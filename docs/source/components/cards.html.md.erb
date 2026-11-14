@@ -1,11 +1,13 @@
 ---
 title: Cards
-description: Complete navigation, image, information and device cards with accessible layouts and truthful household states.
+description: Primary and secondary cards, linked and static navigation, images, actions, groups and truthful household states.
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-14"
 updates:
+  - date: "2026-11-14"
+    description: Defined NHS-informed primary and secondary card permutations, complete Home Assistant examples, a restrained shared visual contract and interaction boundaries.
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
   - date: 2026-11-11
@@ -42,6 +44,95 @@ Use civica for the public identity and follow the [compatibility record](../get-
 | Chart | Inspect a trend with units and period context | Use the separate [chart component](charts.html) and its data alternative |
 
 A short list is often better than a card for every item. Do not use cards to box every paragraph in a long guide, turn every sensor into a competing headline or add a dark border around an already grouped control. For larger collections, follow the [hub pattern](../patterns/hub.html).
+
+## Card hierarchy: primary and secondary
+
+The [NHS card component](https://service-manual.nhs.uk/design-system/components/card) provides the underlying distinction between a **primary card**, which draws attention to a main destination or major topic, and a **secondary card**, which supports the journey without competing with it. civica follows that distinction while retaining its own square corners, quiet surfaces, household language and focus design. **Primary does not mean urgent, safe, successful or live.** Severity and device state are communicated separately in words.
+
+| Decision | Primary card | Secondary card |
+| --- | --- | --- |
+| Purpose | A main destination or major household topic | Related guidance, explanation or lower-priority navigation |
+| Appearance | The standard bordered surface with a restrained leading accent | A quiet bordered surface without the leading accent |
+| Heading | Descriptive, in document heading order | Descriptive, in the same document heading order |
+| Controls | One explicit heading link, or separate independent actions | The same interaction rules |
+| Grouping | Few, genuinely important cards | Supporting cards may appear in a responsive group |
+
+Do not decide prominence based on the number of device entities, a brand colour or whether a live value happens to be high. Only a small number of primary cards should compete for attention on a dashboard or hub. A card is a **reference HTML pattern**, not an additional Home Assistant custom-card type.
+
+### Primary card: one heading link
+
+A primary card introduces an important overview. The actual link remains in the heading so normal browser navigation, context menus and keyboard operation are available. The entire card is **not** an anchor and does not acquire a click handler. Visual hover on a linked card supplements the focus styling of its real link.
+
+<%= example('card-primary-linked') %>
+
+### Primary card: static surface with several links
+
+Not all primary cards navigate to one destination. When several actions are necessary, keep the card itself static and let each link remain independent.
+
+<%= example('card-primary-static') %>
+
+### Primary card with a chevron
+
+An optional chevron can signal a navigation destination, but it never carries the meaning alone, becomes its own focus target or substitutes for the link label. Do not add it to a non-clickable card merely as decoration.
+
+<%= example('card-primary-chevron') %>
+
+### Secondary card: one heading link
+
+Use a secondary card for related information and lower-priority routes. It uses the same accessible link behaviour without the visual primary accent.
+
+<%= example('card-secondary-linked') %>
+
+### Secondary card: static surface
+
+Supporting content can be readable with no interaction, or contain more than one independent link. Do not wrap other interactive controls inside a whole-card anchor.
+
+<%= example('card-secondary-static') %>
+
+## Optional content and arrangements
+
+These permutations are **compositional**, not separate product components. Start with primary or secondary prominence and independently choose meaningful content, navigation and layout.
+
+| Option | Contract |
+| --- | --- |
+| Image | Optional, supplementary and correctly described; state and navigation remain in text |
+| Chevron | Optional on a card with one clear heading destination; decorative only |
+| Actions | Independent, labelled links or buttons; never nested inside another interactive element |
+| Group | A semantic list in reading order, responsive without truncating labels |
+| Value | Unit, source, observed time and unknown/unavailable distinctions |
+| Heading | The correct level for the surrounding document; visual size does not set semantics |
+
+### Image-led primary destination
+
+This uses an existing original civica kitchen illustration. Its empty alternative text is intentional here because the heading and copy identify the fictional room and destination. Meaningful spatial diagrams elsewhere require a descriptive alternative.
+
+<%= example('card-primary-image-linked') %>
+
+### Contextual actions in the heading area
+
+The title and its associated links are separate focus targets. At narrower widths the heading and links stack without changing their source order. These examples navigate to documentation sections; they do not edit automations.
+
+<%= example('card-secondary-actions') %>
+
+### Mixed-prominence group and measured values
+
+A grid can contain related cards with different prominence, but should not turn every sensor into a competing primary card. Keep values and sources explicit, and preserve semantic list and reading order.
+
+<%= example('card-primary-metric-group') %>
+
+### Heading levels within a section
+
+A card heading is part of the page outline, not an isolated heading level. Use an `h3` below an `h2` section heading, even if its appearance matches other card titles.
+
+<%= example('card-heading-level') %>
+
+## Reference class contract
+
+The examples share `.civica-card-demo`, `.civica-card-demo__body`, and optional `.civica-card-demo__media`. To express prominence, use **exactly one** modifier: `.civica-card-demo--primary` or `.civica-card-demo--secondary`. The unmodified base remains supported for published examples. Apply `.civica-card-demo--clickable` **only when a single heading anchor provides the destination**; this modifier is visual affordance, not JavaScript behaviour and does not make the entire surface interactive. Do not use it on cards containing buttons or additional links.
+
+The optional `.civica-card-demo__heading-row` holds the title and a decorative chevron or independent action-link list. `.civica-card-demo__action-links` is a semantic list. `.civica-card-demo__metric` is a display role for numeric text, not a sensor-state type. Use a responsive `.civica-card-demo-grid` list for related cards.
+
+All variants inherit civica's typography and surface colours, a 1px structural border, square corners and 20px content padding. A primary card adds a quiet 4px leading accent; a secondary card does not. **No shadow, lift animation, colour-only state, or card-wide invisible click target is required.** Links remain underlined and visibly focused; the accent does not encode urgency or availability.
 
 ## A navigation card needs a useful destination
 
