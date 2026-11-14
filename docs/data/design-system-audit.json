@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "reviewed_on": "2026-11-13",
+  "reviewed_on": "2026-11-14",
   "status": "current-startup-readiness-patch-locally-validated; full-ci-publication-and-live-acceptance-pending",
   "baseline_commit": "2dfeb5272eaf27c100dcb50b59f20220918a2d41",
   "scope": "All current authored guides and examples; shared documentation presentation, original artwork and canonical ownership; maintained lighting request/count remediation and chart fixture date navigation. Current source review and named browser checks do not certify every native Home Assistant task or physical outcome. The 12 November supplement adds finite source-registry coverage, terminology, UK family decisions and authored references; acceptance is recorded separately.",
@@ -777,7 +777,7 @@
     },
     {
       "path": "docs/source/components/cards.html.md.erb",
-      "sha256": "1608153b0b099dc49244638dd433fda12ae1865cab909fd924aef481d1692622",
+      "sha256": "5bb9b43f53039fb898b5510e4f87440f26b569d7ecd0872e8cecebd5c1d23391",
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -811,9 +811,18 @@
         "card-unknown-reading",
         "card-group-partial",
         "card-responsive-group",
-        "card-long-name"
+        "card-long-name",
+        "card-primary-linked",
+        "card-primary-static",
+        "card-primary-chevron",
+        "card-secondary-linked",
+        "card-secondary-static",
+        "card-primary-image-linked",
+        "card-secondary-actions",
+        "card-primary-metric-group",
+        "card-heading-level"
       ],
-      "note": "Navigation and multi-action cards retain separate targets; quiet structure and native room hit regions are explicitly differentiated. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
+      "note": "Navigation and multi-action cards retain separate targets; quiet structure and native room hit regions are explicitly differentiated. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 14 November 2026: nine primary/secondary card permutations reviewed for focus, independent links, explicit entity-state meaning and documented reference-only boundaries; complete CI is separately required.",
       "url": "/components/cards.html",
       "title": "Cards",
       "resolved_finding_ids": []
@@ -15875,6 +15884,186 @@
       "review_note": "Read the Distinguish a maintenance record from an alarm specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
       "sha256": "db49e45bfc31be3ee2631f12f35db1e856887c03a74d1906f62380b259833661"
+    },
+    {
+      "id": "card-primary-linked",
+      "title": "Primary card with one navigation destination",
+      "path": "docs/data/card-variants-examples.yml",
+      "authored_html_sha256": "a2148d3b9464d47e6c7f17c3425b7efdd57ba16c644204a41c4169576d54ac59",
+      "owners": [
+        "/components/cards.html"
+      ],
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Original civica household reference reviewed for card hierarchy, link semantics, content/state meaning, responsive structure and absence of live control. Rendered verification separately gated.",
+      "source_file": "docs/data/card-variants-examples.yml",
+      "sha256": "69410543a0883224b43b2e182e86b0f7ad80277871c323f6d2478491bdf82ba9"
+    },
+    {
+      "id": "card-primary-static",
+      "title": "Primary card with more than one destination",
+      "path": "docs/data/card-variants-examples.yml",
+      "authored_html_sha256": "5756d1e192eef90bee5c84fab04a13aa8584d5dff6aa759ed01a559a76c1cd59",
+      "owners": [
+        "/components/cards.html"
+      ],
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Original civica household reference reviewed for card hierarchy, link semantics, content/state meaning, responsive structure and absence of live control. Rendered verification separately gated.",
+      "source_file": "docs/data/card-variants-examples.yml",
+      "sha256": "69410543a0883224b43b2e182e86b0f7ad80277871c323f6d2478491bdf82ba9"
+    },
+    {
+      "id": "card-primary-chevron",
+      "title": "Primary navigation card with a chevron",
+      "path": "docs/data/card-variants-examples.yml",
+      "authored_html_sha256": "c868ef71977bc30c9462364876dfb3671af69e9a162971b95436f2691263cbc6",
+      "owners": [
+        "/components/cards.html"
+      ],
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Original civica household reference reviewed for card hierarchy, link semantics, content/state meaning, responsive structure and absence of live control. Rendered verification separately gated.",
+      "source_file": "docs/data/card-variants-examples.yml",
+      "sha256": "69410543a0883224b43b2e182e86b0f7ad80277871c323f6d2478491bdf82ba9"
+    },
+    {
+      "id": "card-secondary-linked",
+      "title": "Secondary card with one navigation destination",
+      "path": "docs/data/card-variants-examples.yml",
+      "authored_html_sha256": "a369be5bcc6ee28654c4a6cf862246fb6dffd7404f6a9e3e4b53c6eadaa915a8",
+      "owners": [
+        "/components/cards.html"
+      ],
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Original civica household reference reviewed for card hierarchy, link semantics, content/state meaning, responsive structure and absence of live control. Rendered verification separately gated.",
+      "source_file": "docs/data/card-variants-examples.yml",
+      "sha256": "69410543a0883224b43b2e182e86b0f7ad80277871c323f6d2478491bdf82ba9"
+    },
+    {
+      "id": "card-secondary-static",
+      "title": "Secondary card with independent links",
+      "path": "docs/data/card-variants-examples.yml",
+      "authored_html_sha256": "7c5a8d645aeeab2f790bd9e913396fe2723e65a31fbf90f5cc8f94ba4dc127e2",
+      "owners": [
+        "/components/cards.html"
+      ],
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Original civica household reference reviewed for card hierarchy, link semantics, content/state meaning, responsive structure and absence of live control. Rendered verification separately gated.",
+      "source_file": "docs/data/card-variants-examples.yml",
+      "sha256": "69410543a0883224b43b2e182e86b0f7ad80277871c323f6d2478491bdf82ba9"
+    },
+    {
+      "id": "card-primary-image-linked",
+      "title": "Image card with a single destination",
+      "path": "docs/data/card-variants-examples.yml",
+      "authored_html_sha256": "15e7bd0fa28a30f0960f5bedbfd90604258598688799afed7b58faf8325c25ca",
+      "owners": [
+        "/components/cards.html"
+      ],
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Original civica household reference reviewed for card hierarchy, link semantics, content/state meaning, responsive structure and absence of live control. Rendered verification separately gated.",
+      "source_file": "docs/data/card-variants-examples.yml",
+      "sha256": "69410543a0883224b43b2e182e86b0f7ad80277871c323f6d2478491bdf82ba9"
+    },
+    {
+      "id": "card-secondary-actions",
+      "title": "Non-clickable card with contextual actions",
+      "path": "docs/data/card-variants-examples.yml",
+      "authored_html_sha256": "19fe872a5d16ffa8bbb9a173e23b23eb763ced880adad04a1a905016f7fb75ee",
+      "owners": [
+        "/components/cards.html"
+      ],
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Original civica household reference reviewed for card hierarchy, link semantics, content/state meaning, responsive structure and absence of live control. Rendered verification separately gated.",
+      "source_file": "docs/data/card-variants-examples.yml",
+      "sha256": "69410543a0883224b43b2e182e86b0f7ad80277871c323f6d2478491bdf82ba9"
+    },
+    {
+      "id": "card-primary-metric-group",
+      "title": "A responsive group of two measured-state summaries",
+      "path": "docs/data/card-variants-examples.yml",
+      "authored_html_sha256": "be22557f0a3f253390aab4dc7f07ca2e0c732e1f9db0dea9e159294431cbfe64",
+      "owners": [
+        "/components/cards.html"
+      ],
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Original civica household reference reviewed for card hierarchy, link semantics, content/state meaning, responsive structure and absence of live control. Rendered verification separately gated.",
+      "source_file": "docs/data/card-variants-examples.yml",
+      "sha256": "69410543a0883224b43b2e182e86b0f7ad80277871c323f6d2478491bdf82ba9"
+    },
+    {
+      "id": "card-heading-level",
+      "title": "Card heading below a page section heading",
+      "path": "docs/data/card-variants-examples.yml",
+      "authored_html_sha256": "44d0d6272fa9afc3c45514a14e330ccfbb260f5b5bc07eca1d77c1c8a054ff67",
+      "owners": [
+        "/components/cards.html"
+      ],
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Original civica household reference reviewed for card hierarchy, link semantics, content/state meaning, responsive structure and absence of live control. Rendered verification separately gated.",
+      "source_file": "docs/data/card-variants-examples.yml",
+      "sha256": "69410543a0883224b43b2e182e86b0f7ad80277871c323f6d2478491bdf82ba9"
     }
   ],
   "findings": [
@@ -17429,7 +17618,7 @@
     },
     {
       "path": "docs/source/stylesheets/example.css.scss",
-      "sha256": "6c9ae99a89e4f274d78601709d8c212d1a3c66c3d67938ea55b3b6e8205c0bf7",
+      "sha256": "371f0ae0a77102f464320a220a5fb4c99b858aff817d61f51b7e7c122c0ac440",
       "scope": "Authored/shared documentation source review. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18176,6 +18365,11 @@
       "path": "docs/data/licensing-notice-review.json",
       "sha256": "4f3d5b589973c0de692b4afc131ef002db6cad68514b1ae97c074091c067889f",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
+    },
+    {
+      "path": "docs/data/card-variants-examples.yml",
+      "scope": "Nine original Civica Home Assistant card example variants with reference-only links and data.",
+      "sha256": "69410543a0883224b43b2e182e86b0f7ad80277871c323f6d2478491bdf82ba9"
     }
   ],
   "limitations": [
