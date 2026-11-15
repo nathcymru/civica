@@ -18,11 +18,9 @@
 /* Progressive enhancement: navigation, catalogue and source tabs remain usable without JS. */
 (() => {
   const narrow = matchMedia('(max-width:760px)');
-  const sectionMenu = document.querySelector('.c-section-menu');
   const mainToggle = document.querySelector('.c-menu-toggle');
   const mainLinks = document.getElementById('primary-navigation');
   const arrangeNavigation = () => {
-    if (sectionMenu) sectionMenu.open = !narrow.matches;
     if (mainToggle && mainLinks) {
       mainToggle.hidden = !narrow.matches;
       mainToggle.setAttribute('aria-expanded', String(!narrow.matches));

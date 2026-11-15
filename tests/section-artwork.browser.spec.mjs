@@ -83,7 +83,6 @@ test('heroes stack complete artwork below text at 320px and grow with doubled te
     expect(Math.abs(before.x)).toBeLessThanOrEqual(1);
     expect(Math.abs(before.x + before.width - 320)).toBeLessThanOrEqual(1);
     expect(art.y).toBeGreaterThanOrEqual(text.y + text.height - 1);
-    await expect(page.locator('.c-section-menu > summary')).toBeVisible();
     await noOverflow(page);
     // Doubling the root alone would not exercise the explicit pixel heading
     // and summary sizes. Change the actual computed text sizes instead.
@@ -106,7 +105,7 @@ test('heroes stack complete artwork below text at 320px and grow with doubled te
   }
 });
 
-test('header text and section navigation remain complete without illustrations or scripting at 320px', async ({ browser, baseURL }) => {
+test('header text remains complete without illustrations or scripting at 320px', async ({ browser, baseURL }) => {
   test.setTimeout(60000);
   const context = await browser.newContext({ javaScriptEnabled:false, viewport:{ width:320, height:900 } });
   const page = await context.newPage();
@@ -116,8 +115,7 @@ test('header text and section navigation remain complete without illustrations o
       await page.goto(new URL(`/docs/build/${route}`, baseURL).href);
       await expect(page.locator('.c-illustrated-header__summary')).toHaveText(entry.summary);
       await expect(page.locator('main h1')).toBeVisible();
-      await expect(page.locator('.c-section-menu > summary')).toBeVisible();
-      await expect(page.locator('.c-sidebar')).toBeVisible();
+        await expect(page.locator('.c-sidebar')).toBeVisible();
       await noOverflow(page);
     }
   } finally { await context.close(); }

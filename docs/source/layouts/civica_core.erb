@@ -23,16 +23,17 @@
 <main id="main-content" class="c-home-content" tabindex="-1"><%= yield %></main>
 <% else %>
 <div class="c-container c-page<%= ' c-page--illustrated' if illustrated_page %>">
-<aside class="c-sidebar" aria-label="Section navigation">
+<%# Section navigation follows the GOV.UK Design System sub-navigation: a labelled nav, plain theme headings and lists, and a marked current item. %>
+<nav class="app-subnav c-sidebar" aria-labelledby="app-subnav-heading">
+<h2 class="govuk-visually-hidden" id="app-subnav-heading">Pages in this section</h2>
 <% section = data.navigation.sections.find { |item| item.id == current_section } %>
-<details class="c-section-menu" open><summary><%= section ? section.title : 'Design System' %> navigation</summary>
-<% if section %><h2><a href="<%= docs_path(section.path) %>"<%= ' aria-current="page"' if '/' + current_page.destination_path == section.path %>><%= section.title %></a></h2>
-<% section_groups(section.id).each do |group, resources| %>
-<details class="c-nav-group"<%= ' open' if resources.any? { |r| r.destination_path == current_page.destination_path } || ['Guidance', 'Writing standards', 'Home Assistant components'].include?(group) %>><summary><%= group %></summary><ul>
-<% resources.each do |resource| %><li><a href="<%= docs_path('/' + resource.destination_path) %>"<%= ' aria-current="page"' if resource.destination_path == current_page.destination_path %>><%= escape(resource.data.title) %></a></li><% end %>
-</ul></details><% end %>
-<% else %><ul><% data.navigation.sections.each do |item| %><li><a href="<%= docs_path(item.path) %>"><%= item.title %></a></li><% end %></ul><% end %>
-</details></aside>
+<% if section %><% section_groups(section.id).each do |group, resources| %>
+<h3 class="app-subnav__theme"><%= group %></h3>
+<ul class="app-subnav__section">
+<% resources.each do |resource| %><% current = resource.destination_path == current_page.destination_path %><li class="app-subnav__section-item<%= ' app-subnav__section-item--current' if current %>"><a class="app-subnav__link govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="<%= docs_path('/' + resource.destination_path) %>"<%= ' aria-current="page"' if current %>><%= escape(resource.data.title) %></a></li><% end %>
+</ul><% end %>
+<% else %><ul class="app-subnav__section"><% data.navigation.sections.each do |item| %><li class="app-subnav__section-item"><a class="app-subnav__link govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="<%= docs_path(item.path) %>"><%= item.title %></a></li><% end %></ul><% end %>
+</nav>
 <main class="technical-documentation c-content<%= ' c-content--illustrated' if illustrated_page %>" id="main-content" tabindex="-1">
 <% if illustrated_page %><%= yield_content :illustrated_header %><div class="c-reading-content"><% else %><%= partial 'partials/breadcrumbs' %><% end %>
 <%= yield %>

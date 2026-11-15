@@ -348,16 +348,14 @@ test('mobile navigation works by keyboard and remains available after resizing',
   await page.setViewportSize({ width: 1280, height: 900 });
   await expect(menu).toBeHidden();
   await expect(links).toBeVisible();
-  await expect(page.locator('.c-section-menu')).toHaveAttribute('open', '');
-  await expect(page.locator('.c-sidebar a[aria-current="page"]')).toBeVisible();
+  // Matches the GOV.UK sub-navigation: a labelled nav with a marked current item.
+  await expect(page.getByRole('navigation', { name: 'Pages in this section' })).toBeVisible();
+  await expect(page.locator('.app-subnav__section-item--current > a[aria-current="page"]')).toBeVisible();
   await page.setViewportSize({ width: 320, height: 800 });
   await expect(menu).toBeVisible();
   await expect(links).toBeHidden();
-  const section = page.locator('.c-section-menu');
-  await expect(section).not.toHaveAttribute('open', '');
-  await section.locator(':scope > summary').focus(); await page.keyboard.press('Enter');
-  await expect(section).toHaveAttribute('open', '');
-  await expect(page.locator('.c-sidebar a[aria-current="page"]')).toBeVisible();
+  // Like GOV.UK, the section sub-navigation is not shown on narrow screens.
+  await expect(page.locator('.app-subnav')).toBeHidden();
   await assertReflow(page);
 });
 
