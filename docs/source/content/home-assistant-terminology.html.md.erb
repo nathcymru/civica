@@ -1,14 +1,16 @@
 ---
 title: Home Assistant terminology
-description: Find exact native terms, explain them for household tasks and check the dated coverage of this register.
+description: "Find the exact Home Assistant name for a feature, and a short way to explain it."
 section: "content"
 group: "Home Assistant terminology"
 nav_order: 10
 source_url: https://www.home-assistant.io/docs/glossary/
 status: reference
 published_on: 2026-11-12
-updated_on: "2026-11-12"
+updated_on: "2026-11-15"
 updates:
+  - date: "2026-11-15"
+    description: "Rewrote the page text in plain English. The entries and their identifiers are unchanged."
   - date: "2026-11-12"
     description: "Moved this page into the top-level Writing guide section while preserving its URL and rule anchors."
   - date: 2026-11-12
@@ -17,23 +19,23 @@ updates:
 
 # Home Assistant terminology
 
-Use the exact Home Assistant name when helping someone find a control. Use a short household explanation when helping them understand it. Keep a person's chosen name and any identifier they need to copy unchanged.
+Use the exact Home Assistant name when you help someone find a control. Use a short explanation when you help them understand it. Keep the names people gave their devices, and any ID they must copy, exactly as they are.
 
-This register supports the [Technical A to Z](style-guides/technical-a-to-z.html), including the rules on native labels (WG-021) and literal values (WG-025). The `HT-` references identify terminology entries, not writing rules.
+Start with the [Technical A to Z](style-guides/technical-a-to-z.html). These pages are the full lists behind it.
 
 <% register = JSON.parse(File.read(File.join(root, 'data', 'ha-terminology.json'))) %>
 
-## Find the right kind of term
+## Find a term
 
-| What you need | Reference |
+| If you need... | Go to |
 | --- | --- |
-| An explanation of a concept such as entity, automation, app or template | [Complete official-glossary mapping](ha-glossary.html) |
+| What a concept such as entity, automation, app or template means | [Home Assistant glossary](ha-glossary.html) |
 | A domain, helper type, raw state, attribute or device-class label | [Entity and state language](entity-and-state-language.html) |
-| A dashboard, action, Assist, Energy, security, Settings or configuration term | [Interface and configuration terminology](interface-terminology.html) |
-| A route or interface surface and its native-versus-civica coverage | [Native interface coverage record](../reference/ha-interface-coverage.json) |
-| Stable identifiers and exact source pointers for automation or review | [Terminology JSON](../reference/ha-terminology.json) |
+| A dashboard, action, Assist, Energy, security or Settings term | [Interface and configuration terminology](interface-terminology.html) |
+| Every route and screen, and whether civica covers it | [Native interface coverage record](../reference/ha-interface-coverage.json) |
+| The same entries as data | [Terminology JSON](../reference/ha-terminology.json) |
 
-The reference pages have named sections and expandable entries. Use the page's contents links or your browser's find command to locate a name or literal key. No script is needed to read an entry or follow its source link.
+Each list has a section for every letter or type. Select an entry to open it. You can read it without a script.
 
 ## Choose wording by purpose
 
@@ -45,7 +47,7 @@ The reference pages have named sections and expandable entries. Use the page's c
 | Diagnostics or configuration | The exact field, value, path or identifier in code styling | Case, dots, underscores, spaces and punctuation required by the syntax |
 | An older instruction | Explain the current name while identifying the historical term | Literal old keys and saved routes unless a verified migration changes them |
 
-Do not run a global replacement from “entity” to “device”, “notification” to “message”, or “service” to “action”. These words can have different technical meanings. “Service” may describe a non-device information source, an older action label, or a backend API. Specify which meaning the task uses.
+Do not swap “entity” for “device”, “notification” for “message” or “service” for “action” everywhere. Each pair can mean different things. “Service” can mean a source of information, an older name for an action, or a backend field. Say which one you mean.
 
 <%= example('term-device-entity') %>
 
@@ -53,15 +55,15 @@ Do not run a global replacement from “entity” to “device”, “notificati
 
 <%= example('term-identifiers') %>
 
-## What complete coverage means here
+## What is covered
 
-This register contains <strong><%= register['terms'].length %> explained terminology entries</strong> and <strong><%= register['native_values'].length %> context-specific native labels</strong>. The numbers have different meanings and must not be added together as a count of installed features.
+The register has <strong><%= register['terms'].length %> entries</strong> and <strong><%= register['native_values'].length %> native labels</strong>. They are different things, so do not add them together.
 
-The source context is **Home Assistant Core 2026.11.1**, **frontend 20261028.5**, and the official website snapshot checked on **12 November 2026**. The JSON records complete commit identifiers and content hashes. A source version is evidence for this reference; it is not a claim about the version installed in a reader's home.
+It was checked against Home Assistant Core 2026.11.1, frontend 20261028.5 and the official website on 12 November 2026. That is the version we checked, not the version installed in a reader’s home.
 
 <table>
-<caption>Explicit terminology inventories and their limits</caption>
-<thead><tr><th scope="col">Inventory</th><th scope="col">Entries</th><th scope="col">Coverage boundary</th></tr></thead>
+<caption>What each list covers</caption>
+<thead><tr><th scope="col">List</th><th scope="col">Entries</th><th scope="col">What it leaves out</th></tr></thead>
 <tbody>
 <% register['inventories'].each do |inventory| %>
 <tr><th scope="row"><%= escape(inventory['title']) %></th><td><%= inventory['denominator'] %></td><td><%= escape(inventory['exclusions']) %></td></tr>
@@ -69,19 +71,13 @@ The source context is **Home Assistant Core 2026.11.1**, **frontend 20261028.5**
 </tbody>
 </table>
 
-The official glossary mapping covers all **83** source entries: **72** Home Assistant concepts and **11** data or template types. The entity-platform mapping covers all **45** entries in the pinned Core registry. The card, feature, selector and view counts come from native dispatch registries and include technical or historical keys where the source includes them. They are not counts of public editor choices or maintained civica components.
+Counts can overlap, so they are not a total of unique terms. The lists do not include every vendor term, custom card or integration setting. If a term is missing, add it from a source. Do not guess.
 
-The supplementary domain map also covers all **15** additional state domains identified by the native row and dialog census, plus **Plant, Zone and Schedule** from the existing guide topics and official integration references. It reuses existing glossary and helper entries where they already explain the concept. Inventory counts can therefore overlap; they are not a sum of unique terms. These domains remain separate from the 45-platform denominator.
+## Native labels and translations
 
-The nine named helper types and Settings destinations cover the stated English translation subtrees. Other helper integrations exist. Native state labels cover the selected platform translation subtrees, including device-class and attribute context; they do not enumerate every integration-specific value. The separate [interface census](../reference/ha-interface-coverage.json) owns route and surface counts.
+English labels are here so you can find the entry. Keep the translation Home Assistant shows, and the names people supplied. Explain an unfamiliar term near the task.
 
-This is a complete mapping of these **named, dated inventories**, not a promise to contain every vendor term, custom card, integration parameter, translated sentence or future release. A missing term needs a source-backed addition, not a guessed translation.
-
-## Keep translations and technical keys distinct
-
-Native English source labels are shown so an author can identify the reference. They are not instructions to force English into another locale. Keep the actual native translation and the person's supplied names. Explain an unfamiliar term near the task, and review any new authored translation in that language.
-
-The native-label tables distinguish a raw state, attribute property, attribute value, device-class translation key and translation fallback key. In particular, `_` is a default entry in a translation file. It is **not** an entity ID or a device-class setting to paste into configuration.
+The underscore `_` in the native-label tables is a default translation entry. It is not an entity ID. Do not paste it into configuration.
 
 ## Source attribution
 
@@ -91,10 +87,10 @@ The extracted native keys and English labels come from Home Assistant Core and f
 
 ## Maintain an entry
 
-1. Identify the task and whether the text is a native label, supplied name, technical value or authored explanation.
-2. Read its official source at the supported version. Check the actual integration when a capability or state is conditional.
-3. Preserve the native name and literal value; write a separate first-use explanation and the most likely confusion.
-4. Record the stable entry ID, source, checked date, version and inventory membership. Retain historical keys where saved configuration still depends on them.
-5. Check the example in ordinary, missing and ambiguous states, then review the rendered page and relevant user task. Record those checks separately from source inspection.
+1. Decide whether the text is a native label, a name someone supplied, a technical value or your own explanation.
+2. Read the official source for the supported version.
+3. Keep the native name and any literal value. Write a separate short explanation and the most likely mix-up.
+4. Record the entry ID, source, date and version. Keep old keys that saved configuration still uses.
+5. Check the example in a normal, a missing and an unclear state.
 
-The [terminology JSON](../reference/ha-terminology.json) contains the full source-refresh record and exact inventory members. The [Publish, update or retire content](publish-update-retire/index.html) section explains evidence, exceptions and change notes.
+The [terminology JSON](../reference/ha-terminology.json) holds the source record. [Publish, update or retire content](publish-update-retire/index.html) explains evidence and change notes.
