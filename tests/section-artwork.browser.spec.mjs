@@ -115,7 +115,7 @@ test('header text remains complete without illustrations or scripting at 320px',
       await page.goto(new URL(`/docs/build/${route}`, baseURL).href);
       await expect(page.locator('.c-illustrated-header__summary')).toHaveText(entry.summary);
       await expect(page.locator('main h1')).toBeVisible();
-        await expect(page.locator('.c-sidebar')).toBeVisible();
+      await expect(page.locator('.c-sidebar')).toBeHidden();
       await noOverflow(page);
     }
   } finally { await context.close(); }
@@ -123,7 +123,7 @@ test('header text remains complete without illustrations or scripting at 320px',
 
 test('data, colour and optional household identity are discoverable without a local Brand guidance group', async ({ page }) => {
   await page.goto('/docs/build/styles/index.html');
-  await expect(page.getByRole('complementary', {name:'Section navigation'})).not.toContainText('Brand guidance');
+  await expect(page.getByRole('navigation', {name:'Pages in this section'})).not.toContainText('Brand guidance');
   for (const name of ['Data visualisation','Colour roles and accessibility']) {
     await expect(page.locator('main').getByRole('link', {name,exact:true}).first()).toBeVisible();
   }
