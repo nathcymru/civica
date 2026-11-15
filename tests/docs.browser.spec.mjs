@@ -385,3 +385,42 @@ test('accordion labels stay aligned with visible text after individual and all-s
     await checkLabels();
   }
 });
+
+
+test('card prominence examples distinguish real links from non-interactive surfaces', async ({ page }) => {
+  const route = id => `/docs/build/examples/${id}.html`;
+  for (const id of ['card-primary-linked', 'card-primary-chevron', 'card-secondary-linked', 'card-primary-image-linked']) {
+    await page.goto(route(id));
+    const card = page.locator('.civica-card-demo').first();
+    await expect(card).toHaveAttribute('aria-labelledby', /.+/);
+    await expect(card).toHaveClass(/civica-card-demo--clickable/);
+    await expect(card.locator('a.civica-card-demo__title-link')).toHaveCount(1);
+    await expect(card.locator('button')).toHaveCount(0);
+    const link = card.locator('a.civica-card-demo__title-link');
+    await link.focus();
+    await expect(link).toBeFocused();
+    const href = await link.getAttribute('href');
+    await page.keyboard.press('Enter');
+    await expect(page).toHaveURL(new RegExp(href.slice(1) + '$'));
+    const target = page.locator(href);
+    await expect(target).toBeVisible();
+  }
+  for (const id of ['card-primary-static', 'card-secondary-static', 'card-secondary-actions', 'card-heading-level']) {
+    await page.goto(route(id));
+    await expect(page.locator('.civica-card-demo').first()).not.toHaveClass(/civica-card-demo--clickable/);
+    await expect(page.locator('.civica-card-demo a.civica-card-demo__title-link')).toHaveCount(0);
+  }
+});
+
+test('card permutations preserve accessible content and reflow at 320px', async ({ page }) => {
+  const ids = ['card-primary-linked', 'card-primary-static', 'card-primary-chevron', 'card-secondary-linked',
+    'card-secondary-static', 'card-primary-image-linked', 'card-secondary-actions', 'card-primary-metric-group', 'card-heading-level'];
+  for (const id of ids) {
+    await page.setViewportSize({ width: 320, height: 800 });
+    await page.goto(`/docs/build/examples/${id}.html`);
+    await expect(page.locator('.civica-card-demo').first()).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), id).toBe(true);
+    const result = await new AxeBuilder({ page }).analyze();
+    expect(result.violations.map(({ id }) => id), id).toEqual([]);
+  }
+});

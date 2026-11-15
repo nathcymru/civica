@@ -54,8 +54,15 @@ test('the completed register preserves 39 variant routes and maps all 30 specifi
   expect(specificationPages).toHaveLength(30);
   expect(new Set(specificationPages.map(page => page.metadata.gap_id)).size).toBe(30);
   expect(specificationPages.map(page => page.metadata.gap_id).sort()).toEqual(gaps.findings.map(gap => gap.id).sort());
-  expect(cardExamples).toHaveLength(14);
-  expect(new Set(cardExamples).size).toBe(14);
+  // Retain the original fourteen specimens and the nine new NHS-informed
+  // primary/secondary variations; all referenced IDs must remain unique.
+  expect(cardExamples).toHaveLength(23);
+  expect(new Set(cardExamples).size).toBe(23);
+  for (const id of [
+    'card-primary-linked', 'card-primary-static', 'card-primary-chevron',
+    'card-secondary-linked', 'card-secondary-static', 'card-primary-image-linked',
+    'card-secondary-actions', 'card-primary-metric-group', 'card-heading-level',
+  ]) expect(cardExamples).toContain(id);
 });
 
 for (const spec of specificationPages) {

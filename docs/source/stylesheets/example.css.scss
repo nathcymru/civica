@@ -87,6 +87,23 @@ dialog::backdrop { background:rgb(11 12 12 / 50%); }
   font-size:var(--c-body-size); line-height:1.5;
 }
 .civica-card-demo { border:1px solid var(--c-border); background:#fff; margin:0 0 20px; min-width:0; max-width:40rem; }
+/* Card hierarchy is a civica composition adapted from NHS card guidance.
+   No hidden surface-wide navigation, content clipping or state signalling. */
+.civica-card-demo--primary { border-left:4px solid #1d70b8; }
+.civica-card-demo--secondary { border:1px solid var(--c-border); }
+.civica-card-demo--clickable:has(.civica-card-demo__title-link:hover) { border-color:#1d70b8; }
+.civica-card-demo--clickable:has(.civica-card-demo__title-link:focus-visible) { border-color:#0b0c0c; }
+.civica-card-demo__heading-row { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px 20px; }
+.civica-card-demo__heading-row > .govuk-heading-m { flex:1 1 12rem; min-width:0; margin-bottom:0; }
+.civica-card-demo__chevron { display:block; flex:none; width:12px; height:12px; border-top:3px solid currentColor; border-right:3px solid currentColor; transform:rotate(45deg); margin:10px 8px 0 0; }
+.civica-card-demo__action-links { flex:1 1 12rem; min-width:0; list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px 18px; }
+.civica-card-demo__action-links li { margin:0; min-width:0; }
+.civica-card-demo__metric { display:inline-block; font-size:1.75rem; line-height:1.2; font-weight:700; }
+@media (forced-colors:active) {
+  .civica-card-demo--primary { border-left-color:CanvasText; }
+  .civica-card-demo--clickable:has(.civica-card-demo__title-link:hover),
+  .civica-card-demo--clickable:has(.civica-card-demo__title-link:focus-visible) { border-color:CanvasText; }
+}
 .civica-card-demo__media { margin:0; }
 .civica-card-demo__media img,img.civica-card-demo__media { display:block; width:100%; height:auto; }
 .civica-card-demo__body { padding:20px; min-width:0; }
