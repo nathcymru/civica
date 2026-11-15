@@ -1,0 +1,39 @@
+---
+title: "Content blocks"
+description: "Write reusable text, such as notification templates, once and keep it true everywhere."
+section: "content"
+group: "Formatting content"
+nav_order: 5
+source_url: "https://guidance.publishing.service.gov.uk/formatting-content/content-blocks/"
+status: "reference"
+published_on: "2026-11-15"
+updated_on: "2026-11-15"
+updates:
+  - date: "2026-11-15"
+    description: "Rewritten with plain rules and Before and After examples."
+---
+
+# Content blocks
+
+A content block is text used in more than one place, such as a notification template or a repeated hint. Write it once. Check it fits every place it appears.
+
+<h2 id="wg-045">Keep notifications true and private</h2>
+
+A notification must say what was observed, when, and nothing a stranger reading a lock screen should not see.
+
+| Before | After |
+| --- | --- |
+| Nain is home alone and the back door is unlocked. | Back door reports Unlocked at 21:14. |
+| Alarm triggered by Sam’s bedroom motion at 02:10. | Alarm triggered at 02:10. Open Home Assistant for details. |
+| Door opened | Front door opened at 22:15. |
+
+Put the time and the device in the first line. Keep personal detail out of the preview. Do not put passwords, tokens or exact addresses in a notification.
+
+## Placeholders
+
+When a block contains a value filled in later, name the value in capitals inside curly brackets. Check the sentence still reads well with a missing value.
+
+| Before | After |
+| --- | --- |
+| {{ states('x') }} opened | {DEVICE_NAME} opened at {TIME}. |
+| (If DEVICE_NAME is empty) opened at 22:15. | Use a fallback: “A door opened at 22:15.” |

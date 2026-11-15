@@ -19,7 +19,7 @@ updates:
 
 Use the exact Home Assistant name when helping someone find a control. Use a short household explanation when helping them understand it. Keep a person's chosen name and any identifier they need to copy unchanged.
 
-This dated supplement applies [Words and style](words-and-style.html), including WG-021 on native labels and WG-025 on literal values. The `HT-` references identify terminology entries, not new writing rules. No native translation, device name or configuration is changed by this guide.
+This register supports the [Technical A to Z](style-guides/technical-a-to-z.html), including the rules on native labels (WG-021) and literal values (WG-025). The `HT-` references identify terminology entries, not writing rules.
 
 <% register = JSON.parse(File.read(File.join(root, 'data', 'ha-terminology.json'))) %>
 
@@ -83,14 +83,6 @@ Native English source labels are shown so an author can identify the reference. 
 
 The native-label tables distinguish a raw state, attribute property, attribute value, device-class translation key and translation fallback key. In particular, `_` is a default entry in a translation file. It is **not** an entity ID or a device-class setting to paste into configuration.
 
-## Source freshness and writing guidance
-
-On 12 November 2026, all **37** previously hashed NHS, Home Office and GOV.UK writing sources returned exactly the same HTML bytes as the 11 November review. This establishes that those retrieved pages did not change between the two checks; it does not establish that every sentence in this repository complies with them.
-
-The current [Plain English Campaign free-guides index](https://www.plainenglish.co.uk/free-guides) and [SCULPT framework page](https://www.worcestershire.gov.uk/council-services/business/digital-worcestershire/sculpt-accessibility/what-sculpt) were also checked. They had no previous recorded HTML hash, so this guide does not claim their bytes were unchanged. The earlier scoped PDF review remains dated 11 November; this refresh does not claim every linked PDF was reread.
-
-No change to the **68 frozen writing rules** was required by this source refresh. The terminology explanations are original civica content. Plain English word lists, SCULPT artwork and endorsement claims are not reproduced.
-
 ## Source attribution
 
 The official Home Assistant website identifies its source under [CC BY-NC-SA 4.0](https://github.com/home-assistant/home-assistant.io/blob/644bcefb1b42d1f50d26847d7d11df06c3b84ae2/LICENSE.md). This register preserves its term names, aliases and source links; it links to the official definitions instead of bundling them. The household explanations and examples were written for civica.
@@ -105,4 +97,4 @@ The extracted native keys and English labels come from Home Assistant Core and f
 4. Record the stable entry ID, source, checked date, version and inventory membership. Retain historical keys where saved configuration still depends on them.
 5. Check the example in ordinary, missing and ambiguous states, then review the rendered page and relevant user task. Record those checks separately from source inspection.
 
-The [terminology JSON](../reference/ha-terminology.json) contains the full source-refresh record and exact inventory members. The [content review chapter](content-review.html) explains evidence, exceptions and meaningful change notes.
+The [terminology JSON](../reference/ha-terminology.json) contains the full source-refresh record and exact inventory members. The [Publish, update or retire content](publish-update-retire/index.html) section explains evidence, exceptions and change notes.
