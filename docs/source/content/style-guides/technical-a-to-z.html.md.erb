@@ -1,0 +1,216 @@
+---
+title: "Technical A to Z"
+description: "The exact words to use for Home Assistant entities, states, attributes, automations and the interface."
+section: "content"
+group: "Style guides"
+nav_order: 2
+source_url: "https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/style-guides/technical-a-to-z/"
+status: "reference"
+published_on: "2026-11-15"
+updated_on: "2026-11-15"
+updates:
+  - date: "2026-11-15"
+    description: "Replaced the four terminology chapters with one technical A to Z. The full dated registers remain as reference."
+---
+
+# Technical A to Z
+
+This guide covers Home Assistant words. For general writing, see the [A to Z style guide](a-to-z.html).
+
+Use the exact Home Assistant name when you tell someone where to find a control. Use a short explanation when you tell them what it means. Keep the name a person gave their device, and any ID they must copy, exactly as it is.
+
+## Rules for all entries
+
+<h3 id="wg-020">Use one word for one operation</h3>
+
+Use the same word for the same operation. Use a different word for a different operation.
+
+<%= example('wg-household-terms') %>
+
+| Before | After |
+| --- | --- |
+| Remove the automation (when you mean delete it) | Delete automation |
+| Disable the automation (when you mean turn off future starts) | Turn off automation |
+| Remove from this dashboard (when it also deletes the device) | Remove from this dashboard. The device stays in Home Assistant. |
+
+<h3 id="wg-021">Keep native labels and translations</h3>
+
+When you point someone to a screen, use the label Home Assistant shows, in the language it shows. Explain an unfamiliar term next to it.
+
+| Before | After |
+| --- | --- |
+| Open Messages. (the screen says Notifications) | Open **Notifications**. This shows messages from your automations. |
+| Find the identification of the light. | Find the **Entity ID** of the light. |
+
+<h3 id="wg-022">Keep names exactly as people typed them</h3>
+
+Do not change the case, spelling, punctuation or language of a name someone gave. Do not guess a relationship from it. Do not change an ID when someone changes a name.
+
+| Before | After |
+| --- | --- |
+| Nain’s lamp → Nain’s Lamp | Nain’s lamp |
+| Mam’s heater → Mother’s heater | Mam’s heater |
+
+<h3 id="wg-025">Keep literal values literal</h3>
+
+Put an entity ID, a key, a path or a version in code formatting. Do not change underscores, dashes or quotation marks inside it.
+
+| Before | After |
+| --- | --- |
+| Enter the reading lamp ID: light.reading-lamp. | Entity ID: `light.reading_lamp` |
+| Set mode to "heat". (curly quotes copied into YAML) | Set `mode: heat` |
+
+Label an example ID as an example. Never ask someone to paste a password or token into a field that does not need one.
+
+## A
+
+### Action
+
+Use “action” for what Home Assistant is asked to do. Older guidance says “service”: these mean the same thing. A request to run an action does not prove the device finished it.
+
+### App
+
+Use “app” for software that runs alongside Home Assistant on Home Assistant OS. Older instructions and some saved files say “add-on”. Say “app (previously add-on)” once. An app is not an integration, a dashboard card or the Companion app on a phone.
+
+### Area
+
+A room or other space that groups devices and entities. An area is not a zone. Acting on an area may change several entities.
+
+### Assist
+
+Home Assistant’s voice and text assistant. A helpful reply does not prove the right device was controlled.
+
+### Attribute
+
+Extra information about an entity, such as brightness. Write the attribute name in code formatting only when someone must copy it. An attribute is not the state.
+
+## B
+
+### Blueprint
+
+A reusable pattern for making an automation or script. Choosing inputs or saving a blueprint-based automation does not mean it has run.
+
+## C
+
+### Card
+
+A block on a dashboard. Do not use “widget” or “tile” unless that is the card’s name.
+
+### Condition
+
+A check that decides whether a run carries on. A condition does not start a run and does not wait until it becomes true.
+
+## D
+
+### Dashboard
+
+A set of views and cards for checking or controlling the home. A dashboard being hidden does not stop anyone reaching a device.
+
+### Device
+
+A physical product or a service that groups several entities. One device may have many entities, and some entities have no device.
+
+### Device class
+
+A more specific kind of entity, such as a door or a temperature sensor. Write it in lower case, as a label, not as a state.
+
+### Domain
+
+The first part of an entity ID: in `light.reading_lamp` the domain is `light`. It is not an internet domain.
+
+## E
+
+### Entity
+
+One reading, control or function in Home Assistant, such as a lamp or a temperature. An entity is not always a physical device. Say “light”, “sensor” or “switch” when you can.
+
+### Entity ID
+
+Write “entity ID”, not “entity id” or “identifier”. The format is `domain.object_id`, all lower case, with underscores. Changing the name of an entity does not necessarily change its ID.
+
+### Event
+
+A message that something happened. Receiving one does not prove a device did something.
+
+## F
+
+### Floor
+
+A group of areas on one level. Do not infer a building layout from it.
+
+## H
+
+### Helper
+
+A stored value or simple calculation, such as a toggle or a counter. Editing a draft helper does not change anything until it is saved.
+
+## I
+
+### Integration
+
+The connection between Home Assistant and a device family or service. Not the same as an app.
+
+## L
+
+### Label
+
+A tag you can put on many things to organise or target them. A label is not a room.
+
+## P
+
+### Person
+
+A Home Assistant person entity, which combines phones and other trackers. It is not a user account. It does not prove where a person is.
+
+## S
+
+### Scene
+
+A saved set of device states you can request together. A scene is not a timed routine. Activating it does not prove every device reached its state.
+
+### Script
+
+A sequence of actions you start yourself or from an automation. Saving a script does not run it. Stopping a script does not undo what it already requested.
+
+### State
+
+The value Home Assistant holds for an entity. It is not necessarily a fresh reading or what a person asked for.
+
+| Before | After |
+| --- | --- |
+| The light is off. | The light reports Off. |
+
+#### Unavailable and unknown
+
+“Unavailable” means Home Assistant cannot get the state now. “Unknown” means no usable state has been supplied. Neither means 0, and neither proves the device is offline. See [States, requests and errors](../writing-guidelines/states-and-errors.html).
+
+## T
+
+### Template
+
+A way to calculate or format a value. A template result is not a measured value. A missing input must not become 0.
+
+### Trigger
+
+What starts an automation. Saving or turning on an automation is not a trigger.
+
+## Y
+
+### YAML
+
+The text format used for some configuration. Keep spacing, keys and quotation marks exactly.
+
+## Z
+
+### Zone
+
+A place on a map used for location features. A zone is not a room.
+
+## Full native vocabulary
+
+These pages list every checked Home Assistant term and native label, with the version they were checked against.
+
+- [Home Assistant terminology](../home-assistant-terminology.html) explains how to use them
+- [Home Assistant glossary](../ha-glossary.html) maps every entry in the official glossary
+- [Entity and state language](../entity-and-state-language.html) lists domains, device classes, states and attributes
+- [Interface terminology](../interface-terminology.html) lists dashboard, action, Assist, Energy and Settings terms

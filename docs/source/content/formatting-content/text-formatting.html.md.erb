@@ -1,0 +1,76 @@
+---
+title: "Text formatting"
+description: "Use headings, lists, tables, bold and quotes so that meaning does not depend on how the page looks."
+section: "content"
+group: "Formatting content"
+nav_order: 1
+source_url: "https://guidance.publishing.service.gov.uk/formatting-content/text-formatting/"
+status: "reference"
+published_on: "2026-11-15"
+updated_on: "2026-11-15"
+updates:
+  - date: "2026-11-15"
+    description: "Rewritten with plain rules and Before and After examples."
+---
+
+# Text formatting
+
+<h2 id="wg-080">Use real headings, lists and tables</h2>
+
+Use the heading, list and table elements, not bold or spaces that only look like them. Start at H2. Do not skip a level.
+
+<%= example('wg-accessible-structure') %>
+
+| Before | After |
+| --- | --- |
+| **Bedroom light help** (bold text) | ## Bedroom light help |
+| Check the room. • Check the state. (typed bullet characters) | A real list with a lead-in line (see below) |
+| A table used to line up a form | A form with labels |
+
+Use a table only for data with at least 2 columns and 3 rows, including the heading row. Put headings in the first row. Do not use a table for layout.
+
+## Lists
+
+Use a bulleted list when the order does not matter. Use numbered steps when it does.
+
+- always use a lead-in line
+- start each bullet in lower case, unless it is a name
+- do not use more than one sentence in a bullet
+- do not put “and” or “or” after the bullets
+- do not put a full stop after the last bullet
+
+| Before | After |
+| --- | --- |
+| Things to check: Plug is in; The hub light is green; and wifi is on. | Check that:<br>- the plug is in<br>- the hub light is green<br>- wifi is on |
+
+## Bold, italics, capitals and quotes
+
+Use bold only for a control the person must select or a label they will see on screen. Do not use italics. Do not write whole sentences in capital letters. Use a blockquote only to quote someone else at length.
+
+| Before | After |
+| --- | --- |
+| **Important:** do not unplug the hub. | Do not unplug the hub during the update. |
+| Press *Save*. | Select **Save**. |
+| DO NOT TURN OFF THE HEATING | Do not turn off the heating while the boiler is being serviced. |
+
+<h2 id="wg-081">Do not depend on colour or position</h2>
+
+Say it in words as well as colour, icons and layout.
+
+| Before | After |
+| --- | --- |
+| A red dot next to the sensor. | Hall sensor: Unavailable (shown with a red dot). |
+| See the card on the left. | See the **Heating** card. |
+
+<h2 id="wg-084">Make results reach assistive technology</h2>
+
+When a message appears after an action, put it where a screen reader will announce it. Do not use a toast that disappears before it can be read.
+
+| Before | After |
+| --- | --- |
+| A coloured banner that fades after 2 seconds. | A status message that stays until the next action: “Request sent. Waiting for the lamp to report.” |
+| Help text only shown on hover. | Help text visible under the field. |
+
+## Code and literal values
+
+Use code formatting for an entity ID, key or path that someone must copy. Do not change an underscore, dash or quote mark inside it. See [Technical A to Z](../style-guides/technical-a-to-z.html).
