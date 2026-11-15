@@ -1,14 +1,16 @@
 ---
 title: Home Assistant glossary
-description: All 83 entries in the checked official glossary, with native names, household explanations and common confusions.
+description: "What each Home Assistant glossary term means, in household words."
 section: "content"
 group: "Home Assistant terminology"
 nav_order: 11
 source_url: https://www.home-assistant.io/docs/glossary/
 status: reference
 published_on: 2026-11-12
-updated_on: "2026-11-12"
+updated_on: "2026-11-15"
 updates:
+  - date: "2026-11-15"
+    description: "Rewrote the page text in plain English. The entries and their identifiers are unchanged."
   - date: "2026-11-12"
     description: "Moved this page into the top-level Writing guide section while preserving its URL and rule anchors."
   - date: 2026-11-12
@@ -17,13 +19,13 @@ updates:
 
 # Home Assistant glossary
 
-This page covers every entry in the [official Home Assistant glossary](https://www.home-assistant.io/docs/glossary/) snapshot checked on 12 November 2026. The native terms and aliases remain recognisable. The explanations below are original civica wording for household tasks, not a replacement translation or a copy of the official definitions.
+This page covers every entry in the [official Home Assistant glossary](https://www.home-assistant.io/docs/glossary/), checked on 12 November 2026. The explanations are civica’s own words, not a copy of the official ones.
 
-Read [how to use the terminology register](home-assistant-terminology.html) before treating an explanation as an interface label. For literal state values, device classes and platform identifiers, use [Entity and state language](entity-and-state-language.html).
+Read [Home Assistant terminology](home-assistant-terminology.html) before you use an explanation as a label. For states, device classes and platform names, see [Entity and state language](entity-and-state-language.html).
 
-## Distinctions that matter during a task
+## Terms that are easy to mix up
 
-An integration supplies entities; a device can group several of them. A trigger starts a run, a condition checks whether it can continue, and an action requests an operation. Saving or enabling an automation does not establish that the action ran. A notification being sent does not establish that someone read it.
+An integration supplies entities. A device can group several of them. A trigger starts an automation, a condition checks whether it carries on, and an action asks for something to happen. Saving an automation does not mean it ran. Sending a notification does not mean anyone read it.
 
 <%= example('term-event-action') %>
 
@@ -44,21 +46,24 @@ An integration supplies entities; a device can group several of them. A trigger 
 <% entries.select { |term| term['native_name'][0].upcase == letter }.each do |term| %>
 <details class="civica-audit-detail" id="<%= escape(term['id'].downcase) %>">
 <summary><strong><%= escape(term['native_name']) %></strong><%= ' — historical term retained' if term['status'] == 'historical-term-retained' %></summary>
-<p><strong>Household wording:</strong> <%= escape(term['household_wording']) %>.</p>
-<p><strong>First-use explanation:</strong> <%= escape(term['first_use_explanation']) %></p>
-<p><strong>Keep distinct:</strong> <%= escape(term['avoid_confusion']) %></p>
-<% unless term['aliases'].empty? %><p><strong>Aliases recorded by the source:</strong> <%= escape(term['aliases'].join(', ')) %>. These are lookup references, not instructions to replace native labels.</p><% end %>
+<p><strong>Say:</strong> <%= escape(term['household_wording']) %>.</p>
+<p><strong>What it means:</strong> <%= escape(term['first_use_explanation']) %></p>
+<p><strong>Do not confuse it with:</strong> <%= escape(term['avoid_confusion']) %></p>
+<% unless term['aliases'].empty? %><p><strong>Also called:</strong> <%= escape(term['aliases'].join(', ')) %>.</p><% end %>
 <p><a href="<%= escape(term['official_glossary_url']) %>">Official <%= escape(term['native_name']) %> entry</a><% if term['further_reading_url'] %> · <a href="<%= escape(term['further_reading_url']) %>">Related official guidance</a><% end %>. Reference: <code><%= escape(term['id']) %></code>.</p>
 </details>
 <% end %>
 <% end %>
 
-## Historical terms and current instructions
+## Old names
 
-Apps were formerly called add-ons. Lovelace remains in technical dashboard identifiers. Component was an older name for integration, while “component” also has a separate meaning in this design system. Home Assistant Core remains the main program even though the former standalone Core production installation method is deprecated. Home Assistant Supervised names a deprecated installation method; Supervisor is still a distinct software component.
+- Apps used to be called add-ons.
+- Lovelace still appears in technical dashboard keys.
+- Component is an older name for integration. Component also has a separate meaning in this design system.
+- Home Assistant Supervised is a deprecated installation method. Home Assistant Core is still the main program.
 
-Preserve those distinctions. Use the current control name when giving a current instruction, and retain an old literal key when explaining saved configuration. Link to the [current official installation guidance](https://www.home-assistant.io/installation/) before recommending an installation method.
+Use the current name when you give an instruction. Keep an old key when you explain saved configuration. Check the [official installation guide](https://www.home-assistant.io/installation/) before you recommend an installation method.
 
-## Scope and maintenance
+## What this page does not cover
 
-The register maps 83 source entries, not every phrase in the entire Home Assistant website. Source snapshots, aliases, entry identifiers and reviewed dates are in the [terminology JSON](../reference/ha-terminology.json). The [interface terminology chapter](interface-terminology.html) adds the specifically enumerated native UI and configuration vocabulary. Future or vendor-specific terms need a separate source check.
+It covers the 83 glossary entries, not the whole Home Assistant website. The [terminology JSON](../reference/ha-terminology.json) has the sources, aliases, IDs and dates. [Interface terminology](interface-terminology.html) covers screens and settings. A term that is not here needs its own source.
