@@ -1,95 +1,50 @@
 ---
 title: "Writing for a connected home"
-description: "A practical writing standard for civica household controls, states, help and documentation."
+description: "How to write labels, states, errors and help for Home Assistant, based on the GOV.UK writing and style manual."
 section: "content"
 group: "Writing standards"
 nav_order: 0
-source_url: "https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/writing-guidelines/meet-user-needs/"
+source_url: "https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/writing-guidelines/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-15"
 updates:
-  - date: "2026-11-12"
-    description: "Corrected the landing header to a shared sidebar and hero band, with the title beside the illustration on wide screens and above it on narrow screens."
-  - date: "2026-11-12"
-    description: "Added an original section illustration that matches the documentation navigation family and keeps the complete meaning in text."
-  - date: "2026-11-12"
-    description: "Moved this page into the top-level Writing guide section while preserving its URL and rule anchors."
-  - date: "2026-11-12"
-    description: "Added the dated Home Assistant terminology supplement and its complete glossary and native vocabulary inventories."
-  - date: "2026-11-11"
-    description: "Added original household writing rules, contextual examples and source boundaries for writing for a connected home."
+  - date: "2026-11-15"
+    description: "Rewrote the guide to mirror the GOV.UK manual: writing guidelines, formatting, publish, update and retire, and style guides. Cut repeated disclaimers and abstract wording."
 ---
 
 # Writing for a connected home
 
-Use this guide when writing a civica dashboard, custom control, help page, notification template or documentation example. Start with the task a person needs to complete and the evidence the system actually has. A clear sentence cannot make an unsupported action reliable.
+Use this guide to write dashboard labels, states, errors, notifications and help for Home Assistant. It follows the GOV.UK writing and style manual, adapted for a household.
 
-This is an original household writing standard informed by official public-service guidance, Plain English and SCULPT. It is not an official government, NHS or Home Office service and does not confer their approval.
+Every rule has the same shape: the rule, why it matters, then Before and After examples. The names, rooms and devices in the examples are made up.
 
-<h2 id="wg-001">WG-001 — Start with a real household need</h2>
+## Where to start
 
-**SHOULD.** State who needs the content, what they need to do or understand, and the context in which they will use it.
-
-A person checking the heating at night needs the current state and a relevant action before an explanation of the integration. A person troubleshooting an installation may need an exact diagnostic name. Neither audience benefits from the same unexplained technical summary.
-
-Put the most useful information first. Give a page a specific title and a short summary that adds context rather than repeating it. Treat publisher character-count suggestions as editing prompts, not reasons to truncate a room name or omit a condition.
-
-<%= example('wg-task-first') %>
-
-<h2 id="wg-002">WG-002 — Apply the guide to content we own</h2>
-
-**MUST.** Change civica-authored labels and explanatory content without silently rewriting native Home Assistant translations, user names or integration values.
-
-A native feature label is part of the person’s navigation map. A household name may be Welsh, abbreviated, humorous or meaningful only to that household. Keep both intact. Explain an unfamiliar native term beside it when necessary. Correcting an authored hint is different from renaming an entity or changing a translated native control.
-
-The guide covers documentation and proposed patterns as well as implemented components. A reference example must not imply that the repository already installs that workflow.
-
-<%= example('wg-scope') %>
-
-<h2 id="wg-003">WG-003 — Use requirement levels deliberately</h2>
-
-**MUST.** Interpret MUST as a required civica content contract, SHOULD as a tested default with a documented reason for an exception, and MAY as an allowed contextual choice.
-
-A MUST about truthful state wording applies whenever that state is shown. A SHOULD about active voice permits “Schedule not saved” where the result matters more than the actor. A MAY about additional explanatory text does not permit hiding essential conditions.
-
-These levels describe this project’s standard. They are not claims about legislation, certification or every native Home Assistant screen. A proposal that conflicts with a MUST needs a revised contract and review, not an unrecorded exception.
-
-<h2 id="wg-004">WG-004 — Keep source-system claims in their proper scope</h2>
-
-**MUST.** Adapt transferable writing principles without importing clinical assurance, government identity, legal rules or unsupported services.
-
-The NHS review standard is useful for ownership and version control. Its clinical approval process is not a household safety assessment. Home Office wording about immigration status is not a household permission model. Plain English and SCULPT inform this original guide; their logos, posters, word lists and endorsement claims are not part of it.
-
-The earlier [Content design introduction](../styles/content.html) remains available as a quick reference. Its URL has not changed.
-
-## Choose the relevant chapter
-
-| If you are writing… | Start here |
+| If you are... | Go to |
 | --- | --- |
-| An explanation or summary | [Voice and language](voice-and-language.html) |
-| A label, term or identifier | [Words and style](words-and-style.html) |
-| A Home Assistant name, domain, state or technical term | [Home Assistant terminology](home-assistant-terminology.html) |
-| A control, state or confirmation | [Interface copy](interface-copy.html) |
-| A failure, warning or notification | [Errors and alerts](errors-and-alerts.html) |
-| Setup, questions or learning material | [Instructions and learning](instructions-and-learning.html) |
-| Household, identity or language content | [Inclusive content](inclusive-content.html) |
-| Values, dates, charts or comparisons | [Numbers and data](numbers-and-data.html) |
-| Structured web or alternative-format content | [Accessible content](accessible-content.html) |
-| A review, exception or change record | [Content review](content-review.html) |
+| Deciding what to write | [Writing guidelines](writing-guidelines/index.html) |
+| Writing about a state, a request or an error | [States, requests and errors](writing-guidelines/states-and-errors.html) |
+| Setting out text, images, numbers or files | [Formatting content](formatting-content/index.html) |
+| Putting content live, changing it or removing it | [Publish, update or retire content](publish-update-retire/index.html) |
+| Checking a word, a number or a Home Assistant term | [Style guides](style-guides/index.html) |
 
-The [machine-readable inventory](../reference/writing-guide.json) contains the same core rule IDs and source mapping, and links the dated [terminology register](../reference/ha-terminology.json). The ten core chapters remain the writing standard; the terminology supplement supplies explicit, versioned native vocabulary. Use the [writing checklist](../reference/writing-guide-checklist.json) during review; a completed checklist is evidence of checks performed, not a claim that every person can use the result.
+## Use it with an AI tool
 
-## Sources and adaptation
+Give the AI the pages that match the job. Also give it the real state of the device and the integration’s documented behaviour. An AI cannot know whether a lamp is off or just not reporting. Check every generated message against [States, requests and errors](writing-guidelines/states-and-errors.html) before you use it.
 
-- [GOV.UK: Meet user needs](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/writing-guidelines/meet-user-needs/)
-- [GOV.UK: Clear titles](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/writing-guidelines/clear-titles/)
-- [GOV.UK: Summaries](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/writing-guidelines/summaries/)
-- [Home Office: Content style guide](https://design.homeoffice.gov.uk/design-and-content/content/content-style-guide)
-- [NHS: Standard for creating health content](https://service-manual.nhs.uk/content/standard-for-creating-health-content)
-- [Plain English Campaign: free guides](https://www.plainenglish.co.uk/free-guides)
-- [Worcestershire County Council: What is SCULPT?](https://www.worcestershire.gov.uk/council-services/business/digital-worcestershire/sculpt-accessibility/what-sculpt)
+The rules are also available as [machine-readable data](../reference/writing-guide.json), and a [review checklist](../reference/writing-guide-checklist.json).
 
-## Implementation boundary
+## What the guide does not change
 
-These rules govern civica-authored content. The examples use synthetic household information and local preview interactions. They do not add Home Assistant features, change device states or certify safety, accessibility or clinical suitability. Preserve native translations and user-supplied names; verify each proposed message against the actual integration and supported version.
+It does not change native Home Assistant labels, translations or the names people give their devices. It applies only to content civica writes. See [Meet household needs](writing-guidelines/meet-household-needs.html).
+
+The earlier [Content design introduction](../styles/content.html) is still available.
+
+## Sources
+
+- [GOV.UK writing guidelines](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/writing-guidelines/)
+- [GOV.UK formatting content](https://guidance.publishing.service.gov.uk/formatting-content/)
+- [GOV.UK publish, update or retire content](https://guidance.publishing.service.gov.uk/publish-update-retire-content/)
+- [GOV.UK A to Z style guide](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/style-guides/a-to-z-style-guide/)
+- [GOV.UK technical A to Z style guide](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/style-guides/technical-a-to-z/)

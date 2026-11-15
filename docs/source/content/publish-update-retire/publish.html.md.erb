@@ -1,0 +1,50 @@
+---
+title: "Publish"
+description: "Check facts, language and presentation separately before content goes live, and say what you checked."
+section: "content"
+group: "Publish, update or retire"
+nav_order: 2
+source_url: "https://guidance.publishing.service.gov.uk/publish-update-retire-content/"
+status: "reference"
+published_on: "2026-11-15"
+updated_on: "2026-11-15"
+updates:
+  - date: "2026-11-15"
+    description: "Rewritten with plain rules and Before and After examples."
+---
+
+# Publish
+
+<h2 id="wg-094">Check facts, language and presentation separately</h2>
+
+One person checking all three at once misses things. Check that it is true, then that it is clear, then that it looks right and works with a screen reader.
+
+| Before | After |
+| --- | --- |
+| Looks fine. | Facts: checked against the integration docs. Language: read aloud, no jargon. Presentation: checked at 320px wide and with a screen reader. |
+
+<h2 id="wg-095">Report checks within their limits</h2>
+
+Say what you checked and what you did not. A passing test is not proof that people understand it.
+
+<%= example('wg-review-record') %>
+
+| Before | After |
+| --- | --- |
+| Fully accessible and tested. | Checked with an automated tool and with the keyboard only. Not yet tested with a screen reader. |
+| Passed review. | Reviewed 11 November 2026. No live appliance was operated. |
+
+<h2 id="wg-086">Describe accessibility evidence accurately</h2>
+
+Do not claim a page is accessible. Say what was tested.
+
+| Before | After |
+| --- | --- |
+| This page meets WCAG. | We tested this page with a keyboard and an automated checker. We found no problems. We have not tested it with a screen reader. |
+
+## Before you publish
+
+- the content has an owner and a source
+- it uses the words from [Technical A to Z](../style-guides/technical-a-to-z.html)
+- any state or confirmation matches what the integration can really report
+- each question and link follows the [writing guidelines](../writing-guidelines/index.html)

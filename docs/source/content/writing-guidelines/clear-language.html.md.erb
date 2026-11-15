@@ -1,0 +1,96 @@
+---
+title: "Use clear language"
+description: "Use plain words, short sentences and no assumptions about the person reading."
+section: "content"
+group: "Writing guidelines"
+nav_order: 3
+source_url: "https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/writing-guidelines/clear-language/"
+status: "reference"
+published_on: "2026-11-15"
+updated_on: "2026-11-15"
+updates:
+  - date: "2026-11-15"
+    description: "Rewritten with plain rules and Before and After examples. Merged the inclusive language rules."
+---
+
+# Use clear language
+
+Plain English is the standard. Specialists prefer it too, because they can read it faster.
+
+<h2 id="wg-010">Use familiar, concrete words</h2>
+
+Use the shortest word that keeps the technical meaning. Keep a technical term when it is the exact label, and explain it the first time.
+
+| Before | After |
+| --- | --- |
+| The actuator is de-energised. | The socket reports that it is off. This does not confirm that the appliance is safe to work on. |
+| Initiate the pairing procedure. | Start pairing. |
+| An entity is exposed. | An entity is a control or reading in Home Assistant. This lamp is one entity. |
+
+Do not swap a precise term for a comforting one that is wrong.
+
+<h2 id="wg-013">Make sentences easy to follow</h2>
+
+One main idea per sentence. Use the active voice. Put a condition before the action it limits.
+
+Check any sentence over 20 words. This is a prompt, not a limit. Do not cut a device name or a condition to hit a number.
+
+| Before | After |
+| --- | --- |
+| The schedule is unable to be saved at this time as a result of the connection to Home Assistant having been interrupted. | Home Assistant could not save the schedule. The connection dropped. |
+| Heating will be turned off unless the window sensor reports Closed and the target is above 16°C. | If the window sensor reports Closed and the target is above 16°C, the heating stays on. Otherwise it turns off. |
+
+“Schedule not saved” is fine in a short result message when the next sentence says what happened.
+
+<h2 id="wg-014">Write important conditions in full</h2>
+
+Use “cannot” and “do not”, not “can’t” and “don’t”, in conditions, warnings and short instructions.
+
+Expanded forms are easier to translate and harder to misread at a glance. Do not change contractions in native translations, quotations or names.
+
+| Before | After |
+| --- | --- |
+| You can’t start it if remote’s off. | You cannot start the washing machine here while remote control is off. |
+| Don’t unplug the hub. | Do not unplug the hub during the update. |
+
+Avoid idioms such as “give it a whirl” and “in a pinch”.
+
+<h2 id="wg-060">Do not assume who is reading</h2>
+
+Do not assume a relationship, ownership, ability or who is at home.
+
+| Before | After |
+| --- | --- |
+| Ask your husband to check the fuse box in your home. | Ask someone who can help with the device, if you need support. |
+| Your landlord must fix this. | Check your tenancy agreement or contact the owner of the property. |
+
+Safety instructions still need a qualified source.
+
+<h2 id="wg-062">Use respectful, specific language</h2>
+
+Describe what happens, not what a person is like. Avoid labels such as “normal user” and words like “simply”, “obviously” and “just”.
+
+| Before | After |
+| --- | --- |
+| Normal users can ignore this setting. | Most households do not need to change this setting. |
+| Simply restart the router. | Turn the router off, wait 30 seconds, then turn it on again. |
+
+<h2 id="wg-063">Do not assume one way to see, hear or act</h2>
+
+Do not rely on colour, sound, position or a gesture alone. Say it in words too.
+
+| Before | After |
+| --- | --- |
+| Tap the green button on the right. | Select **Turn on**. |
+| Listen for the beep. | The light flashes twice and the hub beeps. If you cannot see or hear it, check **Status** in the app. |
+
+<h2 id="wg-065">Preserve language and translation</h2>
+
+Write English in English and Welsh in Welsh. Do not machine-translate a sentence and publish it unchecked, and do not mix languages in one control.
+
+| Before | After |
+| --- | --- |
+| Lamp (lamp Cymraeg: lamp) | Lamp, and a separate Welsh version written by a Welsh speaker: Lamp |
+| Translate the page into Welsh automatically. | Ask a Welsh speaker to write the Welsh version. Publish the two versions together. |
+
+A household may name devices in any language. Leave those names as typed.

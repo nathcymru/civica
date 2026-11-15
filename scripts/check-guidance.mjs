@@ -19,7 +19,7 @@ const rules = [...brand.rules, ...writing.rules];
 unique(rules.map(rule => rule.id), 'Rules');
 const ids = new Set(rules.map(rule => rule.id));
 assert.equal(brand.pages.length, 4, 'Four requested brand chapters');
-assert.equal(writing.pages.length, 10, 'Ten writing chapters');
+assert.equal(writing.pages.length, 25, 'Twenty-five writing pages');
 assert.ok(brand.rules.length >= 30 && writing.rules.length >= 40, 'Substantive rule coverage');
 for (const source of [brand, writing]) {
   const sourceIds = new Set(source.sources.map(item => item.id));
