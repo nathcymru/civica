@@ -30,11 +30,12 @@ test('writing pages have the correct active navigation, breadcrumbs and a single
     await expect(main.getByRole('link', { name: 'Writing guide', exact: true })).toHaveAttribute('aria-current', 'true');
     await expect(main.locator('a[aria-current]')).toHaveCount(1);
     await expect(main.getByRole('link', { name: 'Styles', exact: true })).not.toHaveAttribute('aria-current');
-    const sidebar = page.getByRole('complementary', { name: 'Section navigation' });
-    expect((await sidebar.locator('a').evaluateAll(relativePaths)).filter(path => path === '/content/index.html')).toHaveLength(1);
-    await expect(sidebar.locator('a[aria-current="page"]')).toHaveCount(1);
-    await expect(sidebar.locator('a[aria-current="page"]')).toBeVisible();
-    await expect(sidebar.locator('.c-nav-group > summary')).toHaveText(['Writing guidelines', 'Formatting content', 'Publish, update or retire', 'Style guides', 'Home Assistant terminology', 'Quick reference', 'Moved pages']);
+    // As on the GOV.UK Design System, the sidebar lists pages in themed groups and
+    // does not repeat the section home, which is reached from the breadcrumb.
+    const sidebar = page.getByRole('navigation', { name: 'Pages in this section' });
+    expect((await sidebar.locator('a').evaluateAll(relativePaths)).filter(path => path === '/content/index.html')).toHaveLength(0);
+    await expect(sidebar.locator('a[aria-current="page"]')).toHaveCount(path === '/content/index.html' ? 0 : 1);
+    await expect(sidebar.locator('.app-subnav__theme')).toHaveText(['Writing guidelines', 'Formatting content', 'Publish, update or retire', 'Style guides', 'Home Assistant terminology', 'Quick reference', 'Moved pages']);
     const breadcrumb = page.getByRole('navigation', { name: 'Breadcrumb' });
     await expect(breadcrumb).toContainText('Writing guide');
     await expect(breadcrumb.getByRole('link', { name: 'Styles', exact: true })).toHaveCount(0);
@@ -73,14 +74,8 @@ test('Writing guide navigation works by keyboard at 320px and with doubled navig
   await expect(page).toHaveURL(/\/content\/index\.html$/);
   await expect(menu).toHaveAttribute('aria-expanded', 'false');
   await menu.focus(); await page.keyboard.press('Space');
-  const section = page.locator('.c-section-menu');
-  await section.locator(':scope > summary').focus(); await page.keyboard.press('Enter');
-  await expect(section).toHaveAttribute('open', '');
-  for (const group of await section.locator('.c-nav-group').all()) {
-    if (await group.getAttribute('open') === null) {
-      await group.locator(':scope > summary').focus(); await page.keyboard.press('Enter');
-    }
-  }
+  // Like GOV.UK, the section sub-navigation is not shown on narrow screens.
+  await expect(page.locator('.app-subnav')).toBeHidden();
   const originalSize = await writingLink.evaluate(node => parseFloat(getComputedStyle(node).fontSize));
   // Double actual computed text sizes: changing only the root size would miss
   // the explicit pixel sizes used by the native documentation navigation.
@@ -91,9 +86,9 @@ test('Writing guide navigation works by keyboard at 320px and with doubled navig
   });
   await expect(writingLink).toHaveCSS('font-size', `${originalSize * 2}px`);
   await expect(writingLink).toBeVisible();
-  await expect(page.locator('.c-sidebar a[aria-current="page"]')).toBeVisible();
   await reflow(page);
   await page.setViewportSize({ width: 1280, height: 900 });
+  await expect(page.locator('.app-subnav')).toBeVisible();
   await expect(menu).toBeHidden();
   await expect(writingLink).toBeVisible();
   await expect(writingLink).toHaveAttribute('aria-current', 'true');
@@ -110,7 +105,8 @@ test('Writing guide navigation and grouped catalogue remain usable without JavaS
     await expect(writing).toBeVisible();
     await writing.click();
     await expect(page).toHaveURL(/\/content\/index\.html$/);
-    await expect(page.locator('.c-sidebar a[aria-current="page"]')).toHaveText('Writing guide');
+    await expect(page.locator('.app-subnav')).toBeHidden();
+    await expect(writing).toHaveAttribute('aria-current', 'true');
     await reflow(page);
     await page.goto(new URL('/docs/build/search.html', baseURL).href);
     const group = page.locator('[data-catalogue-group]').filter({ has: page.getByRole('heading', { level: 2, name: 'Writing guide', exact: true }) });
