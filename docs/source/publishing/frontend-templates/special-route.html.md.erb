@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/special-route/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -16,25 +16,36 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove repeated template boilerplate and per-page source commentary, and link the shared limits on the page templates index."
+ai_instructions: "Apply before proposing a custom page or panel. Use one only when a verified task cannot be served by an existing dashboard, setting or guide. Record owner, route, input data, allowed actions, and empty and error states, and keep a native fallback. Never invent backend services. Rules WG-040, WG-090."
+ai_related:
+  - path: "/publishing/frontend-templates/index.html"
+    title: "Page templates"
+    relationship: "Owns the shared limits and checks for every page template."
+  - path: "/home-assistant/compatibility-register.html"
+    title: "Compatibility register and native fallback"
+    relationship: "Owns which native surfaces civica claims to support."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns the state and request wording rules."
 ---
 
 # Special route
 
-A special route is a purpose-built page whose content and behaviour do not fit an ordinary publishing template. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/special-route/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Add a special route only when a verified task cannot be served by an existing dashboard, setting or guide, and record who owns it. Keep the native route working if the custom one fails. The shared limits for every page template are on [Page templates](index.html).
 
 ## When to use it
 
-In this project, the relevant principle is a deliberately scoped custom component or documented native route. Use a special page only when a verified task cannot be served by the existing dashboard, setting or guide. Record its owner, route and compatibility boundary.
+In civica this means a deliberately scoped custom component or a documented native route. Record its owner, route and compatibility boundary ([WG-090](../../content/publish-update-retire/choose-content-type.html#wg-090)). [Compatibility register and native fallback](../../home-assistant/compatibility-register.html) owns which native surfaces civica claims to support.
 
 ## Structure and behaviour
 
-Keep the same headings, navigation, focus and status conventions as the rest of civica. Specify the input data, allowed actions and empty/error states. Native navigation should continue to support browser history and ordinary links.
+Keep the same headings, navigation, focus and status conventions as the rest of civica. Specify the input data, the allowed actions and the empty and error states. Native navigation must keep supporting browser history and ordinary links. Give a recovery that matches the cause when the source fails ([WG-040](../../content/writing-guidelines/states-and-errors.html#wg-040)).
 
 ## Home Assistant boundary
 
-A theme is not permission to take over arbitrary HA routes or private components. New pages must not invent backend services or expose private household data. The examples illustrate route information and a recovery state, not an installed custom panel.
+A theme is not permission to take over arbitrary Home Assistant routes or private components. A new page must not invent backend services or expose private household data. The examples show route information and a recovery state. They are not an installed custom panel.
 
 ## Route contract
 
@@ -44,21 +55,14 @@ A fictional custom route is described without a broken navigation link.
 
 ## Unavailable custom source
 
-The empty/error message remains useful.
+The empty or error message stays useful.
 
 <%= example("pub-frontend-templates-special-route-2") %>
-
 ## Acceptance checks
 
 - The custom route has a defined user need.
 - Its input and failure contracts are documented.
-- Direct navigation and browser back work.
-- Unsupported internals leave a usable native route.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- Direct navigation and the browser back button work.
+- If an unsupported internal changes, a usable native route remains.
 
 [Browse page templates](index.html).

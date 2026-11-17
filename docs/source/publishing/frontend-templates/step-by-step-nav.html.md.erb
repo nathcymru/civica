@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/step-by-step-nav/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,25 +14,36 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove repeated template boilerplate and per-page source commentary, and link the shared limits on the page templates index."
+ai_instructions: "Apply when linking an ordered setup journey with a real start and end. Number only genuinely ordered stages, keep action links visible, state prerequisites in text, and make every step stand alone. Never show a check mark for a visited link or imply installation succeeded. Rules WG-035, WG-050."
+ai_related:
+  - path: "/publishing/frontend-templates/index.html"
+    title: "Page templates"
+    relationship: "Owns the shared limits and checks for every page template."
+  - path: "/content/writing-guidelines/clear-structure.html"
+    title: "Create a clear structure"
+    relationship: "Owns ordering, prerequisites and heading rules."
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns request, pending, confirmed and failed wording."
 ---
 
 # Step by step nav
 
-Publishing step-by-step navigation connects an ordered end-to-end journey across guidance and services. It is not a task-completion tracker. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/step-by-step-nav/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Number steps only when the order is necessary, and never mark one done because someone opened it. Step navigation connects a journey. It does not track completion. The shared limits for every page template are on [Page templates](index.html).
 
 ## When to use it
 
-Use the navigational structure for a documented setup journey with a real beginning and end: understand requirements, install, then verify. Keep optional or unordered household chores in a task list instead. Opening a guidance step does not mean it has been completed.
+Use it for a documented setup journey with a real beginning and end, such as understand requirements, install, then verify. Keep optional or unordered chores in a task list. Opening a guidance step does not mean it has been completed ([WG-035](../../content/writing-guidelines/states-and-errors.html#wg-035)).
 
 ## Structure and behaviour
 
-Number genuinely ordered stages and keep their action links visible. Explain prerequisites and optional branches in text. If disclosure controls shorten a long overview, the same headings and links must remain usable without JavaScript. Each destination must stand alone for direct visitors.
+Number the ordered stages and keep their action links visible ([WG-050](../../content/writing-guidelines/clear-structure.html#wg-050)). Explain prerequisites and optional branches in text. If disclosure controls shorten a long overview, the same headings and links must work without JavaScript. Each destination must stand alone for a direct visitor.
 
 ## Home Assistant boundary
 
-The theme does not store progress through this reference journey. Do not reuse the step design as an automation status display or assert that an installation succeeded. A service needing saved completion belongs to an explicit task-list implementation.
+The theme does not store progress through this reference journey. Do not reuse the step design as an automation status display or to claim an installation succeeded. A service that needs saved completion belongs in an explicit task-list implementation.
 
 ## Installation journey
 
@@ -45,18 +56,11 @@ An ordered list links to existing local step text.
 Native details expands guidance without claiming saved progress.
 
 <%= example("pub-frontend-templates-step-by-step-nav-2") %>
-
 ## Acceptance checks
 
-- The sequence is necessary rather than merely convenient.
+- The sequence is necessary, not merely convenient.
 - Step numbers are announced with their titles.
 - No check mark appears because a link was visited.
-- Optional paths and prerequisites remain understandable.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- Optional paths and prerequisites stay understandable.
 
 [Browse page templates](index.html).

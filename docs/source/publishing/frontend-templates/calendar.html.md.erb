@@ -6,7 +6,7 @@ group: Page templates
 source_url: https://design-guide.publishing.service.gov.uk/frontend-templates/calendar/
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -16,49 +16,53 @@ updates:
     description: "Added explicit example dates and a time zone to the agenda and empty-week specimens."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove repeated template boilerplate and per-page source commentary, and link the shared limits on the page templates index."
+ai_instructions: "Apply when presenting dates, appointments or schedules from a household calendar. Show the source, local date and time zone, and tell all-day from timed events. An empty period is not a failed request. Do not invent events or bank holidays. Rules WG-038, WG-075, WG-080, WG-081."
+ai_related:
+  - path: "/publishing/frontend-templates/index.html"
+    title: "Page templates"
+    relationship: "Owns the shared limits and checks for every page template."
+  - path: "/home-assistant/schedules-and-time.html"
+    title: "Schedules, calendars and timers"
+    relationship: "Owns calendar, schedule and timer states."
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns wording for unknown, unavailable and stale readings."
 ---
 
 # Calendar
 
-The publishing calendar template presents important dates in a structured, browsable form. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/calendar/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Show the calendar source, the local date and the time zone, and keep all-day events apart from timed ones. People mostly need the next event, so prefer a readable agenda to a grid. The shared limits for every page template are on [Page templates](index.html).
 
 ## When to use it
 
-Adapt the information structure for existing household calendar entries, maintenance appointments or collection schedules. Prefer a readable agenda when people mainly need the next event. Display the calendar source, local date and time; distinguish all-day events from timed appointments.
+Adapt this structure for household calendar entries, maintenance appointments and collection schedules. Choose an agenda when the reader mainly needs the next event. Use a grid only when comparing days matters.
 
 ## Structure and behaviour
 
-Group events by date using semantic headings or a table with clear headers. If a calendar grid is necessary, provide a list alternative and a keyboard model that does not require tabbing through every empty cell. Keep next/previous-period controls labelled with their date context.
+Group events by date under semantic headings, or use a table with clear headers ([WG-080](../../content/formatting-content/text-formatting.html#wg-080)). If you need a calendar grid, also provide a list alternative, and a keyboard model that does not make people tab through every empty cell. Label next and previous controls with the period they open. Name the time zone wherever a time could be read two ways ([WG-075](../../content/formatting-content/charts-and-data.html#wg-075)). Do not use colour alone for today, the selected date or event status ([WG-081](../../content/formatting-content/text-formatting.html#wg-081)).
 
 ## Home Assistant boundary
 
-The theme does not generate schedules, infer bank holidays or create calendar entries. Example dates are invented and must not be presented as current household appointments. Keep native timezone, recurrence, cancellations and permission handling with the calendar integration.
+The theme does not generate schedules, infer bank holidays or create calendar entries. Keep time zone, recurrence, cancellation and permission handling with the native calendar integration, and see [Schedules, calendars and timers](../../home-assistant/schedules-and-time.html) for its states. Example dates are invented and are not household appointments.
 
 ## Household agenda
 
-Invented appointments show a dated agenda in Europe/London. The timed visit has a GMT offset; the all-day reminder remains a calendar-date event.
+Invented appointments show a dated agenda in Europe/London. The timed visit has a GMT offset. The all-day reminder stays a calendar-date event.
 
 <%= example("pub-frontend-templates-calendar-1") %>
 
 ## Empty period
 
-The example names the selected week and its time zone. A successful empty period remains distinct from a failed request.
+The example names the selected week and its time zone. An empty period stays distinct from a failed request ([WG-038](../../content/writing-guidelines/states-and-errors.html#wg-038)).
 
 <%= example("pub-frontend-templates-calendar-2") %>
-
 ## Acceptance checks
 
-- Repeated and all-day events retain their native meaning.
-- Today, selected date and event status do not rely only on colour.
+- Repeated and all-day events keep their native meaning.
+- Today, the selected date and event status do not rely on colour alone.
 - An empty period is different from a failed calendar request.
-- Narrow screens retain event titles, date and time.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- Narrow screens keep event titles, dates and times.
 
 [Browse page templates](index.html).

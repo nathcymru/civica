@@ -6,7 +6,7 @@ group: "Publishing guide"
 source_url: "https://design-guide.publishing.service.gov.uk/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,23 +14,47 @@ updates:
     description: "Updated the current project name and repository links to civica."
   - date: "2026-11-11"
     description: "Added all 42 publishing guidance mappings and the verified metadata migration record."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with how to use the section, add checking guidance and add one source credit at the foot of the page."
+ai_instructions: "Use to find the local adaptation of a Publishing Design Guide component, pattern or page template. The 42 pages are reference patterns with simulated examples, not installed services. Never claim an example sent feedback, subscribed anyone or operated a device. The source credit is at the foot of this page. Rules WG-001, WG-002, WG-056."
+ai_related:
+  - path: "/publishing/components/index.html"
+    title: "Publishing components"
+    relationship: "Lists the 11 component pages."
+  - path: "/publishing/patterns/index.html"
+    title: "Publishing patterns"
+    relationship: "Lists the search-filter pattern."
+  - path: "/publishing/frontend-templates/index.html"
+    title: "Page templates"
+    relationship: "Lists the 30 page template pages."
+  - path: "/publishing/source-history.html"
+    title: "Publishing source history"
+    relationship: "Owns the pinned sources and the metadata migration record."
 ---
 
 # Publishing patterns for civica
 
-The GOV.UK Publishing Design Guide extends the core Design System for information publishing. This local section adapts its information architecture and content patterns to civica without importing the official brand or pretending that Home Assistant is a government publishing platform.
+Use these pages when you write or review information pages such as guides, answers and lists of documents. Each page gives a rule first, then a Home Assistant example. They are reference patterns. civica does not install a publishing service, and Home Assistant is not a government publishing platform.
 
-The reviewed inventory contains **42 canonical guidance pages**: 11 components, 1 pattern and 30 frontend templates. The template count includes the nested finder, browse, smart-answer and topical-event variants. Every entry has a local adaptation page and two contextual examples.
+The inventory holds **42 guidance pages**: 11 components, 1 pattern and 30 page templates. The template count includes nested finder, browse, smart-answer and topical-event variants. Each page has two simulated examples. The record is `docs/data/publishing-inventory.json`.
 
 - [Publishing components](components/index.html): document links, navigation, messages, search and subscriptions.
 - [Publishing patterns](patterns/index.html): search filters.
-- [Page templates](frontend-templates/index.html): answers, guides, directories, task entry pages and the full set of nested variants.
-- [Source history and metadata migration](source-history.html): pinned sources and the verified published-dates change.
+- [Page templates](frontend-templates/index.html): answers, guides, directories, task entry pages and their nested variants.
+- [Source history and metadata migration](source-history.html): pinned sources and the published-dates change.
 
 ## What coverage means
 
-The catalogue records each source and explains when it fits a household interface. Examples contain real local destinations and ordinary accessible HTML. Synthetic records and local-only form feedback are labelled. No example sends feedback, subscribes an address, creates a calendar event, operates a device or pretends to connect to a backend.
+Every guidance page has a local entry. Where a government-specific directory has no household equivalent, the page keeps the source mapping and states the one principle that still applies. It does not invent a household service.
 
-Some government-specific directories have no direct household equivalent. Their pages preserve the source mapping and explain a limited applicable principle, rather than creating a fictitious household service. This is deliberate coverage of the decision, not a missing entry hidden from the catalogue.
+The inventory covers the Publishing Design Guide’s guidance sections. It does not list every partial or variation in the separate `govuk_publishing_components` gem.
 
-The separate `govuk_publishing_components` gem has a larger implementation catalogue. These 42 pages inventory the Publishing Design Guide’s guidance sections; they do not claim to inventory every gem partial or variation. The machine-readable source is `docs/data/publishing-inventory.json`.
+## How to check an example
+
+The examples use ordinary accessible HTML and invented data. Synthetic records and local-only form feedback are labelled. No example sends feedback, subscribes an address, creates a calendar event, operates a device or connects to a backend.
+
+Check each example at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its real data and permissions before calling it supported.
+
+## Source credit
+
+This section is adapted from the [GOV.UK Publishing Design Guide](https://design-guide.publishing.service.gov.uk/). It is not endorsed by GOV.UK, and it uses no official marks. The [source history](source-history.html) records the pinned versions.

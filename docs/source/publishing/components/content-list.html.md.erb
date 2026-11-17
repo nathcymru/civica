@@ -6,7 +6,7 @@ group: Publishing components
 source_url: https://design-guide.publishing.service.gov.uk/components/content-list/
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -16,53 +16,58 @@ updates:
     description: "Linked this retained variant to its shared behaviour owner and clarified its specific implementation boundary."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove per-page source commentary and keep the examples labelled as simulated."
+ai_instructions: "Apply to long installation, recovery or maintenance guidance. Label the list \"On this page\" for fragments and \"In this guide\" for other pages. Build links from stable heading IDs in document order. Do not style it as a progress checklist. The shared contents list page owns the contract. Rules WG-050, WG-080, WG-083."
+ai_related:
+  - path: "/components/contents-list.html"
+    title: "Contents list"
+    relationship: "Owns the distinction between On this page and In this guide."
+  - path: "/patterns/mini-hub.html"
+    title: "Explain one topic across a mini-hub"
+    relationship: "Use when several real pages need current-topic and previous or next context."
+  - path: "/publishing/components/index.html"
+    title: "Publishing components"
+    relationship: "Lists this component with its sibling pages."
 ---
 
 # Contents list
 
-A contents list gives a short route to sections within a long page or to chapters in a guide. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/components/content-list/).
+Add a contents list only when the page is long enough that someone needs a route to one section. Write section names as tasks, and cut sections before you add navigation. A three-sentence card does not need one.
 
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+**Reference pattern.** The examples document a local adaptation. They do not add a publishing backend or a new Home Assistant capability.
 
 ## Use the shared navigation contract
 
-[Contents list](../../components/contents-list.html#choose-the-navigation-scope) owns the distinction between “On this page” fragments and “In this guide” routes. This publishing source page retains its article examples. Use the [mini-hub pattern](../../patterns/mini-hub.html) when several real pages also need current-topic and previous/next context.
+[Contents list](../../components/contents-list.html#choose-the-navigation-scope) owns the difference between “On this page” fragments and “In this guide” routes. This page keeps the article examples. Use the [mini-hub pattern](../../patterns/mini-hub.html) when several real pages also need current-topic and previous or next context.
 
 ## When to use it
 
-Use it on substantial installation, recovery or maintenance guidance. Write section names that describe the user task. Reduce unnecessary sections before adding more navigation. A three-sentence card does not need its own contents list.
+Use it on substantial guidance, such as recovering from a failed backup or setting up a new heat pump. Name each section by what the reader does, for example “Restore from a backup”.
 
 ## Structure and behaviour
 
-Generate links from stable heading IDs and keep their order the same as the document. Label the navigation "On this page" for local anchors and "In this guide" for other pages. A current chapter is plain text. One nested level may help a technical guide; deeper nesting is a sign to restructure.
+Generate links from stable heading IDs and keep them in the same order as the document. Label the navigation “On this page” for local anchors and “In this guide” for other pages. A current chapter is plain text. One nested level can help a technical guide. Deeper nesting is a sign the content needs restructuring.
 
 ## Home Assistant boundary
 
-The local contents list is a documentation pattern, not an injection into every HA panel. Sticky positioning must not hide the target under the header or consume the whole mobile viewport. Do not make a table of contents look like a progress checklist.
+This is a documentation pattern. It is not injected into Home Assistant panels. Sticky positioning must not hide a target under the header or fill a mobile screen. Do not make a contents list look like a progress checklist.
 
 ## Installation contents
 
-Three working section links inside the example.
+Three section links inside the example.
 
 <%= example("pub-components-content-list-1") %>
 
 ## Short recovery guide
 
-Use only the sections needed for a bounded task.
+Use only the sections a short task needs.
 
 <%= example("pub-components-content-list-2") %>
 
 ## Acceptance checks
 
 - Every anchor reaches the intended visible heading.
-- Heading hierarchy and list nesting agree.
-- Keyboard focus remains visible after following a link.
-- Long headings wrap in both sidebar and main content.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
-
-[Browse publishing components](index.html).
+- Heading levels and list nesting agree.
+- Keyboard focus stays visible after following a link.
+- Long headings wrap in both the sidebar and the main content.

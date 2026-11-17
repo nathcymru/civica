@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/finder/case-studies-finder/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -16,49 +16,46 @@ updates:
     description: "Added working local example behaviour with a safe no-JavaScript fallback and no connected backend."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, link to the shared finder behaviour and remove repeated boilerplate and source commentary."
+ai_instructions: "Apply when listing worked household projects or configuration examples. Give each result a problem, context and outcome. Label a synthetic example as synthetic and never present untested YAML as proven. Link to the finder page for shared behaviour. Rules WG-001, WG-011, WG-056."
+ai_related:
+  - path: "/publishing/frontend-templates/finder.html"
+    title: "Finder"
+    relationship: "Owns the shared finder behaviour."
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns the wording for unknown, unavailable and stale states."
 ---
 
 # Case studies finder
 
-The official variant searches published case studies. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/finder/case-studies-finder/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Use a case studies finder only for projects that were actually documented, and say whether each is tested. A reader judges fit from the problem, the context and the outcome, so a result that shows only a title invites a wrong guess. For example, a lighting scene record should say which Home Assistant version it was tested on, or say that it is untested. Scope, result count, empty states, focus and the no-JavaScript fallback follow the [shared finder behaviour](../finder.html#finder-shared-contract).
 
 ## When to use it
 
-Use the idea for a curated library of documented household projects or worked configuration examples. Give each result a problem, context and outcome so readers can judge whether it fits their own setup.
-
-## Structure and behaviour
-
-Keep the collection scope next to the search label. Use a result title, a short distinguishing description and only the metadata needed for the next decision. The selected criteria and result count should remain visible. A no-match result needs a clear way to broaden the query; an unavailable data source needs a different message.
+Use it for a curated library of documented household projects or worked configuration examples.
 
 ## Home Assistant boundary
 
-Do not label untested YAML as a proven case study. Distinguish a synthetic example from an installation record and identify the tested version when evidence exists. The examples are self-contained specimens with invented records. The second example filters its fixed local list by the words entered, updates the result count, exposes a genuine no-match state and restores all records when cleared. Record details remain readable without JavaScript; submit buttons are disabled until the local handler is ready. No connected search backend or household data is used.
+Do not label untested YAML as a proven case study. Tell a synthetic example from an installation record, and give the tested version when evidence exists.
 
 ## Example projects
 
-Two invented entries demonstrate the result metadata.
+Two invented entries show the result metadata.
 
 <%= example("pub-frontend-templates-finder-case-studies-finder-1") %>
 
 ## Search within this collection
 
-Type a word from a title or its context, then find records. The fixed local list and its disclosures work without a backend.
+Type a word from a title or its context, then select Find example records. The list is fixed and invented, and no backend is used.
 
 <%= example("pub-frontend-templates-finder-case-studies-finder-2") %>
 
 ## Acceptance checks
 
-- The collection’s scope matches the promised result type.
-- Metadata is verified rather than inferred from the display name.
-- Keyboard focus stays predictable as criteria change.
-- No-match and unavailable states have different explanations.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- The scope matches the promised result type.
+- Each result says whether it is synthetic, documented or tested.
+- The metadata comes from the record, not from its display name.
 
 [Browse page templates](../index.html).

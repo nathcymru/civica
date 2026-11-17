@@ -6,7 +6,7 @@ group: Publishing components
 source_url: https://design-guide.publishing.service.gov.uk/components/global-banner/
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -16,29 +16,42 @@ updates:
     description: "Linked this retained variant to its shared behaviour owner and clarified its specific implementation boundary."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove per-page source commentary and keep the examples labelled as simulated."
+ai_instructions: "Apply when a message affects the whole interface but is not urgent. State the scope and next step, keep one short paragraph and at most one destination. Define what dismissal means (per user, browser or message revision) and keep unresolved operational faults discoverable. Add no cookie or global Home Assistant message. Rules WG-012, WG-014, WG-042."
+ai_related:
+  - path: "/components/status.html"
+    title: "Status and notifications"
+    relationship: "Owns the message decision guide."
+  - path: "/components/notification-banners.html"
+    title: "Notification banners"
+    relationship: "Owns the ordinary banner contract."
+  - path: "/publishing/components/index.html"
+    title: "Publishing components"
+    relationship: "Lists this component with its sibling pages."
 ---
 
 # Global banner
 
-A global banner communicates a site-wide message that is important but does not use the emergency treatment. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/components/global-banner/).
+Use a global banner for an important message that affects the whole interface and is not an emergency. Say what is affected and what to do next, and define what dismissing it means.
 
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+**Reference pattern.** The examples document a local adaptation. They do not add a publishing backend or a new Home Assistant capability.
 
 ## Use the shared notice decision
 
-Start with the [message decision guide](../../components/status.html#choose-the-right-message) and the [ordinary banner contract](../../components/notification-banners.html#scope-the-notice-before-choosing-a-variant). This variant adds whole-service relevance and an explicit dismissal lifecycle. It does not supply the permission to create a global native HA notice or make a routine message urgent.
+Start with the [message decision guide](../../components/status.html#choose-the-right-message) and the [ordinary banner contract](../../components/notification-banners.html#scope-the-notice-before-choosing-a-variant). This variant adds whole-service relevance and a dismissal lifecycle. It does not give permission to create a global native Home Assistant notice, and it does not make a routine message urgent.
 
 ## When to use it
 
-Use a global message for a bounded service interruption or a change that affects the whole interface. State the scope and expected next step. A room-specific device problem belongs with that device; a release announcement usually belongs in update information rather than every dashboard.
+Use it for a bounded interruption or a change that affects every page, such as planned maintenance on the documentation site. A problem with one room’s device belongs with that device. A release announcement usually belongs in update information, not on every dashboard.
 
 ## Structure and behaviour
 
-Keep a short heading, one concise paragraph and at most one primary destination. If the message can be dismissed, give the action a visible label and define whether dismissal applies per user, browser or message revision. Important operational faults must remain discoverable after dismissal.
+Keep a short heading, one concise paragraph and at most one main destination. If the message can be dismissed, give the action a visible label and say whether dismissal applies per user, per browser or per message revision. An important operational fault must stay discoverable after dismissal.
 
 ## Home Assistant boundary
 
-The official guide describes a limited display-count cookie for some government campaigns. That is not the civica policy. This reference adds no cookie, cross-site tracking or global HA message injection. Persistence requires an explicit implementation and a documented lifecycle.
+The official guide describes a limited display-count cookie for some government campaigns. civica does not adopt that. This reference adds no cookie, cross-site tracking or global Home Assistant message. Persistence needs an explicit implementation and a documented lifecycle.
 
 ## Planned maintenance message
 
@@ -48,21 +61,13 @@ Static, fictional maintenance information with a working detail anchor.
 
 ## Dismissal semantics
 
-The button reports local demonstration activity; it does not change a saved preference.
+The button reports local demonstration activity. It does not change a saved preference.
 
 <%= example("pub-components-global-banner-2") %>
 
 ## Acceptance checks
 
-- The message is relevant to every page where it appears.
-- Dismissal does not conceal an unresolved safety or operational condition.
+- The message is relevant on every page where it appears.
+- Dismissal does not hide an unresolved safety or operational condition.
 - A revised message is distinguishable from a dismissed old one.
-- The banner does not repeatedly steal focus.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
-
-[Browse publishing components](index.html).
+- The banner does not repeatedly take focus.

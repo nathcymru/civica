@@ -6,7 +6,7 @@ group: "Publishing components"
 source_url: "https://design-guide.publishing.service.gov.uk/components/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,24 +14,36 @@ updates:
     description: "Updated the current project name and repository links to civica."
   - date: "2026-11-11"
     description: "Added the complete section inventory and local adaptation links."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove per-page source commentary and keep the examples labelled as simulated."
+ai_instructions: "Use to find the local adaptation of a Publishing Design Guide component. All 11 pages are reference patterns with simulated examples, not installed services. Check the shared civica component page that owns each contract before adopting one. Rules WG-001, WG-002, WG-056."
+ai_related:
+  - path: "/publishing/index.html"
+    title: "Publishing patterns for civica"
+    relationship: "Owns the scope, coverage and source credit for this section."
+  - path: "/publishing/source-history.html"
+    title: "Publishing source history"
+    relationship: "Owns the pinned sources and the metadata migration record."
 ---
 
 # Publishing components
 
-This section maps all **11** canonical guidance pages in the official section, including nested variants. Each page has a civica adaptation, explicit implementation limits and two contextual examples. These are reference patterns, not a claim that the theme installs every publishing service.
+Choose a component by the job it does for a reader. Each page below gives the rule first, then a Home Assistant example, and says where the shared contract lives. They are reference patterns. The theme does not install any publishing service.
 
-| Pattern | Local scope |
+The section covers all **11** component pages in the inventory (`docs/data/publishing-inventory.json`). Each page has two simulated examples.
+
+| Pattern | Use it to |
 | --- | --- |
-| [Attachment](attachment.html) | Reference and local examples |
-| [Breadcrumbs](breadcrumbs.html) | Reference and local examples |
-| [Contents list](content-list.html) | Reference and local examples |
-| [Emergency banner](emergency-banner.html) | Reference and local examples |
-| [Feedback](feedback.html) | Reference and local examples |
-| [Global banner](global-banner.html) | Reference and local examples |
-| [Previous and next navigation](previous-and-next-navigation.html) | Reference and local examples |
-| [Print link](print-link.html) | Reference and local examples |
-| [Related Navigation](related-navigation.html) | Reference and local examples |
-| [Search autocomplete](search-autocomplete.html) | Reference and local examples |
-| [Single page notification button](single-page-notification-button.html) | Reference and local examples |
+| [Attachment](attachment.html) | Link to a manual or document with its format and size |
+| [Breadcrumbs](breadcrumbs.html) | Show the parent route of a page |
+| [Contents list](content-list.html) | Give a route to sections of a long page or guide |
+| [Emergency banner](emergency-banner.html) | Show a verified, current, urgent condition |
+| [Feedback](feedback.html) | Collect a response about a documentation page |
+| [Global banner](global-banner.html) | Share an important, non-urgent whole-interface message |
+| [Previous and next navigation](previous-and-next-navigation.html) | Move between ordered chapters |
+| [Print link](print-link.html) | Open the browser print dialog or a print page |
+| [Related Navigation](related-navigation.html) | Offer a few adjacent links |
+| [Search autocomplete](search-autocomplete.html) | Suggest queries from permitted records |
+| [Single page notification button](single-page-notification-button.html) | Offer updates about one page |
 
-[Source history and metadata migration](../source-history.html).
+For scope and how to check the examples, see [Publishing patterns for civica](../index.html).

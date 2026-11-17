@@ -6,7 +6,7 @@ group: Page templates
 source_url: https://design-guide.publishing.service.gov.uk/frontend-templates/smart-answer/
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -16,29 +16,41 @@ updates:
     description: "Linked this retained variant to its shared behaviour owner and clarified its specific implementation boundary."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove repeated template boilerplate and per-page source commentary, and link the shared limits on the page templates index."
+ai_instructions: "Apply when proposing a decision aid for troubleshooting. Ask one question at a time, include an I do not know route and a way back, define every branch, and call an outcome a suggested check, not a diagnosis. Prefer a checklist if branching adds nothing. Rules WG-040, WG-043."
+ai_related:
+  - path: "/publishing/frontend-templates/index.html"
+    title: "Page templates"
+    relationship: "Owns the shared limits and checks for every page template."
+  - path: "/patterns/question-pages.html"
+    title: "Ask clear questions on pages and in dialogs"
+    relationship: "Owns input, back navigation and retained answers."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns the state and request wording rules."
+  - path: "/content/writing-guidelines/meet-household-needs.html"
+    title: "Meet household needs"
+    relationship: "Owns the start-with-the-task rule."
 ---
 
 # Smart answer
 
-A smart answer asks questions and uses the responses to route someone to a relevant outcome. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/smart-answer/).
+Suggest a next check, not a diagnosis. A smart answer asks questions and uses the responses to route someone to a relevant outcome. The shared limits for every page template are on [Page templates](index.html).
 
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
-
-## Reuse the question contract
-
-Use [question pages](../../patterns/question-pages.html#compose-the-task-without-replacing-its-owner) for input, back navigation and retained answers. This template adds a bounded route to explanatory outcomes. Its reference examples do not configure native triggers, conditions or actions, and must not be described as an implemented automation or diagnostic editor.
+Use [question pages](../../patterns/question-pages.html#compose-the-task-without-replacing-its-owner) for input, back navigation and retained answers. The examples do not configure native triggers, conditions or actions, and must not be described as an implemented automation or diagnostic editor.
 
 ## When to use it
 
-A bounded troubleshooting decision aid can help users find the right existing guidance. Ask one meaningful question at a time, include “I do not know” where appropriate and keep a route back to change an answer. Distinguish a suggested next check from a diagnosis.
+Use a bounded decision aid to help people find existing guidance. Ask one meaningful question at a time, include "I do not know" where it fits and keep a route back to change an answer. For a simple choice between a few routes, see [Simple smart answer](smart-answer/simple-smart-answer.html). For version-controlled rules, see [GitHub smart answer](smart-answer/github-smart-answer.html).
 
 ## Structure and behaviour
 
-Define every branch, outcome and prerequisite before building the interaction. Retain previous responses while moving backwards. Do not hide contradictory evidence or make a confident recommendation from an unavailable reading. Prefer a simple checklist when a decision tree adds no value.
+Define every branch, outcome and prerequisite before you build the interaction. Keep earlier responses when someone goes back. Do not hide contradictory evidence, and do not give a confident recommendation from an unavailable reading ([WG-043](../../content/writing-guidelines/states-and-errors.html#wg-043)). Use a simple checklist when a decision tree adds no value.
 
 ## Home Assistant boundary
 
-The theme provides no diagnostic engine and does not infer appliance faults. Example choices navigate to explanatory text, not service calls. Safety-related decisions and device capability claims require verified domain guidance; they are not generated from a visual pattern.
+The theme provides no diagnostic engine and does not infer appliance faults. The example choices go to explanatory text, not service calls. Safety decisions and device capability claims need verified domain guidance. A visual pattern cannot generate them.
 
 ## Bounded display question
 
@@ -48,21 +60,14 @@ Two local links lead to actual explanations.
 
 ## Unknown answer
 
-Offer a useful route without guessing.
+Offer a useful route without guessing ([WG-040](../../content/writing-guidelines/states-and-errors.html#wg-040)).
 
 <%= example("pub-frontend-templates-smart-answer-2") %>
-
 ## Acceptance checks
 
 - Every permitted answer reaches a defined outcome.
 - An unknown answer has a useful next step.
 - Changing an earlier answer clears incompatible later results.
-- Outcomes distinguish evidence from assumptions.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- Outcomes separate evidence from assumptions.
 
 [Browse page templates](index.html).

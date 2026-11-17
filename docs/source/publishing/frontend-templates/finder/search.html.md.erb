@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/finder/search/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -16,49 +16,46 @@ updates:
     description: "Added working local example behaviour with a safe no-JavaScript fallback and no connected backend."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, link to the shared finder behaviour and remove repeated boilerplate and source commentary."
+ai_instructions: "Apply when adding a documentation or site search. State its scope, label each result type and link to existing pages. Do not blend documentation with private entity records or send household queries to an external index. Link to the finder page for shared behaviour. Rules WG-001, WG-002, WG-083."
+ai_related:
+  - path: "/publishing/frontend-templates/finder.html"
+    title: "Finder"
+    relationship: "Owns the shared finder behaviour."
+  - path: "/publishing/patterns/search-filter.html"
+    title: "Search filter"
+    relationship: "Owns query, facet, count and reset behaviour."
 ---
 
 # Search
 
-The official search template searches indexed content across GOV.UK rather than one document collection. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/finder/search/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+State what a site search covers before the first query. Documentation search covers documentation, so results must say what type of page they are and must never be read as a search of household data. Home Assistant’s own search keeps finding entities and actions. Scope, result count, empty states, focus and the no-JavaScript fallback follow the [shared finder behaviour](../finder.html#finder-shared-contract).
 
 ## When to use it
 
-A local site search may span design guidance, components and examples, but it must state its scope. In HA, native search continues to own entity and action discovery; documentation search must not be presented as a search of household data.
-
-## Structure and behaviour
-
-Keep the collection scope next to the search label. Use a result title, a short distinguishing description and only the metadata needed for the next decision. The selected criteria and result count should remain visible. A no-match result needs a clear way to broaden the query; an unavailable data source needs a different message.
+Use a local site search that may span guidance, components and examples, provided it states its scope.
 
 ## Home Assistant boundary
 
-Do not blend public documentation with private entity records or send household queries to an external index without an explicit product decision. Results must link to existing pages and identify their type. The examples are self-contained specimens with invented records. The second example filters its fixed local list by the words entered, updates the result count, exposes a genuine no-match state and restores all records when cleared. Record details remain readable without JavaScript; submit buttons are disabled until the local handler is ready. No connected search backend or household data is used.
+Do not blend public documentation with private entity records. Do not send household queries to an external index without an explicit product decision. Results link to existing pages and identify their type.
 
 ## Example site results
 
-Two invented entries demonstrate the result metadata.
+Two invented entries show the result metadata.
 
 <%= example("pub-frontend-templates-finder-search-1") %>
 
 ## Search within this collection
 
-Type a word from a title or its context, then find records. The fixed local list and its disclosures work without a backend.
+Type a word from a title or its context, then select Find example records. The list is fixed and invented, and no backend is used.
 
 <%= example("pub-frontend-templates-finder-search-2") %>
 
 ## Acceptance checks
 
-- The collection’s scope matches the promised result type.
-- Metadata is verified rather than inferred from the display name.
-- Keyboard focus stays predictable as criteria change.
-- No-match and unavailable states have different explanations.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- The search states its scope.
+- Every result names its type and links to an existing page.
+- No household data is searched or sent anywhere.
 
 [Browse page templates](../index.html).

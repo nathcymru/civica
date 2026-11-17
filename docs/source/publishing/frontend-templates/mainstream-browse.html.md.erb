@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/mainstream-browse/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,25 +14,36 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, add machine-readable guidance and remove repeated boilerplate and source commentary."
+ai_instructions: "Apply when organising a large household help or documentation collection into topics. Use recognisable subjects, keep broad topics apart from task links, explain the ordering and keep it stable. Do not import a government taxonomy or popularity lists. Link to level one and level two pages for each level. Rules WG-001, WG-050, WG-083."
+ai_related:
+  - path: "/publishing/frontend-templates/mainstream-browse/level-one.html"
+    title: "Level one"
+    relationship: "Owns the first browse level."
+  - path: "/publishing/frontend-templates/mainstream-browse/level-two.html"
+    title: "Level two"
+    relationship: "Owns the second browse level."
+  - path: "/content/writing-guidelines/add-links.html"
+    title: "Write effective links"
+    relationship: "Owns link wording."
 ---
 
 # Mainstream browse
 
-Mainstream browse organises a topic hierarchy into parent and child pages. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/mainstream-browse/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Organise a large help collection into topics people already recognise, and keep it no deeper than it needs to be. People scan familiar subjects faster than clever categories. For example, “Lighting” and “Heating” work as topics. A household with a handful of guides needs one flat list and no hierarchy.
 
 ## When to use it
 
-Use the principle for a large household help collection or documentation catalogue. Start with subjects people recognise, such as lighting, heating or maintaining the system. Keep broad subjects distinct from detailed task links. A small household may only need a single flat list.
+Use it for a large household help collection or documentation catalogue. Start with subjects people recognise, such as lighting, heating or maintaining the system. Keep broad subjects distinct from detailed task links.
 
 ## Structure and behaviour
 
-Provide a short introduction and plainly labelled topic links. Use a clear second level only where it reduces scanning effort. Alphabetical order can help a known-item list; task priority can help a curated list. Explain the chosen ordering and keep it stable.
+Give a short introduction and plainly labelled topic links. Add a second level only where it reduces scanning. Alphabetical order suits a known-item list and task priority suits a curated one. Say which you chose and keep it stable. The [level one](mainstream-browse/level-one.html) and [level two](mainstream-browse/level-two.html) pages cover each level.
 
 ## Home Assistant boundary
 
-Do not import the government taxonomy or analytics-derived popularity lists. The theme does not change native HA areas, floors or labels. Navigation must use configured routes and avoid suggesting that an entity has only one possible organisational relationship.
+Do not import a government taxonomy or popularity lists. The theme does not change Home Assistant areas, floors or labels. Navigation uses configured routes and does not suggest an entity has only one organisational relationship.
 
 ## Household subjects
 
@@ -42,21 +53,15 @@ A readable list uses real local section destinations.
 
 ## Documentation subjects
 
-A second purpose illustrates the same browse structure.
+A second purpose shows the same browse structure.
 
 <%= example("pub-frontend-templates-mainstream-browse-2") %>
 
 ## Acceptance checks
 
 - The hierarchy can be explained in ordinary language.
-- Users can reach the parent topic from a child.
-- Topic names differ enough to make choices clear.
-- The same list is not needlessly repeated in several panels.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- A person can reach the parent topic from a child.
+- Topic names differ enough to make the choice clear.
+- The same list is not repeated in several panels.
 
 [Browse page templates](index.html).

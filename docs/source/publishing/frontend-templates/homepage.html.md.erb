@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/homepage/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,29 +14,40 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove repeated template boilerplate and per-page source commentary, and link the shared limits on the page templates index."
+ai_instructions: "Apply when designing an Overview or a documentation entry page. Put household purpose and frequent tasks first, keep status apart from navigation, label icons, and never show invented or unavailable readings as normal. Use the household's own name and artwork, not official marks. Rules WG-033, WG-081."
+ai_related:
+  - path: "/publishing/frontend-templates/index.html"
+    title: "Page templates"
+    relationship: "Owns the shared limits and checks for every page template."
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns wording for unknown, unavailable and stale readings."
+  - path: "/content/writing-guidelines/meet-household-needs.html"
+    title: "Meet household needs"
+    relationship: "Owns the start-with-the-task rule."
 ---
 
 # Homepage
 
-The publishing homepage introduces the service and prioritises important routes rather than linking to everything. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/homepage/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Lead with what the household does most, and keep current conditions apart from navigation. A homepage prioritises a few routes rather than linking to everything. The shared limits for every page template are on [Page templates](index.html).
 
 ## When to use it
 
-For Home Assistant Overview, prioritise useful household status and frequent tasks. Keep current conditions separate from navigation. Room and domain names should be familiar, with visible labels beside meaningful native icons. The documentation homepage instead introduces the design system and its major learning routes.
+For a Home Assistant Overview, put useful household status and frequent tasks first. Use familiar room and domain names, with a visible label beside each meaningful native icon. The documentation homepage instead introduces the design system and its main learning routes.
 
 ## Structure and behaviour
 
-Use a concise heading, a small number of task links and grouped secondary routes. Follow the local action-links component for navigational arrows. Whitespace and headings should do most of the grouping; do not surround every destination with a dark card border.
+Use a concise heading, a small number of task links and grouped secondary routes. Follow the local action-links component for navigational arrows. Let whitespace and headings do most of the grouping, and do not put a heavy card border round every destination. Repeated icons must keep one meaning ([WG-081](../../content/formatting-content/text-formatting.html#wg-081)).
 
 ## Home Assistant boundary
 
-A household homepage is not a clone of www.gov.uk. Use the household’s chosen name and optional authorised artwork, never the crown or official masthead. Priorities depend on the household; do not infer universal “most used” tasks or fabricate live readings.
+A household homepage is not a copy of www.gov.uk. Use the household's chosen name and any artwork it is authorised to use, never the crown or an official masthead. Priorities depend on the household, so do not assume a universal "most used" task. Do not show invented readings, and show an unavailable reading as unavailable ([WG-033](../../content/writing-guidelines/states-and-errors.html#wg-033)).
 
 ## Task-focused overview
 
-Working local routes; no live readings are shown.
+Working local routes. No live readings are shown.
 
 <%= example("pub-frontend-templates-homepage-1") %>
 
@@ -45,18 +56,11 @@ Working local routes; no live readings are shown.
 Prioritise a few useful starting points.
 
 <%= example("pub-frontend-templates-homepage-2") %>
-
 ## Acceptance checks
 
-- The first screen makes the service purpose clear.
+- The first screen makes the purpose clear.
 - Actions and navigation look and behave differently.
 - Unavailable readings are not presented as normal.
-- Repeated icons have a consistent meaning and visible label.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- Repeated icons have a consistent meaning and a visible label.
 
 [Browse page templates](index.html).

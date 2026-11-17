@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/mainstream-browse/level-two/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,49 +14,54 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, add machine-readable guidance and remove repeated boilerplate and source commentary."
+ai_instructions: "Apply when writing a second-level browse page. Use a specific subtopic title, a route to the parent and link text that names the task. Choose reading order or alphabetical order on purpose. Say when a link leaves Home Assistant. Keep every link visible without JavaScript. Rules WG-050, WG-083, WG-037."
+ai_related:
+  - path: "/publishing/frontend-templates/mainstream-browse.html"
+    title: "Mainstream browse"
+    relationship: "Owns the browse hierarchy and ordering rules."
+  - path: "/publishing/frontend-templates/mainstream-browse/level-one.html"
+    title: "Level one"
+    relationship: "Owns the first browse level."
+  - path: "/content/writing-guidelines/add-links.html"
+    title: "Write effective links"
+    relationship: "Owns link wording."
 ---
 
 # Level two
 
-The second browse level lists detailed destinations within a subtopic, either curated or alphabetically ordered. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/mainstream-browse/level-two/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Let a level-two page take people straight to a task, with an order you can defend. People arriving here should not meet another vague category. For example, an installation topic can list guides in reading order, while a reference list is alphabetical so people can find a known item. The hierarchy itself is described in [Mainstream browse](../mainstream-browse.html).
 
 ## When to use it
 
-Use this level for a focused set of guides, device instructions or settings explanations. At this point people should be able to select a task directly rather than navigate through another vague category. Include short descriptions where two destinations sound similar.
+Use it for a focused set of guides, device instructions or settings explanations. Add a short description where two destinations sound alike.
 
 ## Structure and behaviour
 
-Give the page a specific subtopic title and a route to its parent. Choose an order intentionally: the user’s likely sequence for a procedure, or alphabetical order for known-item lookup. Make each link’s destination type clear when mixing a guide, native page and external document.
+Give the page a specific subtopic title and a route to its parent. Choose reading order for a procedure and alphabetical order for known-item lookup. When a list mixes a guide, a native page and an external document, make each destination type clear.
 
 ## Home Assistant boundary
 
-The example subtopics are documentation structures, not installed HA routes. Avoid hidden accordion groups that make a short list harder to scan. Do not imply that changing the browse order changes device priority or automation behaviour.
+The example subtopics are documentation structures, not installed Home Assistant routes. Avoid hidden accordions on a short list. Changing the browse order does not change device priority or automation behaviour.
 
 ## Ordered installation reading
 
-Real local section links reflect a reading sequence.
+Real local section links follow a reading sequence.
 
 <%= example("pub-frontend-templates-mainstream-browse-level-two-1") %>
 
 ## Alphabetical reference list
 
-A clear known-item list needs no hidden categories.
+A known-item list needs no hidden categories.
 
 <%= example("pub-frontend-templates-mainstream-browse-level-two-2") %>
 
 ## Acceptance checks
 
-- Links describe the task rather than a generic “Read more”.
-- The ordering is consistent and defensible.
-- All essential links remain visible without JavaScript.
-- The parent route is available without using browser history.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- Link text names the task, not “Read more”.
+- The order is consistent and defensible.
+- Every essential link is visible without JavaScript.
+- The parent route is available without browser history.
 
 [Browse page templates](../index.html).

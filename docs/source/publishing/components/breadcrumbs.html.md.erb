@@ -6,7 +6,7 @@ group: Publishing components
 source_url: https://design-guide.publishing.service.gov.uk/components/breadcrumbs/
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -16,33 +16,43 @@ updates:
     description: "Linked this retained variant to its shared behaviour owner and clarified its specific implementation boundary."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove per-page source commentary and keep the examples labelled as simulated."
+ai_instructions: "Apply when showing the parent route of a documentation page. Use one real hierarchy, a named navigation landmark and aria-current=\"page\" or plain text for the current item. Breadcrumbs are not browser history or task progress. The shared breadcrumbs page owns the contract. Rules WG-080, WG-083."
+ai_related:
+  - path: "/components/breadcrumbs.html"
+    title: "Breadcrumbs"
+    relationship: "Owns the shared hierarchy contract and current-page semantics."
+  - path: "/publishing/components/index.html"
+    title: "Publishing components"
+    relationship: "Lists this component with its sibling pages."
 ---
 
 # Breadcrumbs
 
-Publishing breadcrumbs expose the parent hierarchy of an information page. They are navigation, not transaction progress. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/components/breadcrumbs/).
+Show breadcrumbs only when they reflect a real parent route. They are navigation for people who arrive deep in the documentation, not a record of where they have been and not a measure of progress through a task.
 
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+**Reference pattern.** The examples document a local adaptation. They do not add a publishing backend or a new Home Assistant capability.
 
 ## Use the shared hierarchy contract
 
-[Breadcrumbs](../../components/breadcrumbs.html#maintain-one-hierarchy-contract) owns parent routes, the navigation landmark and current-page semantics. This source page retains the publishing context and both examples. Choose the parent-only or current-item variant deliberately; both must describe the same real hierarchy.
+[Breadcrumbs](../../components/breadcrumbs.html#maintain-one-hierarchy-contract) owns parent routes, the navigation landmark and current-page semantics. This page keeps the publishing context and both examples. Choose the parent-only or current-item variant deliberately. Both must describe the same hierarchy.
 
 ## When to use it
 
-Use a short hierarchy when a person can arrive directly at a device guide or a nested documentation page. Link the real parent area and its collection. A dashboard already oriented by its sidebar and room title may not need another trail.
+Use a short trail when someone can land directly on a device guide or a nested help page, for example Help, then Cameras. Link the real parent area. A dashboard already oriented by its sidebar and room title may not need another trail.
 
 ## Structure and behaviour
 
-Use a named navigation landmark and an ordered list. Keep each parent label consistent with its destination title. If the current page is shown, use plain text or aria-current="page". Decorative separators must not be read as extra content. The local site shell remains the owner of the primary breadcrumb implementation.
+Use a named navigation landmark and an ordered list. Keep each parent label the same as its destination title. Show the current page as plain text or with aria-current="page". Decorative separators must not be read out as content. The site shell owns the primary breadcrumb implementation.
 
 ## Home Assistant boundary
 
-A breadcrumb does not describe browser history. Do not manufacture a parent route from a dashboard URL, assume that every entity belongs to one room, or copy a government topic taxonomy into Home Assistant.
+A breadcrumb does not describe browser history. Do not build a parent route from a dashboard URL, assume every entity belongs to one room, or copy a government topic taxonomy into Home Assistant.
 
 ## Two-level help trail
 
-Working in-page destinations illustrate a help hierarchy.
+In-page destinations illustrate a help hierarchy.
 
 <%= example("pub-components-breadcrumbs-1") %>
 
@@ -54,15 +64,7 @@ The current item is plain text with aria-current.
 
 ## Acceptance checks
 
-- Follow every parent link and confirm the real hierarchy.
-- Check the trail wraps without clipping at 320px.
-- Distinguish it from the previous-page control.
-- Avoid two navigation landmarks with the same accessible name.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
-
-[Browse publishing components](index.html).
+- Every parent link reaches the real parent.
+- The trail wraps without clipping at 320px.
+- It is not confused with the previous-page control.
+- No two navigation landmarks share an accessible name.

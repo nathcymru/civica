@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/guide/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,25 +14,36 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove repeated template boilerplate and per-page source commentary, and link the shared limits on the page templates index."
+ai_instructions: "Apply when splitting a subject into chapters. Use chapters only when sections answer different tasks. Keep consistent titles, mark the current chapter without a self-link, name previous and next chapters, and repeat prerequisites a direct visitor needs. A guide is not a wizard. Rules WG-051, WG-083."
+ai_related:
+  - path: "/publishing/frontend-templates/index.html"
+    title: "Page templates"
+    relationship: "Owns the shared limits and checks for every page template."
+  - path: "/content/writing-guidelines/clear-structure.html"
+    title: "Create a clear structure"
+    relationship: "Owns ordering, prerequisites and heading rules."
+  - path: "/content/writing-guidelines/add-links.html"
+    title: "Write effective links"
+    relationship: "Owns link text and external-link rules."
 ---
 
 # Guide
 
-A guide divides a substantial subject into chapters with their own titles and durable routes. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/guide/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Split a guide into chapters only when each chapter answers a different task and stands alone for someone who arrives directly. If readers need the whole procedure at once, use a [detailed guide](detailed-guide.html) with a contents list. The shared limits for every page template are on [Page templates](index.html).
 
 ## When to use it
 
-Use a multi-part guide when sections answer different tasks or are useful independently. A companion installation guide might separate preparation, installation and verification. If readers need the whole procedure at once, prefer a detailed single page with a contents list.
+Use it when sections are useful independently. A companion installation guide might separate preparation, installation and verification.
 
 ## Structure and behaviour
 
-Keep a consistent title and chapter navigation. Identify the current chapter without a self-link, and provide previous/next destinations with chapter names. A combined print view is useful only when it contains the whole guide. Maintain cross-chapter terminology and version requirements.
+Keep one title style and one chapter navigation. Mark the current chapter without a self-link. Give previous and next links the chapter names ([WG-083](../../content/writing-guidelines/add-links.html#wg-083)). Offer a combined print view only if it holds the whole guide. Keep terminology and version requirements the same across chapters.
 
 ## Home Assistant boundary
 
-A sequence of guide pages is not a wizard and must not silently save progress. Do not hide necessary prerequisites on a previous page that a direct visitor may never have seen. The examples navigate between actual sections rather than fictional URLs.
+A run of guide pages is not a wizard and must not save progress silently. Do not leave a necessary prerequisite on an earlier page that a direct visitor may never see ([WG-051](../../content/writing-guidelines/clear-structure.html#wg-051)). The examples link to real sections, not invented URLs.
 
 ## Chapter list
 
@@ -45,18 +56,11 @@ An example current chapter and one real destination.
 The destination title supplies context.
 
 <%= example("pub-frontend-templates-guide-2") %>
-
 ## Acceptance checks
 
-- Direct entry to every chapter remains understandable.
+- Direct entry to every chapter is still understandable.
 - Navigation order matches the published contents.
 - Requirements do not contradict other chapters.
 - No chapter link performs an installation action.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
 
 [Browse page templates](index.html).

@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/smart-answer/github-smart-answer/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,29 +14,40 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove repeated template boilerplate and per-page source commentary, and link the shared limits on the page templates index."
+ai_instructions: "Apply when a future diagnostic guide needs branching rules or calculations. Keep rules in reviewed, versioned source with an example for every outcome, separate logic from copy, cite the inputs behind an answer and never invent a formula. Prefer a written guide unless logic clearly helps. Rules WG-043, WG-056."
+ai_related:
+  - path: "/publishing/frontend-templates/smart-answer.html"
+    title: "Smart answer"
+    relationship: "Owns the shared decision-aid rules."
+  - path: "/publishing/frontend-templates/index.html"
+    title: "Page templates"
+    relationship: "Owns the shared limits and checks for every page template."
+  - path: "/content/writing-guidelines/summaries.html"
+    title: "Write clear summaries"
+    relationship: "Owns the keep-examples-honest rule."
 ---
 
 # GitHub smart answer
 
-The GitHub smart-answer variant uses version-controlled logic and content for more complex decision trees or calculations. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/smart-answer/github-smart-answer/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Keep branching rules in reviewed, versioned source, and show the inputs and assumptions behind every answer. Use this variant only for decisions that need complex rules or calculations. Shared decision-aid rules are on [Smart answer](../smart-answer.html), and shared limits are on [Page templates](../index.html).
 
 ## When to use it
 
-If a future household diagnostic guide needs branching rules, keep those rules in reviewed source with examples for every outcome. Separate logic from explanatory copy. A deterministic answer should cite the inputs and assumptions that produced it.
+Use it if a future household diagnostic guide needs branching rules. Keep those rules in reviewed source, with an example for every outcome. Separate logic from explanatory copy. A deterministic answer should cite the inputs and assumptions that produced it ([WG-043](../../../content/writing-guidelines/states-and-errors.html#wg-043)).
 
 ## Structure and behaviour
 
-Define input types, units, unknown states and boundaries before rendering questions. Test every branch, backtracking and changed answers. A calculation must preserve the underlying measurement semantics and report any approximation; a design template is not authority to invent a formula.
+Define input types, units, unknown states and boundaries before you render questions. Test every branch, going back and changed answers. A calculation must keep the meaning of the underlying measurement and report any approximation. A design template is not authority to invent a formula.
 
 ## Home Assistant boundary
 
-This project does not install the government’s Ruby smart-answer engine or introduce a diagnostic calculator. The examples are explicit decision documentation, with no service calls or inferred fault diagnosis. Use a simpler written guide unless the extra logic demonstrably helps.
+civica does not install the government's Ruby smart-answer engine or add a diagnostic calculator. The examples are decision documentation, with no service calls and no inferred fault diagnosis ([WG-056](../../../content/writing-guidelines/summaries.html#wg-056)). Use a simpler written guide unless the extra logic demonstrably helps.
 
 ## Decision rule record
 
-A readable rule specification rather than an unimplemented calculator.
+A readable rule specification, not an unimplemented calculator.
 
 <%= example("pub-frontend-templates-smart-answer-github-smart-answer-1") %>
 
@@ -45,18 +56,11 @@ A readable rule specification rather than an unimplemented calculator.
 Both example outcomes exist as local sections.
 
 <%= example("pub-frontend-templates-smart-answer-github-smart-answer-2") %>
-
 ## Acceptance checks
 
-- Rules are versioned and independently reviewable.
+- Rules are versioned and can be reviewed independently.
 - Boundary and unknown-input cases have specified outcomes.
-- The user can understand why an outcome was shown.
+- The person can understand why an outcome was shown.
 - Changes to earlier answers invalidate dependent results.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
 
 [Browse page templates](../index.html).

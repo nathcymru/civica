@@ -6,7 +6,7 @@ group: Publishing patterns
 source_url: https://design-guide.publishing.service.gov.uk/patterns/search-filter/
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -18,55 +18,63 @@ updates:
     description: "Added working local example behaviour with a safe no-JavaScript fallback and no connected backend."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove per-page source commentary and keep the examples labelled as simulated."
+ai_instructions: "Apply when narrowing a substantial catalogue with a query and facets. Keep a visible result count and a clear no-match state with a reset route. Query words must all match, values in one facet are alternatives and the query combines with the facet. Do not move focus on refresh. Without JavaScript, keep records readable and submission disabled. Rules WG-038, WG-044, WG-084."
+ai_related:
+  - path: "/components/search-input.html"
+    title: "Search input"
+    relationship: "Owns the query field labels and submission."
+  - path: "/publishing/frontend-templates/finder.html"
+    title: "Finder"
+    relationship: "Composes this filtering contract for a named collection."
+  - path: "/publishing/components/search-autocomplete.html"
+    title: "Search autocomplete"
+    relationship: "Adds optional suggestions from the same records."
+  - path: "/publishing/patterns/index.html"
+    title: "Publishing patterns"
+    relationship: "Lists this pattern."
 ---
 
 # Search filter
 
-The publishing search-filter pattern narrows a result set with facets and adapts their placement on small screens. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/patterns/search-filter/).
+Add filters only to a substantial catalogue, and keep the result count, the list and the no-match message in step. Choose facets that reflect the task, such as area, domain or availability. A short list that is easy to scan does not need a filter panel.
 
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+**Reference pattern.** The examples document a local adaptation. They do not add a publishing backend or a new Home Assistant capability.
 
 ## Share the filtering contract
 
-The [search input](../../components/search-input.html) owns the query field, while this pattern owns how query, facets and results work together. The [finder](../frontend-templates/finder.html) composes this contract for a named collection. Its source-specific child pages do not define new filter algorithms or household services.
+The [search input](../../components/search-input.html) owns the query field. This pattern owns how query, facets and results work together. The [finder](../frontend-templates/finder.html) composes this contract for a named collection, and its child pages do not define new filter rules.
 
-For these local examples, all query words must match a record, selected values within one Area facet are alternatives, and the query combines with the selected facet. Apply and Clear operate on the same fixed record set. Keep the visible count, result list and no-match message consistent. Without JavaScript, expose the records and keep submission disabled rather than sending the query to the current page. A real implementation needs its own permitted dataset, loading and error behaviour.
+In these examples, all query words must match a record, values selected within the Area facet are alternatives, and the query combines with the selected facet. Apply and Clear work on the same fixed record set. Without JavaScript, show the records and keep submission disabled rather than sending the query to the current page. A real implementation needs its own permitted dataset, loading state and error behaviour.
 
 ## When to use it
 
-Use filters for a substantial device, automation or document catalogue. Choose facets that reflect the task, such as area, domain or availability. Keep a visible result count and clear selected criteria. A short list that is already easy to scan does not need an elaborate filter panel.
+Use filters for a large device, automation or document catalogue, for example narrowing sample records to the Kitchen. Keep selected criteria visible and easy to clear.
 
 ## Structure and behaviour
 
-Group related choices with a fieldset and legend. Keep search, filters and results in a logical document order. A mobile disclosure may contain the same controls, with a link back to results. Native HA remains responsible for entity visibility and actual filtering; a documentation specimen is not a replacement entity registry.
+Group related choices with a fieldset and legend. Keep search, filters and results in a logical order. A mobile disclosure can hold the same controls, with a link back to results. Native Home Assistant owns entity visibility and real filtering. A documentation specimen is not an entity registry.
 
 ## Home Assistant boundary
 
-Automatic refresh must not move focus away from the changed filter. State when results are loading and when no records match. Preserve meaningful query state when navigating back. These local examples apply filters only when the person submits them: query words must all match a record, selected areas are alternatives, and query and area criteria combine. Clear filters restores the fixed dataset. Counts and empty-state messages reflect the actual visible records; no live entities are queried. Without JavaScript, all records remain readable and the form cannot submit.
+Automatic refresh must not move focus away from the changed filter. Say when results are loading and when no records match. Keep meaningful query state when someone navigates back. These examples apply filters only when the person submits them, and Clear filters restores the fixed dataset. Counts and empty-state messages reflect the visible records. No live entities are queried.
 
 ## Search and area filters
 
-Try a name, select Kitchen or Hall, and apply the filters. Choices within Area are alternatives; the query and area criteria combine.
+Try a name, select Kitchen or Hall, and apply the filters. Choices within Area are alternatives. The query and area criteria combine.
 
 <%= example("pub-patterns-search-filter-1") %>
 
 ## Recover from no matches
 
-Enter an unmatched word such as bedroom to see the empty state, then clear filters to restore all three documentation records.
+Enter an unmatched word such as bedroom to see the empty state, then clear the filters to restore all three documentation records.
 
 <%= example("pub-patterns-search-filter-2") %>
 
 ## Acceptance checks
 
 - A zero-result state offers a meaningful reset route.
-- The result count agrees with the displayed dataset.
-- Multiple filter groups have unique labels.
-- Mobile and desktop expose the same filtering capability.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
-
-[Browse publishing patterns](index.html).
+- The result count agrees with the displayed records.
+- Each filter group has a unique label.
+- Mobile and desktop offer the same filtering.

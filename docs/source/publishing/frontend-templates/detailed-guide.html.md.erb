@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/detailed-guide/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,25 +14,36 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove repeated template boilerplate and per-page source commentary, and link the shared limits on the page templates index."
+ai_instructions: "Apply when writing a single-page, maintained procedure such as installation, upgrade or recovery. State the outcome, supported baseline and prerequisites first, order steps as performed, add checks before risky steps, and keep real dates. Never invent versions, URLs or backup locations. Rules WG-050, WG-051, WG-091."
+ai_related:
+  - path: "/publishing/frontend-templates/index.html"
+    title: "Page templates"
+    relationship: "Owns the shared limits and checks for every page template."
+  - path: "/content/writing-guidelines/clear-structure.html"
+    title: "Create a clear structure"
+    relationship: "Owns ordering, prerequisites and heading rules."
+  - path: "/content/writing-guidelines/change-notes.html"
+    title: "Write change notes"
+    relationship: "Owns how to write a change note."
 ---
 
 # Detailed guide
 
-A detailed guide supports a specific task that needs substantial, maintained instructions. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/detailed-guide/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Start with the outcome, the supported baseline and the prerequisites, then give the steps in the order people must perform them. Use a detailed guide for a task that needs substantial, maintained instructions. The shared limits for every page template are on [Page templates](index.html).
 
 ## When to use it
 
-Use it for installing the companion, upgrading a supported version or recovering a known configuration. Start with the intended outcome, supported baseline and prerequisites. Place steps in the order people must perform them, with checks at the points where mistakes would otherwise go unnoticed.
+Use it to install the companion, upgrade a supported version or recover a known configuration. Put a check at each point where a mistake would otherwise go unnoticed. If the subject splits into independent tasks, use a [guide](guide.html).
 
 ## Structure and behaviour
 
-Include a contents list, meaningful headings, concise code blocks where necessary, and verified recovery information. Publish a real first-publication date and maintain dated change notes. In current publishing metadata, page-history entries belong to page_history; do not build new guidance around the removed published-dates component.
+Include a contents list, meaningful headings, short code blocks where needed and verified recovery information ([WG-050](../../content/writing-guidelines/clear-structure.html#wg-050), [WG-051](../../content/writing-guidelines/clear-structure.html#wg-051)). Publish a real first-publication date and keep dated change notes that describe what a reader will notice ([WG-091](../../content/writing-guidelines/change-notes.html#wg-091)). In current publishing metadata, page history belongs to `page_history`. Do not build new guidance around the removed published-dates component. See [Publishing source history](../source-history.html).
 
 ## Home Assistant boundary
 
-The guide is instructional content, not an automated installer. Never imply that reading a step completed it. Do not invent a supported Home Assistant version, release URL or backup location. Keep security-sensitive credentials and private household details out of public examples.
+The guide is instructional content, not an installer. Reading a step does not complete it. Do not invent a supported Home Assistant version, release URL or backup location. Keep credentials and private household details out of public examples.
 
 ## Task-oriented structure
 
@@ -45,18 +56,11 @@ A bounded outline for a real theme installation guide.
 These are labelled example dates and changes.
 
 <%= example("pub-frontend-templates-detailed-guide-2") %>
-
 ## Acceptance checks
 
 - Instructions match the version being documented.
-- Each potentially disruptive step has a practical validation point.
+- Each step that could disrupt the system has a practical validation point.
 - Code and links are verified against the package.
-- Change notes explain user-visible changes rather than every internal edit.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- Change notes explain user-visible changes, not every internal edit.
 
 [Browse page templates](index.html).
