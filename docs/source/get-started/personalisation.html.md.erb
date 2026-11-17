@@ -6,30 +6,43 @@ group: Guidance
 nav_order: 3
 status: reference
 published_on: "2026-11-12"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
   - date: "2026-11-12"
     description: "Separated project identity from optional household personalisation, with current native options and proposed header examples."
+  - date: "2026-11-17"
+    description: "Tightened the page, put the current native steps first and kept the proposed settings clearly separate."
+ai_instructions: "Use to add a household or business name, with an optional crest or logo. Present native dashboard titles and Picture cards as what works now. Present the header table as a proposal, never as an available theme setting. Keep the name as real text. Rules WG-022, WG-043, WG-061, WG-082."
+ai_related:
+  - path: "/get-started/compatibility.html"
+    title: "Compatibility and limits"
+    relationship: "Owns what the companion does and does not do for identity today."
+  - path: "/styles/brand.html"
+    title: "Project identity"
+    relationship: "Applies when referring to the civica project itself."
+  - path: "/components/header.html"
+    title: "Header"
+    relationship: "Use when implementing the proposed header behaviour."
 ---
 
 # Personalise your home
 
-Your Home Assistant interface belongs to your household or business. Use a name people recognise, with a family crest, household emblem or business logo if it helps them recognise the space. A clear text name is enough.
+Your Home Assistant interface belongs to your household or business. Use a name people recognise. Add a family crest, household emblem or business logo only if it helps them recognise the space. A clear text name is enough.
 
-civica identifies the theme project, its documentation and promotion. It is not a required name or logo inside your home. The [project identity guide](../styles/brand.html) applies when referring to the project itself.
+civica identifies the theme project and its documentation. It is not a required name or logo inside your home. Use the [project identity guide](../styles/brand.html) only when you refer to the project itself.
 
 ## What you can do now
 
-Home Assistant supports named dashboards and picture cards. These are existing native features; this page does not change your installation.
+Home Assistant already supports named dashboards and Picture cards. This page does not change your installation.
 
 1. Choose a recognisable dashboard title, such as “Morgan household” or “Example workshop”. Keep built-in page names where Home Assistant owns them. A dashboard title does not rename accounts, entities or devices.
 2. If an image helps, add a native Picture card and use its **Upload picture** option or an existing authorised image. Keep the name available as text and provide suitable alternative text.
 3. Set the picture's action deliberately. An identity image should not unexpectedly turn on a device. A home link should lead to the actual dashboard home; an image that has no action should not look like a button.
 4. Check the result on a phone, with keyboard navigation and enlarged text. Keep the room names, current states and essential actions more prominent than decorative artwork.
 
-The official [dashboard guidance](https://www.home-assistant.io/dashboards/dashboards/) describes dashboard titles and configuration. The [Picture card guidance](https://www.home-assistant.io/dashboards/picture/) documents image upload, alternative text and actions. Review these against the version you use before changing a setup.
+Home Assistant's [dashboard guidance](https://www.home-assistant.io/dashboards/dashboards/) describes dashboard titles and configuration. Its [Picture card guidance](https://www.home-assistant.io/dashboards/picture/) covers image upload, alternative text and actions. Check both against your Home Assistant version before you change a setup.
 
 ## Proposed theme personalisation
 

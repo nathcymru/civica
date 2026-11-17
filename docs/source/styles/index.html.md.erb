@@ -4,7 +4,7 @@ description: "Styles for the civica Home Assistant design system."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -20,20 +20,35 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the task, state who owns each style and move outside source credit to the foot of this page."
+ai_instructions: "Apply to choosing colour, type, layout, icons or chart styling. Choose a role before a value, take the value from the page that owns it and never add a hex value to one component. Send identity questions to Project identity and household names to Personalise your home. Rules WG-001, WG-002, WG-083."
+ai_related:
+  - path: "/styles/brand-colour.html"
+    title: "Colour roles and accessibility"
+    relationship: "Owns the rules for choosing a colour by its job."
+  - path: "/styles/typography.html"
+    title: "Typography"
+    relationship: "Owns the type sizes and the native density exception."
+  - path: "/get-started/personalisation.html"
+    title: "Personalise your home"
+    relationship: "Owns household names, crests and logos."
 ---
 
 # Styles
 
-Styles define the shared visual language. Apply the same semantic tokens to native Home Assistant controls, maintained custom cards and documentation examples.
+Choose a style by its role, such as primary text, canvas, focus or error. Then take the value from the page that owns it. The same semantic tokens apply to native Home Assistant controls, maintained custom cards and documentation examples.
 
-- [Colour roles and accessibility](brand-colour.html): apply colours by purpose, with accessible combinations.
-- [Colour palettes](colour.html): choose among ten palettes without changing status meanings.
+## Choose a style
+
+- [Colour roles and accessibility](brand-colour.html): choose a colour by its job and test the combination.
+- [Colour palettes](colour.html): pick one of ten palettes without changing what a status means.
 - [Data visualisation](brand-data.html): choose and compose charts, dashboards and maps.
-- [Chart colour](chart-colour.html): generate stable Vivid and Muted series colours, supported by patterns and labels.
-- [Typography](typography.html): make labels, values and headings readable.
-- [Layout and spacing](layout.html): preserve hierarchy at every width.
-- [Icons and images](images.html): use visual recognition with text alternatives.
-
+- [Chart colour](chart-colour.html): give each chart series a stable colour, backed by patterns and labels.
+- [Typography](typography.html): set sizes that keep labels, values and headings readable.
+- [Typography in context](brand-typography.html): decide how type behaves in values, native screens and printed handovers.
+- [Layout and spacing](layout.html): keep the hierarchy at every width.
+- [Icons and images](images.html): give every meaningful icon or image a text alternative.
 
 ## Examples
 
@@ -43,23 +58,21 @@ These isolated examples illustrate the decisions on this page. Any household val
 
 <%= example('local-colour-muted') %>
 
-
 <span id="brand-guidance"></span>
-
-## Apply the design guidance
-
-Use the [colour rules](brand-colour.html), [typography rules](brand-typography.html), [data principles](brand-data.html) and [illustration rules](illustration.html) as ordinary interface guidance. Their GOV.UK Brand source is credited, but it is not a second brand system inside a home.
-
-For a family name, crest or business logo, follow [personalisation](../get-started/personalisation.html). The civica [project identity](brand.html) belongs to its documentation and promotion.
-
-The [work-package checklist](../community/guidance-work-package.html) records source coverage and review loops. The [design-system audit](../community/design-system-audit.html) uses the finished rules to identify changes still needed.
-
-<p id="writing-guide">Writing guidance now has its own <a href="../content/index.html">Writing guide section</a>.</p>
 
 ## Use roles before values
 
-Choose a role such as primary text, canvas, focus, error or selected control. Resolve the role through the shared theme tokens. Avoid adding a hex value to one component merely because it looks close to the chosen palette.
+Choose a role, then resolve it through the shared theme tokens. For example, use the focus token on a custom button rather than copying a yellow hex value because it looks close.
 
 The canonical palette data is `design-system/palettes.json` in the repository. Generated theme data and YAML must be reproducible from that source. Documentation must not become a competing source of colour truth.
 
-This follows GOV.UK's distinction between [functional colours and colour palettes](https://design-system.service.gov.uk/styles/colour/) while adding the civica brand choices.
+## Know who owns what
+
+- The [colour](brand-colour.html), [typography](brand-typography.html), [data](brand-data.html) and [illustration](illustration.html) pages are ordinary interface guidance. They are not a second brand system inside a home.
+- For a family name, crest or business logo, follow [Personalise your home](../get-started/personalisation.html).
+- The civica [project identity](brand.html) belongs to this documentation and to promotion of the project.
+- The [work-package checklist](../community/guidance-work-package.html) records source coverage and review loops. The [design-system audit](../community/design-system-audit.html) lists the changes still needed.
+
+<p id="writing-guide">Wording rules have their own <a href="../content/index.html">Writing guide section</a>.</p>
+
+<p><small>Source note: colour roles, including the functional colours, spacing, type scale, typeface and images draw on the <a href="https://design-system.service.gov.uk/styles/colour/">GOV.UK Design System styles</a>. Brand colour, typography and print typography draw on the <a href="https://brand.design-system.service.gov.uk/">GOV.UK Brand guidance</a>. Image and icon guidance also draws on the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a> and the <a href="https://design.homeoffice.gov.uk/">Home Office Design System</a>. Chart and map colour guidance draws on the <a href="https://service-manual.ons.gov.uk/data-visualisation/colours/using-colours-in-charts">Office for National Statistics data visualisation guidance</a>. The Ministry of Justice and Department for Work and Pensions are named on the <a href="brand.html">Project identity</a> page only to identify sources. The ten palettes, Vivid and Muted variants and the chart colour generator are civica decisions. civica’s dark divider and control-outline values are its own adaptation, not GOV.UK values. civica is an independent project and is not endorsed by these organisations. The <a href="../community/sources.html">source register</a> and <a href="../community/licensing.html">licensing and attribution</a> give the full list and licence terms.</small></p>

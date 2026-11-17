@@ -1,9 +1,9 @@
 ---
 title: "Typography"
-description: "Typography for the civica Home Assistant design system."
+description: "Set Arial type sizes that keep labels, values and headings readable in civica and native Home Assistant."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 published_on: "2026-11-11"
 updates:
   - date: "2026-11-13"
@@ -16,16 +16,29 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, corrected the wordmark description and moved source credit to the Styles index."
+ai_instructions: "Apply when setting a font, size or heading in a card, dashboard or documentation page. Use Arial, take sizes from the type hierarchy table, scale them with Home Assistant's text preference and let text wrap. Do not name GDS Transport in a font stack. A large sensor value is a value, not a heading. Rules WG-001, WG-002."
+ai_related:
+  - path: "/styles/brand-typography.html"
+    title: "Typography in context"
+    relationship: "Owns how type behaves in values, native screens and print."
+  - path: "/styles/layout.html"
+    title: "Layout and spacing"
+    relationship: "Owns spacing and hierarchy at each width."
+  - path: "/accessibility/index.html"
+    title: "Accessibility"
+    relationship: "Owns text resizing and reflow requirements."
 ---
 
 # Typography
 
-Use Arial, Helvetica and the system sans-serif fallback consistently. Do not name GDS Transport anywhere in the active font stack. The supplied outlined civica wordmark is artwork, not a font for interface text.
+Set text in Arial, then Helvetica, then the system sans-serif font. Do not name GDS Transport anywhere in the font stack. The supplied civica lockup is artwork, not a font for interface text.
 
 
 ## Apply the type hierarchy
 
-The [typography principles](brand-typography.html) explains expressive and functional hierarchy, alignment, line length and emphasis. The sizes and native Home Assistant density exception on this page remain the implementation contract.
+This page owns the sizes and the native Home Assistant density exception. [Typography in context](brand-typography.html) owns alignment, values, text scaling and print.
 
 
 ## Examples
@@ -48,20 +61,20 @@ These isolated examples illustrate the decisions on this page. Any household val
 | Supporting metadata | 16px, regular, 1.5 line height | 16px |
 | Primary sensor value | 32px to 48px, tabular numerals where useful | Fit the value and unit without truncation |
 
-These are local starting points informed by the [GOV.UK type scale](https://design-system.service.gov.uk/styles/type-scale/). Maintained custom civica UI uses 19px body/main controls and 16px metadata. Native HA dense controls/body use 16px, supporting labels 14px and compact ancillary text 12px. Existing larger native headings retain HA values, with card titles explicitly 24px. This is a controlled density adaptation to preserve native geometry; check it in live Home Assistant at 200% text size. The shared custom base sizes are `civica-font-size-body: 19px`, `civica-font-size-small: 16px` and `civica-font-size-heading: 24px`; native `ha-font-size-xs/s/m/l` base sizes are 12/14/16/19px. The generated values use `calc()` with `--ha-font-size-scale` so Home Assistant’s user text scaling remains effective.
+These are starting points, not fixed values. Maintained custom civica UI uses 19px for body text and main controls, and 16px for metadata. Native Home Assistant dense controls and body text use 16px, supporting labels 14px and compact extra text 12px. Larger native headings keep their Home Assistant values, and card titles are 24px. This density adaptation protects native layout. Check it in live Home Assistant at 200% text size.
 
-Native dashboard section titles in `hui-heading-card` share the 24px bold card-heading size so an H2 does not appear weaker than the cards it introduces. The theme sets `ha-heading-card-title-font-size` to `var(--civica-font-size-heading)`, `ha-heading-card-title-font-weight` to `700`, and `ha-heading-card-title-line-height` to `1.25`. This compact dashboard adaptation preserves Home Assistant’s text scale and the existing heading semantics. Subtitle and caption tokens retain their native supporting hierarchy.
+The shared custom base sizes are `civica-font-size-body` (19px), `civica-font-size-small` (16px) and `civica-font-size-heading` (24px). The native `ha-font-size-xs`, `ha-font-size-s`, `ha-font-size-m` and `ha-font-size-l` base sizes are 12, 14, 16 and 19px. Each value uses `calc()` with `--ha-font-size-scale`, so Home Assistant’s text scaling still works.
+
+Native dashboard section titles in `hui-heading-card` use the 24px bold card-heading size, so a section title never looks weaker than the cards below it. The theme sets `ha-heading-card-title-font-size` to `var(--civica-font-size-heading)`, `ha-heading-card-title-font-weight` to `700` and `ha-heading-card-title-line-height` to `1.25`. This keeps Home Assistant’s text scale and heading structure. Subtitle and caption tokens keep their native supporting look.
 
 ## Make hierarchy semantic
 
-Use one meaningful page heading and ordered heading levels. A large sensor number is a value, not automatically a heading. Do not style a paragraph to look like a heading while leaving its semantics unchanged.
+Use one page heading and keep heading levels in order. A large sensor number such as “21 °C” is a value, not automatically a heading. Do not style a paragraph to look like a heading while leaving it as a paragraph.
 
-Use sentence case. Use bold for labels and selective emphasis, not whole paragraphs. Avoid uppercase action labels, italics for essential instructions and light grey text that reduces contrast.
+Use sentence case. Use bold for labels and selective emphasis, not whole paragraphs. Avoid uppercase button labels, italics for essential instructions and pale grey text that lowers contrast.
 
 ## Keep text readable
 
-Keep instructions near their controls. Let labels wrap. Reserve ellipsis for non-essential overflow where the full value can be obtained without pointer hover. A unit, warning or room name needed to identify a device must remain available.
+Keep instructions next to their controls and let labels wrap. Use an ellipsis only for non-essential overflow, and only where the full value is available without hovering. A unit, warning or room name needed to identify a device must always be visible.
 
-Allow browser text resizing and user font preferences. Do not disable zoom or depend on fixed pixel container heights.
-
-GOV.UK's [typeface guidance](https://design-system.service.gov.uk/styles/typeface/) requires an alternative to its font outside the relevant official service context.
+Allow browser text resizing and the person’s font preferences. Do not disable zoom or give containers a fixed pixel height.

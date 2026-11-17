@@ -4,7 +4,7 @@ description: "Content design for the civica Home Assistant design system."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -16,61 +16,69 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten as a short summary that leads with the rule and points to the writing guide for detail. Corrected the pending-state row and the error example."
 section: content
 group: Quick reference
+ai_instructions: "Use as a one-page summary of the writing guide, reached from the legacy /styles/content.html route. Where it differs from the guide, follow the guide. Name the action and object, keep state and action apart and never report success before the device confirms it. Rules WG-030, WG-031, WG-032, WG-044."
+ai_related:
+  - path: "/content/index.html"
+    title: "Writing for a connected home"
+    relationship: "Owns the full writing rules. Follow it where this page differs."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns state, action, pending and error wording."
+  - path: "/content/writing-guidelines/clear-titles.html"
+    title: "Write clear titles"
+    relationship: "Owns control labels and titles."
 ---
 
 # Content design
 
-Write for someone who wants to understand or control their home quickly. Use familiar household words, clear actions and precise states.
+Write for someone who wants to understand or control their home quickly. Use words a household already uses, say what will happen and say what the home is doing now.
 
-
-## Use the complete writing guide
-
-The [writing guide](../content/index.html) holds the full rules for labels, states, errors, notifications and help. This page is a short summary. Where the two differ, follow the guide.
-
+This page is a summary. The [writing guide](../content/index.html) owns the full rules. Where the two differ, follow the guide.
 
 ## Examples
 
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+These examples use invented household details. They are simulations: the buttons do not control a home. Open an example to see it at full width or to read its HTML.
 
 <%= example('local-content-state') %>
 
 <%= example('local-content-error') %>
 
-
 ## Use clear language
 
-Use active verbs: **Turn on**, **Turn off**, **Set temperature**, **Save changes**, **Try again**. Avoid “execute”, “initialise”, “entity service invocation” and similar implementation language in household controls.
+Start a control label with a verb and name the object: **Turn off kitchen lights**, not **Off**. Use sentence case. Use “you” where it helps. Write “cannot” and “do not” in warnings. Do not use words such as “execute”, “initialise” or “entity service invocation” in household controls.
 
-Name the object where ambiguity matters: **Turn off kitchen lights** is clearer than **Off** in a group of controls. Use sentence case. Address the user as “you” when useful. In warnings and conditions write “cannot” and “do not”.
+See [Write clear titles](../content/writing-guidelines/clear-titles.html), [Use familiar, concrete words](../content/writing-guidelines/clear-language.html#wg-010) and [Use the right tone](../content/writing-guidelines/right-tone.html).
 
-See [Use clear language](../content/writing-guidelines/clear-language.html) and [Use the right tone](../content/writing-guidelines/right-tone.html) for the full rules.
-
-## Distinguish state from action
+## Keep state and action apart
 
 | Situation | State label | Action label |
 | --- | --- | --- |
-| Light is off | Off | Turn on |
+| Light is off | Off | Turn on kitchen light |
 | Heating is requesting heat | Heating | Change temperature |
-| A command is awaiting confirmation | Turning on… | Keep the pending action disabled only while needed |
-| No current reading is available | Unavailable | Try again, if an actual retry is possible |
-| There are no current alerts | No current alerts | View history |
+| Request sent, no reply yet | Turning on… | None. Disable the button only until the device replies. |
+| No current reading | Unavailable | Try again, only if a retry is possible |
+| No alerts | No current alerts | View history |
 
-Do not label missing information as zero. Do not report success before the device or service confirms the result. Use the user's configured entity names; do not silently rename their devices to satisfy a writing rule.
+Show a missing reading as unavailable, not as zero. Do not say a request worked until the device reports it. Use the names the household chose for its devices. Do not rename them to suit a writing rule.
+
+See [States, requests and errors](../content/writing-guidelines/states-and-errors.html).
 
 ## Explain errors
 
-Say what happened and what the user can do. For example: “The kitchen light did not respond. Check that it has power, then try again.” Keep raw error details behind a diagnostic disclosure when they help troubleshooting.
+Say what happened, then give one step that fits the cause. For example: “The kitchen light has not reported a new state. Check it before you send another request.” Put raw error details in a disclosure when they help with troubleshooting.
 
-Do not invent a recovery action. If the interface cannot retry, explain where the user can check the device.
+Do not invent a recovery step. If the interface cannot retry, say where the person can check the device.
 
-## Structure information
+## Put the important thing first
 
-Put important information first. Keep headings descriptive and short. Use lists for parallel choices and numbered steps for a sequence. Avoid repeated introductions and generic headings. See [Create a clear structure](../content/writing-guidelines/clear-structure.html).
+Lead with what the person needs. Keep headings short and specific. Use bullets for parallel choices and numbered steps for a sequence. See [Create a clear structure](../content/writing-guidelines/clear-structure.html).
 
-## Links and units
+## Write links and units
 
-Link text describes its destination or task. Use “View energy use”, not “Click here”. Keep numbers with their units, use locale-aware formatting and show the relevant time period. Do not hardcode pounds, Celsius or a UK timezone over a user's configured preferences.
+Describe the destination in link text: “View energy use”, not “Click here”. Keep each number with its unit and the period it covers. Use locale-aware formatting. Do not fix pounds, Celsius or a UK time zone over the household’s own settings. See [Add links](../content/writing-guidelines/add-links.html).
 
-For English documentation use UK spelling. Preserve native Home Assistant translations in the application rather than replacing every label with hardcoded English.
+Write documentation in UK English. In the application, keep Home Assistant’s own translations. Do not replace them with fixed English labels.
