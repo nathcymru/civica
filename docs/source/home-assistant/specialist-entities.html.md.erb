@@ -6,8 +6,8 @@ group: "Home Assistant: interface coverage"
 status: reference
 source_url: https://www.home-assistant.io/docs/configuration/entities_domains/
 published_on: 2026-11-12
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-12
+updated_on: "2026-11-17"
+last_reviewed_on: 2026-11-17
 review_in: 3 months
 updates:
   - date: "2026-11-13"
@@ -16,19 +16,38 @@ updates:
     description: "Linked the shared design styles without requiring the project identity inside a household interface."
   - date: "2026-11-12"
     description: "Added the specialist entities and derived information contract, native registry mapping and complete synthetic examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, correct the platform wording for plant and shorten repeated evidence text."
+ai_instructions: "Apply when a design shows plant, air quality, sun, event, image-processing, location or generated information. Show the supplied value, unit, source and time, never a single healthy badge. Keep a missing reading missing, treat a calculation as a calculation, an event as an event and generated text as unverified. Rules WG-011, WG-043, WG-070, WG-076."
+ai_related:
+  - path: "/home-assistant/weather-and-warnings.html"
+    title: "Weather, environmental readings and warnings"
+    relationship: "Owns weather forecasts, observed readings and warnings."
+  - path: "/home-assistant/maps-and-zones.html"
+    title: "Maps, zones and location records"
+    relationship: "Owns how locations and zones are shown."
+  - path: "/home-assistant/presence-and-privacy.html"
+    title: "Presence, people and shared-screen privacy"
+    relationship: "Owns the privacy rules for people and device trackers."
+  - path: "/home-assistant/assist-and-voice.html"
+    title: "Assist, conversation and voice"
+    relationship: "Owns the voice and conversation flow."
+  - path: "/home-assistant/interface-coverage.html"
+    title: "Home Assistant interface coverage"
+    relationship: "Owns the register of entity platforms and their guides."
 ---
 
 # Specialist entities and derived information
 
-A shared visual language must not flatten different evidence into the same “healthy” badge. Entity platforms define capabilities; their integrations determine available values and meaning. The coverage inventory enumerates all 45 Core entity platforms, plus separate helper/state domains. It does not claim that every integration exposes identical fields or even a dashboard control.
+Do not give different kinds of evidence the same “healthy” badge. Show each supplied value with its unit, source and time. Entity platforms define what an entity can do, and each integration decides which values it supplies and what they mean. The [interface coverage register](interface-coverage.html) lists all 45 Core entity platforms and 15 further helper and state domains. It does not say that every integration exposes the same fields or a dashboard control.
 
-<h2 id="environment">Plant, environmental and derived observations</h2>
+<h2 id="environment">Plant, environmental and calculated readings</h2>
 
-Plant status can combine moisture, light, temperature or conductivity readings and configured thresholds. Identify the specific reading outside its configured range; do not diagnose a plant from an icon. A missing measurement must stay missing. A threshold set by the household is not a professional recommendation.
+Plant is a separate Home Assistant integration. It can combine moisture, light, temperature or conductivity readings with limits the household has set. Name the reading that is outside its limit. Do not diagnose a plant from an icon. A missing reading stays missing. A limit the household chose is not expert advice.
 
-Air-quality and sensor entities can report several different quantities with different units. Show the supplied quantity, value, observation context and any source-defined scale. Do not apply a generic percentage or a medical “safe” claim. Binary sensor states depend on device class: contact open, moisture detected and battery low are different meanings, not interchangeable red/green statuses.
+Air quality and other sensors can report several quantities in different units. Show the quantity, value, unit, when it was observed and any scale the source defines. Do not apply a generic percentage or say a reading is medically safe. Binary sensor states depend on the device class. Contact open, moisture detected and battery low are different things, so do not treat them as one red and green pair.
 
-Sun information is calculated for the configured location and time. An elevation or next-rise time is a prediction/calculation, not a brightness sensor reading. Calendar and weather predictions similarly retain their own source and period. Keep the [weather contract](weather-and-warnings.html) and [time contract](locale-units-and-time.html) authoritative for those families.
+Sun data is calculated for the configured location and time. Elevation or the next rising time is a calculation, not a brightness reading. Calendar and weather predictions keep their own source and period. For weather, see [Weather, environmental readings and warnings](weather-and-warnings.html). For time, see [Locale, units and time](locale-units-and-time.html).
 
 <%= example('ha-coverage-specialist-plant') %>
 
@@ -36,38 +55,34 @@ Sun information is calculated for the configured location and time. An elevation
 
 <h2 id="events">Events, locations and image processing</h2>
 
-An event records something that happened. It is not necessarily a state that remains true until another event. Show its type and recorded time without inventing duration. A geolocation entity marks a location supplied by an integration; a device tracker or person has different identity and privacy semantics. Follow [maps and zones](maps-and-zones.html) and [presence](presence-and-privacy.html#ha-ctrl-014-states) instead of treating every point as a person currently present.
+An event records that something happened. It is not a state that stays true until the next event. Show its type and the time it was recorded, and do not invent how long it lasted. A geolocation entity is a place supplied by an integration. A device tracker or a person has a different identity and different privacy rules. Follow [Maps, zones and location records](maps-and-zones.html) and [Presence, people and shared-screen privacy](presence-and-privacy.html#ha-ctrl-014-states). Do not treat every point as a person who is there now.
 
-An image entity is an image resource. Image-processing results may describe a particular image, scan time and detected objects. Keep those together; a retained detection is not proof that an object remains present. Display confidence only when supplied and meaningful for that model, with its documented interpretation. Avoid faces, names or other personal details on shared displays unless the actual permission boundary allows them.
+An image entity is an image. An image-processing result can describe one image, the time it was scanned and the objects found. Keep these together. An earlier detection does not show the object is still there. Show confidence only when it is supplied and means something for that model. Keep faces, names and other personal details off shared displays unless the real permissions allow them.
 
 <%= example('ha-coverage-specialist-event') %>
 
 <h2 id="generated">AI, voice and generated output</h2>
 
-AI task, conversation, Assist satellite, speech-to-text, text-to-speech and wake-word platforms participate in different stages. A wake-word event is not a transcript; a transcript is not an accepted command; generated text is not a verified device result. Preserve the chosen provider, pipeline and native consent/account boundaries.
+AI task, conversation, Assist satellite, speech-to-text, text-to-speech and wake word are separate stages. A wake word is not a transcript. A transcript is not an accepted command. Generated text is not a confirmed device result. Keep the chosen provider, pipeline and the native consent and account limits.
 
-Treat generated output as untrusted content for display. Label a generated suggestion and any stated limitations, provide the original relevant device evidence, and require the native action/permission flow before work is requested. Never promote a model's confident sentence to a safety assessment or a confirmed household state. A failed speech step should offer a supported typed or visual route rather than repeatedly listening without explanation. See [Assist and voice](assist-and-voice.html).
+Treat generated output as untrusted content. Label a generated suggestion and its limits, show the device evidence it relies on, and use the native action and permission flow before any work is requested. Never present a model's confident sentence as a safety check or a confirmed household state. If a speech step fails, offer a typed or visual route instead of listening again without explanation. See [Assist, conversation and voice](assist-and-voice.html).
 
 <%= example('ha-coverage-specialist-generated') %>
 
 <h2 id="fallback">Unknown domains and future integrations</h2>
 
-Prefer native default information when a platform has no dedicated control. Show identity, the correctly formatted state and available attributes with clear labels; retain an unresolved-state explanation where necessary. Do not infer actions from a friendly name, an icon, an integration name or an arbitrary attribute called “status”. Radio/infrared/remote operations follow [helper and operation guidance](helpers-and-scalar-inputs.html#operations); notify follows [notification delivery](notifications-and-delivery.html).
+When a platform has no dedicated control, use the native default. Show the identity, the correctly formatted state and the available attributes with clear labels, and explain any unresolved state. Do not infer an action from a friendly name, an icon, an integration name or an attribute called “status”. Radio, infrared and remote operations follow [Helpers and scalar input controls](helpers-and-scalar-inputs.html#operations). Notify follows [Notifications, acknowledgement and alerts](notifications-and-delivery.html).
 
-New custom integrations and custom cards require their own capability and implementation review. The finite official platform list cannot establish their support. Register a reviewed extension separately rather than silently counting it as a built-in component.
+Custom integrations and custom cards need their own review. The official platform list cannot show what they support. Record a reviewed extension separately and do not count it as a built-in component.
 
 <h2 id="acceptance">Acceptance checks</h2>
 
-Test a threshold breach with a second missing reading, a retained image result, an event with no end time, calculated sun data and generated text contradicting device evidence. Confirm all timestamps and units retain their meaning. Check that viewing generated suggestions makes no device request and that private location/image details are not exposed through supposedly decorative labels or alternative text.
+Test a limit that is breached while a second reading is missing, a retained image result, an event with no end time, calculated sun data and generated text that contradicts device evidence. Check that every time and unit keeps its meaning. Check that viewing a generated suggestion sends no device request, and that private location or image details do not leak through labels or alternative text.
 
-Sources: [Entities and domains](https://www.home-assistant.io/docs/configuration/entities_domains/), [Plant](https://www.home-assistant.io/integrations/plant/), [Air quality](https://www.home-assistant.io/integrations/air_quality/), [Event](https://www.home-assistant.io/integrations/event/), [Sun](https://www.home-assistant.io/integrations/sun/), [AI task](https://www.home-assistant.io/integrations/ai_task/), and the [Core 2026.11.1 platform registry](https://github.com/home-assistant/core/blob/d8a0dc698c8946b44e455d904000db563cfbf1ba/homeassistant/generated/entity_platforms.py).
+<h2 id="evidence">Where this page stops</h2>
 
-<h2 id="evidence">Implementation and evidence boundary</h2>
+This is a reference specification, not a replacement for native components. The examples use invented records and do not call Home Assistant. Mapping a platform to this page names its design owner. It does not show that every integration, browser or device has been tested. Keep native state formatting, translations, permissions and event handling. Theme tokens change presentation only.
 
-This is a reference design specification, not a replacement for native Home Assistant components. The examples use invented records and local draft feedback; they do not call Home Assistant. Mapping a registry entry here establishes a design owner, not proof that every integration, browser or device has been tested. Keep native state formatting, translations, permissions, capabilities and event handling. Theme tokens can change presentation; they cannot supply missing application behaviour.
+Record real tests with [Native task accessibility and evidence](native-task-accessibility.html). For layout, colour and type, see the [design styles](../styles/index.html). Keep 16px control text, visible labels, keyboard access and readable names at 320px.
 
-The [interface coverage inventory](../reference/ha-interface-coverage.json) records the finite source baseline and exact mappings. Recheck native behaviour after frontend changes. Use the [native task acceptance process](native-task-accessibility.html) to record what was actually tested.
-
-Apply the [design styles](../styles/index.html), [writing guide](../content/index.html), [layout](../styles/layout.html), [colour roles](../styles/colour.html) and [typography](../styles/typography.html). Structural dividers use the quiet border token; editable boundaries and focus indicators remain distinct. Preserve 16px native control text, visible labels, keyboard access and readable names at 320px. A compact arrangement must not remove a capability explanation or essential recovery route.
-
-Review owner: civica maintainers. Source baseline: Home Assistant Core 2026.11.1 and frontend 20261028.5; primary documentation reviewed on 12 November 2026.
+Baseline: Home Assistant Core 2026.11.1 and frontend 20261028.5. References, which open outside this site: [Entities and domains](https://www.home-assistant.io/docs/configuration/entities_domains/), [Plant](https://www.home-assistant.io/integrations/plant/), [Air quality](https://www.home-assistant.io/integrations/air_quality/), [Event](https://www.home-assistant.io/integrations/event/), [Sun](https://www.home-assistant.io/integrations/sun/), [AI task](https://www.home-assistant.io/integrations/ai_task/) and the [Core 2026.11.1 platform registry](https://github.com/home-assistant/core/blob/d8a0dc698c8946b44e455d904000db563cfbf1ba/homeassistant/generated/entity_platforms.py).

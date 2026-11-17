@@ -1,60 +1,74 @@
 ---
 title: "Onboarding, integration setup and sign-in"
-description: "Complete design specification for onboarding, integration setup and sign-in, with state contracts, synthetic examples and native acceptance boundaries."
+description: "Explain what is being set up and what is needed, and keep discovery, setup and sign-in in Home Assistant's own flows."
 section: patterns
 group: "Home Assistant: flows"
 status: reference
 gap_id: HA-GAP-021
 source_url: https://www.home-assistant.io/getting-started/onboarding/
 published_on: 2026-11-11
-updated_on: 2026-11-11
+updated_on: "2026-11-17"
 updates:
   - date: 2026-11-11
     description: "Added the dedicated onboarding, integration setup and sign-in specification and three complete synthetic examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, use the native onboarding labels and link the shared test record to the native task page."
+ai_instructions: "Apply when explaining onboarding, adding an integration or signing in again. Say what is being set up, what is needed and what happens next. Keep a discovered device distinct from a configured one and a configured integration distinct from entities that report a useful state. Never collect a password or token in themed content, and never show a fake sign-in. Leave onboarding, sign-in and multi-factor authentication to Home Assistant. Rules WG-002, WG-034, WG-051, WG-061."
+ai_related:
+  - path: "/home-assistant/integration-and-app-settings.html"
+    title: "Integration, connectivity and app settings"
+    relationship: "Owns how to show an integration that needs attention after setup."
+  - path: "/home-assistant/accounts-and-permissions.html"
+    title: "Accounts, permissions and shared settings"
+    relationship: "Owns people, user accounts and administrator rights."
+  - path: "/home-assistant/backup-and-restore.html"
+    title: "Backups, restore and recovery copies"
+    relationship: "Owns the wording for restoring from a backup."
+  - path: "/home-assistant/native-task-accessibility.html"
+    title: "Native task accessibility and evidence"
+    relationship: "Owns how to record what was actually tested."
 ---
 
 # Onboarding, integration setup and sign-in
 
-Explain what is being set up, what information is required and when a discovered device becomes usable. Preserve Home Assistant’s native ownership and authentication flow. The installed civica companion does not replace onboarding, sign-in, multi-factor authentication or native app identity.
+Say what is being set up, what information is needed and when a discovered device is ready to use. Leave Home Assistant's own flows alone. The civica companion does not replace onboarding, sign-in, multi-factor authentication or the native app's identity.
+
+These examples are local previews with invented values. They do not collect credentials or connect to Home Assistant. Open an example to see it at full width or read its HTML.
 
 ## Scope and native ownership
 
-Native onboarding offers creating a new installation or restoring a backup and then establishing its configuration. Integration setup and reauthentication belong to their native configuration flows. These examples are guidance specimens, not a credential collector. [Official Home Assistant source](https://www.home-assistant.io/getting-started/onboarding/), reviewed 11 November 2026.
-
-This page completes the design specification for **HA-GAP-021**. Its examples are synthetic documentation, not a claim that a new native feature or adapter has been installed. The application integration must meet the task-specific acceptance below.
+Native onboarding has three steps. You open the welcome screen, then choose **Create my smart home** for a new installation or restore a backup under **Or restore**, and finally set the home location and the data you are willing to share. Creating a new installation makes the owner account, which is an administrator account. Adding an integration and signing in again belong to the integration's own configuration flow.
 
 ## States and content decisions
 
-| Source condition | Required presentation | Boundary |
+| Source condition | Show | Do not |
 | --- | --- | --- |
-| New installation / restore | Explain the distinct starting paths and their consequences. | Do not imply creating an owner restores an existing home. |
-| Discovered | Name the candidate device/service and the next supported setup step. | Discovered does not mean configured or connected. |
-| Configuring / awaiting provider | Retain the chosen integration and real flow state. | Do not fabricate completion while waiting for authorization. |
-| Configured, no entities yet | Explain the actual reported condition and available diagnostics. | Do not silently treat an empty entity list as failure or success. |
-| Reauthentication required | Identify the provider and affected integration. | Never ask for a password in a generic themed alert. |
+| New installation or restore | The two starting paths and what each one does | Suggest that creating an owner brings back an existing home |
+| Discovered | The name of the device or service and the next step Home Assistant supports | Say a discovered device is configured or connected |
+| Configuring, or waiting for the provider | The integration chosen and the real state of the flow | Show it as complete while waiting for authorisation |
+| Configured, no entities yet | What Home Assistant reports and where to look next | Treat an empty list as a failure or as a success without saying why |
+| Needs reauthentication | The provider and the integration affected | Ask for a password in a generic themed alert |
 
 ## Integration contract
 
-1. Keep owner creation, login credentials, people records and device discovery separate. Appearance cannot grant administrative access.
-2. Use the native integration schema and provider redirect. Explain actual requested permissions and account scope before proceeding; do not promise local processing for an external provider.
-3. Preserve the selected device, non-secret setup answers and native validation where supported. Do not copy credentials into URLs, example source, logs or analytics.
-4. After configuration, distinguish the integration entry being saved from devices/entities reporting useful state. An authentication success alone does not prove device readiness.
+1. Keep the owner account, sign-in details, people records and device discovery apart. A theme cannot give anyone administrator access. See [Accounts, permissions and shared settings](accounts-and-permissions.html).
+2. Use the integration's own steps and the provider's redirect. Say which permissions are requested and what the account can reach before the person continues. Do not promise local processing for an external provider.
+3. Keep the chosen device, the setup answers that are not secret and the native validation where Home Assistant supports it. Do not put credentials in URLs, example source, logs or analytics.
+4. Once setup finishes, tell saving the integration apart from devices and entities reporting a useful state. A successful sign-in does not show that a device is ready.
 
 ## Accessible interaction
 
-- Use visible labels and programmatic hints/errors; do not disable password managers or paste in actual native credential fields.
-- Support a clear return path after an external authorization step and preserve keyboard focus on the native error or next task.
-- Keep location, analytics and optional discovery choices explicit. Explain why sensitive data are requested rather than making all choices appear required.
+- Use visible labels, and give hints and errors a programmatic link. Do not block password managers, and do not paste into a native credential field.
+- After an external authorisation step, give a clear way back, and keep keyboard focus on the native error or the next task.
+- Make location, analytics and optional discovery separate choices, and say why sensitive data is asked for. Do not make every choice look required. In native onboarding, data sharing is off until the person turns it on.
 
 ## Failure and recovery
 
-- When discovery shows duplicate candidates, use verified identifiers to distinguish them without displaying unnecessary secrets.
-- For rejected authorization, preserve the native error and account scope; offer the actual retry or cancel route.
-- Cancelling setup must describe whether a partial integration entry remains. Do not invent removal of an already configured integration.
+- If discovery finds duplicate candidates, tell them apart with verified identifiers, such as the last digits of an identifier, without showing secrets that are not needed.
+- If authorisation is rejected, keep the native error and what the account can reach, and offer the retry or cancel route that exists.
+- When setup is cancelled, say whether a partial integration entry remains. Do not claim to remove an integration that was already configured. See [Integration, connectivity and app settings](integration-and-app-settings.html) for what to show afterwards.
 
 ## Complete examples
-
-The examples use invented records. Forms validate and show local feedback only; they do not call Home Assistant, save preferences or claim a real device result. In-page links lead to the explanation shown in the same specimen.
 
 <%= example('ha-flow-021-start') %>
 
@@ -64,12 +78,8 @@ The examples use invented records. Forms validate and show local feedback only; 
 
 ## Integration acceptance
 
-- Check new-install and restore routes without applying companion branding to authentication.
-- Verify discovered, configuring, configured-without-state and rejected authorization examples keep their meanings distinct.
-- Confirm synthetic examples contain no real credentials and never navigate to a fake sign-in endpoint.
+- Check the new-installation and restore routes, with no companion branding on any sign-in screen.
+- Check that the discovered, configuring, configured-without-state and rejected-authorisation examples keep their different meanings.
+- Confirm that the examples contain no real credentials and never link to a fake sign-in page.
 
-Record actual environment, versions, state, method and result using the [native task accessibility matrix](native-task-accessibility.html). Source review and a local example do not establish physical execution, screen-reader usability or live compatibility.
-
-## Applicable local rules
-
-[BG-COL-01](../styles/brand-colour.html#bg-col-01), [WG-002](../content/writing-guidelines/meet-household-needs.html#wg-002), [WG-034](../content/writing-guidelines/states-and-errors.html#wg-034), [WG-051](../content/writing-guidelines/clear-structure.html#wg-051), [WG-061](../content/writing-guidelines/clear-structure.html#wg-061).
+Record the actual environment, versions, state, method and result using [Native task accessibility and evidence](native-task-accessibility.html). A source review or a local example does not show physical behaviour, screen-reader use or live compatibility.

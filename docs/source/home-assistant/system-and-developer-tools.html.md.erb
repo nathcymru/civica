@@ -5,7 +5,7 @@ section: patterns
 group: "Home Assistant: flows"
 status: reference
 published_on: 2026-11-12
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -13,86 +13,107 @@ updates:
     description: "Linked the shared design styles without requiring the project identity inside a household interface."
   - date: "2026-11-12"
     description: "Added design ownership for native system, tools, analytics, AI, labs, storage and hardware routes."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, use the current Settings > Tools label and trim repeated evidence wording."
+ai_instructions: "Apply when a design covers Settings > Tools, system settings, analytics, AI, Labs, logs, storage or hardware. Say what a change affects, who can make it and how the outcome will be known. Keep a diagnostic experiment apart from a command to equipment, a requested change apart from a confirmed one and a calculation apart from a device report. Rules WG-031, WG-032, WG-034, WG-044."
+ai_related:
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns how a requested action and its result are shown."
+  - path: "/home-assistant/history-and-statistics.html"
+    title: "History, activity and statistics"
+    relationship: "Owns logs, history and statistics presentation."
+  - path: "/home-assistant/accounts-and-permissions.html"
+    title: "Accounts, permissions and shared settings"
+    relationship: "Owns who can change a setting and its scope."
+  - path: "/home-assistant/updates-and-repairs.html"
+    title: "Updates, repairs and maintenance"
+    relationship: "Owns update and repair states."
+  - path: "/home-assistant/native-task-accessibility.html"
+    title: "Native task accessibility and evidence"
+    relationship: "Owns how to record what was actually tested."
 ---
 
 # System settings and tools
 
-System settings and diagnostic tools can affect more than the screen in front of someone. Identify what a change affects, who can make it and how its outcome will be known. Keep a diagnostic experiment separate from a command sent to equipment.
+Before a change, say what it affects, who can make it and how the outcome will be known. System settings and tools can affect more than the screen in front of someone. Keep a diagnostic experiment apart from a command sent to equipment.
 
-This reference pattern covers the system and tools routes registered by frontend **20261028.5**, used by Core **2026.11.1**. The [interface coverage register](interface-coverage.html) lists each entry. A route mapping establishes design ownership; it does not establish native visual compatibility or authorise a test against a real home.
+This reference pattern covers the system and tools routes registered by Home Assistant frontend **20261028.5**, used by Core **2026.11.1**. The [interface coverage register](interface-coverage.html) lists each route. A route mapping names a design owner. It does not show that the native screen has been tested, and it does not allow a test against a real home.
 
 <h2 id="system-capabilities">Choose the contract for the task</h2>
 
-| Task | Required distinction | Related pattern |
+| Task | Keep apart | Related page |
 | --- | --- | --- |
-| State or template experiment | A displayed state or template result versus a physical device outcome | [Entity state](entity-state.html) |
-| Action or event tool | A requested operation and its target versus a reported result | [Action results](action-results.html) |
-| Logs and diagnostics | Recorded events and timestamps versus a proven cause | [History and statistics](history-and-statistics.html) |
-| General settings | Instance-wide settings versus a person's profile preferences | [Locale, units and time](locale-units-and-time.html) |
-| Analytics, AI and Labs | The specific enabled capability, data flow, account scope and known limitation | [Accounts and permissions](accounts-and-permissions.html) |
-| Storage and hardware | Reported capacity or configuration versus a guarantee of recovery or reliability | [Backups](backup-and-restore.html) |
-| Updates and Repairs | Availability, request progress and confirmed completion | [Updates and Repairs](updates-and-repairs.html) |
+| State or template experiment | A displayed state or template result, and what a device actually did | [Entity state, confidence and freshness](entity-state.html) |
+| Action or event tool | A requested operation and its target, and the reported result | [Action requests and results](action-results.html) |
+| Logs and diagnostics | Recorded events and times, and a proven cause | [History, activity and statistics](history-and-statistics.html) |
+| General settings | Settings for the whole instance, and a person's own preferences | [Locale, units and time](locale-units-and-time.html) |
+| Analytics, AI and Labs | The enabled feature, where its data goes, whose account it uses and its known limits | [Accounts, permissions and shared settings](accounts-and-permissions.html) |
+| Storage and hardware | Reported capacity or settings, and a promise of recovery or reliability | [Backups, restore and recovery copies](backup-and-restore.html) |
+| Updates and Repairs | What is available, how far a request has got and what is confirmed done | [Updates, repairs and maintenance](updates-and-repairs.html) |
 
-<h2 id="system-experiments">Explain what a diagnostic experiment changes</h2>
+<h2 id="system-experiments">Explain what an experiment changes</h2>
 
-Keep technical labels and literal values intact. A state override changes Home Assistant's representation; it does not by itself command equipment to adopt that state. State changes and events may still affect automations. Explain that distinction before an action where it is relevant. A template preview is a calculation, not proof that its inputs are current or that a later action will succeed.
+Keep technical labels and literal values as Home Assistant shows them. Setting a state changes what Home Assistant records for that entity. It does not by itself tell the equipment to change. The change and any event can still start automations, so say so before the action where it matters. A template preview is a calculation. It does not show that its inputs are current or that a later action will work.
 
-The current native entry point is **Settings > Tools**. Older instructions may call this **Developer tools**. Preserve the current interface label when giving a route.
+Home Assistant opens its tools from **Settings > Tools**. Older instructions call this **Developer tools**. Use the current label when you give a route.
 
-| Tool | Design requirement |
+| Tool | What the design must do |
 | --- | --- |
-| YAML | Distinguish check, reload and restart; name the scope and preserve native confirmation |
-| States | Explain represented-state changes and their possible automation effects |
-| Actions | Identify the actual action and resolved targets before execution |
-| Action history | Separate recorded action data from a new request to repeat it |
-| Template | Preserve literal syntax, selection and errors; a preview result is a calculation |
-| Events | Distinguish listening from firing an event and explain possible automation effects |
-| Statistics | Keep correction or deletion separate from read-only inspection, with units and time boundaries |
-| Assist | Distinguish sentence interpretation from an executed action and preserve provider context |
-| Debug and optional debug console | Retain native availability and permissions; distinguish observation from code execution |
+| YAML | Separate checking the configuration, reloading and restarting. Name the scope and keep the native confirmation. |
+| States | Explain that a state is being set for testing and that automations can react. |
+| Actions | Name the actual action and its resolved targets before it runs. |
+| Action history | Keep what was recorded apart from a new request to repeat it. |
+| Template | Keep the syntax, selection and errors as written. A preview result is a calculation. |
+| Events | Separate listening from firing an event, and explain that firing can start automations. |
+| Statistics | Keep correcting or deleting apart from read-only viewing. Show units and the time range. |
+| Assist | Separate how a sentence was understood from an action that ran. Keep the provider context. |
+| Debug and the optional debug console | Keep native availability and permissions. Separate watching from running code. |
 
-The legacy `service` tool route redirects to `action` in the reviewed source. It is an alias, not an additional action interface.
+The older `service` route is a legacy alias for `action` in the reviewed source. It is not a second action tool.
 
-An action tool can send real commands. Show its exact action, target, parameters and available permission checks, and keep its result separate from a subsequent device report. Do not label a live command “Preview”. Examples in this guide never invoke these tools.
+An action tool can send real commands. Show its exact action, target and parameters and any permission checks that are available. Keep its result apart from what the device later reports. Do not call a live command “Preview”. The examples here never run these tools.
 
 <%= example('system-state-tool') %>
 
-<h2 id="system-settings">Make settings scope and data use clear</h2>
+<h2 id="system-settings">Show the scope and where data goes</h2>
 
-Name whether a setting affects the current browser, the signed-in account or the whole instance. Use the actual native choice and its current value. Explain a changed prerequisite, unavailable feature or administrator restriction without hiding the setting's meaning.
+Say whether a setting affects this browser, the signed-in account or the whole instance. Use the native choice and its current value. If a prerequisite has changed, a feature is unavailable or an administrator has restricted a setting, say so without hiding what the setting means.
 
-For analytics, AI and Labs, describe the specific feature and relevant data destination from its actual configuration. Do not invent a universal “private”, “local only” or “AI off” guarantee. Enabling a provider, exposing an entity to Assist and enabling an experimental interface feature are different choices. Keep the native notices, consent steps and rollback information where supplied.
+For analytics, AI and Labs, describe the feature and where its data goes from the actual configuration. Do not promise “private”, “local only” or “AI off” unless the configuration shows it. Enabling a provider, exposing an entity to Assist and turning on an experimental feature are three different choices. Keep the native notices, consent steps and rollback information.
 
 <%= example('system-privacy-choice') %>
 
-<h2 id="system-diagnostics">Show observations with their limits</h2>
+<h2 id="system-diagnostics">Show what was observed, and its limits</h2>
 
-Label a log's timestamp and level without assuming that the nearest event caused an outage. An old retained value must not look like a new diagnostic response. Provide redaction guidance before copying logs; never encourage a person to publish credentials, private location history or full household data as part of a routine issue report.
+Label a log entry's time and level, and do not assume the nearest event caused an outage. Do not let an old retained value look like a new diagnostic result. Explain how to redact a log before it is copied. Never encourage someone to publish credentials, location history or full household data in a routine report.
 
-Storage needs the volume or location, unit, total/used/available interpretation and observation time. Keep decimal GB and binary GiB distinct. Do not infer a recovery guarantee from free space or a backup file count. Hardware identifiers and connectivity values should preserve their literal format with useful labels and an accessible text alternative to topology diagrams.
+For storage, give the volume or location, the unit, what total, used and available mean and when it was observed. Keep decimal GB and binary GiB apart. Free space or a count of backup files does not promise recovery. Keep hardware identifiers and connection values in their literal format with clear labels, and give topology diagrams a text alternative.
 
 <%= example('system-storage-status') %>
 
 <h2 id="system-presentation">Use the shared components</h2>
 
-Use [tables](../components/table.html) for comparable observations, [summary lists](../components/summary-list.html) for named attributes and [details](../components/details.html) for secondary technical explanation. Technical content uses code styling only for literal syntax. It still needs the shared heading scale, quiet borders, visible focus and readable body text.
+Use [tables](../components/table.html) for values that can be compared, [summary lists](../components/summary-list.html) for named details and [details](../components/details.html) for secondary technical explanation. Use code styling only for literal syntax. Keep the shared heading sizes, quiet borders, visible focus and readable body text.
 
-Keep input boundaries distinct from card dividers. Where a native editor needs a specialist code control, preserve line navigation, accessible naming, selection, undo and validation. Do not simulate a rich editor with a decorative text box or replace actionable diagnostics with coloured status dots. State loading, no results, permission denied, stale data and failed retrieval explicitly.
+Keep input borders distinct from card dividers. Where a native editor needs a code control, keep line navigation, an accessible name, selection, undo and validation. Do not fake a rich editor with a decorative text box, and do not replace readable diagnostics with coloured dots. Show loading, no results, permission denied, stale data and a failed retrieval as separate states.
 
 <h2 id="system-acceptance">Acceptance checks</h2>
 
-1. Identify the exact tool and account permission before testing. Use a disposable fixture for state/event experiments; do not use a household device as an accessibility fixture.
-2. Check that Save, Reload, Restart, Run and a preview label describe different actual operations. Test failures and unconfirmed responses without discarding a useful draft.
-3. Verify instance, account and browser scope. Test unsupported installation options and features that disappear when their integration is unloaded.
-4. Check units, timestamps, redaction, empty and stale records. Preserve literal identifiers in copy operations.
-5. Use keyboard-only navigation, 320px width, enlarged text and forced colours. Verify errors are connected to their controls and that dialogs restore focus.
+1. Identify the exact tool and the account permission before testing. Use a disposable fixture for state and event experiments. Do not use a household device as an accessibility fixture.
+2. Check that Save, Reload, Restart, Run and a preview label each describe a different real operation. Test failures and unconfirmed responses without discarding a useful draft.
+3. Check the instance, account and browser scope. Test installation options that are unsupported and features that vanish when their integration is unloaded.
+4. Check units, times, redaction, empty records and stale records. Keep literal identifiers when they are copied.
+5. Test by keyboard alone, at 320px, with larger text and in forced colours. Check that errors are tied to their controls and that dialogs return focus.
 
-The examples provide local, invented demonstrations. See [native task accessibility](native-task-accessibility.html) and [compatibility](compatibility-register.html) for the separate evidence needed before making a live implementation claim.
+The examples are local and use invented data. Record real tests with [Native task accessibility and evidence](native-task-accessibility.html) and the [Compatibility register and native fallback](compatibility-register.html).
 
-## Sources
+## References
+
+These open outside this site. Core 2026.11.1, frontend 20261028.5.
 
 - [Pinned native settings router](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/panels/config/ha-panel-config.ts)
 - [Pinned settings sections](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/panels/config/config-sections.ts)
-- [Home Assistant developer tools](https://www.home-assistant.io/docs/tools/dev-tools/)
+- [Home Assistant tools](https://www.home-assistant.io/docs/tools/dev-tools/)
 
-Reviewed on 12 November 2026. Review owner: civica maintainers. Follow the [writing guide](../content/index.html) and [design styles](../styles/index.html); neither changes native permissions or device capabilities.
+Follow the [writing guide](../content/index.html) and [design styles](../styles/index.html). Neither changes native permissions or device capabilities.

@@ -1,60 +1,74 @@
 ---
 title: "Registry tables and bulk actions"
-description: "Complete design specification for registry tables and bulk actions, with state contracts, synthetic examples and native acceptance boundaries."
+description: "Show what is selected and exactly which records a bulk change will touch, and report each result separately."
 section: patterns
 group: "Home Assistant: flows"
 status: reference
 gap_id: HA-GAP-029
 source_url: https://www.home-assistant.io/docs/organizing/
 published_on: 2026-11-11
-updated_on: 2026-11-11
+updated_on: "2026-11-17"
 updates:
   - date: 2026-11-11
     description: "Added the dedicated registry tables and bulk actions specification and three complete synthetic examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, match how Home Assistant groups areas, floors, labels and categories, and link the shared test record to the native task page."
+ai_instructions: "Apply when listing devices, entities, areas or labels, or when one change can affect several records. State the selected count and say whether rows hidden by a filter stay selected. Review the exact target set before a bulk change, and report each record's result separately: saved, rejected or not confirmed. Never show All updated while a result is missing, and never describe a failed or restricted load as no matches. Rules WG-032, WG-034, WG-038, WG-080, WG-084."
+ai_related:
+  - path: "/home-assistant/target-pickers.html"
+    title: "Entity, device and area pickers"
+    relationship: "Owns choosing entities, devices and areas as the target of an action."
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns the wording for a request that is sent, pending, confirmed or failed."
+  - path: "/components/table.html"
+    title: "Table"
+    relationship: "Owns table structure, headers and sorting."
+  - path: "/home-assistant/native-task-accessibility.html"
+    title: "Native task accessibility and evidence"
+    relationship: "Owns how to record what was actually tested."
 ---
 
 # Registry tables and bulk actions
 
-Help people find the correct records, understand what is selected and predict the scope of a bulk operation. Entities, devices, areas, labels and categories are related but not interchangeable. Sorting or filtering must not silently broaden a selection.
+Help people find the right records, see what is selected and know how far a bulk change will reach. Entities, devices, areas, labels and categories are related but are not the same thing. Sorting or filtering must not quietly widen the selection.
+
+These examples are local previews with invented records. They do not change a Home Assistant setting. Open an example to see it at full width or read its HTML.
 
 ## Scope and native ownership
 
-Native organisation features distinguish areas, floors, labels, categories and groups. Registry screens own their selection, sorting and saved-view behaviour. The local Publishing finder is a fixed-record demonstration, not a replacement registry or permission system. [Official Home Assistant source](https://www.home-assistant.io/docs/organizing/), reviewed 11 November 2026.
-
-This page completes the design specification for **HA-GAP-029**. Its examples are synthetic documentation, not a claim that a new native feature or adapter has been installed. The application integration must meet the task-specific acceptance below.
+Home Assistant groups assets with areas, floors, labels, categories and the group integration. A device can have one area. Its entities inherit that area unless you override it, and each entity can have several labels. Labels can also filter tables. A category belongs to one table, so the automations page can have different categories from the scripts page. The native registry screens own selection, sorting and any saved views. The examples are fixed records. They are not a registry or a permission system.
 
 ## States and content decisions
 
-| Source condition | Required presentation | Boundary |
+| Source condition | Show | Do not |
 | --- | --- | --- |
-| Loaded records | Show the current filter/sort context and meaningful names. | Do not conflate an entity row with a whole device. |
-| Selected rows | State the selected count and whether hidden filtered rows remain selected. | Do not infer Select all means every record on the server. |
-| No filter matches | Explain the active criteria and a real reset route. | Do not claim the registry has no entities. |
-| Unavailable / restricted data | Name the actual retrieval or access limitation. | Do not describe a failed response as an empty result. |
-| Partial bulk outcome | Show successful, failed and unconfirmed members separately. | Do not announce All updated while any result is missing. |
+| Records loaded | The current filter and sort, and names that mean something | Treat a row for one entity as the whole device |
+| Rows selected | The selected count, and whether rows hidden by a filter stay selected | Assume Select all means every record on the server |
+| No filter matches | The active criteria and a real way to reset them | Say the registry has no entities |
+| Data unavailable or restricted | The actual retrieval or access problem | Describe a failed response as an empty result |
+| Partly successful bulk change | The records that succeeded, failed and are not confirmed, listed separately | Write All updated while any result is missing |
 
 ## Integration contract
 
-1. Use native stable record IDs and the server’s authorized data. Keep display names separate from copyable entity identifiers.
-2. Before a bulk operation, resolve its exact target set and present a count plus meaningful review route. Retain native selection semantics through filter, sort and page changes; document them rather than guessing.
-3. Only expose operations supported by every target or make per-target restrictions explicit. An area assignment, label change, disable operation and removal have different consequences.
-4. Saved filters or views require the actual native persistence contract and scope. A locally filtered documentation table must never claim it saved an account preference.
+1. Use the stable record IDs and the data the server authorises. Keep the display name apart from the entity ID, which people may need to copy.
+2. Before a bulk change, work out the exact set of targets and show the count with a way to review them. Keep the native selection rules through filter, sort and page changes. Describe what Home Assistant does instead of guessing.
+3. Offer only the operations every target supports, or say which targets are restricted. Assigning an area, changing a label, disabling and removing have different consequences.
+4. A saved filter or view needs the real native storage and scope. A table filtered in the documentation must never claim to have saved an account preference.
 
 ## Accessible interaction
 
-- Use real table headers or the native equivalent, visible sorting state and named row selection controls. Keyboard access must not require clicking an entire interactive row.
-- Announce changed result/selection counts without announcing the full table after each keystroke.
-- Keep row actions reachable at narrow widths and enlarged text. Provide a named way to review selected rows before a destructive operation.
+- Use real table headers or the native equivalent, show the sort order, and name each row's selection control. The keyboard must not depend on clicking a whole row.
+- Announce a changed count of results or selected rows. Do not read out the whole table after each keystroke.
+- Keep row actions reachable at narrow widths and with enlarged text. Give people a named way to review the selected rows before anything is deleted or removed.
 
 ## Failure and recovery
 
-- If a selected row disappears or permission changes, revalidate the target set before execution and explain the change.
-- For partial failure, preserve successful results and expose only supported retry scopes; do not blindly repeat completed destructive work.
-- If the registry cannot load, retain filter inputs as supported but do not display previous data as a fresh authorized response.
+- If a selected row disappears or a permission changes, check the target set again before running the change, and say what changed.
+- After a partial failure, keep the results that succeeded and offer only the retries that are supported. Do not repeat completed work that cannot be undone.
+- If the registry cannot load, keep the filter inputs where Home Assistant supports it. Do not show earlier data as if it were a fresh, authorised response.
 
 ## Complete examples
-
-The examples use invented records. Forms validate and show local feedback only; they do not call Home Assistant, save preferences or claim a real device result. In-page links lead to the explanation shown in the same specimen.
 
 <%= example('ha-flow-029-selection') %>
 
@@ -64,12 +78,8 @@ The examples use invented records. Forms validate and show local feedback only; 
 
 ## Integration acceptance
 
-- Test filtering/sorting with selected rows inside and outside the visible result set; verify the named target count.
-- Check bulk success, rejection, partial and unconfirmed responses without optimistic all-success copy.
-- Verify keyboard sorting/selection/actions and distinguish device, entity and category operations.
+- Filter and sort with some selected rows inside the visible results and some outside, and check the stated number of targets.
+- Check success, rejection, partial and not-confirmed results, with no copy that assumes every record succeeded.
+- Check sorting, selection and actions by keyboard, and that device, entity and category operations are told apart.
 
-Record actual environment, versions, state, method and result using the [native task accessibility matrix](native-task-accessibility.html). Source review and a local example do not establish physical execution, screen-reader usability or live compatibility.
-
-## Applicable local rules
-
-[BG-TYP-04](../styles/brand-typography.html#bg-typ-04), [WG-032](../content/writing-guidelines/states-and-errors.html#wg-032), [WG-034](../content/writing-guidelines/states-and-errors.html#wg-034), [WG-038](../content/writing-guidelines/states-and-errors.html#wg-038), [WG-080](../content/formatting-content/text-formatting.html#wg-080), [WG-084](../content/formatting-content/text-formatting.html#wg-084).
+Record the actual environment, versions, state, method and result using [Native task accessibility and evidence](native-task-accessibility.html). A source review or a local example does not show physical behaviour, screen-reader use or live compatibility.

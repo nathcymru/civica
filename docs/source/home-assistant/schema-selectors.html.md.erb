@@ -6,8 +6,8 @@ group: "Home Assistant: interface coverage"
 status: reference
 source_url: https://www.home-assistant.io/docs/blueprint/selectors/
 published_on: 2026-11-12
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-12
+updated_on: "2026-11-17"
+last_reviewed_on: 2026-11-17
 review_in: 3 months
 updates:
   - date: "2026-11-13"
@@ -16,60 +16,72 @@ updates:
     description: "Linked the shared design styles without requiring the project identity inside a household interface."
   - date: "2026-11-12"
     description: "Added the schema selectors and configuration forms contract, native registry mapping and complete synthetic examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, state the selector counts from the pinned baseline and move repeated evidence wording to the interface coverage page."
+ai_instructions: "Apply when a form, blueprint or action asks for a value that Home Assistant describes with a selector. Keep the value type, filters and validation the selector supplies. Do not flatten resources into entity IDs, convert one value type into another, run a draft while checking it or clear a person's input after an error. Rules WG-025, WG-034, WG-040, WG-084."
+ai_related:
+  - path: "/home-assistant/target-pickers.html"
+    title: "Entity, device and area pickers"
+    relationship: "Owns how entity, device, area, floor, label and target selections are shown and kept."
+  - path: "/home-assistant/automation-editing.html"
+    title: "Automation and script editing"
+    relationship: "Owns the action, condition and trigger editors."
+  - path: "/home-assistant/locale-units-and-time.html"
+    title: "Locale, units and time"
+    relationship: "Owns language, country, time zone and unit preferences."
+  - path: "/home-assistant/interface-coverage.html"
+    title: "Home Assistant interface coverage"
+    relationship: "Owns the register that maps each selector to a guide."
 ---
 
 # Schema selectors and configuration forms
 
-A selector describes the value a form accepts and how the native interface helps someone supply it. It is not a permission grant or a promise that a target is currently available. Preserve the schema, value type, filters and validation supplied by Home Assistant.
+A selector tells a form what kind of value to accept and how Home Assistant helps someone supply it. Keep the value type, filters and validation that Home Assistant supplies. A selector does not grant permission and does not show that a target is available now.
 
-<h2 id="selection">Registry, provider and destination selection</h2>
+<h2 id="selection">Choose resources, providers and destinations</h2>
 
-Entity, device, area, floor, label and target selectors use stable identities and native filters; follow [target pickers](target-pickers.html#ha-ctrl-008-capabilities). Config-entry, app, backup-location, serial-port and provider selectors refer to different resources: do not flatten them into a list of entity IDs. Attribute selection depends on its parent entity. Statistic selection refers to a statistic identity that may not have a current state entity.
+Entity, device, area, floor, label and target selectors use stable identities and native filters. See [Entity, device and area pickers](target-pickers.html#ha-ctrl-008-capabilities). Config entry, app, backup location, serial port and provider selectors point at different kinds of resource. Do not flatten them into a list of entity IDs. An attribute depends on its parent entity. A statistic has its own identity and may have no current state entity.
 
-Assist pipeline, conversation agent, speech-to-text, text-to-speech and voice choices must retain provider relationships and permission boundaries. A native selection can use a cloud provider; label a verified external processing boundary where the actual integration establishes one. Language, country and timezone are separate preferences. A language choice must not silently change units or the household timezone.
+Assist pipeline, conversation agent, speech-to-text, text-to-speech and voice choices keep their provider links and permissions. A provider can be a cloud service. Say so only where the actual configuration shows it. Language, country and time zone are separate preferences. Changing the language must not silently change units or the household time zone.
 
 <%= example('ha-coverage-selector-resources') %>
 
-<h2 id="values">Scalar values, choices and presentation variants</h2>
+<h2 id="values">Keep each value type</h2>
 
-Number selectors retain min/max/step and native slider or box mode. Boolean retains a boolean, not the strings “yes” and “no”. Date, datetime, time, duration and period have different serialisation; a duration is not a clock time. RGB colour is a channel value, while colour temperature has its own units and device limits. Do not convert one into the other just to reuse a widget.
+Number keeps its minimum, maximum and step, and its slider or box mode. Boolean stays a true or false value, not the words “yes” and “no”. Date, datetime, time, duration and period are stored differently, and a duration is not a clock time. RGB colour is channel values. Colour temperature has its own units and device limits. Do not convert one into the other to reuse a control.
 
-Select preserves single versus multiple selection, labelled options and the declared custom-value policy. Choose exposes the selected branch and its dependent fields; keep a stored inactive branch only if the native schema does so. Constant and button-toggle values still need their real purpose. A placeholder is not a label or default answer. Entity-name and UI state-content selectors configure presentation, not entity identity.
+Select keeps single or multiple choice, its labelled options and its rule on custom values. Choose shows the selected branch and its dependent fields. Keep a stored inactive branch only if the native schema does. A placeholder is not a label and not a default answer. Entity name and state content selectors set what is displayed. They do not change which entity is meant.
 
-Device class, state class and unit-of-measurement choices constrain interpretation of data. Explain their relationship and preserve contextual filters. Changing a displayed unit string does not convert recorded values. Use [numbers and data](../content/formatting-content/charts-and-data.html) and [locale, units and time](locale-units-and-time.html).
+Device class, state class and unit of measurement limit how data is read. Explain how they relate and keep their filters. Changing a displayed unit does not convert recorded values. See [Charts and data](../content/formatting-content/charts-and-data.html) and [Locale, units and time](locale-units-and-time.html).
 
 <%= example('ha-coverage-selector-values') %>
 
 <h2 id="structured">Actions, conditions, triggers and structured input</h2>
 
-Action, condition and trigger selectors retain native typed editors; these are not ordinary free text. A trigger starts evaluation, conditions determine whether actions run, and actions request work. A selector-of-selectors chooses a schema, not its eventual value. Automation-behaviour and numeric-threshold selectors are internal typed configuration with their own constraints. Keep advanced options discoverable without forcing every person into code.
+Action, condition and trigger selectors use typed editors, not plain text. A trigger starts a check, conditions decide whether actions run, and actions ask for work. The selector for selectors chooses a schema, not the value that follows. Automation behaviour and numeric threshold selectors are internal typed settings with their own limits. Keep advanced options easy to find without forcing anyone into code.
 
-Object and template editors need a visible label, expected shape, syntax feedback and retained input after rejection. A valid template can still produce a value the consumer cannot use. Separate syntax validation, schema validation and execution; checking a draft must not execute it. File input must state permitted content and actual upload destination before upload. QR code is an output representation or specific selector contract, not a substitute for a readable equivalent; do not expose secrets in a fallback.
+Object and template editors need a visible label, the expected shape, syntax feedback and the person's input kept after a rejection. A valid template can still give a value the receiver cannot use. Keep syntax checking, schema checking and running apart, and never run a draft just to check it. A file input says which content is allowed and where the upload goes before the upload starts. A QR code is an output or a specific selector, so offer a readable alternative and do not put secrets in it.
 
 <%= example('ha-coverage-selector-structured') %>
 
-<h2 id="presentation">Internal selectors and visual settings</h2>
+<h2 id="presentation">Internal selectors and display settings</h2>
 
-The pinned frontend dispatches 61 selector keys. The public blueprint documentation exposes a subset. The inventory labels source-only selectors, addon compatibility and legacy `ui-action`/`ui-color` aliases explicitly; internal keys are not a recommendation to depend on an undocumented API.
+The pinned Home Assistant frontend handles 61 selector keys. The public blueprint documentation lists 41 of them. The [interface coverage register](interface-coverage.html) marks source-only selectors, app compatibility and the legacy `ui-action` and `ui-color` aliases. An internal key is not a recommendation to depend on an undocumented interface.
 
-Icon, theme, UI colour, navigation, UI action, clock/date format, time format and areas-display configure presentation. Preserve native previews without executing a configured action. A theme preview must not change equipment. Navigation destinations need valid context, and a proposed action needs a named target and outcome. Local documentation specimens are purpose-specific HTML, not replacements for complex native searchable selectors.
+Icon, theme, UI colour, navigation, UI action, clock and date format, time format and areas display settings change presentation. Preview them without running the configured action. A theme preview must not change equipment. A navigation destination needs a valid context. A proposed action needs a named target and outcome. The examples here are plain HTML for one purpose each, not copies of the searchable native selectors.
 
-<h2 id="errors">Validation and form recovery</h2>
+<h2 id="errors">Validation and recovery</h2>
 
-A required value, incompatible value, missing resource and backend failure need different explanations. Associate field errors with the labelled control; link an error summary to the actual invalid input. Do not clear a password or destructive change silently unless the owning security flow requires it and explains recovery. Optional unset, explicit null and empty string can differ: preserve the schema's semantics.
+A missing value, an incompatible value, a missing resource and a backend failure need different messages. Tie each field error to its labelled control and link an error summary to the invalid input. Do not clear a password or a destructive change silently unless the security flow requires it and explains how to recover. An unset value, an explicit null and an empty string can mean different things, so keep the schema's meaning.
 
 <h2 id="acceptance">Acceptance checks</h2>
 
-Round-trip every supported selector's value type through the native form. Test missing defaults, multi-select removal, context changes, a vanished saved resource and a backend rejection. Verify no code or action executes during preview/validation. Exercise keyboard focus and error recovery for nested choose/object forms at 320px. Internal keys require pinned-source review and native regression evidence before use.
+Round-trip every supported selector value type through the native form. Test a missing default, removing from a multiple choice, a change of context, a saved resource that has disappeared and a backend rejection. Check that previewing or validating runs no code and no action. Test keyboard focus and error recovery in nested choose and object forms at 320px. Before using an internal key, review the pinned source and test native behaviour.
 
-Sources: [Selectors](https://www.home-assistant.io/docs/blueprint/selectors/), [pinned selector dispatcher](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/components/ha-selector/ha-selector.ts), [pinned selector types](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/data/selector.ts), and [automation editing](automation-editing.html#ha-ctrl-009-capabilities).
+<h2 id="evidence">Where this page stops</h2>
 
-<h2 id="evidence">Implementation and evidence boundary</h2>
+This is a reference specification, not a replacement for native components. The examples use invented records and give local feedback only. They do not call Home Assistant. Mapping a selector to this page names its design owner. It does not show that every integration, browser or device has been tested. Keep native state formatting, translations, permissions and event handling. Theme tokens change presentation only.
 
-This is a reference design specification, not a replacement for native Home Assistant components. The examples use invented records and local draft feedback; they do not call Home Assistant. Mapping a registry entry here establishes a design owner, not proof that every integration, browser or device has been tested. Keep native state formatting, translations, permissions, capabilities and event handling. Theme tokens can change presentation; they cannot supply missing application behaviour.
+The [interface coverage register](interface-coverage.html) records the baseline and the mappings. Record real tests with [Native task accessibility and evidence](native-task-accessibility.html). For layout, colour and type, see the [design styles](../styles/index.html). Keep 16px control text, visible labels, keyboard access and readable names at 320px, and do not remove an explanation or a recovery route to make a layout fit.
 
-The [interface coverage inventory](../reference/ha-interface-coverage.json) records the finite source baseline and exact mappings. Recheck native behaviour after frontend changes. Use the [native task acceptance process](native-task-accessibility.html) to record what was actually tested.
-
-Apply the [design styles](../styles/index.html), [writing guide](../content/index.html), [layout](../styles/layout.html), [colour roles](../styles/colour.html) and [typography](../styles/typography.html). Structural dividers use the quiet border token; editable boundaries and focus indicators remain distinct. Preserve 16px native control text, visible labels, keyboard access and readable names at 320px. A compact arrangement must not remove a capability explanation or essential recovery route.
-
-Review owner: civica maintainers. Source baseline: Home Assistant Core 2026.11.1 and frontend 20261028.5; primary documentation reviewed on 12 November 2026.
+Baseline: Home Assistant Core 2026.11.1 and frontend 20261028.5. References, which open outside this site: [Selectors](https://www.home-assistant.io/docs/blueprint/selectors/), the [pinned selector dispatcher](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/components/ha-selector/ha-selector.ts) and the [pinned selector types](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/data/selector.ts). For the editors, see [Automation and script editing](automation-editing.html#ha-ctrl-009-capabilities).

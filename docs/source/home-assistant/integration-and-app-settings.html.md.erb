@@ -5,7 +5,7 @@ section: patterns
 group: "Home Assistant: flows"
 status: reference
 published_on: 2026-11-12
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -13,70 +13,85 @@ updates:
     description: "Linked the shared design styles without requiring the project identity inside a household interface."
   - date: "2026-11-12"
     description: "Added versioned coverage for integration setup, protocol panels, credentials, apps and marketplace entry points."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, use the current Apps wording and keep requested and confirmed outcomes apart."
+ai_instructions: "Apply when designing or describing integration setup, credentials, protocol panels, apps or remote access. Keep a discovered device, an integration entry, an app and a dashboard card apart. Show the reported state separately from any request, never show a secret, and say when an outcome is not confirmed. Write app, with previously add-on only where it helps. Rules WG-021, WG-031, WG-032, WG-035, WG-043, WG-044."
+ai_related:
+  - path: "/home-assistant/onboarding-and-sign-in.html"
+    title: "Onboarding, integration setup and sign-in"
+    relationship: "Owns first-run setup and sign-in, which this page does not repeat."
+  - path: "/home-assistant/accounts-and-permissions.html"
+    title: "Accounts, permissions and shared settings"
+    relationship: "Owns who may change a setting and what a rejected request looks like."
+  - path: "/home-assistant/connection-and-recovery.html"
+    title: "Connection loss and recovery"
+    relationship: "Owns the wording when the connection to Home Assistant is lost."
+  - path: "/home-assistant/updates-and-repairs.html"
+    title: "Updates, repairs and maintenance"
+    relationship: "Owns update and repair wording, including app updates."
+  - path: "/home-assistant/interface-coverage.html"
+    title: "Home Assistant interface coverage"
+    relationship: "Records which settings routes this page covers."
 ---
 
 # Integration, connectivity and app settings
 
-An integration connects Home Assistant to a service or device. An app is software managed by an installation that supports apps. A discovered device, an integration entry, an app and a dashboard card are different objects. Keep their names and outcomes separate throughout setup and maintenance.
+Keep a discovered device, an integration entry, an app and a dashboard card as separate things, with their own names and outcomes. An integration connects Home Assistant to a service or device. An app is software managed by an installation that supports apps.
 
-This reference pattern covers the management surfaces registered by frontend **20261028.5**, used by Core **2026.11.1**. It provides design ownership for the routes in the [interface coverage register](interface-coverage.html). It does not replace native integration forms, supply credentials or install software.
+This page covers the management routes registered by Home Assistant frontend **20261028.5**, used by Core **2026.11.1**. It gives design ownership to the routes in the [interface coverage register](interface-coverage.html). It does not replace native integration forms, supply credentials or install software.
 
 <h2 id="integration-capabilities">Use the actual management contract</h2>
 
-| Surface | Show | Preserve |
+| Surface | Show | Keep |
 | --- | --- | --- |
-| Discovery and integration setup | Available identity, source and what setup would connect | The integration's native steps, supported options, permission checks and cancellation |
+| Discovery and integration setup | The identity and source that are available, and what setup would connect | The integration’s native steps, options, permission checks and cancellation |
 | Credentials and reauthentication | Which integration needs attention and the reported authentication problem | Native credential entry, secret masking, validation and authorised recovery |
-| Connectivity and protocol panels | The selected adapter or network, devices, observations and permitted operations | The specific protocol's units, identifiers, pairing/reset consequences and support limits |
-| Apps and marketplace | Installed versus available software, version, source and reported status | Installation-type restrictions, native update/install confirmation and permissions |
-| Cloud and remote connection | Which connection is being configured and its reported state | Account scope, native authentication and an explicit explanation of remote access |
+| Connectivity and protocol panels | The chosen adapter or network, its devices, observations and permitted operations | The protocol’s own units, identifiers, pairing and reset consequences and support limits |
+| Apps and marketplace | Installed or available software, version, source and reported status | Installation-type restrictions, native update and install confirmation, and permissions |
+| Cloud and remote connection | Which connection is being set up and its reported state | Account scope, native sign-in and a plain explanation of remote access |
 
-The pinned settings router includes Bluetooth, DHCP, infrared, LoRaWAN, Matter, Modbus, MQTT, radio frequency, serial, SSDP, Thread, Zeroconf, ZHA and Z-Wave JS entry points. Their presence in source does not mean they are enabled in every installation. KNX and Insteon links can open integration-owned panels. Apply the shared layout and state rules while retaining each panel's actual controls. Do not treat a protocol dashboard as evidence that every device exposes the same capabilities.
+The pinned settings router includes entry points for Bluetooth, DHCP, infrared, LoRaWAN, Matter, Modbus, MQTT, radio frequency, serial, SSDP, Thread, Zeroconf, ZHA and Z-Wave JS. A route in the source does not mean it is enabled in every installation. The KNX and Insteon links can open panels that the integration owns. Apply the shared layout and state rules and keep each panel’s own controls. A protocol dashboard does not show that every device has the same capabilities.
 
 <h2 id="integration-discovery">Discovery is a setup opportunity</h2>
 
-Use a clear name and any source-provided identifier that helps distinguish devices. Do not label a discovery as trusted, paired or ready before the relevant check succeeds. An ignored discovery, a removed integration entry and a deleted device have different effects. Explain the selected operation at its own confirmation step.
+Use a clear name and any source identifier that helps people tell devices apart. Do not call a discovery trusted, paired or ready until the relevant check has succeeded. Ignoring a discovery, removing an integration entry and deleting a device have different effects, so explain the chosen operation at its own confirmation step.
 
 <%= example('admin-discovery') %>
 
 <h2 id="integration-credentials">Keep credentials within their native flow</h2>
 
-Show which connection needs reauthentication without displaying a token in an error message, example, screenshot or copied diagnostic. Preserve the user's place and any non-secret draft when the native flow supports it. If the backend outcome is not known, say that the result has not been confirmed. Do not translate a temporary timeout into a rejected password or grant a local visual control the authority to approve an account.
+Show which connection needs reauthentication without putting a token in an error message, example, screenshot or copied diagnostic. Keep the person’s place and any non-secret draft when the native flow allows it. If the backend outcome is not known, say the result has not been confirmed. Do not present a temporary timeout as a rejected password, and do not let a local visual control approve an account.
 
 <%= example('admin-credential-status') %>
 
 <h2 id="integration-protocols">Make protocol observations interpretable</h2>
 
-Separate a device's last observation, an adapter's connection and an application's overall availability. Name the protocol-specific measure and unit. A count of discovered devices is not a count of working devices. Missing observations remain unknown; a signal-strength value alone is not a general health score. Preserve native pairing, inclusion, interview, configuration and reset wording when it matters to the task.
+Keep a device’s last observation, an adapter’s connection and an application’s overall availability apart. Name the protocol’s measure and its unit. A count of discovered devices is not a count of working devices. A missing observation stays unknown, and a signal-strength value alone is not a health score. Keep the native pairing, inclusion, interview, configuration and reset wording where it matters to the task.
 
 <%= example('admin-protocol-diagnostics') %>
 
 <h2 id="integration-apps">Keep app lifecycle and automation state distinct</h2>
 
-Use the current native **Apps** label when directing people to the interface, with “formerly add-ons” where it helps recognise older instructions. An app being installed does not establish that it is running; a running process does not establish that its connected devices work. Keep the reported state separate from a start, stop or update request. “Start on boot” is a setting, not an instruction to start immediately.
+Write “app” and use the native **Apps** label when you direct people to the interface. Add “previously add-on” once where it helps people reading older instructions. An installed app is not necessarily running, and a running app does not mean its connected devices work. Keep the reported state apart from a start, stop or update request. “Start on boot” is a setting, not an instruction to start now.
 
 <%= example('admin-app-state') %>
 
 <h2 id="integration-presentation">Shared appearance and accessible interaction</h2>
 
-Use the [card](../components/cards.html), [summary list](../components/summary-list.html), [form](../components/controls.html), [error](../content/writing-guidelines/states-and-errors.html) and [dialog](../components/dialogs.html) contracts. Use quiet structural borders and the shared body scale. Preserve functional protocol icons with text names; do not replace them with unexplained decorative marks. Expose the selected network and action target in text, not just colour.
+Use the [card](../components/cards.html), [summary list](../components/summary-list.html), [form](../components/controls.html), [error](../content/writing-guidelines/states-and-errors.html) and [dialog](../components/dialogs.html) patterns. Keep protocol icons that do a job and give each a text name, not an unexplained decoration. Show the chosen network and the action target in text, not only in colour.
 
-Maintain keyboard access through nested configuration flows, restore focus on cancellation and keep validation beside its field. A long hardware identifier must wrap visually without changing its copied value. Loading, permission denied, no results and disconnected are separate states. Do not replace a native protocol diagram with a table unless the alternative preserves the task; provide an accessible data or list view alongside it where possible.
+Keep keyboard access through nested configuration flows, return focus when the person cancels, and keep validation beside its field. A long hardware identifier may wrap on screen without changing the value that is copied. Loading, permission denied, no results and disconnected are separate states. Do not replace a native protocol diagram with a table unless the table keeps the task working, and provide an accessible data or list view beside the diagram where you can.
 
 <h2 id="integration-acceptance">Acceptance checks</h2>
 
-1. Test supported and unsupported installation types, absent integrations, restricted accounts and a connection disappearing during setup.
-2. Check discovery, configure, reauthenticate, disable, remove and delete separately. Confirm that each label describes the actual backend operation and target.
-3. Test authentication failure, cancellation, timeout and a late response without exposing a secret or reporting unconfirmed success.
-4. Verify protocol-specific identifiers, numeric units, selection and confirmations. Test keyboard navigation, 320px reflow, enlarged text and forced colours.
-5. Verify app installed/running/updating/stopped states against actual responses. Keep version choice, update request and completion distinct.
+1. Test supported and unsupported installation types, missing integrations, restricted accounts and a connection that disappears during setup.
+2. Check discovery, configure, reauthenticate, disable, remove and delete separately. Each label must describe the real backend operation and its target.
+3. Test an authentication failure, a cancellation, a timeout and a late response without showing a secret or reporting an unconfirmed success.
+4. Check protocol identifiers, numeric units, selection and confirmations. Test keyboard navigation, 320px reflow, enlarged text and forced colours.
+5. Check the installed, running, updating and stopped states of an app against the real responses. Keep the version choice, the update request and its completion apart.
 
-The examples use invented records and local feedback. Native installation and device acceptance needs evidence for the actual Home Assistant version, integration and account. Follow [action results](action-results.html), [permissions](accounts-and-permissions.html), [connection recovery](connection-and-recovery.html) and the [compatibility register](compatibility-register.html).
+The examples use invented records and local feedback. Native installation and device acceptance needs evidence for the real Home Assistant version, integration and account. Follow [Action requests and results](action-results.html), [Accounts, permissions and shared settings](accounts-and-permissions.html), [Connection loss and recovery](connection-and-recovery.html) and the [Compatibility register and native fallback](compatibility-register.html).
 
 ## Sources
 
-- [Pinned frontend settings routes](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/panels/config/ha-panel-config.ts)
-- [Pinned settings navigation and feature conditions](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/panels/config/config-sections.ts)
-- [Home Assistant concepts](https://www.home-assistant.io/getting-started/concepts-terminology/)
-
-Reviewed on 12 November 2026. Review owner: civica maintainers. Apply the [design styles](../styles/index.html) and [writing guide](../content/index.html) to all authored content; retain native translations and household names.
+For the native definitions, see the pinned frontend [settings routes](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/panels/config/ha-panel-config.ts), the pinned [settings navigation and feature conditions](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/panels/config/config-sections.ts) and the Home Assistant [concepts and terminology](https://www.home-assistant.io/getting-started/concepts-terminology/).

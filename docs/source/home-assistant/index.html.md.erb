@@ -1,12 +1,12 @@
 ---
 title: "Home Assistant controls and flows"
-description: "Design contracts, complete examples and acceptance recipes for native household controls and tasks."
+description: "Find the specification for a native household control or task, with its states, simulated examples and checks."
 section: patterns
 group: Guidance
 nav_order: 2
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -14,19 +14,38 @@ updates:
     description: "Added the pinned interface census and extended the original 30 task specifications with additional native families."
   - date: 2026-11-11
     description: "Added the Home Assistant specification catalogue, shared state and action starting points, and implementation boundaries."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with how to choose a specification and added one source note at the foot of the page."
+ai_instructions: "Use this page to find the specification for a Home Assistant control or task. Read the state and action pages before formatting a reading or adding a command, treat every example as simulated, and keep the native route. Do not report an unrun check as a pass. The source note at the foot credits the outside sources for the whole section. Rules WG-001, WG-032, WG-056."
+ai_related:
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns how a reading, an unknown value and an old value are shown."
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns the request, pending, confirmed and failed result states."
+  - path: "/home-assistant/compatibility-register.html"
+    title: "Compatibility register and native fallback"
+    relationship: "Owns which native surfaces civica claims to support."
+  - path: "/home-assistant/interface-coverage.html"
+    title: "Home Assistant interface coverage"
+    relationship: "Owns the item-by-item census of built-in cards, selectors and routes."
+  - path: "/home-assistant/native-task-accessibility.html"
+    title: "Native task accessibility and evidence"
+    relationship: "Owns how a native task test is recorded."
 ---
 
 # Home Assistant controls and flows
 
-Use these specifications when designing or reviewing a household task in Home Assistant. They combine the civica [brand rules](../styles/brand-colour.html), [writing guide](../content/index.html) and reusable components with the capabilities that each integration actually provides.
+Use these specifications when you design or review a household task in Home Assistant. Each one gives the states a person can see, how to word them, how to check the task and where the native interface stays in charge. They combine the civica [brand rules](../styles/brand-colour.html), [writing guide](../content/index.html) and reusable components with what each integration really provides.
 
-The catalogue covers the original 30 design gaps recorded by the [component audit](../community/missing-components.html), with additional families identified by the [item-by-item interface census](interface-coverage.html). Use that census to find a specific built-in card, selector, control, settings route or domain. A specification explains required behaviour and how to check it. Its invented examples do not connect to a household, replace a native editor or prove that an installed integration supports a command.
+The catalogue covers the 30 design gaps in the [component audit](../community/missing-components.html), plus further families found by the [item-by-item interface census](interface-coverage.html). Use the census to find a built-in card, selector, control, settings route or domain. Every example is simulated. It does not connect to a household, replace a native editor or show that an installed integration supports a command.
 
-The [A to Z Technical lexicon](../content/style-guides/technical-a-to-z.html) explains native names and literal keys. The [UK systems review](../community/uk-design-system-review.html) records the applicable public-service pattern or the reason for a local extension.
+The [A to Z Technical lexicon](../content/style-guides/technical-a-to-z.html) gives native names and literal keys. The [UK design systems review](../community/uk-design-system-review.html) records the public-service pattern each specification draws on, or why civica extends it.
 
 ## Start with state and actions
 
-Read [entity state, confidence and freshness](entity-state.html) before formatting a reading. Read [action results](action-results.html) before adding a command. These contracts distinguish a request, its acceptance and the state subsequently reported by a device. They also distinguish an unavailable entity, an unknown value, a valid zero and an old retained value.
+Read [entity state, confidence and freshness](entity-state.html) before you format a reading. Read [action results](action-results.html) before you add a command. Together they keep a request, its acceptance and the state the device later reports apart. They also keep an unavailable entity, an unknown value, a real zero and an old retained value apart.
 
 <%= example('local-status-pending') %>
 
@@ -36,11 +55,11 @@ Read [entity state, confidence and freshness](entity-state.html) before formatti
 
 | Need | Use | Boundary |
 | --- | --- | --- |
-| A repeated visual or interaction element | [Components](../components/index.html), such as fields, cards and tables | Reuse the canonical owner and its complete examples |
-| A supported device control | The domain specification below and the native control | Capability, permission, mode and range come from Home Assistant |
-| A task across several controls | The flow specification below | Preserve unsaved work, native outcomes and recovery routes |
-| Native shell, colour settings or Energy presentation | [Compatibility register](compatibility-register.html) | Only the listed exact adapters claim maintained integration |
-| A new or third-party surface | Its native interface and documented variables | Matching colours alone do not establish behavioural support |
+| A repeated visual or interaction element | [Components](../components/index.html), such as fields, cards and tables | Reuse the canonical owner and its complete examples. |
+| A supported device control | The domain specification below and the native control | Home Assistant decides capability, permission, mode and range. |
+| A task across several controls | The flow specification below | Keep unsaved work, native outcomes and recovery routes. |
+| Native shell, colour settings or Energy presentation | [Compatibility register](compatibility-register.html) | Only the listed exact adapters claim maintained integration. |
+| A new or third-party surface | Its native interface and documented variables | Matching colours do not show that behaviour is supported. |
 
 ## Controls and task specifications
 
@@ -52,10 +71,12 @@ Read [entity state, confidence and freshness](entity-state.html) before formatti
 
 ## Check a real task
 
-1. Identify the exact Home Assistant version, integration, entity capabilities and user permissions.
-2. Follow the specification's state matrix and acceptance recipe using synthetic data first.
-3. Check keyboard use, narrow layouts, text resizing, reduced motion and the non-visual route. Record the browser and assistive technology actually used.
-4. Separate an automated example check from a native task test and a live device observation. Do not report an unrun check as a pass.
-5. Keep the native route available when a private host changes or an unsupported capability is encountered.
+1. Identify the exact Home Assistant version, the integration, the entity's capabilities and the person's permissions.
+2. Follow the specification's states and acceptance checks, using invented data first.
+3. Check keyboard use, narrow layouts, text resizing, reduced motion and the non-visual route. Record the browser and assistive technology you actually used.
+4. Keep an automated example check, a native task test and a live device observation as three separate results. Do not report a check you have not run as a pass.
+5. Keep the native route available when a private host changes or a capability is not supported.
 
-The [native task accessibility](native-task-accessibility.html) and [compatibility register](compatibility-register.html) pages define these boundaries in detail. The [work-package checklist](../community/guidance-work-package.html) records the implementation and verification evidence for this documentation revision.
+The [native task accessibility](native-task-accessibility.html) and [compatibility register](compatibility-register.html) pages set out these limits in detail. The [work-package checklist](../community/guidance-work-package.html) records the implementation and verification evidence for this revision.
+
+<p><small>Source note: these specifications are written against Home Assistant’s own documentation and frontend. Each page links the Home Assistant pages it relies on. The maps guidance is adapted from the GOV.UK Brand guidelines: <a href="https://brand.design-system.service.gov.uk/data/maps/">data: maps</a> and <a href="https://brand.design-system.service.gov.uk/colour/maps/">colour: maps</a>. The wider design-system sources, licences and notices are listed in the <a href="../community/sources.html">sources and provenance</a> page and the <a href="../community/licensing.html">licence</a> page. civica is an independent project. It is not endorsed by Home Assistant or by the organisations named in those pages.</small></p>

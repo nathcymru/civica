@@ -8,7 +8,7 @@ gap_id: HA-GAP-005
 contract_id: HA-CTRL-005
 source_url: https://www.home-assistant.io/integrations/climate/
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -20,45 +20,61 @@ updates:
     description: "Completed the supplied water-heater mode and distinguished unsupported oscillation from an unavailable reading."
   - date: "2026-11-11"
     description: "Added climate, fan and water-heater controls contract, domain-specific acceptance checks and synthetic reference examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, keep measured, target, mode and activity apart, and move shared checks to the native task page."
+ai_instructions: "Apply when designing climate, fan, humidifier or water-heater controls. Show the measured value, the target, the selected mode and the reported activity as separate labelled items. Offer only supported controls, keep units and limits, and keep a requested target pending until confirmed. Never fill a missing reading with a target or zero. Rules WG-033, WG-034, WG-070, WG-071, WG-073."
+ai_related:
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns the wording for unknown, unavailable and stale readings."
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns the pending, confirmed and rejected request states."
+  - path: "/components/sliders.html"
+    title: "Sliders and precise values"
+    relationship: "Owns the range, exact-entry and step controls used for targets."
+  - path: "/home-assistant/locale-units-and-time.html"
+    title: "Locale, units and time"
+    relationship: "Owns unit, precision and date preferences."
 ---
 
 # Climate, fan and water-heater controls
 
-Someone adjusting comfort needs to know both the current reading and what the equipment has been asked to do. A thermostat mode, fan preset, humidity target and hot-water programme are different controls and must not be merged into one generic dial.
+Show what the room is doing and what the equipment has been asked to do. A measured temperature, a target, a selected mode and the reported activity are different facts. Do not merge them into one dial.
 
-**HA-CTRL-005 — reference design specification.** This specifies the local design coverage requested by HA-GAP-005 for an existing Home Assistant capability. The examples do not install a native adapter, connect to a backend or operate equipment.
+These examples are simulated with invented data. They do not control any equipment. This page covers the design contract (HA-CTRL-005, from gap HA-GAP-005). It does not add a thermostat, fan service or hot-water automation.
 
 <h2 id="ha-ctrl-005-capabilities">Task and capability contract</h2>
 
-| Domain | Required distinctions and capability gates |
+| Domain | Keep apart, and offer only what the entity supports |
 | --- | --- |
-| Climate | `current_temperature` versus target; selected HVAC mode versus reported `hvac_action`; single target versus supported lower/upper targets. |
-| Fan | On/off, percentage, preset, oscillation and direction are separate capabilities. A preset name must remain the supplied name. |
-| Humidifier/dehumidifier | Measured humidity versus target; device class identifies adding or removing moisture. Do not reverse the meaning to fit an icon. |
-| Water heater | Reported operation mode, available target and current measurement. Offer only supplied controls; retain equipment-specific instructions and protections. |
-| Every numeric target | Native unit, limits, increment and precision; validate dual-target constraints before any request. |
+| Climate | `current_temperature` and the target; the selected HVAC mode and the reported `hvac_action`; a single target and, where supported, lower and upper targets. |
+| Fan | On or off, percentage, preset, oscillation and direction are separate capabilities. Keep a preset’s supplied name. |
+| Humidifier or dehumidifier | Measured humidity and target humidity. The device class says whether it adds or removes moisture, so do not reverse that to suit an icon. |
+| Water heater | The reported operation mode, the target where available, and the current measurement. Keep the equipment’s own instructions and protections. |
+| Every numeric target | The native unit, limits, increment and precision. Check a lower and upper pair before sending a request. |
 
 <h2 id="ha-ctrl-005-states">States, pending work and failure</h2>
 
-Selected Heat with reported Idle is valid: it does not mean a fault or active heating. Off is not unavailable. Keep a known target visible when a current measurement is missing, with separate labels. If the target is not known, do not fill it with the measured temperature.
+Selected Heat with reported Idle is valid. It does not mean a fault or that the system is heating. Off is not unavailable. When the measurement is missing, keep a known target visible with its own label. When the target is not known, never show the measured temperature in its place.
 
-A requested target stays a draft or pending value until the documented confirmation condition is met. If modes change during an edit, do not send a target to a now-unsupported mode. Preserve the entered draft for review where the application actually does so. For a rejected target, identify the range error at the field; for a failed request, identify the task-level failure. Avoid diagnosing a boiler, refrigerant or air-quality fault from an unconfirmed UI request.
+Keep a requested target as a draft or pending value until the documented confirmation arrives. If the mode changes during an edit, do not send a target to a mode that no longer supports it, and keep the draft for review where the application does so. For a rejected target, show the range error at the field. For a failed request, show the failure for the task. Do not diagnose a boiler, refrigerant or air-quality fault from an unconfirmed request.
 
 <h2 id="ha-ctrl-005-content">Content and interpretation</h2>
 
-Use “Measured temperature”, “Target temperature”, “Selected mode” and “Reported activity” where ambiguity would otherwise arise. Keep °C/°F and percentage units associated with each value. Humidity settings are not a medical assessment. Water-heater recipes must defer to equipment instructions and competent advice; this design system does not prescribe a safe temperature or alter protective programmes.
+Where wording could be ambiguous, use “Measured temperature”, “Target temperature”, “Selected mode” and “Reported activity”. Keep the °C, °F or percentage unit next to each value. A humidity setting is not a medical assessment. Defer to the equipment instructions and competent advice for water-heater settings. This design system does not set a safe temperature or change protective programmes.
 
 <h2 id="ha-ctrl-005-accessibility">Accessibility and interaction</h2>
 
-Expose target values and modes as labelled native controls, with keyboard adjustment and readable units. Do not require a drag around a circular thermostat to enter a precise value. Announce target changes once, separately from frequent temperature readings. Keep both setpoints readable at enlarged text; never hide one behind a tooltip or colour alone.
+Give targets and modes labelled native controls with keyboard adjustment and readable units. Do not require dragging round a circular thermostat to enter a precise value. Announce a target change once, separately from frequent temperature readings. At enlarged text, keep both setpoints readable. Never hide one behind a tooltip or show it by colour alone.
 
 <h2 id="ha-ctrl-005-integration">Native integration boundary</h2>
 
-Use native Climate, Fan, Humidifier and Water heater controls and their actual supported modes/features. Preserve the entity's unit conversion and precision. The pinned climate source in the gap inventory is source evidence, not live verification of every device. These examples are design recipes; no new thermostat, fan service or hot-water automation is installed by this documentation.
+Use the native Climate, Fan, Humidifier and Water heater controls with the modes and features the entity supports. Keep the entity’s unit conversion and precision. The pinned climate source in the gap inventory is source evidence, not a live check of every device.
 
 <h2 id="ha-ctrl-005-examples">Reference examples</h2>
 
-These complete, isolated HTML specimens use synthetic data. Buttons and forms only demonstrate local feedback or draft validation. Static state examples are labelled as such; no action reaches a household.
+Buttons and forms in these examples show local feedback or draft validation only. No action reaches a household.
 
 <%= example('ha-climate-target') %>
 
@@ -70,16 +86,16 @@ These complete, isolated HTML specimens use synthetic data. Buttons and forms on
 
 <h2 id="ha-ctrl-005-acceptance">Acceptance and evidence</h2>
 
-1. Check Heat/Idle, Heat/Heating, Off, unknown and unavailable independently. A mode change must not falsely update measured temperature.
-2. Exercise decimal steps, Celsius and Fahrenheit, single and dual targets, invalid ordering and a mode removed while editing.
-3. Test a fan without oscillation, a dehumidifier with no current humidity and a water heater without a reported temperature. No invented controls or zeroes.
-4. Reject a target request and delay another beyond the waiting limit. Preserve native safety/code flows, keyboard access, source precision and meaningful pending text.
+1. Check Heat with Idle, Heat with Heating, Off, unknown and unavailable separately. A mode change must not change the measured temperature.
+2. Try decimal steps, Celsius and Fahrenheit, single and dual targets, an invalid order, and a mode removed during editing.
+3. Test a fan without oscillation, a dehumidifier with no current humidity and a water heater with no reported temperature. Show no invented controls and no zeroes.
+4. Reject one target request and delay another beyond the waiting limit. Keep native safety and code flows, keyboard access, source precision and meaningful pending text.
 
-Record the integration/frontend version, browser, fixture or device, input state, expected result, observed result and evidence location. Source review and documentation checks are not live-device verification. Record unresolved native limitations explicitly; do not turn this checklist into an accessibility guarantee.
+Record what was tested using [Native task accessibility and evidence](native-task-accessibility.html). A source review or a local example is not a live-device check.
 
-<h2 id="ha-ctrl-005-sources">Sources and governing rules</h2>
+<h2 id="ha-ctrl-005-sources">Sources</h2>
 
-Primary sources reviewed on 11 November 2026. Current documentation may describe a newer frontend than an installed system; verify the actual controls before reproducing a route.
+Reviewed on 11 November 2026. Current documentation may describe a newer frontend than the one installed, so check the controls you actually have.
 
 - [Climate](https://www.home-assistant.io/integrations/climate/)
 - [Climate entity contract](https://contributors.home-assistant.io/core/entities/climate/)
@@ -87,6 +103,4 @@ Primary sources reviewed on 11 November 2026. Current documentation may describe
 - [Humidifier](https://www.home-assistant.io/integrations/humidifier/)
 - [Water heater](https://www.home-assistant.io/integrations/water_heater/)
 
-Applicable frozen rules: [BG-COL-05](../styles/brand-colour.html#bg-col-05), [BG-TYP-03](../styles/brand-typography.html#bg-typ-03), [WG-034](../content/writing-guidelines/states-and-errors.html#wg-034), [WG-070](../content/formatting-content/charts-and-data.html#wg-070), [WG-071](../content/formatting-content/charts-and-data.html#wg-071), [WG-073](../content/formatting-content/charts-and-data.html#wg-073). The shared [design styles](../styles/index.html) and [writing guide](../content/index.html) also govern any new implementation.
-
-Review owner: civica maintainers. Recheck after native capability, source, renderer or interaction changes.
+Wording and numbers follow [Keep unavailable, unknown, stale and offline apart](../content/writing-guidelines/states-and-errors.html#wg-033), [Explain what the control can and cannot do](../content/writing-guidelines/states-and-errors.html#wg-034), [Charts and data](../content/formatting-content/charts-and-data.html#wg-070) and the shared [design styles](../styles/index.html).
