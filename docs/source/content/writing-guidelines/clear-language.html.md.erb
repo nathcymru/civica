@@ -54,6 +54,49 @@ Expanded forms are easier to translate into any language and harder to misread a
 
 Avoid idioms such as “give it a whirl” and “in a pinch”.
 
+<h2 id="wg-020">Use one word for one operation</h2>
+
+Use the same word for the same operation. Use a different word for a different operation.
+
+<%= example('wg-household-terms') %>
+
+| Before | After |
+| --- | --- |
+| Remove the automation (when you mean delete it) | Delete automation |
+| Disable the automation (when you mean turn off future starts) | Turn off automation |
+| Remove from this dashboard (when it also deletes the device) | Remove from this dashboard. The device stays in Home Assistant. |
+
+<h2 id="wg-021">Keep native labels and translations</h2>
+
+When you point someone to a screen, use the label Home Assistant shows, in the language it shows. Explain an unfamiliar term next to it.
+
+For a single Home Assistant word, look it up in [A to Z Technical](../style-guides/technical-a-to-z.html).
+
+| Before | After |
+| --- | --- |
+| Open Messages. (the screen says Notifications) | Open **Notifications**. This shows messages from your automations. |
+| Find the identification of the light. | Find the **Entity ID** of the light. |
+
+<h2 id="wg-022">Keep names exactly as people typed them</h2>
+
+Do not change the case, spelling, punctuation or language of a name someone gave. Do not guess a relationship from it. Do not change an ID when someone changes a name.
+
+| Before | After |
+| --- | --- |
+| Nain’s lamp → Nain’s Lamp | Nain’s lamp |
+| Mam’s heater → Mother’s heater | Mam’s heater |
+
+<h2 id="wg-025">Keep literal values literal</h2>
+
+Put an entity ID, a key, a path or a version in code formatting. Do not change underscores, dashes or quotation marks inside it.
+
+| Before | After |
+| --- | --- |
+| Enter the reading lamp ID: light.reading-lamp. | Entity ID: `light.reading_lamp` |
+| Set mode to "heat". (curly quotes copied into YAML) | Set `mode: heat` |
+
+Label an example ID as an example. Never ask someone to paste a password or token into a field that does not need one.
+
 <h2 id="wg-060">Do not assume who is reading</h2>
 
 Do not assume a relationship, ownership, ability or who is at home.

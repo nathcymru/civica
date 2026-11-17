@@ -45,12 +45,12 @@
     "WG-012": "/content/writing-guidelines/right-tone.html#wg-012",
     "WG-013": "/content/writing-guidelines/clear-language.html#wg-013",
     "WG-014": "/content/writing-guidelines/clear-language.html#wg-014",
-    "WG-020": "/content/style-guides/technical-a-to-z.html#wg-020",
-    "WG-021": "/content/style-guides/technical-a-to-z.html#wg-021",
-    "WG-022": "/content/style-guides/technical-a-to-z.html#wg-022",
+    "WG-020": "/content/writing-guidelines/clear-language.html#wg-020",
+    "WG-021": "/content/writing-guidelines/clear-language.html#wg-021",
+    "WG-022": "/content/writing-guidelines/clear-language.html#wg-022",
     "WG-023": "/content/style-guides/a-to-z.html#wg-023",
     "WG-024": "/content/style-guides/a-to-z.html#wg-024",
-    "WG-025": "/content/style-guides/technical-a-to-z.html#wg-025",
+    "WG-025": "/content/writing-guidelines/clear-language.html#wg-025",
     "WG-030": "/content/writing-guidelines/clear-titles.html#wg-030",
     "WG-031": "/content/writing-guidelines/states-and-errors.html#wg-031",
     "WG-032": "/content/writing-guidelines/states-and-errors.html#wg-032",
@@ -111,7 +111,7 @@
     },
     {
       "path": "docs/data/writing-guide-inventory.json",
-      "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290"
+      "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2"
     }
   ],
   "review_ledgers": [
@@ -363,7 +363,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "The package distinguishes completed review tasks from unresolved component findings and exposes evidence for repeated loops. Remediation review: Reviewed the revised catalogue, evidence/compatibility boundaries, linked current deliverables and exact implementation claims. Remediation review: Reviewed the revised catalogue, evidence/compatibility boundaries, linked current deliverables and exact implementation claims. 12 November 2026 source review: Linked the design-style deliverables while preserving the earlier work-package evidence. Integrated validation is recorded separately in the data-design review.",
-      "sha256": "1e9e355f5b70b3834f032f503b75fc5384d67fa9f650071cbf6bdd060fe8007d",
+      "sha256": "58ea04fb011d21f4b49334dbe3284eb630ff994d98899102a0244c486357df26",
       "url": "/community/guidance-work-package.html",
       "title": "Brand, writing and audit work package",
       "example_ids": [
@@ -471,7 +471,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Reviewed the form/parser/workflow contract against primary GitHub sources: submitted textarea boundary, maintainer release judgement, status and UTC chronology, exact category/title ordering, public GitHub notes versus excluded roadmap notes, safe pagination and read-only token, trusted-main/PR separation, and the retained full verification gate. Current integrated and publication evidence is separately bounded in roadmap-review.json. Accepted-stage source review: reviewed all three publishing labels, open/no-date status semantics, one-to-three category limits, schema migration, old-form compatibility and blank-only reserved media. Corrected the instruction that could have relabelled previously started work as unstarted. Feasibility, language quality and accessibility remain requirements for later research and delivery, not established proposal facts. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "a9b643caad2f7474fd6f564058c02d079bc1023281e751f6d183e3a014af2036",
+      "sha256": "c9fd0848770bef1fce6af3b800f8926fd7f4f30a301dedc2e78a63b8c948e93f",
       "url": "/community/maintain-roadmap.html",
       "title": "Maintain the theme roadmap",
       "example_ids": [],
@@ -774,7 +774,7 @@
     },
     {
       "path": "docs/source/components/cards.html.md.erb",
-      "sha256": "5bb9b43f53039fb898b5510e4f87440f26b569d7ecd0872e8cecebd5c1d23391",
+      "sha256": "00da90cd1dadaea9847de558daa4708163d84e98de39a7006fb87f0ffed4bcf1",
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -1812,7 +1812,7 @@
     },
     {
       "path": "docs/source/components/page-history.html.md.erb",
-      "sha256": "0e50b03b1280239e8302187c1354c22cfca938e3c77db70211bbb46d75c6ce38",
+      "sha256": "5f4b64b18b3aa4f05beb7e58a3a74c55d5fdd4d67c825e1e128a2fbf30c09af8",
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -2498,66 +2498,6 @@
       "resolved_finding_ids": []
     },
     {
-      "path": "docs/source/content/accessible-content.html.md.erb",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "note": "Rewritten on 15 November 2026. Hash recorded after the rewrite. No independent review has been done yet. This page now only points to its replacement.",
-      "sha256": "12e6b9b5fdb46463fe9c54eda99319a463835181fb26bf50b7d0f2017c3316c4",
-      "url": "/content/accessible-content.html",
-      "title": "Accessible content",
-      "example_ids": [
-        "wg-accessible-structure",
-        "wg-accessible-links"
-      ],
-      "resolved_finding_ids": []
-    },
-    {
-      "path": "docs/source/content/content-review.html.md.erb",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "note": "Rewritten on 15 November 2026. Hash recorded after the rewrite. No independent review has been done yet. This page now only points to its replacement.",
-      "sha256": "8b98b703a93d2906eb2a70d86a492270cf8ae281936e7966482143086e6e5463",
-      "url": "/content/content-review.html",
-      "title": "Review and maintain content",
-      "example_ids": [
-        "wg-review-record",
-        "wg-change-note"
-      ],
-      "resolved_finding_ids": []
-    },
-    {
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -2576,42 +2516,10 @@
         "term-climate-meaning",
         "term-missing-state"
       ],
-      "sha256": "72b89c14bea5ac777febf970c31a54d0b3bb63d64eae394a47c4ea5e840fbc5d",
+      "sha256": "218f26e713f1f829e92b8d82f198b204566a7a8154df94402932c8f1a58d6d2a",
       "note": "Prose and entry text rewritten on 15 November 2026. Entries and IDs unchanged. Hash recorded after the rewrite. No independent review has been done yet.",
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
-    },
-    {
-      "path": "docs/source/content/errors-and-alerts.html.md.erb",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "note": "Rewritten on 15 November 2026. Hash recorded after the rewrite. No independent review has been done yet. This page now only points to its replacement.",
-      "sha256": "d04ff062005d6725fced3104158bbfc48b07677d0f1af5190b4527722e3036ba",
-      "url": "/content/errors-and-alerts.html",
-      "title": "Errors, warnings and notifications",
-      "example_ids": [
-        "wg-recoverable-error",
-        "wg-availability",
-        "wg-warning-context",
-        "wg-permission"
-      ],
-      "resolved_finding_ids": []
     },
     {
       "reviewed_rule_families": [
@@ -2632,7 +2540,7 @@
         "term-native-label",
         "term-historical-name"
       ],
-      "sha256": "3e5fe9e97756095fe889fc98dd93fdae0ae8c5c3f7608ff9960dfa212ec8ac7a",
+      "sha256": "9ca25f86726ab2d90d89b87aab792f039d49280e0d181f9f540148ab554a68c6",
       "note": "Prose and entry text rewritten on 15 November 2026. Entries and IDs unchanged. Hash recorded after the rewrite. No independent review has been done yet.",
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
@@ -2656,41 +2564,10 @@
         "term-same-word-different-layer",
         "term-identifiers"
       ],
-      "sha256": "2f92465b731014b531c5239beca27fa93cbc35f632a435335c66bc1569dc9998",
+      "sha256": "940bff4864a15d9763345c62957e5dcf667b530772c4bf25616be24e8d71a5e3",
       "note": "Prose and entry text rewritten on 15 November 2026. Entries and IDs unchanged. Hash recorded after the rewrite. No independent review has been done yet.",
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
-    },
-    {
-      "path": "docs/source/content/inclusive-content.html.md.erb",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "note": "Rewritten on 15 November 2026. Hash recorded after the rewrite. No independent review has been done yet. This page now only points to its replacement.",
-      "sha256": "cc205a6bfcef1e959666d11961fa9e5685b87170236db3c5a435ed5b44cfb54b",
-      "url": "/content/inclusive-content.html",
-      "title": "Inclusive household content",
-      "example_ids": [
-        "wg-inclusion",
-        "wg-bsl-status",
-        "wg-presence"
-      ],
-      "resolved_finding_ids": []
     },
     {
       "path": "docs/source/content/index.html.md.erb",
@@ -2713,7 +2590,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Rewritten on 15 November 2026. Hash recorded after the rewrite. No independent review has been done yet. ",
-      "sha256": "d9761bb6333583b0bbc59d77167e6239ab5e7c97a8c5fcbf40789c47a3a6e803",
+      "sha256": "4cec4144e83f6481f2dfedb5a275f73eee316f5d65c2ed3cf68ae59749ef0d8a",
       "url": "/content/index.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -2723,67 +2600,6 @@
       "resolved_finding_ids": [],
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
-    },
-    {
-      "path": "docs/source/content/instructions-and-learning.html.md.erb",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "note": "Rewritten on 15 November 2026. Hash recorded after the rewrite. No independent review has been done yet. This page now only points to its replacement.",
-      "sha256": "f2bc5c82e13643c5e4853603c4fe4dfd0810ec34838cf66ea4e2317b9adbdb63",
-      "url": "/content/instructions-and-learning.html",
-      "title": "Instructions, questions and learning",
-      "example_ids": [
-        "wg-instructions",
-        "wg-form-purpose"
-      ],
-      "resolved_finding_ids": []
-    },
-    {
-      "path": "docs/source/content/interface-copy.html.md.erb",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "note": "Rewritten on 15 November 2026. Hash recorded after the rewrite. No independent review has been done yet. This page now only points to its replacement.",
-      "sha256": "b8bcf6aca288943aa657f19dc4eb69fc816c6c7eaaafb721422d9dd763bc4a0b",
-      "url": "/content/interface-copy.html",
-      "title": "Interface copy and truthful states",
-      "example_ids": [
-        "wg-state-action",
-        "wg-command-progress",
-        "wg-automation-status"
-      ],
-      "resolved_finding_ids": []
     },
     {
       "reviewed_rule_families": [
@@ -2804,102 +2620,8 @@
         "term-navigation-action",
         "term-power-energy"
       ],
-      "sha256": "c8426ce4dcdd978e30d777a45e02195f84498f62fcad31f676adcacfa287aac7",
+      "sha256": "5711e1d45f1d21a1252d8ccb60c02b86ddaa16f10af2f79960b68ed8f833e6aa",
       "note": "Prose and entry text rewritten on 15 November 2026. Entries and IDs unchanged. Hash recorded after the rewrite. No independent review has been done yet.",
-      "current_review_on": "2026-11-12",
-      "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
-    },
-    {
-      "path": "docs/source/content/numbers-and-data.html.md.erb",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "note": "Rewritten on 15 November 2026. Hash recorded after the rewrite. No independent review has been done yet. This page now only points to its replacement.",
-      "sha256": "9b5374670393fbc395722cc1ce71be2add0c6e319afc2c80e8936701b4407d3f",
-      "url": "/content/numbers-and-data.html",
-      "title": "Numbers, dates and household data",
-      "example_ids": [
-        "wg-data-meaning",
-        "wg-data-gaps",
-        "wg-comparison-period"
-      ],
-      "resolved_finding_ids": []
-    },
-    {
-      "path": "docs/source/content/voice-and-language.html.md.erb",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "note": "Rewritten on 15 November 2026. Hash recorded after the rewrite. No independent review has been done yet. This page now only points to its replacement.",
-      "sha256": "04cdcdeb6ef7c91694a780d482a62a26cd9c7733e18a695a8e596e2431f9a250",
-      "url": "/content/voice-and-language.html",
-      "title": "Voice and language",
-      "example_ids": [
-        "wg-plain-precision",
-        "wg-calm-tone",
-        "wg-critical-contraction"
-      ],
-      "resolved_finding_ids": []
-    },
-    {
-      "path": "docs/source/content/words-and-style.html.md.erb",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "note": "Rewritten on 15 November 2026. Hash recorded after the rewrite. No independent review has been done yet. This page now only points to its replacement.",
-      "sha256": "93905bd467031fe9c9ba3e061e5a926d84639e27bc60130b7d5e7941ff144205",
-      "url": "/content/words-and-style.html",
-      "title": "Words and style",
-      "example_ids": [
-        "wg-household-terms",
-        "wg-literal-identifiers"
-      ],
-      "resolved_finding_ids": [],
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
     },
@@ -3706,7 +3428,7 @@
         "admin-protocol-diagnostics",
         "admin-app-state"
       ],
-      "sha256": "26f3ac790eeaabcbbe720ba0cbc0131b36b821429f4973ba5c0e4d00addf89d5",
+      "sha256": "9a2a4d511b0004735fc05bb8a36b0468e08e5fa5735550374abb012ce90e70df",
       "note": "Read complete guide. Pinned source routes match protocol/app distinctions in available source snapshots. Discovery is not trust or pairing, app installed/running/start-on-boot differ, credential recovery remains native, local examples do not install software. 12 November 2026 source review: Linked the shared design styles without requiring the project identity inside a household interface. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
@@ -3769,7 +3491,7 @@
       "path": "docs/source/home-assistant/locale-units-and-time.html.md.erb",
       "url": "/home-assistant/locale-units-and-time.html",
       "title": "Locale, units and time",
-      "sha256": "c578403af0c47575fca44896b519698c4363041fb3022953391d6602497e4ecd",
+      "sha256": "8f0281842ec5829888ece23fbe2076428889cf2360a051120dc9b1fca7350eec",
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "resolved_finding_ids": [],
@@ -3973,7 +3695,7 @@
         "ha-coverage-content-note",
         "ha-coverage-content-external"
       ],
-      "sha256": "402b43c6194a13e2e9d598e81516ab96dcf3390008cefeaf85617b235ea15ca8",
+      "sha256": "607c50647f134380c42cbd631514b45400e7c830f60110cf40fc502fa49d964e",
       "note": "Read full guide: decorative/live/retained imagery, equivalent normal-flow information, action gestures versus semantics, escaped authored content and blocked external embeds are covered. Local and external Webpage sources are now both acknowledged. 12 November 2026 source review: Linked the shared design styles without requiring the project identity inside a household interface. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
@@ -3982,7 +3704,7 @@
       "path": "docs/source/home-assistant/presence-and-privacy.html.md.erb",
       "url": "/home-assistant/presence-and-privacy.html",
       "title": "Presence, people and shared-screen privacy",
-      "sha256": "67564feb07c2ed6e972c5fa98b26cb111a8459ed69250af9ffb2494a76b568f5",
+      "sha256": "9d57b1467598501e9730b238b8d682bafd9c2df065ed5a765df7317c9a753f85",
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "resolved_finding_ids": [],
@@ -4091,7 +3813,7 @@
         "ha-coverage-selector-values",
         "ha-coverage-selector-structured"
       ],
-      "sha256": "4c59f3a43d593e5fd7b960944741408a25309c20a5bffbc3d5970997f82ea469",
+      "sha256": "85827f0cc549acaac40a65901fdbfc4c30ce12ee901cdb09706216c60c4fd692",
       "note": "Read full guide: resource types and IDs, provider privacy, scalar/structured data, presentation/internal selector boundaries, errors and typed round trips remain distinct. The examples explicitly avoid claiming to implement a live searchable native selector or YAML parser. 12 November 2026 source review: Linked the shared design styles without requiring the project identity inside a household interface. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
@@ -4149,7 +3871,7 @@
       "path": "docs/source/home-assistant/target-pickers.html.md.erb",
       "url": "/home-assistant/target-pickers.html",
       "title": "Entity, device and area pickers",
-      "sha256": "1668b17192bba47893050e19c75de35e54736559ab3fac9241689bd431e17e54",
+      "sha256": "1359d32ba630f0fdd4434318b4636b29054c4a760ab97ddc5301eeb4c0cd55f7",
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "resolved_finding_ids": [],
@@ -6585,7 +6307,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Legacy URL now points to the full writing guide; existing summary preserves state/action differences, real retry capability, locale and user names. Writing-section review: existing prose, rule anchors and URLs retained; metadata, navigation ownership and authored update history moved to the independent Writing guide section. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "1615b867ecbd67d1d5b2355e4b7d4b0675e34b792af13ba76318dfeccf4d5221",
+      "sha256": "56684e85e4c430b109ba8fde39e613ae3981155b95106a6d9fec3444210d5fe9",
       "url": "/styles/content.html",
       "title": "Content design",
       "example_ids": [
@@ -6646,7 +6368,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Functional HA symbols, purpose-specific publishing arrows, operational imagery and supplied identity are correctly separated from new illustration guidance. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. 12 November 2026 source review: Separated project artwork from optional household identity and retained meaningful image alternatives. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "07360b6656ecc5cfa2675ecca4ad5e9c330c0361a1609b0d351e3d1020f3e420",
+      "sha256": "f70598ff440d85ffa9eed945a3948a99c4fdfac43911b6c96e5f5d3d53d4fc00",
       "url": "/styles/images.html",
       "title": "Icons and images",
       "example_ids": [
@@ -6926,7 +6648,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "9dd5a183fc0f858d8ebd2c0fb9363b4a2a6de7d746052c38c552392f6096ea6b",
+      "sha256": "6f51bb65c3aaa74eca9ce0ea3fd9bfaa346ed8eb0a2bbec8bc72862dabf2225f",
       "url": "/content/formatting-content/text-formatting.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -6958,7 +6680,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "3d190218f7a393fa4b276781d270741cb16b407f1a870f1f91470d97c2651a81",
+      "sha256": "dcf3e896b28f4acda6d35cd3ff4c11ff9f300d6c7989c48d7dd443428ecfcefa",
       "url": "/content/publish-update-retire/choose-content-type.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7022,7 +6744,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "9a19509630afe093327ffc452a55f64e51784b58b41de9ded68219076bab5ce1",
+      "sha256": "16d18fdefd2bb415044b642be093778b5fd007620f3e49f6460732a5bc8dac99",
       "url": "/content/publish-update-retire/publish.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7054,7 +6776,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "17f5b44670af37d427ba8169578a24564bc0e039f043f37087f019402b69cbfb",
+      "sha256": "c8acb2980b7910c1e373d2b8a18a5a0c2851165dba1266c96dae5e64a4f50d08",
       "url": "/content/publish-update-retire/retire.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7086,7 +6808,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "9aca332c6358ee7ae25e271b552a362a26375dd23a6deb1b9408c0975a572613",
+      "sha256": "fa4ccfa6b440cd693ca6e2ad1e04c463d7a98ec2964636c7604c03139d8dfe1d",
       "url": "/content/publish-update-retire/update.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7118,7 +6840,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "586099d65e162987654d60af8b6734a58ad6580e940d7dbe08580d1c27cd80b1",
+      "sha256": "b9e55d0a5189bf735baa1773b74039f63746c50f248901453ca51ba4d30b7f45",
       "url": "/content/style-guides/a-to-z.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7150,7 +6872,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "920ae89e8bac69c4f8f2f44fe00658afaa1e053573d012397c33528addd0a76f",
+      "sha256": "6ad6f28def69f73da7d60e6899275b328cc077ca9c2615ce7d642b485f14ecfb",
       "url": "/content/style-guides/index.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7182,7 +6904,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "54845e49938e80362cd525cc2a53ff554c7a085d3cc065fa4132f95a6ebb8174",
+      "sha256": "75477d908a93153c4c799b4bacbbbbbb9f359d2f9416d86f29fa17baf1fab160",
       "url": "/content/style-guides/technical-a-to-z.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7278,7 +7000,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "4df80d0e8d88b2cdce1ed4933fe798b7faf734eeeb5a43b51d8e2048154893cf",
+      "sha256": "e575c147334b7ffc9f290a98d385e4243ae57da1bab2b1b0f237633e371467f0",
       "url": "/content/writing-guidelines/clear-language.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7470,7 +7192,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "9ce3f56715b46cb75a94049fe1d9a27ccb56742df9ad92f1e9498ed1c92e0f29",
+      "sha256": "5cd40d421048304655c221447bdfb16eee1b84935328f1e54343260df9513b63",
       "url": "/content/writing-guidelines/states-and-errors.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -16316,7 +16038,7 @@
       "path": "docs/data/writing-guide-examples.yml",
       "authored_html_sha256": "0a9940f4d528e7c8ad624484746461a755747448d5210e8fafdc9af12232821a",
       "owners": [
-        "/content/style-guides/technical-a-to-z.html"
+        "/content/writing-guidelines/clear-language.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -18183,7 +17905,7 @@
     },
     {
       "path": "docs/source/layouts/civica_core.erb",
-      "sha256": "6c18e8cbe6b7d67bb6f3d6e78239c2e1b6fedde4ecd2bb5309418a440eed84fe",
+      "sha256": "b4a17b168015cb0e31923ce5b1cf1418aab0a147dacf02bf7436d226a642b51a",
       "scope": "Authored/shared documentation source review. Subsequent project-story/navigation changes reviewed within docs/data/project-story-review.json scope. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18238,7 +17960,7 @@
     },
     {
       "path": "docs/helpers/design_system_helpers.rb",
-      "sha256": "5324501d45f792f78c0c4eecaff62f413abf78ae03838ca9e7ed955297eda99b",
+      "sha256": "63f2bc94e27ec50cd04a9e546284360213ca3bbdb1c3862b0ed0a4e48b7265dc",
       "scope": "Authored/shared documentation source review. Subsequent project-story/navigation changes reviewed within docs/data/project-story-review.json scope. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18248,7 +17970,7 @@
     },
     {
       "path": "docs/source/design-contract.json",
-      "sha256": "0b9e62c023943e409315a04be2cbfd43ad5bc01f6c9a2e8c6672fc651de6439d",
+      "sha256": "030d0a783f4d165519c6320cc04c181fe4d653106be5747be9a70795b8aa84dc",
       "scope": "Authored/shared documentation source review. Subsequent project-story/navigation changes reviewed within docs/data/project-story-review.json scope. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -18353,7 +18075,7 @@
     },
     {
       "path": "docs/data/writing-guide-inventory.json",
-      "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+      "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
       "scope": "Authored/shared documentation source review."
     },
     {
@@ -18683,7 +18405,7 @@
     },
     {
       "path": "docs/data/hero-layout-review.json",
-      "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+      "sha256": "e0dc0a3baf3342232ff625fe4d1b890fbd89a066d387ddbace0318378faa1a48",
       "scope": "Corrective shared hero layout and its explicitly bounded source/verification record."
     },
     {
@@ -18748,7 +18470,7 @@
     },
     {
       "path": "docs/source/community/maintain-roadmap.html.md.erb",
-      "sha256": "a9b643caad2f7474fd6f564058c02d079bc1023281e751f6d183e3a014af2036",
+      "sha256": "c9fd0848770bef1fce6af3b800f8926fd7f4f30a301dedc2e78a63b8c948e93f",
       "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -18788,7 +18510,7 @@
     },
     {
       "path": "docs/data/roadmap-review.json",
-      "sha256": "4d46560b8ad2178a04ef7b7901b623c283b809e8c3744959f629b2c63df86aa6",
+      "sha256": "fbdfc874d57ac37c9c1ca1ddd1186e9e1edacc4a7d6b33a07de6569940e1bfd8",
       "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits."
     },
     {
@@ -18798,7 +18520,7 @@
     },
     {
       "path": "docs/data/roadmap-accepted-review.json",
-      "sha256": "5372d08e84255d78d3b31cf1632245c2aea46e5f68bd3a3b48c1cea653c757e2",
+      "sha256": "8ae6219c3505c96e137d82d20a4dda3b8fa78a94c7fd59b372c0e11eb9d416d9",
       "scope": "Accepted-stage roadmap source review; current evidence and limitations are recorded in docs/data/roadmap-accepted-review.json."
     },
     {
@@ -18813,7 +18535,7 @@
     },
     {
       "path": "docs/data/naming-inventory.json",
-      "sha256": "a4c8106a70710583876c10ea3351c2c98f53883f34f6f88ce8f76af7bca9d0a5",
+      "sha256": "16372693908a1cc74e15f85d0ad80c1196d4f6629d94e59ec445fff440dcff12",
       "scope": "Current naming, compatibility and historical-evidence boundary review; final integrated acceptance is separately recorded. Current startup-readiness correction reviewed in docs/data/startup-readiness-review.json; later full CI/live outcomes remain separate. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18898,7 +18620,7 @@
     },
     {
       "path": "docs/source/stylesheets/_civica-components.scss",
-      "sha256": "3f6267a498c5ad7dfebaddbeae6b42ad3c698307936ef3ba13b456ccf90237f7",
+      "sha256": "7fd98b108b1fa103acf044852af18b95aa1bca5f67e986d3e273957b5c687bb9",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18948,7 +18670,7 @@
     },
     {
       "path": "docs/data/licensing-notice-review.json",
-      "sha256": "31716e6a217b6abd4c3148477a7838a89768739044409e280ed101ffdc31ccb2",
+      "sha256": "debafd652a433e7c842dcbc27f07ae3bfb221b3ab644e6e6c8c3c52d40f35f42",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18995,19 +18717,19 @@
     {
       "record": "docs/data/hero-layout-review.json",
       "revision": "df7a26a640f1e7242598a61e4197dd1f468b3b70",
-      "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+      "sha256": "e0dc0a3baf3342232ff625fe4d1b890fbd89a066d387ddbace0318378faa1a48",
       "scope": "Unchanged preceding hero-layout evidence. Its tests and deployed result remain historical and do not prove the new roadmap pipeline."
     },
     {
       "record": "docs/data/roadmap-review.json",
       "revision": "478c666670b0947d43800b7213c14ea81a66abe4",
-      "sha256": "4d46560b8ad2178a04ef7b7901b623c283b809e8c3744959f629b2c63df86aa6",
+      "sha256": "fbdfc874d57ac37c9c1ca1ddd1186e9e1edacc4a7d6b33a07de6569940e1bfd8",
       "scope": "Preserved original roadmap evidence before schema 2 and the Accepted stage. Its actual merged publication is separately identified in the accepted-stage review; the old source record remains unchanged."
     },
     {
       "record": "docs/data/roadmap-accepted-review.json",
       "revision": "ba86ef03a2b1edabed6409c021bd3c49ab62d98b",
-      "sha256": "5372d08e84255d78d3b31cf1632245c2aea46e5f68bd3a3b48c1cea653c757e2",
+      "sha256": "8ae6219c3505c96e137d82d20a4dda3b8fa78a94c7fd59b372c0e11eb9d416d9",
       "scope": "Original Accepted-stage roadmap review retained byte-for-byte. The rename does not rewrite its source identity, reported tests or publication boundaries."
     },
     {
@@ -19206,7 +18928,7 @@
         },
         {
           "path": "docs/data/writing-guide-inventory.json",
-          "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+          "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
           "scope": "Authored/shared documentation source review."
         },
         {
@@ -19713,7 +19435,7 @@
         },
         {
           "path": "docs/data/writing-guide-inventory.json",
-          "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+          "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
           "scope": "Authored/shared documentation source review."
         },
         {
@@ -20043,7 +19765,7 @@
         },
         {
           "path": "docs/data/hero-layout-review.json",
-          "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+          "sha256": "e0dc0a3baf3342232ff625fe4d1b890fbd89a066d387ddbace0318378faa1a48",
           "scope": "Corrective shared hero layout and its explicitly bounded source/verification record."
         },
         {
@@ -20235,7 +19957,7 @@
         },
         {
           "path": "docs/data/writing-guide-inventory.json",
-          "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+          "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
           "scope": "Authored/shared documentation source review."
         },
         {
@@ -20565,7 +20287,7 @@
         },
         {
           "path": "docs/data/hero-layout-review.json",
-          "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+          "sha256": "e0dc0a3baf3342232ff625fe4d1b890fbd89a066d387ddbace0318378faa1a48",
           "scope": "Corrective shared hero layout and its explicitly bounded source/verification record."
         },
         {
@@ -20670,7 +20392,7 @@
         },
         {
           "path": "docs/data/roadmap-review.json",
-          "sha256": "4d46560b8ad2178a04ef7b7901b623c283b809e8c3744959f629b2c63df86aa6",
+          "sha256": "fbdfc874d57ac37c9c1ca1ddd1186e9e1edacc4a7d6b33a07de6569940e1bfd8",
           "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits."
         }
       ]
@@ -20857,7 +20579,7 @@
         },
         {
           "path": "docs/data/writing-guide-inventory.json",
-          "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+          "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
           "scope": "Authored/shared documentation source review."
         },
         {
@@ -21187,7 +20909,7 @@
         },
         {
           "path": "docs/data/hero-layout-review.json",
-          "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+          "sha256": "e0dc0a3baf3342232ff625fe4d1b890fbd89a066d387ddbace0318378faa1a48",
           "scope": "Corrective shared hero layout and its explicitly bounded source/verification record."
         },
         {
@@ -21292,7 +21014,7 @@
         },
         {
           "path": "docs/data/roadmap-review.json",
-          "sha256": "4d46560b8ad2178a04ef7b7901b623c283b809e8c3744959f629b2c63df86aa6",
+          "sha256": "fbdfc874d57ac37c9c1ca1ddd1186e9e1edacc4a7d6b33a07de6569940e1bfd8",
           "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits."
         },
         {
@@ -21302,7 +21024,7 @@
         },
         {
           "path": "docs/data/roadmap-accepted-review.json",
-          "sha256": "5372d08e84255d78d3b31cf1632245c2aea46e5f68bd3a3b48c1cea653c757e2",
+          "sha256": "8ae6219c3505c96e137d82d20a4dda3b8fa78a94c7fd59b372c0e11eb9d416d9",
           "scope": "Accepted-stage roadmap source review; current evidence and limitations are recorded in docs/data/roadmap-accepted-review.json."
         }
       ]
@@ -21384,7 +21106,7 @@
         },
         {
           "path": "docs/source/design-contract.json",
-          "sha256": "0b9e62c023943e409315a04be2cbfd43ad5bc01f6c9a2e8c6672fc651de6439d",
+          "sha256": "030d0a783f4d165519c6320cc04c181fe4d653106be5747be9a70795b8aa84dc",
           "scope": "Authored/shared documentation source review. Subsequent project-story/navigation changes reviewed within docs/data/project-story-review.json scope. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
         },
         {
@@ -21489,7 +21211,7 @@
         },
         {
           "path": "docs/data/writing-guide-inventory.json",
-          "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+          "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
           "scope": "Authored/shared documentation source review."
         },
         {
@@ -21819,7 +21541,7 @@
         },
         {
           "path": "docs/data/hero-layout-review.json",
-          "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+          "sha256": "e0dc0a3baf3342232ff625fe4d1b890fbd89a066d387ddbace0318378faa1a48",
           "scope": "Corrective shared hero layout and its explicitly bounded source/verification record."
         },
         {
@@ -21884,7 +21606,7 @@
         },
         {
           "path": "docs/source/community/maintain-roadmap.html.md.erb",
-          "sha256": "a9b643caad2f7474fd6f564058c02d079bc1023281e751f6d183e3a014af2036",
+          "sha256": "c9fd0848770bef1fce6af3b800f8926fd7f4f30a301dedc2e78a63b8c948e93f",
           "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
         },
         {
@@ -21924,7 +21646,7 @@
         },
         {
           "path": "docs/data/roadmap-review.json",
-          "sha256": "4d46560b8ad2178a04ef7b7901b623c283b809e8c3744959f629b2c63df86aa6",
+          "sha256": "fbdfc874d57ac37c9c1ca1ddd1186e9e1edacc4a7d6b33a07de6569940e1bfd8",
           "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits."
         },
         {
@@ -21934,7 +21656,7 @@
         },
         {
           "path": "docs/data/roadmap-accepted-review.json",
-          "sha256": "5372d08e84255d78d3b31cf1632245c2aea46e5f68bd3a3b48c1cea653c757e2",
+          "sha256": "8ae6219c3505c96e137d82d20a4dda3b8fa78a94c7fd59b372c0e11eb9d416d9",
           "scope": "Accepted-stage roadmap source review; current evidence and limitations are recorded in docs/data/roadmap-accepted-review.json."
         },
         {
@@ -22056,7 +21778,7 @@
         },
         {
           "path": "docs/source/design-contract.json",
-          "sha256": "0b9e62c023943e409315a04be2cbfd43ad5bc01f6c9a2e8c6672fc651de6439d",
+          "sha256": "030d0a783f4d165519c6320cc04c181fe4d653106be5747be9a70795b8aa84dc",
           "scope": "Authored/shared documentation source review. Subsequent project-story/navigation changes reviewed within docs/data/project-story-review.json scope. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
         },
         {
@@ -22161,7 +21883,7 @@
         },
         {
           "path": "docs/data/writing-guide-inventory.json",
-          "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+          "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
           "scope": "Authored/shared documentation source review."
         },
         {
@@ -22491,7 +22213,7 @@
         },
         {
           "path": "docs/data/hero-layout-review.json",
-          "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+          "sha256": "e0dc0a3baf3342232ff625fe4d1b890fbd89a066d387ddbace0318378faa1a48",
           "scope": "Corrective shared hero layout and its explicitly bounded source/verification record."
         },
         {
@@ -22556,7 +22278,7 @@
         },
         {
           "path": "docs/source/community/maintain-roadmap.html.md.erb",
-          "sha256": "a9b643caad2f7474fd6f564058c02d079bc1023281e751f6d183e3a014af2036",
+          "sha256": "c9fd0848770bef1fce6af3b800f8926fd7f4f30a301dedc2e78a63b8c948e93f",
           "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
         },
         {
@@ -22596,7 +22318,7 @@
         },
         {
           "path": "docs/data/roadmap-review.json",
-          "sha256": "4d46560b8ad2178a04ef7b7901b623c283b809e8c3744959f629b2c63df86aa6",
+          "sha256": "fbdfc874d57ac37c9c1ca1ddd1186e9e1edacc4a7d6b33a07de6569940e1bfd8",
           "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits."
         },
         {
@@ -22606,7 +22328,7 @@
         },
         {
           "path": "docs/data/roadmap-accepted-review.json",
-          "sha256": "5372d08e84255d78d3b31cf1632245c2aea46e5f68bd3a3b48c1cea653c757e2",
+          "sha256": "8ae6219c3505c96e137d82d20a4dda3b8fa78a94c7fd59b372c0e11eb9d416d9",
           "scope": "Accepted-stage roadmap source review; current evidence and limitations are recorded in docs/data/roadmap-accepted-review.json."
         },
         {
