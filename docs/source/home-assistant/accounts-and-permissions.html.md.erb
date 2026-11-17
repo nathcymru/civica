@@ -1,6 +1,6 @@
 ---
 title: Accounts, permissions and shared settings
-description: Make setting scope and authorisation limits clear without inventing new account roles.
+description: Say whose experience a setting changes and what the person is allowed to do, without inventing account roles.
 section: patterns
 group: "Home Assistant: controls"
 status: reference
@@ -8,7 +8,7 @@ gap_id: HA-GAP-013
 contract_id: HA-CTRL-013
 source_url: https://www.home-assistant.io/docs/configuration/user-configuration/
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -22,47 +22,67 @@ updates:
     description: "Removed an assumed answer from the new shared-display policy question."
   - date: "2026-11-11"
     description: "Added accounts, permissions and shared settings contract, domain-specific acceptance checks and synthetic reference examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, separate a rejected, pending and saved change and move the outside sources to the section index."
+ai_instructions: "Apply when a control changes a setting that could belong to an account, a browser, a dashboard or the whole installation. Say the scope beside the control before submission, keep native roles, authentication and permission checks, and never collect credentials or label a rejected or unconfirmed change as saved. Rules WG-002, WG-034, WG-051, WG-052, WG-061."
+ai_related:
+  - path: "/patterns/settings.html"
+    title: "Settings and preferences"
+    relationship: "Owns the personal-preference pattern that this page gives a scope to."
+  - path: "/home-assistant/onboarding-and-sign-in.html"
+    title: "Onboarding, integration setup and sign-in"
+    relationship: "Owns the native sign-in and setup flows."
+  - path: "/home-assistant/presence-and-privacy.html"
+    title: "Presence, people and shared-screen privacy"
+    relationship: "Owns person entities and what a shared screen may show."
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns the request, pending, rejected and confirmed states."
 ---
 
 # Accounts, permissions and shared settings
 
-Before changing a preference, a person needs to know whose experience changes and whether they have permission. Preserve Home Assistant’s owner, administrator and other user roles; civica is an appearance layer, not a new authorisation system.
+Say whose experience a setting changes before the person changes it, and show whether they are allowed to. Keep Home Assistant's own owner, administrator and other user roles. civica changes appearance. It is not an authorisation system.
 
-**HA-CTRL-013 — reference design specification.** This specifies the local design coverage requested by HA-GAP-013 for an existing Home Assistant capability. The examples do not install a native adapter, connect to a backend or operate equipment.
+This page is contract HA-CTRL-013. Its examples are simulated. They do not connect to Home Assistant or change a setting.
 
 <h2 id="ha-ctrl-013-capabilities">Task and capability contract</h2>
 
-| Scope | Required explanation |
+Put the scope next to the control. Check what the installed version actually does before you write it.
+
+| Scope | What to explain |
 | --- | --- |
-| Account | Name the signed-in account's preference and verify whether it follows that account across clients. |
-| Browser or mobile app | Explain the current-client scope and any loss on sign-out or local-data removal. |
-| Dashboard | State which saved dashboard changes and who can view it under native rules. Visibility is not an entity permission boundary. |
-| Installation | Identify the system-wide effect, required native role and any consequential dependencies. |
-| Authentication | Preserve native password, multi-factor authentication, session and token management; never collect credentials in a theme control. |
+| Account | Name the signed-in account's preference. Check whether it follows that account to other browsers and apps. |
+| Browser or mobile app | Say it applies to this client only, and what is lost on sign-out or when local data is removed. |
+| Dashboard | Say which saved dashboard changes and who can view it under native rules. Hiding a dashboard does not restrict access to an entity. |
+| Installation | Name the system-wide effect, the native role needed and anything that depends on it. |
+| Authentication | Keep the native password, multi-factor authentication, session and token management. Never collect credentials in a theme control. |
 
 <h2 id="ha-ctrl-013-states">States, pending work and failure</h2>
 
-Distinguish a permitted edit, a pending save, a rejected request and a lost session. An enabled button is not proof that a backend operation is permitted. If permissions change while a form is open, handle the native rejection without announcing a saved result or revealing restricted data.
+Keep a permitted edit, a pending save, a rejected request and a lost session apart. An enabled button does not prove the change is allowed. If permissions change while a form is open, show Home Assistant's rejection. Do not say the change was saved and do not reveal restricted data.
 
-A user account and a person entity have different purposes. Changing a display name, changing a login identifier, revoking a session and removing a tracked person are separate operations. Do not invent granular “guest room-only” permissions because a dashboard hides other cards.
+A user account and a person entity do different jobs. Changing a display name, changing a login, revoking a session and removing a tracked person are separate operations. Do not invent narrower permissions, such as “guest, one room only”, because a dashboard hides other cards.
 
-For shared devices, explain whether a change affects this browser or a reusable account. Do not make “shared” imply that the account has reduced backend access. A local-only login restriction concerns where authentication is permitted; it is not a room or device permission model.
+On a shared device, say whether a change affects this browser or a reusable account. A “shared” label does not mean the account has less access in the backend. A restriction on where a person may sign in is not a room or device permission.
 
 <h2 id="ha-ctrl-013-content">Content and interpretation</h2>
 
-Put scope near the control before submission: “For this browser” or “For your account”, based on the actual implementation. Refer to native settings labels in the current interface language. Never show access tokens, passwords or recovery material in examples, screenshots or copyable snippets. Keep an authorisation error factual and avoid promising that a different theme can fix it.
+Put the scope before submission, for example “For this browser” or “For your account”, whichever the implementation really does. Use the settings labels Home Assistant shows in the current language.
+
+Do not show an access token, password or recovery code in an example, screenshot or copyable snippet. State an authorisation error as a fact. Do not suggest that a different theme will fix it.
 
 <h2 id="ha-ctrl-013-accessibility">Accessibility and interaction</h2>
 
-Keep permission explanations readable even when an action is unavailable. Do not use disabled styling as the only account-status indicator. Native authentication inputs retain password-manager, keyboard and assistive-technology behaviour. An expired session must lead to the native sign-in flow without a keyboard trap or hidden focused form.
+Keep the permission explanation readable when an action is unavailable. Do not rely on disabled styling alone to show the account's status. Native sign-in fields keep their password-manager, keyboard and assistive-technology behaviour. An expired session must lead to the native sign-in without a keyboard trap or a hidden focused form.
 
 <h2 id="ha-ctrl-013-integration">Native integration boundary</h2>
 
-Use native account/profile and authentication flows. The current documentation separates native profile preferences from client-only settings; verify the installed version and the civica companion's native event binding before making persistence claims. The examples are scope-review specimens, not a user-management implementation. Backend enforcement remains authoritative even when someone directly invokes an action or opens a hidden route.
+Use the native profile and authentication flows. Home Assistant separates profile preferences from settings kept only in the browser. Check the installed version, and how the civica companion stores each setting, before you claim a setting persists. These examples only review scope. They are not a user-management tool. Home Assistant stays the authority even if someone calls an action directly or opens a hidden route.
 
 <h2 id="ha-ctrl-013-examples">Reference examples</h2>
 
-These complete, isolated HTML specimens use synthetic data. Buttons and forms only demonstrate local feedback or draft validation. Static state examples are labelled as such; no action reaches a household.
+These examples use invented data. Buttons and forms show local feedback only. No action reaches a household.
 
 <%= example('ha-account-scope') %>
 
@@ -72,20 +92,13 @@ These complete, isolated HTML specimens use synthetic data. Buttons and forms on
 
 <h2 id="ha-ctrl-013-acceptance">Acceptance and evidence</h2>
 
-1. Review owner, administrator and non-administrator views with permitted test accounts. Verify rejected actions at the backend independently of visibility.
-2. Change an account preference and a client-only preference in two clients; record their actual persistence and sign-out behaviour.
-3. Expire a session and revoke a permission while an edit is open. No rejected or unconfirmed change may be labelled saved.
-4. Check keyboard access, private-field handling and shared-display scope. Confirm no token, secret or personal location appears in public evidence.
+1. Review the owner, administrator and non-administrator views with permitted test accounts. Check that Home Assistant rejects a forbidden action whether or not the control is visible.
+2. Change an account preference and a browser-only preference in two clients. Record how each persists and what sign-out does.
+3. Expire a session and remove a permission while an edit is open. No rejected or unconfirmed change may be labelled saved.
+4. Check keyboard access, private fields and the scope shown on a shared display. Keep tokens, secrets and personal locations out of public evidence.
 
-Record the integration/frontend version, browser, fixture or device, input state, expected result, observed result and evidence location. Source review and documentation checks are not live-device verification. Record unresolved native limitations explicitly; do not turn this checklist into an accessibility guarantee.
+Record the Home Assistant version, the browser, the fixture or device, the starting state, the expected and observed results, and where the evidence is kept. A documentation check is not a live-device test.
 
-<h2 id="ha-ctrl-013-sources">Sources and governing rules</h2>
+For personal preferences see [Settings and preferences](../patterns/settings.html). For rejected requests see [Action requests and results](action-results.html).
 
-Primary sources reviewed on 11 November 2026. Current documentation may describe a newer frontend than an installed system; verify the actual controls before reproducing a route.
-
-- [People and user configuration](https://www.home-assistant.io/docs/configuration/user-configuration/)
-- [Authentication](https://www.home-assistant.io/docs/authentication/)
-
-Applicable frozen rules: [BG-ILL-09](../styles/illustration.html#bg-ill-09), [WG-002](../content/writing-guidelines/meet-household-needs.html#wg-002), [WG-034](../content/writing-guidelines/states-and-errors.html#wg-034), [WG-051](../content/writing-guidelines/clear-structure.html#wg-051), [WG-061](../content/writing-guidelines/clear-structure.html#wg-061). The shared [design styles](../styles/index.html) and [writing guide](../content/index.html) also govern any new implementation.
-
-Review owner: civica maintainers. Recheck after native capability, source, renderer or interaction changes.
+Home Assistant references: [People and user configuration](https://www.home-assistant.io/docs/configuration/user-configuration/) and [Authentication](https://www.home-assistant.io/docs/authentication/). They leave this site.

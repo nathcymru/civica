@@ -8,7 +8,7 @@ gap_id: "HA-GAP-003"
 contract_id: "HA-CTRL-003"
 source_url: "https://github.com/home-assistant/frontend/blob/b1164739c3a853a28ba1c425415e96a17eb6286e/src/components/ha-control-slider.ts"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-12"
 review_in: "3 months"
 updates:
@@ -20,47 +20,63 @@ updates:
     description: "Linked the canonical local slider component and its precise-entry, failure and unavailable examples; native integration scope remains unchanged."
   - date: "2026-11-11"
     description: "Added continuous controls and alternatives contract, domain-specific acceptance checks and synthetic reference examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, make ownership of the slider component clear and move shared checks to the native task page."
+ai_instructions: "Apply when a value is set with a slider, stepper or number field. Keep the native control, show the unit and accessible value, and offer a visible or exact-entry route to any task that depends on a gesture. Keep a draft apart from the reported value and never show a minimum for an unknown value. Rules WG-030, WG-034, WG-063, WG-084."
+ai_related:
+  - path: "/components/sliders.html"
+    title: "Sliders and precise values"
+    relationship: "Owns the slider, exact-entry and step-button appearance and examples."
+  - path: "/home-assistant/helpers-and-scalar-inputs.html"
+    title: "Helpers and scalar input controls"
+    relationship: "Owns helper values and scalar inputs, kept apart from reported device values."
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns the pending, confirmed and rejected request states."
+  - path: "/home-assistant/native-task-accessibility.html"
+    title: "Native task accessibility and evidence"
+    relationship: "Owns how to record what was actually tested."
 ---
 
 # Continuous controls and alternatives
 
-Use continuous controls when a person needs to adjust a meaningful range. Preserve the native control when it already supplies the right keyboard, touch and accessible-value behaviour. A decorative dial is not a substitute for a usable input.
+Use a continuous control when someone needs to adjust a meaningful range. Keep the native control when it already gives the right keyboard, touch and accessible-value behaviour. A decorative dial is not a substitute for a usable input.
 
-The [Sliders and precise values component](../components/sliders.html) owns the reusable range, exact-entry and step-button appearance, with five complete specimens. This pattern owns the native capability, commit and reconciliation contract. The slider is a local civica extension; the [UK systems review](../community/uk-design-system-review.html) records the official guidance and catalogue evidence.
+[Sliders and precise values](../components/sliders.html) owns the reusable range, exact-entry and step-button appearance, with five complete examples. This page owns the native capability, commit and reconciliation rules. The slider is a civica extension. The [UK design systems and Home Assistant controls](../community/uk-design-system-review.html) page records the guidance behind it.
 
-**HA-CTRL-003 — reference design specification.** This specifies the local design coverage requested by HA-GAP-003 for an existing Home Assistant capability. The examples do not install a native adapter, connect to a backend or operate equipment.
+These examples are simulated with invented data. They do not control a home. This page covers the design contract (HA-CTRL-003, from gap HA-GAP-003). It does not add a native adapter.
 
 <h2 id="ha-ctrl-003-capabilities">Task and capability contract</h2>
 
-| Domain input | Contract |
+| Domain input | Rule |
 | --- | --- |
-| Minimum, maximum and step | Use the integration's range and increments; allow decimal steps. Do not reuse a brightness percentage range for temperature or position. |
-| Current value versus draft | Label the draft separately until the native contract confirms the change. |
-| Unit and format | Give a visible unit and a meaningful accessible value, such as “19.5 degrees Celsius”, not an unlabelled number. |
-| Commit behaviour | Decide from the native component whether changes are sent while dragging or on commit. Do not add a second subscription that duplicates requests. |
-| Essential hold/double-tap action | Provide an ordinary visible control or native details route to the same task. |
+| Minimum, maximum and step | Use the integration’s range and increments, including decimal steps. Do not reuse a brightness percentage range for temperature or position. |
+| Current value and draft | Label the draft separately until the native contract confirms the change. |
+| Unit and format | Show a visible unit and an accessible value with meaning, such as “19.5 degrees Celsius”, not a bare number. |
+| Commit behaviour | Follow the native component: it either sends changes while dragging or on commit. Do not add a second subscription that duplicates requests. |
+| Essential hold or double-tap action | Provide an ordinary visible control, or a route to the native details, for the same task. |
 
 <h2 id="ha-ctrl-003-states">States, pending work and failure</h2>
 
-Retain valid minimum and maximum values; do not use a minimum to stand for unknown. When a value is missing, replace the active numeric interaction with an explicit explanation and retain the device name. If the integration changes its supported range while a person edits, preserve the draft for review and explain the new constraint rather than silently sending a clamped value.
+Keep valid minimum and maximum values, and never use a minimum to mean unknown. When a value is missing, replace the numeric control with an explanation and keep the device name. If the integration changes its supported range during an edit, keep the draft for review and explain the new limit. Do not silently send a clamped value.
 
-For rapidly updating controls, distinguish a local draft from incoming reported values. Do not fight the pointer by resetting the thumb on every unrelated update. A failed commit must show the latest reported value and the unsent or unconfirmed draft honestly. A physical switch changing the value during an edit requires reconciliation, not a claim that the local draft won.
+On a control that updates often, keep the local draft apart from incoming reported values. Do not reset the thumb on every unrelated update, which fights the pointer. If a commit fails, show the latest reported value and say the draft was not sent or not confirmed. If a physical switch changes the value during an edit, reconcile the two. Do not claim the local draft won.
 
 <h2 id="ha-ctrl-003-content">Content and interpretation</h2>
 
-Write “Brightness”, “Target temperature” or “Volume” with the device context. Use on/off words alongside switch state. Provide a number-entry or step-control route when precision matters and the integration supports it. Do not expose several equivalent inputs that silently disagree. The local percentage example updates only its draft; it is not a live dimmer.
+Write “Brightness”, “Target temperature” or “Volume” with the device name. Show on and off in words next to a switch state. Offer number entry or step buttons when precision matters and the integration supports it. Do not show several equivalent inputs that can disagree. The percentage example changes only its local draft. It is not a live dimmer.
 
 <h2 id="ha-ctrl-003-accessibility">Accessibility and interaction</h2>
 
-Check arrow, Home and End behaviour against the chosen native control; do not promise shortcuts that the actual component lacks. Keep visible focus, large touch targets and a label outside a moving thumb. Preserve a slider's semantic bounds and accessible value. At 320px, 200% text and forced colours, the label and current value must remain clear. Respect circular or pill geometry where it conveys the control; strong focus and input boundaries remain distinct from quiet card dividers.
+Check arrow, Home and End behaviour against the native control you chose, and do not promise shortcuts it lacks. Keep a visible focus indicator, large touch targets and a label outside the moving thumb. Keep the slider’s semantic bounds and accessible value. At 320px, 200% text and forced colours, the label and current value must stay clear. Keep focus and input boundaries stronger than quiet card dividers.
 
 <h2 id="ha-ctrl-003-integration">Native integration boundary</h2>
 
-The native slider and card-action contracts are the starting point. The source review recorded `ha-control-slider` at frontend commit `b1164739c3a853a28ba1c425415e96a17eb6286e`; that review does not establish compatibility for every installed frontend. A new private adapter needs its own versioned tests. The HTML form examples demonstrate labels and constraints, not replacement Home Assistant components.
+The native slider and card-action contracts are the starting point. The source review recorded `ha-control-slider` at frontend commit `b1164739c3a853a28ba1c425415e96a17eb6286e`. That does not establish compatibility with every installed frontend. A new private adapter needs its own versioned tests. The HTML examples show labels and constraints. They do not replace Home Assistant components.
 
 <h2 id="ha-ctrl-003-examples">Reference examples</h2>
 
-These complete, isolated HTML specimens use synthetic data. Buttons and forms only demonstrate local feedback or draft validation. Static state examples are labelled as such; no action reaches a household.
+Buttons and forms in these examples show local feedback or draft validation only. No action reaches a household.
 
 <%= example('ha-control-range') %>
 
@@ -70,20 +86,18 @@ These complete, isolated HTML specimens use synthetic data. Buttons and forms on
 
 <h2 id="ha-ctrl-003-acceptance">Acceptance and evidence</h2>
 
-1. Test a 0.5-unit step, a negative range and exact endpoints. Verify the accessible value and native formatted display agree.
-2. Use only a keyboard to adjust and reach any essential action configured for hold or double tap. Test touch without relying on hover.
-3. Load unknown and unavailable values; neither may announce a numeric minimum as a reading.
-4. Change capabilities and reported values during an edit. Check duplicate request prevention, error recovery, zoom and theme removal without overwriting native control behaviour.
+1. Test a 0.5 step, a negative range and exact endpoints. Check that the accessible value and the native formatted display agree.
+2. Using only the keyboard, adjust the value and reach any essential action set for hold or double tap. Test touch without relying on hover.
+3. Load unknown and unavailable values. Neither may announce a numeric minimum as a reading.
+4. Change capabilities and reported values during an edit. Check duplicate-request prevention, error recovery, zoom, and that removing the theme leaves the native control working.
 
-Record the integration/frontend version, browser, fixture or device, input state, expected result, observed result and evidence location. Source review and documentation checks are not live-device verification. Record unresolved native limitations explicitly; do not turn this checklist into an accessibility guarantee.
+Record what was tested using [Native task accessibility and evidence](native-task-accessibility.html). A source review or a local example is not a live-device check.
 
-<h2 id="ha-ctrl-003-sources">Sources and governing rules</h2>
+<h2 id="ha-ctrl-003-sources">Sources</h2>
 
-Primary sources reviewed on 11 November 2026. Current documentation may describe a newer frontend than an installed system; verify the actual controls before reproducing a route.
+Reviewed on 11 November 2026. Current documentation may describe a newer frontend than the one installed, so check the controls you actually have.
 
 - [Native slider source](https://github.com/home-assistant/frontend/blob/b1164739c3a853a28ba1c425415e96a17eb6286e/src/components/ha-control-slider.ts)
 - [Dashboard actions](https://www.home-assistant.io/dashboards/actions/)
 
-Applicable frozen rules: [BG-COL-04](../styles/brand-colour.html#bg-col-04), [BG-TYP-04](../styles/brand-typography.html#bg-typ-04), [BG-TYP-05](../styles/brand-typography.html#bg-typ-05), [WG-030](../content/writing-guidelines/clear-titles.html#wg-030), [WG-034](../content/writing-guidelines/states-and-errors.html#wg-034), [WG-063](../content/writing-guidelines/clear-language.html#wg-063), [WG-084](../content/formatting-content/text-formatting.html#wg-084). The shared [design styles](../styles/index.html) and [writing guide](../content/index.html) also govern any new implementation.
-
-Review owner: civica maintainers. Recheck after native capability, source, renderer or interaction changes.
+Wording follows [Name the action and its object](../content/writing-guidelines/clear-titles.html#wg-030), [Explain what the control can and cannot do](../content/writing-guidelines/states-and-errors.html#wg-034), [Do not assume one way to see, hear or act](../content/writing-guidelines/clear-language.html#wg-063), [Make results reach assistive technology](../content/formatting-content/text-formatting.html#wg-084) and the shared [design styles](../styles/index.html).

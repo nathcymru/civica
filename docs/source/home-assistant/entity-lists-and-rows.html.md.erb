@@ -6,7 +6,7 @@ group: "Home Assistant: interface coverage"
 status: reference
 source_url: https://www.home-assistant.io/dashboards/entities/
 published_on: 2026-11-12
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-12
 review_in: 3 months
 updates:
@@ -16,64 +16,78 @@ updates:
     description: "Linked the shared design styles without requiring the project identity inside a household interface."
   - date: "2026-11-12"
     description: "Added the entity lists, readings and row actions contract, native registry mapping and complete synthetic examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, correct the More info control count and remove boilerplate."
+ai_instructions: "Apply when designing a list or card that mixes readings, attributes and row actions. Let the entity domain and the row configuration decide the control, never the icon or the words. Say what each action does, show eligible and rejected members of a group action separately, and keep zero, missing and unavailable apart. Rules WG-031, WG-032, WG-033, WG-034, WG-038, WG-073."
+ai_related:
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns the rules for zero, unknown, unavailable and assumed readings."
+  - path: "/home-assistant/history-and-statistics.html"
+    title: "History, activity and statistics"
+    relationship: "Owns recorded values, event records and statistics over a period."
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns the wording and partial-result rules for a group action."
+  - path: "/components/summary-list.html"
+    title: "Summary list"
+    relationship: "Owns the visual pattern for a list of names and values."
 ---
 
 # Entity lists, readings and row actions
 
-A household list often combines temperatures, lights, events and helper values. Keep the compact comparison useful without making every row behave like a switch. The native entity domain and explicit row configuration determine the control, not the icon or the displayed words.
+Let the entity domain and the row configuration decide the control, not the icon or the words on screen. A household list often mixes temperatures, lights, events and helper values. Keep the comparison compact, and do not make every row behave like a switch.
+
+The examples on this page are simulated. They do not call Home Assistant.
 
 <h2 id="readings">Entity, Glance, Sensor and Statistic</h2>
 
-Entity shows one reported state; Glance compares several concise states; Entities allows mixed rows; Sensor can add history; Statistic presents an aggregation for a stated period. A current sensor reading and a statistical mean are different quantities even when the numbers match. History graph, Statistics graph and Activity have different time/data contracts; use [history and statistics](history-and-statistics.html) rather than assigning them one generic “recent” label.
+Pick the card for the question. Entity shows one reported state. Glance compares several short states. Entities allows mixed rows. Sensor can add a history graph. Statistic gives a summary for a stated period. A current reading and a mean can show the same number and still be different quantities, so name which one each row is. History graph, Statistics graph and Activity work to different time and data rules. Use [History, activity and statistics](history-and-statistics.html) instead of one general “recent” label.
 
-Use the native formatted state and unit. Keep source names, including duplicate or long names, with area or ID context where needed. Missing, unavailable, assumed, null and zero follow [entity state](entity-state.html#ha-ctrl-001-states). State colour supplements text. Do not use row height or a right-aligned value to hide an uncertainty label.
+Use the native formatted state and unit. Keep source names, including long or duplicate ones, and add the area or ID when people need it to tell them apart. Show missing, unavailable, assumed, `null` and zero as set out in [Entity state, confidence and freshness](entity-state.html#ha-ctrl-001-states). Colour supports the text and does not replace it. Do not use row height or a right-aligned value to hide an uncertainty label.
 
 <%= example('ha-coverage-rows-readings') %>
 
 <h2 id="domain-rows">Domain rows and grouped actions</h2>
 
-The pinned row dispatcher selects specific controls for climate, covers, dates/times, fans, humidifiers, locks, media, numbers, choices, text, timers, updates and valves. Scene and script rows invoke operations; their activation is not a persistent on/off state. A sensor/event row reports information. A simple-entity row deliberately avoids the domain-specific control. An unrecognised domain falls back to a simple row; do not guess a command.
+Say what each row does. The pinned Home Assistant row dispatcher gives climate, cover, date and time, fan, humidifier, lock, media player, number, select, text, timer, update and valve entities their own controls. Light, switch, remote, siren and vacuum entities use a toggle row. Scene and script rows run an operation, and running it does not leave a lasting on or off state. A sensor or event row only reports. A simple-entity row deliberately avoids the domain control. An unrecognised domain falls back to a simple row, so do not guess a command.
 
-Toggle rows can represent different semantics: enabling an automation changes whether it runs, while turning on a light requests a device state. Describe the actual action. Preserve native special cases such as water-heater rows using climate presentation in this release; do not rewrite the entity domain to match its renderer.
+Toggle rows can mean different things. Turning on an automation changes whether it runs. Turning on a light requests a device state. Describe the actual action. Keep native special cases, such as a water heater row using the climate presentation in this release, and do not rewrite the entity domain to match its renderer.
 
-A header toggle or group action must identify the eligible set. Exclude unsupported targets by the native rules and show unavailable or rejected members separately. A partial result must not claim the whole list changed. See [action results](action-results.html#ha-ctrl-002-states).
+A header toggle or group action must name the entities it can act on. Leave out unsupported targets by the native rules, and list unavailable or rejected members separately. A partial result must never claim the whole list changed. See [Action requests and results](action-results.html#ha-ctrl-002-states).
 
 <%= example('ha-coverage-rows-actions') %>
 
 <h2 id="special-rows">Attributes and special rows</h2>
 
-| Row kind | Meaning and required context |
+| Row kind | What it means and what to show |
 | --- | --- |
-| Attribute | Name the parent entity and attribute quantity. An absent attribute is not numeric zero. |
-| Button / buttons | Give each action its own target-aware name. Do not stretch a row-wide click over nested controls. |
-| Conditional | Retain native condition evaluation and a separate way to reach essential information. |
-| Divider / section | Use a quiet structural separator or real heading; no control semantics. |
+| Attribute | Name the parent entity and the attribute quantity. An absent attribute is not a numeric zero. |
+| Button or buttons | Give each action its own name that includes its target. Do not stretch a row-wide click over nested controls. |
+| Conditional | Keep the native condition check and a separate way to reach essential information. |
+| Divider or section | A quiet separator or a real heading. It has no control behaviour. |
 | Weblink | Name the external destination. Opening a link is not sending a device command. |
-| Cast | Identify the actual playback target and supported cast behaviour; treat it as an action, not navigation. |
-| Text and legacy call-service | Retain compatibility when reading saved configuration. New examples use current action terminology; do not silently rewrite stored IDs. |
+| Cast | Name the real playback target and what casting supports. Treat it as an action, not navigation. |
+| Text and legacy call-service | Keep reading saved configuration that uses them. In new examples, use the current action wording and do not silently rewrite stored IDs. |
 
-Secondary information must state what it measures: last changed is not observation time; area is not device identity. Attribute units come from their contract, not automatically from the parent state's unit. Link and value text must wrap without covering actions.
+Say what secondary information measures. Last changed is not the time of observation, and an area does not identify a device. An attribute’s unit comes from the attribute itself, not automatically from the parent state’s unit. Let link and value text wrap without covering an action.
 
 <%= example('ha-coverage-rows-attributes') %>
 
 <h2 id="more-info">More info and fallback presentation</h2>
 
-Keep the native More info route discoverable by keyboard and a visible action where the row itself has another purpose. A history plot, attributes, controls and entity settings have separate roles. A domain-specific dialog may be unavailable while basic identity or diagnostics remains useful. Preserve the native read-only fallback, disabled/restored messages and permission checks.
+Keep the native More info route reachable by keyboard, and add a visible action where the row itself does something else. A history plot, attributes, controls and entity settings each have their own job. A domain dialog may be unavailable while the name and diagnostics remain useful. Keep the native read-only fallback, the disabled and restored messages and the permission checks.
 
-The inventory records all 35 dedicated More info control files plus the dispatcher fallback. This does not promise a unique dialog for every platform or imply that every entity has history. Never fabricate a custom control because the source registry falls back to the default presentation.
+The coverage inventory records 35 More info control source files, including the default control and the legacy configurator. That does not promise a separate dialog for every platform, and it does not mean every entity has history. Never invent a custom control because the source falls back to the default presentation.
 
 <h2 id="acceptance">Acceptance checks</h2>
 
-Use a mixed list containing sensor zero, an absent attribute, a scene, an unavailable light and a long media title. Verify each action against its domain. Test a header action with a rejected member, a simple read-only override, no history, and an unknown domain. Read the list with a screen reader: each value must stay associated with its name, unit and action. Confirm sorting does not move keyboard focus to another entity.
+Use a mixed list with a sensor reading zero, an absent attribute, a scene, an unavailable light and a long media title. Check each action against its domain. Test a header action with a rejected member, a read-only override, no history and an unknown domain. Read the list with a screen reader: each value must stay linked to its name, unit and action. Confirm that sorting does not move keyboard focus to another entity.
 
-Sources: [Entities card](https://www.home-assistant.io/dashboards/entities/), [Statistic card](https://www.home-assistant.io/dashboards/statistic/), [pinned row dispatcher](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/panels/lovelace/create-element/create-row-element.ts), and [pinned More info composition](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/dialogs/more-info/ha-more-info-info.ts).
+For the native definitions, see the Home Assistant documentation for the [Entities card](https://www.home-assistant.io/dashboards/entities/) and [Statistic card](https://www.home-assistant.io/dashboards/statistic/), and the pinned frontend source for the [row dispatcher](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/panels/lovelace/create-element/create-row-element.ts) and [More info composition](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/src/dialogs/more-info/ha-more-info-info.ts).
 
 <h2 id="evidence">Implementation and evidence boundary</h2>
 
-This is a reference design specification, not a replacement for native Home Assistant components. The examples use invented records and local draft feedback; they do not call Home Assistant. Mapping a registry entry here establishes a design owner, not proof that every integration, browser or device has been tested. Keep native state formatting, translations, permissions, capabilities and event handling. Theme tokens can change presentation; they cannot supply missing application behaviour.
+This is a design reference, not a replacement for native Home Assistant components. The examples use invented records and local feedback. Mapping an entry here names a design owner. It does not show that every integration, browser or device has been tested. Keep native state formatting, translations, permissions, capabilities and event handling. Theme tokens change presentation, not behaviour.
 
-The [interface coverage inventory](../reference/ha-interface-coverage.json) records the finite source baseline and exact mappings. Recheck native behaviour after frontend changes. Use the [native task acceptance process](native-task-accessibility.html) to record what was actually tested.
-
-Apply the [design styles](../styles/index.html), [writing guide](../content/index.html), [layout](../styles/layout.html), [colour roles](../styles/colour.html) and [typography](../styles/typography.html). Structural dividers use the quiet border token; editable boundaries and focus indicators remain distinct. Preserve 16px native control text, visible labels, keyboard access and readable names at 320px. A compact arrangement must not remove a capability explanation or essential recovery route.
-
-Review owner: civica maintainers. Source baseline: Home Assistant Core 2026.11.1 and frontend 20261028.5; primary documentation reviewed on 12 November 2026.
+The [interface coverage inventory](../reference/ha-interface-coverage.json) records the source baseline and every mapping: Home Assistant Core 2026.11.1 and frontend 20261028.5. Check native behaviour again after a frontend change, and record what was actually tested using [Native task accessibility and evidence](native-task-accessibility.html). Keep native controls at 16px text with visible labels, keyboard access and readable names at 320px, and do not remove a capability explanation or recovery route to make a row compact.

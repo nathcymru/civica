@@ -8,7 +8,7 @@ gap_id: HA-GAP-015
 contract_id: HA-CTRL-015
 source_url: https://www.home-assistant.io/integrations/camera/
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -20,47 +20,63 @@ updates:
     description: "Corrected the original camera-diagram provenance to match its actual canvas and recorded its checksum; aligned authored permission wording."
   - date: "2026-11-11"
     description: "Added cameras, streams and snapshots contract, domain-specific acceptance checks and synthetic reference examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, separate live, snapshot and reported states, and move shared checks to the native task page."
+ai_instructions: "Apply when showing a camera image or stream. Say whether it is live, loading, failed or a snapshot, and show a capture time only when one is supplied. Do not claim recording, privacy or an all-clear from a stream or a still. Keep native media controls and authorisation. Rules WG-011, WG-033, WG-034, WG-082."
+ai_related:
+  - path: "/home-assistant/pictures-and-embedded-content.html"
+    title: "Pictures, rich content and embedded pages"
+    relationship: "Owns alternative text and embedded-content rules for pictures."
+  - path: "/home-assistant/presence-and-privacy.html"
+    title: "Presence, people and shared-screen privacy"
+    relationship: "Owns the shared-screen and presence privacy rules."
+  - path: "/home-assistant/native-task-accessibility.html"
+    title: "Native task accessibility and evidence"
+    relationship: "Owns how to record what was actually tested."
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns the wording for unknown, unavailable and stale states."
 ---
 
 # Cameras, streams and snapshots
 
-A camera surface needs evidence about what is being displayed. The viewer’s connection, a still image’s capture time and the camera entity’s reported state are related but different. Preserve useful imagery without recolouring, obscuring or exaggerating it.
+Say what the person is looking at: a live stream, a snapshot or nothing yet. The viewer’s connection, a still image’s capture time and the camera entity’s reported state are three separate facts. Show each only from evidence, and keep the picture as the camera supplied it, without recolouring or obscuring it.
 
-**HA-CTRL-015 — reference design specification.** This specifies the local design coverage requested by HA-GAP-015 for an existing Home Assistant capability. The examples do not install a native adapter, connect to a backend or operate equipment.
+These examples are simulated with invented data. They do not open a camera or control a home. This page covers the design contract (HA-CTRL-015, from gap HA-GAP-015). It does not add a viewer.
 
 <h2 id="ha-ctrl-015-capabilities">Task and capability contract</h2>
 
-| Source capability | Required presentation |
+| Source capability | Show |
 | --- | --- |
-| Still image | Identify it as a snapshot; use a supplied capture time when available. A fetch time is not automatically capture time. |
-| Playable stream | Keep native playback, fullscreen and audio controls where supported. Label loading, connected and failed viewer states from actual evidence. |
-| Recording state | Show only a reported recording state. Seeing a stream does not establish recording, and Idle can mean the integration does not report it. |
-| Privacy or power control | Only expose the actual supported control and explain its scope; closing a viewer does not necessarily stop the camera. |
-| Credentials and image URL | Retain native authorisation and avoid leaking tokens, direct private URLs or household images into public examples. |
+| Still image | Label it a snapshot. Use a supplied capture time. A fetch time is not a capture time. |
+| Playable stream | Keep the native playback, fullscreen and audio controls where supported. Label loading, connected and failed from what the viewer reports. |
+| Recording state | Show only a state the entity reports. Seeing a stream does not show recording, and Idle can mean the integration does not report activity. |
+| Privacy or power control | Offer only a control the camera supports, and say what it affects. Closing a viewer does not necessarily stop the camera. |
+| Credentials and image URL | Keep native authorisation. Keep tokens, private URLs and household images out of public examples. |
 
 <h2 id="ha-ctrl-015-states">States, pending work and failure</h2>
 
-Never leave a Live label over a retained snapshot or stalled image without evidence. If playback stalls, preserve the native error and label any remaining still with its known capture time. If no capture timestamp exists, say that the capture time is not provided; do not invent one from page load.
+Never put a Live label on a retained snapshot or a stalled image. If playback stalls, keep the native error and label any remaining still with its known capture time. If no capture time is supplied, say “Capture time not provided”. Do not use the page load time.
 
-A stream failure, denied permission, unavailable entity and privacy mode are different conditions. Give the supplied reason and a supported recovery route. Retrying playback must not disable privacy mode, start recording or bypass authentication. Closing a modal stops that viewing surface only to the extent the native viewer specifies; it is not a promise that the physical camera stops streaming or recording.
+A stream failure, denied permission, unavailable entity and privacy mode are different conditions. Give the supplied reason and a recovery step that works. Retrying playback must not turn off privacy mode, start recording or bypass sign-in. Closing the viewer ends that viewing surface only as far as the native viewer says. It does not mean the physical camera stops streaming or recording.
 
-Avoid automatic audio or motion that surprises people on shared screens. Do not infer that a doorway is clear or a person is absent from one still image. Keep imagery as evidence rather than using brand filters to make it fit the page.
+Avoid automatic audio or motion on shared screens. One still image cannot show that a doorway is clear or that nobody is there.
 
 <h2 id="ha-ctrl-015-content">Content and interpretation</h2>
 
-Place the camera name and viewing state outside unpredictable imagery, or use a proven contrast surface. Use “Snapshot captured at…” only for a capture timestamp. A decorative placeholder needs no fabricated scene description; essential image content needs an appropriate alternative for the actual task. Do not claim that a generic camera name describes everything happening in a live video.
+Put the camera name and viewing state outside the image, or on a surface with proven contrast. Write “Snapshot captured at…” only for a capture time. A decorative placeholder needs no invented description. If the image carries essential information, give it alternative text for the task ([WG-082](../content/formatting-content/images.html#wg-082)). A camera name does not describe everything in a live video.
 
 <h2 id="ha-ctrl-015-accessibility">Accessibility and interaction</h2>
 
-Keep native media controls keyboard-operable and named. Test fullscreen exit and focus return, audio state and controls over light/dark frames. A viewer needs an accessible camera name and textual state; essential event information may require a separate supported text source. Do not invent live audio description, captions or incident detection. Respect reduced motion and provide a way to stop non-essential playback where the native viewer supports it; record remaining limits.
+Keep native media controls named and keyboard-operable. Check that leaving fullscreen returns focus, and that controls stay visible over light and dark frames. Give the viewer an accessible camera name and a text state. If the task needs event information, point to a separate supported text source. Do not invent live audio description, captions or incident detection. Respect reduced motion and offer a way to stop non-essential playback where the native viewer allows it. Record any limit you find.
 
 <h2 id="ha-ctrl-015-integration">Native integration boundary</h2>
 
-Use the native Camera and stream implementation. Camera entity Idle can coexist with a visible feed on integrations that do not report activity. The examples use an original invented diagram and static states; they do not open a real camera or implement a new viewer. Any future camera adapter must preserve authentication, stream lifecycle and controls and must document privacy and accessible-media limitations for the tested integration/browser.
+Use the native Camera and stream implementation. The entity can report Idle while a feed is visible, on integrations that do not report activity. The examples use an invented diagram and static states. A future camera adapter must keep authentication, the stream lifecycle and the native controls. It must also document the privacy and accessible-media limits for the integration and browser it was tested with.
 
 <h2 id="ha-ctrl-015-examples">Reference examples</h2>
 
-These complete, isolated HTML specimens use synthetic data. Buttons and forms only demonstrate local feedback or draft validation. Static state examples are labelled as such; no action reaches a household.
+Buttons and forms in these examples show local feedback only. No action reaches a household.
 
 <%= example('ha-camera-snapshot') %>
 
@@ -70,21 +86,19 @@ These complete, isolated HTML specimens use synthetic data. Buttons and forms on
 
 <h2 id="ha-ctrl-015-acceptance">Acceptance and evidence</h2>
 
-1. Exercise a timestamped snapshot, unknown capture time, loading stream, playable stream, stalled stream and denied access. No stale image may retain an unsupported Live claim.
-2. Compare entity Idle/Streaming/Recording where supplied with the actual viewer state. Do not infer recording solely from a feed or absence from Idle.
-3. Test keyboard playback/fullscreen/exit, focus return, control contrast on varied frames and supported motion/audio controls. Record missing alternatives honestly.
-4. Review shared-display content and public evidence for real faces, addresses, tokens and private URLs. Verify that retry or closing the viewer does not secretly change camera privacy or recording settings.
+1. Test a timestamped snapshot, an unknown capture time, a loading stream, a playable stream, a stalled stream and denied access. No stale image may keep a Live label.
+2. Compare the entity’s Idle, Streaming or Recording state, where reported, with the viewer. Do not infer recording from a feed, or from the state not being Idle.
+3. Test keyboard playback, fullscreen and exit, focus return, control contrast on varied frames, and any motion or audio controls.
+4. Check shared-display content and public evidence for real faces, addresses, tokens and private URLs. Check that retrying or closing the viewer does not change privacy or recording.
 
-Record the integration/frontend version, browser, fixture or device, input state, expected result, observed result and evidence location. Source review and documentation checks are not live-device verification. Record unresolved native limitations explicitly; do not turn this checklist into an accessibility guarantee.
+Record what was tested using [Native task accessibility and evidence](native-task-accessibility.html). A source review or a local example is not a live-device check.
 
-<h2 id="ha-ctrl-015-sources">Sources and governing rules</h2>
+<h2 id="ha-ctrl-015-sources">Sources</h2>
 
-Primary sources reviewed on 11 November 2026. Current documentation may describe a newer frontend than an installed system; verify the actual controls before reproducing a route.
+Reviewed on 11 November 2026. Current documentation may describe a newer frontend than the one installed, so check the controls you actually have.
 
 - [Camera](https://www.home-assistant.io/integrations/camera/)
 - [Picture entity card](https://www.home-assistant.io/dashboards/picture-entity/)
 - [Stream](https://www.home-assistant.io/integrations/stream/)
 
-Applicable frozen rules: [BG-ILL-08](../styles/illustration.html#bg-ill-08), [BG-ILL-09](../styles/illustration.html#bg-ill-09), [WG-011](../content/writing-guidelines/right-tone.html#wg-011), [WG-033](../content/writing-guidelines/states-and-errors.html#wg-033), [WG-061](../content/writing-guidelines/clear-structure.html#wg-061), [WG-082](../content/formatting-content/images.html#wg-082). The shared [design styles](../styles/index.html) and [writing guide](../content/index.html) also govern any new implementation.
-
-Review owner: civica maintainers. Recheck after native capability, source, renderer or interaction changes.
+Wording follows [Keep unavailable, unknown, stale and offline apart](../content/writing-guidelines/states-and-errors.html#wg-033), [Match certainty to evidence](../content/writing-guidelines/right-tone.html#wg-011) and the shared [design styles](../styles/index.html).

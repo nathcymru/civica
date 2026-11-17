@@ -1,60 +1,79 @@
 ---
 title: "Notifications, acknowledgement and alerts"
-description: "Complete design specification for notifications, acknowledgement and alerts, with state contracts, synthetic examples and native acceptance boundaries."
+description: "Name who a message is for, how it was sent and what is known, and keep sending, seeing, dismissing and resolving apart."
 section: patterns
 group: "Home Assistant: flows"
 status: reference
 gap_id: HA-GAP-028
 source_url: https://www.home-assistant.io/integrations/persistent_notification/
 published_on: 2026-11-11
-updated_on: 2026-11-11
+updated_on: "2026-11-17"
 updates:
   - date: 2026-11-11
     description: "Added the dedicated notifications, acknowledgement and alerts specification and three complete synthetic examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, describe the native persistent notification actions accurately and link the shared test record to the native task page."
+ai_instructions: "Apply when a message, alert or acknowledgement is shown or sent. Name the audience and the channel. Say a request was accepted, not that it was delivered or read, unless the integration reports that. Keep sent, shown, dismissed and resolved as separate states, and keep private detail off shared displays. Update an existing message by its notification ID instead of repeating it. Rules WG-032, WG-042, WG-045, WG-046."
+ai_related:
+  - path: "/components/notification-badge.html"
+    title: "Notification badge"
+    relationship: "Owns the count badge that marks items needing attention."
+  - path: "/components/status.html"
+    title: "Status and notifications"
+    relationship: "Owns the shared status labels and how a message is presented."
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns how to word a request that was sent, pending, confirmed or failed."
+  - path: "/home-assistant/presence-and-privacy.html"
+    title: "Presence, people and shared-screen privacy"
+    relationship: "Owns what personal detail to show on a shared screen."
+  - path: "/home-assistant/native-task-accessibility.html"
+    title: "Native task accessibility and evidence"
+    relationship: "Owns how to record what was actually tested."
 ---
 
 # Notifications, acknowledgement and alerts
 
-Name the message’s audience, delivery channel and current evidence. Sending a notification, displaying it, dismissing it and resolving the underlying condition are separate events. Do not infer that someone saw a message from a successful request or a disappearing badge.
+Say who a message is for, which channel carries it and what is actually known. Sending a notification, showing it, dismissing it and fixing the problem it describes are four separate events. Do not decide that someone saw a message because a request succeeded or a badge disappeared.
+
+These examples are local previews with invented household values. They do not send a notification or control a home. Open an example to see it at full width or read its HTML.
 
 ## Scope and native ownership
 
-Native persistent notifications can be created and dismissed in the frontend. Other integrations have their own delivery and action contracts. The civica sidebar badge presents native attention counts; it does not implement delivery, reading receipts or repair resolution. [Official Home Assistant source](https://www.home-assistant.io/integrations/persistent_notification/), reviewed 11 November 2026.
+A persistent notification appears in the Home Assistant frontend and stays until a person dismisses it. The `persistent_notification.create` and `persistent_notification.dismiss` actions add and remove one, and `persistent_notification.dismiss_all` removes all of them. Other integrations have their own delivery and action rules.
 
-This page completes the design specification for **HA-GAP-028**. Its examples are synthetic documentation, not a claim that a new native feature or adapter has been installed. The application integration must meet the task-specific acceptance below.
+The civica sidebar badge restyles the native count and adds the text “N items need attention” for assistive technology. It does not deliver messages, record that anyone read one or resolve a repair.
 
 ## States and content decisions
 
-| Source condition | Required presentation | Boundary |
+| Source condition | Show | Do not |
 | --- | --- | --- |
-| Request sent / accepted | Show the outcome actually returned by the sending integration. | Do not label it Read or Delivered without that evidence. |
-| Frontend message present | Keep a useful route to its details. | Appearance does not establish which person read it. |
-| Acknowledged / dismissed | Name the operation and its scope. | Dismissed does not mean the underlying condition is resolved. |
-| Resolved | Use the actual source condition or explicit workflow outcome. | A zero count alone is not proof of successful repair. |
-| Repeated unchanged condition | Update the existing message where supported. | Do not announce every sensor refresh as a new emergency. |
+| Request sent or accepted | The outcome the sending integration actually returned | Write Read or Delivered without evidence of it |
+| Message shown in the frontend | A route to its details | Say which person read it |
+| Acknowledged or dismissed | What was done and to what | Say the underlying condition is resolved |
+| Resolved | The source's own condition, or the outcome of an explicit workflow | Treat a count of zero as proof the repair worked |
+| Same condition repeated | Update the existing message where supported | Announce each sensor refresh as a new emergency |
 
 ## Integration contract
 
-1. Choose the native delivery mechanism and account/device audience explicitly. A shared dashboard, phone push and persistent notification have different visibility and persistence.
-2. Map only status fields the backend exposes. If no delivery/read receipt exists, state that limitation instead of deriving one from an action response.
-3. Use a stable message identity when the integration supports updating an existing record. Keep dismissal, acknowledgement and condition state separate in the implementation.
-4. Any action button must retain native permission checks and identify its consequence. Do not disguise a consequential command as an ordinary View details link.
+1. Choose the delivery route and the audience on purpose. A shared dashboard, a phone push message and a persistent notification are seen by different people and last for different times.
+2. Map only the status fields the backend provides. If there is no delivery or read receipt, say so. Do not make one up from the response to an action.
+3. Use a stable message identity when the integration lets you update a message. For a persistent notification, giving the same `notification_id` replaces the earlier one. Keep dismissal, acknowledgement and the state of the problem separate in the implementation.
+4. An action button must keep the native permission checks and say what it will do. Do not present a command with consequences as an ordinary “View details” link.
 
 ## Accessible interaction
 
-- Keep message detail reachable with a named link. Numeric badges supplement it and must not be the only explanation.
-- Announce newly relevant outcomes once with appropriate live-region urgency; preserve a readable notification history where the native system provides it.
-- Adapt previews to shared-screen choices without changing the underlying meaning. Do not expose private names, precise locations or security details by default in public examples.
+- Keep the message detail reachable through a named link. A number in a badge adds to it and must not be the only explanation.
+- Announce a newly relevant outcome once, with live-region urgency that matches it. Keep a readable history where the native system provides one.
+- Show a shorter preview on a shared screen without changing what the message means. Do not show private names, precise locations or security details by default in public examples. See [Presence, people and shared-screen privacy](presence-and-privacy.html).
 
 ## Failure and recovery
 
-- If sending fails, explain which channel failed and whether other channels have independent confirmed results.
-- If an acknowledgement request is unconfirmed, preserve that uncertainty and the original condition.
-- For a recurring problem, avoid escalating severity solely because it has appeared often; use the source’s actual urgency definition.
+- If sending fails, say which channel failed and whether the other channels have their own confirmed results.
+- If an acknowledgement is not confirmed, keep that uncertainty and keep the original condition showing.
+- For a problem that keeps coming back, do not raise its severity just because it keeps coming back. Use the source's own definition of urgency.
 
 ## Complete examples
-
-The examples use invented records. Forms validate and show local feedback only; they do not call Home Assistant, save preferences or claim a real device result. In-page links lead to the explanation shown in the same specimen.
 
 <%= example('ha-flow-028-delivery') %>
 
@@ -64,12 +83,8 @@ The examples use invented records. Forms validate and show local feedback only; 
 
 ## Integration acceptance
 
-- Test accepted-without-receipt, rejected, dismissed-but-unresolved and multi-channel partial results.
-- Verify count changes are announced meaningfully once and do not remove access to details.
-- Check shared-screen preview, private detail and actionable-message permission boundaries separately.
+- Test a request that is accepted with no receipt, a rejected request, a dismissed message whose problem remains, and a send where only some channels succeed.
+- Check that a changed count is announced once, in a way that means something, and that access to the details remains.
+- Check the shared-screen preview, the private detail and the permissions on a message with an action separately.
 
-Record actual environment, versions, state, method and result using the [native task accessibility matrix](native-task-accessibility.html). Source review and a local example do not establish physical execution, screen-reader usability or live compatibility.
-
-## Applicable local rules
-
-[BG-COL-05](../styles/brand-colour.html#bg-col-05), [BG-ILL-09](../styles/illustration.html#bg-ill-09), [WG-032](../content/writing-guidelines/states-and-errors.html#wg-032), [WG-042](../content/writing-guidelines/states-and-errors.html#wg-042), [WG-045](../content/formatting-content/content-blocks.html#wg-045), [WG-046](../content/writing-guidelines/right-tone.html#wg-046).
+Record the actual environment, versions, state, method and result using [Native task accessibility and evidence](native-task-accessibility.html). A source review or a local example does not show physical behaviour, screen-reader use or live compatibility.

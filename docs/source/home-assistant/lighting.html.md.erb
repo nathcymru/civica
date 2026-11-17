@@ -8,7 +8,7 @@ gap_id: "HA-GAP-004"
 contract_id: "HA-CTRL-004"
 source_url: "https://www.home-assistant.io/integrations/light/"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -18,46 +18,64 @@ updates:
     description: "Linked the shared design styles without requiring the project identity inside a household interface."
   - date: "2026-11-11"
     description: "Added lighting capabilities and colour contract, domain-specific acceptance checks and synthetic reference examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, show only supported controls and keep a remembered setting apart from light that is on."
+ai_instructions: "Apply when designing or describing a light control, a room or scene action or a colour choice. Show only the controls the entity supports, keep theme colour apart from light colour, and say what a request will change before it is sent. Never present a remembered setting as light that is on, and never say every light is on because a group reports on. Rules WG-031, WG-032, WG-034, WG-035, WG-044."
+ai_related:
+  - path: "/home-assistant/continuous-controls.html"
+    title: "Continuous controls and alternatives"
+    relationship: "Owns sliders and precise values for brightness and colour temperature."
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns the wording and partial-result rules for a lighting request."
+  - path: "/components/devices.html"
+    title: "Device controls"
+    relationship: "Owns the visual pattern for device controls."
+  - path: "/get-started/colour-settings.html"
+    title: "Change theme colours"
+    relationship: "Owns the interface palette choice, which never changes a light."
 ---
 
 # Lighting capabilities and colour
 
-Choose the smallest useful lighting control for the task: a quick on/off action, a precise brightness adjustment, a tunable-white setting or native colour selection. Room and scene controls need explicit scope because their members can differ.
+Choose the smallest control that does the task: a quick on and off action, a brightness adjustment, a tunable-white setting or native colour selection. Room and scene controls need a stated scope, because their lights can differ.
 
-**HA-CTRL-004 — reference design specification.** This specifies the local design coverage requested by HA-GAP-004 for an existing Home Assistant capability. The examples do not install a native adapter, connect to a backend or operate equipment.
+The examples on this page are simulated. They do not connect to Home Assistant or operate equipment.
 
 <h2 id="ha-ctrl-004-capabilities">Task and capability contract</h2>
 
-| Capability | Present |
+Show a control only when the entity supports it. Home Assistant reports what a light supports in `supported_color_modes`, with `min_color_temp_kelvin` and `max_color_temp_kelvin` for tunable white.
+
+| Capability | What to show |
 | --- | --- |
-| On/off only | State and named on/off action; no dimmer, colour wheel or kelvin field. |
-| Brightness | Native brightness control with a readable percentage; preserve the integration's conversion and off behaviour. |
-| Colour temperature | The entity's supported kelvin range and current setting when supplied. |
-| Colour modes | The native colour control appropriate to `supported_color_modes`; do not assume RGB for every lamp. |
-| Effects or transition | Only the reported effect list and supported transition option. A running effect can restrict other adjustments. |
-| Group or room | Member capabilities, unavailable members and the intended action scope. Never infer universal support from one member. |
+| On and off only | The state and a named on or off action. No dimmer, colour wheel or kelvin field. |
+| Brightness | The native brightness control with a readable percentage. Keep the integration’s conversion and its behaviour when off. |
+| Colour temperature | The supported kelvin range and the current setting when the entity supplies it. |
+| Colour modes | The native colour control that matches `supported_color_modes`. Do not assume every lamp does RGB. |
+| Effects or transition | Only the effects the entity lists and the transition it supports. A running effect can limit other changes. |
+| Group or room | Each member’s capabilities, any unavailable member and the lights the action will affect. Never assume every member supports what one member does. |
 
 <h2 id="ha-ctrl-004-states">States, pending work and failure</h2>
 
-An off light can retain a previous brightness or colour setting; label it as a setting, not emitted light. A missing colour value while off is not a white reading. An unavailable member remains unavailable within a mixed group. Do not turn a group's reported on state into “Every light is on”.
+Do not show brightness or colour as a current reading while a light is off. If a screen shows a remembered setting, label it as a setting, not as light being given out. A missing colour value while a light is off is not a white reading. An unavailable member stays unavailable inside a mixed group, and a group reporting on does not mean “Every light is on”.
 
-During a change, retain the last reported state and qualify the requested setting. A delayed report may reflect another person's change. If a scene or recipe completes its request but one light does not report the target, use the partial-result contract. Do not automatically repeat a colour or transition command to make the display look consistent.
+While a change is in progress, keep the last reported state and mark the new setting as requested. A later report may come from another person’s change. If a scene or recipe request is accepted but one light does not report the target, show a partial result using [Action requests and results](action-results.html). Do not repeat a colour or transition command automatically to make the display agree.
 
 <h2 id="ha-ctrl-004-content">Content and interpretation</h2>
 
-Keep “Theme colour” and “Light colour” visibly separate. Vivid/Muted selects interface artwork and tokens; it does not affect devices. Give a swatch an accessible name or numeric setting when needed; a coloured circle alone cannot identify a physical light's state. Preserve supplied effect and scene names. Explain whether activating a recipe changes brightness, colour, power or several properties before submission.
+Keep “Theme colour” and “Light colour” visibly separate. The interface palette and its Vivid or Muted tone change artwork and colour tokens only. They never change a device. Give a swatch an accessible name or its numeric setting, because a coloured circle alone cannot show a light’s state. Keep effect and scene names exactly as supplied. Before a recipe runs, say whether it changes brightness, colour, power or several of them.
 
 <h2 id="ha-ctrl-004-accessibility">Accessibility and interaction</h2>
 
-Keep native colour input keyboard behaviour and a text or detailed-control route for precise values. The colour preview must not be the only indication of the selected setting. Allow kelvin values, long device names and group outcomes to wrap. Verify focus on a light-coloured swatch and dark canvas, and do not use the selected brand colour as a substitute for the device colour.
+Keep the native colour input’s keyboard behaviour and give a text or detailed route for precise values. A colour preview must not be the only sign of the chosen setting. Let kelvin values, long device names and group results wrap. Check focus on a light swatch against a dark background. Do not use the chosen brand colour to stand for the colour of a device.
 
 <h2 id="ha-ctrl-004-integration">Native integration boundary</h2>
 
-Use the Light domain and native card features, with actual `supported_color_modes`, colour-temperature bounds and feature flags. Home Assistant performs supported colour conversions; a theme should not duplicate those conversions. The existing lighting card and its configured recipe script have their own implementation boundary. These specifications do not add a generic colour picker or new service calls to that card.
+Use the Light domain and native card features with the entity’s own `supported_color_modes`, colour-temperature limits and feature flags. Home Assistant converts between colour modes, so a theme must not repeat those conversions. The civica house lighting card and its recipe script have their own boundary. This page adds no generic colour picker and no new service call to that card.
 
 <h2 id="ha-ctrl-004-examples">Reference examples</h2>
 
-These complete, isolated HTML specimens use synthetic data. Buttons and forms only demonstrate local feedback or draft validation. Static state examples are labelled as such; no action reaches a household.
+These isolated specimens use invented data. Static states are labelled as such, and no action reaches a household.
 
 <%= example('ha-light-switch') %>
 
@@ -67,21 +85,11 @@ These complete, isolated HTML specimens use synthetic data. Buttons and forms on
 
 <h2 id="ha-ctrl-004-acceptance">Acceptance and evidence</h2>
 
-1. Test on/off-only, brightness-only, tunable white, colour and effect-running entities. Unsupported controls must not appear.
-2. Exercise an off entity with retained colour, an unavailable member and a mixed room. Check the action target list and per-member result.
-3. Change all ten interface palettes and both tones; no physical-light command or device-colour conversion may occur.
-4. Use keyboard colour controls, precise text values, 320px layout, native locale and failed requests. Recheck capabilities after a device firmware or integration change.
+1. Test an on and off only light, a brightness-only light, tunable white, colour and a light running an effect. Unsupported controls must not appear.
+2. Test an off light with a remembered colour, an unavailable member and a mixed room. Check the list of lights the action will affect and the result for each member.
+3. Change all ten interface palettes and both tones. No light command or device colour conversion may happen.
+4. Use keyboard colour controls, precise text values, a 320px layout, the native locale and a failed request. Check capabilities again after a firmware or integration change.
 
-Record the integration/frontend version, browser, fixture or device, input state, expected result, observed result and evidence location. Source review and documentation checks are not live-device verification. Record unresolved native limitations explicitly; do not turn this checklist into an accessibility guarantee.
+Record the Home Assistant and frontend versions, browser, fixture or device, input state, expected result, observed result and where the evidence is kept. Reviewing the source or this page is not a test on a connected device.
 
-<h2 id="ha-ctrl-004-sources">Sources and governing rules</h2>
-
-Primary sources reviewed on 11 November 2026. Current documentation may describe a newer frontend than an installed system; verify the actual controls before reproducing a route.
-
-- [Light](https://www.home-assistant.io/integrations/light/)
-- [Light entity capabilities](https://contributors.home-assistant.io/core/entities/light/)
-- [Native card features](https://www.home-assistant.io/dashboards/features/)
-
-Applicable frozen rules: [BG-COL-05](../styles/brand-colour.html#bg-col-05), [BG-ILL-07](../styles/illustration.html#bg-ill-07), [WG-031](../content/writing-guidelines/states-and-errors.html#wg-031), [WG-034](../content/writing-guidelines/states-and-errors.html#wg-034), [WG-035](../content/writing-guidelines/states-and-errors.html#wg-035). The shared [design styles](../styles/index.html) and [writing guide](../content/index.html) also govern any new implementation.
-
-Review owner: civica maintainers. Recheck after native capability, source, renderer or interaction changes.
+For the native definitions, see the Home Assistant documentation for [Light](https://www.home-assistant.io/integrations/light/), [light entity capabilities](https://contributors.home-assistant.io/core/entities/light/) and [card features](https://www.home-assistant.io/dashboards/features/).

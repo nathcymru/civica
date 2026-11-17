@@ -1,60 +1,81 @@
 ---
 title: "Weather, environmental readings and warnings"
-description: "Complete design specification for weather, environmental readings and warnings, with state contracts, synthetic examples and native acceptance boundaries."
+description: "Show what was measured or forecast, where it applies and when it was supplied, without turning a missing warning into an all-clear."
 section: patterns
 group: "Home Assistant: flows"
 status: reference
 gap_id: HA-GAP-027
 source_url: https://www.home-assistant.io/integrations/weather/
 published_on: 2026-11-11
-updated_on: 2026-11-11
+updated_on: "2026-11-17"
 updates:
   - date: 2026-11-11
     description: "Added the dedicated weather, environmental readings and warnings specification and three complete synthetic examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, note that forecasts come from a Home Assistant action and move the shared evidence wording to a link."
+ai_instructions: "Apply when a design shows weather, environmental readings or warnings. Name the quantity, unit, place and time source. Keep observed, forecast and warning information apart, keep a real zero apart from a missing value, and never show an unavailable feed or an empty response as a safe all-clear. Keep the provider's warning wording and severity. Rules WG-011, WG-033, WG-042, WG-043, WG-076."
+ai_related:
+  - path: "/home-assistant/specialist-entities.html"
+    title: "Specialist entities and derived information"
+    relationship: "Owns sun, air quality and other calculated or environmental readings."
+  - path: "/home-assistant/locale-units-and-time.html"
+    title: "Locale, units and time"
+    relationship: "Owns units, time zones and clock preferences."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns the wording for unavailable, unknown and stale states."
+  - path: "/content/formatting-content/charts-and-data.html"
+    title: "Charts and data"
+    relationship: "Owns the rules for gaps, zeros and covered periods."
+  - path: "/home-assistant/native-task-accessibility.html"
+    title: "Native task accessibility and evidence"
+    relationship: "Owns how to record what was actually tested."
+---
+
 ---
 
 # Weather, environmental readings and warnings
 
-Show what was measured or forecast, where it applies and when the source supplied it. Keep forecast probability, measured precipitation and warning severity distinct. The theme must not turn an ordinary record into an emergency signal or claim that missing data mean a safe condition.
+Say what was measured or forecast, where it applies and when the source supplied it. Keep forecast probability, measured rainfall and warning severity apart. A theme must not turn an ordinary record into an emergency signal. Missing data never means a safe condition.
 
-## Scope and native ownership
+<h2 id="scope-and-native-ownership">What Home Assistant owns</h2>
 
-Native weather entities provide current-condition information and provider-specific forecast data. Warning feeds can come from separate integrations. Provider contracts determine units, observation/issue/validity times, geographical scope and warning wording; a common card cannot invent them. [Official Home Assistant source](https://www.home-assistant.io/integrations/weather/), reviewed 11 November 2026.
+A weather entity gives current conditions as state attributes, such as temperature, humidity, pressure, wind and the units for each, depending on the provider. Forecasts come from the `weather.get_forecasts` action. Warning feeds can come from separate integrations. The provider decides the units, the observation, issue and valid times, the area and the warning wording. A shared card cannot invent them. See the [Home Assistant weather documentation](https://www.home-assistant.io/integrations/weather/), which opens outside this site.
 
-This page completes the design specification for **HA-GAP-027**. Its examples are synthetic documentation, not a claim that a new native feature or adapter has been installed. The application integration must meet the task-specific acceptance below.
+This is reference specification HA-GAP-027. The application must also meet the integration acceptance checks below. The examples are simulated and do not show that a feature or adapter is installed.
 
-## States and content decisions
+<h2 id="states-and-content-decisions">What to show for each condition</h2>
 
-| Source condition | Required presentation | Boundary |
+| Condition | Show | Do not |
 | --- | --- | --- |
-| Observed reading | Name quantity, unit, location and actual observation context. | Do not relabel the last state-change time as a fresh measurement. |
-| Forecast interval | Show the covered period and the forecast quantity. | A forecast is not a current observed reading. |
-| Successful empty warning response | State no matching warnings for the checked scope and time. | Do not promise the household is safe or all regions are clear. |
-| Warning data unavailable | Keep missing/failed feed status separate from an empty result. | Do not show a green all-clear. |
-| Active / expired warning | Preserve source wording, applicability and valid period. | Do not extend an expired warning silently. |
+| Observed reading | The quantity, unit, place and when it was observed. | Present the time of the last state change as a new measurement. |
+| Forecast period | The period covered and the forecast quantity. | Present a forecast as a current reading. |
+| Warning request succeeded, none found | No matching warnings for the area and time checked. | Say the household is safe or that every region is clear. |
+| Warning data unavailable | That the feed is missing or failed, kept apart from an empty result. | Show a green all-clear. |
+| Warning active or expired | The source's wording, the area it applies to and the valid period. | Quietly extend an expired warning. |
 
-## Integration contract
+<h2 id="integration-contract">Rules for the integration</h2>
 
-1. Preserve provider attribution and official warning text where supplied. Use source severity definitions and a separate semantic presentation role; the chosen brand palette does not set severity.
-2. Keep source issue time, observation time, retrieval time and valid interval distinct. If a time is not supplied, say so rather than inferring it from a different timestamp.
-3. Use native configured units and the provider’s quantity semantics. Label precipitation probability as a percentage and accumulation with its measured/forecast unit and interval.
-4. Apply the configured location/area scope exactly. A nearby warning can require explanation but must not be described as matching the household without the integration’s actual matching evidence.
+1. Keep the provider's credit and official warning text where they are supplied. Use the source's severity definitions and a separate meaning-based colour role. The chosen brand palette never sets severity.
+2. Keep the issue time, observation time, retrieval time and valid period apart. If a time is not supplied, say so. Do not take it from a different timestamp.
+3. Use the units Home Assistant is configured with and the provider's meaning for each quantity. Label rain probability as a percentage. Label accumulated rain with its unit and whether it was measured or forecast, and the period it covers.
+4. Apply the configured place or area exactly. A nearby warning may need an explanation, but do not say it matches the household unless the integration shows that it does.
 
-## Accessible interaction
+<h2 id="accessible-interaction">Keyboard and screen reader use</h2>
 
-- Provide condition text alongside weather symbols and non-colour warning distinctions. Keep all essential warning content available without a tooltip.
-- Use a structured forecast table with clear periods and units; preserve missing entries instead of closing a gap with zero.
-- Respect reduced motion. Animation or photographic backgrounds must not reduce the readability of values, source credit or actions.
+- Write the condition as text beside any weather symbol, and tell warnings apart without colour. Keep all essential warning content available without a tooltip.
+- Show forecasts in a table with clear periods and units. Keep missing entries as missing instead of filling the gap with zero.
+- Respect reduced motion. Animation and photographic backgrounds must not make values, the source credit or actions harder to read.
 
-## Failure and recovery
+<h2 id="failure-and-recovery">When something goes wrong</h2>
 
-- For a failed feed, show when information was last received and that its current status is unknown; do not recycle an old successful empty result as current.
-- If only part of a forecast is available, label incomplete coverage and keep real zeros distinct from missing values.
-- For safety-relevant information, retain the authoritative source route and scope; do not imply Home Assistant replaces an alarm, physical check or official emergency guidance.
+- If a feed fails, say when information was last received and that the current status is unknown. Do not reuse an earlier empty result as if it were current.
+- If only part of a forecast is available, say the coverage is incomplete and keep real zeros apart from missing values.
+- For safety information, keep the route to the official source and its area. Do not suggest that Home Assistant replaces an alarm, a physical check or official emergency guidance.
 
-## Complete examples
+<h2 id="complete-examples">Examples</h2>
 
-The examples use invented records. Forms validate and show local feedback only; they do not call Home Assistant, save preferences or claim a real device result. In-page links lead to the explanation shown in the same specimen.
+These examples use invented records. Their forms give local feedback only. They do not call Home Assistant or save anything.
 
 <%= example('ha-flow-027-observed') %>
 
@@ -62,14 +83,10 @@ The examples use invented records. Forms validate and show local feedback only; 
 
 <%= example('ha-flow-027-unavailable') %>
 
-## Integration acceptance
+<h2 id="integration-acceptance">Integration acceptance</h2>
 
-- Test observed/forecast periods, missing units/times and partial forecasts against their provider model.
-- Check successful empty, failed, out-of-scope and expired warning responses separately.
-- Verify warning language/attribution remain unchanged by all palettes and no new severity is inferred from colour.
+- Test observed and forecast periods, missing units or times and partial forecasts against the provider's model.
+- Test a successful empty response, a failed one, an out-of-area warning and an expired warning one at a time.
+- Check that every palette leaves the warning wording and credit unchanged, and that no severity is worked out from colour.
 
-Record actual environment, versions, state, method and result using the [native task accessibility matrix](native-task-accessibility.html). Source review and a local example do not establish physical execution, screen-reader usability or live compatibility.
-
-## Applicable local rules
-
-[BG-COL-05](../styles/brand-colour.html#bg-col-05), [BG-ILL-08](../styles/illustration.html#bg-ill-08), [WG-011](../content/writing-guidelines/right-tone.html#wg-011), [WG-033](../content/writing-guidelines/states-and-errors.html#wg-033), [WG-042](../content/writing-guidelines/states-and-errors.html#wg-042), [WG-043](../content/writing-guidelines/states-and-errors.html#wg-043), [WG-076](../content/formatting-content/charts-and-data.html#wg-076).
+Record the environment, versions, state, method and result with [Native task accessibility and evidence](native-task-accessibility.html). Source review and a simulated example do not show real device behaviour, screen reader use or live compatibility. For calculated readings such as sun data and air quality, see [Specialist entities and derived information](specialist-entities.html#environment).

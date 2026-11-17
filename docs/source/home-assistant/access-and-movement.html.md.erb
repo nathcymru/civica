@@ -1,6 +1,6 @@
 ---
 title: Locks, alarms, covers and valves
-description: Keep consequential actions explicit while retaining native protection and device semantics.
+description: Name the object, show what it reports and keep native codes, protection and Stop in place.
 section: patterns
 group: "Home Assistant: controls"
 status: reference
@@ -8,7 +8,7 @@ gap_id: HA-GAP-006
 contract_id: HA-CTRL-006
 source_url: https://www.home-assistant.io/integrations/lock/
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -20,47 +20,75 @@ updates:
     description: "Aligned authored permission wording with the UK-English style while preserving native labels and identifiers."
   - date: "2026-11-11"
     description: "Added locks, alarms, covers and valves contract, domain-specific acceptance checks and synthetic reference examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, keep requested, reported and unconfirmed outcomes apart and move the outside sources to the section index."
+ai_instructions: "Apply when designing or reviewing a lock, alarm panel, cover or valve control. Name the object in the action, show the state it reports, keep native codes, protection and Stop, and never turn a request into a confirmed result or a state into a safety claim. Rules WG-030, WG-032, WG-034, WG-036, WG-043."
+ai_related:
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns the request, pending, confirmed and failed result states used here."
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns unknown, unavailable and stale readings."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns the wording rules for requests, Stop and Cancel."
+  - path: "/home-assistant/presence-and-privacy.html"
+    title: "Presence, people and shared-screen privacy"
+    relationship: "Owns what a shared screen may show about who is home."
 ---
 
 # Locks, alarms, covers and valves
 
-These controls can change access or move equipment. Present the named object, its reported state and the specific intended effect together. A card colour, modal confirmation or hidden button never establishes permission or physical safety.
+Name the lock, alarm, cover or valve, show the state it reports and say what the button will do. These controls change who can get in or move equipment. A card colour, a confirmation dialog or a hidden button never proves that someone has permission or that the home is safe.
 
-**HA-CTRL-006 — reference design specification.** This specifies the local design coverage requested by HA-GAP-006 for an existing Home Assistant capability. The examples do not install a native adapter, connect to a backend or operate equipment.
+This page is contract HA-CTRL-006. Its examples are simulated. They do not connect to Home Assistant or operate equipment.
 
 <h2 id="ha-ctrl-006-capabilities">Task and capability contract</h2>
 
-| Equipment | Capability and action contract |
+Offer only the actions the entity supports. Keep the native confirmation and code flow.
+
+| Equipment | What to do |
 | --- | --- |
-| Lock | Distinguish Lock, Unlock and supported Open/latch release. Preserve protected calls, code requirements and native confirmation. |
-| Alarm panel | Offer only supported arming modes and the native code flow. Arming, pending and triggered states are not a generic on/off switch. |
-| Cover | Preserve open/close, optional position/tilt and supported Stop. A partially open cover is not necessarily fully open. |
-| Valve | Preserve device class, optional position and supported Stop. Position is not measured flow or proof of isolation. |
-| Permission or code absent | Explain the real restriction through the native flow; do not store a substitute code in card configuration or documentation. |
+| Lock | Keep Lock, Unlock and Open (latch release) as separate actions, and offer Open only if the lock supports it. Keep protected calls, code requirements and native confirmation. |
+| Alarm panel | Offer only the arming modes the panel supports, through the native code flow. Arming, pending and triggered are states of the panel, not an on/off switch. |
+| Cover | Keep open, close, position, tilt and Stop as the cover supports them. A partly open cover is not fully open. |
+| Valve | Keep the device class, position and Stop as the valve supports them. A position is not a flow measurement or proof that a pipe is isolated. |
+| Permission or code missing | Explain the restriction through the native flow. Do not store a substitute code in card configuration or documentation. |
 
 <h2 id="ha-ctrl-006-states">States, pending work and failure</h2>
 
-Keep locked, unlocked, locking, unlocking, open, opening, jammed, unknown and unavailable distinct when the integration supplies them. Do not equate an unlocked lock with an open door. A separate contact sensor can provide door position, but it remains a separate observation.
+Show the state the integration reports: locked, unlocked, locking, unlocking, open, opening, jammed, unknown or unavailable. Do not treat an unlocked lock as an open door. A separate contact sensor can report the door, but that is a different reading.
 
-During cover or valve movement, keep Stop reachable if supported. Dismissing a review or leaving the page does not stop movement. A rejected request leaves the latest reported state visible; a waiting limit yields an unconfirmed result, not automatic success or reversal. Do not retry a jammed lock, close a valve or disarm an alarm automatically to repair the UI.
+While a cover or valve moves, keep Stop within reach if it is supported. Closing a review or leaving the page does not stop the movement.
 
-Alarm delays follow the panel's reported state and timing. Do not invent a countdown from a generic delay assumption. A camera image, presence report or closed-valve icon must not become a “Home secure” assertion.
+| Outcome | Say |
+| --- | --- |
+| Home Assistant rejected the request | The request was rejected. Keep the last reported state visible. |
+| The waiting limit passed with no new state | Not confirmed. The action may still complete. Do not report success or undo it. |
+| The lock reports jammed | Jammed, with the reported time. Do not retry the lock, close a valve or disarm an alarm automatically. |
+
+Follow the panel's own timing for alarm delays. Do not invent a countdown. Do not turn a camera image, a presence report or a closed-valve icon into “Home secure”.
 
 <h2 id="ha-ctrl-006-content">Content and interpretation</h2>
 
-Name the object in the action: “Unlock front door”, “Stop study blind”. Explain latch release separately from unlocking where relevant. Use “Reported closed” if the evidence is only a device report. Keep code prompts private and do not echo codes into notifications, logs, examples or screenshots. Preserve native translations and source fault wording.
+Name the object in the action, as in “Unlock front door” or “Stop study blind”. Describe latch release separately from unlocking. Write “Reported closed” when the only evidence is a device report.
+
+Keep code prompts private. Do not echo a code into a notification, log, example or screenshot. Keep native translations and the source's fault wording.
 
 <h2 id="ha-ctrl-006-accessibility">Accessibility and interaction</h2>
 
-Provide a keyboard route to every action and keep Stop visible during movement. A review dialog needs an accessible name, logical focus order, Escape/dismiss behaviour and return focus. The local dialog demonstrates only review presentation. Do not stack a whole-card tap action over dedicated lock buttons. Use persistent text for faults; reserve assertive announcements for a defined urgent condition.
+Give every action a keyboard route and keep Stop visible during movement. A review dialog needs an accessible name, a logical focus order, Escape or dismiss behaviour, and a return of focus to the control that opened it. The local dialog shows only how a review looks.
+
+Do not stack a whole-card tap action over separate lock buttons. Show faults as lasting text. Reserve assertive announcements for a defined urgent condition.
 
 <h2 id="ha-ctrl-006-integration">Native integration boundary</h2>
 
-Retain native More info and its protected lock/alarm implementation. No new access-control layer is supplied here. Backend permission rejection must remain effective even if presentation is bypassed. Home Assistant does not replace physical safety checks, a certified alarm or equipment-specific procedures. The source review informs this recipe; connected equipment and its installed integration require separate acceptance evidence.
+Keep the native More info dialog and its protected lock and alarm flows. This page adds no access-control layer. Home Assistant must still reject a request the person is not allowed to make, even if the interface is bypassed. Home Assistant does not replace physical safety checks, a certified alarm or the equipment's own procedures.
 
 <h2 id="ha-ctrl-006-examples">Reference examples</h2>
 
-These complete, isolated HTML specimens use synthetic data. Buttons and forms only demonstrate local feedback or draft validation. Static state examples are labelled as such; no action reaches a household.
+These examples use invented data. Buttons and forms show local feedback only. No action reaches a household.
 
 <%= example('ha-access-lock') %>
 
@@ -72,22 +100,13 @@ These complete, isolated HTML specimens use synthetic data. Buttons and forms on
 
 <h2 id="ha-ctrl-006-acceptance">Acceptance and evidence</h2>
 
-1. Verify each supported lock transition and jammed/unknown/unavailable state. Unlock must not become Open unless the source reports it.
-2. Use an unauthorised session and an invalid code in a controlled test environment; the backend must reject the action independently of card visibility. Never use real secrets in evidence.
-3. Test cover/valve Stop during motion, a missing Stop feature, partial position and delayed confirmation. Dismissal must not claim cancellation.
-4. Check keyboard review/return focus, shared-screen privacy and long object names. Do not perform a physical security action merely to test a colour or layout.
+1. Check every lock transition the integration supports, and the jammed, unknown and unavailable states. Unlock must not become Open unless the source reports it.
+2. In a test installation, use an account without permission and an invalid code. Home Assistant must reject the request whether or not the control is visible. Never use real secrets.
+3. Test Stop during movement, a cover or valve with no Stop, a partial position and a delayed confirmation. Dismissing a message must not claim the movement was cancelled.
+4. Check keyboard review, return of focus, shared-screen privacy and long object names. Do not operate a real lock or valve just to test a colour or layout.
 
-Record the integration/frontend version, browser, fixture or device, input state, expected result, observed result and evidence location. Source review and documentation checks are not live-device verification. Record unresolved native limitations explicitly; do not turn this checklist into an accessibility guarantee.
+Record the Home Assistant and integration versions, the browser, the fixture or device, the starting state, the expected and observed results, and where the evidence is kept. A documentation check is not a live-device test.
 
-<h2 id="ha-ctrl-006-sources">Sources and governing rules</h2>
+For the request, pending and failed states see [Action requests and results](action-results.html). For wording see [States, requests and errors](../content/writing-guidelines/states-and-errors.html).
 
-Primary sources reviewed on 11 November 2026. Current documentation may describe a newer frontend than an installed system; verify the actual controls before reproducing a route.
-
-- [Lock](https://www.home-assistant.io/integrations/lock/)
-- [Alarm control panel](https://www.home-assistant.io/integrations/alarm_control_panel/)
-- [Cover](https://www.home-assistant.io/integrations/cover/)
-- [Valve](https://www.home-assistant.io/integrations/valve/)
-
-Applicable frozen rules: [BG-COL-05](../styles/brand-colour.html#bg-col-05), [BG-ILL-07](../styles/illustration.html#bg-ill-07), [WG-032](../content/writing-guidelines/states-and-errors.html#wg-032), [WG-034](../content/writing-guidelines/states-and-errors.html#wg-034), [WG-036](../content/writing-guidelines/states-and-errors.html#wg-036), [WG-043](../content/writing-guidelines/states-and-errors.html#wg-043). The shared [design styles](../styles/index.html) and [writing guide](../content/index.html) also govern any new implementation.
-
-Review owner: civica maintainers. Recheck after native capability, source, renderer or interaction changes.
+Home Assistant references: [Lock](https://www.home-assistant.io/integrations/lock/), [Alarm control panel](https://www.home-assistant.io/integrations/alarm_control_panel/), [Cover](https://www.home-assistant.io/integrations/cover/) and [Valve](https://www.home-assistant.io/integrations/valve/). They leave this site. Check the controls in the installed version before copying a route.

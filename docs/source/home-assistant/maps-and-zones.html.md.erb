@@ -1,13 +1,13 @@
 ---
 title: "Maps, zones and location records"
-description: "Design labelled maps with accurate context, restrained colour, uncertainty and complete location records, including a missing-background example."
+description: "Label maps with their source and time, show uncertainty, and keep every location record readable without the map."
 section: patterns
 group: "Home Assistant: flows"
 status: reference
 gap_id: HA-GAP-017
 source_url: https://www.home-assistant.io/dashboards/map/
 published_on: 2026-11-11
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-12
 review_in: 3 months
 updates:
@@ -19,107 +19,118 @@ updates:
     description: "Added the dedicated maps, zones and location records specification and three complete synthetic examples."
   - date: "2026-11-11"
     description: "Bounded the synthetic radius draft and required an explicit display-disclosure choice."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, match the native Map card, correct the list of map styles and move the outside map guidance credit to the Home Assistant index."
+ai_instructions: "Apply when showing a device, person or zone on a map. Label what the map shows, its source and when it was observed. Put every record in a text list as well, and count plotted, unlocated and withheld records separately. Never place a record without coordinates at 0, 0, and never call an accuracy circle a boundary. Keep the native Map card, its provider attribution and its permissions, and keep OpenStreetMap and renderer licence notices visible. Rules WG-038, WG-066, WG-074, WG-077, WG-081, WG-082."
+ai_related:
+  - path: "/home-assistant/presence-and-privacy.html"
+    title: "Presence, people and shared-screen privacy"
+    relationship: "Owns how to word a person's reported presence and limit it on shared displays."
+  - path: "/styles/brand-data.html"
+    title: "Data visualisation"
+    relationship: "Owns the data presentation rules applied to maps."
+  - path: "/styles/chart-colour.html"
+    title: "Chart colour"
+    relationship: "Owns colour scales for quantities, including missing values."
+  - path: "/home-assistant/native-task-accessibility.html"
+    title: "Native task accessibility and evidence"
+    relationship: "Owns how to record what was actually tested."
 ---
 
 # Maps, zones and location records
 
-A map helps locate entities; a text record explains who or what the marker represents and how certain the location is. Start with the household question, such as which reported zone contains a device. If a list of room names answers it, use that list without adding a map. The same task must remain understandable when tiles, imagery or pointer gestures are unavailable. Keep a person’s tracked location separate from their login identity.
+A map shows where an entity is reported to be. A text record says what the marker stands for and how certain the location is. Start with the question the household is asking, such as which zone a device is reported in. If a list of room names answers it, use the list and leave out the map.
 
-This pattern applies [data presentation rules BG-DAT-01 to BG-DAT-08](../styles/brand-data.html) and [colour roles BG-COL-02, BG-COL-03 and BG-COL-07](../styles/brand-colour.html). It adapts the official [GOV.UK map guidance](https://brand.design-system.service.gov.uk/data/maps/) and [map colour guidance](https://brand.design-system.service.gov.uk/colour/maps/) to household locations. The working example below renders real OpenStreetMap vector data with locally defined cartographic roles. Its device observations are invented. It is documentation, not a government map or a replacement for a household map installation.
+The task must still make sense when tiles, imagery or pointer gestures are not available. For how to word a person's tracked location, and how it differs from their sign-in, see [Presence, people and shared-screen privacy](presence-and-privacy.html).
+
+The examples are local previews. The device records are invented, and the map data is real OpenStreetMap data for public places in Cardiff Bay. They do not change a Home Assistant setting or show that a real device moved.
 
 ## Scope and native ownership
 
-The current native Map card supports markers, accuracy circles, grouping and panel lists for people, devices and zones. This specification preserves those native functions and provider attribution; it does not introduce a civica map engine. [Official Home Assistant source](https://www.home-assistant.io/dashboards/map/), reviewed 11 November 2026.
+The native Map card draws markers, accuracy circles and grouped markers. In a panel view it adds People, Devices and Zones tabs. This page keeps those functions and the provider's attribution. It does not add a civica map engine.
 
-This page is the design specification for **HA-GAP-017**. Its rendered examples demonstrate the documentation pattern; they do not establish that a native map feature or adapter has been installed or tested. The application integration must meet the task-specific acceptance below. A project logo, optional household name or business identity belongs outside the plotted evidence; it must not obscure markers, labels, legends or provider attribution.
+The examples show a documentation pattern. They do not show that a native map feature has been installed or tested. A project logo, household name or business identity belongs outside the plotted data, and it must not cover markers, labels, legends or attribution.
 
 <h2 id="map-context">Title, source and observation context</h2>
 
-Use a neutral task title for a changing operational map: “Where are the devices?” or “Reported locations”. A fixed headline that claims everyone is home will become false when the data changes. For a static publication, a supported finding may lead the title. In both cases, provide the measure or type of observation, geographic coverage and observation time or selected period as real text near the map.
+Give a changing map a neutral title, such as “Where are the devices?” or “Reported locations”. A fixed title such as “Everyone is home” becomes false when the data changes. Near the map, say in text what is measured, the area covered and when it was observed.
 
-Keep the data source separate from the basemap provider. A tracker supplies an observation; a tile provider supplies context. Name each source and preserve its required attribution. A public data layer should link to the specific source when a stable public URL exists. Local entity details may provide source context in a private installation; do not publish credentials, precise household coordinates or a private provider URL.
+Name the tracker that supplied the observation and the provider that supplied the background. They are different sources, and the background provider's attribution stays visible. Do not publish credentials, precise household coordinates or a private provider URL.
 
-Each record keeps its own observation time when reports arrive at different times. A page refresh time is not a new location fix. Explain a retained report, missing accuracy or route history; never promote old coordinates to a current location merely because the background loaded successfully.
+Give each record its own observation time when reports arrive at different times. A page refresh is not a new location fix. If you show a retained report or missing accuracy, say so. Do not present old coordinates as current because the background loaded.
 
 <h2 id="map-composition">Map hierarchy, extent and scale</h2>
 
-Put the relevant locations and their labels in the foreground. Use quiet, thin contextual boundaries; omit irrelevant decorative roads and building detail in an authored schematic. Keep native geographic features that help orient the person. Do not recolour, erase or cover important provider labels or warning layers to achieve a simpler appearance.
+Put the locations and their labels first, and keep the surrounding map quiet. Keep the provider's place names, and do not cover or recolour them to look simpler.
 
-- Directly label a small number of features. For several categories, put a short, ordered legend before the plot, near its upper-left edge; do not cover the map with it.
-- Fit the initial extent to the locations needed for the task. Preserve the person's chosen view during ordinary updates. If some selected records fall outside the visible extent, say so and keep them in the list.
-- A geographic map needs an appropriate projection and extent. Use a scale bar when distance matters and the projection supports a meaningful local scale. Do not add a decorative scale to a schematic, a floor plan without measured dimensions or an unsuitable global projection.
-- Use a labelled zone boundary only when the source supplies it. An accuracy circle is uncertainty in a report, not an authorised area, a property boundary or proof that a device lies within a particular building.
+- Label a small number of features directly. For several categories, put a short legend before the map, near its upper-left edge.
+- Fit the first view to the locations the task needs. Keep the person's chosen view during ordinary updates. If a selected record is outside the view, say so and keep it in the list.
+- Add a scale bar only when distance matters and the map can show a meaningful local scale. Do not add one to a diagram or a floor plan with no measured dimensions.
+- Show a zone boundary only when the source supplies it. An accuracy circle is the uncertainty of a report. It is not an allowed area, a property boundary or proof that a device is in a particular building.
 
-The working example uses real OpenStreetMap geography around public places in Cardiff Bay, a north-up Web Mercator view and a metric ruler that responds to zoom. Its device coordinates are invented, and the 30-metre accuracy boundary is calculated geographically from the invented report. It is not a measured device location. No private address or browser geolocation is used.
+The working example uses a north-up Web Mercator view of Cardiff Bay with a metric ruler that follows the zoom. The device coordinates are invented. The 30-metre accuracy circle is calculated from the invented report, so it is not a measured location. The example uses no private address and no browser location.
 
 <h2 id="map-colour">Colour, labels, selection and uncertainty</h2>
 
-Choose colours by their job. A categorical marker identifies a device or source; it does not become a warning because the household uses a red theme. Keep these identities stable when the project, household or business identity changes. Use a small set of colours and retain a letter, shape or direct label for every meaningful category. Provide text for selection and uncertainty as well as a visible treatment.
+Choose each colour for its job. A colour that identifies a device is not a warning, even in a red theme. Use few colours, and give every meaningful category a letter, shape or direct label as well. Say in text what is selected and what is uncertain, as well as showing it.
 
-The working example uses six cartographic roles: land, water, nature, structures, text/markers and the label surface. Vivid and Muted alter the strength of contextual water and nature colours; Light and Dark provide separate legible pairs. These choices never alter geometry, names, observations or selection. Both markers use strong text/marker colour, supported by a circle or diamond and the letters A and B. A solid outer boundary means selected; a dashed outline means reported uncertainty. The letters match the key and complete HTML records. Functional strokes distinguish data cues; administrative boundaries remain quiet. None of these colours expresses device severity or precision.
+The working example uses six map roles: land, water, nature, structures, text and markers, and the label surface. Vivid and Muted change only the strength of the water and nature colours, and Light and Dark each have their own pair. None of these change the geometry, names, observations or selection.
 
-Meet 4.5:1 for ordinary text and 3:1 for meaningful markers and boundaries against adjacent colours where WCAG requires it. Text on a marker needs its own contrast check. Check the actual background, including imagery; a colour that works on a white example may fail over a photograph. In forced-colour mode, retain the shapes, letters, line styles and equivalent records when the original fills disappear.
+- The two markers use the strong text and marker colour, plus a circle or diamond and the letters A and B. The letters match the key and the table.
+- A solid outer boundary means selected. A dashed outline means reported uncertainty.
+- None of the colours expresses how severe a device problem is, or how precise a location is.
 
-For a quantitative layer, decide its meaning before its palette:
+Meet 4.5:1 contrast for ordinary text and 3:1 for markers and boundaries that carry meaning. Test against the real background, because a pair that works on white can fail over imagery. In forced-colour mode, keep the shapes, letters and line styles. See [Colour roles and accessibility](../styles/brand-colour.html) for the rules.
 
-| Relationship | Required scale and context | Avoid |
-| --- | --- | --- |
-| Different devices or zones | Categorical names, stable identities and distinguishable labels/shapes | A rainbow that implies an ordered measurement |
-| Increasing quantities, such as rainfall | Sequential scale with units, ordered endpoints, labelled ranges and a separate missing-value state | Treating missing data as the smallest value |
-| Deviation around a meaningful centre | Diverging scale with an explicit centre, signed endpoints, units and text values | An arbitrary midpoint chosen only for visual balance |
-
-The two examples here demonstrate categorical locations and a missing background. They do not implement a heatmap or claim that a quantitative map scale has been contrast-tested. Preserve a weather or flood provider's published thresholds and warnings; do not reinterpret its colours as theme accents.
+For a map that shows a quantity, such as rainfall, decide what it means before choosing the palette. Use [Chart colour](../styles/chart-colour.html#choose-the-colour-mapping) for scales, units and missing values. Keep a weather or flood provider's own thresholds and warnings, and do not recolour them as theme accents. These examples show categorical locations and a missing background. They do not show a quantity map or claim that one has been contrast-tested.
 
 <h2 id="map-records">Every record remains reachable</h2>
 
-Name the configured set and count plotted, unlocated and withheld records separately where disclosure is permitted. “2 of 3 devices have a reported location” is more informative than “2 devices found”. Do not turn an entity without coordinates into a marker at 0°, 0°, or drop it from the denominator without explanation.
+Name the set and count plotted, unlocated and withheld records separately, where disclosure is allowed. “2 of 3 devices have a reported location” says more than “2 devices found”. Do not put an entity with no coordinates at 0°, 0°, and do not drop it from the total without saying so.
 
-Keep an HTML table or labelled list of the same records available before interaction. Include the entity, reported place, source, observation time and accuracy when supplied. Do not require a pointer hover or map gesture to discover an essential value. The alternative must explain the full map task; a list of entity names alone does not replace location or uncertainty.
+Provide an HTML table or labelled list of the same records before any interaction. Include the entity, the reported place, the source, the observation time and the accuracy when supplied. Do not make an essential value depend on hovering or a map gesture. A list of names alone is not enough, because it leaves out the location and the uncertainty.
 
-For a cluster, expose its members and explain that its count refers to grouped records, not necessarily people. Two devices at one point remain two records. Opening a record, filtering the map or selecting a marker must not request a new position or change account permissions. In a connected implementation, keep selection and its associated details synchronised across the map and list without an unexpected focus move.
+A native group of markers counts the records inside it, not necessarily people. Show the members of a group. Two devices at one point remain two records. Opening a record, filtering the map or selecting a marker must not request a new position or change permissions.
 
 ## States and content decisions
 
-| Source condition | Required presentation | Boundary |
+| Source condition | Show | Do not |
 | --- | --- | --- |
-| Located entity | Show name, reported zone/location and observation context. | An accuracy circle is uncertainty, not a property boundary. |
-| Several markers grouped | Name the group and expose its members through the native interaction. | Do not announce the cluster as one person. |
-| No location supplied | Keep an explicit location-not-available record where the native view supports it. | Do not place the entity at 0°, 0°. |
-| Tiles unavailable | Retain text records and the map’s own error. | Do not suggest the entities have moved. |
-| Historical route / zone | Label the relevant period or configured zone. | A route is not a current observation. |
+| Located entity | Name, reported zone or location, and observation context | Treat the accuracy circle as a property boundary |
+| Markers grouped | The group name and its members | Announce the group as one person |
+| No location supplied | A location-not-available record, where the native view supports it | Place the entity at 0°, 0°, or call it away |
+| Tiles unavailable | The text records and the map's own error | Suggest the entities have moved |
+| Historical route or zone | The period or configured zone | Present a route as a current observation |
 
 ## Integration contract
 
-1. Use the native provider and honour its required attribution. Do not crop or cover attribution with floating controls, including at phone widths.
-2. Read latitude, longitude, accuracy and zone states through native data. Do not geocode names or send location data to a new provider merely to apply a theme.
-3. Respect the user’s selected map focus and zoom; a normal state refresh must not repeatedly drag them away from a selected record.
-4. Editing a zone changes configuration and may affect automations. Separate inspection from an explicit, permission-checked edit workflow; label radius units and preserve validation.
-
-## Accessible interaction
-
-- Provide a named textual route to entity/zone details. Label zoom, reset focus and grouping controls; verify keyboard entry and exit without a trap.
-- For supported zone editing, provide an alternative to dragging, such as the native numeric configuration route. Record a missing native alternative as a limitation.
-- Use marker labels or shapes as well as colour. Preserve provider imagery and manufacturer/person pictures; do not recolour photographs to match the brand.
+1. Use the native provider and keep its attribution visible, including at phone widths. Do not crop it or cover it with floating controls.
+2. Read latitude, longitude, accuracy and zone states from Home Assistant. Do not look up names or send location data to a new provider just to apply a theme.
+3. Keep the person's chosen focus and zoom. A normal state refresh must not drag the map away from a selected record.
+4. Editing a zone changes configuration and can affect automations. Keep looking at a zone separate from editing it, make the edit an explicit step that checks permissions, and label radius units.
+5. For zone editing, offer an alternative to dragging, such as the native numeric configuration. If the native view has none, record that as a limitation.
+6. Label the zoom, grouping and reset controls, and check that the keyboard can enter and leave the map without a trap. The native Map card names its buttons Toggle grouping and Reset focus.
+7. Keep provider imagery and the pictures of people and manufacturers as they are. Do not recolour photographs to match a theme.
 
 ## Failure and recovery
 
-- With no current tracker value, use location not supplied, not away. A configured Home zone does not establish that anyone is there.
-- When location permission is denied, explain the affected feature; do not imply the theme can grant permission.
-- On shared displays, apply the household’s chosen precision and audience. Keep public examples and screenshots free of real addresses and coordinates.
+- With no current tracker value, say the location is not supplied. Do not say the entity is away. A configured Home zone does not show that anyone is there.
+- If location permission is denied, say which feature is affected. A theme cannot grant permission.
+- On a shared display, use the household's chosen level of detail and audience. Keep public examples and screenshots free of real addresses and coordinates.
 
 ## Complete examples
 
-The examples use invented records. Forms validate and show local feedback only; they do not call Home Assistant, save preferences or claim a real device result. In-page links lead to the explanation shown in the same specimen.
+The examples use invented records. Their forms check input and show feedback in the page only. They do not call Home Assistant or save anything.
 
 ### Labelled locations, uncertainty and missing data
 
-Select **Load OpenStreetMap** to request the visible geographic tiles. Then compare Vivid/Muted and Light/Dark, select either device, zoom or reset focus. **Close map** stops the renderer. The complete table preserves all three configured devices, including the unlocated tablet. The legend, selection details and table are HTML, so essential values remain available without the map or JavaScript.
+Select **Load OpenStreetMap** to request the tiles for the visible area. Then switch between Vivid and Muted and between Light and Dark, select either device, zoom, or reset the focus. **Close map** stops the renderer. The table lists all three configured devices, including the tablet with no location. The legend, the selection details and the table are plain HTML, so the values stay available without the map or JavaScript.
 
 <%= example('map-neighbourhood-records') %>
 
 ### Map background unavailable
 
-This deliberately simulated failure does not load or block a real provider. The same reported locations remain readable, and the background failure is distinguished from a missing tracker observation. The decorative symbol is not a substitute for the failure heading or the records.
+This simulated failure loads nothing and blocks nothing. The reported locations stay readable, and the background failure is kept apart from a missing tracker observation. The decorative symbol does not replace the failure heading or the records.
 
 <%= example('map-background-unavailable') %>
 
@@ -133,29 +144,31 @@ This deliberately simulated failure does not load or block a real provider. The 
 
 ## Integration acceptance
 
-- Verify a title, coverage, source, period and truthful attribution at 320px and with enlarged text. A diagram marked “not to scale” must not imply measured distance.
-- Compare every example marker and selection cue with its key and HTML record. Check the plotted/unlocated denominator and both located and unlocated records without JavaScript.
-- Review marker/background and text contrast, shapes, labels and forced-colour output separately in all four map appearances. Test the selected marker and keyboard focus over real geography; a source palette check alone is not evidence of rendered contrast.
-- Check clustered markers, two entities at the same point, missing coordinates and failed tiles independently.
-- Test controls and text alternatives with keyboard, touch, enlarged text and dark mode; retain readable provider attribution.
-- Verify no location request, movement or new sharing is triggered by opening the documentation or changing palettes.
+- Check the title, area covered, source, period and attribution at 320px and with enlarged text. A diagram marked “not to scale” must not suggest measured distance.
+- Compare each marker and selection cue with its key and its row in the table. Check the plotted and unlocated counts, and read both kinds of record without JavaScript.
+- Check marker, background and text contrast, shapes, labels and forced-colour output in all four map appearances. Test the selected marker and keyboard focus over real geography. A check of the palette alone does not show the rendered contrast.
+- Test grouped markers, two entities at one point, missing coordinates and failed tiles separately.
+- Test the controls and text alternatives by keyboard, by touch, with enlarged text and in dark mode.
+- Check that opening the page or changing a palette triggers no location request, movement or new sharing.
 
-Record actual environment, versions, state, method and result using the [native task accessibility matrix](native-task-accessibility.html). Source review and a local example do not establish physical execution, screen-reader usability or live compatibility.
+Record the actual environment, versions, method and result using [Native task accessibility and evidence](native-task-accessibility.html). A source review or a local example does not show physical behaviour, screen-reader use or live compatibility.
 
-## Sources and original artwork
+## What the native Map card offers
 
-Reviewed on 12 November 2026: [GOV.UK Data: Maps](https://brand.design-system.service.gov.uk/data/maps/) and [GOV.UK Colour: Maps](https://brand.design-system.service.gov.uk/colour/maps/). These inform hierarchy, labelled meaning, sources, scale decisions and accessible alternatives. The exact official identity palette is not imported as a household theme. The six local example roles demonstrate that separation.
+Checked on 17 November 2026 against the [Map card](https://www.home-assistant.io/dashboards/map/) and [Map tiles](https://www.home-assistant.io/integrations/map_tiles/) documentation, and the Home Assistant frontend source at commit `b1164739c3a853a28ba1c425415e96a17eb6286e`.
 
-The map uses **MapLibre GL JS 6.16.0** and **VersaTiles Style 7.0.1**, the versions pinned by the reviewed Home Assistant frontend. Its six role colours use the documented custom-map-style colour names, rather than filtering a raster image. The local style keeps OpenStreetMap names and contextual geometry, uses local Arial labels at a minimum of 14px and omits point-of-interest icons and labels unrelated to the example location task. Changing the map appearance preserves the geographic view and device records. These are documentation choices, not a claim that native Home Assistant uses this exact complete style.
+- **Map style** offers Default, Neon, Colorful, Natural, Muted, Gray and Toner. You can also set `map_style` to a custom style with `colors` and `colors_dark`. The dark colours replace the light colours. They are not merged with them.
+- **Theme mode** offers Auto, Light and Dark. `scale_ruler` turns the native ruler on or off.
+- Map tiles supplies the base map from the OpenStreetMap Foundation's servers through Home Assistant, which proxies and briefly caches the requests. On devices that cannot show the detailed map, it shows a simpler map from the same servers.
 
-The [OpenStreetMap provider configuration](../reference/map-example-provider.json) is separate from the bundled renderer. The example uses the OSM Foundation's Shortbread vector service only after explicit activation, sends a normal browser Referer and respects browser cache headers. It does not prefetch a region, create an offline archive, use a caching proxy or request a person's location. It requests only tiles needed for the bounded Cardiff Bay view. Review the [OSMF vector tile policy](https://operations.osmfoundation.org/policies/vector/) before changing that usage. The provider may be unavailable; the complete records remain usable. The public repository provides the project contact route.
+This documentation example contacts OpenStreetMap directly. It does not copy the native proxy and does not change any Home Assistant setting.
 
-Map data remains **© OpenStreetMap contributors**, under its [Open Database Licence terms](https://www.openstreetmap.org/copyright); it is not relabelled as project artwork. Attribution stays visible in and below the working map. The [renderer and style-builder licence notices](../reference/map-demo-licenses.txt) are shipped with the example. Device records, key symbols and the fallback symbol are original project content; provenance and alternative-text decisions sit alongside the examples in `docs/data/map-design-examples.yml`.
+## Data, renderer and licence notices
 
-In the reviewed native frontend, `map_style` supports the built-in Default, Colorful, Natural, Muted, Gray and Toner styles, and a custom map with `colors` and `colors_dark`. Dark overrides replace the light override map rather than merging with it. `theme_mode` selects Light/Dark/Auto; `scale_ruler` controls the native ruler. The current [Map tiles integration](https://www.home-assistant.io/integrations/map_tiles/) supplies OSM tiles through Home Assistant's proxy, with a raster fallback on unsupported clients; custom vector styling does not apply to that fallback. This documentation example contacts OSM directly and does not impersonate that native proxy or change any Home Assistant configuration.
+The working map uses **MapLibre GL JS 6.16.0** and **VersaTiles Style 7.0.1**, the versions in this repository's `package.json`. The local style uses the documented custom-map-style colour names for its six roles. It keeps OpenStreetMap names and context, sets labels in local Arial at 14px or larger, and leaves out point-of-interest icons and labels that the example does not need. Changing the appearance keeps the geographic view and the device records. This is a documentation choice. It is not the style that native Home Assistant uses.
 
-These examples establish a reusable documentation pattern. Native adoption, full screen-reader usability and real-device compatibility still need their own acceptance evidence.
+Map data stays **© OpenStreetMap contributors**, under the [Open Database Licence terms](https://www.openstreetmap.org/copyright). The attribution stays visible in and below the working map. The [renderer and style-builder licence notices](../reference/map-demo-licenses.txt) ship with the example. The device records, key symbols and fallback symbol are original project content. Their provenance and alternative-text decisions are in `docs/data/map-design-examples.yml`.
 
-## Applicable local rules
+The [OpenStreetMap provider configuration](../reference/map-example-provider.json) is separate from the bundled renderer. The example uses the OpenStreetMap Foundation's Shortbread vector tile service only after you select **Load OpenStreetMap**. It sends a normal browser Referer and follows the browser cache headers. It does not prefetch a region, create an offline archive, use a caching proxy or request a person's location. It asks only for the tiles in the bounded Cardiff Bay view. Read the [OSMF vector tile policy](https://operations.osmfoundation.org/policies/vector/) before changing that use. The provider may be unavailable, and the records stay usable if it is. The public repository gives the project's contact route.
 
-[BG-DAT-01](../styles/brand-data.html#bg-dat-01), [BG-DAT-03](../styles/brand-data.html#bg-dat-03), [BG-DAT-04](../styles/brand-data.html#bg-dat-04), [BG-DAT-07](../styles/brand-data.html#bg-dat-07), [BG-DAT-08](../styles/brand-data.html#bg-dat-08), [BG-COL-02](../styles/brand-colour.html#bg-col-02), [BG-COL-03](../styles/brand-colour.html#bg-col-03), [BG-COL-07](../styles/brand-colour.html#bg-col-07), [BG-ILL-08](../styles/illustration.html#bg-ill-08), [BG-ILL-09](../styles/illustration.html#bg-ill-09), [WG-063](../content/writing-guidelines/clear-language.html#wg-063), [WG-066](../content/writing-guidelines/right-tone.html#wg-066), [WG-082](../content/formatting-content/images.html#wg-082).
+These examples show a reusable documentation pattern. Native use, full screen-reader use and real-device compatibility need their own evidence.
