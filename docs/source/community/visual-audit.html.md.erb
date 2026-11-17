@@ -3,16 +3,32 @@ title: "Visual review: borders, icons and badges"
 description: "Evidence and corrective rules from the November 2026 civica.uk visual review."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
+ai_instructions: "Apply when changing borders, dividers, icons, badges or card styling. Use quiet 1px structural edges and stronger input boundaries, keep native icons for Home Assistant domains, and limit square corners to named components. Source inspection explains a cause but a deployed correction needs live checks, so record untested states as not tested. Rules WG-081, WG-086, WG-095."
+ai_related:
+  - path: "/components/notification-badge.html"
+    title: "Notification badge"
+    relationship: "Owns the count pattern adopted from this review."
+  - path: "/styles/images.html"
+    title: "Icons and images"
+    relationship: "Owns the icon and image rules, including native domain icons."
+  - path: "/get-started/compatibility.html"
+    title: "Compatibility and limits"
+    relationship: "Owns the boundary of what the theme and companion change."
+  - path: "/home-assistant/compatibility-register.html"
+    title: "Compatibility register and native fallback"
+    relationship: "Owns the maintained implementations and the native fallback."
 ---
 
 # Visual review: borders, icons and badges
 
-The visual review found poor icon hierarchy, harsh card outlines and dividers, and an angular notification count. This review compares the public GOV.UK homepage, official component sources and repository revision `95b7a58`. It separates source findings from live Home Assistant observations. A passing contrast test had not established a coherent visual hierarchy.
+Keep container edges quiet, keep input boundaries strong and use rounded badges for counts. The review that led to these rules found poor icon hierarchy, harsh card outlines and dividers, and an angular notification count. A passing contrast test had not shown a coherent visual hierarchy.
+
+This page is for maintainers changing the theme or the documentation styles. It compares the public GOV.UK homepage, official component sources and repository revision `95b7a58`. The findings table records source evidence. The Overview findings were also observed live in Chrome on Home Assistant 2026.11.0. The corrections are decisions.
 
 
 ## Examples
 
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+These isolated examples show the decisions on this page. Household values are invented, and the demonstration actions do not control a home. Open an example to see it at full width or view its HTML.
 
 <%= example('local-layout-groups') %>
 
@@ -34,15 +50,15 @@ These isolated examples illustrate the decisions on this page. Any household val
 | Documentation demonstrated older border colours | Its structural CSS used `#B1B4B6`, and the palette demo used an ink container edge | Use the same quiet structural role in the documentation while keeping input boundaries strong |
 | Two installation paths supplied the same theme names | Live inspection found an older HACS copy under `themes/govuk/` alongside the updated manual copy under `themes/civica/`, so stale definitions remained effective | Keep one YAML owner; HACS users copy only runtime files from the archive, and move superseded theme backups outside the included themes directory |
 
-The Overview findings were reproduced in Chrome on Home Assistant 2026.11.0. Source inspection explains the causes; every deployed correction still needs the live checks below. This review does not establish coverage of arbitrary third-party cards.
+The Overview findings were reproduced in Chrome on Home Assistant 2026.11.0. Source inspection explains the causes, but every deployed correction still needs the live checks below. This review does not cover arbitrary third-party cards.
 
 ## What the official references establish
 
-The [GOV.UK colour roles](https://design-system.service.gov.uk/styles/colour/) distinguish structural borders from input boundaries. The [summary-list source](https://github.com/alphagov/govuk-frontend/blob/3862ef30df6a5da3e03974214cd28ffbfa769867/packages/govuk-frontend/src/govuk/components/summary-list/_mixin.scss) uses a 1px structural row divider. Neither justifies making every container look like an editable field.
+The [GOV.UK colour roles](https://design-system.service.gov.uk/styles/colour/) distinguish structural borders from input boundaries. The [summary-list source](https://github.com/alphagov/govuk-frontend/blob/3862ef30df6a5da3e03974214cd28ffbfa769867/packages/govuk-frontend/src/govuk/components/summary-list/_mixin.scss) uses a 1px structural row divider. Neither is a reason to make every container look like an editable field.
 
-The [GOV.UK homepage](https://www.gov.uk/) and its [publishing component guide](https://components.publishing.service.gov.uk/component-guide/action_link) show purpose-specific search and navigation symbols. They do not define household device icons. The [Design System image guidance](https://design-system.service.gov.uk/styles/images/) supports labelled icons in familiar, frequently used systems. Native HA domain symbols remain a controlled choice for that purpose.
+The [GOV.UK homepage](https://www.gov.uk/) and its [publishing component guide](https://components.publishing.service.gov.uk/component-guide/action_link) show purpose-specific search and navigation symbols. They do not define icons for household devices. The [Design System image guidance](https://design-system.service.gov.uk/styles/images/) supports labelled icons in familiar, frequently used systems. Keep the native Home Assistant domain symbols for that purpose.
 
-The [MOJ notification badge](../components/notification-badge.html) supplies the missing count pattern. Its rounded red treatment is compatible with an otherwise square-edged interface. Its source implementation and the local accessibility adaptation must be reviewed separately.
+The [MOJ notification badge](../components/notification-badge.html) supplies the missing count pattern. Its rounded red treatment is compatible with an otherwise square-edged interface. Review its source implementation and the local accessibility adaptation separately.
 
 ## Close the review with evidence
 
@@ -52,4 +68,4 @@ Exercise the badge with empty, single-digit, multi-digit and capped counts in a 
 
 Check light/dark modes, a muted palette, keyboard focus, forced colours and 200% text scaling. Switching away must restore native styling. Confirm that no global radius override or high-contrast divider has reappeared through a legacy variable.
 
-The [source snapshot register](../reference/visual-audit-sources.json) records the exact code references inspected. Release results belong in the repository's verification record; this audit is not a claim of full conformance or a substitute for live review.
+The [source snapshot register](../reference/visual-audit-sources.json) records the exact code references inspected. Release results belong in the repository's verification record. This audit does not claim full conformance and does not replace a live review.

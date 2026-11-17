@@ -3,7 +3,7 @@ title: "Design-system compliance audit"
 description: "Original findings, implemented remedies and verification boundaries against the civica brand and writing rules."
 section: community
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -13,21 +13,39 @@ updates:
     description: "Recorded the implemented remedies, original finding history and bounded verification evidence."
   - date: "2026-11-11"
     description: "Published the whole-system review, page coverage and proposed compliance changes."
+  - date: "2026-11-17"
+    description: "Rewritten to state what the audit proves and does not prove, with the findings, counts, evidence and headings unchanged."
+ai_instructions: "Apply when reading or citing a compliance finding. A finding is evidence of a rule breach at a recorded source location, and a resolution is valid only within its stated verification scope. No confirmed finding is not a certificate of accessibility or live Home Assistant compatibility. Keep resolved findings as history. Rules WG-086, WG-093, WG-094, WG-095."
+ai_related:
+  - path: "/community/component-audit.html"
+    title: "Component organisation review"
+    relationship: "Owns which guide owns each shared component rule."
+  - path: "/community/missing-components.html"
+    title: "Home Assistant specification coverage"
+    relationship: "Owns the 30 native-task design specifications."
+  - path: "/community/guidance-work-package.html"
+    title: "Brand, writing and audit work package"
+    relationship: "Owns the review loops and checklists."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns the rules for wording state, request and error messages that the findings refer to."
 ---
 
 # Design-system compliance audit
 
-This audit applies the completed [design styles](../styles/index.html) and [writing guide](../content/index.html) to the authored design system. It preserves the original findings and records the implemented remedies, current evidence and acceptance checks. Read each resolution alongside its stated test scope.
+Read each finding with its verification scope, because a resolution is only as strong as the checks recorded for it. This audit applies the completed [design styles](../styles/index.html) and [writing guide](../content/index.html) to the authored design system. It keeps the original findings and records the implemented remedies, current evidence and acceptance checks.
+
+The audience is maintainers and reviewers. The findings, counts and source locations below are evidence. The priorities and the migration recommendations are judgements about order of work.
 
 <% audit = JSON.parse(File.read(File.join(root, 'data', 'design-system-audit.json'))) %>
 
 ## Scope and result
 
-<p>The review covers <strong><%= audit['pages'].length %> guidance pages</strong>, <strong><%= audit['examples'].length %> shared examples</strong> and the shared presentation, token and maintained runtime sources listed in the <a href="../reference/design-system-audit.json">machine-readable evidence record</a>. It records <strong><%= audit['findings'].length %> confirmed compliance findings</strong>. “No confirmed finding” means none was identified in the stated static review; it is not a certificate of accessibility or live Home Assistant compatibility.</p>
+<p>The review covers <strong><%= audit['pages'].length %> guidance pages</strong>, <strong><%= audit['examples'].length %> shared examples</strong> and the shared presentation, token and maintained runtime sources listed in the <a href="../reference/design-system-audit.json">machine-readable evidence record</a>. It records <strong><%= audit['findings'].length %> confirmed compliance findings</strong>. “No confirmed finding” means the stated static review identified none. It is not a certificate of accessibility or live Home Assistant compatibility.</p>
 
-The [component review](component-audit.html) separately maps every component to its canonical family. The [Home Assistant gap register](missing-components.html) links the completed specifications for the 30 identified design gaps, including functionality already supplied by native Home Assistant. These are different questions from whether existing guidance follows its rules.
+The [component review](component-audit.html) separately maps every component to its canonical family. The [Home Assistant gap register](missing-components.html) links the completed specifications for the 30 identified design gaps, including functionality already supplied by native Home Assistant. Those registers answer different questions from this audit, which asks whether existing guidance follows its rules.
 
-The [data, colour, personalisation and illustration review](../reference/data-design-review.json) records the current documentation update and its verification boundaries. It preserves the distinction between a published design reference and implementation inside Home Assistant.
+The [data, colour, personalisation and illustration review](../reference/data-design-review.json) records the current documentation update and its verification boundaries. It keeps a published design reference separate from implementation inside Home Assistant.
 
 ## How the audit was performed
 
@@ -37,7 +55,7 @@ The [data, colour, personalisation and illustration review](../reference/data-de
 4. Confirm each finding against a local rule and a precise source location. Record a proposal and observable acceptance criteria.
 5. Reconcile every page and example with the coverage ledger, independently challenge findings, and rerun affected checks.
 
-The [work-package checklist](guidance-work-package.html) records the loops and verification evidence. Source hashes identify what was reviewed. A future edit requires a new review rather than inheriting this result automatically.
+The [work-package checklist](guidance-work-package.html) records the loops and verification evidence. Source hashes identify what was reviewed. A later edit needs a new review, because it does not inherit this result.
 
 ## Priorities
 
@@ -64,7 +82,7 @@ The [work-package checklist](guidance-work-package.html) records the loops and v
 
 <h2 id="migration-recommendations">Migration recommendations</h2>
 
-<p>These recommendations improve consistency when existing material is revised. Their rules may apply to new work; they are not retroactively labelled as confirmed MUST violations.</p>
+<p>These recommendations improve consistency when existing material is revised. Their rules may apply to new work. They are recommendations, not confirmed MUST violations.</p>
 
 <% audit['migration_recommendations'].each do |item| %>
 <h3 id="<%= escape(item['id'].downcase) %>"><%= escape(item['id']) %>: <%= escape(item['title']) %></h3>
@@ -90,10 +108,10 @@ The [work-package checklist](guidance-work-package.html) records the loops and v
 
 <%= example('local-community-decision') %>
 
-Implement a bounded change against the canonical component owner. Preserve existing public URLs through aliases or redirects where needed. Add the acceptance evidence, update the rule and examples together, and change the finding’s status only after the checks pass. Keep a resolved finding as history instead of deleting its evidence.
+Close a finding only after its checks pass. Make a bounded change against the canonical component owner, keep existing public URLs through aliases or redirects where needed, and update the rule and examples together. Add the acceptance evidence, then change the finding's status. Keep a resolved finding as history and do not delete its evidence.
 
 ## Verification boundaries
 
 <ul><% audit['limitations'].each do |limitation| %><li><%= escape(limitation) %></li><% end %></ul>
 
-The remedies update documentation, examples, shared presentation and the maintained lighting-card request/count behaviour. The 30 Home Assistant guides specify native tasks; they do not replace native editors or add unsupported device capabilities. Physical device outcomes and complete native assistive-technology coverage need their own installation-specific evidence.
+The remedies update documentation, examples, shared presentation and the maintained lighting-card request and count behaviour. The 30 Home Assistant guides specify native tasks. They do not replace native editors or add unsupported device capabilities. Physical device outcomes and complete native assistive-technology coverage need their own installation-specific evidence.

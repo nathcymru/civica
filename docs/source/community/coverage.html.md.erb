@@ -3,7 +3,7 @@ title: "Source coverage and implementation status"
 description: "An auditable mapping of the GOV.UK, NHS and publishing-guide catalogues to civica guidance and examples."
 section: community
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -13,13 +13,33 @@ updates:
     description: "Separated current guide and example counts, shared component owners and maintained custom-card types."
   - date: 2026-11-11
     description: "Added the complete component and pattern source mapping, example catalogue and implementation boundaries."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with what coverage means and does not mean, with the source counts, build-time counts and links unchanged."
+ai_instructions: "Apply when claiming that a source component, pattern or Home Assistant interface is covered. Coverage means local guidance plus an example or a stated replacement, never an installed Home Assistant feature. Keep source status, local examples and native implementation separate. Rules WG-043, WG-056, WG-090."
+ai_related:
+  - path: "/community/component-audit.html"
+    title: "Component organisation review"
+    relationship: "Owns which guide owns each shared component rule."
+  - path: "/community/uk-design-system-review.html"
+    title: "UK design systems and Home Assistant controls"
+    relationship: "Owns the decisions about MoJ, DWP, Home Office, ONS, Royal Navy and other catalogues."
+  - path: "/home-assistant/interface-coverage.html"
+    title: "Home Assistant interface coverage"
+    relationship: "Owns the item-by-item mapping of native Home Assistant interface entries."
+  - path: "/home-assistant/compatibility-register.html"
+    title: "Compatibility register and native fallback"
+    relationship: "Owns what the maintained theme and cards implement."
 ---
 
 # Source coverage and implementation status
 
-The catalogue maps every entry in the reviewed GOV.UK component index, NHS component and pattern indexes, and Publishing Design Guide. It includes nested publishing-template variants and the NHS review-date entry that is now withdrawn. Coverage means there is local guidance and an example or an explicit replacement; it does not mean every pattern has been installed in native Home Assistant.
+Use this page to check what "covered" means before you claim that civica supports a pattern. Coverage means there is local guidance and either an example or an explicit replacement. It does not mean the pattern is installed in native Home Assistant.
+
+The page is for maintainers and reviewers. It maps every entry in the reviewed GOV.UK component index, the NHS component and pattern indexes and the Publishing Design Guide. That includes nested publishing-template variants and the NHS review-date entry, which is now withdrawn.
 
 ## Read the status correctly
+
+State which status you mean. Otherwise a reader may take a design reference for a working feature.
 
 | Status | What it establishes | What it does not establish |
 | --- | --- | --- |
@@ -27,9 +47,11 @@ The catalogue maps every entry in the reviewed GOV.UK component index, NHS compo
 | Reference component or pattern | An authored, inspectable design with usage and testing guidance | A connected backend, device action or native HA replacement |
 | Withdrawn source | A recorded source decision and a recommended replacement | A recommendation to build the obsolete component |
 
-A working documentation control proves its local example behaviour. A live Home Assistant claim requires separate installation and route verification. The examples deliberately use invented data and local actions.
+A documentation control proves only the behaviour of its local example. A claim about live Home Assistant needs separate installation and route checks. The examples use invented data and local actions.
 
 ## Source inventories
+
+These counts are evidence: each row is the number of entries in the index reviewed on the dates recorded in the coverage record.
 
 | Source | Reviewed entries | Local organisation |
 | --- | ---: | --- |
@@ -38,9 +60,9 @@ A working documentation control proves its local example behaviour. A live Home 
 | [NHS patterns](https://service-manual.nhs.uk/design-system/patterns) | 13 | Inclusive content, household tasks and page patterns |
 | [Publishing Design Guide](https://design-guide.publishing.service.gov.uk/) | 42 | 11 components, 1 search-filter pattern and 30 page-template entries, including nested variants |
 
-Overlapping source entries share one canonical local page rather than creating competing implementations. The source counts therefore do not add up to a unique-page count. The [dated UK systems review](uk-design-system-review.html) adds MoJ, DWP, Home Office, ONS and Scottish Government catalogue decisions, with detail-page review recorded separately.
+Overlapping source entries share one canonical local page, so the source counts do not add up to a count of unique pages. The [dated UK systems review](uk-design-system-review.html) adds the MoJ, DWP, Home Office, ONS and Scottish Government catalogue decisions. It records detail-page review separately.
 
-The machine-readable [coverage record](../reference/coverage.json) includes every source URL, local route and example ID. The [complete sitemap](../sitemap.html) and [search](../search.html) use the same Middleman page catalogue as section navigation.
+The machine-readable [coverage record](../reference/coverage.json) lists every source URL, local route and example ID. The [complete sitemap](../sitemap.html) and [search](../search.html) use the same Middleman page catalogue as section navigation.
 
 ## Local guidance and maintained implementation
 
@@ -48,17 +70,23 @@ The machine-readable [coverage record](../reference/coverage.json) includes ever
 <% owners = JSON.parse(File.read(File.join(root, 'data', 'component-rationalisation.json')))['current'] %>
 <p>The current build contains <strong><%= coverage_pages.length %> guides</strong> and <strong><%= coverage_examples.length %> examples</strong>. The <%= owners['componentPages'] %> component URLs have <%= owners['componentCanonicalOwners'] %> canonical shared-rule owners. The original 130 official source entries include 28 GOV.UK/NHS overlaps; these are source mappings to shared pages, not duplicate components.</p>
 
-The repository maintains three custom-card types: the lighting card, theme settings and action links. The legacy lighting name is an alias of the same component. Shell, Energy and the three household-card presentation adapters are separately listed in the [compatibility register](../home-assistant/compatibility-register.html); an adapter is not another installed card. The [Home Assistant specifications](../home-assistant/index.html) provide design and acceptance guidance. The [interface census](../home-assistant/interface-coverage.html) now maps each entry in the pinned built-in registries, including shared controls, settings and tools; it is more specific than the original 30-gap task list.
+The repository maintains three custom-card types: the lighting card, theme settings and action links. The legacy lighting name is an alias of the same component. The [compatibility register](../home-assistant/compatibility-register.html) lists Shell, Energy and the three household-card presentation adapters separately. An adapter is not another installed card.
 
-The [A to Z Technical lexicon](../content/style-guides/technical-a-to-z.html) records the official glossary, entity domains and selected native vocabulary. Use its explicit source denominators and version boundaries. It does not claim every vendor-defined integration label or future custom card has been reviewed.
+The [Home Assistant specifications](../home-assistant/index.html) give design and acceptance guidance. The [interface census](../home-assistant/interface-coverage.html) maps each entry in the pinned built-in registries, including shared controls, settings and tools. It is more specific than the original 30-gap task list.
+
+The [A to Z Technical lexicon](../content/style-guides/technical-a-to-z.html) records the official glossary, entity domains and selected native vocabulary. Use its stated source denominators and version boundaries. It does not claim to cover every vendor-defined integration label or future custom card.
 
 ## Adaptation decisions
 
-NHS identity rules, clinical urgency and NHS-number collection are not copied into a household application. We use civica artwork, describe household consequences directly and adapt the identifier pattern to useful device and configuration identifiers. The [BSL pattern](../patterns/british-sign-language.html) makes signed-content availability, production and review requirements explicit; it does not invent a verified household video.
+These are design decisions, not source findings.
 
-Publishing ministerial, organisation, statistical and policy templates become household owners, guides, reports and collections. They retain useful editorial structure while omitting government authority claims. Some patterns describe a future authored application; do not infer that a native dashboard now includes a publishing backend.
+civica does not copy NHS identity rules, clinical urgency or NHS-number collection into a household application. It uses civica artwork, describes household consequences directly and adapts the identifier pattern to useful device and configuration identifiers. The [BSL pattern](../patterns/british-sign-language.html) sets out what signed-content availability, production and review need. It does not invent a verified household video.
+
+Publishing ministerial, organisation, statistical and policy templates become household owners, guides, reports and collections. They keep the useful editorial structure and leave out government authority claims. Some patterns describe a future authored application. Do not infer that a native dashboard now includes a publishing backend.
 
 ## Examples of honest scope
+
+These examples show the difference between a supported component and a native fallback.
 
 <%= example('local-compatibility-supported') %>
 
@@ -66,12 +94,12 @@ Publishing ministerial, organisation, statistical and policy templates become ho
 
 ## Brand, writing and whole-system review
 
-The [brand inventory](../reference/brand-guidance.json) and [writing inventory](../reference/writing-guide.json) add source-to-rule mappings for the new guidance. They record relevant chapters, deliberate adaptations and excluded material rather than treating a source homepage link as full coverage.
+The [brand inventory](../reference/brand-guidance.json) and [writing inventory](../reference/writing-guide.json) map sources to rules. They record relevant chapters, deliberate adaptations and excluded material. A link to a source homepage is not full coverage.
 
-The [work-package checklist](guidance-work-package.html) records repeated coverage checks. The [whole-system audit](design-system-audit.html) records the review scope, every-page outcomes and confirmed findings. The [component organisation review](component-audit.html) and [missing-specification register](missing-components.html) record implemented shared ownership and the 30 dedicated native-task design specifications. None of these records changes a reference example into an installed Home Assistant feature.
+The [work-package checklist](guidance-work-package.html) records repeated coverage checks. The [whole-system audit](design-system-audit.html) records the review scope, every-page outcomes and confirmed findings. The [component organisation review](component-audit.html) and [missing-specification register](missing-components.html) record shared ownership and the 30 dedicated native-task design specifications. None of these records turns a reference example into an installed Home Assistant feature.
 
 ## Maintain coverage
 
-When an upstream index changes, compare entries recursively, record the reviewed version or date and update the mapping. Read a component’s actual source before changing its local behaviour. Keep source status, local examples and native implementation status separate. The documentation checks reject missing mapped pages and broken local routes.
+When an upstream index changes, compare entries recursively, record the reviewed version or date and update the mapping. Read a component's actual source before changing its local behaviour. Keep source status, local examples and native implementation status separate. The documentation checks reject missing mapped pages and broken local routes.
 
-When a source component is withdrawn, preserve the stable local URL, explain the reason and link to the replacement. Do not silently delete guidance that existing dashboards or issue reports may reference.
+When a source component is withdrawn, keep the stable local URL, explain the reason and link to the replacement. Do not delete guidance that existing dashboards or issue reports may refer to.

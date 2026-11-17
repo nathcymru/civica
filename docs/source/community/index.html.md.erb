@@ -3,7 +3,7 @@ title: "Maintain the system"
 description: "Maintain the system for the civica Home Assistant design system."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 published_on: "2026-11-11"
 updates:
   - date: "2026-11-13"
@@ -22,11 +22,38 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the maintenance rule and reorder headings by task."
+ai_instructions: "Use as the entry point for maintainers. Change the contract and the implementation together, keep one source of truth, and review writing, keyboard behaviour, state, contrast and native compatibility. Do not hand-edit one theme. Rules WG-090, WG-093, WG-094."
+ai_related:
+  - path: "/community/sources.html"
+    title: "Sources and provenance"
+    relationship: "Owns the reviewed source register."
+  - path: "/community/licensing.html"
+    title: "Licence"
+    relationship: "Owns the licence and attribution notices."
+  - path: "/community/architecture.html"
+    title: "Documentation architecture"
+    relationship: "Owns how the documentation site is built."
+  - path: "/community/deviations.html"
+    title: "Controlled deviations"
+    relationship: "Owns the register of local decisions."
+  - path: "/community/roadmap.html"
+    title: "Theme roadmap"
+    relationship: "Shows reviewed theme features."
+  - path: "/community/maintain-roadmap.html"
+    title: "Maintain the theme roadmap"
+    relationship: "Explains how to publish a roadmap item."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the test checklist used in review."
 ---
 
 # Maintain the system
 
-Keep civica consistent by changing the documented contract and implementation together.
+Change the documented contract and the implementation together, so that the guidance never describes something the theme does not do.
+
+For example, if a maintainer adds a semantic token for a warning colour, update the canonical palette data, regenerate the YAML themes and change the documentation page in one change. A hand-edit to one theme file leaves the other themes and the guidance out of step.
 
 
 ## Examples
@@ -38,34 +65,34 @@ These isolated examples illustrate the decisions on this page. Any household val
 <%= example('local-community-decision') %>
 
 
-## Current guidance and audit work
-
-Use the [work-package checklist](guidance-work-package.html) to see the source review, guide coverage and repeated checks. The [design-system audit](design-system-audit.html) lists confirmed gaps and proposed changes against the design-style and writing rules. The [component review](component-audit.html) proposes clearer canonical families while preserving existing URLs. The [missing-component register](missing-components.html) distinguishes absent design specifications from functionality already provided by Home Assistant.
-
-## Theme roadmap
-
-The [theme roadmap](roadmap.html) shows reviewed household features that have been accepted, are in the works or have been delivered. It covers the theme, rather than documentation changes. Contributors can use the [roadmap maintenance guide](maintain-roadmap.html) to prepare an issue and review its public wording.
-
 ## Propose a change
 
-Describe the household task, current problem, affected components and evidence. Show the proposed states and narrow-screen behaviour. Identify the official source pattern and explain any adaptation.
+Describe the household task, the current problem, the affected components and your evidence. Show the proposed states and the narrow-screen behaviour. Identify the official source pattern and explain any adaptation.
 
-For a bug, include a minimal reproduction and the Home Assistant/browser versions. For a new pattern, explain why an existing component is insufficient.
+For a bug, include a minimal reproduction and the Home Assistant and browser versions. For a new pattern, explain why an existing component is not enough.
 
 ## Keep one source of truth
 
-Edit canonical palette data and generate outputs. Do not hand-edit only one YAML theme or documentation example. Add a semantic token when the same role appears across components; do not add arbitrary per-card colours.
+Edit the canonical palette data and generate the outputs. Do not hand-edit only one YAML theme or one documentation example. Add a semantic token when the same role appears across components. Do not add arbitrary per-card colours.
 
-Preserve the user-supplied project identity files and their provenance. A new asset requires an explicit design decision and an updated inventory.
+Preserve the user-supplied project identity files and their provenance. A new asset needs an explicit design decision and an updated inventory.
 
 ## Review the whole change
 
-Review writing, keyboard behaviour, state handling, contrast, native compatibility, generated files and documentation. Use the [test checklist](../accessibility/testing.html) and [deviation register](deviations.html).
+Review writing, keyboard behaviour, state handling, contrast, native compatibility, generated files and documentation. Use the [test checklist](../accessibility/testing.html) and the [deviation register](deviations.html).
 
-The [November 2026 visual review](visual-audit.html) records the border, icon and notification-badge deficiencies found after the initial release, their source evidence and required acceptance checks.
+The [November 2026 visual review](visual-audit.html) records the border, icon and notification-badge deficiencies found after the initial release, their source evidence and the acceptance checks.
 
-## Source hierarchy
+## Find audit work
 
-The user's explicit requirements and this repository's documented local contract govern civica. Official systems provide reusable guidance and source patterns. Their government-specific operational instructions do not become instructions to this project's users or maintainers.
+Use the [work-package checklist](guidance-work-package.html) to see the source review, guide coverage and repeated checks. The [design-system audit](design-system-audit.html) lists confirmed gaps and proposed changes against the design-style and writing rules. The [component review](component-audit.html) proposes clearer canonical families and keeps existing URLs. The [missing-component register](missing-components.html) separates absent design specifications from functionality that Home Assistant already provides.
+
+## Publish the theme roadmap
+
+The [theme roadmap](roadmap.html) shows reviewed household features that are accepted, in the works or delivered. It covers the theme, not documentation changes. Use the [roadmap maintenance guide](maintain-roadmap.html) to prepare an issue and review its public wording.
+
+## Follow the source hierarchy
+
+The explicit requirements of the project owner and this repository's documented local contract govern civica. Official systems provide reusable guidance and source patterns. Their government-specific operational instructions do not become instructions to civica's users or maintainers.
 
 [Sources](sources.html), [licensing](licensing.html) and the [documentation architecture](architecture.html) explain how this system is assembled.

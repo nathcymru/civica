@@ -4,7 +4,7 @@ description: "Documentation architecture for the civica Home Assistant design sy
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -12,11 +12,32 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the build rule, add an example of adding a page, and point to licensing and sources as owners."
+ai_instructions: "Use as the owner of how the documentation site is built: Middleman with the pinned govuk_tech_docs gem, unbranded, with navigation derived from page front matter. Do not claim the upstream Node site is Middleman, and do not publish official branding. Rules WG-090, WG-091, WG-092."
+ai_related:
+  - path: "/community/index.html"
+    title: "Maintain the system"
+    relationship: "Starts the maintainer guidance."
+  - path: "/community/licensing.html"
+    title: "Licence"
+    relationship: "Owns the notices for dependency and artwork use."
+  - path: "/community/sources.html"
+    title: "Sources and provenance"
+    relationship: "Owns the reviewed source register."
+  - path: "/components/example.html"
+    title: "Example viewer"
+    relationship: "Owns how reviewed examples are rendered."
+  - path: "/components/page-history.html"
+    title: "Page metadata and history"
+    relationship: "Owns the page-history disclosure."
 ---
 
 # Documentation architecture
 
-This `/docs` folder is a real GOV.UK Tech Docs Template site powered by Middleman and the pinned `govuk_tech_docs` gem. The Markdown renderer, syntax highlighting, component foundations and contents helpers come from that template.
+Build the documentation as a genuine Tech Docs Template site on Middleman, and keep it unbranded. This `/docs` folder uses the pinned `govuk_tech_docs` gem for the Markdown renderer, syntax highlighting, component foundations and contents helpers. Because the template supplies those parts, do not write local copies of them.
+
+For example, a maintainer who needs a new page adds a Markdown file under `docs/source` with a title, a section and an `updates` history entry in its front matter. The navigation and search then pick it up from the Middleman resources, so there is no separate page list to edit.
 
 
 ## Examples
@@ -30,9 +51,9 @@ These isolated examples illustrate the decisions on this page. Any household val
 
 ## Follow the Design System layout
 
-The information architecture follows [alphagov/govuk-design-system](https://github.com/alphagov/govuk-design-system): Get started, Styles, Components, Patterns, Community and Accessibility. Pages use a common header, service navigation, section navigation, main content and footer.
+Use the same section order as the GOV.UK Design System. The information architecture follows [alphagov/govuk-design-system](https://github.com/alphagov/govuk-design-system): Get started, Styles, Components, Patterns, Community and Accessibility. Pages use a common header, service navigation, section navigation, main content and footer.
 
-The upstream website itself uses Node, `src`, `views`, `data` and build tasks. It is not a Middleman project. This repository deliberately maps its layout and content organisation to Middleman's `source`, `layouts`, `data`, `helpers` and `config` directories rather than claiming to copy its build stack.
+The upstream website uses Node, `src`, `views`, `data` and build tasks. It is not a Middleman project. This repository maps its layout and content organisation to Middleman's `source`, `layouts`, `data`, `helpers` and `config` directories. It does not claim to copy the upstream build stack.
 
 ## Local structure
 
@@ -54,17 +75,17 @@ docs/
 
 ## Keep the build unbranded
 
-Set `show_govuk_logo: false`, replace the shell and favicon paths, omit default font-face rules and import only the needed component styles. The published site excludes upstream branded images and font files. The fact that a dependency contains official assets does not mean those assets may be published in civica.
+Do not publish official branding. Set `show_govuk_logo: false`, replace the shell and favicon paths, omit default font-face rules and import only the needed component styles. The published site excludes upstream branded images and font files. A dependency that contains official assets does not give civica permission to publish them. [Licensing](licensing.html) records the notices.
 
 ## Build and preview
 
-Use Ruby 3.3 and Bundler. First run `npm ci` and `npm run build` from the repository root to build the shared chart examples. From `/docs`, run `bundle install`, then `bundle exec middleman build`. Use `bundle exec middleman server` for a local preview. Run the documentation validator after building.
+Use Ruby 3.3 and Bundler. First, from the repository root, run `npm ci` and `npm run build` to build the shared chart examples. From `/docs`, run `bundle install`, then `bundle exec middleman build`. Use `bundle exec middleman server` for a local preview. Run the documentation validator after building.
 
 Run `python3 docs/scripts/sync-brand.py --check` from the repository root to verify the accepted revised documentation artwork against `brand/civica/`.
 
-Commit content, configuration and the lockfile. Do not commit `build/`, `vendor/` or `.bundle/`. Publish the generated `build/` directory through the repository's chosen static hosting workflow.
+Commit content, configuration and the lockfile. Do not commit `build/`, `vendor/` or `.bundle/`. Publish the generated `build/` directory through the repository's static hosting workflow.
 
-The [Tech Docs Template](https://github.com/alphagov/tech-docs-template) explains its Middleman origin and non-government branding requirements.
+The [Tech Docs Template](https://github.com/alphagov/tech-docs-template) explains its Middleman origin and its non-government branding requirements. [Sources](sources.html) owns the source record.
 
 ## Frontend startup
 
@@ -76,7 +97,7 @@ The Energy presentation adapter uses Home Assistant's existing ECharts instance.
 
 The [example viewer](../components/example.html) reads reviewed YAML records, creates isolated standalone pages and displays the exact rendered HTML. Safe demonstration forms start disabled and are enabled only after the local handler is installed; without JavaScript they cannot submit household-like values as URL queries. GOV.UK Frontend 6.6.0 supplies the standard component enhancement, while civica supplies the shell, safe demos and example tabs.
 
-Every non-home editorial page uses the [page-history pattern](../components/page-history.html). Existing first-publication dates come from repository history; updates are authored records. The build does not manufacture a fresh review date. Example canvases carry a demonstration notice and link from their owning guide, which holds the editorial history.
+Give every non-home editorial page the [page-history pattern](../components/page-history.html). First-publication dates come from repository history, and updates are authored records. The build does not manufacture a fresh review date. Example canvases carry a demonstration notice and link from their owning guide, which holds the editorial history.
 
 Navigation and search derive their pages from Middleman resources and frontmatter section/group values. Publishing pages appear within Components or Patterns instead of creating a competing top-level taxonomy. The JSON coverage record exposes the same catalogue for automated reading.
 

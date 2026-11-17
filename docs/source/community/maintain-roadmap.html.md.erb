@@ -5,7 +5,7 @@ section: "community"
 group: "Guidance"
 nav_order: 3
 published_on: "2026-11-12"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -13,11 +13,30 @@ updates:
     description: "Added Accepted for agreed work that has not started, multiple categories and a blank optional explanation-link field."
   - date: "2026-11-12"
     description: "Added the theme-only issue workflow, public writing review, timeline rules and publication checks."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the publication rule, and moved the source links to the sources page."
+ai_instructions: "Use to prepare, review and publish a theme roadmap item from a GitHub issue. Apply one publishing label, keep developer notes out of public fields, and confirm release evidence before calling an item delivered. Automated checks do not prove a feature works or is accessible. Rules WG-010, WG-080, WG-094, WG-095."
+ai_related:
+  - path: "/community/roadmap.html"
+    title: "Theme roadmap"
+    relationship: "Shows the published timeline."
+  - path: "/community/sources.html"
+    title: "Sources and provenance"
+    relationship: "Owns the sources behind the workflow."
+  - path: "/content/writing-guidelines/clear-language.html"
+    title: "Use clear language"
+    relationship: "Owns the wording rules applied in review."
+  - path: "/content/formatting-content/text-formatting.html"
+    title: "Text formatting"
+    relationship: "Owns the heading, list and table rules."
+  - path: "/content/publish-update-retire/index.html"
+    title: "Publish, update or retire content"
+    relationship: "Owns the publication, update and withdrawal rules."
 ---
 
 # Maintain the theme roadmap
 
-Use the [theme roadmap](roadmap.html) to help households understand what has been agreed, what is being worked on and what has already been delivered. Keep developer discussion in GitHub. Only reviewed theme features belong on the public timeline; a new documentation example is not a delivered theme feature.
+Publish a feature on the [theme roadmap](roadmap.html) only after a maintainer has reviewed its wording and its status evidence. The roadmap helps households see what has been agreed, what is being worked on and what has been delivered. Keep developer discussion in GitHub. A new documentation example is not a delivered theme feature.
 
 ## Prepare an issue
 
@@ -96,8 +115,4 @@ The [Accepted-stage review](../reference/roadmap-accepted-review.json) records t
 
 ## Sources
 
-- [FreeAgent: product timeline](https://www.freeagent.com/timeline/)
-- [GitHub: syntax for issue forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms)
-- [GitHub: REST API for issues](https://docs.github.com/en/rest/issues/issues)
-- [GitHub: events that trigger workflows](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)
-- [GitHub: control workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency)
+[Sources and provenance](sources.html) lists the GitHub and product-timeline sources behind this workflow.
