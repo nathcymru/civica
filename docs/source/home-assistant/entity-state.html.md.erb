@@ -58,7 +58,7 @@ Take each part of the display from what the integration supplies. Do not add det
 
 Keep zero, unknown, unavailable, assumed and absent as separate cases. A valid zero stays zero. Home Assistant uses `unknown` when the entity has no value for its state and `unavailable` when the entity cannot provide its state right now. A missing or `null` optional attribute does not make the other values invalid. Do not force a non-numeric state into a number.
 
-Do not mark a reading stale from `last_changed` alone. An unchanged temperature can be correct for hours, because `last_changed` does not move when the value repeats. `last_reported` is updated each time the integration writes the state, but some integrations, such as MQTT, write only when something changed. So even `last_reported` does not prove that every device transmission reached Home Assistant.
+Do not mark a reading stale from `last_changed` alone. An unchanged temperature can be correct for hours, because `last_changed` does not move when the value repeats. `last_reported` is updated each time the integration writes the state,, but how often that happens depends on how each integration writes state. So even `last_reported` does not prove that every device transmission reached Home Assistant.
 
 Where there is no freshness contract, show the timestamp you have with its true label, or say that the observation time is not provided. Only call a reading stale when a documented reporting rhythm has been missed.
 
