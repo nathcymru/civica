@@ -1,174 +1,127 @@
 ---
 title: "A to Z Technical"
-description: "The exact words to use for Home Assistant entities, states, attributes, automations and the interface."
+description: "The exact Home Assistant words to use for entities, states, attributes, automations, cards and settings, with what each one means and what not to confuse it with."
 section: "content"
 group: "Lexicons"
 nav_order: 2
+no_contents: true
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-15"
+updated_on: "2026-11-17"
 updates:
+  - date: "2026-11-17"
+    description: "Merged the Home Assistant glossary, entity and state language and interface terminology lists into this one A to Z."
   - date: "2026-11-15"
-    description: "Replaced the four terminology chapters with one A to Z. Moved the word-choice rules to Use clear language. The full dated registers remain as reference."
+    description: "Added a technical A to Z."
 ---
 
 # A to Z Technical
 
 The exact Home Assistant words to use. For general writing, see [A to Z General](a-to-z.html).
 
-<nav aria-label="A to Z navigation">
-<ol class="style-a-z" role="list"><li><a class="govuk-link govuk-link--no-visited-state" href="#a">A</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#b">B</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#c">C</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#d">D</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#e">E</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#f">F</a></li><li><span class="style-a-z__empty" aria-hidden="true">G</span></li><li><a class="govuk-link govuk-link--no-visited-state" href="#h">H</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#i">I</a></li><li><span class="style-a-z__empty" aria-hidden="true">J</span></li><li><span class="style-a-z__empty" aria-hidden="true">K</span></li><li><a class="govuk-link govuk-link--no-visited-state" href="#l">L</a></li><li><span class="style-a-z__empty" aria-hidden="true">M</span></li><li><span class="style-a-z__empty" aria-hidden="true">N</span></li><li><span class="style-a-z__empty" aria-hidden="true">O</span></li><li><a class="govuk-link govuk-link--no-visited-state" href="#p">P</a></li><li><span class="style-a-z__empty" aria-hidden="true">Q</span></li><li><span class="style-a-z__empty" aria-hidden="true">R</span></li><li><a class="govuk-link govuk-link--no-visited-state" href="#s">S</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#t">T</a></li><li><span class="style-a-z__empty" aria-hidden="true">U</span></li><li><span class="style-a-z__empty" aria-hidden="true">V</span></li><li><span class="style-a-z__empty" aria-hidden="true">W</span></li><li><span class="style-a-z__empty" aria-hidden="true">X</span></li><li><a class="govuk-link govuk-link--no-visited-state" href="#y">Y</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#z">Z</a></li></ol>
+<%
+  register = JSON.parse(File.read(File.join(root, 'data', 'ha-terminology.json')))
+  sources = register['sources'].to_h { |source| [source['id'], source] }
+  kinds = {
+    'official-glossary' => 'Home Assistant term', 'card-types' => 'Card type', 'card-features' => 'Card feature',
+    'selector-types' => 'Selector type', 'entity-platform' => 'Entity platform', 'settings-labels' => 'Settings destination',
+    'automation-language' => 'Automations and scripts', 'state-records' => 'State record', 'dashboard-language' => 'Dashboard',
+    'energy-language' => 'Energy', 'security-language' => 'Accounts and security', 'helper-types' => 'Helper type',
+    'assist-language' => 'Assist and voice', 'installation-language' => 'Installation', 'additional-entity-domains' => 'Entity domain',
+    'view-types' => 'Dashboard view type'
+  }
+  entries = register['terms'].sort_by { |term| [term['native_name'].downcase, term['id']] }
+  by_letter = entries.group_by { |term| term['native_name'][0].upcase }
+  letters = ('A'..'Z').to_a
+%>
+<nav role="navigation" aria-label="A to Z navigation">
+<ol class="style-a-z" role="list"><% letters.each do |letter| %><% if by_letter[letter] %><li><a class="govuk-link govuk-link--no-visited-state" href="#<%= letter.downcase %>"><%= letter %></a></li><% else %><li><span class="style-a-z__empty"><%= letter %></span></li><% end %><% end %></ol>
 </nav>
 
-## A
+<% by_letter.keys.sort.each do |letter| %>
+<h2 id="<%= letter.downcase %>"><%= letter %></h2>
+<% by_letter[letter].each do |term| %>
+<div class="lexicon-entry" id="<%= escape(term['id'].downcase) %>">
+<h3><%= escape(term['native_name']) %><% if term['code_identifiers'] %> <small>(<code><%= escape(term['code_identifiers'].join(', ')) %></code>)</small><% end %></h3>
+<p class="govuk-hint"><%= kinds.fetch(term['category'], term['category']) %><%= ' · older name, kept for saved settings' if term['status'] == 'historical-term-retained' %></p>
+<p><%= escape(term['first_use_explanation']) %></p>
+<p>Write: <%= escape(term['household_wording']) %><%= '.' unless term['household_wording'].end_with?('.') %> <%= escape(term['avoid_confusion']) %></p>
+<% unless term['aliases'].nil? || term['aliases'].empty? %><p>Also called: <%= escape(term['aliases'].join(', ')) %>.</p><% end %>
+<% if term['official_glossary_url'] %><p><a href="<%= escape(term['official_glossary_url']) %>">Official <%= escape(term['native_name']) %> entry</a></p><% end %>
+<% if term['category'] == 'entity-platform' %>
+<% values = register['native_values'].select { |value| value['domain'] == term['code_identifiers'].first } %>
+<% unless values.empty? %>
+<details><summary><%= values.length %> context-specific native labels for <%= escape(term['code_identifiers'].first) %></summary>
+<table><caption>Labels, keys and what each one is</caption><thead><tr><th scope="col">Label and context</th><th scope="col">Key and kind</th><th scope="col">What it means</th></tr></thead><tbody>
+<% values.each do |value| %>
+<tr id="<%= escape(value['id'].downcase) %>"><th scope="row"><%= escape(value['native_label']) %><br><small><%= escape(value['context']) %></small></th><td><code><%= escape(value['code']) %></code><br><%= escape(value['code_kind'].tr('-', ' ')) %></td><td><%= escape(value['first_use_explanation']) %><br><a href="<%= escape(sources.fetch(value['source_id'])['url']) %>">Translation file</a> · <code><%= escape(value['native_label_pointer']) %></code></td></tr>
+<% end %>
+</tbody></table>
+</details>
+<% end %>
+<% end %>
+</div>
+<% end %>
+<% end %>
 
-### Action
+## Kinds of value
 
-Use “action” for what Home Assistant is asked to do. Older guidance says “service”: these mean the same thing. A request to run an action does not prove the device finished it.
+| Kind | Example | How to use it |
+| --- | --- | --- |
+| Entity ID | `light.nains_reading_lamp` | A full ID. Use the real ID from the household’s setup |
+| Domain | `light` | A family of entities. Not a full entity ID |
+| Raw state | `on` | Read it with its domain and device class |
+| Attribute property | `hvac_action` | A key inside the state. Not an entity ID |
+| Attribute value | `heating` | The value of one attribute. Not the same as a selected mode |
+| Device-class key | `door` | Names the label for that class in that domain |
+| Default translation key | `_` | A default entry in a translation file. Do not copy it anywhere |
 
-### App
+## Worked examples
 
-Use “app” for software that runs alongside Home Assistant on Home Assistant OS. Older instructions and some saved files say “add-on”. Say “app (previously add-on)” once. An app is not an integration, a dashboard card or the Companion app on a phone.
+<%= example('term-device-entity') %>
 
-### Area
+<%= example('term-same-word-different-layer') %>
 
-A room or other space that groups devices and entities. An area is not a zone. Acting on an area may change several entities.
+<%= example('term-identifiers') %>
 
-### Assist
+<%= example('term-event-action') %>
 
-Home Assistant’s voice and text assistant. A helpful reply does not prove the right device was controlled.
+<%= example('term-native-label') %>
 
-### Attribute
+<%= example('term-historical-name') %>
 
-Extra information about an entity, such as brightness. Write the attribute name in code formatting only when someone must copy it. An attribute is not the state.
+<%= example('term-contextual-on') %>
 
-## B
+<%= example('term-climate-meaning') %>
 
-### Blueprint
+<%= example('term-missing-state') %>
 
-A reusable pattern for making an automation or script. Choosing inputs or saving a blueprint-based automation does not mean it has run.
+<%= example('term-all-condition') %>
 
-## C
+<%= example('term-navigation-action') %>
 
-### Card
+<%= example('term-power-energy') %>
 
-A block on a dashboard. Do not use “widget” or “tile” unless that is the card’s name.
+## Other entity domains
 
-### Condition
+Home Assistant’s screens refer to 15 more domains than its 45 registered platforms. This table maps each one, plus Plant, Zone and Schedule.
 
-A check that decides whether a run carries on. A condition does not start a run and does not wait until it becomes true.
+<% terms_by_id = register['terms'].to_h { |term| [term['id'], term] } %>
+<table><caption>Supplementary entity-domain mapping</caption><thead><tr><th scope="col">Exact domain</th><th scope="col">Entry</th><th scope="col">Source scope</th></tr></thead><tbody>
+<% register['supplemental_domain_mappings'].sort_by { |mapping| mapping['domain'] }.each do |mapping| %>
+<% term = terms_by_id.fetch(mapping['entry_id']) %>
+<tr><th scope="row"><code><%= escape(mapping['domain']) %></code></th><td><a href="#<%= escape(term['id'].downcase) %>"><%= escape(term['native_name']) %></a></td><td><%= escape(mapping['source_role']) %> · <a href="<%= escape(mapping['official_guidance_url']) %>">Official <%= escape(mapping['domain']) %> guidance</a></td></tr>
+<% end %>
+</tbody></table>
 
-## D
+## About this lexicon
 
-### Dashboard
+It was checked against Home Assistant Core 2026.11.1, frontend 20261028.5 and the official website on 12 November 2026. That is the version we checked, not the version in a reader’s home. It has <%= register['terms'].length %> entries and <%= register['native_values'].length %> native labels. They are different things, so do not add them together.
 
-A set of views and cards for checking or controlling the home. A dashboard being hidden does not stop anyone reaching a device.
+English labels are here so you can find an entry. Keep the translation Home Assistant shows, and the names people gave their devices. The underscore `_` in a native-label table is a default translation entry, not an entity ID.
 
-### Device
+If a term is missing, add it from a source. Do not guess. The [terminology JSON](../../reference/ha-terminology.json) holds every source, ID and date.
 
-A physical product or a service that groups several entities. One device may have many entities, and some entities have no device.
+The official Home Assistant website identifies its source under [CC BY-NC-SA 4.0](https://github.com/home-assistant/home-assistant.io/blob/644bcefb1b42d1f50d26847d7d11df06c3b84ae2/LICENSE.md). This lexicon keeps its term names, aliases and source links and links to the official definitions instead of copying them. The household explanations and examples were written for civica.
 
-### Device class
-
-A more specific kind of entity, such as a door or a temperature sensor. Write it in lower case, as a label, not as a state.
-
-### Domain
-
-The first part of an entity ID: in `light.reading_lamp` the domain is `light`. It is not an internet domain.
-
-## E
-
-### Entity
-
-One reading, control or function in Home Assistant, such as a lamp or a temperature. An entity is not always a physical device. Say “light”, “sensor” or “switch” when you can.
-
-### Entity ID
-
-Write “entity ID”, not “entity id” or “identifier”. The format is `domain.object_id`, all lower case, with underscores. Changing the name of an entity does not necessarily change its ID.
-
-### Event
-
-A message that something happened. Receiving one does not prove a device did something.
-
-## F
-
-### Floor
-
-A group of areas on one level. Do not infer a building layout from it.
-
-## H
-
-### Helper
-
-A stored value or simple calculation, such as a toggle or a counter. Editing a draft helper does not change anything until it is saved.
-
-## I
-
-### Integration
-
-The connection between Home Assistant and a device family or service. Not the same as an app.
-
-## L
-
-### Label
-
-A tag you can put on many things to organise or target them. A label is not a room.
-
-## P
-
-### Person
-
-A Home Assistant person entity, which combines phones and other trackers. It is not a user account. It does not prove where a person is.
-
-## S
-
-### Scene
-
-A saved set of device states you can request together. A scene is not a timed routine. Activating it does not prove every device reached its state.
-
-### Script
-
-A sequence of actions you start yourself or from an automation. Saving a script does not run it. Stopping a script does not undo what it already requested.
-
-### State
-
-The value Home Assistant holds for an entity. It is not necessarily a fresh reading or what a person asked for.
-
-| Before | After |
-| --- | --- |
-| The light is off. | The light reports Off. |
-
-#### Unavailable and unknown
-
-“Unavailable” means Home Assistant cannot get the state now. “Unknown” means no usable state has been supplied. Neither means 0, and neither proves the device is offline. See [States, requests and errors](../writing-guidelines/states-and-errors.html).
-
-## T
-
-### Template
-
-A way to calculate or format a value. A template result is not a measured value. A missing input must not become 0.
-
-### Trigger
-
-What starts an automation. Saving or turning on an automation is not a trigger.
-
-## Y
-
-### YAML
-
-The text format used for some configuration. Keep spacing, keys and quotation marks exactly.
-
-## Z
-
-### Zone
-
-A place on a map used for location features. A zone is not a room.
-
-## Full lists
-
-These pages list every checked Home Assistant term and native label, with the version they were checked against.
-
-- [Home Assistant terminology](../home-assistant-terminology.html) explains how to use them
-- [Home Assistant glossary](../ha-glossary.html) maps every entry in the official glossary
-- [Entity and state language](../entity-and-state-language.html) lists domains, device classes, states and attributes
-- [Interface terminology](../interface-terminology.html) lists dashboard, action, Assist, Energy and Settings terms
+The native keys and English labels come from Home Assistant Core and frontend contributors under [Apache License 2.0](https://github.com/home-assistant/frontend/blob/e32bc0696ebefde323f5b791269ad0c57f3f99d9/LICENSE.md). They keep their upstream licence. They are not civica translations.

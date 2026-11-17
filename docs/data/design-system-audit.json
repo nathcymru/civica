@@ -269,7 +269,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Source catalogue mapping is explicitly different from installed HA functionality; new brand/writing rule maps and audit boundaries are linked. Remediation review: Reviewed the revised catalogue, evidence/compatibility boundaries, linked current deliverables and exact implementation claims. Remediation review: Reviewed the revised catalogue, evidence/compatibility boundaries, linked current deliverables and exact implementation claims. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "8394bb486e84c56e7dc97ea0db33cfca9ebf680dea54271b8eb28531c62a4845",
+      "sha256": "f5acd3f97b0daa5b48bebb3e36a60d4f331d3834b43037af505e4172623aea76",
       "url": "/community/coverage.html",
       "title": "Source coverage and implementation status",
       "example_ids": [
@@ -390,7 +390,7 @@
         "local-compatibility-supported",
         "local-compatibility-fallback"
       ],
-      "sha256": "08a49c645a7838da7abc60f8d55ee5bad6ee068a0db043a56440a14b39c72c2f",
+      "sha256": "1ca1ec5f00cca0c6e7d8193e1674f8d1d02ccb91153bf26acef7ae6138e356db",
       "note": "Reviewed dated source, native versus reference, writing freshness and checklist claims; publication evidence is recorded independently.",
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
@@ -2498,78 +2498,6 @@
       "resolved_finding_ids": []
     },
     {
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "resolved_finding_ids": [],
-      "path": "docs/source/content/entity-and-state-language.html.md.erb",
-      "url": "/content/entity-and-state-language.html",
-      "title": "Entity and state language",
-      "example_ids": [
-        "term-contextual-on",
-        "term-climate-meaning",
-        "term-missing-state"
-      ],
-      "sha256": "218f26e713f1f829e92b8d82f198b204566a7a8154df94402932c8f1a58d6d2a",
-      "note": "Prose and entry text rewritten on 15 November 2026. Entries and IDs unchanged. Hash recorded after the rewrite. No independent review has been done yet.",
-      "current_review_on": "2026-11-12",
-      "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
-    },
-    {
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "resolved_finding_ids": [],
-      "path": "docs/source/content/ha-glossary.html.md.erb",
-      "url": "/content/ha-glossary.html",
-      "title": "Home Assistant glossary",
-      "example_ids": [
-        "term-event-action",
-        "term-native-label",
-        "term-historical-name"
-      ],
-      "sha256": "9ca25f86726ab2d90d89b87aab792f039d49280e0d181f9f540148ab554a68c6",
-      "note": "Prose and entry text rewritten on 15 November 2026. Entries and IDs unchanged. Hash recorded after the rewrite. No independent review has been done yet.",
-      "current_review_on": "2026-11-12",
-      "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
-    },
-    {
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "resolved_finding_ids": [],
-      "path": "docs/source/content/home-assistant-terminology.html.md.erb",
-      "url": "/content/home-assistant-terminology.html",
-      "title": "Home Assistant terminology",
-      "example_ids": [
-        "term-device-entity",
-        "term-same-word-different-layer",
-        "term-identifiers"
-      ],
-      "sha256": "940bff4864a15d9763345c62957e5dcf667b530772c4bf25616be24e8d71a5e3",
-      "note": "Prose and entry text rewritten on 15 November 2026. Entries and IDs unchanged. Hash recorded after the rewrite. No independent review has been done yet.",
-      "current_review_on": "2026-11-12",
-      "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
-    },
-    {
       "path": "docs/source/content/index.html.md.erb",
       "reviewed_rule_families": [
         "BG-COL",
@@ -2598,30 +2526,6 @@
         "wg-scope"
       ],
       "resolved_finding_ids": [],
-      "current_review_on": "2026-11-12",
-      "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
-    },
-    {
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "resolved_finding_ids": [],
-      "path": "docs/source/content/interface-terminology.html.md.erb",
-      "url": "/content/interface-terminology.html",
-      "title": "Interface and configuration terminology",
-      "example_ids": [
-        "term-all-condition",
-        "term-navigation-action",
-        "term-power-energy"
-      ],
-      "sha256": "5711e1d45f1d21a1252d8ccb60c02b86ddaa16f10af2f79960b68ed8f833e6aa",
-      "note": "Prose and entry text rewritten on 15 November 2026. Entries and IDs unchanged. Hash recorded after the rewrite. No independent review has been done yet.",
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
     },
@@ -3380,7 +3284,7 @@
       "path": "docs/source/home-assistant/index.html.md.erb",
       "url": "/home-assistant/index.html",
       "title": "Home Assistant controls and flows",
-      "sha256": "ddffb050a87f7bbde7e963dcc12295938d4b4306587c62fa3df061b11934b4cd",
+      "sha256": "d3488ef381e287489f40dada816f1386d6bab5090595d7621f5d86f50fd99b76",
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "resolved_finding_ids": [],
@@ -6840,7 +6744,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "b9e55d0a5189bf735baa1773b74039f63746c50f248901453ca51ba4d30b7f45",
+      "sha256": "35bbbdb3bbd1b93a3b04336175f0dfd2650004f4f86fe1fc67b53bcbef2cb6b0",
       "url": "/content/style-guides/a-to-z.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -6872,7 +6776,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "6ad6f28def69f73da7d60e6899275b328cc077ca9c2615ce7d642b485f14ecfb",
+      "sha256": "272b74ed5e621d19b01a8803844f8031cf3f9380b3342e91fbc73f25bae12051",
       "url": "/content/style-guides/index.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -6904,7 +6808,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "75477d908a93153c4c799b4bacbbbbbb9f359d2f9416d86f29fa17baf1fab160",
+      "sha256": "3d180aa7b2de14864aa979ce5c0ed039f65d528947486e452db703c01abcfaf2",
       "url": "/content/style-guides/technical-a-to-z.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -15632,7 +15536,7 @@
       "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
       "authored_html_sha256": "11b1f3c97983ff468f2c109b3ab4a80abc9b8b1ed2ce445add1f3b75c1e15c46",
       "owners": [
-        "/content/interface-terminology.html"
+        "/content/style-guides/technical-a-to-z.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -15651,7 +15555,7 @@
       "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
       "authored_html_sha256": "7acf1c00008ede77eba950254855f2349baeb6915b10d03fec9b1d604c6a9d09",
       "owners": [
-        "/content/entity-and-state-language.html"
+        "/content/style-guides/technical-a-to-z.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -15670,7 +15574,7 @@
       "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
       "authored_html_sha256": "3c32a05d787a86ad51995752800f5033021b839a15393b0c43cd7b37fc0d1a6e",
       "owners": [
-        "/content/entity-and-state-language.html"
+        "/content/style-guides/technical-a-to-z.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -15689,7 +15593,7 @@
       "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
       "authored_html_sha256": "e4b73c1683c582d735c8da3e11c92b836da35dafd3caea0a458b08035dd931fa",
       "owners": [
-        "/content/home-assistant-terminology.html"
+        "/content/style-guides/technical-a-to-z.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -15708,7 +15612,7 @@
       "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
       "authored_html_sha256": "b18f3b83356d2e313072b553770ec887585940c9efe486c146c2a3a2f33e4481",
       "owners": [
-        "/content/ha-glossary.html"
+        "/content/style-guides/technical-a-to-z.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -15727,7 +15631,7 @@
       "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
       "authored_html_sha256": "cfb225f2e2447e7417c0a45758170a897badb13b24db58a3a89be4e4b8edc832",
       "owners": [
-        "/content/ha-glossary.html"
+        "/content/style-guides/technical-a-to-z.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -15746,7 +15650,7 @@
       "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
       "authored_html_sha256": "3728e552c77a42cabcd54c79d8c3e790c001080f861408324be0a65f8bbefdb9",
       "owners": [
-        "/content/home-assistant-terminology.html"
+        "/content/style-guides/technical-a-to-z.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -15765,7 +15669,7 @@
       "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
       "authored_html_sha256": "252fed608aaf1cff011fa8c9813dd6a88b44b03e5441b57a36338963b5db37ce",
       "owners": [
-        "/content/entity-and-state-language.html"
+        "/content/style-guides/technical-a-to-z.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -15784,7 +15688,7 @@
       "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
       "authored_html_sha256": "f63fb73e30a6857f968cb6a322a0ccecf85f8abe264a2da708e7bda757700c2e",
       "owners": [
-        "/content/ha-glossary.html"
+        "/content/style-guides/technical-a-to-z.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -15803,7 +15707,7 @@
       "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
       "authored_html_sha256": "206817c78c3d574127eec1ac07f14d3f7af49c50c73d506ab314917c763a9dea",
       "owners": [
-        "/content/interface-terminology.html"
+        "/content/style-guides/technical-a-to-z.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -15822,7 +15726,7 @@
       "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
       "authored_html_sha256": "4077de053473d69acf0a3a645c246e4dfc3e05bbe59168e06193a0437ca6c924",
       "owners": [
-        "/content/interface-terminology.html"
+        "/content/style-guides/technical-a-to-z.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -15841,7 +15745,7 @@
       "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
       "authored_html_sha256": "7b73e7ad25a6bd494a2e14f27d15bc95325a67c8bef5652a9928c1e207ed443c",
       "owners": [
-        "/content/home-assistant-terminology.html"
+        "/content/style-guides/technical-a-to-z.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -17900,7 +17804,7 @@
   "source_snapshots": [
     {
       "path": "docs/source/layouts/civica.erb",
-      "sha256": "5d9b62718b5f053c612259998ded2be943d7aabffe44300e701adfe71d3de24b",
+      "sha256": "85960a6947581bfd3ed4202c10f8d2b902995d8c013556aebc1819b28cca64b6",
       "scope": "Authored/shared documentation source review. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18171,12 +18075,12 @@
     {
       "path": "docs/data/completeness-terminology-review.json",
       "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-      "sha256": "33186d9712bcbc05945ecfafc229a8d47a41fd9225f581ec2b4699024d2c562b"
+      "sha256": "5e8ee81d28e9d57f2f99fbba3f5a591bbd030126bbee3a8d16960d1fc07b286d"
     },
     {
       "path": "docs/data/terminology-source-review.json",
       "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-      "sha256": "60fb3c7eb7d9fdb8a87689cd0aa9a6738ff32c93ec3d77f187c8d2af22d26197"
+      "sha256": "75890ec65bcb3b921af3975bf0d66fda59cd3d1915efb31bce3b00bf9369054d"
     },
     {
       "path": "docs/data/ha-interface-coverage.json",
@@ -18186,7 +18090,7 @@
     {
       "path": "docs/data/ha-terminology.json",
       "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-      "sha256": "9cab7c57812fade4706a6925ec47f32d8521729a71ebcd10842ff4be99a61f68"
+      "sha256": "9c55e5deaa4119fcb5072ef31ae86119a20e8426a78c8eb275f528baca3eb611"
     },
     {
       "path": "docs/data/uk-design-system-crosswalk.json",
@@ -18235,7 +18139,7 @@
     },
     {
       "path": "docs/source/llms.txt",
-      "sha256": "b8025a32d529b66c0efada2c81cb4d19d4375c5c461e1d874e91be38e19a5f1d",
+      "sha256": "3e69301bca3d986c045cbfec4c63c88c9827c906b4d43dde71b62367c8375241",
       "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -18535,7 +18439,7 @@
     },
     {
       "path": "docs/data/naming-inventory.json",
-      "sha256": "16372693908a1cc74e15f85d0ad80c1196d4f6629d94e59ec445fff440dcff12",
+      "sha256": "b8cf988107f9111720d66e34ee9695c79a4f502c8c060e8d25f3d650ba6bdeaf",
       "scope": "Current naming, compatibility and historical-evidence boundary review; final integrated acceptance is separately recorded. Current startup-readiness correction reviewed in docs/data/startup-readiness-review.json; later full CI/live outcomes remain separate. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18670,7 +18574,7 @@
     },
     {
       "path": "docs/data/licensing-notice-review.json",
-      "sha256": "debafd652a433e7c842dcbc27f07ae3bfb221b3ab644e6e6c8c3c52d40f35f42",
+      "sha256": "fd4dd6479f019362891ed6b09b1eed824fc35713f599b7b0f086ca7407e32ab8",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -19024,12 +18928,12 @@
         {
           "path": "docs/data/completeness-terminology-review.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "33186d9712bcbc05945ecfafc229a8d47a41fd9225f581ec2b4699024d2c562b"
+          "sha256": "5e8ee81d28e9d57f2f99fbba3f5a591bbd030126bbee3a8d16960d1fc07b286d"
         },
         {
           "path": "docs/data/terminology-source-review.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "60fb3c7eb7d9fdb8a87689cd0aa9a6738ff32c93ec3d77f187c8d2af22d26197"
+          "sha256": "75890ec65bcb3b921af3975bf0d66fda59cd3d1915efb31bce3b00bf9369054d"
         },
         {
           "path": "docs/data/ha-interface-coverage.json",
@@ -19039,7 +18943,7 @@
         {
           "path": "docs/data/ha-terminology.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "9cab7c57812fade4706a6925ec47f32d8521729a71ebcd10842ff4be99a61f68"
+          "sha256": "9c55e5deaa4119fcb5072ef31ae86119a20e8426a78c8eb275f528baca3eb611"
         },
         {
           "path": "docs/data/uk-design-system-crosswalk.json",
@@ -19531,12 +19435,12 @@
         {
           "path": "docs/data/completeness-terminology-review.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "33186d9712bcbc05945ecfafc229a8d47a41fd9225f581ec2b4699024d2c562b"
+          "sha256": "5e8ee81d28e9d57f2f99fbba3f5a591bbd030126bbee3a8d16960d1fc07b286d"
         },
         {
           "path": "docs/data/terminology-source-review.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "60fb3c7eb7d9fdb8a87689cd0aa9a6738ff32c93ec3d77f187c8d2af22d26197"
+          "sha256": "75890ec65bcb3b921af3975bf0d66fda59cd3d1915efb31bce3b00bf9369054d"
         },
         {
           "path": "docs/data/ha-interface-coverage.json",
@@ -19546,7 +19450,7 @@
         {
           "path": "docs/data/ha-terminology.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "9cab7c57812fade4706a6925ec47f32d8521729a71ebcd10842ff4be99a61f68"
+          "sha256": "9c55e5deaa4119fcb5072ef31ae86119a20e8426a78c8eb275f528baca3eb611"
         },
         {
           "path": "docs/data/uk-design-system-crosswalk.json",
@@ -20053,12 +19957,12 @@
         {
           "path": "docs/data/completeness-terminology-review.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "33186d9712bcbc05945ecfafc229a8d47a41fd9225f581ec2b4699024d2c562b"
+          "sha256": "5e8ee81d28e9d57f2f99fbba3f5a591bbd030126bbee3a8d16960d1fc07b286d"
         },
         {
           "path": "docs/data/terminology-source-review.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "60fb3c7eb7d9fdb8a87689cd0aa9a6738ff32c93ec3d77f187c8d2af22d26197"
+          "sha256": "75890ec65bcb3b921af3975bf0d66fda59cd3d1915efb31bce3b00bf9369054d"
         },
         {
           "path": "docs/data/ha-interface-coverage.json",
@@ -20068,7 +19972,7 @@
         {
           "path": "docs/data/ha-terminology.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "9cab7c57812fade4706a6925ec47f32d8521729a71ebcd10842ff4be99a61f68"
+          "sha256": "9c55e5deaa4119fcb5072ef31ae86119a20e8426a78c8eb275f528baca3eb611"
         },
         {
           "path": "docs/data/uk-design-system-crosswalk.json",
@@ -20675,12 +20579,12 @@
         {
           "path": "docs/data/completeness-terminology-review.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "33186d9712bcbc05945ecfafc229a8d47a41fd9225f581ec2b4699024d2c562b"
+          "sha256": "5e8ee81d28e9d57f2f99fbba3f5a591bbd030126bbee3a8d16960d1fc07b286d"
         },
         {
           "path": "docs/data/terminology-source-review.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "60fb3c7eb7d9fdb8a87689cd0aa9a6738ff32c93ec3d77f187c8d2af22d26197"
+          "sha256": "75890ec65bcb3b921af3975bf0d66fda59cd3d1915efb31bce3b00bf9369054d"
         },
         {
           "path": "docs/data/ha-interface-coverage.json",
@@ -20690,7 +20594,7 @@
         {
           "path": "docs/data/ha-terminology.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "9cab7c57812fade4706a6925ec47f32d8521729a71ebcd10842ff4be99a61f68"
+          "sha256": "9c55e5deaa4119fcb5072ef31ae86119a20e8426a78c8eb275f528baca3eb611"
         },
         {
           "path": "docs/data/uk-design-system-crosswalk.json",
@@ -21307,12 +21211,12 @@
         {
           "path": "docs/data/completeness-terminology-review.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "33186d9712bcbc05945ecfafc229a8d47a41fd9225f581ec2b4699024d2c562b"
+          "sha256": "5e8ee81d28e9d57f2f99fbba3f5a591bbd030126bbee3a8d16960d1fc07b286d"
         },
         {
           "path": "docs/data/terminology-source-review.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "60fb3c7eb7d9fdb8a87689cd0aa9a6738ff32c93ec3d77f187c8d2af22d26197"
+          "sha256": "75890ec65bcb3b921af3975bf0d66fda59cd3d1915efb31bce3b00bf9369054d"
         },
         {
           "path": "docs/data/ha-interface-coverage.json",
@@ -21322,7 +21226,7 @@
         {
           "path": "docs/data/ha-terminology.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "9cab7c57812fade4706a6925ec47f32d8521729a71ebcd10842ff4be99a61f68"
+          "sha256": "9c55e5deaa4119fcb5072ef31ae86119a20e8426a78c8eb275f528baca3eb611"
         },
         {
           "path": "docs/data/uk-design-system-crosswalk.json",
@@ -21371,7 +21275,7 @@
         },
         {
           "path": "docs/source/llms.txt",
-          "sha256": "b8025a32d529b66c0efada2c81cb4d19d4375c5c461e1d874e91be38e19a5f1d",
+          "sha256": "3e69301bca3d986c045cbfec4c63c88c9827c906b4d43dde71b62367c8375241",
           "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
         },
         {
@@ -21979,12 +21883,12 @@
         {
           "path": "docs/data/completeness-terminology-review.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "33186d9712bcbc05945ecfafc229a8d47a41fd9225f581ec2b4699024d2c562b"
+          "sha256": "5e8ee81d28e9d57f2f99fbba3f5a591bbd030126bbee3a8d16960d1fc07b286d"
         },
         {
           "path": "docs/data/terminology-source-review.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "60fb3c7eb7d9fdb8a87689cd0aa9a6738ff32c93ec3d77f187c8d2af22d26197"
+          "sha256": "75890ec65bcb3b921af3975bf0d66fda59cd3d1915efb31bce3b00bf9369054d"
         },
         {
           "path": "docs/data/ha-interface-coverage.json",
@@ -21994,7 +21898,7 @@
         {
           "path": "docs/data/ha-terminology.json",
           "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-          "sha256": "9cab7c57812fade4706a6925ec47f32d8521729a71ebcd10842ff4be99a61f68"
+          "sha256": "9c55e5deaa4119fcb5072ef31ae86119a20e8426a78c8eb275f528baca3eb611"
         },
         {
           "path": "docs/data/uk-design-system-crosswalk.json",
@@ -22043,7 +21947,7 @@
         },
         {
           "path": "docs/source/llms.txt",
-          "sha256": "b8025a32d529b66c0efada2c81cb4d19d4375c5c461e1d874e91be38e19a5f1d",
+          "sha256": "3e69301bca3d986c045cbfec4c63c88c9827c906b4d43dde71b62367c8375241",
           "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
         },
         {
