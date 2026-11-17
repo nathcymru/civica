@@ -6,48 +6,65 @@ group: "Page patterns"
 source_url: "https://service-manual.nhs.uk/design-system/patterns/a-to-z-page"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-11"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-11"
     description: "Added civica household guidance, isolated examples and explicit boundaries for the NHS a-to-z-page pattern."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, use Home Assistant wording and move source credit to the patterns index."
+ai_instructions: "Apply when a large collection of named guides needs an alphabetical route. Keep one subject, make only letters with entries interactive and send each alias to one guide. Selecting a letter or guide never calls a service. Rules WG-030, WG-037, WG-083."
+ai_related:
+  - path: "/content/writing-guidelines/add-links.html"
+    title: "Write effective links"
+    relationship: "Owns the wording of letter and guide links."
+  - path: "/patterns/hub.html"
+    title: "Organise household help with hub pages"
+    relationship: "Use a hub when the collection is small or has several subjects."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test the page against the civica accessibility checks."
 ---
 
 # Browse household guides from A to Z
 
-**Reference pattern.** These examples are local design guidance. They do not install new Home Assistant screens or perform device actions.
+Use an A to Z when people know the name of the guide they want but not where it sits in the navigation. These examples are local guidance. They do not add a Home Assistant screen or perform a device action.
 
-An A to Z is an alternative way to find a named guide. It is useful when people recognise the thing they need but may not know the exact spelling or where it sits in the navigation.
+## When to use it
 
-## The NHS principle we adapt
+Use it for one large collection on one subject, such as appliance guides. If the collection is small, use a short list under meaningful headings instead of an almost empty alphabet. Do not sort live controls by entity ID: an A to Z of guides is not an entity browser.
 
-The [NHS A to Z pattern](https://service-manual.nhs.uk/design-system/patterns/a-to-z-page) combines letter navigation, grouped links and routes back to the top. It is intended for a collection within one broad subject, not a transactional form. civica uses it for reference guides such as appliances; it does not reorganise live controls alphabetically by technical entity ID.
+## Keep one subject
 
-## Build a coherent collection
-
-Keep one clear subject in the page title. “Appliance guides A to Z” is more useful than a mixed list of meters, household members, scenes and account settings. Use familiar names in link text and put technical IDs in the guide only when they help.
+Name the subject in the title. “Appliance guides A to Z” works better than a mixed list of meters, household members, scenes and account settings. Use familiar names in link text, and add an entity ID only where it helps. For example, write “Vacuum cleaner”, not `vacuum.hallway`.
 
 <%= example('nhs-az-household-guides') %>
 
-## Accommodate alternative names
+## Send every alias to one guide
 
-An alias should lead to one maintained guide. For example, a household may say “Hoover” while the canonical guide says “Vacuum cleaner”. Do not create divergent instructions for every synonym. Consider local terminology and user-provided names without exposing another household's private device names.
+A household may say “Hoover” where the guide says “Vacuum cleaner”. List the alias in the index, but link it to the one maintained guide so the instructions cannot diverge. Do not show another household's private device names.
 
 <%= example('nhs-az-aliases') %>
 
-## Empty states and narrow screens
+## Handle letters with no entries
 
-Only make letters with content interactive. If a filtered or bookmarked letter has no entries, explain that the index has no matching guide and offer a route back to the collection. Do not present a dead link or infer that the integration has no devices.
+Make only letters with entries interactive. If a bookmarked letter has no guides, say the index has no matching guide and link back to the full collection. Do not show a dead link, and do not suggest that the integration has no devices.
 
 <%= example('nhs-az-empty') %>
 
-## Accessibility and content
+## Build it accessibly
 
-Use “A to Z” in the title. Give letter navigation a clear accessible name. Keep letter links large enough to use and allow them to wrap at 320 pixels. Use headings for letter sections and real anchors so keyboard navigation, browser history and bookmarking work. Avoid sticky alphabet bars that cover focused content when zoomed. A search route can complement the index; it should not replace the index without research.
+- Put “A to Z” in the title and give the letter navigation an accessible name.
+- Use a heading for each letter and real anchors, so keyboard navigation, browser history and bookmarks work.
+- Keep letter links large enough to select and let them wrap at 320 CSS pixels.
+- Do not use a sticky alphabet bar that covers focused content when the page is zoomed.
+- Offer search as well, not instead, unless research shows people do not need the index.
 
-## Home Assistant implementation boundary
+Link text follows [Write effective links](../content/writing-guidelines/add-links.html). Test with the [civica accessibility checks](../accessibility/testing.html).
 
-The index navigates to help; selecting a letter or guide must never call a service or toggle a device. A live entity browser needs area, type, availability and permission filters rather than this content-only pattern. Keep the article catalogue separate from the current state registry so a disconnected integration does not remove its recovery instructions.
+## Keep it separate from device state
 
-## Maintenance
+Selecting a letter or a guide only moves the person to help. It must never call a service or toggle a device. Keep the guide catalogue apart from the current entity registry, so a disconnected integration does not remove its recovery instructions.
 
-Review aliases when guide names change and preserve useful old routes. Sort consistently for the chosen language. If the collection is small, a short list under meaningful headings is easier to use than an almost empty alphabet. The previews contain only synthetic example guides and demonstrate navigation within the isolated example.
+## Maintain it
+
+Review aliases when a guide is renamed and keep useful old routes. Sort consistently for the chosen language. The examples use synthetic guides and navigate only within the preview.

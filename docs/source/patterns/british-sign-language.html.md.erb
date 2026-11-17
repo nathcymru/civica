@@ -6,52 +6,59 @@ group: Inclusive content
 source_url: https://service-manual.nhs.uk/design-system/patterns/find-bsl-content
 status: reference
 published_on: 2026-11-11
-updated_on: 2026-11-11
+updated_on: "2026-11-17"
 updates:
   - date: 2026-11-11
     description: Corrected the written theme instructions to match immediate native theme selection without inventing a save step.
   - date: 2026-11-11
     description: Added civica household guidance, isolated examples and explicit boundaries for the NHS find-bsl-content pattern.
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, use Home Assistant wording and move source credit to the patterns index."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
+ai_instructions: "Apply when offering or mentioning British Sign Language (BSL) content. Link to a signed guide only when a verified translation exists, label every format accurately and keep the written guide available. Never imply NHS endorsement. Rules WG-011, WG-056, WG-062."
+ai_related:
+  - path: "/content/writing-guidelines/right-tone.html"
+    title: "Use the right tone"
+    relationship: "Owns how sure a claim of availability may sound."
+  - path: "/patterns/recovery.html"
+    title: "Errors and recovery"
+    relationship: "Owns the wording when media cannot load."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test the page against the civica accessibility checks."
 ---
 
 # Help people find British Sign Language content
 
-**Reference pattern.** These examples are local design guidance. They do not install new Home Assistant screens or perform device actions.
-
-British Sign Language (BSL) is a language, not an icon style or a set of hand gestures added to an animation. A BSL label must lead to actual signed content or accurately describe a real service.
-
-## The NHS principle we adapt
-
-The [NHS BSL discovery pattern](https://service-manual.nhs.uk/design-system/patterns/find-bsl-content) pairs a recognisable cue with explanatory words, expands the abbreviation and reports outstanding research questions about discovery. civica adopts clear labelling and honest availability. It does not claim that the NHS research validates this household interface.
+Offer British Sign Language (BSL) content only when a verified signed translation exists. BSL is a language, not an icon style or hand gestures added to an animation. These examples are local guidance. They do not add a Home Assistant screen or perform a device action.
 
 ## No translation is bundled
 
-The current civica theme does not include a verified BSL translation of its help. These examples therefore show availability, editorial preparation and failure states. They contain no fake video player, synthetic signer, unverified thumbnail or non-functional “Watch” link.
+The current civica theme has no verified BSL translation of its help. The examples therefore show availability, editorial preparation and failure states. They contain no player, synthetic signer, thumbnail or non-functional “Watch” link.
 
 <%= example('nhs-bsl-discovery') %>
 
 ## When a translation is commissioned
 
-Agree the content and terminology with a qualified translation provider and BSL users. Translate the actual household task, including supported device states and failure messages. Check the signed content against the current written version. Record who owns the material, its permissions, language, duration, review date and source version.
+Agree the content and terminology with a qualified translation provider and BSL users. Translate the real household task, including supported device states and failure messages, and check it against the current written version. Record the owner, permissions, language, duration, review date and source version.
 
-A link can then say “Watch the British Sign Language guide to changing a theme”, followed by its verified duration. Put the link beside the related instructions and in any established language or access-format navigation. Do not hide it only in a footer. Any optional BSL icon is supplementary; its use needs appropriate provenance and testing, and it must not imply NHS endorsement.
+Then link with the task and the duration, for example “Watch the British Sign Language guide to changing a theme (2 minutes)”. Put the link beside the related instructions and in any language or access-format navigation, not only in a footer. A BSL icon is optional and supplementary. It needs a known source and testing, and it must not imply endorsement by the NHS or any other body.
 
 <%= example('nhs-bsl-content-bundle') %>
 
-## Player and alternative-format behaviour
+## Players and other formats
 
-Use a real accessible player with keyboard controls, visible focus, pause and full-screen support. Do not autoplay. Keep the signer large enough to understand, and check that captions or other controls do not obscure the signing. Written transcripts, captions, audio description and BSL meet different needs; label each available format accurately.
+Use an accessible player with keyboard controls, visible focus, pause and full-screen support. Do not autoplay. Keep the signer large enough to follow and check that captions do not cover the signing. Transcripts, captions, audio description and BSL meet different needs, so label each format by what it is.
 
-If signed content becomes unavailable, retain the written instructions and explain the failure. Link to a direct translation only if its actual destination is still verified. Do not automatically replace BSL with an unrelated help video.
+If the signed content becomes unavailable, keep the written instructions and say what failed. Link to a translation only if its destination is still verified. Do not replace BSL with an unrelated help video.
 
 <%= example('nhs-bsl-link-unavailable') %>
 
-## Home Assistant implementation boundary
+## Keep the boundary clear
 
-The theme can present a link, player and availability state. It cannot supply a translation by restyling an icon or generating hand movements. Do not infer a person's language preference from disability or from a single interaction. Store an explicit preference only when the product supports it and explain its scope. Access to written help must remain available when remote media is blocked, offline or awaiting consent.
+The theme can show a link, a player and an availability state. It cannot supply a translation. Do not infer a language preference from disability or from one interaction. Store a preference only when the product supports it, and say what it covers. Written help must stay available when remote media is blocked, offline or waiting for consent.
 
 ## Review with users
 
-Test discovery, comprehension, signing visibility, mobile zoom and control operation with BSL users. Include a content-change process so an updated control does not leave a misleading signed guide online. Do not publish a BSL availability claim until both the content and its route have passed review.
+Test discovery, comprehension, signer visibility, zoom on a phone and the controls with BSL users. When the written guide changes, review the signed guide too, so a stale translation does not stay online. Do not claim BSL availability until both the content and its link have passed review. Use the [civica accessibility checks](../accessibility/testing.html) for the page.

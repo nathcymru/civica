@@ -6,54 +6,69 @@ group: Page patterns
 source_url: https://service-manual.nhs.uk/design-system/patterns/confirmation-page
 status: reference
 published_on: 2026-11-11
-updated_on: 2026-11-11
+updated_on: "2026-11-17"
 updates:
   - date: 2026-11-11
     description: Changed the interrupted-save specimen to an explicitly unconfirmed result and preserved the draft-review route.
   - date: 2026-11-11
     description: Added civica household guidance, isolated examples and explicit boundaries for the NHS confirmation-page pattern.
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, use Home Assistant wording and move source credit to the patterns index."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
+ai_instructions: "Apply when a task ends. Confirm only a result the system has verified, say what was done and what happens next, and separate an accepted request from a reported device state. When the outcome is unknown, say so and keep the draft. Rules WG-011, WG-031, WG-032, WG-044."
+ai_related:
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns the wording of requests, results and uncertainty."
+  - path: "/patterns/check-answers.html"
+    title: "Check answers before saving"
+    relationship: "Comes before the save this page confirms."
+  - path: "/patterns/recovery.html"
+    title: "Errors and recovery"
+    relationship: "Owns the route when a task fails."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test the page against the civica accessibility checks."
 ---
 
 # Confirm completed household tasks
 
-**Reference pattern.** These examples are local design guidance. They do not install new Home Assistant screens or perform device actions.
-
-Confirmation closes a task. It should reassure people about a result the system has actually verified and make the next step clear.
-
-## The NHS principle we adapt
-
-The [NHS confirmation pattern](https://service-manual.nhs.uk/design-system/patterns/confirmation-page) combines a clear completed outcome with concise next-step information. civica keeps that hierarchy and uses the semantic success role for a confirmed result. Its colour is independent of the chosen brand palette.
+Confirm a result only when the system has verified it, and make the next step clear. These examples are local guidance. They are synthetic states and perform no network or device action.
 
 ## Name what was completed
 
-“Dashboard preferences saved” is precise. “Success” does not explain the result. Include a useful summary and say when the change takes effect. Only show a reference if people can use it later, and explain what it refers to. Do not manufacture a confirmation number for visual effect.
+“Dashboard preferences saved” is precise. “Success” is not. Add a short summary and say when the change takes effect. Show a reference only if people can use it later, and say what it refers to. Do not make up a confirmation number. Use the success colour for a confirmed result. It does not depend on the palette.
 
 <%= example('nhs-confirmation-saved') %>
 
-## Distinguish acceptance from observation
+## Separate acceptance from observation
 
-Home Assistant may accept a request before an integration reports a device change. “Request sent” and “Lamp is on” describe different events. Use the first only after acknowledgement and the second only when reliable reported state supports it. A configuration save should not imply that an automation ran or that a physical outcome occurred.
+Home Assistant can accept a request before an integration reports the device change. “Request sent” and “Lamp is on” are different events. Say the first only after Home Assistant accepts the request, and the second only when the reported state supports it. Saving a configuration does not mean an automation ran or a device changed.
 
 <%= example('nhs-confirmation-pending') %>
 
-## Handle an uncertain result
+## Say when the result is unknown
 
-When the connection drops, say what is known and what is not. The example therefore says “The save could not be confirmed”, rather than claiming the schedule was not saved. Preserve the draft where possible. A timeout can mean that the result is unknown rather than that nothing happened. Before retrying a non-idempotent action, help the person inspect the current state or existing record.
+If the connection drops, say what is known and what is not. The example says “The save could not be confirmed”, not “The schedule was not saved”, because a timeout may mean the result is unknown. Keep the draft where you can. Before retrying an action that could create a duplicate, help the person check the current state or the existing schedule.
 
 <%= example('nhs-confirmation-not-saved') %>
 
-## Accessibility and content
+## Build it accessibly
 
-Use a clear heading at the start of a dedicated confirmation page. On a page update, move focus appropriately or announce the result without duplicate announcements. Do not move focus unexpectedly for background device updates. Keep confirmation content brief; a dense set of promotional or unrelated cards makes the next step harder to find.
+- On a dedicated confirmation page, start with a clear heading.
+- On an updated page, move focus or announce the result once. Do not move focus for background device updates.
+- Keep the content short, with no promotional or unrelated cards.
+- Check focus and contrast of any link inside a success panel.
+- After a small reversible edit, an inline message can suit better than a full panel.
+- The message must still make sense without colour.
 
-If confirmation contains links or controls, check their focus and contrast against the semantic success surface. An ordinary inline result can be better than a full panel after a small reversible edit. The message must still be clear with colour removed.
+Test with the [civica accessibility checks](../accessibility/testing.html).
 
-## Home Assistant implementation boundary
+## Keep the boundary clear
 
-Resolve success from the actual persistence or service response that matches the action. Observe device state separately. Do not infer success from a button click, an optimistic local value or an animation. Prevent accidental duplicate submissions while a request is pending, restore usable controls after failure and preserve native permission errors.
+Decide success from the save or service response that matches the action, and watch device state separately. Do not infer success from a click, an optimistic local value or an animation. Block duplicate submits while a request is pending, restore the controls after a failure and keep Home Assistant's permission errors.
 
 ## Returning to the result
 
-A saved result should have a useful return route where the product supports one. Browser Back must not silently repeat a command. If the result page is opened later, show the saved outcome and its time rather than describing an old event as happening now. The examples are synthetic interface states and perform no network or device actions.
+Give the saved result a return route where the product has one. The browser's Back button must not repeat a command. If the page is opened later, show the saved outcome with its time, not as if it happened now. See [Check answers before saving](check-answers.html) for the step before.

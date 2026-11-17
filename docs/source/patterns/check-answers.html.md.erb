@@ -6,46 +6,61 @@ group: "Task patterns"
 source_url: "https://service-manual.nhs.uk/design-system/patterns/check-answers"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-11"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-11"
     description: "Added civica household guidance, isolated examples and explicit boundaries for the NHS check-answers pattern."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, use Home Assistant wording and move source credit to the patterns index."
+ai_instructions: "Apply before a multi-step setup is saved. Show the answers in a summary list, say what saving will and will not do, and give each Change link an accessible name. Keep the draft if a device changes during review. Rules WG-035, WG-036, WG-038, WG-063."
+ai_related:
+  - path: "/components/summary-list.html"
+    title: "Summary list"
+    relationship: "Owns the markup of the answer rows."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns what a save, request and result may claim."
+  - path: "/patterns/confirmation.html"
+    title: "Confirm completed household tasks"
+    relationship: "Shows the result after a save."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test the page against the civica accessibility checks."
 ---
 
 # Check answers before saving
 
-**Reference pattern.** These examples are local design guidance. They do not install new Home Assistant screens or perform device actions.
-
-A check answers page gives household members a final view of a configuration before it changes. The title and final button must say what will happen.
-
-## The NHS principle we adapt
-
-The [NHS check answers pattern](https://service-manual.nhs.uk/design-system/patterns/check-answers) groups responses in summary lists and provides specific change links before submission. civica uses that review step for meaningful configuration tasks. It is separate from confirmation after a successful save.
+Show a summary before a multi-step setup changes anything, and make the title and final button say what will happen. These examples are local guidance. They do not save a scene or call a device.
 
 ## When to use it
 
-Use it after a multi-step scene, schedule, notification or dashboard setup. A single reversible brightness adjustment does not need a review page. For an irreversible operation, use a focused interruption as well as any useful summary; a long list of answers is not a warning.
+Use it after a multi-step scene, schedule, notification or dashboard setup. A single reversible change, such as brightness, does not need a review page. For an irreversible action, use [Pause before an exceptional consequence](interruption.html) as well. A long list of answers is not a warning.
 
 <%= example('nhs-check-answers-scene') %>
 
-## Make the effect explicit
+## Say what saving does
 
-Differentiate saving a scene from running it, configuring an automation from enabling it, and changing a dashboard from changing a physical device. List the selected devices, affected area, units, time zone and activation state where those influence the result. Show an optional omission as “Not provided”. Do not display questions from branches the user did not take.
+Separate saving a scene from running it, saving an automation from enabling it, and changing a dashboard from changing a device. In the example, “Saving adds the scene to your controls. It will not change any lights now.” List the devices, area, units, time zone and activation state where they affect the result. Show a skipped optional answer as “Not provided”. Do not show questions from branches the person did not take.
 
-Change links must identify the answer in their accessible name. Return to the summary after the edit, with previous answers retained. If an edit introduces a dependency, ask the new question before returning. Do not turn “Change room” into a restart of the whole wizard.
+Give each Change link an accessible name that identifies the answer, such as “Change room”. After the edit, return to the summary with the other answers kept. If the edit needs a new question, ask it first, then return. Do not restart the whole wizard for one change.
 
 <%= example('nhs-check-answers-changed') %>
 
-## Handle changes outside the form
+## Handle changes during review
 
-Home Assistant entities can disappear or become unavailable while a person reviews a draft. Recheck permissions and relevant capabilities before committing. Show which answer needs attention and preserve the rest. Do not silently substitute another lamp, alter a temperature unit, or enable a newly discovered device.
+An entity can become unavailable while a person reviews a draft. Check permissions and capabilities again before saving. Show which answer needs attention and keep the rest. Do not swap in another lamp, change a temperature unit or enable a newly found device without asking.
 
-Where another household member has edited the same configuration, show that conflict and let the person reload or deliberately reconcile the draft. Do not show a success message for a rejected update.
+If another household member has edited the same configuration, show the conflict and let the person reload or reconcile the draft. Do not show a success message for a rejected update.
 
-## Accessibility and content
+## Build it accessibly
 
-Use semantic description lists with readable labels. Keep the order consistent with the questions. Avoid cramped action columns: allow each row to stack at narrow widths. Focus the error summary on a failed submit and link it to the relevant field or correction route. Readable summaries should not require interpreting icons or colour.
+- Use a description list with readable labels, in the same order as the questions.
+- Let each row stack at narrow widths instead of squeezing the action column.
+- On a failed save, focus the error summary and link each error to its answer.
+- Do not rely on icons or colour to explain a row.
 
-## Home Assistant implementation boundary
+See [Summary list](../components/summary-list.html) for the markup and the [civica accessibility checks](../accessibility/testing.html) for testing.
 
-The preview never saves a scene or calls a device. Production code must distinguish validation, persistence, activation and observed device state. Guard duplicate submission while the save is pending, announce the eventual outcome, and retain a safe retry path if confirmation cannot be obtained. Preserve native permission checks and service semantics.
+## Keep the boundary clear
+
+Production code must treat validation, saving, activation and observed device state as four separate facts. Block a second submit while the save is pending, announce the outcome and keep a safe way to retry if the result is unknown. Keep Home Assistant's own permission checks and service behaviour. Show the result with [Confirm completed household tasks](confirmation.html).
