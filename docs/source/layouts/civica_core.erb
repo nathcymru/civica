@@ -6,7 +6,11 @@
 <title><%= escape(current_page.data.title) %> – civica Design System</title>
 <meta name="description" content="<%= escape(current_page.data.description || 'A clear, consistent Home Assistant interface inspired by UK public service design.') %>">
 <% if current_page.data.ai_instructions %>
+<% if current_page.data.section == "content" %>
 <meta name="ai-guide-context" content="This page is part of the civica writing guide for Home Assistant. The guide has four parts that depend on each other: Writing guidelines (what to say), Formatting content (how to lay it out), Publish, update or retire (how content is checked, changed and removed) and Lexicons (A to Z General and A to Z Technical, for looking up single words). Apply the writing guidelines first, then formatting, then the lifecycle checks, and use the lexicons to settle individual words. Rules have IDs such as WG-031 and anchors such as #wg-031. Each rule is a statement, a reason and a Before and After pair. Write in British English. State only what Home Assistant has reported.">
+<% else %>
+<meta name="ai-guide-context" content="This page is part of the civica Design System for Home Assistant. Pages state rules for dashboards, cards and controls, with examples that are documentation only and do not change a real device. Apply the page's own rules first, follow its related pages for anything it does not own, and use the civica writing guide (content section) for wording. Write in British English. State only what Home Assistant has reported.">
+<% end %>
 <meta name="ai-instructions" content="<%= escape(current_page.data.ai_instructions) %>">
 <% Array(current_page.data.ai_related).each do |related| %><meta name="ai-related" content="<%= escape(related['title']) %> (<%= escape(related['path']) %>): <%= escape(related['relationship']) %>">
 <% end %>

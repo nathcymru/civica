@@ -3,7 +3,7 @@ title: "Get started"
 description: "Get started for the civica Home Assistant design system."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 published_on: "2026-11-11"
 updates:
   - date: "2026-11-13"
@@ -20,13 +20,24 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the install route and shorten the design principles."
+ai_instructions: "Use as the starting route for installing and applying civica. Follow the numbered steps in order. Do not claim a layer does more than its table says."
+ai_related:
+  - path: "/get-started/install.html"
+    title: "Install civica"
+    relationship: "First step."
+  - path: "/get-started/compatibility.html"
+    title: "Compatibility and limits"
+    relationship: "Check what the theme cannot change in native and third-party components."
+  - path: "/components/index.html"
+    title: "Components"
+    relationship: "Use for new work after installation."
 ---
 
 # Get started
 
-civica has three layers. Install the layers your interface needs and keep their versions together.
-
-Read [about the project and why I created it](about.html) for the household needs behind the design.
+Install the civica layers your interface needs and keep their versions together. civica has three layers. Read [about the project](about.html) for the household needs behind the design.
 
 | Layer | What it provides | What it cannot do alone |
 | --- | --- | --- |
@@ -37,14 +48,13 @@ Read [about the project and why I created it](about.html) for the household need
 
 ## Examples
 
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+The household values in these examples are invented. Demonstration actions do not control a home.
 
 <%= example('local-install-layers') %>
 
 <%= example('local-compatibility-supported') %>
 
-
-## Use the documented system
+## Set up in this order
 
 1. [Install the theme](install.html).
 2. [Choose a palette and variant](colour-settings.html).
@@ -63,4 +73,4 @@ These isolated examples illustrate the decisions on this page. Any household val
 - Keep essential controls available at narrow widths and high zoom.
 - Document deliberate deviations and the user need they serve.
 
-These principles adapt the [GOV.UK Design System](https://design-system.service.gov.uk/) to repeated home use. More icons, continuous controls and live data are justified when they make household tasks clearer.
+civica adapts the [GOV.UK Design System](https://design-system.service.gov.uk/) to repeated home use. More icons, continuous controls and live data are fine when they make a household task clearer.

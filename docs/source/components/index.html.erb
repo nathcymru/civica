@@ -1,7 +1,7 @@
 ---
 title: "Components"
 description: "Reusable parts of a clear, consistent household interface."
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 published_on: "2026-11-11"
 updates:
   - date: "2026-11-12"
@@ -12,5 +12,19 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Replaced the per-page source commentary with one source note at the foot of this page."
+ai_instructions: "Use this page to find a component. The source note at the foot covers the section: it credits the upstream systems and names the NHS and GOV.UK pages behind the hint text, buttons and warning text components. Some component pages still carry their own source section."
+ai_related:
+  - path: "/patterns/index.html"
+    title: "Patterns"
+    relationship: "Combine components into a task. Read when a component alone is not enough."
+  - path: "/content/writing-guidelines/index.html"
+    title: "Writing guidelines"
+    relationship: "Owns the wording of labels, hints and messages used in components."
+  - path: "/accessibility/index.html"
+    title: "Accessibility"
+    relationship: "Owns the accessibility target and checks that apply to every component."
 ---
-<h1>Components</h1><p class="c-lead">Reusable parts of a clear, consistent household interface.</p><p>Browse the catalogue or filter by title and description. Each reference has usage guidance, contextual examples, accessibility checks and an explicit Home Assistant implementation boundary. A reference example does not mean the native Home Assistant interface has been replaced.</p><p>See the <a href="../community/coverage.html">source coverage record</a> for the complete NHS and publishing-guide mapping.</p><%= partial 'partials/catalogue', locals: { section: 'components' } %>
+<h1>Components</h1><p class="c-lead">Reusable parts of a clear, consistent household interface.</p><p>Browse the catalogue or filter by title and description. Each page says when to use the component, shows Home Assistant examples and lists the accessibility checks. An example here does not mean the native Home Assistant interface has been replaced.</p><p>The <a href="../community/coverage.html">source coverage record</a> maps each component to its source.</p><%= partial 'partials/catalogue', locals: { section: 'components' } %>
+<p><small>Source note: component guidance is adapted from the <a href="https://design-system.service.gov.uk/">GOV.UK Design System</a> and the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>. Specific sources: <a href="https://service-manual.nhs.uk/design-system/components/hint-text">NHS hint text</a>, <a href="https://service-manual.nhs.uk/design-system/components/buttons">NHS buttons</a> and <a href="https://design-system.service.gov.uk/components/warning-text/">GOV.UK warning text</a>. Navigation, modal and card references draw on the <a href="https://design-patterns.service.justice.gov.uk/">Ministry of Justice design system</a>, and chart and data presentation on the <a href="https://service-manual.ons.gov.uk/design-system">Office for National Statistics design system</a>. The examples use shared GOV.UK primitives or original civica markup. civica is an independent project. It is not endorsed by these organisations, and NHS logos and service identity are not used. The <a href="../community/sources.html">source register</a> and <a href="../community/licensing.html">licensing and attribution</a> give the full list, licence terms and notices.</small></p>

@@ -6,7 +6,7 @@ group: Form elements
 source_url: https://service-manual.nhs.uk/design-system/components/buttons
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -16,35 +16,42 @@ updates:
     description: Clarified shared GOV.UK/NHS button ownership and the distinction between component variants and installed behaviour.
   - date: 2026-11-11
     description: Added NHS-informed buttons guidance and 4 Home Assistant reference examples.
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule and move source credit to the components index."
+ai_instructions: "Apply to every control that changes something or submits an answer. Name the outcome in the label. Use a link for navigation. A sent command is a request, not a confirmed state. Rules WG-030, WG-032."
+ai_related:
+  - path: "/content/writing-guidelines/clear-titles.html"
+    title: "Write clear titles"
+    relationship: "Owns the wording of button labels."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns the wording after a command is sent."
+  - path: "/components/controls.html"
+    title: "Buttons and forms"
+    relationship: "Choose between a command, a selection and navigation."
 ---
 
 # Buttons
 
-A button changes something or submits an answer. Its text names the outcome.
-
-These are civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
-
-## One button contract, several source references
-
-This is the shared button owner for civica-authored examples. GOV.UK and NHS guidance inform one local behaviour contract; their source entries are not separate installed components. The [forms overview](controls.html#choose-the-control-by-its-meaning) helps choose between a command, selection and navigation.
-
-Keep the four variants on this page: primary, secondary, explicitly destructive and unavailable. They share request/outcome semantics and visible focus. Source-specific presentation must not turn a navigation link into a command or treat an accepted command as a confirmed state. Native Home Assistant controls retain their own verified capability and permission behaviour.
+Use a button to change something or submit an answer, and name the outcome in its label: “Save schedule”, not “Submit”.
 
 ## When to use it
 
-Use one main action for a local task, with quieter secondary actions. A household dashboard can contain several independent device tasks: it does not need one global primary button for the whole home.
+Use one main action for each local task, with quieter secondary actions. A household dashboard can hold several independent device tasks, so it does not need one primary button for the whole home. This page owns the button contract for every civica example. The [forms overview](controls.html#choose-the-control-by-its-meaning) helps choose between a command, a selection and navigation.
+
+There are four variants: primary, secondary, destructive and unavailable. They share the same request wording and visible focus.
 
 ## When not to use it
 
-Use a link for navigation. Do not make every room tile look like a submit button, or use a red button merely because the selected brand palette is red.
+Use a link to go somewhere. Do not make every room tile look like a submit button. Do not use a red button only because the palette is red. Destructive confirmation uses explicit wording and the fixed danger role, not a palette colour.
 
-## Home Assistant adaptation
+## Say what was sent, not what happened
 
-Keep native service permissions and pending states. A command is not a confirmed device state: after an action, describe that a request was sent until the integration reports the result. The reference actions below only update example text. Destructive confirmation uses explicit wording and the fixed danger role; it is not a palette variant.
+After a command, say that a request was sent until the integration reports the result. “Turning on reading lamp” is a request. “Reading lamp is on” is a state. Keep the native Home Assistant service permissions and pending states. The examples below only change their own text.
 
-## Accessibility and behaviour
+## How it behaves
 
-Use a real button, give non-submit controls type="button", and retain a visible focus indicator. Keep repeat actions at least 44px high in this system. Explain an unavailable action beside the control instead of relying on a faded disabled appearance. Preserve focus while a request completes.
+Use a real button element. Give a non-submit control `type="button"`. Keep a visible focus indicator and make repeated actions at least 44px high. Explain an unavailable action beside the control, not through a faded appearance. Keep focus in place while a request completes.
 
 ## Examples
 
@@ -74,12 +81,6 @@ The reason remains readable even when the control cannot be used.
 
 ## Check the implementation
 
-Check keyboard activation, repeated clicks, delayed results, failure and narrow-screen wrapping. Do not mix compact and standard heights within one action group.
+Check keyboard activation, repeated clicks, delayed results, failure and wrapping at narrow widths. Do not mix compact and standard heights in one action group. Use the [civica accessibility checks](../accessibility/testing.html), then compare light and dark modes, Vivid and Muted tones, and 320 CSS pixels.
 
-Use the [civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, Vivid and Muted tones, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS buttons](https://service-manual.nhs.uk/design-system/components/buttons) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original civica markup, Arial typography and civica assets. NHS logos and service identity are not used.
-
-See also [buttons and forms](controls.html).
+For the label wording, see [Write clear titles](../content/writing-guidelines/clear-titles.html).
