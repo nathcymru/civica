@@ -420,7 +420,7 @@
     },
     {
       "slug": "style-guides/a-to-z",
-      "title": "A to Z style guide",
+      "title": "A to Z General",
       "description": "Capital letters, punctuation, numbers, dates, times and common words for civica content.",
       "path": "content/style-guides/a-to-z.html",
       "source_ids": [
@@ -436,7 +436,7 @@
     },
     {
       "slug": "style-guides/index",
-      "title": "Style guides",
+      "title": "Lexicons",
       "description": "Spelling, punctuation, numbers and the exact words to use for Home Assistant.",
       "path": "content/style-guides/index.html",
       "source_ids": [
@@ -447,21 +447,14 @@
     },
     {
       "slug": "style-guides/technical-a-to-z",
-      "title": "Technical A to Z",
+      "title": "A to Z Technical",
       "description": "The exact words to use for Home Assistant entities, states, attributes, automations and the interface.",
       "path": "content/style-guides/technical-a-to-z.html",
       "source_ids": [
         "GOV-TECHAZ"
       ],
-      "rule_ids": [
-        "WG-020",
-        "WG-021",
-        "WG-022",
-        "WG-025"
-      ],
-      "example_ids": [
-        "wg-household-terms"
-      ]
+      "rule_ids": [],
+      "example_ids": []
     },
     {
       "slug": "writing-guidelines/add-links",
@@ -504,12 +497,18 @@
         "WG-010",
         "WG-013",
         "WG-014",
+        "WG-020",
+        "WG-021",
+        "WG-022",
+        "WG-025",
         "WG-060",
         "WG-062",
         "WG-063",
         "WG-065"
       ],
-      "example_ids": []
+      "example_ids": [
+        "wg-household-terms"
+      ]
     },
     {
       "slug": "writing-guidelines/clear-structure",
@@ -741,8 +740,8 @@
         "GOV-TECHAZ"
       ],
       "scope": "civica-authored content; preserve native Home Assistant strings and user-supplied names",
-      "page": "content/style-guides/technical-a-to-z.html",
-      "local_path": "/content/style-guides/technical-a-to-z.html#wg-020"
+      "page": "content/writing-guidelines/clear-language.html",
+      "local_path": "/content/writing-guidelines/clear-language.html#wg-020"
     },
     {
       "id": "WG-021",
@@ -754,8 +753,8 @@
         "GOV-TECHAZ"
       ],
       "scope": "civica-authored content; preserve native Home Assistant strings and user-supplied names",
-      "page": "content/style-guides/technical-a-to-z.html",
-      "local_path": "/content/style-guides/technical-a-to-z.html#wg-021"
+      "page": "content/writing-guidelines/clear-language.html",
+      "local_path": "/content/writing-guidelines/clear-language.html#wg-021"
     },
     {
       "id": "WG-022",
@@ -767,8 +766,8 @@
         "GOV-TECHAZ"
       ],
       "scope": "civica-authored content; preserve native Home Assistant strings and user-supplied names",
-      "page": "content/style-guides/technical-a-to-z.html",
-      "local_path": "/content/style-guides/technical-a-to-z.html#wg-022"
+      "page": "content/writing-guidelines/clear-language.html",
+      "local_path": "/content/writing-guidelines/clear-language.html#wg-022"
     },
     {
       "id": "WG-023",
@@ -808,8 +807,8 @@
         "GOV-TECHAZ"
       ],
       "scope": "civica-authored content; preserve native Home Assistant strings and user-supplied names",
-      "page": "content/style-guides/technical-a-to-z.html",
-      "local_path": "/content/style-guides/technical-a-to-z.html#wg-025"
+      "page": "content/writing-guidelines/clear-language.html",
+      "local_path": "/content/writing-guidelines/clear-language.html#wg-025"
     },
     {
       "id": "WG-030",

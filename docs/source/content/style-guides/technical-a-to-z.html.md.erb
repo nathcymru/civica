@@ -1,65 +1,24 @@
 ---
-title: "Technical A to Z"
+title: "A to Z Technical"
 description: "The exact words to use for Home Assistant entities, states, attributes, automations and the interface."
 section: "content"
-group: "Style guides"
+group: "Lexicons"
 nav_order: 2
 status: "reference"
 published_on: "2026-11-15"
 updated_on: "2026-11-15"
 updates:
   - date: "2026-11-15"
-    description: "Replaced the four terminology chapters with one technical A to Z. The full dated registers remain as reference."
+    description: "Replaced the four terminology chapters with one A to Z. Moved the word-choice rules to Use clear language. The full dated registers remain as reference."
 ---
 
-# Technical A to Z
+# A to Z Technical
 
-This guide covers Home Assistant words. For general writing, see the [A to Z style guide](a-to-z.html).
+The exact Home Assistant words to use. For general writing, see [A to Z General](a-to-z.html).
 
-Use the exact Home Assistant name when you tell someone where to find a control. Use a short explanation when you tell them what it means. Keep the name a person gave their device, and any ID they must copy, exactly as it is.
-
-## Rules for all entries
-
-<h3 id="wg-020">Use one word for one operation</h3>
-
-Use the same word for the same operation. Use a different word for a different operation.
-
-<%= example('wg-household-terms') %>
-
-| Before | After |
-| --- | --- |
-| Remove the automation (when you mean delete it) | Delete automation |
-| Disable the automation (when you mean turn off future starts) | Turn off automation |
-| Remove from this dashboard (when it also deletes the device) | Remove from this dashboard. The device stays in Home Assistant. |
-
-<h3 id="wg-021">Keep native labels and translations</h3>
-
-When you point someone to a screen, use the label Home Assistant shows, in the language it shows. Explain an unfamiliar term next to it.
-
-| Before | After |
-| --- | --- |
-| Open Messages. (the screen says Notifications) | Open **Notifications**. This shows messages from your automations. |
-| Find the identification of the light. | Find the **Entity ID** of the light. |
-
-<h3 id="wg-022">Keep names exactly as people typed them</h3>
-
-Do not change the case, spelling, punctuation or language of a name someone gave. Do not guess a relationship from it. Do not change an ID when someone changes a name.
-
-| Before | After |
-| --- | --- |
-| Nain’s lamp → Nain’s Lamp | Nain’s lamp |
-| Mam’s heater → Mother’s heater | Mam’s heater |
-
-<h3 id="wg-025">Keep literal values literal</h3>
-
-Put an entity ID, a key, a path or a version in code formatting. Do not change underscores, dashes or quotation marks inside it.
-
-| Before | After |
-| --- | --- |
-| Enter the reading lamp ID: light.reading-lamp. | Entity ID: `light.reading_lamp` |
-| Set mode to "heat". (curly quotes copied into YAML) | Set `mode: heat` |
-
-Label an example ID as an example. Never ask someone to paste a password or token into a field that does not need one.
+<nav aria-label="A to Z navigation">
+<ol class="style-a-z" role="list"><li><a class="govuk-link govuk-link--no-visited-state" href="#a">A</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#b">B</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#c">C</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#d">D</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#e">E</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#f">F</a></li><li><span class="style-a-z__empty" aria-hidden="true">G</span></li><li><a class="govuk-link govuk-link--no-visited-state" href="#h">H</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#i">I</a></li><li><span class="style-a-z__empty" aria-hidden="true">J</span></li><li><span class="style-a-z__empty" aria-hidden="true">K</span></li><li><a class="govuk-link govuk-link--no-visited-state" href="#l">L</a></li><li><span class="style-a-z__empty" aria-hidden="true">M</span></li><li><span class="style-a-z__empty" aria-hidden="true">N</span></li><li><span class="style-a-z__empty" aria-hidden="true">O</span></li><li><a class="govuk-link govuk-link--no-visited-state" href="#p">P</a></li><li><span class="style-a-z__empty" aria-hidden="true">Q</span></li><li><span class="style-a-z__empty" aria-hidden="true">R</span></li><li><a class="govuk-link govuk-link--no-visited-state" href="#s">S</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#t">T</a></li><li><span class="style-a-z__empty" aria-hidden="true">U</span></li><li><span class="style-a-z__empty" aria-hidden="true">V</span></li><li><span class="style-a-z__empty" aria-hidden="true">W</span></li><li><span class="style-a-z__empty" aria-hidden="true">X</span></li><li><a class="govuk-link govuk-link--no-visited-state" href="#y">Y</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#z">Z</a></li></ol>
+</nav>
 
 ## A
 
@@ -205,7 +164,7 @@ The text format used for some configuration. Keep spacing, keys and quotation ma
 
 A place on a map used for location features. A zone is not a room.
 
-## Full native vocabulary
+## Full lists
 
 These pages list every checked Home Assistant term and native label, with the version they were checked against.
 

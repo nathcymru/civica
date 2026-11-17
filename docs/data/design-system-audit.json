@@ -45,12 +45,12 @@
     "WG-012": "/content/writing-guidelines/right-tone.html#wg-012",
     "WG-013": "/content/writing-guidelines/clear-language.html#wg-013",
     "WG-014": "/content/writing-guidelines/clear-language.html#wg-014",
-    "WG-020": "/content/style-guides/technical-a-to-z.html#wg-020",
-    "WG-021": "/content/style-guides/technical-a-to-z.html#wg-021",
-    "WG-022": "/content/style-guides/technical-a-to-z.html#wg-022",
+    "WG-020": "/content/writing-guidelines/clear-language.html#wg-020",
+    "WG-021": "/content/writing-guidelines/clear-language.html#wg-021",
+    "WG-022": "/content/writing-guidelines/clear-language.html#wg-022",
     "WG-023": "/content/style-guides/a-to-z.html#wg-023",
     "WG-024": "/content/style-guides/a-to-z.html#wg-024",
-    "WG-025": "/content/style-guides/technical-a-to-z.html#wg-025",
+    "WG-025": "/content/writing-guidelines/clear-language.html#wg-025",
     "WG-030": "/content/writing-guidelines/clear-titles.html#wg-030",
     "WG-031": "/content/writing-guidelines/states-and-errors.html#wg-031",
     "WG-032": "/content/writing-guidelines/states-and-errors.html#wg-032",
@@ -111,7 +111,7 @@
     },
     {
       "path": "docs/data/writing-guide-inventory.json",
-      "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290"
+      "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2"
     }
   ],
   "review_ledgers": [
@@ -363,7 +363,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "The package distinguishes completed review tasks from unresolved component findings and exposes evidence for repeated loops. Remediation review: Reviewed the revised catalogue, evidence/compatibility boundaries, linked current deliverables and exact implementation claims. Remediation review: Reviewed the revised catalogue, evidence/compatibility boundaries, linked current deliverables and exact implementation claims. 12 November 2026 source review: Linked the design-style deliverables while preserving the earlier work-package evidence. Integrated validation is recorded separately in the data-design review.",
-      "sha256": "1e9e355f5b70b3834f032f503b75fc5384d67fa9f650071cbf6bdd060fe8007d",
+      "sha256": "58ea04fb011d21f4b49334dbe3284eb630ff994d98899102a0244c486357df26",
       "url": "/community/guidance-work-package.html",
       "title": "Brand, writing and audit work package",
       "example_ids": [
@@ -2656,7 +2656,7 @@
         "term-same-word-different-layer",
         "term-identifiers"
       ],
-      "sha256": "2f92465b731014b531c5239beca27fa93cbc35f632a435335c66bc1569dc9998",
+      "sha256": "90a71cc1a84255fe60adf7295f58db8425c0e73d452946e1b63fefd1847aa9a9",
       "note": "Prose and entry text rewritten on 15 November 2026. Entries and IDs unchanged. Hash recorded after the rewrite. No independent review has been done yet.",
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
@@ -2713,7 +2713,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Rewritten on 15 November 2026. Hash recorded after the rewrite. No independent review has been done yet. ",
-      "sha256": "d9761bb6333583b0bbc59d77167e6239ab5e7c97a8c5fcbf40789c47a3a6e803",
+      "sha256": "c3473cc3fa231f345e06f944eca2f9daaf6d0ec82ce195b742487efeb442f953",
       "url": "/content/index.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -2892,7 +2892,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Rewritten on 15 November 2026. Hash recorded after the rewrite. No independent review has been done yet. This page now only points to its replacement.",
-      "sha256": "93905bd467031fe9c9ba3e061e5a926d84639e27bc60130b7d5e7941ff144205",
+      "sha256": "c8995515bb752542af5b8338e79c98db514753726c12846a73e2ac2f0d0e5d57",
       "url": "/content/words-and-style.html",
       "title": "Words and style",
       "example_ids": [
@@ -3769,7 +3769,7 @@
       "path": "docs/source/home-assistant/locale-units-and-time.html.md.erb",
       "url": "/home-assistant/locale-units-and-time.html",
       "title": "Locale, units and time",
-      "sha256": "c578403af0c47575fca44896b519698c4363041fb3022953391d6602497e4ecd",
+      "sha256": "8f0281842ec5829888ece23fbe2076428889cf2360a051120dc9b1fca7350eec",
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "resolved_finding_ids": [],
@@ -3982,7 +3982,7 @@
       "path": "docs/source/home-assistant/presence-and-privacy.html.md.erb",
       "url": "/home-assistant/presence-and-privacy.html",
       "title": "Presence, people and shared-screen privacy",
-      "sha256": "67564feb07c2ed6e972c5fa98b26cb111a8459ed69250af9ffb2494a76b568f5",
+      "sha256": "9d57b1467598501e9730b238b8d682bafd9c2df065ed5a765df7317c9a753f85",
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "resolved_finding_ids": [],
@@ -4149,7 +4149,7 @@
       "path": "docs/source/home-assistant/target-pickers.html.md.erb",
       "url": "/home-assistant/target-pickers.html",
       "title": "Entity, device and area pickers",
-      "sha256": "1668b17192bba47893050e19c75de35e54736559ab3fac9241689bd431e17e54",
+      "sha256": "1359d32ba630f0fdd4434318b4636b29054c4a760ab97ddc5301eeb4c0cd55f7",
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "resolved_finding_ids": [],
@@ -6926,7 +6926,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "9dd5a183fc0f858d8ebd2c0fb9363b4a2a6de7d746052c38c552392f6096ea6b",
+      "sha256": "6f51bb65c3aaa74eca9ce0ea3fd9bfaa346ed8eb0a2bbec8bc72862dabf2225f",
       "url": "/content/formatting-content/text-formatting.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7022,7 +7022,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "9a19509630afe093327ffc452a55f64e51784b58b41de9ded68219076bab5ce1",
+      "sha256": "16d18fdefd2bb415044b642be093778b5fd007620f3e49f6460732a5bc8dac99",
       "url": "/content/publish-update-retire/publish.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7118,7 +7118,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "586099d65e162987654d60af8b6734a58ad6580e940d7dbe08580d1c27cd80b1",
+      "sha256": "ff64d98c5de0c031f5870c985f2375beac6c6a76dd0d3523ceca1e5b18486f5f",
       "url": "/content/style-guides/a-to-z.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7150,7 +7150,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "920ae89e8bac69c4f8f2f44fe00658afaa1e053573d012397c33528addd0a76f",
+      "sha256": "6ad6f28def69f73da7d60e6899275b328cc077ca9c2615ce7d642b485f14ecfb",
       "url": "/content/style-guides/index.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7182,7 +7182,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "54845e49938e80362cd525cc2a53ff554c7a085d3cc065fa4132f95a6ebb8174",
+      "sha256": "75477d908a93153c4c799b4bacbbbbbb9f359d2f9416d86f29fa17baf1fab160",
       "url": "/content/style-guides/technical-a-to-z.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -7278,7 +7278,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "4df80d0e8d88b2cdce1ed4933fe798b7faf734eeeb5a43b51d8e2048154893cf",
+      "sha256": "4051787768e52f3ecc28d9a31091ca2683cf9171c266976186ab952e22d57139",
       "url": "/content/writing-guidelines/clear-language.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -16316,7 +16316,7 @@
       "path": "docs/data/writing-guide-examples.yml",
       "authored_html_sha256": "0a9940f4d528e7c8ad624484746461a755747448d5210e8fafdc9af12232821a",
       "owners": [
-        "/content/style-guides/technical-a-to-z.html"
+        "/content/writing-guidelines/clear-language.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -18238,7 +18238,7 @@
     },
     {
       "path": "docs/helpers/design_system_helpers.rb",
-      "sha256": "5324501d45f792f78c0c4eecaff62f413abf78ae03838ca9e7ed955297eda99b",
+      "sha256": "815c7bed55b50d45c6731a6c79d7855b5cace85b3b2dc0ba9a597b983806a245",
       "scope": "Authored/shared documentation source review. Subsequent project-story/navigation changes reviewed within docs/data/project-story-review.json scope. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18353,7 +18353,7 @@
     },
     {
       "path": "docs/data/writing-guide-inventory.json",
-      "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+      "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
       "scope": "Authored/shared documentation source review."
     },
     {
@@ -18683,7 +18683,7 @@
     },
     {
       "path": "docs/data/hero-layout-review.json",
-      "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+      "sha256": "fb4ac3fafcb4d737d645138c1e5259b436c9ee734655f1ffbb399e58c5ec4101",
       "scope": "Corrective shared hero layout and its explicitly bounded source/verification record."
     },
     {
@@ -18788,7 +18788,7 @@
     },
     {
       "path": "docs/data/roadmap-review.json",
-      "sha256": "4d46560b8ad2178a04ef7b7901b623c283b809e8c3744959f629b2c63df86aa6",
+      "sha256": "d4a7ca0828c45f88e84337fc1c1561e8f9b6ae791ceeb274aa4b7a5fd6444fee",
       "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits."
     },
     {
@@ -18798,7 +18798,7 @@
     },
     {
       "path": "docs/data/roadmap-accepted-review.json",
-      "sha256": "5372d08e84255d78d3b31cf1632245c2aea46e5f68bd3a3b48c1cea653c757e2",
+      "sha256": "81adf568d27b25767050089dd4723c16a79bd4d191b2c99dde930b0cc3a7b405",
       "scope": "Accepted-stage roadmap source review; current evidence and limitations are recorded in docs/data/roadmap-accepted-review.json."
     },
     {
@@ -18813,7 +18813,7 @@
     },
     {
       "path": "docs/data/naming-inventory.json",
-      "sha256": "a4c8106a70710583876c10ea3351c2c98f53883f34f6f88ce8f76af7bca9d0a5",
+      "sha256": "6fc50a5ab2e2aee16ac1568d92309727261e6157822fcd7f45c4baf099c512e7",
       "scope": "Current naming, compatibility and historical-evidence boundary review; final integrated acceptance is separately recorded. Current startup-readiness correction reviewed in docs/data/startup-readiness-review.json; later full CI/live outcomes remain separate. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18898,7 +18898,7 @@
     },
     {
       "path": "docs/source/stylesheets/_civica-components.scss",
-      "sha256": "3f6267a498c5ad7dfebaddbeae6b42ad3c698307936ef3ba13b456ccf90237f7",
+      "sha256": "7fd98b108b1fa103acf044852af18b95aa1bca5f67e986d3e273957b5c687bb9",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18948,7 +18948,7 @@
     },
     {
       "path": "docs/data/licensing-notice-review.json",
-      "sha256": "31716e6a217b6abd4c3148477a7838a89768739044409e280ed101ffdc31ccb2",
+      "sha256": "4be08cb987f1b1b643f7d8712797fe38e3ebab4de1341701c56aee14956b9ae7",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18995,19 +18995,19 @@
     {
       "record": "docs/data/hero-layout-review.json",
       "revision": "df7a26a640f1e7242598a61e4197dd1f468b3b70",
-      "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+      "sha256": "fb4ac3fafcb4d737d645138c1e5259b436c9ee734655f1ffbb399e58c5ec4101",
       "scope": "Unchanged preceding hero-layout evidence. Its tests and deployed result remain historical and do not prove the new roadmap pipeline."
     },
     {
       "record": "docs/data/roadmap-review.json",
       "revision": "478c666670b0947d43800b7213c14ea81a66abe4",
-      "sha256": "4d46560b8ad2178a04ef7b7901b623c283b809e8c3744959f629b2c63df86aa6",
+      "sha256": "d4a7ca0828c45f88e84337fc1c1561e8f9b6ae791ceeb274aa4b7a5fd6444fee",
       "scope": "Preserved original roadmap evidence before schema 2 and the Accepted stage. Its actual merged publication is separately identified in the accepted-stage review; the old source record remains unchanged."
     },
     {
       "record": "docs/data/roadmap-accepted-review.json",
       "revision": "ba86ef03a2b1edabed6409c021bd3c49ab62d98b",
-      "sha256": "5372d08e84255d78d3b31cf1632245c2aea46e5f68bd3a3b48c1cea653c757e2",
+      "sha256": "81adf568d27b25767050089dd4723c16a79bd4d191b2c99dde930b0cc3a7b405",
       "scope": "Original Accepted-stage roadmap review retained byte-for-byte. The rename does not rewrite its source identity, reported tests or publication boundaries."
     },
     {
@@ -19206,7 +19206,7 @@
         },
         {
           "path": "docs/data/writing-guide-inventory.json",
-          "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+          "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
           "scope": "Authored/shared documentation source review."
         },
         {
@@ -19713,7 +19713,7 @@
         },
         {
           "path": "docs/data/writing-guide-inventory.json",
-          "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+          "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
           "scope": "Authored/shared documentation source review."
         },
         {
@@ -20043,7 +20043,7 @@
         },
         {
           "path": "docs/data/hero-layout-review.json",
-          "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+          "sha256": "fb4ac3fafcb4d737d645138c1e5259b436c9ee734655f1ffbb399e58c5ec4101",
           "scope": "Corrective shared hero layout and its explicitly bounded source/verification record."
         },
         {
@@ -20235,7 +20235,7 @@
         },
         {
           "path": "docs/data/writing-guide-inventory.json",
-          "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+          "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
           "scope": "Authored/shared documentation source review."
         },
         {
@@ -20565,7 +20565,7 @@
         },
         {
           "path": "docs/data/hero-layout-review.json",
-          "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+          "sha256": "fb4ac3fafcb4d737d645138c1e5259b436c9ee734655f1ffbb399e58c5ec4101",
           "scope": "Corrective shared hero layout and its explicitly bounded source/verification record."
         },
         {
@@ -20670,7 +20670,7 @@
         },
         {
           "path": "docs/data/roadmap-review.json",
-          "sha256": "4d46560b8ad2178a04ef7b7901b623c283b809e8c3744959f629b2c63df86aa6",
+          "sha256": "d4a7ca0828c45f88e84337fc1c1561e8f9b6ae791ceeb274aa4b7a5fd6444fee",
           "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits."
         }
       ]
@@ -20857,7 +20857,7 @@
         },
         {
           "path": "docs/data/writing-guide-inventory.json",
-          "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+          "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
           "scope": "Authored/shared documentation source review."
         },
         {
@@ -21187,7 +21187,7 @@
         },
         {
           "path": "docs/data/hero-layout-review.json",
-          "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+          "sha256": "fb4ac3fafcb4d737d645138c1e5259b436c9ee734655f1ffbb399e58c5ec4101",
           "scope": "Corrective shared hero layout and its explicitly bounded source/verification record."
         },
         {
@@ -21292,7 +21292,7 @@
         },
         {
           "path": "docs/data/roadmap-review.json",
-          "sha256": "4d46560b8ad2178a04ef7b7901b623c283b809e8c3744959f629b2c63df86aa6",
+          "sha256": "d4a7ca0828c45f88e84337fc1c1561e8f9b6ae791ceeb274aa4b7a5fd6444fee",
           "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits."
         },
         {
@@ -21302,7 +21302,7 @@
         },
         {
           "path": "docs/data/roadmap-accepted-review.json",
-          "sha256": "5372d08e84255d78d3b31cf1632245c2aea46e5f68bd3a3b48c1cea653c757e2",
+          "sha256": "81adf568d27b25767050089dd4723c16a79bd4d191b2c99dde930b0cc3a7b405",
           "scope": "Accepted-stage roadmap source review; current evidence and limitations are recorded in docs/data/roadmap-accepted-review.json."
         }
       ]
@@ -21489,7 +21489,7 @@
         },
         {
           "path": "docs/data/writing-guide-inventory.json",
-          "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+          "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
           "scope": "Authored/shared documentation source review."
         },
         {
@@ -21819,7 +21819,7 @@
         },
         {
           "path": "docs/data/hero-layout-review.json",
-          "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+          "sha256": "fb4ac3fafcb4d737d645138c1e5259b436c9ee734655f1ffbb399e58c5ec4101",
           "scope": "Corrective shared hero layout and its explicitly bounded source/verification record."
         },
         {
@@ -21924,7 +21924,7 @@
         },
         {
           "path": "docs/data/roadmap-review.json",
-          "sha256": "4d46560b8ad2178a04ef7b7901b623c283b809e8c3744959f629b2c63df86aa6",
+          "sha256": "d4a7ca0828c45f88e84337fc1c1561e8f9b6ae791ceeb274aa4b7a5fd6444fee",
           "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits."
         },
         {
@@ -21934,7 +21934,7 @@
         },
         {
           "path": "docs/data/roadmap-accepted-review.json",
-          "sha256": "5372d08e84255d78d3b31cf1632245c2aea46e5f68bd3a3b48c1cea653c757e2",
+          "sha256": "81adf568d27b25767050089dd4723c16a79bd4d191b2c99dde930b0cc3a7b405",
           "scope": "Accepted-stage roadmap source review; current evidence and limitations are recorded in docs/data/roadmap-accepted-review.json."
         },
         {
@@ -22161,7 +22161,7 @@
         },
         {
           "path": "docs/data/writing-guide-inventory.json",
-          "sha256": "b0ba54bb8ce2c67501c10638e311560831adcb433e14c4c94649f396854f4290",
+          "sha256": "6af68882dad7618028adfec2635d31b077001e04b337fb1e858e4cc029b6a6e2",
           "scope": "Authored/shared documentation source review."
         },
         {
@@ -22491,7 +22491,7 @@
         },
         {
           "path": "docs/data/hero-layout-review.json",
-          "sha256": "40d79bec982691bfad4decd4806d8e300bba88da11d88133eac409a799b1d2af",
+          "sha256": "fb4ac3fafcb4d737d645138c1e5259b436c9ee734655f1ffbb399e58c5ec4101",
           "scope": "Corrective shared hero layout and its explicitly bounded source/verification record."
         },
         {
@@ -22596,7 +22596,7 @@
         },
         {
           "path": "docs/data/roadmap-review.json",
-          "sha256": "4d46560b8ad2178a04ef7b7901b623c283b809e8c3744959f629b2c63df86aa6",
+          "sha256": "d4a7ca0828c45f88e84337fc1c1561e8f9b6ae791ceeb274aa4b7a5fd6444fee",
           "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits."
         },
         {
@@ -22606,7 +22606,7 @@
         },
         {
           "path": "docs/data/roadmap-accepted-review.json",
-          "sha256": "5372d08e84255d78d3b31cf1632245c2aea46e5f68bd3a3b48c1cea653c757e2",
+          "sha256": "81adf568d27b25767050089dd4723c16a79bd4d191b2c99dde930b0cc3a7b405",
           "scope": "Accepted-stage roadmap source review; current evidence and limitations are recorded in docs/data/roadmap-accepted-review.json."
         },
         {

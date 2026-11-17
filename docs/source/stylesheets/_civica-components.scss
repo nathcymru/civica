@@ -38,3 +38,29 @@
 @import "govuk/components/textarea";
 @import "govuk/components/warning-text";
 
+
+// A to Z letter navigation, used on the two lexicon pages.
+.style-a-z {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 30px;
+  padding: 0;
+  list-style: none;
+  font-size: 1.1875rem;
+  font-weight: 700;
+
+  li {
+    margin: 0 15px 10px 0;
+    min-width: 1.5rem;
+  }
+
+  a {
+    display: inline-block;
+    padding: 2px 0;
+  }
+
+  .style-a-z__empty {
+    color: #505a5f;
+    font-weight: 400;
+  }
+}

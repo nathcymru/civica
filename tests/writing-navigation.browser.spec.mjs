@@ -35,7 +35,7 @@ test('writing pages have the correct active navigation, breadcrumbs and a single
     const sidebar = page.getByRole('navigation', { name: 'Pages in this section' });
     expect((await sidebar.locator('a').evaluateAll(relativePaths)).filter(path => path === '/content/index.html')).toHaveLength(0);
     await expect(sidebar.locator('a[aria-current="page"]')).toHaveCount(path === '/content/index.html' ? 0 : 1);
-    await expect(sidebar.locator('.app-subnav__theme')).toHaveText(['Writing guidelines', 'Formatting content', 'Publish, update or retire', 'Style guides', 'Home Assistant terminology', 'Quick reference', 'Moved pages']);
+    await expect(sidebar.locator('.app-subnav__theme')).toHaveText(['Writing guidelines', 'Formatting content', 'Publish, update or retire', 'Lexicons', 'Home Assistant terminology', 'Quick reference', 'Moved pages']);
     const breadcrumb = page.getByRole('navigation', { name: 'Breadcrumb' });
     await expect(breadcrumb).toContainText('Writing guide');
     await expect(breadcrumb.getByRole('link', { name: 'Styles', exact: true })).toHaveCount(0);
