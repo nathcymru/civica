@@ -23,7 +23,7 @@ test('all existing writing URLs belong to one top-level section', () => {
 
 test('writing pages have the correct active navigation, breadcrumbs and a single section-home link', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 900 });
-  for (const path of ['/content/index.html', '/content/writing-guidelines/clear-language.html', '/content/home-assistant-terminology.html', '/styles/content.html']) {
+  for (const path of ['/content/index.html', '/content/writing-guidelines/clear-language.html', '/content/style-guides/technical-a-to-z.html', '/styles/content.html']) {
     const response = await page.goto(`/docs/build${path}`);
     expect(response.ok(), path).toBe(true);
     const main = page.getByRole('navigation', { name: 'Main navigation' });

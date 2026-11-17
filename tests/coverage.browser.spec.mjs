@@ -33,30 +33,25 @@ test('every interface registry remains readable when expanded on a narrow screen
   expect(results.violations.map(({ id, nodes }) => ({ id, targets: nodes.map(node => node.target) }))).toEqual([]);
 });
 
-for (const path of ['/content/ha-glossary.html', '/content/interface-terminology.html', '/content/entity-and-state-language.html']) {
-  test(`${path}: all terminology can be disclosed and read without horizontal page scrolling`, async ({ page }) => {
-    test.setTimeout(180000);
-    await page.setViewportSize({ width: 320, height: 900 });
-    await page.goto(route(path));
-    const expected = terms.terms.filter(term => term.local_path?.split('#')[0] === path);
-    await expect(page.locator('details.civica-audit-detail')).toHaveCount(expected.length);
-    await openAll(page, 'details.civica-audit-detail');
-    await noOverflow(page);
-    // Reveal all context-sensitive native labels, including long source pointers.
-    if (path.endsWith('entity-and-state-language.html')) {
-      await openAll(page, 'details.civica-audit-detail > details');
-      await expect(page.locator('tr[id^="ht-native-"]')).toHaveCount(terms.native_values.length);
-    }
-    await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
-    await noOverflow(page);
-    const results = await new AxeBuilder({ page }).exclude('iframe').analyze();
-    expect(results.violations.map(({ id, nodes }) => ({ id, targets: nodes.map(node => node.target) }))).toEqual([]);
-  });
-}
+test('/content/style-guides/technical-a-to-z.html: every term and native label can be read without horizontal page scrolling', async ({ page }) => {
+  test.setTimeout(180000);
+  const path = '/content/style-guides/technical-a-to-z.html';
+  await page.setViewportSize({ width: 320, height: 900 });
+  await page.goto(route(path));
+  const expected = terms.terms.filter(term => term.local_path?.split('#')[0] === path);
+  await expect(page.locator('.lexicon-entry')).toHaveCount(expected.length);
+  await openAll(page, 'details');
+  await noOverflow(page);
+  await expect(page.locator('tr[id^="ht-native-"]')).toHaveCount(terms.native_values.length);
+  await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
+  await noOverflow(page);
+  const results = await new AxeBuilder({ page }).exclude('iframe').analyze();
+  expect(results.violations.map(({ id, nodes }) => ({ id, targets: nodes.map(node => node.target) }))).toEqual([]);
+});
 
 test('complete interface and terminology records are linked from the visible audit page', async ({ page, request }) => {
   await page.goto(route('/community/home-assistant-coverage-audit.html'));
-  for (const path of ['/home-assistant/interface-coverage.html', '/content/home-assistant-terminology.html', '/community/uk-design-system-review.html', '/components/sliders.html']) {
+  for (const path of ['/home-assistant/interface-coverage.html', '/content/style-guides/technical-a-to-z.html', '/community/uk-design-system-review.html', '/components/sliders.html']) {
     const link = page.locator('main a').filter({ hasText: /./ });
     expect(await link.evaluateAll((nodes, suffix) => nodes.some(node => new URL(node.href).pathname.endsWith(suffix)), path)).toBe(true);
     await expect(page.locator(`main a[href$="${path.split('/').pop()}"]`).first()).toBeVisible();

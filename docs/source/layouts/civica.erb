@@ -20,7 +20,7 @@
     first_example.unlink
     headings.first.add_previous_sibling(first_example)
   end
-  if headings.length >= 3 && !home_page?
+  if headings.length >= 3 && !home_page? && !current_page.data.no_contents
     contents = Nokogiri::XML::Node.new('nav', fragment.document)
     contents['class'] = 'c-on-this-page'
     contents['aria-label'] = 'On this page'

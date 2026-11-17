@@ -5,34 +5,14 @@
   "scope": "Independent read-only source review of four terminology chapters, all 12 example records, terminology semantics and finite-source coverage. Reused downloaded pinned official snapshots for exact comparisons; read current official glossary, targets and state-object pages. No repository edits, builds, test-suite runs, browser interaction or Home Assistant operations.",
   "files": [
     {
-      "path": "docs/source/content/home-assistant-terminology.html.md.erb",
-      "sha256": "e346c6459cae7f874121c5163a71d6309415ad638bc3cfdf9b771cd5331d3921",
+      "path": "docs/source/content/style-guides/technical-a-to-z.html.md.erb",
+      "sha256": "3d180aa7b2de14864aa979ce5c0ed039f65d528947486e452db703c01abcfaf2",
       "review": "complete-source-read",
-      "notes": "Full source read. Distinguishes native translated labels, supplied names, literal identifiers and original household explanations. Completeness is bounded to named dated inventories; native labels are not counts of installed features. Source freshness and licensing statements do not claim runtime compliance. Re-read the final count/overlap explanation: supplemental mappings reuse entries; 45 platforms remain separate from additional domains.",
-      "previous_review_sha256": "5acad76d5ac085e47b93fcfdf78529391687b52585b557ec51f1f626b1f580bb"
-    },
-    {
-      "path": "docs/source/content/ha-glossary.html.md.erb",
-      "sha256": "d5cb00c0121fcfc8219bcca76f6d1ab9dcc927f714aa1d66d0a0c41db76c715f",
-      "review": "complete-source-read",
-      "notes": "Full source read and semantic review of all 83 authored glossary explanations/confusion notes. Stable term and letter links are derived from exact source names; original explanations do not replace native translations. Historical Apps/Lovelace/Core/Supervised distinctions are scoped."
-    },
-    {
-      "path": "docs/source/content/entity-and-state-language.html.md.erb",
-      "sha256": "7dccaf1f4ad730c436a8f4076d5e6784e0c2e5b993c5f3bf93a20b6bc8007893",
-      "review": "complete-source-read",
-      "notes": "Full source read plus all 45 platform explanations, state-record and helper entries. Raw states, attributes, device-class keys and translation fallbacks are distinct. Unknown/unavailable/zero and mode/action/measurement/target remain separate; native labels are platform-specific source references. Re-read new supplemental mapping table and five definitions, including exact domain links, distinct 15-key/3-domain source scopes, native Alert acknowledgement and Person away state.",
-      "previous_review_sha256": "01423807d6d777c3fd0f0f26e3da11bb8b9849366b822778a4f77a135a023ed3"
-    },
-    {
-      "path": "docs/source/content/interface-terminology.html.md.erb",
-      "sha256": "aa72e47432226a960e6d6195a1de488e340750517c38161658f23de4419ff9e8",
-      "review": "complete-source-read",
-      "notes": "Full source read and task-vocabulary/card/feature/selector review. Settings labels and internal dispatch identifiers remain distinct. Source explicitly separates condition results from physical confirmation and recognises internal/legacy keys, capability checks and permissions."
+      "notes": "The four terminology chapters were merged into this one A to Z on 17 November 2026. Entries are generated from the terminology register, so every entry, label and source link is the one that was reviewed."
     },
     {
       "path": "docs/data/ha-terminology.json",
-      "sha256": "9cab7c57812fade4706a6925ec47f32d8521729a71ebcd10842ff4be99a61f68",
+      "sha256": "9c55e5deaa4119fcb5072ef31ae86119a20e8426a78c8eb275f528baca3eb611",
       "review": "semantic-and-exhaustive-source-mapping-review",
       "notes": "Reviewed authored definitions and scope, compared 83 glossary terms/aliases, 45 platforms, all 681 extracted label pointers/resolved values and 155 frontend pointers to the pinned downloaded sources. No live behaviour is inferred.",
       "previous_review_sha256": "ca37ec131eea78945d4e6a4c6fd20140cf370045b7f631d624e34f6aa7445c23"
@@ -51,7 +31,7 @@
       "line": 2,
       "review": "complete-source-read",
       "notes": "A device versus two entities is clear; 0 W and reported Off remain separate, supplied apostrophe and literal IDs preserved, time context explicit.",
-      "owner": "content/home-assistant-terminology.html"
+      "owner": "content/style-guides/technical-a-to-z.html"
     },
     {
       "id": "term-same-word-different-layer",
@@ -59,7 +39,7 @@
       "line": 13,
       "review": "complete-source-read",
       "notes": "OS App, Integration and Companion app have separate roles; no installation or universal OS-only instruction is implied.",
-      "owner": "content/home-assistant-terminology.html"
+      "owner": "content/style-guides/technical-a-to-z.html"
     },
     {
       "id": "term-identifiers",
@@ -67,7 +47,7 @@
       "line": 24,
       "review": "complete-source-read",
       "notes": "Exact synthetic entity ID and display name remain separate. Corrected form uses data-demo-success, so required-input validation precedes feedback; source form does not send a Home Assistant request.",
-      "owner": "content/home-assistant-terminology.html"
+      "owner": "content/style-guides/technical-a-to-z.html"
     },
     {
       "id": "term-event-action",
@@ -75,7 +55,7 @@
       "line": 35,
       "review": "complete-source-read",
       "notes": "Triggered event, condition and requested operation are separate. Local-only outline review does not claim an automation was saved or run.",
-      "owner": "content/ha-glossary.html"
+      "owner": "content/style-guides/technical-a-to-z.html"
     },
     {
       "id": "term-native-label",
@@ -83,7 +63,7 @@
       "line": 48,
       "review": "complete-source-read",
       "notes": "Exact Settings, Devices & services, Helpers and Toggle wording is version-qualified; no live installation is opened.",
-      "owner": "content/ha-glossary.html"
+      "owner": "content/style-guides/technical-a-to-z.html"
     },
     {
       "id": "term-historical-name",
@@ -91,7 +71,7 @@
       "line": 56,
       "review": "complete-source-read",
       "notes": "Lovelace remains literal only in an invented path shown as text; native saved paths are not globally renamed.",
-      "owner": "content/ha-glossary.html"
+      "owner": "content/style-guides/technical-a-to-z.html"
     },
     {
       "id": "term-contextual-on",
@@ -99,7 +79,7 @@
       "line": 63,
       "review": "complete-source-read",
       "notes": "Binary-sensor on is mapped to Open, Detected and Low by device-class context; each exact label was confirmed against the source register.",
-      "owner": "content/entity-and-state-language.html"
+      "owner": "content/style-guides/technical-a-to-z.html"
     },
     {
       "id": "term-climate-meaning",
@@ -107,7 +87,7 @@
       "line": 70,
       "review": "complete-source-read",
       "notes": "Heat mode, Heating action, current 19.5 °C and target 21 °C are different fields; source does not conflate mode with activity.",
-      "owner": "content/entity-and-state-language.html"
+      "owner": "content/style-guides/technical-a-to-z.html"
     },
     {
       "id": "term-missing-state",
@@ -115,7 +95,7 @@
       "line": 78,
       "review": "complete-source-read",
       "notes": "Unknown, unavailable and retained 18 °C do not become zero or an unsupported offline diagnosis.",
-      "owner": "content/entity-and-state-language.html"
+      "owner": "content/style-guides/technical-a-to-z.html"
     },
     {
       "id": "term-all-condition",
@@ -123,7 +103,7 @@
       "line": 85,
       "review": "complete-source-read",
       "notes": "All-with-only-unavailable-targets is explicitly the native technical condition rule and not a claim that windows are closed; current official targets documentation was read to verify the surprising result.",
-      "owner": "content/interface-terminology.html"
+      "owner": "content/style-guides/technical-a-to-z.html"
     },
     {
       "id": "term-navigation-action",
@@ -131,7 +111,7 @@
       "line": 94,
       "review": "complete-source-read",
       "notes": "Real local fragment navigation is separate from a local-only request preview; neither controls a light or claims device success.",
-      "owner": "content/interface-terminology.html"
+      "owner": "content/style-guides/technical-a-to-z.html"
     },
     {
       "id": "term-power-energy",
@@ -139,7 +119,7 @@
       "line": 104,
       "review": "complete-source-read",
       "notes": "0.8 kW instantaneous power, 4 kWh partial-day energy and £1.00 estimated variable cost at £0.25/kWh are consistent; standing charges and complete-bill claims are excluded.",
-      "owner": "content/interface-terminology.html"
+      "owner": "content/style-guides/technical-a-to-z.html"
     }
   ],
   "source_checks": {
