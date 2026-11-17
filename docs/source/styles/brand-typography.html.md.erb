@@ -1,12 +1,12 @@
 ---
 title: "Typography in context"
-description: "Arial, semantic hierarchy and channel-specific typography for civica and native Home Assistant."
+description: "Use Arial and a meaningful hierarchy, and adapt type for values, native screens and print."
 section: "styles"
 group: "Guidance"
 source_url: "https://brand.design-system.service.gov.uk/typography/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -16,15 +16,28 @@ updates:
     description: "Separated typography guidance from optional household identity while retaining readable interface roles."
   - date: "2026-11-11"
     description: "Added source-mapped civica.uk rules, contextual examples and explicit adoption boundaries."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, corrected the wordmark description and moved per-rule source lines to the Styles index."
+ai_instructions: "Apply when setting type in a card, a value, a native screen or a printed handover. Use Arial at 400 and 700, build hierarchy from heading level and size, show every value with its unit and time, and let text grow with the user's settings. Keep rule anchors BG-TYP-01 to BG-TYP-06 unchanged. Type sizes live on the Typography page. Rules WG-001, WG-002."
+ai_related:
+  - path: "/styles/typography.html"
+    title: "Typography"
+    relationship: "Owns the type scale, tokens and native density exception."
+  - path: "/accessibility/index.html"
+    title: "Accessibility"
+    relationship: "Owns text resizing and reflow requirements."
+  - path: "/styles/brand-data.html"
+    title: "Data visualisation"
+    relationship: "Owns chart labels and units."
 ---
 
 # Typography in context
 
-Typography makes repeated household tasks easy to scan. Apply the readable hierarchy in GOV.UK’s brand guidance through civica’s approved Arial stack and [existing type scale](typography.html). Official font identity and promotional type treatments do not override native Home Assistant usability.
+Use type to make repeated household tasks quick to scan. Set it in Arial, on the [type scale](typography.html) that owns the sizes. Official font identity and promotional type treatments never override native Home Assistant usability.
 
 ## Examples
 
-These reference examples use invented household details. They do not operate devices or establish that every native Home Assistant surface has adopted this guidance.
+These examples use invented household details. They do not operate devices, and they do not show that every native Home Assistant surface follows this guidance.
 
 <%= example('bg-type-household-hierarchy') %>
 
@@ -36,62 +49,56 @@ These reference examples use invented household details. They do not operate dev
 
 **Local requirement: MUST.** Applies to maintained civica interface and documentation typography.
 
-Use `Arial, Helvetica, sans-serif` for civica interface text and documentation. Use regular 400 and bold 700 weights; do not attempt to reproduce GDS Transport Light by thinning Arial. The supplied outlined wordmark stays an image, never a body-text font.
+Set civica interface text and documentation in `Arial, Helvetica, sans-serif`. Use regular 400 and bold 700. Do not thin Arial to imitate GDS Transport Light. The supplied civica lockup is artwork, not a font for body text.
 
-The GOV.UK Brand site describes GDS Transport as an identity element. The Design System separately requires an alternative for services outside the relevant official domain. Our choice of Arial is explicit, not a temporary missing-font fallback. Do not download, bundle or silently select GDS Transport from a user’s machine.
+GDS Transport is an official GOV.UK identity element, and GOV.UK asks services outside its official domain to use an alternative. Arial is therefore a deliberate choice, not a stand-in for a missing font. Do not download, bundle or silently select GDS Transport from a person’s machine.
 
-Source: [Typography](https://brand.design-system.service.gov.uk/typography/), [Web typography](https://brand.design-system.service.gov.uk/typography/web/), [Design System typeface](https://design-system.service.gov.uk/styles/typeface/).
 
 <h2 id="bg-typ-02">BG-TYP-02: Build hierarchy with meaning, size and weight</h2>
 
 **Local requirement: MUST.** Applies to headings, labels and explanatory text.
 
-Use the [local type hierarchy](typography.html) for page, section and card headings. Make heading levels describe the document structure, not the desired font size. A sensor value is content, not automatically a heading. Use sentence case, readable spacing and selective bold emphasis.
+Take page, section and card heading sizes from the [type hierarchy](typography.html). Choose a heading level for the document structure, not for the font size you want. A sensor value is content, not automatically a heading. Use sentence case, readable spacing and bold for selective emphasis.
 
-Keep instructions left aligned in English and Welsh layouts. Long body text needs a stable reading edge; reserve centred copy for a short, justified presentation need. Do not transplant the social-media five-line headline limit into a wrapping device name or error message.
+Left-align instructions in English and Welsh layouts. Long text needs a steady reading edge, so keep centred text for short, deliberate cases. Do not apply a social-media headline length limit to a device name or an error message that needs to wrap.
 
-Source: [Social typography](https://brand.design-system.service.gov.uk/typography/social/).
 
 <h2 id="bg-typ-03">BG-TYP-03: Keep values, units and dates understandable</h2>
 
 **Local requirement: MUST.** Applies to operational readings and exported measurement text.
 
-Show a measurement with its unit and relevant timestamp. Use tabular numerals where comparison benefits, but keep text selectable and accessible. Do not truncate the minus sign, decimal part, unit, entity name or stale/unavailable qualifier needed to understand a value.
+Show a measurement with its unit and the time it applies to. For example, “Living room 21 °C, updated 14:05”. Use tabular numerals where comparison helps, and keep the text selectable. Never cut off the minus sign, the decimal part, the unit, the entity name or a “stale” or “unavailable” qualifier.
 
-Keep Home Assistant’s language, number, time and timezone preferences for native operational data. An editorial report must state its period and timezone if ambiguity matters. Do not bake changing readings into images or substitute a display font for measurement text.
+Keep Home Assistant’s language, number, time and timezone preferences for native data. A written report states its period and timezone when the reader could be unsure. Do not bake changing readings into images, and do not set measurements in a display font.
 
-Source: [Typography](https://brand.design-system.service.gov.uk/typography/), [Charts](https://brand.design-system.service.gov.uk/data/charts/).
 
 <h2 id="bg-typ-04">BG-TYP-04: Respect native density and operating-system controls</h2>
 
 **Local requirement: MUST.** Applies to custom UI, native dense surfaces, charts and OS-owned controls.
 
-Maintained civica UI starts at 19px body, 16px support and 24px bold card headings, scaled by Home Assistant’s text preference. Native dense surfaces use the documented 12/14/16/19px scale to preserve their geometry; native heading-card titles are 24px bold. Operational chart labels use the adapter’s minimum 14px base.
+Maintained civica UI uses 19px body text, 16px supporting text and 24px bold card headings, all scaled by Home Assistant’s text preference. Native dense surfaces keep the documented 12, 14, 16 and 19px scale to protect their layout, and native heading-card titles are 24px bold. Chart labels use the adapter’s minimum 14px base.
 
-Do not force every editor row to marketing headline sizes or rewrite the mobile operating system’s share sheet, keyboard or permission dialog. These remain native surfaces. Preserve code-editor monospace where alignment carries meaning. This is a deliberate Home Assistant adaptation, not evidence that every third-party card follows the type system.
+Do not enlarge every editor row to headline size. Do not restyle the mobile operating system’s share sheet, keyboard or permission dialog, which stay native. Keep monospace in code editors where alignment carries meaning. This is a deliberate Home Assistant adaptation. It does not show that every third-party card follows the type system.
 
-Source: [App typography](https://brand.design-system.service.gov.uk/typography/app/).
 
 <h2 id="bg-typ-05">BG-TYP-05: Verify text scaling and failure states</h2>
 
 **Local requirement: MUST.** Applies to affected text and controls at narrow widths and user text settings.
 
-Check browser zoom, Home Assistant text scaling and user text-spacing overrides. Allow labels, errors and help text to grow vertically. Test long room names, large readings, missing units, translated strings and no-data messages; do not rely on the shortest English demo label.
+Check browser zoom, Home Assistant text scaling and user text-spacing overrides. Let labels, errors and help text grow taller. Test a long room name, a large reading, a missing unit, a translated string and a no-data message. Do not rely on the shortest English demo label.
 
-A tooltip is supplementary: keyboard and touch users need the identifying name and essential state without hover. If a native compact control truncates non-essential text, retain an accessible full name and a keyboard/touch route to details. Do not disable zoom or fix a card’s height to conceal overflow.
+A tooltip is only a supplement, because keyboard and touch users need the name and essential state without hovering. If a compact native control cuts off non-essential text, keep an accessible full name and a keyboard and touch route to the detail. Do not disable zoom or fix a card’s height to hide overflow.
 
-Source: [App typography](https://brand.design-system.service.gov.uk/typography/app/), [Social typography](https://brand.design-system.service.gov.uk/typography/social/).
 
 <h2 id="bg-typ-06">BG-TYP-06: Separate document and promotional typography</h2>
 
 **Local recommendation: SHOULD.** Applies to printable household documents and promotional text.
 
-For a printable household handover, the official guidance recommends starting no smaller than 12pt body and 16pt headings. Retain readable typography and the household’s chosen name, if any; use larger text when the intended reader needs it. A household handover does not require a civica logo. These sizes are recommendations, not an accessibility guarantee. Inspect the actual exported pages; screen CSS does not prove print legibility. GOV.UK logo dimensions do not transfer to our artwork.
+For a printable household handover, start no smaller than 12pt body text and 16pt headings, as the official print guidance recommends. Use larger text when the reader needs it, and use the household’s own name if it has one. A handover does not need a civica logo. These sizes are a recommendation, not an accessibility guarantee, so inspect the exported pages. Screen CSS does not prove print legibility.
 
-For a release illustration or social image, use a short readable headline and provide the same essential message in accessible accompanying text. Do not replace an HTML guide with a picture of paragraphs. Keep essential dates, links, measurements and instructions outside the bitmap.
+For a release illustration or social image, use a short, readable headline and give the same message as accessible text beside it. Do not replace an HTML guide with a picture of paragraphs. Keep dates, links, measurements and instructions outside the bitmap.
 
-Source: [Print typography](https://brand.design-system.service.gov.uk/typography/print/), [Social typography](https://brand.design-system.service.gov.uk/typography/social/).
 
 ## Review and evidence
 
-The source inventory and rule checklist are maintained in `docs/data/brand-guidance-inventory.json` and `docs/data/brand-guidance-checklist.json`. A reviewed source is evidence for a design decision, not a pass for an interface. Record the page or component, theme/mode, test result and remaining issue before closing a checklist item. Recheck after source, palette, component or renderer changes.
+The source inventory and rule checklist are in `docs/data/brand-guidance-inventory.json` and `docs/data/brand-guidance-checklist.json`. A reviewed source supports a design decision. It is not a pass for an interface. Before closing a checklist item, record the page or component, the theme and mode, the test result and any remaining issue. Check again after a change to a source, palette, component or renderer.

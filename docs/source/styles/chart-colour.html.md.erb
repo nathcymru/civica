@@ -1,9 +1,10 @@
 ---
 title: "Chart colour"
-description: "Worked categorical, sequential and divergent colour examples, with stable identities, numeric scales and explicit missing data."
+description: "Give each chart series a stable colour, choose sequential or divergent scales for quantities, and show missing data plainly."
 last_reviewed_on: 2026-11-12
 review_in: 3 months
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
+published_on: "2026-11-11"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -11,19 +12,31 @@ updates:
     description: "Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries."
   - date: "2026-11-12"
     description: "Added generated categorical references and calculated quantitative scales with matching values, text alternatives and explicit missing-data treatment."
-published_on: "2026-11-11"
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, with outside source commentary moved to the Styles index."
+ai_instructions: "Apply when colouring a chart series, heatmap or map layer. Decide whether colour identifies a source or shows a quantity. Give a source the same colour from its stable ID, never from its position, and always add a label, pattern or table. Do not use alpha, gradients or generated series colours as a scale. Rules WG-001, WG-002."
+ai_related:
+  - path: "/styles/brand-colour.html"
+    title: "Colour roles and accessibility"
+    relationship: "Owns the rule that a palette never changes chart meaning."
+  - path: "/components/charts.html"
+    title: "Charts and tables"
+    relationship: "Owns the maintained Energy chart specification."
+  - path: "/styles/brand-data.html"
+    title: "Data visualisation"
+    relationship: "Owns how to choose and compose a chart."
 ---
 
 # Chart colour
 
-Colour can identify a source or represent a quantity. Choose the meaning first. In the maintained household charts, a categorical colour identifies a source or device: it must not change because another source was added, a series was hidden or the brand palette changed. **Vivid and Muted follow the theme's existing colour toggle.** Light and Dark remain separate display modes.
+Decide first whether colour identifies a source or shows a quantity. In the maintained household charts, a categorical colour identifies a source or device. It must not change because you added another source, hid a series or switched the brand palette. For example, the dishwasher keeps its colour whether or not the oven is shown. **Vivid and Muted follow the theme’s colour toggle.** Light and Dark remain separate display modes.
 
-The [machine-readable contract](../reference/chart-colours.json) and repository module `design-system/chart-colours.mjs` are the shared authority for the theme, native Energy adapter and [working examples](../components/chart-examples.html). Do not define another palette inside a chart or demonstration.
+The [machine-readable contract](../reference/chart-colours.json) and the repository module `design-system/chart-colours.mjs` are the shared authority for the theme, the native Energy adapter and the [working examples](../components/chart-examples.html). Do not define another palette inside a chart or demonstration.
 
 
 ## Apply data guidance
 
-The [data guidance](brand-data.html) sets the rules for communicating a result, comparison or uncertainty. The deterministic series colours on this page and the [maintained Energy chart specification](../components/charts.html) remain the operational contract. The quantitative scales below are worked documentation references for newly authored graphics. They do not change native Home Assistant charts or maps.
+[Data visualisation](brand-data.html) owns how to show a result, a comparison or uncertainty. The series colours on this page and the [maintained Energy chart specification](../components/charts.html) are the operational contract. The quantitative scales below are worked references for newly written graphics. They do not change native Home Assistant charts or maps.
 
 
 ## Examples
@@ -32,19 +45,19 @@ These isolated examples illustrate the decisions on this page. Any household val
 
 ### Categories: the same devices in four display settings
 
-The same three entity IDs are calculated by the existing generator in Vivid/Light, Muted/Light, Vivid/Dark and Muted/Dark. The panels show labelled colours and line/marker choices; one table supplies the unchanged underlying values. The dishwasher retains an identity colour while its value is explicitly missing. A coloured key is not evidence that a reading arrived.
+The generator calculates the same three entity IDs in Vivid and Muted, Light and Dark. The panels show labelled colours with line and marker choices, and one table gives the unchanged values. The dishwasher keeps its identity colour while its value is missing. A coloured key does not prove that a reading arrived.
 
 <%= example('data-colour-categorical') %>
 
 ### Quantities: increasing values and a meaningful centre
 
-The sequential scale represents energy from 0 to 2 kWh. The divergent scale represents a temperature difference from a declared 20 °C target, with zero at the centre. Endpoints, interpolation, units, values and missing-data behaviour are defined inside the example. The numerical labels and tables remain available independently of the fills.
+The sequential scale shows energy from 0 to 2 kWh. The divergent scale shows a temperature difference from a declared 20 °C target, with zero at the centre. The example defines the endpoints, interpolation, units, values and missing-data behaviour. The labels and tables work without the fills.
 
 <%= example('data-colour-quantitative') %>
 
 ### Operational charts
 
-These working charts continue to use the shared adapter and identity generator. Their unfilled line geometry, patterns and table behaviour are separate from the static scale references above.
+These working charts use the shared adapter and identity generator. Their unfilled lines, patterns and tables are separate from the static scale references above.
 
 <%= example('local-chart-power') %>
 
@@ -59,30 +72,30 @@ These working charts continue to use the shared adapter and identity generator. 
 | Divergent | Shows direction and magnitude away from a meaningful centre | A justified centre, two declared endpoints, signed values and a definition of each direction |
 | Missing | There is no usable numeric observation | A label such as “Not supplied”, a non-numeric mark and an explanation where needed |
 
-A categorical colour is not a rank or amount. Do not use generated device colours as a temperature progression. A divergent centre must represent something meaningful, such as no difference from a stated reference; it is not simply the midpoint that makes a palette look balanced. An actual zero belongs on the numeric scale. Unknown and unavailable observations do not.
+A categorical colour is not a rank or an amount. Do not use generated device colours as a temperature progression. A divergent centre must mean something, such as no difference from a stated reference. It is not just the midpoint that makes a palette look balanced. A real zero belongs on the numeric scale. An unknown or unavailable reading does not.
 
-The [GOV.UK chart colour guidance](https://brand.design-system.service.gov.uk/colour/charts/) recommends a maximum of **two colour scales in one chart** when using sequential or divergent scales. This is not a limit of two categorical series. Split the graphic or use a table when additional measures make the colour meaning difficult to follow.
+Use no more than **two colour scales in one chart** when they are sequential or divergent. This is not a limit of two categorical series. Split the graphic or use a table when more measures make the colour meaning hard to follow.
 
 ## Define and test a quantitative scale
 
-Declare the quantity, units, period, endpoints and any centre before selecting colours. Give an out-of-range value an explicit explanation; silently assigning it the endpoint colour hides information. If the range changes, update the legend and explain whether charts across different periods remain comparable.
+State the quantity, units, period, endpoints and any centre before choosing colours. Explain any out-of-range value. Silently giving it the endpoint colour hides information. If the range changes, update the legend and say whether charts from different periods can still be compared.
 
-The example uses simple, rounded interpolation of encoded sRGB channels. Its sequential endpoints are `#D2E2F1` and `#103E65`. Its divergent branches run from `#1D70B8` through the neutral `#F3F3F3` to `#8A6100`. These are fixed, opaque **reference colours**, not another categorical palette, production tokens or a perceptually uniform scale. Intermediate hex values are calculated from the documented inputs. A real heatmap or spatial layer needs its own reviewed range, context and contrast evidence.
+The example interpolates encoded sRGB channels and rounds each result. Its sequential endpoints are `#D2E2F1` and `#103E65`. Its divergent branches run from `#1D70B8` through the neutral `#F3F3F3` to `#8A6100`. These are fixed, opaque **reference colours**. They are not a second categorical palette, production tokens or a perceptually uniform scale. The in-between hex values are calculated from the documented inputs. A real heatmap or map layer needs its own reviewed range, context and contrast evidence.
 
-Keep numeric and categorical labels outside fills unless the actual text/fill combination has been tested. Pale scale steps may not contrast with a white canvas. Use visible boundaries and direct labels or provide a simpler view; never claim that distinct hex values prove distinguishable adjacent areas. The worked examples use outlines, written values and matching tables. The [GOV.UK map colour guidance](https://brand.design-system.service.gov.uk/colour/maps/) also supports shapes, labels and alternative representations where colour contrast is insufficient.
+Keep labels outside fills unless you have tested the real text and fill pair. Pale scale steps may not contrast with a white canvas. Use visible boundaries and direct labels, or offer a simpler view. Different hex values do not prove that neighbouring areas can be told apart. The worked examples use outlines, written values and matching tables. Where colour contrast is not enough, add shapes, labels or another way to read the data.
 
-Missing values use a crossed empty swatch and the words “Not supplied”. Its absence of a numeric colour is deliberate. At forced colours or with fills removed, the labels and data tables still convey every value and its missing state.
+A missing value uses a crossed empty swatch and the words “Not supplied”. It has no numeric colour on purpose. With forced colours or fills removed, the labels and data tables still give every value and its missing state.
 
 
 ## Generate from identity
 
-Pass a stable native source or statistic ID to `chartColour(key, {tone, mode})`. The generator calculates an opaque sRGB colour through OKLCH, a colour space that separates lightness, colour strength and hue. It reduces colour strength when necessary to fit the screen gamut and adjusts lightness to meet the chart-surface contrast target. Muted means lower colour strength, **not transparency**.
+Pass a stable native source or statistic ID to `chartColour(key, {tone, mode})`. The generator calculates an opaque sRGB colour through OKLCH, a colour space that separates lightness, colour strength and hue. It lowers colour strength where needed to fit the screen gamut and adjusts lightness to meet the chart-surface contrast target. Muted means lower colour strength, **not transparency**.
 
-The result is deterministic. The same identity and display settings give the same colour across reloads, chart ordering and legend changes. It does not require a saved per-device colour map or a fixed list of 20 colours. Keep the identifier stable when a friendly name changes. Previous-period comparisons and the positive/negative halves of a native power source share their base identity.
+The result is deterministic. The same ID and display settings give the same colour after a reload, a reorder or a legend change. It needs no saved colour map per device and no fixed list of 20 colours. Keep the ID stable when a friendly name changes. Previous-period comparisons and the positive and negative halves of a native power source share their base ID.
 
-Semantic energy roles reserve recognisable families: grid import, grid export, solar, gas, water, battery charging, battery discharge and non-fossil energy. Total consumption has a neutral role and a distinct dashed line. Multiple meters use namespaced keys such as `gas:<statistic ID>` to retain a family resemblance while adding stable variation. Unrelated devices use the wider generated hue range.
+Energy roles reserve recognisable colour families: grid import, grid export, solar, gas, water, battery charging, battery discharge and non-fossil energy. Total consumption has a neutral role and a distinct dashed line. Several meters use namespaced keys such as `gas:<statistic ID>`, which keep a family resemblance and add stable variation. Unrelated devices use the wider generated hue range.
 
-The theme also supplies **24 fallback colour variables**, `civica-chart-1` to `civica-chart-24`, for consumers that only accept numbered variables. These are compatibility slots, not a maximum series count. Identity-aware charts use the generator directly. The first eight slots retain their existing energy-role mapping.
+The theme also supplies **24 fallback colour variables**, `civica-chart-1` to `civica-chart-24`, for consumers that accept only numbered variables. These are compatibility slots, not a maximum series count. Charts that know the identity use the generator directly. The first eight slots keep their energy-role mapping.
 
 ## Vivid, Muted, Light and Dark
 
@@ -93,22 +106,20 @@ The theme also supplies **24 fallback colour variables**, `civica-chart-1` to `c
 | Light / Dark | Contrast against the actual chart surface | Identity, family and patterns |
 | Hide, reorder or add a series | Native visibility or ordering | Colours of existing identities |
 
-All chart fills and strokes use opaque colours. Do not append alpha bytes, use a gradient, or reduce a series' opacity to create a second palette. Hover must not thicken a line or fade every other series. Normal, hover and legend lines use the shared **1.5px** adapter constant across tones and modes; this is the [documented adaptation](../components/charts.html#visual-rules) of the official ONS 3px reference. A previous-period column uses the same identity colour with a hatch pattern, with its original date available in the data table.
+All chart fills and strokes are opaque. Do not append alpha bytes, use a gradient or lower a series’ opacity to make a second palette. Hover must not thicken a line or fade the other series. Normal, hover and legend lines use the shared **1.5px** adapter constant in every tone and mode, a [documented adaptation](../components/charts.html#visual-rules) of the ONS 3px reference. A previous-period column uses the same identity colour with a hatch pattern, and its original date is in the data table.
 
 ## Support colour with another cue
 
-Use `chartSeriesStyle` for the same colour plus deterministic line dashes, marker identity and fill-pattern choices. The adapter applies matching keys to native legend items while retaining their visibility controls and accessible labels. Use readable source names, a distinct total line, explicit comparison labels and the **View data** table.
+Use `chartSeriesStyle` to get the same colour plus fixed line dashes, markers and fill patterns. The adapter applies the matching keys to native legend items and keeps their visibility controls and accessible labels. Use readable source names, a distinct total line, clear comparison labels and the **View data** table.
 
-A range of 20 or more generated colours is useful for large device inventories. It is **not a claim that 20 simultaneous colours are easy to distinguish**, including for people with colour-vision differences. Patterns also have finite perceptual capacity. Prefer fewer visible series, native legend isolation and device detail where available. Never silently delete observations or merge devices to meet a suggested limit. A 3:1 contrast check against the canvas does not establish separation between every pair of colours.
+Twenty or more generated colours suit large device inventories. They do **not** mean that 20 colours shown together are easy to tell apart, including for people with colour-vision differences. Patterns also have a limited capacity. Prefer fewer visible series, native legend isolation and device detail where available. Never silently delete readings or merge devices to stay under a limit. A 3:1 contrast check against the canvas does not show that every pair of colours is distinct.
 
-The 24-device example makes this limitation visible. Check labels and patterns as well as swatches; do not approve a palette merely because its hex strings are unique. At crowded sizes, retain all values in the table and allow native controls to focus the chart.
+The 24-device example shows this limit. Check labels and patterns as well as swatches, and do not approve a palette just because its hex strings differ. When a chart is crowded, keep every value in the table and let native controls focus the chart.
 
 ## Maintenance and evidence
 
-The algorithm version, semantic families, contrast surfaces, pattern choices and example identities are recorded in the JSON contract. A change to the algorithm may change existing identity colours and must be versioned and explained. Run palette, native-shaped renderer and live-route checks before release.
+The JSON contract records the algorithm version, colour families, contrast surfaces, pattern choices and example IDs. A change to the algorithm may change existing identity colours, so version it and explain it. Run the palette, native-shaped renderer and live-route checks before release.
 
-For the documentation references, `docs/data/data-colour-examples.yml` records the fixed IDs, original values, generated context mappings, generator hash and quantitative formulas under `colour_reference`. Check those records against the visible swatches and tables. Regenerate the categorical references after an algorithm change; do not hand-edit individual hex values. These static examples contain no theme or device controls and do not require JavaScript.
+For the documentation examples, `docs/data/data-colour-examples.yml` records the fixed IDs, original values, generated mappings, generator hash and quantitative formulas under `colour_reference`. Check those records against the visible swatches and tables. Regenerate the categorical references after an algorithm change and do not hand-edit single hex values. These static examples have no theme or device controls and need no JavaScript.
 
-The GOV.UK [data](https://brand.design-system.service.gov.uk/data/), [chart colour](https://brand.design-system.service.gov.uk/colour/charts/) and [map colour](https://brand.design-system.service.gov.uk/colour/maps/) pages were rechecked on **12 November 2026**. Their chart palette is source guidance, not a replacement for the existing civica identity generator. The operational **1.5px**, unfilled-line and stable-colour contracts above are unchanged.
-
-This is a civica extension to ONS guidance, not an official ONS palette. ONS recommends limiting categories and using colour consistently: see [using colours in charts](https://service-manual.ons.gov.uk/data-visualisation/colours/using-colours-in-charts). Our generated range supports Home Assistant's larger inventories while retaining that guidance about readability.
+This generated range is a civica extension, not an official ONS or GOV.UK palette. It supports larger Home Assistant inventories while keeping to the advice to limit categories and use colour consistently. The [Styles index](index.html) credits the outside sources.

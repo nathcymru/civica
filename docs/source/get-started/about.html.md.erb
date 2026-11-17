@@ -6,7 +6,7 @@ group: "Guidance"
 nav_order: 0
 status: "reference"
 published_on: "2026-11-12"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -14,6 +14,19 @@ updates:
     description: "Clarified that the project identity is separate from a household’s optional name, crest or logo."
   - date: "2026-11-12"
     description: "Added the project's household motivation, design approach, implementation boundaries and source-checked licensing explanation."
+  - date: "2026-11-17"
+    description: "Tightened the page, added the install route and kept the licence notices."
+ai_instructions: "Use to explain why civica exists and what it does and does not provide. Keep the first-person project statement, the independence statement and the licence notices. Do not claim WCAG conformance, universal accessibility or that installing the theme implements every example. Rules WG-001, WG-002, WG-056, WG-086."
+ai_related:
+  - path: "/get-started/install.html"
+    title: "Install civica"
+    relationship: "Next step once the purpose is clear."
+  - path: "/get-started/compatibility.html"
+    title: "Compatibility and limits"
+    relationship: "Owns what the theme, module and cards can and cannot change."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns how to check a dashboard before relying on it."
 ---
 
 # About civica
@@ -39,9 +52,9 @@ For this project, I chose restrained decoration and a clear order of information
 
 ## Why start with GOV.UK
 
-The [GOV.UK Design System](https://design-system.service.gov.uk/) brings together reusable styles, components and patterns informed by public-service research. Its emphasis on clear tasks, consistent presentation and accessible interaction gives this project a useful starting point.
+The [GOV.UK Design System](https://design-system.service.gov.uk/) brings together reusable styles, components and patterns informed by public-service research. Its focus on clear tasks, consistent presentation and accessible interaction is a useful starting point.
 
-Those patterns still need adapting and testing in a home. A dashboard is used repeatedly, sometimes for a quick glance and sometimes to investigate a problem. It includes live readings, repeated controls and devices with different capabilities.
+Those patterns still need adapting and testing in a home. A dashboard is used repeatedly, for a quick glance or to investigate a problem, and it shows live readings and devices with different capabilities.
 
 civica draws on other public-service systems where they address those needs: NHS guidance for some content and component patterns, MoJ for notification badges, and ONS for chart presentation. The [source register](../community/sources.html) records these influences. Their research informs the design; it does not establish that a particular household dashboard works for everyone.
 
@@ -79,9 +92,9 @@ Installing the theme does not implement every example in the guide. Home Assista
 
 ## Accessibility is part of the work
 
-Readable type, visible keyboard focus, sufficient contrast and clear state descriptions are design requirements here. They need to be checked alongside zoom, narrow screens, assistive technology and the tasks people actually carry out.
+Readable type, visible keyboard focus, sufficient contrast and clear state descriptions are design requirements. Check them with zoom, narrow screens, assistive technology and the tasks people actually carry out.
 
-A theme alone cannot establish that a complete dashboard meets WCAG or works for every person. Installed cards, device behaviour, content and individual needs all matter. Use the [accessibility testing guide](../accessibility/testing.html), record any limitations and involve the people who will use the home controls.
+A theme alone cannot show that a dashboard meets WCAG or works for everyone. Installed cards, device behaviour, content and individual needs all matter. [Test the interface](../accessibility/testing.html), record any limitations and involve the people who use the controls.
 
 ## Credited sources and licensing
 
@@ -91,7 +104,7 @@ Reusable guidance and code do not make civica an official service. This project 
 
 ## Try it with a real household task
 
-Start with one task, such as finding a room's heating status or controlling a light. Check it with the people who will use it, including someone unfamiliar with the setup. Use what you learn to choose the information, wording and controls that belong on the page.
+Start with one task, such as finding a room's heating status or turning on a light. Ask someone unfamiliar with the setup to try it, then use what you learn to choose the information, wording and controls.
 
 - [Install civica](install.html) and check the supported setup.
 - [Choose a colour palette](colour-settings.html) and its Vivid or Muted variant.

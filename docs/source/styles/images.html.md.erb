@@ -4,7 +4,7 @@ description: Icons and images for the civica Home Assistant design system.
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -18,63 +18,69 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove source commentary and give alternative text to the images guide."
+ai_instructions: "Apply to every icon, device image, photograph and camera image. Keep Home Assistant's native icons and state variants, pair an icon with a name and state, give meaningful images alternative text and keep text out of bitmaps. Rules WG-030, WG-056, WG-082."
+ai_related:
+  - path: "/styles/illustration.html"
+    title: "Illustration"
+    relationship: "Owns authored explanatory artwork and section headers."
+  - path: "/content/formatting-content/images.html"
+    title: "Images"
+    relationship: "Owns alternative text wording."
+  - path: "/get-started/personalisation.html"
+    title: "Personalise your home"
+    relationship: "Owns a household's own crest or logo."
 ---
 
 # Icons and images
 
-Home Assistant uses repeated visual recognition. Icons, device images, room photos, weather symbols and camera feeds can support real tasks.
+Use icons and images to help people recognise a device or room quickly. Keep each one tied to a real task: identifying a light, checking a camera or finding a room.
 
+## Choose the right kind of image
 
-## Distinguish illustration from interface imagery
-
-Use the [illustration guide](illustration.html) for authored explanatory artwork. Its flat visual language does not remove functional icon strokes, chart patterns, photographs or camera imagery. Use the [accessible content guide](../content/formatting-content/text-formatting.html) for alternatives and reading order.
-
+Use [Illustration](illustration.html) for authored explanatory artwork. Its flat style does not remove functional icon strokes, chart hatching, photographs or camera images. Write alternative text and set reading order using [Images](../content/formatting-content/images.html) and [Text formatting](../content/formatting-content/text-formatting.html).
 
 ## Examples
 
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+These examples use invented household details. They are simulations: the buttons do not control a home. Open an example to see it at full width or to read its HTML.
 
 <%= example('local-icon-label') %>
 
 <%= example('local-image-purpose') %>
 
-This informative specimen describes the rooms, window, lamp and thermostat in the original artwork. It is not a screenshot or a statement of current device state. The separate homepage use remains decorative with empty alt text. The illustration’s source and rights are recorded in `docs/data/illustration-assets.json`.
-
+The informative specimen describes the rooms, window, lamp and thermostat in the original artwork. It is not a screenshot and does not show a current device state. The homepage uses the same artwork as decoration, with empty alt text. The artwork’s source and rights are in `docs/data/illustration-assets.json`.
 
 ## Icons
 
-Use Home Assistant's existing icon vocabulary where possible. Keep an icon's meaning consistent. Pair a device icon with its name and state; a coloured bulb alone does not say which light it controls or whether it is available.
+Use Home Assistant’s existing icons. Keep an icon’s meaning the same everywhere. Put a device icon beside its name and state, because a coloured bulb alone does not say which light it is or whether it is available.
 
-Use visible text labels for unfamiliar actions. Icon-only controls require a meaningful accessible name and an adequate target. Tooltips supplement that name; they are not the only explanation.
+Add a visible text label to any unfamiliar action. Give an icon-only control an accessible name and a large enough target. A tooltip adds to that name. It does not replace it.
 
-Do not recolour all icons to the selected palette. Preserve semantic warning and error colours, manufacturer-identifying artwork where appropriate and meaningful native domain state colours.
+Do not recolour every icon to the selected palette. Keep warning and error colours, manufacturer artwork that identifies a device, and native state colours that carry meaning.
 
-GOV.UK explicitly recognises that icons can help people scan systems they use frequently. It still recommends visible labels in most cases. [GOV.UK images guidance](https://design-system.service.gov.uk/styles/images/)
+### Choose an icon
 
-## Homepage icons are component-specific
+- For a known device or entity, keep its native domain icon and any state variant that means something.
+- For a maintained shell action, use one consistent vector symbol. Prefer an existing Home Assistant symbol or a documented component symbol.
+- Do not mix emoji, font glyphs, unrelated pictogram sets and hand-drawn icons in one set of controls.
+- Treat the visible icon and its target separately. A small, crisp symbol can sit inside a 44px control. Keep its viewBox and aspect ratio, and align neighbouring symbols without distorting them.
+- Use `currentColor` where the source allows it. Hide a decorative SVG from assistive technology when the control already has a name.
 
-The [GOV.UK homepage](https://www.gov.uk/) uses symbols belonging to particular publishing components. Its [Search component](https://components.publishing.service.gov.uk/component-guide/search) has a magnifying glass, while its [Action link](https://components.publishing.service.gov.uk/component-guide/action_link) has a directional arrow. The action-link guide identifies its large variant for homepage links. These are not a universal GOV.UK icon pack for lights, heating, cameras or household appliances.
+A replacement icon needs a record of its source, licence, purpose, original geometry and affected components. Test it at its real size in light and dark mode, in forced colours and at high zoom. Do not change manufacturer artwork, supplied civica marks or an informative device state just to make every icon one colour. The [visual review](../community/visual-audit.html) separates real source defects from style preferences.
 
-Use the official symbol only when adopting that component's actual purpose and interaction. Do not replace device symbols with arrows merely to imitate the homepage. GOV.UK's crown, official logo and other identity assets remain prohibited in civica.
+The maintained lighting scene controls use native Home Assistant Material Design icons at 24px: `mdi:string-lights`, `mdi:soccer`, `mdi:rugby`, `mdi:halloween` and `mdi:alarm-light-outline`. The visible scene name carries the meaning. The small colour strip shows a light recipe, not a theme state. The existing scene illustration files stay as they are. Do not flatten them to white to make an icon set.
 
-## Local icon selection rules
+### Action-link arrows
 
-For a known Home Assistant device or entity, retain its native domain icon and any meaningful state variant. For a maintained shell action, use one consistent vector symbol for the action; prefer an existing HA symbol or a documented official component symbol. Do not mix emoji, font glyphs, unrelated pictogram sets and hand-drawn substitutes in one control family.
-
-Treat the visible icon and its hit target separately. A small, crisp symbol can sit inside a 44px control. Keep its viewBox and aspect ratio; align neighbouring symbols optically without distorting them. Use `currentColor` where the source permits it, and keep decorative SVGs out of the accessibility tree when the control already has a name.
-
-A replacement must record its source, licence, purpose, original geometry and affected components. Test its real size in light/dark mode, forced colours and high zoom. Do not change manufacturer artwork, the supplied civica marks or informative device state merely to make all pixels the same colour. The [visual review](../community/visual-audit.html) records the distinction between source defects and stylistic assumptions.
-
-The maintained lighting scene controls use native HA Material Design icons at 24px: `mdi:string-lights`, `mdi:soccer`, `mdi:rugby`, `mdi:halloween` and `mdi:alarm-light-outline`. A visible scene name supplies the meaning. Their small colour strip represents a light recipe, not a theme semantic state. Existing scene illustration files remain preserved; they are not flattened to white and reused as an improvised icon family.
+The action-link arrow and the search magnifying glass belong to those components. Use the symbol only when you adopt the component’s purpose and interaction. Do not replace device symbols with arrows to copy a homepage. Government crowns, logos and other identity assets are not used in civica.
 
 ## Images
 
-Use room/device images when they help identification. Use live camera imagery only in its established security or monitoring context, with a visible location and freshness/state indicator. Do not add stock photography to fill empty space.
+Use a room or device image when it helps someone identify the thing. Use a live camera image only in a security or monitoring context, with a visible location and a sign of how fresh it is. Do not add stock photography to fill space.
 
-Describe informative images with alternative text. Give decorative images empty alternatives. Do not repeat every surrounding word in alt text. Keep text as real text rather than embedding device state or instructions in a bitmap.
+Give an informative image alternative text. Give a decorative image an empty alternative. Do not repeat the words around it. Keep text, such as device state or instructions, as real text and not inside a bitmap.
 
-[NHS image guidance](https://service-manual.nhs.uk/design-system/components/images) provides evidence for meaningful imagery helping people orient themselves. [Home Office guidance](https://design.homeoffice.gov.uk/design-system/styles/images) supports consistent illustration and purposeful photography without unnecessary effects.
+## Household identity images
 
-## Optional identity images
-
-A household or business name can stand alone. If someone chooses a crest or logo, preserve its proportions and colours and keep the name readable without the image. Follow [Personalise your home](../get-started/personalisation.html). Supplied civica artwork belongs to [project documentation and promotion](brand.html); its asset checks do not establish accessibility for a personalised interface.
+A household or business name can stand alone. If someone chooses a crest or logo, keep its proportions and colours, and keep the name readable without the image. Follow [Personalise your home](../get-started/personalisation.html). Supplied civica artwork belongs to [Project identity](brand.html). Its asset checks do not show that a personalised interface is accessible.

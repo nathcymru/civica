@@ -4,7 +4,7 @@ description: "Install civica for the civica Home Assistant design system."
 last_reviewed_on: 2026-11-13
 review_in: 3 months
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the module resource cache versions for the startup theme-registry readiness fix in v1.4.1."
@@ -16,13 +16,26 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the choice of installer, tighten the steps and link to the owning pages."
+ai_instructions: "Use for installing, updating and removing civica. Keep exactly one installed definition of each theme and one owner for the theme YAML, either HACS or manual. Keep the govuk and lighting-card compatibility names. Do not copy themes/ from the archive when HACS manages the theme. Rules WG-050, WG-051, WG-052, WG-025."
+ai_related:
+  - path: "/get-started/colour-settings.html"
+    title: "Change theme colours"
+    relationship: "Choose a palette and variant after installing."
+  - path: "/get-started/compatibility.html"
+    title: "Compatibility and limits"
+    relationship: "Check what the theme and module cannot change."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Check the installation before relying on it."
 ---
 
 # Install civica
 
-Back up your current theme configuration before replacing an existing installation. Keep your existing dashboards and integrations.
+Back up your current theme configuration before you replace an existing installation. Your dashboards and integrations stay as they are.
 
-Choose **HACS or manual installation** to own the theme YAML. Keep each theme name, including the `govuk` compatibility alias, defined only once across the included themes directory.
+Choose **HACS or manual installation** to own the theme YAML. Define each theme name, including the `govuk` compatibility alias, only once in the themes directory that Home Assistant loads.
 
 
 ## Examples
@@ -90,9 +103,9 @@ frontend:
     - /local/civica/civica-ui.js?v=1.4.1
 ```
 
-Restart Home Assistant after a configuration check and reload the browser. The module adds civica settings beside Home Assistant's theme settings. From a non-civica theme, choose a palette to start using civica. It also provides the dashboard settings card.
+Restart Home Assistant after a configuration check and reload the browser. The module adds civica settings beside Home Assistant's theme settings and provides the dashboard settings card. From a non-civica theme, choose a palette to start using civica.
 
-Use `extra_module_url` for global loading. Loading only a dashboard resource can leave settings and native panels untreated until that dashboard has been opened.
+Use `extra_module_url` so the module loads everywhere. If you load it only as a dashboard resource, the settings and native panels stay unstyled until someone opens that dashboard.
 
 ## Optional lighting card
 
@@ -133,4 +146,4 @@ This is also the fallback when an updated Home Assistant profile layout prevents
 
 Select a built-in or other theme first. Remove the module's `extra_module_url` entry, restart, and reload. Remove civica files only after checking that no dashboards or theme selectors still reference them. Existing device entities and automations are not changed by selecting a theme.
 
-Home Assistant documents theme loading and frontend configuration in its [Frontend integration reference](https://www.home-assistant.io/integrations/frontend/).
+For how Home Assistant loads themes, see its [Frontend integration reference](https://www.home-assistant.io/integrations/frontend/). To choose a palette next, [change theme colours](colour-settings.html).

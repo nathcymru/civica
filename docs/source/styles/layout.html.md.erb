@@ -4,7 +4,7 @@ description: "Layout and spacing for the civica Home Assistant design system."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -12,59 +12,68 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule and remove source commentary."
+ai_instructions: "Apply when laying out a dashboard or page. Put urgent information first, group by task or room, use the 5px spacing scale, keep native responsive grids and keep controls at least 44px. Use the documented border and focus colours. Rules WG-001, WG-050."
+ai_related:
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns how cards and features are composed in a dashboard."
+  - path: "/patterns/home.html"
+    title: "Home and rooms"
+    relationship: "Owns the household overview pattern."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test reflow, zoom and target size."
 ---
 
 # Layout and spacing
 
-Use a predictable page structure: navigation, heading, useful summary, primary controls and supporting detail. Put urgent household information before routine monitoring.
-
+Put urgent household information first, then routine monitoring. Use a predictable order: navigation, heading, a useful summary, primary controls, then supporting detail.
 
 ## Examples
 
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+These examples use invented household details. They are simulations: the buttons do not control a home. Open an example to see it at full width or to read its HTML.
 
 <%= example('local-layout-grid') %>
 
 <%= example('local-layout-groups') %>
 
-
 ## Spacing scale
 
-Use a 5px base scale: 5, 10, 15, 20, 25, 30, 40, 50 and 60px. Prefer 15px or 20px within a card, 20px or 30px between related groups and 40px or more between page sections. The purpose is a consistent relationship between elements, not a requirement to override every native padding value.
-
-This adapts [GOV.UK spacing](https://design-system.service.gov.uk/styles/spacing/) to Home Assistant's existing grid.
+Use a 5px base scale: 5, 10, 15, 20, 25, 30, 40, 50 and 60px. Use 15px or 20px inside a card, 20px or 30px between related groups and 40px or more between page sections. The aim is a consistent relationship between elements. It is not a rule to override every native padding value in Home Assistant.
 
 ## Dashboard layout
 
-Use Home Assistant's native responsive sections/grid. Group by the user's task or room. Keep cards aligned and use headings to identify groups. A single card should not contain unrelated heating, security, energy and media controls merely to fill space.
+Use Home Assistant’s native responsive sections and grid. Group cards by task or room, align them and use headings to name each group. Do not put unrelated heating, security, energy and media controls in one card to fill space.
 
-Avoid fixed heights for text cards. Use a single column when needed. Do not force a desktop-wide dashboard to shrink into unreadable miniatures on a phone.
+Do not give text cards a fixed height. Use a single column when the width needs it. Do not shrink a desktop dashboard into unreadable miniatures on a phone.
 
 ## Surfaces and borders
 
-Separate the visual roles. A container is not an input. Use spacing, headings and flat surfaces to group content; add a quiet 1px border where a group needs an edge. Avoid nested boxes around a card, its sections and every row.
+Use spacing, headings and flat surfaces to group content. Add a quiet 1px border only where a group needs an edge. Do not nest boxes around a card, its sections and every row. A container is not an input, so keep their borders different.
 
 | Role | Light mode | Dark mode | Use |
 | --- | --- | --- | --- |
 | Structural divider | `#CECECE` | `#50565A` | Card edges, row separators and section rules, normally 1px |
-| Essential control outline | `#6F777B` | `#9BA4AA` | An outline needed to identify an interactive control |
+| Essential control outline | `#6F777B` | `#9BA4AA` | An outline that identifies an interactive control |
 | Editable field boundary | `#0B0C0C` | White | Strong input boundary, normally 2px |
-| Focus | Yellow with ink | Yellow with ink, or the documented native treatment | The current keyboard target, never ordinary decoration |
+| Focus | Yellow with ink | Yellow with ink, or the documented native treatment | The current keyboard target, never decoration |
 
-The [GOV.UK functional colours](https://design-system.service.gov.uk/styles/colour/) distinguish `border` from `input-border`. The dark structural colour and intermediate control outline are civica adaptations. A decorative separator does not need to meet the contrast requirement of an essential control boundary. Do not weaken an input or focus indicator to make a dense page look quieter.
+A decorative divider does not need the contrast of a control boundary. Do not weaken an input boundary or a focus indicator to make a dense page look quieter.
 
-Use square corners on maintained cards, buttons, fields and dialogs. Do not globally zero Home Assistant's radius scale: [notification badges](../components/notification-badge.html), radio controls, switches, avatars and gauges need their own geometry. Avoid decorative glow and large ambient shadows. A restrained button bottom edge may communicate a pressable action.
+Use square corners on maintained cards, buttons, fields and dialogs. Do not set every Home Assistant radius to zero. [Notification badges](../components/notification-badge.html), radio controls, switches, avatars and gauges need their own shapes. Avoid glow and large ambient shadows. A restrained bottom edge on a button may show that it can be pressed.
 
 ## Responsive behaviour
 
-Test at 320 CSS pixels, 200% text zoom and 400% page zoom. Navigation may wrap or collapse through its native behaviour. Tables and genuinely two-dimensional charts can scroll within their own labelled region; the whole page must not acquire accidental horizontal scrolling.
+Test at 320 CSS pixels, at 200% text zoom and at 400% page zoom. Navigation may wrap or collapse using its native behaviour. A table or a truly two-dimensional chart may scroll inside its own labelled region. The whole page must not scroll sideways by accident.
 
-Do not lock body scrolling or hide native navigation to make a screenshot appear cleaner. Preserve the user's route back to Home Assistant settings and dashboards.
+Do not lock body scrolling or hide native navigation to make a screenshot look cleaner. Keep the person’s way back to Home Assistant settings and dashboards.
 
 ## Density
 
-A home control dashboard can be denser than a single-task government form. This is a controlled adaptation for repeat use. Retain readable labels and at least 44px control targets in maintained custom UI. Avoid reducing text or hit targets to show more cards.
+A home dashboard can be denser than a one-task form, because people use it repeatedly. Keep labels readable and keep controls in maintained custom UI at least 44px. Do not shrink text or targets to fit more cards.
 
 ## Dashboard canvas
 
-Use a plain canvas behind controls and reading content. Photographs and animated scenes compete with hierarchy and can make contrast unpredictable. Keep such imagery inside a purposeful component or a separately chosen immersive view. Configure background integrations through their own controls; do not hide their whole application or remove weather data.
+Use a plain canvas behind controls and reading content. Photographs and animated scenes compete with the hierarchy and make contrast unpredictable. Keep such imagery inside a purposeful component or a separately chosen immersive view. Set up background integrations with their own controls. Do not hide the whole application or remove weather data.
