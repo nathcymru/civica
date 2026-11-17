@@ -4,7 +4,6 @@ description: "Say what a device reported, what was requested and what went wrong
 section: "content"
 group: "Writing guidelines"
 nav_order: 9
-source_url: "https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/writing-guidelines/"
 status: "reference"
 published_on: "2026-11-15"
 updated_on: "2026-11-15"
@@ -15,7 +14,7 @@ updates:
 
 # States, requests and errors
 
-This page has no GOV.UK equivalent. A government form either submits or it does not. A house has a lamp that may or may not have turned on. A request, a stored setting and a physical result are three different facts. Never write one as if it were another.
+A form either submits or it does not. A house has a lamp that may or may not have turned on. A request, a stored setting and a physical result are three different facts. Never write one as if it were another.
 
 ## States and requests
 
@@ -142,6 +141,29 @@ Use alarm wording only for a real alarm. A reminder is not an emergency.
 | --- | --- |
 | WARNING: Boiler service overdue! | Service date needs checking. The saved date is 2 November 2025. |
 | Danger! | Smoke alarm: smoke detected in the kitchen. Leave the house and call 999. |
+
+### Write a warning
+
+Put a warning before the step it affects. Say the hazard, what happens and what to do. Use “Danger”, “Warning” and “Caution” only for a risk to people. For a loss of data or settings, no signal word is needed: say what will be lost.
+
+| Before | After |
+| --- | --- |
+| Be careful with the cover. | Warning: mains electricity. Turn off the socket at the wall before you open the cover. The plug can stay live. |
+| Do not unplug the hub. | Do not unplug the hub during the update. The update will fail and the hub may not start. |
+
+A safety step may stress one critical word in bold: “Do **not** open the cover while the plug is in.” Do this for safety steps only.
+
+### Choose a toast, an alert or a repair
+
+- A **toast** is for feedback the person does not need to act on, such as “Light turned on.” It disappears, so never put anything in it that someone must read to fix a problem.
+- An **alert** stays on screen until the problem is gone. Use it for a fault the person should know about.
+- A **repair** tells the person what is wrong, why it matters, and gives the exact fix as a numbered list.
+- Offer **Undo** after an action the person can reverse.
+
+| Before | After |
+| --- | --- |
+| (Toast) Hub offline. Select Settings, then Network, then restart the router. | (Alert, stays on screen) Hub offline. Lights cannot be controlled. |
+| (Alert) Fix the integration. | (Repair) Hall sensor cannot connect. Heating will use the last schedule.<br>1. Replace the battery.<br>2. Select **Retry**.<br>The sensor should report within a minute. |
 
 <h2 id="wg-043">Stay inside what the system can know</h2>
 
