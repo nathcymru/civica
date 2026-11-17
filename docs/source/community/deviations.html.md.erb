@@ -4,7 +4,7 @@ description: "Controlled deviations for the civica Home Assistant design system.
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -14,11 +14,29 @@ updates:
     description: "Added shared examples and publication history, and corrected the chart deviation record to the implemented 1.5px line and legend weight."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the deviation rule and add an example; the register rows are unchanged."
+ai_instructions: "Use as the owner of the CIV-001 to CIV-016 register of local decisions. Add a deviation only with a user need, a boundary and a verification requirement. Keep IDs stable and do not weaken a boundary to fit a card. Rules WG-093, WG-094, WG-095."
+ai_related:
+  - path: "/community/sources.html"
+    title: "Sources and provenance"
+    relationship: "Owns the source each deviation departs from."
+  - path: "/community/index.html"
+    title: "Maintain the system"
+    relationship: "Starts the maintainer guidance."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the test checklist used to verify a deviation."
+  - path: "/community/visual-audit.html"
+    title: "Visual review: borders, icons and badges"
+    relationship: "Records the border, icon and badge evidence."
 ---
 
 # Controlled deviations
 
-A deviation has a user need, a documented boundary and a verification requirement. It is not permission for each card to invent its own style.
+Record a deviation only when it has a user need, a documented boundary and a verification requirement. A deviation is not permission for each card to invent its own style.
+
+For example, CIV-014 separates structural boundaries from control boundaries in dark themes. It names both colours and requires a test on the actual surface, so a card cannot choose a third value.
 
 | ID | Local decision | User need | Boundary and verification |
 | --- | --- | --- | --- |
@@ -51,6 +69,6 @@ These isolated examples illustrate the decisions on this page. Any household val
 
 ## Review a deviation
 
-Record the expected behaviour, test evidence, known limits and owner. Revisit the decision when Home Assistant or the source pattern changes. Remove adapters that are no longer necessary when a stable native capability becomes available.
+Record the expected behaviour, the test evidence, the known limits and the owner. Revisit the decision when Home Assistant or the source pattern changes. Remove an adapter when a stable native capability replaces it.
 
-Sources and their current statuses are listed in [the source register](sources.html).
+The [source register](sources.html) lists the sources and their current status.

@@ -5,7 +5,7 @@ section: community
 group: Review
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -13,13 +13,29 @@ updates:
     description: "Linked 30 completed Home Assistant specifications and their task-specific examples, retaining native implementation boundaries."
   - date: 2026-11-11
     description: "Recorded 30 proposed household design-specification gaps, native capability evidence and testable acceptance criteria."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with what the register does and does not claim, with the generated specifications, evidence and links unchanged."
+ai_instructions: "Apply when saying that Home Assistant lacks something or that civica covers it. The register lists gaps in civica design specifications, never missing Home Assistant features. Completion means design coverage, not a native adapter or a live device test. Keep native capability, civica implementation and design specification as three separate claims. Rules WG-002, WG-043, WG-056."
+ai_related:
+  - path: "/home-assistant/index.html"
+    title: "Home Assistant controls and flows"
+    relationship: "Owns the catalogue of the 30 completed specifications."
+  - path: "/get-started/compatibility.html"
+    title: "Compatibility and limits"
+    relationship: "Owns the exact boundary of what the companion changes."
+  - path: "/community/component-audit.html"
+    title: "Component organisation review"
+    relationship: "Owns where shared component rules live."
+  - path: "/community/design-system-audit.html"
+    title: "Design-system compliance audit"
+    relationship: "Owns confirmed implementation findings, kept separate from this register."
 ---
 
 # Home Assistant specification coverage
 
-Home Assistant already provides device controls, automation editors, schedules, history, account management and recovery flows. The gaps below concern **civica design specifications and acceptance coverage** for those capabilities. They are not a claim that Home Assistant lacks the features.
+Do not read this register as a list of features Home Assistant lacks. Home Assistant already provides device controls, automation editors, schedules, history, account management and recovery flows. The gaps below concern **civica design specifications and acceptance coverage** for those capabilities.
 
-The review identified 30 areas needing a dedicated specification or a more complete task contract. Each now has a linked guide with state/capability decisions, complete examples, accessibility and recovery guidance, and integration acceptance recipes. Start with the [Home Assistant catalogue](../home-assistant/index.html). Completion means design coverage; it does not mean a new native adapter or live device test.
+The audience is maintainers and reviewers. The review identified 30 areas needing a dedicated specification or a more complete task contract. Each now has a linked guide with state/capability decisions, complete examples, accessibility and recovery guidance, and integration acceptance recipes. Start with the [Home Assistant catalogue](../home-assistant/index.html). Completion means design coverage. It does not mean a new native adapter or a live device test.
 
 <% audit = JSON.parse(File.read(File.join(root, 'data', 'ha-component-gaps.json'))) %>
 <% sources = audit['sources'].to_h { |source| [source['id'], source] } %>
@@ -32,17 +48,19 @@ The review identified 30 areas needing a dedicated specification or a more compl
 | civica implementation | A named maintained component or bounded adapter implements a change; theme variables alone are a narrower claim |
 | Design specification | The guide explains capability, state, content, accessibility and failure behaviour, with task-specific acceptance checks |
 
-The current companion adapts known shell hosts, profile colour settings, numeric attention badges, seven native Energy graph types and three named household cards. It also supplies action links. The maintained lighting card adds its own room and scene controls. Other native surfaces retain their own behaviour and the styles they expose. See [Compatibility and limits](../get-started/compatibility.html) for the exact boundary.
+The current companion adapts known shell hosts, profile colour settings, numeric attention badges, seven native Energy graph types and three named household cards. It also supplies action links. The maintained lighting card adds its own room and scene controls. Other native surfaces keep their own behaviour and the styles they expose. See [Compatibility and limits](../get-started/compatibility.html) for the exact boundary.
 
 ## Priority and dependencies
 
-**P1** means the specification is needed before claiming reliable coverage of consequential actions, permissions, privacy, recovery or task accessibility. **P2** covers the remaining work needed for coherent household use. These are design-work priorities, not a claim that every native surface has a confirmed defect.
+**P1** means the specification is needed before claiming reliable coverage of consequential actions, permissions, privacy, recovery or task accessibility. **P2** covers the remaining work needed for coherent household use. They are priorities for design work. They do not claim that every native surface has a confirmed defect.
 
-Start with the shared state and action contracts, then the domain controls and flows that depend on them. Develop native task examples from actual capabilities and synthetic data. Keep a supported native route available while a new recipe is specified and tested.
+Start with the shared state and action contracts, then the domain controls and flows that depend on them. Build native task examples from actual capabilities and synthetic data. Keep a supported native route available while you specify and test a new recipe.
 
 The [machine-readable gap register](../reference/ha-component-gaps.json) contains exact file and line evidence, source records, dependencies, rule-file hashes and acceptance criteria. The [component organisation review](component-audit.html) identifies where shared rules should live.
 
 ## Specification register
+
+Each entry below is generated from the gap register. The native capability line is evidence from the cited sources. The acceptance criteria are checks to run, not results.
 
 <% audit['findings'].each do |finding| %>
 <h3 id="<%= escape(finding['id'].downcase) %>"><%= escape(finding['id']) %>: <%= escape(finding['title']) %></h3>
@@ -71,7 +89,7 @@ Official Home Assistant pages were reviewed on 11 November 2026. The frontend so
 
 ## Distinguish a specimen from a supported feature
 
-These local examples explain the compatibility boundary. The dedicated guides above add task-specific examples; none connects to a home or creates an unsupported native workflow.
+These local examples show the compatibility boundary. The dedicated guides add task-specific examples. None connects to a home or creates an unsupported native workflow.
 
 <%= example('local-compatibility-supported') %>
 

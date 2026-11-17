@@ -4,17 +4,33 @@ description: Versioned evidence for interface coverage, terminology, UK source d
 section: community
 group: Review
 published_on: 2026-11-12
-updated_on: 2026-11-12
+updated_on: "2026-11-17"
 updates:
   - date: 2026-11-12
     description: Added the item-by-item Home Assistant coverage review, terminology supplement, source decisions and verification checklist.
+  - date: "2026-11-17"
+    description: "Rewritten to lead with what coverage claims need, with the pinned versions, checklist and links unchanged."
+ai_instructions: "Apply when claiming that a Home Assistant interface entry or term is covered. Coverage is a claim about a pinned version and a named registry, not about a household's installed version or every custom integration. A passing documentation example never proves a native or assistive-technology check. Rules WG-021, WG-043, WG-056, WG-086."
+ai_related:
+  - path: "/home-assistant/interface-coverage.html"
+    title: "Home Assistant interface coverage"
+    relationship: "Owns the registry extraction and the item-by-item mapping."
+  - path: "/community/uk-design-system-review.html"
+    title: "UK design systems and Home Assistant controls"
+    relationship: "Owns the UK source catalogue decisions."
+  - path: "/home-assistant/compatibility-register.html"
+    title: "Compatibility register and native fallback"
+    relationship: "Owns what civica can and cannot change in a native interface."
+  - path: "/home-assistant/native-task-accessibility.html"
+    title: "Native task accessibility and evidence"
+    relationship: "Owns how to record what was tested on a native interface."
 ---
 
 # Home Assistant coverage and terminology audit
 
-Use this record to check what “covered” means. An interface entry needs a named design owner and an applicable example. A native term needs its context and an accurate explanation. A live implementation claim needs separate evidence from the actual Home Assistant interface.
+Do not call a Home Assistant entry "covered" without evidence of the right kind. An interface entry needs a named design owner and an applicable example. A native term needs its context and an accurate explanation. A claim about a live implementation needs separate evidence from the actual Home Assistant interface. This page is for maintainers and reviewers.
 
-The review is pinned to **Home Assistant Core 2026.11.1** and its required **frontend 20261028.5**. These are dated source snapshots, not a claim about a household's installed version. The [interface census](../home-assistant/interface-coverage.html) lists the registries, extracted entries, source links and mappings. Its explicit exclusions remain part of the result.
+The review is pinned to **Home Assistant Core 2026.11.1** and its required **frontend 20261028.5**. These are dated source snapshots. They say nothing about the version a household has installed. The [interface census](../home-assistant/interface-coverage.html) lists the registries, extracted entries, source links and mappings. Its stated exclusions are part of the result.
 
 ## Read the deliverables
 
@@ -26,23 +42,23 @@ The review is pinned to **Home Assistant Core 2026.11.1** and its required **fro
 
 ## Coverage is a versioned claim
 
-The original audit identified 30 task-level design gaps. Completing those guides did not by itself enumerate every built-in card or native term. This review adds explicit source registries and new reusable families where the earlier guidance was too broad. It preserves the original audit as history.
+The original audit identified 30 task-level design gaps. Completing those guides did not list every built-in card or native term. This review adds named source registries and new reusable families where the earlier guidance was too broad. It keeps the original audit as history.
 
-Within each named registry, every extracted entry must resolve to a local component, style or pattern and an appropriate example. Aliases and internal-only variants stay visible with their status. The same design can cover several entries when their interaction contract is shared; a generic link without an explanation is insufficient evidence.
+Within each named registry, every extracted entry must resolve to a local component, style or pattern and an appropriate example. Aliases and internal-only variants stay visible with their status. The same design can cover several entries when their interaction contract is shared; a generic link without an explanation is not enough evidence.
 
-“All Home Assistant terms” cannot be a permanent claim for arbitrary custom integrations, household names or future releases. The terminology register therefore records complete coverage of finite upstream lists separately from selected task vocabulary and contextual native labels. It retains exact identifiers and native translations instead of silently renaming them.
+“All Home Assistant terms” cannot be a permanent claim for arbitrary custom integrations, household names or future releases. The terminology register therefore records complete coverage of finite upstream lists separately from selected task vocabulary and contextual native labels. It keeps exact identifiers and native translations and does not rename them.
 
 ## Writing-source review
 
-The supplement rechecks the NHS, Home Office and GOV.UK writing sources plus Plain English and SCULPT. It preserves the existing 68 core writing rules and records source freshness separately. It does not import clinical assurance, government authority or a claim of endorsement. Review the [writing-source evidence](../reference/ha-terminology.json) for the exact URLs, hashes, dates and comparison limits.
+The supplement rechecks the NHS, Home Office and GOV.UK writing sources plus Plain English and SCULPT. It keeps the existing 68 core writing rules and records source freshness separately. It does not import clinical assurance or government authority, and it does not imply endorsement. Review the [writing-source evidence](../reference/ha-terminology.json) for the exact URLs, hashes, dates and comparison limits.
 
-Native labels remain navigation landmarks. Household explanations add meaning at the point of need. A displayed state, accepted request and physical result are different facts. Technical keys, state values, translation keys and entity IDs must not be presented as interchangeable copyable identifiers.
+Native labels remain navigation landmarks. Household explanations add meaning at the point of need. A displayed state, accepted request and physical result are different facts. Do not present technical keys, state values, translation keys and entity IDs as interchangeable copyable identifiers.
 
 ## Appearance and behaviour
 
 All authored Home Assistant examples use the shared documentation components and tokens. The required checks cover typography, quiet structural borders, stronger input boundaries, focus, responsive layout and complete local feedback. Sliders use a labelled native range and a precise alternative, with one draft shared by the inputs. Native chart geometry and chart identities retain their separate documented contract.
 
-An inherited colour or successful browser fixture does not prove that a private native element has been fully restyled. The source census and compatibility register deliberately distinguish design ownership, local reference rendering and native implementation evidence.
+An inherited colour or successful browser fixture does not prove that a private native element has been fully restyled. The source census and compatibility register distinguish design ownership, local reference rendering and native implementation evidence.
 
 <%= example('local-compatibility-supported') %>
 
@@ -50,8 +66,10 @@ An inherited colour or successful browser fixture does not prove that a private 
 
 ## Completion checklist
 
+The checklist below is generated from the verification record. Each scope keeps its own evidence and limits.
+
 <% verification = JSON.parse(File.read(File.join(root, 'data', 'ha-coverage-verification.json'))) %>
-<p>Recorded status: <strong><%= escape(verification['status'].tr('-', ' ')) %></strong>. Each scope below retains its own evidence and limitations.</p>
+<p>Recorded status: <strong><%= escape(verification['status'].tr('-', ' ')) %></strong>. Read each scope with its own evidence and limitations.</p>
 <% verification['checklists'].each do |item| %>
 <h3 id="<%= escape(item['id'].downcase) %>"><%= escape(item['title']) %></h3>
 <p>Status: <strong><%= escape(item['status'].tr('-', ' ')) %></strong>.</p>
@@ -59,10 +77,10 @@ An inherited colour or successful browser fixture does not prove that a private 
 <% if item['evidence'] %><p><%= escape(item['evidence'].join(' ')) %></p><% end %>
 <% end %>
 
-The [machine verification record](../reference/ha-coverage-verification.json) preserves source review, independent review, automated checks and publication evidence separately. Failed checks require correction and a recorded rerun. Do not mark a native or assistive-technology check as passed because its documentation example passes.
+The [machine verification record](../reference/ha-coverage-verification.json) keeps source review, independent review, automated checks and publication evidence separately. Failed checks require correction and a recorded rerun. Do not mark a native or assistive-technology check as passed because its documentation example passes.
 
 ## Maintain the result
 
 On a Home Assistant upgrade, extract the same registries again and compare additions, removals and aliases. Recheck the official writing and design sources when their content changes. Review the affected guidance and terms before updating hashes or denominators. Check each changed example in the browser and preserve its published address or document a migration.
 
-When a third-party component introduces a new interaction, record its source, capability, styling hooks and failure states before assigning it to an existing family. A native fallback is an honest boundary; it is not evidence of a finished custom implementation.
+When a third-party component introduces a new interaction, record its source, capability, styling hooks and failure states before assigning it to an existing family. A native fallback is an honest boundary. It is not evidence of a finished custom implementation.

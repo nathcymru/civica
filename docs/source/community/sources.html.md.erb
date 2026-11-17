@@ -4,7 +4,7 @@ description: "Sources and provenance for the civica Home Assistant design system
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -14,11 +14,32 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the adaptation rule and point to the deviation register. Added the roadmap workflow sources moved from the maintenance guide; existing source records are unchanged."
+ai_instructions: "Use as the single owner of the reviewed source register and local source files. Sources inform original rules; do not copy their workflows, imply endorsement or treat a source's accessibility findings as civica's. Keep the qualification column accurate. Rules WG-090, WG-091, WG-086."
+ai_related:
+  - path: "/community/licensing.html"
+    title: "Licence"
+    relationship: "Owns the separate terms for source material and artwork."
+  - path: "/community/deviations.html"
+    title: "Controlled deviations"
+    relationship: "Records where civica departs from a source."
+  - path: "/community/architecture.html"
+    title: "Documentation architecture"
+    relationship: "Owns how the site is built."
+  - path: "/community/visual-audit.html"
+    title: "Visual review: borders, icons and badges"
+    relationship: "Explains the visual audit sources."
+  - path: "/content/index.html"
+    title: "Writing for a connected home"
+    relationship: "Explains how to resolve conflicting writing advice."
 ---
 
 # Sources and provenance
 
-These official sources were reviewed on 11 November 2026. They inform the local system; their example markup and organisation-specific instructions are not automatically adopted.
+Treat every source below as guidance to adapt, not as instructions to copy. These official sources were reviewed on 11 November 2026. They inform the local system. Civica does not automatically adopt their example markup or organisation-specific instructions.
+
+This page owns the source record. For example, the notification badge draws on the MOJ component, but the Home Assistant drawer and live updates are local adaptations that the [deviation register](deviations.html) records.
 
 | Source | Applied to civica | Qualification |
 | --- | --- | --- |
@@ -60,7 +81,17 @@ The [writing inventory](../reference/writing-guide.json) records the reviewed ch
 - [Plain English Campaign free guides](https://www.plainenglish.co.uk/free-guides): clear explanations, forms, layout and proofreading. The four reviewed guide titles are recorded in the inventory; the PDFs remain with their publisher.
 - [SCULPT](https://www.worcestershire.gov.uk/council-services/business/digital-worcestershire/sculpt-accessibility/what-sculpt): an accessibility review prompt developed by Helen Wilson at Worcestershire County Council.
 
-These sources inform original household rules and examples. We do not copy their organisational workflows or claim endorsement. The [writing guide](../content/index.html) explains how to resolve conflicting advice; [licensing](licensing.html) records the separate source-material terms.
+These sources inform original household rules and examples. Civica does not copy their organisational workflows or claim endorsement. The [writing guide](../content/index.html) explains how to resolve conflicting advice; [licensing](licensing.html) records the separate source-material terms.
+
+## Roadmap workflow sources
+
+These sources informed the [theme roadmap](roadmap.html) and its [maintenance guide](maintain-roadmap.html):
+
+- [FreeAgent: product timeline](https://www.freeagent.com/timeline/)
+- [GitHub: syntax for issue forms](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms)
+- [GitHub: REST API for issues](https://docs.github.com/en/rest/issues/issues)
+- [GitHub: events that trigger workflows](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows)
+- [GitHub: control workflow concurrency](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/control-workflow-concurrency)
 
 ## Local sources
 
@@ -78,4 +109,4 @@ The [visual review](visual-audit.html) explains how the public homepage, reusabl
 
 A source's accessibility findings apply to its tested implementation, not automatically to civica. The supplied asset pack's verification record describes its mechanical checks; it does not establish live Home Assistant compatibility or government approval.
 
-Record source changes during maintenance and update the [deviation register](deviations.html), implementation and tests together.
+Record source changes during maintenance. Update the [deviation register](deviations.html), the implementation and the tests together.
