@@ -2,7 +2,7 @@
   "schema_version": 1,
   "title": "civica household writing guide",
   "reviewed_on": "2026-11-15",
-  "status": "authored guide that follows the GOV.UK manual; source scope and implementation boundaries apply",
+  "status": "authored guide, with its structure informed by the GOV.UK manual; source scope and implementation boundaries apply",
   "normative_levels": {
     "MUST": "Required civica content contract within its stated scope. Not a claim of law or universal native HA conformance.",
     "SHOULD": "Default; exceptions need a recorded reason and verification.",
@@ -722,7 +722,7 @@
       "id": "WG-014",
       "level": "SHOULD",
       "title": "Write important conditions in full",
-      "requirement": "Use “cannot” and “do not”, not “can’t” and “don’t”, in conditions, warnings and short instructions.",
+      "requirement": "Use “cannot” and “do not”, not “can’t” and “don’t”, in conditions, warnings and short instructions. Elsewhere “you’ll” and “it’s” are fine. Do not mix forms on one screen.",
       "check": "Important negative conditions are easy to distinguish, translate and read aloud.",
       "source_ids": [
         "GOV-LANGUAGE"
