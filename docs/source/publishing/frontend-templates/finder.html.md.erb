@@ -19,12 +19,15 @@ updates:
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
   - date: "2026-11-17"
-    description: "Rewritten to state the shared finder behaviour once, replace the broken search-input link and remove per-page source commentary."
+    description: "Rewritten to state the shared finder behaviour once, say which behaviours the examples show, and remove per-page source commentary."
 ai_instructions: "Apply when a finder searches one defined collection of documentation or household records. State the scope, show a result count, keep no-match and unavailable states apart, and never imply a live backend or household data. Child finder pages link here for shared behaviour. Rules WG-001, WG-033, WG-038, WG-056, WG-083."
 ai_related:
   - path: "/publishing/patterns/search-filter.html"
     title: "Search filter"
     relationship: "Owns query, facet, count and reset behaviour."
+  - path: "/components/search-input.html"
+    title: "Search input"
+    relationship: "Owns the search field itself."
   - path: "/publishing/frontend-templates/index.html"
     title: "Page templates"
     relationship: "Lists every page template."
@@ -47,15 +50,17 @@ This is a reference pattern. The examples are simulated with invented records. T
 
 Every finder variant follows these rules. The variant pages link here instead of repeating them.
 
-- **Scope.** Put the collection next to the search label, for example “Search this example collection”. Do not mix result types without labelling each one (WG-001).
+- **Scope.** Put the collection next to the search label, for example “Search the example collection”. Do not mix result types without labelling each one (WG-001).
 - **Results.** Give each result a stable title and only the metadata needed to tell it apart. Show the result count and the criteria in use.
-- **Empty states.** A no-match result says so and offers a way to broaden the query. An unavailable source gets a different message, because “nothing found” and “could not search” lead to different next steps (WG-033, WG-038).
+- **Empty states.** Show a loading state while results are pending. A no-match result says so and offers a way to broaden the query. An unavailable source gets a different message, because “nothing found” and “could not search” lead to different next steps (WG-033, WG-038).
 - **Filters.** Let people remove one filter without re-entering the whole query. Keep the criteria when they return from a result.
 - **Focus and access.** Keep keyboard focus predictable as results change, and announce the count through a status message.
 - **Without JavaScript.** Show every record and state that the form cannot submit.
 - **Permissions.** Filter by permission before data is exposed.
 
-Use the [search filter pattern](../patterns/search-filter.html) for query, facet, count and reset behaviour. This page owns the collection composition.
+Use the [search filter pattern](../patterns/search-filter.html) for query, facet, count and reset behaviour and the [search input component](../../components/search-input.html) for the field itself. This page owns the collection composition.
+
+The simulated examples show the scope, count, no-match state, status announcement and no-JavaScript fallback. Showing the criteria in use, removing a single filter, returning to results with the criteria kept, and the unavailable state are requirements for a real implementation that the examples do not show.
 
 <h2 id="finder-variants">Retained source contexts</h2>
 

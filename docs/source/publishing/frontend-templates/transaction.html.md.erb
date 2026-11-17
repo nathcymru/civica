@@ -23,6 +23,9 @@ ai_related:
   - path: "/publishing/frontend-templates/index.html"
     title: "Page templates"
     relationship: "Owns the shared limits and checks for every page template."
+  - path: "/patterns/start-page.html"
+    title: "Help people start a household task"
+    relationship: "Owns prerequisites and a clear destination."
   - path: "/content/writing-guidelines/add-links.html"
     title: "Write effective links"
     relationship: "Owns link text and external-link rules."
@@ -34,6 +37,8 @@ ai_related:
 # Transaction
 
 Name the task in the link, say what the person needs first, and say where they are going. Use a transaction page when a task needs context before the native Home Assistant flow or an external service. The shared limits for every page template are on [Page templates](index.html).
+
+The [start page pattern](../../patterns/start-page.html) owns prerequisites and a clear destination. [Question pages](../../patterns/question-pages.html#compose-the-task-without-replacing-its-owner) own the answers if the supported flow asks questions. This template cannot establish a backend, a save or a device action by presentation alone.
 
 ## When to use it
 
