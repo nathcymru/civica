@@ -39,7 +39,12 @@ test('/content/style-guides/technical-a-to-z.html: every term and native label c
   await page.setViewportSize({ width: 320, height: 900 });
   await page.goto(route(path));
   const expected = terms.terms.filter(term => term.local_path?.split('#')[0] === path);
-  await expect(page.locator('.lexicon-entry')).toHaveCount(expected.length);
+  // Card types, card features, selector types and settings destinations are grouped into one entry each,
+  // with a table row for every term. Every term still has its own anchor.
+  const grouped = new Set(['card-types', 'card-features', 'selector-types', 'settings-labels']);
+  const single = expected.filter(term => !grouped.has(term.category));
+  await expect(page.locator('.lexicon-entry')).toHaveCount(single.length + grouped.size);
+  await expect(page.locator('tr[id^="ht-card-"], tr[id^="ht-feature-"], tr[id^="ht-selector-"], tr[id^="ht-settings-"]')).toHaveCount(expected.length - single.length);
   await openAll(page, 'details');
   await noOverflow(page);
   await expect(page.locator('tr[id^="ht-native-"]')).toHaveCount(terms.native_values.length);

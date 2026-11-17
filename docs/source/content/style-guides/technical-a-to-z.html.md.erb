@@ -10,6 +10,8 @@ published_on: "2026-11-15"
 updated_on: "2026-11-17"
 updates:
   - date: "2026-11-17"
+    description: "Rewrote every entry in one consistent form. Grouped card types, card features, selector types and settings destinations into tables. Moved the worked examples to Use clear language."
+  - date: "2026-11-17"
     description: "Merged the Home Assistant glossary, entity and state language and interface terminology lists into this one A to Z."
   - date: "2026-11-15"
     description: "Added a technical A to Z."
@@ -23,16 +25,25 @@ The exact Home Assistant words to use. For general writing, see [A to Z General]
   register = JSON.parse(File.read(File.join(root, 'data', 'ha-terminology.json')))
   sources = register['sources'].to_h { |source| [source['id'], source] }
   kinds = {
-    'official-glossary' => 'Home Assistant term', 'card-types' => 'Card type', 'card-features' => 'Card feature',
-    'selector-types' => 'Selector type', 'entity-platform' => 'Entity platform', 'settings-labels' => 'Settings destination',
+    'official-glossary' => 'Home Assistant term', 'entity-platform' => 'Entity platform',
     'automation-language' => 'Automations and scripts', 'state-records' => 'State record', 'dashboard-language' => 'Dashboard',
     'energy-language' => 'Energy', 'security-language' => 'Accounts and security', 'helper-types' => 'Helper type',
     'assist-language' => 'Assist and voice', 'installation-language' => 'Installation', 'additional-entity-domains' => 'Entity domain',
     'view-types' => 'Dashboard view type'
   }
-  entries = register['terms'].sort_by { |term| [term['native_name'].downcase, term['id']] }
-  by_letter = entries.group_by { |term| term['native_name'][0].upcase }
+  # Four categories repeat one rule for many names. They are grouped into one entry each, with a row per name.
+  groups = {
+    'card-types' => { name: 'card types', id: 'card-types', lead: 'The card names the card editor shows. Use the name as shown when you point to a card.', column: 'What it shows' },
+    'card-features' => { name: 'card features', id: 'card-features', lead: 'The features the card editor can add to a card. Use the name as shown when you point to a feature.', column: 'Use it to' },
+    'selector-types' => { name: 'selector types', id: 'selector-types', lead: 'The kinds of input a configuration field accepts. Ask the question in plain words and keep the selector name as written in configuration.', column: 'Accepts' },
+    'settings-labels' => { name: 'settings destinations', id: 'settings-destinations', lead: 'The destinations in Settings. Write each label exactly as Settings shows it.', column: 'Use it to' }
+  }
+  singles = register['terms'].reject { |term| groups.key?(term['category']) }.map { |term| { name: term['native_name'], term: term } }
+  grouped = groups.map { |category, group| { name: group[:name], group: group, terms: register['terms'].select { |term| term['category'] == category } } }
+  entries = (singles + grouped).sort_by { |entry| [entry[:name].downcase, entry[:term] ? entry[:term]['id'] : entry[:group][:id]] }
+  by_letter = entries.group_by { |entry| entry[:name][0].upcase }
   letters = ('A'..'Z').to_a
+  fmt = lambda { |text| escape(text).gsub(/`([^`]+)`/, '<code>\1</code>') }
 %>
 <nav role="navigation" aria-label="A to Z navigation">
 <ol class="style-a-z" role="list"><% letters.each do |letter| %><% if by_letter[letter] %><li><a class="govuk-link govuk-link--no-visited-state" href="#<%= letter.downcase %>"><%= letter %></a></li><% else %><li><span class="style-a-z__empty"><%= letter %></span></li><% end %><% end %></ol>
@@ -40,14 +51,26 @@ The exact Home Assistant words to use. For general writing, see [A to Z General]
 
 <% by_letter.keys.sort.each do |letter| %>
 <h2 id="<%= letter.downcase %>"><%= letter %></h2>
-<% by_letter[letter].each do |term| %>
+<% by_letter[letter].each do |entry| %>
+<% if entry[:group] %>
+<% group = entry[:group] %>
+<div class="lexicon-entry" id="<%= group[:id] %>">
+<h3><%= group[:name] %></h3>
+<p><%= fmt.call(group[:lead]) %></p>
+<table><caption><%= group[:name].capitalize %></caption><thead><tr><th scope="col">Name</th><th scope="col"><%= group[:column] %></th></tr></thead><tbody>
+<% entry[:terms].sort_by { |term| term['native_name'].downcase }.each do |term| %>
+<tr id="<%= escape(term['id'].downcase) %>"><th scope="row"><%= escape(term['native_name']) %><% if term['status'] == 'historical-term-retained' %><br><small>Older name, kept for saved settings</small><% end %></th><td><%= fmt.call(term['first_use_explanation'].sub(/\AAccepts /, '').sub(/\A([a-z])/) { $1.upcase }) %></td></tr>
+<% end %>
+</tbody></table>
+</div>
+<% else %>
+<% term = entry[:term] %>
 <div class="lexicon-entry" id="<%= escape(term['id'].downcase) %>">
 <h3><%= escape(term['native_name']) %><% if term['code_identifiers'] %> <small>(<code><%= escape(term['code_identifiers'].join(', ')) %></code>)</small><% end %></h3>
 <p class="govuk-hint"><%= kinds.fetch(term['category'], term['category']) %><%= ' · older name, kept for saved settings' if term['status'] == 'historical-term-retained' %></p>
-<p><%= escape(term['first_use_explanation']) %></p>
-<p>Write: <%= escape(term['household_wording']) %><%= '.' unless term['household_wording'].end_with?('.') %> <%= escape(term['avoid_confusion']) %></p>
+<p><%= fmt.call([term['first_use_explanation'], term['avoid_confusion'], term['household_wording']].join(' ')) %></p>
 <% unless term['aliases'].nil? || term['aliases'].empty? %><p>Also called: <%= escape(term['aliases'].join(', ')) %>.</p><% end %>
-<% if term['official_glossary_url'] %><p><a href="<%= escape(term['official_glossary_url']) %>">Official <%= escape(term['native_name']) %> entry</a></p><% end %>
+<% if term['official_glossary_url'] %><p><a href="<%= escape(term['official_glossary_url']) %>">Home Assistant glossary entry</a></p><% end %>
 <% if term['category'] == 'entity-platform' %>
 <% values = register['native_values'].select { |value| value['domain'] == term['code_identifiers'].first } %>
 <% unless values.empty? %>
@@ -63,44 +86,19 @@ The exact Home Assistant words to use. For general writing, see [A to Z General]
 </div>
 <% end %>
 <% end %>
+<% end %>
 
 ## Kinds of value
 
-| Kind | Example | How to use it |
-| --- | --- | --- |
-| Entity ID | `light.nains_reading_lamp` | A full ID. Use the real ID from the household’s setup |
-| Domain | `light` | A family of entities. Not a full entity ID |
-| Raw state | `on` | Read it with its domain and device class |
-| Attribute property | `hvac_action` | A key inside the state. Not an entity ID |
-| Attribute value | `heating` | The value of one attribute. Not the same as a selected mode |
-| Device-class key | `door` | Names the label for that class in that domain |
-| Default translation key | `_` | A default entry in a translation file. Do not copy it anywhere |
-
-## Worked examples
-
-<%= example('term-device-entity') %>
-
-<%= example('term-same-word-different-layer') %>
-
-<%= example('term-identifiers') %>
-
-<%= example('term-event-action') %>
-
-<%= example('term-native-label') %>
-
-<%= example('term-historical-name') %>
-
-<%= example('term-contextual-on') %>
-
-<%= example('term-climate-meaning') %>
-
-<%= example('term-missing-state') %>
-
-<%= example('term-all-condition') %>
-
-<%= example('term-navigation-action') %>
-
-<%= example('term-power-energy') %>
+| Kind | How to use it |
+| --- | --- |
+| Entity ID | A full ID. Use the real ID from the household’s setup |
+| Domain | A family of entities. Not a full entity ID |
+| Raw state | Read it with its domain and device class |
+| Attribute property | A key inside the state. Not an entity ID |
+| Attribute value | The value of one attribute. Not the same as a selected mode |
+| Device-class key | Names the label for that class in that domain |
+| Default translation key | A default entry in a translation file (`_`). Do not copy it anywhere |
 
 ## Other entity domains
 
