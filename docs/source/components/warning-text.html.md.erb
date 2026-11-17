@@ -5,40 +5,53 @@ section: components
 group: Content presentation
 status: reference
 published_on: 2026-11-11
-updated_on: 2026-11-11
+updated_on: 2026-11-17
 updates:
   - date: 2026-11-11
     description: "Added the civica.uk guidance, contextual examples and implementation boundaries."
+  - date: 2026-11-17
+    description: "Rewritten to lead with the rule and move source credit to the components index."
+ai_instructions: "Apply when an action can cause a loss or change that is easy to overlook. Place the warning before the action and name the consequence and the object. Do not use it for routine information. A warning is not a device safety interlock. Rules WG-030, WG-042, WG-056."
+ai_related:
+  - path: "/patterns/interruption.html"
+    title: "Pause before an exceptional consequence"
+    relationship: "Use when the decision needs more explanation than a warning."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns the wording for what the system knows and what went wrong."
+  - path: "/components/buttons.html"
+    title: "Buttons"
+    relationship: "Owns the destructive and cancel actions that follow a warning."
 ---
 
 # Warning text
 
-Explain a significant consequence before the person commits to an action.
+Place a short warning before an action that can cause a loss or change that is easy to miss. Name the consequence and the thing it affects, in plain words.
 
-## When to use
+## When to use it
 
-Use a short warning where an action can cause a meaningful loss or change that is easy to overlook. Place it before the decision. State the consequence and the affected object in plain language.
+Use a warning for a meaningful change, such as removing a dashboard or replacing a configuration. Do not use it for routine information, a successful action or every unavailable sensor. Repeated warnings stop being read.
 
-Do not use warnings for routine information, successful actions or every unavailable sensor. Repeated warnings lose their usefulness. A device safety interlock remains the responsibility of the device and integration; a styled warning is not an interlock.
+A warning does not make anything safe. A device interlock stays the job of the device and its integration.
 
-## Removing a saved view
+## Examples
+
+### Removing a dashboard
 
 <%= example('core-warning-delete') %>
 
-## Replacing configuration
+### Replacing configuration
 
 <%= example('core-warning-replace') %>
 
-## Behaviour and content
+The consequences in these examples are made-up content. They do not describe a real home.
 
-The exclamation mark is decorative; assistive technology receives the word “Warning” as part of the message. The text names the actual consequence. Avoid all-capital instructions and vague phrases such as “Are you sure?” without context.
+## Write the message
 
-Use a [confirmation or interruption pattern](../patterns/interruption.html) when the decision needs more explanation. Keep the cancel route clear. Do not make destructive actions look like the ordinary positive primary action simply because the selected palette is green or red.
+Name the actual consequence: “Removing this dashboard deletes its saved layout. It does not remove devices from Home Assistant.” Avoid capitals and vague questions such as “Are you sure?”. The exclamation mark is decorative. Assistive technology reads the word “Warning” as part of the message.
 
-## Accessibility and testing
+When the decision needs more explanation, use the [interruption pattern](../patterns/interruption.html). Keep the cancel route clear. Do not style a destructive action like the ordinary primary action just because the palette is green or red.
 
-Check that the message appears before the action in both visual and reading order. Test high zoom, screen-reader output and forced colours. Verify the real action’s permission checks, confirmation and failure handling separately; this component supplies only the warning presentation.
+## Check the implementation
 
-## Source and implementation boundary
-
-[GOV.UK Warning text](https://design-system.service.gov.uk/components/warning-text/) supplies the visual structure. The consequences above are explicitly example content. The theme preserves existing HA confirmations and must not infer new device capabilities.
+Check that the warning comes before the action in visual and reading order. Test high zoom, screen-reader output and forced colours. Test permissions, confirmation and failure handling on the real action separately. The component supplies only the presentation, and the theme keeps the existing Home Assistant confirmations. Use the [civica accessibility checks](../accessibility/testing.html).

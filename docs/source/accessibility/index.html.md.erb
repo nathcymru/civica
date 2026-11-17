@@ -3,7 +3,7 @@ title: "Accessibility"
 description: "Accessibility for the civica Home Assistant design system."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 published_on: "2026-11-11"
 updates:
   - date: "2026-11-13"
@@ -16,21 +16,29 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the target and use plainer requirement wording."
+ai_instructions: "Apply to every component civica maintains. The target is WCAG 2.2 Level AA, which is a design and testing target and not a claim that every Home Assistant component or custom card conforms. Test contrast in the real component state and test manually."
+ai_related:
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the manual and browser checks to run before release."
+  - path: "/components/index.html"
+    title: "Components"
+    relationship: "Apply these requirements to each component."
 ---
 
 # Accessibility
 
-civica targets WCAG 2.2 Level AA for the components it maintains. This is a design and testing target, not a claim that every Home Assistant component or installed custom card is conformant.
-
+Build every civica component to WCAG 2.2 Level AA. This is a design and testing target. It does not mean every Home Assistant component or installed custom card conforms.
 
 ## Examples
 
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+The household values in these examples are invented. Demonstration actions do not control a home.
 
 <%= example('local-accessibility-keyboard') %>
 
 <%= example('local-accessibility-data') %>
-
 
 ## Core requirements
 
@@ -43,18 +51,18 @@ These isolated examples illustrate the decisions on this page. Any household val
 - Animation respects reduced motion; forced-colour modes retain visible controls.
 - Live state updates avoid unnecessary announcements.
 
-## Contrast has context
+## Test contrast in the real state
 
-Test foreground/background pairs in the actual component state. A palette primary can pass against white while failing against a tinted surface. Opacity, overlays, disabled styles and embedded image colours can change the result.
+Test each text and background pair in the state people will see. A palette primary can pass on white and fail on a tinted card. Opacity, overlays, disabled styles and colours inside images can change the result.
 
-A decorative card border has a different role from an input boundary. Keep that distinction in the token inventory and tests.
+A decorative card border is not an input boundary. Keep them as separate tokens and test them separately.
 
-## Manual testing remains necessary
+## Test by hand as well
 
-Automated checks cannot prove sensible focus order, useful labels, screen-reader announcements, pointer target usability or understandable content. Perform the [manual and browser checks](testing.html) and record results against a named release.
+Automated checks cannot judge focus order, labels, screen-reader announcements, pointer targets or whether the content makes sense. Run the [manual and browser checks](testing.html) and record the result against a named release.
 
 ## Report an accessibility problem
 
-Use the repository issue tracker with the page, component, browser, assistive technology if relevant, expected behaviour and actual behaviour. Include a minimal reproduction. Do not include private tokens or access credentials.
+Use the repository issue tracker. Give the page or component, the browser, the assistive technology if you used one, what you expected and what happened. Add a minimal reproduction. Do not include tokens or access credentials.
 
-Guidance comes from the [GOV.UK accessibility approach](https://design-system.service.gov.uk/accessibility/) and the [Home Office Accessibility Standard](https://design.homeoffice.gov.uk/accessibility/standard), which aligns with WCAG 2.2 AA.
+This page draws on the [GOV.UK accessibility approach](https://design-system.service.gov.uk/accessibility/) and the [Home Office Accessibility Standard](https://design.homeoffice.gov.uk/accessibility/standard), which aligns with WCAG 2.2 AA.

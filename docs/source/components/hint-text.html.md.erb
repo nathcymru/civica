@@ -6,7 +6,7 @@ group: "Form elements"
 source_url: "https://service-manual.nhs.uk/design-system/components/hint-text"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,29 +14,38 @@ updates:
     description: "Updated the current project name and repository links to civica."
   - date: 2026-11-11
     description: "Added NHS-informed hint text guidance and 2 Home Assistant reference examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, use Home Assistant wording and move source credit to the components index."
+ai_instructions: "Apply to the help line under a label or legend. Give one fact the person needs before they answer, keep it short and connect it with aria-describedby. Do not put links, long explanations or safety instructions in a hint. Rules WG-053, WG-056."
+ai_related:
+  - path: "/content/writing-guidelines/summaries.html"
+    title: "Write clear summaries"
+    relationship: "Owns the wording rules for hints and helper text."
+  - path: "/components/controls.html"
+    title: "Buttons and forms"
+    relationship: "Choose the control the hint belongs to."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test the label, hint and error announced together."
 ---
 
 # Hint text
 
-Place a short piece of help where it supports the answer.
-
-These are civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+Put one short fact under a label or legend when most people need it before they answer. Say what the value is for, what format it takes or what it will change.
 
 ## When to use it
 
-Use a hint to explain a unit, expected format or consequence that most people need before answering. An option can have its own hint when the label alone is insufficient.
+Use a hint for a unit, a format or a consequence. For example, “How long the light stays on after movement” under a duration field. An option can have its own hint when its label is not enough.
+
+Write about what the person wants to do, not about the system. Use “Bedside lamp” rather than `light.bedside_lamp`. Name the entity ID only when the task is advanced configuration. If a value changes only what is displayed, say so. If it changes an automation, say that instead.
 
 ## When not to use it
 
-Do not put a long manual, links, details controls or essential safety instructions inside a hint. A placeholder is not a substitute because it disappears while typing.
+Do not put a manual, a link, a details control or a safety instruction in a hint. Move long help into the page, outside the described-by text. A placeholder is not a hint because it disappears when the person starts typing.
 
-## Home Assistant adaptation
+## How it behaves
 
-For Home Assistant, explain human concepts rather than internal entity or service names unless an advanced configuration task requires those identifiers. State whether a value changes only the display or affects an automation. Keep extended help in normal page content outside the described-by text.
-
-## Accessibility and behaviour
-
-Place the hint after the label or legend and before the field. Connect it using aria-describedby. Keep additional error IDs in that association when validation fails. Short hints reduce repetitive screen-reader output.
+Place the hint after the label or legend and before the field. Link it to the field with `aria-describedby`. Keep any error ID in the same attribute when validation fails, so a screen reader reads the label, hint and error together. A short hint keeps that output short.
 
 ## Examples
 
@@ -54,12 +63,6 @@ The saved display preference is distinct from the recorded measurement.
 
 ## Check the implementation
 
-Test the field with its label, hint and error announced together. Check that guidance remains visible at increased text size and does not rely on colour or position.
+Test the label, hint and error announced together. Check that the hint stays visible at increased text size and does not rely on colour or position. Use the [civica accessibility checks](../accessibility/testing.html), then compare light and dark modes, Vivid and Muted tones, and 320 CSS pixels.
 
-Use the [civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, Vivid and Muted tones, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS hint text](https://service-manual.nhs.uk/design-system/components/hint-text) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original civica markup, Arial typography and civica assets. NHS logos and service identity are not used.
-
-See also [buttons and forms](controls.html).
+For the wording, see [Write clear summaries](../content/writing-guidelines/summaries.html). To choose the control, see [buttons and forms](controls.html).
