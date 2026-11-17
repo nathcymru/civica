@@ -50,7 +50,7 @@ The exact Home Assistant words to use. For general writing, see [A to Z General]
 </nav>
 
 <% by_letter.keys.sort.each do |letter| %>
-<h2 id="<%= letter.downcase %>"><%= letter %></h2>
+<h2 class="style-a-z__letter" id="<%= letter.downcase %>"><%= letter %></h2>
 <% by_letter[letter].each do |entry| %>
 <% if entry[:group] %>
 <% group = entry[:group] %>
