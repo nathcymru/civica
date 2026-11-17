@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/finder/statistical-data-sets-finder/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -16,49 +16,46 @@ updates:
     description: "Added working local example behaviour with a safe no-JavaScript fallback and no connected backend."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, link to the shared finder behaviour and remove repeated boilerplate and source commentary."
+ai_instructions: "Apply when listing statistics or exports. Give measure, unit, period, source and update time. Do not list a download that does not exist. Keep missing intervals and real zeros apart. Link to the finder page for shared behaviour. Rules WG-070, WG-073, WG-074, WG-076."
+ai_related:
+  - path: "/publishing/frontend-templates/finder.html"
+    title: "Finder"
+    relationship: "Owns the shared finder behaviour."
+  - path: "/home-assistant/history-and-statistics.html"
+    title: "History, activity and statistics"
+    relationship: "Owns statistics and export wording."
 ---
 
 # Statistical data sets finder
 
-The official variant searches statistical dataset publications. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/finder/statistical-data-sets-finder/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+List only data that exists, and describe it by measure, unit, period, source and update time. A chart and an export of raw readings are different things and need different labels. For example, “Daily energy use, kWh” is a statistic. It is not a promise of per-minute meter readings. Scope, result count, empty states, focus and the no-JavaScript fallback follow the [shared finder behaviour](../finder.html#finder-shared-contract).
 
 ## When to use it
 
-A household data catalogue should describe available native statistics or genuine exports, including measure, unit, period, source and update time. A chart and an export of raw readings are different products and must have different labels.
-
-## Structure and behaviour
-
-Keep the collection scope next to the search label. Use a result title, a short distinguishing description and only the metadata needed for the next decision. The selected criteria and result count should remain visible. A no-match result needs a clear way to broaden the query; an unavailable data source needs a different message.
+Use it for a catalogue of native statistics or genuine exports. Include the measure, unit, period, source and update time.
 
 ## Home Assistant boundary
 
-The theme does not create an export endpoint or promise raw meter history. Never list a generated download before it exists. Preserve missing intervals, measurement units and the actual aggregation level. The examples are self-contained specimens with invented records. The second example filters its fixed local list by the words entered, updates the result count, exposes a genuine no-match state and restores all records when cleared. Record details remain readable without JavaScript; submit buttons are disabled until the local handler is ready. No connected search backend or household data is used.
+This reference does not create an export endpoint or promise raw meter history. Never list a generated download before it exists. Keep missing intervals, units and the actual aggregation level.
 
 ## Example dataset descriptions
 
-Two invented entries demonstrate the result metadata.
+Two invented entries show the result metadata.
 
 <%= example("pub-frontend-templates-finder-statistical-data-sets-finder-1") %>
 
 ## Search within this collection
 
-Type a word from a title or its context, then find records. The fixed local list and its disclosures work without a backend.
+Type a word from a title or its context, then select Find example records. The list is fixed and invented, and no backend is used.
 
 <%= example("pub-frontend-templates-finder-statistical-data-sets-finder-2") %>
 
 ## Acceptance checks
 
-- The collection’s scope matches the promised result type.
-- Metadata is verified rather than inferred from the display name.
-- Keyboard focus stays predictable as criteria change.
-- No-match and unavailable states have different explanations.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- Each entry gives measure, unit, period, source and update time.
+- Charts and raw exports have different labels.
+- No download is listed that does not exist.
 
 [Browse page templates](../index.html).

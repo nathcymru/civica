@@ -6,7 +6,7 @@ group: "Publishing components"
 source_url: "https://design-guide.publishing.service.gov.uk/components/attachment/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,49 +14,54 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove per-page source commentary and keep the examples labelled as simulated."
+ai_instructions: "Apply when linking to a manual, instruction sheet or maintenance document. Put the document title first, then format, size and language, only when known. Offer an HTML version where the content suits a page. Do not show an accessible-format link unless someone fulfils it. Rules WG-064, WG-083, WG-085."
+ai_related:
+  - path: "/content/formatting-content/attachments.html"
+    title: "Attachments"
+    relationship: "Owns the writing rules for describing a file and its format."
+  - path: "/content/writing-guidelines/add-links.html"
+    title: "Write effective links"
+    relationship: "Owns link text that describes the destination."
+  - path: "/publishing/components/index.html"
+    title: "Publishing components"
+    relationship: "Lists this component with its sibling pages."
 ---
 
 # Attachment
 
-The publishing attachment component presents a document link with useful file information and an accessible-format route. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/components/attachment/).
+Name the document in the link, then give its format, size and language when you know them. Someone choosing between a PDF manual and an HTML page needs those details before they select. Prefer an HTML version when the content works as a page. File wording is owned by [Attachments](../../content/formatting-content/attachments.html).
 
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+**Reference pattern.** The examples document a local adaptation. They do not add a publishing backend or a new Home Assistant capability.
 
 ## When to use it
 
-Use this adaptation for household manuals, installation instructions and maintenance documents. Put the document title before format, size and language. Prefer an HTML version when the information can be presented as an accessible web page. A thumbnail is optional and must not become a second keyboard stop for the same download.
+Use it for household manuals, installation instructions and maintenance documents. For example, write “Heat pump manual (PDF, 2MB)” rather than “Download”. A thumbnail is optional and must not add a second keyboard stop for the same download.
 
 ## Structure and behaviour
 
-The content model requires a meaningful title and a real destination. Add file type, measured size and revision only when known. Keep document metadata distinct from live appliance state. A link to view a manual and a button that changes an appliance perform different jobs and must remain separate.
+Give each entry a meaningful title and a real destination. Add file type, measured size and revision only when known. Keep document information separate from live appliance state. A link that opens a manual and a button that changes an appliance do different jobs, so keep them apart.
 
 ## Home Assistant boundary
 
-This reference does not create a document store, request an accessible copy or download a file. The examples open an actual in-page text preview. Do not show an accessible-format request link unless someone is responsible for fulfilling it; do not publish manufacturer artwork without checking its permission.
+This reference does not create a document store, request an accessible copy or download a file. The examples open an in-page text preview. Do not show an accessible-format request link unless someone is responsible for fulfilling it. Check permission before publishing manufacturer artwork.
 
 ## Manual preview
 
-A local HTML manual extract; no file download is implied.
+A local HTML manual extract. No file download is implied.
 
 <%= example("pub-components-attachment-1") %>
 
 ## Revision and format
 
-A document entry with meaningful revision information and a local text alternative.
+A document entry with revision information and a local text alternative.
 
 <%= example("pub-components-attachment-2") %>
 
 ## Acceptance checks
 
-- Check that the title alone identifies the document.
-- Verify the destination and file metadata against the actual asset.
-- A decorative thumbnail has empty alt text and no independent link.
-- The HTML preview must be usable without JavaScript.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
-
-[Browse publishing components](index.html).
+- The title alone identifies the document.
+- The destination and file details match the actual asset.
+- A decorative thumbnail has empty alt text and no separate link.
+- The HTML preview works without JavaScript.

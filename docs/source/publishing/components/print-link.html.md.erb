@@ -6,7 +6,7 @@ group: "Publishing components"
 source_url: "https://design-guide.publishing.service.gov.uk/components/print-link/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -16,25 +16,35 @@ updates:
     description: "Added working local example behaviour with a safe no-JavaScript fallback and no connected backend."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove per-page source commentary and keep the examples labelled as simulated."
+ai_instructions: "Apply when offering to print guidance. Use a button for the browser print dialog and a link only for a real print page. Keep the title, revision, units, warnings and text in print output, and hide action controls. Never claim printing succeeded. Without JavaScript, point to the browser's Print command. Rules WG-032, WG-073, WG-085."
+ai_related:
+  - path: "/content/formatting-content/charts-and-data.html"
+    title: "Charts and data"
+    relationship: "Owns the text equivalent a printed chart needs."
+  - path: "/publishing/components/index.html"
+    title: "Publishing components"
+    relationship: "Lists this component with its sibling pages."
 ---
 
 # Print link
 
-The publishing print control either invokes the browser print dialog or links to an existing print view. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/components/print-link/).
+Use a button when the action opens the browser print dialog, and a link only when a separate printable page exists. Opening the dialog does not mean anything was printed, so never say it did.
 
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+**Reference pattern.** The examples document a local adaptation. They do not add a publishing backend or a new Home Assistant capability.
 
 ## When to use it
 
-Printing can help with offline recovery guidance, maintenance notes and a household quick reference. Include the page title, revision and meaningful text in the print output. A chart printout also needs its unit, selected period and data alternative.
+Printing helps with offline recovery notes, maintenance notes and a household quick reference, for example a “Restore from a backup” checklist. Include the page title, revision and meaningful text in the print output. A printed chart also needs its unit, selected period and a data alternative.
 
 ## Structure and behaviour
 
-Use a button for a browser action and a real link for a separate printable page. Hide action controls and decorative navigation in print styles while preserving warnings and content. For a multi-part guide, assemble a complete print view before offering a link to it.
+Hide action controls and decorative navigation in print styles, and keep warnings and content. For a multi-part guide, build a complete print view before offering a link to it.
 
 ## Home Assistant boundary
 
-Both examples invoke window.print() only when the person selects Print this example. This opens the browser print dialog for the isolated example document. The action controls are omitted from print output, while the example content remains. No PDF is generated or uploaded, and opening the dialog does not claim a successful print. Without JavaScript, use the browser’s own Print command; the example button remains disabled. Test the real print preview, including expanded and collapsed history.
+Both examples call window.print() only when the person selects Print this example. That opens the browser print dialog for the isolated example document. The action controls are left out of the printout and the content stays. No PDF is generated or uploaded. Without JavaScript, use the browser’s own Print command. The example button stays disabled. Test the real print preview, including expanded and collapsed history.
 
 ## Print a recovery note
 
@@ -44,21 +54,13 @@ The button opens the browser print dialog for this isolated example. It does not
 
 ## Print a structured reference
 
-A second example preserves clear labels and explanatory content in the browser print preview.
+A second example keeps clear labels and explanatory content in the print preview.
 
 <%= example("pub-components-print-link-2") %>
 
 ## Acceptance checks
 
-- A separate print URL exists if advertised.
+- A separate print URL exists if one is advertised.
 - Print output contains the title, relevant dates and units.
 - No essential information depends on a background colour.
-- Hidden interactive controls do not leave unexplained gaps.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
-
-[Browse publishing components](index.html).
+- Hidden controls leave no unexplained gaps.

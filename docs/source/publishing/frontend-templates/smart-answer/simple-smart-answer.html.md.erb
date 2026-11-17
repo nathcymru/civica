@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/smart-answer/simple-smart-answer/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,49 +14,53 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove repeated template boilerplate and per-page source commentary, and link the shared limits on the page templates index."
+ai_instructions: "Apply when offering a short choice between a few guidance routes. Ask about something people can reasonably know, keep questions short, include an unsure choice, keep the chosen answer visible, and make each outcome a clear next step. Use a list of links if that is enough. Rule WG-054."
+ai_related:
+  - path: "/publishing/frontend-templates/smart-answer.html"
+    title: "Smart answer"
+    relationship: "Owns the shared decision-aid rules."
+  - path: "/publishing/frontend-templates/index.html"
+    title: "Page templates"
+    relationship: "Owns the shared limits and checks for every page template."
+  - path: "/content/writing-guidelines/clear-structure.html"
+    title: "Create a clear structure"
+    relationship: "Owns ordering, prerequisites and heading rules."
 ---
 
 # Simple smart answer
 
-A simple smart answer uses a straightforward question-and-outcome tree without complex calculations. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/smart-answer/simple-smart-answer/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Ask only what people can reasonably know, and make every choice lead to a clear next step. A simple smart answer is a short question-and-outcome tree with no calculations. Shared decision-aid rules are on [Smart answer](../smart-answer.html), and shared limits are on [Page templates](../index.html).
 
 ## When to use it
 
-Use a small decision aid when a person needs to choose between a few guidance routes. Ask about something they can reasonably know, such as whether they want installation instructions or colour-setting guidance. Each outcome should lead to a clear next step.
+Use it when someone needs to choose between a few guidance routes, such as installation instructions or colour-setting guidance. Ask only what they need to decide ([WG-054](../../../content/writing-guidelines/clear-structure.html#wg-054)). Each outcome should lead to a clear next step.
 
 ## Structure and behaviour
 
-Keep questions short, choices mutually understandable and an alternative for uncertainty. Preserve the chosen answer while reviewing the result. A simple decision can often be an ordinary list of links with explanatory text; do not add a wizard just to imitate a template.
+Keep questions short, choices easy to tell apart and an option for uncertainty. Keep the chosen answer visible while the person reads the result. A simple decision is often better as an ordinary list of links with explanatory text. Do not add a wizard only to imitate a template.
 
 ## Home Assistant boundary
 
-The examples use direct, working section links. They do not store answers or create a configuration. A more complex dependency graph belongs in a specified and tested implementation, not an expanding collection of ad hoc conditional markup.
+The examples use direct links to real sections. They do not store answers or create a configuration. A more complex dependency graph needs a specified, tested implementation, not growing ad hoc conditional markup.
 
 ## Choose a guidance route
 
-Simple choices navigate to actual local explanations.
+Simple choices go to actual local explanations.
 
 <%= example("pub-frontend-templates-smart-answer-simple-smart-answer-1") %>
 
 ## Known or unknown setup
 
-An uncertainty branch remains useful.
+An uncertainty branch stays useful.
 
 <%= example("pub-frontend-templates-smart-answer-simple-smart-answer-2") %>
-
 ## Acceptance checks
 
 - All choices have useful destinations.
 - Questions use language the intended audience understands.
-- The user can return and choose differently.
+- The person can go back and choose differently.
 - No outcome claims an action was completed.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
 
 [Browse page templates](../index.html).

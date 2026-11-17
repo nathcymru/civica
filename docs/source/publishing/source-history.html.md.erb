@@ -6,7 +6,7 @@ group: "Publishing guide"
 source_url: "https://github.com/alphagov/govuk_publishing_components/pull/5572"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,23 +14,46 @@ updates:
     description: "Updated the current project name and repository links to civica."
   - date: "2026-11-11"
     description: "Recorded the July 2026 metadata migration and current option names against pinned source."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the local rule, and recorded that this page owns the pinned sources and migration record."
+ai_instructions: "Use as the single owner of the pinned Publishing Design Guide sources, the review snapshot and the published-dates to metadata migration. Do not reproduce the removed published-dates component. Use genuine dates, keep history usable without JavaScript, and attach no official organisation, logo or analytics. Rules WG-090, WG-091, WG-092."
+ai_related:
+  - path: "/publishing/index.html"
+    title: "Publishing patterns for civica"
+    relationship: "Owns the scope and the source credit for the section."
+  - path: "/components/page-history.html"
+    title: "Page metadata and history"
+    relationship: "Owns the page-history disclosure component."
+  - path: "/content/writing-guidelines/change-notes.html"
+    title: "Write change notes"
+    relationship: "Owns how to describe what changed."
 ---
 
 # Publishing source history
 
-The Publishing Design Guide is an extension of the GOV.UK Design System, not its replacement. Its [About page](https://design-guide.publishing.service.gov.uk/about/) distinguishes guidance for the publishing platform from the core system. The component gem is a separate implementation library. We keep these sources distinct when mapping a pattern to Home Assistant.
+Use genuine publication and update dates, and write each change note for what affects a reader. This page owns the pinned sources and the record of how the upstream published-dates component moved into metadata. Other publishing pages link here instead of repeating it.
+
+## Local documentation rule
+
+civica documentation front matter uses `published_on`, `updated_on` and `updates`. These are civica authoring fields, not aliases accepted by the upstream Ruby gem.
+
+Render update history as a native disclosure with semantic dates and readable notes. Keep it usable without JavaScript and do not open a long history automatically on page load. Do not invent a first-publication date for an older page. Recover it from the repository history or state the evidence limit. Do not attach a government organisation, official logo or GOV.UK analytics to local metadata.
+
+Some official template guidance still lists the older published-dates component. Where its component table conflicts with the pinned implementation, use the migration record below and explain the difference. Do not reproduce a removed component.
 
 ## Reviewed source snapshot
 
-The inventory was reviewed on **11 November 2026** by following the three official section indexes and all nested guidance links. It records 42 canonical pages and a SHA-256 digest of each fetched HTML response. Trailing-slash aliases are counted once. The JSON inventory is in `docs/data/publishing-inventory.json`.
+The Publishing Design Guide extends the GOV.UK Design System and does not replace it. Its [About page](https://design-guide.publishing.service.gov.uk/about/) separates guidance for the publishing platform from the core system. The component gem is a separate implementation library. Keep the three sources distinct when mapping a pattern to Home Assistant.
 
-The reviewed component source is [commit bbe236c](https://github.com/alphagov/govuk_publishing_components/tree/bbe236c5259dd84ddb9208cabca0186fd04d5faa). Its changelog’s latest numbered release is 71.1.0, with additional unreleased changes above it. The guide repository’s observed head is [f227dc0](https://github.com/alphagov/govuk-design-guide/commit/f227dc04ff5c25d91b81420f8db326e75757eceb); this records the repository observation, not an independently verified deployed build identifier.
+The inventory was reviewed on **11 November 2026** by following the three official section indexes and all nested guidance links. It records 42 canonical pages and a SHA-256 digest of each fetched HTML response. Trailing-slash aliases are counted once. The machine-readable record is `docs/data/publishing-inventory.json`.
+
+The reviewed component source is [commit bbe236c](https://github.com/alphagov/govuk_publishing_components/tree/bbe236c5259dd84ddb9208cabca0186fd04d5faa). Its changelog’s latest numbered release is 71.1.0, with unreleased changes above it. The guide repository’s observed head is [f227dc0](https://github.com/alphagov/govuk-design-guide/commit/f227dc04ff5c25d91b81420f8db326e75757eceb). That records the repository observation. It is not an independently verified deployed build identifier.
 
 ## Published dates moved into metadata
 
-The migration is verified. [Issue 5560](https://github.com/alphagov/govuk_publishing_components/issues/5560) proposed combining the two components. [Pull request 5572](https://github.com/alphagov/govuk_publishing_components/pull/5572) merged on **14 July 2026** and appears under version **66.9.0** in the [pinned changelog](https://github.com/alphagov/govuk_publishing_components/blob/bbe236c5259dd84ddb9208cabca0186fd04d5faa/CHANGELOG.md). It initially retained the old component to avoid a breaking change.
+The migration is verified. [Issue 5560](https://github.com/alphagov/govuk_publishing_components/issues/5560) proposed combining the two components. [Pull request 5572](https://github.com/alphagov/govuk_publishing_components/pull/5572) merged on **14 July 2026** and appears under version **66.9.0** in the [pinned changelog](https://github.com/alphagov/govuk_publishing_components/blob/bbe236c5259dd84ddb9208cabca0186fd04d5faa/CHANGELOG.md). It kept the old component at first to avoid a breaking change.
 
-The old `published_dates` component was subsequently removed in **71.0.0**, through [pull request 5807](https://github.com/alphagov/govuk_publishing_components/pull/5807). The `see_updates_link` option was restored in **71.1.0**, through [pull request 5844](https://github.com/alphagov/govuk_publishing_components/pull/5844).
+The old `published_dates` component was removed in **71.0.0**, through [pull request 5807](https://github.com/alphagov/govuk_publishing_components/pull/5807). The `see_updates_link` option was restored in **71.1.0**, through [pull request 5844](https://github.com/alphagov/govuk_publishing_components/pull/5844).
 
 | Earlier published-dates input | Current metadata input | Meaning |
 | --- | --- | --- |
@@ -39,22 +62,14 @@ The old `published_dates` component was subsequently removed in **71.0.0**, thro
 | — | `last_updated` | Latest publication update label |
 | — | `see_updates_link` | Link to the page-history disclosure |
 
-Current `page_history` entries have `display_time`, `timestamp` and `note`. The metadata component also retains a separate `history` text field; that field must not be confused with the old published-dates array. No current `show_history` option was found in the reviewed [implementation](https://github.com/alphagov/govuk_publishing_components/blob/bbe236c5259dd84ddb9208cabca0186fd04d5faa/app/views/govuk_publishing_components/components/_metadata.html.erb) or [examples](https://github.com/alphagov/govuk_publishing_components/blob/bbe236c5259dd84ddb9208cabca0186fd04d5faa/app/views/govuk_publishing_components/components/docs/metadata.yml).
-
-## Local documentation rule
-
-Use genuine publication and update dates. A change note should explain the change that affects a reader. The local documentation frontmatter uses `published_on`, `updated_on` and `updates`; these are civica authoring fields, not claimed aliases accepted by the upstream Ruby gem.
-
-Render the update history as a native disclosure with semantic dates and readable notes. Keep it usable without JavaScript and avoid opening a long history automatically on page load. Do not invent a first-publication date for an older page: recover it from the actual repository history or state the evidence limit. Do not attach a government organisation, official logo or GOV.UK analytics to local metadata.
-
-Some official template guidance still lists the older published-dates component. When its component table conflicts with the current pinned implementation, use the verified migration record and explain the difference rather than reproduce a removed component.
-
-[Browse the complete publishing inventory](index.html).
+Current `page_history` entries have `display_time`, `timestamp` and `note`. The metadata component also keeps a separate `history` text field. Do not confuse it with the old published-dates array. No current `show_history` option was found in the reviewed [implementation](https://github.com/alphagov/govuk_publishing_components/blob/bbe236c5259dd84ddb9208cabca0186fd04d5faa/app/views/govuk_publishing_components/components/_metadata.html.erb) or [examples](https://github.com/alphagov/govuk_publishing_components/blob/bbe236c5259dd84ddb9208cabca0186fd04d5faa/app/views/govuk_publishing_components/components/docs/metadata.yml).
 
 ## Local page-history examples
 
-These fictional examples demonstrate the native disclosure used by this site. Actual page dates come from authored records.
+These fictional examples show the native disclosure this site uses. Real page dates come from authored records.
 
 <%= example('system-history-expanded') %>
 
 <%= example('system-history-correction') %>
+
+For scope and coverage, see [Publishing patterns for civica](index.html).

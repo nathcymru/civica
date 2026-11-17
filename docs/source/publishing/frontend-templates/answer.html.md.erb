@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/answer/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,25 +14,36 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove repeated template boilerplate and per-page source commentary, and link the shared limits on the page templates index."
+ai_instructions: "Apply when writing a single-question answer page. Put the answer in the first paragraph, keep the qualification beside it, and do not split it into tabs or steps. Never imply a setting was changed. Rule WG-083."
+ai_related:
+  - path: "/publishing/frontend-templates/index.html"
+    title: "Page templates"
+    relationship: "Owns the shared limits and checks for every page template."
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns wording for unknown, unavailable and stale readings."
+  - path: "/content/writing-guidelines/meet-household-needs.html"
+    title: "Meet household needs"
+    relationship: "Owns the start-with-the-task rule."
 ---
 
 # Answer
 
-An answer page addresses one narrow question without splitting it into a multi-step journey. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/answer/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Put the answer in the first paragraph. Use an answer page for one narrow question, so a reader can stop after the opening paragraph and still have what they need. The shared limits for every page template are on [Page templates](index.html).
 
 ## When to use it
 
-Use this format for a small household or documentation question, such as the difference between a palette and a display mode. Put the answer first, followed by essential context and a link to the relevant setting or detailed guide. It should be possible to understand the main answer from the opening paragraph.
+Use it for a small household or documentation question, such as the difference between a palette and a display mode. Give the answer first, then the essential context, then a link to the relevant setting or detailed guide. If the question needs several steps, use a [guide](guide.html) or [detailed guide](detailed-guide.html) instead.
 
 ## Structure and behaviour
 
-Use one descriptive page title, a concise answer, optional supporting headings and a small related-navigation group. Keep live values out of permanent prose unless the page reads and labels the current state. A document about a setting should not appear to confirm that the user has changed it.
+Use one descriptive title, a concise answer, optional supporting headings and a small group of related links. Write link text that names the destination ([WG-083](../../content/writing-guidelines/add-links.html#wg-083)). Keep live values out of permanent prose unless the page reads and labels the current state. A page about a setting must not read as if the reader has changed it.
 
 ## Home Assistant boundary
 
-This is a reference content template. It does not create a new HA panel or substitute a static answer for a device’s current state. Avoid government service metadata and do not add a promotional or feedback form without a real purpose and endpoint.
+An answer page is reference content. It does not add a Home Assistant panel, and it does not stand in for a device's current state. Do not add a promotional or feedback form unless it has a real purpose and endpoint.
 
 ## Theme answer
 
@@ -45,18 +56,11 @@ The content answers a real design-system question.
 The answer explains the actual chart contract.
 
 <%= example("pub-frontend-templates-answer-2") %>
-
 ## Acceptance checks
 
 - The first paragraph answers the title.
 - Necessary qualifications appear beside the answer.
 - Links use real destination labels.
-- A simple answer is not artificially divided into tabs.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- A simple answer is not divided into tabs.
 
 [Browse page templates](index.html).

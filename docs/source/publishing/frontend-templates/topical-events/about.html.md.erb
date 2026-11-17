@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/topical-events/about/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,25 +14,30 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, add machine-readable guidance and remove repeated boilerplate and source commentary."
+ai_instructions: "Apply when writing an About page for a household project. State covered scope, exclusions and how status is maintained. Name an owner by role, not by personal details. Link back to the parent project and do not duplicate status text. Label specimen dates as examples. Rules WG-002, WG-061, WG-090."
+ai_related:
+  - path: "/publishing/frontend-templates/topical-events.html"
+    title: "Topical events"
+    relationship: "Owns the time-bounded project page."
 ---
 
 # About page
 
-The topical-event About page explains the purpose and scope of its parent event collection. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/topical-events/about/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Add an About page only when background, responsibility or scope would overload the project page. It states what the work covers, what it leaves out and how its status is kept current. For example, a fictional documentation project can say it covers the lighting guides and excludes alarm settings. A small project needs only a short About section on the same page. The parent is [Topical events](../topical-events.html).
 
 ## When to use it
 
-For a household project, use this page only when background, responsibility or scope would overload the main project page. State what the work covers, what it excludes and how its current status is maintained. Keep operational controls on their established native pages.
+Use it only when background, responsibility or scope would overload the main project page. Say what the work covers, what it excludes and how its status is maintained.
 
 ## Structure and behaviour
 
-Link back to the parent project and distinguish stable background from dated progress notes. Identify the document owner using an appropriate role rather than publishing unnecessary personal information. Use genuine dates for public documentation; label specimen dates as examples.
+Link back to the parent project and keep stable background apart from dated progress notes. Name the document owner by role rather than publishing personal information. Use real dates for public documentation and label specimen dates as examples.
 
 ## Home Assistant boundary
 
-This is not an assertion of government authority or a live project-management system. A small project may need only a short About section on the same page. Do not duplicate status text in two places unless they share the same source.
+This is not a claim of government authority or a live project-management system. Do not duplicate status text in two places unless both share one source. Keep operational controls on their native pages.
 
 ## Project scope
 
@@ -50,13 +55,7 @@ A working local link returns to the example project summary.
 
 - The parent project route exists.
 - Scope is specific enough to prevent false expectations.
-- Background and current updates are distinct.
-- Private contact or household details are not exposed.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- Background and current updates are separate.
+- No private contact or household detail is exposed.
 
 [Browse page templates](../index.html).

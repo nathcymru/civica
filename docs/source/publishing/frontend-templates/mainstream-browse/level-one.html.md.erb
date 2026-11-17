@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/mainstream-browse/level-one/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,25 +14,33 @@ updates:
     description: "Clarified that shared typography and colour roles allow an optional household identity without importing official marks."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, add machine-readable guidance and remove repeated boilerplate and source commentary."
+ai_instructions: "Apply when writing a first-level browse page. Use broad, familiar subjects with a one-sentence description where the name is ambiguous. Do not label links as most viewed without evidence. Keep topic links apart from device actions. Do not add an extra compulsory click before common tasks. Rules WG-001, WG-050, WG-056."
+ai_related:
+  - path: "/publishing/frontend-templates/mainstream-browse.html"
+    title: "Mainstream browse"
+    relationship: "Owns the browse hierarchy and ordering rules."
+  - path: "/publishing/frontend-templates/mainstream-browse/level-two.html"
+    title: "Level two"
+    relationship: "Owns the second browse level."
 ---
 
 # Level one
 
-The first browse level introduces broad topics and routes to their subtopics. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/mainstream-browse/level-one/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+Add a first browse level only when the collection is large enough to need one, and choose broad, familiar subjects. An extra level costs a click, so it must save more effort than it spends. For example, a “Lighting” page can introduce scenes, bulbs and schedules. A small setup should keep its task links on one page. The hierarchy itself is described in [Mainstream browse](../mainstream-browse.html).
 
 ## When to use it
 
-Use a first level only when the documentation or household help collection is large enough to need it. Choose broad, familiar subjects and a one-sentence description when names alone are ambiguous. A smaller setup should keep its direct task links visible.
+Use it when a documentation or help collection is large enough to need it. Add a one-sentence description where a name alone is ambiguous.
 
 ## Structure and behaviour
 
-A topic page contains a clear heading, concise introduction and a plain list of subtopics. Curated high-priority links may appear first when their importance is evidenced; do not label them “Most viewed” without actual appropriate evidence. Keep topic links and immediate device actions separate.
+Use a clear heading, a concise introduction and a plain list of subtopics. Curated links may come first when you can show why they matter. Do not call them “Most viewed” without evidence. Keep topic links separate from immediate device actions.
 
 ## Home Assistant boundary
 
-The government’s popularity ranking is not a household requirement. This reference does not collect analytics or change native HA areas. A first-level page must not become an extra compulsory click before every common task.
+This reference collects no analytics and does not change Home Assistant areas. A first-level page must not become an extra compulsory click before common tasks. Popularity ranking is not a household requirement.
 
 ## Lighting topic
 
@@ -48,15 +56,9 @@ A second subject shows topic-level grouping.
 
 ## Acceptance checks
 
-- Every subtopic has an actual destination.
-- Topic labels are understandable without icons.
-- The hierarchy reduces effort compared with a flat list.
+- Every subtopic has a real destination.
+- Topic labels make sense without icons.
+- The hierarchy takes less effort than a flat list.
 - Curated links do not claim unmeasured popularity.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
 
 [Browse page templates](../index.html).

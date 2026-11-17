@@ -6,7 +6,7 @@ group: "Page templates"
 source_url: "https://design-guide.publishing.service.gov.uk/frontend-templates/finder/people-finder/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -16,49 +16,49 @@ updates:
     description: "Added working local example behaviour with a safe no-JavaScript fallback and no connected backend."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, link to the shared finder behaviour and remove repeated boilerplate and source commentary."
+ai_instructions: "Apply when describing who is responsible for something. List roles, not personal details. Never expose presence, location, email addresses or permissions in a public finder. Use native account management. Link to the finder page for shared behaviour. Rules WG-060, WG-061, WG-066."
+ai_related:
+  - path: "/publishing/frontend-templates/finder.html"
+    title: "Finder"
+    relationship: "Owns the shared finder behaviour."
+  - path: "/home-assistant/presence-and-privacy.html"
+    title: "Presence, people and shared-screen privacy"
+    relationship: "Owns the privacy rules for people and presence."
+  - path: "/home-assistant/accounts-and-permissions.html"
+    title: "Accounts, permissions and shared settings"
+    relationship: "Owns account and permission rules."
 ---
 
 # People finder
 
-The official variant lists ministers and senior officials. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/finder/people-finder/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+A household rarely needs a public people directory, so list roles, not individuals. Where an installation has users or responsible contacts, account permissions stay in Home Assistant’s own account settings. For example, show “Heating maintainer” rather than a name, email address or whether they are home. Scope, result count, empty states, focus and the no-JavaScript fallback follow the [shared finder behaviour](../finder.html#finder-shared-contract).
 
 ## When to use it
 
-A household rarely needs a public people directory. Where a private installation includes users or responsible contacts, use HA’s existing account and permission management. A reference list may describe roles without publishing personal details.
-
-## Structure and behaviour
-
-Keep the collection scope next to the search label. Use a result title, a short distinguishing description and only the metadata needed for the next decision. The selected criteria and result count should remain visible. A no-match result needs a clear way to broaden the query; an unavailable data source needs a different message.
+Use it for role examples only. Where a private installation includes users or responsible contacts, use Home Assistant’s account and permission management.
 
 ## Home Assistant boundary
 
-Do not reproduce a government office hierarchy or expose presence, location, email addresses or account permissions in a public finder. This template is deliberately limited to role examples. The examples are self-contained specimens with invented records. The second example filters its fixed local list by the words entered, updates the result count, exposes a genuine no-match state and restores all records when cleared. Record details remain readable without JavaScript; submit buttons are disabled until the local handler is ready. No connected search backend or household data is used.
+Do not copy a government office hierarchy. Do not expose presence, location, email addresses or account permissions in a public finder.
 
 ## Example responsibility roles
 
-Two invented entries demonstrate the result metadata.
+Two invented entries show the result metadata.
 
 <%= example("pub-frontend-templates-finder-people-finder-1") %>
 
 ## Search within this collection
 
-Type a word from a title or its context, then find records. The fixed local list and its disclosures work without a backend.
+Type a word from a title or its context, then select Find example records. The list is fixed and invented, and no backend is used.
 
 <%= example("pub-frontend-templates-finder-people-finder-2") %>
 
 ## Acceptance checks
 
-- The collection’s scope matches the promised result type.
-- Metadata is verified rather than inferred from the display name.
-- Keyboard focus stays predictable as criteria change.
-- No-match and unavailable states have different explanations.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
+- Results name roles, not people.
+- No presence, location or contact detail is shown.
+- Account permissions stay on their native page.
 
 [Browse page templates](../index.html).

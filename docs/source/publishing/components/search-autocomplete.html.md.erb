@@ -6,7 +6,7 @@ group: Publishing components
 source_url: https://design-guide.publishing.service.gov.uk/components/search-autocomplete/
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -18,39 +18,52 @@ updates:
     description: "Added working local example behaviour with a safe no-JavaScript fallback and no connected backend."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove per-page source commentary and keep the examples labelled as simulated."
+ai_instructions: "Apply when suggesting queries in a search field. Suggestions are optional, derived from the permitted dataset and never invented entity IDs. Keep the native input and datalist without conflicting combobox roles, let people submit their own query, and prefer the native entity picker for Home Assistant entities. Rules WG-038, WG-056, WG-084."
+ai_related:
+  - path: "/components/search-input.html"
+    title: "Search input"
+    relationship: "Owns the query field labels and submission."
+  - path: "/publishing/patterns/search-filter.html"
+    title: "Search filter"
+    relationship: "Owns how query, facets, counts and results work together."
+  - path: "/publishing/components/index.html"
+    title: "Publishing components"
+    relationship: "Lists this component with its sibling pages."
 ---
 
 # Search autocomplete
 
-The publishing search autocomplete suggests queries for a large search service. The guide distinguishes it from a static component-name autocomplete. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/components/search-autocomplete/).
+Treat suggestions as optional. Build them only from records the person may see, and always let them submit their own query. For Home Assistant entities, use the native entity picker so names, permissions and keyboard behaviour stay consistent.
 
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+**Reference pattern.** The examples document a local adaptation. They do not add a publishing backend or a new Home Assistant capability.
 
 ## Keep suggestions optional
 
-The [search-input component](../../components/search-input.html#search-field-filters-or-finder) owns labels and submission. The [search-filter pattern](../patterns/search-filter.html#share-the-filtering-contract) owns visible records and counts. This source variant adds browser-native suggestions from the same fixed records; it does not implement the native Home Assistant entity picker or a predictive search service.
+The [search-input component](../../components/search-input.html#search-field-filters-or-finder) owns labels and submission. The [search-filter pattern](../patterns/search-filter.html#share-the-filtering-contract) owns visible records and counts. This variant adds browser suggestions from the same fixed records. It does not implement the native entity picker or a predictive search service.
 
 ## When to use it
 
-A small documentation catalogue usually needs a labelled search or filter rather than predicted queries. For HA entities, prefer the native entity picker so permissions, names and keyboard behaviour remain consistent. Suggestions must be derived from the permitted local dataset, never invented entity IDs.
+A small documentation catalogue usually needs a labelled search or filter, not predicted queries. Never invent entity IDs as suggestions. They must come from the permitted local dataset.
 
 ## Structure and behaviour
 
-The local examples use a labelled native input with a datalist populated from the same fixed records shown below it. Browser-native suggestions reduce typing; a submitted query filters the visible records by their title and context. People can type a different query, open a record, inspect a no-match result and clear the filters. A polite status reports the result count without moving focus. Do not add conflicting custom combobox roles to the native control.
+The examples use a labelled native input with a datalist filled from the same records shown below it. A submitted query filters the records by title and context. People can type a different query, open a record, see a no-match result and clear the filters. A polite status reports the result count without moving focus. Do not add custom combobox roles that conflict with the native control.
 
 ## Home Assistant boundary
 
-These are working local autocomplete and search specimens, not the government’s predictive query model. The browser controls how datalist suggestions are presented; their keyboard and assistive-technology behaviour needs testing in supported browsers. Filtering uses a small, fixed dataset and does not query HA. No cloud model, query logging, storage or external search API is connected. Without JavaScript, all records and native details remain readable and submit buttons stay disabled.
+These are local specimens, not a predictive query model. The browser decides how datalist suggestions look, so test keyboard and assistive-technology behaviour in the browsers you support. Filtering uses a small fixed dataset and does not query Home Assistant. No cloud model, query logging, storage or external search API is connected. Without JavaScript, all records stay readable and the submit buttons stay disabled.
 
 ## Autocomplete known documentation titles
 
-Native browser suggestions use three actual local example titles. Submit a title or your own query to filter the records.
+Native suggestions use three local example titles. Submit a title or your own query to filter the records.
 
 <%= example("pub-components-search-autocomplete-1") %>
 
 ## Autocomplete example equipment
 
-Suggestions and matching results use the same fixed, invented equipment records; nothing is queried from Home Assistant.
+Suggestions and results use the same fixed, invented equipment records. Nothing is queried from Home Assistant.
 
 <%= example("pub-components-search-autocomplete-2") %>
 
@@ -58,13 +71,5 @@ Suggestions and matching results use the same fixed, invented equipment records;
 
 - The component still works when no suggestion matches.
 - Keyboard and touch users can submit their own query.
-- Suggestions do not reveal entities outside the user’s scope.
+- Suggestions do not reveal entities outside the person’s scope.
 - Test magnification and long result labels before adopting an overlay.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
-
-[Browse publishing components](index.html).

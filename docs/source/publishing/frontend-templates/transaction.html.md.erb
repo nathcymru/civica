@@ -6,7 +6,7 @@ group: Page templates
 source_url: https://design-guide.publishing.service.gov.uk/frontend-templates/transaction/
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-12"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -16,29 +16,36 @@ updates:
     description: "Linked this retained variant to its shared behaviour owner and clarified its specific implementation boundary."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove repeated template boilerplate and per-page source commentary, and link the shared limits on the page templates index."
+ai_instructions: "Apply when a page introduces a task before a native flow or external service. Use a task-specific link label such as Open theme settings, say where the reader is going and what they need first, and use a button only for an action that operates a device. Never link an unverified route. Rules WG-030, WG-034, WG-037."
+ai_related:
+  - path: "/publishing/frontend-templates/index.html"
+    title: "Page templates"
+    relationship: "Owns the shared limits and checks for every page template."
+  - path: "/content/writing-guidelines/add-links.html"
+    title: "Write effective links"
+    relationship: "Owns link text and external-link rules."
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns request, pending, confirmed and failed wording."
 ---
 
 # Transaction
 
-A transaction start page explains a task and directs users to the service that performs it. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/frontend-templates/transaction/).
-
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
-
-## Task entry has its own owner
-
-The [start-page pattern](../../patterns/start-page.html) owns prerequisites and a clear destination. [Question pages](../../patterns/question-pages.html#compose-the-task-without-replacing-its-owner) own the answers if the supported flow actually asks questions. This publishing template remains a task-entry composition; it cannot establish a backend, save or device action by presentation alone.
+Name the task in the link, say what the person needs first, and say where they are going. Use a transaction page when a task needs context before the native Home Assistant flow or an external service. The shared limits for every page template are on [Page templates](index.html).
 
 ## When to use it
 
-Use this structure when a household task needs context before opening the native HA flow or an external service. Explain what the person can do, what they need and where they will go. Common immediate device controls do not need a separate start page.
+Use it when a household task needs explaining before the native flow opens. Say what the person can do, what they need and where they will go. Common immediate device controls do not need a separate start page.
 
 ## Structure and behaviour
 
-Use a task-oriented title and one clear primary destination. A link that opens a flow is navigation; an action that immediately operates a device needs a button and the existing command safeguards. Explain any external account or service boundary before the person leaves.
+Use a task-oriented title and one clear primary destination. A link that opens a flow is navigation. An action that immediately operates a device needs a button and the existing command safeguards ([WG-034](../../content/writing-guidelines/states-and-errors.html#wg-034)). Explain any external account or service before the person leaves, and say when a link leaves Home Assistant ([WG-037](../../content/writing-guidelines/add-links.html#wg-037)).
 
 ## Home Assistant boundary
 
-This reference does not create device commands or bypass authentication. Avoid a vague “Start now” label when “Open theme settings” conveys the task. Never link to an unverified local route or make a documentation button appear to operate the household.
+This reference does not create device commands or bypass authentication. Prefer "Open theme settings" to a vague "Start now" ([WG-030](../../content/writing-guidelines/clear-titles.html#wg-030)). Do not link to an unverified local route, and do not make a documentation button look as if it operates the household.
 
 ## Guided settings entry
 
@@ -51,18 +58,11 @@ A working local anchor demonstrates a task destination.
 The real public repository is clearly identified.
 
 <%= example("pub-frontend-templates-transaction-2") %>
-
 ## Acceptance checks
 
 - The destination exists and matches the promised task.
 - Prerequisites appear before the primary link.
 - Leaving the current service is clear.
 - Opening the page cannot itself issue a device command.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
 
 [Browse page templates](index.html).

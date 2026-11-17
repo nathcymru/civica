@@ -6,7 +6,7 @@ group: Publishing components
 source_url: https://design-guide.publishing.service.gov.uk/components/feedback/
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updates:
@@ -18,29 +18,39 @@ updates:
     description: "Linked this retained variant to its shared behaviour owner and clarified its specific implementation boundary."
   - date: "2026-11-11"
     description: "Added the civica.uk adaptation, applicability limits and two local examples."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, remove per-page source commentary and keep the examples labelled as simulated."
+ai_instructions: "Apply when offering a way to report a documentation problem. Say where the feedback goes and whether it is public. Confirm receipt only after a real successful response, keep typed text on failure and make contact details optional. Examples send nothing. The shared feedback page owns delivery and privacy. Rules WG-032, WG-054, WG-061."
+ai_related:
+  - path: "/components/feedback.html"
+    title: "Feedback"
+    relationship: "Owns destination disclosure, privacy and delivery states."
+  - path: "/publishing/components/index.html"
+    title: "Publishing components"
+    relationship: "Lists this component with its sibling pages."
 ---
 
 # Feedback
 
-The publishing feedback component collects a response about the page. It is separate from contacting an organisation or reporting an urgent problem. [Official publishing guidance](https://design-guide.publishing.service.gov.uk/components/feedback/).
+Tell people where their feedback goes before they write it, and confirm receipt only when a real response says it arrived. Collecting a page response is separate from contacting support or reporting an urgent problem.
 
-**Reference pattern.** The examples document a local adaptation; they do not add a publishing backend or a new Home Assistant capability.
+**Reference pattern.** The examples document a local adaptation. They do not add a publishing backend or a new Home Assistant capability.
 
 ## Use the shared delivery contract
 
-[Feedback](../../components/feedback.html#one-delivery-and-privacy-contract) owns destination disclosure, privacy, retained input and confirmed or uncertain delivery. This page retains the publishing source and its local form and real issue-route examples. Neither variant installs a feedback service in Home Assistant.
+[Feedback](../../components/feedback.html#one-delivery-and-privacy-contract) owns destination disclosure, privacy, retained input and confirmed or uncertain delivery. This page keeps the local form and the real issue-route examples. Neither installs a feedback service in Home Assistant.
 
 ## When to use it
 
-For civica documentation, offer a clear route to report a documentation problem or suggest an improvement. Explain the destination and that a public issue may be visible to others. In the HA interface, use the existing support path for the affected integration or component.
+For civica documentation, give a clear route to report a documentation problem or suggest an improvement, and say that a public issue may be visible to others. In the Home Assistant interface, use the existing support path for the affected integration.
 
 ## Structure and behaviour
 
-If a service collects feedback, label each field and confirm receipt only after a real successful response. Keep entered text available on failure. Make an email address optional unless the service genuinely needs it. Explain the purpose of any contact details before collection.
+Label each field. Show confirmation only after a real successful response. Keep typed text available after a failure. Make an email address optional unless the service needs it, and explain why before asking.
 
 ## Home Assistant boundary
 
-The examples acknowledge activity locally and do not send feedback. No analytics, GOV.UK survey endpoint, notification service or email collection is installed by this reference. A successful local demonstration must never be described as a submitted report.
+The examples acknowledge activity locally and send nothing. They install no analytics, survey endpoint, notification service or email collection. Never describe a local demonstration as a submitted report.
 
 ## Local feedback interaction
 
@@ -50,21 +60,13 @@ Type invented feedback. The demonstration does not send or save it.
 
 ## Public issue route
 
-This real repository link opens the public issue list.
+This repository link opens the public issue list.
 
 <%= example("pub-components-feedback-2") %>
 
 ## Acceptance checks
 
-- The feedback destination and privacy context are clear.
-- Submission errors preserve the user’s wording.
-- Confirmation is backed by the real response, not a click.
+- The destination and privacy context are clear.
+- A submission error keeps the person’s wording.
+- Confirmation depends on the real response, not a click.
 - Keyboard users can reach and leave any expanded form.
-
-Check the examples at narrow widths, with a keyboard and without JavaScript. Test a production implementation against its actual data and permissions before calling it supported.
-
-## Sources and maintenance
-
-Reviewed against the official guidance on 11 November 2026. The [source and migration record](../source-history.html) separates the Publishing Design Guide from the component gem and records the metadata-history migration. Use local typography and colour roles with the household’s optional identity; official GOV.UK marks, analytics and account services are not part of this adaptation.
-
-[Browse publishing components](index.html).
