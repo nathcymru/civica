@@ -6,54 +6,70 @@ group: Task patterns
 source_url: https://service-manual.nhs.uk/design-system/patterns/complete-multiple-tasks
 status: reference
 published_on: 2026-11-11
-updated_on: 2026-11-11
+updated_on: "2026-11-17"
 updates:
   - date: 2026-11-11
     description: Linked task progress to question and task-list owners without implying a native automation editor.
   - date: 2026-11-11
     description: Added civica household guidance, isolated examples and explicit boundaries for the NHS complete-multiple-tasks pattern.
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, use Home Assistant wording and move source credit to the patterns index."
+ai_instructions: "Apply to longer setup that people may pause and resume. Show task names with a text status, keep saved, complete and enabled as separate facts, and never enable an automation by opening or completing a task. Rules WG-030, WG-035, WG-051."
+ai_related:
+  - path: "/patterns/question-pages.html"
+    title: "Ask clear questions on pages and in dialogs"
+    relationship: "Owns each question and its retained answers."
+  - path: "/components/task-list.html"
+    title: "Task list"
+    relationship: "Owns the task row presentation."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns what a saved draft may claim."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test the page against the civica accessibility checks."
 ---
 
 # Complete multiple household tasks
 
-**Reference pattern.** These examples are local design guidance. They do not install new Home Assistant screens or perform device actions.
+Use a task list when setup has several independent parts that people cannot finish in one sitting. Simplify the task before adding a progress screen. These examples are local guidance. They do not add a Home Assistant screen, discover meters or enable an automation.
 
-A task list describes work to finish, not every feature on the dashboard. It is useful when setup has several independent parts and people cannot complete them in one sitting.
+## Who owns what
 
-## Progress is a composition, not an automation
+Use [Ask clear questions on pages and in dialogs](question-pages.html#compose-the-task-without-replacing-its-owner) for each input and its retained answers. This page owns the progress view and the dependencies between tasks. The [Task list](../components/task-list.html) component owns the row presentation.
 
-Use [question pages](question-pages.html#compose-the-task-without-replacing-its-owner) for each input and its retained answers. This pattern owns the progress view and dependencies across those tasks. The [task-list component](../components/task-list.html) owns the task-row presentation.
+Opening or completing a documentation task must not enable an automation. Route to a real editor only when the installation provides one. Otherwise say the example is a reference.
 
-Opening or completing a documentation task must not enable an automation. Keep a saved draft, a reviewed setup and an enabled native rule as separate facts. Route to an actual supported editor only when the installation provides it; otherwise state that the example is a reference and preserve the implementation gap.
+## Use a small set of statuses
 
-## The NHS principle we adapt
-
-The [NHS multiple tasks pattern](https://service-manual.nhs.uk/design-system/patterns/complete-multiple-tasks) groups related work, exposes progress and distinguishes incomplete work from dependencies. civica applies that structure to longer household configuration. Simplify the task before adding a progress screen.
-
-## Start with a small status vocabulary
-
-Use “Completed” and “Incomplete” where possible. Add “Cannot start yet” only for a genuine dependency and explain what unlocks it. Keep a completed task available for correction. A disabled task name should be plain text rather than a link that does nothing.
+Use “Completed” and “Incomplete”. Add “Cannot start yet” only for a real dependency, and say what unlocks it. Keep a completed task open for correction. Show a task that cannot start as plain text, not as a link that does nothing.
 
 <%= example('nhs-tasks-household-setup') %>
 
 ## Draft, complete and enabled are different
 
-A saved quiet-hours draft is not a working notification rule. Count a task as complete using a clear product rule, or let the person explicitly say they have finished when human review is needed. Enabling the resulting configuration is a separate, named action. Returning users should see their saved work, the current dependency state and any changed devices.
+A saved quiet-hours draft is not a working notification rule. Mark a task complete by a clear product rule, or ask the person to say they have finished when a human check is needed. Enabling the result is a separate, named action. When people return, show their saved work, the dependency state and any devices that changed.
 
 <%= example('nhs-tasks-resume-draft') %>
 
-## Repair without discarding progress
+## Repair without losing progress
 
-Use a problem state only when there is a problem to fix. “Sensor unavailable” is not evidence that the user answered a question incorrectly. Distinguish a temporarily unavailable integration from a permanently removed selection. Preserve unaffected task answers and explain whether the person can continue.
+Show a problem only when there is something to fix. “Sensor unavailable” does not mean the person answered wrongly. Tell a temporarily unavailable integration apart from a removed selection, keep the unaffected answers and say whether the person can continue.
 
 <%= example('nhs-tasks-repair') %>
 
-## Accessibility and content
+## Write and build it accessibly
 
-Write task names as household activities: “Choose household events”, not “Configure trigger schema”. Associate each task link with its text status. Group a large setup under meaningful headings. Do not rely on a coloured badge, a completion tick or a progress percentage alone. Let rows wrap at small widths and keep task names before their status in reading order.
+- Name tasks as household activities: “Choose household events”, not “Configure trigger schema”.
+- Tie each task link to its text status, with the name before the status in reading order.
+- Group a long setup under headings.
+- Do not rely on a coloured tag, a tick or a percentage alone.
+- Let rows wrap at small widths.
+- If completion depends on notes or a talk with someone else, ask whether the task is finished. Do not guess durations or show countdowns.
+- Keep “progress saved” messages apart from device notifications, so the page does not announce every background update.
 
-If completion depends on optional notes or a discussion with someone else, ask whether the task is finished. Avoid guessed durations and countdowns. Keep saved-progress messages distinct from device notifications so the page does not announce every background entity update.
+Test with the [civica accessibility checks](../accessibility/testing.html).
 
-## Home Assistant implementation boundary
+## Keep the boundary clear
 
-Persist draft answers and completion state deliberately; do not infer a saved draft from a partially rendered UI. Re-evaluate capability-dependent tasks when integrations change. A task-list link must open a real supported configuration route. The examples are local demonstrations: they do not discover meters, enable automations or grant notification access.
+Save draft answers and completion deliberately. Do not infer a saved draft from a partly drawn screen. Check capability-dependent tasks again when integrations change. A task link must open a real, supported configuration route.

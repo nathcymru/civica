@@ -1,10 +1,10 @@
 ---
 title: Errors and recovery
-description: Errors and recovery for the civica Home Assistant design system.
+description: Say what failed, what is missing and what the person can do next, without claiming more than Home Assistant knows.
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -14,49 +14,60 @@ updates:
     description: Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild.
   - date: 2026-11-11
     description: First published in the civica.uk design system.
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, match the theme-settings messages and move the outside reference to the patterns index."
+ai_instructions: "Apply when a task fails, a reading is missing or there is nothing to show. Say which of these it is, keep what the person entered, place the message by the control and offer only recovery steps that work. Never show a missing reading as 0 or Off. Rules WG-033, WG-038, WG-040, WG-044."
+ai_related:
+  - path: "/components/status.html"
+    title: "Status and notifications"
+    relationship: "Owns the shared status labels and their semantic treatment."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns the wording rules for states, requests and errors."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the keyboard, zoom and reflow checks."
 ---
 
 # Errors and recovery
 
-Help the user understand whether a task failed, data are missing or there is simply nothing to show.
+Tell the person whether a task failed, a reading is missing or there is simply nothing to show. These are different situations and each needs different words.
 
-
-## Examples
-
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+These examples are local previews with invented household values. They do not control a home. Open an example to see it at full width or read its HTML.
 
 <%= example('local-status-failure') %>
 
 <%= example('local-device-unavailable') %>
 
-
 ## Use the right state
 
-| Situation | Explain | Avoid |
+| Situation | Say | Do not say |
 | --- | --- | --- |
-| Successful request with no warnings | No current warnings | Unavailable |
-| Entity has not supplied a usable state | Reading unknown | 0 or Off |
-| Entity currently reports unavailable | Reading unavailable | Definitely offline |
-| Only an earlier observation is available | Last reported value, with its date and time | Presenting it as a new reading |
-| A request was explicitly rejected | Request rejected, with the known reason | The device did not respond |
-| A request was accepted but no new state arrived | Request accepted; result not confirmed | Failed, succeeded or safe to repeat without checking |
-| Theme was not installed | This theme is not available. Reload themes after installing it. | Silent fallback to a different palette |
-| Profile adapter cannot attach | Use the native theme selector or settings card | Hiding the native settings |
+| The request succeeded and there are no warnings | No current warnings | Unavailable |
+| The entity has not given a usable state | Reading unknown | 0 or Off |
+| The entity reports `unavailable` | Reading unavailable | Definitely offline |
+| Only an earlier observation exists | Last reported value, with its date and time | A new reading |
+| Home Assistant rejected the request | Request rejected, with the known reason | The device did not respond |
+| The request was accepted but no new state has arrived | Request accepted; result not confirmed | Failed, succeeded or safe to repeat |
+| A civica theme is missing | This theme is unavailable. Reload themes and try again. | A silent switch to another palette |
+| The profile controls cannot attach | Use the native theme selector or the settings card | Hiding the native settings |
 
-## Keep context
+## Keep the person’s context
 
-Retain entered values and the device or setting name. Place the message near the relevant control. Keep recovery steps short and specific. Offer a retry only if it performs a real retry.
+Keep what they entered, and name the device or setting. Put the message next to the control it concerns. Keep recovery steps short and specific. Offer Retry only when it really retries.
 
-## Avoid repeated interruptions
+## Do not interrupt repeatedly
 
-Do not announce every sensor refresh. A persistent unavailable state can remain visible without producing a new alert each time the application updates. Respect reduced motion and avoid flashing warnings.
+Do not announce every sensor refresh. Leave a lasting unavailable state visible without raising a new alert each time the dashboard updates. Respect reduced motion and do not flash warnings.
 
-## Provide useful diagnostics
+## Collect useful diagnostics
 
-For maintainers, record the Home Assistant version, browser version, selected theme, affected component and reproduction steps. Keep credentials, tokens, addresses and private device details out of screenshots and issue logs unless the user deliberately provides them for diagnosis.
+For a bug report, record the Home Assistant version, browser version, selected theme, affected component and steps to reproduce. Leave credentials, tokens, addresses and private device details out of screenshots and logs unless the person chooses to share them.
 
-The [status component](../components/status.html) defines shared labels and semantic treatment. GOV.UK [error messages](https://design-system.service.gov.uk/components/error-message/) inform clear placement and corrective wording.
+For the shared status labels, see [Status and notifications](../components/status.html). For the wording rules, see [States, requests and errors](../content/writing-guidelines/states-and-errors.html).
 
-## Test the task, including failure
+## Test the failure, not only the success
 
-Start with the current confirmed state. Use a keyboard to reach every action and verify its label names the affected object. Check pending, failed and unavailable results without replacing missing data with zero. Repeat at narrow width and enlarged text. A documentation demonstration is evidence for the pattern’s presentation only; the connected application must separately prove permissions, native routing, state confirmation and recovery.
+Start from the current confirmed state. Reach every action by keyboard and check its label names the affected object. Check pending, failed and unavailable results, and never replace missing data with zero. Repeat at narrow width and larger text.
+
+A preview proves only how the pattern looks. The connected application must separately prove permissions, native routing, state confirmation and recovery.

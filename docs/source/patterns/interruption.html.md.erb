@@ -6,48 +6,57 @@ group: "Page patterns"
 source_url: "https://service-manual.nhs.uk/design-system/patterns/interruption-page"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-11"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-11"
     description: "Added civica household guidance, isolated examples and explicit boundaries for the NHS interruption-page pattern."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, use specific action labels and move source credit to the Patterns index."
+ai_instructions: "Apply only to a likely serious mistake or an irreversible action. Name the object and the consequence, use specific labels such as Delete this backup and Keep the backup, and keep a working Back route. An interruption confirms intent. It does not grant permission or override a supported limit. Never offer Continue anyway for a prohibited action. Rules WG-036, WG-041, WG-044, WG-051."
+ai_related:
+  - path: "/components/dialogs.html"
+    title: "Dialogs"
+    relationship: "Owns the accessible dialog behaviour for a modal interruption."
+  - path: "/home-assistant/backup-and-restore.html"
+    title: "Backups, restore and recovery copies"
+    relationship: "Owns backup deletion and restore behaviour."
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns pending and confirmed outcomes after the person confirms."
 ---
 
 # Pause before an exceptional consequence
 
-**Reference pattern.** These examples are local design guidance. They do not install new Home Assistant screens or perform device actions.
+**Reference pattern.** These examples are simulated. They do not install Home Assistant screens or control a device.
 
-An interruption asks a person to stop and reconsider a specific consequence. Repeated warnings for ordinary actions teach people to dismiss them without reading.
-
-## The NHS principle we adapt
-
-The [NHS interruption pattern](https://service-manual.nhs.uk/design-system/patterns/interruption-page) is for exceptional mistakes, irreversible consequences or unusual risk. It allows a legitimate choice where appropriate and prevents actions that should never be allowed. civica keeps the interruption concise and uses its own semantic warning treatment rather than NHS branding.
+Use an interruption only when a person is likely to make a serious mistake or take an action they cannot undo. Repeated warnings for ordinary actions teach people to dismiss them without reading.
 
 ## Use it sparingly
 
-Deleting a specific backup may warrant a pause. Choosing another colour palette, navigating to a room or changing a reversible dashboard preference does not. Start with an ordinary explanation and use an interruption only when the consequence and evidence justify it.
+Deleting a specific backup can justify a pause. Choosing a colour palette, opening a room or changing a reversible dashboard setting cannot. Start with an ordinary explanation. Add an interruption only when the consequence and the evidence call for it (WG-051).
 
 <%= example('nhs-interruption-backup') %>
 
-## A likely mistake is different from an invalid value
+## Tell a likely mistake from an invalid value
 
-A schedule ending earlier than it starts may be intentionally overnight. Explain the interpretation and let the person confirm or change it. A genuinely unsupported value should instead receive an inline validation error. Do not use a warning to override a device's supported limits.
+A schedule that ends before it starts may be meant to run overnight. Explain how you read it and let the person confirm or change it. A value the device does not support gets an inline error instead (WG-041). Do not use a warning to override a device's supported limits.
 
 <%= example('nhs-interruption-overnight') %>
 
-## Permission is not consent
+## Confirmation is not permission
 
-An interruption confirms intent; it does not authenticate a person or grant a capability. If Home Assistant rejects the action or the integration does not support it, explain the limitation and offer a valid return route. Never add “Continue anyway” to a prohibited operation.
+An interruption confirms what the person intends. It does not sign them in or give them a capability. If Home Assistant rejects the action, or the integration does not support it, say so and offer a valid way back. Never add “Continue anyway” to a prohibited action.
 
 <%= example('nhs-interruption-permission') %>
 
 ## Accessibility and content
 
-Name the object and consequence in the heading or immediate body. A generic “Are you sure?” forces people to reconstruct context. Use action labels such as “Delete this backup” and “Keep the backup”. Preserve a working Back route and browser history. Avoid two differently labelled exits that perform the same navigation.
+Name the object and the consequence in the heading or the first line. “Are you sure?” makes people work out the context. Use labels such as “Delete this backup” and “Keep the backup” (WG-036). Keep a working Back route and the browser history. Do not offer two differently labelled exits that do the same thing.
 
-For a modal version, use a native accessible dialog, label it, keep long content scrollable and return focus to the trigger on cancellation. Do not make clicking outside the dialog perform the destructive action. Keyboard Escape should cancel or close the confirmation without submitting. Do not repeatedly reopen a dismissed dialog because an entity state refreshes.
+For a modal version, use a native accessible dialog with a label. Keep long content scrollable and return focus to the trigger on cancel. Selecting outside the dialog must not confirm a destructive action. Escape cancels or closes without submitting. Do not reopen a dismissed dialog each time an entity state refreshes. See [Dialogs](../components/dialogs.html).
 
-## Home Assistant implementation boundary
+## Home Assistant boundary
 
-Use the native authorised API for the named operation. Recheck the target and current permissions immediately before execution. Bind the confirmation to a stable operation target rather than a list position that could change while the dialog is open. Disable repeated submission while the operation is pending and show its verified outcome.
+Use the native authorised API for the operation. Check the target and the person's permissions again just before running it. Tie the confirmation to a stable target, not a list position that can change while the dialog is open. Stop repeat submissions while the request is pending, and show the confirmed result (WG-044).
 
-The examples are local simulations. They do not delete backups, modify schedules or bypass access controls. Safety-critical device operations require their own supported product workflow; this general pattern is not evidence that a hazardous action is appropriate.
+The examples are simulated. They do not delete backups, change schedules or bypass access controls. Safety-critical device actions need their own supported product workflow. This pattern does not show that a hazardous action is appropriate.

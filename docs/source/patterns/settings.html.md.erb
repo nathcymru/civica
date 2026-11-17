@@ -1,10 +1,10 @@
 ---
 title: "Settings and preferences"
-description: "Settings and preferences for the civica Home Assistant design system."
+description: "Keep a personal appearance preference reversible, close to the Home Assistant profile and in step with the native theme selector."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -12,48 +12,59 @@ updates:
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the civica.uk design system."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule and match the status messages and failure behaviour of the theme settings."
+ai_instructions: "Apply when designing a personal preference such as a colour palette. Keep it reversible, apply it at once without leaving the control and use the native Home Assistant preference. Keep the native theme selector available and in step. Never change another user's setting or the default theme for a personal choice. Rules WG-035, WG-040, WG-053."
+ai_related:
+  - path: "/get-started/colour-settings.html"
+    title: "Change theme colours"
+    relationship: "Owns the steps to choose a palette and the fallback if the controls do not appear."
+  - path: "/components/controls.html"
+    title: "Buttons and forms"
+    relationship: "Owns the select and switch controls used here."
+  - path: "/patterns/recovery.html"
+    title: "Errors and recovery"
+    relationship: "Owns the wording when a theme is missing."
 ---
 
 # Settings and preferences
 
-Appearance is a reversible personal preference. Keep it close to Home Assistant's existing profile settings and use the native preference mechanism.
+Treat appearance as a personal preference that people can undo. Keep it beside Home Assistant’s own profile settings, and save it through the native preference, not a separate store.
 
-
-## Examples
-
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+These examples are local previews with invented values. They do not control a home. Open an example to see it at full width or read its HTML.
 
 <%= example('local-controls-form') %>
 
 <%= example('local-controls-error') %>
 
+## How a palette choice works
 
-## Palette flow
+1. The person picks a palette with **Colour palette**, or selects a civica theme in the native theme selector.
+2. **Colour palette** shows the palette of the current theme.
+3. **Use muted colours** shows whether that theme is Vivid or Muted.
+4. Changing either control selects the matching generated theme, such as `civica Civic Cobalt Muted`.
+5. A short status message confirms the choice.
 
-1. The user chooses a palette or selects a civica theme through the native selector.
-2. The palette select shows the theme's current palette.
-3. The Use muted colours control shows its current variant.
-4. Changing either control selects the matching generated theme.
-5. A short status message confirms the applied choice.
+Keep focus on the control. Do not move to another page, reload or ask for confirmation. Do not change another user’s settings. Do not use Home Assistant’s default-theme action for a personal preference.
 
-Keep focus in the control. Do not navigate away, reload the page or ask for confirmation for an appearance choice. Do not modify other users' settings or call the backend-wide default-theme action for a personal preference.
+## Keep the native controls
 
-## Preserve native controls
+The native theme selector and the Light, Dark or Auto setting stay available. If the person uses the native selector, the civica controls must show the same theme.
 
-The native theme selector and light/dark/automatic setting remain available. The civica palette setting maps to a theme name, so it must stay in sync when the user uses the native selector.
+Choosing a palette clears any custom primary or accent colour, so an old override cannot hide the new palette. Say so in the help text or in [Change theme colours](../get-started/colour-settings.html).
 
-Clear conflicting custom primary/accent overrides when applying a named palette. Explain this behaviour in the settings help text or documentation.
+## When it cannot apply
 
-## Failure behaviour
+- **A civica theme is missing:** keep the current theme and the controls disabled. Say “Install all civica themes and reload themes to use these controls.”
+- **Safe or recovery mode:** disable the controls and say “Colour controls are unavailable in safe or recovery mode.”
+- **The profile page changes:** fail safely and offer the standalone settings card. Never hide the native settings because the controls did not find their place.
 
-If a theme is missing, keep the current selection and explain which theme needs installing. If the profile component changes, fail safely and offer the standalone settings card. Never hide native settings because the adapter did not find its expected target.
+See [Errors and recovery](recovery.html) for the wording of a missing theme.
 
-## Scope
+## Keep the scope narrow
 
-The documentation's palette preview changes only its example. The Home Assistant module changes only the user's chosen theme through the native flow. Neither should be confused with configuring device lighting colours.
+The preview on this site changes only itself. The Home Assistant module changes only the signed-in person’s chosen theme through the native flow. Neither changes the colour of a light or any other device.
 
-Read [Change theme colours](../get-started/colour-settings.html) for installation and fallback details.
+## Test the preference
 
-## Test the task, including failure
-
-Start with the current confirmed state. Use a keyboard to reach every action and verify its label names the affected object. Check pending, failed and unavailable results without replacing missing data with zero. Repeat at narrow width and enlarged text. A documentation demonstration is evidence for the pattern’s presentation only; the connected application must separately prove permissions, native routing, state confirmation and recovery.
+Check the controls by keyboard and with a screen reader, at 320 CSS pixels and larger text. Check that the status message is announced once. Switch themes with the native selector and confirm the civica controls follow. Repeat with a missing theme and in safe mode.

@@ -6,48 +6,57 @@ group: "Page patterns"
 source_url: "https://service-manual.nhs.uk/design-system/patterns/hub-page"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-11"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-11"
     description: "Added civica household guidance, isolated examples and explicit boundaries for the NHS hub-page pattern."
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, point to the card and contents owners and move source credit to the Patterns index."
+ai_instructions: "Apply when grouping a substantial set of help or settings pages. Group by what household members want to do, keep top shortcuts few and direct, and use a list when there are only a few pages. A navigation card has one destination and no device action inside it. Never replace Home Assistant navigation or guess routes. Rules WG-001, WG-030, WG-034, WG-083."
+ai_related:
+  - path: "/components/cards.html"
+    title: "Cards"
+    relationship: "Owns the navigation card and its single-destination contract."
+  - path: "/patterns/mini-hub.html"
+    title: "Explain one topic across a mini-hub"
+    relationship: "Use instead when the content is one topic across a few pages."
+  - path: "/patterns/start-page.html"
+    title: "Help people start a household task"
+    relationship: "Use instead when the route begins a consequential setup journey."
 ---
 
 # Organise household help with hub pages
 
-**Reference pattern.** These examples are local design guidance. They do not install new Home Assistant screens or perform device actions.
+**Reference pattern.** These examples are simulated. They do not install Home Assistant screens or control a device.
 
-A hub gives people routes into groups of information. Its structure should reflect what household members are trying to do, not the implementation of integrations and services.
+A hub gives people routes into groups of related help. Build it around what household members want to do, not around integrations and services (WG-001).
 
-## The NHS principle we adapt
+## Put the useful routes first
 
-The [NHS hub pattern](https://service-manual.nhs.uk/design-system/patterns/hub-page) separates a few important shortcuts from primary content groups and less prominent related topics. civica adopts this hierarchy using its own square cards, typography and palette. Navigation remains consistent across the rest of the application.
-
-## Prioritise useful routes
-
-Use descriptive headings and a short explanation of what each group contains. Reserve top shortcuts for evidenced frequent or important tasks; keep them few. A top task should reach its useful destination directly, rather than point to the same intermediate page as a primary card.
+A hub has a few top shortcuts, then the main content groups, then less prominent related topics. Give each group a descriptive heading and a short line on what it holds. Keep top shortcuts few and base them on tasks people really do often. A top shortcut goes straight to its destination. It does not lead to the same middle page as a main card.
 
 <%= example('nhs-hub-household') %>
 
-## Keep cards proportionate
+## Keep cards in proportion
 
-A hub is useful for a substantial help collection. If there are only a few pages, a list is easier to scan and cheaper to maintain. Do not make a large card for every toggle, entity state or small configuration question.
+Use a hub for a substantial collection of help. For a few pages, a list is easier to scan and cheaper to keep up to date. Do not make a large card for every toggle, entity state or small setting.
 
 <%= example('nhs-hub-small') %>
 
-## Separate navigation from control
+## Keep navigation apart from control
 
-A room dashboard may contain both a route to room information and controls for lights. Keep their purposes clear. A navigation card should have one destination and must not also contain a button that performs a device action inside the same clickable region. A device control card remains a different component with its own labels, state and feedback.
+A room dashboard can have a route to room information and controls for lights. A navigation card has one destination and no button for a device action inside the same clickable area. A device card is a different component with its own labels, state and feedback. See [Cards](../components/cards.html#choose-the-card-by-its-job).
 
-Avoid putting unrelated images or decorative icons on every help card. Use a consistent domain icon only when it helps recognition and retain the text. Quiet structural borders and spacing should define groups; do not turn each navigation card into a heavy input-style box.
+Do not put an unrelated image or icon on every help card. Use a domain icon only where it helps people recognise the group, and keep the text. Let quiet borders and spacing form the groups.
 
 ## Accessibility and content
 
-Make the heading link meaningful out of context. Follow a logical heading order and DOM order. A visual grid must become a single readable column at narrow widths and high zoom. If the whole card is made clickable in a production implementation, keep one actual link, preserve keyboard behaviour and avoid overlapping or nested interactive elements. Focus must remain visible on the chosen palette.
+Write heading links that make sense out of context (WG-083). Keep heading order and page order logical. The grid becomes one readable column at narrow width and high zoom. If a whole card is clickable, keep one real link, keep keyboard behaviour and avoid nested interactive elements. Keep focus visible on every palette.
 
-## Home Assistant implementation boundary
+## Home Assistant boundary
 
-The hub routes to actual available help or configuration pages. It must not replace Home Assistant's global navigation, hide native settings, or guess routes for custom integrations. Respect profile permissions when showing administrative destinations. An unavailable device must not make its recovery help disappear.
+A hub links to help and settings pages that exist. It does not replace Home Assistant's navigation, hide native settings or guess routes for custom integrations. Respect profile permissions before showing an administrative link (WG-034). When a device is unavailable, keep its recovery help.
 
-## Review the information architecture
+## Check the structure
 
-Test the group names with household members and observe whether they can find a task without knowing an integration name. Use a start page when a route begins a consequential setup journey, and use a mini-hub for one complex explanatory topic. A hub is not a substitute for either pattern. The preview destinations are local explanatory sections and never operate devices.
+Test the group names with household members. Check that they can find a task without knowing an integration name. For a consequential setup journey, use a [start page](start-page.html). For one complex topic, use a [mini-hub](mini-hub.html). A hub replaces neither. The preview links go to local explanations and never operate a device.

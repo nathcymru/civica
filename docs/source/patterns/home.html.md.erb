@@ -1,10 +1,10 @@
 ---
 title: Home and rooms
-description: Home and rooms for the civica Home Assistant design system.
+description: Show what needs attention, what is happening and what people can control, then group rooms and tasks around that.
 last_reviewed_on: 2026-11-12
 review_in: 3 months
 published_on: 2026-11-11
-updated_on: "2026-11-13"
+updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -16,87 +16,96 @@ updates:
     description: Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild.
   - date: 2026-11-11
     description: First published in the civica.uk design system.
+  - date: "2026-11-17"
+    description: "Rewritten to lead with the rule, tighten the data-dashboard guidance and move outside source credit to the Patterns index."
+ai_instructions: "Apply when laying out a home overview or a room page. Answer three questions in order: what needs attention, what is happening and what can I control. Keep one control pattern in every room, keep people's device names, and never replace a missing reading with zero. Examples are simulated and prove presentation only. Rules WG-001, WG-011, WG-033, WG-076, WG-077."
+ai_related:
+  - path: "/components/cards.html"
+    title: "Cards"
+    relationship: "Owns the choice of card for each job."
+  - path: "/styles/brand-data.html"
+    title: "Data visualisation"
+    relationship: "Owns the data, chart and dashboard rules applied here."
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns how to define freshness for a reading."
 ---
 
 # Home and rooms
 
-The home overview answers three questions: what needs attention, what is happening and what can I control?
+A home overview answers three questions in order: what needs attention, what is happening and what can I control?
 
+## Order the overview
+
+1. Show important household alerts with their context.
+2. Show frequently used controls and useful summaries.
+3. Group rooms or tasks under clear headings.
+4. Offer history and detailed settings after the immediate actions.
+
+Do not give every card the same prominence. A wall of gauges with no explanation hides what matters.
 
 ## Choose complete room cards
 
-Use the [card decision guide](../components/cards.html#choose-the-card-by-its-job) to choose room navigation, information, device-action and status cards. Its image, long-name and responsive-group examples demonstrate complete content and destinations. An illustration supplements the room identity; it is not evidence of live state.
+Use the [card decision guide](../components/cards.html#choose-the-card-by-its-job) to choose between navigation, information, device-action and status cards. An illustration helps people recognise a room. It is not evidence of live state.
 
-The device-group specimen below now lists its two configured members, dated reported states and a separate details route. Its preview acknowledges a local request only. A connected overview must include unavailable configured members in group summaries and must not infer targets from a shared room name.
+The device-group example below lists its two configured members, their dated reported states and a separate details route. Its preview acknowledges a local request only. A connected overview must include unavailable members in a group summary. It must not work out targets from a shared room name.
 
 ## Examples
 
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+These examples are simulated. The values are invented and nothing here controls a home. Open an example to see it at full width or to view its HTML.
 
 <%= example('local-layout-grid') %>
 
 <%= example('local-card-actions') %>
 
+## Room pages
+
+Use the room name as the heading. Group lighting, climate, media and other functions together, and keep the names people gave their devices. Show useful room context, such as a temperature with its unit and its state.
+
+Use the same control pattern in every room. A lamp must not need a tap in one room and a hidden long press in another without a real reason.
+
+## Images and icons
+
+A room image helps people recognise the room, and a device icon helps them scan. Both support the room and device names. They do not replace them. Keep sensor values and controls off busy images.
+
+## Responsive and shared use
+
+Allow scrolling and a single column. A wall-mounted display and a phone can arrange cards differently, but they must use the same labels, states and control meanings.
+
 ## Decide whether the task needs a data dashboard
 
-Use a monitoring overview for a question people return to and data that can be kept up to date. Give occasional readers enough context to understand the measures. A fixed report can be a better fit for a one-off explanation or a result that needs substantial interpretation. Review the need again when the household, sources or task changes. This adapts the [GOV.UK dashboard guidance](https://brand.design-system.service.gov.uk/data/dashboards/).
+Use a monitoring overview for a question people return to, with data you can keep current. Give occasional readers enough context to understand each measure. A fixed report suits a one-off explanation or a result that needs interpretation. Review the choice when the household, the sources or the task changes.
 
 | Household need | Suitable presentation | Essential context |
 | --- | --- | --- |
-| Repeatedly check grid import during a selected period | A small set of indicators, an interval chart and its values | Period, unit, source, missing intervals and the difference between a partial sum and a complete total |
-| Compare a few room observations at a stated time | A text-first report or table | Per-room observation time, source, coverage and any reason to exclude an old value |
-| Explain a detailed change or investigate a fault | A focused history view or written report | Evidence, comparison conditions and an explanation that the overview cannot supply |
+| Check grid import repeatedly during a chosen period | A few indicators, an interval chart and its values | Period, unit, source, missing intervals, and whether a sum is partial or complete |
+| Compare a few room observations at a stated time | A text-first report or table | Observation time for each room, source, coverage and why an old value is excluded |
+| Explain a change or investigate a fault | A focused history view or written report | Evidence, comparison conditions and an explanation the overview cannot give |
 
-The [data guidance](../styles/brand-data.html) connects these choices to charts, dashboards and maps. **BG-DAT-01** starts with the question, **BG-DAT-03** supplies measure, period and source, and **BG-DAT-07** provides a usable alternative. [BG-COL-02](../styles/brand-colour.html#bg-col-02) keeps identity, status and data colours separate; [BG-COL-07](../styles/brand-colour.html#bg-col-07) preserves meaningful chart identities and scales.
+The [data guidance](../styles/brand-data.html) links these choices to charts, dashboards and maps. **BG-DAT-01** starts with the question, **BG-DAT-03** supplies the measure, period and source, and **BG-DAT-07** gives a usable alternative. [BG-COL-02](../styles/brand-colour.html#bg-col-02) keeps identity, status and data colours apart. [BG-COL-07](../styles/brand-colour.html#bg-col-07) keeps chart identities and scales meaningful.
 
 ## A monitoring overview with matching chart data
 
-This example answers one question about grid import. The indicators, column chart and table use the same six hourly intervals. One interval is missing, so the page states a partial sum and qualifies the largest recorded value. A local link leads to the source and coverage explanation; it does not open a pretend device control.
+This example answers one question about grid import. The indicators, the column chart and the table use the same six hourly intervals. One interval is missing, so the page says the total is a partial sum and qualifies the largest recorded value. A local link explains the source and coverage. It does not open a pretend device control.
 
-The chart is a static SVG reference, with opaque square columns, a zero baseline and the shared grid-import colour. It applies the documented chart roles but does not run the native Energy adapter. Use the [maintained chart specification and working renderer examples](../components/charts.html) for the production integration and its supported scope. All values here are invented.
+The chart is a static SVG with opaque square columns, a zero baseline and the shared grid-import colour. It does not run the native Energy adapter. For the production integration and its scope, see [Charts and tables](../components/charts.html). All values are invented.
 
 <%= example('dashboard-data-electricity-monitor') %>
 
 ## A text-first report when coverage is incomplete
 
-This second example keeps every room visible while distinguishing observations inside the review window, an older observation and a room with no configured sensor. It uses a reading list because the immediate task does not need another chart. The source details explain why a household-wide average is absent.
+This example keeps every room visible. It separates readings inside the review window, an older reading and a room with no configured sensor. It uses a reading list because the task does not need a chart. The source details explain why there is no household average.
 
-Its five-minute window is an explicit example decision. A real installation needs an appropriate observation contract for each source; a theme cannot infer freshness from colour or a generic last-changed timestamp. See [entity state, confidence and freshness](../home-assistant/entity-state.html) when defining that contract.
+The five-minute window is a choice made for this example. A real installation needs a freshness rule for each source. A theme cannot work out freshness from colour or a generic last-changed time. See [Entity state, confidence and freshness](../home-assistant/entity-state.html).
 
 <%= example('dashboard-data-room-report') %>
 
-## Apply the data pattern without changing native ownership
+## Keep native ownership
 
-Keep selected periods, statistics, permissions and device capabilities under Home Assistant's control. These compositions are reference specifications, not a new dashboard configuration or a native adapter. A household can use its own name and identity without changing the meaning of a chart source, warning or missing reading.
+Home Assistant keeps control of selected periods, statistics, permissions and device capabilities. These layouts are reference examples, not dashboard configuration or a native adapter. A household can use its own name and identity without changing what a chart source, a warning or a missing reading means.
 
-Check that indicator values, plotted points and table rows agree before connecting a similar layout to real data. Repeat the check when the period or source changes. Keep missing intervals visible, distinguish power from energy, and verify narrow-screen scrolling, keyboard access, text scaling and an understandable reading order without the chart. Record those checks separately from source review or a successful documentation build.
-
-
-## Order the overview
-
-1. Show important household alerts with their context.
-2. Show frequently used controls and meaningful summaries.
-3. Group rooms or tasks with clear headings.
-4. Offer history and detailed settings after immediate actions.
-
-Do not make every card equally prominent. Avoid a dense wall of gauges with no explanation of what matters.
-
-## Room pages
-
-Use the room name as the heading. Group lighting, climate, media and other functions coherently. Preserve the user's device names. Show relevant room context, such as a temperature with its unit and current state.
-
-Use the same device-control pattern in every room. A lamp should not require a tap in one room, a hidden long press in another and a different custom action elsewhere without a real reason.
-
-## Images and icons
-
-Room images can help recognition. Device icons support quick scanning. Both supplement the room and device names. Keep sensor values and controls outside busy imagery.
-
-## Responsive and shared use
-
-Allow scrolling and a single-column layout. A wall-mounted display and a phone may need different card arrangements, but they should use the same labels, states and control meanings.
-
-ONS [dashboard guidance](https://service-manual.ons.gov.uk/data-visualisation/guidance/dashboards) supports prominent important insights, written context and scrolling rather than forcing all information into one screen. NHS [cards](https://service-manual.nhs.uk/design-system/components/card) support related content groups.
+Before you connect a similar layout to real data, check that indicator values, plotted points and table rows agree. Repeat the check when the period or source changes. Show missing intervals, keep power and energy apart (WG-076), and check scrolling at narrow width, keyboard access, text scaling and the reading order without the chart. Record these checks separately from source review and from a documentation build.
 
 ## Test the task, including failure
 
-Start with the current confirmed state. Use a keyboard to reach every action and verify its label names the affected object. Check pending, failed and unavailable results without replacing missing data with zero. Repeat at narrow width and enlarged text. A documentation demonstration is evidence for the pattern’s presentation only; the connected application must separately prove permissions, native routing, state confirmation and recovery.
+Start from the current confirmed state. Reach every action with the keyboard and check that its label names the object it affects. Check pending, failed and unavailable results, and do not replace missing data with zero. Repeat at narrow width and with enlarged text. A documentation example shows presentation only. The connected application must separately prove permissions, native routing, state confirmation and recovery.
