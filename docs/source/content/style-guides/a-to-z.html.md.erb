@@ -15,6 +15,17 @@ updates:
     description: "Rewrote as a full alphabetical list with Home Assistant and civica entries."
   - date: "2026-11-15"
     description: "Added a general A to Z."
+ai_instructions: "Use as a lookup, not a page to read through. Find the word, follow the rule it gives, and open the linked guideline for the reasoning and Before and After pairs. Entries contain rules only, never examples. Letters link to each section. Do not add examples here."
+ai_related:
+  - path: "/content/style-guides/technical-a-to-z.html"
+    title: "A to Z Technical"
+    relationship: "Exact Home Assistant terms. Entries here link to it."
+  - path: "/content/writing-guidelines/index.html"
+    title: "Writing guidelines"
+    relationship: "Guidelines where each rule is explained."
+  - path: "/content/formatting-content/index.html"
+    title: "Formatting content"
+    relationship: "Formatting entries link to these pages."
 ---
 
 # A to Z General
@@ -25,7 +36,7 @@ General writing rules, in alphabetical order. For Home Assistant words, see [A t
 <ol class="style-a-z" role="list"><li><a class="govuk-link govuk-link--no-visited-state" href="#a">A</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#b">B</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#c">C</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#d">D</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#e">E</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#f">F</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#g">G</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#h">H</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#i">I</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#j">J</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#k">K</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#l">L</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#m">M</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#n">N</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#o">O</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#p">P</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#q">Q</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#r">R</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#s">S</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#t">T</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#u">U</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#v">V</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#w">W</a></li><li><span class="style-a-z__empty">X</span></li><li><a class="govuk-link govuk-link--no-visited-state" href="#y">Y</a></li><li><a class="govuk-link govuk-link--no-visited-state" href="#z">Z</a></li></ol>
 </nav>
 
-<h2 id="a">A</h2>
+<h2 class="style-a-z__letter" id="a">A</h2>
 
 <h3 id="abbreviations-acronyms-and-initialisms">abbreviations, acronyms and initialisms</h3>
 
@@ -87,7 +98,7 @@ Lower case. Say whether it is saved, turned on or running, because these are thr
 
 Capital A when it is a label a tracker reports. It describes a phone or tracker, not a person. See [Treat presence as sensitive and uncertain](../writing-guidelines/right-tone.html#wg-066).
 
-<h2 id="b">B</h2>
+<h2 class="style-a-z__letter" id="b">B</h2>
 
 <h3 id="battery">battery</h3>
 
@@ -113,7 +124,7 @@ See [lists](#lists).
 
 Name it with a verb and its object. A button asks for something. It does not report what happened. See [Name the action and its object](../writing-guidelines/clear-titles.html#wg-030).
 
-<h2 id="c">C</h2>
+<h2 class="style-a-z__letter" id="c">C</h2>
 
 <h3 id="camera">camera</h3>
 
@@ -163,7 +174,7 @@ Use after an introductory phrase. Do not use before “and” in a list unless i
 
 Write “cannot” and “do not” in warnings, conditions and short instructions. Use “you’ll” and “it’s” elsewhere. Do not mix forms of one word on a screen. See [Write important conditions in full](../writing-guidelines/clear-language.html#wg-014).
 
-<h2 id="d">D</h2>
+<h2 class="style-a-z__letter" id="d">D</h2>
 
 <h3 id="dashboard">dashboard</h3>
 
@@ -197,7 +208,7 @@ Avoid. It can mean turned off, hidden or unavailable. Say which. Do not use abou
 
 See [contractions](#contractions).
 
-<h2 id="e">E</h2>
+<h2 class="style-a-z__letter" id="e">E</h2>
 
 <h3 id="e-g">e.g.</h3>
 
@@ -223,7 +234,7 @@ Say what happened, then what the person can do. Name only a confirmed cause. Do 
 
 Do not use.
 
-<h2 id="f">F</h2>
+<h2 class="style-a-z__letter" id="f">F</h2>
 
 <h3 id="fahrenheit">Fahrenheit</h3>
 
@@ -241,7 +252,7 @@ A group of areas on one level. See [floor](technical-a-to-z.html#ht-floor).
 
 End every full sentence with one. Do not end a heading, label, button or short table cell with one. Do not use in abbreviations.
 
-<h2 id="g">G</h2>
+<h2 class="style-a-z__letter" id="g">G</h2>
 
 <h3 id="gateway">gateway</h3>
 
@@ -251,7 +262,7 @@ Use the name printed on the device or in its app. Do not use “gateway” and �
 
 Do not assume who is in the home. Write “someone in your home”, not “your family”. See [Do not assume who is reading](../writing-guidelines/clear-language.html#wg-060).
 
-<h2 id="h">H</h2>
+<h2 class="style-a-z__letter" id="h">H</h2>
 
 <h3 id="headings">headings</h3>
 
@@ -273,7 +284,7 @@ Use the name printed on the device or in its app. Do not call Home Assistant a �
 
 Use in a compound modifier only to prevent confusion. Keep native names as they are.
 
-<h2 id="i">I</h2>
+<h2 class="style-a-z__letter" id="i">I</h2>
 
 <h3 id="i-e">i.e.</h3>
 
@@ -299,19 +310,19 @@ Write “IP address” in full once. Use code formatting. Do not show one on a s
 
 Do not use. Put a document’s name in “double quotation marks”.
 
-<h2 id="j">J</h2>
+<h2 class="style-a-z__letter" id="j">J</h2>
 
 <h3 id="jargon">jargon</h3>
 
 Use the word the household uses. Keep a technical term when it is the label on screen, and explain it once. See [Use familiar, concrete words](../writing-guidelines/clear-language.html#wg-010).
 
-<h2 id="k">K</h2>
+<h2 class="style-a-z__letter" id="k">K</h2>
 
 <h3 id="kilowatts-and-kilowatt-hours">kilowatts and kilowatt-hours</h3>
 
 Power is a rate, in kilowatts (kW) or watts (W). Energy is an amount over a period, in kilowatt-hours (kWh). Do not write “kW/h”. See [Name the measured quantity](../formatting-content/charts-and-data.html#wg-070).
 
-<h2 id="l">L</h2>
+<h2 class="style-a-z__letter" id="l">L</h2>
 
 <h3 id="labels">labels</h3>
 
@@ -337,7 +348,7 @@ Use a lead-in line. Start each bullet in lower case unless it is a name. Do not 
 
 “Locked” is what the lock reports. It does not prove the door is shut. See [Stay inside what the system can know](../writing-guidelines/states-and-errors.html#wg-043).
 
-<h2 id="m">M</h2>
+<h2 class="style-a-z__letter" id="m">M</h2>
 
 <h3 id="measurements">measurements</h3>
 
@@ -355,7 +366,7 @@ Write in full. Abbreviate only in a narrow table column.
 
 A motion sensor reports movement, not a person. See [Treat presence as sensitive and uncertain](../writing-guidelines/right-tone.html#wg-066).
 
-<h2 id="n">N</h2>
+<h2 class="style-a-z__letter" id="n">N</h2>
 
 <h3 id="names">names</h3>
 
@@ -369,7 +380,7 @@ Say what was observed and when. Do not include anything a stranger should not re
 
 Use numerals, including 1 to 9. Use a comma in thousands. Use “to” in a range. See [Respect number and date preferences](../formatting-content/charts-and-data.html#wg-072).
 
-<h2 id="o">O</h2>
+<h2 class="style-a-z__letter" id="o">O</h2>
 
 <h3 id="offline">offline</h3>
 
@@ -383,7 +394,7 @@ Do not use as a label. Say what will happen.
 
 “On” and “off” are states. “Turn on” and “Turn off” are actions. Do not use “switch on” or “toggle”. See [Separate state from action](../writing-guidelines/states-and-errors.html#wg-031).
 
-<h2 id="p">P</h2>
+<h2 class="style-a-z__letter" id="p">P</h2>
 
 <h3 id="passwords-and-tokens">passwords and tokens</h3>
 
@@ -409,7 +420,7 @@ See [kilowatts and kilowatt-hours](#kilowatts-and-kilowatt-hours).
 
 A tracker or sensor reports a device or movement, not a person. Do not show it on a shared screen unless the household chose to. See [Treat presence as sensitive and uncertain](../writing-guidelines/right-tone.html#wg-066).
 
-<h2 id="q">Q</h2>
+<h2 class="style-a-z__letter" id="q">Q</h2>
 
 <h3 id="question-marks">question marks</h3>
 
@@ -419,7 +430,7 @@ Do not use a question as a heading. Use one in a form question that asks for a d
 
 Use curly double quotation marks. Use straight ones only in code. Never change quotation marks in a value someone must copy. See [Keep literal values literal](../writing-guidelines/clear-language.html#wg-025).
 
-<h2 id="r">R</h2>
+<h2 class="style-a-z__letter" id="r">R</h2>
 
 <h3 id="reading">reading</h3>
 
@@ -441,7 +452,7 @@ Say “Request sent” until the device reports a result. Do not say “Done” 
 
 Offer “Try again” only when it is safe and will not repeat the action. See [Explain pending and uncertain outcomes](../writing-guidelines/states-and-errors.html#wg-044).
 
-<h2 id="s">S</h2>
+<h2 class="style-a-z__letter" id="s">S</h2>
 
 <h3 id="saved-sent-and-selected">saved, sent and selected</h3>
 
@@ -483,7 +494,7 @@ Never use sound alone. Give the same information in words. See [Do not assume on
 
 A state is the value Home Assistant holds for an entity. It is not necessarily fresh or what was asked for. See [Separate state from action](../writing-guidelines/states-and-errors.html#wg-031).
 
-<h2 id="t">T</h2>
+<h2 class="style-a-z__letter" id="t">T</h2>
 
 <h3 id="temperature">temperature</h3>
 
@@ -509,7 +520,7 @@ A short message that disappears. Use only for feedback no one needs to act on. S
 
 Use for lights, heating and appliances. Do not use “switch on”, “power up”, “activate” or “toggle”. Name the thing.
 
-<h2 id="u">U</h2>
+<h2 class="style-a-z__letter" id="u">U</h2>
 
 <h3 id="unavailable-and-unknown">unavailable and unknown</h3>
 
@@ -531,7 +542,7 @@ An action and a time. Name which. Never show a page’s change date as a device�
 
 Write “web address”. Use code formatting only when someone must copy it. Never show one containing a token or password.
 
-<h2 id="v">V</h2>
+<h2 class="style-a-z__letter" id="v">V</h2>
 
 <h3 id="version-numbers">version numbers</h3>
 
@@ -541,7 +552,7 @@ Write Home Assistant versions as the maker does. Say which version a screen or l
 
 Use “voice” for speaking to Assist. Say what Assist heard and did. See [Assist](technical-a-to-z.html#ht-assist-language-assist).
 
-<h2 id="w">W</h2>
+<h2 class="style-a-z__letter" id="w">W</h2>
 
 <h3 id="warnings">warnings</h3>
 
@@ -559,13 +570,13 @@ Lower case, no hyphen. Keep the network name exactly as typed.
 
 Do not use “simply”, “just”, “easy”, “obviously” or “please”. See [Use familiar, concrete words](../writing-guidelines/clear-language.html#wg-010).
 
-<h2 id="y">Y</h2>
+<h2 class="style-a-z__letter" id="y">Y</h2>
 
 <h3 id="you-and-your">you and your</h3>
 
 Use “you” and “your”. Do not use “the user”. Use “we” only when it is clear who “we” is. See [Do not assume who is reading](../writing-guidelines/clear-language.html#wg-060).
 
-<h2 id="z">Z</h2>
+<h2 class="style-a-z__letter" id="z">Z</h2>
 
 <h3 id="z-wave">Z-Wave</h3>
 

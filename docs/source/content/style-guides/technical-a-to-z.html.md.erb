@@ -15,6 +15,17 @@ updates:
     description: "Merged the Home Assistant glossary, entity and state language and interface terminology lists into this one A to Z."
   - date: "2026-11-15"
     description: "Added a technical A to Z."
+ai_instructions: "Use as a lookup for exact Home Assistant words. Each entry gives the meaning, what not to confuse it with and what to write. Keep native labels, keys and translations exactly as Home Assistant shows them. Entries are rules only. Examples live in Use clear language, under Use Home Assistant words accurately."
+ai_related:
+  - path: "/content/style-guides/a-to-z.html"
+    title: "A to Z General"
+    relationship: "General writing rules."
+  - path: "/content/writing-guidelines/clear-language.html"
+    title: "Use clear language"
+    relationship: "Rules WG-020 to WG-025 and the worked examples."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "What states and requests may claim."
 ---
 
 # A to Z Technical
@@ -50,7 +61,7 @@ The exact Home Assistant words to use. For general writing, see [A to Z General]
 </nav>
 
 <% by_letter.keys.sort.each do |letter| %>
-<h2 id="<%= letter.downcase %>"><%= letter %></h2>
+<h2 class="style-a-z__letter" id="<%= letter.downcase %>"><%= letter %></h2>
 <% by_letter[letter].each do |entry| %>
 <% if entry[:group] %>
 <% group = entry[:group] %>

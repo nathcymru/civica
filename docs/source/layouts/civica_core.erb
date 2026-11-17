@@ -5,6 +5,12 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#1d70b8">
 <title><%= escape(current_page.data.title) %> – civica Design System</title>
 <meta name="description" content="<%= escape(current_page.data.description || 'A clear, consistent Home Assistant interface inspired by UK public service design.') %>">
+<% if current_page.data.ai_instructions %>
+<meta name="ai-guide-context" content="This page is part of the civica writing guide for Home Assistant. The guide has four parts that depend on each other: Writing guidelines (what to say), Formatting content (how to lay it out), Publish, update or retire (how content is checked, changed and removed) and Lexicons (A to Z General and A to Z Technical, for looking up single words). Apply the writing guidelines first, then formatting, then the lifecycle checks, and use the lexicons to settle individual words. Rules have IDs such as WG-031 and anchors such as #wg-031. Each rule is a statement, a reason and a Before and After pair. Write in British English. State only what Home Assistant has reported.">
+<meta name="ai-instructions" content="<%= escape(current_page.data.ai_instructions) %>">
+<% Array(current_page.data.ai_related).each do |related| %><meta name="ai-related" content="<%= escape(related['title']) %> (<%= escape(related['path']) %>): <%= escape(related['relationship']) %>">
+<% end %>
+<% end %>
 <%= stylesheet_link_tag 'screen' %><%= favicon_tag 'favicon.ico' %>
 <link rel="icon" type="image/svg+xml" href="<%= docs_path('/images/favicon.svg') %>"><link rel="apple-touch-icon" href="<%= docs_path('/images/apple-touch-icon.png') %>"><link rel="manifest" href="<%= docs_path('/site.webmanifest') %>">
 </head>
