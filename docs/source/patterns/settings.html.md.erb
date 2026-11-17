@@ -43,7 +43,9 @@ These examples are local previews with invented values. They do not control a ho
 2. **Colour palette** shows the palette of the current theme.
 3. **Use muted colours** shows whether that theme is Vivid or Muted.
 4. Changing either control selects the matching generated theme, such as `civica Civic Cobalt Muted`.
-5. A short status message confirms the choice.
+5. A short status message reports the selection, for example “Civic Cobalt: muted colours selected.” Home Assistant applies and saves the theme. The message does not confirm that the save finished.
+
+The real control is labelled “Use muted colours” and has no Save button. The preview above shortens the label to “Muted colours” and adds a “Preview saving” button so it can show feedback locally.
 
 Keep focus on the control. Do not move to another page, reload or ask for confirmation. Do not change another user’s settings. Do not use Home Assistant’s default-theme action for a personal preference.
 
@@ -55,11 +57,8 @@ Choosing a palette clears any custom primary or accent colour, so an old overrid
 
 ## When it cannot apply
 
-- **A civica theme is missing:** keep the current theme and the controls disabled. Say “Install all civica themes and reload themes to use these controls.”
-- **Safe or recovery mode:** disable the controls and say “Colour controls are unavailable in safe or recovery mode.”
-- **The profile page changes:** fail safely and offer the standalone settings card. Never hide the native settings because the controls did not find their place.
-
-See [Errors and recovery](recovery.html) for the wording of a missing theme.
+- **A civica theme is missing, themes are loading, or Home Assistant is in safe or recovery mode:** keep the current theme and show the message given in [Errors and recovery](recovery.html). That page owns the wording.
+- **The profile page changes:** fail safely and offer the standalone settings card. Never hide the native settings because the controls did not find their place. [Change theme colours](../get-started/colour-settings.html) shows the card.
 
 ## Keep the scope narrow
 

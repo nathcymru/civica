@@ -49,7 +49,10 @@ These examples are local previews with invented household values. They do not co
 | Only an earlier observation exists | Last reported value, with its date and time | A new reading |
 | Home Assistant rejected the request | Request rejected, with the known reason | The device did not respond |
 | The request was accepted but no new state has arrived | Request accepted; result not confirmed | Failed, succeeded or safe to repeat |
-| A civica theme is missing | This theme is unavailable. Reload themes and try again. | A silent switch to another palette |
+| The civica colour controls are disabled because not every civica theme is installed | Install all civica themes and reload themes to use these controls. | Leaving the controls disabled without a reason |
+| A chosen civica theme is absent when the person applies it | This theme is unavailable. Reload themes and try again. | A silent switch to another palette |
+| Home Assistant has not yet supplied its themes | Colour settings are loading. | An error |
+| Home Assistant is in safe or recovery mode | Colour controls are unavailable in safe or recovery mode. | Hiding the native theme settings |
 | The profile controls cannot attach | Use the native theme selector or the settings card | Hiding the native settings |
 
 ## Keep the person’s context
