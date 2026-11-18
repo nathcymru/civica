@@ -1,0 +1,64 @@
+---
+title: "Illustration colours"
+description: "How to choose, pair and contrast GOV.UK colours in an illustration, with Home Assistant examples."
+group: "Colour"
+nav_order: 8
+last_reviewed_on: 2026-11-18
+review_in: 3 months
+published_on: "2026-11-18"
+updated_on: "2026-11-18"
+updates:
+  - date: "2026-11-18"
+    description: "First published, following the GOV.UK Brand Guidelines illustrations colour page, with its colours copied exactly."
+ai_instructions: "Apply when choosing colours for an illustration in civica documentation, a Home Assistant dashboard or a social post. Take colours from the palette for the channel: Web colours for documentation and dashboards, Social colours for social media. Use 4 to 6 colours where possible. Make Primary blue the base, and use Accent teal or Accent blue only to highlight a key component. Pair complementary colours, use shades of one colour to separate foreground from background, and test the illustration with a colour blindness simulator. Illustration colours do not follow the theme colour. How to draw an illustration is owned by Illustration. Rules WG-001, WG-002."
+ai_related:
+  - path: "/styles/illustration.html"
+    title: "Illustration"
+    relationship: "Owns when to use an illustration, how to draw it and its alternative text."
+  - path: "/styles/colour-web.html"
+    title: "Web colours"
+    relationship: "Owns the palette for illustrations in documentation and dashboards."
+  - path: "/styles/colour-social.html"
+    title: "Social colours"
+    relationship: "Owns the palette for illustrations in social posts."
+---
+
+# Illustration colours
+
+Use this page to choose colours for an illustration, such as a picture that explains where to put a sensor. For when to use an illustration and how to draw it, see [Illustration](illustration.html). Illustration colours do not change with the household's theme colour.
+
+## Illustrations palette
+
+Use the palette for the channel where the illustration will appear. For example, use [Web colours](colour-web.html) for documentation pages and dashboards, and [Social colours](colour-social.html) for social media.
+
+Use as few colours as you can. As a rule of thumb, use 4 to 6 colours, depending on how complex the illustration is and how many elements it has.
+
+<%= colour_copy_status %>
+
+<%= colour_palette('illustrations', fields: %i[hex rgb]) %>
+
+Primary blue is the base of the brand, so use it heavily in illustrations. Use Accent teal and Accent blue if they suit the illustration and its layout. They are bold, so use them to highlight a key component.
+
+<%= example('illustration-colour-applying') %>
+
+### Colour pairing
+
+Choose colours that complement each other, with enough contrast to tell the key elements apart and keep a clear visual hierarchy.
+
+Use different shades of one colour to separate the foreground from the background, so that the image does not look flat.
+
+<%= example('illustration-colour-pairing') %>
+
+### Using contrast
+
+Contrasting colours make an illustration more appealing and easier to see.
+
+Test the illustration with a colour blindness simulator, to check that people with a colour vision deficiency do not lose important information.
+
+A warm colour beside a cool one, such as yellow beside blue, makes a focal point that draws attention to the action. Keep Primary blue dominant.
+
+<%= example('illustration-colour-contrast') %>
+
+## Maintenance
+
+GOV.UK values live in `docs/data/govuk-brand-colours.json`, under `pages.illustrations`. The example illustrations are generated from that file by `docs/scripts/generate-illustration-examples.py`. If a colour changes, run the script again rather than editing the illustrations by hand; `--check` reports illustrations that are out of date. Run `npm run check:colours` after the docs build.

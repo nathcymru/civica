@@ -7,7 +7,8 @@
 //   3. each built Colour page shows every colour of its palette, with its values;
 //   4. the Chart colours page and chart module use the GOV.UK chart palette;
 //   5. the Map colours page shows the GOV.UK map example colours;
-//   6. the Social colours page shows the GOV.UK companion pairings.
+//   6. the Social colours page shows the GOV.UK companion pairings;
+//   7. the illustration examples use only GOV.UK Web and illustration colours.
 // Run after the docs build: node scripts/check-colours.mjs
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -73,7 +74,7 @@ const contrast = (a, b) => { const [x, y] = [luminance(a), luminance(b)].sort((m
 
 // 3. Published pages show every colour of their palette.
 const decode = text => text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
-for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app', 'colour-app', ['hex', 'rgb']], ['print', 'colour-print', ['cmyk', 'pantone']], ['maps', 'colour-maps', ['hex', 'rgb']], ['social', 'colour-social', ['hex', 'rgb']]]) {
+for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app', 'colour-app', ['hex', 'rgb']], ['print', 'colour-print', ['cmyk', 'pantone']], ['maps', 'colour-maps', ['hex', 'rgb']], ['social', 'colour-social', ['hex', 'rgb']], ['illustrations', 'colour-illustrations', ['hex', 'rgb']]]) {
   const path = `${BUILD}/${file}.html`;
   assert.ok(existsSync(path), `${path} missing: run the docs build first`);
   const raw = readFileSync(path, 'utf8');
@@ -149,5 +150,14 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   const used = [...tiles.matchAll(/(?:fill|stroke)="(#[0-9A-Fa-f]{6})"/g)].map(match => match[1].toUpperCase());
   assert.ok(used.length > 0, 'colour-social: example tiles have colours');
   for (const hex of used) assert.ok(palette.has(hex), `colour-social: example colour ${hex} is in the GOV.UK social palette`);
+}
+// 7. Every colour in the illustration examples is a GOV.UK Web colour or one
+// of the colours the GOV.UK illustrations page lists.
+{
+  const allowed = new Set([...groupIds(pages.web.palette), ...groupIds(pages.illustrations.palette)].map(id => colours[id].hex.toUpperCase()));
+  const examples = readFileSync('docs/data/illustration-colour-examples.yml', 'utf8');
+  const used = [...examples.matchAll(/(?:fill|stroke)="(#[0-9A-Fa-f]{6})"/g)].map(match => match[1].toUpperCase());
+  assert.ok(used.length > 0, 'colour-illustrations: examples have colours');
+  for (const hex of used) assert.ok(allowed.has(hex), `colour-illustrations: example colour ${hex} is a GOV.UK Web or illustration colour`);
 }
 console.log(`Colour record is consistent: ${Object.keys(colours).length} GOV.UK colours across ${Object.keys(pages).length} pages, read ${data.source.read_on}.`);
