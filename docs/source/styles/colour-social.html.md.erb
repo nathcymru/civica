@@ -1,6 +1,6 @@
 ---
 title: "Social colours"
-description: "The GOV.UK social palette, how to use colour to set the tone of a post, and the nine companion colour pairings, with Home Assistant examples."
+description: "The GOV.UK social palette, how to use colour to set the tone of a post, and the 9 companion colour pairings, with Home Assistant examples."
 group: "Colour"
 nav_order: 3
 last_reviewed_on: 2026-11-18
@@ -10,7 +10,7 @@ updated_on: "2026-11-18"
 updates:
   - date: "2026-11-18"
     description: "First published, with the GOV.UK social palette and companion colour set copied exactly from the GOV.UK Brand Guidelines."
-ai_instructions: "Apply when making a social media graphic or a promotional tile about civica or a household's Home Assistant set-up. Use only the GOV.UK social palette on this page, unchanged, rendered from docs/data/govuk-brand-colours.json. Match the colour to the tone: black and white or a dark shade to inform, tonal colours (one family) for sensitive messages, companion pairings (only the nine listed) to prompt action or share good news. Every text pair must reach WCAG 2.2 AA contrast. Never rely on colour alone. Social colours do not follow the theme colour and are not used in the Home Assistant interface. Rules WG-001, WG-002."
+ai_instructions: "Apply when making a social media graphic or a promotional tile about civica or a household's Home Assistant set-up. Use only the GOV.UK social palette on this page, unchanged, rendered from docs/data/govuk-brand-colours.json. Match the colour to the tone: black and white or a dark shade to inform, tonal colours (based on one colour family) for sensitive messages, companion colours (the 9 listed pairings) to prompt action or share good news. Accent blue on Primary blue and Primary blue on Primary yellow reach only 3:1, so use them only for large text or graphics. Every text pair must reach WCAG 2.2 AA contrast. Never rely on colour alone. Social colours do not follow the theme colour and are not used in the Home Assistant interface. Rules WG-001, WG-002."
 ai_related:
   - path: "/styles/colour-web.html"
     title: "Web colours"
@@ -57,7 +57,7 @@ For a sensitive message, use colours from one tonal range, so that the post feel
 
 ## Companion colour set
 
-Use companion colours for emphasis, for example to prompt an action or to share good news. Use only these 9 pairings, which are kept few so that they stay accessible.
+Use companion colours for emphasis, for example to prompt an action or to share good news. GOV.UK keeps the set to these 9 pairings to help keep them accessible. Accent blue on Primary blue and Primary blue on Primary yellow reach only 3:1, so use them only for large text or graphics, not for smaller text.
 
 <%= colour_companion_pairs %>
 
@@ -70,4 +70,4 @@ Use companion colours for emphasis, for example to prompt an action or to share 
 
 ## Maintenance
 
-GOV.UK values live in `docs/data/govuk-brand-colours.json`, under `pages.social`. The example tiles were generated from that file. If a colour changes, regenerate them rather than editing a colour by hand. Run `npm run check:colours` after the docs build.
+GOV.UK values live in `docs/data/govuk-brand-colours.json`, under `pages.social`. The example tiles are generated from that file by `docs/scripts/generate-social-examples.py`. If a colour changes, run the script again rather than editing the tiles by hand; `--check` reports tiles that are out of date. Run `npm run check:colours` after the docs build.

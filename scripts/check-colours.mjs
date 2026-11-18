@@ -121,13 +121,6 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   const module = JSON.parse(readFileSync('design-system/chart-colours.json', 'utf8'));
   assert.deepEqual(module.categorical.map(colour => colour.hex), pages.charts.categorical.filter(item => !item.role).map(item => colours[item.colour].hex), 'chart module uses the GOV.UK categorical colours');
 }
-// 6. The Social colours page shows the nine GOV.UK companion pairings in order,
-// and every pairing's foreground and background reach 3:1 at least.
-{
-  const html = decode(readFileSync(`${BUILD}/colour-social.html`, 'utf8'));
-  const names = [...html.matchAll(/<p class="c-swatch__name">([^<]+ on [^<]+)<\/p>/g)].map(match => match[1]);
-  assert.deepEqual(names, pages.social.companion.map(pair => `${colours[pair.foreground].name} on ${colours[pair.background].name}`), 'colour-social: companion pairings in GOV.UK order');
-}
 // 5. The map example colours are GOV.UK's, and the Map colours page lists them.
 {
   const example = pages.maps.example;
@@ -140,5 +133,21 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   // Data must reach 3:1 with the land through its outline (GOV.UK maps guidance).
   const land = colours[example.base_map.find(item => item.role === 'Land').colour].hex;
   assert.ok(contrast(colours[example.points_of_interest[0].outline].hex, land) >= 3, 'map data outline reaches 3:1 on the land');
+}
+// 6. The Social colours page shows the 9 GOV.UK companion pairings in order,
+// every pairing reaches 3:1 at least, and every example tile colour is a
+// GOV.UK social palette colour.
+{
+  const html = decode(readFileSync(`${BUILD}/colour-social.html`, 'utf8'));
+  const names = [...html.matchAll(/<p class="c-swatch__name">([^<]+ on [^<]+)<\/p>/g)].map(match => match[1]);
+  assert.deepEqual(names, pages.social.companion.map(pair => `${colours[pair.foreground].name} on ${colours[pair.background].name}`), 'colour-social: companion pairings in GOV.UK order');
+  for (const pair of pages.social.companion) {
+    assert.ok(contrast(colours[pair.foreground].hex, colours[pair.background].hex) >= 3, `colour-social: ${pair.foreground} on ${pair.background} reaches 3:1`);
+  }
+  const palette = new Set(groupIds(pages.social.palette).map(id => colours[id].hex.toUpperCase()));
+  const tiles = readFileSync('docs/data/social-colour-examples.yml', 'utf8');
+  const used = [...tiles.matchAll(/(?:fill|stroke)="(#[0-9A-Fa-f]{6})"/g)].map(match => match[1].toUpperCase());
+  assert.ok(used.length > 0, 'colour-social: example tiles have colours');
+  for (const hex of used) assert.ok(palette.has(hex), `colour-social: example colour ${hex} is in the GOV.UK social palette`);
 }
 console.log(`Colour record is consistent: ${Object.keys(colours).length} GOV.UK colours across ${Object.keys(pages).length} pages, read ${data.source.read_on}.`);

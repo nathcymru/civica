@@ -63,8 +63,9 @@ module ColourHelpers
     %w[RGB CMYK Pantone Sass].include?(label) ? label : label.downcase
   end
 
-  def colour_value_row(label, value, colour_name, copy: true)
-    id = 'v-' + Digest::SHA1.hexdigest("#{colour_name}|#{label}|#{value}")[0, 10]
+  # `key` keeps the id unique when one colour value appears in several swatches.
+  def colour_value_row(label, value, colour_name, copy: true, key: nil)
+    id = 'v-' + Digest::SHA1.hexdigest("#{key}|#{colour_name}|#{label}|#{value}")[0, 10]
     button = copy ? %(<button type="button" class="c-copy-value" data-copy-value="#{escape(value)}" aria-label="Copy #{escape(colour_spoken_label(label))} #{escape(value)} for #{escape(colour_name)}" hidden><svg class="c-copy-value__icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M5 1h8a2 2 0 0 1 2 2v8h-2V3H5z"/><path d="M1 5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2z"/></svg><span class="c-copy-value__text" aria-hidden="true">Copy</span></button>) : ''
     %(<div class="c-swatch__row"><dt>#{escape(label)}</dt><dd><code id="#{id}">#{escape(value)}</code>#{button}</dd></div>)
   end
@@ -120,12 +121,12 @@ module ColourHelpers
   # GOV.UK social companion colour set: each pairing shown as a sample, with
   # both colour names and their hex values as real text.
   def colour_companion_pairs
-    items = colour_page('social').fetch('companion').map do |pair|
+    items = colour_page('social').fetch('companion').each_with_index.map do |pair, index|
       fg = govuk_colour(pair.fetch('foreground'))
       bg = govuk_colour(pair.fetch('background'))
       label = "#{fg.fetch('name')} on #{bg.fetch('name')}"
       sample = %(<svg class="c-pair__sample" viewBox="0 0 120 80" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="120" height="80" fill="#{bg.fetch('hex')}"/><circle cx="60" cy="40" r="26" fill="#{fg.fetch('hex')}"/></svg>)
-      rows = [colour_value_row('Foreground', fg.fetch('hex'), fg.fetch('name')), colour_value_row('Background', bg.fetch('hex'), bg.fetch('name'))]
+      rows = [colour_value_row('Foreground', fg.fetch('hex'), fg.fetch('name'), key: "pair-#{index}"), colour_value_row('Background', bg.fetch('hex'), bg.fetch('name'), key: "pair-#{index}")]
       %(<li class="c-swatch">#{sample}<p class="c-swatch__name">#{escape(label)}</p><dl class="c-swatch__codes">#{rows.join}</dl></li>)
     end
     %(<ul class="c-swatches" role="list">#{items.join}</ul>)
