@@ -66,17 +66,6 @@
           "name": "ha-bottom-sheet",
           "origin": "Home Assistant",
           "anchor": "child-ha-bottom-sheet"
-        },
-        {
-          "name": "ha-bar",
-          "origin": "Home Assistant",
-          "anchor": "xref-ha-bar",
-          "cross_reference": {
-            "parent": "Bar / Meter",
-            "route": "/components/bar-meter.html",
-            "anchor": "child-ha-bar"
-          },
-          "note": "Owned by Bar / Meter."
         }
       ]
     },
@@ -1729,17 +1718,6 @@
           "name": "ha-clickable-list-item",
           "origin": "Home Assistant",
           "anchor": "child-ha-clickable-list-item"
-        },
-        {
-          "name": "ha-list-item",
-          "origin": "Home Assistant",
-          "anchor": "xref-ha-list-item",
-          "cross_reference": {
-            "parent": "List, Navigation List & Sortable List",
-            "route": "/components/list-navigation-list-and-sortable-list.html",
-            "anchor": "child-ha-list-item"
-          },
-          "note": "Owned by List, Navigation List & Sortable List."
         }
       ]
     },

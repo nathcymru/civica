@@ -11,6 +11,11 @@ const parents = inventory.parents;
 const index = '/docs/build/components/index.html';
 const sourceFor = route => ['.html.md.erb', '.html.erb', '.html.md'].map(suffix => `docs/source${route.replace(/\.html$/, '')}${suffix}`).find(existsSync);
 const available = parents.filter(parent => sourceFor(parent.route));
+// Pages outside the inventory stay in the sidebar until Branch 2 retires them (pinned in scripts/check-components.mjs).
+const legacy = ['chart-examples', 'controls', 'details', 'devices', 'error-summary', 'example', 'expander',
+  'generic-header', 'password-input', 'review-date', 'status', 'warning-callout']
+  .map(name => `/components/${name}.html`).filter(sourceFor)
+  .map(route => ({ route, title: YAML.parse(readFileSync(sourceFor(route), 'utf8').split(/^---$/m)[1]).title }));
 // A page links to an element's anchor only once it declares the component schema.
 const declares = parent => {
   const source = sourceFor(parent.route);
@@ -74,9 +79,10 @@ test('the A to Z list names every parent once, links published pages and marks t
 });
 
 test('the combobox finds parents, elements and variants and goes to the owning anchor', async ({ page }) => {
-  const requests = [];
-  page.on('request', request => { if (!request.url().endsWith('.html') && request.resourceType() === 'fetch') requests.push(request.url()); });
   await page.goto(index);
+  // Searching uses the embedded data only: no request of any kind after the page has loaded.
+  const requests = [];
+  page.on('request', request => requests.push(request.url()));
   const box = page.getByRole('combobox', { name: 'Find a component or element' });
   await expect(box).toHaveAttribute('aria-expanded', 'false');
   await box.fill('ha-button');
@@ -91,24 +97,69 @@ test('the combobox finds parents, elements and variants and goes to the owning a
   await box.press('Escape');
   await expect(box).toHaveAttribute('aria-expanded', 'false');
 
+  // An honest empty result.
+  await box.fill('zzzz-no-such-element');
+  await expect(page.locator('[data-component-search-status]')).toHaveText('No components or elements match.');
+  await expect(box).toHaveAttribute('aria-expanded', 'false');
+  expect(requests).toEqual([]);
+
   // A child element resolves to its anchor on the owning page.
   await box.fill('<details>');
   await listbox.getByRole('option', { name: /^<details>/ }).first().click();
   const accordion = parents.find(parent => parent.parent === 'Accordion');
   await expect(page).toHaveURL(new RegExp(`components/accordion\\.html${anchorPattern(accordion, 'child-details')}`));
 
-  // A parent that has no page yet resolves to its entry in the A to Z list.
+  // A parent that has no page yet resolves to its entry in the A to Z list, and focus moves there.
   await page.goto(index);
-  await page.getByRole('combobox', { name: 'Find a component or element' }).fill('hui-tile-card');
-  await page.getByRole('combobox', { name: 'Find a component or element' }).press('ArrowDown');
-  await page.getByRole('combobox', { name: 'Find a component or element' }).press('Enter');
+  const again = page.getByRole('combobox', { name: 'Find a component or element' });
+  await again.fill('hui-tile-card');
+  await again.press('ArrowDown');
+  await again.press('Enter');
   const tile = parents.find(parent => parent.parent === 'Tile Card');
-  await expect(page).toHaveURL(available.includes(tile) ? new RegExp(`tile-card\\.html${anchorPattern(tile, 'child-hui-tile-card')}`) : /index\.html#parent-tile-card$/);
+  if (available.includes(tile)) await expect(page).toHaveURL(new RegExp(`tile-card\\.html${anchorPattern(tile, 'child-hui-tile-card')}`));
+  else {
+    await expect(page).toHaveURL(/index\.html#parent-tile-card$/);
+    await expect(page.locator('#parent-tile-card')).toBeFocused();
+  }
+});
 
-  // An honest empty result.
-  await page.getByRole('combobox', { name: 'Find a component or element' }).fill('zzzz-no-such-element');
-  await expect(page.locator('[data-component-search-status]')).toHaveText('No components or elements match.');
-  expect(requests).toEqual([]);
+test('a cross-referenced element appears once, under its owner, naming the other pages', async ({ page }) => {
+  await page.goto(index);
+  const box = page.getByRole('combobox', { name: 'Find a component or element' });
+  const exact = name => page.getByRole('listbox').locator('.c-component-search__option', { has: page.locator('.c-component-search__name', { hasText: new RegExp(`^${name}$`) }) });
+  for (const item of parents.flatMap(parent => parent.children.flatMap(child => [child, ...(child.grandchildren || [])]).filter(entry => entry.cross_reference).map(entry => ({ parent, entry })))) {
+    await box.fill(item.entry.name);
+    const options = exact(item.entry.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    await expect(options).toHaveCount(1);
+    await expect(options).toContainText(`in ${item.entry.cross_reference.parent}`);
+    await expect(options).toContainText(item.parent.parent);
+    if (item.entry.note) await expect(options).toContainText(item.entry.note);
+  }
+});
+
+test('the combobox keyboard follows the ARIA combobox pattern', async ({ page }) => {
+  await page.goto(index);
+  const box = page.getByRole('combobox', { name: 'Find a component or element' });
+  await box.fill('ha-');
+  // More than 50 matches: the first 50 are shown and the status says so.
+  await expect(page.getByRole('listbox').getByRole('option')).toHaveCount(50);
+  await expect(page.locator('[data-component-search-status]')).toHaveText(/^\d+ results, showing the first 50\.$/);
+  await box.press('ArrowUp');
+  await expect(box).toHaveAttribute('aria-activedescendant', 'component-option-49');
+  await box.press('ArrowDown');
+  await expect(box).toHaveAttribute('aria-activedescendant', 'component-option-0');
+  for (const key of ['Home', 'End', 'ArrowLeft', 'ArrowRight']) {
+    await box.press('ArrowDown');
+    await expect(box).toHaveAttribute('aria-activedescendant', /component-option-\d+/);
+    await box.press(key);
+    await expect(box).not.toHaveAttribute('aria-activedescendant');
+    await expect(box).toBeFocused();
+    await expect(box).toHaveAttribute('aria-expanded', 'true');
+  }
+  await box.press('Escape');
+  await expect(box).toHaveAttribute('aria-expanded', 'false');
+  await box.press('Escape');
+  await expect(box).toHaveValue('');
 });
 
 test('the index passes automated accessibility checks and reflows at 320px', async ({ page }) => {
@@ -130,13 +181,16 @@ test('without JavaScript the full A to Z list remains and the combobox is not of
 });
 
 test('the sidebar is one flat A to Z list of published parents with the current page marked', async ({ page }) => {
-  await page.goto('/docs/build/components/buttons.html');
-  const sidebar = page.getByRole('navigation', { name: 'Pages in this section' });
-  await expect(sidebar.locator('.app-subnav__theme')).toHaveCount(0);
-  await expect(sidebar.locator('ul.app-subnav__section')).toHaveCount(1);
-  const names = await sidebar.locator('.app-subnav__section-item a').allTextContents();
-  expect(names.map(name => name.trim())).toEqual(available.map(parent => parent.parent));
-  await expect(sidebar.locator('.app-subnav__section-item--current > a[aria-current="page"]')).toHaveText('Button');
+  const expected = [...available.map(parent => parent.parent), ...legacy.map(item => item.title)].sort(byName);
+  for (const [route, current] of [['/components/buttons.html', 'Button'], ...legacy.map(item => [item.route, item.title])]) {
+    await page.goto(`/docs/build${route}`);
+    const sidebar = page.getByRole('navigation', { name: 'Pages in this section' });
+    await expect(sidebar.locator('.app-subnav__theme')).toHaveCount(0);
+    await expect(sidebar.locator('ul.app-subnav__section')).toHaveCount(1);
+    const names = await sidebar.locator('.app-subnav__section-item a').allTextContents();
+    expect(names.map(name => name.trim()), route).toEqual(expected);
+    await expect(sidebar.locator('.app-subnav__section-item--current > a[aria-current="page"]')).toHaveText(current);
+  }
 });
 
 test('the machine-readable index lists every parent, child and grandchild with its owner', async ({ request }) => {

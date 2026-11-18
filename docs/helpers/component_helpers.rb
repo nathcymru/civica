@@ -26,16 +26,33 @@ module ComponentHelpers
     end
   end
 
+  # Pages in /components/ that are not inventory parents. They are kept in the
+  # sidebar only until Branch 2 retires or moves them; the check pins this list
+  # so it can shrink but never grow.
+  def component_legacy_pages
+    routes = component_inventory.fetch('parents').map { |parent| parent.fetch('route').sub(%r{\A/}, '') }
+    sitemap.resources.select do |resource|
+      path = resource.destination_path
+      path.start_with?('components/') && path.end_with?('.html') && path != 'components/index.html' &&
+        !resource.ignored? && !routes.include?(path)
+    end
+  end
+
+  # The sidebar: every published parent, plus the legacy pages above, in one
+  # flat list in the inventory's order (lower-case code points).
+  def component_sidebar_items
+    items = component_parents.select { |parent| parent.fetch('available') }
+                             .map { |parent| { 'name' => parent.fetch('parent'), 'resource' => parent.fetch('resource') } } +
+            component_legacy_pages.map { |resource| { 'name' => resource.data.title.to_s, 'resource' => resource } }
+    items.sort_by { |item| item.fetch('name').downcase }
+  end
+
   def component_slug(text)
     text.downcase.gsub('&', 'and').gsub(/[^a-z0-9]+/, '-').gsub(/\A-|-\z/, '')
   end
 
   def component_letter_groups
     component_parents.group_by { |parent| parent.fetch('letter') }
-  end
-
-  def component_origin_summary(parent)
-    parent.fetch('origins').join(', ')
   end
 
   # One entry for each parent, child and grandchild, in inventory order.
@@ -96,15 +113,34 @@ module ComponentHelpers
   end
 
   # The browser copy drops the bulky parent records; it needs only the entries.
+  # A cross-referenced element resolves to the same anchor as its owner entry,
+  # so it is folded into that entry ("also listed on") instead of repeating it.
   def component_search_json
-    JSON.generate(component_index_entries.map do |entry|
+    entries = component_index_entries
+    also = Hash.new { |hash, key| hash[key] = [] }
+    entries.each { |entry| also[[entry.fetch('name'), entry.fetch('owner')]] << entry if entry['listed_on'] }
+    JSON.generate(entries.reject { |entry| entry['listed_on'] }.map do |entry|
       href = if entry.fetch('available')
                docs_path(entry.fetch('route')) + (entry['anchor'] && entry['anchor_published'] ? '#' + entry['anchor'] : '')
              else
                '#parent-' + component_slug(entry.fetch('owner'))
              end
+      listed = also[[entry.fetch('name'), entry.fetch('owner')]]
+      notes = ([entry['note']] + listed.map { |item| item['note'] }).compact
       { 'n' => entry.fetch('name'), 'k' => entry.fetch('kind'), 'o' => entry.fetch('owner'), 'h' => href,
-        'a' => entry.fetch('available'), 'w' => entry['within'] }.compact
+        'a' => entry.fetch('available'), 'w' => entry['within'],
+        'g' => entry['origin'] && component_origin_label(entry['origin']),
+        'l' => listed.empty? ? nil : listed.map { |item| item.fetch('listed_on') },
+        't' => notes.empty? ? nil : notes.join(' ') }.compact
     end).gsub('</', '<\/')
+  end
+
+  # Display form of an origin. The data value is "Civica"; the brand is written civica.
+  def component_origin_label(origin)
+    origin == 'Civica' ? 'civica' : origin
+  end
+
+  def component_origin_summary(parent)
+    'Origin: ' + parent.fetch('origins').map { |origin| component_origin_label(origin) }.join(', ')
   end
 end

@@ -112,7 +112,7 @@ h2.style-a-z__letter {
   list-style: none;
   border: 2px solid $civica-text;
   border-top: 0;
-  background: #ffffff;
+  background: var(--c-canvas);
 }
 
 .c-component-search__option {
@@ -121,13 +121,14 @@ h2.style-a-z__letter {
   cursor: pointer;
   overflow-wrap: anywhere;
 
-  &:hover { background: #f3f2f1; }
+  // Hover uses an underline, not a new tint, so the popup needs no colour beyond the tokens.
+  &:hover .c-component-search__name { text-decoration: underline; }
 
   &[aria-selected="true"] {
-    color: #ffffff;
-    background: $civica-primary;
+    color: var(--c-canvas);
+    background: var(--c-primary);
 
-    .c-component-search__meta { color: #ffffff; }
+    .c-component-search__meta { color: var(--c-canvas); }
   }
 }
 

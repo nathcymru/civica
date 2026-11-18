@@ -98,9 +98,15 @@
   let active = -1;
   root.hidden = false;
 
-  const describe = entry => entry.k === 'parent'
-    ? `${kinds.parent}${entry.a ? '' : ', specification not yet published'}`
-    : `${kinds[entry.k]} in ${entry.o}${entry.w ? `, within ${entry.w}` : ''}${entry.a ? '' : ', specification not yet published'}`;
+  // Spoken and shown after the name: what it is, where it is documented, its
+  // origin, any other page that lists it, and whether the page is published yet.
+  const describe = entry => [
+    entry.k === 'parent' ? kinds.parent : `${kinds[entry.k]} in ${entry.o}${entry.w ? `, within ${entry.w}` : ''}`,
+    entry.g ? `Origin: ${entry.g}` : '',
+    entry.l ? `Also listed on ${entry.l.join(' and ')}` : '',
+    entry.t || '',
+    entry.a ? '' : 'Specification not yet published'
+  ].filter(Boolean).join('. ');
   const rank = (entry, query) => {
     const name = entry.n.toLocaleLowerCase();
     const bare = name.replace(/^<|>$/g, '');
@@ -179,6 +185,9 @@
     } else if (event.key === 'Enter') {
       if (!listbox.hidden && active >= 0) { event.preventDefault(); go(results[active]); }
       else if (!listbox.hidden && results.length === 1) { event.preventDefault(); go(results[0]); }
+    } else if (['Home', 'End', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+      // These keys move the text cursor, so focus returns to the text (APG combobox).
+      if (active >= 0) highlight(-1);
     } else if (event.key === 'Escape') {
       if (!listbox.hidden) { event.preventDefault(); close(); }
       else if (input.value) { event.preventDefault(); input.value = ''; status.textContent = ''; }

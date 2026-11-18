@@ -37,9 +37,9 @@
 <nav class="app-subnav c-sidebar" aria-labelledby="app-subnav-heading">
 <h2 class="govuk-visually-hidden" id="app-subnav-heading">Pages in this section</h2>
 <% section = data.navigation.sections.find { |item| item.id == current_section } %>
-<% if section && section.id == 'components' %><%# Components: one flat A to Z list of published parents from the locked inventory, named as the inventory names them. %>
+<% if section && section.id == 'components' %><%# Components: one flat A to Z list of published parents from the locked inventory, named as the inventory names them, plus legacy pages until Branch 2 retires them. %>
 <ul class="app-subnav__section">
-<% component_parents.select { |parent| parent['available'] }.each do |parent| %><% current = parent['resource'].destination_path == current_page.destination_path %><li class="app-subnav__section-item<%= ' app-subnav__section-item--current' if current %>"><a class="app-subnav__link govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="<%= docs_path(parent['route']) %>"<%= ' aria-current="page"' if current %>><%= escape(parent['parent']) %></a></li>
+<% component_sidebar_items.each do |item| %><% current = item['resource'].destination_path == current_page.destination_path %><li class="app-subnav__section-item<%= ' app-subnav__section-item--current' if current %>"><a class="app-subnav__link govuk-link govuk-link--no-visited-state govuk-link--no-underline" href="<%= docs_path('/' + item['resource'].destination_path) %>"<%= ' aria-current="page"' if current %>><%= escape(item['name']) %></a></li>
 <% end %></ul>
 <% elsif section %><% section_groups(section.id).each do |group, resources| %>
 <h3 class="app-subnav__theme"><%= group %></h3>
