@@ -20,7 +20,7 @@ test('sample date changes cross month boundaries and fixed examples have no no-o
   await next.evaluate(button => { for (let index = 0; index < 20; index++) button.click(); });
   await expect(page.locator('hui-power-sources-graph-card .chart-description')).toContainText('1 December 2026');
   await expect(page.locator('hui-energy-usage-graph-card .chart-description')).toContainText('compared with 30 November 2026');
-  await page.getByRole('checkbox', { name: 'Muted chart colours' }).check();
+  await page.getByRole('checkbox', { name: 'Dark example' }).check();
   await expect(page.locator('hui-power-sources-graph-card .chart-description')).toContainText('1 December 2026');
   for (const id of ['local-chart-devices', 'local-chart-empty']) {
     await page.goto(`/docs/build/examples/${id}.html`);
@@ -32,7 +32,7 @@ test('sample date changes cross month boundaries and fixed examples have no no-o
   await expect(page.locator('.chart-description')).toContainText('28 March 2027, from 00:00 GMT to 04:00 BST');
 });
 
-test('real ECharts receives ONS presentation while data, native legend, zoom and tooltip survive', async ({ page }) => {
+test('real ECharts receives the GOV.UK chart presentation while data, native legend, zoom and tooltip survive', async ({ page }) => {
   const errors = []; page.on('pageerror', error => errors.push(error.message));
   await openExamples(page);
   await page.evaluate(() => {
@@ -317,7 +317,7 @@ test('Canvas paint, hover lines, native legend keys and tooltip swatches use the
     const canvas = host.shadowRoot.querySelector('.chart canvas'), scale = canvas.width / chart.getWidth();
     return [...canvas.getContext('2d').getImageData(Math.floor((rect.x + rect.width / 2) * scale), Math.floor((rect.y + rect.height / 2) * scale), 1, 1).data];
   });
-  expect(pixel).toEqual([32, 96, 149, 255]); // Opaque shared grid colour, actually painted.
+  expect(pixel).toEqual([29, 112, 184, 255]); // GOV.UK Primary blue grid colour, opaque and actually painted.
   await page.evaluate(() => window.energyFixture.hosts.devices.chart.dispatchAction({ type: 'highlight', seriesIndex: 0, dataIndex: 0 }));
   await expect.poll(() => page.evaluate(() => {
     const f = window.energyFixture, graphic = f.hosts.devices.chart.getModel().getSeriesByIndex(0).getData().getItemGraphicEl(0);
@@ -329,10 +329,10 @@ test('Canvas paint, hover lines, native legend keys and tooltip swatches use the
   const marker = page.locator('hui-energy-usage-graph-card .native-tooltip [data-series-id="grid-from_grid"] ha-chart-tooltip-marker');
   await expect(marker).toBeVisible();
   expect(await marker.evaluate(node => node.color)).toBe(await page.evaluate(() => window.energyFixture.sharedColour('grid-consumption')));
-  expect(await marker.evaluate(node => getComputedStyle(node).backgroundColor)).toBe('rgb(32, 96, 149)');
+  expect(await marker.evaluate(node => getComputedStyle(node).backgroundColor)).toBe('rgb(29, 112, 184)');
 });
 
-test('24 source identities keep shared colours and pattern keys across tone, mode, theme colour and ordering', async ({ page }) => {
+test('24 source identities keep shared colours and pattern keys across mode, theme colour and ordering', async ({ page }) => {
   await openExamples(page);
   async function inspect() {
     return page.evaluate(() => {
@@ -349,18 +349,21 @@ test('24 source identities keep shared colours and pattern keys across tone, mod
     });
   }
   const contexts = [];
-  for (const mode of ['light', 'dark']) for (const tone of ['vivid', 'muted']) {
-    await page.evaluate(({ mode, tone }) => { window.energyFixture.setMode(mode); window.energyFixture.setTone(tone); }, { mode, tone });
+  for (const mode of ['light', 'dark']) {
+    await page.evaluate(mode => window.energyFixture.setMode(mode), mode);
     await expect.poll(async () => (await inspect()).every(item => item.current === item.expected.color)).toBe(true);
     const result = await inspect(); contexts.push(result.map(item => item.current));
-    expect(new Set(result.map(item => item.current)).size).toBe(24);
+    // Six GOV.UK colours repeat across 24 series; colour, pattern, line dash and marker together stay distinct.
+    expect(new Set(result.map(item => item.current)).size).toBe(6);
+    expect(new Set(result.map(item => JSON.stringify([item.current, item.expected.pattern, item.expected.lineDash, item.expected.symbol]))).size).toBe(24);
     for (const item of result) {
       expect(item.previous).toBe(item.current); expect(item.keyColour).toBe(item.current);
       if (item.smallChartColour) expect(item.smallChartColour).toBe(item.current);
       expect(item.patterned).toBe(item.expected.pattern !== 'solid'); expect(item.patternKey).toBe(item.patterned); expect(item.comparisonPatterned).toBe(true);
     }
   }
-  expect(contexts[0]).not.toEqual(contexts[1]); expect(contexts[0]).not.toEqual(contexts[2]);
+  // GOV.UK chart colours are the same in light and dark mode.
+  expect(contexts[0]).toEqual(contexts[1]);
   const before = await inspect();
   await page.evaluate(() => window.energyFixture.setPalette('purple'));
   expect((await inspect()).map(item => item.current)).toEqual(before.map(item => item.current));
@@ -482,7 +485,7 @@ test('deactivation during a native date update never mixes new readings with old
 test('cross hatching and isolated hollow symbols match their visible legend keys', async ({ page }) => {
   await openExamples(page);
   const cross = await page.evaluate(() => {
-    const host = window.energyFixture.hosts.many, series = host.chart.getOption().series.find(series => series.id.startsWith('sensor.dishwasher_energy-'));
+    const host = window.energyFixture.hosts.many, series = host.chart.getOption().series.find(series => series.id.startsWith('sensor.oven_energy-')); // a cross-hatched identity
     const button = [...host.shadowRoot.querySelectorAll('.legend-toggle')].find(button => button.dataset.id === series.id);
     const data = host.chart.getModel().getSeries().find(model => model.id === series.id).getData();
     return { rendererSymbol: series.itemStyle.decal.symbol, keyPath: button.querySelector('.civica-chart-key pattern path').getAttribute('d'), paintedPattern: !!data.getItemVisual(0, 'style').decal?.image };

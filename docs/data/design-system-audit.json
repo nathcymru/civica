@@ -331,7 +331,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "All sixteen local decisions preserve their boundaries. CIV-016 has a confirmed Markdown-to-HTML table-structure defect. Remediation review: Reviewed the revised catalogue, evidence/compatibility boundaries, linked current deliverables and exact implementation claims. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "473e2fd254a3f2180acb34077b728b56840860b37d34185463e0cc5c5ae4dd6e",
+      "sha256": "d2c8ffca91d9313d81023f1cb77d78b89cfc5c63e979f1506ee923459c5b2e13",
       "url": "/community/deviations.html",
       "title": "Controlled deviations",
       "example_ids": [
@@ -550,7 +550,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Source families, reviewed scope and linked inventories are recorded. Source authority does not imply current native deployment or endorsement. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "7ddffe40d5c5a89d3d6f1e83fb64286ec314d8c6fe30e10befd6995b03f655b1",
+      "sha256": "437048ade724171c2547080a2469ca983e02c2b8ab8569743492682b82433807",
       "url": "/community/sources.html",
       "title": "Sources and provenance",
       "example_ids": [
@@ -895,7 +895,7 @@
     },
     {
       "path": "docs/source/components/charts.html.md.erb",
-      "sha256": "3a65c5b97168ddbc7eadf2f45a91d989f695c9f9174e64d1ae2ea8966e12e9eb",
+      "sha256": "18d567f9f2b72687eae3664b925064e1137aec25ac35aee8d957b4ce96837301",
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -6057,7 +6057,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "All nine data rules reviewed; clarified private HA adapter versus public ECharts APIs before freeze. Power/energy, original dates, gaps and native controls are preserved. 12 November 2026 source review: Linked the data rules to complete chart, dashboard and map examples, with an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json.",
-      "sha256": "a99ac13b42379fd84f64a1c9267c3264145ff2f3fcbed0455f7a436df620b389",
+      "sha256": "c93fd6bbd83d6272d51114d73f27752b45ed8016c7a69d97fb7f3ac654a1cafe",
       "url": "/styles/brand-data.html",
       "title": "Data visualisation",
       "example_ids": [
@@ -6149,7 +6149,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Stable identities, opaque generated colours, pattern limits and 1.5px lines are explicit. The 24-series example is not claimed perceptually distinct by colour alone. 12 November 2026 source review: Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "ae6f92e6bbcb35ff9ed2bc621cb5d94dcf40d2591e9ed800a0b6608b1c66442f",
+      "sha256": "1b32dc43c92e8e65c94a4d2d163847ebc61e078dfbe3cee6353b627ee9b1197b",
       "url": "/styles/chart-colour.html",
       "title": "Chart colour",
       "example_ids": [
@@ -6302,7 +6302,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Visual roles, brand chapters and the complete writing guide have clear entry points; canonical tokens remain outside authored prose. Project-story navigation review: discoverable About and Writing guide links, section grouping and update history are consistent; no new runtime claim. Preserved the historical #writing-guide anchor with a route to the new section. 12 November 2026 source review: Made data and colour guidance directly discoverable and added the matching original section illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "f3053632fde3b22faa533b0f943f9f1b47a1f6cc8745268dc2272d5f41b2c6b0",
+      "sha256": "03be1f031391771f0013cd81dca9c68669528f3de76ad1589088a1fbaae28e50",
       "url": "/styles/index.html",
       "title": "Styles",
       "example_ids": [
@@ -8159,7 +8159,7 @@
     },
     {
       "id": "data-colour-categorical",
-      "title": "Stable device identities in four display settings",
+      "title": "Stable device identities in light and dark mode",
       "path": "docs/data/data-colour-examples.yml",
       "source_file": "docs/data/data-colour-examples.yml",
       "reviewed_rule_families": [
@@ -8170,7 +8170,7 @@
         "WG"
       ],
       "finding_ids": [],
-      "review_note": "All four tone/mode contexts retain stable entity identities, generator-based colours and line/symbol cues. Missing data is not zero, values have a common period and table, and the specimen does not introduce another categorical palette.",
+      "review_note": "Light and dark contexts use the GOV.UK categorical chart colours from chartSeriesStyle, unchanged in both modes. Devices that share a colour differ by line dash, marker and name. Missing data is not zero, values have a common period and table, and colour is never the only cue.",
       "sha256": "9f2081ce5ec31875dde1ee7b1e82b776038eb5c104256954add3f9afa84a3777",
       "authored_html_sha256": "4fffd1a9aadd7ebe19dd9f93c6dd579ee58002866732232230f547a2f32069ed",
       "owners": [
@@ -8190,9 +8190,85 @@
         "WG"
       ],
       "finding_ids": [],
-      "review_note": "Sequential and diverging mappings state their endpoints, meaningful centre, numerical values and missing/out-of-range policies. These measured-value scales remain separate from categorical source identities.",
+      "review_note": "Sequential and divergent scales use named GOV.UK tints and shades (blues; blues and reds with Black tint 95% at a meaningful centre), with numerical values and missing and out-of-range policies. These measured-value scales stay separate from categorical source identities.",
       "sha256": "9f2081ce5ec31875dde1ee7b1e82b776038eb5c104256954add3f9afa84a3777",
       "authored_html_sha256": "29910af958afc584a698870331c16ecbd311c8e3d6e21b6fe11953d3531eb118",
+      "owners": [
+        "/styles/chart-colour.html"
+      ]
+    },
+    {
+      "id": "chart-govuk-single",
+      "title": "Single category bar chart",
+      "path": "docs/data/data-colour-examples.yml",
+      "source_file": "docs/data/data-colour-examples.yml",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Like-for-like with the GOV.UK \"Single category\" chart composition: synthetic daily electricity use (kWh) as bars in Primary blue, Black tint 80% grid lines and Black labels. Labelled synthetic data, period, unit, source, value labels on bars and a matching table.",
+      "sha256": "a7d560b964bfe53f4b6998d40913506b70958b1edcc3f3343a497a29ff6d6401",
+      "authored_html_sha256": "c22de339731ddbeba63c745d09c2e3122ea77e3c5ad09878191b201be2c8bfe2",
+      "owners": [
+        "/styles/chart-colour.html"
+      ]
+    },
+    {
+      "id": "chart-govuk-multiple",
+      "title": "Multiple categories line chart",
+      "path": "docs/data/data-colour-examples.yml",
+      "source_file": "docs/data/data-colour-examples.yml",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Like-for-like with the GOV.UK \"Multiple categories\" composition: four synthetic room temperatures as lines in Blue shade 50%, Teal tint 25%, Primary magenta and Orange tint 25%, each with its own dash and an end label, legend on top and a matching table.",
+      "sha256": "a7d560b964bfe53f4b6998d40913506b70958b1edcc3f3343a497a29ff6d6401",
+      "authored_html_sha256": "34e8f85a6a18160c608bac6bcae8e92b42712211972b19d51de34364e08bf96c",
+      "owners": [
+        "/styles/chart-colour.html"
+      ]
+    },
+    {
+      "id": "chart-govuk-divergent",
+      "title": "Divergent stacked bar chart",
+      "path": "docs/data/data-colour-examples.yml",
+      "source_file": "docs/data/data-colour-examples.yml",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Like-for-like with the GOV.UK \"Divergent categories\" composition: synthetic hours under and over the heating target per room in Primary blue, Blue tint 50%, Red tint 50% and Primary red, legend on top, position as a non-colour cue and a matching table including hours on target.",
+      "sha256": "a7d560b964bfe53f4b6998d40913506b70958b1edcc3f3343a497a29ff6d6401",
+      "authored_html_sha256": "723fdc2e8918143fc53cdd4d1576d1a01d925964432190fb0aefed97a7ce1633",
+      "owners": [
+        "/styles/chart-colour.html"
+      ]
+    },
+    {
+      "id": "chart-govuk-social",
+      "title": "Illustrative social media chart",
+      "path": "docs/data/data-colour-examples.yml",
+      "source_file": "docs/data/data-colour-examples.yml",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Illustrative example after the GOV.UK \"Using charts within social media\" composition: synthetic automation counts as area-sized circles on Blue shade 50% with Accent teal and Teal tint 95%, used only on that shade background as GOV.UK requires. Values are printed on every circle and repeated in a table.",
+      "sha256": "a7d560b964bfe53f4b6998d40913506b70958b1edcc3f3343a497a29ff6d6401",
+      "authored_html_sha256": "302534ae65abe2b3e5357d1a0ff5bc28489fc06d864c1825d11e02c2c16c5e26",
       "owners": [
         "/styles/chart-colour.html"
       ]
@@ -16749,8 +16825,8 @@
       "evidence": [
         {
           "path": "docs/source/community/deviations.html.md.erb",
-          "line": 60,
-          "excerpt": "| CIV-016 | Generated chart colours and dense-data lines | Larger Home Assistant inventories and live signals | Opaque identity-based OKLCH colours with Vivid/Muted variants, 24 fallback slots and patterns; 1.5px normal/hover/selected lines and legend keys; unfilled individual Power lines. Native column stacks, values and controls remain authoritative. This extends the ONS palette and 3px line guidance |",
+          "line": 62,
+          "excerpt": "| CIV-016 | Repeated GOV.UK chart colours and dense-data lines | Larger Home Assistant inventories and live signals | The six GOV.UK categorical colours, unchanged in both modes (owner decision, 18 November 2026), repeat across series; each series also has a stable pattern, line dash and marker. White labels in dark mode. 1.5px normal/hover/selected lines and legend keys; unfilled individual Power lines. Native column stacks, values and controls remain authoritative |",
           "detail": "The dense-chart deviation is restored to the shared decision table and its semantic headers."
         }
       ],
@@ -17916,7 +17992,7 @@
     },
     {
       "path": "docs/source/javascripts/energy-chart-examples.js",
-      "sha256": "d24aa6a3c4bd8400a27b69ca396b1a4c1e5a04e7dd2bfac821900a6c157cf647",
+      "sha256": "1eab7acfcf57ca939feed24b5560b3dc1a1955698ca2dac20b9e9cf64d78461b",
       "scope": "Authored/shared documentation source review. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -17956,7 +18032,7 @@
     },
     {
       "path": "ui/dev/energy-charts-harness.ts",
-      "sha256": "f3109615b8dc8fbf91f32537f44c8637a3ea320eb7d4d88a678eef9f988d3493",
+      "sha256": "568315edcb3f08ec3d15d9996f004ee088566dd2bd42275d7ed6af3952065827",
       "scope": "Maintained presentation/content surface inventory and bounded static inspection; no new live-device execution."
     },
     {
@@ -17981,7 +18057,7 @@
     },
     {
       "path": "ui/src/energy-charts.ts",
-      "sha256": "d60ce681dd8dab76f844ea42a5289829dad5345d1f96449d6f3c2377a7bf79e1",
+      "sha256": "63a2953856eb053844bfcbdfe3d29c83c7efa1bebef7202b1b260227873dd6e0",
       "scope": "Maintained presentation/content surface inventory and bounded static inspection; no new live-device execution. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json. Current startup-readiness correction reviewed in docs/data/startup-readiness-review.json; later full CI/live outcomes remain separate."
     },
     {
@@ -18211,7 +18287,7 @@
     },
     {
       "path": "docs/source/llms.txt",
-      "sha256": "e7154b45d88461063458578995fc6709faf8b3de78b590ac321dd00fd7772ff2",
+      "sha256": "cf9f7994db97f68967074d9b51add62a5a7eff6bda81f31c6d55566b0ccbaa55",
       "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -18237,12 +18313,12 @@
     {
       "path": "docs/data/dashboard-data-examples.yml",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately.",
-      "sha256": "f58ffe131e502cc7d6f33186e7b4624bf1c20e6ba2e17b32ed356abc5ddee68a"
+      "sha256": "48a169f8d8803d3e067861a1223703deab63de416f9e413e9e70911c634ebdd8"
     },
     {
       "path": "docs/data/data-colour-examples.yml",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "9f2081ce5ec31875dde1ee7b1e82b776038eb5c104256954add3f9afa84a3777"
+      "sha256": "3f0e141a6de02effc3730343857a65448d320a0460dc4e1c39759db5f432f872"
     },
     {
       "path": "docs/data/data-design-review.json",
@@ -18571,7 +18647,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "c1901b5948d86a889fbe175129cbddf4b0a7f51273aefd5993fca26997fa0fd5",
+      "sha256": "e686839ae0b55cbbc4482dd488c2d6636ef452ebcfdbdac000c84d1d1b639853",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {

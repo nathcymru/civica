@@ -6,7 +6,7 @@ group: "Guidance"
 source_url: "https://brand.design-system.service.gov.uk/data/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-17"
+updated_on: "2026-11-18"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -18,6 +18,8 @@ updates:
     description: "Added source-mapped civica.uk rules, contextual examples and explicit adoption boundaries."
   - date: "2026-11-17"
     description: "Rewritten to lead each rule with the action, remove per-rule source links and use Home Assistant wording. Rule IDs and anchors are unchanged."
+  - date: "2026-11-18"
+    description: "Chart colours now come from the GOV.UK chart palette and are the same in light and dark mode."
 ai_instructions: "Apply when designing a chart, dashboard or map for household data. Start from the question the person needs answered, keep native values and units, show gaps as gaps and give a text alternative. Operational charts follow the chart specification, not publicity graphics. Rules WG-038, WG-043, WG-056, WG-082."
 ai_related:
   - path: "/components/charts.html"
@@ -25,7 +27,7 @@ ai_related:
     relationship: "Owns the operational chart specification."
   - path: "/styles/chart-colour.html"
     title: "Chart colour"
-    relationship: "Owns the colour generator and legend keys."
+    relationship: "Owns the GOV.UK chart palette, series styles and legend keys."
   - path: "/home-assistant/maps-and-zones.html"
     title: "Maps, zones and location records"
     relationship: "Owns map and location behaviour."
@@ -97,9 +99,9 @@ The Power adapter’s signed projection picks the existing signed sample from ve
 
 **Local requirement: MUST.** Applies to supported operational Energy plots, legends and tooltip markers.
 
-Use the shared [chart-colour generator](chart-colour.html), legend keys that match the line or pattern, opaque paints and a **1.5px** line width in every state. Hover must not thicken a line or fade the other series.
+Use the [GOV.UK chart colours and series styles](chart-colour.html), legend keys that match the line or pattern, opaque paints and a **1.5px** line width in every state. Hover must not thicken a line or fade the other series.
 
-A brand change leaves each source’s colour unchanged. Vivid or Muted and Light or Dark use the generator’s declared variants. A comparison keeps its source colour and adds hatching. Hatching, markers and functional strokes are deliberate cues that do not rely on colour, so the [illustration](illustration.html) limits on texture and outline do not apply to them. Infographic accents and other palettes do not replace this contract.
+A theme colour change leaves each source’s colour unchanged, and chart colours are the same in light and dark mode. A comparison keeps its source colour and adds hatching. Hatching, markers and functional strokes are deliberate cues that do not rely on colour, so the [illustration](illustration.html) limits on texture and outline do not apply to them. Infographic accents and other palettes do not replace this contract.
 
 
 <h2 id="bg-dat-06">BG-DAT-06: Retain useful native interaction</h2>

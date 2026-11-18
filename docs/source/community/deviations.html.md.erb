@@ -18,6 +18,8 @@ updates:
     description: "Rewritten to lead with the deviation rule and add an example; the register rows are unchanged."
   - date: "2026-11-18"
     description: "CIV-002 now records the seven GOV.UK theme colours that replaced the ten palettes."
+  - date: "2026-11-18"
+    description: "CIV-016 now records repeated GOV.UK chart colours with patterns, replacing generated OKLCH colours."
 ai_instructions: "Use as the owner of the CIV-001 to CIV-016 register of local decisions. Add a deviation only with a user need, a boundary and a verification requirement. Keep IDs stable and do not weaken a boundary to fit a card. Rules WG-093, WG-094, WG-095."
 ai_related:
   - path: "/community/sources.html"
@@ -57,7 +59,7 @@ For example, CIV-014 separates structural boundaries from control boundaries in 
 | CIV-013 | MOJ notification badge in the native HA drawer control | Recognisable attention count without replacing notification behaviour | Preserve red rounded geometry, capped count and native accessible context; local live updates must not flood announcements |
 | CIV-014 | Separate dark structural and control boundaries | Quiet grouping without losing usable controls | Dark structural `#50565A`; interactive outline `#9BA4AA`; keep input/focus contrast and test the actual surface |
 | CIV-015 | Native Energy distribution diagram retained | Show household energy flow using the configured native sources | It is a Home Assistant flow diagram, not an ONS chart component. Preserve its accessible labels and native totals table; do not mislabel it as an ONS Sankey |
-| CIV-016 | Generated chart colours and dense-data lines | Larger Home Assistant inventories and live signals | Opaque identity-based OKLCH colours with Vivid/Muted variants, 24 fallback slots and patterns; 1.5px normal/hover/selected lines and legend keys; unfilled individual Power lines. Native column stacks, values and controls remain authoritative. This extends the ONS palette and 3px line guidance |
+| CIV-016 | Repeated GOV.UK chart colours and dense-data lines | Larger Home Assistant inventories and live signals | The six GOV.UK categorical colours, unchanged in both modes (owner decision, 18 November 2026), repeat across series; each series also has a stable pattern, line dash and marker. White labels in dark mode. 1.5px normal/hover/selected lines and legend keys; unfilled individual Power lines. Native column stacks, values and controls remain authoritative |
 
 
 ## Examples

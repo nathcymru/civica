@@ -18,10 +18,10 @@ examples:
       expected_interval_count: 6
       known_interval_sum: 2.34
       source_identity: grid-consumption
-      colour: "#206095"
-      colour_source: "chartColour('grid-consumption', {tone: 'vivid', mode: 'light'}) from design-system/chart-colours.mjs"
+      colour: "#1D70B8"
+      colour_source: "chartColour('grid-consumption', {mode: 'light'}) from design-system/chart-colours.mjs (GOV.UK Primary blue)"
       geometry: "Original SVG columns: 44px opaque square bars; y=260−300×value; x=78+90×interval index. Scale 0–0.8kWh. No rectangle for the missing interval."
-      presentation_source: "ui/src/energy-charts.ts ENERGY_CHART_SPEC: Arial; 14px minimum chart labels; 1px #D9D9D9 numeric grid; 1.5px #B3B3B3 zero baseline. Existing native renderer remains the production implementation."
+      presentation_source: "ui/src/energy-charts.ts ENERGY_CHART_SPEC: Arial; 14px minimum chart labels; 1px #CECECE numeric grid (GOV.UK Black tint 80%); 1.5px #858686 zero baseline (GOV.UK Black tint 50%). Existing native renderer remains the production implementation."
     artwork:
       creator: "civica.uk project; original documentation SVG geometry"
       licence: "MIT for original repository code and documentation artwork under LICENSE"
@@ -54,7 +54,7 @@ examples:
               <g class="civica-data-dashboard__grid"><line x1="60" y1="20" x2="590" y2="20"/><line x1="60" y1="80" x2="590" y2="80"/><line x1="60" y1="140" x2="590" y2="140"/><line x1="60" y1="200" x2="590" y2="200"/></g>
               <line class="civica-data-dashboard__zero" x1="60" y1="260" x2="590" y2="260"/>
               <g class="civica-data-dashboard__labels" text-anchor="end"><text x="49" y="25">0.8</text><text x="49" y="85">0.6</text><text x="49" y="145">0.4</text><text x="49" y="205">0.2</text><text x="49" y="265">0</text></g>
-              <g class="civica-data-dashboard__bars" fill="#206095"><rect x="78" y="134" width="44" height="126"/><rect x="168" y="152" width="44" height="108"/><rect x="348" y="44" width="44" height="216"/><rect x="438" y="98" width="44" height="162"/><rect x="528" y="170" width="44" height="90"/></g>
+              <g class="civica-data-dashboard__bars" fill="#1D70B8"><rect x="78" y="134" width="44" height="126"/><rect x="168" y="152" width="44" height="108"/><rect x="348" y="44" width="44" height="216"/><rect x="438" y="98" width="44" height="162"/><rect x="528" y="170" width="44" height="90"/></g>
               <g class="civica-data-dashboard__labels" text-anchor="middle"><text x="100" y="284">06–07</text><text x="190" y="284">07–08</text><text x="280" y="284">08–09</text><text x="370" y="284">09–10</text><text x="460" y="284">10–11</text><text x="550" y="284">11–12</text><text x="280" y="240">No value</text><text x="325" y="311">Hourly interval (GMT)</text></g>
             </svg>
           </div>

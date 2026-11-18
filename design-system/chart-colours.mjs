@@ -1,7 +1,10 @@
 import specification from './chart-colours.json' with { type: 'json' };
 
-// Original civica identity algorithm. Oklab conversion follows CSS Color 4;
-// the palette policy, stable hashes and tone ranges are specified in the JSON.
+// civica chart colours. The six categorical colours come unchanged from the
+// GOV.UK Brand Guidelines chart palette (see chart-colours.json `source`).
+// Colours are the same in light and dark mode; only the label colour used for
+// the total consumption line follows the mode. Because six colours cannot tell
+// every series apart, each identity also gets a stable pattern, dash and marker.
 const freeze = (value) => {
   if (value && typeof value === 'object') {
     Object.values(value).forEach(freeze);
@@ -10,13 +13,18 @@ const freeze = (value) => {
   return value;
 };
 export const CHART_COLOUR_SPEC = freeze(specification);
-const colourCache = new Map();
-const CACHE_LIMIT = 2048;
-const TAU = Math.PI * 2;
+const styleCache = new Map();
+const CACHE_LIMIT = CHART_COLOUR_SPEC.memoization.maximumEntries;
+const CATEGORICAL = CHART_COLOUR_SPEC.categorical;
+const colourById = Object.fromEntries(CATEGORICAL.map((colour) => [colour.id, colour.hex]));
 const roleFor = (key) => Object.hasOwn(CHART_COLOUR_SPEC.roles, key) ? CHART_COLOUR_SPEC.roles[key] : undefined;
 const normalise = (key) => {
   if (typeof key !== 'string' || !key.trim()) throw new TypeError('A non-empty stable chart identity is required');
   return key.trim().normalize('NFC');
+};
+const checkMode = (mode) => {
+  if (!['light', 'dark'].includes(mode)) throw new TypeError('Chart mode must be light or dark');
+  return mode;
 };
 function hash(key) {
   let value = 2166136261;
@@ -25,10 +33,7 @@ function hash(key) {
   value ^= value >>> 13; value = Math.imul(value, 0xc2b2ae35);
   return (value ^ value >>> 16) >>> 0;
 }
-const fraction = (key, salt) => hash(`${key}\0${salt}`) / 4294967296;
-const interpolate = (range, position) => range[0] + (range[1] - range[0]) * position;
 const decode = (channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
-const encode = (channel) => channel <= 0.0031308 ? channel * 12.92 : 1.055 * channel ** (1 / 2.4) - 0.055;
 const channels = (colour) => colour.match(/[\da-f]{2}/gi).map((channel) => parseInt(channel, 16) / 255);
 const luminance = (colour) => channels(colour).map(decode).reduce((sum, channel, i) => sum + channel * [0.2126, 0.7152, 0.0722][i], 0);
 export function chartContrast(one, two) {
@@ -36,102 +41,58 @@ export function chartContrast(one, two) {
   return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
 }
 
-function fromHex(colour) {
-  const [r, g, b] = channels(colour).map(decode);
-  const l = Math.cbrt(0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b);
-  const m = Math.cbrt(0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b);
-  const s = Math.cbrt(0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b);
-  const lightness = 0.2104542553 * l + 0.793617785 * m - 0.0040720468 * s;
-  const a = 1.9779984951 * l - 2.428592205 * m + 0.4505937099 * s;
-  const bb = 0.0259040371 * l + 0.7827717662 * m - 0.808675766 * s;
-  return { l: lightness, c: Math.hypot(a, bb), h: (Math.atan2(bb, a) + TAU) % TAU };
-}
-function linearRgb({ l, c, h }) {
-  const a = c * Math.cos(h), b = c * Math.sin(h);
-  const ll = (l + 0.3963377774 * a + 0.2158037573 * b) ** 3;
-  const mm = (l - 0.1055613458 * a - 0.0638541728 * b) ** 3;
-  const ss = (l - 0.0894841775 * a - 1.291485548 * b) ** 3;
-  return [4.0767416621 * ll - 3.3077115913 * mm + 0.2309699292 * ss,
-    -1.2684380046 * ll + 2.6097574011 * mm - 0.3413193965 * ss,
-    -0.0041960863 * ll - 0.7034186147 * mm + 1.707614701 * ss];
-}
-const inGamut = (rgb) => rgb.every((channel) => channel >= -1e-8 && channel <= 1 + 1e-8);
-function toHex(lch) {
-  let rgb = linearRgb(lch);
-  if (!inGamut(rgb)) {
-    let low = 0, high = lch.c;
-    for (let i = 0; i < 24; i++) {
-      const middle = (low + high) / 2;
-      if (inGamut(linearRgb({ ...lch, c: middle }))) low = middle;
-      else high = middle;
-    }
-    rgb = linearRgb({ ...lch, c: low });
-  }
-  return '#' + rgb.map((channel) => Math.round(255 * encode(Math.max(0, Math.min(1, channel)))).toString(16).padStart(2, '0')).join('').toUpperCase();
-}
-function candidate(key, tone, mode) {
+/** The label colour: Black on light surfaces, White on dark surfaces. */
+export const chartLabelColour = (mode = 'light') => CHART_COLOUR_SPEC.labels[checkMode(mode)].hex;
+/** GOV.UK "Axes & lines": Black tint 80%, in both modes. */
+export const chartAxisColour = () => CHART_COLOUR_SPEC.axesAndLines.hex;
+
+function resolve(key, mode) {
+  const cacheKey = `${mode}\0${key}`;
+  if (styleCache.has(cacheKey)) return styleCache.get(cacheKey);
   const family = key.includes(':') ? key.slice(0, key.indexOf(':')) : '';
-  const anchor = roleFor(key) ?? roleFor(family);
-  if (anchor) {
-    const colour = fromHex(anchor.anchor);
-    if (mode !== 'light' || tone !== 'vivid') {
-      const transform = CHART_COLOUR_SPEC.anchorTransformation[mode + (tone === 'vivid' ? 'Vivid' : 'Muted')];
-      colour.l = mode === 'light' ? Math.min(transform.maximumLightness, colour.l + transform.lightnessOffset)
-        : transform.lightnessBase + colour.l * transform.anchorLightnessMultiplier;
-      colour.c *= transform.chromaMultiplier;
-    }
-    if (family) {
-      const variation = CHART_COLOUR_SPEC.familyVariation;
-      colour.l = Math.max(0.15, Math.min(0.9, colour.l + interpolate(variation.lightnessOffset, fraction(key, 'lightness'))));
-      colour.c *= interpolate(variation.chromaMultiplier, fraction(key, 'chroma'));
-    }
-    return colour;
+  const role = roleFor(key) ?? roleFor(family);
+  const value = hash(key);
+  let colour, pattern, index;
+  if (role) {
+    colour = role.colour === 'labels' ? chartLabelColour(mode) : colourById[role.colour];
+    // A second meter in a family keeps the family colour and gets its own pattern.
+    pattern = roleFor(key) ? role.pattern : CHART_COLOUR_SPEC.patterns[1 + hash(`${key}\0pattern`) % (CHART_COLOUR_SPEC.patterns.length - 1)];
+    index = roleFor(key) ? role.index : value;
+  } else {
+    // One slot per colour and pattern pair, so series that share a colour
+    // usually differ in pattern too.
+    const slot = value % (CATEGORICAL.length * CHART_COLOUR_SPEC.patterns.length);
+    colour = CATEGORICAL[slot % CATEGORICAL.length].hex;
+    pattern = CHART_COLOUR_SPEC.patterns[Math.floor(slot / CATEGORICAL.length)];
+    index = value;
   }
-  const range = CHART_COLOUR_SPEC.generated[mode][tone];
-  return { h: fraction(key, 'hue') * TAU, l: interpolate(range.lightness, fraction(key, 'lightness')), c: interpolate(range.chroma, fraction(key, 'chroma')) };
-}
-function resolve(key, { tone = 'vivid', mode = 'light' } = {}) {
-  if (!['vivid', 'muted'].includes(tone) || !['light', 'dark'].includes(mode)) throw new TypeError('Chart tone and mode must be vivid/muted and light/dark');
-  const cacheKey = JSON.stringify([key, tone, mode]);
-  if (colourCache.has(cacheKey)) return colourCache.get(cacheKey);
-  const remember = (value) => {
-    if (colourCache.size >= CACHE_LIMIT) colourCache.delete(colourCache.keys().next().value);
-    colourCache.set(cacheKey, value);
-    return value;
-  };
-  const colour = candidate(key, tone, mode);
-  const surfaces = CHART_COLOUR_SPEC.surfaces[mode];
-  const passes = (hex) => surfaces.every((surface) => chartContrast(hex, surface) >= CHART_COLOUR_SPEC.contrastSearchTarget);
-  let result = toHex(colour);
-  if (passes(result)) return remember(result);
-  // Search toward black on light surfaces, white on dark surfaces. Contrast
-  // is checked on the quantised sRGB output, not an unrenderable OKLCH target.
-  let failing = colour.l, passing = mode === 'light' ? 0 : 1;
-  result = toHex({ ...colour, l: passing });
-  for (let i = 0; i < 24; i++) {
-    const middle = (failing + passing) / 2;
-    const trial = toHex({ ...colour, l: middle });
-    if (passes(trial)) { passing = middle; result = trial; }
-    else failing = middle;
-  }
-  return remember(result);
-}
-
-export function chartColour(key, options = {}) {
-  return resolve(normalise(key), options);
-}
-
-export function chartSeriesStyle(key, options = {}) {
-  key = normalise(key);
-  const roleIndex = roleFor(key)?.index;
-  const index = roleIndex ?? hash(key);
-  const patternIndex = (roleIndex ?? hash(`${key}\0pattern`)) % CHART_COLOUR_SPEC.patterns.length;
-  const dashIndex = (roleIndex ?? hash(`${key}\0line`)) % CHART_COLOUR_SPEC.lineDashes.length;
-  const symbolIndex = (roleIndex ?? hash(`${key}\0symbol`)) % CHART_COLOUR_SPEC.symbols.length;
-  return {
-    color: resolve(key, options), index,
-    pattern: CHART_COLOUR_SPEC.patterns[patternIndex],
+  const exact = roleFor(key)?.index;
+  const dashIndex = (exact ?? hash(`${key}\0line`)) % CHART_COLOUR_SPEC.lineDashes.length;
+  const symbolIndex = (exact ?? hash(`${key}\0symbol`)) % CHART_COLOUR_SPEC.symbols.length;
+  const style = freeze({
+    color: colour, index, pattern,
     lineDash: key === 'consumption' ? [7, 2] : [...CHART_COLOUR_SPEC.lineDashes[dashIndex]],
     symbol: CHART_COLOUR_SPEC.symbols[symbolIndex],
-  };
+  });
+  if (styleCache.size >= CACHE_LIMIT) styleCache.delete(styleCache.keys().next().value);
+  styleCache.set(cacheKey, style);
+  return style;
+}
+
+export function chartColour(key, { mode = 'light' } = {}) {
+  return resolve(normalise(key), checkMode(mode)).color;
+}
+
+/** Colour plus the pattern, line dash and marker that also identify the series. */
+export function chartSeriesStyle(key, { mode = 'light' } = {}) {
+  const style = resolve(normalise(key), checkMode(mode));
+  return { ...style, lineDash: [...style.lineDash] };
+}
+
+/** Colour for a numbered theme slot (1 to 24). */
+export function chartSlotColour(slot, { mode = 'light' } = {}) {
+  // Slots 1 to 9 keep their energy role mapping, in role index order.
+  const roles = Object.entries(CHART_COLOUR_SPEC.roles).sort((a, b) => a[1].index - b[1].index).map(([role]) => role);
+  if (!Number.isInteger(slot) || slot < 1 || slot > 24) throw new RangeError('Chart slots run from 1 to 24');
+  return slot <= roles.length ? chartColour(roles[slot - 1], { mode }) : CATEGORICAL[(slot - roles.length - 1) % CATEGORICAL.length].hex;
 }

@@ -102,4 +102,20 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
     assert.ok(contrast(sample[1], sample[2]) >= 3, `${file}: sample label on ${sample[1]} reaches 3:1`);
   }
 }
+// 4. The Chart colours page shows the categorical, scale and additional
+// palettes in GOV.UK order, and the chart module uses the same categorical colours.
+{
+  const path = `${BUILD}/chart-colour.html`;
+  assert.ok(existsSync(path), `${path} missing: run the docs build first`);
+  const html = decode(readFileSync(path, 'utf8'));
+  const names = [...html.matchAll(/<p class="c-swatch__name">([^<]+)<\/p>/g)].map(match => match[1]);
+  const expected = [
+    ...pages.charts.categorical.map(item => item.role ? `${item.role}: ${colours[item.colour].name}` : colours[item.colour].name),
+    ...groupIds(pages.charts.sequential).map(id => colours[id].name),
+    ...pages.charts.additional.map(id => colours[id].name),
+  ];
+  assert.deepEqual(names, expected, 'chart-colour: swatches match the GOV.UK chart palette in order');
+  const module = JSON.parse(readFileSync('design-system/chart-colours.json', 'utf8'));
+  assert.deepEqual(module.categorical.map(colour => colour.hex), pages.charts.categorical.filter(item => !item.role).map(item => colours[item.colour].hex), 'chart module uses the GOV.UK categorical colours');
+}
 console.log(`Colour record is consistent: ${Object.keys(colours).length} GOV.UK colours across ${Object.keys(pages).length} pages, read ${data.source.read_on}.`);

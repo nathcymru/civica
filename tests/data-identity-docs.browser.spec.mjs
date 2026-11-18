@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import YAML from 'yaml';
-import { chartColour, chartSeriesStyle, chartContrast } from '../design-system/chart-colours.mjs';
+import { chartColour, chartSeriesStyle, chartContrast, CHART_COLOUR_SPEC } from '../design-system/chart-colours.mjs';
 
 const readExamples = name => YAML.parse(readFileSync(`docs/data/${name}-examples.yml`, 'utf8')).examples;
 const colours = readExamples('data-colour');
@@ -13,50 +13,72 @@ const exampleUrl = id => `/docs/build/examples/${id}.html`;
 const rgb = hex => `rgb(${hex.slice(1).match(/../g).map(channel => parseInt(channel, 16)).join(', ')})`;
 const clean = text => text.replace(/\s+/g, ' ').trim();
 const numeric = text => Number(text.replace('−', '-'));
-const interpolate = (start, end, position) => {
-  const channels = hex => hex.slice(1).match(/../g).map(channel => parseInt(channel, 16));
-  const from = channels(start), to = channels(end);
-  return `#${from.map((value, index) => Math.round(value + position * (to[index] - value)).toString(16).padStart(2, '0')).join('')}`.toUpperCase();
-};
+const govuk = JSON.parse(readFileSync('docs/data/govuk-brand-colours.json', 'utf8'));
 const tableRows = table => table.locator('tbody tr').evaluateAll(rows => rows.map(row => [...row.querySelectorAll('th,td')].map(cell => cell.textContent.replace(/\s+/g, ' ').trim())));
 
 // The guide-wide suite covers general accessibility and source rendering. These
 // checks own the numerical meaning and the separation of colour from identity.
-test('categorical references use the existing generator in all four display contexts', async ({ page }) => {
+test('categorical references use the GOV.UK chart palette through the generator in light and dark mode', async ({ page }) => {
   const reference = colours['data-colour-categorical'].colour_reference;
   expect(createHash('sha256').update(readFileSync(reference.generator)).digest('hex')).toBe(reference.generator_sha256);
-  expect(reference.contexts.map(context => `${context.tone}/${context.mode}`).sort()).toEqual(['muted/dark', 'muted/light', 'vivid/dark', 'vivid/light']);
+  expect(reference.algorithm_version).toBe(CHART_COLOUR_SPEC.algorithmVersion);
+  expect(reference.contexts.map(context => context.mode).sort()).toEqual(['dark', 'light']);
+  const categorical = govuk.pages.charts.categorical.filter(item => !item.role).map(item => govuk.colours[item.colour]);
   await page.goto(exampleUrl('data-colour-categorical'));
   await expect(page.locator('[data-chart-key]')).toHaveCount(reference.series.length * reference.contexts.length);
+  await expect(page.locator('[data-chart-tone]')).toHaveCount(0);
   for (const context of reference.contexts) {
+    expect(Object.keys(context)).not.toContain('tone');
     expect(context.series.map(series => series.key)).toEqual(reference.series.map(series => series.key));
     for (const series of context.series) {
-      const expected = chartSeriesStyle(series.key, { tone: context.tone, mode: context.mode });
+      const expected = chartSeriesStyle(series.key, { mode: context.mode });
       expect(series).toMatchObject(expected);
-      expect(chartContrast(expected.color, context.surface)).toBeGreaterThanOrEqual(3);
-      const key = page.locator(`[data-chart-key="${series.key}"][data-chart-tone="${context.tone}"][data-chart-mode="${context.mode}"]`);
+      // The same GOV.UK colour in both modes, copied unchanged from the GOV.UK record.
+      expect(expected.color).toBe(chartSeriesStyle(series.key, { mode: 'light' }).color);
+      const source = categorical.find(colour => colour.hex === expected.color);
+      expect(source, `${series.key}: GOV.UK categorical colour`).toBeTruthy();
+      expect(series.colour_name).toBe(source.name);
+      const key = page.locator(`[data-chart-key="${series.key}"][data-chart-mode="${context.mode}"]`);
       await expect(key).toContainText(series.label);
+      await expect(key).toContainText(source.name);
       await expect(key.locator('.c-data-colour-code')).toHaveText(expected.color);
       await expect(key).toHaveAttribute('data-chart-pattern', expected.pattern);
       await expect(key).toHaveAttribute('data-chart-symbol', expected.symbol);
       await expect(key).toHaveAttribute('data-chart-line-dash', expected.lineDash.join(','));
       await expect(key.locator('svg line')).toHaveAttribute('stroke', expected.color);
       await expect(key.locator('svg line')).toHaveAttribute('stroke-width', '1.5');
-      await expect(key.locator('svg line')).toHaveAttribute('stroke-dasharray', expected.lineDash.join(' '));
+      if (expected.lineDash.length) await expect(key.locator('svg line')).toHaveAttribute('stroke-dasharray', expected.lineDash.join(' '));
       await expect(key.locator('svg line')).toHaveCSS('opacity', '1');
+      // Label text, not the series colour, must stay readable on the surface.
+      const text = await key.evaluate(node => getComputedStyle(node).color);
+      const hex = `#${text.match(/\d+/g).slice(0, 3).map(channel => Number(channel).toString(16).padStart(2, '0')).join('')}`;
+      expect(chartContrast(hex, context.surface)).toBeGreaterThanOrEqual(4.5);
+    }
+    // Devices that share a colour must differ in line dash or marker.
+    for (const [index, one] of context.series.entries()) for (const two of context.series.slice(index + 1)) {
+      if (one.color === two.color) expect(`${one.lineDash}|${one.symbol}`).not.toBe(`${two.lineDash}|${two.symbol}`);
     }
   }
   const rows = await tableRows(page.getByRole('table'));
   expect(rows.map(row => row[1])).toEqual(reference.series.map(series => series.value === null ? 'Not supplied' : String(series.value)));
   expect(rows.find(row => row[0].includes('Dishwasher'))[2]).toContain('not zero');
+  await expect(page.locator('.c-example-canvas')).not.toContainText(/Vivid|Muted|OKLCH/i);
   await expect(page.getByRole('button')).toHaveCount(0);
 });
 
-test('quantitative scales calculate values, retain their units and keep missing distinct from zero', async ({ page }) => {
+test('quantitative scales use named GOV.UK steps, retain their units and keep missing distinct from zero', async ({ page }) => {
   const reference = colours['data-colour-quantitative'].colour_reference;
+  const blues = govuk.pages.charts.sequential.find(scale => scale.title === 'Blues').colours;
+  const expectedIds = {
+    sequential: ['blue-tint-80', 'blue-tint-50', 'blue-tint-25', 'blue', 'blue-shade-50'],
+    divergent: ['blue', 'blue-tint-50', 'black-tint-95', 'red-tint-50', 'red'],
+  };
+  expect(expectedIds.sequential.every(id => blues.includes(id))).toBe(true);
+  const chartScaleIds = govuk.pages.charts.sequential.flatMap(scale => scale.colours);
   await page.goto(exampleUrl('data-colour-quantitative'));
   for (const name of ['sequential', 'divergent']) {
     const scale = reference[name];
+    expect(scale.rows.filter(row => row.value !== null).map(row => row.colour_id)).toEqual(expectedIds[name]);
     const table = page.getByRole('table', { name: `The ${name} colours and their underlying values` });
     const renderedRows = await tableRows(table);
     expect(renderedRows).toHaveLength(scale.rows.length);
@@ -74,16 +96,17 @@ test('quantitative scales calculate values, retain their units and keep missing 
         expect(renderedRows[index].slice(1).every(cell => cell.startsWith('Not supplied'))).toBe(true);
         continue;
       }
-      const expected = name === 'sequential'
-        ? interpolate(scale.start, scale.end, (row.value - scale.minimum) / (scale.maximum - scale.minimum))
-        : row.value <= scale.centre
-          ? interpolate(scale.negative, scale.neutral, (row.value - scale.minimum) / (scale.centre - scale.minimum))
-          : interpolate(scale.neutral, scale.positive, (row.value - scale.centre) / (scale.maximum - scale.centre));
-      expect(row.color).toBe(expected);
-      await expect(swatch).toHaveAttribute('data-scale-colour', expected);
-      await expect(swatch.locator('.c-data-colour-fill')).toHaveCSS('background-color', rgb(expected));
+      // Each step is a named GOV.UK chart colour, copied unchanged; nothing is interpolated.
+      const source = govuk.colours[row.colour_id];
+      expect(chartScaleIds).toContain(row.colour_id);
+      expect(row.color).toBe(source.hex);
+      expect(row.colour_name).toBe(source.name);
+      await expect(swatch).toHaveAttribute('data-scale-colour', source.hex);
+      await expect(swatch).toContainText(source.name);
+      await expect(swatch.locator('.c-data-colour-fill')).toHaveCSS('background-color', rgb(source.hex));
       await expect(swatch.locator('.c-data-colour-fill')).toHaveCSS('opacity', '1');
-      expect(renderedRows[index].at(-1)).toBe(expected);
+      expect(renderedRows[index].at(-1)).toBe(source.hex);
+      expect(renderedRows[index].at(-2)).toBe(source.name);
       expect(numeric(renderedRows[index][name === 'sequential' ? 1 : 2])).toBe(row.value);
       if (name === 'divergent') {
         expect(numeric(renderedRows[index][1])).toBe(row.measurement);
@@ -93,6 +116,7 @@ test('quantitative scales calculate values, retain their units and keep missing 
   }
   await expect(page.locator('.c-example-canvas')).toContainText('outside this scale');
   await expect(page.locator('.c-example-canvas')).toContainText('no more than two quantitative colour scales');
+  await expect(page.locator('.c-example-canvas')).not.toContainText(/interpolate/i);
 });
 
 test('electricity dashboard columns, table and partial total describe the same six intervals', async ({ page }) => {
@@ -102,7 +126,7 @@ test('electricity dashboard columns, table and partial total describe the same s
   expect(data.known_interval_count).toBe(known.length);
   expect(data.expected_interval_count).toBe(data.values.length);
   expect((Date.parse(data.period_end) - Date.parse(data.period_start)) / 3_600_000).toBe(data.values.length);
-  expect(data.colour).toBe(chartColour(data.source_identity, { tone: 'vivid', mode: 'light' }));
+  expect(data.colour).toBe(chartColour(data.source_identity, { mode: 'light' }));
   await page.goto(exampleUrl('dashboard-data-electricity-monitor'));
   const rows = await tableRows(page.getByRole('table'));
   expect(rows.map(row => row[1])).toEqual(data.values.map(value => value === null ? 'Not supplied' : value.toFixed(2)));

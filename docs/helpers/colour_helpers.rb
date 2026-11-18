@@ -99,9 +99,22 @@ module ColourHelpers
 
   # A palette as GOV.UK groups it: one heading and one swatch list per group.
   def colour_palette(page, level: 3, **options)
-    colour_page(page).fetch('palette').map do |group|
+    colour_groups(colour_page(page).fetch('palette'), level: level, **options)
+  end
+
+  def colour_groups(groups, level: 3, **options)
+    groups.map do |group|
       %(<h#{level} id="#{colour_slug(group.fetch('title'))}">#{escape(group.fetch('title'))}</h#{level}>\n) + colour_swatches(group.fetch('colours'), **options)
     end.join("\n")
+  end
+
+  # Chart categorical colours, in the GOV.UK order. Axes, lines and labels
+  # carry their role in the name, as upstream shows them.
+  def colour_chart_categorical(**options)
+    items = colour_page('charts').fetch('categorical').map do |item|
+      colour_swatch(item.fetch('colour'), role: item['role'], **options)
+    end
+    %(<ul class="c-swatches" role="list">#{items.join}</ul>)
   end
 
   # Web functional colours: GOV.UK token name, its palette colour and codes.

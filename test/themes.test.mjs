@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { parse } from 'yaml';
 import { palettes, allThemes, generatedFiles, contrast, rgb } from '../scripts/generate-themes.mjs';
+import { chartSlotColour } from '../design-system/chart-colours.mjs';
 
 const themes = allThemes();
 test('default civica theme and legacy alias resolve to the same complete palette without changing saved selections', () => {
@@ -148,7 +149,10 @@ test('text, native inputs, header, selected navigation and all action states pas
     minimum(v['wa-color-brand-border-normal'], v['card-background-color'], 3, `${label} native button outline`);
     minimum(v['ha-color-focus'], v['app-header-background-color'], 3, `${label} scoped header focus`);
     minimum(v['civica-focus-text'], v['ha-color-focus'], 3, `${label} custom two-colour focus`);
-    for (let i = 1; i <= 24; i++) minimum(v[`civica-chart-${i}`], v['card-background-color'], 3, `${label} chart series ${i}`);
+    // Chart series use the GOV.UK chart palette unchanged, so some fall below
+    // 3:1 on the card (owner decision, 2026-11-18). Labels, patterns and the
+    // data table carry the meaning; the slots must be the GOV.UK colours.
+    for (let i = 1; i <= 24; i++) assert.equal(v[`civica-chart-${i}`], chartSlotColour(i, { mode: mode === 'dark' ? 'dark' : 'light' }), `${label} chart series ${i}`);
   }
 });
 
