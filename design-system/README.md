@@ -26,7 +26,7 @@ For custom controls, combine `ha-color-focus` yellow with `civica-focus-text` in
 
 Square card, field, button and dialog corners follow the service design language. Native circle and pill tokens are retained for radio buttons, switches, avatars and gauges. Dialog widths and heights are not forced globally: users must still be able to read and scroll long dialogs at zoomed and mobile sizes.
 
-Eight chart colours stay fixed whatever the theme colour, with separate light/dark values. They meet 3:1 against the card surface. This does not establish that adjacent series are distinguishable from each other. Direct labels, units, alternative tables, patterns or strokes remain necessary; a theme cannot add these to native charts. Charts with more than eight series should be simplified or separately reviewed.
+Charts use the six GOV.UK categorical chart colours, the same in light and dark mode and with every theme colour. Colour alone does not tell series apart: each series also gets a stable pattern, line dash and marker, and direct labels, units and alternative tables remain necessary. A theme cannot add these to native charts. The theme's 24 numbered chart slots repeat the six colours. For charts with many series, follow the [chart rules](https://nathcymru.github.io/civica/components/charts.html); never drop native series.
 
 ## Compatibility evidence
 

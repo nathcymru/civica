@@ -65,7 +65,7 @@
     "upstreamEvidence": "design-system/upstream-sources.json",
     "publishedPaletteCopy": "reference/palettes.json",
     "paletteCount": 7,
-    "chartTone": "vivid (fixed; no tone choice)",
+    "chartColours": "Six GOV.UK categorical chart colours; no tone; the same in light and dark mode",
     "themeNamePattern": "civica {palette.name}",
     "compatibilityAlias": "govuk",
     "screenColourAuthority": "sRGB hex",
@@ -89,7 +89,7 @@
     "chartSeriesLimit": null,
     "chartColourContract": "reference/chart-colours.json",
     "chartColourGenerator": "design-system/chart-colours.mjs",
-    "chartToneFollowsTheme": true
+    "chartColoursFollowTheme": false
   },
   "settings": {
     "module": "/local/civica/civica-ui.js",
@@ -166,7 +166,7 @@
       "scope": "Supported native Energy charts under ha-panel-energy only",
       "source": "https://service-manual.ons.gov.uk/design-system/components/bar-chart-component",
       "sourceSnapshot": "reference/ons-chart-sources.json",
-      "implementation": "ONS presentation rules adapted to native ECharts; no second production chart engine",
+      "implementation": "ONS chart structure rules (geometry, axes, legend and figure) adapted to native ECharts, with colours from the GOV.UK chart palette; no second production chart engine",
       "nativeFeaturesPreserved": [
         "statistics",
         "series identities and values",
