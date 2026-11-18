@@ -124,7 +124,7 @@ test('header text remains complete without illustrations or scripting at 320px',
 test('data, colour and optional household identity are discoverable without a local Brand guidance group', async ({ page }) => {
   await page.goto('/docs/build/styles/index.html');
   await expect(page.getByRole('navigation', {name:'Pages in this section'})).not.toContainText('Brand guidance');
-  for (const name of ['Data visualisation','Colour roles and accessibility']) {
+  for (const name of ['Data visualisation','Colour']) {
     await expect(page.locator('main').getByRole('link', {name,exact:true}).first()).toBeVisible();
   }
   await page.goto('/docs/build/styles/brand.html');
