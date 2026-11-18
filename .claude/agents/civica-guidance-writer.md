@@ -46,4 +46,5 @@ Only the pages assigned to you, their data and example files, and any records th
 - Examples added, revised or removed
 - Proposed retirements
 - Visual opportunities for the illustrator (illustrations and diagrams) or the data visualiser (charts, state comparisons, data tables)
+- Where the brief asks a page to mirror a source page: the source and built screenshots you compared, and every difference in layout or presentation that remains, with its reason
 - Unresolved questions or limitations

@@ -1,4 +1,5 @@
 ---
+no_contents: true
 title: "Map colours"
 description: "The GOV.UK map palette, the colours GOV.UK uses for a base map and its data, and how to apply them to Home Assistant zones and locations."
 group: "Colour"
@@ -10,6 +11,8 @@ updated_on: "2026-11-18"
 updates:
   - date: "2026-11-18"
     description: "First published, with the GOV.UK map palette and map example colours copied exactly from the GOV.UK Brand Guidelines."
+  - date: "2026-11-18"
+    description: "Swatches and the example now follow the GOV.UK Maps page: round swatches, the zones drawing shown on the page, and Colours used in example with Points of interest and Base map. Moved maintenance notes to Colour."
 ai_instructions: "Apply when colouring a map: a base map, zones, device or person locations, or areas. Use only the GOV.UK map palette on this page, unchanged, rendered from docs/data/govuk-brand-colours.json. For a base map with data, follow the GOV.UK example: land Black tint 95% with a Black tint 80% outline, sea Teal tint 95%, coastal areas Teal tint 80%, data Accent green with a Primary green outline, labels Black. Map colours are the same in light and dark mode and never follow the theme colour. Use few colours, give every map a key, and add a shape, letter or label so that colour is never the only cue. Rules WG-001, WG-002."
 ai_related:
   - path: "/home-assistant/maps-and-zones.html"
@@ -31,7 +34,7 @@ Use these colours for maps: a base map, Home Assistant zones, the reported locat
 
 ## Map palette
 
-<%= colour_palette('maps', fields: %i[hex rgb]) %>
+<%= colour_palette('maps') %>
 
 ## Using colour combinations on maps
 
@@ -44,29 +47,29 @@ Use these colours for maps: a base map, Home Assistant zones, the reported locat
 - Colours carry cultural and political meaning. Some are linked with UK political parties, so do not let an area's colour suggest a party.
 - Test the map with the people who will use it.
 
-## Colours used in the example
+### Example
 
-GOV.UK shows one combination: a base map with data in a single colour. Use it for a map of zones or locations.
+A base map with Home Assistant zones as data in a single colour. The zones and coastline are invented.
 
-### Points of interest
+<%= colour_figures('map-govuk-zones', min: '100%') %>
 
-<ul class="c-swatches" role="list"><%= colour_swatch('green-accent', role: 'Data', fields: %i[hex rgb]) %><%= colour_swatch('green', role: 'Data outline', fields: %i[hex rgb]) %><%= colour_swatch('black', role: 'Labels', fields: %i[hex rgb]) %></ul>
+### Colours used in example
 
-### Base map
+#### Points of interest
 
-<ul class="c-swatches" role="list"><%= colour_swatch('black-tint-95', role: 'Land', fields: %i[hex rgb]) %><%= colour_swatch('black-tint-80', role: 'Land outline', fields: %i[hex rgb]) %><%= colour_swatch('teal-tint-95', role: 'Sea', fields: %i[hex rgb]) %><%= colour_swatch('teal-tint-80', role: 'Coastal areas', fields: %i[hex rgb]) %></ul>
+Data, such as a zone or a marker, is shown in Accent green and outlined in Primary green. Labels, such as zone names, are in Black.
+
+<%= colour_swatches(%w[green-accent green black]) %>
+
+#### Base map
+
+Land is shown in Black tint 95% and outlined in Black tint 80%. Sea is shown in Teal tint 95%, with coastal areas in Teal tint 80%.
+
+<%= colour_swatches(%w[black-tint-80 black-tint-95 teal-tint-80 teal-tint-95]) %>
 
 Accent green has low contrast with Black tint 95% land. The Primary green outline gives each zone or marker the 3:1 it needs, and a Black name or letter identifies it.
 
-## Examples
-
-These examples use invented places and records.
-
-### Home Assistant zones
-
-<%= example('map-govuk-zones') %>
-
-### Device locations on OpenStreetMap
+## In Home Assistant
 
 The working OpenStreetMap example on [Maps, zones and location records](../home-assistant/maps-and-zones.html#labelled-locations-uncertainty-and-missing-data) uses the same base map colours. Its device markers are Accent green with a Primary green outline, and each has its own shape and letter. GOV.UK gives no road, building or river colours, so the example uses these civica choices:
 
@@ -76,10 +79,4 @@ The working OpenStreetMap example on [Maps, zones and location records](../home-
 
 The Teal tint 80% coastal band also edges lakes and other inland water.
 
-## In Home Assistant
-
 The native Map card has its own map styles, and civica does not restyle it. Keep its provider attribution and its permissions. Use these colours for maps you design, such as a custom map or a picture of a map in a guide.
-
-## Maintenance
-
-GOV.UK values live in `docs/data/govuk-brand-colours.json`, under `pages.maps`, with the colours of the GOV.UK example under `pages.maps.example`. The working map takes its colours from `docs/javascript/map-examples.mjs`, and the browser tests check that they match the record. Run `npm run check:colours` after the docs build.

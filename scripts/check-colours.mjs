@@ -79,17 +79,17 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   assert.ok(existsSync(path), `${path} missing: run the docs build first`);
   const raw = readFileSync(path, 'utf8');
   const html = decode(raw);
-  const swatches = [...html.matchAll(/<li class="c-swatch">([\s\S]*?)<\/dl>\s*<\/li>/g)].map(match => match[1]);
+  const swatches = [...html.matchAll(/<div class="c-swatch" style="--c-swatch-colour:(#[0-9A-F]{6});">([\s\S]*?)<\/div>/g)].map(match => ({ hex: match[1], body: match[2] }));
   const listed = swatches.slice(0, groupIds(pages[page].palette).length);
   groupIds(pages[page].palette).forEach((id, position) => {
     const colour = colours[id];
-    const swatch = listed[position] || '';
-    assert.ok(swatch.includes(`<p class="c-swatch__name">${colour.name}</p>`), `${file}: swatch ${position + 1} is ${colour.name}`);
+    const { hex, body: swatch } = listed[position] || { hex: '', body: '' };
+    assert.ok(swatch.includes(`<dt class="c-swatch__name">${colour.name}</dt>`), `${file}: swatch ${position + 1} is ${colour.name}`);
     if (show.includes('hex')) assert.ok(swatch.includes(`>${colour.hex}</code>`), `${file}: ${colour.name} hex`);
     if (show.includes('rgb')) assert.ok(swatch.includes(`>${colour.rgb.join(' ')}</code>`), `${file}: ${colour.name} RGB`);
     if (show.includes('cmyk') && colour.print) assert.ok(swatch.includes(`>${colour.print.cmyk.join(' ')}</code>`), `${file}: ${colour.name} CMYK`);
     if (show.includes('pantone') && colour.print) assert.ok(swatch.includes(`>${colour.print.pantone}</code>`), `${file}: ${colour.name} Pantone`);
-    assert.ok(swatch.includes(`style="background-color:${colour.hex};`), `${file}: ${colour.name} sample`);
+    assert.equal(hex, colour.hex, `${file}: ${colour.name} sample`);
   });
   assert.equal((html.match(/data-copy-value-status/g) || []).length, 1, `${file}: one copy status region`);
   // Match the raw HTML. Values that contain double quotes (Sass) are written
@@ -101,10 +101,6 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
     buttons += 1;
   }
   assert.equal(buttons, (raw.match(/class="c-copy-value"/g) || []).length, `${file}: every copy button was checked`);
-  // Sample labels are 19px bold (large text), so each needs at least 3:1.
-  for (const sample of html.matchAll(/style="background-color:(#[0-9A-F]{6});color:(#[0-9A-F]{6})"/g)) {
-    assert.ok(contrast(sample[1], sample[2]) >= 3, `${file}: sample label on ${sample[1]} reaches 3:1`);
-  }
 }
 // 4. The Chart colours page shows the categorical, scale and additional
 // palettes in GOV.UK order, and the chart module uses the same categorical colours.
@@ -112,7 +108,7 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   const path = `${BUILD}/chart-colour.html`;
   assert.ok(existsSync(path), `${path} missing: run the docs build first`);
   const html = decode(readFileSync(path, 'utf8'));
-  const names = [...html.matchAll(/<p class="c-swatch__name">([^<]+)<\/p>/g)].map(match => match[1]);
+  const names = [...html.matchAll(/<dt class="c-swatch__name">([^<]+)<\/dt>/g)].map(match => match[1]);
   const expected = [
     ...pages.charts.categorical.map(item => item.role ? `${item.role}: ${colours[item.colour].name}` : colours[item.colour].name),
     ...groupIds(pages.charts.sequential).map(id => colours[id].name),
@@ -128,8 +124,8 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   [...example.points_of_interest, ...example.base_map].forEach(item => { known(item.colour); if (item.outline) known(item.outline); });
   const html = decode(readFileSync(`${BUILD}/colour-maps.html`, 'utf8'));
   for (const item of [...example.points_of_interest, ...example.base_map]) {
-    assert.ok(html.includes(`${colours[item.colour].name}</p>`), `colour-maps: shows ${colours[item.colour].name}`);
-    if (item.outline) assert.ok(html.includes(`${colours[item.outline].name}</p>`), `colour-maps: shows ${colours[item.outline].name}`);
+    assert.ok(html.includes(`${colours[item.colour].name}</dt>`), `colour-maps: shows ${colours[item.colour].name}`);
+    if (item.outline) assert.ok(html.includes(`${colours[item.outline].name}</dt>`), `colour-maps: shows ${colours[item.outline].name}`);
   }
   // Data must reach 3:1 with the land through its outline (GOV.UK maps guidance).
   const land = colours[example.base_map.find(item => item.role === 'Land').colour].hex;
@@ -140,7 +136,7 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
 // GOV.UK social palette colour.
 {
   const html = decode(readFileSync(`${BUILD}/colour-social.html`, 'utf8'));
-  const names = [...html.matchAll(/<p class="c-swatch__name">([^<]+ on [^<]+)<\/p>/g)].map(match => match[1]);
+  const names = [...html.matchAll(/<h4 class="c-pair__name">([^<]+ on [^<]+)<\/h4>/g)].map(match => match[1]);
   assert.deepEqual(names, pages.social.companion.map(pair => `${colours[pair.foreground].name} on ${colours[pair.background].name}`), 'colour-social: companion pairings in GOV.UK order');
   for (const pair of pages.social.companion) {
     assert.ok(contrast(colours[pair.foreground].hex, colours[pair.background].hex) >= 3, `colour-social: ${pair.foreground} on ${pair.background} reaches 3:1`);
@@ -159,5 +155,42 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   const used = [...examples.matchAll(/(?:fill|stroke)="(#[0-9A-Fa-f]{6})"/g)].map(match => match[1].toUpperCase());
   assert.ok(used.length > 0, 'colour-illustrations: examples have colours');
   for (const hex of used) assert.ok(allowed.has(hex), `colour-illustrations: example colour ${hex} is a GOV.UK Web or illustration colour`);
+}
+// 8. Layout parity with the GOV.UK Brand colour pages. Text and records can
+// pass review while the page looks nothing like its source, so check what a
+// reader sees: the GOV.UK section headings in GOV.UK order (outline read from
+// brand.design-system.service.gov.uk/colour/ on 18 November 2026), the GOV.UK
+// swatch list rather than cards, no "On this page" box (GOV.UK has none), and
+// GOV.UK's example pictures on the page rather than in example frames.
+// This is not a visual comparison: also compare screenshots before release.
+{
+  const outline = {
+    'colour-web': ['Web palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Browns', 'Neutrals', 'Functional colours'],
+    'colour-app': ['App palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals', 'App header'],
+    'colour-social': ['Social palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals', 'Use colour to reflect tone', 'From most informative to most inspiring', 'Tonal colour examples', 'Companion colour set', 'Companion colour examples'],
+    'colour-print': ['Print palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals'],
+    'chart-colour': ['Chart palette', 'Categorical palette', 'Sequential and divergent scale palette', 'Using colour in charts', 'Single category', 'Multiple categories', 'Divergent categories', 'Using charts within social media'],
+    'colour-maps': ['Map palette', 'Blues', 'Magentas', 'Reds', 'Greens', 'Purples', 'Teals', 'Oranges', 'Neutrals', 'Using colour combinations on maps', 'Example', 'Colours used in example', 'Points of interest', 'Base map'],
+    'colour-illustrations': ['Illustrations palette', 'Applying colour', 'Colour pairing', 'Using contrast'],
+  };
+  const text = value => decode(value.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim();
+  for (const [file, expected] of Object.entries(outline)) {
+    const html = readFileSync(`${BUILD}/${file}.html`, 'utf8');
+    const main = html.slice(html.indexOf('<main'));
+    const headings = [...main.matchAll(/<h[2-4][^>]*>([\s\S]*?)<\/h[2-4]>/g)].map(match => text(match[1]));
+    let at = 0;
+    for (const heading of expected) {
+      const found = headings.indexOf(heading, at);
+      assert.ok(found >= 0, `${file}: GOV.UK section "${heading}" is missing or out of GOV.UK order`);
+      at = found + 1;
+    }
+    assert.ok(!main.includes('c-on-this-page'), `${file}: GOV.UK colour pages have no "On this page" box`);
+    assert.ok(main.includes('class="c-swatch-list'), `${file}: swatches use the GOV.UK swatch list`);
+  }
+  for (const file of ['colour-social', 'colour-maps', 'colour-illustrations']) {
+    const main = readFileSync(`${BUILD}/${file}.html`, 'utf8');
+    assert.ok(!main.includes('<iframe'), `${file}: GOV.UK shows these examples as pictures on the page, not in example frames`);
+    assert.ok(main.includes('Indicative examples for illustrative purposes only.'), `${file}: GOV.UK callout under the example pictures`);
+  }
 }
 console.log(`Colour record is consistent: ${Object.keys(colours).length} GOV.UK colours across ${Object.keys(pages).length} pages, read ${data.source.read_on}.`);

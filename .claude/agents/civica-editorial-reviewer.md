@@ -25,6 +25,7 @@ Verify:
 - Metadata, histories and audit records accurate. Chained hashes consistent.
 - Protected files byte-identical to `/mnt/project-files/civica-writing/protected-baseline.json` and `historical_files` in `docs/data/naming-inventory.json`.
 - No unintended visual or behavioural change (CSS, JS, layout, components, theme).
+- Where the brief asks a page to mirror a source page (for example a GOV.UK Brand Guidelines page), screenshot the source and the built page at the same width (1280px and 320px) with Playwright and compare them side by side: section order, components (such as swatches, copy buttons, callouts), and how examples are presented. Matching text and records is not enough. If the pages look different without a recorded reason, the outcome is CHANGES REQUIRED. Name the screenshots you compared in the review.
 
 ## Final gate (after the illustrator)
 Also verify: visuals match the text; illustration and chart rules in `styles/illustration`, `styles/brand-data`, `styles/chart-colour`, `styles/images`, `content/formatting-content/images` and `charts-and-data` are met; the page makes sense without the visual; alternative text and equivalent data are correct; no false state or misleading comparison; asset ownership recorded. Approval applies to a specific commit. Any later change voids it.

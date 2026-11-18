@@ -5,14 +5,14 @@
   "baseline_commit": "2dfeb5272eaf27c100dcb50b59f20220918a2d41",
   "scope": "All current authored guides and examples; shared documentation presentation, original artwork and canonical ownership; maintained lighting request/count remediation and chart fixture date navigation. Current source review and named browser checks do not certify every native Home Assistant task or physical outcome. The 12 November supplement adds finite source-registry coverage, terminology, UK family decisions and authored references; acceptance is recorded separately.",
   "rule_links": {
-    "BG-COL-01": "/styles/brand-colour.html#bg-col-01",
-    "BG-COL-02": "/styles/brand-colour.html#bg-col-02",
-    "BG-COL-03": "/styles/brand-colour.html#bg-col-03",
-    "BG-COL-04": "/styles/brand-colour.html#bg-col-04",
-    "BG-COL-05": "/styles/brand-colour.html#bg-col-05",
-    "BG-COL-06": "/styles/brand-colour.html#bg-col-06",
-    "BG-COL-07": "/styles/brand-colour.html#bg-col-07",
-    "BG-COL-08": "/styles/brand-colour.html#bg-col-08",
+    "BG-COL-01": "/styles/colour.html#bg-col-01",
+    "BG-COL-02": "/styles/colour-web.html#bg-col-02",
+    "BG-COL-03": "/styles/colour.html#bg-col-03",
+    "BG-COL-04": "/styles/colour-web.html#bg-col-04",
+    "BG-COL-05": "/styles/colour-web.html#bg-col-05",
+    "BG-COL-06": "/styles/colour.html#bg-col-06",
+    "BG-COL-07": "/styles/chart-colour.html#bg-col-07",
+    "BG-COL-08": "/styles/colour.html#bg-col-08",
     "BG-TYP-01": "/styles/brand-typography.html#bg-typ-01",
     "BG-TYP-02": "/styles/brand-typography.html#bg-typ-02",
     "BG-TYP-03": "/styles/brand-typography.html#bg-typ-03",
@@ -6006,33 +6006,6 @@
       "resolved_finding_ids": []
     },
     {
-      "path": "docs/source/styles/brand-colour.html.md.erb",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "note": "All eight colour rules reviewed for local palette authority, semantic independence, contrast context, channel distinctions and functional/decorative scope. 12 November 2026 source review: Integrated colour roles with data examples and optional household identity, with an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026: retired. Its 8 rules moved unchanged in meaning to Colour (BG-COL-01, 03, 06, 08), Web colours (BG-COL-02, 04, 05) and Chart colours (BG-COL-07), with its 3 examples; the URL is kept with one anchor per rule linking to the new location.",
-      "sha256": "30f5977245a60361186ee6ccc8d20e8269ccef1c2324f728c94534de21edd60a",
-      "url": "/styles/brand-colour.html",
-      "title": "Colour roles and accessibility (retired)",
-      "example_ids": [],
-      "resolved_finding_ids": []
-    },
-    {
       "path": "docs/source/styles/brand-data.html.md.erb",
       "reviewed_rule_families": [
         "BG-COL",
@@ -6145,7 +6118,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Stable identities, the six GOV.UK categorical chart colours (unchanged in light and dark mode), pattern limits and 1.5px lines are explicit. The 24-series example is distinct by colour, pattern, line dash and marker together, not by colour alone. 12 November 2026 source review: Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026 colour review: the generated palette was replaced by the GOV.UK chart palette, with single, multiple, divergent and social examples. 18 November 2026: rule BG-COL-07 moved here from the retired Colour roles and accessibility page.",
-      "sha256": "b704f785049c695d2ae73e61b99a842a6bc341922963fb4771cd441ef5cdab7c",
+      "sha256": "870d475d095a78a48f2ae0af7a988b0c44f3a0f4497988a4dbf5d0cd94d4b41c",
       "url": "/styles/chart-colour.html",
       "title": "Chart colours",
       "example_ids": [
@@ -6177,7 +6150,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Reviewed generated exact palette references and semantic-role table; tone is independent of mode, chart identity and print metadata are qualified. 12 November 2026 source review: Connected the palette reference to colour roles, optional household identity and an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026: rules BG-COL-01, BG-COL-03, BG-COL-06 and BG-COL-08 and the role separation example moved here from the retired Colour roles and accessibility page.",
-      "sha256": "2a6484ea7be69b029d17828c33a8377579809481b76fb64f185da3e9213d07a4",
+      "sha256": "28a052ac56dd92c39a6612167d13cca4c1cb8fadca31e4b131d183a4c815ac1a",
       "url": "/styles/colour.html",
       "title": "Colour",
       "example_ids": [
@@ -7154,7 +7127,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties are listed only where the shipped theme sets that exact value. 18 November 2026: rules BG-COL-02, BG-COL-04 and BG-COL-05 and their examples moved here from the retired Colour roles and accessibility page.",
-      "sha256": "c0693f1f6073ca4c6b3a0d0fa4fbb1614cbff0ae48c488333849e03f406119db",
+      "sha256": "60275ff1d38c6f3cfeea770e4ebd3cfc681710f4390464b0ffc4992f5f9ac203",
       "url": "/styles/colour-web.html",
       "title": "Web colours",
       "example_ids": [
@@ -7181,7 +7154,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties are listed only where the shipped theme sets that exact value.",
-      "sha256": "5be0ccb085c6dd284dd1dd64aa8732906ba6f35e2d8f49921d27c754b0bf03e4",
+      "sha256": "3af591a982bd029d6c5c3bf5df5642957e8c4069963a2c7d512f1550c2fd3cf1",
       "url": "/styles/colour-app.html",
       "title": "App colours",
       "example_ids": [],
@@ -7205,7 +7178,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties are listed only where the shipped theme sets that exact value.",
-      "sha256": "7cc08545ebd40d3963a7798b2d98ae4250311ca4c73d03012f31be08f95c2088",
+      "sha256": "89841f7cb067d1e28c6f52f26eb807acf0075d5512b378dd7276dc67c8d5335d",
       "url": "/styles/colour-print.html",
       "title": "Print colours",
       "example_ids": [],
@@ -7229,7 +7202,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines maps page read on 18 November 2026 (Open Government Licence v3.0), including the colours of the GOV.UK map example under pages.maps.example. Map colours are the same in light and dark mode and do not follow the theme colour.",
-      "sha256": "0c98e9a6d55566762775480e96cb15e1d093ae2d1b2e9b608bfc5b58b02c3605",
+      "sha256": "c6e455998cd46fb69b147b770b8e0a63adc805b04aa03db6a3e0b34be9379c71",
       "url": "/styles/colour-maps.html",
       "title": "Map colours",
       "example_ids": [
@@ -7255,7 +7228,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "18 November 2026: first published. Every palette value is rendered from docs/data/govuk-brand-colours.json, and the example tiles are generated from it by docs/scripts/generate-social-examples.py; the values were copied verbatim from the GOV.UK Brand Guidelines social page read on 18 November 2026 (Open Government Licence v3.0), including the 9 companion pairings under pages.social.companion. Social colours do not follow the theme colour and are not used in the Home Assistant interface.",
-      "sha256": "f7e0048ff7784e5fdc909e8f3af6226bec36c2f7fd75e1485e4a6050ce5c0440",
+      "sha256": "718aed8345c274eb13c58f082bf266544c89fd05638e55624062599ba3c87811",
       "url": "/styles/colour-social.html",
       "title": "Social colours",
       "example_ids": [
@@ -7284,7 +7257,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "18 November 2026: first published. The Applying colour values are rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines illustrations colour page read on 18 November 2026 (Open Government Licence v3.0); the guidance is paraphrased from that page. The example illustrations are generated by docs/scripts/generate-illustration-examples.py and use only GOV.UK Web and illustration colours.",
-      "sha256": "e44a351eaa94e26d999b6c9dd9e73ea135df69461357780e93451aece643b5eb",
+      "sha256": "7ba1ba4e4fe366ae33abc1cd7768811fb79a52e1613607bba4c7f70c606c9b00",
       "url": "/styles/colour-illustrations.html",
       "title": "Illustration colours",
       "example_ids": [
@@ -18188,7 +18161,7 @@
     },
     {
       "path": "docs/source/stylesheets/screen.css.scss",
-      "sha256": "8c37367f03505aee0ed568fe82ed8aba8546370b7ad1249b1a834b6d70ed4bd5",
+      "sha256": "6ce1e435204c18c01ca80a01b84eaf0d3ea2bc89947b0bee32d1d49b258b37d6",
       "scope": "Authored/shared documentation source review. Subsequent project-story/navigation changes reviewed within docs/data/project-story-review.json scope. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate. 14 November 2026: reviewed homepage section rules, column stacking, bordered image cards, focus and enlarged-text reflow; existing project-story and section-artwork checks passed."
     },
     {
@@ -18328,7 +18301,7 @@
     },
     {
       "path": "docs/data/brand-guidance-inventory.json",
-      "sha256": "c80cb043babdb1a046b192aed657642a220485f5c1b0fe65a51ad494f94ddd24",
+      "sha256": "c40e5e1d4680ce13d749ed411d3cc5837d15d869084238c727f659fc50f3d058",
       "scope": "Authored/shared documentation source review. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -18449,7 +18422,7 @@
     {
       "path": "docs/data/uk-design-system-crosswalk.json",
       "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "1af34a8dc908ea0eb7733e1daf32f72a977f37fb8e2c271bade6fefef2fd66d7"
+      "sha256": "f43f6b6cafa93bf7929aacc0b465e6eeea5032439c1d5db4354f852b56656218"
     },
     {
       "path": "docs/data/ha-administration-examples.yml",
@@ -18478,7 +18451,7 @@
     },
     {
       "path": "docs/data/page_history.yml",
-      "sha256": "e565bd88d0efa529e36a30958619c84b0a8be4b0e80d6eaa756354988b840e0e",
+      "sha256": "594ac6d8b8c67a6f0d0e339e1b3d569ba83b392fb37367739a94513beb9406ff",
       "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives."
     },
     {
@@ -18634,7 +18607,7 @@
     {
       "path": "docs/scripts/sync-palettes.py",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "9d88ea337acebc2e105861dd53df649432e73911e78384eebd91ec2b6f7bdaff"
+      "sha256": "32c8e27bbb68eb6a760b8ace4543b7a566a0014d33a5fbc8880db1f7d51d92b7"
     },
     {
       "path": "docs/scripts/generate-social-examples.py",
@@ -18888,7 +18861,7 @@
     },
     {
       "path": "docs/source/stylesheets/_civica-components.scss",
-      "sha256": "9ebe3f5a1c9116f2d4375fa6a0eb06190a9224cea572fa1b886ef95e2a3b9921",
+      "sha256": "2b95b84129c962304a3663ce324da33613df62ddff22f52f02887203d5174240",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {

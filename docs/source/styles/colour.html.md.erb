@@ -113,7 +113,7 @@ The theme colour does not change Home Assistant’s light, dark or automatic mod
 
 ## Colour rules
 
-These rules apply to every colour choice. Rule IDs BG-COL-01, BG-COL-03, BG-COL-06 and BG-COL-08 moved here from the retired Colour roles and accessibility page, unchanged in meaning. [Web colours](colour-web.html#colour-roles-in-home-assistant) owns BG-COL-02, BG-COL-04 and BG-COL-05, and [Chart colours](chart-colour.html#bg-col-07) owns BG-COL-07.
+These rules apply to every colour choice. [Web colours](colour-web.html#colour-roles-in-home-assistant) owns BG-COL-02, BG-COL-04 and BG-COL-05, and [Chart colours](chart-colour.html#bg-col-07) owns BG-COL-07.
 
 <h3 id="bg-col-01">BG-COL-01: Keep the theme colour and identity roles separate</h3>
 
@@ -156,3 +156,5 @@ The brand source inventory and rule checklist are in `docs/data/brand-guidance-i
 GOV.UK values live in `docs/data/govuk-brand-colours.json`. The theme colours live in `design-system/palettes.json`. After changing either, run `node scripts/generate-themes.mjs` and `python3 docs/scripts/sync-palettes.py` from the repository root, and commit the generated files together. Use `--check` on both to detect drift.
 
 The default theme is `civica`, which uses Blue. The `govuk` entry is a compatibility alias for Blue. Each theme colour has its own theme, named `civica {colour}`.
+
+Every colour section page renders its swatches from `docs/data/govuk-brand-colours.json`, under `pages`. `docs/scripts/generate-social-examples.py` and `docs/scripts/generate-illustration-examples.py` generate the social tiles and the illustrations from that file: if a colour changes, run them again rather than editing the pictures by hand, and use `--check` to find pictures that are out of date. The working OpenStreetMap example takes its colours from `docs/javascript/map-examples.mjs`, and the browser tests check them against the record. Run `npm run check:colours` after the docs build.

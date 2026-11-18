@@ -1,4 +1,5 @@
 ---
+no_contents: true
 title: "Chart colours"
 group: "Colour"
 nav_order: 6
@@ -23,7 +24,9 @@ updates:
   - date: "2026-11-18"
     description: "Map colours now belong to the Map colours page; this page keeps scales for maps that show a quantity. Swatches now show hex, RGB and Sass only, because chart colours do not follow the theme colour."
   - date: "2026-11-18"
-    description: "Rule BG-COL-07 moved here from the retired Colour roles and accessibility page."
+    description: "Rule BG-COL-07 moved here from the Colour roles and accessibility page, which has been deleted."
+  - date: "2026-11-18"
+    description: "Swatches now use the GOV.UK Brand layout, and the 4 GOV.UK chart examples are shown on the page. Renamed Charts on social media to Using charts within social media, as on GOV.UK."
 ai_instructions: "Apply when colouring a chart series or heatmap, and for the scale rules of a map layer that shows a quantity (its colours come from Map colours). Use only the GOV.UK chart palette on this page, unchanged, in both light and dark mode: six categorical colours, Black tint 80% for axes and lines, Black (White in dark mode) for labels. Decide whether colour identifies a source or shows a quantity. Give a source its style from its stable ID with chartSeriesStyle, never from its position, and always add a label, pattern or table. Quantities use the listed tints and shades of one family, never calculated in-between colours, and no more than two scales per chart. Do not use alpha or gradients. Rule BG-COL-07 is on this page. Rules WG-001, WG-002."
 ai_related:
   - path: "/styles/colour.html"
@@ -57,19 +60,19 @@ Every chart colour comes unchanged from the GOV.UK chart palette. Colour helps t
 
 Use these colours to tell categories apart. Use Black tint 80% for axes and grid lines, and Black for labels.
 
-<%= colour_chart_categorical(fields: %i[hex rgb sass]) %>
+<%= colour_chart_categorical %>
 
 ### Sequential and divergent scale palette
 
 Each scale is one primary colour with its tints and shades. Avoid using colour alone to show what the data means, and use no more than two scales in one chart.
 
-<%= colour_groups(colour_page('charts').fetch('sequential'), level: 4, fields: %i[hex rgb sass]) %>
+<%= colour_groups(colour_page('charts').fetch('sequential'), level: 4) %>
 
 ### Additional palette for illustrative infographics
 
 Use these colours only in illustrative infographics, and only on backgrounds that use the 25% and 50% shades. Do not use them in Home Assistant charts.
 
-<%= colour_swatches(colour_page('charts').fetch('additional'), fields: %i[hex rgb sass]) %>
+<%= colour_swatches(colour_page('charts').fetch('additional')) %>
 
 ## Using colour in charts
 
@@ -84,21 +87,21 @@ These examples follow the GOV.UK chart examples, with invented Home Assistant da
 
 ### Single category
 
-<%= example('chart-govuk-single') %>
+<%= colour_figures('chart-govuk-single', min: '100%') %>
 
 ### Multiple categories
 
-<%= example('chart-govuk-multiple') %>
+<%= colour_figures('chart-govuk-multiple', min: '100%') %>
 
 ### Divergent categories
 
-<%= example('chart-govuk-divergent') %>
+<%= colour_figures('chart-govuk-divergent', min: '100%') %>
 
-## Charts on social media
+## Using charts within social media
 
 On social media, charts can use the full colour palette. Accent colours can highlight key data and positive messages, on backgrounds that use the 25% and 50% shades. Larger, bolder shapes help people take in the message.
 
-<%= example('chart-govuk-social') %>
+<%= colour_figures('chart-govuk-social', min: '100%') %>
 
 ## Apply data guidance
 
@@ -132,7 +135,7 @@ These working charts use the shared adapter. Their lines, patterns and tables ar
 
 **Local requirement: MUST.** Applies to categorical chart identities and proposed quantitative map/chart scales.
 
-This rule moved here from the retired Colour roles and accessibility page. Choosing a theme colour must not change what a grid, solar or device series looks like (see [Light and dark mode](#light-and-dark-mode)). Map the colour to the relationship, as in the next 2 sections. For a new heatmap or map layer, write down its scale, units, endpoints and unavailable state before choosing colours. These are reference requirements. They do not mean every native map layer has been rethemed. Keep the source credit and a text route to the data.
+Choosing a theme colour must not change what a grid, solar or device series looks like (see [Light and dark mode](#light-and-dark-mode)). Map the colour to the relationship, as in the next 2 sections. For a new heatmap or map layer, write down its scale, units, endpoints and unavailable state before choosing colours. These are reference requirements. They do not mean every native map layer has been rethemed. Keep the source credit and a text route to the data.
 
 ## Choose the colour mapping
 

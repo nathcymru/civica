@@ -11,7 +11,7 @@ const ids = name => data.pages[name].palette.flatMap(group => group.colours);
 for (const name of ['web', 'app', 'print']) {
   test(`${name} colours show every GOV.UK colour in order`, async ({ page: browser }) => {
     await browser.goto(page(name));
-    const names = await browser.locator('.c-swatches').first().locator('xpath=ancestor::main').locator('.c-swatch__name').allTextContents();
+    const names = await browser.locator('.c-swatch-list').first().locator('xpath=ancestor::main').locator('.c-swatch__name').allTextContents();
     expect(names.slice(0, ids(name).length).map(text => text.trim())).toEqual(ids(name).map(id => data.colours[id].name));
   });
 

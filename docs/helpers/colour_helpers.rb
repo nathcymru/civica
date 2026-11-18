@@ -1,6 +1,7 @@
 require 'json'
 require 'yaml'
 require 'digest'
+require 'nokogiri'
 
 # The Colour section renders every swatch from one record:
 # docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand
@@ -34,68 +35,51 @@ module ColourHelpers
     (a + 0.05) / (b + 0.05)
   end
 
-  # The label on a sample is black or white, whichever contrasts more.
-  def colour_label_hex(hex)
-    colour_contrast(hex, '#0B0C0C') >= colour_contrast(hex, '#FFFFFF') ? '#0B0C0C' : '#FFFFFF'
-  end
-
-  # Home Assistant custom properties that the shipped civica theme sets to
-  # exactly this value (light mode). Read from the generated theme, so the
-  # list is never typed by hand and disappears if the theme stops using it.
-  CIVICA_THEME_PROPERTIES = %w[primary-color primary-text-color secondary-text-color text-primary-color link-color
-                               divider-color error-color success-color civica-input-border civica-focus-background
-                               civica-focus-text card-background-color primary-background-color].freeze
-
-  def civica_theme_tokens
-    @civica_theme_tokens ||= begin
-      theme = YAML.safe_load(File.read(File.expand_path('../themes/civica.yaml', root))).values.first
-      light = theme.reject { |key, _| key == 'modes' }.merge(theme.dig('modes', 'light') || {})
-      light.select { |key, value| CIVICA_THEME_PROPERTIES.include?(key) && value.is_a?(String) && value.start_with?('#') }
-    end
-  end
-
-  def colour_theme_properties(hex)
-    civica_theme_tokens.select { |_, value| value.casecmp?(hex) }.keys.sort.map { |key| "--#{key}" }
-  end
-
   # "Copy hex #1D70B8 for Primary blue": lower case mid-sentence, except initialisms and names.
   def colour_spoken_label(label)
-    %w[RGB CMYK Pantone Sass].include?(label) ? label : label.downcase
+    %w[RGB CMYK Pantone].include?(label) ? label : label.downcase
   end
 
+  COPY_ICON = '<svg class="c-copy-value__icon" viewBox="0 0 18 18" width="18" height="18" aria-hidden="true" focusable="false">' \
+              '<polygon points="12.58 16.51 2.27 16.51 2.27 3.35 3.27 3.35 3.27 15.51 12.58 15.51 12.58 16.51"/>' \
+              '<path d="M15.73,13.91H4.88V1.49h10.86v12.42ZM5.88,12.91h8.86V2.49H5.88v10.42Z"/></svg>'.freeze
+
+  # One value line, as GOV.UK shows it: "RGB 29 112 184" or "#1D70B8", then
+  # an icon-only copy button. The value stays selectable text; the button is
+  # shown by JavaScript only where the Clipboard API exists.
   # `key` keeps the id unique when one colour value appears in several swatches.
-  def colour_value_row(label, value, colour_name, copy: true, key: nil)
+  def colour_value_row(label, value, colour_name, copy: true, key: nil, show_label: true)
     id = 'v-' + Digest::SHA1.hexdigest("#{key}|#{colour_name}|#{label}|#{value}")[0, 10]
-    button = copy ? %(<button type="button" class="c-copy-value" data-copy-value="#{escape(value)}" aria-label="Copy #{escape(colour_spoken_label(label))} #{escape(value)} for #{escape(colour_name)}" hidden><svg class="c-copy-value__icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M5 1h8a2 2 0 0 1 2 2v8h-2V3H5z"/><path d="M1 5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2z"/></svg><span class="c-copy-value__text" aria-hidden="true">Copy</span></button>) : ''
-    %(<div class="c-swatch__row"><dt>#{escape(label)}</dt><dd><code id="#{id}">#{escape(value)}</code>#{button}</dd></div>)
+    prefix = show_label ? %(<span class="c-swatch__label">#{escape(label)}</span> ) : ''
+    button = copy ? %(<button type="button" class="c-copy-value" data-copy-value="#{escape(value)}" aria-label="Copy #{escape(colour_spoken_label(label))} #{escape(value)} for #{escape(colour_name)}" hidden>#{COPY_ICON}</button>) : ''
+    %(<dd class="c-swatch__value">#{prefix}<code id="#{id}">#{escape(value)}</code>#{button}</dd>)
   end
 
-  # One swatch. `fields` picks which codes to show: GOV.UK screen pages show
-  # RGB and hex; the print page shows CMYK and Pantone only.
-  def colour_swatch(id, fields: %i[hex rgb sass theme], role: nil)
+  # One swatch in the GOV.UK Brand layout: a circular sample, the name in bold,
+  # then each value with its copy button. Screen pages show RGB and hex; the
+  # print page shows CMYK and Pantone, in the GOV.UK order.
+  def colour_swatch(id, fields: %i[rgb hex], role: nil, name: nil, key: nil)
     colour = govuk_colour(id)
-    name = colour.fetch('name')
+    name ||= role ? "#{role}: #{colour.fetch('name')}" : colour.fetch('name')
     hex = colour.fetch('hex')
-    rows = []
-    fields.each do |field|
+    rows = fields.filter_map do |field|
       case field
-      when :hex then rows << colour_value_row('Hex', hex, name)
-      when :rgb then rows << colour_value_row('RGB', colour.fetch('rgb').join(' '), name)
-      when :sass then rows << colour_value_row('Sass', colour['sass'], name) if colour['sass']
-      when :cmyk then rows << colour_value_row('CMYK', colour.dig('print', 'cmyk').join(' '), name) if colour['print']
-      when :pantone then rows << colour_value_row('Pantone', colour.dig('print', 'pantone'), name) if colour['print']
-      when :theme
-        colour_theme_properties(hex).each { |property| rows << colour_value_row('civica Blue theme, light mode', "var(#{property})", name) }
+      when :rgb then colour_value_row('RGB', colour.fetch('rgb').join(' '), name, key: key)
+      when :hex then colour_value_row('Hex', hex, name, key: key, show_label: false)
+      when :cmyk then colour_value_row('CMYK', colour.dig('print', 'cmyk').join(' '), name, key: key) if colour['print']
+      when :pantone then colour_value_row('Pantone', colour.dig('print', 'pantone'), name, key: key, show_label: false) if colour['print']
       end
     end
-    rows << %(<div class="c-swatch__row"><dt>Print</dt><dd>No print value given</dd></div>) if fields.include?(:cmyk) && !colour['print']
-    sample = %(<span class="c-swatch__sample" style="background-color:#{hex};color:#{colour_label_hex(hex)}" aria-hidden="true">#{escape(name)}</span>)
-    heading = role ? %(<p class="c-swatch__name">#{escape(role)}: #{escape(name)}</p>) : %(<p class="c-swatch__name">#{escape(name)}</p>)
-    %(<li class="c-swatch">#{sample}#{heading}<dl class="c-swatch__codes">#{rows.join}</dl></li>)
+    rows << %(<dd class="c-swatch__value">No print value given</dd>) if fields.include?(:cmyk) && !colour['print']
+    %(<div class="c-swatch" style="--c-swatch-colour:#{hex};"><dt class="c-swatch__name">#{escape(name)}</dt>#{rows.join}</div>)
   end
 
-  def colour_swatches(ids, **options)
-    %(<ul class="c-swatches" role="list">#{ids.map { |id| colour_swatch(id, **options) }.join}</ul>)
+  def colour_swatch_list(items, compact: false)
+    %(<dl class="c-swatch-list#{' c-swatch-list--compact' if compact}">#{items.join}</dl>)
+  end
+
+  def colour_swatches(ids, compact: false, **options)
+    colour_swatch_list(ids.map { |id| colour_swatch(id, **options) }, compact: compact)
   end
 
   # A palette as GOV.UK groups it: one heading and one swatch list per group.
@@ -109,48 +93,62 @@ module ColourHelpers
     end.join("\n")
   end
 
+  # "The web palette has:" list of links to each group, as GOV.UK opens it.
+  def colour_group_links(page, extra = {})
+    links = colour_page(page).fetch('palette').map { |group| [group.fetch('title').downcase, "##{colour_slug(group.fetch('title'))}"] } + extra.to_a
+    %(<ul>#{links.map { |text, href| %(<li><a href="#{href}">#{escape(text)}</a></li>) }.join}</ul>)
+  end
+
   # Chart categorical colours, in the GOV.UK order. Axes, lines and labels
   # carry their role in the name, as upstream shows them.
   def colour_chart_categorical(**options)
-    items = colour_page('charts').fetch('categorical').map do |item|
-      colour_swatch(item.fetch('colour'), role: item['role'], **options)
-    end
-    %(<ul class="c-swatches" role="list">#{items.join}</ul>)
+    colour_swatch_list(colour_page('charts').fetch('categorical').map { |item| colour_swatch(item.fetch('colour'), role: item['role'], **options) })
   end
 
-  # GOV.UK social companion colour set: each pairing shown as a sample, with
-  # both colour names and their hex values as real text.
-  def colour_companion_pairs
-    items = colour_page('social').fetch('companion').each_with_index.map do |pair, index|
+  # GOV.UK social companion colour set: each pairing is named, shown as a
+  # sample, and its two colours listed as swatches.
+  def colour_companion_pairs(level: 4)
+    colour_page('social').fetch('companion').each_with_index.map do |pair, index|
       fg = govuk_colour(pair.fetch('foreground'))
       bg = govuk_colour(pair.fetch('background'))
       label = "#{fg.fetch('name')} on #{bg.fetch('name')}"
-      sample = %(<svg class="c-pair__sample" viewBox="0 0 120 80" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="120" height="80" fill="#{bg.fetch('hex')}"/><circle cx="60" cy="40" r="26" fill="#{fg.fetch('hex')}"/></svg>)
-      rows = [colour_value_row('Foreground', fg.fetch('hex'), fg.fetch('name'), key: "pair-#{index}"), colour_value_row('Background', bg.fetch('hex'), bg.fetch('name'), key: "pair-#{index}")]
-      %(<li class="c-swatch">#{sample}<p class="c-swatch__name">#{escape(label)}</p><dl class="c-swatch__codes">#{rows.join}</dl></li>)
-    end
-    %(<ul class="c-swatches" role="list">#{items.join}</ul>)
-  end
-
-  # Web functional colours: GOV.UK token name, its palette colour and codes.
-  def colour_functional_tokens(level: 3)
-    colour_page('web').fetch('functional').map do |group|
-      items = group.fetch('tokens').map do |token|
-        colour = govuk_colour(token.fetch('colour'))
-        name = token.fetch('token')
-        rows = [colour_value_row('Token', name, name), colour_value_row('Sass', %(govuk-functional-colour("#{name}")), name),
-                colour_value_row('Hex', colour.fetch('hex'), name), colour_value_row('RGB', colour.fetch('rgb').join(' '), name)]
-        colour_theme_properties(colour.fetch('hex')).each { |property| rows << colour_value_row('civica Blue theme, light mode', "var(#{property})", name) }
-        sample = %(<span class="c-swatch__sample" style="background-color:#{colour.fetch('hex')};color:#{colour_label_hex(colour.fetch('hex'))}" aria-hidden="true">#{escape(name)}</span>)
-        %(<li class="c-swatch">#{sample}<p class="c-swatch__name">#{escape(name)} <span class="c-swatch__alias">(#{escape(colour.fetch('name'))})</span></p><dl class="c-swatch__codes">#{rows.join}</dl></li>)
-      end
-      %(<h#{level} id="functional-#{colour_slug(group.fetch('title'))}">#{escape(group.fetch('title'))}</h#{level}>\n<ul class="c-swatches" role="list">#{items.join}</ul>)
+      sample = %(<svg class="c-pair__sample" viewBox="0 0 320 320" aria-hidden="true" focusable="false"><rect width="320" height="320" fill="#{bg.fetch('hex')}"/><circle cx="160" cy="160" r="96" fill="#{fg.fetch('hex')}"/></svg>)
+      swatches = colour_swatch_list([colour_swatch(pair.fetch('foreground'), key: "pair-#{index}"), colour_swatch(pair.fetch('background'), key: "pair-#{index}")])
+      %(<h#{level} class="c-pair__name">#{escape(label)}</h#{level}>\n<div class="c-pair">#{sample}<div class="c-pair__colours">#{swatches}</div></div>)
     end.join("\n")
   end
 
-  # One polite status region per page announces every copy result.
-  # It also owns the one sentence that explains the buttons.
+  # Web functional colours: named by their GOV.UK token, as upstream shows them.
+  def colour_functional_tokens(level: 3)
+    colour_page('web').fetch('functional').map do |group|
+      items = group.fetch('tokens').map { |token| colour_swatch(token.fetch('colour'), name: token.fetch('token')) }
+      %(<h#{level} id="functional-#{colour_slug(group.fetch('title'))}">#{escape(group.fetch('title'))}</h#{level}>\n) + colour_swatch_list(items)
+    end.join("\n")
+  end
+
+  # GOV.UK shows each colour example as a picture on the page, followed by
+  # "Indicative examples for illustrative purposes only." The pictures come
+  # from the same example record as the standalone example page, so there is
+  # one source. Only the <figure> elements are taken: their headings and
+  # tables belong to the standalone page.
+  # `min` is the narrowest a picture may get before the grid wraps it.
+  def colour_figures(id, min: nil)
+    spec = config[:civica_examples].fetch(id) { raise "Unknown example #{id}" }
+    figures = Nokogiri::HTML::DocumentFragment.parse(spec.fetch('html')).css('figure')
+    raise "Example #{id} has no figure to show" if figures.empty?
+    style = min ? %( style="--c-figure-min:#{min}") : ''
+    # Indented lines would become Markdown code blocks, so drop the indentation.
+    html = figures.map(&:to_html).join.gsub(/^[ \t]+/, '')
+    %(<div class="c-colour-figures"#{style}>#{html}</div>\n#{colour_callout})
+  end
+
+  def colour_callout
+    %(<div class="govuk-inset-text c-callout">Indicative examples for illustrative purposes only.</div>)
+  end
+
+  # One polite status region per page announces every copy result. GOV.UK
+  # shows the copy icons without an explanatory sentence, and so does civica.
   def colour_copy_status
-    %(<p>Each value has a <strong>Copy</strong> button. Without JavaScript, select the value and copy it yourself.</p>\n<p class="govuk-visually-hidden" role="status" data-copy-value-status></p>)
+    %(<p class="govuk-visually-hidden" role="status" data-copy-value-status></p>)
   end
 end
