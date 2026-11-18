@@ -158,6 +158,7 @@ module ColourHelpers
   #   :chart    the chart, its notes and its data table (in a details
   #             element), with a compact swatch list for the colours it uses
   #   :map      the map, its key and its data table (in a details element)
+  #   :scale    the social tone tiles in one row, without captions
   def colour_example(id, layout: :figures, callout: true, level: 4)
     spec = config[:civica_examples].fetch(id) { raise "Unknown example #{id}" }
     fragment = Nokogiri::HTML::DocumentFragment.parse(spec.fetch('html'))
@@ -167,7 +168,18 @@ module ColourHelpers
     case layout
     when :tiles then lead = colour_example_tiles(root, id, level)
     when :chart then colour_example_chart(root, id)
-    when :map then colour_example_data_tables(root)
+    when :map
+      # The page's "Colours used in example" section owns the colour list.
+      root.css('> p').each { |para| para.remove if para.text.strip.start_with?('Colours used:') }
+      colour_example_data_tables(root)
+    when :scale
+      # GOV.UK's Inform to Inspire scale: the 5 tiles in one row under the
+      # axis. The page lists the options in order, so the record's own order
+      # sentence and the per-tile captions are not repeated.
+      root.css('figcaption').each(&:remove)
+      root.css('figure').each { |figure| figure.remove_attribute('aria-labelledby') }
+      root.css('> p').each { |para| para.content = 'The messages are invented examples.' if para.text.include?('In order:') }
+      root.css('> div[style]').each { |grid| grid['style'] = 'display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px' }
     end
     # Markdown wraps a line that starts with an inline-looking tag (such as
     # <figcaption>) in a paragraph, so emit the example as one line of HTML.
@@ -208,7 +220,7 @@ module ColourHelpers
       heading.remove if heading&.name == 'h3'
       # Nokogiri's HTML4 parser rewrites <div> inside <dl>, so the swatch list
       # goes in as a placeholder and is substituted into the final string.
-      @colour_example_swatches = %(<p class="govuk-body govuk-!-font-weight-bold">Colours used</p>) + colour_swatch_list(items, compact: true)
+      @colour_example_swatches = %(<p><strong>Colours used</strong></p>) + colour_swatch_list(items, compact: true)
       list.replace(Nokogiri::XML::Text.new('COLOUR-EXAMPLE-SWATCHES', root.document))
     end
     colour_example_data_tables(root)
@@ -223,7 +235,10 @@ module ColourHelpers
       summary = label && !label.empty? ? "Show the data: #{label}" : 'Show the data'
       details = Nokogiri::HTML::DocumentFragment.parse(%(<details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">#{escape(summary)}</span></summary><div class="govuk-details__text"></div></details>)).at_css('details')
       region.add_next_sibling(details)
-      details.at_css('.govuk-details__text').add_child(region)
+      # The layout gives every table one scrollable, labelled region, so the
+      # record's own region wrapper is dropped to avoid 2 nested focus stops.
+      details.at_css('.govuk-details__text').add_child(region.at_css('table'))
+      region.remove
     end
   end
 

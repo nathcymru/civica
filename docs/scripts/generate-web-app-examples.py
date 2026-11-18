@@ -184,13 +184,13 @@ def phone(p, tid, x, y, w, h, inner):
 
 examples = {}
 
-# 1. Web palette example: the civica dashboard in a desktop browser.
+# 1. Web palette example: a simulated dashboard in a desktop browser, modelled on the GOV.UK picture.
 p = Picture(PALETTES['web'])
 body = (f'<rect width="960" height="640" fill="{p.c("blue-tint-50")}"/>'
         f'<rect x="80" y="60" width="800" height="520" rx="10" fill="{p.c("white")}"/>'
         # Browser chrome: tab strip, tab and address bar.
         f'<path d="M80 100v-30a10 10 0 0 1 10-10h780a10 10 0 0 1 10 10v30z" fill="{p.c("black-tint-95")}"/>'
-        f'<circle cx="102" cy="80" r="6" fill="{p.c("red")}"/><circle cx="122" cy="80" r="6" fill="{p.c("yellow")}"/><circle cx="142" cy="80" r="6" fill="{p.c("green")}"/>'
+        f'<circle cx="102" cy="80" r="6" fill="{p.c("black-tint-80")}"/><circle cx="122" cy="80" r="6" fill="{p.c("black-tint-80")}"/><circle cx="142" cy="80" r="6" fill="{p.c("black-tint-80")}"/>'
         f'<path d="M165 100v-26a6 6 0 0 1 6-6h208a6 6 0 0 1 6 6v26z" fill="{p.c("white")}"/>'
         f'<rect x="177" y="76" width="16" height="16" rx="3" fill="{p.c("blue")}"/>'
         + p.text(201, 89, 'Overview – Morgan household', 13, 'black-tint-25', 'white')
@@ -229,17 +229,17 @@ body += (f'<rect x="120" y="482" width="719" height="70" rx="4" fill="{p.c("whit
          + p.text(170, 535, 'Locked at 18:42', 13, 'black-tint-25', 'white')
          + p.text(818, 522, 'View logbook', 15, 'blue-shade-10', 'white', anchor='end')
          + f'<rect x="725" y="526" width="93" height="1.5" fill="{p.c("blue-shade-10")}"/>')
-web_desc = ('A desktop browser on a Blue tint 50% background shows the civica dashboard for the invented Morgan household. '
+web_desc = ('A desktop browser on a Blue tint 50% background shows a simulated dashboard for the invented Morgan household. '
             'The header is Primary blue with “Morgan household”, Menu and a search icon in White. Below it, a White navigation bar has Overview, Energy, Map, Logbook, History and Settings links in Blue shade 10%, with a Primary blue line under Overview. '
             'On a Blue tint 95% background are an Overview heading and White cards with Black tint 80% borders: Living room 21.5 °C, Kitchen light On with a Primary blue switch, Energy today 7.8 kWh, and Front door Locked with a View logbook link. '
             'The text is Black, with secondary text in Black tint 25%.')
-web = figure('web-dashboard', svg('web-dashboard', 'Web palette example: the civica dashboard in a desktop browser', web_desc, body),
-             'The civica dashboard on desktop, in the web palette', p)
+web = figure('web-dashboard', svg('web-dashboard', 'Web palette example: a simulated dashboard in a desktop browser', web_desc, body),
+             'A simulated dashboard on desktop, in the web palette', p)
 examples['web-colour-dashboard'] = {
-    'title': 'The civica dashboard in the web palette',
+    'title': 'A simulated dashboard in the web palette',
     'description': 'A civica Home Assistant dashboard in a desktop browser, with a Primary blue header, links in the GOV.UK link colour, and White cards on Blue tint 95%. Every colour is a GOV.UK web palette colour.',
     'height': 760,
-    'html': '<section aria-labelledby="web-dashboard-h"><h2 class="govuk-heading-m" id="web-dashboard-h">Web palette example</h2>' + block('The household, its web address, rooms and readings are invented.', [web]) + '</section>',
+    'html': '<section aria-labelledby="web-dashboard-h"><h2 class="govuk-heading-m" id="web-dashboard-h">Web palette example</h2>' + block('This is a simulated picture in web palette colours, modelled on the GOV.UK web palette example. It is not a screenshot of civica or Home Assistant: Home Assistant has no Menu button or navigation bar like this, and the civica theme as shipped has a White dashboard background and Black icons. The household, its web address, rooms and readings are invented.', [web]) + '</section>',
 }
 
 # 2. Mobile web header: the dashboard in a mobile browser, content greyed out.
@@ -258,15 +258,15 @@ inner = (p.text(312, 160, '9:41', 17, 'black', 'white', 700) + status_icons(p, 6
          + bars(p, 293, 470, [90], 'black-tint-80', 12)
          + ''.join(bars(p, 293, y, [18], 'black-tint-80', 3) + bars(p, 338, y - 5, [w], 'black-tint-80', 12) for y, w in [(541, 110), (577, 130), (613, 260)]))
 body = f'<rect width="960" height="640" fill="{p.c("white")}"/>' + phone(p, 'mobile-web-clip', 280, 128, 400, 620, inner)
-mobile_desc = ('A phone shows the civica dashboard in a mobile browser, with the address home.morgan.example. The header is Primary blue with “Morgan household”, Menu and a search icon in White. '
+mobile_desc = ('A phone shows a simulated dashboard in a mobile browser, with the address home.morgan.example. The header is Primary blue with “Morgan household”, Menu and a search icon in White. '
                'The page content below the header is greyed out as Black tint 80% bars, so that only the header is in colour.')
-mobile = figure('mobile-web', svg('mobile-web', 'Mobile web header: the civica dashboard on a phone', mobile_desc, body),
-                'The civica dashboard in a mobile browser, with the content greyed out', p)
+mobile = figure('mobile-web', svg('mobile-web', 'Mobile web header: a simulated dashboard on a phone', mobile_desc, body),
+                'A simulated dashboard in a mobile browser, with the content greyed out', p)
 examples['app-colour-mobile-web-header'] = {
     'title': 'The Primary blue header on the mobile web',
-    'description': 'The civica dashboard in a mobile browser: the Primary blue header with the household name in White, and the page content greyed out.',
+    'description': 'A simulated dashboard in a mobile browser, modelled on the GOV.UK picture: the Primary blue header with the household name in White, and the page content greyed out.',
     'height': 760,
-    'html': '<section aria-labelledby="mobile-web-h"><h2 class="govuk-heading-m" id="mobile-web-h">Mobile web header</h2>' + block('The household name and web address are invented.', [mobile]) + '</section>',
+    'html': '<section aria-labelledby="mobile-web-h"><h2 class="govuk-heading-m" id="mobile-web-h">Mobile web header</h2>' + block('This is a simulated screen modelled on the GOV.UK mobile web header picture, not a screenshot of civica or Home Assistant. The household name and web address are invented.', [mobile]) + '</section>',
 }
 
 
@@ -298,21 +298,21 @@ def app_screen(p, tid, x, kind):
 
 header_figures = []
 for tid, screens, caption, desc in [
-    ('app-header-1', [('home'), (('Living room', 'Home', None))], 'Companion app: Home and Living room screens',
-     'Two Home Assistant Companion app screens with a Primary blue header. The Home screen shows “Morgan household” in White above a White search field. '
+    ('app-header-1', [('home'), (('Living room', 'Home', None))], 'Simulated app: Home and Living room screens',
+     'Two simulated app screens with a Primary blue header. The Home screen shows “Morgan household” in White above a White search field. '
      'The Living room screen has a White back link to Home and the title “Living room” in White. The content below each header is greyed out in Black tint 95% and Black tint 80%.'),
-    ('app-header-2', [(('Energy', 'Home', 'Edit')), (('Settings', None, None))], 'Companion app: Energy and Settings screens',
-     'Two Home Assistant Companion app screens with a Primary blue header. The Energy screen has a White back link to Home, an Edit link and the title “Energy” in White. '
+    ('app-header-2', [(('Energy', 'Home', 'Edit')), (('Settings', None, None))], 'Simulated app: Energy and Settings screens',
+     'Two simulated app screens with a Primary blue header. The Energy screen has a White back link to Home, an Edit link and the title “Energy” in White. '
      'The Settings screen has the title “Settings” in White. The content below each header is greyed out in Black tint 95% and Black tint 80%.'),
 ]:
     p = Picture(PALETTES['app'])
     body = f'<rect width="960" height="640" fill="{p.c("white")}"/>' + app_screen(p, f'{tid}-a', 65, screens[0]) + app_screen(p, f'{tid}-b', 495, screens[1])
     header_figures.append(figure(tid, svg(tid, f'App header: {caption.split(": ", 1)[1]}', desc, body), caption, p))
 examples['app-colour-header'] = {
-    'title': 'The Primary blue header in the Companion app',
-    'description': 'Four Home Assistant Companion app screens with the Primary blue header and the content greyed out.',
+    'title': 'The Primary blue header in simulated app screens',
+    'description': 'Four simulated app screens, modelled on the GOV.UK app pictures, with the Primary blue header and the content greyed out.',
     'height': 1300,
-    'html': '<section aria-labelledby="app-header-h"><h2 class="govuk-heading-m" id="app-header-h">App header</h2>' + block('The household and room names are invented.', header_figures) + '</section>',
+    'html': '<section aria-labelledby="app-header-h"><h2 class="govuk-heading-m" id="app-header-h">App header</h2>' + block('These are simulated screens modelled on the GOV.UK app pictures, not screens of the Home Assistant Companion app or of the civica theme as shipped. The household and room names are invented.', header_figures) + '</section>',
 }
 
 # 4. Examples: tinted tiles and menus, led by Primary blue and Accent teal.
@@ -391,17 +391,17 @@ screen = (f'<rect x="{x}" y="10" width="{w}" height="98" fill="{p.c("blue")}"/>'
           + p.text(x + w - 24, 444, '2026.11', 14, 'black-tint-25', 'blue-tint-95', anchor='end')
           + tab_bar(p, x, w, 'Settings'))
 body += phone(p, 'app-examples-b', x, 10, w, 620, screen)
-examples_desc = ('Two Home Assistant Companion app screens. The Home screen has a Primary blue header with “Morgan household” in White, an Accent teal label reading “Everyone is home” in Blue shade 50%, and a White search field. '
+examples_desc = ('Two simulated app screens. The Home screen has a Primary blue header with “Morgan household” in White, an Accent teal label reading “Everyone is home” in Blue shade 50%, and a White search field. '
                  'Below are tinted tiles in Blue tint 95% with Blue tint 50% borders and Primary blue icons: Logbook, and the areas Living room, Kitchen, Bedrooms, Garden and Energy, with an Edit link. '
                  'The Settings screen has a Primary blue header and tinted menus: an account card for Alex Morgan with a Manage your account link, Sign out in Primary red, Notifications On, Location sharing, a Primary blue Dark mode switch, the app version and a Help and feedback link. '
                  'Each screen has a tab bar with Home and Settings, the current tab in Primary blue.')
-example_figure = figure('app-examples', svg('app-examples', 'App examples: tinted tiles and menus in the Companion app', examples_desc, body),
-                        'Companion app: tinted tiles on the Home screen and tinted menus in Settings', p)
+example_figure = figure('app-examples', svg('app-examples', 'App examples: tinted tiles and menus in simulated app screens', examples_desc, body),
+                        'Simulated app: tinted tiles on the Home screen and tinted menus in Settings', p)
 examples['app-colour-examples'] = {
-    'title': 'Tinted tiles and menus in the Companion app',
-    'description': 'Two Home Assistant Companion app screens led by Primary blue and Accent teal, with Blue tint 95% tiles and menus.',
+    'title': 'Tinted tiles and menus in simulated app screens',
+    'description': 'Two simulated app screens, modelled on the GOV.UK app examples, led by Primary blue and Accent teal, with Blue tint 95% tiles and menus.',
     'height': 760,
-    'html': '<section aria-labelledby="app-examples-h"><h2 class="govuk-heading-m" id="app-examples-h">Examples</h2>' + block('The household, person, areas and app version are invented.', [example_figure]) + '</section>',
+    'html': '<section aria-labelledby="app-examples-h"><h2 class="govuk-heading-m" id="app-examples-h">Examples</h2>' + block('These are simulated screens modelled on the GOV.UK app examples, not screens of the Home Assistant Companion app or of the civica theme as shipped. The household, person, areas and app version are invented.', [example_figure]) + '</section>',
 }
 
 for ex in examples.values():
@@ -410,7 +410,7 @@ for ex in examples.values():
         'licence': 'MIT, original project documentation code under LICENSE',
         'source': 'docs/data/web-app-colour-examples.yml',
         'provenance': 'Original interface pictures with an invented household, generated by docs/scripts/generate-web-app-examples.py from docs/data/govuk-brand-colours.json. Compositions follow the GOV.UK web and app colour page pictures; no GOV.UK artwork, screenshots, crown, wordmark or other identity device is copied.',
-        'purpose': 'Show the GOV.UK web and app palettes on a civica Home Assistant dashboard and in the Home Assistant Companion app.',
+        'purpose': 'Show the GOV.UK web and app palettes in simulated dashboard and app pictures modelled on the GOV.UK pictures; they are not screenshots of civica, Home Assistant or the Companion app.',
         'intended_background': 'Each picture carries its own background; every text pair reaches at least 4.5:1, checked when the script runs.',
         'alternative_text_decision': 'Each picture is an SVG image with a title and a description that names what it shows and its colours; the caption lists the colours. The page text gives the guidance, so the page works without the pictures.',
         'review_status': 'Source checks only; integrated rendered review is recorded separately.',
