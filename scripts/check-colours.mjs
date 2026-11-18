@@ -175,7 +175,7 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
     assert.ok(used.length > 0, `${id}: example has colours`);
     for (const hex of used) assert.ok(allowed.has(hex), `${id}: example colour ${hex} is in the GOV.UK ${page} palette`);
     assert.ok(/Colours: [^<]+\./.test(examples[id].html), `${id}: caption lists the colours`);
-    assert.ok(/are invented\./.test(examples[id].html), `${id}: says its details are invented`);
+    assert.ok(/are invented[.,]/.test(examples[id].html), `${id}: says its details are invented`);
   }
 }
 // 8. Layout parity with the GOV.UK Brand colour pages. Text and records can
@@ -188,11 +188,11 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
 {
   const outline = {
     'colour-web': ['Web palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Browns', 'Neutrals', 'Functional colours', 'Web palette example'],
-    'colour-app': ['App palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals', 'App header', 'Mobile web header', 'App header', 'Examples'],
+    'colour-app': ['App palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals', 'App header', 'Mobile web header', 'App screens', 'Examples'],
     'colour-social': ['Social palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals', 'Use colour to reflect tone', 'From most informative to most inspiring', 'Tonal colour examples', 'Companion colour set', 'Companion colour examples'],
     'colour-print': ['Print palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals'],
-    'chart-colour': ['Chart palette', 'Categorical palette', 'Sequential and divergent scale palette', 'Using colour in charts', 'Single category', 'Multiple categories', 'Divergent categories', 'Using charts within social media'],
-    'colour-maps': ['Map palette', 'Blues', 'Magentas', 'Reds', 'Greens', 'Purples', 'Teals', 'Oranges', 'Neutrals', 'Using colour combinations on maps', 'Example', 'Colours used in example', 'Points of interest', 'Base map'],
+    'chart-colour': ['Chart palette', 'Categorical palette', 'Sequential and divergent scale palette', 'Using colour in charts', 'Single category', 'Multiple categories', 'Above and below a target', 'Using charts within social media'],
+    'colour-maps': ['Map palette', 'Blues', 'Magentas', 'Reds', 'Greens', 'Purples', 'Teals', 'Oranges', 'Neutrals', 'Using colour combinations on maps', 'Example: zones on a base map', 'Colours used in the example', 'Points of interest', 'Base map'],
     'colour-illustrations': ['Illustrations palette', 'Applying colour', 'Colour pairing', 'Using contrast'],
   };
   const text = value => decode(value.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim();
@@ -214,18 +214,43 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   assert.ok(!readFileSync(`${BUILD}/colour.html`, 'utf8').includes('c-on-this-page'), 'colour: GOV.UK colour pages have no "On this page" box');
   for (const file of ['colour-social', 'colour-maps', 'colour-illustrations']) {
     const main = readFileSync(`${BUILD}/${file}.html`, 'utf8');
-    assert.ok(!main.includes('<iframe'), `${file}: GOV.UK shows these examples as pictures on the page, not in example frames`);
-    // GOV.UK puts the callout on Social and Maps, not on Illustrations.
-    assert.equal(main.includes('Indicative examples for illustrative purposes only.'), file !== 'colour-illustrations', `${file}: GOV.UK callout matches the source page`);
+    // The colour pictures are on the page, not in example frames. The one
+    // frame allowed is the working OpenStreetMap example on Map colours.
+    const frames = [...main.matchAll(/<iframe\b[^>]*\bsrc="[^"]*examples\/([a-z0-9-]+)\.html/g)].map(match => match[1]);
+    assert.deepEqual(frames, file === 'colour-maps' ? ['map-neighbourhood-records'] : [], `${file}: colour pictures are on the page, not in example frames${file === 'colour-maps' ? ', and the working OpenStreetMap example is framed' : ''}`);
+    assert.ok(!main.includes('Indicative examples for illustrative purposes only.'), `${file}: no shared example disclaimer`);
   }
-  // Web and App keep their rule examples in frames, so check only the GOV.UK
-  // pictures: each is on the page, not framed, and GOV.UK's callouts are there
-  // (1 on Web; 3 on App: App header, its App header subsection and Examples).
-  for (const [file, figures, callouts] of [['colour-web', ['web-dashboard'], 1], ['colour-app', ['mobile-web', 'app-header-1', 'app-header-2', 'app-examples'], 3]]) {
+  // Web and App keep their rule examples in frames, so check only the colour
+  // pictures: each is on the page, not framed.
+  for (const [file, figures] of [['colour-web', ['web-dashboard']], ['colour-app', ['mobile-web', 'app-header-1', 'app-header-2', 'app-examples']]]) {
     const main = readFileSync(`${BUILD}/${file}.html`, 'utf8');
     for (const id of figures) assert.ok(main.includes(`role="img" aria-labelledby="${id}-t ${id}-d"`), `${file}: the ${id} picture is on the page`);
-    assert.ok(!/<iframe[^>]+(?:web|app)-colour-/.test(main), `${file}: GOV.UK shows these pictures on the page, not in example frames`);
-    assert.equal((main.match(/Indicative examples for illustrative purposes only\./g) || []).length, callouts, `${file}: GOV.UK callouts match the source page`);
+    assert.ok(!/<iframe[^>]+(?:web|app)-colour-/.test(main), `${file}: these pictures are on the page, not in example frames`);
+  }
+  // Each colour example on the page says once, in its own caption or lead,
+  // that its data is invented or synthetic. A shared page-level disclaimer
+  // repeated the same statement up to 6 times, so it is not used. Drawings
+  // (SVG text) are left out: a drawn label is part of the picture.
+  for (const file of ['colour-web', 'colour-app', 'colour-social', 'colour-maps', 'chart-colour']) {
+    const main = readFileSync(`${BUILD}/${file}.html`, 'utf8');
+    assert.ok(!main.includes('Indicative examples for illustrative purposes only.'), `${file}: no shared example disclaimer`);
+    // Each example block, from its opening div to the matching closing div.
+    const examples = [...main.matchAll(/<div class="c-colour-example">/g)].map(match => {
+      const tags = /<\/?div\b[^>]*>/g;
+      tags.lastIndex = match.index;
+      let depth = 0;
+      for (let tag; (tag = tags.exec(main));) {
+        depth += tag[0].startsWith('</') ? -1 : 1;
+        if (depth === 0) return main.slice(match.index, tags.lastIndex);
+      }
+      return main.slice(match.index);
+    });
+    assert.ok(examples.length > 0, `${file}: has colour examples`);
+    for (const [index, example] of examples.entries()) {
+      const words = decode(example.replace(/<svg\b[\s\S]*?<\/svg>/g, ' ').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
+      const statements = words.split(/(?<=[.!?])\s+/).filter(sentence => /\b(invented|synthetic|simulated)\b/i.test(sentence));
+      assert.equal(statements.length, 1, `${file}: colour example ${index + 1} says once that it is invented (found ${statements.length}: ${statements.join(' | ')})`);
+    }
   }
   // Each example keeps its invented-data label and its data table.
   for (const [file, count] of [['chart-colour', 4], ['colour-maps', 1]]) {

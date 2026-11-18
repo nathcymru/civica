@@ -1,7 +1,7 @@
 ---
 no_contents: true
 title: "App colours"
-description: "The GOV.UK app palette, with accents and dark mode blues, for the Home Assistant Companion app."
+description: "The civica app palette, with accents and dark mode blues, for app-like graphics, and when to use it instead of the web palette."
 group: "Colour"
 nav_order: 2
 last_reviewed_on: 2026-11-18
@@ -10,16 +10,22 @@ published_on: "2026-11-18"
 updated_on: "2026-11-18"
 updates:
   - date: "2026-11-18"
-    description: "First published, with the GOV.UK app palette copied exactly from the GOV.UK Brand Guidelines."
+    description: "First published, with the civica app palette."
   - date: "2026-11-18"
-    description: "Swatches now use the GOV.UK Brand layout: a round sample, the name, and RGB and hex values with copy icons."
+    description: "Swatches now show a round sample, the name, and RGB and hex values with copy icons."
   - date: "2026-11-18"
-    description: "The App header and Examples sections now follow the GOV.UK App page: simulated pictures, modelled on the GOV.UK pictures, of the Primary blue header on the mobile web, of 4 app screens with the Primary blue header, and of app screens with tinted tiles and menus. They are not screenshots of the Companion app or the civica theme, and the household and its details are invented. Use colour with care is now part of Examples."
-ai_instructions: "Use this page for colour in the Home Assistant Companion app and other app-like screens. Every value comes unchanged from the GOV.UK Brand Guidelines app page and is rendered from docs/data/govuk-brand-colours.json. The app palette adds accents and two dark mode blues to the web palette. Lead with Primary blue and Accent teal, keep the brand header on key screens, and never add colour that reduces accessibility. Grey out content in Black tints when a picture shows only the header. The pictures are simulated screens modelled on the GOV.UK pictures, not screenshots of the Companion app or the civica theme as shipped; household details are invented, and they copy no GOV.UK identity device."
+    description: "Added drawings to App header and Examples: the Primary blue header on the mobile web, 4 app screens with the Primary blue header, and app screens with tinted tiles and menus. They are not screenshots of the Companion app or the civica theme, and the household and its details are invented. Use colour with care is now part of Examples."
+  - date: "2026-11-18"
+    description: "Rewritten for Home Assistant users: removed outside source names, gave each picture a caption saying which screens it shows and what to notice, and removed a repeated sentence."
+  - date: "2026-11-18"
+    description: "Said when to use app colours instead of web colours, corrected what the app palette contains, said where Accent teal and the dark mode blues go, and cut each picture's colour list to the colours to notice."
+  - date: "2026-11-18"
+    description: "Redrew every picture as the Home Assistant frontend at phone width, as the Companion app and a phone browser show it: the Primary blue toolbar with the menu icon and the view tabs or title, then the dashboard, Logbook, Settings, a shopping list and the sidebar. Removed the large titles, back links, search fields, tab bars, account links and the Accent teal badge, which are not part of Home Assistant. The Examples picture now shows tinted tile icons and the tinted row in the sidebar."
+ai_instructions: "Use this page for app-like graphics you design, such as a phone screen in a guide or a release picture. A Home Assistant dashboard uses Web colours wherever it is viewed, including in the Companion app, because the app shows the same dashboard with the same civica theme. Values are rendered from docs/data/govuk-brand-colours.json. The app palette is the web palette without the browns, plus Accent blue, green, purple, magenta, red, orange and yellow and 2 dark mode blues. Lead with Primary blue and keep the brand header on key screens. Accent teal is for a small badge or label in a graphic, never the theme accent-color, which is the theme colour. The civica theme does not use the dark mode blues. The pictures are simplified drawings with invented household details, not screenshots of the Companion app. Functional colours are owned by Web colours. Do not name outside sources in page text. Rules WG-001, WG-056."
 ai_related:
   - path: "/styles/colour-web.html"
     title: "Web colours"
-    relationship: "Owns the functional colours (text, links, focus, error, success) that the app also uses."
+    relationship: "Owns the web palette and the functional colours (text, links, focus, error, success) used on every Home Assistant dashboard, including in the Companion app."
   - path: "/get-started/colour-settings.html"
     title: "Change theme colours"
     relationship: "Owns how a household changes the theme colour in Home Assistant."
@@ -27,9 +33,9 @@ ai_related:
 
 # App colours
 
-Use these colours in the Home Assistant Companion app and on screens that behave like an app. Lead with Primary blue and Accent teal, from the first screen to the controls.
+Use these colours for app-like graphics you design, such as a phone screen in a guide or a picture for a release post. A Home Assistant dashboard uses [Web colours](colour-web.html) wherever it is viewed, including in the Companion app, because the app shows the same dashboard with the same civica theme.
 
-The app palette has every primary colour, tint, shade and accent, plus two dark mode blues. Every value is the GOV.UK app palette, unchanged.
+The app palette is the web palette without the browns, plus Accent blue, green, purple, magenta, red, orange and yellow, and 2 dark mode blues.
 
 <%= colour_copy_status %>
 
@@ -41,28 +47,24 @@ The app palette has:
 
 <%= colour_palette('app') %>
 
+Use accents for small highlights, such as a badge or a label. Accent teal is not the theme's accent colour: in the civica theme, that is the household's theme colour.
+
+The 2 dark mode blues are a pair for dark app screens: Dark mode primary blue on Dark mode blue shade 80% has 6.8:1 contrast, so it works for text and controls. The civica theme does not use them: in dark mode it uses lighter tints of the theme colour, as [Light and dark modes](colour.html#light-and-dark-modes) explains.
+
 ## App header
 
-Keep the brand colour header on key screens, as on the web. It gives each screen a clear starting point and makes the household's interface easy to recognise.
-
-<%= colour_callout %>
+Keep the Primary blue header on key screens, in the app and in a phone browser. It gives each screen a clear starting point and makes the household's interface easy to recognise.
 
 ### Mobile web header
 
 <%= colour_example('app-colour-mobile-web-header', callout: false) %>
 
-### App header
-
-<%= colour_callout %>
+### App screens
 
 <%= colour_example('app-colour-header', callout: false) %>
 
 ## Examples
 
-In the Companion app, lead with Primary blue and Accent teal, from the first screen to the core controls.
-
-Tints inside cards and colours that help people find their way can add structure. Apply colour only where it does not add visual clutter or make the screen harder to use.
-
-<%= colour_callout %>
+Tinted tiles and menus can add structure and help people find their way. Add colour only where it does not clutter the screen or make it harder to use.
 
 <%= colour_example('app-colour-examples', callout: false) %>

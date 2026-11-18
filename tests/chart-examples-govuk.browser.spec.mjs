@@ -63,7 +63,8 @@ for (const id of ids) {
     await expect(canvas.locator('figure figcaption')).toHaveCount(1);
     await expect(canvas).toContainText('Synthetic data');
     await expect(canvas).toContainText('not readings from a Home Assistant instance');
-    if (id === 'chart-govuk-social') await expect(canvas).toContainText('Illustrative example');
+    // The caption carries the one simulation statement; the drawing carries no label or data note.
+    expect((await svg.locator('text').allTextContents()).join(' ')).not.toMatch(/Illustrative|invented|synthetic/i);
     await expect(canvas.getByRole('table')).toHaveCount(1);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `${id}: no horizontal scroll`).toBe(true);
     const box = await svg.boundingBox();

@@ -173,13 +173,13 @@ module ColourHelpers
       root.css('> p').each { |para| para.remove if para.text.strip.start_with?('Colours used:') }
       colour_example_data_tables(root)
     when :scale
-      # GOV.UK's Inform to Inspire scale: the 5 tiles in one row under the
+      # The inform-to-inspire scale: the 5 tiles in a row (wrapping on narrow screens) under the
       # axis. The page lists the options in order, so the record's own order
       # sentence and the per-tile captions are not repeated.
       root.css('figcaption').each(&:remove)
       root.css('figure').each { |figure| figure.remove_attribute('aria-labelledby') }
       root.css('> p').each { |para| para.content = 'The messages are invented examples.' if para.text.include?('In order:') }
-      root.css('> div[style]').each { |grid| grid['style'] = 'display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px' }
+      root.css('> div[style]').each { |grid| grid['style'] = 'display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px' }
     end
     # Markdown wraps a line that starts with an inline-looking tag (such as
     # <figcaption>) in a paragraph, so emit the example as one line of HTML.

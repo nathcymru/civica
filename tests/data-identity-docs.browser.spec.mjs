@@ -18,104 +18,113 @@ const tableRows = table => table.locator('tbody tr').evaluateAll(rows => rows.ma
 
 // The guide-wide suite covers general accessibility and source rendering. These
 // checks own the numerical meaning and the separation of colour from identity.
-test('categorical references use the GOV.UK chart palette through the generator in light and dark mode', async ({ page }) => {
-  const reference = colours['data-colour-categorical'].colour_reference;
-  expect(createHash('sha256').update(readFileSync(reference.generator)).digest('hex')).toBe(reference.generator_sha256);
-  expect(reference.algorithm_version).toBe(CHART_COLOUR_SPEC.algorithmVersion);
-  expect(reference.contexts.map(context => context.mode).sort()).toEqual(['dark', 'light']);
-  const categorical = govuk.pages.charts.categorical.filter(item => !item.role).map(item => govuk.colours[item.colour]);
+test('categorical example draws a History graph card: civica-chart-1 to civica-chart-4 by position, solid lines and a legend, in light and dark mode', async ({ page }) => {
+  const spec = colours['data-colour-categorical'];
+  const data = spec.chart_data;
+  // civica-chart-N in the first (light) block of the theme, and the same in dark mode.
+  const theme = readFileSync('themes/civica.yaml', 'utf8');
+  const themeHex = n => theme.match(new RegExp(`"civica-chart-${n}": "(#[0-9A-F]{6})"`))[1];
+  for (const [index, series] of data.series.entries()) {
+    expect(series.theme_colour).toBe(`civica-chart-${index + 1}`);
+    expect(series.hex).toBe(themeHex(index + 1));
+    expect(series.hex).toBe(govuk.colours[series.colour_id].hex);
+  }
   await page.goto(exampleUrl('data-colour-categorical'));
-  await expect(page.locator('[data-chart-key]')).toHaveCount(reference.series.length * reference.contexts.length);
-  await expect(page.locator('[data-chart-tone]')).toHaveCount(0);
-  for (const context of reference.contexts) {
-    expect(Object.keys(context)).not.toContain('tone');
-    expect(context.series.map(series => series.key)).toEqual(reference.series.map(series => series.key));
-    for (const series of context.series) {
-      const expected = chartSeriesStyle(series.key, { mode: context.mode });
-      expect(series).toMatchObject(expected);
-      // The same GOV.UK colour in both modes, copied unchanged from the GOV.UK record.
-      expect(expected.color).toBe(chartSeriesStyle(series.key, { mode: 'light' }).color);
-      const source = categorical.find(colour => colour.hex === expected.color);
-      expect(source, `${series.key}: GOV.UK categorical colour`).toBeTruthy();
-      expect(series.colour_name).toBe(source.name);
-      const key = page.locator(`[data-chart-key="${series.key}"][data-chart-mode="${context.mode}"]`);
-      await expect(key).toContainText(series.label);
-      await expect(key).toContainText(source.name);
-      await expect(key.locator('.c-data-colour-code')).toHaveText(expected.color);
-      await expect(key).toHaveAttribute('data-chart-pattern', expected.pattern);
-      await expect(key).toHaveAttribute('data-chart-symbol', expected.symbol);
-      await expect(key).toHaveAttribute('data-chart-line-dash', expected.lineDash.join(','));
-      await expect(key.locator('svg line')).toHaveAttribute('stroke', expected.color);
-      await expect(key.locator('svg line')).toHaveAttribute('stroke-width', '1.5');
-      if (expected.lineDash.length) await expect(key.locator('svg line')).toHaveAttribute('stroke-dasharray', expected.lineDash.join(' '));
-      await expect(key.locator('svg line')).toHaveCSS('opacity', '1');
-      // Label text, not the series colour, must stay readable on the surface.
-      const text = await key.evaluate(node => getComputedStyle(node).color);
-      const hex = `#${text.match(/\d+/g).slice(0, 3).map(channel => Number(channel).toString(16).padStart(2, '0')).join('')}`;
-      expect(chartContrast(hex, context.surface)).toBeGreaterThanOrEqual(4.5);
+  for (const mode of ['light', 'dark']) {
+    const svg = page.locator(`svg[data-chart-mode="${mode}"]`);
+    await expect(svg).toHaveAttribute('role', 'img');
+    const lines = await svg.locator('path[data-series]').evaluateAll(nodes => nodes.map(node => ({ key: node.dataset.series, values: node.dataset.values.split(',').map(value => value === '' ? null : Number(value)), stroke: node.getAttribute('stroke'), dash: node.getAttribute('stroke-dasharray') })));
+    expect(lines.map(line => line.key)).toEqual(data.series.map(series => series.key));
+    for (const [index, series] of data.series.entries()) {
+      expect(lines[index].values).toEqual(series.values);
+      expect(lines[index].stroke).toBe(series.hex);
+      // A native History graph card draws solid lines only.
+      expect(lines[index].dash).toBeNull();
     }
-    // Devices that share a colour must differ in line dash or marker.
-    for (const [index, one] of context.series.entries()) for (const two of context.series.slice(index + 1)) {
-      if (one.color === two.color) expect(`${one.lineDash}|${one.symbol}`).not.toBe(`${two.lineDash}|${two.symbol}`);
-    }
+    // No markers: the only circles are the legend bullets, one per series in its colour.
+    const bullets = await svg.locator('circle').evaluateAll(nodes => nodes.map(node => ({ key: node.dataset.legend, fill: node.getAttribute('fill') })));
+    expect(bullets).toEqual(data.series.map(series => ({ key: series.key, fill: series.hex })));
+    await expect(svg.locator('rect')).toHaveCount(1);
+    // Each room is named once, in the legend: no end labels.
+    const labels = await svg.locator('text').allTextContents();
+    for (const series of data.series) expect(labels.filter(label => label === series.label)).toHaveLength(1);
+    expect(labels.filter(label => label === 'No data')).toHaveLength(1);
   }
   const rows = await tableRows(page.getByRole('table'));
-  expect(rows.map(row => row[1])).toEqual(reference.series.map(series => series.value === null ? 'Not supplied' : String(series.value)));
-  expect(rows.find(row => row[0].includes('Dishwasher'))[2]).toContain('not zero');
-  await expect(page.locator('.c-example-canvas')).not.toContainText(/Vivid|Muted|OKLCH/i);
+  expect(rows).toEqual(data.times.map((time, index) => [time, ...data.series.map(series => series.values[index] === null ? 'Not supplied' : String(series.values[index]))]));
+  await expect(page.locator('.c-example-canvas')).not.toContainText(/Vivid|Muted|OKLCH|GOV\.UK|real zero|at a moment|line style|marker/i);
   await expect(page.getByRole('button')).toHaveCount(0);
 });
 
-test('quantitative scales use named GOV.UK steps, retain their units and keep missing distinct from zero', async ({ page }) => {
+test('chart text in the data colour examples renders at 12px or more at a 320px viewport, and No data sits off the grid lines', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  for (const id of ['data-colour-categorical', 'data-colour-quantitative']) {
+    await page.goto(exampleUrl(id));
+    const sizes = await page.locator('svg[data-chart] text').evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect().height > 0 && Number(node.getAttribute('font-size')) * node.ownerSVGElement.getScreenCTM().a));
+    expect(sizes.length).toBeGreaterThan(0);
+    for (const size of sizes) expect(size, id).toBeGreaterThanOrEqual(12);
+  }
+  await page.goto(exampleUrl('data-colour-categorical'));
+  for (const svg of await page.locator('svg[data-chart-mode]').all()) {
+    const box = await svg.locator('text', { hasText: 'No data' }).boundingBox();
+    const lines = await svg.locator('line').evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect()));
+    for (const line of lines) expect(line.y < box.y || line.y > box.y + box.height).toBe(true);
+  }
+  // The same holds inside the narrower embedded frame on the Chart colours page.
+  await page.goto('/docs/build/styles/chart-colour.html');
+  for (const id of ['data-colour-categorical', 'data-colour-quantitative']) {
+    const frame = page.frameLocator(`#example-${id} iframe`);
+    await page.locator(`#example-${id} iframe`).scrollIntoViewIfNeeded();
+    await expect(frame.locator('svg[data-chart]').first()).toBeVisible();
+    const sizes = await frame.locator('svg[data-chart] text').evaluateAll(nodes => nodes.map(node => Number(node.getAttribute('font-size')) * node.ownerSVGElement.getScreenCTM().a));
+    for (const size of sizes) expect(size, `${id} embedded`).toBeGreaterThanOrEqual(12);
+  }
+});
+
+test('quantitative heatmaps use listed scale steps, print every value and keep missing distinct from zero', async ({ page }) => {
   const reference = colours['data-colour-quantitative'].colour_reference;
-  const blues = govuk.pages.charts.sequential.find(scale => scale.title === 'Blues').colours;
-  const expectedIds = {
-    sequential: ['blue-tint-80', 'blue-tint-50', 'blue-tint-25', 'blue', 'blue-shade-50'],
-    divergent: ['blue', 'blue-tint-50', 'black-tint-95', 'red-tint-50', 'red'],
-  };
-  expect(expectedIds.sequential.every(id => blues.includes(id))).toBe(true);
   const chartScaleIds = govuk.pages.charts.sequential.flatMap(scale => scale.colours);
   await page.goto(exampleUrl('data-colour-quantitative'));
   for (const name of ['sequential', 'divergent']) {
     const scale = reference[name];
-    expect(scale.rows.filter(row => row.value !== null).map(row => row.colour_id)).toEqual(expectedIds[name]);
-    const table = page.getByRole('table', { name: `The ${name} colours and their underlying values` });
-    const renderedRows = await tableRows(table);
-    expect(renderedRows).toHaveLength(scale.rows.length);
-    await expect(table.locator('thead')).toContainText(name === 'sequential' ? 'Energy (kWh)' : 'Difference (°C)');
-    for (const [index, row] of scale.rows.entries()) {
-      const swatch = page.locator(`[data-scale="${name}"][data-scale-value="${row.value ?? 'missing'}"]`);
-      expect(renderedRows[index][0]).toBe(row.label);
-      if (row.value === null) {
-        expect(row.color).toBeNull();
-        await expect(swatch).toHaveAttribute('data-scale-colour', 'none');
-        await expect(swatch).toContainText('Not supplied');
-        await expect(swatch.locator('.c-data-colour-fill svg')).toBeVisible();
-        const missingFill = await swatch.locator('.c-data-colour-fill').evaluate(node => getComputedStyle(node).backgroundColor);
-        expect(scale.rows.filter(sample => sample.color !== null).map(sample => rgb(sample.color))).not.toContain(missingFill);
-        expect(renderedRows[index].slice(1).every(cell => cell.startsWith('Not supplied'))).toBe(true);
+    for (const step of scale.steps) {
+      // Each step is a named chart scale colour, copied unchanged; nothing is interpolated.
+      expect(chartScaleIds).toContain(step.colour);
+      expect(step.hex).toBe(govuk.colours[step.colour].hex);
+      expect(step.name).toBe(govuk.colours[step.colour].name);
+    }
+    const svg = page.locator(`svg[data-chart="heatmap-${name}"]`);
+    await expect(svg).toHaveAttribute('role', 'img');
+    const cells = await svg.locator('rect[data-room]').evaluateAll(nodes => nodes.map(node => ({ room: node.dataset.room, value: node.dataset.value, step: node.dataset.step ?? null, fill: node.getAttribute('fill') })));
+    expect(cells).toHaveLength(scale.rows.length * scale.days.length);
+    for (const [r, row] of scale.rows.entries()) for (const [c, value] of row.values.entries()) {
+      const cell = cells[r * row.values.length + c];
+      expect(cell.room).toBe(row.room);
+      if (value === null) {
+        expect(cell.value).toBe('missing');
+        expect(scale.steps.map(step => step.hex)).not.toContain(cell.fill);
         continue;
       }
-      // Each step is a named GOV.UK chart colour, copied unchanged; nothing is interpolated.
-      const source = govuk.colours[row.colour_id];
-      expect(chartScaleIds).toContain(row.colour_id);
-      expect(row.color).toBe(source.hex);
-      expect(row.colour_name).toBe(source.name);
-      await expect(swatch).toHaveAttribute('data-scale-colour', source.hex);
-      await expect(swatch).toContainText(source.name);
-      await expect(swatch.locator('.c-data-colour-fill')).toHaveCSS('background-color', rgb(source.hex));
-      await expect(swatch.locator('.c-data-colour-fill')).toHaveCSS('opacity', '1');
-      expect(renderedRows[index].at(-1)).toBe(source.hex);
-      expect(renderedRows[index].at(-2)).toBe(source.name);
-      expect(numeric(renderedRows[index][name === 'sequential' ? 1 : 2])).toBe(row.value);
-      if (name === 'divergent') {
-        expect(numeric(renderedRows[index][1])).toBe(row.measurement);
-        expect(row.measurement - scale.target_temperature).toBe(row.value);
-      }
+      expect(Number(cell.value)).toBe(value);
+      const step = scale.steps.find(item => item.colour === row.colour_ids[c]);
+      expect(cell.fill).toBe(step.hex);
+      expect(value).toBeGreaterThanOrEqual(step.from);
+      expect(value).toBeLessThanOrEqual(step.to);
+    }
+    const table = page.getByRole('table', { name: name === 'sequential' ? /Energy used each day by room/ : /Difference from the 20 °C target/ });
+    const rendered = await tableRows(table);
+    expect(rendered.map(row => row[0])).toEqual(scale.rows.map(row => row.room));
+    for (const [r, row] of scale.rows.entries()) for (const [c, value] of row.values.entries()) {
+      if (value === null) expect(rendered[r][c + 1]).toBe('Not supplied');
+      else expect(numeric(rendered[r][c + 1])).toBeCloseTo(value, 5);
     }
   }
-  await expect(page.locator('.c-example-canvas')).toContainText('outside this scale');
-  await expect(page.locator('.c-example-canvas')).toContainText('no more than two quantitative colour scales');
+  // A supplied zero takes a colour; a missing reading does not.
+  expect(reference.sequential.rows.some(row => row.values.includes(0))).toBe(true);
+  // Scale rules (outside the scale, missing, real zero) are stated on the Chart colours page, not repeated in the example.
+  await expect(page.locator('.c-example-canvas')).not.toContainText(/outside this scale|real zero|failure and success|at a moment/i);
+  // The two-scale limit is stated once, on the Chart colours page, not in the example.
+  expect(readFileSync('docs/build/styles/chart-colour.html', 'utf8')).toContain('Use no more than 2 colour scales in one chart.');
   await expect(page.locator('.c-example-canvas')).not.toContainText(/interpolate/i);
 });
 
@@ -253,7 +262,7 @@ test('data meanings and identity remain available without JavaScript at a narrow
       if (id === 'data-colour-categorical') await expect(page.getByRole('table')).toContainText('Not supplied');
       if (id === 'data-colour-quantitative') {
         await expect(page.getByRole('table')).toHaveCount(2);
-        await expect(page.locator('[data-scale-value="missing"]')).toHaveCount(2);
+        await expect(page.locator('rect[data-value="missing"]')).toHaveCount(2);
       }
       if (id === 'dashboard-data-electricity-monitor') await expect(page.getByRole('table')).toContainText('Not supplied');
       if (id === 'dashboard-data-room-report') await expect(page.locator('.civica-data-dashboard__room-list > div')).toHaveCount(4);

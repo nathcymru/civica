@@ -2,800 +2,627 @@
   "description": "Known content-rule faults on pages written before 18 November 2026. Entries may only be removed. See scripts/check-content-rules.mjs.",
   "pages": {
     "accessibility/index": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "accessibility/testing": [
       "names GOV.UK",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "community/architecture": [
       "names GOV.UK",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "community/component-audit": [
       "names GOV.UK, NHS",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "community/coverage": [
-      "names GOV.UK, NHS, ONS",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK, NHS, ONS"
     ],
     "community/design-system-audit": [
       "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "community/deviations": [
-      "names GOV.UK, NHS, ONS",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GDS, GOV.UK, NHS, ONS",
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "community/guidance-work-package": [
-      "names GOV.UK, NHS",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK, NHS"
     ],
     "community/home-assistant-coverage-audit": [
-      "names GOV.UK, NHS",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK, NHS"
     ],
     "community/index": [
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "community/licensing": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "community/missing-components": [
       "names GOV.UK, ONS",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "community/sources": [
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "community/uk-design-system-review": [
-      "names GOV.UK, NHS, ONS"
+      "names GDS, GOV.UK, NHS, ONS"
     ],
     "community/visual-audit": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "components/accordion": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "components/action-links": [
       "names GOV.UK, NHS",
       "repeats \"The affected example records include creator, original sourc…\"",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "components/back-link": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/breadcrumbs": [
       "names GOV.UK, NHS",
+      "repeats \"Breadcrumbs owns the shared rules for this family. Each rela…\"",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/buttons": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK, NHS"
     ],
     "components/cards": [
       "names GOV.UK, NHS",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Two configured example lights reported Off. The button produ…\""
     ],
     "components/character-count": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/chart-examples": [
       "names GOV.UK, ONS",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Charts and tables owns the shared rules for this family. Eac…\""
     ],
     "components/charts": [
       "names GOV.UK, ONS",
+      "repeats \"Charts and tables owns the shared rules for this family. Eac…\"",
       "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "components/checkboxes": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/contents-list": [
       "names GOV.UK, NHS",
       "repeats \"Contents list owns the shared rules for this family. Each re…\"",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/controls": [
       "names GOV.UK",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "components/cookie-banner": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "components/date-input": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/details": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/devices": [
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "components/dialogs": [
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "components/do-and-dont-lists": [
       "names GOV.UK, NHS",
       "repeats \"The affected example records include creator, original sourc…\"",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/error-message": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/error-summary": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/example": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "components/exit-this-page": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "components/expander": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/feedback": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "components/fieldset": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/file-upload": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/footer": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/generic-header": [
-      "names GOV.UK, NHS",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK, NHS"
     ],
     "components/header": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/hint-text": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names NHS"
     ],
     "components/images": [
       "names GOV.UK, NHS",
       "repeats \"The affected example records include creator, original sourc…\"",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/inset-text": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/language-navigation": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "components/navigation": [
       "names GOV.UK",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "components/notification-badge": [
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "components/notification-banners": [
       "names GOV.UK, NHS",
+      "repeats \"Notification banners owns the shared rules for this family. …\"",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/page-history": [
       "names GOV.UK, NHS",
-      "repeats \"Page metadata and history owns the shared rules for this fam…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Page metadata and history owns the shared rules for this fam…\""
     ],
     "components/pagination": [
       "names GOV.UK, NHS",
+      "repeats \"Pagination owns the shared rules for this family. Each relat…\"",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/panel": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/password-input": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/phase-banner": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "components/radios": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/review-date": [
       "names GOV.UK, NHS",
       "repeats \"Page metadata and history owns the shared rules for this fam…\"",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/search-input": [
       "names GOV.UK, NHS",
+      "repeats \"Search input owns the shared rules for this family. Each rel…\"",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/select": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/service-navigation": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "components/skip-link": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/sliders": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "components/status": [
       "names GOV.UK",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"A complete static pending state, including the acknowledged …\"",
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "components/summary-list": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/table": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/tabs": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/tag": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/task-list": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/text-input": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/textarea": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/warning-callout": [
       "names GOV.UK, NHS",
       "repeats \"These are civica reference implementations for component aut…\"",
-      "repeats \"Use the civica accessibility checks and compare the rendered…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "components/warning-text": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "content/formatting-content/attachments": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "content/formatting-content/charts-and-data": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "content/formatting-content/text-formatting": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "content/index": [
       "names GOV.UK"
     ],
-    "content/publish-update-retire/publish": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+    "examples/core-cookie-essential": [
+      "names GOV.UK"
     ],
-    "content/writing-guidelines/add-links": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+    "examples/local-community-decision": [
+      "names ONS"
     ],
-    "content/writing-guidelines/clear-language": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+    "examples/local-community-source": [
+      "names ONS"
     ],
-    "content/writing-guidelines/clear-structure": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "content/writing-guidelines/meet-household-needs": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "content/writing-guidelines/right-tone": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "content/writing-guidelines/states-and-errors": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+    "examples/wg-accessible-links": [
+      "names NHS"
     ],
     "get-started/about": [
-      "names GOV.UK, NHS, ONS"
-    ],
-    "get-started/colour-settings": [
-      "names GOV.UK",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK, Government Digital Service, NHS, ONS"
     ],
     "get-started/compatibility": [
-      "names ONS",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK, ONS",
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "get-started/index": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "get-started/install": [
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "get-started/personalisation": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/access-and-movement": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK",
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "home-assistant/accounts-and-permissions": [
-      "repeats \"Record the Home Assistant version, the browser, the fixture …\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record the Home Assistant version, the browser, the fixture …\""
     ],
     "home-assistant/action-results": [
-      "repeats \"Record the Home Assistant version, the browser, the fixture …\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record the Home Assistant version, the browser, the fixture …\""
     ],
     "home-assistant/appliances-and-cleaning": [
-      "repeats \"Record the Home Assistant version, the browser, the fixture …\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record the Home Assistant version, the browser, the fixture …\""
     ],
     "home-assistant/assist-and-voice": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record the environment, versions, state, method and result i…\""
     ],
     "home-assistant/automation-editing": [
-      "repeats \"Record the Home Assistant version, the browser, the fixture …\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record the Home Assistant version, the browser, the fixture …\""
     ],
     "home-assistant/backup-and-restore": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record the environment, versions, state, method and result i…\""
     ],
     "home-assistant/cameras": [
       "repeats \"Record what was tested using Native task accessibility and e…\"",
       "repeats \"Reviewed on 11 November 2026. Current documentation may desc…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "home-assistant/climate-and-air": [
       "repeats \"Record what was tested using Native task accessibility and e…\"",
-      "repeats \"Reviewed on 11 November 2026. Current documentation may desc…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Reviewed on 11 November 2026. Current documentation may desc…\""
     ],
     "home-assistant/compatibility-register": [
       "names ONS",
-      "repeats \"Forms in these examples validate and give local feedback onl…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Forms in these examples validate and give local feedback onl…\""
     ],
     "home-assistant/connection-and-recovery": [
       "repeats \"Forms in these examples validate and give local feedback onl…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record what was tested using Native task accessibility and e…\""
     ],
     "home-assistant/continuous-controls": [
       "repeats \"Record what was tested using Native task accessibility and e…\"",
-      "repeats \"Reviewed on 11 November 2026. Current documentation may desc…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/dashboard-composition": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Reviewed on 11 November 2026. Current documentation may desc…\""
     ],
     "home-assistant/dashboard-editing": [
       "repeats \"Forms in these examples validate and give local feedback onl…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record what was tested using Native task accessibility and e…\""
     ],
     "home-assistant/energy-flow-and-other-charts": [
       "names ONS",
       "repeats \"Record what was tested using Native task accessibility and e…\"",
-      "repeats \"Reviewed on 11 November 2026. Current documentation may desc…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Reviewed on 11 November 2026. Current documentation may desc…\""
     ],
     "home-assistant/entity-lists-and-rows": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"This is a design reference, not a replacement for native Hom…\""
     ],
     "home-assistant/entity-state": [
-      "repeats \"Record the Home Assistant and frontend versions, browser, fi…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record the Home Assistant and frontend versions, browser, fi…\""
     ],
     "home-assistant/helpers-and-scalar-inputs": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"This is a design reference, not a replacement for native Hom…\""
     ],
     "home-assistant/history-and-statistics": [
-      "repeats \"Record the Home Assistant and frontend versions, browser, fi…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record the Home Assistant and frontend versions, browser, fi…\""
     ],
     "home-assistant/index": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/integration-and-app-settings": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/interface-coverage": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK",
+      "repeats \"A complete static pending state, including the acknowledged …\""
     ],
     "home-assistant/lighting": [
-      "repeats \"Record the Home Assistant and frontend versions, browser, fi…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/locale-units-and-time": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record the Home Assistant and frontend versions, browser, fi…\""
     ],
     "home-assistant/maps-and-zones": [
       "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "home-assistant/media-playback": [
       "repeats \"Record the actual environment, versions, state, method and r…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/native-task-accessibility": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These examples are local previews with invented household va…\""
     ],
     "home-assistant/notifications-and-delivery": [
-      "repeats \"Record the actual environment, versions, state, method and r…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record the actual environment, versions, state, method and r…\""
     ],
     "home-assistant/onboarding-and-sign-in": [
-      "repeats \"Record the actual environment, versions, state, method and r…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/pictures-and-embedded-content": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/presence-and-privacy": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record the actual environment, versions, state, method and r…\""
     ],
     "home-assistant/registries-and-bulk-actions": [
-      "repeats \"Record the actual environment, versions, state, method and r…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/schedules-and-time": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/schema-selectors": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/specialist-entities": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/system-and-developer-tools": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "home-assistant/target-pickers": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Record the actual environment, versions, state, method and r…\""
     ],
     "home-assistant/todo-and-reminders": [
-      "repeats \"These examples use invented records. Their forms give local …\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These examples use invented records. Their forms give local …\""
     ],
     "home-assistant/updates-and-repairs": [
-      "repeats \"These examples use invented records. Their forms give local …\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These examples use invented records. Their forms give local …\""
     ],
     "home-assistant/weather-and-warnings": [
-      "repeats \"These examples use invented records. Their forms give local …\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These examples use invented records. Their forms give local …\""
     ],
     "index": [
       "names GOV.UK"
     ],
     "patterns/a-to-z": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names NHS"
     ],
     "patterns/british-sign-language": [
-      "names NHS",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names NHS"
     ],
     "patterns/check-answers": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names NHS"
     ],
     "patterns/complete-multiple-tasks": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names NHS",
+      "repeats \"Complete multiple household tasks owns the shared rules for …\""
     ],
     "patterns/confirmation": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names NHS",
+      "repeats \"Confirm completed household tasks owns the shared rules for …\""
     ],
     "patterns/energy": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
+      "names GOV.UK",
+      "repeats \"These examples are simulated. The values are invented and no…\"",
       "shows rule IDs"
     ],
     "patterns/home": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
+      "repeats \"These examples are simulated. The values are invented and no…\"",
+      "repeats \"Two configured example lights reported Off. The button produ…\"",
       "shows rule IDs"
     ],
     "patterns/household-urgency": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
+      "names NHS",
+      "repeats \"Show household urgency clearly owns the shared rules for thi…\"",
       "shows rule IDs"
     ],
     "patterns/hub": [
+      "names NHS",
       "repeats \"Organise household help with hub pages owns the shared rules…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "patterns/index": [
       "names GOV.UK, NHS, ONS"
     ],
     "patterns/interruption": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
+      "names NHS",
       "shows rule IDs"
     ],
     "patterns/mini-hub": [
+      "names NHS",
       "repeats \"Contents list owns the shared rules for this family. Each re…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "patterns/question-pages": [
-      "repeats \"Ask clear questions on pages and in dialogs owns the shared …\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names NHS",
+      "repeats \"Ask clear questions on pages and in dialogs owns the shared …\""
     ],
     "patterns/recovery": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These examples are local previews with invented household va…\""
     ],
     "patterns/review-dates": [
-      "repeats \"Page metadata and history owns the shared rules for this fam…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
-    ],
-    "patterns/settings": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names NHS",
+      "repeats \"Page metadata and history owns the shared rules for this fam…\""
     ],
     "patterns/stable-identifiers": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names NHS"
     ],
     "patterns/start-page": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names NHS",
+      "repeats \"Help people start a household task owns the shared rules for…\""
     ],
     "publishing/components/attachment": [
-      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/breadcrumbs": [
-      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Breadcrumbs owns the shared rules for this family. Each rela…\"",
+      "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/content-list": [
       "repeats \"Contents list owns the shared rules for this family. Each re…\"",
-      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/emergency-banner": [
       "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Show household urgency clearly owns the shared rules for thi…\""
     ],
     "publishing/components/feedback": [
-      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/global-banner": [
-      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Notification banners owns the shared rules for this family. …\"",
+      "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/previous-and-next-navigation": [
-      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Pagination owns the shared rules for this family. Each relat…\"",
+      "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/print-link": [
-      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/related-navigation": [
-      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/search-autocomplete": [
       "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Search input owns the shared rules for this family. Each rel…\""
     ],
     "publishing/components/single-page-notification-button": [
       "names GOV.UK",
-      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/frontend-templates/answer": [
       "repeats \"Detailed guide owns the shared rules for this family. Each r…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/calendar": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/completed-transaction": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
+      "repeats \"Confirm completed household tasks owns the shared rules for …\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/detailed-guide": [
       "repeats \"Detailed guide owns the shared rules for this family. Each r…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/document-collections": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/finder": [
       "repeats \"Search filter owns the shared rules for this family. Each re…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/finder/case-studies-finder": [
       "repeats \"Search filter owns the shared rules for this family. Each re…\"",
       "repeats \"Type a word from a title or its context, then find records. …\"",
-      "repeats \"Type a word from a title or its context, then select Find ex…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Type a word from a title or its context, then select Find ex…\""
     ],
     "publishing/frontend-templates/finder/departments-agencies-public-bodies-finder": [
       "repeats \"Search filter owns the shared rules for this family. Each re…\"",
       "repeats \"Type a word from a title or its context, then find records. …\"",
-      "repeats \"Type a word from a title or its context, then select Find ex…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Type a word from a title or its context, then select Find ex…\""
     ],
     "publishing/frontend-templates/finder/groups-finder": [
       "repeats \"Search filter owns the shared rules for this family. Each re…\"",
       "repeats \"Type a word from a title or its context, then find records. …\"",
-      "repeats \"Type a word from a title or its context, then select Find ex…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Type a word from a title or its context, then select Find ex…\""
     ],
     "publishing/frontend-templates/finder/hmrc-contacts-finder": [
       "repeats \"Search filter owns the shared rules for this family. Each re…\"",
       "repeats \"Type a word from a title or its context, then find records. …\"",
-      "repeats \"Type a word from a title or its context, then select Find ex…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Type a word from a title or its context, then select Find ex…\""
     ],
     "publishing/frontend-templates/finder/people-finder": [
       "repeats \"Search filter owns the shared rules for this family. Each re…\"",
       "repeats \"Type a word from a title or its context, then find records. …\"",
-      "repeats \"Type a word from a title or its context, then select Find ex…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Type a word from a title or its context, then select Find ex…\""
     ],
     "publishing/frontend-templates/finder/search": [
       "repeats \"Search filter owns the shared rules for this family. Each re…\"",
       "repeats \"Type a word from a title or its context, then find records. …\"",
-      "repeats \"Type a word from a title or its context, then select Find ex…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Type a word from a title or its context, then select Find ex…\""
     ],
     "publishing/frontend-templates/finder/specialist-document-finder": [
       "repeats \"Search filter owns the shared rules for this family. Each re…\"",
       "repeats \"Type a word from a title or its context, then find records. …\"",
-      "repeats \"Type a word from a title or its context, then select Find ex…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Type a word from a title or its context, then select Find ex…\""
     ],
     "publishing/frontend-templates/finder/statistical-data-sets-finder": [
       "repeats \"Search filter owns the shared rules for this family. Each re…\"",
       "repeats \"Type a word from a title or its context, then find records. …\"",
-      "repeats \"Type a word from a title or its context, then select Find ex…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Type a word from a title or its context, then select Find ex…\""
     ],
     "publishing/frontend-templates/finder/supergroup-finder": [
       "repeats \"Search filter owns the shared rules for this family. Each re…\"",
       "repeats \"Type a word from a title or its context, then find records. …\"",
-      "repeats \"Type a word from a title or its context, then select Find ex…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Type a word from a title or its context, then select Find ex…\""
     ],
     "publishing/frontend-templates/finder/topical-events-finder": [
       "repeats \"Search filter owns the shared rules for this family. Each re…\"",
       "repeats \"Type a word from a title or its context, then find records. …\"",
-      "repeats \"Type a word from a title or its context, then select Find ex…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Type a word from a title or its context, then select Find ex…\""
     ],
     "publishing/frontend-templates/finder/world-organisation-finder": [
       "repeats \"Search filter owns the shared rules for this family. Each re…\"",
       "repeats \"Type a word from a title or its context, then find records. …\"",
-      "repeats \"Type a word from a title or its context, then select Find ex…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Type a word from a title or its context, then select Find ex…\""
     ],
     "publishing/frontend-templates/guide": [
       "repeats \"Contents list owns the shared rules for this family. Each re…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/homepage": [
       "repeats \"Organise household help with hub pages owns the shared rules…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/index": [
@@ -803,50 +630,41 @@
       "shows rule IDs"
     ],
     "publishing/frontend-templates/mainstream-browse": [
-      "repeats \"Organise household help with hub pages owns the shared rules…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Organise household help with hub pages owns the shared rules…\""
     ],
     "publishing/frontend-templates/mainstream-browse/level-one": [
-      "repeats \"Organise household help with hub pages owns the shared rules…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Organise household help with hub pages owns the shared rules…\""
     ],
     "publishing/frontend-templates/mainstream-browse/level-two": [
-      "repeats \"Organise household help with hub pages owns the shared rules…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Organise household help with hub pages owns the shared rules…\""
     ],
     "publishing/frontend-templates/smart-answer": [
       "repeats \"Ask clear questions on pages and in dialogs owns the shared …\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/smart-answer/github-smart-answer": [
       "repeats \"Ask clear questions on pages and in dialogs owns the shared …\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/smart-answer/simple-smart-answer": [
       "repeats \"Ask clear questions on pages and in dialogs owns the shared …\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/special-route": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/step-by-step-nav": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
+      "repeats \"Complete multiple household tasks owns the shared rules for …\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/topical-events": [
-      "repeats \"Organise household help with hub pages owns the shared rules…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Organise household help with hub pages owns the shared rules…\""
     ],
     "publishing/frontend-templates/topical-events/about": [
-      "repeats \"Detailed guide owns the shared rules for this family. Each r…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Detailed guide owns the shared rules for this family. Each r…\""
     ],
     "publishing/frontend-templates/transaction": [
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
+      "repeats \"Help people start a household task owns the shared rules for…\"",
       "shows rule IDs"
     ],
     "publishing/index": [
@@ -854,86 +672,54 @@
     ],
     "publishing/patterns/search-filter": [
       "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Search filter owns the shared rules for this family. Each re…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"Search filter owns the shared rules for this family. Each re…\""
     ],
     "publishing/source-history": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK"
     ],
     "styles/brand": [
-      "names GOV.UK, NHS, ONS",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GDS, GOV.UK, NHS, ONS",
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "styles/brand-data": [
       "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
+      "repeats \"The rule inventory and checklist are and . Reviewing a sourc…\"",
+      "repeats \"These examples use invented household details. They are simu…\"",
       "shows rule IDs"
     ],
     "styles/brand-typography": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
+      "names GDS, GOV.UK",
       "shows rule IDs"
-    ],
-    "styles/chart-colour": [
-      "names GOV.UK",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
-      "shows rule IDs"
-    ],
-    "styles/colour": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
-      "shows rule IDs"
-    ],
-    "styles/colour-app": [
-      "names GOV.UK"
     ],
     "styles/colour-illustrations": [
-      "names GOV.UK"
-    ],
-    "styles/colour-maps": [
-      "has no working OpenStreetMap example",
       "names GOV.UK"
     ],
     "styles/colour-print": [
       "names GOV.UK"
     ],
-    "styles/colour-social": [
-      "names GOV.UK"
-    ],
-    "styles/colour-web": [
-      "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
-      "shows rule IDs"
-    ],
     "styles/content": [
-      "repeats \"These examples use invented household details. They are simu…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These examples use invented household details. They are simu…\""
     ],
     "styles/illustration": [
       "names GOV.UK",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\"",
+      "repeats \"The rule inventory and checklist are and . Reviewing a sourc…\"",
+      "repeats \"These examples use invented household details. They are simu…\"",
       "shows rule IDs"
     ],
     "styles/images": [
-      "repeats \"These examples use invented household details. They are simu…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These examples use invented household details. They are simu…\""
     ],
     "styles/index": [
-      "names GOV.UK",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GOV.UK, ONS",
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "styles/layout": [
       "names GOV.UK",
-      "repeats \"These examples use invented household details. They are simu…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "repeats \"These examples use invented household details. They are simu…\""
     ],
     "styles/typography": [
-      "repeats \"These isolated examples illustrate the decisions on this pag…\"",
-      "repeats \"Use the markup as a starting point. Replace the example cont…\""
+      "names GDS",
+      "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ]
   }
 }
