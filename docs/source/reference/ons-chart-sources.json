@@ -169,13 +169,13 @@
     "implementation": "Original presentation adapter for native Home Assistant ECharts; no Highcharts dependency",
     "activation": "Optional companion while a civica theme is selected; restore native presentation on deactivation",
     "dataOwner": "Home Assistant; do not recalculate, reaggregate, reorder, truncate, interpolate or otherwise rewrite native data",
-    "colours": "Generated opaque colours from stable identity keys with semantic energy families; Vivid/Muted follows theme and is independent of Light/Dark and brand palette",
+    "colours": "The six GOV.UK categorical chart colours, opaque and assigned from stable identity keys with fixed energy roles; the same in light and dark mode and with every theme colour, with pattern, line dash and marker telling apart series that share a colour",
     "font": "Use the civica Arial stack and respect the native text scale; no Open Sans download",
     "darkMode": {
       "text": "#FFFFFF",
-      "axis": "#CBD0D3",
-      "grid": "#50565A",
-      "zero": "#9BA4AA"
+      "axis": "#FFFFFF",
+      "grid": "#CECECE",
+      "zero": "#858686"
     },
     "legend": "Preserve native visibility controls and labels; add matching colour/pattern keys and restore native inline styling on deactivation",
     "dataAlternative": "View data disclosure with semantic table; all supported supplied values including legend-hidden series, independent of zoom. 100 rows per page with explicit count, no silent total-row cap. Original comparison timestamps retained; unsupported shapes and absent units explained.",
