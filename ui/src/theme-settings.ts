@@ -7,16 +7,14 @@ export interface ThemeHass {
   selectedTheme?: { theme?: string; dark?: boolean; primaryColor?: string; accentColor?: string };
 }
 
-export const themeName = (name: string, muted: boolean) => `civica ${name} ${muted ? 'Muted' : 'Vivid'}`;
+// One theme per GOV.UK theme colour. Chart colours do not follow this choice.
+export const themeName = (name: string) => `civica ${name}`;
 export function selectedVariant(hass?: ThemeHass) {
   const name = hass?.themes?.theme || hass?.selectedTheme?.theme || hass?.themes?.default_theme;
-  for (const palette of palettes.palettes) {
-    for (const muted of [false, true]) {
-      if (name === themeName(palette.name, muted)) return { palette, muted };
-    }
-  }
-  const defaultPalette = palettes.palettes.find(palette => palette.id === palettes.defaultPalette)!;
-  return name === 'civica' || name === 'govuk' ? { palette: defaultPalette, muted: palettes.defaultTone === 'muted' } : undefined;
+  const palette = palettes.palettes.find(item => name === themeName(item.name));
+  if (palette) return { palette };
+  const defaultPalette = palettes.palettes.find(item => item.id === palettes.defaultPalette)!;
+  return name === 'civica' || name === 'govuk' ? { palette: defaultPalette } : undefined;
 }
 
 const CSS = `
@@ -27,19 +25,16 @@ h2 { margin:0 0 16px; font-size:var(--civica-font-size-heading, 24px); line-heig
 p { max-width:65ch; line-height:1.5; margin:12px 0; }
 label { display:block; font-weight:700; margin-bottom:8px; }
 select { font:inherit; color:inherit; background:var(--input-fill-color, white); border:2px solid var(--primary-text-color, #0b0c0c); border-radius:0; min-height:44px; width:100%; max-width:28rem; padding:6px; }
-.tone { display:flex; gap:12px; align-items:center; margin-top:20px; min-height:44px; cursor:pointer; }
-input { width:24px; height:24px; flex:none; accent-color:var(--primary-color, #1d70b8); }
-select:focus-visible, input:focus-visible { outline:3px solid #ffdd00; outline-offset:2px; box-shadow:0 0 0 5px #0b0c0c; }
+select:focus-visible { outline:3px solid #ffdd00; outline-offset:2px; box-shadow:0 0 0 5px #0b0c0c; }
 .hint { font-size:var(--civica-font-size-small, 16px); color:var(--secondary-text-color, #484949); }
 [role=status] { font-size:var(--civica-font-size-small, 16px); min-height:1.5em; }
-@media(forced-colors:active) { select:focus-visible, input:focus-visible { outline-color:Highlight; box-shadow:none; } }
+@media(forced-colors:active) { select:focus-visible { outline-color:Highlight; box-shadow:none; } }
 `;
 
 export class CivicaThemeSettings extends HTMLElement {
   private current?: ThemeHass;
   private timer?: ReturnType<typeof setInterval>;
   private select!: HTMLSelectElement;
-  private muted!: HTMLInputElement;
   private status!: HTMLParagraphElement;
   private stateKey = '';
   public getCardSize() { return 4; }
@@ -52,17 +47,14 @@ export class CivicaThemeSettings extends HTMLElement {
     const style = document.createElement('style'); style.textContent = CSS;
     const section = document.createElement('section'); section.setAttribute('aria-labelledby', 'title');
     const title = document.createElement('h2'); title.id = 'title'; title.textContent = 'civica colours';
-    const label = document.createElement('label'); label.htmlFor = 'palette'; label.textContent = 'Colour palette';
+    const label = document.createElement('label'); label.htmlFor = 'palette'; label.textContent = 'Theme colour';
     this.select = document.createElement('select'); this.select.id = 'palette'; this.select.setAttribute('aria-describedby', 'hint');
-    const placeholder = document.createElement('option'); placeholder.value = ''; placeholder.textContent = 'Choose a civica palette'; placeholder.disabled = true; this.select.append(placeholder);
+    const placeholder = document.createElement('option'); placeholder.value = ''; placeholder.textContent = 'Choose a theme colour'; placeholder.disabled = true; this.select.append(placeholder);
     for (const p of palettes.palettes) { const option = document.createElement('option'); option.value = p.id; option.textContent = p.name; this.select.append(option); }
-    const toggle = document.createElement('label'); toggle.className = 'tone'; toggle.htmlFor = 'muted';
-    this.muted = document.createElement('input'); this.muted.type = 'checkbox'; this.muted.id = 'muted'; this.muted.setAttribute('role', 'switch'); this.muted.setAttribute('aria-describedby', 'hint');
-    const text = document.createElement('span'); text.textContent = 'Use muted colours'; toggle.append(this.muted, text);
-    const hint = document.createElement('p'); hint.id = 'hint'; hint.className = 'hint'; hint.textContent = 'Use softer brand and chart colours, or switch off for vivid colours. Your light, dark or automatic mode stays the same.';
+    const hint = document.createElement('p'); hint.id = 'hint'; hint.className = 'hint'; hint.textContent = 'Changes the header, buttons and highlights. Chart, map, error and success colours stay the same. Your light, dark or automatic mode stays the same.';
     this.status = document.createElement('p'); this.status.setAttribute('role', 'status'); this.status.setAttribute('aria-live', 'polite');
-    section.append(title, label, this.select, toggle, hint, this.status); root.append(style, section);
-    this.select.addEventListener('change', () => this.apply()); this.muted.addEventListener('change', () => this.apply());
+    section.append(title, label, this.select, hint, this.status); root.append(style, section);
+    this.select.addEventListener('change', () => this.apply());
     this.sync();
   }
   connectedCallback() {
@@ -84,28 +76,27 @@ export class CivicaThemeSettings extends HTMLElement {
     const key = `${loading}|${recovery}|${this.current?.selectedTheme?.theme}|${this.current?.themes?.theme}|${Object.keys(available).join('|')}`;
     if (this.stateKey === key) return;
     this.stateKey = key;
-    const hasAll = palettes.palettes.every(p => [false, true].every(m => themeName(p.name, m) in available));
+    const hasAll = palettes.palettes.every(p => themeName(p.name) in available);
     this.select.disabled = !hasAll || Boolean(recovery);
-    this.muted.disabled = !hasAll || !variant || Boolean(recovery);
-    this.select.value = variant?.palette.id || ''; this.muted.checked = variant?.muted || false;
-    this.status.textContent = recovery ? 'Colour controls are unavailable in safe or recovery mode.' : loading ? 'Colour settings are loading.' : !hasAll ? 'Install all civica themes and reload themes to use these controls.' : variant ? `${variant.palette.name}: ${variant.muted ? 'muted' : 'vivid'} colours selected.` : 'Choose a palette to use civica colours.';
+    this.select.value = variant?.palette.id || '';
+    this.status.textContent = recovery ? 'Colour controls are unavailable in safe or recovery mode.' : loading ? 'Colour settings are loading.' : !hasAll ? 'Install all civica themes and reload themes to use these controls.' : variant ? `${variant.palette.name} theme colour selected.` : 'Choose a theme colour to use civica colours.';
   }
   private apply() {
     const palette = palettes.palettes.find(p => p.id === this.select.value);
     if (!palette || this.current?.config?.safe_mode || this.current?.config?.recovery_mode) return;
-    const theme = themeName(palette.name, this.muted.checked);
+    const theme = themeName(palette.name);
     if (!this.current?.themes?.themes?.[theme]) { this.status.textContent = 'This theme is unavailable. Reload themes and try again.'; return; }
     // This is the same event used by HA's own profile theme row. HA owns local
     // application, persistence, cross-device updates and any save-failure toast.
-    // Clear native colour overrides so they cannot partially mask this palette.
+    // Clear native colour overrides so they cannot partially mask this theme colour.
     this.dispatchEvent(new CustomEvent('settheme', {
       detail: { theme, primaryColor: undefined, accentColor: undefined }, bubbles: true, composed: true,
     }));
-    this.status.textContent = `${palette.name}: ${this.muted.checked ? 'muted' : 'vivid'} colours selected.`;
+    this.status.textContent = `${palette.name} theme colour selected.`;
   }
 }
 
 if (!customElements.get('civica-theme-settings')) customElements.define('civica-theme-settings', CivicaThemeSettings);
 const registry = window as unknown as { customCards?: object[] };
 registry.customCards ||= [];
-if (!registry.customCards.some((c: any) => c.type === 'civica-theme-settings')) registry.customCards.push({ type: 'civica-theme-settings', name: 'civica colours', description: 'Choose a colour palette and switch between vivid and muted colours.' });
+if (!registry.customCards.some((c: any) => c.type === 'civica-theme-settings')) registry.customCards.push({ type: 'civica-theme-settings', name: 'civica colours', description: 'Choose the theme colour from the GOV.UK palette.' });

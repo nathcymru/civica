@@ -139,3 +139,78 @@ h2.style-a-z__letter {
   color: $civica-secondary-text;
   font-size: 1rem;
 }
+
+// Colour swatches (GOV.UK Brand colour pages). The sample colour and its label
+// colour come from the data file as inline values; everything else uses tokens.
+.c-swatches,
+.technical-documentation ul.c-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 20px;
+  margin: 0 0 30px;
+  padding: 0;
+  list-style: none;
+}
+
+.c-swatch,
+.technical-documentation .c-swatches > li.c-swatch {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid $civica-border;
+  background: var(--c-canvas);
+}
+
+.c-swatch__sample {
+  display: flex;
+  align-items: flex-end;
+  min-height: 6rem;
+  padding: 10px;
+  border-bottom: 1px solid $civica-border;
+  font-weight: 700;
+  // 19px bold is large text, so 3:1 applies. Some GOV.UK colours (Primary
+  // brown) reach only about 4.4:1 against both black and white.
+  font-size: 1.1875rem;
+}
+
+.c-swatch__name {
+  margin: 10px 10px 5px;
+  font-weight: 700;
+}
+
+.c-swatch__alias { font-weight: 400; color: $civica-secondary-text; }
+
+.c-swatch__codes { margin: 0 10px 10px; font-size: 1rem; }
+
+.c-swatch__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 10px;
+  margin: 0 0 5px;
+
+  dt { min-width: 4.5rem; color: $civica-secondary-text; }
+  dd { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin: 0; }
+  code { overflow-wrap: anywhere; }
+}
+
+.c-copy-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 2rem;
+  padding: 2px 8px;
+  border: 1px solid var(--c-text);
+  color: var(--c-primary);
+  background: var(--c-canvas);
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &:hover { text-decoration: underline; }
+  &:focus-visible { outline: 3px solid var(--c-focus); outline-offset: 0; box-shadow: inset 0 0 0 2px var(--c-text); }
+  &[data-copied="true"] .c-copy-value__icon { display: none; }
+  &[data-copied="true"]::before { content: "✓"; }
+}
+
+.c-copy-value__icon { fill: currentColor; }

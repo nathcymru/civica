@@ -66,10 +66,10 @@ function updateBrand(app: App, targets: HTMLElement[]) {
     originalIcons.clear(); ownIcon?.remove(); ownIcon = undefined;
     return;
   }
-  // Artwork is supplied for palette/tone, not display mode. The masthead keeps
-  // its exact primary colour in light and dark mode, so the same original file
-  // works in both. Never recolour the supplied house and wordmark with CSS filters.
-  const variantPath = `themes/${variant!.palette.id}/${variant!.muted ? 'muted' : 'vivid'}/`;
+  // Theme colours are GOV.UK primaries that all pass 4.5:1 with white, so one
+  // white lockup works on every masthead, in light and dark mode. The app
+  // icon is the project icon, whatever theme colour is chosen. Never recolour
+  // the supplied house and wordmark with CSS filters.
   // Native icon buttons wrap Web Awesome plain/neutral buttons. Override both
   // neutral foreground roles at the icon boundary, not across a whole toolbar:
   // filled buttons and menu surfaces must retain their own foreground pairs.
@@ -104,7 +104,7 @@ function updateBrand(app: App, targets: HTMLElement[]) {
       logo.style.cssText = 'display:block;width:100%;max-width:176px;height:auto;box-sizing:border-box;padding:5px 8px;';
       title.replaceChildren(logo);
     }
-    const logoUrl = assetUrl(`${variantPath}lockup-on-primary.svg`);
+    const logoUrl = assetUrl('core/lockup-white.svg');
     if (logo.src !== logoUrl) logo.src = logoUrl;
   }
   const icons = document.querySelectorAll<HTMLLinkElement>('link[rel="icon"],link[rel="shortcut icon"],link[rel="apple-touch-icon"]');
@@ -112,7 +112,7 @@ function updateBrand(app: App, targets: HTMLElement[]) {
   for (const icon of [...icons, ...(ownIcon ? [ownIcon] : [])]) {
     if (!originalIcons.has(icon) && icon !== ownIcon) originalIcons.set(icon, Object.fromEntries(['href', 'type', 'sizes'].map(name => [name, icon.getAttribute(name)])));
     const touchIcon = icon.rel === 'apple-touch-icon';
-    const target = `${variantPath}app-icon.${touchIcon ? 'png' : 'svg'}`;
+    const target = touchIcon ? 'icons/app-icon-512.png' : 'icons/app-icon.svg';
     const href = assetUrl(target);
     if (icon.href !== href) icon.href = href;
     icon.type = touchIcon ? 'image/png' : 'image/svg+xml';

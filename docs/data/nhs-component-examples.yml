@@ -106,8 +106,8 @@ examples:
       <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Display preferences</legend>
       <div class="govuk-checkboxes" data-module="govuk-checkboxes">
       <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="muted-0" name="muted" type="checkbox" value="0" checked>
-      <label class="govuk-label govuk-checkboxes__label" for="muted-0">Use muted colours</label>
+      <input class="govuk-checkboxes__input" id="unavailable-0" name="unavailable" type="checkbox" value="0" checked>
+      <label class="govuk-label govuk-checkboxes__label" for="unavailable-0">Show unavailable devices</label>
       </div>
       </div>
       </fieldset>
@@ -491,25 +491,22 @@ examples:
       <h2 class="govuk-heading-m">No matching devices</h2>
       <p class="govuk-body">Check the name or try a room name. The connection is available.</p>
   nhs-select-palettes:
-    title: "Choose a saved palette"
+    title: "Choose a saved theme colour"
     description: "A named, reversible settings list is the local reason for retaining a select."
     height: 340
     html: |
       <form data-demo-form>
       <div class="govuk-form-group">
-      <label class="govuk-label" for="palette-choice">Colour palette</label>
+      <label class="govuk-label" for="palette-choice">Theme colour</label>
       <div class="govuk-hint" id="palette-choice-hint">Preview names only; this example does not change Home Assistant</div>
       <select class="govuk-select" id="palette-choice" name="palette-choice" aria-describedby="palette-choice-hint">
-      <option selected>Civic Cobalt</option>
-      <option>Racing Moss</option>
-      <option>Imperial Damson</option>
-      <option>Sovereign Crimson</option>
-      <option>Regimental Plum</option>
-      <option>Oxford Midnight</option>
-      <option>Ink Charcoal</option>
-      <option>Heritage Ochre</option>
-      <option>Kiln Terracotta</option>
-      <option>Umber Bronze</option>
+      <option selected>Blue</option>
+      <option>Green</option>
+      <option>Teal</option>
+      <option>Purple</option>
+      <option>Magenta</option>
+      <option>Red</option>
+      <option>Black</option>
       </select>
       </div>
       </form>
@@ -1474,7 +1471,7 @@ examples:
       </div>
       <section id="review-preferences" tabindex="-1">
       <h2 class="govuk-heading-m">Understand display colours</h2>
-      <p class="govuk-body">Choose a Colour palette for the interface’s brand colours. Use muted colours changes the tone; Home Assistant’s Light, Dark or Auto display mode stays separate. Selecting a palette applies through the native theme flow. Reading this help changes no preference.</p>
+      <p class="govuk-body">Choose a Theme colour for the interface’s header, buttons and highlights. Home Assistant’s Light, Dark or Auto display mode stays separate. Selecting a colour applies through the native theme flow. Reading this help changes no preference.</p>
       </section>
     artwork:
       creator: civica.uk project; Codex-assisted original SVG markup

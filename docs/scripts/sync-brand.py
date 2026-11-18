@@ -20,12 +20,11 @@ mapping = {
     'images/icon-192.png': 'icons/icon-192.png',
     'images/icon-512.png': 'icons/icon-512.png',
 }
-palettes = json.loads((root / 'design-system/palettes.json').read_text())
-for palette in palettes['palettes']:
-    for tone in palettes['tones']:
-        for filename in ['lockup-on-primary.svg', 'lockup-on-canvas.svg', 'app-icon.svg']:
-            path = f'themes/{palette["id"]}/{tone}/{filename}'
-            mapping[f'images/{path}'] = path
+# The ten supplied palette families were retired on 2026-11-18, when theme
+# colours became the GOV.UK primaries. One white lock-up serves every theme
+# colour, and one lock-up on white serves light backgrounds.
+mapping['images/civica-lockup-white.svg'] = 'core/lockup-white.svg'
+mapping['images/civica-lockup-on-white.svg'] = 'core/lockup-on-white.svg'
 
 records = []
 for destination, original in sorted(mapping.items()):

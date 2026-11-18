@@ -3,7 +3,7 @@ title: "Chart colour"
 description: "Give each chart series a stable colour, choose sequential or divergent scales for quantities, and show missing data plainly."
 last_reviewed_on: 2026-11-12
 review_in: 3 months
-updated_on: "2026-11-17"
+updated_on: "2026-11-18"
 published_on: "2026-11-11"
 updates:
   - date: "2026-11-13"
@@ -14,11 +14,13 @@ updates:
     description: "Added generated categorical references and calculated quantitative scales with matching values, text alternatives and explicit missing-data treatment."
   - date: "2026-11-17"
     description: "Rewritten to lead with the rule, with outside source commentary moved to the Styles index."
+  - date: "2026-11-18"
+    description: "Every civica theme now uses the Vivid chart tone, because the theme colour control has no tone choice."
 ai_instructions: "Apply when colouring a chart series, heatmap or map layer. Decide whether colour identifies a source or shows a quantity. Give a source the same colour from its stable ID, never from its position, and always add a label, pattern or table. Do not use alpha, gradients or generated series colours as a scale. Rules WG-001, WG-002."
 ai_related:
   - path: "/styles/brand-colour.html"
     title: "Colour roles and accessibility"
-    relationship: "Owns the rule that a palette never changes chart meaning."
+    relationship: "Owns the rule that the theme colour never changes chart meaning."
   - path: "/components/charts.html"
     title: "Charts and tables"
     relationship: "Owns the maintained Energy chart specification."
@@ -29,7 +31,7 @@ ai_related:
 
 # Chart colour
 
-Decide first whether colour identifies a source or shows a quantity. In the maintained household charts, a categorical colour identifies a source or device. It must not change because you added another source, hid a series or switched the brand palette. For example, the dishwasher keeps its colour whether or not the oven is shown. **Vivid and Muted follow the theme’s colour toggle.** Light and Dark remain separate display modes.
+Decide first whether colour identifies a source or shows a quantity. In the maintained household charts, a categorical colour identifies a source or device. It must not change because you added another source, hid a series or switched the theme colour. For example, the dishwasher keeps its colour whether or not the oven is shown. Light and Dark remain separate display modes.
 
 The [machine-readable contract](../reference/chart-colours.json) and the repository module `design-system/chart-colours.mjs` are the shared authority for the theme, the native Energy adapter and the [working examples](../components/chart-examples.html). Do not define another palette inside a chart or demonstration.
 
@@ -99,10 +101,12 @@ The theme also supplies **24 fallback colour variables**, `civica-chart-1` to `c
 
 ## Vivid, Muted, Light and Dark
 
+The generator still has Vivid and Muted tones. Since 18 November 2026 every civica theme uses Vivid, because the theme colour control has no tone choice.
+
 | Setting | What changes | What stays stable |
 | --- | --- | --- |
-| Brand palette | Branding and interface accents | Chart identity and energy family |
-| Vivid / Muted | Chart colour strength and tested lightness | Identity, family and patterns |
+| Theme colour | Branding and interface accents | Chart identity and energy family |
+| Vivid / Muted (generator only) | Chart colour strength and tested lightness | Identity, family and patterns |
 | Light / Dark | Contrast against the actual chart surface | Identity, family and patterns |
 | Hide, reorder or add a series | Native visibility or ordering | Colours of existing identities |
 

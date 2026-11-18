@@ -14,7 +14,7 @@ The archive supplies no numeric version. The local provenance label is `revised-
 
 Every accepted image decoded successfully in Chromium 153.0.8010.12. Visual review covered the core PNGs, all 20 theme primary lockups, all 18 accepted WebPs and the supplied proof sheets. The valid WebPs show the revised identity. This checks file integrity and identity consistency, not accessibility or redistribution rights.
 
-Run `npm run check:brand` to check accepted hashes, image signatures, the exact inventory, documented omissions and palette agreement. Run `python3 docs/scripts/sync-brand.py --check` to check the 67 published documentation copies and their source mapping in `docs/source/reference/brand-assets.json`. The accepted manifest deliberately does not hash itself; the documentation mapping records its hash.
+Run `npm run check:brand` to check accepted hashes, image signatures, the exact inventory, documented omissions and the retired palette record. Run `python3 docs/scripts/sync-brand.py --check` to check the 67 published documentation copies and their source mapping in `docs/source/reference/brand-assets.json`. The accepted manifest deliberately does not hash itself; the documentation mapping records its hash.
 
 ## Revised identity and palette variants
 
@@ -24,7 +24,7 @@ Core lockup SVGs use a `1180 × 260` view box, including their supplied trailing
 
 Core marks are under `core/`; browser and home-screen icons are under `icons/`. `source/approved-concept-reference.png` and its copy in `proof/` are supplied concept references, not replacement production lockups. `proof/civica-revised-pack-proof.png` records the supplied production proof. Production consumers use the designated core or theme files.
 
-All ten palette names and all 40 primary/canvas colour values in `docs/brand-tokens.json` match `design-system/palettes.json`. Each of the 20 palette/tone directories includes valid SVG and PNG versions of the primary lockup, canvas lockup, primary emblem and app icon. The Home Assistant companion selects `themes/{palette-id}/{vivid|muted}/lockup-on-primary.svg`, `app-icon.svg` and `app-icon.png`. The primary header retains the supplied palette colour in light and dark modes. The documentation masthead uses the core blue lockup; its palette preview uses the matching supplied theme assets.
+The pack also supplies artwork for ten palettes, in 20 palette/tone directories under `themes/`. On 18 November 2026 those palettes were replaced by seven GOV.UK theme colours (see `design-system/palettes.json`). The palette artwork is kept unchanged as a record, and `npm run check:brand` still verifies it, but it is not shipped or used. Every theme colour passes 4.5:1 with white, so the Home Assistant companion uses `core/lockup-white.svg` on every header, with `icons/app-icon.svg` and `icons/app-icon-512.png`. The documentation masthead uses the core blue lockup.
 
 Supplied colours and successful image decoding do not certify surrounding interface text, focus indicators, chart series, small-size legibility or the whole application. Those have separate implementation and acceptance checks.
 

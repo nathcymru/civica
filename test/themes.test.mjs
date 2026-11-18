@@ -9,13 +9,13 @@ test('default civica theme and legacy alias resolve to the same complete palette
   const files = generatedFiles();
   const installed = parse(files['themes/civica.yaml']);
   const legacy = parse(files['themes/govuk.yaml']).govuk;
-  assert.equal(Object.keys(installed).length, 21);
+  assert.equal(Object.keys(installed).length, 8);
   const { 'card-mod-theme': defaultName, ...defaultTokens } = installed.civica;
   const { 'card-mod-theme': legacyName, ...legacyTokens } = legacy;
-  const { 'card-mod-theme': variantName, ...variantTokens } = installed['civica Civic Cobalt Vivid'];
+  const { 'card-mod-theme': variantName, ...variantTokens } = installed['civica Blue'];
   assert.equal(defaultName, 'civica');
   assert.equal(legacyName, 'govuk');
-  assert.equal(variantName, 'civica Civic Cobalt Vivid');
+  assert.equal(variantName, 'civica Blue');
   assert.deepEqual(defaultTokens, variantTokens);
   assert.deepEqual(legacyTokens, variantTokens);
   for (const [name, theme] of Object.entries(themes)) assert.deepEqual(installed[name], theme);
@@ -25,34 +25,23 @@ function minimum(foreground, background, ratio, description) {
   assert.ok(actual >= ratio, `${description}: ${foreground} on ${background} is ${actual.toFixed(2)}:1, needs ${ratio}:1`);
 }
 
-test('all supplied palettes preserve the exact screen colours and complete print metadata', () => {
-  const expected = [
-    ['Civic Cobalt', '#1D70B8', '#103E65', '#F3F6F9'],
-    ['Racing Moss', '#006853', '#00392E', '#F2F6F4'],
-    ['Imperial Damson', '#732282', '#3F1348', '#F6F3F7'],
-    ['Sovereign Crimson', '#B2292E', '#621719', '#F9F4F4'],
-    ['Regimental Plum', '#532A45', '#2E1726', '#F7F3F5'],
-    ['Oxford Midnight', '#003764', '#001E37', '#F2F4F8'],
-    ['Ink Charcoal', '#0B0C0C', '#2B2E30', '#F3F2F1'],
-    ['Heritage Ochre', '#8A6100', '#4D3600', '#F9F7F1'],
-    ['Kiln Terracotta', '#9E3B0E', '#572008', '#F9F5F2'],
-    ['Umber Bronze', '#5C3D28', '#332216', '#F6F4F1'],
-  ];
-  assert.deepEqual(palettes.palettes.map((p) => [p.name, p.vivid.primary.hex, p.muted.primary.hex, p.muted.canvas.hex]), expected);
+test('theme colours are the GOV.UK primaries that pass 4.5:1 with white text, copied exactly', () => {
+  // Owner decision, 2026-11-18: blue, green, teal, purple, magenta, red and black.
+  const govuk = JSON.parse(readFileSync('docs/data/govuk-brand-colours.json', 'utf8')).colours;
+  assert.deepEqual(palettes.palettes.map((p) => [p.name, p.primary.hex]), [
+    ['Blue', '#1D70B8'], ['Green', '#0F7A52'], ['Teal', '#158187'], ['Purple', '#54319F'],
+    ['Magenta', '#CA357C'], ['Red', '#CA3535'], ['Black', '#0B0C0C'],
+  ]);
   for (const palette of palettes.palettes) {
-    assert.equal(palette.vivid.canvas.hex, '#FFFFFF');
-    for (const tone of ['vivid', 'muted']) for (const colour of Object.values(palette[tone])) {
-      assert.deepEqual(colour.rgb, rgb(colour.hex));
-      assert.deepEqual(colour.rgba, [...colour.rgb, 1]);
-      assert.equal(colour.cmyk.length, 4);
-      assert.ok(colour.cmyk.every((channel) => Number.isInteger(channel) && channel >= 0 && channel <= 100));
-      assert.ok(colour.reference);
-    }
+    assert.equal(palette.primary.hex, govuk[palette.govukColour].hex, `${palette.name} is the GOV.UK ${palette.govukName}`);
+    assert.deepEqual(palette.primary.rgb, rgb(palette.primary.hex));
+    minimum('#FFFFFF', palette.primary.hex, 4.5, `${palette.name} with white text`);
   }
+  for (const excluded of ['brown', 'orange', 'yellow']) assert.ok(contrast('#FFFFFF', govuk[excluded].hex) < 4.5, `${excluded} stays excluded`);
 });
 
-test('20 native themes each offer separate light and dark modes without restricted branding fonts', () => {
-  assert.equal(Object.keys(themes).length, 20);
+test('7 native themes each offer separate light and dark modes without restricted branding fonts', () => {
+  assert.equal(Object.keys(themes).length, 7);
   for (const [name, theme] of Object.entries(themes)) {
     assert.match(name, /^civica /);
     assert.deepEqual(Object.keys(theme.modes), ['light', 'dark']);
@@ -170,18 +159,10 @@ test('semantic meanings and chart series remain stable across palette choices', 
       assert.equal(other.modes[mode][key], entries[0].modes[mode][key], `${mode} ${key}`);
     }
   }
-  for (const tone of ['Vivid', 'Muted']) for (const mode of ['light', 'dark']) {
-    const sameTone = Object.entries(themes).filter(([name]) => name.endsWith(tone)).map(([, theme]) => theme);
-    for (const theme of sameTone) {
-      assert.equal(theme.modes[mode]['civica-chart-tone'], tone.toLowerCase());
-      assert.equal(theme.modes[mode]['civica-chart-mode'], mode);
-      for (let i = 1; i <= 24; i++) assert.equal(theme.modes[mode][`civica-chart-${i}`], sameTone[0].modes[mode][`civica-chart-${i}`]);
-    }
-  }
-  for (const palette of palettes.palettes) for (const mode of ['light', 'dark']) {
-    const vivid = themes[`civica ${palette.name} Vivid`].modes[mode];
-    const muted = themes[`civica ${palette.name} Muted`].modes[mode];
-    for (let i = 1; i <= 24; i++) assert.notEqual(vivid[`civica-chart-${i}`], muted[`civica-chart-${i}`]);
+  // Chart colours never follow the theme colour.
+  for (const mode of ['light', 'dark']) for (const theme of entries) {
+    assert.equal(theme.modes[mode]['civica-chart-mode'], mode);
+    for (let i = 1; i <= 24; i++) assert.equal(theme.modes[mode][`civica-chart-${i}`], entries[0].modes[mode][`civica-chart-${i}`]);
   }
 });
 

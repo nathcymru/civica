@@ -90,7 +90,7 @@ test('keyboard activation preserves native hash navigation, back history and sam
   await expect(page.getByRole('heading', { name: 'House lighting', exact: true })).toBeVisible();
 });
 
-test('civica and all 20 palette variants in both modes keep link and circle-arrow contrast, including keyboard focus', async ({ page }) => {
+test('civica and all 7 theme colours in both modes keep link and circle-arrow contrast, including keyboard focus', async ({ page }) => {
   await mount(page);
   const measurements = await page.evaluate(() => {
     const link = window.actionLinks.shadowRoot.querySelector('a');
@@ -114,15 +114,15 @@ test('civica and all 20 palette variants in both modes keep link and circle-arro
     }
     return out;
   });
-  expect(measurements).toHaveLength(42);
+  expect(measurements).toHaveLength(16);
   for (const state of measurements) {
     expect(state.label, `${state.theme} ${state.dark ? 'dark' : 'light'} text`).toBeGreaterThanOrEqual(4.5);
     expect(state.arrow, `${state.theme} ${state.dark ? 'dark' : 'light'} arrow`).toBeGreaterThanOrEqual(3);
     expect(state.arrowColour).toBe(state.dark ? 'rgb(255, 255, 255)' : 'rgb(11, 12, 12)');
   }
-  // The Civic Cobalt light circle matches the publishing pattern's visible
+  // The Blue light circle matches the publishing pattern's visible
   // tint, rather than the near-white quiet-fill token that hid its shape.
-  expect(measurements.find(state => state.theme === 'civica Civic Cobalt Vivid' && !state.dark).circle).toEqual([210, 226, 241]);
+  expect(measurements.find(state => state.theme === 'civica Blue' && !state.dark).circle).toEqual([210, 226, 241]);
   const link = page.locator('civica-action-links a').first();
   await page.keyboard.press('Tab');
   await expect(link).toBeFocused();

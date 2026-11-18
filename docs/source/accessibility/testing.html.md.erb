@@ -4,7 +4,7 @@ description: "Test the interface for the civica Home Assistant design system."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: "2026-11-11"
-updated_on: "2026-11-17"
+updated_on: "2026-11-18"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -14,6 +14,8 @@ updates:
     description: "First published in the civica.uk design system."
   - date: "2026-11-17"
     description: "Rewritten to lead with the evidence to record, tighten the checks and report results within their limits."
+  - date: "2026-11-18"
+    description: "Tests and checks now cover the Theme colour select and all seven theme colours in both modes."
 ai_instructions: "Use to test a civica interface before release. Record the revision, Home Assistant version, browser, viewport and card versions. Report each check as passed, failed or not tested. A local fixture is not evidence of a live deployment, and an untested item is never a pass. Rules WG-086, WG-095, WG-063, WG-081."
 ai_related:
   - path: "/get-started/compatibility.html"
@@ -43,19 +45,19 @@ These isolated examples illustrate the decisions on this page. Any household val
 
 ## Automated checks
 
-Run the repository's documented validation commands for generated palette/theme parity, syntax and contrast. Build this documentation with `bundle exec middleman build`. Validate generated links and check that no GOV.UK crown, logotype or font assets are published.
+Run the repository's documented validation commands for generated theme colour parity, syntax and contrast. Build this documentation with `bundle exec middleman build`. Validate generated links and check that no GOV.UK crown, logotype or font assets are published.
 
-Meaningful browser tests should cover actual behaviour: palette changes map to the correct available theme; the Muted control preserves the palette; native mode stays unchanged; unsupported themes do not fail silently; switching away restores the interface.
+Meaningful browser tests should cover actual behaviour: theme colour changes map to the correct available theme; native mode stays unchanged; unsupported themes do not fail silently; switching away restores the interface.
 
 ## Keyboard and screen reader
 
-Use Tab, Shift+Tab, Enter, Space and arrow keys. Check the palette select, Muted control, native theme selector, sidebar, dialogs and representative device controls. Verify the visible label, role and state. Close a dialog and confirm focus returns to its trigger.
+Use Tab, Shift+Tab, Enter, Space and arrow keys. Check the Theme colour select, native theme selector, sidebar, dialogs and representative device controls. Verify the visible label, role and state. Close a dialog and confirm focus returns to its trigger.
 
-Check that a palette change is announced once and that sensor refreshes do not flood the live region. Check that unavailable and empty states are spoken in words that make sense.
+Check that a theme colour change is announced once and that sensor refreshes do not flood the live region. Check that unavailable and empty states are spoken in words that make sense.
 
 ## Responsive and visual checks
 
-Check desktop, tablet and 320px phone layouts, 200% text enlargement, 400% zoom, reduced motion and forced colours. Review every palette/variant combination against real text, inputs, focus, error and success states. Check light, dark and automatic preferences separately.
+Check desktop, tablet and 320px phone layouts, 200% text enlargement, 400% zoom, reduced motion and forced colours. Review all seven theme colours in both modes against real text, inputs, focus, error and success states. Check light, dark and automatic preferences separately.
 
 Inspect the supplied logo and favicon at their real sizes. Confirm that no stretched mark, clipped heading, hidden action, lost chart label or accidental page overflow appears.
 

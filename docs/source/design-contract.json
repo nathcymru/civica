@@ -34,8 +34,7 @@
     "sourceArchiveSha256": "0d1a44c3526ccaafa773e1d7314d0d3df6e2e77065be7c3f9c2e1de36dc14d2a",
     "suppliedHashManifest": "brand/civica/docs/SHA256SUMS.json",
     "publishedAssetManifest": "reference/brand-assets.json",
-    "variantAssetPattern": "brand/civica/themes/{palette.id}/{vivid|muted}/{lockup-on-primary.svg|lockup-on-canvas.svg|app-icon.svg|app-icon.png}",
-    "paletteArtwork": "Select the complete supplied variant file; no CSS filters or SVG recolouring",
+    "themeColourArtwork": "core/lockup-white.svg on every theme colour, with icons/app-icon.svg and icons/app-icon-512.png; the supplied per-palette artwork in brand/civica/themes is a retired record and is not shipped",
     "documentationMasthead": "core/lockup-on-blue.svg",
     "scope": "civica project documentation and promotion; not a required in-home identity",
     "household": {
@@ -65,12 +64,9 @@
     "resolvedThemes": "design-system/themes.json",
     "upstreamEvidence": "design-system/upstream-sources.json",
     "publishedPaletteCopy": "reference/palettes.json",
-    "paletteCount": 10,
-    "tones": [
-      "vivid",
-      "muted"
-    ],
-    "themeNamePattern": "civica {palette.name} {Vivid|Muted}",
+    "paletteCount": 7,
+    "chartTone": "vivid (fixed; no tone choice)",
+    "themeNamePattern": "civica {palette.name}",
     "compatibilityAlias": "govuk",
     "screenColourAuthority": "sRGB hex",
     "printReferences": "Reproduced as supplied; not a measured match guarantee",
@@ -78,9 +74,8 @@
       "light",
       "dark"
     ],
-    "toneIndependentOfMode": true,
-    "lightMode": "Exact supplied primary and canvas",
-    "darkMode": "Neutral dark surfaces; interactive tint blended 72% toward white; supplied primary retained for brand header",
+    "lightMode": "Exact GOV.UK theme colour on a white canvas; links use GOV.UK link blue #1A65A6",
+    "darkMode": "Neutral dark surfaces; interactive tint blended 72% toward white; exact theme colour retained for brand header",
     "semanticRolesIndependentOfPalette": [
       "error",
       "success",
@@ -101,8 +96,7 @@
     "profileHost": "ha-pick-theme-row",
     "event": "settheme",
     "persistence": "Home Assistant native profile preference",
-    "paletteControl": "Labelled select",
-    "toneControl": "Use muted colours checkbox/switch",
+    "themeColourControl": "Labelled select: Theme colour, seven GOV.UK colours",
     "fallbackCard": "custom:civica-theme-settings",
     "clearsPrimaryAccentOverrides": true,
     "preservesNativeMode": true,
@@ -185,7 +179,7 @@
         "downloads"
       ],
       "dataAlternative": "View data disclosure for native plotted series with original comparison dates, units, missing values and pagination",
-      "semanticColours": "Deterministic opaque identity colours, semantic energy families, independent of brand; Vivid/Muted follows theme",
+      "semanticColours": "Deterministic opaque identity colours, semantic energy families, independent of the theme colour; chart tone fixed at vivid",
       "flowDiagram": "Native Energy distribution diagram remains a documented controlled deviation",
       "nonEnergyCharts": "Unchanged; no claim that History or arbitrary third-party charts use this adapter",
       "examples": "Native-shaped fixtures using the same adapter and colour engine, including 24 named series",
@@ -299,7 +293,7 @@
       "forced colours",
       "reduced motion",
       "native panels",
-      "all palette tones and modes"
+      "all theme colours and modes"
     ]
   },
   "preserve": [

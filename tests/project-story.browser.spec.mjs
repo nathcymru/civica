@@ -23,7 +23,7 @@ test('current documentation and isolated artwork examples use the civica identit
     expect(box.width/box.height).toBeCloseTo(1180/260,2);
     await noOverflow(page);
   }
-  for(const id of ['local-brand-primary','local-brand-canvas','local-colour-vivid','local-colour-muted']) {
+  for(const id of ['local-brand-primary','local-brand-canvas','local-theme-blue','local-theme-purple']) {
     await page.goto(`/docs/build/examples/${id}.html`);
     const lockup=page.locator('.c-example-canvas img.civica-project-lockup');
     await expect(lockup).toHaveAttribute('alt','civica');

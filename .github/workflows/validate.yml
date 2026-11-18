@@ -74,6 +74,7 @@ jobs:
       - run: npm run check:brand -- --check-built
       - run: npm run check:naming
       - run: npm run check:components
+      - run: npm run check:colours
       # The hosted runner supplies Chromium's shared libraries. Install the
       # pinned browser without a redundant, network-dependent apt refresh.
       # Browser launch and the full suite below remain mandatory.

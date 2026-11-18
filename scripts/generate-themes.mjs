@@ -10,10 +10,16 @@ const hex = (channels) => '#' + channels.map((v) => Math.round(v).toString(16).p
 export const mix = (a, b, fraction) => hex(rgb(a).map((v, i) => v + (rgb(b)[i] - v) * fraction));
 const luminance = (value) => rgb(value).map((v) => v / 255).map((v) => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4).reduce((sum, v, i) => sum + v * [0.2126, 0.7152, 0.0722][i], 0);
 export const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + 0.05) / (Math.min(luminance(a), luminance(b)) + 0.05);
-export const themeName = (palette, tone) => `civica ${palette.name} ${tone[0].toUpperCase()}${tone.slice(1)}`;
+// One theme per GOV.UK theme colour (design-system/palettes.json). Chart colours
+// keep their own fixed palette and never follow this choice.
+export const themeName = (palette) => `civica ${palette.name}`;
+const CHART_TONE = 'vivid';
 const INK = '#0B0C0C';
 const WHITE = '#FFFFFF';
 const FOCUS = '#FFDD00';
+// GOV.UK functional link colour (Blue shade 10%). Links keep it whatever theme
+// colour is chosen, as GOV.UK functional colours do. Dark mode uses the derived tint.
+const LINK = '#1A65A6';
 const SEMANTIC = { danger: '#CA3535', warning: '#8A6100', success: '#0F7A52', info: '#1D70B8' };
 
 // Primary source reviewed 11 November 2026: home-assistant/frontend
@@ -113,9 +119,9 @@ function roleTokens(role, source, dark) {
   return out;
 }
 
-export function modeTokens(palette, tone, dark) {
-  const primary = palette[tone].primary.hex;
-  const suppliedCanvas = palette[tone].canvas.hex;
+export function modeTokens(palette, dark) {
+  const primary = palette.primary.hex;
+  const suppliedCanvas = WHITE;
   const canvas = dark ? '#17191B' : suppliedCanvas;
   const surface = dark ? '#24282B' : WHITE;
   const secondarySurface = dark ? '#30363A' : '#F3F2F1';
@@ -129,7 +135,7 @@ export function modeTokens(palette, tone, dark) {
   const navigationActive = dark ? active : mix(primary, INK, 0.25);
   const colours = Object.fromEntries(Object.entries(SEMANTIC).map(([key, value]) => [key, dark ? mix(value, WHITE, 0.72) : value]));
   const tokens = {
-    'civica-palette': palette.id, 'civica-tone': tone,
+    'civica-palette': palette.id,
     'civica-brand-primary': primary, 'civica-brand-canvas': suppliedCanvas,
     'civica-canvas': canvas, 'civica-surface': surface,
     'civica-border-quiet': quietBorder, 'civica-border-interactive': interactiveBorder,
@@ -139,11 +145,11 @@ export function modeTokens(palette, tone, dark) {
     'civica-action': active, 'civica-action-hover': hover, 'civica-on-action': onActive,
     'primary-color': active, 'dark-primary-color': hover, 'darker-primary-color': hover,
     'light-primary-color': dark ? mix(primary, WHITE, 0.82) : mix(primary, WHITE, 0.90),
-    'accent-color': active, 'link-color': active,
+    'accent-color': active, 'link-color': dark ? active : LINK,
     'primary-text-color': text, 'secondary-text-color': secondary,
     'text-primary-color': onActive, 'text-light-primary-color': text, 'disabled-text-color': secondary,
     'ha-color-text-primary': text, 'ha-color-text-secondary': secondary,
-    'ha-color-text-disabled': secondary, 'ha-color-text-link': active,
+    'ha-color-text-disabled': secondary, 'ha-color-text-link': dark ? active : LINK,
     'ha-color-text-primary-inverted': dark ? INK : WHITE,
     'ha-color-text-secondary-inverted': dark ? '#484949' : '#CBD0D3',
     'primary-background-color': canvas, 'secondary-background-color': secondarySurface,
@@ -241,8 +247,8 @@ export function modeTokens(palette, tone, dark) {
     for (const state of ['resting', 'hover']) tokens[`ha-color-fill-disabled-${volume}-${state}`] = secondarySurface;
   }
   const energy = ['grid-consumption', 'gas', 'non-fossil', 'grid-return', 'solar', 'water', 'battery-in', 'battery-out'];
-  const chartContext = { tone, mode: dark ? 'dark' : 'light' };
-  tokens['civica-chart-tone'] = tone;
+  const chartContext = { tone: CHART_TONE, mode: dark ? 'dark' : 'light' };
+  tokens['civica-chart-tone'] = CHART_TONE;
   tokens['civica-chart-mode'] = chartContext.mode;
   // The first eight variables retain their semantic compatibility mapping.
   // Additional fallback slots are generated, not a cap on identity-based data.
@@ -258,17 +264,17 @@ export function modeTokens(palette, tone, dark) {
   return tokens;
 }
 
-export function buildTheme(palette, tone, name = themeName(palette, tone)) {
+export function buildTheme(palette, name = themeName(palette)) {
   return {
-    ...common, ...paletteScale(palette[tone].primary.hex),
+    ...common, ...paletteScale(palette.primary.hex),
     'card-mod-theme': name,
     'card-mod-card-yaml': '.: |\n  ha-card { border: 1px solid var(--ha-card-border-color); border-radius: 0; box-shadow: none; }\n  ha-card:focus-visible { outline: 3px solid var(--civica-focus-text); outline-offset: 3px; box-shadow: 0 0 0 3px var(--ha-color-focus); }\n',
-    modes: { light: modeTokens(palette, tone, false), dark: modeTokens(palette, tone, true) },
+    modes: { light: modeTokens(palette, false), dark: modeTokens(palette, true) },
   };
 }
 
 export function allThemes() {
-  return Object.fromEntries(palettes.palettes.flatMap((palette) => palettes.tones.map((tone) => [themeName(palette, tone), buildTheme(palette, tone)])));
+  return Object.fromEntries(palettes.palettes.map((palette) => [themeName(palette), buildTheme(palette)]));
 }
 
 function yaml(object, indent = 0) {
@@ -278,11 +284,11 @@ function yaml(object, indent = 0) {
 export function generatedFiles() {
   const themes = allThemes();
   const defaultPalette = palettes.palettes.find((palette) => palette.id === palettes.defaultPalette);
-  const installedThemes = { civica: buildTheme(defaultPalette, palettes.defaultTone, 'civica'), ...themes };
-  const comment = '# Generated by scripts/generate-themes.mjs. Edit design-system/palettes.json and the generator.\n# Vivid/muted are independent of light/dark. See docs/source/styles/colour.html.md.erb.\n';
+  const installedThemes = { civica: buildTheme(defaultPalette, 'civica'), ...themes };
+  const comment = '# Generated by scripts/generate-themes.mjs. Edit design-system/palettes.json and the generator.\n# One theme per GOV.UK theme colour. See docs/source/styles/colour-web.html.md.erb.\n';
   return {
     'themes/civica.yaml': comment + yaml(installedThemes),
-    'themes/govuk.yaml': comment + '# Migration alias only. Select a civica theme for new installations.\n' + yaml({ govuk: buildTheme(defaultPalette, palettes.defaultTone, 'govuk') }),
+    'themes/govuk.yaml': comment + '# Migration alias only. Select a civica theme for new installations.\n' + yaml({ govuk: buildTheme(defaultPalette, 'govuk') }),
     'design-system/themes.json': JSON.stringify({ schemaVersion: 1, generated: true, themes: installedThemes }, null, 2) + '\n',
   };
 }
@@ -298,5 +304,5 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     } else writeFileSync(new URL(path, root), content);
   }
   if (stale) process.exitCode = 1;
-  else console.log(check ? 'Theme outputs are current (civica, 20 variants and migration alias).' : 'Generated civica, 20 palette variants and the govuk migration alias.');
+  else console.log(check ? `Theme outputs are current (civica, ${palettes.palettes.length} theme colours and migration alias).` : `Generated civica, ${palettes.palettes.length} theme colours and the govuk migration alias.`);
 }

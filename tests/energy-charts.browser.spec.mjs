@@ -332,7 +332,7 @@ test('Canvas paint, hover lines, native legend keys and tooltip swatches use the
   expect(await marker.evaluate(node => getComputedStyle(node).backgroundColor)).toBe('rgb(32, 96, 149)');
 });
 
-test('24 source identities keep shared colours and pattern keys across tone, mode, brand and ordering', async ({ page }) => {
+test('24 source identities keep shared colours and pattern keys across tone, mode, theme colour and ordering', async ({ page }) => {
   await openExamples(page);
   async function inspect() {
     return page.evaluate(() => {
@@ -362,7 +362,7 @@ test('24 source identities keep shared colours and pattern keys across tone, mod
   }
   expect(contexts[0]).not.toEqual(contexts[1]); expect(contexts[0]).not.toEqual(contexts[2]);
   const before = await inspect();
-  await page.evaluate(() => window.energyFixture.setPalette('imperial-damson'));
+  await page.evaluate(() => window.energyFixture.setPalette('purple'));
   expect((await inspect()).map(item => item.current)).toEqual(before.map(item => item.current));
   await page.evaluate(() => {
     const f = window.energyFixture, data = f.hosts.many.data.slice().reverse().map((series, index) => series.name ? { ...series, id: series.id.replace(/-\d+$/, `-${index + 70}`) } : series);

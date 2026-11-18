@@ -84,18 +84,15 @@ for (const field of ['theme_files', 'zip_entries']) {
   assert.equal(correction?.verifiedValue, field === 'theme_files' ? 167 : 225);
 }
 
+// The ten supplied palette families (brand-tokens.json and themes/<palette>/)
+// were retired on 2026-11-18, when the theme colours became the GOV.UK primaries
+// (owner decision). The files stay in the supplied package as a record, but the
+// theme and the Home Assistant companion no longer use them.
 const canonical = JSON.parse(readFileSync('design-system/palettes.json', 'utf8'));
 const supplied = JSON.parse(readFileSync(base + 'docs/brand-tokens.json', 'utf8'));
-assert.deepEqual(Object.keys(supplied).sort(), canonical.palettes.map(p => p.id).sort(), 'Brand palette inventory differs');
-for (const palette of canonical.palettes) {
-  assert.equal(supplied[palette.id].name, palette.name, `Palette name differs: ${palette.id}`);
-  for (const tone of canonical.tones) {
-    for (const role of ['primary', 'canvas']) assert.equal(supplied[palette.id][tone][role], palette[tone][role].hex, `Supplied ${palette.id} ${tone} ${role} differs from requested palette`);
-    for (const stem of ['lockup-on-primary', 'lockup-on-canvas', 'app-icon', 'emblem-primary']) {
-      for (const extension of ['svg', 'png']) assert.ok(manifest.has(`themes/${palette.id}/${tone}/${stem}.${extension}`), `Missing ${palette.id} ${tone} ${stem}.${extension}`);
-    }
-  }
-}
+assert.equal(Object.keys(supplied).length, 10, 'The retired supplied palette record is kept whole');
+for (const palette of canonical.palettes) assert.ok(!(palette.id in supplied), `Theme colour ${palette.id} must not reuse a retired supplied palette`);
+for (const runtimeFile of ['core/lockup-white.svg', 'icons/app-icon.svg', 'icons/app-icon-512.png']) assert.ok(manifest.has(runtimeFile), `Missing runtime artwork ${runtimeFile}`);
 if (existsSync('docs/build')) {
   const files = walk('docs/build');
   assert.ok(!files.some(f => /(?:transport|govuk-logo|govuk-crown|govuk-crest)/i.test(f)), 'Official brand asset in docs output');
@@ -116,7 +113,7 @@ if (process.argv.includes('--check-built')) {
       assert.deepEqual(walk(directory).map(f => f.slice(directory.length + 1)).sort(), [...expected.keys()].sort(), `Stale or missing built assets: ${directory}`);
     }
   }
-  const runtime = new Map([...manifest].filter(([file]) => /^(core|icons|themes)\//.test(file)));
+  const runtime = new Map([...manifest].filter(([file]) => /^(core|icons)\//.test(file)));
   copies('ui/dist/brand', runtime, true);
   const docs = JSON.parse(readFileSync('docs/source/reference/brand-assets.json', 'utf8'));
   assert.equal(docs.acceptedPackManifestSha256, hash(readFileSync(base + acceptedPath)), 'Documentation mapping uses a different accepted package');
@@ -128,8 +125,8 @@ if (process.argv.includes('--check-built')) {
     return [record.publishedPath, record.sha256];
   }));
   copies('docs/build', published);
-  copies('docs/build/images/themes', new Map([...published].filter(([file]) => file.startsWith('images/themes/')).map(([file, digest]) => [file.slice('images/themes/'.length), digest])), true);
+  assert.ok(!existsSync('docs/build/images/themes'), 'Retired palette artwork must not be published');
   assert.equal(hash(readFileSync('docs/build/reference/brand-assets.json')), hash(readFileSync('docs/source/reference/brand-assets.json')), 'Built documentation provenance is stale');
   console.log(`Verified ${runtime.size} built companion assets and ${published.size} built documentation copies against the accepted package.`);
 }
-console.log(`Verified ${manifest.size} accepted revised source files, ${imageCount} decoded-image records, 20 palette variants and available docs output. One empty WebP is excluded; source metadata corrections are recorded.`);
+console.log(`Verified ${manifest.size} accepted revised source files, ${imageCount} decoded-image records (retired palette artwork kept as a record) and available docs output. One empty WebP is excluded; source metadata corrections are recorded.`);

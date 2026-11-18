@@ -4,7 +4,7 @@ description: "Apply the civica chart rules to native Home Assistant Energy witho
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: "2026-11-11"
-updated_on: "2026-11-17"
+updated_on: "2026-11-18"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -14,6 +14,8 @@ updates:
     description: "First published in the civica.uk design system."
   - date: "2026-11-17"
     description: "Rewritten to lead with the rule, keep power and energy apart, and move outside source credit to the Patterns index."
+  - date: "2026-11-18"
+    description: "Chart colours stay the same with every GOV.UK theme colour; the Vivid and Muted toggle was removed."
 ai_instructions: "Apply when styling or describing the native Energy dashboard. Keep Home Assistant as the owner of data, dates, units and costs. Use stacked columns for energy over a period and unfilled lines for power. Never label power as energy, never turn a missing reading into zero and never claim coverage the adapter does not have. Rules WG-070, WG-073, WG-074, WG-076, WG-077, WG-086."
 ai_related:
   - path: "/components/charts.html"
@@ -85,7 +87,7 @@ Show the selected period. Do not hard-code “today” when the person can chang
 
 ## Keep series colours stable
 
-Use the [chart colour generator](../styles/chart-colour.html) for energy families and native device identities. Colours stay the same when the brand palette changes. Vivid and Muted follow the existing theme toggle. Current and comparison columns are opaque. Hatching marks the previous period. Keep the native source names and legend state, and show values in text, because colour alone cannot separate every combination.
+Use the [chart colour generator](../styles/chart-colour.html) for energy families and native device identities. Colours stay the same when the theme colour changes. Current and comparison columns are opaque. Hatching marks the previous period. Keep the native source names and legend state, and show values in text, because colour alone cannot separate every combination.
 
 ## Check the behaviour before release
 
