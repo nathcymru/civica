@@ -34,11 +34,13 @@ updates:
     description: "Added the Social colours page."
   - date: "2026-11-18"
     description: "Added the Illustration colours page."
+  - date: "2026-11-18"
+    description: "Removed Colour roles and accessibility from the list; its rules are now on Colour, Web colours and Chart colours."
 ai_instructions: "Apply to choosing colour, type, layout, icons or chart styling. Choose a role before a value, take the value from the page that owns it and never add a hex value to one component. Send identity questions to Project identity and household names to Personalise your home. Rules WG-001, WG-002, WG-083."
 ai_related:
-  - path: "/styles/brand-colour.html"
-    title: "Colour roles and accessibility"
-    relationship: "Owns the rules for choosing a colour by its job."
+  - path: "/styles/colour.html"
+    title: "Colour"
+    relationship: "Owns how to choose the palette for the job and the general colour rules (BG-COL-01, 03, 06, 08)."
   - path: "/styles/typography.html"
     title: "Typography"
     relationship: "Owns the type sizes and the native density exception."
@@ -53,8 +55,7 @@ Choose a style by its role, such as primary text, canvas, focus or error. Then t
 
 ## Choose a style
 
-- [Colour roles and accessibility](brand-colour.html): choose a colour by its job and test the combination.
-- [Colour](colour.html): how civica uses the GOV.UK palette, and the seven theme colours a household can choose.
+- [Colour](colour.html): how civica uses the GOV.UK palette, the seven theme colours a household can choose, and the general colour rules.
 - [Web](colour-web.html), [App](colour-app.html) and [Print](colour-print.html) colours: every GOV.UK value, ready to copy.
 - [Data visualisation](brand-data.html): choose and compose charts, dashboards and maps.
 - [Chart colours](chart-colour.html): the GOV.UK chart palette and a stable colour and pattern for each series.
@@ -84,7 +85,7 @@ The canonical palette data is `design-system/palettes.json` in the repository. G
 
 ## Know who owns what
 
-- The [colour](brand-colour.html), [typography](brand-typography.html), [data](brand-data.html) and [illustration](illustration.html) pages are ordinary interface guidance. They are not a second brand system inside a home.
+- The [colour](colour.html), [typography](brand-typography.html), [data](brand-data.html) and [illustration](illustration.html) pages are ordinary interface guidance. They are not a second brand system inside a home.
 - For a family name, crest or business logo, follow [Personalise your home](../get-started/personalisation.html).
 - The civica [project identity](brand.html) belongs to this documentation and to promotion of the project.
 - The [work-package checklist](../community/guidance-work-package.html) records source coverage and review loops. The [design-system audit](../community/design-system-audit.html) lists the changes still needed.

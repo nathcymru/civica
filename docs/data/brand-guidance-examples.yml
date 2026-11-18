@@ -1,19 +1,19 @@
 examples:
   bg-colour-role-separation:
     title: Interface colours change; status meaning stays stable
-    description: Two supplied palette primaries sit above the same explicit device failure. This is a colour-role specimen, not a palette settings control.
+    description: Two of the seven theme colours, Green and Red, sit above the same explicit device failure. This is a colour-role specimen, not a theme colour control.
     height: 650
     html: |
       <div class="civica-pattern-grid">
         <section class="civica-card" aria-labelledby="moss-title">
-          <div style="background:#006853;padding:16px"><strong style="color:#ffffff">Morgan household</strong></div>
-          <h2 class="govuk-heading-m" id="moss-title">Racing Moss</h2>
+          <div style="background:#0F7A52;padding:16px"><strong style="color:#ffffff">Morgan household</strong></div>
+          <h2 class="govuk-heading-m" id="moss-title">Green theme colour</h2>
           <p class="govuk-body"><strong>Kitchen sensor unavailable</strong></p>
           <p class="govuk-body">There is no current reading. The last confirmed reading was 20 °C at 09:10.</p>
         </section>
         <section class="civica-card" aria-labelledby="crimson-title">
-          <div style="background:#b2292e;padding:16px"><strong style="color:#ffffff">Morgan household</strong></div>
-          <h2 class="govuk-heading-m" id="crimson-title">Sovereign Crimson</h2>
+          <div style="background:#CA3535;padding:16px"><strong style="color:#ffffff">Morgan household</strong></div>
+          <h2 class="govuk-heading-m" id="crimson-title">Red theme colour</h2>
           <p class="govuk-body"><strong>Kitchen sensor unavailable</strong></p>
           <p class="govuk-body">There is no current reading. The last confirmed reading was 20 °C at 09:10.</p>
         </section>

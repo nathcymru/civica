@@ -1,4 +1,5 @@
 ---
+no_contents: true
 title: "Web colours"
 description: "The GOV.UK web palette and functional colours, with every tint, shade and code, ready to copy."
 group: "Colour"
@@ -10,7 +11,13 @@ updated_on: "2026-11-18"
 updates:
   - date: "2026-11-18"
     description: "First published, with the GOV.UK web palette and functional colours copied exactly from the GOV.UK Brand Guidelines."
-ai_instructions: "Use this page for any colour shown on a web page or Home Assistant dashboard. Every value comes unchanged from the GOV.UK Brand Guidelines web page and is rendered from docs/data/govuk-brand-colours.json: never type a hex value from memory. Prefer the functional colour for its role (for example brand, link, error, focus) and use the palette only for supporting elements such as illustrations. Never use colour alone to give meaning. Chart colours have their own page."
+  - date: "2026-11-18"
+    description: "Added rules BG-COL-02, BG-COL-04 and BG-COL-05 and their examples, moved from the Colour roles and accessibility page, which has been deleted."
+  - date: "2026-11-18"
+    description: "Swatches now use the GOV.UK Brand layout: a round sample, the name, and RGB and hex values with copy icons. Added the list of colour groups. Removed the Sass and theme property rows from each swatch."
+  - date: "2026-11-18"
+    description: "Added a Web palette example, as on the GOV.UK Web page: a simulated picture, modelled on the GOV.UK one, of a dashboard for an invented household in a desktop browser, using only web palette colours. It is not a screenshot of civica or Home Assistant."
+ai_instructions: "Use this page for any colour shown on a web page or Home Assistant dashboard. Every value comes unchanged from the GOV.UK Brand Guidelines web page and is rendered from docs/data/govuk-brand-colours.json: never type a hex value from memory. Prefer the functional colour for its role (for example brand, link, error, focus) and use the palette only for supporting elements such as illustrations. Never use colour alone to give meaning. Chart colours have their own page. Rules BG-COL-02, BG-COL-04 and BG-COL-05 are on this page: give each colour one job, keep dividers apart from editable boundaries, and keep native device, warning and notification meaning. The Web palette example is an indicative picture with an invented household; its colours are web palette colours only."
 ai_related:
   - path: "/styles/colour-app.html"
     title: "App colours"
@@ -39,6 +46,10 @@ In GOV.UK Frontend, call the `govuk-colour` Sass function instead of typing a va
 
 Most colours have tints at 25%, 50%, 80% and 95%, and shades at 25% and 50%. Black has tints for greys. White has no variants.
 
+The web palette has:
+
+<%= colour_group_links('web', 'web functional colours' => '#functional-colours') %>
+
 <%= colour_palette('web') %>
 
 ## Functional colours
@@ -52,6 +63,44 @@ A functional colour has one job. Use it only for that job, and use the palette f
 - Use `error` only for error messages and `success` only for success messages.
 - Use `hover` only for the hover state of inputs.
 
-Where the default civica theme (Blue), in light mode, sets a Home Assistant custom property to exactly this value, the property is listed. Other theme colours and dark mode use different values, so a listed property does not always give this colour.
-
 <%= colour_functional_tokens %>
+
+### Web palette example
+
+<%= colour_callout %>
+
+<%= colour_example('web-colour-dashboard', callout: false) %>
+
+## Colour roles in Home Assistant
+
+These rules apply the functional colours in a Home Assistant interface.
+
+These examples use invented household details. They do not operate devices, and they do not show that every native Home Assistant surface follows this guidance.
+
+<h3 id="bg-col-02">BG-COL-02: Choose a colour by its job</h3>
+
+**Local requirement: MUST.** Applies to interface colour tokens and semantic states.
+
+Give identity, reading, interaction, state and data their own roles. The theme colour supports navigation and interaction hierarchy. Text tokens support reading. Focus and validation tokens mark an interaction state. Device colours may express a native domain state. Chart colours identify a source.
+
+The Red theme colour is the same as the error colour (`#CA3535` in light mode; in dark mode both use civica’s own `#F0C6C6`, which is not a GOV.UK value), and the Green theme colour is the same as the success colour (`#0F7A52`). With either selected, do not let a button or highlight stand in for an error or success: say it in words. A green primary is not proof of success, and a yellow lighting scene is a light recipe, not a warning. Choose a semantic fill and its paired text colour together. A dark-mode error text colour is not automatically a safe button background.
+
+<%= example('bg-colour-state-labels') %>
+
+<h3 id="bg-col-04">BG-COL-04: Separate dividers from editable boundaries</h3>
+
+**Local requirement: MUST.** Applies to structural borders, inputs and native control geometry.
+
+Use `civica-border-quiet` for structural dividers and quiet card edges: `#CECECE` in light mode, with a documented dark counterpart. Use `civica-border-interactive` for boundaries people need to recognise a control, and `civica-input-border` for editable fields. Keep the strong input and focus treatments.
+
+Do not outline every dashboard region in black. Group content with headings and spacing first. Equally, do not lighten every border: a text field, a focus ring and a card separator do different jobs. Keep native circle and pill shapes where they carry meaning, as on a switch, radio, badge, avatar or gauge.
+
+<%= example('bg-colour-boundaries') %>
+
+<h3 id="bg-col-05">BG-COL-05: Preserve device, warning and notification meaning</h3>
+
+**Local requirement: MUST.** Applies to device state, manufacturer identifiers and attention counts.
+
+Keep the native icon and state colours for a device, and keep the device name and state readable. An unavailable sensor is not a zero reading and not an off device. A manufacturer mark can help identify a device. It is content, not the identity of the interface.
+
+The [notification badge](../components/notification-badge.html) keeps its fixed attention colour and rounded shape with every theme colour. Do not treat its count as an alarm severity, and do not replace a warning message with a coloured dot. Confirmed success, a pending action and a failure each need their own wording as well as their own look.

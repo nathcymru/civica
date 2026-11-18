@@ -1,4 +1,5 @@
 ---
+no_contents: true
 title: "Illustration colours"
 description: "How to choose, pair and contrast GOV.UK colours in an illustration, with Home Assistant examples."
 group: "Colour"
@@ -10,6 +11,8 @@ updated_on: "2026-11-18"
 updates:
   - date: "2026-11-18"
     description: "First published, following the GOV.UK Brand Guidelines illustrations colour page, with its colours copied exactly."
+  - date: "2026-11-18"
+    description: "Swatches and examples now follow the GOV.UK Illustrations page: round swatches and the illustrations shown on the page. Moved maintenance notes to Colour."
 ai_instructions: "Apply when choosing colours for an illustration in civica documentation, a Home Assistant dashboard or a social post. Take colours from the palette for the channel: Web colours for documentation and dashboards, Social colours for social media. Use 4 to 6 colours where possible. Make Primary blue the base, and use Accent teal and Accent blue, if they suit the illustration, to highlight a key component. Pair complementary colours, use shades of one colour to separate foreground from background, and test the illustration with a colour blindness simulator. Illustration colours do not follow the theme colour. How to draw an illustration is owned by Illustration. Rules WG-001, WG-002."
 ai_related:
   - path: "/styles/illustration.html"
@@ -35,13 +38,13 @@ Use as few colours as you can. As a rule of thumb, use 4 to 6 colours, depending
 
 <%= colour_copy_status %>
 
-<%= colour_palette('illustrations', fields: %i[hex rgb]) %>
+<%= colour_palette('illustrations') %>
 
 Primary blue is the base of the GOV.UK palette and civica’s default theme colour, so use it heavily in illustrations. Use Accent teal and Accent blue if they suit the illustration and its layout. They are bold, so use them to highlight a key component.
 
 In this example, Accent teal and Accent blue highlight the sensor on the Primary blue wall, where both reach 3:1.
 
-<%= example('illustration-colour-applying') %>
+<%= colour_example('illustration-colour-applying', callout: false) %>
 
 ### Colour pairing
 
@@ -49,7 +52,7 @@ Choose colours that complement each other, with enough contrast to tell the key 
 
 Use different shades of one colour to separate the foreground from the background, so that the image does not look flat.
 
-<%= example('illustration-colour-pairing') %>
+<%= colour_example('illustration-colour-pairing', callout: false) %>
 
 ### Using contrast
 
@@ -61,8 +64,4 @@ A warm colour beside a cool one, such as yellow beside blue, makes a focal point
 
 In this example, the person in yellow stands in front of the dark window and the person in blue in front of the White wall. The greyscale copy is a quick check that the scene still reads without colour; it does not replace a colour blindness simulator.
 
-<%= example('illustration-colour-contrast') %>
-
-## Maintenance
-
-GOV.UK values live in `docs/data/govuk-brand-colours.json`, under `pages.illustrations`. The example illustrations are generated from that file by `docs/scripts/generate-illustration-examples.py`. If a colour changes, run the script again rather than editing the illustrations by hand; `--check` reports illustrations that are out of date. Run `npm run check:colours` after the docs build.
+<%= colour_example('illustration-colour-contrast', callout: false) %>

@@ -5,12 +5,14 @@ section: components
 group: Content presentation
 status: reference
 published_on: 2026-11-11
-updated_on: 2026-11-17
+updated_on: "2026-11-18"
 updates:
   - date: 2026-11-11
     description: "Added the civica.uk guidance, contextual examples and implementation boundaries."
   - date: 2026-11-17
     description: "Rewritten to lead with the rule and move source credit to the components index."
+  - date: "2026-11-18"
+    description: "The destructive action guidance now says theme colour Green or Red, instead of palette."
 ai_instructions: "Apply when an action can cause a loss or change that is easy to overlook. Place the warning before the action and name the consequence and the object. Do not use it for routine information. A warning is not a device safety interlock. Rules WG-030, WG-042, WG-056."
 ai_related:
   - path: "/patterns/interruption.html"
@@ -50,7 +52,7 @@ The consequences in these examples are made-up content. They do not describe a r
 
 Name the actual consequence: “Removing this dashboard deletes its saved layout. It does not remove devices from Home Assistant.” Avoid capitals and vague questions such as “Are you sure?”. The exclamation mark is decorative. Assistive technology reads the word “Warning” as part of the message.
 
-When the decision needs more explanation, use the [interruption pattern](../patterns/interruption.html). Keep the cancel route clear. Do not style a destructive action like the ordinary primary action just because the palette is green or red.
+When the decision needs more explanation, use the [interruption pattern](../patterns/interruption.html). Keep the cancel route clear. Do not style a destructive action like the ordinary primary action just because the theme colour is Green or Red.
 
 ## Check the implementation
 

@@ -41,6 +41,7 @@ module DesignSystemHelpers
     section_home = data.navigation.sections.find { |item| item.id == section }&.path
     pages = guide_pages.select do |resource|
       section_for(resource) == section && '/' + resource.destination_path != section_home &&
+        resource.data.status != 'retired' &&
         (!resource.destination_path.end_with?('/index.html') || resource.destination_path == 'home-assistant/index.html')
     end
     pages.group_by { |resource| resource.data.group || (section == 'components' ? 'Home Assistant components' : 'Guidance') }

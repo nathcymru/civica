@@ -1,4 +1,5 @@
 ---
+no_contents: true
 title: "Print colours"
 description: "The GOV.UK print palette, with CMYK and Pantone references for printed material."
 group: "Colour"
@@ -10,6 +11,8 @@ updated_on: "2026-11-18"
 updates:
   - date: "2026-11-18"
     description: "First published, with the GOV.UK print palette copied exactly from the GOV.UK Brand Guidelines."
+  - date: "2026-11-18"
+    description: "Swatches now use the GOV.UK Brand layout: a round sample, the name, and CMYK and Pantone values with copy icons."
 ai_instructions: "Use this page only for printed material, such as a household guide, a label or a sign for a device. Every value comes unchanged from the GOV.UK Brand Guidelines print page and is rendered from docs/data/govuk-brand-colours.json. Print values are CMYK and Pantone; the page gives no screen values. For screens, use Web colours. Do not convert between print and screen values yourself."
 ai_related:
   - path: "/styles/colour-web.html"
@@ -26,5 +29,9 @@ Each colour except White has a CMYK and a Pantone reference. Every value is the 
 <%= colour_copy_status %>
 
 ## Print palette
+
+The print palette has:
+
+<%= colour_group_links('print') %>
 
 <%= colour_palette('print', fields: %i[cmyk pantone]) %>
