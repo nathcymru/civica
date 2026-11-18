@@ -65,7 +65,7 @@
     "upstreamEvidence": "design-system/upstream-sources.json",
     "publishedPaletteCopy": "reference/palettes.json",
     "paletteCount": 7,
-    "chartTone": "vivid (fixed; no tone choice)",
+    "chartColours": "Six GOV.UK categorical chart colours; no tone; the same in light and dark mode",
     "themeNamePattern": "civica {palette.name}",
     "compatibilityAlias": "govuk",
     "screenColourAuthority": "sRGB hex",
@@ -89,7 +89,7 @@
     "chartSeriesLimit": null,
     "chartColourContract": "reference/chart-colours.json",
     "chartColourGenerator": "design-system/chart-colours.mjs",
-    "chartToneFollowsTheme": true
+    "chartColoursFollowTheme": false
   },
   "settings": {
     "module": "/local/civica/civica-ui.js",
@@ -166,7 +166,7 @@
       "scope": "Supported native Energy charts under ha-panel-energy only",
       "source": "https://service-manual.ons.gov.uk/design-system/components/bar-chart-component",
       "sourceSnapshot": "reference/ons-chart-sources.json",
-      "implementation": "ONS presentation rules adapted to native ECharts; no second production chart engine",
+      "implementation": "ONS chart structure rules (geometry, axes, legend and figure) adapted to native ECharts, with colours from the GOV.UK chart palette; no second production chart engine",
       "nativeFeaturesPreserved": [
         "statistics",
         "series identities and values",
@@ -179,7 +179,7 @@
         "downloads"
       ],
       "dataAlternative": "View data disclosure for native plotted series with original comparison dates, units, missing values and pagination",
-      "semanticColours": "Deterministic opaque identity colours, semantic energy families, independent of the theme colour; chart tone fixed at vivid",
+      "semanticColours": "The six GOV.UK categorical chart colours, opaque, assigned by stable identity with fixed energy roles; the same in light and dark mode and independent of the theme colour",
       "flowDiagram": "Native Energy distribution diagram remains a documented controlled deviation",
       "nonEnergyCharts": "Unchanged; no claim that History or arbitrary third-party charts use this adapter",
       "examples": "Native-shaped fixtures using the same adapter and colour engine, including 24 named series",

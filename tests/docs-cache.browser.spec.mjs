@@ -93,4 +93,7 @@ test('project-subpath charts load hashed catalogue scripts and expose identical 
       .toBe(`/civica/examples/${id}.html`);
   }
   expect(errors).toEqual([]);
+  // Other example iframes on these guides may still be loading through the
+  // route when the assertions finish; end the route without failing the run.
+  await page.unrouteAll({ behavior: 'ignoreErrors' });
 });

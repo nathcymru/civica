@@ -20,11 +20,13 @@ updates:
     description: "Chart identities no longer follow a Vivid or Muted tone: they stay the same with every GOV.UK theme colour."
   - date: "2026-11-18"
     description: "Chart colours, labels and axes now use the GOV.UK chart palette instead of the ONS palette and generated colours."
+  - date: "2026-11-18"
+    description: "ONS is credited for chart structure only, and the local chart contract now names the six GOV.UK chart colours instead of generated identities."
 ---
 
 # Charts and tables
 
-Charts help people compare values and understand change. The civica chart pattern adapts the **ONS Design System chart components**, their figure structure and their chart build specifications to Home Assistant. A change to series colours alone does not implement this pattern.
+Charts help people compare values and understand change. The civica chart pattern adapts the **ONS Design System chart components** to Home Assistant: their geometry, axes, legend and figure structure, from the ONS chart build specifications. Colours follow the GOV.UK chart palette. A change to series colours alone does not implement this pattern.
 
 Use the [Energy and history pattern](../patterns/energy.html) for consumption, power and distribution. The [machine-readable ONS source record](../reference/ons-chart-sources.json) records the upstream release, source hashes, reference values and controlled deviations.
 
@@ -39,9 +41,9 @@ The [data principles](../styles/brand-data.html) govern the question, context, a
 | --- | --- |
 | GOV.UK data guidance | Purpose, chart anatomy, readable context, accessible alternatives and truthful values |
 | ONS chart guidance | Line/column/bar geometry, axes, legend and figure structure |
-| Local chart contract | Stable generated identities, opaque fills, 1.5px unfilled Power lines; the same colours with every theme colour |
+| Local chart contract | Stable identities on the six GOV.UK chart colours, opaque fills, 1.5px unfilled Power lines; the same colours with every theme colour |
 
-These decisions form one specification. Neither a family logo nor a different interface palette changes the meaning of a source series. For ordered values or difference from a meaningful centre, use the [quantitative scale examples](../styles/chart-colour.html#choose-the-colour-mapping); do not replace the categorical Energy generator with those scales.
+These decisions form one specification. Neither a family logo nor a different interface palette changes the meaning of a source series. For ordered values or difference from a meaningful centre, use the [quantitative scale examples](../styles/chart-colour.html#choose-the-colour-mapping); do not replace the categorical Energy colours with those scales.
 
 ## Use the shared table contract
 
