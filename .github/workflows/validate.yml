@@ -1,4 +1,12 @@
 name: Validate civica
+# Three paths, sized to a GitHub Pages documentation site:
+#   - Pull requests: every fast check plus a browser smoke test (about 2 minutes).
+#     A newer push to the same pull request cancels the older run.
+#   - Merge to main, roadmap issue changes and the nightly refresh: build and
+#     deploy only (about 1 minute). The pull request already ran the checks.
+#   - Nightly and on demand: the full browser suite and the install package.
+# Page-by-page quality is the job of the Writer, Editor and Illustrator review,
+# not of a long CI run.
 on:
   push:
     branches: [main]
@@ -11,37 +19,103 @@ on:
 permissions:
   contents: read
   issues: read
-# Serialise the complete build and publication, including issue-triggered runs.
-# Pending refreshes may be coalesced; each trusted run reads the latest main and
-# the complete current issue set, so an older event cannot restore old content.
-concurrency:
-  # Irrelevant issue events must not evict a pending publication before their
-  # job condition skips them. They get their own group instead.
-  group: >-
-    civica-validate-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) ||
-    (github.event_name == 'issues' &&
-    !contains(github.event.issue.labels.*.name, 'roadmap: accepted') &&
-    !contains(github.event.issue.labels.*.name, 'roadmap: in-works') &&
-    !contains(github.event.issue.labels.*.name, 'roadmap: completed') &&
-    github.event.label.name != 'roadmap: accepted' &&
-    github.event.label.name != 'roadmap: in-works' &&
-    github.event.label.name != 'roadmap: completed') && format('ignored-{0}', github.run_id) || 'publish' }}
-  cancel-in-progress: false
 jobs:
-  verify:
+  checks:
+    if: github.event_name == 'pull_request' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: civica-checks-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.event_name }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+          working-directory: docs
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: .github/workflows/validate.yml
+      - run: npm ci
+      - run: pip install PyYAML Jinja2
+      - run: npm run build
+      - run: npm run check:licences
+      - run: npm run typecheck
+      - run: npm test
+      - run: python3 docs/scripts/sync-palettes.py --check
+      - run: python3 docs/scripts/sync-brand.py --check
+      - run: python3 lighting/scripts/check-ha.py
+      - run: python3 docs/scripts/generate-web-app-examples.py --check
+      - run: bundle exec middleman build
+        working-directory: docs
+      - run: python3 scripts/check-docs.py
+      - run: npm run check:guidance
+      - run: npm run check:coverage
+      - run: npm run check:brand -- --check-built
+      - run: npm run check:naming
+      - run: npm run check:components
+      - run: npm run check:colours
+      - run: npm run check:content
+      # Keep the downloaded browser between runs. The key follows the lockfile,
+      # so a Playwright upgrade downloads the matching browser once.
+      - id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx playwright install chromium
+      - name: Browser smoke test
+        if: github.event_name == 'pull_request'
+        run: npm run test:browser:smoke
+      - name: Full browser suite
+        if: github.event_name != 'pull_request'
+        run: npm run test:browser
+      - if: github.event_name != 'pull_request'
+        run: npm run package
+      - if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: civica
+          path: |
+            dist/civica.zip
+            dist/SHA256SUMS
+
+  deploy:
+    # Roadmap issue events publish only when they touch a published roadmap label.
     if: >-
+      github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && (
       github.event_name != 'issues' ||
       contains(github.event.issue.labels.*.name, 'roadmap: accepted') ||
       contains(github.event.issue.labels.*.name, 'roadmap: in-works') ||
       contains(github.event.issue.labels.*.name, 'roadmap: completed') ||
       github.event.label.name == 'roadmap: accepted' ||
       github.event.label.name == 'roadmap: in-works' ||
-      github.event.label.name == 'roadmap: completed'
+      github.event.label.name == 'roadmap: completed')
     runs-on: ubuntu-latest
+    # One publication at a time. A pending run reads the latest main and the
+    # complete current issue set, so an older event cannot restore old content.
+    concurrency:
+      group: github-pages
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      issues: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event_name == 'pull_request' && github.ref || 'main' }}
+          ref: main
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -53,65 +127,17 @@ jobs:
           working-directory: docs
       - run: npm ci
       - name: Refresh reviewed theme roadmap
-        if: github.event_name != 'pull_request'
         run: npm run roadmap:fetch
         env:
           GH_TOKEN: ${{ github.token }}
           GITHUB_REPOSITORY: ${{ github.repository }}
       - run: npm run build
-      - run: npm run check:licences
-      - run: npm run typecheck
-      - run: npm test
-      - run: python3 docs/scripts/sync-palettes.py --check
-      - run: python3 docs/scripts/sync-brand.py --check
-      - run: python3 -m venv .venv && .venv/bin/pip install PyYAML Jinja2
-      - run: .venv/bin/python lighting/scripts/check-ha.py
-      - run: .venv/bin/python docs/scripts/generate-web-app-examples.py --check
       - run: bundle exec middleman build
         working-directory: docs
-      - run: python3 scripts/check-docs.py
-      - run: npm run check:guidance
-      - run: npm run check:coverage
-      - run: npm run check:brand -- --check-built
-      - run: npm run check:naming
-      - run: npm run check:components
-      - run: npm run check:colours
-      # The hosted runner supplies Chromium's shared libraries. Install the
-      # pinned browser without a redundant, network-dependent apt refresh.
-      # Browser launch and the full suite below remain mandatory.
-      - run: npx playwright install chromium
-      - run: npm run test:browser
-      - run: npm run package
-      - uses: actions/upload-artifact@v4
-        with:
-          name: civica
-          path: |
-            dist/civica.zip
-            dist/SHA256SUMS
-      - uses: actions/upload-artifact@v4
-        with:
-          name: civica-design-system
-          path: docs/build/
       - uses: actions/configure-pages@v5
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
       - uses: actions/upload-pages-artifact@v4
-        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
           path: docs/build/
-  deploy-docs:
-    needs: verify
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    concurrency:
-      group: github-pages
-      cancel-in-progress: false
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       - name: Publish design documentation
         id: deployment
         uses: actions/deploy-pages@v4

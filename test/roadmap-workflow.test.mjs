@@ -4,7 +4,8 @@ import { readFileSync } from 'node:fs';
 import YAML from 'yaml';
 
 const workflow = YAML.parse(readFileSync('.github/workflows/validate.yml', 'utf8'));
-const steps = workflow.jobs.verify.steps;
+const checks = workflow.jobs.checks;
+const deploy = workflow.jobs.deploy;
 
 test('roadmap refresh handles withdrawal and recovery without granting issue-write access', () => {
   for (const event of ['edited', 'labeled', 'unlabeled', 'closed', 'reopened', 'deleted', 'transferred']) {
@@ -13,47 +14,46 @@ test('roadmap refresh handles withdrawal and recovery without granting issue-wri
   assert.ok(workflow.on.schedule.length && 'workflow_dispatch' in workflow.on);
   assert.equal(workflow.permissions.issues, 'read');
   assert.equal(workflow.permissions.contents, 'read');
-  assert.match(workflow.jobs.verify.if, /contains\(github\.event\.issue\.labels\.\*\.name, 'roadmap: accepted'\)/);
-  assert.match(workflow.jobs.verify.if, /github\.event\.label\.name == 'roadmap: accepted'/);
-  assert.match(workflow.jobs.verify.if, /github\.event\.label\.name == 'roadmap: in-works'/);
-  assert.match(workflow.jobs.verify.if, /github\.event\.label\.name == 'roadmap: completed'/);
+  assert.equal(deploy.permissions.issues, 'read');
+  assert.equal(deploy.permissions.contents, 'read');
+  for (const label of ['accepted', 'in-works', 'completed']) {
+    assert.match(deploy.if, new RegExp(`contains\\(github\\.event\\.issue\\.labels\\.\\*\\.name, 'roadmap: ${label}'\\)`));
+    assert.match(deploy.if, new RegExp(`github\\.event\\.label\\.name == 'roadmap: ${label}'`));
+  }
 });
 
 test('trusted refresh cannot interpolate issue text into shell or execute a PR build', () => {
+  assert.match(deploy.if, /github\.ref == 'refs\/heads\/main' && github\.event_name != 'pull_request'/);
+  const steps = deploy.steps;
   const refresh = steps.find(step => step.name === 'Refresh reviewed theme roadmap');
-  assert.equal(refresh.if, "github.event_name != 'pull_request'");
   assert.equal(refresh.run, 'npm run roadmap:fetch');
   assert.equal(refresh.env.GH_TOKEN, '${{ github.token }}');
   assert.ok(steps.indexOf(refresh) < steps.findIndex(step => step.run === 'npm run build'));
-  for (const step of steps) {
-    if (step.run) assert.doesNotMatch(step.run, /\$\{\{[\s\S]*github\.event\.(issue|comment|label)/);
+  for (const job of [checks, deploy]) {
+    for (const step of job.steps) {
+      if (step.run) assert.doesNotMatch(step.run, /\$\{\{[\s\S]*github\.event\.(issue|comment|label)/);
+    }
   }
   const checkout = steps.find(step => step.uses?.startsWith('actions/checkout@'));
-  assert.equal(checkout.with.ref, "${{ github.event_name == 'pull_request' && github.ref || 'main' }}");
+  assert.equal(checkout.with.ref, 'main');
+  // Pull-request code never runs with Pages or token write access.
+  assert.equal(checks.permissions, undefined);
+  assert.doesNotMatch(checks.if, /issues/);
 });
 
-test('whole publication is serialised and unrelated issues cannot replace a pending publication', () => {
-  assert.equal(workflow.concurrency['cancel-in-progress'], false);
-  const group = workflow.concurrency.group;
-  assert.match(group, /'publish'/);
-  assert.match(group, /format\('pr-\{0\}'/);
-  assert.match(group, /format\('ignored-\{0\}', github\.run_id\)/);
-  assert.match(group, /!contains\(github\.event\.issue\.labels\.\*\.name, 'roadmap: accepted'\)/);
-  assert.match(group, /github\.event\.label\.name != 'roadmap: accepted'/);
-  assert.match(group, /!contains\(github\.event\.issue\.labels\.\*\.name, 'roadmap: in-works'\)/);
-  assert.match(group, /!contains\(github\.event\.issue\.labels\.\*\.name, 'roadmap: completed'\)/);
-  assert.match(group, /github\.event\.label\.name != 'roadmap: in-works'/);
-  assert.match(group, /github\.event\.label\.name != 'roadmap: completed'/);
+test('publication is serialised and a pending publication is never cancelled', () => {
+  assert.equal(deploy.concurrency.group, 'github-pages');
+  assert.equal(deploy.concurrency['cancel-in-progress'], false);
 });
 
-test('roadmap publication retains the existing complete validation gate', () => {
-  const browser = steps.findIndex(step => step.run === 'npm run test:browser');
-  const upload = steps.findIndex(step => step.uses?.startsWith('actions/upload-pages-artifact@'));
-  assert.ok(browser > 0 && upload > browser);
-  for (const command of ['npm test', 'npm run check:guidance', 'npm run check:coverage', 'npm run check:brand']) {
-    assert.ok(steps.findIndex(step => step.run === command) < upload);
+test('pull requests run every fast check and a browser smoke test; nightly runs the full suite', () => {
+  const runs = checks.steps.map(step => step.run).filter(Boolean);
+  for (const command of ['npm test', 'npm run check:guidance', 'npm run check:coverage', 'npm run check:brand -- --check-built', 'npm run check:naming', 'npm run check:components', 'npm run check:colours', 'npm run check:content', 'python3 scripts/check-docs.py']) {
+    assert.ok(runs.includes(command), `${command} must run on pull requests`);
   }
-  assert.equal(workflow.jobs['deploy-docs'].needs, 'verify');
-  assert.match(workflow.jobs['deploy-docs'].if, /github.event_name != 'pull_request'/);
-  assert.match(steps[upload].if, /github.event_name != 'pull_request'/);
+  const smoke = checks.steps.find(step => step.run === 'npm run test:browser:smoke');
+  const full = checks.steps.find(step => step.run === 'npm run test:browser');
+  assert.equal(smoke.if, "github.event_name == 'pull_request'");
+  assert.equal(full.if, "github.event_name != 'pull_request'");
+  assert.ok(workflow.on.schedule.length);
 });

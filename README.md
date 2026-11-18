@@ -105,7 +105,9 @@ npm test
 npm run check:brand
 # Build docs as described below before running the complete browser suite.
 npm run docs:build
-npm run test:browser
+npm run test:browser:smoke   # about 1 minute; what pull requests run
+npm run test:browser         # full suite; runs nightly
+npm run check:content
 npm run package
 ```
 

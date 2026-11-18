@@ -10,6 +10,7 @@
     "test": "node lighting/scripts/generate.mjs --check && node scripts/generate-themes.mjs --check && node --test lighting/test/*.test.mjs test/*.test.mjs",
     "generate:themes": "node scripts/generate-themes.mjs",
     "test:browser": "playwright test",
+    "test:browser:smoke": "CIVICA_BROWSER_SMOKE=1 playwright test",
     "check:brand": "node scripts/check-brand.mjs",
     "package": "npm run build && node scripts/package.mjs",
     "docs:build": "cd docs && bundle exec middleman build",
@@ -20,6 +21,7 @@
     "check:naming": "node scripts/check-naming.mjs",
     "check:components": "node scripts/check-components.mjs",
     "check:colours": "node scripts/check-colours.mjs",
+    "check:content": "node scripts/check-content-rules.mjs",
     "check:licences": "node scripts/audit-licences.mjs"
   },
   "devDependencies": {
