@@ -4,7 +4,9 @@
 //   1. the record is internally sound (hex and RGB agree, every reference exists);
 //   2. each palette matches the pinned upstream record: group titles, order,
 //      and every colour's id, hex, RGB, CMYK and Pantone;
-//   3. each built Colour page shows every colour of its palette, with its values.
+//   3. each built Colour page shows every colour of its palette, with its values;
+//   4. the Chart colours page and chart module use the GOV.UK chart palette;
+//   5. the Map colours page shows the GOV.UK map example colours.
 // Run after the docs build: node scripts/check-colours.mjs
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -70,7 +72,7 @@ const contrast = (a, b) => { const [x, y] = [luminance(a), luminance(b)].sort((m
 
 // 3. Published pages show every colour of their palette.
 const decode = text => text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
-for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app', 'colour-app', ['hex', 'rgb']], ['print', 'colour-print', ['cmyk', 'pantone']]]) {
+for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app', 'colour-app', ['hex', 'rgb']], ['print', 'colour-print', ['cmyk', 'pantone']], ['maps', 'colour-maps', ['hex', 'rgb']]]) {
   const path = `${BUILD}/${file}.html`;
   assert.ok(existsSync(path), `${path} missing: run the docs build first`);
   const raw = readFileSync(path, 'utf8');
@@ -117,5 +119,18 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   assert.deepEqual(names, expected, 'chart-colour: swatches match the GOV.UK chart palette in order');
   const module = JSON.parse(readFileSync('design-system/chart-colours.json', 'utf8'));
   assert.deepEqual(module.categorical.map(colour => colour.hex), pages.charts.categorical.filter(item => !item.role).map(item => colours[item.colour].hex), 'chart module uses the GOV.UK categorical colours');
+}
+// 5. The map example colours are GOV.UK's, and the Map colours page lists them.
+{
+  const example = pages.maps.example;
+  [...example.points_of_interest, ...example.base_map].forEach(item => { known(item.colour); if (item.outline) known(item.outline); });
+  const html = decode(readFileSync(`${BUILD}/colour-maps.html`, 'utf8'));
+  for (const item of [...example.points_of_interest, ...example.base_map]) {
+    assert.ok(html.includes(`${colours[item.colour].name}</p>`), `colour-maps: shows ${colours[item.colour].name}`);
+    if (item.outline) assert.ok(html.includes(`${colours[item.outline].name}</p>`), `colour-maps: shows ${colours[item.outline].name}`);
+  }
+  // Data must reach 3:1 with the land through its outline (GOV.UK maps guidance).
+  const land = colours[example.base_map.find(item => item.role === 'Land').colour].hex;
+  assert.ok(contrast(colours[example.points_of_interest[0].outline].hex, land) >= 3, 'map data outline reaches 3:1 on the land');
 }
 console.log(`Colour record is consistent: ${Object.keys(colours).length} GOV.UK colours across ${Object.keys(pages).length} pages, read ${data.source.read_on}.`);

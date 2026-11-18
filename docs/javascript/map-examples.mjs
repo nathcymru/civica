@@ -12,27 +12,28 @@ const CENTER = [-3.1638, 51.4635];
 const BOUNDS = [[-3.182, 51.452], [-3.143, 51.475]];
 const ATTRIBUTION = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>';
 
-// Six cartographic roles, deliberately independent of a household's identity.
-// Source labels and the same geometry are retained across every variant.
+// The GOV.UK map example colours (docs/data/govuk-brand-colours.json,
+// pages.maps.example), unchanged and the same in light and dark mode:
+// land Black tint 95% with a Black tint 80% outline, sea Teal tint 95%,
+// coastal areas Teal tint 80%, labels Black, and data points in Accent green
+// with a Primary green outline. GOV.UK gives no road or building colours, so
+// roads are White with Black tint 80% casings and buildings Black tint 80%,
+// both from the GOV.UK Neutrals. They never follow the household's theme colour.
 export const MAP_ROLES = Object.freeze({
-  'vivid-light': { land: '#f3f2f1', surface: '#ffffff', water: '#b1d1e8', nature: '#cfe4dc', structure: '#cecece', ink: '#0b0c0c' },
-  'muted-light': { land: '#f3f2f1', surface: '#ffffff', water: '#d2dfe7', nature: '#dfe6e2', structure: '#cecece', ink: '#0b0c0c' },
-  'vivid-dark': { land: '#1b1d1e', surface: '#0b0c0c', water: '#21465c', nature: '#29463b', structure: '#62696d', ink: '#ffffff' },
-  'muted-dark': { land: '#1b1d1e', surface: '#0b0c0c', water: '#303d45', nature: '#343f39', structure: '#62696d', ink: '#ffffff' },
+  land: '#F3F3F3', outline: '#CECECE', water: '#F3F9F9', coast: '#D0E6E7',
+  surface: '#FFFFFF', structure: '#CECECE', ink: '#0B0C0C', point: '#66F39E', pointOutline: '#0F7A52',
 });
 
-export function mapStyle(tone, mode, tilejson) {
-  const roles = MAP_ROLES[`${tone}-${mode}`] ?? MAP_ROLES['vivid-light'];
+export function mapStyle(tilejson) {
+  const roles = MAP_ROLES;
   const colors = Object.fromEntries(osm.colorKeys.map(key => {
     let color = roles.land;
     if (/^(water|glacier|labelWater)$/.test(key)) color = key === 'labelWater' ? roles.ink : roles.water;
-    else if (/^nature/.test(key)) color = roles.nature;
     else if (/^label/.test(key)) color = key === 'labelHalo' ? roles.surface : roles.ink;
     else if (/^(road|transit|boundary|building)/.test(key)) color = /Bg$/.test(key) || key === 'building' || /^boundary|^transit/.test(key) ? roles.structure : roles.surface;
-    else if (key === 'background') color = roles.surface;
     return [key, color];
   }));
-  const style = osm({ theme: mode === 'dark' ? 'muted-dark' : 'muted', colors, urls: { osm: tilejson }, text: { language: 'local', transform: 'none' } });
+  const style = osm({ theme: 'muted', colors, urls: { osm: tilejson }, text: { language: 'local', transform: 'none' } });
   // MapLibre renders local fonts when glyphs is absent. Do not request a second
   // font/icon service. Keep source place names, roads, water and building labels.
   delete style.glyphs;
@@ -53,7 +54,15 @@ export function mapStyle(tone, mode, tilejson) {
       layer.paint['text-halo-width'] = 1.5;
     }
     if (layer.type === 'line' && /^boundary/.test(layer.id)) layer.paint['line-width'] = 1;
+    // Rivers and streams are lines, so Teal tint 95% would vanish on the land.
+    if (layer.type === 'line' && /^water-(river|canal|stream|ditch)$/.test(layer.id)) layer.paint['line-color'] = roles.coast;
   }
+  // Coastal areas are a Teal tint 80% band along every water edge, and the
+  // land keeps its 1px Black tint 80% outline on top of that band.
+  const edge = (layer, suffix, paint) => ({ id: `${layer.id}-${suffix}`, type: 'line', source: layer.source, 'source-layer': layer['source-layer'], ...(layer.filter ? { filter: layer.filter } : {}), paint });
+  style.layers = style.layers.flatMap(layer => layer.type === 'fill' && /^water-(ocean|area)/.test(layer.id)
+    ? [layer, edge(layer, 'coast', { 'line-color': roles.coast, 'line-width': 4 }), edge(layer, 'land-outline', { 'line-color': roles.outline, 'line-width': 1 })]
+    : [layer]);
   for (const source of Object.values(style.sources)) source.attribution = ATTRIBUTION;
   return style;
 }
@@ -79,8 +88,6 @@ export function initialiseMapExample(root) {
   const stop = root.querySelector('[data-map-stop]');
   const canvas = root.querySelector('[data-map-canvas]');
   const status = root.querySelector('[data-map-status]');
-  const tone = root.querySelector('[data-map-tone]');
-  const mode = root.querySelector('[data-map-mode]');
   const selected = root.querySelector('[data-map-selected]');
   let map, config, generation = 0, timer, selectedId = 'a';
   const markers = [];
@@ -104,20 +111,11 @@ export function initialiseMapExample(root) {
     selected.textContent = `Selected: ${record.label}. ${record.place}. ${record.accuracy ? `Reported accuracy: ${record.accuracy} metres.` : 'Accuracy not supplied.'} This is an invented observation.`;
     if (map) map.jumpTo({ center: record.coordinates });
   }
-  function updateAppearance() {
-    const roles = MAP_ROLES[`${tone.value}-${mode.value}`];
-    root.dataset.mapTone = tone.value;
-    root.dataset.mapMode = mode.value;
-    root.style.setProperty('--map-a', roles.ink);
-    root.style.setProperty('--map-b', roles.ink);
-    root.style.setProperty('--map-marker-label', roles.surface);
-    if (map && config) map.setStyle(mapStyle(tone.value, mode.value, config.tilejson));
-  }
   function addAccuracy() {
     if (!map || map.getSource('example-accuracy')) return;
     map.addSource('example-accuracy', { type: 'geojson', data: accuracyPolygon(MAP_RECORDS[0].coordinates, 30) });
-    map.addLayer({ id: 'example-accuracy-halo', type: 'line', source: 'example-accuracy', paint: { 'line-color': MAP_ROLES[`${tone.value}-${mode.value}`].surface, 'line-width': 5 } });
-    map.addLayer({ id: 'example-accuracy-outline', type: 'line', source: 'example-accuracy', paint: { 'line-color': MAP_ROLES[`${tone.value}-${mode.value}`].ink, 'line-width': 1.5, 'line-dasharray': [3, 3] } });
+    map.addLayer({ id: 'example-accuracy-halo', type: 'line', source: 'example-accuracy', paint: { 'line-color': MAP_ROLES.surface, 'line-width': 5 } });
+    map.addLayer({ id: 'example-accuracy-outline', type: 'line', source: 'example-accuracy', paint: { 'line-color': MAP_ROLES.ink, 'line-width': 1.5, 'line-dasharray': [3, 3] } });
   }
   async function start() {
     clearMap();
@@ -133,7 +131,7 @@ export function initialiseMapExample(root) {
       canvas.hidden = false;
       maplibregl.setWorkerCount(1);
       maplibregl.setWorkerUrl(new URL(`./maplibre-gl-worker.mjs?v=${maplibregl.getVersion()}`, import.meta.url).href);
-      map = new maplibregl.Map({ container: canvas, style: mapStyle(tone.value, mode.value, config.tilejson), center: CENTER, zoom: 15.5, minZoom: 12, maxZoom: 18, maxBounds: BOUNDS,
+      map = new maplibregl.Map({ container: canvas, style: mapStyle(config.tilejson), center: CENTER, zoom: 15.5, minZoom: 12, maxZoom: 18, maxBounds: BOUNDS,
         attributionControl: { compact: false }, dragRotate: false, pitchWithRotate: false, touchPitch: false, scrollZoom: false, fadeDuration: 0, renderWorldCopies: false,
         prefetchZoomDelta: 0, maxTileCacheSize: 32, transformRequest: url => ({ url, referrerPolicy: 'strict-origin-when-cross-origin' }) });
       map.touchZoomRotate.disableRotation();
@@ -175,8 +173,6 @@ export function initialiseMapExample(root) {
   }
   load.addEventListener('click', start);
   stop.addEventListener('click', () => { clearMap(); load.disabled = false; inform('Map closed. No further map tiles are requested; the location records are unchanged.', 'closed'); load.focus(); });
-  tone.addEventListener('change', updateAppearance);
-  mode.addEventListener('change', updateAppearance);
   root.querySelectorAll('[data-map-select]').forEach(button => button.addEventListener('click', () => select(button.dataset.mapSelect)));
   root.querySelectorAll('[data-map-command]').forEach(button => button.addEventListener('click', () => {
     if (!map) return;
@@ -186,8 +182,7 @@ export function initialiseMapExample(root) {
   }));
   new ResizeObserver(() => map?.resize()).observe(canvas);
   window.addEventListener('pagehide', clearMap, { once: true });
-  load.disabled = false; tone.disabled = false; mode.disabled = false;
-  updateAppearance();
+  load.disabled = false;
 }
 
 if (typeof document !== 'undefined') document.querySelectorAll('[data-map-example]').forEach(initialiseMapExample);

@@ -2,7 +2,7 @@
 examples:
   map-neighbourhood-records:
     title: A styled OpenStreetMap with uncertainty and every location record
-    description: Real OpenStreetMap vector data around Cardiff Bay uses six restrained map roles, four appearance variants and labelled device markers. Invented device records remain available without loading the map.
+    description: Real OpenStreetMap vector data around Cardiff Bay uses the GOV.UK map example colours and labelled device markers in Accent green. Invented device records remain available without loading the map.
     height: 1550
     html: |
       <link rel="stylesheet" href="../stylesheets/maplibre-examples.css">
@@ -20,10 +20,6 @@ examples:
           </ul>
           <p class="govuk-body" id="map-reference-instructions" data-map-instructions>The background uses real OpenStreetMap data. The example bicycle and tool case are invented; no devices are tracked here. Use the map controls or the complete records below. On the map, arrow keys pan and plus or minus zoom; Tab leaves the map.</p>
           <p class="govuk-body">Selecting Load OpenStreetMap connects your browser to the OpenStreetMap Foundation tile service. The provider receives ordinary request information, including your IP address and this site's origin. No location permission is requested. Read the <a class="govuk-link" href="https://osmfoundation.org/wiki/Privacy_Policy">provider privacy policy</a>.</p>
-          <div class="civica-map-demo__appearance" role="group" aria-label="Map appearance">
-            <div class="govuk-form-group"><label class="govuk-label" for="map-reference-tone">Colour strength</label><select class="govuk-select" id="map-reference-tone" data-map-tone disabled><option value="vivid">Vivid</option><option value="muted">Muted</option></select></div>
-            <div class="govuk-form-group"><label class="govuk-label" for="map-reference-mode">Display mode</label><select class="govuk-select" id="map-reference-mode" data-map-mode disabled><option value="light">Light</option><option value="dark">Dark</option></select></div>
-          </div>
           <div class="govuk-button-group"><button class="govuk-button" type="button" data-map-load disabled>Load OpenStreetMap</button><button class="govuk-button govuk-button--secondary" type="button" data-map-stop disabled>Close map</button></div>
           <p class="govuk-body" data-map-status role="status">Map not loaded. All 3 example location records are available below.</p>
           <div class="civica-map-demo__navigation" role="group" aria-label="Map controls"><button type="button" class="govuk-button govuk-button--secondary" data-map-command="in" disabled>Zoom in</button><button type="button" class="govuk-button govuk-button--secondary" data-map-command="out" disabled>Zoom out</button><button type="button" class="govuk-button govuk-button--secondary" data-map-command="reset" disabled>Reset to Cardiff Bay</button></div>
@@ -47,7 +43,7 @@ examples:
             </tbody>
           </table>
         </div>
-        <p class="govuk-body">All times use Europe/London. These are individual reports, not a guarantee of a device's current position. Marker shape and letter identify each device. The strong marker colour does not encode battery level, severity or precision.</p>
+        <p class="govuk-body">All times use Europe/London. These are individual reports, not a guarantee of a device's current position. Marker shape and letter identify each device. The Accent green marker colour does not encode battery level, severity or precision.</p>
       </section>
       <script type="module" src="../javascripts/map-examples.js"></script>
     artwork:
@@ -56,8 +52,61 @@ examples:
       source: docs/data/map-design-examples.yml#map-neighbourhood-records
       provenance: Original HTML marker/key symbols and invented device observations. Geographic background is attributed OpenStreetMap data loaded from the OSMF vector service only after explicit activation; it is not original project artwork.
       purpose: Demonstrate marker identity, a selected record, uncertainty and full membership without exposing a real household location.
-      intended_background: Six cartographic roles across Vivid/Muted and Light/Dark, declared in docs/javascript/map-examples.mjs. Marker shapes and letters remain distinct without colour.
+      intended_background: The GOV.UK map example colours, the same in light and dark mode, declared in docs/javascript/map-examples.mjs. Marker shapes and letters remain distinct without colour.
       alternative_text_decision: The live canvas has a task-specific accessible name and keyboard instructions; the key, controls, observations, sources and uncertainty are also real HTML. Glyphs use local Arial; no external icon or font service is requested.
+      review_status: Source checks only; integrated rendered review is recorded separately.
+  map-govuk-zones:
+    title: Home Assistant zones in the map colours
+    description: A no-network drawing of three invented Home Assistant zones on a coastline, using only the colours of the GOV.UK map example, with a key and a table of the same zones.
+    height: 1150
+    html: |
+      <section class="civica-map-demo" aria-labelledby="map-zones-title">
+        <h2 class="govuk-heading-m" id="map-zones-title">Where are the household's zones?</h2>
+        <p class="govuk-body">Three invented zones on an invented coastline. This drawing contacts no map provider and uses no real address.</p>
+        <figure class="civica-map-demo__figure" aria-labelledby="map-zones-caption">
+          <ul class="govuk-list civica-map-demo__key" aria-label="Map key">
+            <li><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><circle cx="16" cy="16" r="12" fill="#66F39E" stroke="#0F7A52" stroke-width="2"/></svg><span>Zone, with its name</span></li>
+            <li><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="3" width="26" height="26" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/></svg><span>Land</span></li>
+            <li><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="3" width="26" height="26" fill="#D0E6E7"/></svg><span>Coastal area</span></li>
+            <li><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="3" width="26" height="26" fill="#F3F9F9" stroke="#D0E6E7" stroke-width="1"/></svg><span>Sea</span></li>
+          </ul>
+          <svg class="civica-map-demo__plot" viewBox="0 0 640 400" role="img" aria-labelledby="map-zones-svg-title map-zones-svg-desc" style="font-family:Arial,Helvetica,sans-serif">
+            <title id="map-zones-svg-title">Map of three household zones on a coastline</title>
+            <desc id="map-zones-svg-desc">Land fills the left and top of the map and the sea is at the bottom right. The Home zone is near the coast, the Work zone is inland to the north-west, and the School zone is between them. The table below lists every zone.</desc>
+            <rect width="640" height="400" fill="#F3F9F9"/>
+            <path d="M0 0H640V96C590 120 560 176 500 196C440 216 420 268 360 300C300 332 250 330 210 368C190 386 176 400 176 400H0Z" fill="none" stroke="#D0E6E7" stroke-width="16" stroke-linejoin="round"/>
+            <path d="M0 0H640V96C590 120 560 176 500 196C440 216 420 268 360 300C300 332 250 330 210 368C190 386 176 400 176 400H0Z" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
+            <circle cx="340" cy="250" r="24" fill="#66F39E" stroke="#0F7A52" stroke-width="2"/>
+            <circle cx="150" cy="110" r="36" fill="#66F39E" stroke="#0F7A52" stroke-width="2"/>
+            <circle cx="250" cy="196" r="19" fill="#66F39E" stroke="#0F7A52" stroke-width="2"/>
+            <text x="340" y="294" font-size="18" font-weight="700" fill="#0B0C0C" text-anchor="middle">Home</text>
+            <text x="150" y="166" font-size="18" font-weight="700" fill="#0B0C0C" text-anchor="middle">Work</text>
+            <text x="250" y="235" font-size="18" font-weight="700" fill="#0B0C0C" text-anchor="middle">School</text>
+            <text x="520" y="330" font-size="16" fill="#0B0C0C" text-anchor="middle">Sea</text>
+          </svg>
+          <figcaption class="govuk-body" id="map-zones-caption">Invented geography and zones, drawn for this example. Zone circles are drawn in proportion to each zone's radius.</figcaption>
+        </figure>
+        <div class="civica-table-scroll" tabindex="0" role="region" aria-label="All 3 example zones, scroll horizontally if needed">
+          <table class="govuk-table">
+            <caption class="govuk-table__caption govuk-table__caption--m">All 3 configured zones — fictional</caption>
+            <thead class="govuk-table__head"><tr class="govuk-table__row"><th class="govuk-table__header" scope="col">Zone</th><th class="govuk-table__header" scope="col">Where it is on the map</th><th class="govuk-table__header" scope="col">Radius</th></tr></thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row"><th class="govuk-table__header" scope="row">Home</th><td class="govuk-table__cell">Near the coast</td><td class="govuk-table__cell">100 metres</td></tr>
+              <tr class="govuk-table__row"><th class="govuk-table__header" scope="row">Work</th><td class="govuk-table__cell">Inland, to the north-west</td><td class="govuk-table__cell">150 metres</td></tr>
+              <tr class="govuk-table__row"><th class="govuk-table__header" scope="row">School</th><td class="govuk-table__cell">Between Home and Work</td><td class="govuk-table__cell">80 metres</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="govuk-body">Colours used: zones are Accent green <code>#66F39E</code> with a Primary green <code>#0F7A52</code> outline, and labels are Black <code>#0B0C0C</code>. Land is Black tint 95% <code>#F3F3F3</code> with a Black tint 80% <code>#CECECE</code> outline. The sea is Teal tint 95% <code>#F3F9F9</code>, and coastal areas are Teal tint 80% <code>#D0E6E7</code>. A zone does not show that anyone is there.</p>
+      </section>
+    artwork:
+      creator: civica project; original SVG markup
+      licence: MIT, original project documentation code under LICENSE
+      source: docs/data/map-design-examples.yml#map-govuk-zones
+      provenance: Original invented coastline and zone circles. Colours are the GOV.UK map example colours, copied unchanged from docs/data/govuk-brand-colours.json (pages.maps.example). No provider tiles, imported paths or personal data.
+      purpose: Show the GOV.UK map colour combination applied to Home Assistant zones without loading a map provider.
+      intended_background: Teal tint 95% sea and Black tint 95% land, the same in light and dark mode. Zone names are text labels, so the colour is not the only cue.
+      alternative_text_decision: The SVG has a title and description, and the table lists every zone with the same facts.
       review_status: Source checks only; integrated rendered review is recorded separately.
   map-background-unavailable:
     title: A missing map background preserves the location records
@@ -96,6 +145,6 @@ examples:
       source: docs/data/map-design-examples.yml#map-background-unavailable
       provenance: Original folded-map outline and diagonal failure stroke. No imported icon paths, provider tiles or personal data.
       purpose: Support an explicit simulated background failure; the text carries the complete meaning.
-      intended_background: Fixed light neutral surface from _data-maps.scss; monochrome symbol.
+      intended_background: Fixed Black tint 95% surface from _data-maps.scss; monochrome symbol.
       alternative_text_decision: Decorative SVG is hidden from assistive technology because the adjacent heading and paragraph explain the failure.
       review_status: Source checks only; integrated rendered review is recorded separately.

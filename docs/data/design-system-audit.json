@@ -3426,7 +3426,7 @@
       "path": "docs/source/home-assistant/maps-and-zones.html.md.erb",
       "url": "/home-assistant/maps-and-zones.html",
       "title": "Maps, zones and location records",
-      "sha256": "16ae11c77a65a32d7d1a4c18051653f9c203accc09aaf2d2695b3c33d828b583",
+      "sha256": "bbe19de3ca48ff344f7e46adb3cf25da87868005c9da9e94fb123d451fee49fe",
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "resolved_finding_ids": [],
@@ -6149,7 +6149,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Stable identities, the six GOV.UK categorical chart colours (unchanged in light and dark mode), pattern limits and 1.5px lines are explicit. The 24-series example is distinct by colour, pattern, line dash and marker together, not by colour alone. 12 November 2026 source review: Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026 colour review: the generated palette was replaced by the GOV.UK chart palette, with single, multiple, divergent and social examples.",
-      "sha256": "0052d97836ee9f1394110646af8daff45ccd9c306f948e84b65ac3c5dac2691b",
+      "sha256": "0fbc5e8d4862438b9af1a2deb96b79160e9463c92b273849abbb9f1c0b66eb96",
       "url": "/styles/chart-colour.html",
       "title": "Chart colours",
       "example_ids": [
@@ -6181,7 +6181,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Reviewed generated exact palette references and semantic-role table; tone is independent of mode, chart identity and print metadata are qualified. 12 November 2026 source review: Connected the palette reference to colour roles, optional household identity and an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "3a5a76b7ca683820677648dba3784b157eae0570b2f269a78fb46a9c14ba7507",
+      "sha256": "b057619dbfbbf58433f12ae6586bf17b0391a93e7ce59a3daa2b6777dd803969",
       "url": "/styles/colour.html",
       "title": "Colour",
       "example_ids": [
@@ -6302,7 +6302,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Visual roles, brand chapters and the complete writing guide have clear entry points; canonical tokens remain outside authored prose. Project-story navigation review: discoverable About and Writing guide links, section grouping and update history are consistent; no new runtime claim. Preserved the historical #writing-guide anchor with a route to the new section. 12 November 2026 source review: Made data and colour guidance directly discoverable and added the matching original section illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "8e8b2d8e9b6a1df7fde1510da0ab29d3e8ba9de55731e7400f95c10798a5b376",
+      "sha256": "0a228cd072edb5dcfebf834f1e2894a0b601682347b87a40cd08393ec4780c98",
       "url": "/styles/index.html",
       "title": "Styles",
       "example_ids": [
@@ -7209,6 +7209,32 @@
       "url": "/styles/colour-print.html",
       "title": "Print colours",
       "example_ids": [],
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/styles/colour-maps.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines maps page read on 18 November 2026 (Open Government Licence v3.0), including the colours of the GOV.UK map example under pages.maps.example. Map colours are the same in light and dark mode and do not follow the theme colour.",
+      "sha256": "180c5a80b96a351670635b52a88ed60e422f6e25de2709ce3df3db6171c963c6",
+      "url": "/styles/colour-maps.html",
+      "title": "Map colours",
+      "example_ids": [
+        "map-govuk-zones"
+      ],
       "resolved_finding_ids": []
     }
   ],
@@ -11408,7 +11434,7 @@
       ],
       "finding_ids": [],
       "review_note": "A simulated map-background failure keeps all three fictional records, their original observation times and missing location. No provider request, fake retry or inference that a device is away is made.",
-      "sha256": "3ef7f2b37b6e09bbb05d036a6d3a099a3b7d8bd4869f08b56e0e63d3dd73dc4e",
+      "sha256": "adf8f9d321a481bb0c7be9a9454885f5a2f457c3ce78b5fec04dbc384e37cb1e",
       "authored_html_sha256": "18f072eb3232e56373e45df7854a48ea9524ef5a69803a751d3acb311965ae16",
       "owners": [
         "/home-assistant/maps-and-zones.html"
@@ -11428,8 +11454,8 @@
       ],
       "finding_ids": [],
       "review_note": "Real attributed OpenStreetMap geography is separate from three fictional device records, two plotted locations and a missing location. Activation, privacy, keyboard controls, selected record, uncertainty and complete table remain explicit; live runtime adoption is not claimed.",
-      "sha256": "3ef7f2b37b6e09bbb05d036a6d3a099a3b7d8bd4869f08b56e0e63d3dd73dc4e",
-      "authored_html_sha256": "89055ebd59472c41afb01c1856aa7d5102ed130c65cd97b3f1a95d67b6154915",
+      "sha256": "adf8f9d321a481bb0c7be9a9454885f5a2f457c3ce78b5fec04dbc384e37cb1e",
+      "authored_html_sha256": "5f3c80dda8d6177f41e593c7ed81d147f1e2bd6c27532ce9a17fed24c9641750",
       "owners": [
         "/home-assistant/maps-and-zones.html"
       ]
@@ -16423,6 +16449,24 @@
       "review_note": "Original civica household reference reviewed for card hierarchy, link semantics, content/state meaning, responsive structure and absence of live control. Rendered verification separately gated.",
       "source_file": "docs/data/card-variants-examples.yml",
       "sha256": "69410543a0883224b43b2e182e86b0f7ad80277871c323f6d2478491bdf82ba9"
+    },
+    {
+      "id": "map-govuk-zones",
+      "title": "Home Assistant zones in the map colours",
+      "path": "docs/data/map-design-examples.yml",
+      "source_file": "docs/data/map-design-examples.yml",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-DAT",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Like-for-like with the GOV.UK map example composition: invented Home Assistant zones as data in Accent green with a Primary green outline and Black labels, on Black tint 95% land with a Black tint 80% outline, Teal tint 95% sea and Teal tint 80% coastal areas. No provider request; key, SVG title and description, and a matching table of every zone.",
+      "sha256": "adf8f9d321a481bb0c7be9a9454885f5a2f457c3ce78b5fec04dbc384e37cb1e",
+      "authored_html_sha256": "1e0b559d0763ebdbf4badc0095da870d48845db23815fdfcc3381c7eaabf9cc2",
+      "owners": [
+        "/styles/colour-maps.html"
+      ]
     }
   ],
   "findings": [
@@ -18287,7 +18331,7 @@
     },
     {
       "path": "docs/source/llms.txt",
-      "sha256": "cf9f7994db97f68967074d9b51add62a5a7eff6bda81f31c6d55566b0ccbaa55",
+      "sha256": "9a399c1320a309f17d26cb3b0c9d90ae5ef9d1eaa479dbd3e286d2b376203af3",
       "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -18328,7 +18372,7 @@
     {
       "path": "docs/data/map-design-examples.yml",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately.",
-      "sha256": "3ef7f2b37b6e09bbb05d036a6d3a099a3b7d8bd4869f08b56e0e63d3dd73dc4e"
+      "sha256": "adf8f9d321a481bb0c7be9a9454885f5a2f457c3ce78b5fec04dbc384e37cb1e"
     },
     {
       "path": "docs/data/page-illustrations.yml",
@@ -18348,7 +18392,7 @@
     {
       "path": "docs/javascript/map-examples.mjs",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately.",
-      "sha256": "82bb1679e0f4431ae463af186a8f4478c6ae462e83aa64088fb03a01752bc8f3"
+      "sha256": "f032a4019aaf9a966535d1c32400973ff73ef0eb9cebe04ff6b75c8869eed7d2"
     },
     {
       "path": "docs/source/images/guide-colour.svg",
@@ -18418,7 +18462,7 @@
     {
       "path": "docs/source/stylesheets/_data-maps.scss",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately.",
-      "sha256": "da4923c4e393f36bdc61c6147ecee31a3b521c29f330b8d4e8b8ceca8cdccfe0"
+      "sha256": "980230276949101dd6f932dc4d54a9361673a48c7b9974e64e3bb02ad1490bcb"
     },
     {
       "path": "scripts/build-docs-maps.mjs",
@@ -18428,7 +18472,7 @@
     {
       "path": "docs/scripts/sync-palettes.py",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "c699639e9b655b6c1ad0c1e46b03b162940f00a0571bdc8537d4058370ece558"
+      "sha256": "b32664d53ac210e17dfd8e5083c3d4bbb23875ee16b6771acbf020a86f07a908"
     },
     {
       "path": "scripts/build.mjs",

@@ -23,6 +23,8 @@ updates:
     description: "Rewritten to lead with the rule, match the native Map card, correct the list of map styles and move the outside map guidance credit to the Home Assistant index."
   - date: "2026-11-18"
     description: "Renamed the link to Chart colours, the page that now owns the GOV.UK chart palette."
+  - date: "2026-11-18"
+    description: "The working map now uses the GOV.UK map colours, the same in light and dark mode; the Vivid, Muted, Light and Dark controls were removed."
 ai_instructions: "Apply when showing a device, person or zone on a map. Label what the map shows, its source and when it was observed. Put every record in a text list as well, and count plotted, unlocated and withheld records separately. Never place a record without coordinates at 0, 0, and never call an accuracy circle a boundary. Keep the native Map card, its provider attribution and its permissions, and keep OpenStreetMap and renderer licence notices visible. Rules WG-038, WG-066, WG-074, WG-077, WG-081, WG-082."
 ai_related:
   - path: "/home-assistant/presence-and-privacy.html"
@@ -76,15 +78,15 @@ The working example uses a north-up Web Mercator view of Cardiff Bay with a metr
 
 Choose each colour for its job. A colour that identifies a device is not a warning, even in a red theme. Use few colours, and give every meaningful category a letter, shape or direct label as well. Say in text what is selected and what is uncertain, as well as showing it.
 
-The working example uses six map roles: land, water, nature, structures, text and markers, and the label surface. Vivid and Muted change only the strength of the water and nature colours, and Light and Dark each have their own pair. None of these change the geometry, names, observations or selection.
+The working example uses the [Map colours](../styles/colour-maps.html), unchanged and the same in light and dark mode. They never follow the household's theme colour, and they do not change the geometry, names, observations or selection.
 
-- The two markers use the strong text and marker colour, plus a circle or diamond and the letters A and B. The letters match the key and the table.
+- The two markers are Accent green with a Primary green outline, plus a circle or diamond and the letters A and B in Black. The letters match the key and the table.
 - A solid outer boundary means selected. A dashed outline means reported uncertainty.
 - None of the colours expresses how severe a device problem is, or how precise a location is.
 
 Meet 4.5:1 contrast for ordinary text and 3:1 for markers and boundaries that carry meaning. Test against the real background, because a pair that works on white can fail over imagery. In forced-colour mode, keep the shapes, letters and line styles. See [Colour roles and accessibility](../styles/brand-colour.html) for the rules.
 
-For a map that shows a quantity, such as rainfall, decide what it means before choosing the palette. Use [Chart colours](../styles/chart-colour.html#choose-the-colour-mapping) for scales, units and missing values. Keep a weather or flood provider's own thresholds and warnings, and do not recolour them as theme accents. These examples show categorical locations and a missing background. They do not show a quantity map or claim that one has been contrast-tested.
+For a map that shows a quantity, such as rainfall, decide what it means before choosing the palette. Take its colours from the [map palette](../styles/colour-maps.html), and use [Chart colours](../styles/chart-colour.html#choose-the-colour-mapping) for scales, units and missing values. Keep a weather or flood provider's own thresholds and warnings, and do not recolour them as theme accents. These examples show categorical locations and a missing background. They do not show a quantity map or claim that one has been contrast-tested.
 
 <h2 id="map-records">Every record remains reachable</h2>
 
@@ -126,7 +128,7 @@ The examples use invented records. Their forms check input and show feedback in 
 
 ### Labelled locations, uncertainty and missing data
 
-Select **Load OpenStreetMap** to request the tiles for the visible area. Then switch between Vivid and Muted and between Light and Dark, select either device, zoom, or reset the focus. **Close map** stops the renderer. The table lists all three configured devices, including the tablet with no location. The legend, the selection details and the table are plain HTML, so the values stay available without the map or JavaScript.
+Select **Load OpenStreetMap** to request the tiles for the visible area. Then select either device, zoom, or reset the focus. **Close map** stops the renderer. The table lists all three configured devices, including the tablet with no location. The legend, the selection details and the table are plain HTML, so the values stay available without the map or JavaScript.
 
 <%= example('map-neighbourhood-records') %>
 
