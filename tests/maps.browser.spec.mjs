@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { validateStyleMin } from '@maplibre/maplibre-gl-style-spec';
@@ -28,31 +29,45 @@ async function interceptProvider(page, fail = false) {
 const mapRoot = page => page.locator('[data-map-example]');
 const noOverflow = async page => expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
 
-test('four map styles retain source geography, local labels and six explicit roles', () => {
-  const styles = Object.entries(MAP_ROLES).map(([key, roles]) => {
-    const [tone, mode] = key.split('-');
-    const style = mapStyle(tone, mode, provider);
-    expect(validateStyleMin(style).map(error => error.message)).toEqual([]);
-    expect(new Set(Object.values(roles)).size).toBe(6);
-    expect(style.glyphs).toBeUndefined();
-    expect(style.sprite).toBeUndefined();
-    expect(Object.values(style.sources)).toEqual([expect.objectContaining({ type: 'vector', url: provider })]);
-    const labels = style.layers.filter(layer => layer.type === 'symbol');
-    expect(labels.length).toBeGreaterThan(0);
-    for (const layer of labels) {
-      expect(layer.layout['text-font']).toEqual(['Arial']);
-      expect(layer.layout['text-size']).toBeGreaterThanOrEqual(14);
-      expect(layer.layout['icon-image']).toBeUndefined();
-      expect(layer.paint['text-opacity']).toBe(1);
-    }
-    return style;
-  });
-  for (const style of styles.slice(1)) {
-    expect(style.sources).toEqual(styles[0].sources);
-    expect(style.layers.map(({ id, type, source, filter, layout }) => ({ id, type, source, filter, layout })))
-      .toEqual(styles[0].layers.map(({ id, type, source, filter, layout }) => ({ id, type, source, filter, layout })));
+test('the map style uses the GOV.UK map colours, local labels and the source geography', () => {
+  const govuk = JSON.parse(readFileSync('docs/data/govuk-brand-colours.json', 'utf8'));
+  const hex = id => govuk.colours[id].hex;
+  const example = govuk.pages.maps.example;
+  const base = Object.fromEntries(example.base_map.map(item => [item.role, item]));
+  // Each role is the colour GOV.UK names for it in the map example.
+  expect(MAP_ROLES.land).toBe(hex(base.Land.colour));
+  expect(MAP_ROLES.outline).toBe(hex(base.Land.outline));
+  expect(MAP_ROLES.water).toBe(hex(base.Sea.colour));
+  expect(MAP_ROLES.coast).toBe(hex(base['Coastal areas'].colour));
+  expect(MAP_ROLES.point).toBe(hex(example.points_of_interest[0].colour));
+  expect(MAP_ROLES.pointOutline).toBe(hex(example.points_of_interest[0].outline));
+  expect(MAP_ROLES.ink).toBe(hex(example.points_of_interest[1].colour));
+  // Every other role is a GOV.UK Neutral.
+  const neutrals = govuk.pages.maps.palette.find(group => group.title === 'Neutrals').colours.map(hex);
+  for (const role of ['surface', 'structure']) expect(neutrals).toContain(MAP_ROLES[role]);
+  const style = mapStyle(provider);
+  expect(validateStyleMin(style).map(error => error.message)).toEqual([]);
+  expect(style.glyphs).toBeUndefined();
+  expect(style.sprite).toBeUndefined();
+  expect(Object.values(style.sources)).toEqual([expect.objectContaining({ type: 'vector', url: provider })]);
+  // The style builder writes colours as rgb(); compare the same colour either way.
+  const rgb = colour => /^#/.test(colour) ? `rgb(${[1, 3, 5].map(at => parseInt(colour.slice(at, at + 2), 16)).join(',')})` : colour.replace(/\s/g, '');
+  const paint = (id, property) => rgb(style.layers.find(layer => layer.id === id).paint[property]);
+  expect(paint('background', 'background-color')).toBe(rgb(MAP_ROLES.land));
+  expect(paint('water-ocean', 'fill-color')).toBe(rgb(MAP_ROLES.water));
+  expect(paint('water-ocean-coast', 'line-color')).toBe(rgb(MAP_ROLES.coast));
+  expect(paint('water-ocean-land-outline', 'line-color')).toBe(rgb(MAP_ROLES.outline));
+  const labels = style.layers.filter(layer => layer.type === 'symbol');
+  expect(labels.length).toBeGreaterThan(0);
+  for (const layer of labels) {
+    expect(layer.layout['text-font']).toEqual(['Arial']);
+    expect(layer.layout['text-size']).toBeGreaterThanOrEqual(14);
+    expect(layer.layout['icon-image']).toBeUndefined();
+    expect(layer.paint['text-opacity']).toBe(1);
+    expect(rgb(layer.paint['text-color'])).toBe(rgb(MAP_ROLES.ink));
   }
-  expect(new Set(styles.map(style => JSON.stringify(style.layers.map(layer => layer.paint)))).size).toBe(4);
+  // The style takes no mode or tone: it is the same in light and dark mode.
+  expect(mapStyle.length).toBe(1);
   expect(MAP_RECORDS.filter(record => record.coordinates)).toHaveLength(2);
   expect(MAP_RECORDS.find(record => record.id === 'c').coordinates).toBeNull();
 });
@@ -83,7 +98,7 @@ test('map records and missing-location meaning remain available without JavaScri
   await context.close();
 });
 
-test('mocked vector renderer preserves records through appearance, keyboard selection and close', async ({ page }) => {
+test('mocked vector renderer preserves records through keyboard selection and close', async ({ page }) => {
   test.setTimeout(60000);
   const requests = await interceptProvider(page);
   const errors = [];
@@ -96,14 +111,13 @@ test('mocked vector renderer preserves records through appearance, keyboard sele
   await expect(page.locator('.civica-map-demo__marker')).toHaveCount(2);
   await expect(page.locator('.maplibregl-ctrl-scale')).toBeVisible();
   await expect(page.locator('.maplibregl-ctrl-attrib')).toContainText('OpenStreetMap');
-  const readings = await mapRoot(page).evaluate(root => JSON.stringify(root.mapExample.records));
-  for (const [tone, mode] of [['vivid', 'light'], ['muted', 'light'], ['muted', 'dark'], ['vivid', 'dark']]) {
-    await page.getByLabel('Colour strength').selectOption(tone);
-    await page.getByLabel('Display mode').selectOption(mode);
-    await expect.poll(() => mapRoot(page).evaluate(root => !!root.mapExample?.map.isStyleLoaded() && !!root.mapExample.map.getLayer('example-accuracy-outline'))).toBe(true);
-    expect(await page.locator('tbody').innerText()).toBe(records);
-    expect(await mapRoot(page).evaluate(root => JSON.stringify(root.mapExample.records))).toBe(readings);
-  }
+  await expect.poll(() => mapRoot(page).evaluate(root => !!root.mapExample?.map.isStyleLoaded() && !!root.mapExample.map.getLayer('example-accuracy-outline'))).toBe(true);
+  expect(await page.locator('tbody').innerText()).toBe(records);
+  await expect(page.getByLabel('Colour strength')).toHaveCount(0);
+  await expect(page.getByLabel('Display mode')).toHaveCount(0);
+  // Markers are GOV.UK Accent green with a Primary green outline and a Black letter.
+  const marker = await page.locator('.civica-map-demo__marker--a').evaluate(node => { const style = getComputedStyle(node); return [style.backgroundColor, style.borderTopColor, style.color]; });
+  expect(marker).toEqual(['rgb(102, 243, 158)', 'rgb(15, 122, 82)', 'rgb(11, 12, 12)']);
   await page.getByRole('button', { name: 'Select tool case', exact: true }).focus();
   await page.keyboard.press('Enter');
   await expect(page.locator('[data-map-selected]')).toContainText('B — example tool case');

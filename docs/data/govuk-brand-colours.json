@@ -2138,7 +2138,37 @@
             "white"
           ]
         }
-      ]
+      ],
+      "example": {
+        "title": "Example map of South West England highlighting areas of conservation in green",
+        "caption": "Indicative examples for illustrative purposes only.",
+        "points_of_interest": [
+          {
+            "role": "Data",
+            "colour": "green-accent",
+            "outline": "green"
+          },
+          {
+            "role": "Labels for nearby population centres",
+            "colour": "black"
+          }
+        ],
+        "base_map": [
+          {
+            "role": "Land",
+            "colour": "black-tint-95",
+            "outline": "black-tint-80"
+          },
+          {
+            "role": "Sea",
+            "colour": "teal-tint-95"
+          },
+          {
+            "role": "Coastal areas",
+            "colour": "teal-tint-80"
+          }
+        ]
+      }
     },
     "illustrations": {
       "url": "https://brand.design-system.service.gov.uk/colour/illustrations/",

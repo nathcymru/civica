@@ -20,7 +20,9 @@ updates:
     description: "Every civica theme now uses the Vivid chart tone, because the theme colour control has no tone choice."
   - date: "2026-11-18"
     description: "Rewritten for the GOV.UK chart palette: six categorical colours, GOV.UK scale steps and the same colours in light and dark mode. The ONS-based generated colours and the Vivid and Muted tones were removed."
-ai_instructions: "Apply when colouring a chart series, heatmap or map layer. Use only the GOV.UK chart palette on this page, unchanged, in both light and dark mode: six categorical colours, Black tint 80% for axes and lines, Black (White in dark mode) for labels. Decide whether colour identifies a source or shows a quantity. Give a source its style from its stable ID with chartSeriesStyle, never from its position, and always add a label, pattern or table. Quantities use the listed tints and shades of one family, never calculated in-between colours, and no more than two scales per chart. Do not use alpha or gradients. Rules WG-001, WG-002."
+  - date: "2026-11-18"
+    description: "Map colours now belong to the Map colours page; this page keeps scales for maps that show a quantity. Swatches now show hex, RGB and Sass only, because chart colours do not follow the theme colour."
+ai_instructions: "Apply when colouring a chart series or heatmap, and for the scale rules of a map layer that shows a quantity (its colours come from Map colours). Use only the GOV.UK chart palette on this page, unchanged, in both light and dark mode: six categorical colours, Black tint 80% for axes and lines, Black (White in dark mode) for labels. Decide whether colour identifies a source or shows a quantity. Give a source its style from its stable ID with chartSeriesStyle, never from its position, and always add a label, pattern or table. Quantities use the listed tints and shades of one family, never calculated in-between colours, and no more than two scales per chart. Do not use alpha or gradients. Rules WG-001, WG-002."
 ai_related:
   - path: "/styles/brand-colour.html"
     title: "Colour roles and accessibility"
@@ -31,6 +33,9 @@ ai_related:
   - path: "/styles/brand-data.html"
     title: "Data visualisation"
     relationship: "Owns how to choose and compose a chart."
+  - path: "/styles/colour-maps.html"
+    title: "Map colours"
+    relationship: "Owns map colours; this page keeps scales for maps that show a quantity."
 ---
 
 # Chart colours
@@ -50,19 +55,19 @@ Every chart colour comes unchanged from the GOV.UK chart palette. Colour helps t
 
 Use these colours to tell categories apart. Use Black tint 80% for axes and grid lines, and Black for labels.
 
-<%= colour_chart_categorical %>
+<%= colour_chart_categorical(fields: %i[hex rgb sass]) %>
 
 ### Sequential and divergent scale palette
 
 Each scale is one primary colour with its tints and shades. Avoid using colour alone to show what the data means, and use no more than two scales in one chart.
 
-<%= colour_groups(colour_page('charts').fetch('sequential'), level: 4) %>
+<%= colour_groups(colour_page('charts').fetch('sequential'), level: 4, fields: %i[hex rgb sass]) %>
 
 ### Additional palette for illustrative infographics
 
 Use these colours only in illustrative infographics, and only on backgrounds that use the 25% and 50% shades. Do not use them in Home Assistant charts.
 
-<%= colour_swatches(colour_page('charts').fetch('additional')) %>
+<%= colour_swatches(colour_page('charts').fetch('additional'), fields: %i[hex rgb sass]) %>
 
 ## Using colour in charts
 
