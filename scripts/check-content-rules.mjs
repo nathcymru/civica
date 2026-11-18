@@ -7,15 +7,16 @@
 //      "Source note:", and the attribution pages that exist to credit sources.
 //   2. Readers never see internal rule IDs such as BG-TYP-01 or WG-031.
 //      Anchors (id="bg-typ-01") are fine; visible text is not.
-//   3. No paragraph is copied onto several pages. Say it once and link to it.
+//   3. No paragraph or list item is copied onto another page. Say it once and link to it.
 //   4. Map colours shows a working OpenStreetMap example on the page itself.
 //
 // Pages written before these rules are listed in
 // docs/data/content-rules-baseline.json with their known faults. A page may
 // only improve: a new fault, or a fault on a page not in the baseline, fails.
-// When a page is fixed, run with --update to shrink the baseline.
+// When a page is fixed, run with --update to shrink the baseline. --update
+// never adds a fault; --reset rebuilds the list when the rules change.
 //
-// Usage: node scripts/check-content-rules.mjs [--update]
+// Usage: node scripts/check-content-rules.mjs [--update [--reset]]
 
 import { readFileSync, writeFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative } from 'node:path';
@@ -30,12 +31,12 @@ const ATTRIBUTION_PAGES = new Set(['community/licensing', 'community/sources']);
 // Generated pages that repeat other pages' text by design.
 const SKIP = new Set(['search', '404']);
 
-const SOURCES = /\b(GOV\.UK|ONS|NHS)\b/g;
+const SOURCES = /\b(GOV\.UK|ONS|NHS|GDS|Office for National Statistics|Government Digital Service)\b/g;
 const RULE_ID = /\b(?:BG|WG)-(?:[A-Z]{2,4}-)?\d{2,3}\b/g;
-// Paragraphs shorter than this are too generic to count as copied text.
+// Paragraphs and list items shorter than this are too generic to count as copied text.
 const MIN_REPEAT = 120;
 // Text on this many pages or more counts as copied.
-const REPEAT_PAGES = 3;
+const REPEAT_PAGES = 2;
 
 const decode = value => value
   .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
@@ -52,33 +53,39 @@ function pages(dir) {
   return out;
 }
 
-// The readable page body, without code, pictures, scripts or source notes.
-function body(html) {
+// Everything a reader can see or hear in the page body: text (including page
+// history and text inside drawings) and the alt, aria-label and title
+// attributes. Code, scripts and the one allowed source note are left out.
+function readable(html) {
   const start = html.indexOf('<main');
   const end = html.indexOf('</main>');
-  let main = start >= 0 ? html.slice(start, end >= 0 ? end : undefined) : '';
-  main = main.replace(/<(script|style|svg|pre|code|iframe|template)\b[\s\S]*?<\/\1>/g, ' ');
-  // The page history is a dated record, and the "Help improve this guidance"
-  // block is shared page furniture like the footer. Neither is guidance text.
-  main = main.replace(/<details id="full-publication-update-history">[\s\S]*?<\/details>/g, ' ');
-  main = main.replace(/<div class="c-contribute">[\s\S]*?<\/div>/g, ' ');
-  // Each example frame carries the same "View example code" usage note from
-  // docs/source/partials/_example.erb. It is example furniture, not guidance.
-  main = main.replace(/<details class="c-example__code">[\s\S]*?<\/details>/g, ' ');
-  // A source note is the one allowed place to name a source.
+  let main = start >= 0 ? html.slice(start, end >= 0 ? end : undefined) : html.slice(html.indexOf('<body'));
+  main = main.replace(/<(script|style|pre|code|template)\b[\s\S]*?<\/\1>/g, ' ');
   main = main.replace(/<p>\s*<small>\s*Source note:[\s\S]*?<\/small>\s*<\/p>/g, ' ');
-  return main;
+  const attributes = [...main.matchAll(/\s(?:alt|aria-label|title)="([^"]*)"/g)].map(match => match[1]);
+  return { main, text: `${plain(main)} ${decode(attributes.join(' '))}` };
+}
+
+// Guidance text for the repeat rule. The page history is a dated record, and
+// the "Help improve this guidance" block and the example code note are shared
+// page furniture like the footer, so they are not counted as copied guidance.
+function guidance(main) {
+  return main
+    .replace(/<(svg|iframe)\b[\s\S]*?<\/\1>/g, ' ')
+    .replace(/<details id="full-publication-update-history">[\s\S]*?<\/details>/g, ' ')
+    .replace(/<div class="c-contribute">[\s\S]*?<\/div>/g, ' ')
+    .replace(/<details class="c-example__code">[\s\S]*?<\/details>/g, ' ');
 }
 
 const found = {};
-const paragraphs = new Map();
+const blocks = new Map();
 for (const file of pages(BUILD)) {
   const page = relative(BUILD, file).replace(/\.html$/, '');
-  if (SKIP.has(page) || page.startsWith('examples/')) continue;
+  if (SKIP.has(page)) continue;
   const html = readFileSync(file, 'utf8');
-  if (!html.includes('<main')) continue;
-  const main = body(html);
-  const text = plain(main);
+  const example = page.startsWith('examples/');
+  if (!example && !html.includes('<main')) continue;
+  const { main, text } = readable(html);
   const faults = [];
   if (!ATTRIBUTION_PAGES.has(page)) {
     const names = [...new Set((text.match(SOURCES) || []))].sort();
@@ -86,19 +93,23 @@ for (const file of pages(BUILD)) {
   }
   if (RULE_ID.test(text)) faults.push('shows rule IDs');
   RULE_ID.lastIndex = 0;
-  for (const match of main.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/g)) {
-    const paragraph = plain(match[1]);
-    if (paragraph.length < MIN_REPEAT) continue;
-    if (!paragraphs.has(paragraph)) paragraphs.set(paragraph, new Set());
-    paragraphs.get(paragraph).add(page);
+  // Example pages are reused inside guide pages by design; only guide pages
+  // are compared for copied text.
+  if (!example) {
+    for (const match of guidance(main).matchAll(/<(p|li)\b[^>]*>([\s\S]*?)<\/\1>/g)) {
+      const block = plain(match[2]);
+      if (block.length < MIN_REPEAT) continue;
+      if (!blocks.has(block)) blocks.set(block, new Set());
+      blocks.get(block).add(page);
+    }
   }
   if (faults.length) found[page] = faults;
 }
 
-for (const [paragraph, where] of paragraphs) {
+for (const [block, where] of blocks) {
   if (where.size < REPEAT_PAGES) continue;
   for (const page of where) {
-    (found[page] ||= []).push(`repeats "${paragraph.slice(0, 60)}…"`);
+    (found[page] ||= []).push(`repeats "${block.slice(0, 60)}…"`);
   }
 }
 
@@ -123,17 +134,33 @@ if (existsSync(maps)) {
 
 for (const page of Object.keys(found)) found[page] = [...new Set(found[page])].sort();
 
+const baseline = existsSync(BASELINE) ? JSON.parse(readFileSync(BASELINE, 'utf8')).pages : {};
+
 if (update) {
-  const sorted = Object.fromEntries(Object.keys(found).sort().map(page => [page, found[page]]));
+  // --update only removes fixed faults. A new fault must be fixed, not listed.
+  // --reset rewrites the list from scratch; use it only when the rules
+  // themselves change, and say so in the commit.
+  const reset = process.argv.includes('--reset');
+  const kept = {};
+  const refused = [];
+  for (const page of Object.keys(found).sort()) {
+    const known = new Set(baseline[page] || []);
+    const faults = reset ? found[page] : found[page].filter(fault => known.has(fault));
+    if (!reset) for (const fault of found[page]) if (!known.has(fault)) refused.push(`${page}: ${fault}`);
+    if (faults.length) kept[page] = faults;
+  }
   writeFileSync(BASELINE, `${JSON.stringify({
     description: 'Known content-rule faults on pages written before 18 November 2026. Entries may only be removed. See scripts/check-content-rules.mjs.',
-    pages: sorted,
+    pages: kept,
   }, null, 2)}\n`);
-  console.log(`Baseline written: ${Object.keys(sorted).length} pages with known faults.`);
+  console.log(`Baseline written: ${Object.keys(kept).length} pages with known faults.`);
+  if (refused.length) {
+    console.error(`Not added to the baseline, fix these instead (${refused.length}):\n${refused.map(f => `  - ${f}`).join('\n')}`);
+    process.exit(1);
+  }
   process.exit(0);
 }
 
-const baseline = existsSync(BASELINE) ? JSON.parse(readFileSync(BASELINE, 'utf8')).pages : {};
 const failures = [];
 let stale = 0;
 for (const [page, faults] of Object.entries(found)) {

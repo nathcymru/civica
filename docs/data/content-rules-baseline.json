@@ -24,7 +24,7 @@
       "shows rule IDs"
     ],
     "community/deviations": [
-      "names GOV.UK, NHS, ONS",
+      "names GDS, GOV.UK, NHS, ONS",
       "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "community/guidance-work-package": [
@@ -44,7 +44,7 @@
       "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "community/uk-design-system-review": [
-      "names GOV.UK, NHS, ONS"
+      "names GDS, GOV.UK, NHS, ONS"
     ],
     "community/visual-audit": [
       "names GOV.UK"
@@ -64,11 +64,16 @@
     ],
     "components/breadcrumbs": [
       "names GOV.UK, NHS",
+      "repeats \"Breadcrumbs owns the shared rules for this family. Each rela…\"",
       "repeats \"These are civica reference implementations for component aut…\"",
       "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
-    "components/cards": [
+    "components/buttons": [
       "names GOV.UK, NHS"
+    ],
+    "components/cards": [
+      "names GOV.UK, NHS",
+      "repeats \"Two configured example lights reported Off. The button produ…\""
     ],
     "components/character-count": [
       "names GOV.UK, NHS",
@@ -76,10 +81,12 @@
       "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
     "components/chart-examples": [
-      "names GOV.UK, ONS"
+      "names GOV.UK, ONS",
+      "repeats \"Charts and tables owns the shared rules for this family. Eac…\""
     ],
     "components/charts": [
       "names GOV.UK, ONS",
+      "repeats \"Charts and tables owns the shared rules for this family. Eac…\"",
       "repeats \"These isolated examples illustrate the decisions on this pag…\"",
       "shows rule IDs"
     ],
@@ -170,6 +177,9 @@
       "repeats \"These are civica reference implementations for component aut…\"",
       "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
+    "components/hint-text": [
+      "names NHS"
+    ],
     "components/images": [
       "names GOV.UK, NHS",
       "repeats \"The affected example records include creator, original sourc…\"",
@@ -193,6 +203,7 @@
     ],
     "components/notification-banners": [
       "names GOV.UK, NHS",
+      "repeats \"Notification banners owns the shared rules for this family. …\"",
       "repeats \"These are civica reference implementations for component aut…\"",
       "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
@@ -202,6 +213,7 @@
     ],
     "components/pagination": [
       "names GOV.UK, NHS",
+      "repeats \"Pagination owns the shared rules for this family. Each relat…\"",
       "repeats \"These are civica reference implementations for component aut…\"",
       "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
@@ -231,6 +243,7 @@
     ],
     "components/search-input": [
       "names GOV.UK, NHS",
+      "repeats \"Search input owns the shared rules for this family. Each rel…\"",
       "repeats \"These are civica reference implementations for component aut…\"",
       "repeats \"Use the civica accessibility checks and compare the rendered…\""
     ],
@@ -252,6 +265,7 @@
     ],
     "components/status": [
       "names GOV.UK",
+      "repeats \"A complete static pending state, including the acknowledged …\"",
       "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "components/summary-list": [
@@ -297,21 +311,34 @@
     "content/index": [
       "names GOV.UK"
     ],
+    "examples/core-cookie-essential": [
+      "names GOV.UK"
+    ],
+    "examples/local-community-decision": [
+      "names ONS"
+    ],
+    "examples/local-community-source": [
+      "names ONS"
+    ],
+    "examples/wg-accessible-links": [
+      "names NHS"
+    ],
     "get-started/about": [
-      "names GOV.UK, NHS, ONS"
+      "names GOV.UK, Government Digital Service, NHS, ONS"
     ],
     "get-started/colour-settings": [
       "names GOV.UK",
       "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "get-started/compatibility": [
-      "names ONS",
+      "names GOV.UK, ONS",
       "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "get-started/index": [
       "names GOV.UK"
     ],
     "get-started/install": [
+      "names GOV.UK",
       "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "home-assistant/accounts-and-permissions": [
@@ -323,8 +350,14 @@
     "home-assistant/appliances-and-cleaning": [
       "repeats \"Record the Home Assistant version, the browser, the fixture …\""
     ],
+    "home-assistant/assist-and-voice": [
+      "repeats \"Record the environment, versions, state, method and result i…\""
+    ],
     "home-assistant/automation-editing": [
       "repeats \"Record the Home Assistant version, the browser, the fixture …\""
+    ],
+    "home-assistant/backup-and-restore": [
+      "repeats \"Record the environment, versions, state, method and result i…\""
     ],
     "home-assistant/cameras": [
       "repeats \"Record what was tested using Native task accessibility and e…\"",
@@ -340,34 +373,49 @@
       "repeats \"Forms in these examples validate and give local feedback onl…\""
     ],
     "home-assistant/connection-and-recovery": [
-      "repeats \"Forms in these examples validate and give local feedback onl…\""
+      "repeats \"Forms in these examples validate and give local feedback onl…\"",
+      "repeats \"Record what was tested using Native task accessibility and e…\""
     ],
     "home-assistant/continuous-controls": [
       "repeats \"Record what was tested using Native task accessibility and e…\"",
       "repeats \"Reviewed on 11 November 2026. Current documentation may desc…\""
     ],
     "home-assistant/dashboard-editing": [
-      "repeats \"Forms in these examples validate and give local feedback onl…\""
+      "repeats \"Forms in these examples validate and give local feedback onl…\"",
+      "repeats \"Record what was tested using Native task accessibility and e…\""
     ],
     "home-assistant/energy-flow-and-other-charts": [
       "names ONS",
       "repeats \"Record what was tested using Native task accessibility and e…\"",
       "repeats \"Reviewed on 11 November 2026. Current documentation may desc…\""
     ],
+    "home-assistant/entity-lists-and-rows": [
+      "repeats \"This is a design reference, not a replacement for native Hom…\""
+    ],
     "home-assistant/entity-state": [
       "repeats \"Record the Home Assistant and frontend versions, browser, fi…\""
     ],
+    "home-assistant/helpers-and-scalar-inputs": [
+      "repeats \"This is a design reference, not a replacement for native Hom…\""
+    ],
     "home-assistant/history-and-statistics": [
       "repeats \"Record the Home Assistant and frontend versions, browser, fi…\""
+    ],
+    "home-assistant/index": [
+      "names GOV.UK",
+      "repeats \"A complete static pending state, including the acknowledged …\""
     ],
     "home-assistant/lighting": [
       "repeats \"Record the Home Assistant and frontend versions, browser, fi…\""
     ],
     "home-assistant/maps-and-zones": [
+      "names GOV.UK",
+      "repeats \"Real OpenStreetMap vector data around Cardiff Bay in the civ…\"",
       "shows rule IDs"
     ],
     "home-assistant/media-playback": [
-      "repeats \"Record the actual environment, versions, state, method and r…\""
+      "repeats \"Record the actual environment, versions, state, method and r…\"",
+      "repeats \"These examples are local previews with invented household va…\""
     ],
     "home-assistant/notifications-and-delivery": [
       "repeats \"Record the actual environment, versions, state, method and r…\""
@@ -390,19 +438,40 @@
     "index": [
       "names GOV.UK"
     ],
+    "patterns/a-to-z": [
+      "names NHS"
+    ],
     "patterns/british-sign-language": [
       "names NHS"
     ],
+    "patterns/check-answers": [
+      "names NHS"
+    ],
+    "patterns/complete-multiple-tasks": [
+      "names NHS",
+      "repeats \"Complete multiple household tasks owns the shared rules for …\""
+    ],
+    "patterns/confirmation": [
+      "names NHS",
+      "repeats \"Confirm completed household tasks owns the shared rules for …\""
+    ],
     "patterns/energy": [
+      "names GOV.UK",
+      "repeats \"These examples are simulated. The values are invented and no…\"",
       "shows rule IDs"
     ],
     "patterns/home": [
+      "repeats \"These examples are simulated. The values are invented and no…\"",
+      "repeats \"Two configured example lights reported Off. The button produ…\"",
       "shows rule IDs"
     ],
     "patterns/household-urgency": [
+      "names NHS",
+      "repeats \"Show household urgency clearly owns the shared rules for thi…\"",
       "shows rule IDs"
     ],
     "patterns/hub": [
+      "names NHS",
       "repeats \"Organise household help with hub pages owns the shared rules…\"",
       "shows rule IDs"
     ],
@@ -410,22 +479,37 @@
       "names GOV.UK, NHS, ONS"
     ],
     "patterns/interruption": [
+      "names NHS",
       "shows rule IDs"
     ],
     "patterns/mini-hub": [
+      "names NHS",
       "repeats \"Contents list owns the shared rules for this family. Each re…\"",
       "shows rule IDs"
     ],
     "patterns/question-pages": [
+      "names NHS",
       "repeats \"Ask clear questions on pages and in dialogs owns the shared …\""
     ],
+    "patterns/recovery": [
+      "repeats \"These examples are local previews with invented household va…\""
+    ],
     "patterns/review-dates": [
+      "names NHS",
       "repeats \"Page metadata and history owns the shared rules for this fam…\""
+    ],
+    "patterns/stable-identifiers": [
+      "names NHS"
+    ],
+    "patterns/start-page": [
+      "names NHS",
+      "repeats \"Help people start a household task owns the shared rules for…\""
     ],
     "publishing/components/attachment": [
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/breadcrumbs": [
+      "repeats \"Breadcrumbs owns the shared rules for this family. Each rela…\"",
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/content-list": [
@@ -433,15 +517,18 @@
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/emergency-banner": [
-      "repeats \"Reference pattern. The examples document a local adaptation.…\""
+      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
+      "repeats \"Show household urgency clearly owns the shared rules for thi…\""
     ],
     "publishing/components/feedback": [
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/global-banner": [
+      "repeats \"Notification banners owns the shared rules for this family. …\"",
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/previous-and-next-navigation": [
+      "repeats \"Pagination owns the shared rules for this family. Each relat…\"",
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/print-link": [
@@ -451,7 +538,8 @@
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/search-autocomplete": [
-      "repeats \"Reference pattern. The examples document a local adaptation.…\""
+      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
+      "repeats \"Search input owns the shared rules for this family. Each rel…\""
     ],
     "publishing/components/single-page-notification-button": [
       "names GOV.UK",
@@ -465,6 +553,7 @@
       "shows rule IDs"
     ],
     "publishing/frontend-templates/completed-transaction": [
+      "repeats \"Confirm completed household tasks owns the shared rules for …\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/detailed-guide": [
@@ -570,6 +659,7 @@
       "shows rule IDs"
     ],
     "publishing/frontend-templates/step-by-step-nav": [
+      "repeats \"Complete multiple household tasks owns the shared rules for …\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/topical-events": [
@@ -579,6 +669,7 @@
       "repeats \"Detailed guide owns the shared rules for this family. Each r…\""
     ],
     "publishing/frontend-templates/transaction": [
+      "repeats \"Help people start a household task owns the shared rules for…\"",
       "shows rule IDs"
     ],
     "publishing/index": [
@@ -592,35 +683,61 @@
       "names GOV.UK"
     ],
     "styles/brand": [
-      "names GOV.UK, NHS, ONS",
+      "names GDS, GOV.UK, NHS, ONS",
       "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "styles/brand-data": [
       "names GOV.UK",
+      "repeats \"The rule inventory and checklist are and . Reviewing a sourc…\"",
+      "repeats \"These examples use invented household details. They are simu…\"",
       "shows rule IDs"
     ],
     "styles/brand-typography": [
+      "names GDS, GOV.UK",
+      "shows rule IDs"
+    ],
+    "styles/chart-colour": [
+      "names GOV.UK, ONS",
+      "shows rule IDs"
+    ],
+    "styles/colour": [
       "names GOV.UK",
       "shows rule IDs"
+    ],
+    "styles/colour-app": [
+      "names GOV.UK"
     ],
     "styles/colour-illustrations": [
       "names GOV.UK"
     ],
+    "styles/colour-maps": [
+      "names GOV.UK",
+      "repeats \"Real OpenStreetMap vector data around Cardiff Bay in the civ…\""
+    ],
     "styles/colour-print": [
       "names GOV.UK"
+    ],
+    "styles/colour-social": [
+      "names GOV.UK"
+    ],
+    "styles/colour-web": [
+      "names GOV.UK",
+      "shows rule IDs"
     ],
     "styles/content": [
       "repeats \"These examples use invented household details. They are simu…\""
     ],
     "styles/illustration": [
       "names GOV.UK",
+      "repeats \"The rule inventory and checklist are and . Reviewing a sourc…\"",
+      "repeats \"These examples use invented household details. They are simu…\"",
       "shows rule IDs"
     ],
     "styles/images": [
       "repeats \"These examples use invented household details. They are simu…\""
     ],
     "styles/index": [
-      "names GOV.UK",
+      "names GOV.UK, ONS",
       "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
     "styles/layout": [
@@ -628,6 +745,7 @@
       "repeats \"These examples use invented household details. They are simu…\""
     ],
     "styles/typography": [
+      "names GDS",
       "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ]
   }
