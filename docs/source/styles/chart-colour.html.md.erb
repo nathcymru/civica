@@ -31,6 +31,8 @@ updates:
     description: "Rewritten for Home Assistant users: each example now says what it shows and what to notice, repeated rules are merged into one place, and outside source names, visible rule IDs and maintenance notes were removed. The working Energy charts now live only on Chart examples."
   - date: "2026-11-18"
     description: "Said what native Home Assistant charts do with the civica theme, gave each numbered chart colour its role, renamed 2 sections to say what they cover, and stated each rule once."
+  - date: "2026-11-18"
+    description: "Redrew the categorical example as a line chart of humidity in 4 rooms and the scale example as 2 heatmaps of a week of room data. The Multiple categories chart now uses civica-chart-1 to civica-chart-4 in order. The social media chart no longer draws an example label or a data note inside the picture."
 ai_instructions: "Apply when colouring a chart series or heatmap, and for the scale rules of a map layer that shows an amount (its colours come from Map colours). Use only the civica chart colours on this page, in both light and dark mode and with every theme colour: six categorical colours, Black tint 80% for axes and grid lines, Black (White in dark mode) for labels. Decide whether colour names a source or shows an amount. On the Energy dashboard the civica companion gives each source its style from its stable ID with chartSeriesStyle; native History graph and Statistics graph cards take civica-chart-1 to civica-chart-24 by position and draw no patterns or dashes, so never claim they do. Always add a name, pattern or table. Amounts use the listed tints and shades of one family, never calculated in-between colours, and no more than two scales per chart. Missing values get no numeric colour. The additional colours are for social media graphics only. Never dropping a series is owned by Charts and tables. Do not name outside sources or show rule IDs on the page. The rule anchored bg-col-07 is on this page. Rules WG-076, WG-077, WG-081."
 ai_related:
   - path: "/styles/colour.html"
@@ -139,7 +141,7 @@ Energy roles have fixed colours:
 
 The 6 colours cannot tell more than 6 devices apart, so colours repeat and the pattern, line dash and marker do the rest. The companion adds them to the native legend and keeps its controls to show and hide each series. [Charts and tables](../components/charts.html) explains what to do when a chart gets crowded, and the [24-device chart](../components/chart-examples.html) shows it.
 
-This example shows the keys for 3 appliances in light and dark mode. Notice that 2 of them share a colour, and that each keeps the same style in both modes.
+This example shows the humidity in 4 rooms over a day, in light and dark mode. Notice that the rooms take `civica-chart-1` to `civica-chart-4` in order, that each room keeps its colour in both modes, and that its line style, marker and name tell it apart without colour.
 
 <%= example('data-colour-categorical') %>
 
@@ -168,7 +170,7 @@ For a heatmap or a map layer that shows an amount, write down the quantity, unit
 
 Keep labels outside coloured areas unless you have tested the text on that fill. Pale steps can disappear on a white background, so add outlines and direct labels. Give a missing value a crossed empty swatch and the words “Not supplied”, never a colour from the scale.
 
-This example shows energy used in each room on a 0 to 2 kWh scale, and room temperatures as a difference from a 20 °C target. Notice that the missing reading has no colour from the scale.
+This example shows a week of energy used in each room on a 0 to 2 kWh scale, and a week of room temperatures as a difference from a 20 °C target, as 2 heatmaps. Notice that each cell prints its value, and that a missing reading is a crossed empty cell with no colour from the scale.
 
 <%= example('data-colour-quantitative') %>
 

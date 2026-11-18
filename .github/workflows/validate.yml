@@ -52,6 +52,7 @@ jobs:
       - run: python3 docs/scripts/sync-brand.py --check
       - run: python3 lighting/scripts/check-ha.py
       - run: python3 docs/scripts/generate-web-app-examples.py --check
+      - run: python3 docs/scripts/generate-data-colour-examples.py --check
       - run: bundle exec middleman build
         working-directory: docs
       - run: python3 scripts/check-docs.py
