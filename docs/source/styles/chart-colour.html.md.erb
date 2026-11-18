@@ -56,6 +56,10 @@ Every chart colour comes unchanged from the GOV.UK chart palette. Colour helps t
 
 <%= colour_copy_status %>
 
+The chart palette has:
+
+<%= colour_group_links('charts') %>
+
 ### Categorical palette
 
 Use these colours to tell categories apart. Use Black tint 80% for axes and grid lines, and Black for labels.
@@ -66,13 +70,13 @@ Use these colours to tell categories apart. Use Black tint 80% for axes and grid
 
 Each scale is one primary colour with its tints and shades. Avoid using colour alone to show what the data means, and use no more than two scales in one chart.
 
-<%= colour_groups(colour_page('charts').fetch('sequential'), level: 4) %>
+<%= colour_groups(colour_page('charts').fetch('sequential'), level: 4, key: 'scale') %>
 
 ### Additional palette for illustrative infographics
 
 Use these colours only in illustrative infographics, and only on backgrounds that use the 25% and 50% shades. Do not use them in Home Assistant charts.
 
-<%= colour_swatches(colour_page('charts').fetch('additional')) %>
+<%= colour_swatches(colour_page('charts').fetch('additional'), key: 'additional') %>
 
 ## Using colour in charts
 
@@ -87,21 +91,21 @@ These examples follow the GOV.UK chart examples, with invented Home Assistant da
 
 ### Single category
 
-<%= colour_figures('chart-govuk-single', min: '100%') %>
+<%= colour_example('chart-govuk-single', layout: :chart, callout: false) %>
 
 ### Multiple categories
 
-<%= colour_figures('chart-govuk-multiple', min: '100%') %>
+<%= colour_example('chart-govuk-multiple', layout: :chart, callout: false) %>
 
 ### Divergent categories
 
-<%= colour_figures('chart-govuk-divergent', min: '100%') %>
+<%= colour_example('chart-govuk-divergent', layout: :chart, callout: false) %>
 
 ## Using charts within social media
 
 On social media, charts can use the full colour palette. Accent colours can highlight key data and positive messages, on backgrounds that use the 25% and 50% shades. Larger, bolder shapes help people take in the message.
 
-<%= colour_figures('chart-govuk-social', min: '100%') %>
+<%= colour_example('chart-govuk-social', layout: :chart) %>
 
 ## Apply data guidance
 

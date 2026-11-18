@@ -34,6 +34,10 @@ Use these colours for maps: a base map, Home Assistant zones, the reported locat
 
 ## Map palette
 
+The map palette has:
+
+<%= colour_group_links('maps') %>
+
 <%= colour_palette('maps') %>
 
 ## Using colour combinations on maps
@@ -51,7 +55,7 @@ Use these colours for maps: a base map, Home Assistant zones, the reported locat
 
 A base map with Home Assistant zones as data in a single colour. The zones and coastline are invented.
 
-<%= colour_figures('map-govuk-zones', min: '100%') %>
+<%= colour_example('map-govuk-zones', layout: :map) %>
 
 ### Colours used in example
 
@@ -59,13 +63,13 @@ A base map with Home Assistant zones as data in a single colour. The zones and c
 
 Data, such as a zone or a marker, is shown in Accent green and outlined in Primary green. Labels, such as zone names, are in Black.
 
-<%= colour_swatches(%w[green-accent green black]) %>
+<%= colour_swatches(%w[green-accent green black], key: 'example') %>
 
 #### Base map
 
 Land is shown in Black tint 95% and outlined in Black tint 80%. Sea is shown in Teal tint 95%, with coastal areas in Teal tint 80%.
 
-<%= colour_swatches(%w[black-tint-80 black-tint-95 teal-tint-80 teal-tint-95]) %>
+<%= colour_swatches(%w[black-tint-80 black-tint-95 teal-tint-80 teal-tint-95], key: 'example') %>
 
 Accent green has low contrast with Black tint 95% land. The Primary green outline gives each zone or marker the 3:1 it needs, and a Black name or letter identifies it.
 

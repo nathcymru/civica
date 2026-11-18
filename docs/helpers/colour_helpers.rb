@@ -58,7 +58,7 @@ module ColourHelpers
   # One swatch in the GOV.UK Brand layout: a circular sample, the name in bold,
   # then each value with its copy button. Screen pages show RGB and hex; the
   # print page shows CMYK and Pantone, in the GOV.UK order.
-  def colour_swatch(id, fields: %i[rgb hex], role: nil, name: nil, key: nil)
+  def colour_swatch(id, fields: %i[rgb hex], role: nil, name: nil, key: nil, note: nil)
     colour = govuk_colour(id)
     name ||= role ? "#{role}: #{colour.fetch('name')}" : colour.fetch('name')
     hex = colour.fetch('hex')
@@ -71,6 +71,7 @@ module ColourHelpers
       end
     end
     rows << %(<dd class="c-swatch__value">No print value given</dd>) if fields.include?(:cmyk) && !colour['print']
+    rows << %(<dd class="c-swatch__note">#{escape(note)}</dd>) if note
     %(<div class="c-swatch" style="--c-swatch-colour:#{hex};"><dt class="c-swatch__name">#{escape(name)}</dt>#{rows.join}</div>)
   end
 
@@ -94,15 +95,28 @@ module ColourHelpers
   end
 
   # "The web palette has:" list of links to each group, as GOV.UK opens it.
+  # The chart page lists its categorical, scale and additional groups.
   def colour_group_links(page, extra = {})
-    links = colour_page(page).fetch('palette').map { |group| [group.fetch('title').downcase, "##{colour_slug(group.fetch('title'))}"] } + extra.to_a
+    groups = if page == 'charts'
+               [['categorical colours', '#categorical-palette']] +
+                 colour_page('charts').fetch('sequential').map { |group| [group.fetch('title').downcase, "##{colour_slug(group.fetch('title'))}"] } +
+                 [['additional colours', '#additional-palette-for-illustrative-infographics']]
+             else
+               colour_page(page).fetch('palette').map { |group| [group.fetch('title').downcase, "##{colour_slug(group.fetch('title'))}"] }
+             end
+    links = groups + extra.to_a
     %(<ul>#{links.map { |text, href| %(<li><a href="#{href}">#{escape(text)}</a></li>) }.join}</ul>)
   end
 
-  # Chart categorical colours, in the GOV.UK order. Axes, lines and labels
-  # carry their role in the name, as upstream shows them.
-  def colour_chart_categorical(**options)
-    colour_swatch_list(colour_page('charts').fetch('categorical').map { |item| colour_swatch(item.fetch('colour'), role: item['role'], **options) })
+  # Chart categorical colours, in the GOV.UK order, then the colours for axes
+  # and lines and for labels, each under its own heading as GOV.UK shows them.
+  def colour_chart_categorical(level: 4, **options)
+    items = colour_page('charts').fetch('categorical')
+    html = colour_swatch_list(items.reject { |item| item['role'] }.map { |item| colour_swatch(item.fetch('colour'), key: 'categorical', **options) })
+    items.select { |item| item['role'] }.group_by { |item| item['role'] }.each do |role, group|
+      html += %(\n<h#{level} id="#{colour_slug(role)}">#{escape(role)}</h#{level}>\n) + colour_swatch_list(group.map { |item| colour_swatch(item.fetch('colour'), key: 'categorical', **options) })
+    end
+    html
   end
 
   # GOV.UK social companion colour set: each pairing is named, shown as a
@@ -126,20 +140,91 @@ module ColourHelpers
     end.join("\n")
   end
 
-  # GOV.UK shows each colour example as a picture on the page, followed by
-  # "Indicative examples for illustrative purposes only." The pictures come
-  # from the same example record as the standalone example page, so there is
-  # one source. Only the <figure> elements are taken: their headings and
-  # tables belong to the standalone page.
-  # `min` is the narrowest a picture may get before the grid wraps it.
-  def colour_figures(id, min: nil)
+  def colour_id_by_name(name)
+    @colour_ids_by_name ||= govuk_colours.fetch('colours').to_h { |id, colour| [colour.fetch('name'), id] }
+    @colour_ids_by_name.fetch(name) { raise "Unknown GOV.UK colour name #{name}" }
+  end
+
+  # A colour example as GOV.UK shows it: the picture on the page, not in an
+  # example frame. The pictures, the "invented data" labels and the data
+  # tables come from the same example record as the standalone example page,
+  # so there is one source. The record's own h2 is dropped, because the page
+  # heading already names the example.
+  #
+  # layout:
+  #   :figures  keep the record as it is (pictures with their captions)
+  #   :tiles    each picture under its own heading, beside swatches for the
+  #             colours its caption lists (GOV.UK tonal and companion examples)
+  #   :chart    the chart, its notes and its data table (in a details
+  #             element), with a compact swatch list for the colours it uses
+  #   :map      the map, its key and its data table (in a details element)
+  def colour_example(id, layout: :figures, callout: true, level: 4)
     spec = config[:civica_examples].fetch(id) { raise "Unknown example #{id}" }
-    figures = Nokogiri::HTML::DocumentFragment.parse(spec.fetch('html')).css('figure')
-    raise "Example #{id} has no figure to show" if figures.empty?
-    style = min ? %( style="--c-figure-min:#{min}") : ''
-    # Indented lines would become Markdown code blocks, so drop the indentation.
-    html = figures.map(&:to_html).join.gsub(/^[ \t]+/, '')
-    %(<div class="c-colour-figures"#{style}>#{html}</div>\n#{colour_callout})
+    fragment = Nokogiri::HTML::DocumentFragment.parse(spec.fetch('html'))
+    root = fragment.at_css('section') || fragment
+    root.at_css('h2')&.remove
+    lead = ''
+    case layout
+    when :tiles then lead = colour_example_tiles(root, id, level)
+    when :chart then colour_example_chart(root, id)
+    when :map then colour_example_data_tables(root)
+    end
+    # Markdown wraps a line that starts with an inline-looking tag (such as
+    # <figcaption>) in a paragraph, so emit the example as one line of HTML.
+    html = (lead.empty? ? root.inner_html : lead).gsub(/^[ \t]+/, '').gsub(/\s*\n\s*/, ' ').strip
+    html = html.sub('COLOUR-EXAMPLE-SWATCHES', @colour_example_swatches.to_s) if layout == :chart
+    intro = lead.empty? ? '' : root.css('> p').map(&:to_html).join
+    note = callout ? colour_callout : ''
+    if layout == :tiles
+      %(<div class="c-colour-example">#{intro}#{note}#{html}</div>)
+    else
+      %(<div class="c-colour-example">#{html}</div>\n#{note})
+    end
+  end
+
+  def colour_example_tiles(root, id, level)
+    root.css('figure').each_with_index.map do |figure, index|
+      caption = figure.at_css('figcaption')
+      title = caption.at_css('strong').text.strip
+      names = caption.text.split('Colours:', 2).last.to_s.strip.delete_suffix('.').split(', ').map(&:strip)
+      caption.remove
+      figure.remove_attribute('aria-labelledby')
+      figure.remove_attribute('style')
+      swatches = colour_swatch_list(names.map { |name| colour_swatch(colour_id_by_name(name), key: "#{id}-#{index}") })
+      %(<h#{level}>#{escape(title)}</h#{level}>\n<div class="c-pair c-pair--tile">#{figure.to_html.gsub(/^[ \t]+/, '')}<div class="c-pair__colours">#{swatches}</div></div>)
+    end.join("\n")
+  end
+
+  # The record lists its colours with their jobs ("Primary blue: bars"). Show
+  # them as GOV.UK's compact swatches, keeping each job as a note.
+  def colour_example_chart(root, id)
+    list = root.at_css('ul[data-govuk-colours]')
+    heading = list&.previous_element
+    if list
+      items = list.css('li').map do |item|
+        role = item.text.split(':', 2).last.to_s.strip
+        colour_swatch(item['data-govuk-colour'], key: id, note: role)
+      end
+      heading.remove if heading&.name == 'h3'
+      # Nokogiri's HTML4 parser rewrites <div> inside <dl>, so the swatch list
+      # goes in as a placeholder and is substituted into the final string.
+      @colour_example_swatches = %(<p class="govuk-body govuk-!-font-weight-bold">Colours used</p>) + colour_swatch_list(items, compact: true)
+      list.replace(Nokogiri::XML::Text.new('COLOUR-EXAMPLE-SWATCHES', root.document))
+    end
+    colour_example_data_tables(root)
+  end
+
+  # Data tables stay on the page as the text alternative to the picture, in
+  # a details element, so the picture leads as it does on GOV.UK.
+  def colour_example_data_tables(root)
+    root.css('.civica-table-scroll').each do |region|
+      next unless region.at_css('table')
+      label = region.at_css('caption')&.text&.strip
+      summary = label && !label.empty? ? "Show the data: #{label}" : 'Show the data'
+      details = Nokogiri::HTML::DocumentFragment.parse(%(<details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">#{escape(summary)}</span></summary><div class="govuk-details__text"></div></details>)).at_css('details')
+      region.add_next_sibling(details)
+      details.at_css('.govuk-details__text').add_child(region)
+    end
   end
 
   def colour_callout

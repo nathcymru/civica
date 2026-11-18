@@ -6117,8 +6117,8 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "Stable identities, the six GOV.UK categorical chart colours (unchanged in light and dark mode), pattern limits and 1.5px lines are explicit. The 24-series example is distinct by colour, pattern, line dash and marker together, not by colour alone. 12 November 2026 source review: Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026 colour review: the generated palette was replaced by the GOV.UK chart palette, with single, multiple, divergent and social examples. 18 November 2026: rule BG-COL-07 moved here from the retired Colour roles and accessibility page.",
-      "sha256": "870d475d095a78a48f2ae0af7a988b0c44f3a0f4497988a4dbf5d0cd94d4b41c",
+      "note": "Stable identities, the six GOV.UK categorical chart colours (unchanged in light and dark mode), pattern limits and 1.5px lines are explicit. The 24-series example is distinct by colour, pattern, line dash and marker together, not by colour alone. 12 November 2026 source review: Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026 colour review: the generated palette was replaced by the GOV.UK chart palette, with single, multiple, divergent and social examples. 18 November 2026: rule BG-COL-07 moved here from the Colour roles and accessibility page (since deleted). 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout without the Sass row; Axes & lines and Labels have their own headings; the 4 GOV.UK examples are shown on the page with their invented-data labels, a compact list of the colours used and their data tables in details elements.",
+      "sha256": "83b3733ad213637d0f665e71f77482ece36ecd793012fcf9fe836e83ac177d02",
       "url": "/styles/chart-colour.html",
       "title": "Chart colours",
       "example_ids": [
@@ -6149,7 +6149,7 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "Reviewed generated exact palette references and semantic-role table; tone is independent of mode, chart identity and print metadata are qualified. 12 November 2026 source review: Connected the palette reference to colour roles, optional household identity and an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026: rules BG-COL-01, BG-COL-03, BG-COL-06 and BG-COL-08 and the role separation example moved here from the retired Colour roles and accessibility page.",
+      "note": "Reviewed generated exact palette references and semantic-role table; tone is independent of mode, chart identity and print metadata are qualified. 12 November 2026 source review: Connected the palette reference to colour roles, optional household identity and an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026: rules BG-COL-01, BG-COL-03, BG-COL-06 and BG-COL-08 and the role separation example moved here from the Colour roles and accessibility page (since deleted). 18 November 2026: the Colour roles and accessibility page was deleted; its rule anchors now resolve here, on Web colours and on Chart colours. Maintenance notes for the colour section's swatches and example pictures were added.",
       "sha256": "28a052ac56dd92c39a6612167d13cca4c1cb8fadca31e4b131d183a4c815ac1a",
       "url": "/styles/colour.html",
       "title": "Colour",
@@ -7126,7 +7126,7 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties are listed only where the shipped theme sets that exact value. 18 November 2026: rules BG-COL-02, BG-COL-04 and BG-COL-05 and their examples moved here from the retired Colour roles and accessibility page.",
+      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties were listed only where the shipped theme set that exact value (removed later on 18 November 2026). 18 November 2026: rules BG-COL-02, BG-COL-04 and BG-COL-05 and their examples moved here from the Colour roles and accessibility page (since deleted). 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout (round sample, name, RGB and hex with icon copy buttons) and the page lists its colour groups; the Sass and civica theme property rows were removed from each swatch, so no theme properties are listed.",
       "sha256": "60275ff1d38c6f3cfeea770e4ebd3cfc681710f4390464b0ffc4992f5f9ac203",
       "url": "/styles/colour-web.html",
       "title": "Web colours",
@@ -7153,8 +7153,8 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties are listed only where the shipped theme sets that exact value.",
-      "sha256": "3af591a982bd029d6c5c3bf5df5642957e8c4069963a2c7d512f1550c2fd3cf1",
+      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties were listed only where the shipped theme set that exact value (removed later on 18 November 2026). 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout (round sample, name, RGB and hex with icon copy buttons) and the page lists its colour groups; the Sass and civica theme property rows were removed from each swatch, so no theme properties are listed.",
+      "sha256": "cfa6630c37a8b96c989c6544b4e228b68b8fad0a5e0f069d2304eea79cbaf8a2",
       "url": "/styles/colour-app.html",
       "title": "App colours",
       "example_ids": [],
@@ -7177,8 +7177,8 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties are listed only where the shipped theme sets that exact value.",
-      "sha256": "89841f7cb067d1e28c6f52f26eb807acf0075d5512b378dd7276dc67c8d5335d",
+      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties were listed only where the shipped theme set that exact value (removed later on 18 November 2026). 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout (round sample, name, CMYK and Pantone with icon copy buttons) and the page lists its colour groups. Correction: this page never listed civica theme properties.",
+      "sha256": "7d6b724cf23de1c70047cf39980a3616559e936d2e38fad890bf9b1837929bfa",
       "url": "/styles/colour-print.html",
       "title": "Print colours",
       "example_ids": [],
@@ -7201,8 +7201,8 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines maps page read on 18 November 2026 (Open Government Licence v3.0), including the colours of the GOV.UK map example under pages.maps.example. Map colours are the same in light and dark mode and do not follow the theme colour.",
-      "sha256": "c6e455998cd46fb69b147b770b8e0a63adc805b04aa03db6a3e0b34be9379c71",
+      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines maps page read on 18 November 2026 (Open Government Licence v3.0), including the colours of the GOV.UK map example under pages.maps.example. Map colours are the same in light and dark mode and do not follow the theme colour. 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout, the page lists its colour groups, and the zones drawing is shown on the page with its key, invented-data note and data table (in a details element), followed by Colours used in example.",
+      "sha256": "f19043bcd593e084d84ffcab02cc1382dca19044f9d97a17ba979af90441ffc8",
       "url": "/styles/colour-maps.html",
       "title": "Map colours",
       "example_ids": [
@@ -7227,8 +7227,8 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "18 November 2026: first published. Every palette value is rendered from docs/data/govuk-brand-colours.json, and the example tiles are generated from it by docs/scripts/generate-social-examples.py; the values were copied verbatim from the GOV.UK Brand Guidelines social page read on 18 November 2026 (Open Government Licence v3.0), including the 9 companion pairings under pages.social.companion. Social colours do not follow the theme colour and are not used in the Home Assistant interface.",
-      "sha256": "718aed8345c274eb13c58f082bf266544c89fd05638e55624062599ba3c87811",
+      "note": "18 November 2026: first published. Every palette value is rendered from docs/data/govuk-brand-colours.json, and the example tiles are generated from it by docs/scripts/generate-social-examples.py; the values were copied verbatim from the GOV.UK Brand Guidelines social page read on 18 November 2026 (Open Government Licence v3.0), including the 9 companion pairings under pages.social.companion. Social colours do not follow the theme colour and are not used in the Home Assistant interface. 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout, the page lists its colour groups, the tone tiles sit on an Inform to Inspire scale, and each tonal and companion example tile has its own heading and the swatches of the colours it uses; maintenance notes moved to Colour.",
+      "sha256": "43529b6826ed028566e4469ed1e6edb82a385132b564e5a2e539044690ba957a",
       "url": "/styles/colour-social.html",
       "title": "Social colours",
       "example_ids": [
@@ -7256,8 +7256,8 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "18 November 2026: first published. The Applying colour values are rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines illustrations colour page read on 18 November 2026 (Open Government Licence v3.0); the guidance is paraphrased from that page. The example illustrations are generated by docs/scripts/generate-illustration-examples.py and use only GOV.UK Web and illustration colours.",
-      "sha256": "7ba1ba4e4fe366ae33abc1cd7768811fb79a52e1613607bba4c7f70c606c9b00",
+      "note": "18 November 2026: first published. The Applying colour values are rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines illustrations colour page read on 18 November 2026 (Open Government Licence v3.0); the guidance is paraphrased from that page. The example illustrations are generated by docs/scripts/generate-illustration-examples.py and use only GOV.UK Web and illustration colours. 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout and the example illustrations are shown on the page with their captions; maintenance notes moved to Colour.",
+      "sha256": "ce971f140101f4a038f93dc7c635d7258cecb255527aec51b72cebef687f883f",
       "url": "/styles/colour-illustrations.html",
       "title": "Illustration colours",
       "example_ids": [
@@ -18466,7 +18466,7 @@
     },
     {
       "path": "docs/source/llms.txt",
-      "sha256": "b0dea3bb4df5698e93326fc45563cad9715c3515517064236f2da00380383dd5",
+      "sha256": "f2152966fa36e149e19eaa0540379db7f48a370704f71727e960f18fcfde4616",
       "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -18861,7 +18861,7 @@
     },
     {
       "path": "docs/source/stylesheets/_civica-components.scss",
-      "sha256": "2b95b84129c962304a3663ce324da33613df62ddff22f52f02887203d5174240",
+      "sha256": "5ab657ac2b9bdd872269f95aa01798fc1de00850fbe147deb7b659c615ece0f9",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {

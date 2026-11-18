@@ -107,10 +107,13 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
 {
   const path = `${BUILD}/chart-colour.html`;
   assert.ok(existsSync(path), `${path} missing: run the docs build first`);
-  const html = decode(readFileSync(path, 'utf8'));
+  const full = decode(readFileSync(path, 'utf8'));
+  // The palette sections end where the examples begin.
+  const html = full.slice(0, full.indexOf('id="using-colour-in-charts"'));
+  assert.ok(html.length < full.length, 'chart-colour: Using colour in charts section found');
   const names = [...html.matchAll(/<dt class="c-swatch__name">([^<]+)<\/dt>/g)].map(match => match[1]);
   const expected = [
-    ...pages.charts.categorical.map(item => item.role ? `${item.role}: ${colours[item.colour].name}` : colours[item.colour].name),
+    ...pages.charts.categorical.map(item => colours[item.colour].name),
     ...groupIds(pages.charts.sequential).map(id => colours[id].name),
     ...pages.charts.additional.map(id => colours[id].name),
   ];
@@ -190,7 +193,13 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   for (const file of ['colour-social', 'colour-maps', 'colour-illustrations']) {
     const main = readFileSync(`${BUILD}/${file}.html`, 'utf8');
     assert.ok(!main.includes('<iframe'), `${file}: GOV.UK shows these examples as pictures on the page, not in example frames`);
-    assert.ok(main.includes('Indicative examples for illustrative purposes only.'), `${file}: GOV.UK callout under the example pictures`);
+    // GOV.UK puts the callout on Social and Maps, not on Illustrations.
+    assert.equal(main.includes('Indicative examples for illustrative purposes only.'), file !== 'colour-illustrations', `${file}: GOV.UK callout matches the source page`);
+  }
+  // Each example keeps its invented-data label and its data table.
+  for (const [file, count] of [['chart-colour', 4], ['colour-maps', 1]]) {
+    const main = readFileSync(`${BUILD}/${file}.html`, 'utf8');
+    assert.ok((main.match(/<details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Show the data/g) || []).length >= count, `${file}: every GOV.UK example keeps its data table`);
   }
 }
 console.log(`Colour record is consistent: ${Object.keys(colours).length} GOV.UK colours across ${Object.keys(pages).length} pages, read ${data.source.read_on}.`);

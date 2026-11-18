@@ -242,13 +242,32 @@ h2.style-a-z__letter {
 
 .c-copy-value__icon { width: 18px; height: 18px; fill: currentColor; }
 
-// Colour examples shown as pictures, as GOV.UK does, not in an example frame.
-.c-colour-figures {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--c-figure-min, 14rem)), 1fr));
-  gap: 20px;
+// Colour examples shown on the page, as GOV.UK does, not in an example frame.
+// min-width: 0 lets a wide map scroll inside its region instead of the page.
+.c-colour-example {
+  min-width: 0;
   margin: 20px 0;
 
-  figure { margin: 0; }
   svg { max-width: 100%; height: auto; }
+  .civica-table-scroll { max-width: 100%; overflow-x: auto; }
 }
+
+.c-pair--tile figure { margin: 0; }
+.c-pair--tile figure svg { display: block; width: 100%; max-width: 320px; }
+
+.technical-documentation .c-swatch dd.c-swatch__note { grid-column: 2; margin: 5px 0 0; font-size: 1rem; }
+
+// GOV.UK's Inform to Inspire scale on the Social colours page.
+.c-inform-inspire {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #f4f8fb;
+}
+.technical-documentation .c-inform-inspire__axis {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #0f385c;
+  font-weight: 700;
+}
+.c-inform-inspire__line { flex: 1; border-top: 2px solid #0f385c; }
