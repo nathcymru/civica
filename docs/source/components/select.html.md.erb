@@ -6,7 +6,7 @@ group: "Form elements"
 source_url: "https://service-manual.nhs.uk/design-system/components/select"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
+updated_on: "2026-11-18"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -14,6 +14,8 @@ updates:
     description: "Updated the current project name and repository links to civica."
   - date: 2026-11-11
     description: "Added NHS-informed select guidance and 2 Home Assistant reference examples."
+  - date: "2026-11-18"
+    description: "Says theme colour instead of the retired palettes."
 ---
 
 # Select
@@ -24,7 +26,7 @@ These are civica reference implementations for component authors. They do not re
 
 ## When to use it
 
-Use it only after considering whether a shorter question or visible radio group would be clearer. The ten named civica palettes are an explicit settings use: the labels are familiar, the choice is reversible and keyboard selection is native.
+Use it only after considering whether a shorter question or visible radio group would be clearer. The seven civica theme colours are an explicit settings use: the labels are familiar, the choice is reversible and keyboard selection is native.
 
 ## When not to use it
 
@@ -32,7 +34,7 @@ Do not use a multi-select list for rooms or hide two simple choices in a dropdow
 
 ## Home Assistant adaptation
 
-Preselect the saved palette when editing theme settings. Keep its name in text and provide an immediate visual preview; a colour swatch alone does not identify the choice. Selecting an appearance must not issue device commands or reset the selected Energy period.
+Preselect the saved theme colour when editing theme settings. Keep its name in text and provide an immediate visual preview; a colour swatch alone does not identify the choice. Selecting an appearance must not issue device commands or reset the selected Energy period.
 
 ## Accessibility and behaviour
 
@@ -40,7 +42,7 @@ Provide a visible label and useful hint. Keep the native select keyboard behavio
 
 ## Examples
 
-### Choose a saved palette
+### Choose a saved theme colour
 
 A named, reversible settings list is the local reason for retaining a select.
 

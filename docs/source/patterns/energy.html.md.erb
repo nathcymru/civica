@@ -18,6 +18,8 @@ updates:
     description: "Chart colours stay the same with every GOV.UK theme colour; the Vivid and Muted toggle was removed."
   - date: "2026-11-18"
     description: "Series colours now link to Chart colours, which owns the GOV.UK chart palette."
+  - date: "2026-11-18"
+    description: "Says theme colour instead of the retired palettes."
 ai_instructions: "Apply when styling or describing the native Energy dashboard. Keep Home Assistant as the owner of data, dates, units and costs. Use stacked columns for energy over a period and unfilled lines for power. Never label power as energy, never turn a missing reading into zero and never claim coverage the adapter does not have. Rules WG-070, WG-073, WG-074, WG-076, WG-077, WG-086."
 ai_related:
   - path: "/components/charts.html"
@@ -97,7 +99,7 @@ Use the [chart colours](../styles/chart-colour.html) for energy families and nat
 2. Compare series count, names, values, timestamps, units, stacks and period before and after styling. Include zero, missing, negative and comparison values.
 3. Change the date, open the data, use the legend and tooltips, and follow the native detail links. Check that the chart and the table agree each time.
 4. Check columns, power history and distribution separately. A better column chart does not cover the distribution diagram.
-5. Check light and dark modes, several palettes, the keyboard, a 320px viewport and enlarged text. Keep wide tables inside their container.
+5. Check light and dark modes, several theme colours, the keyboard, a 320px viewport and enlarged text. Keep wide tables inside their container.
 6. Switch away from civica, leave Energy and come back. Check that styling returns, with no duplicate tables or legends.
 7. Say which checks used synthetic data and which used a live installation. One screenshot does not show that every custom chart card works or that a screen reader audit is done (WG-086, WG-095).
 
