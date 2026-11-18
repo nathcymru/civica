@@ -209,6 +209,9 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
     assert.ok(!main.includes('c-on-this-page'), `${file}: GOV.UK colour pages have no "On this page" box`);
     assert.ok(main.includes('class="c-swatch-list'), `${file}: swatches use the GOV.UK swatch list`);
   }
+  // The Colour overview page has no swatch outline to check, but GOV.UK's
+  // colour overview has no "On this page" box either.
+  assert.ok(!readFileSync(`${BUILD}/colour.html`, 'utf8').includes('c-on-this-page'), 'colour: GOV.UK colour pages have no "On this page" box');
   for (const file of ['colour-social', 'colour-maps', 'colour-illustrations']) {
     const main = readFileSync(`${BUILD}/${file}.html`, 'utf8');
     assert.ok(!main.includes('<iframe'), `${file}: GOV.UK shows these examples as pictures on the page, not in example frames`);
