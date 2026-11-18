@@ -175,7 +175,7 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
     assert.ok(used.length > 0, `${id}: example has colours`);
     for (const hex of used) assert.ok(allowed.has(hex), `${id}: example colour ${hex} is in the GOV.UK ${page} palette`);
     assert.ok(/Colours: [^<]+\./.test(examples[id].html), `${id}: caption lists the colours`);
-    assert.ok(/are invented\./.test(examples[id].html), `${id}: says its details are invented`);
+    assert.ok(/are invented[.,]/.test(examples[id].html), `${id}: says its details are invented`);
   }
 }
 // 8. Layout parity with the GOV.UK Brand colour pages. Text and records can
@@ -192,7 +192,7 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
     'colour-social': ['Social palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals', 'Use colour to reflect tone', 'From most informative to most inspiring', 'Tonal colour examples', 'Companion colour set', 'Companion colour examples'],
     'colour-print': ['Print palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals'],
     'chart-colour': ['Chart palette', 'Categorical palette', 'Sequential and divergent scale palette', 'Using colour in charts', 'Single category', 'Multiple categories', 'Above and below a target', 'Using charts within social media'],
-    'colour-maps': ['Map palette', 'Blues', 'Magentas', 'Reds', 'Greens', 'Purples', 'Teals', 'Oranges', 'Neutrals', 'Using colour combinations on maps', 'Example', 'Colours used in example', 'Points of interest', 'Base map'],
+    'colour-maps': ['Map palette', 'Blues', 'Magentas', 'Reds', 'Greens', 'Purples', 'Teals', 'Oranges', 'Neutrals', 'Using colour combinations on maps', 'Example: zones on a base map', 'Colours used in the example', 'Points of interest', 'Base map'],
     'colour-illustrations': ['Illustrations palette', 'Applying colour', 'Colour pairing', 'Using contrast'],
   };
   const text = value => decode(value.replace(/<[^>]+>/g, '')).replace(/\s+/g, ' ').trim();

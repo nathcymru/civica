@@ -4,177 +4,98 @@
 # docs/data/govuk-brand-colours.json. Never hand-edit a colour.
 examples:
   data-colour-categorical:
-    title: Four room humidity lines in the civica chart colours, in light and dark mode
-    description: A line chart of synthetic relative humidity in four rooms over one day, coloured civica-chart-1 to civica-chart-4 in order, with a line style, marker and end label for each room, a gap for missing readings and a matching table.
-    height: 1900
+    title: Four humidity sensors in a History graph card, in light and dark mode
+    description: A History graph card of synthetic relative humidity in four rooms over one day, coloured civica-chart-1 to civica-chart-4 by entity position, with a legend, a gap for missing readings and a matching table.
+    height: 1500
     html: |-
       <section aria-labelledby="categorical-heading">
-      <h2 class="govuk-heading-m" id="categorical-heading">Four rooms keep their colours in light and dark mode</h2>
+      <h2 class="govuk-heading-m" id="categorical-heading">A History graph card with the civica theme</h2>
       <p class="govuk-body">
-      <strong>Synthetic data, not readings from a Home Assistant instance.</strong> Relative humidity reported by four room sensors every 3 hours on Thursday 12 November 2026, Europe/London. The rooms take <code>civica-chart-1</code> to <code>civica-chart-4</code> in the order they are listed, as a History graph card colours them. The colours are the same in light and dark mode.</p>
+      <strong>Synthetic data.</strong> Relative humidity from 4 room sensors every 3 hours on 12 November 2026, Europe/London, drawn in light and dark mode.</p>
       <figure style="margin:0 0 30px;">
       <figcaption class="govuk-heading-s">Light mode: relative humidity, 12 November 2026 (%)</figcaption>
-      <svg role="img" aria-labelledby="categorical-light-title categorical-light-desc" viewBox="0 0 320 262" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif;" data-chart="categorical-light" data-chart-mode="light">
-      <title id="categorical-light-title">Line chart of relative humidity in four rooms over one day, light mode</title>
-      <desc id="categorical-light-desc">Four lines, one for each room, with the room name at the end of each line. The kitchen is a solid line with circles, the living room dashed with squares, the bedroom dotted with triangles and the bathroom dash-dot with diamonds. Bathroom humidity jumps to 82% at 09:00 and 74% at 21:00, and the kitchen peaks at 66% at 18:00. The living room line has a gap at 06:00 and 09:00, where the sensor sent no reading. At 21:00 the bathroom reads 74%, the kitchen 59%, the bedroom 53% and the living room 46%. The table below gives every reading.</desc>
+      <svg role="img" aria-labelledby="categorical-light-title categorical-light-desc" viewBox="0 0 228 236" style="display:block;width:100%;max-width:360px;height:auto;font-family:Arial,Helvetica,sans-serif;" data-chart="categorical-light" data-chart-mode="light">
+      <title id="categorical-light-title">History graph of relative humidity in four rooms over one day, light mode</title>
+      <desc id="categorical-light-desc">Four solid lines, one for each room, named in the legend under the chart. Bathroom humidity jumps to 82% at 09:00 and 74% at 21:00, and the kitchen peaks at 66% at 18:00. The living room line has a gap at 06:00 and 09:00, where the sensor sent no reading. At 21:00 the bathroom reads 74%, the kitchen 59%, the bedroom 53% and the living room 46%. The table below gives every reading.</desc>
       <g aria-hidden="true">
-      <rect x="0" y="0" width="320" height="262" fill="#FFFFFF"/>
-      <line x1="4" y1="12" x2="34" y2="12" stroke="#1D70B8" stroke-width="2"/>
-      <circle cx="19" cy="12" r="4" fill="#1D70B8" stroke="#0B0C0C" stroke-width="1"/>
-      <text x="42" y="16" text-anchor="start" font-size="12" fill="#0B0C0C">Kitchen</text>
-      <line x1="164" y1="12" x2="194" y2="12" stroke="#CA357C" stroke-width="2" stroke-dasharray="6 3"/>
-      <rect x="175.5" y="8.5" width="7" height="7" fill="#CA357C" stroke="#0B0C0C" stroke-width="1"/>
-      <text x="202" y="16" text-anchor="start" font-size="12" fill="#0B0C0C">Living room</text>
-      <line x1="4" y1="32" x2="34" y2="32" stroke="#50A1A5" stroke-width="2" stroke-dasharray="2 3"/>
-      <path d="M19 27.5 L23.5 35.5 L14.5 35.5 Z" fill="#50A1A5" stroke="#0B0C0C" stroke-width="1"/>
-      <text x="42" y="36" text-anchor="start" font-size="12" fill="#0B0C0C">Bedroom</text>
-      <line x1="164" y1="32" x2="194" y2="32" stroke="#0F385C" stroke-width="2" stroke-dasharray="8 3 2 3"/>
-      <path d="M179 27 L184 32 L179 37 L174 32 Z" fill="#0F385C" stroke="#0B0C0C" stroke-width="1"/>
-      <text x="202" y="36" text-anchor="start" font-size="12" fill="#0B0C0C">Bathroom</text>
-      <text x="4" y="62" text-anchor="start" font-size="12" fill="#0B0C0C">%</text>
-      <line x1="34" y1="232" x2="226" y2="232" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="236" text-anchor="end" font-size="12" fill="#0B0C0C">30</text>
-      <line x1="34" y1="205.33" x2="226" y2="205.33" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="209.33" text-anchor="end" font-size="12" fill="#0B0C0C">40</text>
-      <line x1="34" y1="178.67" x2="226" y2="178.67" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="182.67" text-anchor="end" font-size="12" fill="#0B0C0C">50</text>
-      <line x1="34" y1="152" x2="226" y2="152" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="156" text-anchor="end" font-size="12" fill="#0B0C0C">60</text>
-      <line x1="34" y1="125.33" x2="226" y2="125.33" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="129.33" text-anchor="end" font-size="12" fill="#0B0C0C">70</text>
-      <line x1="34" y1="98.67" x2="226" y2="98.67" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="102.67" text-anchor="end" font-size="12" fill="#0B0C0C">80</text>
-      <line x1="34" y1="72" x2="226" y2="72" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="76" text-anchor="end" font-size="12" fill="#0B0C0C">90</text>
-      <text x="34" y="250" text-anchor="middle" font-size="12" fill="#0B0C0C">00:00</text>
-      <text x="88.86" y="250" text-anchor="middle" font-size="12" fill="#0B0C0C">06:00</text>
-      <text x="143.71" y="250" text-anchor="middle" font-size="12" fill="#0B0C0C">12:00</text>
-      <text x="198.57" y="250" text-anchor="middle" font-size="12" fill="#0B0C0C">18:00</text>
-      <path data-series="sensor.kitchen_humidity" data-values="52,51,50,58,55,53,66,59" d="M34 173.33 L61.43 176 L88.86 178.67 L116.29 157.33 L143.71 165.33 L171.14 170.67 L198.57 136 L226 154.67" fill="none" stroke="#1D70B8" stroke-width="2"/>
-      <circle cx="34" cy="173.33" r="4" fill="#1D70B8" stroke="#0B0C0C" stroke-width="1"/>
-      <circle cx="61.43" cy="176" r="4" fill="#1D70B8" stroke="#0B0C0C" stroke-width="1"/>
-      <circle cx="88.86" cy="178.67" r="4" fill="#1D70B8" stroke="#0B0C0C" stroke-width="1"/>
-      <circle cx="116.29" cy="157.33" r="4" fill="#1D70B8" stroke="#0B0C0C" stroke-width="1"/>
-      <circle cx="143.71" cy="165.33" r="4" fill="#1D70B8" stroke="#0B0C0C" stroke-width="1"/>
-      <circle cx="171.14" cy="170.67" r="4" fill="#1D70B8" stroke="#0B0C0C" stroke-width="1"/>
-      <circle cx="198.57" cy="136" r="4" fill="#1D70B8" stroke="#0B0C0C" stroke-width="1"/>
-      <circle cx="226" cy="154.67" r="4" fill="#1D70B8" stroke="#0B0C0C" stroke-width="1"/>
-      <path data-series="sensor.living_room_humidity" data-values="47,46,,,44,45,48,46" d="M34 186.67 L61.43 189.33 M143.71 194.67 L171.14 192 L198.57 184 L226 189.33" fill="none" stroke="#CA357C" stroke-width="2" stroke-dasharray="6 3"/>
-      <rect x="30.5" y="183.17" width="7" height="7" fill="#CA357C" stroke="#0B0C0C" stroke-width="1"/>
-      <rect x="57.93" y="185.83" width="7" height="7" fill="#CA357C" stroke="#0B0C0C" stroke-width="1"/>
-      <rect x="140.21" y="191.17" width="7" height="7" fill="#CA357C" stroke="#0B0C0C" stroke-width="1"/>
-      <rect x="167.64" y="188.5" width="7" height="7" fill="#CA357C" stroke="#0B0C0C" stroke-width="1"/>
-      <rect x="195.07" y="180.5" width="7" height="7" fill="#CA357C" stroke="#0B0C0C" stroke-width="1"/>
-      <rect x="222.5" y="185.83" width="7" height="7" fill="#CA357C" stroke="#0B0C0C" stroke-width="1"/>
-      <text x="102.57" y="208.67" text-anchor="middle" font-size="11" fill="#0B0C0C">No data</text>
-      <path data-series="sensor.bedroom_humidity" data-values="56,59,61,54,50,49,50,53" d="M34 162.67 L61.43 154.67 L88.86 149.33 L116.29 168 L143.71 178.67 L171.14 181.33 L198.57 178.67 L226 170.67" fill="none" stroke="#50A1A5" stroke-width="2" stroke-dasharray="2 3"/>
-      <path d="M34 158.17 L38.5 166.17 L29.5 166.17 Z" fill="#50A1A5" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M61.43 150.17 L65.93 158.17 L56.93 158.17 Z" fill="#50A1A5" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M88.86 144.83 L93.36 152.83 L84.36 152.83 Z" fill="#50A1A5" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M116.29 163.5 L120.79 171.5 L111.79 171.5 Z" fill="#50A1A5" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M143.71 174.17 L148.21 182.17 L139.21 182.17 Z" fill="#50A1A5" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M171.14 176.83 L175.64 184.83 L166.64 184.83 Z" fill="#50A1A5" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M198.57 174.17 L203.07 182.17 L194.07 182.17 Z" fill="#50A1A5" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M226 166.17 L230.5 174.17 L221.5 174.17 Z" fill="#50A1A5" stroke="#0B0C0C" stroke-width="1"/>
-      <path data-series="sensor.bathroom_humidity" data-values="63,61,60,82,68,64,62,74" d="M34 144 L61.43 149.33 L88.86 152 L116.29 93.33 L143.71 130.67 L171.14 141.33 L198.57 146.67 L226 114.67" fill="none" stroke="#0F385C" stroke-width="2" stroke-dasharray="8 3 2 3"/>
-      <path d="M34 139 L39 144 L34 149 L29 144 Z" fill="#0F385C" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M61.43 144.33 L66.43 149.33 L61.43 154.33 L56.43 149.33 Z" fill="#0F385C" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M88.86 147 L93.86 152 L88.86 157 L83.86 152 Z" fill="#0F385C" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M116.29 88.33 L121.29 93.33 L116.29 98.33 L111.29 93.33 Z" fill="#0F385C" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M143.71 125.67 L148.71 130.67 L143.71 135.67 L138.71 130.67 Z" fill="#0F385C" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M171.14 136.33 L176.14 141.33 L171.14 146.33 L166.14 141.33 Z" fill="#0F385C" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M198.57 141.67 L203.57 146.67 L198.57 151.67 L193.57 146.67 Z" fill="#0F385C" stroke="#0B0C0C" stroke-width="1"/>
-      <path d="M226 109.67 L231 114.67 L226 119.67 L221 114.67 Z" fill="#0F385C" stroke="#0B0C0C" stroke-width="1"/>
-      <text x="232" y="158.67" text-anchor="start" font-size="12" fill="#0B0C0C">Kitchen</text>
-      <text x="232" y="193.33" text-anchor="start" font-size="12" fill="#0B0C0C">Living room</text>
-      <text x="232" y="174.67" text-anchor="start" font-size="12" fill="#0B0C0C">Bedroom</text>
-      <text x="232" y="118.67" text-anchor="start" font-size="12" fill="#0B0C0C">Bathroom</text>
+      <rect x="0" y="0" width="228" height="236" fill="#FFFFFF"/>
+      <text x="4" y="12" text-anchor="start" font-size="12" fill="#0B0C0C">%</text>
+      <line x1="26" y1="164" x2="214" y2="164" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="168" text-anchor="end" font-size="12" fill="#0B0C0C">30</text>
+      <line x1="26" y1="140.67" x2="214" y2="140.67" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="144.67" text-anchor="end" font-size="12" fill="#0B0C0C">40</text>
+      <line x1="26" y1="117.33" x2="214" y2="117.33" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="121.33" text-anchor="end" font-size="12" fill="#0B0C0C">50</text>
+      <line x1="26" y1="94" x2="214" y2="94" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="98" text-anchor="end" font-size="12" fill="#0B0C0C">60</text>
+      <line x1="26" y1="70.67" x2="214" y2="70.67" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="74.67" text-anchor="end" font-size="12" fill="#0B0C0C">70</text>
+      <line x1="26" y1="47.33" x2="214" y2="47.33" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="51.33" text-anchor="end" font-size="12" fill="#0B0C0C">80</text>
+      <line x1="26" y1="24" x2="214" y2="24" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="28" text-anchor="end" font-size="12" fill="#0B0C0C">90</text>
+      <text x="26" y="182" text-anchor="middle" font-size="12" fill="#0B0C0C">00:00</text>
+      <text x="79.71" y="182" text-anchor="middle" font-size="12" fill="#0B0C0C">06:00</text>
+      <text x="133.43" y="182" text-anchor="middle" font-size="12" fill="#0B0C0C">12:00</text>
+      <text x="187.14" y="182" text-anchor="middle" font-size="12" fill="#0B0C0C">18:00</text>
+      <path data-series="sensor.kitchen_humidity" data-values="52,51,50,58,55,53,66,59" d="M26 112.67 L52.86 115 L79.71 117.33 L106.57 98.67 L133.43 105.67 L160.29 110.33 L187.14 80 L214 96.33" fill="none" stroke="#1D70B8" stroke-width="2" stroke-linejoin="round"/>
+      <path data-series="sensor.living_room_humidity" data-values="47,46,,,44,45,48,46" d="M26 124.33 L52.86 126.67 M133.43 131.33 L160.29 129 L187.14 122 L214 126.67" fill="none" stroke="#CA357C" stroke-width="2" stroke-linejoin="round"/>
+      <text x="93.14" y="156.33" text-anchor="middle" font-size="12" fill="#0B0C0C">No data</text>
+      <path data-series="sensor.bedroom_humidity" data-values="56,59,61,54,50,49,50,53" d="M26 103.33 L52.86 96.33 L79.71 91.67 L106.57 108 L133.43 117.33 L160.29 119.67 L187.14 117.33 L214 110.33" fill="none" stroke="#50A1A5" stroke-width="2" stroke-linejoin="round"/>
+      <path data-series="sensor.bathroom_humidity" data-values="63,61,60,82,68,64,62,74" d="M26 87 L52.86 91.67 L79.71 94 L106.57 42.67 L133.43 75.33 L160.29 84.67 L187.14 89.33 L214 61.33" fill="none" stroke="#0F385C" stroke-width="2" stroke-linejoin="round"/>
+      <circle data-legend="sensor.kitchen_humidity" cx="12" cy="202" r="6" fill="#1D70B8"/>
+      <text x="24" y="206" text-anchor="start" font-size="12" fill="#0B0C0C">Kitchen</text>
+      <circle data-legend="sensor.living_room_humidity" cx="124" cy="202" r="6" fill="#CA357C"/>
+      <text x="136" y="206" text-anchor="start" font-size="12" fill="#0B0C0C">Living room</text>
+      <circle data-legend="sensor.bedroom_humidity" cx="12" cy="224" r="6" fill="#50A1A5"/>
+      <text x="24" y="228" text-anchor="start" font-size="12" fill="#0B0C0C">Bedroom</text>
+      <circle data-legend="sensor.bathroom_humidity" cx="124" cy="224" r="6" fill="#0F385C"/>
+      <text x="136" y="228" text-anchor="start" font-size="12" fill="#0B0C0C">Bathroom</text>
       </g>
       </svg>
       </figure>
       <figure style="margin:0 0 30px;">
       <figcaption class="govuk-heading-s">Dark mode: relative humidity, 12 November 2026 (%)</figcaption>
-      <svg role="img" aria-labelledby="categorical-dark-title categorical-dark-desc" viewBox="0 0 320 262" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif;" data-chart="categorical-dark" data-chart-mode="dark">
-      <title id="categorical-dark-title">Line chart of relative humidity in four rooms over one day, dark mode</title>
-      <desc id="categorical-dark-desc">Four lines, one for each room, with the room name at the end of each line. The kitchen is a solid line with circles, the living room dashed with squares, the bedroom dotted with triangles and the bathroom dash-dot with diamonds. Bathroom humidity jumps to 82% at 09:00 and 74% at 21:00, and the kitchen peaks at 66% at 18:00. The living room line has a gap at 06:00 and 09:00, where the sensor sent no reading. At 21:00 the bathroom reads 74%, the kitchen 59%, the bedroom 53% and the living room 46%. The table below gives every reading.</desc>
+      <svg role="img" aria-labelledby="categorical-dark-title categorical-dark-desc" viewBox="0 0 228 236" style="display:block;width:100%;max-width:360px;height:auto;font-family:Arial,Helvetica,sans-serif;" data-chart="categorical-dark" data-chart-mode="dark">
+      <title id="categorical-dark-title">History graph of relative humidity in four rooms over one day, dark mode</title>
+      <desc id="categorical-dark-desc">Four solid lines, one for each room, named in the legend under the chart. Bathroom humidity jumps to 82% at 09:00 and 74% at 21:00, and the kitchen peaks at 66% at 18:00. The living room line has a gap at 06:00 and 09:00, where the sensor sent no reading. At 21:00 the bathroom reads 74%, the kitchen 59%, the bedroom 53% and the living room 46%. The table below gives every reading.</desc>
       <g aria-hidden="true">
-      <rect x="0" y="0" width="320" height="262" fill="#24282B"/>
-      <line x1="4" y1="12" x2="34" y2="12" stroke="#1D70B8" stroke-width="2"/>
-      <circle cx="19" cy="12" r="4" fill="#1D70B8" stroke="#FFFFFF" stroke-width="1"/>
-      <text x="42" y="16" text-anchor="start" font-size="12" fill="#FFFFFF">Kitchen</text>
-      <line x1="164" y1="12" x2="194" y2="12" stroke="#CA357C" stroke-width="2" stroke-dasharray="6 3"/>
-      <rect x="175.5" y="8.5" width="7" height="7" fill="#CA357C" stroke="#FFFFFF" stroke-width="1"/>
-      <text x="202" y="16" text-anchor="start" font-size="12" fill="#FFFFFF">Living room</text>
-      <line x1="4" y1="32" x2="34" y2="32" stroke="#50A1A5" stroke-width="2" stroke-dasharray="2 3"/>
-      <path d="M19 27.5 L23.5 35.5 L14.5 35.5 Z" fill="#50A1A5" stroke="#FFFFFF" stroke-width="1"/>
-      <text x="42" y="36" text-anchor="start" font-size="12" fill="#FFFFFF">Bedroom</text>
-      <line x1="164" y1="32" x2="194" y2="32" stroke="#0F385C" stroke-width="2" stroke-dasharray="8 3 2 3"/>
-      <path d="M179 27 L184 32 L179 37 L174 32 Z" fill="#0F385C" stroke="#FFFFFF" stroke-width="1"/>
-      <text x="202" y="36" text-anchor="start" font-size="12" fill="#FFFFFF">Bathroom</text>
-      <text x="4" y="62" text-anchor="start" font-size="12" fill="#FFFFFF">%</text>
-      <line x1="34" y1="232" x2="226" y2="232" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="236" text-anchor="end" font-size="12" fill="#FFFFFF">30</text>
-      <line x1="34" y1="205.33" x2="226" y2="205.33" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="209.33" text-anchor="end" font-size="12" fill="#FFFFFF">40</text>
-      <line x1="34" y1="178.67" x2="226" y2="178.67" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="182.67" text-anchor="end" font-size="12" fill="#FFFFFF">50</text>
-      <line x1="34" y1="152" x2="226" y2="152" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="156" text-anchor="end" font-size="12" fill="#FFFFFF">60</text>
-      <line x1="34" y1="125.33" x2="226" y2="125.33" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="129.33" text-anchor="end" font-size="12" fill="#FFFFFF">70</text>
-      <line x1="34" y1="98.67" x2="226" y2="98.67" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="102.67" text-anchor="end" font-size="12" fill="#FFFFFF">80</text>
-      <line x1="34" y1="72" x2="226" y2="72" stroke="#CECECE" stroke-width="1"/>
-      <text x="28" y="76" text-anchor="end" font-size="12" fill="#FFFFFF">90</text>
-      <text x="34" y="250" text-anchor="middle" font-size="12" fill="#FFFFFF">00:00</text>
-      <text x="88.86" y="250" text-anchor="middle" font-size="12" fill="#FFFFFF">06:00</text>
-      <text x="143.71" y="250" text-anchor="middle" font-size="12" fill="#FFFFFF">12:00</text>
-      <text x="198.57" y="250" text-anchor="middle" font-size="12" fill="#FFFFFF">18:00</text>
-      <path data-series="sensor.kitchen_humidity" data-values="52,51,50,58,55,53,66,59" d="M34 173.33 L61.43 176 L88.86 178.67 L116.29 157.33 L143.71 165.33 L171.14 170.67 L198.57 136 L226 154.67" fill="none" stroke="#1D70B8" stroke-width="2"/>
-      <circle cx="34" cy="173.33" r="4" fill="#1D70B8" stroke="#FFFFFF" stroke-width="1"/>
-      <circle cx="61.43" cy="176" r="4" fill="#1D70B8" stroke="#FFFFFF" stroke-width="1"/>
-      <circle cx="88.86" cy="178.67" r="4" fill="#1D70B8" stroke="#FFFFFF" stroke-width="1"/>
-      <circle cx="116.29" cy="157.33" r="4" fill="#1D70B8" stroke="#FFFFFF" stroke-width="1"/>
-      <circle cx="143.71" cy="165.33" r="4" fill="#1D70B8" stroke="#FFFFFF" stroke-width="1"/>
-      <circle cx="171.14" cy="170.67" r="4" fill="#1D70B8" stroke="#FFFFFF" stroke-width="1"/>
-      <circle cx="198.57" cy="136" r="4" fill="#1D70B8" stroke="#FFFFFF" stroke-width="1"/>
-      <circle cx="226" cy="154.67" r="4" fill="#1D70B8" stroke="#FFFFFF" stroke-width="1"/>
-      <path data-series="sensor.living_room_humidity" data-values="47,46,,,44,45,48,46" d="M34 186.67 L61.43 189.33 M143.71 194.67 L171.14 192 L198.57 184 L226 189.33" fill="none" stroke="#CA357C" stroke-width="2" stroke-dasharray="6 3"/>
-      <rect x="30.5" y="183.17" width="7" height="7" fill="#CA357C" stroke="#FFFFFF" stroke-width="1"/>
-      <rect x="57.93" y="185.83" width="7" height="7" fill="#CA357C" stroke="#FFFFFF" stroke-width="1"/>
-      <rect x="140.21" y="191.17" width="7" height="7" fill="#CA357C" stroke="#FFFFFF" stroke-width="1"/>
-      <rect x="167.64" y="188.5" width="7" height="7" fill="#CA357C" stroke="#FFFFFF" stroke-width="1"/>
-      <rect x="195.07" y="180.5" width="7" height="7" fill="#CA357C" stroke="#FFFFFF" stroke-width="1"/>
-      <rect x="222.5" y="185.83" width="7" height="7" fill="#CA357C" stroke="#FFFFFF" stroke-width="1"/>
-      <text x="102.57" y="208.67" text-anchor="middle" font-size="11" fill="#FFFFFF">No data</text>
-      <path data-series="sensor.bedroom_humidity" data-values="56,59,61,54,50,49,50,53" d="M34 162.67 L61.43 154.67 L88.86 149.33 L116.29 168 L143.71 178.67 L171.14 181.33 L198.57 178.67 L226 170.67" fill="none" stroke="#50A1A5" stroke-width="2" stroke-dasharray="2 3"/>
-      <path d="M34 158.17 L38.5 166.17 L29.5 166.17 Z" fill="#50A1A5" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M61.43 150.17 L65.93 158.17 L56.93 158.17 Z" fill="#50A1A5" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M88.86 144.83 L93.36 152.83 L84.36 152.83 Z" fill="#50A1A5" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M116.29 163.5 L120.79 171.5 L111.79 171.5 Z" fill="#50A1A5" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M143.71 174.17 L148.21 182.17 L139.21 182.17 Z" fill="#50A1A5" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M171.14 176.83 L175.64 184.83 L166.64 184.83 Z" fill="#50A1A5" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M198.57 174.17 L203.07 182.17 L194.07 182.17 Z" fill="#50A1A5" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M226 166.17 L230.5 174.17 L221.5 174.17 Z" fill="#50A1A5" stroke="#FFFFFF" stroke-width="1"/>
-      <path data-series="sensor.bathroom_humidity" data-values="63,61,60,82,68,64,62,74" d="M34 144 L61.43 149.33 L88.86 152 L116.29 93.33 L143.71 130.67 L171.14 141.33 L198.57 146.67 L226 114.67" fill="none" stroke="#0F385C" stroke-width="2" stroke-dasharray="8 3 2 3"/>
-      <path d="M34 139 L39 144 L34 149 L29 144 Z" fill="#0F385C" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M61.43 144.33 L66.43 149.33 L61.43 154.33 L56.43 149.33 Z" fill="#0F385C" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M88.86 147 L93.86 152 L88.86 157 L83.86 152 Z" fill="#0F385C" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M116.29 88.33 L121.29 93.33 L116.29 98.33 L111.29 93.33 Z" fill="#0F385C" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M143.71 125.67 L148.71 130.67 L143.71 135.67 L138.71 130.67 Z" fill="#0F385C" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M171.14 136.33 L176.14 141.33 L171.14 146.33 L166.14 141.33 Z" fill="#0F385C" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M198.57 141.67 L203.57 146.67 L198.57 151.67 L193.57 146.67 Z" fill="#0F385C" stroke="#FFFFFF" stroke-width="1"/>
-      <path d="M226 109.67 L231 114.67 L226 119.67 L221 114.67 Z" fill="#0F385C" stroke="#FFFFFF" stroke-width="1"/>
-      <text x="232" y="158.67" text-anchor="start" font-size="12" fill="#FFFFFF">Kitchen</text>
-      <text x="232" y="193.33" text-anchor="start" font-size="12" fill="#FFFFFF">Living room</text>
-      <text x="232" y="174.67" text-anchor="start" font-size="12" fill="#FFFFFF">Bedroom</text>
-      <text x="232" y="118.67" text-anchor="start" font-size="12" fill="#FFFFFF">Bathroom</text>
+      <rect x="0" y="0" width="228" height="236" fill="#24282B"/>
+      <text x="4" y="12" text-anchor="start" font-size="12" fill="#FFFFFF">%</text>
+      <line x1="26" y1="164" x2="214" y2="164" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="168" text-anchor="end" font-size="12" fill="#FFFFFF">30</text>
+      <line x1="26" y1="140.67" x2="214" y2="140.67" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="144.67" text-anchor="end" font-size="12" fill="#FFFFFF">40</text>
+      <line x1="26" y1="117.33" x2="214" y2="117.33" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="121.33" text-anchor="end" font-size="12" fill="#FFFFFF">50</text>
+      <line x1="26" y1="94" x2="214" y2="94" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="98" text-anchor="end" font-size="12" fill="#FFFFFF">60</text>
+      <line x1="26" y1="70.67" x2="214" y2="70.67" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="74.67" text-anchor="end" font-size="12" fill="#FFFFFF">70</text>
+      <line x1="26" y1="47.33" x2="214" y2="47.33" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="51.33" text-anchor="end" font-size="12" fill="#FFFFFF">80</text>
+      <line x1="26" y1="24" x2="214" y2="24" stroke="#CECECE" stroke-width="1"/>
+      <text x="22" y="28" text-anchor="end" font-size="12" fill="#FFFFFF">90</text>
+      <text x="26" y="182" text-anchor="middle" font-size="12" fill="#FFFFFF">00:00</text>
+      <text x="79.71" y="182" text-anchor="middle" font-size="12" fill="#FFFFFF">06:00</text>
+      <text x="133.43" y="182" text-anchor="middle" font-size="12" fill="#FFFFFF">12:00</text>
+      <text x="187.14" y="182" text-anchor="middle" font-size="12" fill="#FFFFFF">18:00</text>
+      <path data-series="sensor.kitchen_humidity" data-values="52,51,50,58,55,53,66,59" d="M26 112.67 L52.86 115 L79.71 117.33 L106.57 98.67 L133.43 105.67 L160.29 110.33 L187.14 80 L214 96.33" fill="none" stroke="#1D70B8" stroke-width="2" stroke-linejoin="round"/>
+      <path data-series="sensor.living_room_humidity" data-values="47,46,,,44,45,48,46" d="M26 124.33 L52.86 126.67 M133.43 131.33 L160.29 129 L187.14 122 L214 126.67" fill="none" stroke="#CA357C" stroke-width="2" stroke-linejoin="round"/>
+      <text x="93.14" y="156.33" text-anchor="middle" font-size="12" fill="#FFFFFF">No data</text>
+      <path data-series="sensor.bedroom_humidity" data-values="56,59,61,54,50,49,50,53" d="M26 103.33 L52.86 96.33 L79.71 91.67 L106.57 108 L133.43 117.33 L160.29 119.67 L187.14 117.33 L214 110.33" fill="none" stroke="#50A1A5" stroke-width="2" stroke-linejoin="round"/>
+      <path data-series="sensor.bathroom_humidity" data-values="63,61,60,82,68,64,62,74" d="M26 87 L52.86 91.67 L79.71 94 L106.57 42.67 L133.43 75.33 L160.29 84.67 L187.14 89.33 L214 61.33" fill="none" stroke="#0F385C" stroke-width="2" stroke-linejoin="round"/>
+      <circle data-legend="sensor.kitchen_humidity" cx="12" cy="202" r="6" fill="#1D70B8"/>
+      <text x="24" y="206" text-anchor="start" font-size="12" fill="#FFFFFF">Kitchen</text>
+      <circle data-legend="sensor.living_room_humidity" cx="124" cy="202" r="6" fill="#CA357C"/>
+      <text x="136" y="206" text-anchor="start" font-size="12" fill="#FFFFFF">Living room</text>
+      <circle data-legend="sensor.bedroom_humidity" cx="12" cy="224" r="6" fill="#50A1A5"/>
+      <text x="24" y="228" text-anchor="start" font-size="12" fill="#FFFFFF">Bedroom</text>
+      <circle data-legend="sensor.bathroom_humidity" cx="124" cy="224" r="6" fill="#0F385C"/>
+      <text x="136" y="228" text-anchor="start" font-size="12" fill="#FFFFFF">Bathroom</text>
       </g>
       </svg>
       </figure>
-      <p class="govuk-body">Each room also has its own line style and marker, and its name at the end of its line, so the chart can be read without colour. A History graph card draws plain solid lines, so there give each entity a clear name.</p>
-      <p class="govuk-body">The living room sensor sent no reading at 06:00 or 09:00, so its line has a gap and the table says “Not supplied”. A gap is not a reading of zero.</p>
-      <p class="govuk-body">On the dark background, Primary blue (2.9:1) and Blue shade 50% (1.2:1) are hard to see, so there the outlined markers and the room names carry the meaning. Humidity is a reading at a moment, not an amount over a period.</p>
       <div class="civica-table-scroll" role="region" tabindex="0" aria-label="Relative humidity readings">
       <table class="govuk-table">
       <caption class="govuk-table__caption govuk-table__caption--m">Relative humidity every 3 hours, 12 November 2026 (%)</caption>
@@ -253,19 +174,19 @@ examples:
       <li data-chart-colour="blue" data-hex="#1D70B8">
       <span aria-hidden="true" style="display:inline-block;width:24px;height:24px;margin-right:8px;vertical-align:middle;border:1px solid #0B0C0C;background:#1D70B8;">
       </span>
-      <code>civica-chart-1</code>, Primary blue <code>#1D70B8</code>: Kitchen (solid line, circle marker)</li>
+      <code>civica-chart-1</code>, Primary blue <code>#1D70B8</code>: Kitchen</li>
       <li data-chart-colour="magenta" data-hex="#CA357C">
       <span aria-hidden="true" style="display:inline-block;width:24px;height:24px;margin-right:8px;vertical-align:middle;border:1px solid #0B0C0C;background:#CA357C;">
       </span>
-      <code>civica-chart-2</code>, Primary magenta <code>#CA357C</code>: Living room (dashed line, square marker)</li>
+      <code>civica-chart-2</code>, Primary magenta <code>#CA357C</code>: Living room</li>
       <li data-chart-colour="teal-tint-25" data-hex="#50A1A5">
       <span aria-hidden="true" style="display:inline-block;width:24px;height:24px;margin-right:8px;vertical-align:middle;border:1px solid #0B0C0C;background:#50A1A5;">
       </span>
-      <code>civica-chart-3</code>, Teal tint 25% <code>#50A1A5</code>: Bedroom (dotted line, triangle marker)</li>
+      <code>civica-chart-3</code>, Teal tint 25% <code>#50A1A5</code>: Bedroom</li>
       <li data-chart-colour="blue-shade-50" data-hex="#0F385C">
       <span aria-hidden="true" style="display:inline-block;width:24px;height:24px;margin-right:8px;vertical-align:middle;border:1px solid #0B0C0C;background:#0F385C;">
       </span>
-      <code>civica-chart-4</code>, Blue shade 50% <code>#0F385C</code>: Bathroom (dash-dot line, diamond marker)</li>
+      <code>civica-chart-4</code>, Blue shade 50% <code>#0F385C</code>: Bathroom</li>
       <li data-chart-colour="black-tint-80" data-hex="#CECECE">
       <span aria-hidden="true" style="display:inline-block;width:24px;height:24px;margin-right:8px;vertical-align:middle;border:1px solid #0B0C0C;background:#CECECE;">
       </span>Black tint 80% <code>#CECECE</code>: grid lines</li>
@@ -279,74 +200,72 @@ examples:
       </section>
     chart_data:
       classification: Synthetic documentation data; not readings from a Home Assistant instance
+      card: 'History graph card as drawn with the civica theme: solid lines, legend under the plot, no dashes, markers or end labels'
       measure: Relative humidity
       unit: '%'
       time_zone: Europe/London
       date: '2026-11-12'
       times: ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00']
-      colour_order: civica-chart-1 to civica-chart-4 from themes/civica.yaml, by position
+      colour_order: civica-chart-1 to civica-chart-4 from themes/civica.yaml, by entity position
       series:
         - key: sensor.kitchen_humidity
           label: Kitchen
           theme_colour: civica-chart-1
           colour_id: blue
           hex: '#1D70B8'
-          line_dash: []
-          marker: circle
           values: [52, 51, 50, 58, 55, 53, 66, 59]
         - key: sensor.living_room_humidity
           label: Living room
           theme_colour: civica-chart-2
           colour_id: magenta
           hex: '#CA357C'
-          line_dash: [6, 3]
-          marker: square
           values: [47, 46, null, null, 44, 45, 48, 46]
         - key: sensor.bedroom_humidity
           label: Bedroom
           theme_colour: civica-chart-3
           colour_id: teal-tint-25
           hex: '#50A1A5'
-          line_dash: [2, 3]
-          marker: triangle
           values: [56, 59, 61, 54, 50, 49, 50, 53]
         - key: sensor.bathroom_humidity
           label: Bathroom
           theme_colour: civica-chart-4
           colour_id: blue-shade-50
           hex: '#0F385C'
-          line_dash: [8, 3, 2, 3]
-          marker: diamond
           values: [63, 61, 60, 82, 68, 64, 62, 74]
       surfaces:
         light: '#FFFFFF'
         dark: '#24282B'
+      contrast_on_dark_card:
+        civica-chart-1: 2.9
+        civica-chart-2: 3.1
+        civica-chart-3: 4.9
+        civica-chart-4: 1.2
       missing: 'No reading: a gap in the line, “No data” under the gap and “Not supplied” in the table.'
     colour_reference:
       reviewed_on: '2026-11-18'
-      classification: civica chart palette, categorical colours by position; the same in light and dark mode
+      classification: civica chart palette, categorical colours by entity position; the same in light and dark mode
       generator: docs/scripts/generate-data-colour-examples.py
       source: https://brand.design-system.service.gov.uk/colour/charts/
       colours:
         - id: blue
           name: Primary blue
           hex: '#1D70B8'
-          role: Kitchen (solid line, circle marker)
+          role: Kitchen
           theme_colour: civica-chart-1
         - id: magenta
           name: Primary magenta
           hex: '#CA357C'
-          role: Living room (dashed line, square marker)
+          role: Living room
           theme_colour: civica-chart-2
         - id: teal-tint-25
           name: Teal tint 25%
           hex: '#50A1A5'
-          role: Bedroom (dotted line, triangle marker)
+          role: Bedroom
           theme_colour: civica-chart-3
         - id: blue-shade-50
           name: Blue shade 50%
           hex: '#0F385C'
-          role: Bathroom (dash-dot line, diamond marker)
+          role: Bathroom
           theme_colour: civica-chart-4
         - id: black-tint-80
           name: Black tint 80%
@@ -366,115 +285,115 @@ examples:
     height: 2300
     html: |-
       <section aria-labelledby="quantitative-heading">
-      <h2 class="govuk-heading-m" id="quantitative-heading">Colour can show an amount or a difference</h2>
+      <h2 class="govuk-heading-m" id="quantitative-heading">A week of room readings as two heatmaps</h2>
       <p class="govuk-body">
-      <strong>Synthetic data, not readings from a Home Assistant instance.</strong> A week of readings for 5 rooms, Monday 9 to Sunday 15 November 2026, Europe/London, as two heatmaps. Each cell prints its value, so the colour is never the only cue.</p>
+      <strong>Synthetic data.</strong> Daily readings for 5 rooms, Monday 9 to Sunday 15 November 2026, Europe/London; each cell prints its value.</p>
       <section class="c-data-colour-reference" aria-labelledby="sequential-heading">
       <h3 class="govuk-heading-m" id="sequential-heading">An amount: energy used each day, 0 to 2 kWh</h3>
-      <p class="govuk-body">Five steps of Blues, from light for less to dark for more. Each step covers 0.4 kWh, and a value on a boundary goes in the higher step. A reading of 0.00 kWh is a real zero and takes the lightest step. A missing reading is a crossed empty cell, not a colour from the scale.</p>
+      <p class="govuk-body">Five steps of Blues, 0.4 kWh each. A value on a boundary goes in the higher step.</p>
       <figure style="margin:0 0 30px;">
       <figcaption class="govuk-heading-s">Energy used each day by room, 9 to 15 November 2026 (kWh)</figcaption>
-      <svg role="img" aria-labelledby="heatmap-sequential-title heatmap-sequential-desc" viewBox="0 0 320 244" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif;" data-chart="heatmap-sequential">
+      <svg role="img" aria-labelledby="heatmap-sequential-title heatmap-sequential-desc" viewBox="0 0 232 352" style="display:block;width:100%;max-width:360px;height:auto;font-family:Arial,Helvetica,sans-serif;" data-chart="heatmap-sequential">
       <title id="heatmap-sequential-title">Heatmap of energy used each day by room in kilowatt-hours</title>
       <desc id="heatmap-sequential-desc">A grid of 5 rooms by 7 days. Each cell is shaded from light blue for little energy to dark blue for more, and shows its value. The living room and the study use the most, up to 1.96 kWh; the hall uses the least. The garage used 0.00 kWh on 5 days and has no reading for Wednesday, shown as a crossed empty cell. The table below gives every value.</desc>
       <g aria-hidden="true">
-      <rect x="0" y="0" width="320" height="244" fill="#FFFFFF"/>
-      <text x="93" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Mon</text>
-      <text x="127" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Tue</text>
-      <text x="161" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Wed</text>
-      <text x="195" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Thu</text>
-      <text x="229" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Fri</text>
-      <text x="263" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Sat</text>
-      <text x="297" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Sun</text>
-      <text x="0" y="40" text-anchor="start" font-size="12" fill="#0B0C0C">Living room</text>
-      <rect data-room="Living room" data-day="Monday 9" data-value="1.42" data-step="blue" x="76" y="22" width="34" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
-      <text x="93" y="40" text-anchor="middle" font-size="12" fill="#FFFFFF">1.42</text>
-      <rect data-room="Living room" data-day="Tuesday 10" data-value="1.18" data-step="blue-tint-25" x="110" y="22" width="34" height="28" fill="#5694CA" stroke="#CECECE" stroke-width="1"/>
-      <text x="127" y="40" text-anchor="middle" font-size="12" fill="#0B0C0C">1.18</text>
-      <rect data-room="Living room" data-day="Wednesday 11" data-value="1.35" data-step="blue" x="144" y="22" width="34" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
-      <text x="161" y="40" text-anchor="middle" font-size="12" fill="#FFFFFF">1.35</text>
-      <rect data-room="Living room" data-day="Thursday 12" data-value="1.27" data-step="blue" x="178" y="22" width="34" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
-      <text x="195" y="40" text-anchor="middle" font-size="12" fill="#FFFFFF">1.27</text>
-      <rect data-room="Living room" data-day="Friday 13" data-value="1.64" data-step="blue-shade-50" x="212" y="22" width="34" height="28" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
-      <text x="229" y="40" text-anchor="middle" font-size="12" fill="#FFFFFF">1.64</text>
-      <rect data-room="Living room" data-day="Saturday 14" data-value="1.96" data-step="blue-shade-50" x="246" y="22" width="34" height="28" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
-      <text x="263" y="40" text-anchor="middle" font-size="12" fill="#FFFFFF">1.96</text>
-      <rect data-room="Living room" data-day="Sunday 15" data-value="1.83" data-step="blue-shade-50" x="280" y="22" width="34" height="28" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
-      <text x="297" y="40" text-anchor="middle" font-size="12" fill="#FFFFFF">1.83</text>
-      <text x="0" y="68" text-anchor="start" font-size="12" fill="#0B0C0C">Study</text>
-      <rect data-room="Study" data-day="Monday 9" data-value="1.71" data-step="blue-shade-50" x="76" y="50" width="34" height="28" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
-      <text x="93" y="68" text-anchor="middle" font-size="12" fill="#FFFFFF">1.71</text>
-      <rect data-room="Study" data-day="Tuesday 10" data-value="1.88" data-step="blue-shade-50" x="110" y="50" width="34" height="28" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
-      <text x="127" y="68" text-anchor="middle" font-size="12" fill="#FFFFFF">1.88</text>
-      <rect data-room="Study" data-day="Wednesday 11" data-value="1.52" data-step="blue" x="144" y="50" width="34" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
-      <text x="161" y="68" text-anchor="middle" font-size="12" fill="#FFFFFF">1.52</text>
-      <rect data-room="Study" data-day="Thursday 12" data-value="1.79" data-step="blue-shade-50" x="178" y="50" width="34" height="28" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
-      <text x="195" y="68" text-anchor="middle" font-size="12" fill="#FFFFFF">1.79</text>
-      <rect data-room="Study" data-day="Friday 13" data-value="1.12" data-step="blue-tint-25" x="212" y="50" width="34" height="28" fill="#5694CA" stroke="#CECECE" stroke-width="1"/>
-      <text x="229" y="68" text-anchor="middle" font-size="12" fill="#0B0C0C">1.12</text>
-      <rect data-room="Study" data-day="Saturday 14" data-value="0.31" data-step="blue-tint-80" x="246" y="50" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="263" y="68" text-anchor="middle" font-size="12" fill="#0B0C0C">0.31</text>
-      <rect data-room="Study" data-day="Sunday 15" data-value="0.24" data-step="blue-tint-80" x="280" y="50" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="297" y="68" text-anchor="middle" font-size="12" fill="#0B0C0C">0.24</text>
-      <text x="0" y="96" text-anchor="start" font-size="12" fill="#0B0C0C">Bedroom</text>
-      <rect data-room="Bedroom" data-day="Monday 9" data-value="0.46" data-step="blue-tint-50" x="76" y="78" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="93" y="96" text-anchor="middle" font-size="12" fill="#0B0C0C">0.46</text>
-      <rect data-room="Bedroom" data-day="Tuesday 10" data-value="0.41" data-step="blue-tint-50" x="110" y="78" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="127" y="96" text-anchor="middle" font-size="12" fill="#0B0C0C">0.41</text>
-      <rect data-room="Bedroom" data-day="Wednesday 11" data-value="0.52" data-step="blue-tint-50" x="144" y="78" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="161" y="96" text-anchor="middle" font-size="12" fill="#0B0C0C">0.52</text>
-      <rect data-room="Bedroom" data-day="Thursday 12" data-value="0.44" data-step="blue-tint-50" x="178" y="78" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="195" y="96" text-anchor="middle" font-size="12" fill="#0B0C0C">0.44</text>
-      <rect data-room="Bedroom" data-day="Friday 13" data-value="0.49" data-step="blue-tint-50" x="212" y="78" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="229" y="96" text-anchor="middle" font-size="12" fill="#0B0C0C">0.49</text>
-      <rect data-room="Bedroom" data-day="Saturday 14" data-value="0.63" data-step="blue-tint-50" x="246" y="78" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="263" y="96" text-anchor="middle" font-size="12" fill="#0B0C0C">0.63</text>
-      <rect data-room="Bedroom" data-day="Sunday 15" data-value="0.58" data-step="blue-tint-50" x="280" y="78" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="297" y="96" text-anchor="middle" font-size="12" fill="#0B0C0C">0.58</text>
-      <text x="0" y="124" text-anchor="start" font-size="12" fill="#0B0C0C">Hall</text>
-      <rect data-room="Hall" data-day="Monday 9" data-value="0.18" data-step="blue-tint-80" x="76" y="106" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="93" y="124" text-anchor="middle" font-size="12" fill="#0B0C0C">0.18</text>
-      <rect data-room="Hall" data-day="Tuesday 10" data-value="0.16" data-step="blue-tint-80" x="110" y="106" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="127" y="124" text-anchor="middle" font-size="12" fill="#0B0C0C">0.16</text>
-      <rect data-room="Hall" data-day="Wednesday 11" data-value="0.21" data-step="blue-tint-80" x="144" y="106" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="161" y="124" text-anchor="middle" font-size="12" fill="#0B0C0C">0.21</text>
-      <rect data-room="Hall" data-day="Thursday 12" data-value="0.17" data-step="blue-tint-80" x="178" y="106" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="195" y="124" text-anchor="middle" font-size="12" fill="#0B0C0C">0.17</text>
-      <rect data-room="Hall" data-day="Friday 13" data-value="0.22" data-step="blue-tint-80" x="212" y="106" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="229" y="124" text-anchor="middle" font-size="12" fill="#0B0C0C">0.22</text>
-      <rect data-room="Hall" data-day="Saturday 14" data-value="0.27" data-step="blue-tint-80" x="246" y="106" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="263" y="124" text-anchor="middle" font-size="12" fill="#0B0C0C">0.27</text>
-      <rect data-room="Hall" data-day="Sunday 15" data-value="0.25" data-step="blue-tint-80" x="280" y="106" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="297" y="124" text-anchor="middle" font-size="12" fill="#0B0C0C">0.25</text>
-      <text x="0" y="152" text-anchor="start" font-size="12" fill="#0B0C0C">Garage</text>
-      <rect data-room="Garage" data-day="Monday 9" data-value="0.0" data-step="blue-tint-80" x="76" y="134" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="93" y="152" text-anchor="middle" font-size="12" fill="#0B0C0C">0.00</text>
-      <rect data-room="Garage" data-day="Tuesday 10" data-value="0.0" data-step="blue-tint-80" x="110" y="134" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="127" y="152" text-anchor="middle" font-size="12" fill="#0B0C0C">0.00</text>
-      <rect data-room="Garage" data-day="Wednesday 11" data-value="missing" x="144" y="134" width="34" height="28" fill="#FFFFFF" stroke="#CECECE" stroke-width="1"/>
-      <path d="M153 140 L169 156 M169 140 L153 156" fill="none" stroke="#0B0C0C" stroke-width="1.5"/>
-      <rect data-room="Garage" data-day="Thursday 12" data-value="0.0" data-step="blue-tint-80" x="178" y="134" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="195" y="152" text-anchor="middle" font-size="12" fill="#0B0C0C">0.00</text>
-      <rect data-room="Garage" data-day="Friday 13" data-value="0.04" data-step="blue-tint-80" x="212" y="134" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="229" y="152" text-anchor="middle" font-size="12" fill="#0B0C0C">0.04</text>
-      <rect data-room="Garage" data-day="Saturday 14" data-value="0.92" data-step="blue-tint-25" x="246" y="134" width="34" height="28" fill="#5694CA" stroke="#CECECE" stroke-width="1"/>
-      <text x="263" y="152" text-anchor="middle" font-size="12" fill="#0B0C0C">0.92</text>
-      <rect data-room="Garage" data-day="Sunday 15" data-value="0.0" data-step="blue-tint-80" x="280" y="134" width="34" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="297" y="152" text-anchor="middle" font-size="12" fill="#0B0C0C">0.00</text>
-      <text x="0" y="184" text-anchor="start" font-size="12" font-weight="700" fill="#0B0C0C">Key (kWh)</text>
-      <rect data-key="blue-tint-80" x="0" y="196" width="16" height="16" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
-      <text x="22" y="208" text-anchor="start" font-size="12" fill="#0B0C0C">Under 0.4</text>
-      <rect data-key="blue-tint-50" x="107" y="196" width="16" height="16" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="129" y="208" text-anchor="start" font-size="12" fill="#0B0C0C">0.4 to 0.8</text>
-      <rect data-key="blue-tint-25" x="214" y="196" width="16" height="16" fill="#5694CA" stroke="#CECECE" stroke-width="1"/>
-      <text x="236" y="208" text-anchor="start" font-size="12" fill="#0B0C0C">0.8 to 1.2</text>
-      <rect data-key="blue" x="0" y="220" width="16" height="16" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
-      <text x="22" y="232" text-anchor="start" font-size="12" fill="#0B0C0C">1.2 to 1.6</text>
-      <rect data-key="blue-shade-50" x="107" y="220" width="16" height="16" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
-      <text x="129" y="232" text-anchor="start" font-size="12" fill="#0B0C0C">1.6 to 2.0</text>
-      <rect x="214" y="220" width="16" height="16" fill="#FFFFFF" stroke="#CECECE" stroke-width="1"/>
-      <path d="M217 223 L227 233 M227 223 L217 233" fill="none" stroke="#0B0C0C" stroke-width="1.5"/>
-      <text x="236" y="232" text-anchor="start" font-size="12" fill="#0B0C0C">Not supplied</text>
+      <rect x="0" y="0" width="232" height="352" fill="#FFFFFF"/>
+      <text x="20" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Mon</text>
+      <text x="52" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Tue</text>
+      <text x="84" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Wed</text>
+      <text x="116" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Thu</text>
+      <text x="148" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Fri</text>
+      <text x="180" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Sat</text>
+      <text x="212" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Sun</text>
+      <text x="4" y="32" text-anchor="start" font-size="12" fill="#0B0C0C">Living room</text>
+      <rect data-room="Living room" data-day="Monday 9" data-value="1.42" data-step="blue" x="4" y="36" width="32" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
+      <text x="20" y="54" text-anchor="middle" font-size="12" fill="#FFFFFF">1.42</text>
+      <rect data-room="Living room" data-day="Tuesday 10" data-value="1.18" data-step="blue-tint-25" x="36" y="36" width="32" height="28" fill="#5694CA" stroke="#CECECE" stroke-width="1"/>
+      <text x="52" y="54" text-anchor="middle" font-size="12" fill="#0B0C0C">1.18</text>
+      <rect data-room="Living room" data-day="Wednesday 11" data-value="1.35" data-step="blue" x="68" y="36" width="32" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
+      <text x="84" y="54" text-anchor="middle" font-size="12" fill="#FFFFFF">1.35</text>
+      <rect data-room="Living room" data-day="Thursday 12" data-value="1.27" data-step="blue" x="100" y="36" width="32" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
+      <text x="116" y="54" text-anchor="middle" font-size="12" fill="#FFFFFF">1.27</text>
+      <rect data-room="Living room" data-day="Friday 13" data-value="1.64" data-step="blue-shade-50" x="132" y="36" width="32" height="28" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
+      <text x="148" y="54" text-anchor="middle" font-size="12" fill="#FFFFFF">1.64</text>
+      <rect data-room="Living room" data-day="Saturday 14" data-value="1.96" data-step="blue-shade-50" x="164" y="36" width="32" height="28" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
+      <text x="180" y="54" text-anchor="middle" font-size="12" fill="#FFFFFF">1.96</text>
+      <rect data-room="Living room" data-day="Sunday 15" data-value="1.83" data-step="blue-shade-50" x="196" y="36" width="32" height="28" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
+      <text x="212" y="54" text-anchor="middle" font-size="12" fill="#FFFFFF">1.83</text>
+      <text x="4" y="76" text-anchor="start" font-size="12" fill="#0B0C0C">Study</text>
+      <rect data-room="Study" data-day="Monday 9" data-value="1.71" data-step="blue-shade-50" x="4" y="80" width="32" height="28" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
+      <text x="20" y="98" text-anchor="middle" font-size="12" fill="#FFFFFF">1.71</text>
+      <rect data-room="Study" data-day="Tuesday 10" data-value="1.88" data-step="blue-shade-50" x="36" y="80" width="32" height="28" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
+      <text x="52" y="98" text-anchor="middle" font-size="12" fill="#FFFFFF">1.88</text>
+      <rect data-room="Study" data-day="Wednesday 11" data-value="1.52" data-step="blue" x="68" y="80" width="32" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
+      <text x="84" y="98" text-anchor="middle" font-size="12" fill="#FFFFFF">1.52</text>
+      <rect data-room="Study" data-day="Thursday 12" data-value="1.79" data-step="blue-shade-50" x="100" y="80" width="32" height="28" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
+      <text x="116" y="98" text-anchor="middle" font-size="12" fill="#FFFFFF">1.79</text>
+      <rect data-room="Study" data-day="Friday 13" data-value="1.12" data-step="blue-tint-25" x="132" y="80" width="32" height="28" fill="#5694CA" stroke="#CECECE" stroke-width="1"/>
+      <text x="148" y="98" text-anchor="middle" font-size="12" fill="#0B0C0C">1.12</text>
+      <rect data-room="Study" data-day="Saturday 14" data-value="0.31" data-step="blue-tint-80" x="164" y="80" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="180" y="98" text-anchor="middle" font-size="12" fill="#0B0C0C">0.31</text>
+      <rect data-room="Study" data-day="Sunday 15" data-value="0.24" data-step="blue-tint-80" x="196" y="80" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="212" y="98" text-anchor="middle" font-size="12" fill="#0B0C0C">0.24</text>
+      <text x="4" y="120" text-anchor="start" font-size="12" fill="#0B0C0C">Bedroom</text>
+      <rect data-room="Bedroom" data-day="Monday 9" data-value="0.46" data-step="blue-tint-50" x="4" y="124" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="20" y="142" text-anchor="middle" font-size="12" fill="#0B0C0C">0.46</text>
+      <rect data-room="Bedroom" data-day="Tuesday 10" data-value="0.41" data-step="blue-tint-50" x="36" y="124" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="52" y="142" text-anchor="middle" font-size="12" fill="#0B0C0C">0.41</text>
+      <rect data-room="Bedroom" data-day="Wednesday 11" data-value="0.52" data-step="blue-tint-50" x="68" y="124" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="84" y="142" text-anchor="middle" font-size="12" fill="#0B0C0C">0.52</text>
+      <rect data-room="Bedroom" data-day="Thursday 12" data-value="0.44" data-step="blue-tint-50" x="100" y="124" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="116" y="142" text-anchor="middle" font-size="12" fill="#0B0C0C">0.44</text>
+      <rect data-room="Bedroom" data-day="Friday 13" data-value="0.49" data-step="blue-tint-50" x="132" y="124" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="148" y="142" text-anchor="middle" font-size="12" fill="#0B0C0C">0.49</text>
+      <rect data-room="Bedroom" data-day="Saturday 14" data-value="0.63" data-step="blue-tint-50" x="164" y="124" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="180" y="142" text-anchor="middle" font-size="12" fill="#0B0C0C">0.63</text>
+      <rect data-room="Bedroom" data-day="Sunday 15" data-value="0.58" data-step="blue-tint-50" x="196" y="124" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="212" y="142" text-anchor="middle" font-size="12" fill="#0B0C0C">0.58</text>
+      <text x="4" y="164" text-anchor="start" font-size="12" fill="#0B0C0C">Hall</text>
+      <rect data-room="Hall" data-day="Monday 9" data-value="0.18" data-step="blue-tint-80" x="4" y="168" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="20" y="186" text-anchor="middle" font-size="12" fill="#0B0C0C">0.18</text>
+      <rect data-room="Hall" data-day="Tuesday 10" data-value="0.16" data-step="blue-tint-80" x="36" y="168" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="52" y="186" text-anchor="middle" font-size="12" fill="#0B0C0C">0.16</text>
+      <rect data-room="Hall" data-day="Wednesday 11" data-value="0.21" data-step="blue-tint-80" x="68" y="168" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="84" y="186" text-anchor="middle" font-size="12" fill="#0B0C0C">0.21</text>
+      <rect data-room="Hall" data-day="Thursday 12" data-value="0.17" data-step="blue-tint-80" x="100" y="168" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="116" y="186" text-anchor="middle" font-size="12" fill="#0B0C0C">0.17</text>
+      <rect data-room="Hall" data-day="Friday 13" data-value="0.22" data-step="blue-tint-80" x="132" y="168" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="148" y="186" text-anchor="middle" font-size="12" fill="#0B0C0C">0.22</text>
+      <rect data-room="Hall" data-day="Saturday 14" data-value="0.27" data-step="blue-tint-80" x="164" y="168" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="180" y="186" text-anchor="middle" font-size="12" fill="#0B0C0C">0.27</text>
+      <rect data-room="Hall" data-day="Sunday 15" data-value="0.25" data-step="blue-tint-80" x="196" y="168" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="212" y="186" text-anchor="middle" font-size="12" fill="#0B0C0C">0.25</text>
+      <text x="4" y="208" text-anchor="start" font-size="12" fill="#0B0C0C">Garage</text>
+      <rect data-room="Garage" data-day="Monday 9" data-value="0.0" data-step="blue-tint-80" x="4" y="212" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="20" y="230" text-anchor="middle" font-size="12" fill="#0B0C0C">0.00</text>
+      <rect data-room="Garage" data-day="Tuesday 10" data-value="0.0" data-step="blue-tint-80" x="36" y="212" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="52" y="230" text-anchor="middle" font-size="12" fill="#0B0C0C">0.00</text>
+      <rect data-room="Garage" data-day="Wednesday 11" data-value="missing" x="68" y="212" width="32" height="28" fill="#FFFFFF" stroke="#CECECE" stroke-width="1"/>
+      <path d="M77 218 L91 234 M91 218 L77 234" fill="none" stroke="#0B0C0C" stroke-width="1.5"/>
+      <rect data-room="Garage" data-day="Thursday 12" data-value="0.0" data-step="blue-tint-80" x="100" y="212" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="116" y="230" text-anchor="middle" font-size="12" fill="#0B0C0C">0.00</text>
+      <rect data-room="Garage" data-day="Friday 13" data-value="0.04" data-step="blue-tint-80" x="132" y="212" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="148" y="230" text-anchor="middle" font-size="12" fill="#0B0C0C">0.04</text>
+      <rect data-room="Garage" data-day="Saturday 14" data-value="0.92" data-step="blue-tint-25" x="164" y="212" width="32" height="28" fill="#5694CA" stroke="#CECECE" stroke-width="1"/>
+      <text x="180" y="230" text-anchor="middle" font-size="12" fill="#0B0C0C">0.92</text>
+      <rect data-room="Garage" data-day="Sunday 15" data-value="0.0" data-step="blue-tint-80" x="196" y="212" width="32" height="28" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="212" y="230" text-anchor="middle" font-size="12" fill="#0B0C0C">0.00</text>
+      <text x="4" y="262" text-anchor="start" font-size="12" font-weight="700" fill="#0B0C0C">Key (kWh)</text>
+      <rect data-key="blue-tint-80" x="4" y="274" width="16" height="16" fill="#D2E2F1" stroke="#CECECE" stroke-width="1"/>
+      <text x="26" y="286" text-anchor="start" font-size="12" fill="#0B0C0C">Under 0.4</text>
+      <rect data-key="blue-tint-50" x="120" y="274" width="16" height="16" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="142" y="286" text-anchor="start" font-size="12" fill="#0B0C0C">0.4 to 0.8</text>
+      <rect data-key="blue-tint-25" x="4" y="298" width="16" height="16" fill="#5694CA" stroke="#CECECE" stroke-width="1"/>
+      <text x="26" y="310" text-anchor="start" font-size="12" fill="#0B0C0C">0.8 to 1.2</text>
+      <rect data-key="blue" x="120" y="298" width="16" height="16" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
+      <text x="142" y="310" text-anchor="start" font-size="12" fill="#0B0C0C">1.2 to 1.6</text>
+      <rect data-key="blue-shade-50" x="4" y="322" width="16" height="16" fill="#0F385C" stroke="#CECECE" stroke-width="1"/>
+      <text x="26" y="334" text-anchor="start" font-size="12" fill="#0B0C0C">1.6 to 2.0</text>
+      <rect x="120" y="322" width="16" height="16" fill="#FFFFFF" stroke="#CECECE" stroke-width="1"/>
+      <path d="M123 325 L133 335 M133 325 L123 335" fill="none" stroke="#0B0C0C" stroke-width="1.5"/>
+      <text x="142" y="334" text-anchor="start" font-size="12" fill="#0B0C0C">Not supplied</text>
       </g>
       </svg>
       </figure>
@@ -550,110 +469,110 @@ examples:
       </section>
       <section class="c-data-colour-reference" aria-labelledby="divergent-heading">
       <h3 class="govuk-heading-m" id="divergent-heading">A difference: temperature against a 20 °C target</h3>
-      <p class="govuk-body">Each cell is the room’s <strong>average temperature while the heating was scheduled on, minus the 20 °C target</strong>. Blues are below the target and reds above it, with Black tint 95% within half a degree. A value on a boundary goes in the step nearer the centre. Below and above are directions, not failure and success: red here means warmer, not an error. A difference of 0.0 °C means on target; it does not mean missing.</p>
+      <p class="govuk-body">Each cell is the room’s <strong>average temperature while the heating was scheduled on, minus the 20 °C target</strong>. Blues are below the target, reds above it and Black tint 95% within half a degree. A value on a boundary goes in the step nearer the centre.</p>
       <figure style="margin:0 0 30px;">
       <figcaption class="govuk-heading-s">Difference from the 20 °C target by room, 9 to 15 November 2026 (°C)</figcaption>
-      <svg role="img" aria-labelledby="heatmap-divergent-title heatmap-divergent-desc" viewBox="0 0 320 244" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif;" data-chart="heatmap-divergent">
+      <svg role="img" aria-labelledby="heatmap-divergent-title heatmap-divergent-desc" viewBox="0 0 232 352" style="display:block;width:100%;max-width:360px;height:auto;font-family:Arial,Helvetica,sans-serif;" data-chart="heatmap-divergent">
       <title id="heatmap-divergent-title">Heatmap of each room’s daily temperature difference from a 20 °C target</title>
       <desc id="heatmap-divergent-desc">A grid of 5 rooms by 7 days. Blue cells were colder than the 20 °C target, red cells warmer and grey cells within half a degree of it; darker means further from the target. Every cell shows its signed difference. The bedroom was below target all week, down to −2.2 °C; the kitchen was above it, up to +2.1 °C. The hall has no reading for Thursday, shown as a crossed empty cell. The table below gives every value.</desc>
       <g aria-hidden="true">
-      <rect x="0" y="0" width="320" height="244" fill="#FFFFFF"/>
-      <text x="93" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Mon</text>
-      <text x="127" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Tue</text>
-      <text x="161" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Wed</text>
-      <text x="195" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Thu</text>
-      <text x="229" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Fri</text>
-      <text x="263" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Sat</text>
-      <text x="297" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Sun</text>
-      <text x="0" y="40" text-anchor="start" font-size="12" fill="#0B0C0C">Living room</text>
-      <rect data-room="Living room" data-day="Monday 9" data-value="0.4" data-step="black-tint-95" x="76" y="22" width="34" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
-      <text x="93" y="40" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.4</text>
-      <rect data-room="Living room" data-day="Tuesday 10" data-value="0.2" data-step="black-tint-95" x="110" y="22" width="34" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
-      <text x="127" y="40" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.2</text>
-      <rect data-room="Living room" data-day="Wednesday 11" data-value="-0.3" data-step="black-tint-95" x="144" y="22" width="34" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
-      <text x="161" y="40" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.3</text>
-      <rect data-room="Living room" data-day="Thursday 12" data-value="0.6" data-step="red-tint-50" x="178" y="22" width="34" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
-      <text x="195" y="40" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.6</text>
-      <rect data-room="Living room" data-day="Friday 13" data-value="1.1" data-step="red-tint-50" x="212" y="22" width="34" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
-      <text x="229" y="40" text-anchor="middle" font-size="12" fill="#0B0C0C">+1.1</text>
-      <rect data-room="Living room" data-day="Saturday 14" data-value="1.7" data-step="red" x="246" y="22" width="34" height="28" fill="#CA3535" stroke="#CECECE" stroke-width="1"/>
-      <text x="263" y="40" text-anchor="middle" font-size="12" fill="#FFFFFF">+1.7</text>
-      <rect data-room="Living room" data-day="Sunday 15" data-value="1.2" data-step="red-tint-50" x="280" y="22" width="34" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
-      <text x="297" y="40" text-anchor="middle" font-size="12" fill="#0B0C0C">+1.2</text>
-      <text x="0" y="68" text-anchor="start" font-size="12" fill="#0B0C0C">Kitchen</text>
-      <rect data-room="Kitchen" data-day="Monday 9" data-value="0.9" data-step="red-tint-50" x="76" y="50" width="34" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
-      <text x="93" y="68" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.9</text>
-      <rect data-room="Kitchen" data-day="Tuesday 10" data-value="1.3" data-step="red-tint-50" x="110" y="50" width="34" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
-      <text x="127" y="68" text-anchor="middle" font-size="12" fill="#0B0C0C">+1.3</text>
-      <rect data-room="Kitchen" data-day="Wednesday 11" data-value="0.7" data-step="red-tint-50" x="144" y="50" width="34" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
-      <text x="161" y="68" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.7</text>
-      <rect data-room="Kitchen" data-day="Thursday 12" data-value="1.6" data-step="red" x="178" y="50" width="34" height="28" fill="#CA3535" stroke="#CECECE" stroke-width="1"/>
-      <text x="195" y="68" text-anchor="middle" font-size="12" fill="#FFFFFF">+1.6</text>
-      <rect data-room="Kitchen" data-day="Friday 13" data-value="2.1" data-step="red" x="212" y="50" width="34" height="28" fill="#CA3535" stroke="#CECECE" stroke-width="1"/>
-      <text x="229" y="68" text-anchor="middle" font-size="12" fill="#FFFFFF">+2.1</text>
-      <rect data-room="Kitchen" data-day="Saturday 14" data-value="0.8" data-step="red-tint-50" x="246" y="50" width="34" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
-      <text x="263" y="68" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.8</text>
-      <rect data-room="Kitchen" data-day="Sunday 15" data-value="0.3" data-step="black-tint-95" x="280" y="50" width="34" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
-      <text x="297" y="68" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.3</text>
-      <text x="0" y="96" text-anchor="start" font-size="12" fill="#0B0C0C">Bedroom</text>
-      <rect data-room="Bedroom" data-day="Monday 9" data-value="-1.8" data-step="blue" x="76" y="78" width="34" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
-      <text x="93" y="96" text-anchor="middle" font-size="12" fill="#FFFFFF">−1.8</text>
-      <rect data-room="Bedroom" data-day="Tuesday 10" data-value="-1.6" data-step="blue" x="110" y="78" width="34" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
-      <text x="127" y="96" text-anchor="middle" font-size="12" fill="#FFFFFF">−1.6</text>
-      <rect data-room="Bedroom" data-day="Wednesday 11" data-value="-1.2" data-step="blue-tint-50" x="144" y="78" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="161" y="96" text-anchor="middle" font-size="12" fill="#0B0C0C">−1.2</text>
-      <rect data-room="Bedroom" data-day="Thursday 12" data-value="-2.2" data-step="blue" x="178" y="78" width="34" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
-      <text x="195" y="96" text-anchor="middle" font-size="12" fill="#FFFFFF">−2.2</text>
-      <rect data-room="Bedroom" data-day="Friday 13" data-value="-1.4" data-step="blue-tint-50" x="212" y="78" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="229" y="96" text-anchor="middle" font-size="12" fill="#0B0C0C">−1.4</text>
-      <rect data-room="Bedroom" data-day="Saturday 14" data-value="-0.9" data-step="blue-tint-50" x="246" y="78" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="263" y="96" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.9</text>
-      <rect data-room="Bedroom" data-day="Sunday 15" data-value="-1.1" data-step="blue-tint-50" x="280" y="78" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="297" y="96" text-anchor="middle" font-size="12" fill="#0B0C0C">−1.1</text>
-      <text x="0" y="124" text-anchor="start" font-size="12" fill="#0B0C0C">Study</text>
-      <rect data-room="Study" data-day="Monday 9" data-value="-0.6" data-step="blue-tint-50" x="76" y="106" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="93" y="124" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.6</text>
-      <rect data-room="Study" data-day="Tuesday 10" data-value="-0.2" data-step="black-tint-95" x="110" y="106" width="34" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
-      <text x="127" y="124" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.2</text>
-      <rect data-room="Study" data-day="Wednesday 11" data-value="-0.8" data-step="blue-tint-50" x="144" y="106" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="161" y="124" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.8</text>
-      <rect data-room="Study" data-day="Thursday 12" data-value="0.1" data-step="black-tint-95" x="178" y="106" width="34" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
-      <text x="195" y="124" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.1</text>
-      <rect data-room="Study" data-day="Friday 13" data-value="-1.7" data-step="blue" x="212" y="106" width="34" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
-      <text x="229" y="124" text-anchor="middle" font-size="12" fill="#FFFFFF">−1.7</text>
-      <rect data-room="Study" data-day="Saturday 14" data-value="-2.3" data-step="blue" x="246" y="106" width="34" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
-      <text x="263" y="124" text-anchor="middle" font-size="12" fill="#FFFFFF">−2.3</text>
-      <rect data-room="Study" data-day="Sunday 15" data-value="-2.1" data-step="blue" x="280" y="106" width="34" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
-      <text x="297" y="124" text-anchor="middle" font-size="12" fill="#FFFFFF">−2.1</text>
-      <text x="0" y="152" text-anchor="start" font-size="12" fill="#0B0C0C">Hall</text>
-      <rect data-room="Hall" data-day="Monday 9" data-value="-0.4" data-step="black-tint-95" x="76" y="134" width="34" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
-      <text x="93" y="152" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.4</text>
-      <rect data-room="Hall" data-day="Tuesday 10" data-value="-0.7" data-step="blue-tint-50" x="110" y="134" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="127" y="152" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.7</text>
-      <rect data-room="Hall" data-day="Wednesday 11" data-value="-0.2" data-step="black-tint-95" x="144" y="134" width="34" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
-      <text x="161" y="152" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.2</text>
-      <rect data-room="Hall" data-day="Thursday 12" data-value="missing" x="178" y="134" width="34" height="28" fill="#FFFFFF" stroke="#CECECE" stroke-width="1"/>
-      <path d="M187 140 L203 156 M203 140 L187 156" fill="none" stroke="#0B0C0C" stroke-width="1.5"/>
-      <rect data-room="Hall" data-day="Friday 13" data-value="-0.9" data-step="blue-tint-50" x="212" y="134" width="34" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="229" y="152" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.9</text>
-      <rect data-room="Hall" data-day="Saturday 14" data-value="-0.3" data-step="black-tint-95" x="246" y="134" width="34" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
-      <text x="263" y="152" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.3</text>
-      <rect data-room="Hall" data-day="Sunday 15" data-value="0.0" data-step="black-tint-95" x="280" y="134" width="34" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
-      <text x="297" y="152" text-anchor="middle" font-size="12" fill="#0B0C0C">0.0</text>
-      <text x="0" y="184" text-anchor="start" font-size="12" font-weight="700" fill="#0B0C0C">Key (°C)</text>
-      <rect data-key="blue" x="0" y="196" width="16" height="16" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
-      <text x="22" y="208" text-anchor="start" font-size="12" fill="#0B0C0C">−2.5 to −1.5</text>
-      <rect data-key="blue-tint-50" x="107" y="196" width="16" height="16" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
-      <text x="129" y="208" text-anchor="start" font-size="12" fill="#0B0C0C">−1.5 to −0.5</text>
-      <rect data-key="black-tint-95" x="214" y="196" width="16" height="16" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
-      <text x="236" y="208" text-anchor="start" font-size="12" fill="#0B0C0C">−0.5 to +0.5</text>
-      <rect data-key="red-tint-50" x="0" y="220" width="16" height="16" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
-      <text x="22" y="232" text-anchor="start" font-size="12" fill="#0B0C0C">+0.5 to +1.5</text>
-      <rect data-key="red" x="107" y="220" width="16" height="16" fill="#CA3535" stroke="#CECECE" stroke-width="1"/>
-      <text x="129" y="232" text-anchor="start" font-size="12" fill="#0B0C0C">+1.5 to +2.5</text>
-      <rect x="214" y="220" width="16" height="16" fill="#FFFFFF" stroke="#CECECE" stroke-width="1"/>
-      <path d="M217 223 L227 233 M227 223 L217 233" fill="none" stroke="#0B0C0C" stroke-width="1.5"/>
-      <text x="236" y="232" text-anchor="start" font-size="12" fill="#0B0C0C">Not supplied</text>
+      <rect x="0" y="0" width="232" height="352" fill="#FFFFFF"/>
+      <text x="20" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Mon</text>
+      <text x="52" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Tue</text>
+      <text x="84" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Wed</text>
+      <text x="116" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Thu</text>
+      <text x="148" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Fri</text>
+      <text x="180" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Sat</text>
+      <text x="212" y="14" text-anchor="middle" font-size="12" fill="#0B0C0C">Sun</text>
+      <text x="4" y="32" text-anchor="start" font-size="12" fill="#0B0C0C">Living room</text>
+      <rect data-room="Living room" data-day="Monday 9" data-value="0.4" data-step="black-tint-95" x="4" y="36" width="32" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
+      <text x="20" y="54" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.4</text>
+      <rect data-room="Living room" data-day="Tuesday 10" data-value="0.2" data-step="black-tint-95" x="36" y="36" width="32" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
+      <text x="52" y="54" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.2</text>
+      <rect data-room="Living room" data-day="Wednesday 11" data-value="-0.3" data-step="black-tint-95" x="68" y="36" width="32" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
+      <text x="84" y="54" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.3</text>
+      <rect data-room="Living room" data-day="Thursday 12" data-value="0.6" data-step="red-tint-50" x="100" y="36" width="32" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
+      <text x="116" y="54" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.6</text>
+      <rect data-room="Living room" data-day="Friday 13" data-value="1.1" data-step="red-tint-50" x="132" y="36" width="32" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
+      <text x="148" y="54" text-anchor="middle" font-size="12" fill="#0B0C0C">+1.1</text>
+      <rect data-room="Living room" data-day="Saturday 14" data-value="1.7" data-step="red" x="164" y="36" width="32" height="28" fill="#CA3535" stroke="#CECECE" stroke-width="1"/>
+      <text x="180" y="54" text-anchor="middle" font-size="12" fill="#FFFFFF">+1.7</text>
+      <rect data-room="Living room" data-day="Sunday 15" data-value="1.2" data-step="red-tint-50" x="196" y="36" width="32" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
+      <text x="212" y="54" text-anchor="middle" font-size="12" fill="#0B0C0C">+1.2</text>
+      <text x="4" y="76" text-anchor="start" font-size="12" fill="#0B0C0C">Kitchen</text>
+      <rect data-room="Kitchen" data-day="Monday 9" data-value="0.9" data-step="red-tint-50" x="4" y="80" width="32" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
+      <text x="20" y="98" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.9</text>
+      <rect data-room="Kitchen" data-day="Tuesday 10" data-value="1.3" data-step="red-tint-50" x="36" y="80" width="32" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
+      <text x="52" y="98" text-anchor="middle" font-size="12" fill="#0B0C0C">+1.3</text>
+      <rect data-room="Kitchen" data-day="Wednesday 11" data-value="0.7" data-step="red-tint-50" x="68" y="80" width="32" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
+      <text x="84" y="98" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.7</text>
+      <rect data-room="Kitchen" data-day="Thursday 12" data-value="1.6" data-step="red" x="100" y="80" width="32" height="28" fill="#CA3535" stroke="#CECECE" stroke-width="1"/>
+      <text x="116" y="98" text-anchor="middle" font-size="12" fill="#FFFFFF">+1.6</text>
+      <rect data-room="Kitchen" data-day="Friday 13" data-value="2.1" data-step="red" x="132" y="80" width="32" height="28" fill="#CA3535" stroke="#CECECE" stroke-width="1"/>
+      <text x="148" y="98" text-anchor="middle" font-size="12" fill="#FFFFFF">+2.1</text>
+      <rect data-room="Kitchen" data-day="Saturday 14" data-value="0.8" data-step="red-tint-50" x="164" y="80" width="32" height="28" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
+      <text x="180" y="98" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.8</text>
+      <rect data-room="Kitchen" data-day="Sunday 15" data-value="0.3" data-step="black-tint-95" x="196" y="80" width="32" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
+      <text x="212" y="98" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.3</text>
+      <text x="4" y="120" text-anchor="start" font-size="12" fill="#0B0C0C">Bedroom</text>
+      <rect data-room="Bedroom" data-day="Monday 9" data-value="-1.8" data-step="blue" x="4" y="124" width="32" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
+      <text x="20" y="142" text-anchor="middle" font-size="12" fill="#FFFFFF">−1.8</text>
+      <rect data-room="Bedroom" data-day="Tuesday 10" data-value="-1.6" data-step="blue" x="36" y="124" width="32" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
+      <text x="52" y="142" text-anchor="middle" font-size="12" fill="#FFFFFF">−1.6</text>
+      <rect data-room="Bedroom" data-day="Wednesday 11" data-value="-1.2" data-step="blue-tint-50" x="68" y="124" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="84" y="142" text-anchor="middle" font-size="12" fill="#0B0C0C">−1.2</text>
+      <rect data-room="Bedroom" data-day="Thursday 12" data-value="-2.2" data-step="blue" x="100" y="124" width="32" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
+      <text x="116" y="142" text-anchor="middle" font-size="12" fill="#FFFFFF">−2.2</text>
+      <rect data-room="Bedroom" data-day="Friday 13" data-value="-1.4" data-step="blue-tint-50" x="132" y="124" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="148" y="142" text-anchor="middle" font-size="12" fill="#0B0C0C">−1.4</text>
+      <rect data-room="Bedroom" data-day="Saturday 14" data-value="-0.9" data-step="blue-tint-50" x="164" y="124" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="180" y="142" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.9</text>
+      <rect data-room="Bedroom" data-day="Sunday 15" data-value="-1.1" data-step="blue-tint-50" x="196" y="124" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="212" y="142" text-anchor="middle" font-size="12" fill="#0B0C0C">−1.1</text>
+      <text x="4" y="164" text-anchor="start" font-size="12" fill="#0B0C0C">Study</text>
+      <rect data-room="Study" data-day="Monday 9" data-value="-0.6" data-step="blue-tint-50" x="4" y="168" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="20" y="186" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.6</text>
+      <rect data-room="Study" data-day="Tuesday 10" data-value="-0.2" data-step="black-tint-95" x="36" y="168" width="32" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
+      <text x="52" y="186" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.2</text>
+      <rect data-room="Study" data-day="Wednesday 11" data-value="-0.8" data-step="blue-tint-50" x="68" y="168" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="84" y="186" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.8</text>
+      <rect data-room="Study" data-day="Thursday 12" data-value="0.1" data-step="black-tint-95" x="100" y="168" width="32" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
+      <text x="116" y="186" text-anchor="middle" font-size="12" fill="#0B0C0C">+0.1</text>
+      <rect data-room="Study" data-day="Friday 13" data-value="-1.7" data-step="blue" x="132" y="168" width="32" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
+      <text x="148" y="186" text-anchor="middle" font-size="12" fill="#FFFFFF">−1.7</text>
+      <rect data-room="Study" data-day="Saturday 14" data-value="-2.3" data-step="blue" x="164" y="168" width="32" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
+      <text x="180" y="186" text-anchor="middle" font-size="12" fill="#FFFFFF">−2.3</text>
+      <rect data-room="Study" data-day="Sunday 15" data-value="-2.1" data-step="blue" x="196" y="168" width="32" height="28" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
+      <text x="212" y="186" text-anchor="middle" font-size="12" fill="#FFFFFF">−2.1</text>
+      <text x="4" y="208" text-anchor="start" font-size="12" fill="#0B0C0C">Hall</text>
+      <rect data-room="Hall" data-day="Monday 9" data-value="-0.4" data-step="black-tint-95" x="4" y="212" width="32" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
+      <text x="20" y="230" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.4</text>
+      <rect data-room="Hall" data-day="Tuesday 10" data-value="-0.7" data-step="blue-tint-50" x="36" y="212" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="52" y="230" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.7</text>
+      <rect data-room="Hall" data-day="Wednesday 11" data-value="-0.2" data-step="black-tint-95" x="68" y="212" width="32" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
+      <text x="84" y="230" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.2</text>
+      <rect data-room="Hall" data-day="Thursday 12" data-value="missing" x="100" y="212" width="32" height="28" fill="#FFFFFF" stroke="#CECECE" stroke-width="1"/>
+      <path d="M109 218 L123 234 M123 218 L109 234" fill="none" stroke="#0B0C0C" stroke-width="1.5"/>
+      <rect data-room="Hall" data-day="Friday 13" data-value="-0.9" data-step="blue-tint-50" x="132" y="212" width="32" height="28" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="148" y="230" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.9</text>
+      <rect data-room="Hall" data-day="Saturday 14" data-value="-0.3" data-step="black-tint-95" x="164" y="212" width="32" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
+      <text x="180" y="230" text-anchor="middle" font-size="12" fill="#0B0C0C">−0.3</text>
+      <rect data-room="Hall" data-day="Sunday 15" data-value="0.0" data-step="black-tint-95" x="196" y="212" width="32" height="28" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
+      <text x="212" y="230" text-anchor="middle" font-size="12" fill="#0B0C0C">0.0</text>
+      <text x="4" y="262" text-anchor="start" font-size="12" font-weight="700" fill="#0B0C0C">Key (°C)</text>
+      <rect data-key="blue" x="4" y="274" width="16" height="16" fill="#1D70B8" stroke="#CECECE" stroke-width="1"/>
+      <text x="26" y="286" text-anchor="start" font-size="12" fill="#0B0C0C">−2.5 to −1.5</text>
+      <rect data-key="blue-tint-50" x="120" y="274" width="16" height="16" fill="#8EB8DC" stroke="#CECECE" stroke-width="1"/>
+      <text x="142" y="286" text-anchor="start" font-size="12" fill="#0B0C0C">−1.5 to −0.5</text>
+      <rect data-key="black-tint-95" x="4" y="298" width="16" height="16" fill="#F3F3F3" stroke="#CECECE" stroke-width="1"/>
+      <text x="26" y="310" text-anchor="start" font-size="12" fill="#0B0C0C">−0.5 to +0.5</text>
+      <rect data-key="red-tint-50" x="120" y="298" width="16" height="16" fill="#E59A9A" stroke="#CECECE" stroke-width="1"/>
+      <text x="142" y="310" text-anchor="start" font-size="12" fill="#0B0C0C">+0.5 to +1.5</text>
+      <rect data-key="red" x="4" y="322" width="16" height="16" fill="#CA3535" stroke="#CECECE" stroke-width="1"/>
+      <text x="26" y="334" text-anchor="start" font-size="12" fill="#0B0C0C">+1.5 to +2.5</text>
+      <rect x="120" y="322" width="16" height="16" fill="#FFFFFF" stroke="#CECECE" stroke-width="1"/>
+      <path d="M123 325 L133 335 M133 325 L123 335" fill="none" stroke="#0B0C0C" stroke-width="1.5"/>
+      <text x="142" y="334" text-anchor="start" font-size="12" fill="#0B0C0C">Not supplied</text>
       </g>
       </svg>
       </figure>
@@ -727,7 +646,6 @@ examples:
       </table>
       </div>
       </section>
-      <p class="govuk-body">Both scales have fixed ends: 0 to 2.0 kWh and −2.5 to +2.5 °C. A value beyond them is <strong>outside this scale</strong>: show the value and say so, or revise the range, rather than giving it the end colour. Never turn missing data into zero, the centre or a reassuring colour. Every value is printed on a fill where it reaches at least 4.5:1, in Black on the pale steps and White on the dark ones.</p>
       <h3 class="govuk-heading-s">Colours used</h3>
       <ul class="govuk-list" data-chart-colours>
       <li data-chart-colour="blue-tint-80" data-hex="#D2E2F1">
@@ -921,7 +839,6 @@ examples:
             values: [-0.4, -0.7, -0.2, null, -0.9, -0.3, 0.0]
             colour_ids: [black-tint-95, blue-tint-50, black-tint-95, null, blue-tint-50, black-tint-95, black-tint-95]
       missing: 'No mapped colour: a crossed empty cell, the key entry “Not supplied” and “Not supplied” in the table.'
-      out_of_range: Outside this scale; no automatic clipping to an end colour.
       text_contrast: Black on the pale steps and White on the dark steps, each at least 4.5:1, chosen by the generator.
       colours:
         - id: blue-tint-80
@@ -1054,7 +971,7 @@ examples:
       <svg role="img" aria-labelledby="multiple-title multiple-desc" viewBox="0 0 320 262" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif;" data-chart="multiple"><title id="multiple-title">Line chart of four room temperatures in degrees Celsius over one day</title><desc id="multiple-desc">The living room is a solid line, the kitchen dashed, the bedroom dotted and the study dash-dot. The living room and study are coolest around 06:00 and the kitchen at 03:00; the bedroom is coolest at 15:00. At 21:00 the living room is warmest at 21.4 °C and the study coolest at 16.6 °C. The table below gives every reading.</desc>
       <g aria-hidden="true"><line x1="0" y1="10" x2="28" y2="10" stroke="#1D70B8" stroke-width="3"/><text x="34" y="14" font-size="12" fill="#0B0C0C">Living room</text><line x1="160" y1="10" x2="188" y2="10" stroke="#CA357C" stroke-width="3" stroke-dasharray="8 4"/><text x="194" y="14" font-size="12" fill="#0B0C0C">Kitchen</text><line x1="0" y1="30" x2="28" y2="30" stroke="#50A1A5" stroke-width="3" stroke-dasharray="2 3"/><text x="34" y="34" font-size="12" fill="#0B0C0C">Bedroom</text><line x1="160" y1="30" x2="188" y2="30" stroke="#0F385C" stroke-width="3" stroke-dasharray="10 3 2 3"/><text x="194" y="34" font-size="12" fill="#0B0C0C">Study</text><text x="0" y="62" font-size="12" fill="#0B0C0C">°C</text><line x1="34" y1="232" x2="236" y2="232" stroke="#CECECE" stroke-width="1"/><text x="28" y="236" text-anchor="end" font-size="12" fill="#0B0C0C">14</text><line x1="34" y1="200" x2="236" y2="200" stroke="#CECECE" stroke-width="1"/><text x="28" y="204" text-anchor="end" font-size="12" fill="#0B0C0C">16</text><line x1="34" y1="168" x2="236" y2="168" stroke="#CECECE" stroke-width="1"/><text x="28" y="172" text-anchor="end" font-size="12" fill="#0B0C0C">18</text><line x1="34" y1="136" x2="236" y2="136" stroke="#CECECE" stroke-width="1"/><text x="28" y="140" text-anchor="end" font-size="12" fill="#0B0C0C">20</text><line x1="34" y1="104" x2="236" y2="104" stroke="#CECECE" stroke-width="1"/><text x="28" y="108" text-anchor="end" font-size="12" fill="#0B0C0C">22</text><line x1="34" y1="72" x2="236" y2="72" stroke="#CECECE" stroke-width="1"/><text x="28" y="76" text-anchor="end" font-size="12" fill="#0B0C0C">24</text><text x="34" y="250" text-anchor="middle" font-size="12" fill="#0B0C0C">00:00</text><text x="91.71" y="250" text-anchor="middle" font-size="12" fill="#0B0C0C">06:00</text><text x="149.43" y="250" text-anchor="middle" font-size="12" fill="#0B0C0C">12:00</text><text x="207.14" y="250" text-anchor="middle" font-size="12" fill="#0B0C0C">18:00</text><path data-series="sensor.living_room_temperature" data-values="17.6,17.1,16.9,19.4,20.3,20.6,21.8,21.4" d="M34 174.4 L62.86 182.4 L91.71 185.6 L120.57 145.6 L149.43 131.2 L178.29 126.4 L207.14 107.2 L236 113.6" fill="none" stroke="#1D70B8" stroke-width="3"/><text x="242" y="117.6" font-size="12" fill="#0B0C0C">Living room</text><path data-series="sensor.kitchen_temperature" data-values="16.8,16.2,16.4,19.8,19.1,18.7,21,19.8" d="M34 187.2 L62.86 196.8 L91.71 193.6 L120.57 139.2 L149.43 150.4 L178.29 156.8 L207.14 120 L236 139.2" fill="none" stroke="#CA357C" stroke-width="3" stroke-dasharray="8 4"/><text x="242" y="143.2" font-size="12" fill="#0B0C0C">Kitchen</text><path data-series="sensor.bedroom_temperature" data-values="18.4,18,17.7,18.9,17.2,17,17.6,18.2" d="M34 161.6 L62.86 168 L91.71 172.8 L120.57 153.6 L149.43 180.8 L178.29 184 L207.14 174.4 L236 164.8" fill="none" stroke="#50A1A5" stroke-width="3" stroke-dasharray="2 3"/><text x="242" y="168.8" font-size="12" fill="#0B0C0C">Bedroom</text><path data-series="sensor.study_temperature" data-values="15.9,15.4,15.1,17.4,20.2,20.6,18.1,16.6" d="M34 201.6 L62.86 209.6 L91.71 214.4 L120.57 177.6 L149.43 132.8 L178.29 126.4 L207.14 166.4 L236 190.4" fill="none" stroke="#0F385C" stroke-width="3" stroke-dasharray="10 3 2 3"/><text x="242" y="194.4" font-size="12" fill="#0B0C0C">Study</text></g></svg>
       </figure>
-      <p class="govuk-body">Each room has its own colour and its own line style, and each line is labelled at its end. The legend is on top. These are temperatures at a moment, not amounts over a period.</p>
+      <p class="govuk-body">Each room has its own colour and its own line style, and each line is labelled at its end. The legend is on top.</p>
       <div class="civica-table-scroll" role="region" tabindex="0" aria-label="Room temperature readings"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--m">Room temperatures every 3 hours, 12 November 2026 (°C)</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Time</th><th scope="col" class="govuk-table__header">Living room</th><th scope="col" class="govuk-table__header">Kitchen</th><th scope="col" class="govuk-table__header">Bedroom</th><th scope="col" class="govuk-table__header">Study</th></tr></thead><tbody class="govuk-table__body"><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">00:00</th><td class="govuk-table__cell">17.6</td><td class="govuk-table__cell">16.8</td><td class="govuk-table__cell">18.4</td><td class="govuk-table__cell">15.9</td></tr><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">03:00</th><td class="govuk-table__cell">17.1</td><td class="govuk-table__cell">16.2</td><td class="govuk-table__cell">18.0</td><td class="govuk-table__cell">15.4</td></tr><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">06:00</th><td class="govuk-table__cell">16.9</td><td class="govuk-table__cell">16.4</td><td class="govuk-table__cell">17.7</td><td class="govuk-table__cell">15.1</td></tr><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">09:00</th><td class="govuk-table__cell">19.4</td><td class="govuk-table__cell">19.8</td><td class="govuk-table__cell">18.9</td><td class="govuk-table__cell">17.4</td></tr><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">12:00</th><td class="govuk-table__cell">20.3</td><td class="govuk-table__cell">19.1</td><td class="govuk-table__cell">17.2</td><td class="govuk-table__cell">20.2</td></tr><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">15:00</th><td class="govuk-table__cell">20.6</td><td class="govuk-table__cell">18.7</td><td class="govuk-table__cell">17.0</td><td class="govuk-table__cell">20.6</td></tr><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">18:00</th><td class="govuk-table__cell">21.8</td><td class="govuk-table__cell">21.0</td><td class="govuk-table__cell">17.6</td><td class="govuk-table__cell">18.1</td></tr><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">21:00</th><td class="govuk-table__cell">21.4</td><td class="govuk-table__cell">19.8</td><td class="govuk-table__cell">18.2</td><td class="govuk-table__cell">16.6</td></tr></tbody></table></div>
       <p class="govuk-body">Entity IDs: <code>sensor.living_room_temperature</code>, <code>sensor.kitchen_temperature</code>, <code>sensor.bedroom_temperature</code>, <code>sensor.study_temperature</code>.</p>
       <h3 class="govuk-heading-s">Colours used</h3>

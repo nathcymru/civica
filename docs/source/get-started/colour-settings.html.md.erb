@@ -15,9 +15,14 @@ updates:
   - date: "2026-11-17"
     description: "Rewritten to lead with the task, remove source commentary and state the saved-setting and recovery behaviour plainly."
   - date: "2026-11-18"
-    description: "Rewritten for the Theme colour control: choose one of seven GOV.UK colours. The ten palettes and the Use muted colours control were removed."
-ai_instructions: "Use for choosing the civica theme colour. Name the control exactly as it appears: Theme colour. It offers seven GOV.UK colours: Blue, Green, Teal, Purple, Magenta, Red and Black. It changes the header, buttons, highlights, on states, switches, sliders and dark-mode links; chart, map, error, warning and success colours and the light, dark or automatic mode stay the same. Do not say the module stores its own preference. Rules WG-021, WG-050, WG-052, WG-051."
+    description: "Rewritten for the Theme colour control: choose one of seven colours. The ten palettes and the Use muted colours control were removed."
+  - date: "2026-11-18"
+    description: "What the theme colour changes now links to the Colour page instead of repeating it, and the page says the civica lock-up appears in the sidebar title."
+ai_instructions: "Use for choosing the civica theme colour. Name the control exactly as it appears: Theme colour. It offers seven colours: Blue, Green, Teal, Purple, Magenta, Red and Black. What the theme colour changes and keeps is owned by Colour (/styles/colour.html#theme-colour): link to it, do not repeat it. With the module installed, the white civica lock-up appears in the sidebar title, not the header. The light, dark or automatic mode stays as it was. Do not say the module stores its own preference. Do not name outside sources on the page. Rules WG-021, WG-050, WG-052, WG-051."
 ai_related:
+  - path: "/styles/colour.html"
+    title: "Colour"
+    relationship: "Owns what the theme colour changes and what stays the same."
   - path: "/get-started/install.html"
     title: "Install civica"
     relationship: "Install the themes and module before the colour controls can work."
@@ -36,7 +41,7 @@ Open your Home Assistant profile and find the theme settings. Use **Theme colour
 
 ## Examples
 
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+These examples show the white civica lock-up on the Blue and the Purple theme colour. Notice that the lock-up stays white whichever colour you choose.
 
 <%= example('local-theme-blue') %>
 
@@ -45,17 +50,13 @@ These isolated examples illustrate the decisions on this page. Any household val
 
 ## Choose a theme colour
 
-Use **Theme colour** to choose one of seven colours from the [GOV.UK colour palette](../styles/colour.html): Blue, Green, Teal, Purple, Magenta, Red or Black. The list always shows names, in that order. Blue is the default.
+Use **Theme colour** to choose one of seven colours: Blue, Green, Teal, Purple, Magenta, Red or Black. The list always shows names, in that order. Blue is the default. Home Assistant's light, dark or automatic mode stays as it was.
 
-The theme colour changes the header, buttons, selected navigation and highlights. It also colours entities that are on, switches and sliders, and, in dark mode, links. It does not change:
-
-- text, focus, error, warning and success colours, or links in light mode
-- chart, map and illustration colours, so a colour means the same thing in every home
-- Home Assistant's light, dark or automatic mode, which is kept as it was
+[Theme colour](../styles/colour.html#theme-colour) explains what the theme colour changes and what stays the same.
 
 Each theme colour has its own Home Assistant theme, named `civica Blue`, `civica Green` and so on. The `civica` theme is the same as `civica Blue`.
 
-The header always uses the white civica lockup, because every theme colour passes 4.5:1 contrast with white. This does not add a household name, crest or logo setting.
+With the module installed, the sidebar title shows the white civica lock-up on every theme colour, because every theme colour passes 4.5:1 contrast with white. There is no setting for a household name, crest or logo.
 
 ## How the setting is saved
 

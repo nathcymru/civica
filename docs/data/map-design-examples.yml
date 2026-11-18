@@ -62,7 +62,6 @@ examples:
     html: |
       <section class="civica-map-demo" aria-labelledby="map-zones-title">
         <h2 class="govuk-heading-m" id="map-zones-title">Where are the household's zones?</h2>
-        <p class="govuk-body">This drawing contacts no map provider and uses no real address.</p>
         <figure class="civica-map-demo__figure" aria-labelledby="map-zones-caption">
           <ul class="govuk-list civica-map-demo__key" aria-label="Map key">
             <li><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><circle cx="16" cy="16" r="12" fill="#66F39E" stroke="#0F7A52" stroke-width="2"/></svg><span>Zone, with its name</span></li>
@@ -70,7 +69,7 @@ examples:
             <li><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="3" width="26" height="26" fill="#D0E6E7"/></svg><span>Coastal area</span></li>
             <li><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="3" width="26" height="26" fill="#F3F9F9" stroke="#D0E6E7" stroke-width="1"/></svg><span>Sea</span></li>
           </ul>
-          <div class="civica-table-scroll" tabindex="0" role="region" aria-label="Map of zones, scroll horizontally if needed"><svg class="civica-map-demo__plot" viewBox="0 0 640 400" role="img" aria-labelledby="map-zones-svg-title map-zones-svg-desc" style="min-width:600px;font-family:Arial,Helvetica,sans-serif">
+          <svg class="civica-map-demo__plot" viewBox="0 0 640 400" role="img" aria-labelledby="map-zones-svg-title map-zones-svg-desc" style="display:block;width:100%;height:auto;font-family:Arial,Helvetica,sans-serif">
             <title id="map-zones-svg-title">Map of three household zones on a coastline</title>
             <desc id="map-zones-svg-desc">Land fills the left and top of the map and the sea is at the bottom right. The Home zone is near the coast, the Work zone is inland to the north-west, and the School zone is between them. The table below lists every zone.</desc>
             <rect width="640" height="400" fill="#F3F9F9"/>
@@ -79,11 +78,11 @@ examples:
             <circle cx="340" cy="250" r="24" fill="#66F39E" stroke="#0F7A52" stroke-width="2"/>
             <circle cx="150" cy="110" r="36" fill="#66F39E" stroke="#0F7A52" stroke-width="2"/>
             <circle cx="250" cy="196" r="19" fill="#66F39E" stroke="#0F7A52" stroke-width="2"/>
-            <text x="340" y="294" font-size="18" font-weight="700" fill="#0B0C0C" text-anchor="middle">Home</text>
-            <text x="150" y="166" font-size="18" font-weight="700" fill="#0B0C0C" text-anchor="middle">Work</text>
-            <text x="250" y="235" font-size="18" font-weight="700" fill="#0B0C0C" text-anchor="middle">School</text>
-            <text x="520" y="330" font-size="16" fill="#0B0C0C" text-anchor="middle">Sea</text>
-          </svg></div>
+            <text x="340" y="306" font-size="28" font-weight="700" fill="#0B0C0C" text-anchor="middle">Home</text>
+            <text x="150" y="178" font-size="28" font-weight="700" fill="#0B0C0C" text-anchor="middle">Work</text>
+            <text x="250" y="246" font-size="28" font-weight="700" fill="#0B0C0C" text-anchor="middle">School</text>
+            <text x="520" y="330" font-size="28" fill="#0B0C0C" text-anchor="middle">Sea</text>
+          </svg>
           <figcaption class="govuk-body" id="map-zones-caption">3 invented Home Assistant zones on an invented coastline. Zone circles are drawn in proportion to each zone's radius.</figcaption>
         </figure>
         <div class="civica-table-scroll" tabindex="0" role="region" aria-label="All 3 example zones, scroll horizontally if needed">
@@ -97,7 +96,7 @@ examples:
             </tbody>
           </table>
         </div>
-        <p class="govuk-body">Colours used: zones are Accent green <code>#66F39E</code> with a Primary green <code>#0F7A52</code> outline, and labels are Black <code>#0B0C0C</code>. Land is Black tint 95% <code>#F3F3F3</code> with a Black tint 80% <code>#CECECE</code> outline. The sea is Teal tint 95% <code>#F3F9F9</code>, and coastal areas are Teal tint 80% <code>#D0E6E7</code>. A zone does not show that anyone is there.</p>
+        <p class="govuk-body">A zone does not show that anyone is there.</p>
       </section>
     artwork:
       creator: civica project; original SVG markup

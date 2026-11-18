@@ -3,18 +3,18 @@
 examples:
   web-colour-dashboard:
     title: A Home Assistant dashboard in the web palette
-    description: 'A Home Assistant dashboard with the civica theme in a desktop browser: Home Assistant’s sidebar, the Primary blue toolbar with view tabs, and White cards with quiet borders on a White background.'
+    description: 'A Home Assistant dashboard with the civica theme and companion in a desktop browser: Home Assistant’s sidebar, the Primary blue toolbar with view tabs, and White cards with quiet borders on a White background.'
     height: 700
     html: |
       <section aria-labelledby="web-dashboard-h">
       <h2 class="govuk-heading-m" id="web-dashboard-h">Web palette example</h2>
-      <p class="govuk-body">A Home Assistant dashboard with the civica theme in a desktop browser. Notice the White background and cards, the Primary blue toolbar with the view tabs in White, Black tint 80% card borders, Black text with secondary text and sidebar icons in Black tint 25%, and the link in Blue shade 10%. The switch that is on is Primary blue. The orange heating dial is Home Assistant’s own colour for heating, which the theme keeps.</p>
+      <p class="govuk-body">A Home Assistant dashboard with the civica theme and companion in a desktop browser. Notice the White background and cards, the Primary blue toolbar with the view tabs in White, Black tint 80% card borders, Black text with secondary text and sidebar icons in Black tint 25%, and the link in Blue shade 10%. The switch that is on is Primary blue. The heating dial uses Home Assistant’s own orange for heating, drawn in the nearest palette colour, Primary orange. The theme colours for the selected sidebar row, #E8EEF3 and #19578D, are not palette colours either, so the row is drawn as Black tint 95% with Blue shade 25% text.</p>
       <div style="max-width:720px">
       <figure style="margin:0 0 30px" aria-labelledby="web-dashboard-c">
       <div role="region" aria-label="Dashboard drawing, which scrolls sideways on a narrow screen" tabindex="0" style="overflow-x:auto">
       <svg viewBox="0 0 800 540" role="img" aria-labelledby="web-dashboard-t web-dashboard-d" style="display:block;width:100%;height:auto;min-width:600px;font-family:Arial,Helvetica,sans-serif">
       <title id="web-dashboard-t">Web palette example: a Home Assistant dashboard in a desktop browser</title>
-      <desc id="web-dashboard-d">A desktop browser shows a Home Assistant dashboard with the civica theme on a White background. On the left is Home Assistant’s sidebar: a Primary blue row with the menu icon and the civica logo in White, then Overview, which is selected, Energy, Map, Logbook and History, and at the bottom Settings, Notifications and the user Alex Morgan. The Primary blue toolbar has the view tabs Home, Upstairs and Garden in White, with Home underlined, and Search, Assist and menu icons. The Home view has 2 badges, 9.5 °C and 1.2 kW, and 2 sections. Living room has an entities card where Main light is on, with a Primary blue switch, and Lamp is off, and a thermostat card heating to 21 °C with a current temperature of 19.5 °C on an orange dial. Kitchen has tiles for Temperature 20.5 °C, Humidity 48 % and Window Closed, and a card that says bins go out on Thursday with a link to the bin calendar in Blue shade 10%. Cards are White with Black tint 80% borders, text is Black and secondary text Black tint 25%.</desc>
+      <desc id="web-dashboard-d">A desktop browser shows a Home Assistant dashboard with the civica theme and companion on a White background. On the left is Home Assistant’s sidebar: a Primary blue row with the menu icon and the civica logo in White, which the civica companion adds, then Overview, which is selected, on a Black tint 95% row with its icon and name in Blue shade 25%, Energy, Map, Logbook and History, and at the bottom Settings, Notifications and the user Alex Morgan. The Primary blue toolbar has the view tabs Home, Upstairs and Garden in White, with Home underlined, and Search, Assist and menu icons. The Home view has 2 badges, 9.5 °C and 1.2 kW, and 2 sections. Living room has an entities card where Main light is on, with a Primary blue switch, and Lamp is off, and a thermostat card heating to 21 °C with a current temperature of 19.5 °C on a Primary orange dial. Kitchen has tiles for Temperature 20.5 °C, Humidity 48 % and Window Closed, and a card that says bins go out on Thursday with a link to the bin calendar in Blue shade 10%. Cards are White with Black tint 80% borders, text is Black and secondary text Black tint 25%.</desc>
       <rect width="800" height="540" fill="#FFFFFF"/>
       <rect width="800" height="44" fill="#F3F3F3"/>
       <circle cx="20" cy="22" r="6" fill="#CECECE"/>
@@ -748,14 +748,14 @@ examples:
     html: |
       <section aria-labelledby="app-examples-h">
       <h2 class="govuk-heading-m" id="app-examples-h">Examples</h2>
-      <p class="govuk-body">Two Companion app screens: the Upstairs view of a dashboard, and the sidebar opened from the menu icon. Notice that each tile tints only its icon circle, Yellow tint 80% for a light that is on and Black tint 80% for one that is off, and that the sidebar marks the open dashboard with a Black tint 95% row and Blue shade 25% text. The tints add structure without filling whole cards. Home Assistant’s own amber for lights and orange for heating are drawn with the nearest palette colours.</p>
+      <p class="govuk-body">Two Companion app screens: the Upstairs view of a dashboard, and the sidebar opened from the menu icon. Notice the Accent yellow guide label, an App palette colour, with Black text and a Black border, pointing at the menu icon. Notice too that each tile tints only its icon circle, Yellow tint 80% for a light that is on and Black tint 80% for one that is off, and that the sidebar marks the open dashboard with a Black tint 95% row and Blue shade 25% text. The tints add structure without filling whole cards. The sidebar’s Primary blue row with the civica logo appears when the civica companion is installed. Home Assistant’s own amber for lights and orange for heating, and the theme’s #E8EEF3 and #19578D for the open dashboard’s sidebar row, are not palette colours, so they are drawn with the nearest palette colours.</p>
       <div style="max-width:720px">
       <figure style="margin:0 0 30px" aria-labelledby="app-examples-c">
       <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center">
       <div style="flex:1 1 250px;max-width:340px">
       <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-examples-t app-examples-d" style="display:block;width:100%;height:auto;font-family:Arial,Helvetica,sans-serif">
       <title id="app-examples-t">App examples: tiles with tinted icons</title>
-      <desc id="app-examples-d">The Companion app shows the Upstairs view under the Primary blue toolbar. Each tile has its icon in a tinted circle: Bedside lamp and Desk lamp are on, with yellow icons on Yellow tint 80%; Heating is heating, with an orange icon on Orange tint 80%; Ceiling light, Spotlights and the sensors have Black tint 25% icons on Black tint 80%. The tiles themselves stay White with Black tint 80% borders.</desc>
+      <desc id="app-examples-d">The Companion app shows the Upstairs view under the Primary blue toolbar. A guide annotation, which is not part of the app, points at the menu icon: an Accent yellow label with a Black border that says Tap to open the menu in Black. Each tile has its icon in a tinted circle: Bedside lamp and Desk lamp are on, with yellow icons on Yellow tint 80%; Heating is heating, with an orange icon on Orange tint 80%; Ceiling light, Spotlights and the sensors have Black tint 25% icons on Black tint 80%. The tiles themselves stay White with Black tint 80% borders.</desc>
       <rect width="380" height="760" fill="#FFFFFF"/>
       <defs>
       <clipPath id="app-examples-clip">
@@ -791,73 +791,77 @@ examples:
       <circle cx="10" cy="10" r="6.5" fill="none" stroke="#FFFFFF" stroke-width="2.2"/>
       <path d="M15 15l6 6" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round"/>
       </g>
-      <text x="26" y="146" font-size="18" font-weight="700" fill="#0B0C0C">Bedroom</text>
-      <rect x="22.5" y="158.5" width="163" height="55" fill="#FFFFFF" stroke="#CECECE"/>
-      <circle cx="50" cy="186" r="18" fill="#FFF8CC"/>
-      <g transform="translate(40 176) scale(0.833333)">
+      <text x="26" y="196" font-size="18" font-weight="700" fill="#0B0C0C">Bedroom</text>
+      <rect x="22.5" y="208.5" width="163" height="55" fill="#FFFFFF" stroke="#CECECE"/>
+      <circle cx="50" cy="236" r="18" fill="#FFF8CC"/>
+      <g transform="translate(40 226) scale(0.833333)">
       <path d="M8 3h8l3 8H5z" fill="#FFDD00"/>
       <rect x="11" y="11" width="2" height="9" fill="#FFDD00"/>
       <rect x="7" y="20" width="10" height="2" fill="#FFDD00"/>
       </g>
-      <text x="78" y="183" font-size="15" font-weight="700" fill="#0B0C0C">Bedside lamp</text>
-      <text x="78" y="202" font-size="14" font-weight="400" fill="#484949">On · 40 %</text>
-      <rect x="194.5" y="158.5" width="163" height="55" fill="#FFFFFF" stroke="#CECECE"/>
-      <circle cx="222" cy="186" r="18" fill="#CECECE"/>
-      <g transform="translate(212 176) scale(0.833333)">
+      <text x="78" y="233" font-size="15" font-weight="700" fill="#0B0C0C">Bedside lamp</text>
+      <text x="78" y="252" font-size="14" font-weight="400" fill="#484949">On · 40 %</text>
+      <rect x="194.5" y="208.5" width="163" height="55" fill="#FFFFFF" stroke="#CECECE"/>
+      <circle cx="222" cy="236" r="18" fill="#CECECE"/>
+      <g transform="translate(212 226) scale(0.833333)">
       <path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z" fill="#484949"/>
       <rect x="8.5" y="18.5" width="7" height="2" fill="#484949"/>
       </g>
-      <text x="250" y="183" font-size="15" font-weight="700" fill="#0B0C0C">Ceiling light</text>
-      <text x="250" y="202" font-size="14" font-weight="400" fill="#484949">Off</text>
-      <rect x="22.5" y="222.5" width="335" height="55" fill="#FFFFFF" stroke="#CECECE"/>
-      <circle cx="50" cy="250" r="18" fill="#FDE4D7"/>
-      <g transform="translate(40 240) scale(0.833333)">
+      <text x="250" y="233" font-size="15" font-weight="700" fill="#0B0C0C">Ceiling light</text>
+      <text x="250" y="252" font-size="14" font-weight="400" fill="#484949">Off</text>
+      <rect x="22.5" y="272.5" width="335" height="55" fill="#FFFFFF" stroke="#CECECE"/>
+      <circle cx="50" cy="300" r="18" fill="#FDE4D7"/>
+      <g transform="translate(40 290) scale(0.833333)">
       <path d="M12 2c.5 4 6 6.5 6 12a6 6 0 0 1-12 0c0-3 1.5-5 3-6.5 0 2 .8 3.2 2 3.7C11 8 10.5 5 12 2z" fill="#F47738"/>
       </g>
-      <text x="78" y="247" font-size="15" font-weight="700" fill="#0B0C0C">Heating</text>
-      <text x="78" y="266" font-size="14" font-weight="400" fill="#484949">Heat · 19 °C</text>
-      <rect x="22.5" y="286.5" width="163" height="55" fill="#FFFFFF" stroke="#CECECE"/>
-      <circle cx="50" cy="314" r="18" fill="#CECECE"/>
-      <g transform="translate(40 304) scale(0.833333)">
+      <text x="78" y="297" font-size="15" font-weight="700" fill="#0B0C0C">Heating</text>
+      <text x="78" y="316" font-size="14" font-weight="400" fill="#484949">Heat · 19 °C</text>
+      <rect x="22.5" y="336.5" width="163" height="55" fill="#FFFFFF" stroke="#CECECE"/>
+      <circle cx="50" cy="364" r="18" fill="#CECECE"/>
+      <g transform="translate(40 354) scale(0.833333)">
       <rect x="4" y="3" width="16" height="18" fill="none" stroke="#484949" stroke-width="2"/>
       <path d="M12 3v18M4 12h16" stroke="#484949" stroke-width="2"/>
       </g>
-      <text x="78" y="311" font-size="15" font-weight="700" fill="#0B0C0C">Window</text>
-      <text x="78" y="330" font-size="14" font-weight="400" fill="#484949">Closed</text>
-      <rect x="194.5" y="286.5" width="163" height="55" fill="#FFFFFF" stroke="#CECECE"/>
-      <circle cx="222" cy="314" r="18" fill="#CECECE"/>
-      <g transform="translate(212 304) scale(0.833333)">
+      <text x="78" y="361" font-size="15" font-weight="700" fill="#0B0C0C">Window</text>
+      <text x="78" y="380" font-size="14" font-weight="400" fill="#484949">Closed</text>
+      <rect x="194.5" y="336.5" width="163" height="55" fill="#FFFFFF" stroke="#CECECE"/>
+      <circle cx="222" cy="364" r="18" fill="#CECECE"/>
+      <g transform="translate(212 354) scale(0.833333)">
       <path d="M12 2.5S5 10.5 5 15a7 7 0 0 0 14 0c0-4.5-7-12.5-7-12.5z" fill="#484949"/>
       </g>
-      <text x="250" y="311" font-size="15" font-weight="700" fill="#0B0C0C">Humidity</text>
-      <text x="250" y="330" font-size="14" font-weight="400" fill="#484949">52 %</text>
-      <text x="26" y="384" font-size="18" font-weight="700" fill="#0B0C0C">Office</text>
-      <rect x="22.5" y="396.5" width="163" height="55" fill="#FFFFFF" stroke="#CECECE"/>
-      <circle cx="50" cy="424" r="18" fill="#FFF8CC"/>
-      <g transform="translate(40 414) scale(0.833333)">
+      <text x="250" y="361" font-size="15" font-weight="700" fill="#0B0C0C">Humidity</text>
+      <text x="250" y="380" font-size="14" font-weight="400" fill="#484949">52 %</text>
+      <text x="26" y="434" font-size="18" font-weight="700" fill="#0B0C0C">Office</text>
+      <rect x="22.5" y="446.5" width="163" height="55" fill="#FFFFFF" stroke="#CECECE"/>
+      <circle cx="50" cy="474" r="18" fill="#FFF8CC"/>
+      <g transform="translate(40 464) scale(0.833333)">
       <path d="M8 3h8l3 8H5z" fill="#FFDD00"/>
       <rect x="11" y="11" width="2" height="9" fill="#FFDD00"/>
       <rect x="7" y="20" width="10" height="2" fill="#FFDD00"/>
       </g>
-      <text x="78" y="421" font-size="15" font-weight="700" fill="#0B0C0C">Desk lamp</text>
-      <text x="78" y="440" font-size="14" font-weight="400" fill="#484949">On · 70 %</text>
-      <rect x="194.5" y="396.5" width="163" height="55" fill="#FFFFFF" stroke="#CECECE"/>
-      <circle cx="222" cy="424" r="18" fill="#CECECE"/>
-      <g transform="translate(212 414) scale(0.833333)">
+      <text x="78" y="471" font-size="15" font-weight="700" fill="#0B0C0C">Desk lamp</text>
+      <text x="78" y="490" font-size="14" font-weight="400" fill="#484949">On · 70 %</text>
+      <rect x="194.5" y="446.5" width="163" height="55" fill="#FFFFFF" stroke="#CECECE"/>
+      <circle cx="222" cy="474" r="18" fill="#CECECE"/>
+      <g transform="translate(212 464) scale(0.833333)">
       <path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z" fill="#484949"/>
       <rect x="8.5" y="18.5" width="7" height="2" fill="#484949"/>
       </g>
-      <text x="250" y="421" font-size="15" font-weight="700" fill="#0B0C0C">Spotlights</text>
-      <text x="250" y="440" font-size="14" font-weight="400" fill="#484949">Off</text>
-      <rect x="22.5" y="460.5" width="335" height="55" fill="#FFFFFF" stroke="#CECECE"/>
-      <circle cx="50" cy="488" r="18" fill="#CECECE"/>
-      <g transform="translate(40 478) scale(0.833333)">
+      <text x="250" y="471" font-size="15" font-weight="700" fill="#0B0C0C">Spotlights</text>
+      <text x="250" y="490" font-size="14" font-weight="400" fill="#484949">Off</text>
+      <rect x="22.5" y="510.5" width="335" height="55" fill="#FFFFFF" stroke="#CECECE"/>
+      <circle cx="50" cy="538" r="18" fill="#CECECE"/>
+      <g transform="translate(40 528) scale(0.833333)">
       <rect x="9.5" y="2.5" width="5" height="12" rx="2.5" fill="none" stroke="#484949" stroke-width="2"/>
       <circle cx="12" cy="17.5" r="4" fill="#484949"/>
       <rect x="11" y="8" width="2" height="8" fill="#484949"/>
       </g>
-      <text x="78" y="485" font-size="15" font-weight="700" fill="#0B0C0C">Temperature</text>
-      <text x="78" y="504" font-size="14" font-weight="400" fill="#484949">20 °C</text>
+      <text x="78" y="535" font-size="15" font-weight="700" fill="#0B0C0C">Temperature</text>
+      <text x="78" y="554" font-size="14" font-weight="400" fill="#484949">20 °C</text>
+      <path d="M26 128L36 113L46 128" fill="#FCFF52" stroke="#0B0C0C" stroke-width="2" stroke-linejoin="round"/>
+      <rect x="20" y="127" width="206" height="38" rx="19" fill="#FCFF52" stroke="#0B0C0C" stroke-width="2"/>
+      <rect x="28" y="125" width="16" height="4" fill="#FCFF52"/>
+      <text x="123" y="152" font-size="16" font-weight="700" fill="#0B0C0C" text-anchor="middle">Tap to open the menu</text>
       <rect x="130" y="734" width="120" height="5" rx="2.5" fill="#0B0C0C"/>
       </g>
       <rect x="10" y="10" width="360" height="740" rx="40" fill="none" stroke="#858686" stroke-width="3"/>
@@ -866,7 +870,7 @@ examples:
       <div style="flex:1 1 250px;max-width:340px">
       <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-examples-b-t app-examples-b-d" style="display:block;width:100%;height:auto;font-family:Arial,Helvetica,sans-serif">
       <title id="app-examples-b-t">App examples: the sidebar with a tinted row</title>
-      <desc id="app-examples-b-d">The Companion app shows Home Assistant’s sidebar, opened from the menu icon, over the dimmed dashboard. It starts with a Primary blue row with the menu icon and the civica logo in White. Overview, the open dashboard, is on a Black tint 95% row with its icon and name in Blue shade 25%. Below are Energy, Map, Logbook, History and To-do lists, then Settings, Notifications and the user Alex Morgan.</desc>
+      <desc id="app-examples-b-d">The Companion app shows Home Assistant’s sidebar, opened from the menu icon, over the dimmed dashboard. It starts with a Primary blue row with the menu icon and the civica logo in White, which appears when the civica companion is installed. Overview, the open dashboard, is on a Black tint 95% row with its icon and name in Blue shade 25%. Below are Energy, Map, Logbook, History and To-do lists, then Settings, Notifications and the user Alex Morgan.</desc>
       <rect width="380" height="760" fill="#FFFFFF"/>
       <defs>
       <clipPath id="app-examples-b-clip">
@@ -960,8 +964,8 @@ examples:
       </div>
       </div>
       <figcaption class="govuk-body-s" id="app-examples-c" style="margin-top:10px">
-      <strong>A drawing of the Companion app, not a screenshot: the household, rooms and readings are invented.</strong>
-      <br>Colours: Yellow tint 80%, Black tint 80%, Black tint 95%, Blue shade 25%.</figcaption>
+      <strong>A drawing of the Companion app, not a screenshot: the household, rooms and readings are invented, and the Accent yellow label is a guide annotation, not part of the app.</strong>
+      <br>Colours: Accent yellow, Yellow tint 80%, Black tint 80%, Black tint 95%, Blue shade 25%.</figcaption>
       </figure>
       </div>
       </section>

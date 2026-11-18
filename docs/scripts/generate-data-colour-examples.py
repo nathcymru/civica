@@ -103,48 +103,43 @@ def colours_used(items):
     return ''.join(out)
 
 
-def marker(shape, x, y, fill, outline):
-    common = f'fill="{fill}" stroke="{outline}" stroke-width="1"'
-    if shape == 'circle':
-        return f'<circle cx="{fmt(x)}" cy="{fmt(y)}" r="4" {common}/>'
-    if shape == 'square':
-        return f'<rect x="{fmt(x - 3.5)}" y="{fmt(y - 3.5)}" width="7" height="7" {common}/>'
-    if shape == 'triangle':
-        return f'<path d="M{fmt(x)} {fmt(y - 4.5)} L{fmt(x + 4.5)} {fmt(y + 3.5)} L{fmt(x - 4.5)} {fmt(y + 3.5)} Z" {common}/>'
-    if shape == 'diamond':
-        return f'<path d="M{fmt(x)} {fmt(y - 5)} L{fmt(x + 5)} {fmt(y)} L{fmt(x)} {fmt(y + 5)} L{fmt(x - 5)} {fmt(y)} Z" {common}/>'
-    raise ValueError(shape)
-
-
 # ---------------------------------------------------------------------------
-# 1. Categorical: relative humidity in 4 rooms, coloured by position.
+# 1. Categorical: relative humidity in 4 rooms, as a native History graph card
+#    draws it with the civica theme: solid lines, colour by entity position,
+#    a legend of coloured circles and names under the plot, a gap where an
+#    entity has no reading. No dashes, markers or end labels.
 # ---------------------------------------------------------------------------
 TIMES = ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00']
-DASH_WORDS = {(): 'solid line', (6, 3): 'dashed line', (2, 3): 'dotted line', (8, 3, 2, 3): 'dash-dot line'}
 ROOMS = [
-    # key, label, line dash, marker, values (None: no reading)
-    ('sensor.kitchen_humidity', 'Kitchen', (), 'circle', [52, 51, 50, 58, 55, 53, 66, 59]),
-    ('sensor.living_room_humidity', 'Living room', (6, 3), 'square', [47, 46, None, None, 44, 45, 48, 46]),
-    ('sensor.bedroom_humidity', 'Bedroom', (2, 3), 'triangle', [56, 59, 61, 54, 50, 49, 50, 53]),
-    ('sensor.bathroom_humidity', 'Bathroom', (8, 3, 2, 3), 'diamond', [63, 61, 60, 82, 68, 64, 62, 74]),
+    # entity ID, name, values (None: no reading)
+    ('sensor.kitchen_humidity', 'Kitchen', [52, 51, 50, 58, 55, 53, 66, 59]),
+    ('sensor.living_room_humidity', 'Living room', [47, 46, None, None, 44, 45, 48, 46]),
+    ('sensor.bedroom_humidity', 'Bedroom', [56, 59, 61, 54, 50, 49, 50, 53]),
+    ('sensor.bathroom_humidity', 'Bathroom', [63, 61, 60, 82, 68, 64, 62, 74]),
 ]
-MARKER_WORDS = {'circle': 'circle', 'square': 'square', 'triangle': 'triangle', 'diamond': 'diamond'}
 chart_ids = theme_chart_colours(len(ROOMS))
-X0, X1, YTOP, YBOT, VMIN, VMAX = 34, 226, 72, 232, 30, 90
+# The viewBox is 228 wide so that 12-unit text renders at 12px or more when the
+# picture is 228px wide or wider (the embedded example at a 320px viewport is
+# about 238px wide). max-width keeps it near the size of a dashboard card.
+WIDTH, HEIGHT, FONT_SIZE = 228, 236, 12
+X0, X1, YTOP, YBOT, VMIN, VMAX = 26, 214, 24, 164, 30, 90
 xat = lambda index: X0 + index * (X1 - X0) / (len(TIMES) - 1)
 yat = lambda value: YBOT - (value - VMIN) * (YBOT - YTOP) / (VMAX - VMIN)
 
 
-def spread(positions, gap=14):
-    """Move end labels apart, keeping their order, so none overlap."""
-    order = sorted(range(len(positions)), key=lambda i: positions[i])
-    placed = {}
-    last = None
-    for i in order:
-        y = positions[i] if last is None else max(positions[i], last + gap)
-        placed[i] = y
-        last = y
-    return [placed[i] for i in range(len(positions))]
+def no_data_label(values, ink):
+    """'No data' centred under the gap, in the empty band between two grid lines
+    below every reading, so it never sits on a grid line or a series line."""
+    gaps = [i for i, value in enumerate(values) if value is None]
+    if not gaps:
+        return ''
+    lowest = min(value for _, _, series in ROOMS for value in series if value is not None)
+    band = max(v for v in range(VMIN, VMAX, 10) if v + 10 <= lowest)
+    if any(value is not None and value < band + 10 for _, _, series in ROOMS for value in series):
+        raise SystemExit('No empty grid band for the No data label')
+    middle = (xat(gaps[0] - 1) + xat(gaps[-1] + 1)) / 2
+    baseline = (yat(band) + yat(band + 10)) / 2 + FONT_SIZE / 3
+    return text(middle, baseline, 'No data', ink, size=FONT_SIZE, anchor='middle')
 
 
 def line_chart(mode):
@@ -152,26 +147,16 @@ def line_chart(mode):
     ink = hexof(look['label'])
     grid = hexof(GRID)
     tid = f'categorical-{mode}'
-    parts = [f'<rect x="0" y="0" width="320" height="262" fill="{look["surface"]}"/>']
-    # Legend on top: line style and marker with the room name.
-    for index, (key, label, dash, shape, values) in enumerate(ROOMS):
-        colour = hexof(chart_ids[index])
-        lx, ly = (4 if index % 2 == 0 else 164), 12 + (index // 2) * 20
-        dash_attr = f' stroke-dasharray="{" ".join(map(str, dash))}"' if dash else ''
-        parts.append(f'<line x1="{lx}" y1="{ly}" x2="{lx + 30}" y2="{ly}" stroke="{colour}" stroke-width="2"{dash_attr}/>')
-        parts.append(marker(shape, lx + 15, ly, colour, ink))
-        parts.append(text(lx + 38, ly + 4, label, ink))
-    parts.append(text(4, 62, '%', ink))
+    parts = [f'<rect x="0" y="0" width="{WIDTH}" height="{HEIGHT}" fill="{look["surface"]}"/>']
+    parts.append(text(4, 12, '%', ink, size=FONT_SIZE))
     for value in range(VMIN, VMAX + 1, 10):
         parts.append(f'<line x1="{X0}" y1="{fmt(yat(value))}" x2="{X1}" y2="{fmt(yat(value))}" stroke="{grid}" stroke-width="1"/>')
-        parts.append(text(X0 - 6, yat(value) + 4, str(value), ink, anchor='end'))
+        parts.append(text(X0 - 4, yat(value) + 4, str(value), ink, size=FONT_SIZE, anchor='end'))
     for index, time in enumerate(TIMES):
         if index % 2 == 0:
-            parts.append(text(xat(index), 250, time, ink, anchor='middle'))
-    ends = []
-    for index, (key, label, dash, shape, values) in enumerate(ROOMS):
+            parts.append(text(xat(index), YBOT + 18, time, ink, size=FONT_SIZE, anchor='middle'))
+    for index, (key, label, values) in enumerate(ROOMS):
         colour = hexof(chart_ids[index])
-        dash_attr = f' stroke-dasharray="{" ".join(map(str, dash))}"' if dash else ''
         d, pen = [], 'M'
         for i, value in enumerate(values):
             if value is None:
@@ -180,29 +165,23 @@ def line_chart(mode):
             d.append(f'{pen}{fmt(xat(i))} {fmt(yat(value))}')
             pen = 'L'
         data_values = ','.join('' if value is None else str(value) for value in values)
-        parts.append(f'<path data-series="{key}" data-values="{data_values}" d="{" ".join(d)}" fill="none" stroke="{colour}" stroke-width="2"{dash_attr}/>')
-        for i, value in enumerate(values):
-            if value is not None:
-                parts.append(marker(shape, xat(i), yat(value), colour, ink))
-        ends.append(yat(values[-1]) + 4)
-        gaps = [i for i, value in enumerate(values) if value is None]
-        if gaps:
-            before, after = gaps[0] - 1, gaps[-1] + 1
-            middle = (xat(before) + xat(after)) / 2
-            level = max(yat(values[before]), yat(values[after]))
-            parts.append(text(middle, level + 14, 'No data', ink, size=11, anchor='middle'))
-    for index, y in enumerate(spread(ends)):
-        parts.append(text(X1 + 6, y, ROOMS[index][1], ink))
-    last = {label: values[-1] for _, label, _, _, values in ROOMS}
-    desc = ('Four lines, one for each room, with the room name at the end of each line. '
-            'The kitchen is a solid line with circles, the living room dashed with squares, the bedroom dotted with triangles and the bathroom dash-dot with diamonds. '
+        parts.append(f'<path data-series="{key}" data-values="{data_values}" d="{" ".join(d)}" fill="none" stroke="{colour}" stroke-width="2" stroke-linejoin="round"/>')
+        parts.append(no_data_label(values, ink))
+    # Legend under the plot, as the card draws it: a circle in the series
+    # colour and the entity name, two to a row so it fits at 320px.
+    for index, (key, label, _) in enumerate(ROOMS):
+        lx, ly = (6 if index % 2 == 0 else 118), YBOT + 42 + (index // 2) * 22
+        parts.append(f'<circle data-legend="{key}" cx="{lx + 6}" cy="{ly - 4}" r="6" fill="{hexof(chart_ids[index])}"/>')
+        parts.append(text(lx + 18, ly, label, ink, size=FONT_SIZE))
+    last = {label: values[-1] for _, label, values in ROOMS}
+    desc = ('Four solid lines, one for each room, named in the legend under the chart. '
             'Bathroom humidity jumps to 82% at 09:00 and 74% at 21:00, and the kitchen peaks at 66% at 18:00. '
             'The living room line has a gap at 06:00 and 09:00, where the sensor sent no reading. '
             f'At 21:00 the bathroom reads {last["Bathroom"]}%, the kitchen {last["Kitchen"]}%, the bedroom {last["Bedroom"]}% and the living room {last["Living room"]}%. '
             'The table below gives every reading.')
-    svg = (f'<svg role="img" aria-labelledby="{tid}-title {tid}-desc" viewBox="0 0 320 262" '
-           f'style="display:block;width:100%;max-width:480px;height:auto;font-family:{FONT};" data-chart="{tid}" data-chart-mode="{mode}">'
-           f'<title id="{tid}-title">Line chart of relative humidity in four rooms over one day, {look["title"].lower()}</title>'
+    svg = (f'<svg role="img" aria-labelledby="{tid}-title {tid}-desc" viewBox="0 0 {WIDTH} {HEIGHT}" '
+           f'style="display:block;width:100%;max-width:360px;height:auto;font-family:{FONT};" data-chart="{tid}" data-chart-mode="{mode}">'
+           f'<title id="{tid}-title">History graph of relative humidity in four rooms over one day, {look["title"].lower()}</title>'
            f'<desc id="{tid}-desc">{escape(desc)}</desc><g aria-hidden="true">{"".join(parts)}</g></svg>')
     return (f'<figure style="margin:0 0 30px;"><figcaption class="govuk-heading-s">{look["title"]}: relative humidity, 12 November 2026 (%)</figcaption>'
             f'{svg}</figure>')
@@ -210,26 +189,26 @@ def line_chart(mode):
 
 def categorical():
     reading = lambda value: 'Not supplied' if value is None else str(value)
-    rows = [[time] + [reading(values[i]) for _, _, _, _, values in ROOMS] for i, time in enumerate(TIMES)]
-    used = [(chart_ids[i], f'civica-chart-{i + 1}', f'{label} ({DASH_WORDS[dash]}, {MARKER_WORDS[shape]} marker)')
-            for i, (_, label, dash, shape, _) in enumerate(ROOMS)]
+    rows = [[time] + [reading(values[i]) for _, _, values in ROOMS] for i, time in enumerate(TIMES)]
+    used = [(chart_ids[i], f'civica-chart-{i + 1}', label) for i, (_, label, _) in enumerate(ROOMS)]
     used += [(GRID, None, 'grid lines'), ('black', None, 'labels in light mode'), ('white', None, 'labels in dark mode')]
-    low = {mode: [(name(colour), contrast(hexof(colour), look['surface'])) for colour in chart_ids if contrast(hexof(colour), look['surface']) < 3]
+    HARD_IN_DARK = 'blue-shade-50'
+    low = {mode: [f'{name(colour)} ({contrast(hexof(colour), look["surface"]):.1f}:1)' for colour in chart_ids if contrast(hexof(colour), look['surface']) < 3]
            for mode, look in SURFACES.items()}
-    dark_low = ' and '.join(f'{colour_name} ({ratio:.1f}:1)' for colour_name, ratio in low['dark'])
+    if low['light']:
+        raise SystemExit(f'Hard to see in light mode: {low["light"]}')
+    # The Chart colours page names Blue shade 50% (1.2:1 on the dark card) and
+    # Primary blue (2.9:1); chart_data records both. Keep this guard so the page stays true.
+    if HARD_IN_DARK not in chart_ids or contrast(hexof(HARD_IN_DARK), SURFACES['dark']['surface']) >= 1.5:
+        raise SystemExit('Blue shade 50% is no longer the hard-to-see series in dark mode; rewrite the Chart colours page')
     html = ''.join([
         '<section aria-labelledby="categorical-heading">',
-        '<h2 class="govuk-heading-m" id="categorical-heading">Four rooms keep their colours in light and dark mode</h2>',
-        '<p class="govuk-body"><strong>Synthetic data, not readings from a Home Assistant instance.</strong> '
-        'Relative humidity reported by four room sensors every 3 hours on Thursday 12 November 2026, Europe/London. '
-        'The rooms take <code>civica-chart-1</code> to <code>civica-chart-4</code> in the order they are listed, as a History graph card colours them. '
-        'The colours are the same in light and dark mode.</p>',
+        '<h2 class="govuk-heading-m" id="categorical-heading">A History graph card with the civica theme</h2>',
+        '<p class="govuk-body"><strong>Synthetic data.</strong> '
+        'Relative humidity from 4 room sensors every 3 hours on 12 November 2026, Europe/London, '
+        'drawn in light and dark mode.</p>',
         line_chart('light'),
         line_chart('dark'),
-        '<p class="govuk-body">Each room also has its own line style and marker, and its name at the end of its line, so the chart can be read without colour. '
-        'A History graph card draws plain solid lines, so there give each entity a clear name.</p>',
-        '<p class="govuk-body">The living room sensor sent no reading at 06:00 or 09:00, so its line has a gap and the table says “Not supplied”. A gap is not a reading of zero.</p>',
-        f'<p class="govuk-body">On the dark background, {dark_low} are hard to see, so there the outlined markers and the room names carry the meaning. Humidity is a reading at a moment, not an amount over a period.</p>',
         table('Relative humidity readings', 'Relative humidity every 3 hours, 12 November 2026 (%)', ['Time'] + [room[1] for room in ROOMS], rows),
         '<p class="govuk-body">Entity IDs: ' + ', '.join(f'<code>{key}</code>' for key, *_ in ROOMS) + '.</p>',
         colours_used(used),
@@ -237,27 +216,29 @@ def categorical():
     ])
     record = {
         'classification': 'Synthetic documentation data; not readings from a Home Assistant instance',
+        'card': 'History graph card as drawn with the civica theme: solid lines, legend under the plot, no dashes, markers or end labels',
         'measure': 'Relative humidity',
         'unit': '%',
         'time_zone': 'Europe/London',
         'date': '2026-11-12',
         'times': Flow(TIMES),
-        'colour_order': 'civica-chart-1 to civica-chart-4 from themes/civica.yaml, by position',
+        'colour_order': 'civica-chart-1 to civica-chart-4 from themes/civica.yaml, by entity position',
         'series': [{'key': key, 'label': label, 'theme_colour': f'civica-chart-{i + 1}', 'colour_id': chart_ids[i], 'hex': hexof(chart_ids[i]),
-                    'line_dash': Flow(dash), 'marker': shape, 'values': Flow(values)}
-                   for i, (key, label, dash, shape, values) in enumerate(ROOMS)],
+                    'values': Flow(values)}
+                   for i, (key, label, values) in enumerate(ROOMS)],
         'surfaces': {mode: look['surface'] for mode, look in SURFACES.items()},
+        'contrast_on_dark_card': {f'civica-chart-{i + 1}': round(contrast(hexof(colour), SURFACES['dark']['surface']), 1) for i, colour in enumerate(chart_ids)},
         'missing': 'No reading: a gap in the line, “No data” under the gap and “Not supplied” in the table.',
     }
     return {
-        'title': 'Four room humidity lines in the civica chart colours, in light and dark mode',
-        'description': 'A line chart of synthetic relative humidity in four rooms over one day, coloured civica-chart-1 to civica-chart-4 in order, with a line style, marker and end label for each room, a gap for missing readings and a matching table.',
-        'height': 1900,
+        'title': 'Four humidity sensors in a History graph card, in light and dark mode',
+        'description': 'A History graph card of synthetic relative humidity in four rooms over one day, coloured civica-chart-1 to civica-chart-4 by entity position, with a legend, a gap for missing readings and a matching table.',
+        'height': 1500,
         'html': html,
         'chart_data': record,
         'colour_reference': {
             'reviewed_on': '2026-11-18',
-            'classification': 'civica chart palette, categorical colours by position; the same in light and dark mode',
+            'classification': 'civica chart palette, categorical colours by entity position; the same in light and dark mode',
             'generator': 'docs/scripts/generate-data-colour-examples.py',
             'source': CHARTS['url'],
             'colours': [{'id': colour, 'name': name(colour), 'hex': hexof(colour), 'role': role, **({'theme_colour': token} if token else {})}
@@ -344,17 +325,26 @@ def signed(value, scale):
     return (MINUS if value < 0 else '+') + f'{abs(value):.1f}'
 
 
+# Each room's name sits on its own line above its row of cells, so the picture
+# is only 232 wide: 12-unit text renders at 12px or more down to a 232px-wide
+# picture (the embedded example at a 320px viewport is about 238px wide).
+HEAT_LEFT, HEAT_CELL, HEAT_ROW_LABEL, HEAT_CELL_HEIGHT, HEAT_TOP = 4, 32, 16, 28, 20
+HEAT_WIDTH = HEAT_LEFT * 2 + len(DAYS) * HEAT_CELL
+HEAT_ROW = HEAT_ROW_LABEL + HEAT_CELL_HEIGHT
+HEAT_HEIGHT = HEAT_TOP + 5 * HEAT_ROW + 22 + 12 + 3 * 24 + 6
+
+
 def heatmap(scale):
     tid = f'heatmap-{scale["id"]}'
     ink = hexof('black')
     grid = hexof(GRID)
-    gx, cw, ch, gy = 76, 34, 28, 22
-    parts = [f'<rect x="0" y="0" width="320" height="244" fill="#FFFFFF"/>']
+    gx, cw, ch, gy = HEAT_LEFT, HEAT_CELL, HEAT_CELL_HEIGHT, HEAT_TOP
+    parts = [f'<rect x="0" y="0" width="{HEAT_WIDTH}" height="{HEAT_HEIGHT}" fill="#FFFFFF"/>']
     for index, (short, _) in enumerate(DAYS):
         parts.append(text(gx + index * cw + cw / 2, 14, short, ink, anchor='middle'))
     for r, (room, values) in enumerate(scale['rows']):
-        y = gy + r * ch
-        parts.append(text(0, y + ch / 2 + 4, room, ink))
+        parts.append(text(gx, gy + r * HEAT_ROW + 12, room, ink))
+        y = gy + r * HEAT_ROW + HEAT_ROW_LABEL
         for c, value in enumerate(values):
             x = gx + c * cw
             step = step_for(scale, value)
@@ -366,11 +356,11 @@ def heatmap(scale):
             fill = hexof(step['colour'])
             parts.append(f'<rect data-room="{room}" data-day="{day}" data-value="{value}" data-step="{step["colour"]}" x="{x}" y="{y}" width="{cw}" height="{ch}" fill="{fill}" stroke="{grid}" stroke-width="1"/>')
             parts.append(text(x + cw / 2, y + ch / 2 + 4, signed(value, scale), hexof(ink_for(fill)), size=12, anchor='middle'))
-    ky = gy + len(scale['rows']) * ch + 22
-    parts.append(text(0, ky, f'Key ({scale["unit"]})', ink, weight=700))
+    ky = gy + len(scale['rows']) * HEAT_ROW + 22
+    parts.append(text(gx, ky, f'Key ({scale["unit"]})', ink, weight=700))
     keys = [(step['colour'], step['label']) for step in scale['steps']] + [(None, 'Not supplied')]
     for index, (colour, label) in enumerate(keys):
-        kx, kyy = (index % 3) * 107, ky + 12 + (index // 3) * 24
+        kx, kyy = gx + (index % 2) * (HEAT_WIDTH // 2), ky + 12 + (index // 2) * 24
         if colour is None:
             parts.append(f'<rect x="{kx}" y="{kyy}" width="16" height="16" fill="#FFFFFF" stroke="{grid}" stroke-width="1"/>')
             parts.append(f'<path d="M{kx + 3} {kyy + 3} L{kx + 13} {kyy + 13} M{kx + 13} {kyy + 3} L{kx + 3} {kyy + 13}" fill="none" stroke="{ink}" stroke-width="1.5"/>')
@@ -382,8 +372,8 @@ def heatmap(scale):
 
 def heatmap_figure(scale, caption, title, desc):
     tid, body = heatmap(scale)
-    svg = (f'<svg role="img" aria-labelledby="{tid}-title {tid}-desc" viewBox="0 0 320 244" '
-           f'style="display:block;width:100%;max-width:480px;height:auto;font-family:{FONT};" data-chart="{tid}">'
+    svg = (f'<svg role="img" aria-labelledby="{tid}-title {tid}-desc" viewBox="0 0 {HEAT_WIDTH} {HEAT_HEIGHT}" '
+           f'style="display:block;width:100%;max-width:360px;height:auto;font-family:{FONT};" data-chart="{tid}">'
            f'<title id="{tid}-title">{escape(title)}</title><desc id="{tid}-desc">{escape(desc)}</desc><g aria-hidden="true">{body}</g></svg>')
     return f'<figure style="margin:0 0 30px;"><figcaption class="govuk-heading-s">{escape(caption)}</figcaption>{svg}</figure>'
 
@@ -406,26 +396,22 @@ def quantitative():
     used += [(GRID, None, 'cell outlines'), ('black', None, 'labels and values on pale cells'), ('white', None, 'values on dark cells')]
     html = ''.join([
         '<section aria-labelledby="quantitative-heading">',
-        '<h2 class="govuk-heading-m" id="quantitative-heading">Colour can show an amount or a difference</h2>',
-        '<p class="govuk-body"><strong>Synthetic data, not readings from a Home Assistant instance.</strong> '
-        'A week of readings for 5 rooms, Monday 9 to Sunday 15 November 2026, Europe/London, as two heatmaps. Each cell prints its value, so the colour is never the only cue.</p>',
+        '<h2 class="govuk-heading-m" id="quantitative-heading">A week of room readings as two heatmaps</h2>',
+        '<p class="govuk-body"><strong>Synthetic data.</strong> '
+        'Daily readings for 5 rooms, Monday 9 to Sunday 15 November 2026, Europe/London; each cell prints its value.</p>',
         '<section class="c-data-colour-reference" aria-labelledby="sequential-heading">',
         '<h3 class="govuk-heading-m" id="sequential-heading">An amount: energy used each day, 0 to 2 kWh</h3>',
-        '<p class="govuk-body">Five steps of Blues, from light for less to dark for more. Each step covers 0.4 kWh, and a value on a boundary goes in the higher step. '
-        'A reading of 0.00 kWh is a real zero and takes the lightest step. A missing reading is a crossed empty cell, not a colour from the scale.</p>',
+        '<p class="govuk-body">Five steps of Blues, 0.4 kWh each. A value on a boundary goes in the higher step.</p>',
         heatmap_figure(seq, 'Energy used each day by room, 9 to 15 November 2026 (kWh)', 'Heatmap of energy used each day by room in kilowatt-hours', seq_desc),
         heatmap_table(seq, 'Daily energy use by room', 'Energy used each day by room, 9 to 15 November 2026 (kWh)'),
         '</section>',
         '<section class="c-data-colour-reference" aria-labelledby="divergent-heading">',
         '<h3 class="govuk-heading-m" id="divergent-heading">A difference: temperature against a 20 °C target</h3>',
         '<p class="govuk-body">Each cell is the room’s <strong>average temperature while the heating was scheduled on, minus the 20 °C target</strong>. '
-        'Blues are below the target and reds above it, with Black tint 95% within half a degree. A value on a boundary goes in the step nearer the centre. '
-        'Below and above are directions, not failure and success: red here means warmer, not an error. A difference of 0.0 °C means on target; it does not mean missing.</p>',
+        'Blues are below the target, reds above it and Black tint 95% within half a degree. A value on a boundary goes in the step nearer the centre.</p>',
         heatmap_figure(div, 'Difference from the 20 °C target by room, 9 to 15 November 2026 (°C)', 'Heatmap of each room’s daily temperature difference from a 20 °C target', div_desc),
         heatmap_table(div, 'Daily difference from the heating target by room', 'Difference from the 20 °C target by room, 9 to 15 November 2026 (°C)'),
         '</section>',
-        '<p class="govuk-body">Both scales have fixed ends: 0 to 2.0 kWh and −2.5 to +2.5 °C. A value beyond them is <strong>outside this scale</strong>: show the value and say so, or revise the range, rather than giving it the end colour. '
-        'Never turn missing data into zero, the centre or a reassuring colour. Every value is printed on a fill where it reaches at least 4.5:1, in Black on the pale steps and White on the dark ones.</p>',
         colours_used(used),
         '</section>',
     ])
@@ -457,7 +443,6 @@ def quantitative():
             'sequential': scale_record(seq),
             'divergent': scale_record(div),
             'missing': 'No mapped colour: a crossed empty cell, the key entry “Not supplied” and “Not supplied” in the table.',
-            'out_of_range': 'Outside this scale; no automatic clipping to an end colour.',
             'text_contrast': 'Black on the pale steps and White on the dark steps, each at least 4.5:1, chosen by the generator.',
             'colours': [{'id': colour, 'name': name(colour), 'hex': hexof(colour), 'role': role} for colour, _, role in used],
         },

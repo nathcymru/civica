@@ -17,6 +17,8 @@ updates:
     description: "Rewritten for Home Assistant users: removed outside source names, gave each set of example tiles a caption saying what to notice, and rebuilt 2 companion tiles so that every companion example uses one of the 9 pairings."
   - date: "2026-11-18"
     description: "Defined tonal and companion colours, gave the tonal tiles serious messages in one colour family each, corrected what the social palette contains, and removed repeated sentences."
+  - date: "2026-11-18"
+    description: "The yellow companion tile now invites people to see where their energy goes on the Energy dashboard. The order of the tone examples no longer depends on screen width, and the contrast check links to the Colour page."
 ai_instructions: "Apply when making a social media graphic or a promotional tile about civica or a household's Home Assistant set-up. Use only the civica social palette on this page, rendered from docs/data/govuk-brand-colours.json. The social palette is the app palette without the 2 dark mode blues (no browns). Match the colour to the tone: black and white or a dark shade to inform, a tonal colour (the tints and shades of one colour family) for a serious message such as a warning or a fault, a companion colour (one of the 9 listed pairings) to prompt action or share good news. Accent blue on Primary blue and Primary blue on Primary yellow reach only 3:1, so use them only for large text or graphics. Every other text pair must reach WCAG 2.2 AA contrast. Never rely on colour alone. Social colours do not follow the theme colour and are not used in the Home Assistant interface. Do not name outside sources in page text. Rules WG-001, WG-002, WG-081."
 ai_related:
   - path: "/styles/colour-web.html"
@@ -54,12 +56,12 @@ A tonal colour uses the tints and shades of one colour family. A companion colou
 
 ### From most informative to most inspiring
 
-Five posts, from the most informative on the left to the most inspiring on the right.
+Five posts, in order from the most informative to the most inspiring.
 
 <div class="c-inform-inspire">
 <p class="c-inform-inspire__axis"><span>Inform</span><span class="c-inform-inspire__line" aria-hidden="true"></span><span>Inspire</span></p>
 <%= colour_example('social-colour-tone', layout: :scale, callout: false) %>
-<p>Colour use, from left to right:</p>
+<p>Colour use, in order, from first to last:</p>
 <ul>
 <li>black and white</li>
 <li>dark shade</li>
@@ -80,7 +82,7 @@ Use a tonal colour for a serious message, such as a warning or a fault. One colo
 Use companion colours for emphasis, for example to prompt an action or to share good news. Keep to these 9 pairings, which have been checked for contrast. Accent blue on Primary blue and Primary blue on Primary yellow reach only 3:1, so use them only for large text or graphics.
 
 - Some pairings are harder to see for people with a visual impairment or colour blindness, so choose carefully.
-- Check every pairing that carries text against WCAG 2.2 contrast (minimum), level AA.
+- Check every pairing that carries text, as [Test combinations and keep another cue](colour.html#bg-col-03) explains.
 - Do not rely on colour alone to show meaning, ask for an action or prompt a response.
 - Some people browse in dark mode or with high contrast settings. Check the post there, and adjust the colours if you need to.
 

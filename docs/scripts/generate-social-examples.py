@@ -96,12 +96,13 @@ examples['social-colour-tonal'] = {
 
 # 3. Companion colour examples.
 comp = []
-body = (f'<path d="M540 140v170M450 230l90-90 90 90" fill="none" stroke="{hexof("blue")}" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>'
-        + lines(['Get help to'], 540, 470, 84, hexof('blue'))
-        + f'<rect x="380" y="520" width="320" height="130" rx="65" fill="{hexof("blue")}"/>' + lines(['cut'], 540, 612, 84, hexof('white'))
-        + lines(['your energy bill'], 540, 760, 84, hexof('blue')))
-comp.append(figure('companion-yellow', svg('companion-yellow', 'Social tile: Get help to cut your energy bill',
-                                           'A Primary blue arrow above “Get help to cut your energy bill” in large Primary blue text, with “cut” in White on a Primary blue lozenge, on a Primary yellow background.', body, 'yellow'),
+body = (f'<path d="M420 320H660" fill="none" stroke="{hexof("blue")}" stroke-width="20" stroke-linecap="round"/>'
+        + ''.join(f'<rect x="{x}" y="{y}" width="56" height="{310 - y}" fill="{hexof("blue")}"/>' for x, y in [(440, 220), (512, 140), (584, 190)])
+        + lines(['See where your'], 540, 470, 84, hexof('blue'))
+        + f'<rect x="355" y="520" width="370" height="130" rx="65" fill="{hexof("blue")}"/>' + lines(['energy'], 540, 612, 84, hexof('white'))
+        + lines(['goes'], 540, 760, 84, hexof('blue')))
+comp.append(figure('companion-yellow', svg('companion-yellow', 'Social tile: See where your energy goes',
+                                           'A Primary blue bar chart above “See where your energy goes” in large Primary blue text, with “energy” in White on a Primary blue lozenge, on a Primary yellow background.', body, 'yellow'),
                    'Primary blue on Primary yellow', ['blue', 'white', 'yellow']))
 body = (f'<path d="M540 500c-90-110-150-170-150-250a150 150 0 0 1 300 0c0 80-60 140-150 250z" fill="{hexof("magenta")}"/><circle cx="540" cy="250" r="55" fill="{hexof("blue-tint-95")}"/>'
         + lines(['Check who', 'is home'], 540, 680, 110, hexof('blue-shade-50')))
@@ -118,7 +119,7 @@ examples['social-colour-companion'] = {
     'description': 'Three Home Assistant social tiles, each built on one of the companion colour pairings.',
     'height': 800,
     'html': '<section aria-labelledby="social-companion-h"><h2 class="govuk-heading-m" id="social-companion-h">Companion colour</h2>'
-            '<p class="govuk-body">Three posts that prompt an action: getting help with an energy bill, checking who is home and adding a door sensor. The messages are invented examples.</p>'
+            '<p class="govuk-body">Three posts that prompt an action: seeing where the household’s energy goes on the Energy dashboard, checking who is home and adding a door sensor. The messages are invented examples.</p>'
             + grid(comp) + '</section>',
 }
 

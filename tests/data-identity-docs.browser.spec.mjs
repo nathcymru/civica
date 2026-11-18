@@ -18,7 +18,7 @@ const tableRows = table => table.locator('tbody tr').evaluateAll(rows => rows.ma
 
 // The guide-wide suite covers general accessibility and source rendering. These
 // checks own the numerical meaning and the separation of colour from identity.
-test('categorical line chart takes civica-chart-1 to civica-chart-4 in order, in light and dark mode', async ({ page }) => {
+test('categorical example draws a History graph card: civica-chart-1 to civica-chart-4 by position, solid lines and a legend, in light and dark mode', async ({ page }) => {
   const spec = colours['data-colour-categorical'];
   const data = spec.chart_data;
   // civica-chart-N in the first (light) block of the theme, and the same in dark mode.
@@ -33,23 +33,52 @@ test('categorical line chart takes civica-chart-1 to civica-chart-4 in order, in
   for (const mode of ['light', 'dark']) {
     const svg = page.locator(`svg[data-chart-mode="${mode}"]`);
     await expect(svg).toHaveAttribute('role', 'img');
-    const lines = await svg.locator('path[data-series]').evaluateAll(nodes => nodes.map(node => ({ key: node.dataset.series, values: node.dataset.values.split(',').map(value => value === '' ? null : Number(value)), stroke: node.getAttribute('stroke'), dash: node.getAttribute('stroke-dasharray') ?? '' })));
+    const lines = await svg.locator('path[data-series]').evaluateAll(nodes => nodes.map(node => ({ key: node.dataset.series, values: node.dataset.values.split(',').map(value => value === '' ? null : Number(value)), stroke: node.getAttribute('stroke'), dash: node.getAttribute('stroke-dasharray') })));
     expect(lines.map(line => line.key)).toEqual(data.series.map(series => series.key));
-    expect(new Set(lines.map(line => line.dash)).size).toBe(lines.length);
     for (const [index, series] of data.series.entries()) {
       expect(lines[index].values).toEqual(series.values);
       expect(lines[index].stroke).toBe(series.hex);
-      expect(lines[index].dash).toBe(series.line_dash.join(' '));
+      // A native History graph card draws solid lines only.
+      expect(lines[index].dash).toBeNull();
     }
-    // Each room is named twice: in the legend and at the end of its line.
+    // No markers: the only circles are the legend bullets, one per series in its colour.
+    const bullets = await svg.locator('circle').evaluateAll(nodes => nodes.map(node => ({ key: node.dataset.legend, fill: node.getAttribute('fill') })));
+    expect(bullets).toEqual(data.series.map(series => ({ key: series.key, fill: series.hex })));
+    await expect(svg.locator('rect')).toHaveCount(1);
+    // Each room is named once, in the legend: no end labels.
     const labels = await svg.locator('text').allTextContents();
-    for (const series of data.series) expect(labels.filter(label => label === series.label)).toHaveLength(2);
-    expect(labels).toContain('No data');
+    for (const series of data.series) expect(labels.filter(label => label === series.label)).toHaveLength(1);
+    expect(labels.filter(label => label === 'No data')).toHaveLength(1);
   }
   const rows = await tableRows(page.getByRole('table'));
   expect(rows).toEqual(data.times.map((time, index) => [time, ...data.series.map(series => series.values[index] === null ? 'Not supplied' : String(series.values[index]))]));
-  await expect(page.locator('.c-example-canvas')).not.toContainText(/Vivid|Muted|OKLCH|GOV\.UK/i);
+  await expect(page.locator('.c-example-canvas')).not.toContainText(/Vivid|Muted|OKLCH|GOV\.UK|real zero|at a moment|line style|marker/i);
   await expect(page.getByRole('button')).toHaveCount(0);
+});
+
+test('chart text in the data colour examples renders at 12px or more at a 320px viewport, and No data sits off the grid lines', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  for (const id of ['data-colour-categorical', 'data-colour-quantitative']) {
+    await page.goto(exampleUrl(id));
+    const sizes = await page.locator('svg[data-chart] text').evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect().height > 0 && Number(node.getAttribute('font-size')) * node.ownerSVGElement.getScreenCTM().a));
+    expect(sizes.length).toBeGreaterThan(0);
+    for (const size of sizes) expect(size, id).toBeGreaterThanOrEqual(12);
+  }
+  await page.goto(exampleUrl('data-colour-categorical'));
+  for (const svg of await page.locator('svg[data-chart-mode]').all()) {
+    const box = await svg.locator('text', { hasText: 'No data' }).boundingBox();
+    const lines = await svg.locator('line').evaluateAll(nodes => nodes.map(node => node.getBoundingClientRect()));
+    for (const line of lines) expect(line.y < box.y || line.y > box.y + box.height).toBe(true);
+  }
+  // The same holds inside the narrower embedded frame on the Chart colours page.
+  await page.goto('/docs/build/styles/chart-colour.html');
+  for (const id of ['data-colour-categorical', 'data-colour-quantitative']) {
+    const frame = page.frameLocator(`#example-${id} iframe`);
+    await page.locator(`#example-${id} iframe`).scrollIntoViewIfNeeded();
+    await expect(frame.locator('svg[data-chart]').first()).toBeVisible();
+    const sizes = await frame.locator('svg[data-chart] text').evaluateAll(nodes => nodes.map(node => Number(node.getAttribute('font-size')) * node.ownerSVGElement.getScreenCTM().a));
+    for (const size of sizes) expect(size, `${id} embedded`).toBeGreaterThanOrEqual(12);
+  }
 });
 
 test('quantitative heatmaps use listed scale steps, print every value and keep missing distinct from zero', async ({ page }) => {
@@ -92,7 +121,8 @@ test('quantitative heatmaps use listed scale steps, print every value and keep m
   }
   // A supplied zero takes a colour; a missing reading does not.
   expect(reference.sequential.rows.some(row => row.values.includes(0))).toBe(true);
-  await expect(page.locator('.c-example-canvas')).toContainText('outside this scale');
+  // Scale rules (outside the scale, missing, real zero) are stated on the Chart colours page, not repeated in the example.
+  await expect(page.locator('.c-example-canvas')).not.toContainText(/outside this scale|real zero|failure and success|at a moment/i);
   // The two-scale limit is stated once, on the Chart colours page, not in the example.
   expect(readFileSync('docs/build/styles/chart-colour.html', 'utf8')).toContain('Use no more than 2 colour scales in one chart.');
   await expect(page.locator('.c-example-canvas')).not.toContainText(/interpolate/i);

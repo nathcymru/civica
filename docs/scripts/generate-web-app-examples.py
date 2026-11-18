@@ -253,7 +253,7 @@ PANELS = [('dashboard', 'Overview'), ('bolt', 'Energy'), ('map', 'Map'), ('logbo
 
 def thermostat(p, x, y, w):
     """A thermostat card in heat mode: the dial shows the target temperature
-    and its buttons. Heat is Home Assistant's orange, which civica keeps."""
+    and its buttons. Heat is Home Assistant's orange, drawn as Primary orange."""
 
     cx, cy, r = x + w / 2, y + 112, 72
     out = card(p, x, y, w, 210) + p.text(cx, y + 26, 'Thermostat', 15, 'black', 'white', 700, 'middle')
@@ -322,10 +322,10 @@ body = (f'<rect width="800" height="540" fill="{p.c("white")}"/>'
         + card(p, 508, 390, 276, 80) + p.text(524, 422, 'Bins go out on Thursday.', 15, 'black', 'white')
         + p.text(524, 450, 'See the bin calendar', 15, 'blue-shade-10', 'white') + f'<rect x="524" y="453" width="131" height="1.5" fill="{p.c("blue-shade-10")}"/>'
         + f'<rect x="0.5" y="0.5" width="799" height="539" fill="none" stroke="{p.c("black-tint-80")}"/>')
-web_desc = ('A desktop browser shows a Home Assistant dashboard with the civica theme on a White background. '
-            'On the left is Home Assistant’s sidebar: a Primary blue row with the menu icon and the civica logo in White, then Overview, which is selected, Energy, Map, Logbook and History, and at the bottom Settings, Notifications and the user Alex Morgan. '
+web_desc = ('A desktop browser shows a Home Assistant dashboard with the civica theme and companion on a White background. '
+            'On the left is Home Assistant’s sidebar: a Primary blue row with the menu icon and the civica logo in White, which the civica companion adds, then Overview, which is selected, on a Black tint 95% row with its icon and name in Blue shade 25%, Energy, Map, Logbook and History, and at the bottom Settings, Notifications and the user Alex Morgan. '
             'The Primary blue toolbar has the view tabs Home, Upstairs and Garden in White, with Home underlined, and Search, Assist and menu icons. '
-            'The Home view has 2 badges, 9.5 °C and 1.2 kW, and 2 sections. Living room has an entities card where Main light is on, with a Primary blue switch, and Lamp is off, and a thermostat card heating to 21 °C with a current temperature of 19.5 °C on an orange dial. '
+            'The Home view has 2 badges, 9.5 °C and 1.2 kW, and 2 sections. Living room has an entities card where Main light is on, with a Primary blue switch, and Lamp is off, and a thermostat card heating to 21 °C with a current temperature of 19.5 °C on a Primary orange dial. '
             'Kitchen has tiles for Temperature 20.5 °C, Humidity 48 % and Window Closed, and a card that says bins go out on Thursday with a link to the bin calendar in Blue shade 10%. '
             'Cards are White with Black tint 80% borders, text is Black and secondary text Black tint 25%.')
 web = figure('web-dashboard',
@@ -336,12 +336,13 @@ web = figure('web-dashboard',
              ['white', 'blue', 'black-tint-80', 'black', 'black-tint-25', 'blue-shade-10'])
 examples['web-colour-dashboard'] = {
     'title': 'A Home Assistant dashboard in the web palette',
-    'description': 'A Home Assistant dashboard with the civica theme in a desktop browser: Home Assistant’s sidebar, the Primary blue toolbar with view tabs, and White cards with quiet borders on a White background.',
+    'description': 'A Home Assistant dashboard with the civica theme and companion in a desktop browser: Home Assistant’s sidebar, the Primary blue toolbar with view tabs, and White cards with quiet borders on a White background.',
     'height': 700,
     'html': '<section aria-labelledby="web-dashboard-h"><h2 class="govuk-heading-m" id="web-dashboard-h">Web palette example</h2>' + block(
-        'A Home Assistant dashboard with the civica theme in a desktop browser. Notice the White background and cards, the Primary blue toolbar with the view tabs in White, '
+        'A Home Assistant dashboard with the civica theme and companion in a desktop browser. Notice the White background and cards, the Primary blue toolbar with the view tabs in White, '
         'Black tint 80% card borders, Black text with secondary text and sidebar icons in Black tint 25%, and the link in Blue shade 10%. '
-        'The switch that is on is Primary blue. The orange heating dial is Home Assistant’s own colour for heating, which the theme keeps.', [web]) + '</section>',
+        'The switch that is on is Primary blue. The heating dial uses Home Assistant’s own orange for heating, drawn in the nearest palette colour, Primary orange. '
+        'The theme colours for the selected sidebar row, #E8EEF3 and #19578D, are not palette colours either, so the row is drawn as Black tint 95% with Blue shade 25% text.', [web]) + '</section>',
 }
 
 # 2. Mobile web header: the same dashboard in a phone browser.
@@ -444,38 +445,47 @@ examples['app-colour-header'] = {
 # 4. Examples: tinted tile icons, and the tinted row in the sidebar.
 p = Picture(PALETTES['app'])
 upstairs = (toolbar(p, 10, 54, 360, None, tabs=[('Home', 58, False), ('Upstairs', 80, True), ('Garden', 70, False)], actions=('search', 'dots'))
-            + heading(p, 26, 146, 'Bedroom')
-            + tile(p, 22, 158, 164, 'Bedside lamp', 'On · 40 %', 'lamp', 'yellow', 'yellow-tint-80')
-            + tile(p, 194, 158, 164, 'Ceiling light', 'Off', 'bulb')
-            + tile(p, 22, 222, 336, 'Heating', 'Heat · 19 °C', 'flame', 'orange', 'orange-tint-80')
-            + tile(p, 22, 286, 164, 'Window', 'Closed', 'window') + tile(p, 194, 286, 164, 'Humidity', '52 %', 'drop')
-            + heading(p, 26, 384, 'Office')
-            + tile(p, 22, 396, 164, 'Desk lamp', 'On · 70 %', 'lamp', 'yellow', 'yellow-tint-80')
-            + tile(p, 194, 396, 164, 'Spotlights', 'Off', 'bulb')
-            + tile(p, 22, 460, 336, 'Temperature', '20 °C', 'thermometer'))
+            + heading(p, 26, 196, 'Bedroom')
+            + tile(p, 22, 208, 164, 'Bedside lamp', 'On · 40 %', 'lamp', 'yellow', 'yellow-tint-80')
+            + tile(p, 194, 208, 164, 'Ceiling light', 'Off', 'bulb')
+            + tile(p, 22, 272, 336, 'Heating', 'Heat · 19 °C', 'flame', 'orange', 'orange-tint-80')
+            + tile(p, 22, 336, 164, 'Window', 'Closed', 'window') + tile(p, 194, 336, 164, 'Humidity', '52 %', 'drop')
+            + heading(p, 26, 434, 'Office')
+            + tile(p, 22, 446, 164, 'Desk lamp', 'On · 70 %', 'lamp', 'yellow', 'yellow-tint-80')
+            + tile(p, 194, 446, 164, 'Spotlights', 'Off', 'bulb')
+            + tile(p, 22, 510, 336, 'Temperature', '20 °C', 'thermometer')
+            # A guide annotation, not Home Assistant UI: an Accent yellow label
+            # with a Black border, pointing up at the menu icon.
+            + f'<path d="M26 128L36 113L46 128" fill="{p.c("yellow-accent")}" stroke="{p.c("black")}" stroke-width="2" stroke-linejoin="round"/>'
+            + f'<rect x="20" y="127" width="206" height="38" rx="19" fill="{p.c("yellow-accent")}" stroke="{p.c("black")}" stroke-width="2"/>'
+            + f'<rect x="28" y="125" width="16" height="4" fill="{p.c("yellow-accent")}"/>'
+            + p.text(123, 152, 'Tap to open the menu', 16, 'black', 'yellow-accent', 700, 'middle'))
 drawer = (f'<rect x="10" y="54" width="360" height="696" fill="{p.c("black-tint-50")}"/>'
           + f'<rect x="274" y="54" width="96" height="56" fill="{p.c("blue-shade-25")}"/>'
           + sidebar(p, 10, 54, 264, 696, 'Overview', PANELS + [('todo', 'To-do lists')], 172))
 examples_pictures = [
-    svg('app-examples', 'App examples: tiles with tinted icons', 'The Companion app shows the Upstairs view under the Primary blue toolbar. Each tile has its icon in a tinted circle: '
+    svg('app-examples', 'App examples: tiles with tinted icons', 'The Companion app shows the Upstairs view under the Primary blue toolbar. '
+        'A guide annotation, which is not part of the app, points at the menu icon: an Accent yellow label with a Black border that says Tap to open the menu in Black. Each tile has its icon in a tinted circle: '
         'Bedside lamp and Desk lamp are on, with yellow icons on Yellow tint 80%; Heating is heating, with an orange icon on Orange tint 80%; Ceiling light, Spotlights and the sensors have Black tint 25% icons on Black tint 80%. '
         'The tiles themselves stay White with Black tint 80% borders.', phone(p, 'app-examples-clip', upstairs), 380, 760),
     svg('app-examples-b', 'App examples: the sidebar with a tinted row', 'The Companion app shows Home Assistant’s sidebar, opened from the menu icon, over the dimmed dashboard. '
-        'It starts with a Primary blue row with the menu icon and the civica logo in White. Overview, the open dashboard, is on a Black tint 95% row with its icon and name in Blue shade 25%. '
+        'It starts with a Primary blue row with the menu icon and the civica logo in White, which appears when the civica companion is installed. Overview, the open dashboard, is on a Black tint 95% row with its icon and name in Blue shade 25%. '
         'Below are Energy, Map, Logbook, History and To-do lists, then Settings, Notifications and the user Alex Morgan.', phone(p, 'app-examples-b-clip', drawer), 380, 760),
 ]
 example_figure = figure('app-examples', phones(*examples_pictures),
-                        'A drawing of the Companion app, not a screenshot: the household, rooms and readings are invented.', p,
-                        ['yellow-tint-80', 'black-tint-80', 'black-tint-95', 'blue-shade-25'])
+                        'A drawing of the Companion app, not a screenshot: the household, rooms and readings are invented, and the Accent yellow label is a guide annotation, not part of the app.', p,
+                        ['yellow-accent', 'yellow-tint-80', 'black-tint-80', 'black-tint-95', 'blue-shade-25'])
 examples['app-colour-examples'] = {
     'title': 'Tinted tile icons and menu rows in Companion app screens',
     'description': 'Two Companion app screens: tiles that tint only their icon circle, and the sidebar with a tinted row for the open dashboard.',
     'height': 900,
     'html': '<section aria-labelledby="app-examples-h"><h2 class="govuk-heading-m" id="app-examples-h">Examples</h2>' + block(
         'Two Companion app screens: the Upstairs view of a dashboard, and the sidebar opened from the menu icon. '
-        'Notice that each tile tints only its icon circle, Yellow tint 80% for a light that is on and Black tint 80% for one that is off, '
+        'Notice the Accent yellow guide label, an App palette colour, with Black text and a Black border, pointing at the menu icon. '
+        'Notice too that each tile tints only its icon circle, Yellow tint 80% for a light that is on and Black tint 80% for one that is off, '
         'and that the sidebar marks the open dashboard with a Black tint 95% row and Blue shade 25% text. The tints add structure without filling whole cards. '
-        'Home Assistant’s own amber for lights and orange for heating are drawn with the nearest palette colours.', [example_figure]) + '</section>',
+        'The sidebar’s Primary blue row with the civica logo appears when the civica companion is installed. '
+        'Home Assistant’s own amber for lights and orange for heating, and the theme’s #E8EEF3 and #19578D for the open dashboard’s sidebar row, are not palette colours, so they are drawn with the nearest palette colours.', [example_figure]) + '</section>',
 }
 
 

@@ -1,7 +1,7 @@
 examples:
   bg-colour-role-separation:
     title: Interface colours change; status meaning stays stable
-    description: The same unavailable kitchen sensor with the Green and the Red theme colour. The household and reading are invented.
+    description: The same unavailable kitchen sensor with the Green and the Red theme colour.
     height: 650
     html: |
       <div class="civica-pattern-grid">
@@ -20,7 +20,7 @@ examples:
       </div>
   bg-colour-boundaries:
     title: A quiet card boundary and a strong input boundary
-    description: "Renaming an area, as you would from Settings > Areas, labels & zones > Kitchen. Select the Name field or press Tab to see the focus ring. The household is invented."
+    description: "Renaming an area, as you would from Settings > Areas, labels & zones > Kitchen. Select the Name field or press Tab to see the focus ring."
     height: 360
     html: |
       <section class="civica-card" aria-labelledby="room-boundary-title">
@@ -33,22 +33,16 @@ examples:
       </section>
   bg-colour-state-labels:
     title: Device states written out on an entities card
-    description: An entities card called Device checks on a household's Overview dashboard. The devices are invented.
-    height: 560
+    description: An entities card called Device checks on a household's Overview dashboard, with an icon, a name and a state on each row.
+    height: 340
     html: |
       <section class="civica-card" aria-labelledby="state-labels-title">
         <h2 class="govuk-heading-m" id="state-labels-title">Device checks</h2>
-        <div class="civica-table-scroll" role="region" tabindex="0" aria-label="Device checks, scroll horizontally if needed">
-        <table class="govuk-table">
-          <caption class="govuk-table__caption govuk-visually-hidden">Device checks</caption>
-          <thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Entity</th><th scope="col" class="govuk-table__header">State</th></tr></thead>
-          <tbody class="govuk-table__body">
-            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Kitchen light</th><td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">On</strong></td></tr>
-            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Hall sensor battery</th><td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">12%</strong></td></tr>
-            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Bedroom sensor temperature</th><td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">Unavailable</strong></td></tr>
-          </tbody>
-        </table>
-        </div>
+        <ul class="govuk-list govuk-body" style="margin-bottom:0">
+          <li style="display:flex;align-items:center;gap:16px;min-height:40px"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" style="flex:none"><circle cx="12" cy="9" r="6" fill="none" stroke="#0B0C0C" stroke-width="2"/><path d="M9 16h6M10 20h4" stroke="#0B0C0C" stroke-width="2" stroke-linecap="round"/></svg><span style="flex:1 1 auto;min-width:0">Kitchen light</span><span style="flex:none;text-align:right">On</span></li>
+          <li style="display:flex;align-items:center;gap:16px;min-height:40px"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" style="flex:none"><rect x="7" y="4" width="10" height="17" rx="1" fill="none" stroke="#0B0C0C" stroke-width="2"/><path d="M10 2h4" stroke="#0B0C0C" stroke-width="2" stroke-linecap="round"/><rect x="9" y="17" width="6" height="2" fill="#0B0C0C"/></svg><span style="flex:1 1 auto;min-width:0">Hall sensor battery</span><span style="flex:none;text-align:right">12%</span></li>
+          <li style="display:flex;align-items:center;gap:16px;min-height:40px"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false" style="flex:none"><path d="M10 4a2 2 0 0 1 4 0v10a4 4 0 1 1-4 0Z" fill="none" stroke="#0B0C0C" stroke-width="2" stroke-linejoin="round"/></svg><span style="flex:1 1 auto;min-width:0">Bedroom temperature</span><span style="flex:none;text-align:right">Unavailable</span></li>
+        </ul>
       </section>
   bg-type-household-hierarchy:
     title: A long room name with a clear heading structure

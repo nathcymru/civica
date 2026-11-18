@@ -17,7 +17,9 @@ updates:
     description: "Rewritten for Home Assistant users: added the working OpenStreetMap example to this page, gave each example a caption saying what to notice, and removed outside source names and notes about the documentation."
   - date: "2026-11-18"
     description: "Tied each colour in the working OpenStreetMap example to a feature you can see, added its colour key, said how the native Map card can take these colours, and corrected what the page said about rivers."
-ai_instructions: "Apply when colouring a map: a base map, zones, device or person locations, or areas. Use only the civica map palette on this page, rendered from docs/data/govuk-brand-colours.json; never type a hex value. For a base map with data: land Black tint 95% with a Black tint 80% outline, sea Teal tint 95%, coastal areas Teal tint 80%, one data colour (Accent green with a Primary green outline), labels Black. Tell zones and markers apart by shape, letter and label, not by a second colour. On the working OpenStreetMap example, roads are White with Black tint 80% edges and buildings Black tint 80%; rivers are Teal tint 80% lines with low contrast against the land. Map colours are the same in light and dark mode and never follow the theme colour. The native Map card can take these colours through a custom map_style with colors and colors_dark; civica ships no Map card restyle. Attribution, locations and uncertainty are owned by Maps, zones and location records. Do not name outside sources on the page. Rules WG-001, WG-002, WG-081."
+  - date: "2026-11-18"
+    description: "Said that a custom map style colours only the base map, not the Map card's zones and markers. Added White to the base map colours and removed the repeated colour list under the working example. The zones drawing now fits narrow screens."
+ai_instructions: "Apply when colouring a map: a base map, zones, device or person locations, or areas. Use only the civica map palette on this page, rendered from docs/data/govuk-brand-colours.json; never type a hex value. For a base map with data: land Black tint 95% with a Black tint 80% outline, sea Teal tint 95%, coastal areas Teal tint 80%, one data colour (Accent green with a Primary green outline), labels Black. Tell zones and markers apart by shape, letter and label, not by a second colour. On the working OpenStreetMap example, roads are White with Black tint 80% edges and buildings Black tint 80%; rivers are Teal tint 80% lines with low contrast against the land. Map colours are the same in light and dark mode and never follow the theme colour. The native Map card can take the base map colours through a custom map_style with colors and colors_dark; that setting does not colour zones or markers: the Home zone takes primary-color, passive zones secondary-text-color, other zones, people and trackers color-N in creation order (civica chart colours), so Accent green zones and markers apply only to maps you draw yourself. civica ships no Map card restyle. Attribution, locations and uncertainty are owned by Maps, zones and location records. Do not name outside sources on the page. Rules WG-001, WG-002, WG-081."
 ai_related:
   - path: "/home-assistant/maps-and-zones.html"
     title: "Maps, zones and location records"
@@ -55,13 +57,13 @@ The map palette has:
 
 [Test combinations and keep another cue](colour.html#bg-col-03) explains the contrast that text and controls need.
 
-### Example
+### Example: zones on a base map
 
 Three Home Assistant zones, Home, Work and School, drawn on a base map. Notice that every zone uses the same colour with a darker outline, and that each zone is named, so you can tell them apart without colour.
 
 <%= colour_example('map-govuk-zones', layout: :map, callout: false) %>
 
-### Colours used in example
+### Colours used in the example
 
 #### Points of interest
 
@@ -71,9 +73,9 @@ Zones and markers are Accent green with a Primary green outline. Accent green on
 
 #### Base map
 
-Land is Black tint 95% with a Black tint 80% outline. Sea is Teal tint 95%, with a band of Teal tint 80% along the coast.
+Land is Black tint 95% with a Black tint 80% outline. Sea is Teal tint 95%, with a band of Teal tint 80% along the coast. On the working example below, roads are White.
 
-<%= colour_swatches(%w[black-tint-80 black-tint-95 teal-tint-80 teal-tint-95], key: 'example') %>
+<%= colour_swatches(%w[white black-tint-80 black-tint-95 teal-tint-80 teal-tint-95], key: 'example') %>
 
 ## Working OpenStreetMap example
 
@@ -90,12 +92,14 @@ Rivers and streams are thin Teal tint 80% lines, which have low contrast with th
 
 <%= example('map-neighbourhood-records') %>
 
-### Colours in the working example
-
-<%= colour_swatches(%w[white black-tint-80 black-tint-95 teal-tint-95 teal-tint-80 green-accent green black], key: 'osm') %>
+[Colours used in the example](#colours-used-in-the-example) has swatches of every colour on this map.
 
 ## In Home Assistant
 
-civica ships no restyle of the native Map card, which keeps its own map styles. You can give the Map card these colours yourself by setting a custom `map_style` with `colors` and `colors_dark`: [What the native Map card offers](../home-assistant/maps-and-zones.html#what-the-native-map-card-offers) explains the options. Use the same colours for both, because map colours do not change in dark mode.
+civica ships no restyle of the native Map card, which keeps its own map styles. You can give the base map these colours yourself by setting a custom `map_style` with `colors` and `colors_dark`: [What the native Map card offers](../home-assistant/maps-and-zones.html#what-the-native-map-card-offers) explains the options. Use the same colours for both, because map colours do not change in dark mode.
+
+The `colors` setting covers only the base map, such as land, water, roads, buildings and boundaries. The Map card colours zones and markers from the theme instead. The Home zone takes the primary colour, which is Primary blue with civica. A passive zone takes the secondary text colour. Other zones, and people and device trackers, take the numbered colours in the order they were added to Home Assistant, which civica sets to its chart colours. So Accent green zones and markers apply only to maps you draw yourself.
+
+Checked on 18 November 2026 against the Home Assistant frontend source at commit `b1164739c3a853a28ba1c425415e96a17eb6286e`.
 
 [Maps, zones and location records](../home-assistant/maps-and-zones.html) explains how to show locations, uncertainty and missing records, and how to keep the provider's attribution visible.
