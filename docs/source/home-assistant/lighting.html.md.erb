@@ -8,7 +8,7 @@ gap_id: "HA-GAP-004"
 contract_id: "HA-CTRL-004"
 source_url: "https://www.home-assistant.io/integrations/light/"
 published_on: "2026-11-11"
-updated_on: "2026-11-17"
+updated_on: "2026-11-18"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -20,6 +20,8 @@ updates:
     description: "Added lighting capabilities and colour contract, domain-specific acceptance checks and synthetic reference examples."
   - date: "2026-11-17"
     description: "Rewritten to lead with the rule, show only supported controls and keep a remembered setting apart from light that is on."
+  - date: "2026-11-18"
+    description: "The theme colour changes colour tokens only; palette artwork and tones were removed."
 ai_instructions: "Apply when designing or describing a light control, a room or scene action or a colour choice. Show only the controls the entity supports, keep theme colour apart from light colour, and say what a request will change before it is sent. Never present a remembered setting as light that is on, and never say every light is on because a group reports on. Rules WG-031, WG-032, WG-034, WG-035, WG-044."
 ai_related:
   - path: "/home-assistant/continuous-controls.html"
@@ -63,7 +65,7 @@ While a change is in progress, keep the last reported state and mark the new set
 
 <h2 id="ha-ctrl-004-content">Content and interpretation</h2>
 
-Keep “Theme colour” and “Light colour” visibly separate. The interface palette and its Vivid or Muted tone change artwork and colour tokens only. They never change a device. Give a swatch an accessible name or its numeric setting, because a coloured circle alone cannot show a light’s state. Keep effect and scene names exactly as supplied. Before a recipe runs, say whether it changes brightness, colour, power or several of them.
+Keep “Theme colour” and “Light colour” visibly separate. The theme colour changes colour tokens only. It never changes a device. Give a swatch an accessible name or its numeric setting, because a coloured circle alone cannot show a light’s state. Keep effect and scene names exactly as supplied. Before a recipe runs, say whether it changes brightness, colour, power or several of them.
 
 <h2 id="ha-ctrl-004-accessibility">Accessibility and interaction</h2>
 

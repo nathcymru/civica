@@ -67,7 +67,7 @@ function updateBrand(app: App, targets: HTMLElement[]) {
     return;
   }
   // Theme colours are GOV.UK primaries that all pass 4.5:1 with white, so one
-  // white lock-up works on every masthead, in light and dark mode. The app
+  // white lockup works on every masthead, in light and dark mode. The app
   // icon is the project icon, whatever theme colour is chosen. Never recolour
   // the supplied house and wordmark with CSS filters.
   // Native icon buttons wrap Web Awesome plain/neutral buttons. Override both

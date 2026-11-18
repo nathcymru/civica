@@ -16,7 +16,7 @@ updates:
     description: "Rewritten to lead with the task, remove source commentary and state the saved-setting and recovery behaviour plainly."
   - date: "2026-11-18"
     description: "Rewritten for the Theme colour control: choose one of seven GOV.UK colours. The ten palettes and the Use muted colours control were removed."
-ai_instructions: "Use for choosing the civica theme colour. Name the control exactly as it appears: Theme colour. It offers seven GOV.UK colours: Blue, Green, Teal, Purple, Magenta, Red and Black. It changes the header, buttons and highlights only; chart, map and status colours and the light, dark or automatic mode stay the same. Do not say the module stores its own preference. Rules WG-021, WG-050, WG-052, WG-051."
+ai_instructions: "Use for choosing the civica theme colour. Name the control exactly as it appears: Theme colour. It offers seven GOV.UK colours: Blue, Green, Teal, Purple, Magenta, Red and Black. It changes the header, buttons, highlights, on states, switches, sliders and dark-mode links; chart, map, error, warning and success colours and the light, dark or automatic mode stay the same. Do not say the module stores its own preference. Rules WG-021, WG-050, WG-052, WG-051."
 ai_related:
   - path: "/get-started/install.html"
     title: "Install civica"
@@ -47,15 +47,15 @@ These isolated examples illustrate the decisions on this page. Any household val
 
 Use **Theme colour** to choose one of seven colours from the [GOV.UK colour palette](../styles/colour.html): Blue, Green, Teal, Purple, Magenta, Red or Black. The list always shows names, in that order. Blue is the default.
 
-The theme colour changes the header, buttons, selected navigation and highlights. It does not change:
+The theme colour changes the header, buttons, selected navigation and highlights. It also colours entities that are on, switches and sliders, and, in dark mode, links. It does not change:
 
-- text, link, focus, error and success colours
+- text, focus, error, warning and success colours, or links in light mode
 - chart, map and illustration colours, so a colour means the same thing in every home
 - Home Assistant's light, dark or automatic mode, which is kept as it was
 
 Each theme colour has its own Home Assistant theme, named `civica Blue`, `civica Green` and so on. The `civica` theme is the same as `civica Blue`.
 
-The header always uses the white civica lock-up, because every theme colour passes 4.5:1 contrast with white. This does not add a household name, crest or logo setting.
+The header always uses the white civica lockup, because every theme colour passes 4.5:1 contrast with white. This does not add a household name, crest or logo setting.
 
 ## How the setting is saved
 

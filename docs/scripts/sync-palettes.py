@@ -9,7 +9,7 @@ data = json.loads(source.read_text())
 # The Colour index. Theme colours come from design-system/palettes.json, which
 # takes each value from docs/data/govuk-brand-colours.json (GOV.UK Brand Guidelines).
 lines = ['---', 'title: Colour', 'description: How civica uses the GOV.UK colour palette, which colours a household can choose for the theme, and where each palette is documented.', 'group: "Colour"', 'nav_order: 0', 'last_reviewed_on: 2026-11-18', 'review_in: 3 months',
- 'ai_instructions: "Start here for any colour question. civica uses the GOV.UK colour palette unchanged. The household chooses one theme colour (the brand colour of the header, buttons and highlights) from seven GOV.UK primary colours that pass 4.5:1 with white text. Every other colour has one owner page: web, app, social, print, charts, maps and illustrations. Chart, map, illustration and status colours never change with the theme colour. Never convey meaning by colour alone."',
+ 'ai_instructions: "Start here for any colour question. civica uses the GOV.UK colour palette unchanged. The household chooses one theme colour (the brand colour of the header, buttons and highlights) from seven GOV.UK primary colours that pass 4.5:1 with white text. Web, app and print colours each have an owner page, and chart colours are owned by Chart colour; social, maps and illustrations pages are planned. Chart, map, error, warning and success colours never change with the theme colour; links in dark mode, the on state, switches and sliders do. Primary red and green match the error and success colours. Never convey meaning by colour alone."',
  'ai_related:', '  - path: "/styles/colour-web.html"', '    title: "Web colours"', '    relationship: "Owns the web palette and the functional colours (text, links, focus, error, success, brand)."',
  '  - path: "/get-started/colour-settings.html"', '    title: "Change theme colours"', '    relationship: "Owns how a household changes the theme colour in Home Assistant."',
  '---', '', '# Colour', '',
@@ -25,12 +25,13 @@ lines = ['---', 'title: Colour', 'description: How civica uses the GOV.UK colour
  '- [Print colours](colour-print.html): printed material, with CMYK and Pantone references.', '',
  '## Theme colour', '',
  'Each household chooses one theme colour. It colours the header, buttons, selected navigation and highlights. Choose it in your profile with [the civica colour controls](../get-started/colour-settings.html).', '',
- 'The choices are the GOV.UK primary colours that pass 4.5:1 contrast with white text, so white text and the white lock-up stay readable on every one:', '',
+ 'The choices are the GOV.UK primary colours that pass 4.5:1 contrast with white text, so white text and the white lockup stay readable on every one:', '',
  '| Theme colour | GOV.UK colour | Hex | Home Assistant theme |', '| --- | --- | --- | --- |']
 for p in data['palettes']:
     lines.append(f"| {p['name']} | {p['govukName']} | `{p['primary']['hex']}` | `civica {p['name']}` |")
 lines += ['', 'Primary orange, yellow and brown are not offered: white text on them falls below 4.5:1.', '',
- 'The theme colour is the only colour that changes. Text, links, focus, error and success colours, and every chart, map and illustration colour, stay the same whatever the household chooses. This keeps meanings the same in every home.', '',
+ 'The theme colour also sets the colour of links in dark mode, entities that are on, switches and sliders. Text, focus, error, warning and success colours, links in light mode (GOV.UK link blue `#1A65A6`), and every chart, map and illustration colour stay the same whatever the household chooses.', '',
+ 'Primary red is also the error colour, and Primary green is the success colour. With the Red or Green theme colour, buttons and highlights share a colour with error or success messages. Always give a state in words or with an icon, so that the meaning does not depend on colour.', '',
  '## Try a theme colour', '', 'This demonstration changes only the example. To change Home Assistant, use [the profile colour controls](../get-started/colour-settings.html).', '',
  '<div class="c-demo" data-palette-demo>', '<div class="c-demo__header"><strong>Morgan household</strong></div>', '<label for="palette-preview">Theme colour</label>', '<select id="palette-preview">']
 for p in data['palettes']:

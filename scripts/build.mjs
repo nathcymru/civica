@@ -21,7 +21,7 @@ execFileSync(process.execPath, ['scripts/build-docs-maps.mjs'], { stdio: 'inheri
 // so previous-generation artwork cannot leak into an installation ZIP.
 rmSync('ui/dist/brand', { recursive: true, force: true });
 mkdirSync('ui/dist/brand', { recursive: true });
-// Retired palette artwork (brand/civica/themes) is not shipped: one white lock-up
+// Retired palette artwork (brand/civica/themes) is not shipped: one white lockup
 // and the project icon serve every GOV.UK theme colour.
 for (const part of ['core', 'icons']) cpSync(`brand/civica/${part}`, `ui/dist/brand/${part}`, { recursive: true });
 console.log('Built lighting card, colour settings companion and supplied brand assets.');

@@ -64,12 +64,9 @@
     "resolvedThemes": "design-system/themes.json",
     "upstreamEvidence": "design-system/upstream-sources.json",
     "publishedPaletteCopy": "reference/palettes.json",
-    "paletteCount": 10,
-    "tones": [
-      "vivid",
-      "muted"
-    ],
-    "themeNamePattern": "civica {palette.name} {Vivid|Muted}",
+    "paletteCount": 7,
+    "chartTone": "vivid (fixed; no tone choice)",
+    "themeNamePattern": "civica {palette.name}",
     "compatibilityAlias": "govuk",
     "screenColourAuthority": "sRGB hex",
     "printReferences": "Reproduced as supplied; not a measured match guarantee",
@@ -77,9 +74,8 @@
       "light",
       "dark"
     ],
-    "toneIndependentOfMode": true,
-    "lightMode": "Exact supplied primary and canvas",
-    "darkMode": "Neutral dark surfaces; interactive tint blended 72% toward white; supplied primary retained for brand header",
+    "lightMode": "Exact GOV.UK theme colour on a white canvas; links use GOV.UK link blue #1A65A6",
+    "darkMode": "Neutral dark surfaces; interactive tint blended 72% toward white; exact theme colour retained for brand header",
     "semanticRolesIndependentOfPalette": [
       "error",
       "success",
@@ -183,7 +179,7 @@
         "downloads"
       ],
       "dataAlternative": "View data disclosure for native plotted series with original comparison dates, units, missing values and pagination",
-      "semanticColours": "Deterministic opaque identity colours, semantic energy families, independent of brand; Vivid/Muted follows theme",
+      "semanticColours": "Deterministic opaque identity colours, semantic energy families, independent of the theme colour; chart tone fixed at vivid",
       "flowDiagram": "Native Energy distribution diagram remains a documented controlled deviation",
       "nonEnergyCharts": "Unchanged; no claim that History or arbitrary third-party charts use this adapter",
       "examples": "Native-shaped fixtures using the same adapter and colour engine, including 24 named series",
@@ -297,7 +293,7 @@
       "forced colours",
       "reduced motion",
       "native panels",
-      "all palette tones and modes"
+      "all theme colours and modes"
     ]
   },
   "preserve": [

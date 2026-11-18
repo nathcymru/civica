@@ -51,7 +51,7 @@ export class CivicaThemeSettings extends HTMLElement {
     this.select = document.createElement('select'); this.select.id = 'palette'; this.select.setAttribute('aria-describedby', 'hint');
     const placeholder = document.createElement('option'); placeholder.value = ''; placeholder.textContent = 'Choose a theme colour'; placeholder.disabled = true; this.select.append(placeholder);
     for (const p of palettes.palettes) { const option = document.createElement('option'); option.value = p.id; option.textContent = p.name; this.select.append(option); }
-    const hint = document.createElement('p'); hint.id = 'hint'; hint.className = 'hint'; hint.textContent = 'Changes the header, buttons and highlights. Chart, map and status colours stay the same. Your light, dark or automatic mode stays the same.';
+    const hint = document.createElement('p'); hint.id = 'hint'; hint.className = 'hint'; hint.textContent = 'Changes the header, buttons and highlights. Chart, map, error and success colours stay the same. Your light, dark or automatic mode stays the same.';
     this.status = document.createElement('p'); this.status.setAttribute('role', 'status'); this.status.setAttribute('aria-live', 'polite');
     section.append(title, label, this.select, hint, this.status); root.append(style, section);
     this.select.addEventListener('change', () => this.apply());

@@ -65,7 +65,7 @@ If `frontend:` already exists, add `themes:` to that section. Do not create a se
 
 Run the `frontend.reload_themes` action, or restart Home Assistant after a configuration check. Open your profile and select **civica** for the default Blue theme colour. Seven theme colours are available, from **civica Blue** to **civica Black**. The theme colour is independent of Home Assistant's light and dark mode.
 
-If you used a civica palette before 18 November 2026, such as **civica Civic Cobalt Vivid**, that theme is no longer installed. Home Assistant falls back to its default theme. Choose a theme colour again in your profile.
+If you used a civica palette before 18 November 2026, such as **civica Civic Cobalt Vivid**, that theme is no longer installed. Home Assistant shows its built-in appearance until you choose a theme colour again in your profile. Update any automation that calls `frontend.set_theme` with an old theme name.
 
 HACS's Theme category installs and updates the YAML in its repository folder under `/config/themes/`. An existing installation may use `/config/themes/govuk/`; keep that HACS-managed location. HACS does not install the optional JavaScript module or image files automatically. When adding those from the release archive, copy only `www/civica/`, not a second set of themes.
 
