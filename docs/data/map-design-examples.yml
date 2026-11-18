@@ -70,7 +70,7 @@ examples:
             <li><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="3" width="26" height="26" fill="#D0E6E7"/></svg><span>Coastal area</span></li>
             <li><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="3" width="26" height="26" fill="#F3F9F9" stroke="#D0E6E7" stroke-width="1"/></svg><span>Sea</span></li>
           </ul>
-          <svg class="civica-map-demo__plot" viewBox="0 0 640 400" role="img" aria-labelledby="map-zones-svg-title map-zones-svg-desc" style="font-family:Arial,Helvetica,sans-serif">
+          <div class="civica-table-scroll" tabindex="0" role="region" aria-label="Map of zones, scroll horizontally if needed"><svg class="civica-map-demo__plot" viewBox="0 0 640 400" role="img" aria-labelledby="map-zones-svg-title map-zones-svg-desc" style="min-width:600px;font-family:Arial,Helvetica,sans-serif">
             <title id="map-zones-svg-title">Map of three household zones on a coastline</title>
             <desc id="map-zones-svg-desc">Land fills the left and top of the map and the sea is at the bottom right. The Home zone is near the coast, the Work zone is inland to the north-west, and the School zone is between them. The table below lists every zone.</desc>
             <rect width="640" height="400" fill="#F3F9F9"/>
@@ -83,7 +83,7 @@ examples:
             <text x="150" y="166" font-size="18" font-weight="700" fill="#0B0C0C" text-anchor="middle">Work</text>
             <text x="250" y="235" font-size="18" font-weight="700" fill="#0B0C0C" text-anchor="middle">School</text>
             <text x="520" y="330" font-size="16" fill="#0B0C0C" text-anchor="middle">Sea</text>
-          </svg>
+          </svg></div>
           <figcaption class="govuk-body" id="map-zones-caption">Invented geography and zones, drawn for this example. Zone circles are drawn in proportion to each zone's radius.</figcaption>
         </figure>
         <div class="civica-table-scroll" tabindex="0" role="region" aria-label="All 3 example zones, scroll horizontally if needed">

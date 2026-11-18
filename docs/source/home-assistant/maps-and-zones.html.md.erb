@@ -27,6 +27,9 @@ updates:
     description: "The working map now uses the GOV.UK map colours, the same in light and dark mode; the Vivid, Muted, Light and Dark controls were removed."
 ai_instructions: "Apply when showing a device, person or zone on a map. Label what the map shows, its source and when it was observed. Put every record in a text list as well, and count plotted, unlocated and withheld records separately. Never place a record without coordinates at 0, 0, and never call an accuracy circle a boundary. Keep the native Map card, its provider attribution and its permissions, and keep OpenStreetMap and renderer licence notices visible. Rules WG-038, WG-066, WG-074, WG-077, WG-081, WG-082."
 ai_related:
+  - path: "/styles/colour-maps.html"
+    title: "Map colours"
+    relationship: "Owns the map palette and the base map and data colours used by the working example."
   - path: "/home-assistant/presence-and-privacy.html"
     title: "Presence, people and shared-screen privacy"
     relationship: "Owns how to word a person's reported presence and limit it on shared displays."
@@ -76,7 +79,7 @@ The working example uses a north-up Web Mercator view of Cardiff Bay with a metr
 
 <h2 id="map-colour">Colour, labels, selection and uncertainty</h2>
 
-Choose each colour for its job. A colour that identifies a device is not a warning, even in a red theme. Use few colours, and give every meaningful category a letter, shape or direct label as well. Say in text what is selected and what is uncertain, as well as showing it.
+Choose each colour for its job. A colour that identifies a device is not a warning, even in a red theme. Follow [Map colours](../styles/colour-maps.html#using-colour-combinations-on-maps) for how many colours to use and the cues to add. Say in text what is selected and what is uncertain, as well as showing it.
 
 The working example uses the [Map colours](../styles/colour-maps.html), unchanged and the same in light and dark mode. They never follow the household's theme colour, and they do not change the geometry, names, observations or selection.
 
