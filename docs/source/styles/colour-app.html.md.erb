@@ -1,7 +1,7 @@
 ---
 no_contents: true
 title: "App colours"
-description: "The GOV.UK app palette, with accents and dark mode blues, for the Home Assistant Companion app."
+description: "The civica app palette, with accents and dark mode blues, for the Home Assistant Companion app."
 group: "Colour"
 nav_order: 2
 last_reviewed_on: 2026-11-18
@@ -15,7 +15,9 @@ updates:
     description: "Swatches now use the GOV.UK Brand layout: a round sample, the name, and RGB and hex values with copy icons."
   - date: "2026-11-18"
     description: "The App header and Examples sections now follow the GOV.UK App page: simulated pictures, modelled on the GOV.UK pictures, of the Primary blue header on the mobile web, of 4 app screens with the Primary blue header, and of app screens with tinted tiles and menus. They are not screenshots of the Companion app or the civica theme, and the household and its details are invented. Use colour with care is now part of Examples."
-ai_instructions: "Use this page for colour in the Home Assistant Companion app and other app-like screens. Every value comes unchanged from the GOV.UK Brand Guidelines app page and is rendered from docs/data/govuk-brand-colours.json. The app palette adds accents and two dark mode blues to the web palette. Lead with Primary blue and Accent teal, keep the brand header on key screens, and never add colour that reduces accessibility. Grey out content in Black tints when a picture shows only the header. The pictures are simulated screens modelled on the GOV.UK pictures, not screenshots of the Companion app or the civica theme as shipped; household details are invented, and they copy no GOV.UK identity device."
+  - date: "2026-11-18"
+    description: "Rewritten for Home Assistant users: removed outside source names, gave each picture a caption saying which screens it shows and what to notice, and removed a repeated sentence."
+ai_instructions: "Use this page for colour in the Home Assistant Companion app and other app-like screens. Values are rendered from docs/data/govuk-brand-colours.json. The app palette adds accents and two dark mode blues to the web palette. Lead with Primary blue and Accent teal, keep the brand header on key screens, and never add colour that reduces accessibility. The pictures are drawings with invented household details, not screenshots of the Companion app or the civica theme. Functional colours are owned by Web colours. Do not name outside sources in page text. Rules WG-001, WG-056."
 ai_related:
   - path: "/styles/colour-web.html"
     title: "Web colours"
@@ -27,9 +29,9 @@ ai_related:
 
 # App colours
 
-Use these colours in the Home Assistant Companion app and on screens that behave like an app. Lead with Primary blue and Accent teal, from the first screen to the controls.
+Use these colours in the Home Assistant Companion app and on screens that behave like an app. Lead with Primary blue and Accent teal, from the first screen to the controls. For text, links, focus and error colours, use the [functional colours](colour-web.html#functional-colours).
 
-The app palette has every primary colour, tint, shade and accent, plus two dark mode blues. Every value is the GOV.UK app palette, unchanged.
+The app palette has every primary colour, tint, shade and accent, plus 2 dark mode blues.
 
 <%= colour_copy_status %>
 
@@ -43,7 +45,7 @@ The app palette has:
 
 ## App header
 
-Keep the brand colour header on key screens, as on the web. It gives each screen a clear starting point and makes the household's interface easy to recognise.
+Keep the Primary blue header on key screens, in the app and in a phone browser. It gives each screen a clear starting point and makes the household's interface easy to recognise.
 
 <%= colour_callout %>
 
@@ -59,9 +61,7 @@ Keep the brand colour header on key screens, as on the web. It gives each screen
 
 ## Examples
 
-In the Companion app, lead with Primary blue and Accent teal, from the first screen to the core controls.
-
-Tints inside cards and colours that help people find their way can add structure. Apply colour only where it does not add visual clutter or make the screen harder to use.
+Tinted tiles and menus can add structure and help people find their way. Add colour only where it does not clutter the screen or make it harder to use.
 
 <%= colour_callout %>
 

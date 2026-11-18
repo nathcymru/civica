@@ -46,7 +46,7 @@ def grid(items, minimum=220):
 
 examples = {}
 
-# 1. Use colour to reflect tone: inform to inspire (GOV.UK order).
+# 1. Use colour to reflect tone: inform to inspire.
 tone = []
 for tid, text, bg, circle, ink, caption in [
     ('tone-1', ['Power cut', 'in your area'], 'black', 'white', 'black', 'Black and white'),
@@ -61,7 +61,7 @@ tone.append(figure('tone-5', svg('tone-5', 'Social tile: Your first automation',
                    'Companion colour', ['blue-shade-50', 'green-accent']))
 examples['social-colour-tone'] = {
     'title': 'Social tiles from informative to inspiring',
-    'description': 'Five Home Assistant social tiles, from black and white, the most informative, to a companion colour, the most inspiring, in the GOV.UK social colours.',
+    'description': 'Five Home Assistant social tiles, from black and white, the most informative, to a companion colour, the most inspiring, in the social colours.',
     'height': 900,
     'html': '<section aria-labelledby="social-tone-h"><h2 class="govuk-heading-m" id="social-tone-h">From informative to inspiring</h2>'
             '<p class="govuk-body">In order: black and white, a dark shade, Primary blue, a tonal colour and a companion colour. The messages are invented examples.</p>'
@@ -87,27 +87,27 @@ tonal.append(figure('tonal-purple', svg('tonal-purple', 'Social tile: Save on yo
                     'Purple tones', ['white', 'purple', 'purple-accent', 'purple-shade-50']))
 examples['social-colour-tonal'] = {
     'title': 'Social tiles in green, red and purple tones',
-    'description': 'Three Home Assistant social tiles, each based on the tints and shades of one GOV.UK colour family.',
+    'description': 'Three Home Assistant social tiles, each based on the tints and shades of one colour family.',
     'height': 800,
     'html': '<section aria-labelledby="social-tonal-h"><h2 class="govuk-heading-m" id="social-tonal-h">Tonal colour</h2>'
-            '<p class="govuk-body">Each tile is based on one colour family. Like the GOV.UK example, the red tile uses Purple tint 95% for its text. The messages are invented examples.</p>'
+            '<p class="govuk-body">Three posts: solar power covering the day’s use, a storm warning and a heating tip. Notice that each tile uses the tints and shades of one colour family, which keeps a serious message calm. The messages are invented examples.</p>'
             + grid(tonal) + '</section>',
 }
 
 # 3. Companion colour examples.
 comp = []
-body = (f'<path d="M540 140v170M450 230l90-90 90 90" fill="none" stroke="{hexof("yellow")}" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>'
-        + lines(['Get help to'], 540, 470, 84, hexof('white'))
-        + f'<rect x="380" y="520" width="320" height="130" rx="65" fill="{hexof("yellow")}"/>' + lines(['cut'], 540, 612, 84, hexof('black'))
-        + lines(['your energy bill'], 540, 760, 84, hexof('white')))
+body = (f'<path d="M540 140v170M450 230l90-90 90 90" fill="none" stroke="{hexof("blue")}" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>'
+        + lines(['Get help to'], 540, 470, 84, hexof('blue'))
+        + f'<rect x="380" y="520" width="320" height="130" rx="65" fill="{hexof("blue")}"/>' + lines(['cut'], 540, 612, 84, hexof('white'))
+        + lines(['your energy bill'], 540, 760, 84, hexof('blue')))
 comp.append(figure('companion-yellow', svg('companion-yellow', 'Social tile: Get help to cut your energy bill',
-                                           'A Primary yellow arrow above “Get help to cut your energy bill” in White text, with “cut” in Black on a Primary yellow lozenge, on a Primary blue background.', body, 'blue'),
-                   'Primary yellow on Primary blue', ['yellow', 'white', 'black', 'blue']))
-body = (f'<path d="M540 500c-90-110-150-170-150-250a150 150 0 0 1 300 0c0 80-60 140-150 250z" fill="{hexof("magenta")}"/><circle cx="540" cy="250" r="55" fill="{hexof("magenta-tint-95")}"/>'
+                                           'A Primary blue arrow above “Get help to cut your energy bill” in large Primary blue text, with “cut” in White on a Primary blue lozenge, on a Primary yellow background.', body, 'yellow'),
+                   'Primary blue on Primary yellow', ['blue', 'white', 'yellow']))
+body = (f'<path d="M540 500c-90-110-150-170-150-250a150 150 0 0 1 300 0c0 80-60 140-150 250z" fill="{hexof("magenta")}"/><circle cx="540" cy="250" r="55" fill="{hexof("blue-tint-95")}"/>'
         + lines(['Check who', 'is home'], 540, 680, 110, hexof('blue-shade-50')))
 comp.append(figure('companion-magenta', svg('companion-magenta', 'Social tile: Check who is home',
-                                            'A Primary magenta map pin above “Check who is home” in Blue shade 50% text, on a Magenta tint 95% background.', body, 'magenta-tint-95'),
-                   'Primary magenta and Blue shade 50% on Magenta tint 95%', ['magenta', 'blue-shade-50', 'magenta-tint-95']))
+                                            'A Primary magenta map pin above “Check who is home” in Blue shade 50% text, on a Blue tint 95% background.', body, 'blue-tint-95'),
+                   'Primary magenta on Blue tint 95%', ['magenta', 'blue-shade-50', 'blue-tint-95']))
 body = (f'<circle cx="540" cy="320" r="190" fill="{hexof("blue-shade-50")}"/>' + lines(['Step', 'by step'], 540, 305, 72, hexof('green-accent'))
         + lines(['Add a door', 'sensor'], 540, 700, 110, hexof('blue-shade-50')))
 comp.append(figure('companion-green', svg('companion-green', 'Social tile: Step by step: add a door sensor',
@@ -115,10 +115,10 @@ comp.append(figure('companion-green', svg('companion-green', 'Social tile: Step 
                    'Blue shade 50% on Accent green', ['green-accent', 'blue-shade-50']))
 examples['social-colour-companion'] = {
     'title': 'Social tiles with companion colours',
-    'description': 'Three Home Assistant social tiles that pair GOV.UK colours from different families, following the GOV.UK companion examples.',
+    'description': 'Three Home Assistant social tiles, each built on one of the companion colour pairings.',
     'height': 800,
     'html': '<section aria-labelledby="social-companion-h"><h2 class="govuk-heading-m" id="social-companion-h">Companion colour</h2>'
-            '<p class="govuk-body">These follow the GOV.UK companion examples, which pair colours from different families. Only the third tile uses 1 of the 9 pairings exactly. The messages are invented examples.</p>'
+            '<p class="govuk-body">Three posts that prompt an action: getting help with an energy bill, checking who is home and adding a door sensor. Notice that each tile is built on one of the companion pairings, and that the 3:1 pairing, Primary blue on Primary yellow, carries only large words and shapes. The messages are invented examples.</p>'
             + grid(comp) + '</section>',
 }
 

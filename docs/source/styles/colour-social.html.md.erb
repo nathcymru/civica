@@ -1,7 +1,7 @@
 ---
 no_contents: true
 title: "Social colours"
-description: "The GOV.UK social palette, how to use colour to set the tone of a post, and the 9 companion colour pairings, with Home Assistant examples."
+description: "The civica social palette, how to use colour to set the tone of a post, and the 9 companion colour pairings, with Home Assistant examples."
 group: "Colour"
 nav_order: 3
 last_reviewed_on: 2026-11-18
@@ -13,7 +13,9 @@ updates:
     description: "First published, with the GOV.UK social palette and companion colour set copied exactly from the GOV.UK Brand Guidelines."
   - date: "2026-11-18"
     description: "Swatches and examples now follow the GOV.UK Social page: round swatches, example tiles shown on the page, each companion pairing beside its 2 colours, and GOV.UK section headings. Moved maintenance notes to Colour."
-ai_instructions: "Apply when making a social media graphic or a promotional tile about civica or a household's Home Assistant set-up. Use only the GOV.UK social palette on this page, unchanged, rendered from docs/data/govuk-brand-colours.json. Match the colour to the tone: black and white or a dark shade to inform, tonal colours (based on one colour family) for sensitive messages, companion colours (the 9 listed pairings) to prompt action or share good news. Accent blue on Primary blue and Primary blue on Primary yellow reach only 3:1, so use them only for large text or graphics. Every text pair must reach WCAG 2.2 AA contrast. Never rely on colour alone. Social colours do not follow the theme colour and are not used in the Home Assistant interface. Rules WG-001, WG-002."
+  - date: "2026-11-18"
+    description: "Rewritten for Home Assistant users: removed outside source names, gave each set of example tiles a caption saying what to notice, and rebuilt 2 companion tiles so that every companion example uses one of the 9 pairings."
+ai_instructions: "Apply when making a social media graphic or a promotional tile about civica or a household's Home Assistant set-up. Use only the civica social palette on this page, rendered from docs/data/govuk-brand-colours.json. Match the colour to the tone: black and white or a dark shade to inform, tonal colours (one colour family) for sensitive messages, companion colours (the 9 listed pairings) to prompt action or share good news. Accent blue on Primary blue and Primary blue on Primary yellow reach only 3:1, so use them only for large text or graphics. Every text pair must reach WCAG 2.2 AA contrast. Never rely on colour alone. Social colours do not follow the theme colour and are not used in the Home Assistant interface. Do not name outside sources in page text. Rules WG-001, WG-002, WG-081."
 ai_related:
   - path: "/styles/colour-web.html"
     title: "Web colours"
@@ -28,9 +30,9 @@ ai_related:
 
 # Social colours
 
-Use these colours for social media graphics and other promotional tiles, such as a post about a new civica release. They are not for the Home Assistant interface: for dashboards, use [Web colours](colour-web.html). Social colours do not change with the household's theme colour.
+Use these colours for social media graphics and other promotional tiles, such as a post about a new civica release or a household's first automation. They are not for the Home Assistant interface: for dashboards, use [Web colours](colour-web.html). Social colours do not change with the household's theme colour.
 
-The social palette has every primary colour, tint, shade and accent, because social posts need more room for expression than a service. Keep the rest of the post consistent with the [Colour](colour.html) guidance.
+The social palette has every primary colour, tint, shade and accent, because a post needs to stand out in a busy feed.
 
 <%= colour_copy_status %>
 
@@ -44,11 +46,11 @@ The social palette has:
 
 ## Use colour to reflect tone
 
-Some posts need to feel serious and practical, and point people to what they need. Others need impact, so that they stand out in a busy feed.
-
-There are two ways to add expression: tonal colours and companion colours. Each gives a different level of expression.
+Choose colours for what the post needs to do. A power cut notice needs to feel serious and practical. A tip about a first automation can be bolder, so that it stands out.
 
 ### From most informative to most inspiring
+
+Five posts, from the most informative on the left to the most inspiring on the right. Notice how the colour moves from black and white, through a dark shade, Primary blue and a tonal colour, to a companion colour.
 
 <div class="c-inform-inspire">
 <p class="c-inform-inspire__axis"><span>Inform</span><span class="c-inform-inspire__line" aria-hidden="true"></span><span>Inspire</span></p>
@@ -65,13 +67,13 @@ There are two ways to add expression: tonal colours and companion colours. Each 
 
 ### Tonal colour examples
 
-For a sensitive message, use colours from one tonal range, so that the post feels serious, informative and practical. For example, use Green tint 95% with Green shade 50%, or the reds of a warning.
+For a sensitive or serious message, use the tints and shades of one colour family, such as Green tint 95% with Green shade 50%.
 
 <%= colour_example('social-colour-tonal', layout: :tiles) %>
 
 ### Companion colour set
 
-Use companion colours for emphasis, for example to prompt an action or to share good news. GOV.UK keeps the set to these 9 pairings to help keep them accessible. Accent blue on Primary blue and Primary blue on Primary yellow reach only 3:1, so use them only for large text or graphics, not for smaller text.
+Use companion colours for emphasis, for example to prompt an action or to share good news. Keep to these 9 pairings, which have been checked for contrast. Accent blue on Primary blue and Primary blue on Primary yellow reach only 3:1, so use them only for large text or graphics.
 
 - Some pairings are harder to see for people with a visual impairment or colour blindness, so choose carefully.
 - Check every pairing that carries text against WCAG 2.2 contrast (minimum), level AA.

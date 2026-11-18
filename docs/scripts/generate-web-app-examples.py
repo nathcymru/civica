@@ -237,9 +237,9 @@ web = figure('web-dashboard', svg('web-dashboard', 'Web palette example: a simul
              'A simulated dashboard on desktop, in the web palette', p)
 examples['web-colour-dashboard'] = {
     'title': 'A simulated dashboard in the web palette',
-    'description': 'A civica Home Assistant dashboard in a desktop browser, with a Primary blue header, links in the GOV.UK link colour, and White cards on Blue tint 95%. Every colour is a GOV.UK web palette colour.',
+    'description': 'A Home Assistant dashboard in a desktop browser, drawn in web palette colours: a Primary blue header, links in the link colour, and White cards on Blue tint 95%.',
     'height': 760,
-    'html': '<section aria-labelledby="web-dashboard-h"><h2 class="govuk-heading-m" id="web-dashboard-h">Web palette example</h2>' + block('This is a simulated picture in web palette colours, modelled on the GOV.UK web palette example. It is not a screenshot of civica or Home Assistant: Home Assistant has no Menu button or navigation bar like this, and the civica theme as shipped has a White dashboard background and Black icons. The household, its web address, rooms and readings are invented.', [web]) + '</section>',
+    'html': '<section aria-labelledby="web-dashboard-h"><h2 class="govuk-heading-m" id="web-dashboard-h">Web palette example</h2>' + block('A Home Assistant dashboard in a desktop browser, drawn in web palette colours. Notice the Primary blue header, the links in the link colour, and the White cards on a Blue tint 95% background. It is a drawing, not a screenshot: Home Assistant has no Menu button or navigation bar like this, and the civica theme has a White dashboard background and Black icons. The household, its web address, rooms and readings are invented.', [web]) + '</section>',
 }
 
 # 2. Mobile web header: the dashboard in a mobile browser, content greyed out.
@@ -264,9 +264,9 @@ mobile = figure('mobile-web', svg('mobile-web', 'Mobile web header: a simulated 
                 'A simulated dashboard in a mobile browser, with the content greyed out', p)
 examples['app-colour-mobile-web-header'] = {
     'title': 'The Primary blue header on the mobile web',
-    'description': 'A simulated dashboard in a mobile browser, modelled on the GOV.UK picture: the Primary blue header with the household name in White, and the page content greyed out.',
+    'description': 'A simulated dashboard in a mobile browser: the Primary blue header with the household name in White, and the page content greyed out.',
     'height': 760,
-    'html': '<section aria-labelledby="mobile-web-h"><h2 class="govuk-heading-m" id="mobile-web-h">Mobile web header</h2>' + block('This is a simulated screen modelled on the GOV.UK mobile web header picture, not a screenshot of civica or Home Assistant. The household name and web address are invented.', [mobile]) + '</section>',
+    'html': '<section aria-labelledby="mobile-web-h"><h2 class="govuk-heading-m" id="mobile-web-h">Mobile web header</h2>' + block('A Home Assistant dashboard in a phone browser, with the page content greyed out so that the header stands out. Notice that the Primary blue header keeps the household name in White, as on a desktop. It is a drawing, not a screenshot. The household name and web address are invented.', [mobile]) + '</section>',
 }
 
 
@@ -310,9 +310,9 @@ for tid, screens, caption, desc in [
     header_figures.append(figure(tid, svg(tid, f'App header: {caption.split(": ", 1)[1]}', desc, body), caption, p))
 examples['app-colour-header'] = {
     'title': 'The Primary blue header in simulated app screens',
-    'description': 'Four simulated app screens, modelled on the GOV.UK app pictures, with the Primary blue header and the content greyed out.',
+    'description': 'Four simulated Companion app screens with the Primary blue header and the content greyed out.',
     'height': 1300,
-    'html': '<section aria-labelledby="app-header-h"><h2 class="govuk-heading-m" id="app-header-h">App header</h2>' + block('These are simulated screens modelled on the GOV.UK app pictures, not screens of the Home Assistant Companion app or of the civica theme as shipped. The household and room names are invented.', header_figures) + '</section>',
+    'html': '<section aria-labelledby="app-header-h"><h2 class="govuk-heading-m" id="app-header-h">App header</h2>' + block('Four Companion app screens: Home, Living room, Energy and Settings. Notice that every screen starts with the same Primary blue header, so people always know where they are. The content is greyed out so that the header stands out. They are drawings, not screenshots of the Companion app. The household and room names are invented.', header_figures) + '</section>',
 }
 
 # 4. Examples: tinted tiles and menus, led by Primary blue and Accent teal.
@@ -399,9 +399,9 @@ example_figure = figure('app-examples', svg('app-examples', 'App examples: tinte
                         'Simulated app: tinted tiles on the Home screen and tinted menus in Settings', p)
 examples['app-colour-examples'] = {
     'title': 'Tinted tiles and menus in simulated app screens',
-    'description': 'Two simulated app screens, modelled on the GOV.UK app examples, led by Primary blue and Accent teal, with Blue tint 95% tiles and menus.',
+    'description': 'Two simulated Companion app screens, led by Primary blue and Accent teal, with Blue tint 95% tiles and menus.',
     'height': 760,
-    'html': '<section aria-labelledby="app-examples-h"><h2 class="govuk-heading-m" id="app-examples-h">Examples</h2>' + block('These are simulated screens modelled on the GOV.UK app examples, not screens of the Home Assistant Companion app or of the civica theme as shipped. The household, person, areas and app version are invented.', [example_figure]) + '</section>',
+    'html': '<section aria-labelledby="app-examples-h"><h2 class="govuk-heading-m" id="app-examples-h">Examples</h2>' + block('Two Companion app screens with tinted tiles and menus. Notice the Accent teal label and the Blue tint 95% tiles and menus, which add structure without clutter. They are drawings, not screenshots of the Companion app. The household, person, areas and app version are invented.', [example_figure]) + '</section>',
 }
 
 for ex in examples.values():

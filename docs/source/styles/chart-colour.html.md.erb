@@ -91,19 +91,19 @@ Use these colours only in social media graphics, on a background that uses a 25%
 
 ### Single category
 
-A week of daily electricity use, as you might show it with a statistics graph card. One measure needs one colour, so every bar is Primary blue. Notice that each bar has its value above it, so you can read the chart without the colour.
+A week of daily electricity use, as you might show it with a statistics graph card. Notice that one measure needs only one colour: every bar is Primary blue.
 
 <%= colour_example('chart-govuk-single', layout: :chart, callout: false) %>
 
 ### Multiple categories
 
-Four room temperatures over one day, as you might show them with a history graph card. Notice that each room has its own colour and line style, and its name at the end of its line, so you can tell the rooms apart without colour.
+Four room temperatures over one day, as you might show them with a history graph card. Notice that each room takes a different categorical colour.
 
 <%= colour_example('chart-govuk-multiple', layout: :chart, callout: false) %>
 
 ### Divergent categories
 
-Hours each room spent below or above its heating target in one week. Blues mean below the target and reds mean above it. Notice that below is always left of the centre line and above is always right, so position shows the direction as well as colour. Red here means warmer, not an error.
+Hours each room spent below or above its heating target in one week. Notice that blues mean below the target and reds mean above it, with darker steps further from the target.
 
 <%= colour_example('chart-govuk-divergent', layout: :chart, callout: false) %>
 
@@ -111,7 +111,7 @@ Hours each room spent below or above its heating target in one week. Blues mean 
 
 In a social media post, such as one sharing a household's year of solar power, use larger, bolder shapes so people take in the message quickly. You can use an additional colour to pick out one result, on a background that uses a 25% or 50% shade. Do not use this style on a dashboard.
 
-The example shows the most-used automations in a month. Notice that Accent teal picks out the top automation, and every circle shows its name and number.
+The example shows the most-used automations in a month, as a post might share them.
 
 <%= colour_example('chart-govuk-social', layout: :chart) %>
 
@@ -141,7 +141,7 @@ For charts that accept only numbered colours, the theme supplies `civica-chart-1
 
 The 6 colours cannot tell more than 6 devices apart, so colours repeat and the pattern, line dash and marker do the rest. The adapter adds them to the native legend and keeps its controls to show and hide each series. When a chart gets crowded, show fewer series and keep every value in the **View data** table. Never drop readings or merge devices to stay under a limit. The [24-device chart](../components/chart-examples.html) shows this.
 
-This example shows 3 appliances in light and dark mode. Notice that the tumble dryer and dishwasher are both Primary blue, and that the line dash, marker and name tell them apart. The dishwasher keeps its style while its reading is missing.
+This example shows the keys for 3 appliances in light and dark mode. Notice that 2 of them share a colour, and that each keeps the same style in both modes.
 
 <%= example('data-colour-categorical') %>
 
@@ -166,7 +166,7 @@ For a heatmap or a map layer that shows an amount, write down the quantity, unit
 
 Keep labels outside coloured areas unless you have tested the text on that fill. Pale steps can disappear on a white background, so add outlines and direct labels. Give a missing value a crossed empty swatch and the words “Not supplied”, never a colour from the scale.
 
-This example shows energy used in each room on a 0 to 2 kWh scale, and room temperatures as a difference from a 20 °C target. Notice that each step is labelled with its value, and that the missing reading has no colour.
+This example shows energy used in each room on a 0 to 2 kWh scale, and room temperatures as a difference from a 20 °C target. Notice that the missing reading has no colour from the scale.
 
 <%= example('data-colour-quantitative') %>
 
