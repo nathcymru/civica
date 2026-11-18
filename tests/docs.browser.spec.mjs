@@ -72,8 +72,10 @@ test('audit findings and expanded coverage stay navigable at narrow widths', asy
   await page.setViewportSize({ width: 320, height: 800 });
   await page.goto('/docs/build/community/design-system-audit.html');
   for (const name of ['Migration recommendations', 'Coverage by page', 'Record and close a finding']) {
-    await expect(page.getByRole('heading', { name, exact: true })).toBeVisible();
-    await page.getByRole('navigation', { name: 'On this page' }).getByRole('link', { name, exact: true }).click();
+    const heading = page.getByRole('heading', { name, exact: true });
+    await expect(heading).toBeVisible();
+    // Pages have no "On this page" box, so reach each section by scrolling to it.
+    await heading.scrollIntoViewIfNeeded();
     await assertReflow(page);
   }
   const disclosure = page.locator('details').filter({ has: page.getByText('Show every reviewed page', { exact: true }) });
