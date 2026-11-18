@@ -6,7 +6,8 @@
 //      and every colour's id, hex, RGB, CMYK and Pantone;
 //   3. each built Colour page shows every colour of its palette, with its values;
 //   4. the Chart colours page and chart module use the GOV.UK chart palette;
-//   5. the Map colours page shows the GOV.UK map example colours.
+//   5. the Map colours page shows the GOV.UK map example colours;
+//   6. the Social colours page shows the GOV.UK companion pairings.
 // Run after the docs build: node scripts/check-colours.mjs
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -72,7 +73,7 @@ const contrast = (a, b) => { const [x, y] = [luminance(a), luminance(b)].sort((m
 
 // 3. Published pages show every colour of their palette.
 const decode = text => text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
-for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app', 'colour-app', ['hex', 'rgb']], ['print', 'colour-print', ['cmyk', 'pantone']], ['maps', 'colour-maps', ['hex', 'rgb']]]) {
+for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app', 'colour-app', ['hex', 'rgb']], ['print', 'colour-print', ['cmyk', 'pantone']], ['maps', 'colour-maps', ['hex', 'rgb']], ['social', 'colour-social', ['hex', 'rgb']]]) {
   const path = `${BUILD}/${file}.html`;
   assert.ok(existsSync(path), `${path} missing: run the docs build first`);
   const raw = readFileSync(path, 'utf8');
@@ -119,6 +120,13 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   assert.deepEqual(names, expected, 'chart-colour: swatches match the GOV.UK chart palette in order');
   const module = JSON.parse(readFileSync('design-system/chart-colours.json', 'utf8'));
   assert.deepEqual(module.categorical.map(colour => colour.hex), pages.charts.categorical.filter(item => !item.role).map(item => colours[item.colour].hex), 'chart module uses the GOV.UK categorical colours');
+}
+// 6. The Social colours page shows the nine GOV.UK companion pairings in order,
+// and every pairing's foreground and background reach 3:1 at least.
+{
+  const html = decode(readFileSync(`${BUILD}/colour-social.html`, 'utf8'));
+  const names = [...html.matchAll(/<p class="c-swatch__name">([^<]+ on [^<]+)<\/p>/g)].map(match => match[1]);
+  assert.deepEqual(names, pages.social.companion.map(pair => `${colours[pair.foreground].name} on ${colours[pair.background].name}`), 'colour-social: companion pairings in GOV.UK order');
 }
 // 5. The map example colours are GOV.UK's, and the Map colours page lists them.
 {

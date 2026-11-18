@@ -161,6 +161,14 @@ h2.style-a-z__letter {
   background: var(--c-canvas);
 }
 
+// A social companion pairing: the foreground colour on its background.
+.c-pair__sample {
+  display: block;
+  width: 100%;
+  height: 6rem;
+  border-bottom: 1px solid $civica-border;
+}
+
 .c-swatch__sample {
   display: flex;
   align-items: flex-end;

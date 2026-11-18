@@ -117,6 +117,20 @@ module ColourHelpers
     %(<ul class="c-swatches" role="list">#{items.join}</ul>)
   end
 
+  # GOV.UK social companion colour set: each pairing shown as a sample, with
+  # both colour names and their hex values as real text.
+  def colour_companion_pairs
+    items = colour_page('social').fetch('companion').map do |pair|
+      fg = govuk_colour(pair.fetch('foreground'))
+      bg = govuk_colour(pair.fetch('background'))
+      label = "#{fg.fetch('name')} on #{bg.fetch('name')}"
+      sample = %(<svg class="c-pair__sample" viewBox="0 0 120 80" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="120" height="80" fill="#{bg.fetch('hex')}"/><circle cx="60" cy="40" r="26" fill="#{fg.fetch('hex')}"/></svg>)
+      rows = [colour_value_row('Foreground', fg.fetch('hex'), fg.fetch('name')), colour_value_row('Background', bg.fetch('hex'), bg.fetch('name'))]
+      %(<li class="c-swatch">#{sample}<p class="c-swatch__name">#{escape(label)}</p><dl class="c-swatch__codes">#{rows.join}</dl></li>)
+    end
+    %(<ul class="c-swatches" role="list">#{items.join}</ul>)
+  end
+
   # Web functional colours: GOV.UK token name, its palette colour and codes.
   def colour_functional_tokens(level: 3)
     colour_page('web').fetch('functional').map do |group|
