@@ -6026,7 +6026,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "All eight colour rules reviewed for local palette authority, semantic independence, contrast context, channel distinctions and functional/decorative scope. 12 November 2026 source review: Integrated colour roles with data examples and optional household identity, with an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "a492e5e6204fc87357c82d6269b0aae44659a44b46ebedc497ee6cd37c92dc41",
+      "sha256": "325c40b53c6fb5c2b4d18dcfdfb99a7f7f22c1f15dccddb32d53aa55140c61be",
       "url": "/styles/brand-colour.html",
       "title": "Colour roles and accessibility",
       "example_ids": [
@@ -6181,7 +6181,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Reviewed generated exact palette references and semantic-role table; tone is independent of mode, chart identity and print metadata are qualified. 12 November 2026 source review: Connected the palette reference to colour roles, optional household identity and an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "b057619dbfbbf58433f12ae6586bf17b0391a93e7ce59a3daa2b6777dd803969",
+      "sha256": "383d7a080f1bb8fbec08d804bfae3188c4400cf4990bb2be15456e0dd01b5151",
       "url": "/styles/colour.html",
       "title": "Colour",
       "example_ids": [
@@ -6302,7 +6302,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Visual roles, brand chapters and the complete writing guide have clear entry points; canonical tokens remain outside authored prose. Project-story navigation review: discoverable About and Writing guide links, section grouping and update history are consistent; no new runtime claim. Preserved the historical #writing-guide anchor with a route to the new section. 12 November 2026 source review: Made data and colour guidance directly discoverable and added the matching original section illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "75aa22ba5e5a466f70b9fd7074cab9348f273c4385d6d3c50716c85c78c53578",
+      "sha256": "f8e9d7337295135f2d394fbbc153408c7ef38c8c2a4212dea18327f352b4aee6",
       "url": "/styles/index.html",
       "title": "Styles",
       "example_ids": [
@@ -7234,6 +7234,34 @@
       "title": "Map colours",
       "example_ids": [
         "map-govuk-zones"
+      ],
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/styles/colour-social.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "note": "18 November 2026: first published. Every palette value is rendered from docs/data/govuk-brand-colours.json, and the example tiles are generated from it by docs/scripts/generate-social-examples.py; the values were copied verbatim from the GOV.UK Brand Guidelines social page read on 18 November 2026 (Open Government Licence v3.0), including the 9 companion pairings under pages.social.companion. Social colours do not follow the theme colour and are not used in the Home Assistant interface.",
+      "sha256": "f7e0048ff7784e5fdc909e8f3af6226bec36c2f7fd75e1485e4a6050ce5c0440",
+      "url": "/styles/colour-social.html",
+      "title": "Social colours",
+      "example_ids": [
+        "social-colour-tone",
+        "social-colour-tonal",
+        "social-colour-companion"
       ],
       "resolved_finding_ids": []
     }
@@ -16467,6 +16495,57 @@
       "owners": [
         "/styles/colour-maps.html"
       ]
+    },
+    {
+      "id": "social-colour-tone",
+      "title": "Social tiles from informative to inspiring",
+      "path": "docs/data/social-colour-examples.yml",
+      "source_file": "docs/data/social-colour-examples.yml",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Like-for-like with the GOV.UK tone examples: five invented Home Assistant posts from black and white to a companion colour. Generated by docs/scripts/generate-social-examples.py. Each tile is an SVG with a title and description; every text pair reaches at least 4.5:1.",
+      "sha256": "1138d24e27d34bc9108e731b40dea3516c8d3a0fb9d83e4575b3d750d7c59a79",
+      "authored_html_sha256": "721c7e7f80d3339a1831d9a90270a9e5f429878c45649f9e51a0bcf8c542beba",
+      "owners": [
+        "/styles/colour-social.html"
+      ]
+    },
+    {
+      "id": "social-colour-tonal",
+      "title": "Social tiles in green, red and purple tones",
+      "path": "docs/data/social-colour-examples.yml",
+      "source_file": "docs/data/social-colour-examples.yml",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Like-for-like with the GOV.UK tonal examples: green, red and purple tiles, each based on one colour family; like the GOV.UK example, the red tile uses Purple tint 95% for its text. Generated by docs/scripts/generate-social-examples.py. Each tile is an SVG with a title and description; every text pair reaches at least 4.5:1.",
+      "sha256": "1138d24e27d34bc9108e731b40dea3516c8d3a0fb9d83e4575b3d750d7c59a79",
+      "authored_html_sha256": "6d27347537b758ee02cf28146555647e269cead94ee789c061834290f0a7122c",
+      "owners": [
+        "/styles/colour-social.html"
+      ]
+    },
+    {
+      "id": "social-colour-companion",
+      "title": "Social tiles with companion colours",
+      "path": "docs/data/social-colour-examples.yml",
+      "source_file": "docs/data/social-colour-examples.yml",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "Like-for-like with the GOV.UK companion examples, which pair colours from different families; only the third tile uses one of the 9 listed pairings exactly, and the example text says so. Generated by docs/scripts/generate-social-examples.py. Each tile is an SVG with a title and description; every text pair reaches at least 4.5:1.",
+      "sha256": "1138d24e27d34bc9108e731b40dea3516c8d3a0fb9d83e4575b3d750d7c59a79",
+      "authored_html_sha256": "6af8d0a55232f2bfe229ff04364d92aea16253a6e2710376bcf3dd9e3b4f8989",
+      "owners": [
+        "/styles/colour-social.html"
+      ]
     }
   ],
   "findings": [
@@ -18331,7 +18410,7 @@
     },
     {
       "path": "docs/source/llms.txt",
-      "sha256": "9a399c1320a309f17d26cb3b0c9d90ae5ef9d1eaa479dbd3e286d2b376203af3",
+      "sha256": "8fa6d73f45785f40681e00fb75a6d255054b515b2234eda856e6cec59abbfdd1",
       "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -18472,7 +18551,12 @@
     {
       "path": "docs/scripts/sync-palettes.py",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "b32664d53ac210e17dfd8e5083c3d4bbb23875ee16b6771acbf020a86f07a908"
+      "sha256": "7f113c77b70057958cf0820bdb7055f4d08be799ae3dd5bd89d72fbede8f48e3"
+    },
+    {
+      "path": "docs/scripts/generate-social-examples.py",
+      "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately.",
+      "sha256": "f60f7187109a2a2c866807573cce48f7fdd2ed45b7d92035f67f7002d1bacd46"
     },
     {
       "path": "scripts/build.mjs",
@@ -18716,7 +18800,7 @@
     },
     {
       "path": "docs/source/stylesheets/_civica-components.scss",
-      "sha256": "2d6912cac8ff9f6f363471322177335ead81f496e0e4a1d00f38d9b68eb3f340",
+      "sha256": "9ebe3f5a1c9116f2d4375fa6a0eb06190a9224cea572fa1b886ef95e2a3b9921",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {

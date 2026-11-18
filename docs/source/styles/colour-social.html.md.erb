@@ -1,0 +1,73 @@
+---
+title: "Social colours"
+description: "The GOV.UK social palette, how to use colour to set the tone of a post, and the 9 companion colour pairings, with Home Assistant examples."
+group: "Colour"
+nav_order: 3
+last_reviewed_on: 2026-11-18
+review_in: 3 months
+published_on: "2026-11-18"
+updated_on: "2026-11-18"
+updates:
+  - date: "2026-11-18"
+    description: "First published, with the GOV.UK social palette and companion colour set copied exactly from the GOV.UK Brand Guidelines."
+ai_instructions: "Apply when making a social media graphic or a promotional tile about civica or a household's Home Assistant set-up. Use only the GOV.UK social palette on this page, unchanged, rendered from docs/data/govuk-brand-colours.json. Match the colour to the tone: black and white or a dark shade to inform, tonal colours (based on one colour family) for sensitive messages, companion colours (the 9 listed pairings) to prompt action or share good news. Accent blue on Primary blue and Primary blue on Primary yellow reach only 3:1, so use them only for large text or graphics. Every text pair must reach WCAG 2.2 AA contrast. Never rely on colour alone. Social colours do not follow the theme colour and are not used in the Home Assistant interface. Rules WG-001, WG-002."
+ai_related:
+  - path: "/styles/colour-web.html"
+    title: "Web colours"
+    relationship: "Owns the colours for web pages and Home Assistant dashboards."
+  - path: "/styles/brand-data.html"
+    title: "Data visualisation"
+    relationship: "Owns how to show data in a project publicity graphic."
+  - path: "/styles/chart-colour.html"
+    title: "Chart colours"
+    relationship: "Owns the colours of a chart inside a social graphic."
+---
+
+# Social colours
+
+Use these colours for social media graphics and other promotional tiles, such as a post about a new civica release. They are not for the Home Assistant interface: for dashboards, use [Web colours](colour-web.html). Social colours do not change with the household's theme colour.
+
+The social palette has every primary colour, tint, shade and accent, because social posts need more room for expression than a service. Keep the rest of the post consistent with the [Colour](colour.html) guidance.
+
+<%= colour_copy_status %>
+
+## Social palette
+
+<%= colour_palette('social', fields: %i[hex rgb]) %>
+
+## Use colour to reflect tone
+
+Some posts need to feel serious and practical, and point people to what they need. Others need impact, so that they stand out in a busy feed. Choose colour for the tone of the message, from most informative to most inspiring:
+
+1. Black and white.
+2. A dark shade.
+3. Primary blue.
+4. A tonal colour.
+5. A companion colour.
+
+There are two ways to add expression: tonal colours and companion colours.
+
+<%= example('social-colour-tone') %>
+
+## Tonal colour
+
+For a sensitive message, use colours from one tonal range, so that the post feels serious, informative and practical. For example, use Green tint 95% with Green shade 50%, or the reds of a warning.
+
+<%= example('social-colour-tonal') %>
+
+## Companion colour set
+
+Use companion colours for emphasis, for example to prompt an action or to share good news. GOV.UK keeps the set to these 9 pairings to help keep them accessible. Accent blue on Primary blue and Primary blue on Primary yellow reach only 3:1, so use them only for large text or graphics, not for smaller text.
+
+<%= colour_companion_pairs %>
+
+- Some pairings are harder to see for people with a visual impairment or colour blindness, so choose carefully.
+- Check every pairing that carries text against WCAG 2.2 contrast (minimum), level AA.
+- Do not rely on colour alone to show meaning, ask for an action or prompt a response.
+- Some people browse in dark mode or with high contrast settings. Check the post there, and adjust the colours if you need to.
+
+<%= example('social-colour-companion') %>
+
+## Maintenance
+
+GOV.UK values live in `docs/data/govuk-brand-colours.json`, under `pages.social`. The example tiles are generated from that file by `docs/scripts/generate-social-examples.py`. If a colour changes, run the script again rather than editing the tiles by hand; `--check` reports tiles that are out of date. Run `npm run check:colours` after the docs build.

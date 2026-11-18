@@ -6,7 +6,8 @@
 //      and every colour's id, hex, RGB, CMYK and Pantone;
 //   3. each built Colour page shows every colour of its palette, with its values;
 //   4. the Chart colours page and chart module use the GOV.UK chart palette;
-//   5. the Map colours page shows the GOV.UK map example colours.
+//   5. the Map colours page shows the GOV.UK map example colours;
+//   6. the Social colours page shows the GOV.UK companion pairings.
 // Run after the docs build: node scripts/check-colours.mjs
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -72,7 +73,7 @@ const contrast = (a, b) => { const [x, y] = [luminance(a), luminance(b)].sort((m
 
 // 3. Published pages show every colour of their palette.
 const decode = text => text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
-for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app', 'colour-app', ['hex', 'rgb']], ['print', 'colour-print', ['cmyk', 'pantone']], ['maps', 'colour-maps', ['hex', 'rgb']]]) {
+for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app', 'colour-app', ['hex', 'rgb']], ['print', 'colour-print', ['cmyk', 'pantone']], ['maps', 'colour-maps', ['hex', 'rgb']], ['social', 'colour-social', ['hex', 'rgb']]]) {
   const path = `${BUILD}/${file}.html`;
   assert.ok(existsSync(path), `${path} missing: run the docs build first`);
   const raw = readFileSync(path, 'utf8');
@@ -132,5 +133,21 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   // Data must reach 3:1 with the land through its outline (GOV.UK maps guidance).
   const land = colours[example.base_map.find(item => item.role === 'Land').colour].hex;
   assert.ok(contrast(colours[example.points_of_interest[0].outline].hex, land) >= 3, 'map data outline reaches 3:1 on the land');
+}
+// 6. The Social colours page shows the 9 GOV.UK companion pairings in order,
+// every pairing reaches 3:1 at least, and every example tile colour is a
+// GOV.UK social palette colour.
+{
+  const html = decode(readFileSync(`${BUILD}/colour-social.html`, 'utf8'));
+  const names = [...html.matchAll(/<p class="c-swatch__name">([^<]+ on [^<]+)<\/p>/g)].map(match => match[1]);
+  assert.deepEqual(names, pages.social.companion.map(pair => `${colours[pair.foreground].name} on ${colours[pair.background].name}`), 'colour-social: companion pairings in GOV.UK order');
+  for (const pair of pages.social.companion) {
+    assert.ok(contrast(colours[pair.foreground].hex, colours[pair.background].hex) >= 3, `colour-social: ${pair.foreground} on ${pair.background} reaches 3:1`);
+  }
+  const palette = new Set(groupIds(pages.social.palette).map(id => colours[id].hex.toUpperCase()));
+  const tiles = readFileSync('docs/data/social-colour-examples.yml', 'utf8');
+  const used = [...tiles.matchAll(/(?:fill|stroke)="(#[0-9A-Fa-f]{6})"/g)].map(match => match[1].toUpperCase());
+  assert.ok(used.length > 0, 'colour-social: example tiles have colours');
+  for (const hex of used) assert.ok(palette.has(hex), `colour-social: example colour ${hex} is in the GOV.UK social palette`);
 }
 console.log(`Colour record is consistent: ${Object.keys(colours).length} GOV.UK colours across ${Object.keys(pages).length} pages, read ${data.source.read_on}.`);
