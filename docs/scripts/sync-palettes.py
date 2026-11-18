@@ -9,7 +9,7 @@ data = json.loads(source.read_text())
 # The Colour index. Theme colours come from design-system/palettes.json, which
 # takes each value from docs/data/govuk-brand-colours.json (GOV.UK Brand Guidelines).
 lines = ['---', 'title: Colour', 'description: How civica uses the GOV.UK colour palette, which colours a household can choose for the theme, and where each palette is documented.', 'group: "Colour"', 'nav_order: 0', 'last_reviewed_on: 2026-11-18', 'review_in: 3 months',
- 'ai_instructions: "Start here for any colour question. civica uses the GOV.UK colour palette unchanged. The household chooses one theme colour (the brand colour of the header, buttons and highlights) from seven GOV.UK primary colours that pass 4.5:1 with white text. Web, app and print colours each have an owner page; social, chart and map colours are owned by Social colours, Chart colours and Map colours; the illustrations page is planned. Chart, map, error, warning and success colours never change with the theme colour; links in dark mode, the on state, switches and sliders do. Primary red and green match the error and success colours. Never convey meaning by colour alone."',
+ 'ai_instructions: "Start here for any colour question. civica uses the GOV.UK colour palette unchanged. The household chooses one theme colour (the brand colour of the header, buttons and highlights) from seven GOV.UK primary colours that pass 4.5:1 with white text. Web, app and print colours each have an owner page; social, chart, map and illustration colours are owned by Social colours, Chart colours, Map colours and Illustration colours. Chart, map, error, warning and success colours never change with the theme colour; links in dark mode, the on state, switches and sliders do. Primary red and green match the error and success colours. Never convey meaning by colour alone."',
  'ai_related:', '  - path: "/styles/colour-web.html"', '    title: "Web colours"', '    relationship: "Owns the web palette and the functional colours (text, links, focus, error, success, brand)."',
  '  - path: "/get-started/colour-settings.html"', '    title: "Change theme colours"', '    relationship: "Owns how a household changes the theme colour in Home Assistant."',
  '---', '', '# Colour', '',
@@ -24,7 +24,8 @@ lines = ['---', 'title: Colour', 'description: How civica uses the GOV.UK colour
  '- [App colours](colour-app.html): the Home Assistant Companion app, including dark mode blues.',
  '- [Social colours](colour-social.html): social media graphics and promotional tiles, with the companion colour set.',
  '- [Print colours](colour-print.html): printed material, with CMYK and Pantone references.',
- '- [Map colours](colour-maps.html): base maps, Home Assistant zones and locations.', '',
+ '- [Map colours](colour-maps.html): base maps, Home Assistant zones and locations.',
+ '- [Illustration colours](colour-illustrations.html): choosing, pairing and contrasting colours in an illustration.', '',
  '## Theme colour', '',
  'Each household chooses one theme colour. It colours the header, buttons, selected navigation and highlights. Choose it in your profile with [the civica colour controls](../get-started/colour-settings.html).', '',
  'The choices are the GOV.UK primary colours that pass 4.5:1 contrast with white text, so white text and the white lockup stay readable on every one:', '',
