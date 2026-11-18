@@ -2,7 +2,7 @@
 examples:
   map-neighbourhood-records:
     title: A styled OpenStreetMap with uncertainty and every location record
-    description: Real OpenStreetMap vector data around Cardiff Bay uses the GOV.UK map example colours and labelled device markers in Accent green. Invented device records remain available without loading the map.
+    description: Real OpenStreetMap vector data around Cardiff Bay in the civica map colours, with labelled device markers in Accent green. The invented device records stay available without loading the map.
     height: 1550
     html: |
       <link rel="stylesheet" href="../stylesheets/maplibre-examples.css">
@@ -57,7 +57,7 @@ examples:
       review_status: Source checks only; integrated rendered review is recorded separately.
   map-govuk-zones:
     title: Home Assistant zones in the map colours
-    description: A no-network drawing of three invented Home Assistant zones on a coastline, using only the colours of the GOV.UK map example, with a key and a table of the same zones.
+    description: A no-network drawing of three invented Home Assistant zones on a coastline in the civica map colours, with a key and a table of the same zones.
     height: 1150
     html: |
       <section class="civica-map-demo" aria-labelledby="map-zones-title">

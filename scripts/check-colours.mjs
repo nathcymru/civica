@@ -214,7 +214,10 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   assert.ok(!readFileSync(`${BUILD}/colour.html`, 'utf8').includes('c-on-this-page'), 'colour: GOV.UK colour pages have no "On this page" box');
   for (const file of ['colour-social', 'colour-maps', 'colour-illustrations']) {
     const main = readFileSync(`${BUILD}/${file}.html`, 'utf8');
-    assert.ok(!main.includes('<iframe'), `${file}: GOV.UK shows these examples as pictures on the page, not in example frames`);
+    // The colour pictures are on the page, not in example frames. The one
+    // frame allowed is the working OpenStreetMap example on Map colours.
+    const frames = [...main.matchAll(/<iframe\b[^>]*\bsrc="[^"]*examples\/([a-z0-9-]+)\.html/g)].map(match => match[1]);
+    assert.deepEqual(frames, file === 'colour-maps' ? ['map-neighbourhood-records'] : [], `${file}: colour pictures are on the page, not in example frames${file === 'colour-maps' ? ', and the working OpenStreetMap example is framed' : ''}`);
     // GOV.UK puts the callout on Social and Maps, not on Illustrations.
     assert.equal(main.includes('Indicative examples for illustrative purposes only.'), file !== 'colour-illustrations', `${file}: GOV.UK callout matches the source page`);
   }

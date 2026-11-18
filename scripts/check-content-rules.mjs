@@ -62,6 +62,9 @@ function body(html) {
   // block is shared page furniture like the footer. Neither is guidance text.
   main = main.replace(/<details id="full-publication-update-history">[\s\S]*?<\/details>/g, ' ');
   main = main.replace(/<div class="c-contribute">[\s\S]*?<\/div>/g, ' ');
+  // Each example frame carries the same "View example code" usage note from
+  // docs/source/partials/_example.erb. It is example furniture, not guidance.
+  main = main.replace(/<details class="c-example__code">[\s\S]*?<\/details>/g, ' ');
   // A source note is the one allowed place to name a source.
   main = main.replace(/<p>\s*<small>\s*Source note:[\s\S]*?<\/small>\s*<\/p>/g, ' ');
   return main;
@@ -100,9 +103,22 @@ for (const [paragraph, where] of paragraphs) {
 }
 
 // Rule 4: the Map colours page has its own working OpenStreetMap example.
+// The shared example() helper renders it as an example frame: an iframe whose
+// built example page carries the map renderer's data-map-example marker and
+// reads its provider record, which must name OpenStreetMap.
 const maps = join(BUILD, 'styles/colour-maps.html');
-if (existsSync(maps) && !/data-osm-map|class="[^"]*\bc-osm-map\b/.test(readFileSync(maps, 'utf8'))) {
-  (found['styles/colour-maps'] ||= []).push('has no working OpenStreetMap example');
+const workingMap = src => {
+  const example = join(BUILD, 'styles', src);
+  if (!existsSync(example)) return false;
+  const html = readFileSync(example, 'utf8');
+  const config = html.match(/<section\b[^>]*\bdata-map-example\b[^>]*\bdata-map-config="([^"]+)"/);
+  if (!config) return false;
+  const provider = join(example, '..', config[1]);
+  return existsSync(provider) && /OpenStreetMap/.test(readFileSync(provider, 'utf8'));
+};
+if (existsSync(maps)) {
+  const frames = [...readFileSync(maps, 'utf8').matchAll(/<iframe\b[^>]*\bsrc="([^"?#]*examples\/[a-z0-9-]+\.html)/g)].map(match => match[1]);
+  if (!frames.some(workingMap)) (found['styles/colour-maps'] ||= []).push('has no working OpenStreetMap example');
 }
 
 for (const page of Object.keys(found)) found[page] = [...new Set(found[page])].sort();

@@ -1,7 +1,7 @@
 ---
 no_contents: true
 title: "Map colours"
-description: "The GOV.UK map palette, the colours GOV.UK uses for a base map and its data, and how to apply them to Home Assistant zones and locations."
+description: "The civica map colours, how to combine them on a base map, and a working OpenStreetMap example that uses them."
 group: "Colour"
 nav_order: 7
 last_reviewed_on: 2026-11-18
@@ -13,11 +13,13 @@ updates:
     description: "First published, with the GOV.UK map palette and map example colours copied exactly from the GOV.UK Brand Guidelines."
   - date: "2026-11-18"
     description: "Swatches and the example now follow the GOV.UK Maps page: round swatches, the zones drawing shown on the page, and Colours used in example with Points of interest and Base map. Moved maintenance notes to Colour."
-ai_instructions: "Apply when colouring a map: a base map, zones, device or person locations, or areas. Use only the GOV.UK map palette on this page, unchanged, rendered from docs/data/govuk-brand-colours.json. For a base map with data, follow the GOV.UK example: land Black tint 95% with a Black tint 80% outline, sea Teal tint 95%, coastal areas Teal tint 80%, data Accent green with a Primary green outline, labels Black. Map colours are the same in light and dark mode and never follow the theme colour. Use few colours, give every map a key, and add a shape, letter or label so that colour is never the only cue. Rules WG-001, WG-002."
+  - date: "2026-11-18"
+    description: "Rewritten for Home Assistant users: added the working OpenStreetMap example to this page, gave each example a caption saying what to notice, and removed outside source names and notes about the documentation."
+ai_instructions: "Apply when colouring a map: a base map, zones, device or person locations, or areas. Use only the civica map palette on this page, rendered from docs/data/govuk-brand-colours.json; never type a hex value. For a base map with data: land Black tint 95% with a Black tint 80% outline, sea Teal tint 95%, coastal areas Teal tint 80%, data Accent green with a Primary green outline, labels Black. On the working OpenStreetMap example, roads are White with Black tint 80% edges, buildings, railways and boundaries Black tint 80%, rivers Teal tint 80%. Map colours are the same in light and dark mode and never follow the theme colour. Use few colours, give every map a key, and add a shape, letter or label so that colour is never the only cue. civica does not restyle the native Map card. Do not name outside sources on the page. Rules WG-001, WG-002, WG-081."
 ai_related:
   - path: "/home-assistant/maps-and-zones.html"
     title: "Maps, zones and location records"
-    relationship: "Owns how to show locations, uncertainty and missing records on a map, and the working OpenStreetMap example."
+    relationship: "Owns how to show locations, uncertainty and missing records on a map. This page embeds its working OpenStreetMap example to show the colours."
   - path: "/styles/chart-colour.html"
     title: "Chart colours"
     relationship: "Owns scales for maps that show a quantity, and missing-value rules."
@@ -28,7 +30,7 @@ ai_related:
 
 # Map colours
 
-Use these colours for maps: a base map, Home Assistant zones, the reported locations of people and devices, or areas. Every colour is the GOV.UK map palette, unchanged. Map colours are the same in light and dark mode, and they never change with the household's theme colour.
+Use these colours for any map you draw or style for Home Assistant: the base map, zones, the reported locations of people and devices, and areas. Map colours stay the same in light and dark mode and do not change with the household's theme colour, so a map reads the same on every dashboard.
 
 <%= colour_copy_status %>
 
@@ -42,18 +44,18 @@ The map palette has:
 
 ## Using colour combinations on maps
 
-- Use as few colours as the map needs, so that it stays easy to read.
-- Data on the map, such as a zone or a marker, needs at least 3:1 contrast with the base map. If it does not reach 3:1, simplify the map, add outlines, or give the same information as text, such as a table.
-- Give text on a map strong contrast with the background.
-- Choose combinations that people with colour vision deficiencies can tell apart.
+- Use as few colours as the map needs. Every extra colour is one more thing to look up in the key.
+- Give data on the map, such as a zone or a marker, at least 3:1 contrast with the base map. If it falls short, add an outline, simplify the map or give the same facts in a table.
+- Give each marker a shape, letter or label as well as a colour, so that people who cannot tell the colours apart can still read the map.
 - Give every map a key that names each colour, shape and line style.
-- Combine colour with shapes, patterns and labels. Never rely on colour alone.
-- Colours carry cultural and political meaning. Some are linked with UK political parties, so do not let an area's colour suggest a party.
+- Do not let the colour of an area suggest a political party.
 - Test the map with the people who will use it.
+
+[Test the real colour pairs](colour.html#bg-col-03) explains the contrast that text and controls need.
 
 ### Example
 
-A base map with Home Assistant zones as data in a single colour. The zones and coastline are invented.
+Three Home Assistant zones, Home, Work and School, drawn on a base map, as they might appear on a custom map card. Notice that every zone uses the same colour with a darker outline, and that each zone is named, so you can tell them apart without colour. The coastline and zones are invented.
 
 <%= colour_example('map-govuk-zones', layout: :map) %>
 
@@ -61,26 +63,31 @@ A base map with Home Assistant zones as data in a single colour. The zones and c
 
 #### Points of interest
 
-Data, such as a zone or a marker, is shown in Accent green and outlined in Primary green. Labels, such as zone names, are in Black.
+Zones and markers are Accent green with a Primary green outline. Accent green on its own is too pale against the land, so the outline gives the 3:1 contrast. Labels, such as zone names, are Black.
 
 <%= colour_swatches(%w[green-accent green black], key: 'example') %>
 
 #### Base map
 
-Land is shown in Black tint 95% and outlined in Black tint 80%. Sea is shown in Teal tint 95%, with coastal areas in Teal tint 80%.
+Land is Black tint 95% with a Black tint 80% outline. Sea is Teal tint 95%, with a band of Teal tint 80% along the coast.
 
 <%= colour_swatches(%w[black-tint-80 black-tint-95 teal-tint-80 teal-tint-95], key: 'example') %>
 
-Accent green has low contrast with Black tint 95% land. The Primary green outline gives each zone or marker the 3:1 it needs, and a Black name or letter identifies it.
+## Working OpenStreetMap example
+
+The same colours on real OpenStreetMap data around Cardiff Bay, with 2 invented device locations. Nothing is requested from OpenStreetMap until you select **Load OpenStreetMap**.
+
+When the map loads, notice that:
+
+- roads are White with Black tint 80% edges
+- buildings, railways and boundaries are Black tint 80%
+- rivers and other narrow water are Teal tint 80%, so they stay visible against the land, and the coastal band also edges lakes
+- each device marker has its own shape and letter as well as its colour
+
+<%= example('map-neighbourhood-records') %>
 
 ## In Home Assistant
 
-The working OpenStreetMap example on [Maps, zones and location records](../home-assistant/maps-and-zones.html#labelled-locations-uncertainty-and-missing-data) uses the same base map colours. Its device markers are Accent green with a Primary green outline, and each has its own shape and letter. GOV.UK gives no road, building or river colours, so the example uses these civica choices:
+Use these colours for maps you design, such as a custom map card or a picture of a map in a guide. civica does not restyle the native Map card, which keeps its own map styles. Keep the map provider's attribution visible on any map.
 
-- Roads are White with Black tint 80% edges.
-- Buildings, railways and boundaries are Black tint 80%.
-- Rivers and other narrow water are Teal tint 80%, so that they stay visible.
-
-The Teal tint 80% coastal band also edges lakes and other inland water.
-
-The native Map card has its own map styles, and civica does not restyle it. Keep its provider attribution and its permissions. Use these colours for maps you design, such as a custom map or a picture of a map in a guide.
+[Maps, zones and location records](../home-assistant/maps-and-zones.html) explains how to show locations, uncertainty and missing records.
