@@ -28,7 +28,7 @@ ai_instructions: "Apply when colouring a chart series or heatmap, and for the sc
 ai_related:
   - path: "/styles/colour.html"
     title: "Colour"
-    relationship: "Owns the theme colours and the colour rules for every channel."
+    relationship: "Owns the theme colours and the general colour rules (BG-COL-01, 03, 06, 08)."
   - path: "/components/charts.html"
     title: "Charts and tables"
     relationship: "Owns the maintained Energy chart specification."
@@ -128,11 +128,13 @@ These working charts use the shared adapter. Their lines, patterns and tables ar
 
 <%= example('local-chart-many') %>
 
-<span id="bg-col-07"></span>
+<h2 id="bg-col-07">BG-COL-07: Keep chart and map scales independent</h2>
+
+**Local requirement: MUST.** Applies to categorical chart identities and proposed quantitative map/chart scales.
+
+This rule moved here from the retired Colour roles and accessibility page. Choosing a theme colour must not change what a grid, solar or device series looks like (see [Light and dark mode](#light-and-dark-mode)). Map the colour to the relationship, as in the next 2 sections. For a new heatmap or map layer, write down its scale, units, endpoints and unavailable state before choosing colours. These are reference requirements. They do not mean every native map layer has been rethemed. Keep the source credit and a text route to the data.
 
 ## Choose the colour mapping
-
-This section and the next carry rule BG-COL-07 (MUST): keep chart and map scales independent of the theme colour. It moved here from the retired Colour roles and accessibility page.
 
 | Relationship | Meaning of colour | Colours | Required context |
 | --- | --- | --- | --- |

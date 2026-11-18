@@ -25,8 +25,6 @@ updates:
     description: "Renamed the link to Chart colours, the page that now owns the GOV.UK chart palette."
   - date: "2026-11-18"
     description: "The working map now uses the GOV.UK map colours, the same in light and dark mode; the Vivid, Muted, Light and Dark controls were removed."
-  - date: "2026-11-18"
-    description: "Colour rule links now point to the pages that own them, after the Colour roles and accessibility page was retired."
 ai_instructions: "Apply when showing a device, person or zone on a map. Label what the map shows, its source and when it was observed. Put every record in a text list as well, and count plotted, unlocated and withheld records separately. Never place a record without coordinates at 0, 0, and never call an accuracy circle a boundary. Keep the native Map card, its provider attribution and its permissions, and keep OpenStreetMap and renderer licence notices visible. Rules WG-038, WG-066, WG-074, WG-077, WG-081, WG-082."
 ai_related:
   - path: "/styles/colour-maps.html"
@@ -89,7 +87,7 @@ The working example uses the [Map colours](../styles/colour-maps.html), unchange
 - A solid outer boundary means selected. A dashed outline means reported uncertainty.
 - None of the colours expresses how severe a device problem is, or how precise a location is.
 
-Meet 4.5:1 contrast for ordinary text and 3:1 for markers and boundaries that carry meaning. Test against the real background, because a pair that works on white can fail over imagery. In forced-colour mode, keep the shapes, letters and line styles. See [Colour](../styles/colour.html#bg-col-03) for the rules.
+Meet 4.5:1 contrast for ordinary text and 3:1 for markers and boundaries that carry meaning. Test against the real background, because a pair that works on white can fail over imagery. In forced-colour mode, keep the shapes, letters and line styles. See rules [BG-COL-03](../styles/colour.html#bg-col-03) and [BG-COL-06](../styles/colour.html#bg-col-06).
 
 For a map that shows a quantity, such as rainfall, decide what it means before choosing the palette. Take its colours from the [map palette](../styles/colour-maps.html), and use [Chart colours](../styles/chart-colour.html#choose-the-colour-mapping) for scales, units and missing values. Keep a weather or flood provider's own thresholds and warnings, and do not recolour them as theme accents. These examples show categorical locations and a missing background. They do not show a quantity map or claim that one has been contrast-tested.
 

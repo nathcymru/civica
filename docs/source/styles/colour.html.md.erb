@@ -10,6 +10,9 @@ ai_related:
   - path: "/styles/colour-web.html"
     title: "Web colours"
     relationship: "Owns the web palette and the functional colours (text, links, focus, error, success, brand)."
+  - path: "/styles/chart-colour.html"
+    title: "Chart colours"
+    relationship: "Owns chart colours and rule BG-COL-07."
   - path: "/get-started/colour-settings.html"
     title: "Change theme colours"
     relationship: "Owns how a household changes the theme colour in Home Assistant."
@@ -110,9 +113,9 @@ The theme colour does not change Home Assistant’s light, dark or automatic mod
 
 ## Colour rules
 
-These rules apply to every colour choice. Rule IDs BG-COL-01, BG-COL-03, BG-COL-06 and BG-COL-08 moved here from the retired Colour roles and accessibility page, unchanged in meaning. Web colours owns BG-COL-02, BG-COL-04 and BG-COL-05, and Chart colours owns BG-COL-07.
+These rules apply to every colour choice. Rule IDs BG-COL-01, BG-COL-03, BG-COL-06 and BG-COL-08 moved here from the retired Colour roles and accessibility page, unchanged in meaning. [Web colours](colour-web.html#colour-roles-in-home-assistant) owns BG-COL-02, BG-COL-04 and BG-COL-05, and [Chart colours](chart-colour.html#bg-col-07) owns BG-COL-07.
 
-<h2 id="bg-col-01">BG-COL-01: Keep the theme colour and identity roles separate</h2>
+<h3 id="bg-col-01">BG-COL-01: Keep the theme colour and identity roles separate</h3>
 
 **Local requirement: MUST.** Applies to theme selection, household personalisation and separate project identity assets.
 
@@ -122,7 +125,7 @@ civica uses the GOV.UK colour palette. That does not make civica an official gov
 
 <%= example('bg-colour-role-separation') %>
 
-<h2 id="bg-col-03">BG-COL-03: Test combinations and retain another cue</h2>
+<h3 id="bg-col-03">BG-COL-03: Test combinations and retain another cue</h3>
 
 **Local requirement: MUST.** Applies to rendered text, controls and meaningful graphical objects.
 
@@ -130,15 +133,15 @@ Test the real foreground and background pair against the [accessibility requirem
 
 Give a status words, a selection a checked or current state, and a chart series a name plus a pattern or shape. For example, show “Front door locked” in text as well as a green icon. Test focus on its real surface, including a dark masthead. A colour-blindness simulation helps a review but does not prove that everyone can tell every pair apart.
 
-<h2 id="bg-col-06">BG-COL-06: Review every display context</h2>
+<h3 id="bg-col-06">BG-COL-06: Review every display context</h3>
 
 **Local requirement: MUST.** Applies to affected components with every theme colour, in both modes and in accessibility contexts.
 
 The theme colour, and Light or Dark, are independent choices. Use the documented derived dark tokens and keep the exact theme colour on the brand header. Do not make a colour lighter by adding transparency.
 
-Let forced-colour modes use system colours for text, links, focus and controls. Keep borders, labels and symbols if fills disappear, and avoid a blanket `forced-color-adjust: none`. Check real native dialogs, dense settings tables and editors, not only the spacious examples. A documentation preview is not an audit of all fourteen combinations (7 theme colours, 2 modes).
+Let forced-colour modes use system colours for text, links, focus and controls. Keep borders, labels and symbols if fills disappear, and avoid a blanket `forced-color-adjust: none`. Check real native dialogs, dense settings tables and editors, not only the spacious examples. A documentation preview is not an audit of all 14 combinations (7 theme colours, 2 modes).
 
-<h2 id="bg-col-08">BG-COL-08: Adapt the output channel without importing identity</h2>
+<h3 id="bg-col-08">BG-COL-08: Adapt the output channel without importing identity</h3>
 
 **Local requirement: MUST.** Applies to screen, promotional and print colour output.
 
@@ -147,6 +150,8 @@ Dashboard controls need calm colour for repeated use. A release graphic or other
 For print, treat the supplied CMYK and RAL or descriptive values as references, not measured matches. Use screen hex in sRGB for the application and check a separate proof for printed material. Never change a screen token to approximate a paint or print sample. Illustration colour follows [Illustration colours](colour-illustrations.html).
 
 ## Maintain the tokens
+
+The brand source inventory and rule checklist are in `docs/data/brand-guidance-inventory.json` and `docs/data/brand-guidance-checklist.json`. A reviewed source supports a design decision. It is not a pass for an interface. Before closing a checklist item, record the page or component, the theme and mode, the test result and any remaining issue. Check again after a change to a source, palette, component or renderer.
 
 GOV.UK values live in `docs/data/govuk-brand-colours.json`. The theme colours live in `design-system/palettes.json`. After changing either, run `node scripts/generate-themes.mjs` and `python3 docs/scripts/sync-palettes.py` from the repository root, and commit the generated files together. Use `--check` on both to detect drift.
 

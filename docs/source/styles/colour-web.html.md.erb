@@ -29,7 +29,7 @@ ai_related:
 
 Use these colours on web pages and Home Assistant dashboards. Use a functional colour for its role first, such as the brand, link or error colour. Use the wider palette only for supporting elements such as illustrations or custom cards.
 
-Every value on this page is the GOV.UK web palette, unchanged.
+Every value in the swatches and tables on this page is the GOV.UK web palette, unchanged.
 
 <%= colour_copy_status %>
 
@@ -64,17 +64,17 @@ These rules apply the functional colours in a Home Assistant interface. Rule IDs
 
 These examples use invented household details. They do not operate devices, and they do not show that every native Home Assistant surface follows this guidance.
 
-<h2 id="bg-col-02">BG-COL-02: Choose a colour by its job</h2>
+<h3 id="bg-col-02">BG-COL-02: Choose a colour by its job</h3>
 
 **Local requirement: MUST.** Applies to interface colour tokens and semantic states.
 
 Give identity, reading, interaction, state and data their own roles. The theme colour supports navigation and interaction hierarchy. Text tokens support reading. Focus and validation tokens mark an interaction state. Device colours may express a native domain state. Chart colours identify a source.
 
-The Red theme colour is the same as the error colour (`#CA3535` in light mode, `#F0C6C6` in dark mode), and the Green theme colour is the same as the success colour (`#0F7A52`). With either selected, do not let a button or highlight stand in for an error or success: say it in words. A green primary is not proof of success, and a yellow lighting scene is a light recipe, not a warning. Choose a semantic fill and its paired text colour together. A dark-mode error text colour is not automatically a safe button background.
+The Red theme colour is the same as the error colour (`#CA3535` in light mode; in dark mode both use civica’s own `#F0C6C6`, which is not a GOV.UK value), and the Green theme colour is the same as the success colour (`#0F7A52`). With either selected, do not let a button or highlight stand in for an error or success: say it in words. A green primary is not proof of success, and a yellow lighting scene is a light recipe, not a warning. Choose a semantic fill and its paired text colour together. A dark-mode error text colour is not automatically a safe button background.
 
 <%= example('bg-colour-state-labels') %>
 
-<h2 id="bg-col-04">BG-COL-04: Separate dividers from editable boundaries</h2>
+<h3 id="bg-col-04">BG-COL-04: Separate dividers from editable boundaries</h3>
 
 **Local requirement: MUST.** Applies to structural borders, inputs and native control geometry.
 
@@ -84,7 +84,7 @@ Do not outline every dashboard region in black. Group content with headings and 
 
 <%= example('bg-colour-boundaries') %>
 
-<h2 id="bg-col-05">BG-COL-05: Preserve device, warning and notification meaning</h2>
+<h3 id="bg-col-05">BG-COL-05: Preserve device, warning and notification meaning</h3>
 
 **Local requirement: MUST.** Applies to device state, manufacturer identifiers and attention counts.
 
