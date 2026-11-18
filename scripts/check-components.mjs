@@ -145,7 +145,7 @@ items.forEach((match, position) => {
 const search = JSON.parse(page.match(/<script type="application\/json" id="component-search-data">([\s\S]*?)<\/script>/)[1]);
 const expectedSearch = expected.filter(entry => !entry.listed_on).map(entry => {
   const also = expected.filter(other => other.listed_on && other.name === entry.name && other.owner === entry.owner);
-  const notes = [entry.note, ...also.map(other => other.note)].filter(Boolean);
+  const notes = also.map(other => other.note).filter(Boolean);
   const href = entry.available
     ? `${entry.route.replace('/components/', '')}${entry.anchor && entry.anchor_published ? `#${entry.anchor}` : ''}`
     : `#parent-${slug(entry.owner)}`;

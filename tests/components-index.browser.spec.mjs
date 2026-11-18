@@ -80,9 +80,11 @@ test('the A to Z list names every parent once, links published pages and marks t
 
 test('the combobox finds parents, elements and variants and goes to the owning anchor', async ({ page }) => {
   await page.goto(index);
+  await page.waitForLoadState('networkidle');
   // Searching uses the embedded data only: no request of any kind after the page has loaded.
+  // The browser may fetch the favicon late on its own; that is not the search.
   const requests = [];
-  page.on('request', request => requests.push(request.url()));
+  page.on('request', request => { if (!request.url().endsWith('/favicon.svg')) requests.push(request.url()); });
   const box = page.getByRole('combobox', { name: 'Find a component or element' });
   await expect(box).toHaveAttribute('aria-expanded', 'false');
   await box.fill('ha-button');

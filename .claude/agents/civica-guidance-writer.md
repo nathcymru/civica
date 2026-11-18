@@ -45,5 +45,5 @@ Only the pages assigned to you, their data and example files, and any records th
 - Links and metadata changed
 - Examples added, revised or removed
 - Proposed retirements
-- Visual opportunities for the illustrator
+- Visual opportunities for the illustrator (illustrations and diagrams) or the data visualiser (charts, state comparisons, data tables)
 - Unresolved questions or limitations

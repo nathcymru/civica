@@ -126,7 +126,8 @@ module ComponentHelpers
                '#parent-' + component_slug(entry.fetch('owner'))
              end
       listed = also[[entry.fetch('name'), entry.fetch('owner')]]
-      notes = ([entry['note']] + listed.map { |item| item['note'] }).compact
+      # Only cross-reference notes are shown; other inventory notes are internal records.
+      notes = listed.map { |item| item['note'] }.compact
       { 'n' => entry.fetch('name'), 'k' => entry.fetch('kind'), 'o' => entry.fetch('owner'), 'h' => href,
         'a' => entry.fetch('available'), 'w' => entry['within'],
         'g' => entry['origin'] && component_origin_label(entry['origin']),
