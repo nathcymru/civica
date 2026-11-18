@@ -13,7 +13,9 @@ updates:
     description: "First published, with the GOV.UK app palette copied exactly from the GOV.UK Brand Guidelines."
   - date: "2026-11-18"
     description: "Swatches now use the GOV.UK Brand layout: a round sample, the name, and RGB and hex values with copy icons."
-ai_instructions: "Use this page for colour in the Home Assistant Companion app and other app-like screens. Every value comes unchanged from the GOV.UK Brand Guidelines app page and is rendered from docs/data/govuk-brand-colours.json. The app palette adds accents and two dark mode blues to the web palette. Lead with Primary blue and Accent teal, keep the brand header on key screens, and never add colour that reduces accessibility."
+  - date: "2026-11-18"
+    description: "The App header and Examples sections now follow the GOV.UK App page: a picture of the Primary blue header on the mobile web, 4 Home Assistant Companion app screens with the Primary blue header, and Companion app screens with tinted tiles and menus. The household and its details are invented. Use colour with care is now part of Examples."
+ai_instructions: "Use this page for colour in the Home Assistant Companion app and other app-like screens. Every value comes unchanged from the GOV.UK Brand Guidelines app page and is rendered from docs/data/govuk-brand-colours.json. The app palette adds accents and two dark mode blues to the web palette. Lead with Primary blue and Accent teal, keep the brand header on key screens, and never add colour that reduces accessibility. Grey out content in Black tints when a picture shows only the header. The pictures are indicative examples with invented household details, and they copy no GOV.UK identity device."
 ai_related:
   - path: "/styles/colour-web.html"
     title: "Web colours"
@@ -43,6 +45,24 @@ The app palette has:
 
 Keep the brand colour header on key screens, as on the web. It gives each screen a clear starting point and makes the household's interface easy to recognise.
 
-## Use colour with care
+<%= colour_callout %>
+
+### Mobile web header
+
+<%= colour_example('app-colour-mobile-web-header', callout: false) %>
+
+### App header
+
+<%= colour_callout %>
+
+<%= colour_example('app-colour-header', callout: false) %>
+
+## Examples
+
+In the Companion app, lead with Primary blue and Accent teal, from the first screen to the core controls.
 
 Tints inside cards and colours that help people find their way can add structure. Apply colour only where it does not add visual clutter or make the screen harder to use.
+
+<%= colour_callout %>
+
+<%= colour_example('app-colour-examples', callout: false) %>

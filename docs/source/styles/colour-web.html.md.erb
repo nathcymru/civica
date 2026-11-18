@@ -15,7 +15,9 @@ updates:
     description: "Added rules BG-COL-02, BG-COL-04 and BG-COL-05 and their examples, moved from the Colour roles and accessibility page, which has been deleted."
   - date: "2026-11-18"
     description: "Swatches now use the GOV.UK Brand layout: a round sample, the name, and RGB and hex values with copy icons. Added the list of colour groups. Removed the Sass and theme property rows from each swatch."
-ai_instructions: "Use this page for any colour shown on a web page or Home Assistant dashboard. Every value comes unchanged from the GOV.UK Brand Guidelines web page and is rendered from docs/data/govuk-brand-colours.json: never type a hex value from memory. Prefer the functional colour for its role (for example brand, link, error, focus) and use the palette only for supporting elements such as illustrations. Never use colour alone to give meaning. Chart colours have their own page. Rules BG-COL-02, BG-COL-04 and BG-COL-05 are on this page: give each colour one job, keep dividers apart from editable boundaries, and keep native device, warning and notification meaning."
+  - date: "2026-11-18"
+    description: "Added a Web palette example, as on the GOV.UK Web page: a picture of a civica dashboard for an invented household in a desktop browser, using only web palette colours."
+ai_instructions: "Use this page for any colour shown on a web page or Home Assistant dashboard. Every value comes unchanged from the GOV.UK Brand Guidelines web page and is rendered from docs/data/govuk-brand-colours.json: never type a hex value from memory. Prefer the functional colour for its role (for example brand, link, error, focus) and use the palette only for supporting elements such as illustrations. Never use colour alone to give meaning. Chart colours have their own page. Rules BG-COL-02, BG-COL-04 and BG-COL-05 are on this page: give each colour one job, keep dividers apart from editable boundaries, and keep native device, warning and notification meaning. The Web palette example is an indicative picture with an invented household; its colours are web palette colours only."
 ai_related:
   - path: "/styles/colour-app.html"
     title: "App colours"
@@ -62,6 +64,12 @@ A functional colour has one job. Use it only for that job, and use the palette f
 - Use `hover` only for the hover state of inputs.
 
 <%= colour_functional_tokens %>
+
+### Web palette example
+
+<%= colour_callout %>
+
+<%= colour_example('web-colour-dashboard', callout: false) %>
 
 ## Colour roles in Home Assistant
 

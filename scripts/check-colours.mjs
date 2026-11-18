@@ -8,11 +8,14 @@
 //   4. the Chart colours page and chart module use the GOV.UK chart palette;
 //   5. the Map colours page shows the GOV.UK map example colours;
 //   6. the Social colours page shows the GOV.UK companion pairings;
-//   7. the illustration examples use only GOV.UK Web and illustration colours.
+//   7. the illustration examples use only GOV.UK Web and illustration colours,
+//      the web example only web palette colours and the app examples only app
+//      palette colours (the generator checks text contrast);
 // Run after the docs build: node scripts/check-colours.mjs
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
+import YAML from 'yaml';
 
 const data = JSON.parse(readFileSync('docs/data/govuk-brand-colours.json', 'utf8'));
 const { colours, pages } = data;
@@ -159,6 +162,22 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
   assert.ok(used.length > 0, 'colour-illustrations: examples have colours');
   for (const hex of used) assert.ok(allowed.has(hex), `colour-illustrations: example colour ${hex} is a GOV.UK Web or illustration colour`);
 }
+// The same check for the Web and App colour pictures: the web example uses
+// only web palette colours, and the app examples only app palette colours.
+{
+  const examples = YAML.parse(readFileSync('docs/data/web-app-colour-examples.yml', 'utf8')).examples;
+  const palettes = { web: groupIds(pages.web.palette), app: groupIds(pages.app.palette) };
+  const expected = { 'web-colour-dashboard': 'web', 'app-colour-mobile-web-header': 'app', 'app-colour-header': 'app', 'app-colour-examples': 'app' };
+  assert.deepEqual(Object.keys(examples).sort(), Object.keys(expected).sort(), 'web and app examples: the expected pictures');
+  for (const [id, page] of Object.entries(expected)) {
+    const allowed = new Set(palettes[page].map(colour => colours[colour].hex.toUpperCase()));
+    const used = [...examples[id].html.matchAll(/(?:fill|stroke)="(#[0-9A-Fa-f]{6})"/g)].map(match => match[1].toUpperCase());
+    assert.ok(used.length > 0, `${id}: example has colours`);
+    for (const hex of used) assert.ok(allowed.has(hex), `${id}: example colour ${hex} is in the GOV.UK ${page} palette`);
+    assert.ok(/Colours: [^<]+\./.test(examples[id].html), `${id}: caption lists the colours`);
+    assert.ok(/are invented\./.test(examples[id].html), `${id}: says its details are invented`);
+  }
+}
 // 8. Layout parity with the GOV.UK Brand colour pages. Text and records can
 // pass review while the page looks nothing like its source, so check what a
 // reader sees: the GOV.UK section headings in GOV.UK order (outline read from
@@ -168,8 +187,8 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
 // This is not a visual comparison: also compare screenshots before release.
 {
   const outline = {
-    'colour-web': ['Web palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Browns', 'Neutrals', 'Functional colours'],
-    'colour-app': ['App palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals', 'App header'],
+    'colour-web': ['Web palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Browns', 'Neutrals', 'Functional colours', 'Web palette example'],
+    'colour-app': ['App palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals', 'App header', 'Mobile web header', 'App header', 'Examples'],
     'colour-social': ['Social palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals', 'Use colour to reflect tone', 'From most informative to most inspiring', 'Tonal colour examples', 'Companion colour set', 'Companion colour examples'],
     'colour-print': ['Print palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals'],
     'chart-colour': ['Chart palette', 'Categorical palette', 'Sequential and divergent scale palette', 'Using colour in charts', 'Single category', 'Multiple categories', 'Divergent categories', 'Using charts within social media'],
@@ -195,6 +214,15 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
     assert.ok(!main.includes('<iframe'), `${file}: GOV.UK shows these examples as pictures on the page, not in example frames`);
     // GOV.UK puts the callout on Social and Maps, not on Illustrations.
     assert.equal(main.includes('Indicative examples for illustrative purposes only.'), file !== 'colour-illustrations', `${file}: GOV.UK callout matches the source page`);
+  }
+  // Web and App keep their rule examples in frames, so check only the GOV.UK
+  // pictures: each is on the page, not framed, and GOV.UK's callouts are there
+  // (1 on Web; 3 on App: App header, its App header subsection and Examples).
+  for (const [file, figures, callouts] of [['colour-web', ['web-dashboard'], 1], ['colour-app', ['mobile-web', 'app-header-1', 'app-header-2', 'app-examples'], 3]]) {
+    const main = readFileSync(`${BUILD}/${file}.html`, 'utf8');
+    for (const id of figures) assert.ok(main.includes(`role="img" aria-labelledby="${id}-t ${id}-d"`), `${file}: the ${id} picture is on the page`);
+    assert.ok(!/<iframe[^>]+(?:web|app)-colour-/.test(main), `${file}: GOV.UK shows these pictures on the page, not in example frames`);
+    assert.equal((main.match(/Indicative examples for illustrative purposes only\./g) || []).length, callouts, `${file}: GOV.UK callouts match the source page`);
   }
   // Each example keeps its invented-data label and its data table.
   for (const [file, count] of [['chart-colour', 4], ['colour-maps', 1]]) {

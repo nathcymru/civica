@@ -66,6 +66,7 @@ jobs:
       - run: python3 docs/scripts/sync-brand.py --check
       - run: python3 -m venv .venv && .venv/bin/pip install PyYAML Jinja2
       - run: .venv/bin/python lighting/scripts/check-ha.py
+      - run: .venv/bin/python docs/scripts/generate-web-app-examples.py --check
       - run: bundle exec middleman build
         working-directory: docs
       - run: python3 scripts/check-docs.py
