@@ -4,7 +4,7 @@ description: Say what failed, what is missing and what the person can do next, w
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: 2026-11-11
-updated_on: "2026-11-17"
+updated_on: "2026-11-18"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -16,6 +16,8 @@ updates:
     description: First published in the civica.uk design system.
   - date: "2026-11-17"
     description: "Rewritten to lead with the rule, match the theme-settings messages and move the outside reference to the patterns index."
+  - date: "2026-11-18"
+    description: "The missing theme row now says theme colour, instead of palette."
 ai_instructions: "Apply when a task fails, a reading is missing or there is nothing to show. Say which of these it is, keep what the person entered, place the message by the control and offer only recovery steps that work. Never show a missing reading as 0 or Off. Rules WG-033, WG-038, WG-040, WG-044."
 ai_related:
   - path: "/components/status.html"
@@ -50,7 +52,7 @@ These examples are local previews with invented household values. They do not co
 | Home Assistant rejected the request | Request rejected, with the known reason | The device did not respond |
 | The request was accepted but no new state has arrived | Request accepted; result not confirmed | Failed, succeeded or safe to repeat |
 | The civica colour controls are disabled because not every civica theme is installed | Install all civica themes and reload themes to use these controls. | Leaving the controls disabled without a reason |
-| A chosen civica theme is absent when the person applies it | This theme is unavailable. Reload themes and try again. | A silent switch to another palette |
+| A chosen civica theme is absent when the person applies it | This theme is unavailable. Reload themes and try again. | A silent switch to another theme colour |
 | Home Assistant has not yet supplied its themes | Colour settings are loading. | An error |
 | Home Assistant is in safe or recovery mode | Colour controls are unavailable in safe or recovery mode. | Hiding the native theme settings |
 | The profile controls cannot attach | Use the native theme selector or the settings card | Hiding the native settings |
