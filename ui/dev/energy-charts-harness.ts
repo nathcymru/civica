@@ -27,7 +27,7 @@ const CARD_STYLE = `
 :host{display:block;min-width:0}ha-card{display:block;min-width:0;border:1px solid var(--divider-color);background:var(--card-background-color);color:var(--primary-text-color);padding:20px}h2{font-size:var(--civica-font-size-heading,24px);line-height:1.25;margin:0 0 10px}p{font-size:var(--civica-font-size-small,16px);line-height:1.5;margin:0 0 15px}.content{min-width:0}
 `;
 // Keep the same legend structure and native inline colour precedence as HA.
-// The adapter, not this fixture, supplies the ONS presentation overrides.
+// The adapter, not this fixture, supplies the GOV.UK chart presentation.
 const CHART_STYLE = `
 :host{display:block;min-width:0}.container{display:flex;flex-direction:column}.chart-container{width:100%;height:240px}.chart{width:100%;height:100%}.chart-legend ul{list-style:none;margin:10px 0;padding:0;display:flex;flex-wrap:wrap;gap:0 8px;justify-content:center}.chart-legend li{display:flex;align-items:center;min-width:0}.chart-legend button{border:0;background:transparent;color:inherit;font:14px/1.5 Roboto,Arial,sans-serif;cursor:pointer}.chart-legend .legend-toggle{padding:4px;width:32px;height:32px;flex:none}.chart-legend .label{padding:4px;min-width:0;text-align:left;overflow-wrap:anywhere}.chart-legend .value{padding:0 4px;font:12px/1.5 Roboto,Arial,sans-serif;white-space:nowrap}.chart-legend .hidden{color:var(--secondary-text-color)}.chart-legend .hidden .label{text-decoration:line-through}.chart-legend button:focus-visible{outline:3px solid var(--ha-color-focus);outline-offset:0}ha-svg-icon{display:inline-flex;align-items:center;justify-content:center;width:var(--mdc-icon-size,24px);height:var(--mdc-icon-size,24px)}ha-svg-icon svg{width:100%;height:100%;fill:currentColor}.empty{font-size:16px;margin:10px 0;color:var(--secondary-text-color)}ha-chart-tooltip-marker{display:inline-block;width:10px;height:10px;border-radius:10px;margin-inline-end:4px;vertical-align:middle}.native-tooltip{font:14px/1.5 Arial,sans-serif}.native-tooltip h4{margin:0;text-align:center}
 `;
@@ -75,11 +75,11 @@ function build(target: HTMLElement) {
   for (const p of palettes.palettes) { const option = element('option', p.name); option.value = p.id; palette.append(option); }
   paletteLabel.append(palette);
   const checkbox = (text: string, checked = false) => { const label = element('label'), input = element('input'); input.type = 'checkbox'; input.checked = checked; label.append(input, text); return { label, input }; };
-  const dark = checkbox('Dark example'), muted = checkbox('Muted chart colours'), enabled = checkbox('Apply civica chart styles', !new URLSearchParams(location.search).has('native'));
+  const dark = checkbox('Dark example'), enabled = checkbox('Apply civica chart styles', !new URLSearchParams(location.search).has('native'));
   const nextDay = element('button', 'Show next sample day'); nextDay.type = 'button';
   nextDay.hidden = ['devices', 'empty'].includes(target.dataset.exampleChart ?? '');
   if (!target.dataset.exampleChart) nextDay.textContent = 'Show next sample day for time charts';
-  controls.append(paletteLabel, muted.label, dark.label, enabled.label, nextDay);
+  controls.append(paletteLabel, dark.label, enabled.label, nextDay);
   const panel = document.createElement('ha-panel-energy'); const panelRoot = panel.attachShadow({ mode: 'open' });
   const panelStyle = element('style', ':host{display:block;min-width:0}.examples{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;padding:0 20px 20px}');
   const examples = element('div'); examples.className = 'examples'; panelRoot.append(panelStyle, examples);
@@ -148,12 +148,10 @@ function build(target: HTMLElement) {
   let day = 0;
   function paintTheme() {
     const p = palettes.palettes.find(item => item.id === palette.value)!;
-    // One theme per GOV.UK theme colour. The Muted tone is a chart generator
-    // option only; no theme selects it.
+    // One theme per GOV.UK theme colour.
     const name = `civica ${p.name}`;
     const theme = (source.themes as Record<string, any>)[name];
     for (const [key, value] of Object.entries({ ...theme, ...theme.modes[dark.input.checked ? 'dark' : 'light'] })) if (typeof value === 'string' && !key.startsWith('card-mod')) target.style.setProperty(`--${key}`, value);
-    target.style.setProperty('--civica-chart-tone', muted.input.checked ? 'muted' : 'vivid');
     target.style.setProperty('--civica-chart-mode', dark.input.checked ? 'dark' : 'light');
   }
   paintTheme();
@@ -212,7 +210,7 @@ function build(target: HTMLElement) {
     }
     refresh();
   }
-  palette.onchange = muted.input.onchange = dark.input.onchange = changeTheme; enabled.input.onchange = refresh;
+  palette.onchange = dark.input.onchange = changeTheme; enabled.input.onchange = refresh;
   nextDay.onclick = () => {
     day++;
     for (const key of ['power', 'usage', 'many'] as Key[]) {
@@ -230,11 +228,10 @@ function build(target: HTMLElement) {
   refresh();
   return {
     panel, hosts, cards, nativeClicks, refresh, manyDevices, presentationSpec: ENERGY_CHART_SPEC, renderer: 'canvas', frontend: '20261028.5',
-    sharedColour: (key: string) => chartColour(key, { tone: muted.input.checked ? 'muted' : 'vivid', mode: dark.input.checked ? 'dark' : 'light' }),
-    sharedStyle: (key: string) => chartSeriesStyle(key, { tone: muted.input.checked ? 'muted' : 'vivid', mode: dark.input.checked ? 'dark' : 'light' }),
+    sharedColour: (key: string) => chartColour(key, { mode: dark.input.checked ? 'dark' : 'light' }),
+    sharedStyle: (key: string) => chartSeriesStyle(key, { mode: dark.input.checked ? 'dark' : 'light' }),
     setActive(active: boolean) { enabled.input.checked = active; refresh(); },
     setMode(mode: 'light' | 'dark') { dark.input.checked = mode === 'dark'; changeTheme(); },
-    setTone(tone: 'vivid' | 'muted') { muted.input.checked = tone === 'muted'; changeTheme(); },
     setPalette(id: string) { palette.value = id; changeTheme(); },
     setPreferences(preferences: Partial<typeof context.locale>) { Object.assign(context.locale, preferences); refresh(); },
     replaceData(key: Key, data: any[], options?: any) { hosts[key].data = data; hosts[key].options = options ?? { ...hosts[key].options, legend: { ...hosts[key].options.legend, data: legendData(key, data) } }; renderNative(key); refresh(); },

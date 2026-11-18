@@ -18,6 +18,8 @@ updates:
     description: "First published in the civica.uk design system."
   - date: "2026-11-18"
     description: "Chart identities no longer follow a Vivid or Muted tone: they stay the same with every GOV.UK theme colour."
+  - date: "2026-11-18"
+    description: "Chart colours, labels and axes now use the GOV.UK chart palette instead of the ONS palette and generated colours."
 ---
 
 # Charts and tables
@@ -79,8 +81,8 @@ These are chart roles, separate from card borders and input boundaries. Values a
 | Element | ONS reference | civica adaptation |
 | --- | --- | --- |
 | Plot | Transparent background; no decorative frame | Inherit the themed card canvas; no extra plot box |
-| Numeric grid | `#D9D9D9`, 1px | `#D9D9D9` in light mode; `#50565A` in dark mode |
-| Zero reference | `#B3B3B3`, 1.5px | Use the true zero crossing where established; dark-mode reference colour `#9BA4AA` |
+| Numeric grid | 1px | GOV.UK Black tint 80% `#CECECE`, 1px, in both modes |
+| Zero reference | 1.5px | Use the true zero crossing where established; GOV.UK Black tint 50% `#858686` in both modes |
 | Axis labels | At least 14px, horizontal | Use the civica font, respect user text scaling and reduce tick density before shrinking text |
 | Legend text | At least 14px, normal weight | Keep native labels and expose values in the accompanying table |
 | Filled-series key | 12px circle | Match the opaque series colour and comparison pattern; preserve native visibility controls |
@@ -102,11 +104,9 @@ Place the legend above the plot, aligned left, and wrap whole labelled items. Pr
 
 ## Colour and typography deviations
 
-ONS 74.0.0's primary categorical palette is `#206095`, `#A8BD3A`, `#871A5B`, `#F66068`, `#05341A`, `#27A0CC`; its line variant exchanges the last two positions. These are reference values, not a replacement brand palette or a guarantee that every pair is distinguishable.
+Chart colours are the [GOV.UK chart palette](../styles/chart-colour.html), unchanged, in light and dark mode and with every theme colour. Each energy role has a fixed colour, and every other series takes one of the six categorical colours plus a pattern, line dash and marker from its stable ID. Colours are opaque, with no native alpha suffixes or gradients. Text uses the civica Arial stack. Labels are GOV.UK Black (`#0B0C0C`) and axes and grid lines Black tint 80% (`#CECECE`). In dark mode labels are White; the zero line uses Black tint 50% (`#858686`) in both modes. White labels in dark mode are a civica adaptation, because GOV.UK gives no dark-mode chart guidance; the Black tint 50% zero line is a civica choice so that it stands out from the grid.
 
-civica uses the [shared chart colour generator](../styles/chart-colour.html) for stable semantic energy families and named device identities. Choosing a theme colour does not recolour identities. There are 24 fallback variables and an extensible identity-based range. Colours are opaque, with no native alpha suffixes or gradients. Text uses the civica Arial stack rather than importing ONS Open Sans. The adapter uses ONS label grey `#414042` and numeric-axis grey `#707071` in light mode; dark equivalents are `#FFFFFF` and `#CBD0D3`. These chart roles preserve the same hierarchy across themes.
-
-Prefer five or fewer categories in a newly authored chart, following ONS [colour guidance](https://service-manual.ons.gov.uk/data-visualisation/colours/using-colours-in-charts). An existing Home Assistant chart may contain more: **never truncate, regroup or discard native series** to fit the ONS component's six-series primary or five-series alternate limit. Use names, data values and preserved line styles to supplement colour. Audit the actual rendered combinations.
+GOV.UK advises limiting the number of colours in a chart. An existing Home Assistant chart may contain more series than there are colours: **never truncate, regroup or discard native series** to fit. Use names, data values, patterns and line styles to supplement colour. Audit the actual rendered combinations.
 
 ## Accessible values
 

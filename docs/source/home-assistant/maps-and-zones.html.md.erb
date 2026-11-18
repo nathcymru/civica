@@ -7,7 +7,7 @@ status: reference
 gap_id: HA-GAP-017
 source_url: https://www.home-assistant.io/dashboards/map/
 published_on: 2026-11-11
-updated_on: "2026-11-17"
+updated_on: "2026-11-18"
 last_reviewed_on: 2026-11-12
 review_in: 3 months
 updates:
@@ -21,6 +21,8 @@ updates:
     description: "Bounded the synthetic radius draft and required an explicit display-disclosure choice."
   - date: "2026-11-17"
     description: "Rewritten to lead with the rule, match the native Map card, correct the list of map styles and move the outside map guidance credit to the Home Assistant index."
+  - date: "2026-11-18"
+    description: "Renamed the link to Chart colours, the page that now owns the GOV.UK chart palette."
 ai_instructions: "Apply when showing a device, person or zone on a map. Label what the map shows, its source and when it was observed. Put every record in a text list as well, and count plotted, unlocated and withheld records separately. Never place a record without coordinates at 0, 0, and never call an accuracy circle a boundary. Keep the native Map card, its provider attribution and its permissions, and keep OpenStreetMap and renderer licence notices visible. Rules WG-038, WG-066, WG-074, WG-077, WG-081, WG-082."
 ai_related:
   - path: "/home-assistant/presence-and-privacy.html"
@@ -30,7 +32,7 @@ ai_related:
     title: "Data visualisation"
     relationship: "Owns the data presentation rules applied to maps."
   - path: "/styles/chart-colour.html"
-    title: "Chart colour"
+    title: "Chart colours"
     relationship: "Owns colour scales for quantities, including missing values."
   - path: "/home-assistant/native-task-accessibility.html"
     title: "Native task accessibility and evidence"
@@ -82,7 +84,7 @@ The working example uses six map roles: land, water, nature, structures, text an
 
 Meet 4.5:1 contrast for ordinary text and 3:1 for markers and boundaries that carry meaning. Test against the real background, because a pair that works on white can fail over imagery. In forced-colour mode, keep the shapes, letters and line styles. See [Colour roles and accessibility](../styles/brand-colour.html) for the rules.
 
-For a map that shows a quantity, such as rainfall, decide what it means before choosing the palette. Use [Chart colour](../styles/chart-colour.html#choose-the-colour-mapping) for scales, units and missing values. Keep a weather or flood provider's own thresholds and warnings, and do not recolour them as theme accents. These examples show categorical locations and a missing background. They do not show a quantity map or claim that one has been contrast-tested.
+For a map that shows a quantity, such as rainfall, decide what it means before choosing the palette. Use [Chart colours](../styles/chart-colour.html#choose-the-colour-mapping) for scales, units and missing values. Keep a weather or flood provider's own thresholds and warnings, and do not recolour them as theme accents. These examples show categorical locations and a missing background. They do not show a quantity map or claim that one has been contrast-tested.
 
 <h2 id="map-records">Every record remains reachable</h2>
 

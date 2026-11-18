@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
-import { chartColour } from '../design-system/chart-colours.mjs';
+import { chartColour, chartSlotColour } from '../design-system/chart-colours.mjs';
 
 const root = new URL('../', import.meta.url);
 export const palettes = JSON.parse(readFileSync(new URL('design-system/palettes.json', root), 'utf8'));
@@ -13,7 +13,6 @@ export const contrast = (a, b) => (Math.max(luminance(a), luminance(b)) + 0.05) 
 // One theme per GOV.UK theme colour (design-system/palettes.json). Chart colours
 // keep their own fixed palette and never follow this choice.
 export const themeName = (palette) => `civica ${palette.name}`;
-const CHART_TONE = 'vivid';
 const INK = '#0B0C0C';
 const WHITE = '#FFFFFF';
 const FOCUS = '#FFDD00';
@@ -247,14 +246,14 @@ export function modeTokens(palette, dark) {
     for (const state of ['resting', 'hover']) tokens[`ha-color-fill-disabled-${volume}-${state}`] = secondarySurface;
   }
   const energy = ['grid-consumption', 'gas', 'non-fossil', 'grid-return', 'solar', 'water', 'battery-in', 'battery-out'];
-  const chartContext = { tone: CHART_TONE, mode: dark ? 'dark' : 'light' };
-  tokens['civica-chart-tone'] = CHART_TONE;
+  // GOV.UK chart colours, the same with every theme colour and in both modes
+  // (only the consumption line follows the label colour). The first nine
+  // variables keep their energy role mapping; the rest repeat the six
+  // categorical colours. They are not a cap on identity-based series.
+  const chartContext = { mode: dark ? 'dark' : 'light' };
   tokens['civica-chart-mode'] = chartContext.mode;
-  // The first eight variables retain their semantic compatibility mapping.
-  // Additional fallback slots are generated, not a cap on identity-based data.
   for (let i = 0; i < 24; i++) {
-    const role = energy[i] || (i === 8 ? 'consumption' : `series-${i + 1}`);
-    const colour = chartColour(role, chartContext);
+    const colour = chartSlotColour(i + 1, chartContext);
     tokens[`civica-chart-${i + 1}`] = colour;
     tokens[`color-${i + 1}`] = colour;
     if (energy[i]) tokens[`energy-${energy[i]}-color`] = colour;

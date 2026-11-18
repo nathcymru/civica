@@ -1,134 +1,112 @@
 {
-  "schemaVersion": 1,
-  "algorithmVersion": "oklch-identity-v1",
-  "reviewedOn": "2026-11-11",
-  "purpose": "Opaque categorical chart colours with stable identities, vivid/muted tones and independent light/dark presentation. This is a civica adaptation, not an official ONS extended palette.",
-  "identity": "Trimmed NFC Unicode string, case-sensitive. Named energy roles are reserved. Other keys use FNV-1a over UTF-16 code units followed by a 32-bit avalanche; hue, lightness and chroma use separate salted hashes. No series-count, order, visibility, brand or random input. A recognised role followed by a colon and meter ID keeps that semantic hue, with identity-derived lightness/chroma variation and patterns. Pattern, line-dash and symbol channels use independent salted hashes for non-reserved identities.",
-  "minimumSurfaceContrast": 3,
-  "contrastSearchTarget": 3.05,
-  "surfaces": {
-    "light": [
-      "#FFFFFF",
-      "#F3F2F1",
-      "#F3F6F9",
-      "#F2F6F4",
-      "#F6F3F7",
-      "#F9F4F4",
-      "#F7F3F5",
-      "#F2F4F8",
-      "#F9F7F1",
-      "#F9F5F2",
-      "#F6F4F1"
-    ],
-    "dark": [
-      "#17191B",
-      "#24282B",
-      "#30363A"
-    ]
+  "schemaVersion": 2,
+  "algorithmVersion": "govuk-categorical-v1",
+  "reviewedOn": "2026-11-18",
+  "purpose": "Categorical chart colours for Home Assistant charts, taken unchanged from the GOV.UK Brand Guidelines chart palette. The same colours are used in light and dark mode. Each identity also gets a fill pattern, line dash and marker, because six colours cannot tell every series apart.",
+  "source": {
+    "url": "https://brand.design-system.service.gov.uk/colour/charts/",
+    "licence": "Open Government Licence v3.0, Crown copyright",
+    "read_on": "2026-11-18",
+    "record": "docs/data/govuk-brand-colours.json"
   },
+  "categorical": [
+    {
+      "id": "blue",
+      "name": "Primary blue",
+      "hex": "#1D70B8"
+    },
+    {
+      "id": "blue-shade-50",
+      "name": "Blue shade 50%",
+      "hex": "#0F385C"
+    },
+    {
+      "id": "magenta",
+      "name": "Primary magenta",
+      "hex": "#CA357C"
+    },
+    {
+      "id": "purple-tint-25",
+      "name": "Purple tint 25%",
+      "hex": "#7F65B7"
+    },
+    {
+      "id": "teal-tint-25",
+      "name": "Teal tint 25%",
+      "hex": "#50A1A5"
+    },
+    {
+      "id": "orange-tint-25",
+      "name": "Orange tint 25%",
+      "hex": "#F7996A"
+    }
+  ],
+  "axesAndLines": {
+    "id": "black-tint-80",
+    "name": "Black tint 80%",
+    "hex": "#CECECE"
+  },
+  "labels": {
+    "light": {
+      "id": "black",
+      "name": "Black",
+      "hex": "#0B0C0C"
+    },
+    "dark": {
+      "id": "white",
+      "name": "White",
+      "hex": "#FFFFFF",
+      "note": "GOV.UK gives no dark-mode chart guidance. Labels and the total consumption line use White on dark surfaces so they stay readable; this is a civica adaptation."
+    }
+  },
+  "identity": "Trimmed NFC Unicode string, case-sensitive. Named energy roles have a fixed colour and pattern. Other keys use FNV-1a over UTF-16 code units followed by a 32-bit avalanche, which picks one of the six colours and one of the patterns, line dashes and markers. A recognised role followed by a colon and meter ID, such as gas:meter-two, keeps the role colour and takes its pattern, dash and marker from the key. No series count, order, visibility, theme colour or random input is used, so a series keeps its style when others are added, hidden or reordered.",
   "roles": {
     "grid-consumption": {
-      "anchor": "#206095",
+      "colour": "blue",
+      "pattern": "solid",
       "index": 0
     },
     "gas": {
-      "anchor": "#A7343A",
+      "colour": "magenta",
+      "pattern": "solid",
       "index": 1
     },
     "non-fossil": {
-      "anchor": "#3B7A57",
+      "colour": "teal-tint-25",
+      "pattern": "diagonal",
       "index": 2
     },
     "grid-return": {
-      "anchor": "#7D4A9A",
+      "colour": "blue-shade-50",
+      "pattern": "solid",
       "index": 3
     },
     "solar": {
-      "anchor": "#8A6100",
+      "colour": "orange-tint-25",
+      "pattern": "solid",
       "index": 4
     },
     "water": {
-      "anchor": "#007F7B",
+      "colour": "teal-tint-25",
+      "pattern": "solid",
       "index": 5
     },
     "battery-in": {
-      "anchor": "#6B4C3B",
+      "colour": "purple-tint-25",
+      "pattern": "solid",
       "index": 6
     },
     "battery-out": {
-      "anchor": "#555555",
+      "colour": "purple-tint-25",
+      "pattern": "reverse-diagonal",
       "index": 7
     },
     "consumption": {
-      "anchor": "#0B0C0C",
+      "colour": "labels",
+      "pattern": "solid",
       "index": 8
     }
   },
-  "generated": {
-    "light": {
-      "vivid": {
-        "lightness": [
-          0.45,
-          0.59
-        ],
-        "chroma": [
-          0.14,
-          0.21
-        ]
-      },
-      "muted": {
-        "lightness": [
-          0.51,
-          0.63
-        ],
-        "chroma": [
-          0.065,
-          0.105
-        ]
-      }
-    },
-    "dark": {
-      "vivid": {
-        "lightness": [
-          0.7,
-          0.81
-        ],
-        "chroma": [
-          0.13,
-          0.2
-        ]
-      },
-      "muted": {
-        "lightness": [
-          0.69,
-          0.77
-        ],
-        "chroma": [
-          0.06,
-          0.1
-        ]
-      }
-    }
-  },
-  "anchorTransformation": {
-    "lightVivid": "Preserve the sRGB anchor unless contrast adjustment is needed",
-    "lightMuted": {
-      "lightnessOffset": 0.06,
-      "maximumLightness": 0.63,
-      "chromaMultiplier": 0.55
-    },
-    "darkVivid": {
-      "lightnessBase": 0.72,
-      "anchorLightnessMultiplier": 0.12,
-      "chromaMultiplier": 1.0
-    },
-    "darkMuted": {
-      "lightnessBase": 0.7,
-      "anchorLightnessMultiplier": 0.1,
-      "chromaMultiplier": 0.55
-    }
-  },
-  "gamut": "Convert OKLCH to sRGB. Reduce chroma by binary search at fixed hue/lightness until in gamut, then quantise to opaque 8-bit hex. Check contrast after quantisation; adjust lightness only if needed. Alpha is never used to create a tone.",
   "patterns": [
     "solid",
     "diagonal",
@@ -178,6 +156,7 @@
     "emptyCircle",
     "emptyTriangle"
   ],
+  "themeSlots": "The theme defines civica-chart-1 to civica-chart-24 for consumers that accept only numbered variables. Slots 1 to 9 are the energy role colours in role index order (slot 9 is total consumption); slots 10 to 24 repeat the six categorical colours in GOV.UK order.",
   "exampleKeys": [
     {
       "key": "sensor.washing_machine_energy",
@@ -277,33 +256,10 @@
     }
   ],
   "limits": [
-    "The generator accepts more than 20 identities; it does not claim 20 colours are universally distinguishable or guarantee unique colours for all possible keys in finite sRGB.",
-    "Stable identity is more important than re-optimising colours when series are added. Similar colours must use labelled legends, table values and secondary pattern/line/symbol cues.",
-    "ONS recommends five or fewer categorical colours. Dense charts should offer native series selection, comparisons or small multiples; never silently discard native series.",
-    "Surface contrast is not pairwise categorical separation, colour-vision-deficiency certification or complete WCAG conformance. Test actual adjacent fills, thin lines and patterns.",
-    "Pattern combinations are finite and also repeat. Do not render 20 overlaid lines merely because 20 styles can be generated.",
-    "Comparison periods reuse the base series colour and use a separately labelled comparison treatment; comparison prefixes are removed by the caller, not guessed by this engine."
+    "Six colours cannot tell more than six series apart. Every series also has a pattern, line dash and marker, a readable name and a value in the data table.",
+    "GOV.UK advises limiting the number of colours. Prefer fewer visible series, the native legend and device detail views. Never delete readings or merge devices to stay under a limit.",
+    "Some colours have low contrast with a white or dark surface (for example Orange tint 25% on white, Blue shade 50% on dark). There the label, pattern or line style carries the meaning."
   ],
-  "sources": [
-    "https://service-manual.ons.gov.uk/data-visualisation/colours/using-colours-in-charts",
-    "https://service-manual.ons.gov.uk/data-visualisation/chart-types/line-chart",
-    "https://service-manual.ons.gov.uk/data-visualisation/chart-types/stacked-bar-charts",
-    "https://github.com/ONSdigital/design-system/blob/fba69ff1aae25035ff167d8408a57540bf8b1066/src/components/chart/area-chart.js",
-    "https://www.w3.org/TR/2026/CRD-css-color-4-20261103/#ok-lab",
-    "https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html",
-    "https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html"
-  ],
-  "familyVariation": {
-    "hueOffset": 0,
-    "lightnessOffset": [
-      -0.055,
-      0.055
-    ],
-    "chromaMultiplier": [
-      0.75,
-      1.2
-    ]
-  },
   "memoization": {
     "maximumEntries": 2048,
     "eviction": "oldest inserted entry",

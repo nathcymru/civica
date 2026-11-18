@@ -2,20 +2,23 @@ import { removeEnergyChartData, updateEnergyChartData } from './energy-chart-dat
 import { chartSeriesStyle } from '../../design-system/chart-colours.mjs';
 import { projectPowerSeries } from './energy-power-series';
 
-// Presentation contract: ONS Design System 74.0.0, chart components, mapped to
+// Presentation contract: GOV.UK Brand Guidelines chart colours, mapped to
 // HA Frontend 20261028.5's public ha-chart-base ECharts instance. Keep the native
 // renderer, data, formatters, Chart2Music, legend actions, zoom and date controls.
+// Labels are GOV.UK Black and axes and grid lines Black tint 80%. GOV.UK gives
+// no dark-mode chart guidance: labels turn White on dark surfaces, and the
+// zero line uses Black tint 50% so it stands out from the grid (civica choices).
 export const ENERGY_CHART_SPEC = Object.freeze({
-  source: 'https://github.com/ONSdigital/design-system/tree/74.0.0/src/components/chart',
+  source: 'https://brand.design-system.service.gov.uk/colour/charts/',
   frontend: '20261028.5',
   fontFamily: 'Arial, Helvetica, sans-serif', // civica's documented typeface
   minimumFontSize: 14,
-  lineWidth: 1.5, // Dense native Energy charts; ONS standalone reference is 3px.
+  lineWidth: 1.5, // Dense native Energy charts use a thinner line than standalone charts.
   gridWidth: 1,
   zeroLineWidth: 1.5,
   minimumPlotHeight: 280,
-  light: { text: '#414042', axis: '#707071', grid: '#D9D9D9', zero: '#B3B3B3' },
-  dark: { text: '#FFFFFF', axis: '#CBD0D3', grid: '#50565A', zero: '#9BA4AA' },
+  light: { text: '#0B0C0C', axis: '#0B0C0C', grid: '#CECECE', zero: '#858686' },
+  dark: { text: '#FFFFFF', axis: '#FFFFFF', grid: '#CECECE', zero: '#858686' },
 });
 
 export const ENERGY_CHART_HOSTS = Object.freeze([
@@ -184,12 +187,9 @@ function crossesVisibleZero(chart: Chart | undefined, axisName: string, axis: Op
 }
 
 function chartContext(style: CSSStyleDeclaration) {
-  const selected = context.themes?.theme || context.selectedTheme?.theme || context.themes?.default_theme || '';
-  const tone = style.getPropertyValue('--civica-chart-tone').trim() || style.getPropertyValue('--civica-tone').trim();
   const mode = style.getPropertyValue('--civica-chart-mode').trim();
   const text = style.getPropertyValue('--primary-text-color').trim().toLowerCase();
   return {
-    tone: (tone ? tone === 'muted' : selected.endsWith(' Muted')) ? 'muted' as const : 'vivid' as const,
     mode: (mode ? mode === 'dark' : context.themes?.darkMode ?? (text === '#ffffff' || text === '#fff')) ? 'dark' as const : 'light' as const,
   };
 }
