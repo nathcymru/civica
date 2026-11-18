@@ -38,7 +38,8 @@
 
 ## Components and patterns
 
-- [Components](components/index.html): navigation, controls, devices, cards, status, dialogs and charts.
+- [Components](components/index.html): one A to Z list of 144 component parents from the locked inventory. Each parent will have one page that owns it and every child element and variant inside it; pages are moving to that structure one letter group at a time. Parents marked "Specification not yet published" have no page yet; do not infer their contract.
+- [Component index JSON](reference/component-index.json): machine-readable copy of the locked inventory (docs/data/component-inventory.json). For any component, Home Assistant element (hui-*, ha-*) or HTML element, it gives the single owning page, the reserved anchor, the origin (one of the exact values "HTML5", "Home Assistant", "Lovelace" or "Civica") and whether the page is published ("available"). The anchor exists on the page only when "anchor_published" is true; otherwise cite the page without the anchor. Use it to resolve an element to its owner before reading guidance.
 - [ONS-based Energy charts](components/charts.html): implemented native chart adapter, geometry, data alternatives, supported hosts and limits from v1.3.0, including opaque fills and explicit chart types.
 - [Working chart examples](components/chart-examples.html): real-renderer demonstrations with invented values; not live household evidence.
 - [ONS chart source snapshot](reference/ons-chart-sources.json): versioned source evidence and deliberate local adaptations.

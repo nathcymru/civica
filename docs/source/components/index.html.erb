@@ -1,8 +1,9 @@
 ---
 title: "Components"
 description: "Reusable parts of a clear, consistent household interface."
-updated_on: "2026-11-17"
+updated_on: "2026-11-18"
 published_on: "2026-11-11"
+no_contents: true
 updates:
   - date: "2026-11-12"
     description: "Corrected the landing header to a shared sidebar and hero band, with the title beside the illustration on wide screens and above it on narrow screens."
@@ -14,7 +15,9 @@ updates:
     description: "First published in the civica.uk design system."
   - date: "2026-11-17"
     description: "Replaced the per-page source commentary with one source note at the foot of this page."
-ai_instructions: "Use this page to find a component. The source note at the foot covers the section: it credits the upstream systems and names the NHS and GOV.UK pages behind the hint text, buttons and warning text components. Some component pages still carry their own source section."
+  - date: "2026-11-18"
+    description: "Replaced the grouped catalogue with one A to Z list of all 144 component parents, an A to Z jump bar and a search that finds components, Home Assistant elements and HTML elements. All three come from the locked component inventory. Element sections are added page by page, so some results open the top of a page for now."
+ai_instructions: "Use this page to find the one page that owns a component, a Home Assistant element (such as hui-tile-card) or an HTML element (such as <details>). Every list, letter and search result comes from docs/data/component-inventory.json, which is also published as /reference/component-index.json for machine readers. A parent marked Specification not yet published has no page yet: do not infer its contract. In the JSON, anchor_published is false until the owning page declares the component schema; until then the anchor is reserved, not yet on the page, so cite the page itself. The source note at the foot credits the upstream systems once for the whole section."
 ai_related:
   - path: "/patterns/index.html"
     title: "Patterns"
@@ -26,5 +29,26 @@ ai_related:
     title: "Accessibility"
     relationship: "Owns the accessibility target and checks that apply to every component."
 ---
-<h1>Components</h1><p class="c-lead">Reusable parts of a clear, consistent household interface.</p><p>Browse the catalogue or filter by title and description. Each page says when to use the component, shows Home Assistant examples and lists the accessibility checks. An example here does not mean the native Home Assistant interface has been replaced.</p><p>The <a href="../community/coverage.html">source coverage record</a> maps each component to its source.</p><%= partial 'partials/catalogue', locals: { section: 'components' } %>
+<h1>Components</h1>
+<nav role="navigation" aria-label="A to Z navigation">
+<ol class="style-a-z" role="list"><% groups = component_letter_groups %><% ComponentHelpers::COMPONENT_LETTERS.each do |letter| %><li><% if groups[letter] %><a class="govuk-link govuk-link--no-visited-state" href="#<%= letter.downcase %>"><%= letter %></a><% else %><span class="style-a-z__empty"><%= letter %></span><% end %></li><% end %></ol>
+</nav>
+<div class="c-search-filter c-component-search" data-component-search hidden>
+<label for="component-search">Find a component or element</label>
+<p class="c-component-search__hint" id="component-search-hint">Type a component name, a Home Assistant element such as hui-tile-card, or an HTML element such as &lt;details&gt;.</p>
+<div class="c-component-search__field">
+<input id="component-search" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="component-search-listbox" aria-describedby="component-search-hint" autocomplete="off" autocapitalize="off" spellcheck="false">
+<ul class="c-component-search__listbox" id="component-search-listbox" role="listbox" aria-label="Matching components and elements" hidden></ul>
+</div>
+<p class="govuk-visually-hidden" role="status" data-component-search-status></p>
+</div>
+<script type="application/json" id="component-search-data"><%= component_search_json %></script>
+<p>Each component has, or will have, one page that owns it and every element and variant it contains. Pages are being moved to this structure one letter group at a time. Until a page has a section for each element, a search result for one of its elements opens the top of that page. A component without a page yet is marked Specification not yet published. The same list is available to machine readers as <a href="../reference/component-index.json">component-index.json</a>.</p>
+<p>An example here does not mean the native Home Assistant interface has been replaced. The <a href="../community/coverage.html">source coverage record</a> maps each component to its source.</p>
+<div class="c-component-az" data-component-list>
+<% component_letter_groups.each do |letter, parents| %><h2 class="style-a-z__letter" id="<%= letter.downcase %>"><%= letter %></h2>
+<ul class="c-component-az__list" role="list">
+<% parents.each do |parent| %><li id="<%= parent['list_anchor'] %>" data-component-parent="<%= escape(parent['parent']) %>"><% if parent['available'] %><a class="govuk-link" href="<%= docs_path(parent['route']) %>"><%= escape(parent['parent']) %></a><% else %><span class="c-component-az__name"><%= escape(parent['parent']) %></span><% end %> <span class="c-component-az__meta"><%= escape(component_origin_summary(parent)) %><%= parent['available'] ? '' : ' · Specification not yet published' %></span></li>
+<% end %></ul>
+<% end %></div>
 <p><small>Source note: component guidance is adapted from the <a href="https://design-system.service.gov.uk/">GOV.UK Design System</a> and the <a href="https://service-manual.nhs.uk/design-system">NHS digital service manual</a>. Specific sources: <a href="https://service-manual.nhs.uk/design-system/components/hint-text">NHS hint text</a>, <a href="https://service-manual.nhs.uk/design-system/components/buttons">NHS buttons</a> and <a href="https://design-system.service.gov.uk/components/warning-text/">GOV.UK warning text</a>. Navigation, modal and card references draw on the <a href="https://design-patterns.service.justice.gov.uk/">Ministry of Justice design system</a>, and chart and data presentation on the <a href="https://service-manual.ons.gov.uk/design-system">Office for National Statistics design system</a>. The examples use shared GOV.UK primitives or original civica markup. civica is an independent project. It is not endorsed by these organisations, and NHS logos and service identity are not used. The <a href="../community/sources.html">source register</a> and <a href="../community/licensing.html">licensing and attribution</a> give the full list, licence terms and notices.</small></p>
