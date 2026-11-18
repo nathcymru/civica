@@ -10,16 +10,18 @@ published_on: "2026-11-18"
 updated_on: "2026-11-18"
 updates:
   - date: "2026-11-18"
-    description: "First published, with the GOV.UK web palette and functional colours copied exactly from the GOV.UK Brand Guidelines."
+    description: "First published, with the civica web palette and functional colours."
   - date: "2026-11-18"
-    description: "Added rules BG-COL-02, BG-COL-04 and BG-COL-05 and their examples, moved from the Colour roles and accessibility page, which has been deleted."
+    description: "Added the rules on choosing a colour by its job, separating dividers from editable boundaries, and keeping device, warning and notification meaning, with their examples, moved from the Colour roles and accessibility page, which has been deleted."
   - date: "2026-11-18"
-    description: "Swatches now use the GOV.UK Brand layout: a round sample, the name, and RGB and hex values with copy icons. Added the list of colour groups. Removed the Sass and theme property rows from each swatch."
+    description: "Swatches now show a round sample, the name, and RGB and hex values with copy icons. Added the list of colour groups. Removed the Sass and theme property rows from each swatch."
   - date: "2026-11-18"
-    description: "Added a Web palette example, as on the GOV.UK Web page: a simulated picture, modelled on the GOV.UK one, of a dashboard for an invented household in a desktop browser, using only web palette colours. It is not a screenshot of civica or Home Assistant."
+    description: "Added a Web palette example: a drawing of a dashboard for an invented household in a desktop browser, using only web palette colours. It is not a screenshot of civica or Home Assistant."
   - date: "2026-11-18"
     description: "Rewritten for Home Assistant users: removed outside source names, visible rule IDs and the Sass notes, gave each example a caption saying what to notice, and replaced the shared example disclaimer with those captions."
-ai_instructions: "Use this page for any colour shown on a web page or Home Assistant dashboard. Values are rendered from docs/data/govuk-brand-colours.json: never type a hex value from memory. Prefer the functional colour for its job (for example brand, link, error, focus) and use the palette only for supporting elements such as illustrations or custom cards. Never use colour alone to give meaning. Chart colours have their own page. The rules anchored bg-col-02, bg-col-04 and bg-col-05 are on this page: give each colour one job, keep dividers apart from editable boundaries, and keep native device, warning and notification meaning. The Web palette example is a drawing with an invented household, not a screenshot. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-081."
+  - date: "2026-11-18"
+    description: "Listed the civica theme variable for each functional colour, said which have none, rebuilt the device state example as an entities card and the border example as renaming an area, and said what to copy from the dashboard drawing."
+ai_instructions: "Use this page for any colour shown on a web page or Home Assistant dashboard. Values are rendered from docs/data/govuk-brand-colours.json: never type a hex value from memory. Prefer the functional colour for its job (for example brand, link, error, focus) and use the civica theme variable listed for it, written var(--variable-name) in a card's CSS. Palette colours have no theme variable: copy the swatch value. template-background, body-background, link-hover, link-visited, link-active, hover and the surface colours have no civica variable; Home Assistant uses primary-background-color and card-background-color, which civica sets to White in light mode. Never use colour alone to give meaning. Chart colours have their own page. The rules anchored bg-col-02, bg-col-04 and bg-col-05 are on this page: give each colour one job, keep dividers apart from editable boundaries, and keep native device, warning and notification meaning. The Web palette example is a drawing with an invented household, not a screenshot. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-081."
 ai_related:
   - path: "/styles/colour-app.html"
     title: "App colours"
@@ -40,7 +42,7 @@ Use these colours on web pages and Home Assistant dashboards. Use a functional c
 
 ## Web palette
 
-Use these colours for supporting elements, such as an illustration or a custom card. In a Home Assistant theme or custom card, use a civica theme variable, such as `civica-border-quiet`, instead of typing a value.
+Use these colours for supporting elements, such as an illustration or a custom card. Palette colours have no theme variable, so copy the value from the swatch. For text, links, borders, focus, errors and success, use the [functional colours](#functional-colours) instead.
 
 Most colours have tints at 25%, 50%, 80% and 95%, and shades at 25% and 50%. Black has tints for greys. White has no variants.
 
@@ -54,17 +56,27 @@ The web palette has:
 
 A functional colour has one job. Use it only for that job, and use the palette for anything else.
 
-- Use `inverse-text` for text on dark backgrounds.
-- Use `template-background` for the page behind the content and `body-background` for the content area.
-- Use `focus` only for the element that has keyboard focus.
-- Use `error` only for error messages and `success` only for success messages.
-- Use `hover` only for the hover state of inputs.
+In Home Assistant, use the civica theme variable rather than the value, so that the colour follows the theme colour and light or dark mode. In a custom card's CSS, write it as `var(--civica-border-quiet)`.
+
+| Functional colour | Use it for | civica theme variable | In dark mode |
+| --- | --- | --- | --- |
+| `brand` | The header | `civica-brand-primary`, which is the household's theme colour | The same colour |
+| `brand` | Buttons, highlights and on states | `primary-color` | A lighter tint of the theme colour |
+| `text` | Text | `primary-text-color` | White |
+| `secondary-text` | Hints and less important text | `secondary-text-color` | `#CBD0D3` |
+| `inverse-text` | Text on buttons filled with the theme colour | `text-primary-color` | Black, because buttons use a light tint in dark mode |
+| `link` | Links | `link-color` | Follows the theme colour |
+| `border` | Dividers and quiet card edges | `civica-border-quiet` | `#50565A` |
+| `input-border` | Fields people type in | `civica-input-border` | White |
+| `focus` and `focus-text` | The element with keyboard focus, and its text | `civica-focus-background` and `civica-focus-text` | The same colours |
+| `error` | Error messages only | `error-color` | `#F0C6C6` |
+| `success` | Success messages only | `success-color` | `#BCDACF` |
+
+civica ships no variable for `template-background`, `body-background`, `link-hover`, `link-visited`, `link-active`, `hover` or the surface colours. Home Assistant draws the page with `primary-background-color` and cards with `card-background-color`, which civica sets to White in light mode, and `#17191B` and `#24282B` in dark mode.
 
 <%= colour_functional_tokens %>
 
 ### Web palette example
-
-<%= colour_callout %>
 
 <%= colour_example('web-colour-dashboard', callout: false) %>
 
@@ -76,19 +88,19 @@ These rules apply the functional colours to a Home Assistant interface.
 
 Give identity, reading, interaction, state and data their own colours. The theme colour marks navigation and actions. Text colours are for reading. Focus and error colours mark an interaction state. Device colours show a native device state. Chart colours name a source.
 
-The Red theme colour is the same as the error colour (`#CA3535` in light mode and `#F0C6C6` in dark mode), and the Green theme colour is the same as the success colour (`#0F7A52`). With either theme colour, say an error or success in words: a green button is not proof that something worked, and a yellow lighting scene is not a warning. Choose a status fill and its text colour together, because a dark-mode error text colour is not always a safe button background.
+The Red theme colour is the same as the error colour (`#CA3535` in light mode and `#F0C6C6` in dark mode), and the Green theme colour is the same as the success colour (`#0F7A52` in light mode and `#BCDACF` in dark mode). With either theme colour, say an error or success in words, as [Test combinations and keep another cue](colour.html#bg-col-03) explains: a green button is not proof that something worked, and a yellow lighting scene is not a warning. Choose a status fill and its text colour together, because a dark-mode error text colour is not always a safe button background.
 
-This example lists 3 device checks. Notice that each state is written out, so none of them depends on its colour.
+This example shows 3 entities on a dashboard card. Notice that each state is written out, so none of them depends on its colour, and that Unavailable is not shown as 0 °C.
 
 <%= example('bg-colour-state-labels') %>
 
 <h3 id="bg-col-04">Separate dividers from editable boundaries</h3>
 
-Use `civica-border-quiet` for dividers and quiet card edges: `#CECECE` in light mode, with a darker value in dark mode. Use `civica-border-interactive` for the edges of controls people need to find, and `civica-input-border` for fields people can type in. Keep the strong input and focus styles.
+Use `civica-border-quiet` for dividers and quiet card edges. Use `civica-border-interactive` for the edges of controls people need to find, and `civica-input-border` for fields people can type in. Keep the strong input and focus styles.
 
 Do not outline every part of a dashboard in black: group content with headings and spacing first. Do not lighten every border either, because a text field, a focus ring and a card edge do different jobs. Keep native circle and pill shapes where they carry meaning, as on a switch, radio button, badge, avatar or gauge.
 
-This example shows a card for renaming a room. Notice that the card edge is quiet, while the text field has a strong border and a clear focus ring.
+This example shows the field for renaming an area. Notice that the card edge is quiet, while the text field has a strong border and, when selected, a clear focus ring.
 
 <%= example('bg-colour-boundaries') %>
 

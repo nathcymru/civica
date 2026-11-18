@@ -115,7 +115,8 @@ test('quantitative scales use named GOV.UK steps, retain their units and keep mi
     }
   }
   await expect(page.locator('.c-example-canvas')).toContainText('outside this scale');
-  await expect(page.locator('.c-example-canvas')).toContainText('no more than two quantitative colour scales');
+  // The two-scale limit is stated once, on the Chart colours page, not in the example.
+  expect(readFileSync('docs/build/styles/chart-colour.html', 'utf8')).toContain('Use no more than 2 colour scales in one chart.');
   await expect(page.locator('.c-example-canvas')).not.toContainText(/interpolate/i);
 });
 

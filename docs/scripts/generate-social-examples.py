@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Generate docs/data/social-colour-examples.yml: Home Assistant social tiles in
-the GOV.UK social colours, composed like the GOV.UK social page examples.
+the civica social colours.
 Run from the repository root: python3 docs/scripts/generate-social-examples.py
 Pass --check to fail if the YAML differs from what this script writes.
 Every colour comes from docs/data/govuk-brand-colours.json by its ID."""
@@ -68,29 +68,29 @@ examples['social-colour-tone'] = {
             + grid(tone) + '</section>',
 }
 
-# 2. Tonal colour examples: green, red and purple tones.
+# 2. Tonal colour examples: serious messages in green, red and purple tones.
 tonal = []
-markup, used = circle_tile('tonal-green', ['Solar covered', 'today’s use'], 'green-tint-95', 'white', 'green-shade-50', 'Social tile: Solar covered today’s use')
+markup, used = circle_tile('tonal-green', ['Check on a', 'neighbour', 'in the cold'], 'green-tint-95', 'green-tint-80', 'green-shade-50', 'Social tile: Check on a neighbour in the cold')
 tonal.append(figure('tonal-green', markup, 'Green tones', used))
 body = (f'<circle cx="540" cy="330" r="110" fill="{hexof("red-accent")}"/>'
         f'<rect x="525" y="250" width="30" height="110" fill="{hexof("red-shade-50")}"/><rect x="525" y="380" width="30" height="30" fill="{hexof("red-shade-50")}"/>'
-        + lines(['Storm warning:', 'secure the garden'], 540, 620, 84, hexof('purple-tint-95')))
+        + lines(['Storm warning:', 'secure the garden'], 540, 620, 84, hexof('red-tint-95')))
 tonal.append(figure('tonal-red', svg('tonal-red', 'Social tile: Storm warning: secure the garden',
-                                     'An exclamation mark in Red shade 50% inside an Accent red circle, above “Storm warning: secure the garden” in Purple tint 95% text, on a Primary red background.', body, 'red'),
-                    'Red tones', ['purple-tint-95', 'red-shade-50', 'red-accent', 'red']))
-body = (lines(['Save on your'], 540, 330, 84, hexof('white'))
-        + f'<rect x="280" y="380" width="520" height="130" rx="65" fill="{hexof("purple")}"/>' + lines(['heating'], 540, 472, 84, hexof('white'))
-        + lines(['this winter'], 540, 610, 84, hexof('white'))
+                                     'An exclamation mark in Red shade 50% inside an Accent red circle, above “Storm warning: secure the garden” in Red tint 95% text, on a Primary red background.', body, 'red'),
+                    'Red tones', ['red-tint-95', 'red-shade-50', 'red-accent', 'red']))
+body = (lines(['Boiler fault:'], 540, 330, 84, hexof('white'))
+        + f'<rect x="240" y="380" width="600" height="130" rx="65" fill="{hexof("purple")}"/>' + lines(['what to do'], 540, 472, 84, hexof('white'))
+        + lines(['next'], 540, 610, 84, hexof('white'))
         + f'<path d="M540 700v170M450 790l90 90 90-90" fill="none" stroke="{hexof("purple-accent")}" stroke-width="40" stroke-linecap="round" stroke-linejoin="round"/>')
-tonal.append(figure('tonal-purple', svg('tonal-purple', 'Social tile: Save on your heating this winter',
-                                        '“Save on your heating this winter” in White text, with “heating” in a Primary purple lozenge and an Accent purple arrow below, on a Purple shade 50% background.', body, 'purple-shade-50'),
+tonal.append(figure('tonal-purple', svg('tonal-purple', 'Social tile: Boiler fault: what to do next',
+                                        '“Boiler fault: what to do next” in White text, with “what to do” in a Primary purple lozenge and an Accent purple arrow below, on a Purple shade 50% background.', body, 'purple-shade-50'),
                     'Purple tones', ['white', 'purple', 'purple-accent', 'purple-shade-50']))
 examples['social-colour-tonal'] = {
-    'title': 'Social tiles in green, red and purple tones',
-    'description': 'Three Home Assistant social tiles, each based on the tints and shades of one colour family.',
+    'title': 'Serious social tiles in green, red and purple tones',
+    'description': 'Three serious Home Assistant social tiles, each in the tints and shades of one colour family.',
     'height': 800,
     'html': '<section aria-labelledby="social-tonal-h"><h2 class="govuk-heading-m" id="social-tonal-h">Tonal colour</h2>'
-            '<p class="govuk-body">Three posts: solar power covering the day’s use, a storm warning and a heating tip. Notice that each tile uses the tints and shades of one colour family, which keeps a serious message calm. The messages are invented examples.</p>'
+            '<p class="govuk-body">Three serious posts: checking on a neighbour in the cold, a storm warning and a boiler fault. The messages are invented examples.</p>'
             + grid(tonal) + '</section>',
 }
 
@@ -118,7 +118,7 @@ examples['social-colour-companion'] = {
     'description': 'Three Home Assistant social tiles, each built on one of the companion colour pairings.',
     'height': 800,
     'html': '<section aria-labelledby="social-companion-h"><h2 class="govuk-heading-m" id="social-companion-h">Companion colour</h2>'
-            '<p class="govuk-body">Three posts that prompt an action: getting help with an energy bill, checking who is home and adding a door sensor. Notice that each tile is built on one of the companion pairings, and that the 3:1 pairing, Primary blue on Primary yellow, carries only large words and shapes. The messages are invented examples.</p>'
+            '<p class="govuk-body">Three posts that prompt an action: getting help with an energy bill, checking who is home and adding a door sensor. The messages are invented examples.</p>'
             + grid(comp) + '</section>',
 }
 
@@ -127,9 +127,9 @@ for ex in examples.values():
         'creator': 'civica project; original SVG markup',
         'licence': 'MIT, original project documentation code under LICENSE',
         'source': 'docs/data/social-colour-examples.yml',
-        'provenance': 'Original tiles and invented messages generated by docs/scripts/generate-social-examples.py from docs/data/govuk-brand-colours.json. Compositions follow the GOV.UK social colour examples; no GOV.UK artwork, marks or imagery are copied.',
-        'purpose': 'Show how the GOV.UK social colours set tone in a Home Assistant social post.',
-        'intended_background': 'Each tile carries its own background; every text pair reaches at least 4.5:1.',
+        'provenance': 'Original tiles and invented messages generated by docs/scripts/generate-social-examples.py from docs/data/govuk-brand-colours.json. No third-party artwork, marks or imagery are copied.',
+        'purpose': 'Show how the civica social colours set the tone of a Home Assistant social post.',
+        'intended_background': 'Each tile carries its own background. Every text pair reaches at least 4.5:1, except Primary blue on Primary yellow (3.84:1), which carries only large words.',
         'alternative_text_decision': 'Each tile is an SVG image with a title and a description that names its message and colours; the caption lists the colours.',
         'review_status': 'Source checks only; integrated rendered review is recorded separately.',
     }

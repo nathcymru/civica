@@ -416,7 +416,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New work-package, compliance, organisation and gap entry points are connected to the maintainers’ change process. 12 November 2026 source review: Linked the shared design styles and added an original contribution and review illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. Roadmap source review: the new entry distinguishes reviewed theme features from documentation changes and links the public timeline and maintainer workflow. Accepted-stage source review: the entry names all three roadmap stages and preserves the theme-versus-documentation scope. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "5a07b6447fd190a00c07d6e3d1a88fd2b65ac890f297a6b04f6c118973a2ec7f",
+      "sha256": "f274d7aad67f09522cd34c0218f7b287feac9b07f49b94da0716f9f37672ae52",
       "url": "/community/index.html",
       "title": "Maintain the system",
       "example_ids": [
@@ -6117,15 +6117,17 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "Stable identities, the six GOV.UK categorical chart colours (unchanged in light and dark mode), pattern limits and 1.5px lines are explicit. The 24-series example is distinct by colour, pattern, line dash and marker together, not by colour alone. 12 November 2026 source review: Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026 colour review: the generated palette was replaced by the GOV.UK chart palette, with single, multiple, divergent and social examples. 18 November 2026: rule BG-COL-07 moved here from the Colour roles and accessibility page (since deleted). 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout without the Sass row; Axes & lines and Labels have their own headings; the 4 GOV.UK examples are shown on the page with their invented-data labels, a compact list of the colours used and their data tables in details elements.",
-      "sha256": "619611e2258deb9b2e533ed1f680cb2ed1f6d554cffc1d9178555365e8d22c99",
+      "note": "Stable identities, the six GOV.UK categorical chart colours (unchanged in light and dark mode), pattern limits and 1.5px lines are explicit. The 24-series example is distinct by colour, pattern, line dash and marker together, not by colour alone. 12 November 2026 source review: Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026 colour review: the generated palette was replaced by the GOV.UK chart palette, with single, multiple, divergent and social examples. 18 November 2026: rule BG-COL-07 moved here from the Colour roles and accessibility page (since deleted). 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout without the Sass row; Axes & lines and Labels have their own headings; the 4 GOV.UK examples are shown on the page with their invented-data labels, a compact list of the colours used and their data tables in details elements. 18 November 2026 (Home Assistant rewrite, round 2): the page names no outside source and shows no rule IDs. In Home Assistant says what native cards draw: Energy dashboard cards get the stable styles through the civica companion; History graph and Statistics graph cards take civica-chart-1 to civica-chart-24 by position and draw no patterns, dashes or end labels. The numbered colours are listed with their energy roles from themes/civica.yaml. Sections renamed: Choose colours from what the data means (anchor bg-col-07) and Above and below a target. Each rule is stated once; never dropping a series is left to Charts and tables. Example text no longer claims fills that are not drawn. Maintenance of the chart colour assignment moved to Maintain the system.",
+      "sha256": "10ed8f6f05ee50dd39ce15bf9f2ffa0ca98f16fe15691c6981a5747252eea576",
       "url": "/styles/chart-colour.html",
       "title": "Chart colours",
       "example_ids": [
+        "chart-govuk-single",
+        "chart-govuk-multiple",
+        "chart-govuk-divergent",
+        "chart-govuk-social",
         "data-colour-categorical",
-        "data-colour-quantitative",
-        "local-chart-power",
-        "local-chart-many"
+        "data-colour-quantitative"
       ],
       "resolved_finding_ids": []
     },
@@ -6149,13 +6151,11 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "Reviewed generated exact palette references and semantic-role table; tone is independent of mode, chart identity and print metadata are qualified. 12 November 2026 source review: Connected the palette reference to colour roles, optional household identity and an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026: rules BG-COL-01, BG-COL-03, BG-COL-06 and BG-COL-08 and the role separation example moved here from the Colour roles and accessibility page (since deleted). 18 November 2026: the Colour roles and accessibility page was deleted; its rule anchors now resolve here, on Web colours and on Chart colours. Maintenance notes for the colour section's swatches and example pictures were added.",
-      "sha256": "dadda69d9af67d9e2291679a79104c1bcfb63ede972b6ad443fcdb5fae245355",
+      "note": "Reviewed generated exact palette references and semantic-role table; tone is independent of mode, chart identity and print metadata are qualified. 12 November 2026 source review: Connected the palette reference to colour roles, optional household identity and an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026: rules BG-COL-01, BG-COL-03, BG-COL-06 and BG-COL-08 and the role separation example moved here from the Colour roles and accessibility page (since deleted). 18 November 2026: the Colour roles and accessibility page was deleted; its rule anchors now resolve here, on Web colours and on Chart colours. Maintenance notes for the colour section's swatches and example pictures were added. 18 November 2026 (Home Assistant rewrite, round 2): the page names no outside source and shows no rule IDs. The theme colour preview text matches what it shows (the header only); the palette overview is one sentence with a link; the Red and Green theme colour note links to Web colours; theme names are left to Change theme colours; maintenance notes moved to Maintain the system (anchor maintain-the-tokens kept). Example list corrected to the one example the page uses.",
+      "sha256": "f3a1331829237c5d1ed6eae41b718c3a5aa433c21030750aa3192b44d327ed38",
       "url": "/styles/colour.html",
       "title": "Colour",
       "example_ids": [
-        "local-theme-blue",
-        "local-theme-purple",
         "bg-colour-role-separation"
       ],
       "resolved_finding_ids": []
@@ -7126,8 +7126,8 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties were listed only where the shipped theme set that exact value (removed later on 18 November 2026). 18 November 2026: rules BG-COL-02, BG-COL-04 and BG-COL-05 and their examples moved here from the Colour roles and accessibility page (since deleted). 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout (round sample, name, RGB and hex with icon copy buttons) and the page lists its colour groups; the Sass and civica theme property rows were removed from each swatch, so no theme properties are listed. 18 November 2026 (GOV.UK pictures): added the Web palette example after Functional colours, with the GOV.UK callout first: a picture of a simulated dashboard for an invented household in a desktop browser, generated by docs/scripts/generate-web-app-examples.py in web palette colours only.",
-      "sha256": "1042e2f22a55f24ec561c715fbf3123b5d65248b05cadaeb181ff7295080ef02",
+      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties were listed only where the shipped theme set that exact value (removed later on 18 November 2026). 18 November 2026: rules BG-COL-02, BG-COL-04 and BG-COL-05 and their examples moved here from the Colour roles and accessibility page (since deleted). 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout (round sample, name, RGB and hex with icon copy buttons) and the page lists its colour groups; the Sass and civica theme property rows were removed from each swatch, so no theme properties are listed. 18 November 2026 (GOV.UK pictures): added the Web palette example after Functional colours, with the GOV.UK callout first: a picture of a simulated dashboard for an invented household in a desktop browser, generated by docs/scripts/generate-web-app-examples.py in web palette colours only. 18 November 2026 (Home Assistant rewrite, round 2): the page names no outside source and shows no rule IDs. Functional colours lists the civica theme variable for each functional colour, checked against themes/civica.yaml in light and dark mode, and says which have none. The device state example is now an entities card with real states, and the border example is renaming an area without a button. The dashboard drawing says what to copy and states once that it is invented.",
+      "sha256": "273ae80225028c89234c1ba92b79dcad1cd96fc3ac353cb4789c3baa025beaa9",
       "url": "/styles/colour-web.html",
       "title": "Web colours",
       "example_ids": [
@@ -7154,8 +7154,8 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties were listed only where the shipped theme set that exact value (removed later on 18 November 2026). 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout (round sample, name, RGB and hex with icon copy buttons) and the page lists its colour groups; the Sass and civica theme property rows were removed from each swatch, so no theme properties are listed. 18 November 2026 (GOV.UK pictures): App header now has the GOV.UK callouts, a Mobile web header picture and an App header subsection with 4 Companion app screens; Use colour with care became Examples, with the GOV.UK guidance and a picture of tinted tiles and menus. The pictures are generated by docs/scripts/generate-web-app-examples.py in app palette colours only, with invented household details.",
-      "sha256": "2a4af0d9ffceaf3b337ebd108a215dd93e3797e42425689256a3311211a34c64",
+      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties were listed only where the shipped theme set that exact value (removed later on 18 November 2026). 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout (round sample, name, RGB and hex with icon copy buttons) and the page lists its colour groups; the Sass and civica theme property rows were removed from each swatch, so no theme properties are listed. 18 November 2026 (GOV.UK pictures): App header now has the GOV.UK callouts, a Mobile web header picture and an App header subsection with 4 Companion app screens; Use colour with care became Examples, with the GOV.UK guidance and a picture of tinted tiles and menus. The pictures are generated by docs/scripts/generate-web-app-examples.py in app palette colours only, with invented household details. 18 November 2026 (Home Assistant rewrite, round 2): the page names no outside source. It says a dashboard uses Web colours wherever it is viewed, including in the Companion app; that the app palette is the web palette without browns plus 7 accents and 2 dark mode blues; that Accent teal is not the theme accent-color; and that the civica theme does not use the dark mode blues. Pictures are described as simplified drawings, each colour list names only the colours to notice, and the second App header heading is now App screens.",
+      "sha256": "0c17460ea8cf68e83f3b531b12db6cfedbfaf21d767161cfea044da0b21df770",
       "url": "/styles/colour-app.html",
       "title": "App colours",
       "example_ids": [
@@ -7206,12 +7206,13 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines maps page read on 18 November 2026 (Open Government Licence v3.0), including the colours of the GOV.UK map example under pages.maps.example. Map colours are the same in light and dark mode and do not follow the theme colour. 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout, the page lists its colour groups, and the zones drawing is shown on the page with its key, invented-data note and data table (in a details element), followed by Colours used in example.",
-      "sha256": "09330ddf0f14f282519037599234e6d9d05175217259d2d1054653b2d5ec6c8a",
+      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines maps page read on 18 November 2026 (Open Government Licence v3.0), including the colours of the GOV.UK map example under pages.maps.example. Map colours are the same in light and dark mode and do not follow the theme colour. 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout, the page lists its colour groups, and the zones drawing is shown on the page with its key, invented-data note and data table (in a details element), followed by Colours used in example. 18 November 2026 (Home Assistant rewrite, round 2): the page names no outside source. Each colour in the working OpenStreetMap example is tied to a feature you can see (roads, buildings, Roath Basin, markers A and B), with a colour key below the map; rivers are described as low-contrast Teal tint 80% lines; zones and markers use one data colour and are told apart by shape, letter and label. In Home Assistant now says the native Map card can take these colours through a custom map_style with colors and colors_dark, and links to Maps, zones and location records for attribution. The shared map example has a shorter description and a plain caption. The shared example disclaimer was replaced by one invented-data statement per example. Known limit: at 320px the scale bar overlaps the in-map attribution; moving it needs a JavaScript change.",
+      "sha256": "36d38500ff821df3a62c6e0dbb7df09d177ca20e811dcb23112040a40ee690ac",
       "url": "/styles/colour-maps.html",
       "title": "Map colours",
       "example_ids": [
-        "map-govuk-zones"
+        "map-govuk-zones",
+        "map-neighbourhood-records"
       ],
       "resolved_finding_ids": []
     },
@@ -7232,8 +7233,8 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "18 November 2026: first published. Every palette value is rendered from docs/data/govuk-brand-colours.json, and the example tiles are generated from it by docs/scripts/generate-social-examples.py; the values were copied verbatim from the GOV.UK Brand Guidelines social page read on 18 November 2026 (Open Government Licence v3.0), including the 9 companion pairings under pages.social.companion. Social colours do not follow the theme colour and are not used in the Home Assistant interface. 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout, the page lists its colour groups, the tone tiles sit on an Inform to Inspire scale, and each tonal and companion example tile has its own heading and the swatches of the colours it uses; maintenance notes moved to Colour.",
-      "sha256": "e8c08edc755e35c6ae5aa655cb5bcd6e11742c0f77adfc9ca9bc41e148055785",
+      "note": "18 November 2026: first published. Every palette value is rendered from docs/data/govuk-brand-colours.json, and the example tiles are generated from it by docs/scripts/generate-social-examples.py; the values were copied verbatim from the GOV.UK Brand Guidelines social page read on 18 November 2026 (Open Government Licence v3.0), including the 9 companion pairings under pages.social.companion. Social colours do not follow the theme colour and are not used in the Home Assistant interface. 18 November 2026 (GOV.UK layout): swatches now use the GOV.UK Brand layout, the page lists its colour groups, the tone tiles sit on an Inform to Inspire scale, and each tonal and companion example tile has its own heading and the swatches of the colours it uses; maintenance notes moved to Colour. 18 November 2026 (Home Assistant rewrite, round 2): the page names no outside source. Tonal and companion colours are defined where first used; the tonal tiles carry serious messages in one colour family each (the red tile text is now Red tint 95%, 4.79:1; the green tile circle is Green tint 80%); the palette is described as the app palette without the dark mode blues; repeated sentences were removed. Known limit: the tone strip text is about 3px tall at 320px; a fix needs a change to the colour_example helper or CSS.",
+      "sha256": "5c2710f6411d67b667dea541d29961e08759e1feab76bffc6849a8b232f0aa5c",
       "url": "/styles/colour-social.html",
       "title": "Social colours",
       "example_ids": [
@@ -7354,7 +7355,7 @@
       "id": "bg-colour-boundaries",
       "title": "A quiet card boundary and a strong input boundary",
       "path": "docs/data/brand-guidance-examples.yml",
-      "authored_html_sha256": "85949b6e6ecf406d083af090bebd0cb593208b95b3748383b620c154137ff213",
+      "authored_html_sha256": "9a5e7b541ff1b1bea350acbdfe169debb90413e617f7d71414fb3d3fa916a42b",
       "owners": [
         "/styles/colour-web.html"
       ],
@@ -7368,7 +7369,7 @@
       "finding_ids": [],
       "review_note": "Read the A quiet card boundary and a strong input boundary specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/brand-guidance-examples.yml",
-      "sha256": "8e16b4c902413b978bc9087153147fe23765563f6bcb0266cf578628ba8c743d"
+      "sha256": "232015960665da76146eda5f90f8914af4184b137e83a5bc389f51b6952c29a1"
     },
     {
       "id": "bg-colour-role-separation",
@@ -7388,13 +7389,13 @@
       "finding_ids": [],
       "review_note": "Read the Identity changes; status meaning stays stable specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately. 12 November 2026 update: The revised specimen separates optional household identity from project artwork; local destinations, meaningful text and the reference-only scope remain explicit. Rendered checks are recorded separately. 18 November 2026: the two retired palettes were replaced by the Green and Red theme colours, and the example moved to Colour with rule BG-COL-01.",
       "source_file": "docs/data/brand-guidance-examples.yml",
-      "sha256": "8e16b4c902413b978bc9087153147fe23765563f6bcb0266cf578628ba8c743d"
+      "sha256": "232015960665da76146eda5f90f8914af4184b137e83a5bc389f51b6952c29a1"
     },
     {
       "id": "bg-colour-state-labels",
       "title": "Different states explained in words",
       "path": "docs/data/brand-guidance-examples.yml",
-      "authored_html_sha256": "787e3acef37112f9346e2bbd939489e504c03f6cd6d72cc55d4ad08da344fbdb",
+      "authored_html_sha256": "c2d8a2f3786f72d691e6fd2a1ee6c366f0737f074874fe22feb38bafea75d636",
       "owners": [
         "/styles/colour-web.html"
       ],
@@ -7408,7 +7409,7 @@
       "finding_ids": [],
       "review_note": "Read the Different states explained in words specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/brand-guidance-examples.yml",
-      "sha256": "8e16b4c902413b978bc9087153147fe23765563f6bcb0266cf578628ba8c743d"
+      "sha256": "232015960665da76146eda5f90f8914af4184b137e83a5bc389f51b6952c29a1"
     },
     {
       "id": "bg-data-editorial-summary",
@@ -8232,8 +8233,8 @@
       ],
       "finding_ids": [],
       "review_note": "Light and dark contexts use the GOV.UK categorical chart colours from chartSeriesStyle, unchanged in both modes. Devices that share a colour differ by line dash, marker and name. Missing data is not zero, values have a common period and table, and colour is never the only cue.",
-      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db",
-      "authored_html_sha256": "dc33358c81a7175ad6220ba2072b9712b4592a6c9bad700c7ff952dc1c01b529",
+      "sha256": "af011ccee70217e708ec46ac02f880f820612533bb5f2cad9f74945b504e258e",
+      "authored_html_sha256": "972327c6d4c9d6b678599606076c891bd066a907e5a8c89c37447bcc63e6b1fe",
       "owners": [
         "/styles/chart-colour.html"
       ]
@@ -8252,8 +8253,8 @@
       ],
       "finding_ids": [],
       "review_note": "Sequential and divergent scales use named GOV.UK tints and shades (blues; blues and reds with Black tint 95% at a meaningful centre), with numerical values and missing and out-of-range policies. These measured-value scales stay separate from categorical source identities.",
-      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db",
-      "authored_html_sha256": "2d6756449a49ad849668070b7aaaab7c9d32ade9bf3778587e39ced9f0ea1d87",
+      "sha256": "af011ccee70217e708ec46ac02f880f820612533bb5f2cad9f74945b504e258e",
+      "authored_html_sha256": "68ee486fa79d23e1301926c0e3e8a61b8e3a2da638830463b92c95dcfcc92371",
       "owners": [
         "/styles/chart-colour.html"
       ]
@@ -8271,8 +8272,8 @@
       ],
       "finding_ids": [],
       "review_note": "Like-for-like with the GOV.UK \"Single category\" chart composition: synthetic daily electricity use (kWh) as bars in Primary blue, Black tint 80% grid lines and Black labels. Labelled synthetic data, period, unit, source, value labels on bars and a matching table.",
-      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db",
-      "authored_html_sha256": "c22de339731ddbeba63c745d09c2e3122ea77e3c5ad09878191b201be2c8bfe2",
+      "sha256": "af011ccee70217e708ec46ac02f880f820612533bb5f2cad9f74945b504e258e",
+      "authored_html_sha256": "4660b9546703d1bd045c8cdcb1f6a31cbba1d2c4ba2abe6b3ccc39147ff0d649",
       "owners": [
         "/styles/chart-colour.html"
       ]
@@ -8290,8 +8291,8 @@
       ],
       "finding_ids": [],
       "review_note": "Like-for-like with the GOV.UK \"Multiple categories\" composition: four synthetic room temperatures as lines in Blue shade 50%, Teal tint 25%, Primary magenta and Orange tint 25%, each with its own dash and an end label, legend on top and a matching table.",
-      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db",
-      "authored_html_sha256": "0b1b362f256dab62680120d3756017cbc430886fe0dfceffb3103e3aac3ebf36",
+      "sha256": "af011ccee70217e708ec46ac02f880f820612533bb5f2cad9f74945b504e258e",
+      "authored_html_sha256": "46181af5f581903b73cd65cc3b24ec058d43abe363b78ad4f2e010a301ec64d9",
       "owners": [
         "/styles/chart-colour.html"
       ]
@@ -8309,8 +8310,8 @@
       ],
       "finding_ids": [],
       "review_note": "Like-for-like with the GOV.UK \"Divergent categories\" composition: synthetic hours under and over the heating target per room in Primary blue, Blue tint 50%, Red tint 50% and Primary red, legend on top, position as a non-colour cue and a matching table including hours on target.",
-      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db",
-      "authored_html_sha256": "723fdc2e8918143fc53cdd4d1576d1a01d925964432190fb0aefed97a7ce1633",
+      "sha256": "af011ccee70217e708ec46ac02f880f820612533bb5f2cad9f74945b504e258e",
+      "authored_html_sha256": "b1e25c8a5740134a796f21c1901aa6ac82c52c6e631eadb11490e38e47f691d1",
       "owners": [
         "/styles/chart-colour.html"
       ]
@@ -8328,8 +8329,8 @@
       ],
       "finding_ids": [],
       "review_note": "Illustrative example after the GOV.UK \"Using charts within social media\" composition: synthetic automation counts as area-sized circles on Blue shade 50% with Accent teal and Teal tint 95%, used only on that shade background as GOV.UK requires. Values are printed on every circle and repeated in a table.",
-      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db",
-      "authored_html_sha256": "302534ae65abe2b3e5357d1a0ff5bc28489fc06d864c1825d11e02c2c16c5e26",
+      "sha256": "af011ccee70217e708ec46ac02f880f820612533bb5f2cad9f74945b504e258e",
+      "authored_html_sha256": "554faa2141588c5a82674939ffcbfd3adc195c4dfceef76ce371d3e2b58a263d",
       "owners": [
         "/styles/chart-colour.html"
       ]
@@ -10758,8 +10759,7 @@
       "path": "docs/data/local-examples.yml",
       "authored_html_sha256": "ab35e7223a125562528a6f4c71b58a374beb037aa51d4f97fd699f7435fa73f5",
       "owners": [
-        "/components/chart-examples.html",
-        "/styles/chart-colour.html"
+        "/components/chart-examples.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -10783,8 +10783,7 @@
       "owners": [
         "/components/chart-examples.html",
         "/components/charts.html",
-        "/patterns/energy.html",
-        "/styles/chart-colour.html"
+        "/patterns/energy.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -10831,7 +10830,6 @@
       "authored_html_sha256": "c8b8ad8b09a99044a381534e5081367715a888959528a3b4b71f955a74ea9470",
       "owners": [
         "/get-started/colour-settings.html",
-        "/styles/colour.html",
         "/styles/index.html"
       ],
       "reviewed_rule_families": [
@@ -10852,8 +10850,7 @@
       "path": "docs/data/local-examples.yml",
       "authored_html_sha256": "e3376f42ca2c9a74db2527f8d231e7576884aed516a602a474a797c245ee9e01",
       "owners": [
-        "/get-started/colour-settings.html",
-        "/styles/colour.html"
+        "/get-started/colour-settings.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -11469,7 +11466,7 @@
       ],
       "finding_ids": [],
       "review_note": "A simulated map-background failure keeps all three fictional records, their original observation times and missing location. No provider request, fake retry or inference that a device is away is made.",
-      "sha256": "bf97edcb3f94a21c5966b964964b49cacb3b7db218c34f01adb98f7d5c999098",
+      "sha256": "ad95c3dbcf3e9d8cf3ed01d015fc88f2db9bb8464298a2b6f56291bae29f5b32",
       "authored_html_sha256": "18f072eb3232e56373e45df7854a48ea9524ef5a69803a751d3acb311965ae16",
       "owners": [
         "/home-assistant/maps-and-zones.html"
@@ -11489,10 +11486,11 @@
       ],
       "finding_ids": [],
       "review_note": "Real attributed OpenStreetMap geography is separate from three fictional device records, two plotted locations and a missing location. Activation, privacy, keyboard controls, selected record, uncertainty and complete table remain explicit; live runtime adoption is not claimed.",
-      "sha256": "bf97edcb3f94a21c5966b964964b49cacb3b7db218c34f01adb98f7d5c999098",
-      "authored_html_sha256": "5f3c80dda8d6177f41e593c7ed81d147f1e2bd6c27532ce9a17fed24c9641750",
+      "sha256": "ad95c3dbcf3e9d8cf3ed01d015fc88f2db9bb8464298a2b6f56291bae29f5b32",
+      "authored_html_sha256": "e1a702b3f0b36a8c4f0cf73cbe9c59b6e2062865d3dcaeb49facbc191ffc7dfc",
       "owners": [
-        "/home-assistant/maps-and-zones.html"
+        "/home-assistant/maps-and-zones.html",
+        "/styles/colour-maps.html"
       ]
     },
     {
@@ -16496,9 +16494,9 @@
         "WG"
       ],
       "finding_ids": [],
-      "review_note": "Like-for-like with the GOV.UK map example composition: invented Home Assistant zones as data in Accent green with a Primary green outline and Black labels, on Black tint 95% land with a Black tint 80% outline, Teal tint 95% sea and Teal tint 80% coastal areas. No provider request; key, SVG title and description, and a matching table of every zone.",
-      "sha256": "bf97edcb3f94a21c5966b964964b49cacb3b7db218c34f01adb98f7d5c999098",
-      "authored_html_sha256": "689cf20e47fdfdf9f00761c235ff48c8004d82e76cee5175a71e6459dd3350f5",
+      "review_note": "Invented Home Assistant zones as data in Accent green with a Primary green outline and Black labels, on Black tint 95% land with a Black tint 80% outline, Teal tint 95% sea and Teal tint 80% coastal areas. No provider request; key, SVG title and description, and a matching table of every zone. 18 November 2026: one invented-data statement, in the caption.",
+      "sha256": "ad95c3dbcf3e9d8cf3ed01d015fc88f2db9bb8464298a2b6f56291bae29f5b32",
+      "authored_html_sha256": "ec6e6683223c5cb3c63843253b028f44dbf769d6cd198444ccceb55b12ddcc27",
       "owners": [
         "/styles/colour-maps.html"
       ]
@@ -16513,8 +16511,8 @@
         "WG"
       ],
       "finding_ids": [],
-      "review_note": "Like-for-like with the GOV.UK tone examples: five invented Home Assistant posts from black and white to a companion colour. Generated by docs/scripts/generate-social-examples.py. Each tile is an SVG with a title and description; every text pair reaches at least 4.5:1.",
-      "sha256": "1138d24e27d34bc9108e731b40dea3516c8d3a0fb9d83e4575b3d750d7c59a79",
+      "review_note": "Five invented Home Assistant posts from black and white to a companion colour. Generated by docs/scripts/generate-social-examples.py. Each tile is an SVG with a title and description; every text pair reaches at least 4.5:1.",
+      "sha256": "29fc1c34b5813ff4c43fd0fac661f44e79c0eca459a5dcc06fe900670b546bb7",
       "authored_html_sha256": "721c7e7f80d3339a1831d9a90270a9e5f429878c45649f9e51a0bcf8c542beba",
       "owners": [
         "/styles/colour-social.html"
@@ -16530,9 +16528,9 @@
         "WG"
       ],
       "finding_ids": [],
-      "review_note": "Like-for-like with the GOV.UK tonal examples: green, red and purple tiles, each based on one colour family; like the GOV.UK example, the red tile uses Purple tint 95% for its text. Generated by docs/scripts/generate-social-examples.py. Each tile is an SVG with a title and description; every text pair reaches at least 4.5:1.",
-      "sha256": "1138d24e27d34bc9108e731b40dea3516c8d3a0fb9d83e4575b3d750d7c59a79",
-      "authored_html_sha256": "6d27347537b758ee02cf28146555647e269cead94ee789c061834290f0a7122c",
+      "review_note": "Three serious posts (checking on a neighbour in the cold, a storm warning, a boiler fault), each in the tints and shades of one colour family. 18 November 2026: the red tile text is Red tint 95% (4.79:1 on Primary red) and the green tile circle is Green tint 80%. Generated by docs/scripts/generate-social-examples.py. Each tile is an SVG with a title and description; every text pair reaches at least 4.5:1.",
+      "sha256": "29fc1c34b5813ff4c43fd0fac661f44e79c0eca459a5dcc06fe900670b546bb7",
+      "authored_html_sha256": "76e60a792638747035eb715c30f5513c4205b131024bdb30fc7c61494f7db13b",
       "owners": [
         "/styles/colour-social.html"
       ]
@@ -16547,9 +16545,9 @@
         "WG"
       ],
       "finding_ids": [],
-      "review_note": "Like-for-like with the GOV.UK companion examples, which pair colours from different families; only the third tile uses one of the 9 listed pairings exactly, and the example text says so. Generated by docs/scripts/generate-social-examples.py. Each tile is an SVG with a title and description; every text pair reaches at least 4.5:1.",
-      "sha256": "1138d24e27d34bc9108e731b40dea3516c8d3a0fb9d83e4575b3d750d7c59a79",
-      "authored_html_sha256": "6af8d0a55232f2bfe229ff04364d92aea16253a6e2710376bcf3dd9e3b4f8989",
+      "review_note": "Three posts that prompt an action, each built on one of the 9 companion pairings: Primary blue on Primary yellow (3.84:1, large words and shapes only), Primary magenta on Blue tint 95% (the map pin) and Blue shade 50% on Accent green. Generated by docs/scripts/generate-social-examples.py. Each tile is an SVG with a title and description; every other text pair reaches at least 4.5:1.",
+      "sha256": "29fc1c34b5813ff4c43fd0fac661f44e79c0eca459a5dcc06fe900670b546bb7",
+      "authored_html_sha256": "42829d12bd89bf80c6f437a18355394ea0bfe919d26413c8726e60b83d75706f",
       "owners": [
         "/styles/colour-social.html"
       ]
@@ -16620,8 +16618,8 @@
       ],
       "finding_ids": [],
       "review_note": "Like-for-like with the GOV.UK Web palette example: a simulated dashboard for an invented household in a desktop browser on Blue tint 50%, with a Primary blue header, Blue shade 10% links and White cards on Blue tint 95%. Every fill and stroke is a web palette colour. Generated by docs/scripts/generate-web-app-examples.py, which stops if any text pair is below 4.5:1. An SVG with a title and description; the caption lists the colours. 18 November 2026 correction: these are simulated pictures modelled on the GOV.UK pictures, not screenshots of civica, Home Assistant or the Companion app; the page says so, and the browser window controls are Black tint 80%, not the error, warning and success colours.",
-      "sha256": "ce892ce5e9ef5fd5b45fe67ed542b388e5c7077ebd39d8943c3ef28064c8adab",
-      "authored_html_sha256": "19c3c0d5130b8a6b2d3223736ff6485770f6c78701d887f0f090eb7ba28037a4",
+      "sha256": "31ed399f8cb071a21892f08d3e1b8fe3978d3ebd32759ac588d2d3714aa9770e",
+      "authored_html_sha256": "a84f9cb789494b85283b801d439526b3fb43eabff465b5a86fd6fa4af9c869a8",
       "owners": [
         "/styles/colour-web.html"
       ]
@@ -16638,8 +16636,8 @@
       ],
       "finding_ids": [],
       "review_note": "Like-for-like with the GOV.UK Mobile web header picture: a simulated dashboard in a mobile browser with the Primary blue header and its content greyed out as Black tint 80% bars rather than faded text, so that every text pair reaches 4.5:1. Every colour is an app palette colour. Generated by docs/scripts/generate-web-app-examples.py. An SVG with a title and description; the caption lists the colours. 18 November 2026 correction: these are simulated pictures modelled on the GOV.UK pictures, not screenshots of civica, Home Assistant or the Companion app; the page says so, and the browser window controls are Black tint 80%, not the error, warning and success colours.",
-      "sha256": "ce892ce5e9ef5fd5b45fe67ed542b388e5c7077ebd39d8943c3ef28064c8adab",
-      "authored_html_sha256": "a65a016a056f13cae9385c3f85c6c9aee2b664b63351bd12ba61893352cbad00",
+      "sha256": "31ed399f8cb071a21892f08d3e1b8fe3978d3ebd32759ac588d2d3714aa9770e",
+      "authored_html_sha256": "9c71dc2ca1b7892e32c6b93a221f382930bb1f5bc2c6fc7beafc36ec7c01aa73",
       "owners": [
         "/styles/colour-app.html"
       ]
@@ -16656,8 +16654,8 @@
       ],
       "finding_ids": [],
       "review_note": "Like-for-like with the GOV.UK App header pictures: 4 invented simulated app screens in 2 pictures, each with the Primary blue header and the content greyed out in Black tint 95% and Black tint 80%. Every colour is an app palette colour. Generated by docs/scripts/generate-web-app-examples.py. Each picture is an SVG with a title and description; the captions list the colours. 18 November 2026 correction: these are simulated pictures modelled on the GOV.UK pictures, not screenshots of civica, Home Assistant or the Companion app; the page says so, and the browser window controls are Black tint 80%, not the error, warning and success colours.",
-      "sha256": "ce892ce5e9ef5fd5b45fe67ed542b388e5c7077ebd39d8943c3ef28064c8adab",
-      "authored_html_sha256": "24ac792da3254b6b917997cca4a1ba2c2e12034b4c9f8899c5519b10705326a6",
+      "sha256": "31ed399f8cb071a21892f08d3e1b8fe3978d3ebd32759ac588d2d3714aa9770e",
+      "authored_html_sha256": "745be3a744ce8a832265106164dd5aab968a5c1b8629fa7c9f179c48e3648e69",
       "owners": [
         "/styles/colour-app.html"
       ]
@@ -16674,8 +16672,8 @@
       ],
       "finding_ids": [],
       "review_note": "Like-for-like with the GOV.UK app Examples picture: Companion app Home and Settings screens led by Primary blue and Accent teal, with Blue tint 95% tiles and menus with Blue tint 50% borders. Every colour is an app palette colour; every text pair reaches 4.5:1, checked by docs/scripts/generate-web-app-examples.py. An SVG with a title and description; the caption lists the colours. 18 November 2026 correction: these are simulated pictures modelled on the GOV.UK pictures, not screenshots of civica, Home Assistant or the Companion app; the page says so, and the browser window controls are Black tint 80%, not the error, warning and success colours.",
-      "sha256": "ce892ce5e9ef5fd5b45fe67ed542b388e5c7077ebd39d8943c3ef28064c8adab",
-      "authored_html_sha256": "7a1f1386aa873c40a6375924bd02d14e1478f82a25af1a74c2469e16c037c5e4",
+      "sha256": "31ed399f8cb071a21892f08d3e1b8fe3978d3ebd32759ac588d2d3714aa9770e",
+      "authored_html_sha256": "6aba5ca24e3d3bba7cc9b5ceb0b6d534f49c994010755d64275948eb48a66966",
       "owners": [
         "/styles/colour-app.html"
       ]
@@ -18343,7 +18341,7 @@
     },
     {
       "path": "docs/data/brand-guidance-examples.yml",
-      "sha256": "8e16b4c902413b978bc9087153147fe23765563f6bcb0266cf578628ba8c743d",
+      "sha256": "232015960665da76146eda5f90f8914af4184b137e83a5bc389f51b6952c29a1",
       "scope": "Authored/shared documentation source review."
     },
     {
@@ -18528,7 +18526,7 @@
     },
     {
       "path": "docs/data/page_history.yml",
-      "sha256": "ec3fad416e7db64897a4a871b3d7dcd8adf359b6558841a9b5336644ab8c8e8b",
+      "sha256": "66e142e4cf32ec05be4ccb7a9c55da9343bbc3c62d4323c91c53f711b97a6a92",
       "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives."
     },
     {
@@ -18574,7 +18572,7 @@
     {
       "path": "docs/data/data-colour-examples.yml",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "52a702f17da7109af2e3bd362d9102be95976625cd0db92c7608830b41814f65"
+      "sha256": "af011ccee70217e708ec46ac02f880f820612533bb5f2cad9f74945b504e258e"
     },
     {
       "path": "docs/data/data-design-review.json",
@@ -18584,7 +18582,7 @@
     {
       "path": "docs/data/map-design-examples.yml",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately.",
-      "sha256": "731a2eaec20accfd2b091f9c266b256203217c140e07e3a9fbb211243aed5fe6"
+      "sha256": "ad95c3dbcf3e9d8cf3ed01d015fc88f2db9bb8464298a2b6f56291bae29f5b32"
     },
     {
       "path": "docs/data/page-illustrations.yml",
@@ -18684,12 +18682,12 @@
     {
       "path": "docs/scripts/sync-palettes.py",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "1c3f401692e220538eb5a51c17f48a9104ae2b33a9464b5b22d4ed73ecd0e287"
+      "sha256": "af66af766088d3c47cb97ac8f1783b2f802067193f496fa7625bd10017dcae04"
     },
     {
       "path": "docs/scripts/generate-social-examples.py",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately.",
-      "sha256": "1379ddb795428f053d5324347b82c5d9bc105d89d77f7f91e0c7ef159d0113e7"
+      "sha256": "a86fd0c4d0e12b45a78f02c88a57c299a60add8f31b02b530e57d68ce03eb53a"
     },
     {
       "path": "docs/scripts/generate-illustration-examples.py",
@@ -18699,7 +18697,7 @@
     {
       "path": "docs/scripts/generate-web-app-examples.py",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately.",
-      "sha256": "8cef7261563474c6cc6f4938659dff215d3ca4d2a033bd6375e01228671925df"
+      "sha256": "46178258d634ab5d5fd11f6c78a90428ff0b57bb269c81dfc1faca3c23f91e29"
     },
     {
       "path": "scripts/build.mjs",
@@ -18783,7 +18781,7 @@
     },
     {
       "path": "docs/source/community/index.html.md.erb",
-      "sha256": "5a07b6447fd190a00c07d6e3d1a88fd2b65ac890f297a6b04f6c118973a2ec7f",
+      "sha256": "f274d7aad67f09522cd34c0218f7b287feac9b07f49b94da0716f9f37672ae52",
       "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
