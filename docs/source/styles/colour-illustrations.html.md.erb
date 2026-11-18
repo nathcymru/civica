@@ -10,7 +10,7 @@ updated_on: "2026-11-18"
 updates:
   - date: "2026-11-18"
     description: "First published, following the GOV.UK Brand Guidelines illustrations colour page, with its colours copied exactly."
-ai_instructions: "Apply when choosing colours for an illustration in civica documentation, a Home Assistant dashboard or a social post. Take colours from the palette for the channel: Web colours for documentation and dashboards, Social colours for social media. Use 4 to 6 colours where possible. Make Primary blue the base, and use Accent teal or Accent blue only to highlight a key component. Pair complementary colours, use shades of one colour to separate foreground from background, and test the illustration with a colour blindness simulator. Illustration colours do not follow the theme colour. How to draw an illustration is owned by Illustration. Rules WG-001, WG-002."
+ai_instructions: "Apply when choosing colours for an illustration in civica documentation, a Home Assistant dashboard or a social post. Take colours from the palette for the channel: Web colours for documentation and dashboards, Social colours for social media. Use 4 to 6 colours where possible. Make Primary blue the base, and use Accent teal and Accent blue, if they suit the illustration, to highlight a key component. Pair complementary colours, use shades of one colour to separate foreground from background, and test the illustration with a colour blindness simulator. Illustration colours do not follow the theme colour. How to draw an illustration is owned by Illustration. Rules WG-001, WG-002."
 ai_related:
   - path: "/styles/illustration.html"
     title: "Illustration"
@@ -37,7 +37,9 @@ Use as few colours as you can. As a rule of thumb, use 4 to 6 colours, depending
 
 <%= colour_palette('illustrations', fields: %i[hex rgb]) %>
 
-Primary blue is the base of the brand, so use it heavily in illustrations. Use Accent teal and Accent blue if they suit the illustration and its layout. They are bold, so use them to highlight a key component.
+Primary blue is the base of the GOV.UK palette and civica’s default theme colour, so use it heavily in illustrations. Use Accent teal and Accent blue if they suit the illustration and its layout. They are bold, so use them to highlight a key component.
+
+In this example, Accent teal and Accent blue highlight the sensor on the Primary blue wall, where both reach 3:1.
 
 <%= example('illustration-colour-applying') %>
 
@@ -55,7 +57,9 @@ Contrasting colours make an illustration more appealing and easier to see.
 
 Test the illustration with a colour blindness simulator, to check that people with a colour vision deficiency do not lose important information.
 
-A warm colour beside a cool one, such as yellow beside blue, makes a focal point that draws attention to the action. Keep Primary blue dominant.
+A warm colour beside a cool one, such as yellow beside blue, makes a focal point that draws attention to the action. Keep the blues of the palette dominant.
+
+In this example, the person in yellow stands in front of the dark window and the person in blue in front of the White wall. The greyscale copy is a quick check that the scene still reads without colour; it does not replace a colour blindness simulator.
 
 <%= example('illustration-colour-contrast') %>
 
