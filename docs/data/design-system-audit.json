@@ -895,7 +895,7 @@
     },
     {
       "path": "docs/source/components/charts.html.md.erb",
-      "sha256": "18d567f9f2b72687eae3664b925064e1137aec25ac35aee8d957b4ce96837301",
+      "sha256": "19c820fbf8d6cad501dd29eba6450cd66dc93a66f0535ddbbca887dbd1106e31",
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -3426,7 +3426,7 @@
       "path": "docs/source/home-assistant/maps-and-zones.html.md.erb",
       "url": "/home-assistant/maps-and-zones.html",
       "title": "Maps, zones and location records",
-      "sha256": "65cf5af64d9a6d047b51f7081cfa3d95f2c1f9b05b7bd9a54cd21b6bb92539a9",
+      "sha256": "16ae11c77a65a32d7d1a4c18051653f9c203accc09aaf2d2695b3c33d828b583",
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "resolved_finding_ids": [],
@@ -4112,7 +4112,7 @@
         "local-chart-empty"
       ],
       "note": "Read the full native Energy scope and three chart entry specimens. The 1.5px unfilled Power line and signed projection are explicit local adaptations; History/distribution remain outside adapter coverage. Dynamic chart runtime validation remains separate. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "f7f20c0b6460c502123e2d6013fc862e9a9f559f0f53702c4e8dee8ea8d4c2a8",
+      "sha256": "1ceaa60b4659057b2fe991b8cbcb357ee9707302d4c54db9402819d59bdff398",
       "url": "/patterns/energy.html",
       "title": "Energy and history",
       "resolved_finding_ids": []
@@ -6026,7 +6026,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "All eight colour rules reviewed for local palette authority, semantic independence, contrast context, channel distinctions and functional/decorative scope. 12 November 2026 source review: Integrated colour roles with data examples and optional household identity, with an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "516f180588ba615ecc9c60e0d4027dca2219c8644968c93e16fe658953885f78",
+      "sha256": "331cac8b098f627f3a0ad5c4e9b4cbaa75fb923e7f8f4a1b8189250a52e30bbf",
       "url": "/styles/brand-colour.html",
       "title": "Colour roles and accessibility",
       "example_ids": [
@@ -6057,7 +6057,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "All nine data rules reviewed; clarified private HA adapter versus public ECharts APIs before freeze. Power/energy, original dates, gaps and native controls are preserved. 12 November 2026 source review: Linked the data rules to complete chart, dashboard and map examples, with an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json.",
-      "sha256": "c93fd6bbd83d6272d51114d73f27752b45ed8016c7a69d97fb7f3ac654a1cafe",
+      "sha256": "e28616d7ecbd7e51b70940302d04601d57b8ce651029fcc083cfcf72b9431aa8",
       "url": "/styles/brand-data.html",
       "title": "Data visualisation",
       "example_ids": [
@@ -6148,10 +6148,10 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "Stable identities, opaque generated colours, pattern limits and 1.5px lines are explicit. The 24-series example is not claimed perceptually distinct by colour alone. 12 November 2026 source review: Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "1b32dc43c92e8e65c94a4d2d163847ebc61e078dfbe3cee6353b627ee9b1197b",
+      "note": "Stable identities, the six GOV.UK categorical chart colours (unchanged in light and dark mode), pattern limits and 1.5px lines are explicit. The 24-series example is distinct by colour, pattern, line dash and marker together, not by colour alone. 12 November 2026 source review: Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026 colour review: the generated palette was replaced by the GOV.UK chart palette, with single, multiple, divergent and social examples.",
+      "sha256": "0052d97836ee9f1394110646af8daff45ccd9c306f948e84b65ac3c5dac2691b",
       "url": "/styles/chart-colour.html",
-      "title": "Chart colour",
+      "title": "Chart colours",
       "example_ids": [
         "data-colour-categorical",
         "data-colour-quantitative",
@@ -6181,7 +6181,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Reviewed generated exact palette references and semantic-role table; tone is independent of mode, chart identity and print metadata are qualified. 12 November 2026 source review: Connected the palette reference to colour roles, optional household identity and an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "0fe408e0d4bcb9d59af7871454aea83bc3e4bb5c7bc3a3717ff9a83c12f3947e",
+      "sha256": "3a5a76b7ca683820677648dba3784b157eae0570b2f269a78fb46a9c14ba7507",
       "url": "/styles/colour.html",
       "title": "Colour",
       "example_ids": [
@@ -6302,7 +6302,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Visual roles, brand chapters and the complete writing guide have clear entry points; canonical tokens remain outside authored prose. Project-story navigation review: discoverable About and Writing guide links, section grouping and update history are consistent; no new runtime claim. Preserved the historical #writing-guide anchor with a route to the new section. 12 November 2026 source review: Made data and colour guidance directly discoverable and added the matching original section illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "03be1f031391771f0013cd81dca9c68669528f3de76ad1589088a1fbaae28e50",
+      "sha256": "8e8b2d8e9b6a1df7fde1510da0ab29d3e8ba9de55731e7400f95c10798a5b376",
       "url": "/styles/index.html",
       "title": "Styles",
       "example_ids": [
@@ -7157,7 +7157,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties are listed only where the shipped theme sets that exact value.",
-      "sha256": "c44bbdb5ebacd765cce949296ac6c34fc20435f0da069897c8edba8300a5c859",
+      "sha256": "cd4e50f9aefd29805a053d7e6166163a2f13146918a63d361c09d48f109212be",
       "url": "/styles/colour-web.html",
       "title": "Web colours",
       "example_ids": [],
@@ -8131,8 +8131,8 @@
       ],
       "finding_ids": [],
       "review_note": "Six dated intervals preserve the missing 08:00–09:00 value; five supplied intervals sum to 2.34 kWh. The matching plot, complete table, qualified largest-recorded comparison, sources and working detail links are synthetic reference content.",
-      "sha256": "f58ffe131e502cc7d6f33186e7b4624bf1c20e6ba2e17b32ed356abc5ddee68a",
-      "authored_html_sha256": "e9577aef4f6fcce8991d3b784d979229e0800e853638b9fff55a6bd75ee61247",
+      "sha256": "48a169f8d8803d3e067861a1223703deab63de416f9e413e9e70911c634ebdd8",
+      "authored_html_sha256": "2371b35e3e38ec55496ca66eb69e1784e9c84312e07a158236384ced686387b5",
       "owners": [
         "/patterns/home.html"
       ]
@@ -8151,7 +8151,7 @@
       ],
       "finding_ids": [],
       "review_note": "Freshness distinguishes two recent readings, one older reading and one unconfigured room. The 2-of-3 configured denominator and all four room records are explicit, with no fabricated diagnosis or physical controls.",
-      "sha256": "f58ffe131e502cc7d6f33186e7b4624bf1c20e6ba2e17b32ed356abc5ddee68a",
+      "sha256": "48a169f8d8803d3e067861a1223703deab63de416f9e413e9e70911c634ebdd8",
       "authored_html_sha256": "67d0142e6d4124c81c2860e9af0231879c156124e11f93ea37a73087865cc74a",
       "owners": [
         "/patterns/home.html"
@@ -8171,8 +8171,8 @@
       ],
       "finding_ids": [],
       "review_note": "Light and dark contexts use the GOV.UK categorical chart colours from chartSeriesStyle, unchanged in both modes. Devices that share a colour differ by line dash, marker and name. Missing data is not zero, values have a common period and table, and colour is never the only cue.",
-      "sha256": "9f2081ce5ec31875dde1ee7b1e82b776038eb5c104256954add3f9afa84a3777",
-      "authored_html_sha256": "4fffd1a9aadd7ebe19dd9f93c6dd579ee58002866732232230f547a2f32069ed",
+      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db",
+      "authored_html_sha256": "dc33358c81a7175ad6220ba2072b9712b4592a6c9bad700c7ff952dc1c01b529",
       "owners": [
         "/styles/chart-colour.html"
       ]
@@ -8191,8 +8191,8 @@
       ],
       "finding_ids": [],
       "review_note": "Sequential and divergent scales use named GOV.UK tints and shades (blues; blues and reds with Black tint 95% at a meaningful centre), with numerical values and missing and out-of-range policies. These measured-value scales stay separate from categorical source identities.",
-      "sha256": "9f2081ce5ec31875dde1ee7b1e82b776038eb5c104256954add3f9afa84a3777",
-      "authored_html_sha256": "29910af958afc584a698870331c16ecbd311c8e3d6e21b6fe11953d3531eb118",
+      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db",
+      "authored_html_sha256": "2d6756449a49ad849668070b7aaaab7c9d32ade9bf3778587e39ced9f0ea1d87",
       "owners": [
         "/styles/chart-colour.html"
       ]
@@ -8210,7 +8210,7 @@
       ],
       "finding_ids": [],
       "review_note": "Like-for-like with the GOV.UK \"Single category\" chart composition: synthetic daily electricity use (kWh) as bars in Primary blue, Black tint 80% grid lines and Black labels. Labelled synthetic data, period, unit, source, value labels on bars and a matching table.",
-      "sha256": "a7d560b964bfe53f4b6998d40913506b70958b1edcc3f3343a497a29ff6d6401",
+      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db",
       "authored_html_sha256": "c22de339731ddbeba63c745d09c2e3122ea77e3c5ad09878191b201be2c8bfe2",
       "owners": [
         "/styles/chart-colour.html"
@@ -8229,8 +8229,8 @@
       ],
       "finding_ids": [],
       "review_note": "Like-for-like with the GOV.UK \"Multiple categories\" composition: four synthetic room temperatures as lines in Blue shade 50%, Teal tint 25%, Primary magenta and Orange tint 25%, each with its own dash and an end label, legend on top and a matching table.",
-      "sha256": "a7d560b964bfe53f4b6998d40913506b70958b1edcc3f3343a497a29ff6d6401",
-      "authored_html_sha256": "34e8f85a6a18160c608bac6bcae8e92b42712211972b19d51de34364e08bf96c",
+      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db",
+      "authored_html_sha256": "0b1b362f256dab62680120d3756017cbc430886fe0dfceffb3103e3aac3ebf36",
       "owners": [
         "/styles/chart-colour.html"
       ]
@@ -8248,7 +8248,7 @@
       ],
       "finding_ids": [],
       "review_note": "Like-for-like with the GOV.UK \"Divergent categories\" composition: synthetic hours under and over the heating target per room in Primary blue, Blue tint 50%, Red tint 50% and Primary red, legend on top, position as a non-colour cue and a matching table including hours on target.",
-      "sha256": "a7d560b964bfe53f4b6998d40913506b70958b1edcc3f3343a497a29ff6d6401",
+      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db",
       "authored_html_sha256": "723fdc2e8918143fc53cdd4d1576d1a01d925964432190fb0aefed97a7ce1633",
       "owners": [
         "/styles/chart-colour.html"
@@ -8267,7 +8267,7 @@
       ],
       "finding_ids": [],
       "review_note": "Illustrative example after the GOV.UK \"Using charts within social media\" composition: synthetic automation counts as area-sized circles on Blue shade 50% with Accent teal and Teal tint 95%, used only on that shade background as GOV.UK requires. Values are printed on every circle and repeated in a table.",
-      "sha256": "a7d560b964bfe53f4b6998d40913506b70958b1edcc3f3343a497a29ff6d6401",
+      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db",
       "authored_html_sha256": "302534ae65abe2b3e5357d1a0ff5bc28489fc06d864c1825d11e02c2c16c5e26",
       "owners": [
         "/styles/chart-colour.html"
@@ -18318,7 +18318,7 @@
     {
       "path": "docs/data/data-colour-examples.yml",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "3f0e141a6de02effc3730343857a65448d320a0460dc4e1c39759db5f432f872"
+      "sha256": "ba4c69e5a485317ecee65c69269310aa0d5270605bb7b3f56d5830c2bfe495db"
     },
     {
       "path": "docs/data/data-design-review.json",
@@ -18428,7 +18428,7 @@
     {
       "path": "docs/scripts/sync-palettes.py",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "c2bcfbcd11b5d678d8a40593c6de8aec39f3a46fbaf9bd6cbc314628fdf60274"
+      "sha256": "c699639e9b655b6c1ad0c1e46b03b162940f00a0571bdc8537d4058370ece558"
     },
     {
       "path": "scripts/build.mjs",

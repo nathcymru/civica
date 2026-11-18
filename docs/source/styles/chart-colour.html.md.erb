@@ -33,7 +33,7 @@ ai_related:
     relationship: "Owns how to choose and compose a chart."
 ---
 
-# Chart colour
+# Chart colours
 
 Decide first whether colour identifies a source or shows a quantity. In the maintained household charts, a categorical colour identifies a source or device. It must not change because you added another source, hid a series or switched the theme colour. For example, the dishwasher keeps its colour whether or not the oven is shown. Light and Dark remain separate display modes.
 
@@ -42,13 +42,13 @@ The [machine-readable contract](../reference/chart-colours.json) and the reposit
 
 ## Chart palette
 
-Every chart colour comes unchanged from the [GOV.UK chart palette](https://brand.design-system.service.gov.uk/colour/charts/). Colour helps tell categories apart in charts such as line charts and stacked bar charts. In others, such as heatmaps, colour stands for a numeric value.
+Every chart colour comes unchanged from the GOV.UK chart palette. Colour helps tell categories apart in charts such as line charts and stacked bar charts. In others, such as heatmaps, colour stands for a numeric value.
 
 <%= colour_copy_status %>
 
 ### Categorical palette
 
-Use these colours, in this order, to tell categories apart. Use Black tint 80% for axes and grid lines, and Black for labels.
+Use these colours to tell categories apart. Use Black tint 80% for axes and grid lines, and Black for labels.
 
 <%= colour_chart_categorical %>
 
@@ -71,7 +71,7 @@ Use these colours only in illustrative infographics, and only on backgrounds tha
 - Use colour to make the data clearer.
 - Limit the number of colours, so that the chart is not confusing.
 
-Chart colours stay the same in light and dark mode. Some of them, such as Blue shade 50%, have low contrast on a dark surface. There, the label, pattern or line style carries the meaning.
+Chart colours stay the same in light and dark mode. Some of them have low contrast with the surface, such as Orange tint 25% on white and Blue shade 50% on a dark surface. There, the label, pattern or line style carries the meaning.
 
 These examples follow the GOV.UK chart examples, with invented Home Assistant data. Each lists the GOV.UK colours it uses.
 
@@ -144,7 +144,7 @@ A missing value uses a crossed empty swatch and the words “Not supplied”. It
 
 ## Give each series a stable colour
 
-Pass a stable native source or statistic ID to `chartSeriesStyle(key, {mode})`. It returns one of the six categorical colours, plus a fill pattern, line dash and marker. The result is deterministic: the same ID gives the same style after a reload, a reorder or a legend change. It needs no saved colour map per device. Keep the ID stable when a friendly name changes. Previous-period comparisons and the positive and negative halves of a native power source share their base ID.
+Pass a stable native source or statistic ID to `chartSeriesStyle(key, {mode})`. It returns one of the six categorical colours (Black or White for total consumption), plus a fill pattern, line dash and marker. The result is deterministic: the same ID gives the same style after a reload, a reorder or a legend change. It needs no saved colour map per device. Keep the ID stable when a friendly name changes. Previous-period comparisons and the positive and negative halves of a native power source share their base ID.
 
 Energy roles have fixed colours:
 
