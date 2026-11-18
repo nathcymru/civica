@@ -2,10 +2,12 @@
 // docs/data/govuk-brand-colours.json is a verbatim copy of the GOV.UK Brand
 // Guidelines colour pages (read 2026-11-18). This check proves that:
 //   1. the record is internally sound (hex and RGB agree, every reference exists);
-//   2. each palette has exactly the number of colours the GOV.UK page shows;
+//   2. each palette matches the pinned upstream record: group titles, order,
+//      and every colour's id, hex, RGB, CMYK and Pantone;
 //   3. each built Colour page shows every colour of its palette, with its values.
 // Run after the docs build: node scripts/check-colours.mjs
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { existsSync, readFileSync } from 'node:fs';
 
 const data = JSON.parse(readFileSync('docs/data/govuk-brand-colours.json', 'utf8'));
@@ -34,6 +36,23 @@ for (const [page, size] of Object.entries(SIZES)) {
   assert.equal(new Set(ids).size, ids.length, `${page}: no colour listed twice`);
   assert.match(pages[page].url, /^https:\/\/brand\.design-system\.service\.gov\.uk\/colour\/[a-z]+\/$/, `${page}: source URL`);
 }
+// The pins are sha256 of the ordered palette, recorded when the GOV.UK pages
+// were read (source.read_on). A reordered, retitled or changed group fails here,
+// even though the pages and browser tests render from the same file.
+const PINS = {
+  web: 'b7cb5d625d92c1d931dfc9ec4fe456f167eac51f870765966b7278b2adc68935',
+  app: '2d74f1722bc3b71eac669fceebd8d4ec238afa4d985591e6fde44871bda5bfce',
+  social: '289fae2ff85b180fd505b8279d4a090f2df1ae26dc3a8d7a95151994979e56e0',
+  print: '85b569eb2fe0ef5700fce8a819853e38368ec3aec1f6ad0ddc00e4ec4234aed4',
+  maps: 'd62e79b85340197e2e92b395d0dc7a3dea13fde09885418f84a2e90b1d021427',
+  illustrations: '58fbd838f55925f98fd61b708d8046b6925dd7b367bd58782ba37c2c3bc74d58',
+};
+assert.equal(data.source.read_on, '2026-11-18', 'Pins were recorded on 2026-11-18: re-read upstream before changing them');
+const fingerprint = page => createHash('sha256').update(JSON.stringify(pages[page].palette.map(group => [group.title,
+  group.colours.map(id => [id, colours[id].hex, colours[id].rgb, colours[id].print?.cmyk ?? null, colours[id].print?.pantone ?? null])]))).digest('hex');
+for (const [page, pin] of Object.entries(PINS)) assert.equal(fingerprint(page), pin, `${page}: palette differs from the pinned GOV.UK record`);
+const functionalPin = createHash('sha256').update(JSON.stringify(pages.web.functional.map(group => [group.title, group.tokens.map(token => [token.token, token.colour])]))).digest('hex');
+assert.equal(functionalPin, '80641b37502bbb75c9c81b226b9c54cabd1ce0612553aaf7addc54033017c198', 'web: functional colours differ from the pinned GOV.UK record');
 assert.equal(pages.web.functional.flatMap(group => group.tokens).length, 20, 'web: 20 functional colours');
 pages.web.functional.flatMap(group => group.tokens).forEach(token => known(token.colour));
 assert.equal(pages.charts.categorical.length, 8, 'charts: 8 categorical entries');
@@ -43,12 +62,19 @@ assert.equal(pages.charts.additional.length, 14, 'charts: 14 additional colours'
 assert.equal(pages.social.companion.length, 9, 'social: 9 companion pairings');
 pages.social.companion.forEach(pair => { known(pair.foreground); known(pair.background); });
 
+const luminance = hex => {
+  const linear = [1, 3, 5].map(at => parseInt(hex.slice(at, at + 2), 16) / 255).map(c => (c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4));
+  return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
+};
+const contrast = (a, b) => { const [x, y] = [luminance(a), luminance(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+
 // 3. Published pages show every colour of their palette.
 const decode = text => text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
 for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app', 'colour-app', ['hex', 'rgb']], ['print', 'colour-print', ['cmyk', 'pantone']]]) {
   const path = `${BUILD}/${file}.html`;
-  if (!existsSync(path)) continue;
-  const html = decode(readFileSync(path, 'utf8'));
+  assert.ok(existsSync(path), `${path} missing: run the docs build first`);
+  const raw = readFileSync(path, 'utf8');
+  const html = decode(raw);
   const swatches = [...html.matchAll(/<li class="c-swatch">([\s\S]*?)<\/dl>\s*<\/li>/g)].map(match => match[1]);
   const listed = swatches.slice(0, groupIds(pages[page].palette).length);
   groupIds(pages[page].palette).forEach((id, position) => {
@@ -62,8 +88,18 @@ for (const [page, file, show] of [['web', 'colour-web', ['hex', 'rgb']], ['app',
     assert.ok(swatch.includes(`style="background-color:${colour.hex};`), `${file}: ${colour.name} sample`);
   });
   assert.equal((html.match(/data-copy-value-status/g) || []).length, 1, `${file}: one copy status region`);
-  for (const button of html.matchAll(/<button type="button" class="c-copy-value" data-copy-value="([^"]+)" aria-label="([^"]+)" hidden>/g)) {
-    assert.ok(button[2].includes(button[1]), `${file}: copy button label names its value ${button[1]}`);
+  // Match the raw HTML. Values that contain double quotes (Sass) are written
+  // with single-quoted attributes, so accept either quote style.
+  let buttons = 0;
+  for (const button of raw.matchAll(/<button type="button" class="c-copy-value" data-copy-value=(?:"([^"]+)"|'([^']+)') aria-label=(?:"([^"]+)"|'([^']+)') hidden>/g)) {
+    const [value, label] = [decode(button[1] ?? button[2]), decode(button[3] ?? button[4])];
+    assert.ok(label.startsWith('Copy ') && label.includes(value), `${file}: copy button label names its value ${value}`);
+    buttons += 1;
+  }
+  assert.equal(buttons, (raw.match(/class="c-copy-value"/g) || []).length, `${file}: every copy button was checked`);
+  // Sample labels are 19px bold (large text), so each needs at least 3:1.
+  for (const sample of html.matchAll(/style="background-color:(#[0-9A-F]{6});color:(#[0-9A-F]{6})"/g)) {
+    assert.ok(contrast(sample[1], sample[2]) >= 3, `${file}: sample label on ${sample[1]} reaches 3:1`);
   }
 }
 console.log(`Colour record is consistent: ${Object.keys(colours).length} GOV.UK colours across ${Object.keys(pages).length} pages, read ${data.source.read_on}.`);

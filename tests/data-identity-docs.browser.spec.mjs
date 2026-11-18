@@ -188,12 +188,11 @@ test('optional household identity keeps its text and real home link without requ
   }
 });
 
-test('all twenty palette previews change only interface colours and retain household identity and state', async ({ page }) => {
+test('every theme colour preview changes only the header colour and retains household identity and state', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 });
   await page.goto('/docs/build/styles/colour.html');
   const demo = page.locator('[data-palette-demo]');
-  const select = demo.getByLabel('Colour palette');
-  const muted = demo.getByLabel('Muted colours');
+  const select = demo.getByLabel('Theme colour');
   const header = demo.locator('.c-demo__header');
   const state = clean(await demo.locator('.c-status').textContent());
   const shell = page.locator('.c-header');
@@ -206,18 +205,15 @@ test('all twenty palette previews change only interface colours and retain house
   try {
     for (const palette of palettes) {
       await select.selectOption({ label: palette.name });
-      for (const tone of ['vivid', 'muted']) {
-        await muted.setChecked(tone === 'muted');
-        await expect(header).toHaveCSS('background-color', rgb(palette[tone].primary.hex));
-        await expect(demo).toHaveCSS('background-color', rgb(palette[tone].canvas.hex));
-        await expect(header).toHaveText('Morgan household');
-        await expect(header.locator('img,svg')).toHaveCount(0);
-        await expect(demo.locator('.c-status')).toHaveText(state);
-        await expect(demo.getByRole('status')).toHaveText(`${palette.name}, ${tone === 'muted' ? 'Muted' : 'Vivid'} preview. These choices affect this example only.`);
-        await expect(shell).toHaveCSS('background-color', shellColour);
-        expect(await shell.textContent()).toBe(shellIdentity);
-        expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
-      }
+      await expect(header).toHaveCSS('background-color', rgb(palette.primary.hex));
+      await expect(demo).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+      await expect(header).toHaveText('Morgan household');
+      await expect(header.locator('img,svg')).toHaveCount(0);
+      await expect(demo.locator('.c-status')).toHaveText(state);
+      await expect(demo.getByRole('status')).toHaveText(`${palette.name} preview. This choice affects this example only.`);
+      await expect(shell).toHaveCSS('background-color', shellColour);
+      expect(await shell.textContent()).toBe(shellIdentity);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
     }
     expect(requests, 'The documentation colour preview must not fetch identity artwork or call a backend').toEqual([]);
   } finally { page.off('request', track); }

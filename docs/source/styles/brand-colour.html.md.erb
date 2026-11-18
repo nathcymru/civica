@@ -6,7 +6,7 @@ group: "Guidance"
 source_url: "https://brand.design-system.service.gov.uk/colour/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-17"
+updated_on: "2026-11-18"
 last_reviewed_on: "2026-11-11"
 review_in: "3 months"
 updates:
@@ -20,11 +20,13 @@ updates:
     description: "Added source-mapped civica.uk rules, contextual examples and explicit adoption boundaries."
   - date: "2026-11-17"
     description: "Rewritten to lead with the rule and a Home Assistant example, with per-rule source lines moved to the Styles index."
-ai_instructions: "Apply when choosing any colour for text, a control, a state, a chart or a printout. Choose the colour by its job, test the real foreground and background pair, and keep a word, pattern or shape alongside colour. Do not let a brand palette change an error, success or chart meaning. Keep rule anchors BG-COL-01 to BG-COL-08 unchanged. Rules WG-001, WG-002."
+  - date: "2026-11-18"
+    description: "Updated for the seven GOV.UK theme colours, which replaced the ten palettes and their Vivid and Muted tones."
+ai_instructions: "Apply when choosing any colour for text, a control, a state, a chart or a printout. Choose the colour by its job, test the real foreground and background pair, and keep a word, pattern or shape alongside colour. Do not let the theme colour change an error, success or chart meaning. Keep rule anchors BG-COL-01 to BG-COL-08 unchanged. Rules WG-001, WG-002."
 ai_related:
   - path: "/styles/colour.html"
     title: "Colour"
-    relationship: "Owns the ten palettes and every colour value."
+    relationship: "Owns the seven theme colours and how civica uses the GOV.UK palette."
   - path: "/styles/chart-colour.html"
     title: "Chart colour"
     relationship: "Owns stable chart series colours and quantitative scales."
@@ -35,15 +37,15 @@ ai_related:
 
 # Colour roles and accessibility
 
-Choose each colour by its job: identity, reading, interaction, state or data. A palette changes the look of the interface. It never changes what an error, a success or a chart series means. This page gives the rules behind [Colour](colour.html) and adds no palette of its own.
+Choose each colour by its job: identity, reading, interaction, state or data. The theme colour changes the look of the interface. It never changes what an error, a success or a chart series means. This page gives the rules behind [Colour](colour.html) and adds no colours of its own.
 
-A palette does not put a civica logo inside a home. Project identity and household personalisation are separate.
+A theme colour does not put a civica logo inside a home. Project identity and household personalisation are separate.
 
 ## Choose colours for the task
 
 | Task | Use |
 | --- | --- |
-| Select interface colours | [Ten palettes and Vivid/Muted](colour.html) |
+| Select interface colours | [Seven GOV.UK theme colours](colour.html) |
 | Identify a chart series | [Stable categorical chart colours](chart-colour.html) |
 | Show increasing values or distance from a target | [Quantitative colour scales](chart-colour.html#choose-the-colour-mapping) |
 | Show locations and spatial measurements | [Maps and zones](../home-assistant/maps-and-zones.html) |
@@ -59,20 +61,20 @@ These examples use invented household details. They do not operate devices, and 
 
 <%= example('bg-colour-state-labels') %>
 
-<h2 id="bg-col-01">BG-COL-01: Keep the selected palette and identity roles separate</h2>
+<h2 id="bg-col-01">BG-COL-01: Keep the theme colour and identity roles separate</h2>
 
 **Local requirement: MUST.** Applies to theme selection, household personalisation and separate project identity assets.
 
-Use only the ten supplied [interface palettes](colour.html), each in Vivid and Muted. Choosing a palette must not add a project logo or replace a household name. Keep a family crest or business logo in its own colours and choose a suitable background rather than recolouring it. For example, switching to Racing Moss leaves the “Morgan household” title as it is.
+Use only the seven [GOV.UK theme colours](colour.html). Choosing a theme colour must not add a project logo or replace a household name. Keep a family crest or business logo in its own colours and choose a suitable background rather than recolouring it. For example, switching to Green leaves the “Morgan household” title as it is.
 
-Civic Cobalt shares a blue value with GOV.UK. That does not make civica an official government service, and GOV.UK’s identity rules do not apply to the civica palette. The [project identity rules](brand.html) cover civica documentation and promotion. Follow [Personalise your home](../get-started/personalisation.html) for a family name, crest or business logo inside a home.
+civica uses the GOV.UK colour palette. That does not make civica an official government service, and GOV.UK’s identity rules do not apply to civica. The [project identity rules](brand.html) cover civica documentation and promotion. Follow [Personalise your home](../get-started/personalisation.html) for a family name, crest or business logo inside a home.
 
 
 <h2 id="bg-col-02">BG-COL-02: Choose a colour by its job</h2>
 
 **Local requirement: MUST.** Applies to interface colour tokens and semantic states.
 
-Give identity, reading, interaction, state and data their own roles. The palette primary supports navigation and interaction hierarchy. Text tokens support reading. Focus and validation tokens mark an interaction state. Device colours may express a native domain state. Chart colours identify a source.
+Give identity, reading, interaction, state and data their own roles. The theme colour supports navigation and interaction hierarchy. Text tokens support reading. Focus and validation tokens mark an interaction state. Device colours may express a native domain state. Chart colours identify a source.
 
 With Sovereign Crimson selected, do not reuse the red primary as an error colour. A green primary is not proof of success, and a yellow lighting scene is a light recipe, not a warning. Choose a semantic fill and its paired text colour together. A dark-mode error text colour is not automatically a safe button background.
 
@@ -101,23 +103,23 @@ Do not outline every dashboard region in black. Group content with headings and 
 
 Keep the native icon and state colours for a device, and keep the device name and state readable. An unavailable sensor is not a zero reading and not an off device. A manufacturer mark can help identify a device. It is content, not the identity of the interface.
 
-The [notification badge](../components/notification-badge.html) keeps its fixed attention colour and rounded shape in every palette. Do not treat its count as an alarm severity, and do not replace a warning message with a coloured dot. Confirmed success, a pending action and a failure each need their own wording as well as their own look.
+The [notification badge](../components/notification-badge.html) keeps its fixed attention colour and rounded shape with every theme colour. Do not treat its count as an alarm severity, and do not replace a warning message with a coloured dot. Confirmed success, a pending action and a failure each need their own wording as well as their own look.
 
 
 <h2 id="bg-col-06">BG-COL-06: Review every display context</h2>
 
-**Local requirement: MUST.** Applies to affected components in all supported tone/mode and accessibility contexts.
+**Local requirement: MUST.** Applies to affected components with every theme colour, in both modes and in accessibility contexts.
 
-Vivid or Muted, and Light or Dark, are independent choices. Use the documented derived dark tokens and keep the supplied primary on its matching brand header. Do not present the off-white canvas as a dark palette, and do not make Muted by adding transparency.
+The theme colour, and Light or Dark, are independent choices. Use the documented derived dark tokens and keep the exact theme colour on the brand header. Do not make a colour lighter by adding transparency.
 
-Let forced-colour modes use system colours for text, links, focus and controls. Keep borders, labels and symbols if fills disappear, and avoid a blanket `forced-color-adjust: none`. Check real native dialogs, dense settings tables and editors, not only the spacious examples. A documentation preview is not an audit of all forty combinations (10 palettes, 2 tones, 2 modes).
+Let forced-colour modes use system colours for text, links, focus and controls. Keep borders, labels and symbols if fills disappear, and avoid a blanket `forced-color-adjust: none`. Check real native dialogs, dense settings tables and editors, not only the spacious examples. A documentation preview is not an audit of all fourteen combinations (7 theme colours, 2 modes).
 
 
 <h2 id="bg-col-07">BG-COL-07: Keep chart and map scales independent</h2>
 
 **Local requirement: MUST.** Applies to categorical chart identities and proposed quantitative map/chart scales.
 
-Operational charts take their colours from the stable identity generator in [Chart colour](chart-colour.html). Choosing a palette must not change what a grid, solar or device series looks like. Tone and mode may change its tested rendering. Categorical colours identify different things, a sequential scale shows increasing values and a divergent scale needs a meaningful centre. Do not use a rainbow of categorical colours to suggest a measured progression.
+Operational charts take their colours from the stable identity generator in [Chart colour](chart-colour.html). Choosing a theme colour must not change what a grid, solar or device series looks like. Mode may change its tested rendering. Categorical colours identify different things, a sequential scale shows increasing values and a divergent scale needs a meaningful centre. Do not use a rainbow of categorical colours to suggest a measured progression.
 
 For a new heatmap or map layer, write down its scale, units, endpoints and unavailable state before choosing colours. These are reference requirements. They do not mean every native map layer has been rethemed. Keep the source credit and a text route to the data.
 

@@ -13,14 +13,14 @@ frontend:
     - /local/civica/civica-ui.js?v=1.4.1
 ```
 
-4. Restart Home Assistant, then reload your browser. Choose a civica theme in **Profile → Theme**. Choose a palette and toggle **Use muted colours**. Your Light/Dark/Auto setting is separate. The native theme dropdown also works without the companion.
+4. Restart Home Assistant, then reload your browser. Choose a civica theme in **Profile → Theme**. Choose a **Theme colour**. Your Light/Dark/Auto setting is separate. The native theme dropdown also works without the companion.
 5. If Profile's layout changes in a later Home Assistant version, add `type: custom:civica-theme-settings` as a dashboard card. The companion must be loaded for that card to work.
 
-The companion clears native primary/accent colour overrides when you select a palette, so they cannot mask part of the theme. Home Assistant saves the preference and reports failures. Colours are unavailable in safe/recovery mode. Switching to a non-civica theme restores the sidebar and browser icon changes.
+The companion clears native primary/accent colour overrides when you select a theme colour, so they cannot mask part of the theme. Home Assistant saves the preference and reports failures. Colours are unavailable in safe/recovery mode. Switching to a non-civica theme restores the sidebar and browser icon changes.
 
 ## Renamed project and existing installations
 
-In HACS, use **Update information** on the existing repository entry and check that it now points to `nathcymru/civica`. Keep its existing theme folder and YAML filenames; do not install a second copy. The default theme is **civica** (Civic Cobalt Vivid). Existing named palette selections and the optional `govuk` alias still work.
+In HACS, use **Update information** on the existing repository entry and check that it now points to `nathcymru/civica`. Keep its existing theme folder and YAML filenames; do not install a second copy. The default theme is **civica** (Blue). The optional `govuk` alias still works. Earlier palette selections, such as `civica Civic Cobalt Vivid`, no longer exist: choose a theme colour again.
 
 When upgrading the optional companion, back up and replace its owned `config/www/civica/brand/` folder with the new package’s `www/civica/brand/` folder. Replacing this folder removes obsolete logos that a merge would leave behind. Keep unrelated files.
 

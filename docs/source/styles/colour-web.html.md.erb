@@ -10,13 +10,13 @@ updated_on: "2026-11-18"
 updates:
   - date: "2026-11-18"
     description: "First published, with the GOV.UK web palette and functional colours copied exactly from the GOV.UK Brand Guidelines."
-ai_instructions: "Use this page for any colour shown on a web page or Home Assistant dashboard. Every value comes unchanged from the GOV.UK Brand Guidelines web page and is rendered from docs/data/govuk-brand-colours.json: never type a hex value from memory. Prefer the functional colour for its role (for example brand, link, error, focus) and use the palette only for supporting elements such as illustrations. Never use colour alone to give meaning. Chart, map and illustration colours have their own pages and do not change with the theme."
+ai_instructions: "Use this page for any colour shown on a web page or Home Assistant dashboard. Every value comes unchanged from the GOV.UK Brand Guidelines web page and is rendered from docs/data/govuk-brand-colours.json: never type a hex value from memory. Prefer the functional colour for its role (for example brand, link, error, focus) and use the palette only for supporting elements such as illustrations. Never use colour alone to give meaning. Chart colours have their own page."
 ai_related:
   - path: "/styles/colour-app.html"
     title: "App colours"
     relationship: "Owns the app palette, including the accents and dark mode blues used in the Home Assistant Companion app."
-  - path: "/styles/colour-charts.html"
-    title: "Chart colours"
+  - path: "/styles/chart-colour.html"
+    title: "Chart colour"
     relationship: "Owns which colours a chart uses. Read before colouring any data."
   - path: "/get-started/colour-settings.html"
     title: "Change theme colours"
@@ -27,7 +27,7 @@ ai_related:
 
 Use these colours on web pages and Home Assistant dashboards. Use a functional colour for its role first, such as the brand, link or error colour. Use the wider palette only for supporting elements such as illustrations or custom cards.
 
-Every value on this page is the GOV.UK web palette, unchanged. Each value has a **Copy** button. Without JavaScript, select the value and copy it yourself.
+Every value on this page is the GOV.UK web palette, unchanged.
 
 <%= colour_copy_status %>
 
@@ -52,6 +52,6 @@ A functional colour has one job. Use it only for that job, and use the palette f
 - Use `error` only for error messages and `success` only for success messages.
 - Use `hover` only for the hover state of inputs.
 
-Where the shipped civica theme sets a Home Assistant custom property to exactly this value, the property is listed too, so you can use it in a card.
+Where the default civica theme (Blue), in light mode, sets a Home Assistant custom property to exactly this value, the property is listed. Other theme colours and dark mode use different values, so a listed property does not always give this colour.
 
 <%= colour_functional_tokens %>

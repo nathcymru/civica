@@ -5,7 +5,7 @@ last_reviewed_on: 2026-11-11
 review_in: 3 months
 section: community
 group: Guidance
-updated_on: "2026-11-17"
+updated_on: "2026-11-18"
 published_on: "2026-11-11"
 updates:
   - date: "2026-11-13"
@@ -20,6 +20,8 @@ updates:
     description: "First published in the civica.uk design system."
   - date: "2026-11-17"
     description: "Rewritten to lead with when to use the artwork, with source commentary moved to the Styles index."
+  - date: "2026-11-18"
+    description: "The header uses the white lock-up on every GOV.UK theme colour. The per-palette artwork is kept as a record and no longer used."
 ai_instructions: "Apply when choosing or placing civica artwork. Use a supplied file unaltered, and only to identify or promote the project, never inside a household interface. Do not redraw, recolour or crop it. Household names, crests and logos belong to Personalise your home. Rules WG-001, WG-002."
 ai_related:
   - path: "/get-started/personalisation.html"
@@ -61,11 +63,10 @@ The user-supplied `civica_brand_assets_revised.zip` pack is stored in `brand/civ
 | Surface | Supplied asset |
 | --- | --- |
 | Default documentation masthead | `core/lockup-on-blue.svg` |
-| Project promotional header on a selected palette | `themes/{palette-id}/{vivid\|muted}/lockup-on-primary.svg` |
-| Project artwork on a selected light canvas | `themes/{palette-id}/{vivid\|muted}/lockup-on-canvas.svg` |
-| Project website or promotional app artwork | `themes/{palette-id}/{vivid\|muted}/app-icon.svg` and `app-icon.png` |
+| Header on any theme colour | `core/lockup-white.svg` |
+| Project website or promotional app artwork | `icons/app-icon.svg` and `icons/app-icon-512.png` |
 | Neutral light surface | `core/lockup-on-white.svg` or `core/lockup-black.svg` |
-| Supporting symbol | Supplied `core/emblem-*` or matching theme emblem |
+| Supporting symbol | Supplied `core/emblem-*` |
 | Default browser favicon | `icons/favicon.ico` and `icons/favicon.svg` |
 | Default home-screen icon | Supplied 180, 192 and 512 pixel icons |
 
@@ -75,7 +76,7 @@ Use the lockup as a single asset. Do not redraw the symbol, retype the wordmark,
 
 The revised identity contains a house outline with a chimney, six dots arranged in two rows of three, and the supplied “Civica” wordmark. The project name in prose is **civica**. The earlier `.uk` suffix and separator-dot geometry are not part of this edition.
 
-Select the complete matching file when the palette or variant changes. Do not reconstruct the house, recolour the SVG or substitute a single monochrome lockup for all variants. The SVG wordmark is supplied as live text using an Arial-based font stack, not outlined letter shapes. Preserve that text and stack; test the rendered result on supported platforms rather than claiming identical pixels across fonts.
+Use the complete supplied file. Do not reconstruct the house or recolour the SVG. The SVG wordmark is supplied as live text using an Arial-based font stack, not outlined letter shapes. Preserve that text and stack; test the rendered result on supported platforms rather than claiming identical pixels across fonts.
 
 ## Size and clear space
 
@@ -83,11 +84,13 @@ The horizontal lockup viewBox is **1180 by 260** units, a ratio of 59:13. Preser
 
 Check the mark visually at the actual rendered size. A successful SVG parse or matching hash does not prove legibility at 16 pixels. Provide `alt="civica"` when the image communicates identity. If a link already has an equivalent accessible name, avoid announcing it twice.
 
-## Palette artwork in use
+## Artwork on a theme colour
 
-For project documentation and promotional mock-ups, select the complete on-primary lockup for the chosen background. This is not a requirement to put the project logo into a household interface. The installed companion still applies project identity on some native surfaces. The [compatibility note](../get-started/compatibility.html#household-identity-transition) records that gap. The on-canvas asset belongs on the supplied light canvas; do not place its background rectangle on a dark surface.
+Every theme colour passes 4.5:1 contrast with white, so the header uses the white lock-up, `core/lockup-white.svg`, whichever colour a household chooses. This is not a requirement to put the project logo into a household interface. The installed companion still applies project identity on some native surfaces. The [compatibility note](../get-started/compatibility.html#household-identity-transition) records that gap. Place `core/lockup-on-white.svg` only on white; do not place its background rectangle on a dark surface.
 
-The [colour preview](colour.html) demonstrates household colour roles without a required project logo. The artwork manifest lists supplied project variants. Neither preview changes Home Assistant or this documentation site’s masthead.
+The supplied pack also holds artwork for each of the ten earlier palettes, in `brand/civica/themes/`. Those palettes were replaced by the [GOV.UK theme colours](colour.html) on 18 November 2026. The files are kept unchanged as a record and are not shipped or used.
+
+The [colour preview](colour.html) demonstrates the theme colour without a required project logo. It does not change Home Assistant or this documentation site’s masthead.
 
 ## Verify provenance and copies
 

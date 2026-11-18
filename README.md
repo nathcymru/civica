@@ -1,8 +1,8 @@
 # civica
 
-A consistent Home Assistant theme and component system inspired by the GOV.UK Design System, using the supplied **civica** identity. Ten palettes, Vivid and Muted tones, accessible light and dark modes, and an optional colour toggle beside Home Assistant's theme settings.
+A consistent Home Assistant theme and component system inspired by the GOV.UK Design System, using the supplied **civica** identity. Seven theme colours from the GOV.UK colour palette, accessible light and dark modes, and a Theme colour control beside Home Assistant's theme settings.
 
-This is an independent project. It is not a government service or an official Home Assistant product. Existing `govuk` entity IDs and saved theme selections remain compatible with older installations.
+This is an independent project. It is not a government service or an official Home Assistant product. Existing `govuk` entity IDs and the `govuk` theme name remain compatible with older installations. The ten earlier palette themes, such as `civica Civic Cobalt Vivid`, were replaced on 18 November 2026: choose a theme colour again after upgrading.
 
 The repository is now `nathcymru/civica`. GitHub redirects old repository links. The documentation has moved to [nathcymru.github.io/civica](https://nathcymru.github.io/civica/); the former Pages address does not redirect.
 
@@ -13,21 +13,21 @@ The comprehensive [design system in `/docs`](docs/README.md) uses the **GOV.UK T
 - [Live design system](https://nathcymru.github.io/civica/)
 - [Download the installation package](https://github.com/nathcymru/civica/releases/latest)
 - [Install and upgrade](https://nathcymru.github.io/civica/get-started/install.html)
-- [Colour palettes and display modes](https://nathcymru.github.io/civica/styles/colour.html)
+- [Colour and theme colours](https://nathcymru.github.io/civica/styles/colour.html)
 - [Brand and artwork](ARTWORK.md)
 - [AI reading guide](docs/source/llms.txt)
-- [Canonical palette data](design-system/palettes.json) and [resolved theme variables](design-system/themes.json)
+- [Theme colour data](design-system/palettes.json) and [resolved theme variables](design-system/themes.json)
 
 ## Included
 
-- **civica and 20 palette variants:** Civic Cobalt, Racing Moss, Imperial Damson, Sovereign Crimson, Regimental Plum, Oxford Midnight, Ink Charcoal, Heritage Ochre, Kiln Terracotta and Umber Bronze, each in Vivid and Muted tones.
-- **One shared token system:** native panels, dashboards, tables, forms, buttons, switches, dialogs, the lighting card and examples use consistent colours and surfaces. Error, warning and chart meanings stay independent of the selected brand palette.
-- **ONS-based Energy charts:** the companion applies individual unfilled power lines, opaque consumption columns, consistent 1.5px strokes and matching keys to supported native Energy graphs, with an accessible View data table. A shared identity-based colour generator supplies Vivid/Muted and Light/Dark variants, 24 fallback slots and an extensible range for named series. Native statistics, date controls, comparisons and chart interaction are retained. See the [chart specification](https://nathcymru.github.io/civica/components/charts.html) and [working examples](https://nathcymru.github.io/civica/components/chart-examples.html).
-- **Colour controls:** a palette selector and “Use muted colours” toggle beside Profile theme settings, plus a dashboard card fallback. Home Assistant handles application and preference storage. Light/Dark/Auto is preserved.
+- **civica and 7 theme colours:** Blue, Green, Teal, Purple, Magenta, Red and Black, taken unchanged from the GOV.UK colour palette. Each passes 4.5:1 contrast with white text.
+- **One shared token system:** native panels, dashboards, tables, forms, buttons, switches, dialogs, the lighting card and examples use consistent colours and surfaces. Error, warning and chart meanings stay independent of the selected theme colour.
+- **ONS-based Energy charts:** the companion applies individual unfilled power lines, opaque consumption columns, consistent 1.5px strokes and matching keys to supported native Energy graphs, with an accessible View data table. A shared identity-based colour generator supplies Light/Dark variants, 24 fallback slots and an extensible range for named series. Native statistics, date controls, comparisons and chart interaction are retained. See the [chart specification](https://nathcymru.github.io/civica/components/charts.html) and [working examples](https://nathcymru.github.io/civica/components/chart-examples.html).
+- **Colour control:** a Theme colour selector beside Profile theme settings, plus a dashboard card fallback. Home Assistant handles application and preference storage. Light/Dark/Auto is preserved.
 - **civica assets:** supplied logos and icons, used without redrawing or recolouring. Original files and their checksum manifest are retained.
 - **Lighting card repairs:** visible unavailable states, accessible errors, keyboard focus, touch targets, responsive layout and native dialog scrolling. Existing lighting automation and reserved-device behaviour are retained.
 
-Vivid/Muted is separate from Light/Dark. The supplied light canvases are exact. Dark mode uses documented, tested colour adaptations while retaining the supplied primary colour in the header.
+The theme colour is separate from Light/Dark. Dark mode uses documented, tested colour adaptations while keeping the exact theme colour in the header.
 
 ## Install the themes
 
@@ -35,7 +35,7 @@ Choose **HACS or manual installation** as the owner of the theme YAML. Home Assi
 
 With HACS, add `https://github.com/nathcymru/civica` as a custom repository of type **Theme**, then download **civica**. HACS installs and updates the YAML in its repository folder under `config/themes/`; an existing installation may use `config/themes/govuk/`. Keep that HACS-managed location. HACS does not install the optional companion or lighting card.
 
-For manual installation without HACS, copy `themes/civica.yaml` to your Home Assistant `config/themes/civica/` directory once. Keep `themes/govuk.yaml` there only if an existing profile or dashboard uses the old `govuk` theme name. That alias now maps to Civic Cobalt Vivid. Keep only one included definition of the alias as well; do not add another `govuk.yaml` alongside an existing installation.
+For manual installation without HACS, copy `themes/civica.yaml` to your Home Assistant `config/themes/civica/` directory once. Keep `themes/govuk.yaml` there only if an existing profile or dashboard uses the old `govuk` theme name. That alias now maps to the Blue theme colour. Keep only one included definition of the alias as well; do not add another `govuk.yaml` alongside an existing installation.
 
 Merge this into your existing `configuration.yaml` without duplicating `frontend`:
 
@@ -44,7 +44,7 @@ frontend:
   themes: !include_dir_merge_named themes
 ```
 
-Restart after changing `configuration.yaml`. For theme-file changes alone, run **Settings → Tools → Actions → `frontend.reload_themes`**. In your **Profile**, choose `civica Civic Cobalt Vivid` or another civica theme. The native selector works without extra JavaScript.
+Restart after changing `configuration.yaml`. For theme-file changes alone, run **Settings → Tools → Actions → `frontend.reload_themes`**. In your **Profile**, choose `civica Blue` or another civica theme. The native selector works without extra JavaScript.
 
 ## Add the colour toggle and branding
 
@@ -61,7 +61,7 @@ frontend:
     - /local/civica/civica-ui.js?v=1.4.1
 ```
 
-Restart Home Assistant and reload the browser. In **Profile → Theme**, choose a palette and toggle **Use muted colours**. The companion uses the same `settheme` event as Home Assistant's own selector. It clears native primary/accent overrides so the palette applies consistently, and leaves display mode unchanged. Home Assistant reports preference-save failures through its native notification.
+Restart Home Assistant and reload the browser. In **Profile → Theme**, choose a **Theme colour**. The companion uses the same `settheme` event as Home Assistant's own selector. It clears native primary/accent overrides so the theme colour applies consistently, and leaves display mode unchanged. Home Assistant reports preference-save failures through its native notification.
 
 The companion adds civica branding to the authenticated sidebar and browser icons while a civica theme is selected. Switching to another theme restores the original elements. It does not replace Home Assistant's login, installed PWA manifest, native app icon or splash screen.
 
@@ -81,7 +81,7 @@ Keep one installation owner, update its files, and move the superseded civica YA
 
 ## Renamed project and existing installations
 
-In HACS, use **Update information** on the existing repository entry and check that it now points to `nathcymru/civica`. Keep its existing theme folder and YAML filenames; do not install a second copy. The default theme is **civica** (Civic Cobalt Vivid). Existing named palette selections and the optional `govuk` alias still work.
+In HACS, use **Update information** on the existing repository entry and check that it now points to `nathcymru/civica`. Keep its existing theme folder and YAML filenames; do not install a second copy. The default theme is **civica** (Blue). The optional `govuk` alias still works. Earlier palette selections, such as `civica Civic Cobalt Vivid`, no longer exist: choose a theme colour again.
 
 When upgrading the optional companion, back up and replace its owned `config/www/civica/brand/` folder with the new package’s `www/civica/brand/` folder. Replacing this folder removes obsolete logos that a merge would leave behind. Keep unrelated files.
 
@@ -118,7 +118,7 @@ bundle exec middleman build
 bundle exec middleman server
 ```
 
-`npm run generate:themes` regenerates YAML and resolved JSON from the palette specification. Tests fail if committed outputs drift. `python3 scripts/contrast.py` remains a compatibility entry point for the palette contrast checks.
+`npm run generate:themes` regenerates YAML and resolved JSON from the theme colour data. Tests fail if committed outputs drift. `python3 scripts/contrast.py` remains a compatibility entry point for the theme contrast checks.
 
 ## Verification boundary
 

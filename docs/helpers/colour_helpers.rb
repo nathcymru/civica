@@ -58,9 +58,14 @@ module ColourHelpers
     civica_theme_tokens.select { |_, value| value.casecmp?(hex) }.keys.sort.map { |key| "--#{key}" }
   end
 
+  # "Copy hex #1D70B8 for Primary blue": lower case mid-sentence, except initialisms and names.
+  def colour_spoken_label(label)
+    %w[RGB CMYK Pantone Sass].include?(label) ? label : label.downcase
+  end
+
   def colour_value_row(label, value, colour_name, copy: true)
     id = 'v-' + Digest::SHA1.hexdigest("#{colour_name}|#{label}|#{value}")[0, 10]
-    button = copy ? %(<button type="button" class="c-copy-value" data-copy-value="#{escape(value)}" aria-label="Copy #{escape(label)} #{escape(value)} for #{escape(colour_name)}" hidden><svg class="c-copy-value__icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M5 1h8a2 2 0 0 1 2 2v8h-2V3H5z"/><path d="M1 5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2z"/></svg><span class="c-copy-value__text" aria-hidden="true">Copy</span></button>) : ''
+    button = copy ? %(<button type="button" class="c-copy-value" data-copy-value="#{escape(value)}" aria-label="Copy #{escape(colour_spoken_label(label))} #{escape(value)} for #{escape(colour_name)}" hidden><svg class="c-copy-value__icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false"><path d="M5 1h8a2 2 0 0 1 2 2v8h-2V3H5z"/><path d="M1 5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2z"/></svg><span class="c-copy-value__text" aria-hidden="true">Copy</span></button>) : ''
     %(<div class="c-swatch__row"><dt>#{escape(label)}</dt><dd><code id="#{id}">#{escape(value)}</code>#{button}</dd></div>)
   end
 
@@ -79,7 +84,7 @@ module ColourHelpers
       when :cmyk then rows << colour_value_row('CMYK', colour.dig('print', 'cmyk').join(' '), name) if colour['print']
       when :pantone then rows << colour_value_row('Pantone', colour.dig('print', 'pantone'), name) if colour['print']
       when :theme
-        colour_theme_properties(hex).each { |property| rows << colour_value_row('civica theme', "var(#{property})", name) }
+        colour_theme_properties(hex).each { |property| rows << colour_value_row('civica Blue theme, light mode', "var(#{property})", name) }
       end
     end
     rows << %(<div class="c-swatch__row"><dt>Print</dt><dd>No print value given</dd></div>) if fields.include?(:cmyk) && !colour['print']
@@ -107,7 +112,7 @@ module ColourHelpers
         name = token.fetch('token')
         rows = [colour_value_row('Token', name, name), colour_value_row('Sass', %(govuk-functional-colour("#{name}")), name),
                 colour_value_row('Hex', colour.fetch('hex'), name), colour_value_row('RGB', colour.fetch('rgb').join(' '), name)]
-        colour_theme_properties(colour.fetch('hex')).each { |property| rows << colour_value_row('civica theme', "var(#{property})", name) }
+        colour_theme_properties(colour.fetch('hex')).each { |property| rows << colour_value_row('civica Blue theme, light mode', "var(#{property})", name) }
         sample = %(<span class="c-swatch__sample" style="background-color:#{colour.fetch('hex')};color:#{colour_label_hex(colour.fetch('hex'))}" aria-hidden="true">#{escape(name)}</span>)
         %(<li class="c-swatch">#{sample}<p class="c-swatch__name">#{escape(name)} <span class="c-swatch__alias">(#{escape(colour.fetch('name'))})</span></p><dl class="c-swatch__codes">#{rows.join}</dl></li>)
       end
@@ -116,12 +121,8 @@ module ColourHelpers
   end
 
   # One polite status region per page announces every copy result.
+  # It also owns the one sentence that explains the buttons.
   def colour_copy_status
-    %(<p class="govuk-visually-hidden" role="status" data-copy-value-status></p>)
-  end
-
-  def colour_source_link(page)
-    url = colour_page(page).fetch('url')
-    %(<a href="#{url}">GOV.UK Brand Guidelines: #{escape(page.capitalize)}</a>)
+    %(<p>Each value has a <strong>Copy</strong> button. Without JavaScript, select the value and copy it yourself.</p>\n<p class="govuk-visually-hidden" role="status" data-copy-value-status></p>)
   end
 end

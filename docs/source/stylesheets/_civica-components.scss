@@ -168,6 +168,9 @@ h2.style-a-z__letter {
   padding: 10px;
   border-bottom: 1px solid $civica-border;
   font-weight: 700;
+  // 19px bold is large text, so 3:1 applies. Some GOV.UK colours (Primary
+  // brown) reach only about 4.4:1 against both black and white.
+  font-size: 1.1875rem;
 }
 
 .c-swatch__name {

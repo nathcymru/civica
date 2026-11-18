@@ -17,7 +17,7 @@
     },
     "local-controls-form": {
       "title": "Appearance preferences",
-      "html": "<form data-demo-form><div class=\"govuk-form-group\"><label class=\"govuk-label\" for=\"palette-choice\">Colour palette</label><select class=\"govuk-select\" id=\"palette-choice\"><option>Civic Cobalt</option><option>Racing Moss</option><option>Imperial Damson</option></select></div><div class=\"govuk-checkboxes\"><div class=\"govuk-checkboxes__item\"><input class=\"govuk-checkboxes__input\" id=\"muted-choice\" type=\"checkbox\"><label class=\"govuk-label govuk-checkboxes__label\" for=\"muted-choice\">Muted colours</label></div></div><button class=\"govuk-button\" type=\"submit\">Preview saving</button><p role=\"status\" data-demo-status></p></form>",
+      "html": "<form data-demo-form><div class=\"govuk-form-group\"><label class=\"govuk-label\" for=\"palette-choice\">Theme colour</label><select class=\"govuk-select\" id=\"palette-choice\"><option>Blue</option><option>Green</option><option>Teal</option><option>Purple</option><option>Magenta</option><option>Red</option><option>Black</option></select></div><button class=\"govuk-button\" type=\"submit\">Preview saving</button><p role=\"status\" data-demo-status></p></form>",
       "height": 400
     },
     "local-controls-error": {
@@ -135,17 +135,17 @@
     },
     "local-brand-canvas": {
       "title": "Supplied identity on a light canvas",
-      "html": "<img class=\"civica-project-lockup\" src=\"../images/themes/civic-cobalt/vivid/lockup-on-canvas.svg\" alt=\"civica\" width=\"295\" height=\"65\"><p class=\"govuk-body\">Use the matching on-canvas asset. Do not recolour the artwork with a CSS filter.</p>",
+      "html": "<img class=\"civica-project-lockup\" src=\"../images/civica-lockup-on-white.svg\" alt=\"civica\" width=\"295\" height=\"65\"><p class=\"govuk-body\">Use the matching on-canvas asset. Do not recolour the artwork with a CSS filter.</p>",
       "height": 300
     },
-    "local-colour-vivid": {
-      "title": "Civic Cobalt \u2014 Vivid",
-      "html": "<section style=\"background:#ffffff;padding:20px\"><div style=\"background:#1d70b8;padding:20px\"><img class=\"civica-project-lockup\" src=\"../images/themes/civic-cobalt/vivid/lockup-on-primary.svg\" alt=\"civica\" width=\"295\" height=\"65\"></div><h2 class=\"govuk-heading-m\">Vivid colours</h2><p class=\"govuk-body\">The brand pair changes together. Error, focus and success meanings remain stable.</p></section>",
+    "local-theme-blue": {
+      "title": "Blue theme colour",
+      "html": "<section style=\"background:#ffffff;padding:20px\"><div style=\"background:#1d70b8;padding:20px\"><img class=\"civica-project-lockup\" src=\"../images/civica-lockup-white.svg\" alt=\"civica\" width=\"295\" height=\"65\"></div><h2 class=\"govuk-heading-m\">Blue theme colour</h2><p class=\"govuk-body\">The header, buttons and highlights use Primary blue. Error, focus, success and chart colours stay the same.</p></section>",
       "height": 300
     },
-    "local-colour-muted": {
-      "title": "Civic Cobalt \u2014 Muted",
-      "html": "<section style=\"background:#f3f6f9;padding:20px\"><div style=\"background:#103e65;padding:20px\"><img class=\"civica-project-lockup\" src=\"../images/themes/civic-cobalt/muted/lockup-on-primary.svg\" alt=\"civica\" width=\"295\" height=\"65\"></div><h2 class=\"govuk-heading-m\">Muted colours</h2><p class=\"govuk-body\">The brand pair changes together. Error, focus and success meanings remain stable.</p></section>",
+    "local-theme-purple": {
+      "title": "Purple theme colour",
+      "html": "<section style=\"background:#ffffff;padding:20px\"><div style=\"background:#54319f;padding:20px\"><img class=\"civica-project-lockup\" src=\"../images/civica-lockup-white.svg\" alt=\"civica\" width=\"295\" height=\"65\"></div><h2 class=\"govuk-heading-m\">Purple theme colour</h2><p class=\"govuk-body\">The header, buttons and highlights use Primary purple. Error, focus, success and chart colours stay the same.</p></section>",
       "height": 300
     },
     "local-install-layers": {

@@ -70,8 +70,8 @@ function build(target: HTMLElement) {
   const style = element('style', STYLE), intro = element('p', 'All readings and device names below are invented examples. They do not show or control your home.'); intro.className = 'intro';
   const controls = element('div'); controls.className = 'controls';
   const lineWeight = element('p', `Line charts and their legend keys use ${ENERGY_CHART_SPEC.lineWidth}px strokes, including on hover.`); lineWeight.className = 'chart-spec';
-  const paletteLabel = element('label', 'Example brand palette'); paletteLabel.className = 'palette';
-  const palette = element('select'); palette.setAttribute('aria-label', 'Example brand palette');
+  const paletteLabel = element('label', 'Example theme colour'); paletteLabel.className = 'palette';
+  const palette = element('select'); palette.setAttribute('aria-label', 'Example theme colour');
   for (const p of palettes.palettes) { const option = element('option', p.name); option.value = p.id; palette.append(option); }
   paletteLabel.append(palette);
   const checkbox = (text: string, checked = false) => { const label = element('label'), input = element('input'); input.type = 'checkbox'; input.checked = checked; label.append(input, text); return { label, input }; };
@@ -148,7 +148,9 @@ function build(target: HTMLElement) {
   let day = 0;
   function paintTheme() {
     const p = palettes.palettes.find(item => item.id === palette.value)!;
-    const name = `civica ${p.name} ${muted.input.checked ? 'Muted' : 'Vivid'}`;
+    // One theme per GOV.UK theme colour. The Muted tone is a chart generator
+    // option only; no theme selects it.
+    const name = `civica ${p.name}`;
     const theme = (source.themes as Record<string, any>)[name];
     for (const [key, value] of Object.entries({ ...theme, ...theme.modes[dark.input.checked ? 'dark' : 'light'] })) if (typeof value === 'string' && !key.startsWith('card-mod')) target.style.setProperty(`--${key}`, value);
     target.style.setProperty('--civica-chart-tone', muted.input.checked ? 'muted' : 'vivid');

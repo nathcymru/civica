@@ -1,5 +1,7 @@
 # Verification
 
+Note, 18 November 2026: the ten palettes and Vivid and Muted tones described in the records below were replaced by seven GOV.UK theme colours. Each record describes the release it verified.
+
 ## v1.4.1 — wait for theme data during startup
 
 Live acceptance identified a transient startup error when Home Assistant supplies a `hass` object before its theme registry is available. The companion and colour controls now handle an absent or null registry and a pending registry map. They keep native identity and disabled loading controls until the data arrives, then recover without changing the saved palette or display mode. The regression checks those transitions, uncaught browser errors and recovery through the existing document-style observer.

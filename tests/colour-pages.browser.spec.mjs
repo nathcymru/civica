@@ -26,14 +26,19 @@ for (const name of ['web', 'app', 'print']) {
 test('a copy button copies the exact value and says so', async ({ page: browser, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await browser.goto(page('web'));
-  const button = browser.getByRole('button', { name: 'Copy Hex #1D70B8 for Primary blue' });
+  const button = browser.getByRole('button', { name: 'Copy hex #1D70B8 for Primary blue', exact: true });
   await expect(button).toBeVisible();
   await button.focus();
   await browser.keyboard.press('Enter');
   expect(await browser.evaluate(() => navigator.clipboard.readText())).toBe('#1D70B8');
-  await expect(browser.locator('[data-copy-value-status]')).toHaveText('Copied #1D70B8');
+  await expect(browser.locator('[data-copy-value-status]')).toHaveText('Copied hex #1D70B8 for Primary blue');
   await expect(button).toHaveAttribute('data-copied', 'true');
   await expect(button).not.toHaveAttribute('data-copied', /.*/, { timeout: 4000 });
+
+  // The same value copied from another colour is still announced, because the
+  // status names the colour as well as the value.
+  await browser.getByRole('button', { name: 'Copy hex #1D70B8 for brand', exact: true }).click();
+  await expect(browser.locator('[data-copy-value-status]')).toHaveText('Copied hex #1D70B8 for brand');
 
   await browser.goto(page('print'));
   await browser.getByRole('button', { name: 'Copy Pantone 7461 C for Primary blue' }).click();
