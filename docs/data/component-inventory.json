@@ -1,0 +1,4636 @@
+{
+  "schema_version": 1,
+  "title": "civica Master Component Inventory",
+  "locked_on": "2026-11-18",
+  "approved_by": "Nathan (project owner), 2026-11-17 and 2026-11-18",
+  "rules": [
+    "This inventory is the sole source of truth for component parent pages. Change it only with the owner's approval, then update the pinned hash in scripts/check-components.mjs.",
+    "Each parent has exactly one page at its route. Each child and grandchild is a section with the given anchor on that page.",
+    "An entry with cross_reference is documented on its owner page; the secondary page links to it.",
+    "Every ha- and hui- element is verified against the pinned Home Assistant frontend source before it is documented; unverified names are reported, never invented or dropped.",
+    "Where Home Assistant registers an element by YAML type (card features, selectors, rows), the page documents both the YAML type key and the element name."
+  ],
+  "parents": [
+    {
+      "parent": "Abbreviation",
+      "route": "/components/abbreviation.html",
+      "letter": "A",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<abbr>",
+          "origin": "HTML5",
+          "anchor": "child-abbr"
+        }
+      ]
+    },
+    {
+      "parent": "Accordion",
+      "route": "/components/accordion.html",
+      "letter": "A",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<details>",
+          "origin": "HTML5",
+          "anchor": "child-details",
+          "grandchildren": [
+            {
+              "name": "<summary>",
+              "origin": "HTML5",
+              "anchor": "child-details--summary"
+            }
+          ]
+        },
+        {
+          "name": "ha-expansion-panel",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-expansion-panel"
+        }
+      ]
+    },
+    {
+      "parent": "Action Bar / Bottom Sheet",
+      "route": "/components/action-bar-bottom-sheet.html",
+      "letter": "A",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-bottom-sheet",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-bottom-sheet"
+        },
+        {
+          "name": "ha-bar",
+          "origin": "Home Assistant",
+          "anchor": "xref-ha-bar",
+          "cross_reference": {
+            "parent": "Bar / Meter",
+            "route": "/components/bar-meter.html",
+            "anchor": "child-ha-bar"
+          },
+          "note": "Owned by Bar / Meter."
+        }
+      ]
+    },
+    {
+      "parent": "Action Links",
+      "route": "/components/action-links.html",
+      "letter": "A",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "civica-action-links",
+          "origin": "Civica",
+          "anchor": "child-civica-action-links"
+        }
+      ]
+    },
+    {
+      "parent": "Activity Card",
+      "route": "/components/activity-card.html",
+      "letter": "A",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-activity-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-activity-card"
+        }
+      ]
+    },
+    {
+      "parent": "Address",
+      "route": "/components/address.html",
+      "letter": "A",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<address>",
+          "origin": "HTML5",
+          "anchor": "child-address"
+        }
+      ]
+    },
+    {
+      "parent": "Alarm Panel Card",
+      "route": "/components/alarm-panel-card.html",
+      "letter": "A",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-alarm-panel-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-alarm-panel-card"
+        }
+      ]
+    },
+    {
+      "parent": "Alert & Tip Callout",
+      "route": "/components/alert-and-tip-callout.html",
+      "letter": "A",
+      "origins": [
+        "Home Assistant",
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "ha-alert",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-alert",
+          "grandchildren": [
+            {
+              "name": "alert-type=\"info\"",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-alert--alert-type-info"
+            },
+            {
+              "name": "alert-type=\"warning\"",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-alert--alert-type-warning"
+            },
+            {
+              "name": "alert-type=\"error\"",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-alert--alert-type-error"
+            },
+            {
+              "name": "alert-type=\"success\"",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-alert--alert-type-success"
+            }
+          ]
+        },
+        {
+          "name": "ha-tip",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-tip"
+        },
+        {
+          "name": "hui-alert-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-alert-card"
+        }
+      ]
+    },
+    {
+      "parent": "Area Card",
+      "route": "/components/area-card.html",
+      "letter": "A",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-area-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-area-card"
+        }
+      ]
+    },
+    {
+      "parent": "Area Picker",
+      "route": "/components/area-picker.html",
+      "letter": "A",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-area-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-area-picker"
+        },
+        {
+          "name": "ha-areas-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-areas-picker"
+        }
+      ]
+    },
+    {
+      "parent": "Article",
+      "route": "/components/article.html",
+      "letter": "A",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<article>",
+          "origin": "HTML5",
+          "anchor": "child-article"
+        }
+      ]
+    },
+    {
+      "parent": "Aside",
+      "route": "/components/aside.html",
+      "letter": "A",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<aside>",
+          "origin": "HTML5",
+          "anchor": "child-aside"
+        }
+      ]
+    },
+    {
+      "parent": "Assist / Voice Pipeline Dialog",
+      "route": "/components/assist-voice-pipeline-dialog.html",
+      "letter": "A",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-voice-command-dialog",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-voice-command-dialog"
+        },
+        {
+          "name": "ha-assist-chat",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-assist-chat"
+        }
+      ]
+    },
+    {
+      "parent": "Audio Player",
+      "route": "/components/audio-player.html",
+      "letter": "A",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<audio>",
+          "origin": "HTML5",
+          "anchor": "child-audio",
+          "grandchildren": [
+            {
+              "name": "<source>",
+              "origin": "HTML5",
+              "anchor": "child-audio--source"
+            },
+            {
+              "name": "<track>",
+              "origin": "HTML5",
+              "anchor": "child-audio--track"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Avatar & User Badge",
+      "route": "/components/avatar-and-user-badge.html",
+      "letter": "A",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-avatar",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-avatar"
+        },
+        {
+          "name": "ha-user-badge",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-user-badge"
+        }
+      ]
+    },
+    {
+      "parent": "Back Link",
+      "route": "/components/back-link.html",
+      "letter": "B",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Back Link Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-back-link-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Badge",
+      "route": "/components/notification-badge.html",
+      "letter": "B",
+      "origins": [
+        "Home Assistant",
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "ha-badge",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-badge"
+        },
+        {
+          "name": "ha-label-badge",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-label-badge"
+        },
+        {
+          "name": "hui-entity-badge",
+          "origin": "Lovelace",
+          "anchor": "child-hui-entity-badge"
+        },
+        {
+          "name": "hui-state-label-badge",
+          "origin": "Lovelace",
+          "anchor": "child-hui-state-label-badge"
+        }
+      ]
+    },
+    {
+      "parent": "Bar / Meter",
+      "route": "/components/bar-meter.html",
+      "letter": "B",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<meter>",
+          "origin": "HTML5",
+          "anchor": "child-meter"
+        },
+        {
+          "name": "ha-bar",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-bar"
+        }
+      ]
+    },
+    {
+      "parent": "Blockquote",
+      "route": "/components/blockquote.html",
+      "letter": "B",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<blockquote>",
+          "origin": "HTML5",
+          "anchor": "child-blockquote",
+          "grandchildren": [
+            {
+              "name": "<cite>",
+              "origin": "HTML5",
+              "anchor": "child-blockquote--cite"
+            }
+          ]
+        },
+        {
+          "name": "<q>",
+          "origin": "HTML5",
+          "anchor": "child-q"
+        }
+      ]
+    },
+    {
+      "parent": "Breadcrumb",
+      "route": "/components/breadcrumbs.html",
+      "letter": "B",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Breadcrumb Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-breadcrumb-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Button",
+      "route": "/components/buttons.html",
+      "letter": "B",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<button>",
+          "origin": "HTML5",
+          "anchor": "child-button",
+          "grandchildren": [
+            {
+              "name": "type=\"button\"",
+              "origin": "HTML5",
+              "anchor": "child-button--type-button"
+            },
+            {
+              "name": "type=\"submit\"",
+              "origin": "HTML5",
+              "anchor": "child-button--type-submit"
+            },
+            {
+              "name": "type=\"reset\"",
+              "origin": "HTML5",
+              "anchor": "child-button--type-reset"
+            }
+          ]
+        },
+        {
+          "name": "<input type=\"button\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-button"
+        },
+        {
+          "name": "<input type=\"submit\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-submit"
+        },
+        {
+          "name": "<input type=\"reset\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-reset"
+        },
+        {
+          "name": "<input type=\"image\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-image"
+        },
+        {
+          "name": "ha-button",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-button",
+          "grandchildren": [
+            {
+              "name": "variant=\"primary\"",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-button--variant-primary"
+            },
+            {
+              "name": "variant=\"secondary\"",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-button--variant-secondary"
+            },
+            {
+              "name": "variant=\"danger\"",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-button--variant-danger"
+            },
+            {
+              "name": "variant=\"plain\"",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-button--variant-plain"
+            }
+          ]
+        },
+        {
+          "name": "ha-icon-button",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-icon-button"
+        },
+        {
+          "name": "ha-icon-button-prev",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-icon-button-prev"
+        },
+        {
+          "name": "ha-icon-button-next",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-icon-button-next"
+        },
+        {
+          "name": "ha-icon-button-toggle",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-icon-button-toggle"
+        },
+        {
+          "name": "ha-fab",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-fab",
+          "note": "Floating Action Button"
+        }
+      ]
+    },
+    {
+      "parent": "Button Card",
+      "route": "/components/button-card.html",
+      "letter": "B",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-button-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-button-card"
+        }
+      ]
+    },
+    {
+      "parent": "Button Group / Segmented Control",
+      "route": "/components/button-group-segmented-control.html",
+      "letter": "B",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-control-button-group",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-control-button-group",
+          "grandchildren": [
+            {
+              "name": "ha-control-button",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-control-button-group--ha-control-button"
+            }
+          ]
+        },
+        {
+          "name": "ha-button-toggle-group",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-button-toggle-group"
+        }
+      ]
+    },
+    {
+      "parent": "Calendar Card",
+      "route": "/components/calendar-card.html",
+      "letter": "C",
+      "origins": [
+        "Lovelace",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "hui-calendar-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-calendar-card"
+        },
+        {
+          "name": "ha-full-calendar",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-full-calendar"
+        }
+      ]
+    },
+    {
+      "parent": "Canvas",
+      "route": "/components/canvas.html",
+      "letter": "C",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<canvas>",
+          "origin": "HTML5",
+          "anchor": "child-canvas"
+        }
+      ]
+    },
+    {
+      "parent": "Card & Section Header",
+      "route": "/components/card-and-section-header.html",
+      "letter": "C",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-section-header",
+          "origin": "Lovelace",
+          "anchor": "child-hui-section-header"
+        }
+      ]
+    },
+    {
+      "parent": "Card (Base Surface)",
+      "route": "/components/cards.html",
+      "letter": "C",
+      "origins": [
+        "Home Assistant",
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "ha-card",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-card",
+          "grandchildren": [
+            {
+              "name": ".card-header",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-card--card-header"
+            },
+            {
+              "name": ".card-content",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-card--card-content"
+            },
+            {
+              "name": ".card-actions",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-card--card-actions"
+            }
+          ]
+        },
+        {
+          "name": "hui-custom-card-wrapper",
+          "origin": "Lovelace",
+          "anchor": "child-hui-custom-card-wrapper"
+        }
+      ]
+    },
+    {
+      "parent": "Card Features (Tile & Area Inline Controls)",
+      "route": "/components/card-features.html",
+      "letter": "C",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-card-features",
+          "origin": "Lovelace",
+          "anchor": "child-hui-card-features",
+          "grandchildren": [
+            {
+              "name": "hui-alarm-modes-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-alarm-modes-card-feature"
+            },
+            {
+              "name": "hui-area-controls-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-area-controls-card-feature"
+            },
+            {
+              "name": "hui-bar-gauge-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-bar-gauge-card-feature"
+            },
+            {
+              "name": "hui-button-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-button-card-feature"
+            },
+            {
+              "name": "hui-climate-fan-modes-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-climate-fan-modes-card-feature"
+            },
+            {
+              "name": "hui-climate-hvac-modes-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-climate-hvac-modes-card-feature"
+            },
+            {
+              "name": "hui-climate-preset-modes-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-climate-preset-modes-card-feature"
+            },
+            {
+              "name": "hui-climate-swing-modes-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-climate-swing-modes-card-feature"
+            },
+            {
+              "name": "hui-counter-actions-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-counter-actions-card-feature"
+            },
+            {
+              "name": "hui-cover-open-close-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-cover-open-close-card-feature"
+            },
+            {
+              "name": "hui-cover-position-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-cover-position-card-feature"
+            },
+            {
+              "name": "hui-cover-tilt-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-cover-tilt-card-feature"
+            },
+            {
+              "name": "hui-cover-tilt-position-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-cover-tilt-position-card-feature"
+            },
+            {
+              "name": "hui-date-set-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-date-set-card-feature"
+            },
+            {
+              "name": "hui-duration-schedule-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-duration-schedule-card-feature"
+            },
+            {
+              "name": "hui-fan-direction-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-fan-direction-card-feature"
+            },
+            {
+              "name": "hui-fan-oscillate-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-fan-oscillate-card-feature"
+            },
+            {
+              "name": "hui-fan-preset-modes-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-fan-preset-modes-card-feature"
+            },
+            {
+              "name": "hui-fan-speed-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-fan-speed-card-feature"
+            },
+            {
+              "name": "hui-humidifier-modes-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-humidifier-modes-card-feature"
+            },
+            {
+              "name": "hui-humidifier-toggle-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-humidifier-toggle-card-feature"
+            },
+            {
+              "name": "hui-lawn-mower-commands-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-lawn-mower-commands-card-feature"
+            },
+            {
+              "name": "hui-lawn-mower-dock-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-lawn-mower-dock-card-feature"
+            },
+            {
+              "name": "hui-light-brightness-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-light-brightness-card-feature"
+            },
+            {
+              "name": "hui-light-color-temp-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-light-color-temp-card-feature"
+            },
+            {
+              "name": "hui-lock-commands-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-lock-commands-card-feature"
+            },
+            {
+              "name": "hui-lock-open-door-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-lock-open-door-card-feature"
+            },
+            {
+              "name": "hui-media-player-playback-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-media-player-playback-card-feature"
+            },
+            {
+              "name": "hui-media-player-volume-buttons-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-media-player-volume-buttons-card-feature"
+            },
+            {
+              "name": "hui-media-player-volume-slider-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-media-player-volume-slider-card-feature"
+            },
+            {
+              "name": "hui-numeric-input-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-numeric-input-card-feature"
+            },
+            {
+              "name": "hui-select-options-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-select-options-card-feature"
+            },
+            {
+              "name": "hui-target-humidity-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-target-humidity-card-feature"
+            },
+            {
+              "name": "hui-target-temperature-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-target-temperature-card-feature"
+            },
+            {
+              "name": "hui-target-temperature-range-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-target-temperature-range-card-feature"
+            },
+            {
+              "name": "hui-time-set-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-time-set-card-feature"
+            },
+            {
+              "name": "hui-toggle-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-toggle-card-feature"
+            },
+            {
+              "name": "hui-trend-graph-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-trend-graph-card-feature"
+            },
+            {
+              "name": "hui-update-actions-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-update-actions-card-feature"
+            },
+            {
+              "name": "hui-vacuum-commands-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-vacuum-commands-card-feature"
+            },
+            {
+              "name": "hui-valve-open-close-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-valve-open-close-card-feature"
+            },
+            {
+              "name": "hui-valve-position-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-valve-position-card-feature"
+            },
+            {
+              "name": "hui-water-heater-operation-modes-card-feature",
+              "origin": "Lovelace",
+              "anchor": "child-hui-card-features--hui-water-heater-operation-modes-card-feature"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Card Header & Footer Widgets",
+      "route": "/components/card-header-and-footer-widgets.html",
+      "letter": "C",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-buttons-header-footer",
+          "origin": "Lovelace",
+          "anchor": "child-hui-buttons-header-footer"
+        },
+        {
+          "name": "hui-graph-header-footer",
+          "origin": "Lovelace",
+          "anchor": "child-hui-graph-header-footer"
+        },
+        {
+          "name": "hui-picture-header-footer",
+          "origin": "Lovelace",
+          "anchor": "child-hui-picture-header-footer"
+        }
+      ]
+    },
+    {
+      "parent": "Category Picker",
+      "route": "/components/category-picker.html",
+      "letter": "C",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-category-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-category-picker"
+        },
+        {
+          "name": "ha-categories-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-categories-picker"
+        }
+      ]
+    },
+    {
+      "parent": "Character Count",
+      "route": "/components/character-count.html",
+      "letter": "C",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Character Count Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-character-count-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Checkbox",
+      "route": "/components/checkboxes.html",
+      "letter": "C",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<input type=\"checkbox\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-checkbox"
+        },
+        {
+          "name": "ha-checkbox",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-checkbox"
+        },
+        {
+          "name": "ha-formfield",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-formfield"
+        }
+      ]
+    },
+    {
+      "parent": "Chip",
+      "route": "/components/chip.html",
+      "letter": "C",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-chip",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-chip"
+        },
+        {
+          "name": "ha-input-chip",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-input-chip"
+        },
+        {
+          "name": "ha-filter-chip",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-filter-chip"
+        },
+        {
+          "name": "ha-assist-chip",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-assist-chip"
+        }
+      ]
+    },
+    {
+      "parent": "Clock Card",
+      "route": "/components/clock-card.html",
+      "letter": "C",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-clock-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-clock-card"
+        }
+      ]
+    },
+    {
+      "parent": "Code & Preformatted Text",
+      "route": "/components/code-and-preformatted-text.html",
+      "letter": "C",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<code>",
+          "origin": "HTML5",
+          "anchor": "child-code"
+        },
+        {
+          "name": "<pre>",
+          "origin": "HTML5",
+          "anchor": "child-pre"
+        },
+        {
+          "name": "<kbd>",
+          "origin": "HTML5",
+          "anchor": "child-kbd"
+        },
+        {
+          "name": "<samp>",
+          "origin": "HTML5",
+          "anchor": "child-samp"
+        },
+        {
+          "name": "<var>",
+          "origin": "HTML5",
+          "anchor": "child-var"
+        },
+        {
+          "name": "ha-code-editor",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-code-editor"
+        },
+        {
+          "name": "ha-yaml-editor",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-yaml-editor"
+        }
+      ]
+    },
+    {
+      "parent": "Color Picker",
+      "route": "/components/color-picker.html",
+      "letter": "C",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<input type=\"color\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-color"
+        },
+        {
+          "name": "ha-color-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-color-picker"
+        },
+        {
+          "name": "ha-hs-color-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-hs-color-picker"
+        },
+        {
+          "name": "ha-rgb-color-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-rgb-color-picker"
+        },
+        {
+          "name": "ha-color-temp-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-color-temp-picker"
+        }
+      ]
+    },
+    {
+      "parent": "Combobox / Autocomplete",
+      "route": "/components/combobox-autocomplete.html",
+      "letter": "C",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<datalist>",
+          "origin": "HTML5",
+          "anchor": "child-datalist"
+        },
+        {
+          "name": "ha-combo-box",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-combo-box"
+        },
+        {
+          "name": "ha-generic-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-generic-picker"
+        }
+      ]
+    },
+    {
+      "parent": "Conditional Card",
+      "route": "/components/conditional-card.html",
+      "letter": "C",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-conditional-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-conditional-card"
+        }
+      ]
+    },
+    {
+      "parent": "Contents List",
+      "route": "/components/contents-list.html",
+      "letter": "C",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Contents List Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-contents-list-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Control Circular Slider",
+      "route": "/components/control-circular-slider.html",
+      "letter": "C",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-control-circular-slider",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-control-circular-slider"
+        }
+      ]
+    },
+    {
+      "parent": "Control Number Box",
+      "route": "/components/control-number-box.html",
+      "letter": "C",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-control-number-buttons",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-control-number-buttons"
+        }
+      ]
+    },
+    {
+      "parent": "Control Select",
+      "route": "/components/control-select.html",
+      "letter": "C",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-control-select",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-control-select"
+        },
+        {
+          "name": "ha-control-select-menu",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-control-select-menu"
+        }
+      ]
+    },
+    {
+      "parent": "Control Slider",
+      "route": "/components/sliders.html",
+      "letter": "C",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<input type=\"range\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-range"
+        },
+        {
+          "name": "ha-slider",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-slider"
+        },
+        {
+          "name": "ha-control-slider",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-control-slider"
+        },
+        {
+          "name": "ha-grid-layout-slider",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-grid-layout-slider"
+        }
+      ]
+    },
+    {
+      "parent": "Cookie Banner",
+      "route": "/components/cookie-banner.html",
+      "letter": "C",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Cookie Banner Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-cookie-banner-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Copy-to-Clipboard",
+      "route": "/components/copy-to-clipboard.html",
+      "letter": "C",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-copy-textfield",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-copy-textfield"
+        }
+      ]
+    },
+    {
+      "parent": "Data Table",
+      "route": "/components/table.html",
+      "letter": "D",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<table>",
+          "origin": "HTML5",
+          "anchor": "child-table",
+          "grandchildren": [
+            {
+              "name": "<caption>",
+              "origin": "HTML5",
+              "anchor": "child-table--caption"
+            },
+            {
+              "name": "<colgroup>",
+              "origin": "HTML5",
+              "anchor": "child-table--colgroup"
+            },
+            {
+              "name": "<col>",
+              "origin": "HTML5",
+              "anchor": "child-table--col",
+              "note": "Nested inside <colgroup>."
+            },
+            {
+              "name": "<thead>",
+              "origin": "HTML5",
+              "anchor": "child-table--thead"
+            },
+            {
+              "name": "<tbody>",
+              "origin": "HTML5",
+              "anchor": "child-table--tbody"
+            },
+            {
+              "name": "<tfoot>",
+              "origin": "HTML5",
+              "anchor": "child-table--tfoot"
+            },
+            {
+              "name": "<tr>",
+              "origin": "HTML5",
+              "anchor": "child-table--tr"
+            },
+            {
+              "name": "<th>",
+              "origin": "HTML5",
+              "anchor": "child-table--th"
+            },
+            {
+              "name": "<td>",
+              "origin": "HTML5",
+              "anchor": "child-table--td"
+            }
+          ]
+        },
+        {
+          "name": "ha-data-table",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-data-table",
+          "grandchildren": [
+            {
+              "name": "ha-filter-states",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-data-table--ha-filter-states"
+            },
+            {
+              "name": "ha-filter-domains",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-data-table--ha-filter-domains"
+            },
+            {
+              "name": "ha-filter-areas",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-data-table--ha-filter-areas"
+            },
+            {
+              "name": "ha-filter-devices",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-data-table--ha-filter-devices"
+            },
+            {
+              "name": "ha-filter-labels",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-data-table--ha-filter-labels"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Date & Time Picker",
+      "route": "/components/date-input.html",
+      "letter": "D",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<input type=\"date\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-date"
+        },
+        {
+          "name": "<input type=\"time\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-time"
+        },
+        {
+          "name": "<input type=\"datetime-local\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-datetime-local"
+        },
+        {
+          "name": "<input type=\"month\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-month"
+        },
+        {
+          "name": "<input type=\"week\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-week"
+        },
+        {
+          "name": "ha-date-input",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-date-input"
+        },
+        {
+          "name": "ha-time-input",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-time-input"
+        },
+        {
+          "name": "ha-date-range-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-date-range-picker"
+        },
+        {
+          "name": "ha-dialog-date-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-dialog-date-picker"
+        }
+      ]
+    },
+    {
+      "parent": "Description List",
+      "route": "/components/description-list.html",
+      "letter": "D",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<dl>",
+          "origin": "HTML5",
+          "anchor": "child-dl",
+          "grandchildren": [
+            {
+              "name": "<dt>",
+              "origin": "HTML5",
+              "anchor": "child-dl--dt"
+            },
+            {
+              "name": "<dd>",
+              "origin": "HTML5",
+              "anchor": "child-dl--dd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Device Picker",
+      "route": "/components/device-picker.html",
+      "letter": "D",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-device-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-device-picker"
+        },
+        {
+          "name": "ha-devices-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-devices-picker"
+        }
+      ]
+    },
+    {
+      "parent": "Dialog / Modal",
+      "route": "/components/dialogs.html",
+      "letter": "D",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<dialog>",
+          "origin": "HTML5",
+          "anchor": "child-dialog"
+        },
+        {
+          "name": "ha-dialog",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-dialog"
+        },
+        {
+          "name": "ha-wa-dialog",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-wa-dialog"
+        },
+        {
+          "name": "ha-dialog-header",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-dialog-header"
+        },
+        {
+          "name": "ha-adaptive-dialog",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-adaptive-dialog"
+        },
+        {
+          "name": "dialog-box",
+          "origin": "Home Assistant",
+          "anchor": "child-dialog-box",
+          "note": "Confirmation/Alert/Prompt Dialog"
+        }
+      ]
+    },
+    {
+      "parent": "Discovered Devices, Repairs & Updates Cards",
+      "route": "/components/discovered-devices-repairs-and-updates-cards.html",
+      "letter": "D",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-discovered-devices-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-discovered-devices-card"
+        },
+        {
+          "name": "hui-repairs-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-repairs-card"
+        },
+        {
+          "name": "hui-updates-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-updates-card"
+        }
+      ]
+    },
+    {
+      "parent": "Divider / Horizontal Rule",
+      "route": "/components/divider-horizontal-rule.html",
+      "letter": "D",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<hr>",
+          "origin": "HTML5",
+          "anchor": "child-hr"
+        },
+        {
+          "name": "ha-divider",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-divider"
+        }
+      ]
+    },
+    {
+      "parent": "Do and Don't Lists",
+      "route": "/components/do-and-dont-lists.html",
+      "letter": "D",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Do and Don't Lists Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-do-and-don-t-lists-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Document Root, Metadata & Shadow DOM Primitives",
+      "route": "/components/document-root-metadata-and-shadow-dom-primitives.html",
+      "letter": "D",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<html>",
+          "origin": "HTML5",
+          "anchor": "child-html"
+        },
+        {
+          "name": "<head>",
+          "origin": "HTML5",
+          "anchor": "child-head",
+          "grandchildren": [
+            {
+              "name": "<title>",
+              "origin": "HTML5",
+              "anchor": "child-head--title"
+            },
+            {
+              "name": "<base>",
+              "origin": "HTML5",
+              "anchor": "child-head--base"
+            },
+            {
+              "name": "<link>",
+              "origin": "HTML5",
+              "anchor": "child-head--link"
+            },
+            {
+              "name": "<meta>",
+              "origin": "HTML5",
+              "anchor": "child-head--meta"
+            },
+            {
+              "name": "<style>",
+              "origin": "HTML5",
+              "anchor": "child-head--style"
+            },
+            {
+              "name": "<script>",
+              "origin": "HTML5",
+              "anchor": "child-head--script"
+            },
+            {
+              "name": "<noscript>",
+              "origin": "HTML5",
+              "anchor": "child-head--noscript"
+            }
+          ]
+        },
+        {
+          "name": "<body>",
+          "origin": "HTML5",
+          "anchor": "child-body"
+        },
+        {
+          "name": "<template>",
+          "origin": "HTML5",
+          "anchor": "child-template",
+          "note": "Web Component Shadow DOM"
+        },
+        {
+          "name": "<slot>",
+          "origin": "HTML5",
+          "anchor": "child-slot",
+          "note": "Web Component Shadow DOM"
+        }
+      ]
+    },
+    {
+      "parent": "Drawer / Navigation Sidebar",
+      "route": "/components/drawer-navigation-sidebar.html",
+      "letter": "D",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-drawer",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-drawer"
+        },
+        {
+          "name": "ha-sidebar",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-sidebar"
+        }
+      ]
+    },
+    {
+      "parent": "Dropdown Menu & Overflow Menu",
+      "route": "/components/select.html",
+      "letter": "D",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<select>",
+          "origin": "HTML5",
+          "anchor": "child-select",
+          "grandchildren": [
+            {
+              "name": "<optgroup>",
+              "origin": "HTML5",
+              "anchor": "child-select--optgroup"
+            },
+            {
+              "name": "<option>",
+              "origin": "HTML5",
+              "anchor": "child-select--option"
+            }
+          ]
+        },
+        {
+          "name": "ha-select",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-select"
+        },
+        {
+          "name": "ha-dropdown",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-dropdown"
+        },
+        {
+          "name": "ha-button-menu",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-button-menu"
+        },
+        {
+          "name": "ha-icon-overflow-menu",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-icon-overflow-menu"
+        },
+        {
+          "name": "ha-check-list-item",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-check-list-item"
+        },
+        {
+          "name": "ha-clickable-list-item",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-clickable-list-item"
+        },
+        {
+          "name": "ha-list-item",
+          "origin": "Home Assistant",
+          "anchor": "xref-ha-list-item",
+          "cross_reference": {
+            "parent": "List, Navigation List & Sortable List",
+            "route": "/components/list-navigation-list-and-sortable-list.html",
+            "anchor": "child-ha-list-item"
+          },
+          "note": "Owned by List, Navigation List & Sortable List."
+        }
+      ]
+    },
+    {
+      "parent": "Duration Input",
+      "route": "/components/duration-input.html",
+      "letter": "D",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-duration-input",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-duration-input"
+        }
+      ]
+    },
+    {
+      "parent": "Embedded External Object",
+      "route": "/components/embedded-external-object.html",
+      "letter": "E",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<embed>",
+          "origin": "HTML5",
+          "anchor": "child-embed"
+        },
+        {
+          "name": "<object>",
+          "origin": "HTML5",
+          "anchor": "child-object",
+          "grandchildren": [
+            {
+              "name": "<param>",
+              "origin": "HTML5",
+              "anchor": "child-object--param"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Empty State & Startup Views",
+      "route": "/components/empty-state-and-startup-views.html",
+      "letter": "E",
+      "origins": [
+        "Lovelace",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "hui-empty-state-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-empty-state-card"
+        },
+        {
+          "name": "hui-starting-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-starting-card"
+        },
+        {
+          "name": "Home Assistant Empty State Pattern",
+          "origin": "Home Assistant",
+          "anchor": "child-home-assistant-empty-state-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Energy Cards",
+      "route": "/components/energy-cards.html",
+      "letter": "E",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-energy-distribution-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-distribution-card"
+        },
+        {
+          "name": "hui-energy-usage-graph-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-usage-graph-card"
+        },
+        {
+          "name": "hui-energy-solar-graph-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-solar-graph-card"
+        },
+        {
+          "name": "hui-energy-gas-graph-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-gas-graph-card"
+        },
+        {
+          "name": "hui-energy-water-graph-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-water-graph-card"
+        },
+        {
+          "name": "hui-energy-devices-graph-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-devices-graph-card"
+        },
+        {
+          "name": "hui-energy-devices-detail-graph-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-devices-detail-graph-card"
+        },
+        {
+          "name": "hui-energy-sources-table-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-sources-table-card"
+        },
+        {
+          "name": "hui-energy-grid-neutrality-gauge-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-grid-neutrality-gauge-card"
+        },
+        {
+          "name": "hui-energy-solar-consumed-gauge-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-solar-consumed-gauge-card"
+        },
+        {
+          "name": "hui-energy-carbon-consumed-gauge-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-carbon-consumed-gauge-card"
+        },
+        {
+          "name": "hui-energy-self-sufficiency-gauge-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-self-sufficiency-gauge-card"
+        },
+        {
+          "name": "hui-energy-date-selection-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-date-selection-card"
+        }
+      ]
+    },
+    {
+      "parent": "Entities Card & Entity Rows",
+      "route": "/components/entities-card-and-entity-rows.html",
+      "letter": "E",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-entities-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-entities-card",
+          "grandchildren": [
+            {
+              "name": "hui-sensor-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-sensor-entity-row"
+            },
+            {
+              "name": "hui-toggle-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-toggle-entity-row"
+            },
+            {
+              "name": "hui-cover-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-cover-entity-row"
+            },
+            {
+              "name": "hui-climate-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-climate-entity-row"
+            },
+            {
+              "name": "hui-humidifier-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-humidifier-entity-row"
+            },
+            {
+              "name": "hui-input-number-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-input-number-entity-row"
+            },
+            {
+              "name": "hui-input-select-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-input-select-entity-row"
+            },
+            {
+              "name": "hui-input-text-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-input-text-entity-row"
+            },
+            {
+              "name": "hui-input-datetime-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-input-datetime-entity-row"
+            },
+            {
+              "name": "hui-input-button-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-input-button-entity-row"
+            },
+            {
+              "name": "hui-lock-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-lock-entity-row"
+            },
+            {
+              "name": "hui-media-player-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-media-player-entity-row"
+            },
+            {
+              "name": "hui-scene-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-scene-entity-row"
+            },
+            {
+              "name": "hui-script-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-script-entity-row"
+            },
+            {
+              "name": "hui-timer-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-timer-entity-row"
+            },
+            {
+              "name": "hui-update-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-update-entity-row"
+            },
+            {
+              "name": "hui-vacuum-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-vacuum-entity-row"
+            },
+            {
+              "name": "hui-valve-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-valve-entity-row"
+            },
+            {
+              "name": "hui-water-heater-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-water-heater-entity-row"
+            },
+            {
+              "name": "hui-weather-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-weather-entity-row"
+            },
+            {
+              "name": "hui-text-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-text-entity-row"
+            },
+            {
+              "name": "hui-simple-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-simple-entity-row"
+            },
+            {
+              "name": "hui-group-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-group-entity-row"
+            },
+            {
+              "name": "hui-event-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-event-entity-row"
+            },
+            {
+              "name": "hui-button-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-button-entity-row"
+            },
+            {
+              "name": "hui-divider-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-divider-row",
+              "note": "Special Row"
+            },
+            {
+              "name": "hui-section-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-section-row",
+              "note": "Special Row"
+            },
+            {
+              "name": "hui-weblink-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-weblink-row",
+              "note": "Special Row"
+            },
+            {
+              "name": "hui-attribute-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-attribute-row",
+              "note": "Special Row"
+            },
+            {
+              "name": "hui-buttons-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-buttons-row",
+              "note": "Special Row"
+            },
+            {
+              "name": "hui-cast-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-cast-row",
+              "note": "Special Row"
+            },
+            {
+              "name": "hui-conditional-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-conditional-row",
+              "note": "Special Row"
+            },
+            {
+              "name": "hui-call-service-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-call-service-row",
+              "note": "Special Row"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Entity Card",
+      "route": "/components/entity-card.html",
+      "letter": "E",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-entity-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-entity-card"
+        }
+      ]
+    },
+    {
+      "parent": "Entity Filter Card",
+      "route": "/components/entity-filter-card.html",
+      "letter": "E",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-entity-filter-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-entity-filter-card"
+        }
+      ]
+    },
+    {
+      "parent": "Entity Picker",
+      "route": "/components/entity-picker.html",
+      "letter": "E",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-entity-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-entity-picker"
+        },
+        {
+          "name": "ha-entities-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-entities-picker"
+        },
+        {
+          "name": "ha-entity-attribute-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-entity-attribute-picker"
+        },
+        {
+          "name": "ha-entity-state-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-entity-state-picker"
+        }
+      ]
+    },
+    {
+      "parent": "Error Boundary / Recovery Card",
+      "route": "/components/error-boundary-recovery-card.html",
+      "letter": "E",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-error-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-error-card"
+        }
+      ]
+    },
+    {
+      "parent": "Error Message & Error Summary",
+      "route": "/components/error-message.html",
+      "letter": "E",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Error Message Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-error-message-pattern"
+        },
+        {
+          "name": "Civica / GOV.UK Error Summary Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-error-summary-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Exit This Page",
+      "route": "/components/exit-this-page.html",
+      "letter": "E",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Exit This Page Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-exit-this-page-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Feedback",
+      "route": "/components/feedback.html",
+      "letter": "F",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Feedback Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-feedback-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Fieldset & Legend",
+      "route": "/components/fieldset.html",
+      "letter": "F",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<fieldset>",
+          "origin": "HTML5",
+          "anchor": "child-fieldset",
+          "grandchildren": [
+            {
+              "name": "<legend>",
+              "origin": "HTML5",
+              "anchor": "child-fieldset--legend"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Figure & Caption",
+      "route": "/components/figure-and-caption.html",
+      "letter": "F",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<figure>",
+          "origin": "HTML5",
+          "anchor": "child-figure",
+          "grandchildren": [
+            {
+              "name": "<figcaption>",
+              "origin": "HTML5",
+              "anchor": "child-figure--figcaption"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "File Upload / Dropzone",
+      "route": "/components/file-upload.html",
+      "letter": "F",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<input type=\"file\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-file"
+        },
+        {
+          "name": "ha-file-upload",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-file-upload"
+        }
+      ]
+    },
+    {
+      "parent": "Floor Picker",
+      "route": "/components/floor-picker.html",
+      "letter": "F",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-floor-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-floor-picker"
+        },
+        {
+          "name": "ha-floors-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-floors-picker"
+        }
+      ]
+    },
+    {
+      "parent": "Footer",
+      "route": "/components/footer.html",
+      "letter": "F",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<footer>",
+          "origin": "HTML5",
+          "anchor": "child-footer"
+        }
+      ]
+    },
+    {
+      "parent": "Form & Schema Form",
+      "route": "/components/form-and-schema-form.html",
+      "letter": "F",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<form>",
+          "origin": "HTML5",
+          "anchor": "child-form"
+        },
+        {
+          "name": "ha-form",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-form",
+          "grandchildren": [
+            {
+              "name": "ha-form-boolean",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-form--ha-form-boolean"
+            },
+            {
+              "name": "ha-form-constant",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-form--ha-form-constant"
+            },
+            {
+              "name": "ha-form-float",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-form--ha-form-float"
+            },
+            {
+              "name": "ha-form-grid",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-form--ha-form-grid"
+            },
+            {
+              "name": "ha-form-expandable",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-form--ha-form-expandable"
+            },
+            {
+              "name": "ha-form-integer",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-form--ha-form-integer"
+            },
+            {
+              "name": "ha-form-multi_select",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-form--ha-form-multi-select"
+            },
+            {
+              "name": "ha-form-positive_time_period_dict",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-form--ha-form-positive-time-period-dict"
+            },
+            {
+              "name": "ha-form-select",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-form--ha-form-select"
+            },
+            {
+              "name": "ha-form-string",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-form--ha-form-string"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Gauge",
+      "route": "/components/gauge.html",
+      "letter": "G",
+      "origins": [
+        "Home Assistant",
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "ha-gauge",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-gauge"
+        },
+        {
+          "name": "hui-gauge-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-gauge-card"
+        }
+      ]
+    },
+    {
+      "parent": "Glance Card",
+      "route": "/components/glance-card.html",
+      "letter": "G",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-glance-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-glance-card"
+        }
+      ]
+    },
+    {
+      "parent": "Grid & Stack Layout Cards",
+      "route": "/components/grid-and-stack-layout-cards.html",
+      "letter": "G",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-grid-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-grid-card"
+        },
+        {
+          "name": "hui-horizontal-stack-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-horizontal-stack-card"
+        },
+        {
+          "name": "hui-vertical-stack-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-vertical-stack-card"
+        }
+      ]
+    },
+    {
+      "parent": "Header / Top App Bar",
+      "route": "/components/header.html",
+      "letter": "H",
+      "origins": [
+        "HTML5",
+        "Home Assistant",
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "<header>",
+          "origin": "HTML5",
+          "anchor": "child-header"
+        },
+        {
+          "name": "ha-top-app-bar-fixed",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-top-app-bar-fixed"
+        },
+        {
+          "name": "ha-two-pane-top-app-bar-fixed",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-two-pane-top-app-bar-fixed"
+        },
+        {
+          "name": "Civica Header Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-header-pattern",
+          "note": "absorbs generic-header"
+        }
+      ]
+    },
+    {
+      "parent": "Heading",
+      "route": "/components/heading.html",
+      "letter": "H",
+      "origins": [
+        "HTML5",
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "<h1> to <h6>",
+          "origin": "HTML5",
+          "anchor": "child-h1-to-h6",
+          "grandchildren": [
+            {
+              "name": "<h1>",
+              "origin": "HTML5",
+              "anchor": "child-h1-to-h6--h1"
+            },
+            {
+              "name": "<h2>",
+              "origin": "HTML5",
+              "anchor": "child-h1-to-h6--h2"
+            },
+            {
+              "name": "<h3>",
+              "origin": "HTML5",
+              "anchor": "child-h1-to-h6--h3"
+            },
+            {
+              "name": "<h4>",
+              "origin": "HTML5",
+              "anchor": "child-h1-to-h6--h4"
+            },
+            {
+              "name": "<h5>",
+              "origin": "HTML5",
+              "anchor": "child-h1-to-h6--h5"
+            },
+            {
+              "name": "<h6>",
+              "origin": "HTML5",
+              "anchor": "child-h1-to-h6--h6"
+            }
+          ]
+        },
+        {
+          "name": "<hgroup>",
+          "origin": "HTML5",
+          "anchor": "child-hgroup"
+        },
+        {
+          "name": "hui-heading-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-heading-card",
+          "grandchildren": [
+            {
+              "name": "hui-entity-heading-badge",
+              "origin": "Lovelace",
+              "anchor": "child-hui-heading-card--hui-entity-heading-badge"
+            },
+            {
+              "name": "hui-button-heading-badge",
+              "origin": "Lovelace",
+              "anchor": "child-hui-heading-card--hui-button-heading-badge"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Help / Hint Text",
+      "route": "/components/hint-text.html",
+      "letter": "H",
+      "origins": [
+        "Home Assistant",
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "ha-input-helper-text",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-input-helper-text"
+        },
+        {
+          "name": "Civica Hint Text Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-hint-text-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "History Graph Card",
+      "route": "/components/history-graph-card.html",
+      "letter": "H",
+      "origins": [
+        "Lovelace",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "hui-history-graph-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-history-graph-card"
+        },
+        {
+          "name": "state-history-charts",
+          "origin": "Home Assistant",
+          "anchor": "child-state-history-charts",
+          "grandchildren": [
+            {
+              "name": "state-history-chart-line",
+              "origin": "Home Assistant",
+              "anchor": "child-state-history-charts--state-history-chart-line"
+            },
+            {
+              "name": "state-history-chart-timeline",
+              "origin": "Home Assistant",
+              "anchor": "child-state-history-charts--state-history-chart-timeline"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Humidifier Card",
+      "route": "/components/humidifier-card.html",
+      "letter": "H",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-humidifier-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-humidifier-card"
+        }
+      ]
+    },
+    {
+      "parent": "Icon & State Icon",
+      "route": "/components/icon-and-state-icon.html",
+      "letter": "I",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-icon",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-icon"
+        },
+        {
+          "name": "ha-state-icon",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-state-icon"
+        },
+        {
+          "name": "ha-svg-icon",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-svg-icon"
+        },
+        {
+          "name": "ha-domain-icon",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-domain-icon"
+        },
+        {
+          "name": "ha-service-icon",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-service-icon"
+        },
+        {
+          "name": "ha-attribute-icon",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-attribute-icon"
+        }
+      ]
+    },
+    {
+      "parent": "Icon Picker",
+      "route": "/components/icon-picker.html",
+      "letter": "I",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-icon-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-icon-picker"
+        }
+      ]
+    },
+    {
+      "parent": "Iframe / Webpage Card",
+      "route": "/components/iframe-webpage-card.html",
+      "letter": "I",
+      "origins": [
+        "HTML5",
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "<iframe>",
+          "origin": "HTML5",
+          "anchor": "child-iframe"
+        },
+        {
+          "name": "hui-iframe-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-iframe-card"
+        }
+      ]
+    },
+    {
+      "parent": "Image & Picture Cards",
+      "route": "/components/images.html",
+      "letter": "I",
+      "origins": [
+        "HTML5",
+        "Lovelace",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<img>",
+          "origin": "HTML5",
+          "anchor": "child-img"
+        },
+        {
+          "name": "<picture>",
+          "origin": "HTML5",
+          "anchor": "child-picture",
+          "grandchildren": [
+            {
+              "name": "<source>",
+              "origin": "HTML5",
+              "anchor": "xref-picture--source",
+              "cross_reference": {
+                "parent": "Audio Player",
+                "route": "/components/audio-player.html",
+                "anchor": "child-audio--source"
+              }
+            }
+          ]
+        },
+        {
+          "name": "<map>",
+          "origin": "HTML5",
+          "anchor": "child-map",
+          "grandchildren": [
+            {
+              "name": "<area>",
+              "origin": "HTML5",
+              "anchor": "child-map--area"
+            }
+          ]
+        },
+        {
+          "name": "hui-picture-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-picture-card"
+        },
+        {
+          "name": "hui-picture-entity-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-picture-entity-card"
+        },
+        {
+          "name": "hui-picture-glance-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-picture-glance-card"
+        },
+        {
+          "name": "ha-camera-fetch-image",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-camera-fetch-image"
+        }
+      ]
+    },
+    {
+      "parent": "Inset Text",
+      "route": "/components/inset-text.html",
+      "letter": "I",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Inset Text Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-inset-text-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Label",
+      "route": "/components/label.html",
+      "letter": "L",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<label>",
+          "origin": "HTML5",
+          "anchor": "child-label"
+        }
+      ]
+    },
+    {
+      "parent": "Label Picker",
+      "route": "/components/label-picker.html",
+      "letter": "L",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-label-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-label-picker"
+        },
+        {
+          "name": "ha-labels-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-labels-picker"
+        }
+      ]
+    },
+    {
+      "parent": "Language Navigation",
+      "route": "/components/language-navigation.html",
+      "letter": "L",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Language Navigation Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-language-navigation-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Light Card",
+      "route": "/components/light-card.html",
+      "letter": "L",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-light-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-light-card"
+        }
+      ]
+    },
+    {
+      "parent": "Link / Anchor",
+      "route": "/components/link-anchor.html",
+      "letter": "L",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<a>",
+          "origin": "HTML5",
+          "anchor": "child-a"
+        }
+      ]
+    },
+    {
+      "parent": "List, Navigation List & Sortable List",
+      "route": "/components/list-navigation-list-and-sortable-list.html",
+      "letter": "L",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<ul>",
+          "origin": "HTML5",
+          "anchor": "child-ul"
+        },
+        {
+          "name": "<ol>",
+          "origin": "HTML5",
+          "anchor": "child-ol"
+        },
+        {
+          "name": "<li>",
+          "origin": "HTML5",
+          "anchor": "child-li"
+        },
+        {
+          "name": "<menu>",
+          "origin": "HTML5",
+          "anchor": "child-menu"
+        },
+        {
+          "name": "ha-list",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-list"
+        },
+        {
+          "name": "ha-list-item",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-list-item"
+        },
+        {
+          "name": "ha-navigation-list",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-navigation-list"
+        },
+        {
+          "name": "ha-md-list",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-md-list",
+          "grandchildren": [
+            {
+              "name": "ha-md-list-item",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-md-list--ha-md-list-item"
+            }
+          ]
+        },
+        {
+          "name": "ha-sortable",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-sortable"
+        },
+        {
+          "name": "ha-items-display-editor",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-items-display-editor"
+        }
+      ]
+    },
+    {
+      "parent": "Logbook Card",
+      "route": "/components/logbook-card.html",
+      "letter": "L",
+      "origins": [
+        "Lovelace",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "hui-logbook-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-logbook-card"
+        },
+        {
+          "name": "ha-logbook",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-logbook"
+        }
+      ]
+    },
+    {
+      "parent": "Main",
+      "route": "/components/main.html",
+      "letter": "M",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<main>",
+          "origin": "HTML5",
+          "anchor": "child-main"
+        }
+      ]
+    },
+    {
+      "parent": "Map Card",
+      "route": "/components/map-card.html",
+      "letter": "M",
+      "origins": [
+        "Lovelace",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "hui-map-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-map-card"
+        },
+        {
+          "name": "ha-map",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-map"
+        }
+      ]
+    },
+    {
+      "parent": "Mark / Highlight",
+      "route": "/components/mark-highlight.html",
+      "letter": "M",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<mark>",
+          "origin": "HTML5",
+          "anchor": "child-mark"
+        }
+      ]
+    },
+    {
+      "parent": "Markdown Card",
+      "route": "/components/markdown-card.html",
+      "letter": "M",
+      "origins": [
+        "Lovelace",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "hui-markdown-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-markdown-card"
+        },
+        {
+          "name": "ha-markdown",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-markdown",
+          "grandchildren": [
+            {
+              "name": "ha-markdown-element",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-markdown--ha-markdown-element"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Mathematical Markup",
+      "route": "/components/mathematical-markup.html",
+      "letter": "M",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<math>",
+          "origin": "HTML5",
+          "anchor": "child-math",
+          "note": "MathML"
+        }
+      ]
+    },
+    {
+      "parent": "Media Control Card",
+      "route": "/components/media-control-card.html",
+      "letter": "M",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-media-control-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-media-control-card"
+        }
+      ]
+    },
+    {
+      "parent": "Metric / Analytics Summary",
+      "route": "/components/metric-analytics-summary.html",
+      "letter": "M",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-metric",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-metric"
+        },
+        {
+          "name": "ha-analytics",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-analytics"
+        }
+      ]
+    },
+    {
+      "parent": "More-Info Dialog & Domain State Controls",
+      "route": "/components/more-info-dialog-and-domain-state-controls.html",
+      "letter": "M",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-more-info-dialog",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-more-info-dialog",
+          "grandchildren": [
+            {
+              "name": "ha-more-info-info",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-more-info-info"
+            },
+            {
+              "name": "ha-more-info-history",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-more-info-history"
+            },
+            {
+              "name": "ha-more-info-logbook",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-more-info-logbook"
+            },
+            {
+              "name": "ha-more-info-settings",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-more-info-settings"
+            },
+            {
+              "name": "ha-related-items",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-related-items"
+            },
+            {
+              "name": "ha-state-control-light-brightness",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-state-control-light-brightness"
+            },
+            {
+              "name": "ha-state-control-climate-temperature",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-state-control-climate-temperature"
+            },
+            {
+              "name": "ha-state-control-cover-position",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-state-control-cover-position"
+            },
+            {
+              "name": "ha-state-control-fan-speed",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-state-control-fan-speed"
+            },
+            {
+              "name": "ha-state-control-humidifier",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-state-control-humidifier"
+            },
+            {
+              "name": "ha-state-control-lock",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-state-control-lock"
+            },
+            {
+              "name": "ha-state-control-toggle",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-state-control-toggle"
+            },
+            {
+              "name": "ha-state-control-valve-position",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-state-control-valve-position"
+            },
+            {
+              "name": "ha-state-control-water_heater",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-state-control-water-heater"
+            },
+            {
+              "name": "ha-vacuum-state",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-vacuum-state"
+            },
+            {
+              "name": "ha-water_heater-state",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-more-info-dialog--ha-water-heater-state"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Navigation",
+      "route": "/components/navigation.html",
+      "letter": "N",
+      "origins": [
+        "HTML5",
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "<nav>",
+          "origin": "HTML5",
+          "anchor": "child-nav"
+        },
+        {
+          "name": "Civica A-Z Jump Navigation Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-a-z-jump-navigation-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Notification Banner & Toast",
+      "route": "/components/notification-banners.html",
+      "letter": "N",
+      "origins": [
+        "Home Assistant",
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "ha-toast",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-toast"
+        },
+        {
+          "name": "hui-notification-drawer",
+          "origin": "Home Assistant",
+          "anchor": "child-hui-notification-drawer"
+        },
+        {
+          "name": "Civica Notification Banner Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-notification-banner-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Output",
+      "route": "/components/output.html",
+      "letter": "O",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<output>",
+          "origin": "HTML5",
+          "anchor": "child-output"
+        }
+      ]
+    },
+    {
+      "parent": "Page History",
+      "route": "/components/page-history.html",
+      "letter": "P",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica Page History Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-page-history-pattern",
+          "note": "absorbs review-date"
+        }
+      ]
+    },
+    {
+      "parent": "Pagination",
+      "route": "/components/pagination.html",
+      "letter": "P",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Pagination Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-pagination-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Panel",
+      "route": "/components/panel.html",
+      "letter": "P",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Panel Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-panel-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Phase Banner",
+      "route": "/components/phase-banner.html",
+      "letter": "P",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Phase Banner Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-phase-banner-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Picture Elements Card",
+      "route": "/components/picture-elements-card.html",
+      "letter": "P",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-picture-elements-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-picture-elements-card",
+          "grandchildren": [
+            {
+              "name": "hui-state-badge-element",
+              "origin": "Lovelace",
+              "anchor": "child-hui-picture-elements-card--hui-state-badge-element"
+            },
+            {
+              "name": "hui-state-icon-element",
+              "origin": "Lovelace",
+              "anchor": "child-hui-picture-elements-card--hui-state-icon-element"
+            },
+            {
+              "name": "hui-state-label-element",
+              "origin": "Lovelace",
+              "anchor": "child-hui-picture-elements-card--hui-state-label-element"
+            },
+            {
+              "name": "hui-service-button-element",
+              "origin": "Lovelace",
+              "anchor": "child-hui-picture-elements-card--hui-service-button-element"
+            },
+            {
+              "name": "hui-action-button-element",
+              "origin": "Lovelace",
+              "anchor": "child-hui-picture-elements-card--hui-action-button-element"
+            },
+            {
+              "name": "hui-icon-element",
+              "origin": "Lovelace",
+              "anchor": "child-hui-picture-elements-card--hui-icon-element"
+            },
+            {
+              "name": "hui-image-element",
+              "origin": "Lovelace",
+              "anchor": "child-hui-picture-elements-card--hui-image-element"
+            },
+            {
+              "name": "hui-conditional-element",
+              "origin": "Lovelace",
+              "anchor": "child-hui-picture-elements-card--hui-conditional-element"
+            },
+            {
+              "name": "hui-state-switch-element",
+              "origin": "Lovelace",
+              "anchor": "child-hui-picture-elements-card--hui-state-switch-element"
+            },
+            {
+              "name": "hui-custom-element",
+              "origin": "Lovelace",
+              "anchor": "child-hui-picture-elements-card--hui-custom-element"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Plant Status Card",
+      "route": "/components/plant-status-card.html",
+      "letter": "P",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-plant-status-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-plant-status-card"
+        }
+      ]
+    },
+    {
+      "parent": "Popover",
+      "route": "/components/popover.html",
+      "letter": "P",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "[popover] Global Attribute / Popover API",
+          "origin": "HTML5",
+          "anchor": "child-popover-global-attribute-popover-api"
+        }
+      ]
+    },
+    {
+      "parent": "Progress Bar & Spinner",
+      "route": "/components/progress-bar-and-spinner.html",
+      "letter": "P",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<progress>",
+          "origin": "HTML5",
+          "anchor": "child-progress"
+        },
+        {
+          "name": "ha-spinner",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-spinner"
+        },
+        {
+          "name": "ha-circular-progress",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-circular-progress"
+        },
+        {
+          "name": "ha-progress-button",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-progress-button"
+        },
+        {
+          "name": "ha-linear-progress",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-linear-progress"
+        },
+        {
+          "name": "ha-fade-in",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-fade-in"
+        }
+      ]
+    },
+    {
+      "parent": "QR Code",
+      "route": "/components/qr-code.html",
+      "letter": "Q",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-qr-code",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-qr-code"
+        }
+      ]
+    },
+    {
+      "parent": "Radio Button",
+      "route": "/components/radios.html",
+      "letter": "R",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<input type=\"radio\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-radio"
+        },
+        {
+          "name": "ha-radio",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-radio"
+        }
+      ]
+    },
+    {
+      "parent": "Relative Time & Timestamp",
+      "route": "/components/relative-time-and-timestamp.html",
+      "letter": "R",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<time>",
+          "origin": "HTML5",
+          "anchor": "child-time"
+        },
+        {
+          "name": "ha-relative-time",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-relative-time"
+        },
+        {
+          "name": "ha-timestamp",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-timestamp"
+        }
+      ]
+    },
+    {
+      "parent": "Search Input",
+      "route": "/components/search-input.html",
+      "letter": "S",
+      "origins": [
+        "HTML5",
+        "Home Assistant",
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "<search>",
+          "origin": "HTML5",
+          "anchor": "child-search"
+        },
+        {
+          "name": "<input type=\"search\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-search"
+        },
+        {
+          "name": "search-input",
+          "origin": "Home Assistant",
+          "anchor": "child-search-input"
+        },
+        {
+          "name": "search-input-outlined",
+          "origin": "Home Assistant",
+          "anchor": "child-search-input-outlined"
+        },
+        {
+          "name": "Civica Combobox Search Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-combobox-search-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Section & View Layout",
+      "route": "/components/section-and-view-layout.html",
+      "letter": "S",
+      "origins": [
+        "HTML5",
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "<section>",
+          "origin": "HTML5",
+          "anchor": "child-section"
+        },
+        {
+          "name": "hui-sections-view",
+          "origin": "Lovelace",
+          "anchor": "child-hui-sections-view"
+        },
+        {
+          "name": "hui-section",
+          "origin": "Lovelace",
+          "anchor": "child-hui-section"
+        },
+        {
+          "name": "hui-masonry-view",
+          "origin": "Lovelace",
+          "anchor": "child-hui-masonry-view"
+        },
+        {
+          "name": "hui-panel-view",
+          "origin": "Lovelace",
+          "anchor": "child-hui-panel-view"
+        },
+        {
+          "name": "hui-sidebar-view",
+          "origin": "Lovelace",
+          "anchor": "child-hui-sidebar-view"
+        }
+      ]
+    },
+    {
+      "parent": "Selector (Polymorphic Schema Input)",
+      "route": "/components/selector.html",
+      "letter": "S",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-selector",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-selector",
+          "grandchildren": [
+            {
+              "name": "ha-selector-action",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-action"
+            },
+            {
+              "name": "ha-selector-addon",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-addon"
+            },
+            {
+              "name": "ha-selector-app",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-app"
+            },
+            {
+              "name": "ha-selector-area",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-area"
+            },
+            {
+              "name": "ha-selector-assist_pipeline",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-assist-pipeline"
+            },
+            {
+              "name": "ha-selector-attribute",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-attribute"
+            },
+            {
+              "name": "ha-selector-backup_location",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-backup-location"
+            },
+            {
+              "name": "ha-selector-bluetooth",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-bluetooth"
+            },
+            {
+              "name": "ha-selector-boolean",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-boolean"
+            },
+            {
+              "name": "ha-selector-button_toggle",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-button-toggle"
+            },
+            {
+              "name": "ha-selector-choose",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-choose"
+            },
+            {
+              "name": "ha-selector-color_rgb",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-color-rgb"
+            },
+            {
+              "name": "ha-selector-color_temp",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-color-temp"
+            },
+            {
+              "name": "ha-selector-condition",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-condition"
+            },
+            {
+              "name": "ha-selector-config_entry",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-config-entry"
+            },
+            {
+              "name": "ha-selector-constant",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-constant"
+            },
+            {
+              "name": "ha-selector-conversation_agent",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-conversation-agent"
+            },
+            {
+              "name": "ha-selector-country",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-country"
+            },
+            {
+              "name": "ha-selector-date",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-date"
+            },
+            {
+              "name": "ha-selector-datetime",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-datetime"
+            },
+            {
+              "name": "ha-selector-device",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-device"
+            },
+            {
+              "name": "ha-selector-duration",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-duration"
+            },
+            {
+              "name": "ha-selector-entity",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-entity"
+            },
+            {
+              "name": "ha-selector-file",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-file"
+            },
+            {
+              "name": "ha-selector-floor",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-floor"
+            },
+            {
+              "name": "ha-selector-icon",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-icon"
+            },
+            {
+              "name": "ha-selector-label",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-label"
+            },
+            {
+              "name": "ha-selector-language",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-language"
+            },
+            {
+              "name": "ha-selector-location",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-location"
+            },
+            {
+              "name": "ha-selector-media",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-media"
+            },
+            {
+              "name": "ha-selector-navigation",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-navigation"
+            },
+            {
+              "name": "ha-selector-number",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-number"
+            },
+            {
+              "name": "ha-selector-object",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-object"
+            },
+            {
+              "name": "ha-selector-qr_code",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-qr-code"
+            },
+            {
+              "name": "ha-selector-select",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-select"
+            },
+            {
+              "name": "ha-selector-serial",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-serial"
+            },
+            {
+              "name": "ha-selector-state",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-state"
+            },
+            {
+              "name": "ha-selector-statistic",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-statistic"
+            },
+            {
+              "name": "ha-selector-stt",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-stt"
+            },
+            {
+              "name": "ha-selector-target",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-target"
+            },
+            {
+              "name": "ha-selector-template",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-template"
+            },
+            {
+              "name": "ha-selector-text",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-text"
+            },
+            {
+              "name": "ha-selector-theme",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-theme"
+            },
+            {
+              "name": "ha-selector-time",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-time"
+            },
+            {
+              "name": "ha-selector-trigger",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-trigger"
+            },
+            {
+              "name": "ha-selector-tts",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-tts"
+            },
+            {
+              "name": "ha-selector-tts_voice",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-tts-voice"
+            },
+            {
+              "name": "ha-selector-ui_action",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-ui-action"
+            },
+            {
+              "name": "ha-selector-ui_color",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-ui-color"
+            },
+            {
+              "name": "ha-selector-ui_state_content",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-ui-state-content"
+            },
+            {
+              "name": "ha-selector-usb",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-usb"
+            },
+            {
+              "name": "ha-selector-zeroconf",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-zeroconf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Sensor Card",
+      "route": "/components/sensor-card.html",
+      "letter": "S",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-sensor-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-sensor-card"
+        }
+      ]
+    },
+    {
+      "parent": "Service Navigation",
+      "route": "/components/service-navigation.html",
+      "letter": "S",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Service Navigation Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-service-navigation-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Settings Row",
+      "route": "/components/settings-row.html",
+      "letter": "S",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-settings-row",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-settings-row"
+        }
+      ]
+    },
+    {
+      "parent": "Shortcut Card",
+      "route": "/components/shortcut-card.html",
+      "letter": "S",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-shortcut-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-shortcut-card"
+        }
+      ]
+    },
+    {
+      "parent": "Skip Link",
+      "route": "/components/skip-link.html",
+      "letter": "S",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Skip Link Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-skip-link-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Statistic & Statistics Graph Cards",
+      "route": "/components/charts.html",
+      "letter": "S",
+      "origins": [
+        "Lovelace",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "hui-statistic-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-statistic-card"
+        },
+        {
+          "name": "hui-statistics-graph-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-statistics-graph-card"
+        },
+        {
+          "name": "ha-chart-base",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-chart-base"
+        }
+      ]
+    },
+    {
+      "parent": "Subheader",
+      "route": "/components/subheader.html",
+      "letter": "S",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-subheader",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-subheader"
+        }
+      ]
+    },
+    {
+      "parent": "Summary List",
+      "route": "/components/summary-list.html",
+      "letter": "S",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Summary List Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-summary-list-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "SVG Vector Graphic",
+      "route": "/components/svg-vector-graphic.html",
+      "letter": "S",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<svg>",
+          "origin": "HTML5",
+          "anchor": "child-svg",
+          "grandchildren": [
+            {
+              "name": "<g>",
+              "origin": "HTML5",
+              "anchor": "child-svg--g"
+            },
+            {
+              "name": "<path>",
+              "origin": "HTML5",
+              "anchor": "child-svg--path"
+            },
+            {
+              "name": "<rect>",
+              "origin": "HTML5",
+              "anchor": "child-svg--rect"
+            },
+            {
+              "name": "<circle>",
+              "origin": "HTML5",
+              "anchor": "child-svg--circle"
+            },
+            {
+              "name": "<ellipse>",
+              "origin": "HTML5",
+              "anchor": "child-svg--ellipse"
+            },
+            {
+              "name": "<line>",
+              "origin": "HTML5",
+              "anchor": "child-svg--line"
+            },
+            {
+              "name": "<polyline>",
+              "origin": "HTML5",
+              "anchor": "child-svg--polyline"
+            },
+            {
+              "name": "<polygon>",
+              "origin": "HTML5",
+              "anchor": "child-svg--polygon"
+            },
+            {
+              "name": "<text>",
+              "origin": "HTML5",
+              "anchor": "child-svg--text"
+            },
+            {
+              "name": "<tspan>",
+              "origin": "HTML5",
+              "anchor": "child-svg--tspan"
+            },
+            {
+              "name": "<defs>",
+              "origin": "HTML5",
+              "anchor": "child-svg--defs"
+            },
+            {
+              "name": "<use>",
+              "origin": "HTML5",
+              "anchor": "child-svg--use"
+            },
+            {
+              "name": "<symbol>",
+              "origin": "HTML5",
+              "anchor": "child-svg--symbol"
+            },
+            {
+              "name": "<clipPath>",
+              "origin": "HTML5",
+              "anchor": "child-svg--clippath"
+            },
+            {
+              "name": "<linearGradient>",
+              "origin": "HTML5",
+              "anchor": "child-svg--lineargradient"
+            },
+            {
+              "name": "<radialGradient>",
+              "origin": "HTML5",
+              "anchor": "child-svg--radialgradient"
+            },
+            {
+              "name": "<stop>",
+              "origin": "HTML5",
+              "anchor": "child-svg--stop"
+            },
+            {
+              "name": "<title>",
+              "origin": "HTML5",
+              "anchor": "xref-svg--title",
+              "cross_reference": {
+                "parent": "Document Root, Metadata & Shadow DOM Primitives",
+                "route": "/components/document-root-metadata-and-shadow-dom-primitives.html",
+                "anchor": "child-head--title"
+              },
+              "note": "In SVG, <title> gives the graphic or shape an accessible name; the HTML <title> owned by Document Root names the document."
+            },
+            {
+              "name": "<desc>",
+              "origin": "HTML5",
+              "anchor": "child-svg--desc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Switch / Toggle",
+      "route": "/components/switch-toggle.html",
+      "letter": "S",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<input type=\"checkbox\" role=\"switch\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-checkbox-role-switch"
+        },
+        {
+          "name": "ha-switch",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-switch"
+        },
+        {
+          "name": "ha-md-switch",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-md-switch"
+        },
+        {
+          "name": "ha-control-switch",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-control-switch"
+        }
+      ]
+    },
+    {
+      "parent": "Tabs",
+      "route": "/components/tabs.html",
+      "letter": "T",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-tab-group",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-tab-group",
+          "grandchildren": [
+            {
+              "name": "ha-tab",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-tab-group--ha-tab"
+            },
+            {
+              "name": "ha-tab-panel",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-tab-group--ha-tab-panel"
+            }
+          ]
+        },
+        {
+          "name": "ha-md-tabs",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-md-tabs",
+          "grandchildren": [
+            {
+              "name": "ha-md-primary-tab",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-md-tabs--ha-md-primary-tab"
+            },
+            {
+              "name": "ha-md-secondary-tab",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-md-tabs--ha-md-secondary-tab"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "Tag",
+      "route": "/components/tag.html",
+      "letter": "T",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Tag Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-tag-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Target Picker",
+      "route": "/components/target-picker.html",
+      "letter": "T",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-target-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-target-picker"
+        }
+      ]
+    },
+    {
+      "parent": "Task List",
+      "route": "/components/task-list.html",
+      "letter": "T",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Task List Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-task-list-pattern"
+        }
+      ]
+    },
+    {
+      "parent": "Text Input",
+      "route": "/components/text-input.html",
+      "letter": "T",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<input type=\"text\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-text"
+        },
+        {
+          "name": "<input type=\"email\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-email"
+        },
+        {
+          "name": "<input type=\"number\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-number"
+        },
+        {
+          "name": "<input type=\"password\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-password"
+        },
+        {
+          "name": "<input type=\"url\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-url"
+        },
+        {
+          "name": "<input type=\"tel\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-tel"
+        },
+        {
+          "name": "<input type=\"hidden\">",
+          "origin": "HTML5",
+          "anchor": "child-input-type-hidden"
+        },
+        {
+          "name": "ha-textfield",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-textfield"
+        },
+        {
+          "name": "ha-md-textfield",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-md-textfield"
+        },
+        {
+          "name": "ha-password-field",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-password-field"
+        }
+      ]
+    },
+    {
+      "parent": "Text Semantics (Inline)",
+      "route": "/components/text-semantics.html",
+      "letter": "T",
+      "origins": [
+        "HTML5"
+      ],
+      "children": [
+        {
+          "name": "<strong>",
+          "origin": "HTML5",
+          "anchor": "child-strong"
+        },
+        {
+          "name": "<em>",
+          "origin": "HTML5",
+          "anchor": "child-em"
+        },
+        {
+          "name": "<b>",
+          "origin": "HTML5",
+          "anchor": "child-b"
+        },
+        {
+          "name": "<i>",
+          "origin": "HTML5",
+          "anchor": "child-i"
+        },
+        {
+          "name": "<u>",
+          "origin": "HTML5",
+          "anchor": "child-u"
+        },
+        {
+          "name": "<small>",
+          "origin": "HTML5",
+          "anchor": "child-small"
+        },
+        {
+          "name": "<s>",
+          "origin": "HTML5",
+          "anchor": "child-s"
+        },
+        {
+          "name": "<del>",
+          "origin": "HTML5",
+          "anchor": "child-del"
+        },
+        {
+          "name": "<ins>",
+          "origin": "HTML5",
+          "anchor": "child-ins"
+        },
+        {
+          "name": "<sub>",
+          "origin": "HTML5",
+          "anchor": "child-sub"
+        },
+        {
+          "name": "<sup>",
+          "origin": "HTML5",
+          "anchor": "child-sup"
+        },
+        {
+          "name": "<dfn>",
+          "origin": "HTML5",
+          "anchor": "child-dfn"
+        },
+        {
+          "name": "<data>",
+          "origin": "HTML5",
+          "anchor": "child-data"
+        },
+        {
+          "name": "<bdi>",
+          "origin": "HTML5",
+          "anchor": "child-bdi"
+        },
+        {
+          "name": "<bdo>",
+          "origin": "HTML5",
+          "anchor": "child-bdo"
+        },
+        {
+          "name": "<ruby>",
+          "origin": "HTML5",
+          "anchor": "child-ruby",
+          "grandchildren": [
+            {
+              "name": "<rt>",
+              "origin": "HTML5",
+              "anchor": "child-ruby--rt"
+            },
+            {
+              "name": "<rp>",
+              "origin": "HTML5",
+              "anchor": "child-ruby--rp"
+            }
+          ]
+        },
+        {
+          "name": "<wbr>",
+          "origin": "HTML5",
+          "anchor": "child-wbr"
+        },
+        {
+          "name": "<br>",
+          "origin": "HTML5",
+          "anchor": "child-br"
+        },
+        {
+          "name": "<span>",
+          "origin": "HTML5",
+          "anchor": "child-span"
+        },
+        {
+          "name": "<div>",
+          "origin": "HTML5",
+          "anchor": "child-div"
+        }
+      ]
+    },
+    {
+      "parent": "Textarea",
+      "route": "/components/textarea.html",
+      "letter": "T",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<textarea>",
+          "origin": "HTML5",
+          "anchor": "child-textarea"
+        },
+        {
+          "name": "ha-textarea",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-textarea"
+        }
+      ]
+    },
+    {
+      "parent": "Thermostat Card",
+      "route": "/components/thermostat-card.html",
+      "letter": "T",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-thermostat-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-thermostat-card"
+        }
+      ]
+    },
+    {
+      "parent": "Tile Card",
+      "route": "/components/tile-card.html",
+      "letter": "T",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-tile-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-tile-card",
+          "grandchildren": [
+            {
+              "name": "ha-tile-icon",
+              "origin": "Home Assistant",
+              "anchor": "child-hui-tile-card--ha-tile-icon"
+            },
+            {
+              "name": "ha-tile-info",
+              "origin": "Home Assistant",
+              "anchor": "child-hui-tile-card--ha-tile-info"
+            },
+            {
+              "name": "ha-tile-badge",
+              "origin": "Home Assistant",
+              "anchor": "child-hui-tile-card--ha-tile-badge"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "parent": "To-do List Card",
+      "route": "/components/to-do-list-card.html",
+      "letter": "T",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-todo-list-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-todo-list-card"
+        },
+        {
+          "name": "hui-shopping-list-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-shopping-list-card"
+        }
+      ]
+    },
+    {
+      "parent": "Tooltip",
+      "route": "/components/tooltip.html",
+      "letter": "T",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-tooltip",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-tooltip"
+        },
+        {
+          "name": "ha-help-tooltip",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-help-tooltip"
+        }
+      ]
+    },
+    {
+      "parent": "User & Locale Pickers",
+      "route": "/components/user-and-locale-pickers.html",
+      "letter": "U",
+      "origins": [
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "ha-user-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-user-picker"
+        },
+        {
+          "name": "ha-users-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-users-picker"
+        },
+        {
+          "name": "ha-theme-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-theme-picker"
+        },
+        {
+          "name": "ha-country-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-country-picker"
+        },
+        {
+          "name": "ha-language-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-language-picker"
+        },
+        {
+          "name": "ha-timezone-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-timezone-picker"
+        },
+        {
+          "name": "ha-currency-picker",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-currency-picker"
+        }
+      ]
+    },
+    {
+      "parent": "Video & Camera Stream Player",
+      "route": "/components/video-and-camera-stream-player.html",
+      "letter": "V",
+      "origins": [
+        "HTML5",
+        "Home Assistant"
+      ],
+      "children": [
+        {
+          "name": "<video>",
+          "origin": "HTML5",
+          "anchor": "child-video",
+          "grandchildren": [
+            {
+              "name": "<source>",
+              "origin": "HTML5",
+              "anchor": "xref-video--source",
+              "cross_reference": {
+                "parent": "Audio Player",
+                "route": "/components/audio-player.html",
+                "anchor": "child-audio--source"
+              }
+            },
+            {
+              "name": "<track>",
+              "origin": "HTML5",
+              "anchor": "xref-video--track",
+              "cross_reference": {
+                "parent": "Audio Player",
+                "route": "/components/audio-player.html",
+                "anchor": "child-audio--track"
+              }
+            }
+          ]
+        },
+        {
+          "name": "ha-camera-stream",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-camera-stream"
+        },
+        {
+          "name": "ha-hls-player",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-hls-player"
+        },
+        {
+          "name": "ha-web-rtc-player",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-web-rtc-player"
+        },
+        {
+          "name": "ha-mjpeg-player",
+          "origin": "Home Assistant",
+          "anchor": "child-ha-mjpeg-player"
+        }
+      ]
+    },
+    {
+      "parent": "Warning Text",
+      "route": "/components/warning-text.html",
+      "letter": "W",
+      "origins": [
+        "Civica"
+      ],
+      "children": [
+        {
+          "name": "Civica / GOV.UK Warning Text Pattern",
+          "origin": "Civica",
+          "anchor": "child-civica-gov-uk-warning-text-pattern",
+          "note": "absorbs warning-callout"
+        }
+      ]
+    },
+    {
+      "parent": "Weather Forecast Card",
+      "route": "/components/weather-forecast-card.html",
+      "letter": "W",
+      "origins": [
+        "Lovelace"
+      ],
+      "children": [
+        {
+          "name": "hui-weather-forecast-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-weather-forecast-card"
+        }
+      ]
+    }
+  ]
+}

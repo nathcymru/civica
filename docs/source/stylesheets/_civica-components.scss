@@ -74,3 +74,67 @@ h2.style-a-z__letter {
   color: #fff;
   background-color: $civica-primary;
 }
+
+// Components index: A to Z list and combobox. Reuses the Lexicon A to Z bar
+// and letter headings; only the list entries and the popup need styles.
+.c-component-az__list {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+
+  li { margin: 0 0 10px; }
+}
+
+.c-component-az__name { font-weight: 700; }
+
+.c-component-az__meta {
+  display: block;
+  color: $civica-secondary-text;
+  font-size: 1rem;
+}
+
+.c-component-search__hint {
+  margin: 0 0 10px;
+  color: $civica-secondary-text;
+}
+
+.c-component-search__field { position: relative; }
+
+.c-component-search__listbox {
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  max-height: 22rem;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  border: 2px solid $civica-text;
+  border-top: 0;
+  background: #ffffff;
+}
+
+.c-component-search__option {
+  padding: 8px 10px;
+  border-bottom: 1px solid $civica-border;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+
+  &:hover { background: #f3f2f1; }
+
+  &[aria-selected="true"] {
+    color: #ffffff;
+    background: $civica-primary;
+
+    .c-component-search__meta { color: #ffffff; }
+  }
+}
+
+.c-component-search__name { font-weight: 700; }
+
+.c-component-search__meta {
+  display: block;
+  color: $civica-secondary-text;
+  font-size: 1rem;
+}
