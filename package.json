@@ -19,6 +19,7 @@
     "check:coverage": "node scripts/check-ha-coverage.mjs",
     "check:naming": "node scripts/check-naming.mjs",
     "check:components": "node scripts/check-components.mjs",
+    "check:colours": "node scripts/check-colours.mjs",
     "check:licences": "node scripts/audit-licences.mjs"
   },
   "devDependencies": {

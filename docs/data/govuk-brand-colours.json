@@ -1,0 +1,2157 @@
+{
+  "schema_version": 1,
+  "title": "GOV.UK Brand colour palettes",
+  "source": {
+    "publisher": "Government Digital Service, GOV.UK Brand Guidelines",
+    "url": "https://brand.design-system.service.gov.uk/colour/",
+    "licence": "Open Government Licence v3.0",
+    "copyright": "Crown copyright",
+    "read_on": "2026-11-18"
+  },
+  "rule": "Values are copied verbatim from the GOV.UK Brand Guidelines colour pages. Do not edit a value here unless the upstream page changed; record the new read date.",
+  "colours": {
+    "blue": {
+      "name": "Primary blue",
+      "hex": "#1D70B8",
+      "rgb": [
+        29,
+        112,
+        184
+      ],
+      "family": "blue",
+      "variant": "primary",
+      "sass": "govuk-colour(\"blue\")",
+      "print": {
+        "cmyk": [
+          84,
+          39,
+          0,
+          28
+        ],
+        "pantone": "7461 C"
+      }
+    },
+    "blue-tint-25": {
+      "name": "Blue tint 25%",
+      "hex": "#5694CA",
+      "rgb": [
+        86,
+        148,
+        202
+      ],
+      "family": "blue",
+      "variant": "tint-25",
+      "sass": "govuk-colour(\"blue\", $variant: \"tint-25\")",
+      "print": {
+        "cmyk": [
+          57,
+          27,
+          0,
+          21
+        ],
+        "pantone": "7688 C"
+      }
+    },
+    "blue-tint-50": {
+      "name": "Blue tint 50%",
+      "hex": "#8EB8DC",
+      "rgb": [
+        142,
+        184,
+        220
+      ],
+      "family": "blue",
+      "variant": "tint-50",
+      "sass": "govuk-colour(\"blue\", $variant: \"tint-50\")",
+      "print": {
+        "cmyk": [
+          35,
+          16,
+          0,
+          14
+        ],
+        "pantone": "278 C"
+      }
+    },
+    "blue-tint-80": {
+      "name": "Blue tint 80%",
+      "hex": "#D2E2F1",
+      "rgb": [
+        210,
+        226,
+        241
+      ],
+      "family": "blue",
+      "variant": "tint-80",
+      "sass": "govuk-colour(\"blue\", $variant: \"tint-80\")",
+      "print": {
+        "cmyk": [
+          13,
+          6,
+          0,
+          5
+        ],
+        "pantone": "545 C"
+      }
+    },
+    "blue-tint-95": {
+      "name": "Blue tint 95%",
+      "hex": "#F4F8FB",
+      "rgb": [
+        244,
+        248,
+        251
+      ],
+      "family": "blue",
+      "variant": "tint-95",
+      "sass": "govuk-colour(\"blue\", $variant: \"tint-95\")"
+    },
+    "blue-shade-10": {
+      "name": "Blue shade 10%",
+      "hex": "#1A65A6",
+      "rgb": [
+        26,
+        101,
+        166
+      ],
+      "family": "blue",
+      "variant": "shade-10",
+      "sass": "govuk-colour(\"blue\", $variant: \"shade-10\")"
+    },
+    "blue-shade-25": {
+      "name": "Blue shade 25%",
+      "hex": "#16548A",
+      "rgb": [
+        22,
+        84,
+        138
+      ],
+      "family": "blue",
+      "variant": "shade-25",
+      "sass": "govuk-colour(\"blue\", $variant: \"shade-25\")"
+    },
+    "blue-shade-50": {
+      "name": "Blue shade 50%",
+      "hex": "#0F385C",
+      "rgb": [
+        15,
+        56,
+        92
+      ],
+      "family": "blue",
+      "variant": "shade-50",
+      "sass": "govuk-colour(\"blue\", $variant: \"shade-50\")",
+      "print": {
+        "cmyk": [
+          84,
+          39,
+          0,
+          64
+        ],
+        "pantone": "7694 C"
+      }
+    },
+    "blue-accent": {
+      "name": "Accent blue",
+      "hex": "#11E0F1",
+      "rgb": [
+        17,
+        224,
+        241
+      ],
+      "family": "blue",
+      "variant": "accent"
+    },
+    "green": {
+      "name": "Primary green",
+      "hex": "#0F7A52",
+      "rgb": [
+        15,
+        122,
+        82
+      ],
+      "family": "green",
+      "variant": "primary",
+      "sass": "govuk-colour(\"green\")",
+      "print": {
+        "cmyk": [
+          99,
+          0,
+          83,
+          37
+        ],
+        "pantone": "7727 C"
+      }
+    },
+    "green-tint-25": {
+      "name": "Green tint 25%",
+      "hex": "#4B9B7D",
+      "rgb": [
+        75,
+        155,
+        125
+      ],
+      "family": "green",
+      "variant": "tint-25",
+      "sass": "govuk-colour(\"green\", $variant: \"tint-25\")",
+      "print": {
+        "cmyk": [
+          70,
+          13,
+          52,
+          17
+        ],
+        "pantone": "6153 C"
+      }
+    },
+    "green-tint-50": {
+      "name": "Green tint 50%",
+      "hex": "#87BCA8",
+      "rgb": [
+        135,
+        188,
+        168
+      ],
+      "family": "green",
+      "variant": "tint-50",
+      "sass": "govuk-colour(\"green\", $variant: \"tint-50\")",
+      "print": {
+        "cmyk": [
+          67,
+          4,
+          51,
+          5
+        ],
+        "pantone": "7723 C"
+      }
+    },
+    "green-tint-80": {
+      "name": "Green tint 80%",
+      "hex": "#CFE4DC",
+      "rgb": [
+        207,
+        228,
+        220
+      ],
+      "family": "green",
+      "variant": "tint-80",
+      "sass": "govuk-colour(\"green\", $variant: \"tint-80\")",
+      "print": {
+        "cmyk": [
+          13,
+          0,
+          9,
+          0
+        ],
+        "pantone": "621 C"
+      }
+    },
+    "green-tint-95": {
+      "name": "Green tint 95%",
+      "hex": "#F3F8F6",
+      "rgb": [
+        243,
+        248,
+        246
+      ],
+      "family": "green",
+      "variant": "tint-95",
+      "sass": "govuk-colour(\"green\", $variant: \"tint-95\")"
+    },
+    "green-shade-25": {
+      "name": "Green shade 25%",
+      "hex": "#0B5C3E",
+      "rgb": [
+        11,
+        92,
+        62
+      ],
+      "family": "green",
+      "variant": "shade-25",
+      "sass": "govuk-colour(\"green\", $variant: \"shade-25\")"
+    },
+    "green-shade-50": {
+      "name": "Green shade 50%",
+      "hex": "#083D29",
+      "rgb": [
+        8,
+        61,
+        41
+      ],
+      "family": "green",
+      "variant": "shade-50",
+      "sass": "govuk-colour(\"green\", $variant: \"shade-50\")"
+    },
+    "green-accent": {
+      "name": "Accent green",
+      "hex": "#66F39E",
+      "rgb": [
+        102,
+        243,
+        158
+      ],
+      "family": "green",
+      "variant": "accent"
+    },
+    "teal": {
+      "name": "Primary teal",
+      "hex": "#158187",
+      "rgb": [
+        21,
+        129,
+        135
+      ],
+      "family": "teal",
+      "variant": "primary",
+      "sass": "govuk-colour(\"teal\")",
+      "print": {
+        "cmyk": [
+          84,
+          4,
+          0,
+          47
+        ],
+        "pantone": "7716 C"
+      }
+    },
+    "teal-tint-25": {
+      "name": "Teal tint 25%",
+      "hex": "#50A1A5",
+      "rgb": [
+        80,
+        161,
+        165
+      ],
+      "family": "teal",
+      "variant": "tint-25",
+      "sass": "govuk-colour(\"teal\", $variant: \"tint-25\")",
+      "print": {
+        "cmyk": [
+          52,
+          2,
+          0,
+          35
+        ],
+        "pantone": "2235 C"
+      }
+    },
+    "teal-tint-50": {
+      "name": "Teal tint 50%",
+      "hex": "#8AC0C3",
+      "rgb": [
+        138,
+        192,
+        195
+      ],
+      "family": "teal",
+      "variant": "tint-50",
+      "sass": "govuk-colour(\"teal\", $variant: \"tint-50\")",
+      "print": {
+        "cmyk": [
+          29,
+          2,
+          0,
+          24
+        ],
+        "pantone": "7472 C"
+      }
+    },
+    "teal-tint-80": {
+      "name": "Teal tint 80%",
+      "hex": "#D0E6E7",
+      "rgb": [
+        208,
+        230,
+        231
+      ],
+      "family": "teal",
+      "variant": "tint-80",
+      "sass": "govuk-colour(\"teal\", $variant: \"tint-80\")",
+      "print": {
+        "cmyk": [
+          10,
+          0,
+          0,
+          9
+        ],
+        "pantone": "7464 C"
+      }
+    },
+    "teal-tint-95": {
+      "name": "Teal tint 95%",
+      "hex": "#F3F9F9",
+      "rgb": [
+        243,
+        249,
+        249
+      ],
+      "family": "teal",
+      "variant": "tint-95",
+      "sass": "govuk-colour(\"teal\", $variant: \"tint-95\")"
+    },
+    "teal-shade-25": {
+      "name": "Teal shade 25%",
+      "hex": "#106165",
+      "rgb": [
+        16,
+        97,
+        101
+      ],
+      "family": "teal",
+      "variant": "shade-25",
+      "sass": "govuk-colour(\"teal\", $variant: \"shade-25\")"
+    },
+    "teal-shade-50": {
+      "name": "Teal shade 50%",
+      "hex": "#0B4144",
+      "rgb": [
+        11,
+        65,
+        68
+      ],
+      "family": "teal",
+      "variant": "shade-50",
+      "sass": "govuk-colour(\"teal\", $variant: \"shade-50\")"
+    },
+    "teal-accent": {
+      "name": "Accent teal",
+      "hex": "#00FFE0",
+      "rgb": [
+        0,
+        255,
+        224
+      ],
+      "family": "teal",
+      "variant": "accent",
+      "print": {
+        "cmyk": [
+          100,
+          0,
+          12,
+          0
+        ],
+        "pantone": "3255 C"
+      }
+    },
+    "purple": {
+      "name": "Primary purple",
+      "hex": "#54319F",
+      "rgb": [
+        84,
+        49,
+        159
+      ],
+      "family": "purple",
+      "variant": "primary",
+      "sass": "govuk-colour(\"purple\")",
+      "print": {
+        "cmyk": [
+          47,
+          69,
+          0,
+          38
+        ],
+        "pantone": "2103 C"
+      }
+    },
+    "purple-tint-25": {
+      "name": "Purple tint 25%",
+      "hex": "#7F65B7",
+      "rgb": [
+        127,
+        101,
+        183
+      ],
+      "family": "purple",
+      "variant": "tint-25",
+      "sass": "govuk-colour(\"purple\", $variant: \"tint-25\")",
+      "print": {
+        "cmyk": [
+          31,
+          45,
+          0,
+          28
+        ],
+        "pantone": "2101 C"
+      }
+    },
+    "purple-tint-50": {
+      "name": "Purple tint 50%",
+      "hex": "#AA98CF",
+      "rgb": [
+        170,
+        152,
+        207
+      ],
+      "family": "purple",
+      "variant": "tint-50",
+      "sass": "govuk-colour(\"purple\", $variant: \"tint-50\")",
+      "print": {
+        "cmyk": [
+          18,
+          27,
+          0,
+          19
+        ],
+        "pantone": "2100 C"
+      }
+    },
+    "purple-tint-80": {
+      "name": "Purple tint 80%",
+      "hex": "#DDD6EC",
+      "rgb": [
+        221,
+        214,
+        236
+      ],
+      "family": "purple",
+      "variant": "tint-80",
+      "sass": "govuk-colour(\"purple\", $variant: \"tint-80\")",
+      "print": {
+        "cmyk": [
+          6,
+          9,
+          0,
+          7
+        ],
+        "pantone": "7444 C"
+      }
+    },
+    "purple-tint-95": {
+      "name": "Purple tint 95%",
+      "hex": "#F6F5FA",
+      "rgb": [
+        246,
+        245,
+        250
+      ],
+      "family": "purple",
+      "variant": "tint-95",
+      "sass": "govuk-colour(\"purple\", $variant: \"tint-95\")"
+    },
+    "purple-shade-25": {
+      "name": "Purple shade 25%",
+      "hex": "#3F2577",
+      "rgb": [
+        63,
+        37,
+        119
+      ],
+      "family": "purple",
+      "variant": "shade-25",
+      "sass": "govuk-colour(\"purple\", $variant: \"shade-25\")"
+    },
+    "purple-shade-50": {
+      "name": "Purple shade 50%",
+      "hex": "#2A1950",
+      "rgb": [
+        42,
+        25,
+        80
+      ],
+      "family": "purple",
+      "variant": "shade-50",
+      "sass": "govuk-colour(\"purple\", $variant: \"shade-50\")"
+    },
+    "purple-accent": {
+      "name": "Accent purple",
+      "hex": "#BA4AFF",
+      "rgb": [
+        186,
+        74,
+        255
+      ],
+      "family": "purple",
+      "variant": "accent"
+    },
+    "magenta": {
+      "name": "Primary magenta",
+      "hex": "#CA357C",
+      "rgb": [
+        202,
+        53,
+        124
+      ],
+      "family": "magenta",
+      "variant": "primary",
+      "sass": "govuk-colour(\"magenta\")",
+      "print": {
+        "cmyk": [
+          0,
+          74,
+          39,
+          21
+        ],
+        "pantone": "213 C"
+      }
+    },
+    "magenta-tint-25": {
+      "name": "Magenta tint 25%",
+      "hex": "#D7689D",
+      "rgb": [
+        215,
+        104,
+        157
+      ],
+      "family": "magenta",
+      "variant": "tint-25",
+      "sass": "govuk-colour(\"magenta\", $variant: \"tint-25\")",
+      "print": {
+        "cmyk": [
+          0,
+          52,
+          27,
+          16
+        ],
+        "pantone": "2038 C"
+      }
+    },
+    "magenta-tint-50": {
+      "name": "Magenta tint 50%",
+      "hex": "#E59ABE",
+      "rgb": [
+        229,
+        154,
+        190
+      ],
+      "family": "magenta",
+      "variant": "tint-50",
+      "sass": "govuk-colour(\"magenta\", $variant: \"tint-50\")",
+      "print": {
+        "cmyk": [
+          0,
+          33,
+          17,
+          10
+        ],
+        "pantone": "2037 C"
+      }
+    },
+    "magenta-tint-80": {
+      "name": "Magenta tint 80%",
+      "hex": "#F4D7E5",
+      "rgb": [
+        244,
+        215,
+        229
+      ],
+      "family": "magenta",
+      "variant": "tint-80",
+      "sass": "govuk-colour(\"magenta\", $variant: \"tint-80\")",
+      "print": {
+        "cmyk": [
+          0,
+          12,
+          6,
+          4
+        ],
+        "pantone": "217 C"
+      }
+    },
+    "magenta-tint-95": {
+      "name": "Magenta tint 95%",
+      "hex": "#FCF5F8",
+      "rgb": [
+        252,
+        245,
+        248
+      ],
+      "family": "magenta",
+      "variant": "tint-95",
+      "sass": "govuk-colour(\"magenta\", $variant: \"tint-95\")"
+    },
+    "magenta-shade-25": {
+      "name": "Magenta shade 25%",
+      "hex": "#98285D",
+      "rgb": [
+        152,
+        40,
+        93
+      ],
+      "family": "magenta",
+      "variant": "shade-25",
+      "sass": "govuk-colour(\"magenta\", $variant: \"shade-25\")"
+    },
+    "magenta-shade-50": {
+      "name": "Magenta shade 50%",
+      "hex": "#651B3E",
+      "rgb": [
+        101,
+        27,
+        62
+      ],
+      "family": "magenta",
+      "variant": "shade-50",
+      "sass": "govuk-colour(\"magenta\", $variant: \"shade-50\")"
+    },
+    "magenta-accent": {
+      "name": "Accent magenta",
+      "hex": "#FF52EE",
+      "rgb": [
+        255,
+        82,
+        238
+      ],
+      "family": "magenta",
+      "variant": "accent"
+    },
+    "red": {
+      "name": "Primary red",
+      "hex": "#CA3535",
+      "rgb": [
+        202,
+        53,
+        53
+      ],
+      "family": "red",
+      "variant": "primary",
+      "sass": "govuk-colour(\"red\")",
+      "print": {
+        "cmyk": [
+          0,
+          74,
+          74,
+          21
+        ],
+        "pantone": "1795 C"
+      }
+    },
+    "red-tint-25": {
+      "name": "Red tint 25%",
+      "hex": "#D76868",
+      "rgb": [
+        215,
+        104,
+        104
+      ],
+      "family": "red",
+      "variant": "tint-25",
+      "sass": "govuk-colour(\"red\", $variant: \"tint-25\")",
+      "print": {
+        "cmyk": [
+          0,
+          52,
+          52,
+          16
+        ],
+        "pantone": "2032 C"
+      }
+    },
+    "red-tint-50": {
+      "name": "Red tint 50%",
+      "hex": "#E59A9A",
+      "rgb": [
+        229,
+        154,
+        154
+      ],
+      "family": "red",
+      "variant": "tint-50",
+      "sass": "govuk-colour(\"red\", $variant: \"tint-50\")",
+      "print": {
+        "cmyk": [
+          0,
+          33,
+          33,
+          10
+        ],
+        "pantone": "2029 C"
+      }
+    },
+    "red-tint-80": {
+      "name": "Red tint 80%",
+      "hex": "#F4D7D7",
+      "rgb": [
+        244,
+        215,
+        215
+      ],
+      "family": "red",
+      "variant": "tint-80",
+      "sass": "govuk-colour(\"red\", $variant: \"tint-80\")",
+      "print": {
+        "cmyk": [
+          0,
+          12,
+          12,
+          4
+        ],
+        "pantone": "4064 C"
+      }
+    },
+    "red-tint-95": {
+      "name": "Red tint 95%",
+      "hex": "#FCF5F5",
+      "rgb": [
+        252,
+        245,
+        245
+      ],
+      "family": "red",
+      "variant": "tint-95",
+      "sass": "govuk-colour(\"red\", $variant: \"tint-95\")"
+    },
+    "red-shade-25": {
+      "name": "Red shade 25%",
+      "hex": "#982828",
+      "rgb": [
+        152,
+        40,
+        40
+      ],
+      "family": "red",
+      "variant": "shade-25",
+      "sass": "govuk-colour(\"red\", $variant: \"shade-25\")"
+    },
+    "red-shade-50": {
+      "name": "Red shade 50%",
+      "hex": "#651B1B",
+      "rgb": [
+        101,
+        27,
+        27
+      ],
+      "family": "red",
+      "variant": "shade-50",
+      "sass": "govuk-colour(\"red\", $variant: \"shade-50\")"
+    },
+    "red-accent": {
+      "name": "Accent red",
+      "hex": "#FF5E5E",
+      "rgb": [
+        255,
+        94,
+        94
+      ],
+      "family": "red",
+      "variant": "accent"
+    },
+    "orange": {
+      "name": "Primary orange",
+      "hex": "#F47738",
+      "rgb": [
+        244,
+        119,
+        56
+      ],
+      "family": "orange",
+      "variant": "primary",
+      "sass": "govuk-colour(\"orange\")",
+      "print": {
+        "cmyk": [
+          0,
+          51,
+          77,
+          4
+        ],
+        "pantone": "2026 C"
+      }
+    },
+    "orange-tint-25": {
+      "name": "Orange tint 25%",
+      "hex": "#F7996A",
+      "rgb": [
+        247,
+        153,
+        106
+      ],
+      "family": "orange",
+      "variant": "tint-25",
+      "sass": "govuk-colour(\"orange\", $variant: \"tint-25\")",
+      "print": {
+        "cmyk": [
+          0,
+          38,
+          57,
+          3
+        ],
+        "pantone": "2023 C"
+      }
+    },
+    "orange-tint-50": {
+      "name": "Orange tint 50%",
+      "hex": "#FABB9C",
+      "rgb": [
+        250,
+        187,
+        156
+      ],
+      "family": "orange",
+      "variant": "tint-50",
+      "sass": "govuk-colour(\"orange\", $variant: \"tint-50\")",
+      "print": {
+        "cmyk": [
+          0,
+          25,
+          38,
+          2
+        ],
+        "pantone": "162 C"
+      }
+    },
+    "orange-tint-80": {
+      "name": "Orange tint 80%",
+      "hex": "#FDE4D7",
+      "rgb": [
+        253,
+        228,
+        215
+      ],
+      "family": "orange",
+      "variant": "tint-80",
+      "sass": "govuk-colour(\"orange\", $variant: \"tint-80\")",
+      "print": {
+        "cmyk": [
+          0,
+          10,
+          15,
+          1
+        ],
+        "pantone": "2015 C"
+      }
+    },
+    "orange-tint-95": {
+      "name": "Orange tint 95%",
+      "hex": "#FEF8F5",
+      "rgb": [
+        254,
+        248,
+        245
+      ],
+      "family": "orange",
+      "variant": "tint-95",
+      "sass": "govuk-colour(\"orange\", $variant: \"tint-95\")"
+    },
+    "orange-shade-25": {
+      "name": "Orange shade 25%",
+      "hex": "#B7592A",
+      "rgb": [
+        183,
+        89,
+        42
+      ],
+      "family": "orange",
+      "variant": "shade-25",
+      "sass": "govuk-colour(\"orange\", $variant: \"shade-25\")"
+    },
+    "orange-shade-50": {
+      "name": "Orange shade 50%",
+      "hex": "#7A3C1C",
+      "rgb": [
+        122,
+        60,
+        28
+      ],
+      "family": "orange",
+      "variant": "shade-50",
+      "sass": "govuk-colour(\"orange\", $variant: \"shade-50\")"
+    },
+    "orange-accent": {
+      "name": "Accent orange",
+      "hex": "#FFAF4A",
+      "rgb": [
+        255,
+        175,
+        74
+      ],
+      "family": "orange",
+      "variant": "accent"
+    },
+    "yellow": {
+      "name": "Primary yellow",
+      "hex": "#FFDD00",
+      "rgb": [
+        255,
+        221,
+        0
+      ],
+      "family": "yellow",
+      "variant": "primary",
+      "sass": "govuk-colour(\"yellow\")",
+      "print": {
+        "cmyk": [
+          0,
+          13,
+          100,
+          0
+        ],
+        "pantone": "Yellow C"
+      }
+    },
+    "yellow-tint-25": {
+      "name": "Yellow tint 25%",
+      "hex": "#FFE640",
+      "rgb": [
+        255,
+        230,
+        64
+      ],
+      "family": "yellow",
+      "variant": "tint-25",
+      "sass": "govuk-colour(\"yellow\", $variant: \"tint-25\")",
+      "print": {
+        "cmyk": [
+          0,
+          3,
+          49,
+          5
+        ],
+        "pantone": "100 C"
+      }
+    },
+    "yellow-tint-50": {
+      "name": "Yellow tint 50%",
+      "hex": "#FFEE80",
+      "rgb": [
+        255,
+        238,
+        128
+      ],
+      "family": "yellow",
+      "variant": "tint-50",
+      "sass": "govuk-colour(\"yellow\", $variant: \"tint-50\")",
+      "print": {
+        "cmyk": [
+          0,
+          10,
+          75,
+          0
+        ],
+        "pantone": "2003 C"
+      }
+    },
+    "yellow-tint-80": {
+      "name": "Yellow tint 80%",
+      "hex": "#FFF8CC",
+      "rgb": [
+        255,
+        248,
+        204
+      ],
+      "family": "yellow",
+      "variant": "tint-80",
+      "sass": "govuk-colour(\"yellow\", $variant: \"tint-80\")",
+      "print": {
+        "cmyk": [
+          0,
+          3,
+          20,
+          0
+        ],
+        "pantone": "2001 C"
+      }
+    },
+    "yellow-tint-95": {
+      "name": "Yellow tint 95%",
+      "hex": "#FFFDF2",
+      "rgb": [
+        255,
+        253,
+        242
+      ],
+      "family": "yellow",
+      "variant": "tint-95",
+      "sass": "govuk-colour(\"yellow\", $variant: \"tint-95\")"
+    },
+    "yellow-shade-25": {
+      "name": "Yellow shade 25%",
+      "hex": "#BFA600",
+      "rgb": [
+        191,
+        166,
+        0
+      ],
+      "family": "yellow",
+      "variant": "shade-25",
+      "sass": "govuk-colour(\"yellow\", $variant: \"shade-25\")"
+    },
+    "yellow-shade-50": {
+      "name": "Yellow shade 50%",
+      "hex": "#806F00",
+      "rgb": [
+        128,
+        111,
+        0
+      ],
+      "family": "yellow",
+      "variant": "shade-50",
+      "sass": "govuk-colour(\"yellow\", $variant: \"shade-50\")"
+    },
+    "yellow-accent": {
+      "name": "Accent yellow",
+      "hex": "#FCFF52",
+      "rgb": [
+        252,
+        255,
+        82
+      ],
+      "family": "yellow",
+      "variant": "accent"
+    },
+    "brown": {
+      "name": "Primary brown",
+      "hex": "#99704A",
+      "rgb": [
+        153,
+        112,
+        74
+      ],
+      "family": "brown",
+      "variant": "primary",
+      "sass": "govuk-colour(\"brown\")"
+    },
+    "brown-tint-25": {
+      "name": "Brown tint 25%",
+      "hex": "#B39477",
+      "rgb": [
+        179,
+        148,
+        119
+      ],
+      "family": "brown",
+      "variant": "tint-25",
+      "sass": "govuk-colour(\"brown\", $variant: \"tint-25\")"
+    },
+    "brown-tint-50": {
+      "name": "Brown tint 50%",
+      "hex": "#CCB8A5",
+      "rgb": [
+        204,
+        184,
+        165
+      ],
+      "family": "brown",
+      "variant": "tint-50",
+      "sass": "govuk-colour(\"brown\", $variant: \"tint-50\")"
+    },
+    "brown-tint-95": {
+      "name": "Brown tint 95%",
+      "hex": "#FAF8F6",
+      "rgb": [
+        250,
+        248,
+        246
+      ],
+      "family": "brown",
+      "variant": "tint-95",
+      "sass": "govuk-colour(\"brown\", $variant: \"tint-95\")"
+    },
+    "black": {
+      "name": "Black",
+      "hex": "#0B0C0C",
+      "rgb": [
+        11,
+        12,
+        12
+      ],
+      "family": "black",
+      "variant": "primary",
+      "sass": "govuk-colour(\"black\")",
+      "print": {
+        "cmyk": [
+          0,
+          0,
+          0,
+          100
+        ],
+        "pantone": "Black C"
+      }
+    },
+    "black-tint-25": {
+      "name": "Black tint 25%",
+      "hex": "#484949",
+      "rgb": [
+        72,
+        73,
+        73
+      ],
+      "family": "black",
+      "variant": "tint-25",
+      "sass": "govuk-colour(\"black\", $variant: \"tint-25\")",
+      "print": {
+        "cmyk": [
+          1,
+          0,
+          0,
+          71
+        ],
+        "pantone": "418 C"
+      }
+    },
+    "black-tint-50": {
+      "name": "Black tint 50%",
+      "hex": "#858686",
+      "rgb": [
+        133,
+        134,
+        134
+      ],
+      "family": "black",
+      "variant": "tint-50",
+      "sass": "govuk-colour(\"black\", $variant: \"tint-50\")",
+      "print": {
+        "cmyk": [
+          1,
+          0,
+          0,
+          47
+        ],
+        "pantone": "415 C"
+      }
+    },
+    "black-tint-80": {
+      "name": "Black tint 80%",
+      "hex": "#CECECE",
+      "rgb": [
+        206,
+        206,
+        206
+      ],
+      "family": "black",
+      "variant": "tint-80",
+      "sass": "govuk-colour(\"black\", $variant: \"tint-80\")",
+      "print": {
+        "cmyk": [
+          0,
+          0,
+          0,
+          19
+        ],
+        "pantone": "413 C"
+      }
+    },
+    "black-tint-95": {
+      "name": "Black tint 95%",
+      "hex": "#F3F3F3",
+      "rgb": [
+        243,
+        243,
+        243
+      ],
+      "family": "black",
+      "variant": "tint-95",
+      "sass": "govuk-colour(\"black\", $variant: \"tint-95\")"
+    },
+    "white": {
+      "name": "White",
+      "hex": "#FFFFFF",
+      "rgb": [
+        255,
+        255,
+        255
+      ],
+      "family": "white",
+      "variant": "primary",
+      "sass": "govuk-colour(\"white\")"
+    },
+    "blue-dark-mode-primary": {
+      "name": "Dark mode primary blue",
+      "hex": "#37A3FF",
+      "rgb": [
+        55,
+        163,
+        255
+      ],
+      "family": "blue",
+      "variant": "dark-mode-primary"
+    },
+    "blue-dark-mode-shade-80": {
+      "name": "Dark mode blue shade 80%",
+      "hex": "#061625",
+      "rgb": [
+        6,
+        22,
+        37
+      ],
+      "family": "blue",
+      "variant": "dark-mode-shade-80"
+    }
+  },
+  "pages": {
+    "web": {
+      "url": "https://brand.design-system.service.gov.uk/colour/web/",
+      "palette": [
+        {
+          "title": "Blues",
+          "colours": [
+            "blue",
+            "blue-tint-25",
+            "blue-tint-50",
+            "blue-tint-80",
+            "blue-tint-95",
+            "blue-shade-10",
+            "blue-shade-25",
+            "blue-shade-50"
+          ]
+        },
+        {
+          "title": "Greens",
+          "colours": [
+            "green",
+            "green-tint-25",
+            "green-tint-50",
+            "green-tint-80",
+            "green-tint-95",
+            "green-shade-25",
+            "green-shade-50"
+          ]
+        },
+        {
+          "title": "Teals",
+          "colours": [
+            "teal",
+            "teal-tint-25",
+            "teal-tint-50",
+            "teal-tint-80",
+            "teal-tint-95",
+            "teal-shade-25",
+            "teal-shade-50",
+            "teal-accent"
+          ]
+        },
+        {
+          "title": "Purples",
+          "colours": [
+            "purple",
+            "purple-tint-25",
+            "purple-tint-50",
+            "purple-tint-80",
+            "purple-tint-95",
+            "purple-shade-25",
+            "purple-shade-50"
+          ]
+        },
+        {
+          "title": "Magentas",
+          "colours": [
+            "magenta",
+            "magenta-tint-25",
+            "magenta-tint-50",
+            "magenta-tint-80",
+            "magenta-tint-95",
+            "magenta-shade-25",
+            "magenta-shade-50"
+          ]
+        },
+        {
+          "title": "Reds",
+          "colours": [
+            "red",
+            "red-tint-25",
+            "red-tint-50",
+            "red-tint-80",
+            "red-tint-95",
+            "red-shade-25",
+            "red-shade-50"
+          ]
+        },
+        {
+          "title": "Oranges",
+          "colours": [
+            "orange",
+            "orange-tint-25",
+            "orange-tint-50",
+            "orange-tint-80",
+            "orange-tint-95",
+            "orange-shade-25",
+            "orange-shade-50"
+          ]
+        },
+        {
+          "title": "Yellows",
+          "colours": [
+            "yellow",
+            "yellow-tint-25",
+            "yellow-tint-50",
+            "yellow-tint-80",
+            "yellow-tint-95",
+            "yellow-shade-25",
+            "yellow-shade-50"
+          ]
+        },
+        {
+          "title": "Browns",
+          "colours": [
+            "brown",
+            "brown-tint-25",
+            "brown-tint-50",
+            "brown-tint-95"
+          ]
+        },
+        {
+          "title": "Neutrals",
+          "colours": [
+            "black",
+            "black-tint-25",
+            "black-tint-50",
+            "black-tint-80",
+            "black-tint-95",
+            "white"
+          ]
+        }
+      ],
+      "functional": [
+        {
+          "title": "Text",
+          "tokens": [
+            {
+              "token": "text",
+              "colour": "black"
+            },
+            {
+              "token": "secondary-text",
+              "colour": "black-tint-25"
+            },
+            {
+              "token": "inverse-text",
+              "colour": "white"
+            }
+          ]
+        },
+        {
+          "title": "Links",
+          "tokens": [
+            {
+              "token": "link",
+              "colour": "blue-shade-10"
+            },
+            {
+              "token": "link-hover",
+              "colour": "blue-shade-50"
+            },
+            {
+              "token": "link-visited",
+              "colour": "purple"
+            },
+            {
+              "token": "link-active",
+              "colour": "black"
+            }
+          ]
+        },
+        {
+          "title": "Border",
+          "tokens": [
+            {
+              "token": "border",
+              "colour": "black-tint-80"
+            },
+            {
+              "token": "input-border",
+              "colour": "black"
+            }
+          ]
+        },
+        {
+          "title": "Background",
+          "tokens": [
+            {
+              "token": "template-background",
+              "colour": "blue-tint-95"
+            },
+            {
+              "token": "body-background",
+              "colour": "white"
+            }
+          ]
+        },
+        {
+          "title": "Focus state",
+          "tokens": [
+            {
+              "token": "focus",
+              "colour": "yellow"
+            },
+            {
+              "token": "focus-text",
+              "colour": "black"
+            }
+          ]
+        },
+        {
+          "title": "Error state",
+          "tokens": [
+            {
+              "token": "error",
+              "colour": "red"
+            }
+          ]
+        },
+        {
+          "title": "Success state",
+          "tokens": [
+            {
+              "token": "success",
+              "colour": "green"
+            }
+          ]
+        },
+        {
+          "title": "Hover state",
+          "tokens": [
+            {
+              "token": "hover",
+              "colour": "black-tint-80"
+            }
+          ]
+        },
+        {
+          "title": "Brand colour",
+          "tokens": [
+            {
+              "token": "brand",
+              "colour": "blue"
+            }
+          ]
+        },
+        {
+          "title": "Surface",
+          "tokens": [
+            {
+              "token": "surface-background",
+              "colour": "blue-tint-95"
+            },
+            {
+              "token": "surface-text",
+              "colour": "black"
+            },
+            {
+              "token": "surface-border",
+              "colour": "blue-tint-50"
+            }
+          ]
+        }
+      ]
+    },
+    "app": {
+      "url": "https://brand.design-system.service.gov.uk/colour/app/",
+      "palette": [
+        {
+          "title": "Blues",
+          "colours": [
+            "blue",
+            "blue-tint-25",
+            "blue-tint-50",
+            "blue-tint-80",
+            "blue-tint-95",
+            "blue-shade-10",
+            "blue-shade-25",
+            "blue-shade-50",
+            "blue-accent",
+            "blue-dark-mode-primary",
+            "blue-dark-mode-shade-80"
+          ]
+        },
+        {
+          "title": "Greens",
+          "colours": [
+            "green",
+            "green-tint-25",
+            "green-tint-50",
+            "green-tint-80",
+            "green-tint-95",
+            "green-shade-25",
+            "green-shade-50",
+            "green-accent"
+          ]
+        },
+        {
+          "title": "Teals",
+          "colours": [
+            "teal",
+            "teal-tint-25",
+            "teal-tint-50",
+            "teal-tint-80",
+            "teal-tint-95",
+            "teal-shade-25",
+            "teal-shade-50",
+            "teal-accent"
+          ]
+        },
+        {
+          "title": "Purples",
+          "colours": [
+            "purple",
+            "purple-tint-25",
+            "purple-tint-50",
+            "purple-tint-80",
+            "purple-tint-95",
+            "purple-shade-25",
+            "purple-shade-50",
+            "purple-accent"
+          ]
+        },
+        {
+          "title": "Magentas",
+          "colours": [
+            "magenta",
+            "magenta-tint-25",
+            "magenta-tint-50",
+            "magenta-tint-80",
+            "magenta-tint-95",
+            "magenta-shade-25",
+            "magenta-shade-50",
+            "magenta-accent"
+          ]
+        },
+        {
+          "title": "Reds",
+          "colours": [
+            "red",
+            "red-tint-25",
+            "red-tint-50",
+            "red-tint-80",
+            "red-tint-95",
+            "red-shade-25",
+            "red-shade-50",
+            "red-accent"
+          ]
+        },
+        {
+          "title": "Oranges",
+          "colours": [
+            "orange",
+            "orange-tint-25",
+            "orange-tint-50",
+            "orange-tint-80",
+            "orange-tint-95",
+            "orange-shade-25",
+            "orange-shade-50",
+            "orange-accent"
+          ]
+        },
+        {
+          "title": "Yellows",
+          "colours": [
+            "yellow",
+            "yellow-tint-25",
+            "yellow-tint-50",
+            "yellow-tint-80",
+            "yellow-tint-95",
+            "yellow-shade-25",
+            "yellow-shade-50",
+            "yellow-accent"
+          ]
+        },
+        {
+          "title": "Neutrals",
+          "colours": [
+            "black",
+            "black-tint-25",
+            "black-tint-50",
+            "black-tint-80",
+            "black-tint-95",
+            "white"
+          ]
+        }
+      ]
+    },
+    "social": {
+      "url": "https://brand.design-system.service.gov.uk/colour/social/",
+      "palette": [
+        {
+          "title": "Blues",
+          "colours": [
+            "blue",
+            "blue-tint-25",
+            "blue-tint-50",
+            "blue-tint-80",
+            "blue-tint-95",
+            "blue-shade-10",
+            "blue-shade-25",
+            "blue-shade-50",
+            "blue-accent"
+          ]
+        },
+        {
+          "title": "Greens",
+          "colours": [
+            "green",
+            "green-tint-25",
+            "green-tint-50",
+            "green-tint-80",
+            "green-tint-95",
+            "green-shade-25",
+            "green-shade-50",
+            "green-accent"
+          ]
+        },
+        {
+          "title": "Teals",
+          "colours": [
+            "teal",
+            "teal-tint-25",
+            "teal-tint-50",
+            "teal-tint-80",
+            "teal-tint-95",
+            "teal-shade-25",
+            "teal-shade-50",
+            "teal-accent"
+          ]
+        },
+        {
+          "title": "Purples",
+          "colours": [
+            "purple",
+            "purple-tint-25",
+            "purple-tint-50",
+            "purple-tint-80",
+            "purple-tint-95",
+            "purple-shade-25",
+            "purple-shade-50",
+            "purple-accent"
+          ]
+        },
+        {
+          "title": "Magentas",
+          "colours": [
+            "magenta",
+            "magenta-tint-25",
+            "magenta-tint-50",
+            "magenta-tint-80",
+            "magenta-tint-95",
+            "magenta-shade-25",
+            "magenta-shade-50",
+            "magenta-accent"
+          ]
+        },
+        {
+          "title": "Reds",
+          "colours": [
+            "red",
+            "red-tint-25",
+            "red-tint-50",
+            "red-tint-80",
+            "red-tint-95",
+            "red-shade-25",
+            "red-shade-50",
+            "red-accent"
+          ]
+        },
+        {
+          "title": "Oranges",
+          "colours": [
+            "orange",
+            "orange-tint-25",
+            "orange-tint-50",
+            "orange-tint-80",
+            "orange-tint-95",
+            "orange-shade-25",
+            "orange-shade-50",
+            "orange-accent"
+          ]
+        },
+        {
+          "title": "Yellows",
+          "colours": [
+            "yellow",
+            "yellow-tint-25",
+            "yellow-tint-50",
+            "yellow-tint-80",
+            "yellow-tint-95",
+            "yellow-shade-25",
+            "yellow-shade-50",
+            "yellow-accent"
+          ]
+        },
+        {
+          "title": "Neutrals",
+          "colours": [
+            "black",
+            "black-tint-25",
+            "black-tint-50",
+            "black-tint-80",
+            "black-tint-95",
+            "white"
+          ]
+        }
+      ],
+      "companion": [
+        {
+          "foreground": "blue",
+          "background": "yellow"
+        },
+        {
+          "foreground": "red",
+          "background": "magenta-tint-95"
+        },
+        {
+          "foreground": "magenta",
+          "background": "blue-tint-95"
+        },
+        {
+          "foreground": "purple-shade-50",
+          "background": "yellow"
+        },
+        {
+          "foreground": "purple-shade-25",
+          "background": "blue-accent"
+        },
+        {
+          "foreground": "blue-shade-50",
+          "background": "green-accent"
+        },
+        {
+          "foreground": "blue-accent",
+          "background": "green-shade-50"
+        },
+        {
+          "foreground": "blue-accent",
+          "background": "blue"
+        },
+        {
+          "foreground": "yellow",
+          "background": "red-shade-50"
+        }
+      ]
+    },
+    "print": {
+      "url": "https://brand.design-system.service.gov.uk/colour/print/",
+      "palette": [
+        {
+          "title": "Blues",
+          "colours": [
+            "blue",
+            "blue-tint-25",
+            "blue-tint-50",
+            "blue-tint-80",
+            "blue-shade-50"
+          ]
+        },
+        {
+          "title": "Greens",
+          "colours": [
+            "green",
+            "green-tint-25",
+            "green-tint-50",
+            "green-tint-80"
+          ]
+        },
+        {
+          "title": "Teals",
+          "colours": [
+            "teal",
+            "teal-tint-25",
+            "teal-tint-50",
+            "teal-tint-80",
+            "teal-accent"
+          ]
+        },
+        {
+          "title": "Purples",
+          "colours": [
+            "purple",
+            "purple-tint-25",
+            "purple-tint-50",
+            "purple-tint-80"
+          ]
+        },
+        {
+          "title": "Magentas",
+          "colours": [
+            "magenta",
+            "magenta-tint-25",
+            "magenta-tint-50",
+            "magenta-tint-80"
+          ]
+        },
+        {
+          "title": "Reds",
+          "colours": [
+            "red",
+            "red-tint-25",
+            "red-tint-50",
+            "red-tint-80"
+          ]
+        },
+        {
+          "title": "Oranges",
+          "colours": [
+            "orange",
+            "orange-tint-25",
+            "orange-tint-50",
+            "orange-tint-80"
+          ]
+        },
+        {
+          "title": "Yellows",
+          "colours": [
+            "yellow",
+            "yellow-tint-25",
+            "yellow-tint-50",
+            "yellow-tint-80"
+          ]
+        },
+        {
+          "title": "Neutrals",
+          "colours": [
+            "black",
+            "black-tint-25",
+            "black-tint-50",
+            "black-tint-80",
+            "white"
+          ]
+        }
+      ]
+    },
+    "charts": {
+      "url": "https://brand.design-system.service.gov.uk/colour/charts/",
+      "categorical": [
+        {
+          "colour": "blue"
+        },
+        {
+          "colour": "blue-shade-50"
+        },
+        {
+          "colour": "magenta"
+        },
+        {
+          "colour": "purple-tint-25"
+        },
+        {
+          "colour": "teal-tint-25"
+        },
+        {
+          "colour": "orange-tint-25"
+        },
+        {
+          "colour": "black-tint-80",
+          "role": "Axes & lines"
+        },
+        {
+          "colour": "black",
+          "role": "Labels"
+        }
+      ],
+      "sequential": [
+        {
+          "title": "Blues",
+          "colours": [
+            "blue",
+            "blue-tint-25",
+            "blue-tint-50",
+            "blue-tint-80",
+            "blue-shade-10",
+            "blue-shade-25",
+            "blue-shade-50"
+          ]
+        },
+        {
+          "title": "Magentas",
+          "colours": [
+            "magenta",
+            "magenta-tint-25",
+            "magenta-tint-50",
+            "magenta-tint-80",
+            "magenta-shade-25",
+            "magenta-shade-50"
+          ]
+        },
+        {
+          "title": "Reds",
+          "colours": [
+            "red",
+            "red-tint-25",
+            "red-tint-50",
+            "red-tint-80",
+            "red-shade-25",
+            "red-shade-50"
+          ]
+        },
+        {
+          "title": "Greens",
+          "colours": [
+            "green",
+            "green-tint-25",
+            "green-tint-50",
+            "green-tint-80",
+            "green-shade-25",
+            "green-shade-50"
+          ]
+        },
+        {
+          "title": "Purples",
+          "colours": [
+            "purple",
+            "purple-tint-25",
+            "purple-tint-50",
+            "purple-tint-80",
+            "purple-shade-25",
+            "purple-shade-50"
+          ]
+        },
+        {
+          "title": "Teals",
+          "colours": [
+            "teal",
+            "teal-tint-25",
+            "teal-tint-50",
+            "teal-tint-80",
+            "teal-shade-25",
+            "teal-shade-50"
+          ]
+        },
+        {
+          "title": "Oranges",
+          "colours": [
+            "orange",
+            "orange-tint-25",
+            "orange-tint-50",
+            "orange-tint-80",
+            "orange-shade-25",
+            "orange-shade-50"
+          ]
+        },
+        {
+          "title": "Neutrals",
+          "colours": [
+            "black",
+            "black-tint-25",
+            "black-tint-50",
+            "black-tint-80",
+            "black-tint-95",
+            "white"
+          ]
+        }
+      ],
+      "additional": [
+        "blue-tint-95",
+        "magenta-tint-95",
+        "red-tint-95",
+        "green-tint-95",
+        "purple-tint-95",
+        "teal-tint-95",
+        "orange-tint-95",
+        "blue-accent",
+        "magenta-accent",
+        "red-accent",
+        "green-accent",
+        "purple-accent",
+        "teal-accent",
+        "orange-accent"
+      ]
+    },
+    "maps": {
+      "url": "https://brand.design-system.service.gov.uk/colour/maps/",
+      "palette": [
+        {
+          "title": "Blues",
+          "colours": [
+            "blue",
+            "blue-tint-25",
+            "blue-tint-50",
+            "blue-tint-80",
+            "blue-tint-95",
+            "blue-shade-10",
+            "blue-shade-25",
+            "blue-shade-50",
+            "blue-accent"
+          ]
+        },
+        {
+          "title": "Magentas",
+          "colours": [
+            "magenta",
+            "magenta-tint-25",
+            "magenta-tint-50",
+            "magenta-tint-80",
+            "magenta-tint-95",
+            "magenta-shade-25",
+            "magenta-shade-50",
+            "magenta-accent"
+          ]
+        },
+        {
+          "title": "Reds",
+          "colours": [
+            "red",
+            "red-tint-25",
+            "red-tint-50",
+            "red-tint-80",
+            "red-tint-95",
+            "red-shade-25",
+            "red-shade-50",
+            "red-accent"
+          ]
+        },
+        {
+          "title": "Greens",
+          "colours": [
+            "green",
+            "green-tint-25",
+            "green-tint-50",
+            "green-tint-80",
+            "green-tint-95",
+            "green-shade-25",
+            "green-shade-50",
+            "green-accent"
+          ]
+        },
+        {
+          "title": "Purples",
+          "colours": [
+            "purple",
+            "purple-tint-25",
+            "purple-tint-50",
+            "purple-tint-80",
+            "purple-tint-95",
+            "purple-shade-25",
+            "purple-shade-50",
+            "purple-accent"
+          ]
+        },
+        {
+          "title": "Teals",
+          "colours": [
+            "teal",
+            "teal-tint-25",
+            "teal-tint-50",
+            "teal-tint-80",
+            "teal-tint-95",
+            "teal-shade-25",
+            "teal-shade-50",
+            "teal-accent"
+          ]
+        },
+        {
+          "title": "Oranges",
+          "colours": [
+            "orange",
+            "orange-tint-25",
+            "orange-tint-50",
+            "orange-tint-80",
+            "orange-tint-95",
+            "orange-shade-25",
+            "orange-shade-50",
+            "orange-accent"
+          ]
+        },
+        {
+          "title": "Neutrals",
+          "colours": [
+            "black",
+            "black-tint-25",
+            "black-tint-50",
+            "black-tint-80",
+            "black-tint-95",
+            "white"
+          ]
+        }
+      ]
+    },
+    "illustrations": {
+      "url": "https://brand.design-system.service.gov.uk/colour/illustrations/",
+      "palette": [
+        {
+          "title": "Applying colour",
+          "colours": [
+            "blue",
+            "blue-accent",
+            "teal-accent"
+          ]
+        }
+      ]
+    }
+  }
+}

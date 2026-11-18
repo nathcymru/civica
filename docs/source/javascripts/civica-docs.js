@@ -195,3 +195,31 @@
   });
   input.addEventListener('blur', () => setTimeout(close, 0));
 })();
+
+/* Colour value copy buttons. Each value stays selectable text; the button is
+   shown only where the Clipboard API exists. One polite status region per page
+   announces the result, and the icon changes for two seconds. */
+(() => {
+  const buttons = [...document.querySelectorAll('[data-copy-value]')];
+  const status = document.querySelector('[data-copy-value-status]');
+  if (!buttons.length || !status || !navigator.clipboard?.writeText) return;
+  for (const button of buttons) {
+    button.hidden = false;
+    const text = button.querySelector('.c-copy-value__text');
+    let timer;
+    button.addEventListener('click', async () => {
+      const value = button.dataset.copyValue;
+      clearTimeout(timer);
+      try {
+        await navigator.clipboard.writeText(value);
+        button.dataset.copied = 'true';
+        if (text) text.textContent = 'Copied';
+        status.textContent = `Copied ${value}`;
+      } catch {
+        button.dataset.copied = 'false';
+        status.textContent = `Copy failed. Select ${value} and copy it instead.`;
+      }
+      timer = setTimeout(() => { delete button.dataset.copied; if (text) text.textContent = 'Copy'; }, 2000);
+    });
+  }
+})();

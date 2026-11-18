@@ -1,0 +1,57 @@
+---
+title: "Web colours"
+description: "The GOV.UK web palette and functional colours, with every tint, shade and code, ready to copy."
+group: "Colour"
+nav_order: 1
+last_reviewed_on: 2026-11-18
+review_in: 3 months
+published_on: "2026-11-18"
+updated_on: "2026-11-18"
+updates:
+  - date: "2026-11-18"
+    description: "First published, with the GOV.UK web palette and functional colours copied exactly from the GOV.UK Brand Guidelines."
+ai_instructions: "Use this page for any colour shown on a web page or Home Assistant dashboard. Every value comes unchanged from the GOV.UK Brand Guidelines web page and is rendered from docs/data/govuk-brand-colours.json: never type a hex value from memory. Prefer the functional colour for its role (for example brand, link, error, focus) and use the palette only for supporting elements such as illustrations. Never use colour alone to give meaning. Chart, map and illustration colours have their own pages and do not change with the theme."
+ai_related:
+  - path: "/styles/colour-app.html"
+    title: "App colours"
+    relationship: "Owns the app palette, including the accents and dark mode blues used in the Home Assistant Companion app."
+  - path: "/styles/colour-charts.html"
+    title: "Chart colours"
+    relationship: "Owns which colours a chart uses. Read before colouring any data."
+  - path: "/get-started/colour-settings.html"
+    title: "Change theme colours"
+    relationship: "Owns how a household changes the theme colour in Home Assistant."
+---
+
+# Web colours
+
+Use these colours on web pages and Home Assistant dashboards. Use a functional colour for its role first, such as the brand, link or error colour. Use the wider palette only for supporting elements such as illustrations or custom cards.
+
+Every value on this page is the GOV.UK web palette, unchanged. Each value has a **Copy** button. Without JavaScript, select the value and copy it yourself.
+
+<%= colour_copy_status %>
+
+## Web palette
+
+Use these colours for supporting elements, such as illustrations, or in custom components where it is appropriate.
+
+In GOV.UK Frontend, call the `govuk-colour` Sass function instead of typing a value. For example, `govuk-colour("blue")` gives Primary blue. Add `$variant` for a tint or shade, such as `govuk-colour("red", $variant: "tint-25")`.
+
+Most colours have tints at 25%, 50%, 80% and 95%, and shades at 25% and 50%. Black has tints for greys. White has no variants.
+
+<%= colour_palette('web') %>
+
+## Functional colours
+
+A functional colour has one job. Use it only for that job, and use the palette for anything else.
+
+- Use the `govuk-functional-colour` Sass function where it is available, for example `govuk-functional-colour("brand")` instead of `#1D70B8`.
+- Use `inverse-text` for text on dark backgrounds.
+- Use `template-background` for the page behind the content and `body-background` for the content area.
+- Use `focus` only for the element that has keyboard focus.
+- Use `error` only for error messages and `success` only for success messages.
+- Use `hover` only for the hover state of inputs.
+
+Where the shipped civica theme sets a Home Assistant custom property to exactly this value, the property is listed too, so you can use it in a card.
+
+<%= colour_functional_tokens %>

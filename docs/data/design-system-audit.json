@@ -6181,7 +6181,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Reviewed generated exact palette references and semantic-role table; tone is independent of mode, chart identity and print metadata are qualified. 12 November 2026 source review: Connected the palette reference to colour roles, optional household identity and an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "798b4fabe3e1ca4dfead22d047aecd63c56409f983d57fafcbc7d682d45c8ea8",
+      "sha256": "bc79e94a448f421714b3c6c314c10f03cb2ffeb558a5c8ee034a5c2f190456d0",
       "url": "/styles/colour.html",
       "title": "Colour",
       "example_ids": [
@@ -6302,7 +6302,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Visual roles, brand chapters and the complete writing guide have clear entry points; canonical tokens remain outside authored prose. Project-story navigation review: discoverable About and Writing guide links, section grouping and update history are consistent; no new runtime claim. Preserved the historical #writing-guide anchor with a route to the new section. 12 November 2026 source review: Made data and colour guidance directly discoverable and added the matching original section illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "9d24dbadcdb706677db7ab2aa72d877e5872bba78f7254ff66d3325fa768be2a",
+      "sha256": "9910bad01236cf3f2a05b1f27da9b622a975d2f6bc80d25f2f4fe6acd9d78f54",
       "url": "/styles/index.html",
       "title": "Styles",
       "example_ids": [
@@ -7138,6 +7138,78 @@
       "resolved_finding_ids": [],
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
+    },
+    {
+      "path": "docs/source/styles/colour-web.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties are listed only where the shipped theme sets that exact value.",
+      "sha256": "665d1f15a837de0612359cc4cfe64ad4e4e4fb1218e93b1370f5024cfd0aa3c1",
+      "url": "/styles/colour-web.html",
+      "title": "Web colours",
+      "example_ids": [],
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/styles/colour-app.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties are listed only where the shipped theme sets that exact value.",
+      "sha256": "d622e3bbd00cd7b44b2f889bebf3f929f9ce4d856ca7dc8fb274416674ff3794",
+      "url": "/styles/colour-app.html",
+      "title": "App colours",
+      "example_ids": [],
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/styles/colour-print.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties are listed only where the shipped theme sets that exact value.",
+      "sha256": "6addbf4464526bfaa9d9ea7395016f2708c1f10051e8759bc985c5f3ee263e26",
+      "url": "/styles/colour-print.html",
+      "title": "Print colours",
+      "example_ids": [],
+      "resolved_finding_ids": []
     }
   ],
   "examples": [
@@ -17839,7 +17911,7 @@
     },
     {
       "path": "docs/source/javascripts/civica-docs.js",
-      "sha256": "5c8b3e18ddcb9483727b863bee3ef393c274e3c6f599178313d9ec4933ce58ba",
+      "sha256": "1ba2735b301be6831913963f30ed04d1969ae046e7057506f4854e9d080d5dd2",
       "scope": "Authored/shared documentation source review."
     },
     {
@@ -17864,7 +17936,7 @@
     },
     {
       "path": "docs/helpers/design_system_helpers.rb",
-      "sha256": "63f2bc94e27ec50cd04a9e546284360213ca3bbdb1c3862b0ed0a4e48b7265dc",
+      "sha256": "6318420b28655e7d787bc7d08a0ebbcaf3d0d5929fb9f8f0485b0498ff6ae665",
       "scope": "Authored/shared documentation source review. Subsequent project-story/navigation changes reviewed within docs/data/project-story-review.json scope. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18139,7 +18211,7 @@
     },
     {
       "path": "docs/source/llms.txt",
-      "sha256": "36381db3b90506bf0330f714b7b35d548166de5b183f6656ccf085961f588676",
+      "sha256": "bd5da69ac3bcfee4847a4103b978ff043df22e7f6ae8eb2cac91d18ea1dcfb6a",
       "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -18290,7 +18362,7 @@
     {
       "path": "package.json",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json. Current startup-readiness correction reviewed in docs/data/startup-readiness-review.json; later full CI/live outcomes remain separate. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate.",
-      "sha256": "73de96c29518659d78d8ee5891e8ccf2a7b5b8cb945afe4786170256e0cb1a68"
+      "sha256": "c0f6d4a04a5a3e86f63daf12e0f6d3fc121acb7e985612a86307c42fe09c42dd"
     },
     {
       "path": "package-lock.json",
@@ -18329,7 +18401,7 @@
     },
     {
       "path": ".github/workflows/validate.yml",
-      "sha256": "41fca2d4b33bbd902362842bca357c9e358ee59519eb3c6a65ddd07b36cf8523",
+      "sha256": "6a05c8ed68108f11a481818269ac555adbc1f398aeef8193f7f05e7f5f5b8036",
       "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18524,7 +18596,7 @@
     },
     {
       "path": "docs/source/stylesheets/_civica-components.scss",
-      "sha256": "e63560b5bb5ea798b69c7bd1f2d984444e6defa730364c453a9ec36c3eb6bc62",
+      "sha256": "7cb077daadefdd12172f46d79037aeedd50e36a6f3940fe8b1227ebafcf0d754",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
