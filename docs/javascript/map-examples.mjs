@@ -136,7 +136,7 @@ export function initialiseMapExample(root) {
         prefetchZoomDelta: 0, maxTileCacheSize: 32, transformRequest: url => ({ url, referrerPolicy: 'strict-origin-when-cross-origin' }) });
       map.touchZoomRotate.disableRotation();
       map.keyboard.disableRotation();
-      map.addControl(new maplibregl.ScaleControl({ maxWidth: 120, unit: 'metric' }), 'bottom-left');
+      map.addControl(new maplibregl.ScaleControl({ maxWidth: 120, unit: 'metric' }), 'top-left');
       map.getCanvas().setAttribute('aria-label', 'OpenStreetMap of Cardiff Bay with invented device markers. Use arrow keys to pan, plus and minus to zoom, or use the location records below.');
       map.getCanvas().setAttribute('aria-describedby', root.querySelector('[data-map-instructions]').id);
       root.mapExample = { map, records: MAP_RECORDS };
