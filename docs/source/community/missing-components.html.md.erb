@@ -5,7 +5,7 @@ section: community
 group: Review
 status: reference
 published_on: 2026-11-11
-updated_on: "2026-11-17"
+updated_on: "2026-11-18"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -15,6 +15,8 @@ updates:
     description: "Recorded 30 proposed household design-specification gaps, native capability evidence and testable acceptance criteria."
   - date: "2026-11-17"
     description: "Rewritten to lead with what the register does and does not claim, with the generated specifications, evidence and links unchanged."
+  - date: "2026-11-18"
+    description: "Colour rule links now point to the pages that own them, after the Colour roles and accessibility page was retired."
 ai_instructions: "Apply when saying that Home Assistant lacks something or that civica covers it. The register lists gaps in civica design specifications, never missing Home Assistant features. Completion means design coverage, not a native adapter or a live device test. Keep native capability, civica implementation and design specification as three separate claims. Rules WG-002, WG-043, WG-056."
 ai_related:
   - path: "/home-assistant/index.html"
@@ -97,6 +99,6 @@ These local examples show the compatibility boundary. The dedicated guides add t
 
 ## Review and implementation limits
 
-The specifications are reviewed against the frozen [brand guidance](../styles/brand-colour.html) and [writing guide](../content/index.html). Their rules preserve native labels, user names, translations, permissions, data values and device capabilities. Illustration rules do not justify replacing functional icons, camera images or maps. A clinical or government source does not give this household application its authority or assurance.
+The specifications are reviewed against the frozen [brand guidance](../styles/colour.html#colour-rules) and [writing guide](../content/index.html). Their rules preserve native labels, user names, translations, permissions, data values and device capabilities. Illustration rules do not justify replacing functional icons, camera images or maps. A clinical or government source does not give this household application its authority or assurance.
 
 The source review established the original gaps. The implementation adds dedicated guides and examples, checked by the build and browser suite described in the [work package](guidance-work-package.html). Those checks use synthetic data; they do not operate household devices or certify complete native task accessibility. The [whole-system audit](design-system-audit.html) keeps confirmed implementation findings separate from this specification coverage register. Use the [audit checklist](../reference/component-audit-checklist.json) to repeat the review when the sources, rules or implementation change.

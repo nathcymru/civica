@@ -22,11 +22,13 @@ updates:
     description: "Rewritten for the GOV.UK chart palette: six categorical colours, GOV.UK scale steps and the same colours in light and dark mode. The ONS-based generated colours and the Vivid and Muted tones were removed."
   - date: "2026-11-18"
     description: "Map colours now belong to the Map colours page; this page keeps scales for maps that show a quantity. Swatches now show hex, RGB and Sass only, because chart colours do not follow the theme colour."
-ai_instructions: "Apply when colouring a chart series or heatmap, and for the scale rules of a map layer that shows a quantity (its colours come from Map colours). Use only the GOV.UK chart palette on this page, unchanged, in both light and dark mode: six categorical colours, Black tint 80% for axes and lines, Black (White in dark mode) for labels. Decide whether colour identifies a source or shows a quantity. Give a source its style from its stable ID with chartSeriesStyle, never from its position, and always add a label, pattern or table. Quantities use the listed tints and shades of one family, never calculated in-between colours, and no more than two scales per chart. Do not use alpha or gradients. Rules WG-001, WG-002."
+  - date: "2026-11-18"
+    description: "Rule BG-COL-07 moved here from the retired Colour roles and accessibility page."
+ai_instructions: "Apply when colouring a chart series or heatmap, and for the scale rules of a map layer that shows a quantity (its colours come from Map colours). Use only the GOV.UK chart palette on this page, unchanged, in both light and dark mode: six categorical colours, Black tint 80% for axes and lines, Black (White in dark mode) for labels. Decide whether colour identifies a source or shows a quantity. Give a source its style from its stable ID with chartSeriesStyle, never from its position, and always add a label, pattern or table. Quantities use the listed tints and shades of one family, never calculated in-between colours, and no more than two scales per chart. Do not use alpha or gradients. Rule BG-COL-07 is on this page. Rules WG-001, WG-002."
 ai_related:
-  - path: "/styles/brand-colour.html"
-    title: "Colour roles and accessibility"
-    relationship: "Owns the rule that the theme colour never changes chart meaning."
+  - path: "/styles/colour.html"
+    title: "Colour"
+    relationship: "Owns the theme colours and the colour rules for every channel."
   - path: "/components/charts.html"
     title: "Charts and tables"
     relationship: "Owns the maintained Energy chart specification."
@@ -126,7 +128,11 @@ These working charts use the shared adapter. Their lines, patterns and tables ar
 
 <%= example('local-chart-many') %>
 
+<span id="bg-col-07"></span>
+
 ## Choose the colour mapping
+
+This section and the next carry rule BG-COL-07 (MUST): keep chart and map scales independent of the theme colour. It moved here from the retired Colour roles and accessibility page.
 
 | Relationship | Meaning of colour | Colours | Required context |
 | --- | --- | --- | --- |

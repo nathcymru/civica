@@ -479,7 +479,7 @@
     },
     {
       "path": "docs/source/community/missing-components.html.md.erb",
-      "sha256": "edf832631e78bb915aaa2aa001d2f208ab3aab643003011e5a513e7840d7fead",
+      "sha256": "f68aa0afeee2628bb4c7eae08d89ccb5e9fb31c161437900a362336cafd68649",
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -895,7 +895,7 @@
     },
     {
       "path": "docs/source/components/charts.html.md.erb",
-      "sha256": "3354493068ef69e80d7c30e248458a91ca4ecbf1c7676d2def337afd3e7c8261",
+      "sha256": "2c6759ac47c7b78b2b882f3a84cc35a7b89677a1f174303e6e1e5d563d3b3810",
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -2698,7 +2698,7 @@
       "finding_ids": [],
       "note": "Personalisation is an optional household reference contract. Native dashboard and picture-card options are distinct from the proposed global shell settings; current companion identity remains explicitly disclosed. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
       "resolved_finding_ids": [],
-      "sha256": "f1406c44632de273487363ae102cf9a597cebb10f2b7d274dadeab1aeb912d50",
+      "sha256": "b384b58310138eb2ede9dcc8a007ab653df731d7ed349536f0083e65e1a01864",
       "url": "/get-started/personalisation.html",
       "title": "Personalise your home",
       "example_ids": [
@@ -3284,7 +3284,7 @@
       "path": "docs/source/home-assistant/index.html.md.erb",
       "url": "/home-assistant/index.html",
       "title": "Home Assistant controls and flows",
-      "sha256": "cc9ec7c80f53268e51401af829acda306b3a47122f3b6f8ae2b2cfe22a37d3c0",
+      "sha256": "5bd49cb587bbc562033bcf05ead4862d6ee593a610dbf243b9769c60155e1ee6",
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "resolved_finding_ids": [],
@@ -3426,7 +3426,7 @@
       "path": "docs/source/home-assistant/maps-and-zones.html.md.erb",
       "url": "/home-assistant/maps-and-zones.html",
       "title": "Maps, zones and location records",
-      "sha256": "6a28f4f01769349192b7e7718013837e962100175d3f656293aca14f4e59ae44",
+      "sha256": "147f84db746bffe9ee2e91a63198e124f81b1ab75a89b648b0af44224937ae23",
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "resolved_finding_ids": [],
@@ -4145,7 +4145,7 @@
         "dashboard-data-room-report"
       ],
       "note": "Read room hierarchy, responsive/shared use and both card examples. Device actions are distinct from detail navigation and synthetic states are labelled; shared rendering/token findings belong to the foundations audit. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. 12 November 2026 source review: Added complete synthetic data-monitoring dashboards with chart/table parity, periods, sources, missing coverage and freshness. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "65f7b7d9b6fb7a08d9d03c50533d36e7679316b018a3731b6bb30b0c3d715775",
+      "sha256": "cad65d5b500d833779ab7973f435c2da52dd314547e3dd415f4ab44cc85d1cc6",
       "url": "/patterns/home.html",
       "title": "Home and rooms",
       "resolved_finding_ids": []
@@ -6025,15 +6025,11 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "All eight colour rules reviewed for local palette authority, semantic independence, contrast context, channel distinctions and functional/decorative scope. 12 November 2026 source review: Integrated colour roles with data examples and optional household identity, with an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "325c40b53c6fb5c2b4d18dcfdfb99a7f7f22c1f15dccddb32d53aa55140c61be",
+      "note": "All eight colour rules reviewed for local palette authority, semantic independence, contrast context, channel distinctions and functional/decorative scope. 12 November 2026 source review: Integrated colour roles with data examples and optional household identity, with an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026: retired. Its 8 rules moved unchanged in meaning to Colour (BG-COL-01, 03, 06, 08), Web colours (BG-COL-02, 04, 05) and Chart colours (BG-COL-07), with its 3 examples; the URL is kept with one anchor per rule linking to the new location.",
+      "sha256": "b7395a493e6f575afdfb4ed8da0e6d056de37d17af2e9863f48101ef838db99b",
       "url": "/styles/brand-colour.html",
-      "title": "Colour roles and accessibility",
-      "example_ids": [
-        "bg-colour-role-separation",
-        "bg-colour-boundaries",
-        "bg-colour-state-labels"
-      ],
+      "title": "Colour roles and accessibility (retired)",
+      "example_ids": [],
       "resolved_finding_ids": []
     },
     {
@@ -6119,7 +6115,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Current project identity uses the user-supplied revised-2026-11-13 archive and accepted-assets manifest. Superseded logos are removed from current source; the empty WebP and inaccurate supplied self-hash/count are explicitly recorded rather than silently repaired. Household identity remains optional and separate from project/docs identity. Prior V3.2 provenance remains in Git and immutable historical reviews. Installation and current destinations were reviewed in this naming change; rendered/publication acceptance is tracked separately.",
-      "sha256": "3536fb236555cca7c410c911c36191616d0d06796a05caf1d8b1938629d9d331",
+      "sha256": "d453f6f59a61093bb7817fa765cfba356bcfa621607c447aa15c3c7078ddeec4",
       "url": "/styles/brand.html",
       "title": "Project identity",
       "example_ids": [
@@ -6148,8 +6144,8 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "Stable identities, the six GOV.UK categorical chart colours (unchanged in light and dark mode), pattern limits and 1.5px lines are explicit. The 24-series example is distinct by colour, pattern, line dash and marker together, not by colour alone. 12 November 2026 source review: Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026 colour review: the generated palette was replaced by the GOV.UK chart palette, with single, multiple, divergent and social examples.",
-      "sha256": "6e271a6f714b3d4b7176ff86db25343901ec288de57a2376de00196ea96faed9",
+      "note": "Stable identities, the six GOV.UK categorical chart colours (unchanged in light and dark mode), pattern limits and 1.5px lines are explicit. The 24-series example is distinct by colour, pattern, line dash and marker together, not by colour alone. 12 November 2026 source review: Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026 colour review: the generated palette was replaced by the GOV.UK chart palette, with single, multiple, divergent and social examples. 18 November 2026: rule BG-COL-07 moved here from the retired Colour roles and accessibility page.",
+      "sha256": "19d58a9a7df7d679ddb932e3c75525c9be953d77e477c57748db2d6635e3d784",
       "url": "/styles/chart-colour.html",
       "title": "Chart colours",
       "example_ids": [
@@ -6180,13 +6176,14 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "Reviewed generated exact palette references and semantic-role table; tone is independent of mode, chart identity and print metadata are qualified. 12 November 2026 source review: Connected the palette reference to colour roles, optional household identity and an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "1ac50109b994097260ce7f491f15eb8d1f864ee83dc7f0a84488f5488cf7e3dd",
+      "note": "Reviewed generated exact palette references and semantic-role table; tone is independent of mode, chart identity and print metadata are qualified. 12 November 2026 source review: Connected the palette reference to colour roles, optional household identity and an original guide illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 18 November 2026: rules BG-COL-01, BG-COL-03, BG-COL-06 and BG-COL-08 and the role separation example moved here from the retired Colour roles and accessibility page.",
+      "sha256": "e3549dbf17941c12d9a43279df9dc20cb38c2af02117ac60fe3fb08e2b470b66",
       "url": "/styles/colour.html",
       "title": "Colour",
       "example_ids": [
         "local-theme-blue",
-        "local-theme-purple"
+        "local-theme-purple",
+        "bg-colour-role-separation"
       ],
       "resolved_finding_ids": []
     },
@@ -6302,7 +6299,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Visual roles, brand chapters and the complete writing guide have clear entry points; canonical tokens remain outside authored prose. Project-story navigation review: discoverable About and Writing guide links, section grouping and update history are consistent; no new runtime claim. Preserved the historical #writing-guide anchor with a route to the new section. 12 November 2026 source review: Made data and colour guidance directly discoverable and added the matching original section illustration. Integrated validation is recorded separately in the data-design review. Hero layout correction: reviewed the shared text/art band and metadata against the official desktop/mobile composition. Rendered acceptance is tracked separately in hero-layout-review.json. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "cbc406c7b36a32dd6e9f0c098158a0557861f97eee6fb383a12d47d49c8a4c8e",
+      "sha256": "fd53a2fe7fd93ca47f76af2c09de4e21e62246813bdd48525d63a7d244245a98",
       "url": "/styles/index.html",
       "title": "Styles",
       "example_ids": [
@@ -7156,11 +7153,14 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties are listed only where the shipped theme sets that exact value.",
-      "sha256": "cd4e50f9aefd29805a053d7e6166163a2f13146918a63d361c09d48f109212be",
+      "note": "18 November 2026: first published. Every colour value is rendered from docs/data/govuk-brand-colours.json, copied verbatim from the GOV.UK Brand Guidelines colour pages read on 18 November 2026 (Open Government Licence v3.0). civica theme properties are listed only where the shipped theme sets that exact value. 18 November 2026: rules BG-COL-02, BG-COL-04 and BG-COL-05 and their examples moved here from the retired Colour roles and accessibility page.",
+      "sha256": "6f6cad7baffc860157340d4a9d0c26d67154b0e375714cd3cbbfd771c7e01a8a",
       "url": "/styles/colour-web.html",
       "title": "Web colours",
-      "example_ids": [],
+      "example_ids": [
+        "bg-colour-state-labels",
+        "bg-colour-boundaries"
+      ],
       "resolved_finding_ids": []
     },
     {
@@ -7378,7 +7378,7 @@
       "path": "docs/data/brand-guidance-examples.yml",
       "authored_html_sha256": "85949b6e6ecf406d083af090bebd0cb593208b95b3748383b620c154137ff213",
       "owners": [
-        "/styles/brand-colour.html"
+        "/styles/colour-web.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -7398,7 +7398,7 @@
       "path": "docs/data/brand-guidance-examples.yml",
       "authored_html_sha256": "80659756c8423029922fe65cb0dae40d8d81020beaf8573b381dc394f79ce9a1",
       "owners": [
-        "/styles/brand-colour.html"
+        "/styles/colour.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -7418,7 +7418,7 @@
       "path": "docs/data/brand-guidance-examples.yml",
       "authored_html_sha256": "787e3acef37112f9346e2bbd939489e504c03f6cd6d72cc55d4ad08da344fbdb",
       "owners": [
-        "/styles/brand-colour.html"
+        "/styles/colour-web.html"
       ],
       "reviewed_rule_families": [
         "BG-COL",
@@ -18228,7 +18228,7 @@
     },
     {
       "path": "docs/source/design-contract.json",
-      "sha256": "3a7942fa0a935a7d9d5373630e465e0a02928b96b8cd072c8e16ccb928873bad",
+      "sha256": "cbb46a4c591e6b2829d4460cb2f9520c42b8de50cb6e864265a2626733fe71b6",
       "scope": "Authored/shared documentation source review. Subsequent project-story/navigation changes reviewed within docs/data/project-story-review.json scope. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -18493,7 +18493,7 @@
     },
     {
       "path": "docs/source/llms.txt",
-      "sha256": "eae087c873112efc8d138c1c81dcf3489bc392e6be23d957172b64ed5d7ca5a5",
+      "sha256": "b0dea3bb4df5698e93326fc45563cad9715c3515517064236f2da00380383dd5",
       "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -18634,7 +18634,7 @@
     {
       "path": "docs/scripts/sync-palettes.py",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "19f19e8ca274c1fa9515c4f35479d9b8a4122a1a35b2e1451f536c3413930a04"
+      "sha256": "dccd5426c4d72427d8a186ab06c14ba728715cbd4b472748b14add7225006dc7"
     },
     {
       "path": "docs/scripts/generate-social-examples.py",
