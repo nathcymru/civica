@@ -5,7 +5,7 @@ section: "community"
 group: "Guidance"
 nav_order: 3
 published_on: "2026-11-12"
-updated_on: "2026-11-17"
+updated_on: "2026-11-18"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -15,6 +15,8 @@ updates:
     description: "Added the theme-only issue workflow, public writing review, timeline rules and publication checks."
   - date: "2026-11-17"
     description: "Rewritten to lead with the publication rule, and moved the source links to the sources page."
+  - date: "2026-11-18"
+    description: "Updated the description of the validation workflow: checks run on pull requests, and main-branch runs build and deploy."
 ai_instructions: "Use to prepare, review and publish a theme roadmap item from a GitHub issue. Apply one publishing label, keep developer notes out of public fields, and confirm release evidence before calling an item delivered. Automated checks do not prove a feature works or is accessible. Rules WG-010, WG-080, WG-094, WG-095."
 ai_related:
   - path: "/community/roadmap.html"
@@ -101,7 +103,7 @@ The public data uses schema version 2: separate `accepted` and `inWorks` arrays,
 
 Use `npm run roadmap:check` for offline validation. Use `npm run roadmap:fetch` for an explicit refresh; it reads `GITHUB_REPOSITORY` and a `GH_TOKEN` or `GITHUB_TOKEN` with read access to issues. Never put a token in source files. The committed public-only snapshot supports offline and pull-request builds. The live build refreshes that snapshot without committing issue data back to the repository.
 
-The existing validation workflow refreshes the roadmap for relevant issue changes, main-branch builds, manual runs and a daily recovery schedule. It builds trusted main-branch code and runs the full existing checks before deploying GitHub Pages. Pull-request builds use their offline snapshot and cannot publish. The complete publishing workflow is serialised; queued refreshes may be combined and each trusted run fetches current issues again.
+The validation workflow refreshes the roadmap for relevant issue changes, main-branch builds, manual runs and a daily recovery schedule. It builds trusted main-branch code and deploys GitHub Pages. The checks run on the pull request before a change reaches the main branch, and the daily run also runs the full browser suite. Pull-request builds use their offline snapshot and cannot publish. The complete publishing workflow is serialised; queued refreshes may be combined and each trusted run fetches current issues again.
 
 Scheduled runs can be delayed or disabled by GitHub. They are a recovery measure, not an immediate-update guarantee. If a change does not appear, check the latest **Validate civica** run, correct any reported issue fields or labels, and run the workflow again. A successful deployment updates both the [public timeline](roadmap.html) and its [public data](../reference/roadmap.json).
 

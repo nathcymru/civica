@@ -29,6 +29,13 @@ async function mount(page, baseURL, origin = new URL(baseURL).origin, prefix = '
   return path => `${origin}${prefix}${path}`;
 }
 
+// A late sub-resource request can still be inside the route handler when a
+// test ends. Without this, closing the context disposes its fetch response
+// and fails an otherwise passing test.
+test.afterEach(async ({ page }) => {
+  await page.unrouteAll({ behavior: 'ignoreErrors' });
+});
+
 for (const deployment of [
   { name: 'domain root', origin: undefined, prefix: '', secure: false },
   { name: 'HTTPS Pages project', origin: 'https://docs.invalid', prefix: '/civica', secure: true },

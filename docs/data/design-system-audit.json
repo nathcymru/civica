@@ -471,7 +471,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Reviewed the form/parser/workflow contract against primary GitHub sources: submitted textarea boundary, maintainer release judgement, status and UTC chronology, exact category/title ordering, public GitHub notes versus excluded roadmap notes, safe pagination and read-only token, trusted-main/PR separation, and the retained full verification gate. Current integrated and publication evidence is separately bounded in roadmap-review.json. Accepted-stage source review: reviewed all three publishing labels, open/no-date status semantics, one-to-three category limits, schema migration, old-form compatibility and blank-only reserved media. Corrected the instruction that could have relabelled previously started work as unstarted. Feasibility, language quality and accessibility remain requirements for later research and delivery, not established proposal facts. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "3d07a043c1c0075b9c94b3539277abb9788eea91bb527818b4c256092af1861b",
+      "sha256": "4d003bb8fbf8019f708511b0db9ca59ca3ba183fa50025b0eb87a7242369832a",
       "url": "/community/maintain-roadmap.html",
       "title": "Maintain the theme roadmap",
       "example_ids": [],
@@ -18709,7 +18709,7 @@
     {
       "path": "package.json",
       "scope": "Current data, colour, identity and illustration documentation inputs; source review only, with integrated verification recorded separately. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json. Current startup-readiness correction reviewed in docs/data/startup-readiness-review.json; later full CI/live outcomes remain separate. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate.",
-      "sha256": "c0f6d4a04a5a3e86f63daf12e0f6d3fc121acb7e985612a86307c42fe09c42dd"
+      "sha256": "a99e301108ef77452a8ea081c12e33c84e9f2dcd224a4a3705c89974c88cde29"
     },
     {
       "path": "package-lock.json",
@@ -18748,7 +18748,7 @@
     },
     {
       "path": ".github/workflows/validate.yml",
-      "sha256": "52a1e5fb81d6ab5425482bb4b80a1e2addbfbf4274b1236ebb8accdb928149fd",
+      "sha256": "7617d226b11926043bc68c2340de60e5be56039ab4a749227fe51e32a11d44b6",
       "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json. Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18763,7 +18763,7 @@
     },
     {
       "path": "test/roadmap-workflow.test.mjs",
-      "sha256": "42bbaa473eb5167caf43e3622997b56d8307623fbb425fe7f94f09c705b16cc1",
+      "sha256": "f26a0e204d19a15b6785f06430efa811f456fcf2f31d8956e8eadbb247873e51",
       "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json."
     },
     {
@@ -18793,7 +18793,7 @@
     },
     {
       "path": "docs/source/community/maintain-roadmap.html.md.erb",
-      "sha256": "3d07a043c1c0075b9c94b3539277abb9788eea91bb527818b4c256092af1861b",
+      "sha256": "4d003bb8fbf8019f708511b0db9ca59ca3ba183fa50025b0eb87a7242369832a",
       "scope": "Bounded roadmap source review; see docs/data/roadmap-review.json for actual acceptance and publication limits. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
@@ -18918,7 +18918,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "e686839ae0b55cbbc4482dd488c2d6636ef452ebcfdbdac000c84d1d1b639853",
+      "sha256": "c5ed0e6d234a875ae3b418f650083bc20fbe2b943de884073408e5de582d0b54",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
@@ -18983,7 +18983,7 @@
     },
     {
       "path": "tests/docs-notice.browser.spec.mjs",
-      "sha256": "9088acce74dc7f8086c3ca9a56018c52e9aa9485c940004817bd4970ccb8350a",
+      "sha256": "79eb471781865ef6fe3312146b6578da2dcada18cf140a180d0adc42aa9f2b98",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
