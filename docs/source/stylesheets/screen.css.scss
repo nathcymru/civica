@@ -304,3 +304,19 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 
 /* Measured type scale, spacing and page frame (last, so it wins over earlier ad hoc sizes). */
 @import 'type-scale';
+
+/* Page footer details. */
+.c-footer__brand { display:block; }
+.c-footer__brand img { display:block; max-width:100%; height:auto; }
+.govuk-footer__licence-logo { height:31px; width:88px; }
+.c-history__edit-icon { color:#1a65a6; }
+.technical-documentation .c-history p,
+.technical-documentation .c-history li,
+.technical-documentation .c-history summary { font-size:16px; line-height:24px; }
+.technical-documentation .share-links h2 { font-size:19px; line-height:25px; margin:0 0 20px; }
+.technical-documentation .share-links p { font-size:16px; line-height:20px; margin:0 0 20px; }
+@media (max-width:40.0525em) {
+  .technical-documentation .share-links h2 { margin-bottom:15px; }
+  .technical-documentation .share-links p { margin-bottom:15px; }
+}
+.technical-documentation .share-links__list-item { font-size:15px; line-height:normal; }

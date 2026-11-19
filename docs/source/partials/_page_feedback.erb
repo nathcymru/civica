@@ -1,4 +1,3 @@
-<%# Page feedback: the feedback component markup, unchanged except that Report a problem opens the GitHub bug form and no vote is stored. %>
 <div class="govuk-width-container">
 <div data-module="feedback" class="gem-c-feedback govuk-!-display-none-print" role="region" aria-label="Page feedback">
 <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
@@ -12,7 +11,7 @@
 </ul>
 </div>
 </div>
-<div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success" role="alert" hidden>Thank you. Your answer has not been recorded, because this site does not count votes yet.</div>
+<div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success" role="alert" hidden>Thank you</div>
 <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong">
 <a class="govuk-button gem-c-feedback__prompt-link" role="button" draggable="false" target="_blank" rel="noopener noreferrer" href="https://github.com/nathcymru/civica/issues/new?template=bug_report.yml&amp;page=<%= encode_param(page_address) %>">Report a problem with this page<span class="govuk-visually-hidden"> (opens GitHub in a new tab)</span></a>
 </div>
