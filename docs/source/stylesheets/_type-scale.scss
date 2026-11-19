@@ -1,0 +1,196 @@
+// Type scale, spacing and page frame for every documentation page.
+//
+// The values were measured from the reference design system's rendered pages
+// (computed font size, line height, margins and padding at 1440, 768 and 375 px
+// wide) and are written down once here. Arial replaces the reference typeface,
+// which is licensed for its own domains only, so sizes and spacing match but
+// letter shapes differ slightly.
+//
+// Breakpoints follow the reference: phone below 641 px, tablet from 641 px,
+// desktop from 769 px. Tables stay small until desktop, as in the reference.
+
+$type-colour: #0b0c0c;
+$type-secondary: #505a5f;
+$type-border: #b1b4b6;
+$type-inline-code-bg: #f3f3f3;
+$type-inline-code-colour: #d13118;
+
+$bp-tablet: 641px;
+$bp-desktop: 769px;
+
+// Page frame (desktop, tablet and phone).
+$frame-width: 1100px;
+$frame-gutter: 30px;
+$frame-gutter-phone: 15px;
+$frame-sidebar: 260px;
+$frame-sidebar-tablet: 210px;
+$frame-column-gap: 30px;
+$frame-text-width: 720px;
+
+@mixin type($size, $line) {
+  font-size: $size;
+  line-height: $line;
+  letter-spacing: normal;
+}
+
+:root {
+  --type-text: #{$type-colour};
+  --frame-gutter: #{$frame-gutter};
+}
+
+// Frame ---------------------------------------------------------------------
+
+.c-container:not(.c-page--illustrated) { max-width: $frame-width + 2 * $frame-gutter; padding-left: $frame-gutter; padding-right: $frame-gutter; }
+.c-page:not(.c-page--illustrated) { grid-template-columns: $frame-sidebar minmax(0, 1fr); gap: $frame-column-gap; }
+// A hero page keeps its own four-column grid, set up with the hero.
+.c-page--illustrated { grid-template-columns: max(#{$frame-gutter}, calc((100% - #{$frame-width}) / 2)) $frame-sidebar $frame-column-gap minmax(0, 1fr); }
+.c-content { max-width: none; }
+.c-content > p, .c-content > ul, .c-content > ol { max-width: none; }
+.c-content:not(.c-content--illustrated) { max-width: $frame-width - $frame-sidebar - $frame-column-gap; }
+
+@media (min-width: $bp-tablet) and (max-width: $bp-desktop - 1px) {
+  .c-page:not(.c-page--illustrated) { display: grid; grid-template-columns: $frame-sidebar-tablet minmax(0, 1fr); gap: $frame-column-gap; }
+  .c-page--illustrated { grid-template-columns: max(#{$frame-gutter}, calc((100% - #{$frame-width}) / 2)) $frame-sidebar-tablet $frame-column-gap minmax(0, 1fr); }
+  .c-page-contents { display: block; }
+}
+
+@media (max-width: $bp-tablet - 1px) {
+  .c-container:not(.c-page--illustrated) { padding-left: $frame-gutter-phone; padding-right: $frame-gutter-phone; }
+  .c-page:not(.c-page--illustrated) { display: block; }
+}
+
+// Reading column under a hero: same left edge and width as a page without a hero.
+.c-reading-content { max-width: $frame-width - $frame-sidebar - $frame-column-gap; padding: 50px $frame-gutter 0 0; }
+
+// Body copy -----------------------------------------------------------------
+
+.technical-documentation { color: $type-colour; }
+.technical-documentation p,
+.technical-documentation li,
+.technical-documentation dd,
+.technical-documentation dt,
+.technical-documentation figcaption { @include type(19px, 25px); }
+.technical-documentation p { margin: 0 0 20px; }
+.technical-documentation p,
+.technical-documentation ul,
+.technical-documentation ol,
+.technical-documentation h1,
+.technical-documentation h2,
+.technical-documentation h3,
+.technical-documentation h4 { max-width: $frame-text-width; }
+
+.c-lead { @include type(24px, 30px); }
+.technical-documentation .c-lead { margin-bottom: 30px; }
+
+// Headings ------------------------------------------------------------------
+
+.technical-documentation h1 { @include type(48px, 50px); margin: 0 0 50px; }
+.technical-documentation > h1:first-of-type { padding-top: 0; }
+.c-content > h1 { margin-bottom: 50px; }
+.technical-documentation h2 { @include type(36px, 40px); margin: 0 0 30px; padding-top: 20px; }
+.technical-documentation h3 { @include type(24px, 30px); margin: 0 0 20px; }
+.technical-documentation h4 { @include type(19px, 25px); margin: 0 0 20px; }
+.technical-documentation h5,
+.technical-documentation h6 { @include type(19px, 25px); margin: 0 0 20px; }
+
+// Captions (section name above a sub-page title) ------------------------------
+
+.c-caption { @include type(24px, 30px); margin: 0 0 5px; color: $type-secondary; }
+
+// Lists ---------------------------------------------------------------------
+// Only plain lists take the reference spacing; lists with a class (breadcrumbs,
+// catalogues, colour keys, history) keep their own layout rules.
+
+.technical-documentation ul:not([class]),
+.technical-documentation ol:not([class]) { margin: 0 0 20px; padding-left: 20px; }
+.technical-documentation ul:not([class]) { list-style-type: disc; }
+.technical-documentation ol:not([class]) { list-style-type: decimal; }
+.technical-documentation ul:not([class]) > li,
+.technical-documentation ol:not([class]) > li { margin: 0 0 5px; }
+.technical-documentation li > ul:not([class]),
+.technical-documentation li > ol:not([class]) { margin: 5px 0 0; }
+.technical-documentation .c-breadcrumbs ol { list-style: none; padding-left: 0; }
+.technical-documentation .c-history ol { list-style: none; }
+
+// Inset text, notes and code --------------------------------------------------
+
+.c-note { @include type(19px, 25px); margin: 30px 0; padding: 15px; border-left-width: 10px; }
+.c-note > :last-child { margin-bottom: 0; }
+
+.technical-documentation code { @include type(16px, 20px); padding: 2px 4px; }
+.technical-documentation :not(pre) > code { background: $type-inline-code-bg; color: $type-inline-code-colour; }
+.technical-documentation pre { @include type(16px, 20px); margin: 0 0 20px; }
+.technical-documentation pre code { padding: 0; background: none; color: inherit; }
+
+// Tables --------------------------------------------------------------------
+
+.c-table-region { margin: 0 0 30px; }
+.technical-documentation table { @include type(16px, 20px); margin: 0; border-collapse: collapse; }
+.technical-documentation th,
+.technical-documentation td { padding: 10px 20px 10px 0; border-bottom: 1px solid $type-border; text-align: left; }
+.technical-documentation th,
+.technical-documentation td { font-size: inherit; line-height: inherit; }
+.technical-documentation th { font-weight: 700; }
+
+@media (min-width: $bp-desktop) {
+  .technical-documentation table { @include type(19px, 25px); }
+}
+
+// Example panels keep their compact heading but follow the 5 px line grid.
+.technical-documentation .c-code-panel h3 { line-height: 25px; }
+
+// Section navigation ----------------------------------------------------------
+
+.app-subnav { @include type(16px, 20px); padding-right: 15px; }
+.app-subnav__link { padding: 2px 0; }
+.app-subnav__tree .app-subnav__section-item { @include type(19px, 25px); padding-top: 7px; padding-bottom: 7px; }
+.app-subnav__child { @include type(16px, 20px); padding-top: 5px; padding-bottom: 5px; }
+.app-subnav__theme { @include type(19px, 25px); }
+.c-breadcrumbs { @include type(16px, 20px); margin: 5px 0 10px; }
+
+// Hero text -----------------------------------------------------------------
+
+.technical-documentation .c-illustrated-header h1 { @include type(48px, 50px); margin-bottom: 40px; }
+.technical-documentation .c-illustrated-header__summary { @include type(24px, 30px); }
+
+// A narrow hero text column cannot hold 48 px words: use the level 2 size.
+@media (min-width: $bp-tablet) and (max-width: 1100px) {
+  .technical-documentation .c-illustrated-header h1 { @include type(36px, 40px); margin-bottom: 30px; }
+  .technical-documentation .c-illustrated-header__summary { @include type(21px, 25px); }
+}
+
+@media (min-width: $bp-tablet) and (max-width: 900px) {
+  .technical-documentation .c-illustrated-header h1 { @include type(32px, 35px); }
+}
+
+// Tablet and phone ------------------------------------------------------------
+
+@media (max-width: $bp-tablet - 1px) {
+  .c-reading-content { padding: 40px $frame-gutter-phone 0; }
+  .technical-documentation p,
+  .technical-documentation ul:not([class]),
+  .technical-documentation ol:not([class]) { margin-bottom: 15px; }
+  .technical-documentation ul:not([class]) > li,
+  .technical-documentation ol:not([class]) > li { margin-bottom: 0; }
+  .technical-documentation li > ul:not([class]),
+  .technical-documentation li > ol:not([class]) { margin-top: 5px; }
+  .technical-documentation h1 { @include type(32px, 35px); margin-bottom: 30px; }
+  .c-content > h1 { margin-bottom: 30px; }
+  .technical-documentation h2 { @include type(27px, 30px); margin-bottom: 20px; padding-top: 15px; }
+  .technical-documentation h3 { @include type(21px, 25px); margin-bottom: 15px; }
+  .technical-documentation h4,
+  .technical-documentation h5,
+  .technical-documentation h6 { margin-bottom: 15px; }
+  .c-caption { @include type(19px, 25px); }
+  .c-lead { @include type(21px, 25px); }
+  .technical-documentation .c-lead { margin-bottom: 20px; }
+  .c-note { margin: 20px 0; }
+  .technical-documentation pre { margin-bottom: 15px; }
+  .c-table-region { margin-bottom: 20px; }
+  .technical-documentation .c-illustrated-header h1 { @include type(32px, 35px); margin-bottom: 25px; }
+  .technical-documentation .c-illustrated-header__summary { @include type(21px, 25px); }
+}
+
+@media print {
+  .technical-documentation h1 { font-size: 32px; line-height: 35px; }
+}
