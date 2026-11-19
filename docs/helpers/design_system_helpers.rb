@@ -45,8 +45,23 @@ module DesignSystemHelpers
         (!resource.destination_path.end_with?('/index.html') || resource.destination_path == 'home-assistant/index.html')
     end
     pages.group_by { |resource| resource.data.group || (section == 'components' ? 'Home Assistant components' : 'Guidance') }
-      .sort_by { |group, _| ['Guidance', 'Colour', 'Typography', 'Illustration', 'Data visualisation', 'Icons and images', 'Writing guidelines', 'Formatting content', 'Publish, update or retire', 'Lexicons', 'Writing standards', 'Quick reference', 'Home Assistant components', 'Home Assistant: controls', 'Home Assistant: flows', 'Form elements', 'Content presentation', 'Navigation', 'Inclusive content', 'Task patterns', 'Page patterns', 'Publishing components', 'Publishing patterns', 'Page templates'].index(group) || 99 }
+      .sort_by { |group, _| ['Guidance', 'Colour', 'Typography', 'Layout and spacing', 'Icons and images', 'Data visualisation', 'Illustration', 'Writing guidelines', 'Formatting content', 'Publish, update or retire', 'Lexicons', 'Writing standards', 'Quick reference', 'Home Assistant components', 'Home Assistant: controls', 'Home Assistant: flows', 'Form elements', 'Content presentation', 'Navigation', 'Inclusive content', 'Task patterns', 'Page patterns', 'Publishing components', 'Publishing patterns', 'Page templates'].index(group) || 99 }
       .map { |group, resources| [group, resources.sort_by { |resource| [resource.data.nav_order || 100, resource.data.title.downcase] }] }
+  end
+
+  # A section menu where each top-level item links to an overview page and the
+  # sub-pages show only under the branch the reader is in. The section's own
+  # page is the first item, "Introduction". A group with one page is a plain
+  # item. Enabled per section with `tree: true` in data/navigation.yml.
+  def section_tree(section_id)
+    section = data.navigation.sections.find { |item| item.id == section_id }
+    home = guide_pages.find { |resource| '/' + resource.destination_path == section.path }
+    tree = [{ title: 'Introduction', resource: home, children: [] }]
+    section_groups(section_id).each do |_group, resources|
+      overview = resources.find { |resource| resource.data.nav_order == 0 } || resources.first
+      tree << { title: overview.data.title, resource: overview, children: resources - [overview] }
+    end
+    tree
   end
 
   # Search includes section hubs, which are intentionally absent from their own

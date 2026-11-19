@@ -272,5 +272,16 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 .app-subnav__link { padding:2px 0; }
 .app-subnav__section-item--current { margin-left:-14px; padding-left:10px; border-left:4px solid #1d70b8; background-color:#fff; }
 .app-subnav__section-item--current .app-subnav__link[aria-current=page] { font-weight:700; }
+/* Overview-and-sub-pages menu (Styles): every top-level item is a link; only the
+   branch the reader is in opens, marked by a bar down its left edge. The current
+   sub-page is bold with a dot. */
+.app-subnav__tree .app-subnav__section-item { margin-bottom:0; padding:7px 0; font-size:1.1875rem; line-height:1.3157894737; }
+.app-subnav__tree .app-subnav__section-item--current { margin-left:0; padding-left:0; border-left:0; background:none; }
+.app-subnav__tree .app-subnav__section-item--branch { margin-left:-12px; padding-left:10px; border-left:2px solid #1d70b8; }
+.app-subnav__tree .app-subnav__section-item--current > .app-subnav__link { font-weight:700; }
+.app-subnav__children { margin:6px 0 0; padding:0 0 0 18px; list-style:none; }
+.app-subnav__child { position:relative; margin:0; padding:5px 0; font-size:1rem; line-height:1.25; }
+.app-subnav__child--current > .app-subnav__link { font-weight:700; }
+.app-subnav__child--current::before { content:''; position:absolute; left:-16px; top:12px; width:8px; height:8px; border-radius:50%; background:#1d70b8; }
 .app-subnav__theme { margin:0; padding:10px 15px 10px 0; font-size:1.1875rem; font-weight:400; line-height:1.3157894737; color:#484949; }
 .app-subnav__theme:first-of-type { padding-top:0; }
