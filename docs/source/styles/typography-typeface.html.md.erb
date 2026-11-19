@@ -1,0 +1,95 @@
+---
+title: "Typeface"
+description: "Set civica text in Arial at 2 weights, with the font stack, a specimen and the characters a Home Assistant dashboard needs."
+group: "Typography"
+nav_order: 4
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published. The font stack, weights, specimen and glyphs moved here from Typography, and the rule on using Arial everywhere civica sets the text moved here from Typography in context."
+ai_instructions: "Apply when choosing a font or weight for a Home Assistant card, theme, dashboard, printed handover, social image or civica documentation page. Use the font stack Arial, Helvetica, sans-serif at weights 400 and 700 only. Never add another typeface to the stack or bundle a font with a card. Code editors keep 'Courier New', monospace. Use a true minus sign for negative readings and an mdi: icon with a text label instead of an emoji or unusual symbol. Text the phone draws itself is owned by Web-app typography. The rule anchored bg-typ-01 is on this page; do not show its ID as text or name outside sources. Rules WG-001, WG-002."
+ai_related:
+  - path: "/styles/typography.html"
+    title: "Typography"
+    relationship: "Overview of all typography pages."
+  - path: "/styles/typography-type-scale.html"
+    title: "Type scale"
+    relationship: "Owns the sizes and line heights for each weight."
+  - path: "/styles/typography-web-app.html"
+    title: "Web-app typography"
+    relationship: "Owns the screens the phone draws in its own font."
+---
+
+# Typeface
+
+Set all civica text in Arial, at 2 weights: regular and bold.
+
+Arial, or the very similar Helvetica, is already on most computers, iPhones and iPads. Android devices use their own sans-serif font instead. So Home Assistant never has to download a font before it shows the dashboard.
+
+## Font stack
+
+Use this font stack in a custom card or a theme:
+
+```css
+font-family: Arial, Helvetica, sans-serif;
+```
+
+If Arial is missing, the device uses Helvetica, then its own sans-serif font. Do not add another typeface to the stack, and do not download or bundle a font with a card. The civica wordmark is artwork, not a font. Do not use it to set text.
+
+The civica theme sets the Home Assistant font variables for you, including `ha-font-family-body` and `ha-font-family-heading`. Code editors keep a monospace font, `'Courier New', monospace`, because the alignment of code carries meaning.
+
+<h2 id="bg-typ-01">Use Arial everywhere civica sets the text</h2>
+
+Use Arial on dashboards, in custom cards, in documentation, on printed handovers and in social images. Screens the phone draws itself keep the phone's own font. [Web-app typography](typography-web-app.html#the-phones-own-screens) explains which screens those are.
+
+## Weights
+
+| Weight | Value | Use it for |
+| --- | --- | --- |
+| Regular | 400 | Body text, labels, hints, readings and buttons |
+| Bold | 700 | Headings, and a few words that need emphasis |
+
+Do not use a light or medium weight. Most devices have neither for Arial, so they show regular instead and the difference you designed disappears. The civica theme sets Home Assistant's medium weight, `ha-font-weight-medium`, to 400 for this reason.
+
+## Specimen
+
+This specimen shows the characters a Home Assistant dashboard often needs, in Arial regular and bold.
+
+<figure>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:400;line-height:1.5;margin:0 0 10px">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>0 1 2 3 4 5 6 7 8 9 °C % kWh kW −0.4 ½ · : / ( )</p>
+<p style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:700;line-height:1.5;margin:0 0 10px">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>0 1 2 3 4 5 6 7 8 9 °C % kWh kW −0.4 ½ · : / ( )</p>
+<figcaption>Arial regular (400), then Arial bold (700), at 24px. The second row includes the degree sign, units, a true minus sign and the separators used in times and readings.</figcaption>
+</figure>
+
+## Glyphs
+
+Arial covers every character a Home Assistant dashboard normally needs. Use the sets below, and check any other symbol before you rely on it.
+
+<%=
+  sets = [
+    ['Capital letters', 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'],
+    ['Lower case letters', 'a b c d e f g h i j k l m n o p q r s t u v w x y z'],
+    ['Welsh letters', 'Â Ê Î Ô Û Ŵ Ŷ â ê î ô û ŵ ŷ'],
+    ['Numerals', '0 1 2 3 4 5 6 7 8 9'],
+    ['Punctuation', '. , : ; ! ? \' " ( ) / – − … · &amp;'],
+    ['Units and symbols', '° °C °F % kWh kW W V A Hz £ p € ½ × ±'],
+    ['Arrows', '← ↑ → ↓']
+  ]
+  rows = sets.map { |name, chars| %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">#{name}</th><td class="govuk-table__cell" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:1.5;overflow-wrap:anywhere">#{chars}</td></tr>) }
+  %(<div class="civica-table-scroll" role="region" tabindex="0" aria-label="Character set in Arial"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">Characters for Home Assistant dashboards, in Arial regular at 24px</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Set</th><th scope="col" class="govuk-table__header">Characters</th></tr></thead><tbody class="govuk-table__body">#{rows.join}</tbody></table></div>)
+%>
+
+Write a unit as text, such as “21.4°C” or “3.2 kWh”, not as a picture. Use the pound sign (£) for money. Use a true minus sign (−) for a negative reading, such as an export of −0.4 kW. A hyphen is shorter and easy to miss.
+
+### Missing glyphs and fallbacks
+
+If a device has no glyph for a character, it takes that character from the next font in the stack, then from its own sans-serif font. The shape may then differ from the characters around it. To avoid this:
+
+- prefer the characters in the table, which are in Arial, Helvetica and the sans-serif fonts on phones and tablets
+- do not use an emoji, or a symbol outside the table, to carry meaning: use an `mdi:` icon with a text label instead
+- if a character shows as an empty box, replace it with words, such as “up” where an arrow does not show
+- do not add a font to the stack to supply one symbol

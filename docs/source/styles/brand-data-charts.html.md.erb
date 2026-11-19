@@ -1,0 +1,153 @@
+---
+title: "Charts"
+description: "The parts of a chart of household data in Home Assistant, how to keep readings true, when to make a chart interactive and how to give it a text alternative."
+section: "styles"
+group: "Data visualisation"
+nav_order: 1
+status: "reference"
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+last_reviewed_on: "2026-11-19"
+review_in: "3 months"
+updates:
+  - date: "2026-11-19"
+    description: "First published. The chart guidance, the numbered diagram of the parts of a chart and the rules on chart parts, true readings, the chart specification, interaction and text alternatives moved here from Data visualisation, and were shortened."
+ai_instructions: "Apply when designing or reviewing a chart of household data in Home Assistant. Give it a title, and in a fixed report a subtitle with measure, unit, devices and period. Keep native axes, values, units and gaps. Say where the data comes from as entity or statistic plus integration. Keep native interaction. Give every chart a table or a sentence with the same facts. Use only the civica chart colours from /styles/chart-colour.html. Operational Energy charts follow /components/charts.html. The rules anchored bg-dat-03 to bg-dat-07 are on this page. The diagram uses invented readings. Do not show rule IDs or name outside sources in page text. Rules WG-038, WG-056, WG-070 to WG-078."
+ai_related:
+  - path: "/styles/brand-data.html"
+    title: "Data visualisation"
+    relationship: "Owns the principles and choosing a visualisation."
+  - path: "/styles/chart-colour.html"
+    title: "Chart colours"
+    relationship: "Owns the civica chart colours, series styles and legend keys."
+  - path: "/components/charts.html"
+    title: "Charts and tables"
+    relationship: "Owns the operational chart specification, the Energy adapter and the View data table."
+  - path: "/content/formatting-content/charts-and-data.html"
+    title: "Charts and data"
+    relationship: "Owns the wording of quantities, units, times and gaps."
+  - path: "/styles/brand-data-examples.html"
+    title: "Data examples"
+    relationship: "Holds working chart examples."
+---
+
+# Charts
+
+Use a chart when the shape of the readings answers the household’s question faster than a number. [Chart colours](chart-colour.html) owns the only chart palette. [Charts and data](../content/formatting-content/charts-and-data.html) owns how to write quantities, units, times and gaps.
+
+<h2 id="bg-dat-03">Elements of a chart</h2>
+
+Most charts share the same parts. Each one helps people read the chart correctly. This diagram labels each part on a fixed report from one hall sensor. The numbers match the list under it.
+
+<%=
+  hex = ->(id) { govuk_colour(id).fetch('hex') }
+  blue, ink, grid, paper = hex.('blue'), hex.('black'), hex.('black-tint-80'), hex.('white')
+  nights = [['Sun', 1, 18.6], ['Mon', 2, 17.4], ['Tue', 3, 18.2], ['Wed', 4, 17.8], ['Thu', 5, 18.9], ['Fri', 6, 17.6], ['Sat', 7, 18.4]]
+  y_of = ->(v) { (276 - (v - 16) * 40).round(1) }
+  x_of = ->(i) { (34 + 228.0 / 7 * (i + 0.5)).round(1) }
+  callout = ->(n, cx, cy) { %(<circle cx="#{cx}" cy="#{cy}" r="7.5" fill="#{paper}" stroke="#{ink}" stroke-width="1.5"/><text x="#{cx}" y="#{cy + 3.5}" font-size="10" font-weight="700" text-anchor="middle" fill="#{ink}">#{n}</text>) }
+  svg = []
+  svg << %(<text x="0" y="18" font-size="14" font-weight="700" fill="#{ink}">Hall fell below 18°C on 3 nights</text>)
+  svg << %(<text x="0" y="36" font-size="11" fill="#{ink}">Lowest overnight temperature (°C), hall sensor</text><text x="0" y="50" font-size="11" fill="#{ink}">Nights starting 1 to 7 November 2026</text>)
+  svg << %(<line x1="0" y1="68" x2="24" y2="68" stroke="#{blue}" stroke-width="2.5"/><circle cx="12" cy="68" r="3.5" fill="#{blue}"/><text x="30" y="72" font-size="11" fill="#{ink}">Hall lowest</text><line x1="104" y1="68" x2="128" y2="68" stroke="#{ink}" stroke-width="1.5" stroke-dasharray="6 3"/><text x="134" y="72" font-size="11" fill="#{ink}">18°C threshold</text>)
+  svg << %(<text x="0" y="98" font-size="12" fill="#{ink}">°C</text>)
+  [16, 17, 18, 19, 20].each do |v|
+    svg << %(<line x1="34" y1="#{y_of.(v)}" x2="262" y2="#{y_of.(v)}" stroke="#{grid}" stroke-width="1"/><text x="28" y="#{y_of.(v) + 4}" font-size="11" text-anchor="end" fill="#{ink}">#{v}</text>)
+  end
+  svg << %(<line x1="34" y1="#{y_of.(18)}" x2="262" y2="#{y_of.(18)}" stroke="#{ink}" stroke-width="1.5" stroke-dasharray="6 3"/>)
+  nights.each_with_index do |(day, date, _), i|
+    svg << %(<line x1="#{x_of.(i)}" y1="276" x2="#{x_of.(i)}" y2="281" stroke="#{ink}" stroke-width="1"/><text x="#{x_of.(i)}" y="294" font-size="11" text-anchor="middle" fill="#{ink}">#{day}</text><text x="#{x_of.(i)}" y="307" font-size="11" text-anchor="middle" fill="#{ink}">#{date}</text>)
+  end
+  points = nights.each_with_index.map { |(_, _, v), i| "#{x_of.(i)} #{y_of.(v)}" }
+  svg << %(<path d="M#{points.join(' L')}" fill="none" stroke="#{blue}" stroke-width="2.5"/>)
+  nights.each_with_index { |(_, _, v), i| svg << %(<circle cx="#{x_of.(i)}" cy="#{y_of.(v)}" r="3.5" fill="#{blue}"/>) }
+  svg << %(<line x1="#{x_of.(1)}" y1="#{y_of.(17.4) + 6}" x2="#{x_of.(1)}" y2="249" stroke="#{ink}" stroke-width="1"/><text x="#{x_of.(1) - 16}" y="261" font-size="11" fill="#{ink}">Coldest night: 17.4°C</text>)
+  svg << %(<text x="0" y="330" font-size="11" fill="#{ink}">Source: Hall temperature, Zigbee Home Automation</text>)
+  svg << callout.(1, 272, 13) << callout.(2, 272, 32) << callout.(3, 228, 68) << callout.(4, 26, 94) << callout.(5, 9, 137)
+  svg << callout.(6, 274, 280) << callout.(7, 274, 156) << callout.(8, 250, 130) << %(<line x1="#{x_of.(4) + 4}" y1="#{y_of.(18.9) - 4}" x2="190" y2="146" stroke="#{ink}" stroke-width="1"/>) << callout.(9, 196, 141)
+  svg << callout.(10, 196, 257) << callout.(11, 282, 326)
+  rows = nights.map { |day, date, v| %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Night starting #{{ 'Sun' => 'Sunday', 'Mon' => 'Monday', 'Tue' => 'Tuesday', 'Wed' => 'Wednesday', 'Thu' => 'Thursday', 'Fri' => 'Friday', 'Sat' => 'Saturday' }.fetch(day)} #{date} November</th><td class="govuk-table__cell">#{v}</td><td class="govuk-table__cell">#{v < 18 ? 'Yes' : 'No'}</td></tr>) }
+  html = %(<div class="c-colour-example"><figure style="margin:0 0 20px">) +
+    %(<svg role="img" aria-labelledby="anatomy-title anatomy-desc" viewBox="0 0 320 340" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif"><title id="anatomy-title">Diagram of the parts of a line chart, numbered 1 to 11</title><desc id="anatomy-desc">A line chart of the lowest hall temperature on each of 7 nights, with a dashed line at 18°C. Numbered circles mark the title, subtitle, legend, axis title, axis labels, tick marks, gridlines, plot area, marks, annotation and source. The list after the diagram names each part.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
+    %(<figcaption>The parts of a chart, on invented readings from the Hughes household's hall sensor, <code>sensor.hall_temperature</code>.</figcaption></figure>) +
+    %(<details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Show the data: lowest hall temperature each night</span></summary><div class="govuk-details__text"><div class="civica-table-scroll" role="region" tabindex="0" aria-label="Lowest hall temperature each night"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">Lowest hall temperature each night, 1 to 7 November 2026 (invented readings)</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Night</th><th scope="col" class="govuk-table__header">Lowest temperature (°C)</th><th scope="col" class="govuk-table__header">Below 18°C</th></tr></thead><tbody class="govuk-table__body">#{rows.join}</tbody></table></div></div></details></div>)
+  html
+%>
+
+1. **Title**: in a fixed report, it states the finding.
+2. **Subtitle**: the measure and unit, the sensor and the period.
+3. **Legend**: names each line and shows its line style.
+4. **Axis title**: gives the unit once, so the labels do not repeat it.
+5. **Axis labels**: the values on the scale.
+6. **Tick marks**: show where each night sits on the axis.
+7. **Gridlines**: help people read a value across the chart. Keep them quiet.
+8. **Plot area**: the space inside the axes where the data is drawn.
+9. **Marks**: the line and points that show each reading.
+10. **Annotation**: explains one point, next to that point.
+11. **Source**: the entity and the integration the readings came from.
+
+### Titles
+
+Give every chart a title. Write it front-loaded, in the active voice, in sentence case and as short as you can.
+
+On a live dashboard card, name what is measured, such as “Hall temperature” or “Power now”. The data changes under the title, so do not write a claim such as “Usage is falling”.
+
+In a fixed report, the title can state the finding. Add a subtitle with the measure and unit, the rooms or devices and the period. For example:
+
+> **The hall fell below 18°C on 3 nights this week**
+>
+> Lowest overnight temperature in °C, hall sensor, 1 to 7 November 2026
+
+### Axes
+
+Keep Home Assistant’s native axes and units.
+
+- Put the unit in the axis title or subtitle, such as “Temperature (°C)”, not after every label. Put `%` and `£` in the labels.
+- Do not repeat the chart title in the axis title.
+- Use the short friendly name the household set, not the entity ID.
+
+### Annotations
+
+Use an annotation to explain one point, such as “Boiler service, no readings”.
+
+- Keep it to one sentence of about 10 words.
+- Put it next to the point, with space around it so it does not cover the data.
+- Repeat anything essential in the text or the table. Annotations are hard to reach with a screen reader.
+- Do not claim anything the integration did not supply.
+
+### Sources and footnotes
+
+Say where the data comes from, as the entity or statistic and the integration. For example: “Source: Hall temperature from the Zigbee Home Automation integration, Home Assistant long-term statistics.”
+
+Add a footnote only when it changes how people read the chart, such as “No readings from 02:00 to 03:10 while the hub restarted.”
+
+<h2 id="bg-dat-04">Keep the readings true</h2>
+
+Show readings exactly as Home Assistant supplies them: native values, IDs, timestamps, units and gaps.
+
+- Show a missing reading as a gap, never as 0.
+- Do not smooth away a peak or force a line chart to start at zero.
+- Keep a comparison on its original dates, such as this week against the same days last week.
+- Say in words when a value is a forecast, a comparison or an export shown as a negative number.
+
+[Charts and tables](../components/charts.html#visual-rules) explains how the civica Energy adapter keeps native values while it restyles the chart.
+
+<h2 id="bg-dat-05">Use the chart specification</h2>
+
+Operational Energy charts follow [Charts and tables](../components/charts.html) and take their colours from [Chart colours](chart-colour.html). Those pages own line widths, legend keys and hatching. Hatching, markers and line styles do not depend on colour, so the [illustration](illustration.html) limits on texture and outline do not apply to them.
+
+<h2 id="bg-dat-06">Interactive charts</h2>
+
+An interactive chart lets people change what it shows, for example by choosing a date, hiding a source or zooming in. Use interaction when people want their own detail, such as one room or one device, and there is no clear way to show it without.
+
+People must act before they see the information, so they can miss the main message. If interaction is not needed, show the finding in a fixed chart, or use several small charts side by side.
+
+Keep the native interaction Home Assistant gives: the date picker, legend toggles, zoom, tooltips and keyboard controls. Do not replace a working native chart with an image. civica does not add a second chart renderer. [Compatibility and limits](../get-started/compatibility.html) lists the frontend versions the Energy adapter supports.
+
+<h2 id="bg-dat-07">Give a text alternative</h2>
+
+Give every chart a table or a sentence with the same facts. For supported Energy charts, the **View data** table does this. [Charts and tables](../components/charts.html#accessible-values) owns what that table contains.
+
+For a new chart or a fixed report, add a table or a short summary, such as “Hall temperature, 10 to 11 November 2026: lowest 17.8°C at 03:20, highest 21.5°C at 18:05.” Label invented data as invented. Test the chart and its alternative separately: a good table does not prove the chart’s colours or focus order work.
+
+Before you post a chart to a forum or a release page, check which image sizes and file formats it accepts.

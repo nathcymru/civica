@@ -45,7 +45,7 @@ module DesignSystemHelpers
         (!resource.destination_path.end_with?('/index.html') || resource.destination_path == 'home-assistant/index.html')
     end
     pages.group_by { |resource| resource.data.group || (section == 'components' ? 'Home Assistant components' : 'Guidance') }
-      .sort_by { |group, _| ['Guidance', 'Colour', 'Writing guidelines', 'Formatting content', 'Publish, update or retire', 'Lexicons', 'Writing standards', 'Quick reference', 'Home Assistant components', 'Home Assistant: controls', 'Home Assistant: flows', 'Form elements', 'Content presentation', 'Navigation', 'Inclusive content', 'Task patterns', 'Page patterns', 'Publishing components', 'Publishing patterns', 'Page templates'].index(group) || 99 }
+      .sort_by { |group, _| ['Guidance', 'Colour', 'Typography', 'Illustration', 'Data visualisation', 'Icons and images', 'Writing guidelines', 'Formatting content', 'Publish, update or retire', 'Lexicons', 'Writing standards', 'Quick reference', 'Home Assistant components', 'Home Assistant: controls', 'Home Assistant: flows', 'Form elements', 'Content presentation', 'Navigation', 'Inclusive content', 'Task patterns', 'Page patterns', 'Publishing components', 'Publishing patterns', 'Page templates'].index(group) || 99 }
       .map { |group, resources| [group, resources.sort_by { |resource| [resource.data.nav_order || 100, resource.data.title.downcase] }] }
   end
 

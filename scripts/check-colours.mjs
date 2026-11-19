@@ -76,7 +76,7 @@ const luminance = hex => {
 const contrast = (a, b) => { const [x, y] = [luminance(a), luminance(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
 
 // 3. Published pages show every colour of their palette.
-// Web and app colours shows the web and app palettes as one palette: each
+// Web-app colours shows the web-app palettes as one palette: each
 // group lists its web colours, then the app colours the web group lacks, so
 // both palettes keep their order. Colours in only one palette carry a note.
 const decode = text => text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
@@ -85,9 +85,9 @@ const appIds = groupIds(pages.app.palette);
 const webAndAppIds = [...new Set([...pages.web.palette, ...pages.app.palette].map(group => group.title))].flatMap(title => [
   ...new Set([pages.web.palette, pages.app.palette].flatMap(groups => groups.find(group => group.title === title)?.colours ?? [])),
 ]);
-assert.equal(webAndAppIds.length, new Set([...webIds, ...appIds]).size, 'web and app: the combined palette has every web and app colour once');
+assert.equal(webAndAppIds.length, new Set([...webIds, ...appIds]).size, 'web-app: the combined palette has every web-app colour once');
 const paletteNote = id => (!appIds.includes(id) ? 'Web only' : !webIds.includes(id) ? 'App only' : null);
-for (const [page, file, show] of [['web+app', 'colour-web', ['hex', 'rgb']], ['print', 'colour-print', ['cmyk', 'pantone']], ['maps', 'colour-maps', ['hex', 'rgb']], ['social', 'colour-social', ['hex', 'rgb']], ['illustrations', 'colour-illustrations', ['hex', 'rgb']]]) {
+for (const [page, file, show] of [['web+app', 'colour-web-app', ['hex', 'rgb']], ['print', 'colour-print', ['cmyk', 'pantone']], ['maps', 'colour-maps', ['hex', 'rgb']], ['social', 'colour-social', ['hex', 'rgb']], ['illustrations', 'colour-illustrations', ['hex', 'rgb']]]) {
   const path = `${BUILD}/${file}.html`;
   assert.ok(existsSync(path), `${path} missing: run the docs build first`);
   const raw = readFileSync(path, 'utf8');
@@ -121,14 +121,14 @@ for (const [page, file, show] of [['web+app', 'colour-web', ['hex', 'rgb']], ['p
   }
   assert.equal(buttons, (raw.match(/class="c-copy-value"/g) || []).length, `${file}: every copy button was checked`);
 }
-// App colours is retired: its page only points to Web and app colours and
+// App colours is retired: its page only points to Web-app colours and
 // shows no swatches, so the app palette has one owner.
 {
   const path = `${BUILD}/colour-app.html`;
   assert.ok(existsSync(path), `${path} missing: run the docs build first`);
   const html = readFileSync(path, 'utf8');
   assert.ok(!html.includes('class="c-swatch'), 'colour-app: the retired page shows no swatches');
-  assert.ok(html.includes('href="colour-web.html#app-colours"'), 'colour-app: the retired page links to Web and app colours');
+  assert.ok(html.includes('href="colour-web-app.html#app-colours"'), 'colour-app: the retired page links to Web-app colours');
 }
 // 4. The Chart colours page shows the categorical, scale and additional
 // palettes in GOV.UK order, and the chart module uses the same categorical colours.
@@ -193,7 +193,7 @@ for (const [page, file, show] of [['web+app', 'colour-web', ['hex', 'rgb']], ['p
   const examples = YAML.parse(readFileSync('docs/data/web-app-colour-examples.yml', 'utf8')).examples;
   const palettes = { web: groupIds(pages.web.palette), app: groupIds(pages.app.palette) };
   const expected = { 'web-colour-dashboard': 'web', 'app-colour-mobile-web-header': 'app', 'app-colour-header': 'app', 'app-colour-examples': 'app' };
-  assert.deepEqual(Object.keys(examples).sort(), Object.keys(expected).sort(), 'web and app examples: the expected pictures');
+  assert.deepEqual(Object.keys(examples).sort(), Object.keys(expected).sort(), 'web-app examples: the expected pictures');
   for (const [id, page] of Object.entries(expected)) {
     const allowed = new Set(palettes[page].map(colour => colours[colour].hex.toUpperCase()));
     const used = [...examples[id].html.matchAll(/(?:fill|stroke)="(#[0-9A-Fa-f]{6})"/g)].map(match => match[1].toUpperCase());
@@ -212,7 +212,7 @@ for (const [page, file, show] of [['web+app', 'colour-web', ['hex', 'rgb']], ['p
 // This is not a visual comparison: also compare screenshots before release.
 {
   const outline = {
-    'colour-web': ['Theme colour', 'Web and app palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Browns', 'Neutrals', 'Functional colours', 'Dashboard example', 'App colours', 'App header', 'Mobile web header', 'App screens', 'Tinted tiles and menus'],
+    'colour-web-app': ['Theme colour', 'Web-app palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Browns', 'Neutrals', 'Functional colours', 'Dashboard example', 'App colours', 'App header', 'Mobile web header', 'App screens', 'Tinted tiles and menus'],
     'colour-social': ['Social palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals', 'Use colour to reflect tone', 'From most informative to most inspiring', 'Tonal colour examples', 'Companion colour set', 'Companion colour examples'],
     'colour-print': ['Print palette', 'Blues', 'Greens', 'Teals', 'Purples', 'Magentas', 'Reds', 'Oranges', 'Yellows', 'Neutrals'],
     'chart-colour': ['Chart palette', 'Categorical palette', 'Sequential and divergent scale palette', 'Using colour in charts', 'Single category', 'Multiple categories', 'Above and below a target', 'Using charts within social media'],
@@ -244,9 +244,9 @@ for (const [page, file, show] of [['web+app', 'colour-web', ['hex', 'rgb']], ['p
     assert.deepEqual(frames, file === 'colour-maps' ? ['map-neighbourhood-records'] : [], `${file}: colour pictures are on the page, not in example frames${file === 'colour-maps' ? ', and the working OpenStreetMap example is framed' : ''}`);
     assert.ok(!main.includes('Indicative examples for illustrative purposes only.'), `${file}: no shared example disclaimer`);
   }
-  // Web and app colours keeps its rule examples in frames, so check only the colour
+  // Web-app colours keeps its rule examples in frames, so check only the colour
   // pictures: each is on the page, not framed.
-  for (const [file, figures] of [['colour-web', ['web-dashboard', 'mobile-web', 'app-header-1', 'app-header-2', 'app-examples']]]) {
+  for (const [file, figures] of [['colour-web-app', ['web-dashboard', 'mobile-web', 'app-header-1', 'app-header-2', 'app-examples']]]) {
     const main = readFileSync(`${BUILD}/${file}.html`, 'utf8');
     for (const id of figures) assert.ok(main.includes(`role="img" aria-labelledby="${id}-t ${id}-d"`), `${file}: the ${id} picture is on the page`);
     assert.ok(!/<iframe[^>]+(?:web|app)-colour-/.test(main), `${file}: these pictures are on the page, not in example frames`);
@@ -255,7 +255,7 @@ for (const [page, file, show] of [['web+app', 'colour-web', ['hex', 'rgb']], ['p
   // that its data is invented or synthetic. A shared page-level disclaimer
   // repeated the same statement up to 6 times, so it is not used. Drawings
   // (SVG text) are left out: a drawn label is part of the picture.
-  for (const file of ['colour-web', 'colour-social', 'colour-maps', 'chart-colour']) {
+  for (const file of ['colour-web-app', 'colour-social', 'colour-maps', 'chart-colour']) {
     const main = readFileSync(`${BUILD}/${file}.html`, 'utf8');
     assert.ok(!main.includes('Indicative examples for illustrative purposes only.'), `${file}: no shared example disclaimer`);
     // Each example block, from its opening div to the matching closing div.

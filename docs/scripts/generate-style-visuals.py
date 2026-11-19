@@ -5,7 +5,7 @@ Run from the repository root: python3 docs/scripts/generate-style-visuals.py
 Pass --check to fail if the YAML differs from what this script writes.
 
 Every colour comes from docs/data/govuk-brand-colours.json by its ID. Each
-picture names the palette for its channel (Web and app colours for guidance
+picture names the palette for its channel (Web-app colours for guidance
 pages and dashboards, the app palette for app screens, the social palette for
 social posts) and the script stops if a picture uses a colour outside it, or
 if any text in a picture is below 4.5:1 against the colour behind it.

@@ -1,0 +1,82 @@
+---
+title: "Links"
+description: "How links look in civica cards: the link colour, the underline, and the hover and focus styles, in light and dark mode."
+group: "Typography"
+nav_order: 8
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published, with the link style used by civica cards."
+ai_instructions: "Apply when styling a link in a Home Assistant custom card or civica component. civica links use var(--link-color), which follows the theme colour, are underlined with text-underline-offset 0.16em, get a 3px underline on hover, and on keyboard focus show the focus colour background with the underline removed. civica has no visited link colour and no link-visited variable. Keep the underline on links in text. In forced colours mode civica action links use the system LinkText colour. Link wording, new tabs and external links are owned by Write effective links; colour values are owned by Web-app colours. A link goes somewhere; a button operates a device. Do not show rule IDs or name outside sources in page text. Rules WG-083, WG-037, WG-081."
+ai_related:
+  - path: "/styles/typography.html"
+    title: "Typography"
+    relationship: "Overview of all typography pages."
+  - path: "/content/writing-guidelines/add-links.html"
+    title: "Write effective links"
+    relationship: "Owns link text, external links and links that open a new tab."
+  - path: "/styles/colour-web-app.html"
+    title: "Web-app colours"
+    relationship: "Owns the link colour in light and dark mode."
+  - path: "/components/action-links.html"
+    title: "Action links"
+    relationship: "Owns a group of links to dashboard destinations."
+---
+
+# Links
+
+Show every link in the link colour, with an underline. Then people can tell a link from the text around it without relying on colour alone.
+
+The words in a link are owned by [Write effective links](../content/writing-guidelines/add-links.html). It explains how to describe the destination and when to say a link leaves Home Assistant or opens a new tab.
+
+## Link states
+
+civica cards draw a link in 3 states:
+
+| State | How it looks |
+| --- | --- |
+| Default | Link colour, with a thin underline |
+| Hover | Link colour, with a thicker 3px underline |
+| Keyboard focus | Dark text on the focus colour, with a dark bar under it and no underline |
+
+civica has no visited link colour. A dashboard link usually goes to a screen that changes all the time, such as a room or the energy dashboard, so showing that it was visited does not help.
+
+## Link colour in light and dark mode
+
+Links use `link-color`, which follows the household's theme colour. In dark mode the civica theme switches to a lighter link colour, so links stay readable on a dark card. [Web-app colours](colour-web-app.html#functional-colours) gives both values.
+
+In forced colours mode, such as Windows high contrast, civica action links use the system link colour instead.
+
+## Keep the underline
+
+Keep the underline on a link in a sentence or a list. Do not remove it to make a card look tidier.
+
+A group of [action links](../components/action-links.html) still underlines each name. The arrow beside it is decorative.
+
+## Style a link in a custom card
+
+Use the theme variable, not a fixed colour, so the link follows the theme colour and dark mode.
+
+```css
+.link {
+  color: var(--link-color);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+.link:hover {
+  text-decoration-thickness: 3px;
+}
+.link:focus-visible {
+  outline: 3px solid transparent;
+  color: var(--civica-focus-text);
+  background: var(--ha-color-focus);
+  box-shadow: 0 -2px var(--ha-color-focus), 0 4px var(--primary-text-color);
+  text-decoration: none;
+}
+```
+
+A link goes to another screen. To turn on a light or run a scene, use a [button](../components/buttons.html) instead.

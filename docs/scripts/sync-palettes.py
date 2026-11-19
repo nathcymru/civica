@@ -20,7 +20,7 @@ last_reviewed_on: 2026-11-18
 review_in: 3 months
 ai_instructions: "Start here for any colour question. civica has one colour palette, with a page for each job (web, app, social, print, charts, maps, illustrations). The household chooses one theme colour (the colour of the header, buttons and highlights) from seven primary colours that pass 4.5:1 with white text. This page owns what the theme colour changes and keeps; Change theme colours owns how to choose it and the Home Assistant theme names. Chart, map, error, warning and success colours never change with the theme colour; links in dark mode, the on state, switches and sliders do. With the Red or Green theme colour, buttons share a colour with error or success messages; Web colours explains how to keep them apart. Never convey meaning by colour alone. Maintenance of colour records is on Maintain the system. The rules anchored bg-col-01, bg-col-03, bg-col-06 and bg-col-08 are on this page; do not show rule IDs or name outside sources in page text. Rules WG-001, WG-081."
 ai_related:
-  - path: "/styles/colour-web.html"
+  - path: "/styles/colour-web-app.html"
     title: "Web colours"
     relationship: "Owns the web palette and the functional colours (text, links, focus, error, success, brand)."
   - path: "/styles/chart-colour.html"
@@ -40,12 +40,12 @@ civica has one colour palette. Each page under [Choose the palette for the job](
 
 ## Palette overview
 
-Each colour family has a primary colour, lighter tints for backgrounds and highlights, darker shades for text and contrast, and on some pages a bright accent for small highlights. The [Blues on Web colours](colour-web.html#blues) show a whole family.
+Each colour family has a primary colour, lighter tints for backgrounds and highlights, darker shades for text and contrast, and on some pages a bright accent for small highlights. The [Blues on Web colours](colour-web-app.html#blues) show a whole family.
 
 ## Choose the palette for the job
 
-- [Web colours](colour-web.html): web pages, Home Assistant dashboards and the functional colours for text, links, focus, errors and success.
-- [App colours](colour-web.html#app-colours): the Home Assistant Companion app, including dark mode blues.
+- [Web colours](colour-web-app.html): web pages, Home Assistant dashboards and the functional colours for text, links, focus, errors and success.
+- [App colours](colour-web-app.html#app-colours): the Home Assistant Companion app, including dark mode blues.
 - [Social colours](colour-social.html): social media graphics and promotional tiles, with the companion colour set.
 - [Print colours](colour-print.html): printed material, with CMYK and Pantone references.
 - [Chart colours](chart-colour.html): charts, with a stable colour and pattern for each series.
@@ -66,7 +66,7 @@ Primary orange, yellow and brown are not offered: white text on them falls below
 
 The theme colour also sets the colour of links in dark mode, entities that are on, switches and sliders. Everything else stays the same whatever the household chooses: text, focus, error, warning and success colours, links in light mode (`#1A65A6`), and every chart, map and illustration colour.
 
-With the Red or Green theme colour, buttons and highlights share a colour with error or success messages. [Choose a colour by its job](colour-web.html#bg-col-02) explains how to keep their meaning clear.
+With the Red or Green theme colour, buttons and highlights share a colour with error or success messages. [Choose a colour by its job](colour-web-app.html#bg-col-02) explains how to keep their meaning clear.
 
 ## Try a theme colour
 
@@ -89,7 +89,7 @@ The theme colour does not change Home Assistant’s light, dark or automatic mod
 
 ## Colour rules
 
-These rules apply to every colour choice. [Web colours](colour-web.html#colour-roles-in-home-assistant) covers the job of each interface colour, borders and device states, and [Chart colours](chart-colour.html#bg-col-07) covers chart and map scales.
+These rules apply to every colour choice. [Web colours](colour-web-app.html#colour-roles-in-home-assistant) covers the job of each interface colour, borders and device states, and [Chart colours](chart-colour.html#bg-col-07) covers chart and map scales.
 
 <h3 id="bg-col-01">Keep the theme colour separate from names and logos</h3>
 
