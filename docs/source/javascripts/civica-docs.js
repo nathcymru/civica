@@ -223,18 +223,17 @@
   }
 })();
 
-/* Is this page useful? Nothing is stored or sent: there is no vote count yet. The buttons stay hidden without JavaScript. */
+/* Is this page useful? Nothing is stored or sent: there is no vote count yet. The questions stay hidden without JavaScript. */
 (() => {
-  const box = document.querySelector('[data-page-useful]');
+  const box = document.querySelector('.gem-c-feedback');
   if (!box) return;
-  const status = box.querySelector('[data-useful-status]');
-  box.querySelectorAll('[data-useful]').forEach((button) => {
-    button.hidden = false;
+  const questions = box.querySelector('.js-prompt-questions');
+  const success = box.querySelector('.js-prompt-success');
+  questions.hidden = false;
+  box.querySelectorAll('.js-page-is-useful, .js-page-is-not-useful').forEach((button) => {
     button.addEventListener('click', () => {
-      box.querySelectorAll('[data-useful]').forEach((other) => { other.disabled = true; });
-      status.textContent = button.dataset.useful === 'yes'
-        ? 'Thank you. Your answer has not been recorded, because this site does not count votes yet.'
-        : 'Thank you. Your answer has not been recorded, because this site does not count votes yet. Use “Report a problem with this page” to tell us what was missing.';
+      questions.hidden = true;
+      success.hidden = false;
     });
   });
 })();

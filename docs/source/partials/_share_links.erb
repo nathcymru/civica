@@ -1,0 +1,20 @@
+<%# Share links: the share-links component markup, unchanged except for the links and their icons. %>
+<% address = page_address %>
+<% prompt = "Read #{address} and help me understand how to apply it. It is guidance from the civica Design System for Home Assistant. Write in British English and state only what the page says." %>
+<% circle = 'M36.92,0A36.92,36.92,0,1,0,73.84,36.92,36.92,36.92,0,0,0,36.92,0Z' %>
+<% links = [
+  { label: 'Email', via: 'Share by', href: "mailto:?body=#{encode_param(address)}", glyph: 'M58.37,21,36.92,39.45,15.47,21ZM11.65,23.66,26.27,36.23,11.65,49.9ZM15.1,52.83,29.7,39.18l7.22,6.21,7.22-6.21,14.6,13.65ZM62.19,49.9,47.57,36.23,62.19,23.66Z' },
+  { label: 'Microsoft Teams', via: 'Share on', href: "https://teams.microsoft.com/share?href=#{encode_param(address)}", glyph: 'M56.3,48.27a1.42,1.42,0,0,1-1.42,1.42h-19v9.18l-9.18-9.18H19a1.43,1.43,0,0,1-1.43-1.43V20.52A1.43,1.43,0,0,1,19,19.09H54.88a1.43,1.43,0,0,1,1.42,1.42Z' },
+  { label: 'Claude', via: 'Ask', href: "https://claude.ai/new?q=#{encode_param(prompt)}", glyph: 'M36.92,16.5l4.6,14.8,14.8,4.6-14.8,4.6-4.6,14.8-4.6-14.8-14.8-4.6,14.8-4.6Z' },
+  { label: 'Codex', via: 'Ask', href: "https://chatgpt.com/codex?prompt=#{encode_param(prompt)}", glyph: 'M36.92,16.5l4.6,14.8,14.8,4.6-14.8,4.6-4.6,14.8-4.6-14.8-14.8-4.6,14.8-4.6Z' },
+  { label: 'Mistral AI', via: 'Ask', href: "https://chat.mistral.ai/chat?q=#{encode_param(prompt)}", glyph: 'M36.92,16.5l4.6,14.8,14.8,4.6-14.8,4.6-4.6,14.8-4.6-14.8-14.8-4.6,14.8-4.6Z' }
+] %>
+<div class="share-links govuk-!-display-none-print" dir="ltr" title="Share this page">
+<h2 class="govuk-heading-s">Share this page</h2>
+<p class="govuk-body-s">The following links open in a new tab</p>
+<ul class="share-links__list">
+<% links.each do |link| %><li class="share-links__list-item">
+<a target="_blank" rel="noopener noreferrer external" class="govuk-link govuk-link--no-underline share-links__link" href="<%= link[:href] %>"><span class="share-links__link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 73.84 73.84" aria-hidden="true" focusable="false" width="0" height="0" class="share-links__svg"><path fill="currentColor" d="<%= circle %><%= link[:glyph] %>"></path></svg></span><span class="share-links__label"><span class="govuk-visually-hidden"><%= link[:via] %> </span><%= link[:label] %><span class="govuk-visually-hidden"> (opens in new tab)</span></span></a>
+</li>
+<% end %></ul>
+</div>

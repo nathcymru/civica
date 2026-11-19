@@ -57,9 +57,10 @@
 <%= yield %>
 <%= partial 'partials/component_family' %>
 <%= partial 'partials/history' %>
-<div class="c-contribute"><h2>Help improve this guidance</h2><p>Review responsibility: the civica repository maintainers. Follow the <a href="<%= docs_path('/content/publish-update-retire/index.html') %>">publish, update or retire guidance</a> when changing this guidance.</p><p><a href="https://github.com/nathcymru/civica/issues/new">Report an issue or suggest a change</a>. Include the page, the task you were trying to complete and what happened. Do not include household credentials or private sensor data.</p><p><a href="https://github.com/nathcymru/civica/blob/main/<%= current_page.data.repository_source || ('docs/source/' + current_page.source_file.sub(root + '/source/', '')) %>">View this page’s source</a></p></div>
+<%= partial 'partials/share_links' %>
 <%= '</div>' if illustrated_page %>
 </main></div><% end %>
+<%= partial 'partials/page_feedback' %>
 <%= partial 'partials/footer' %>
 <%= javascript_include_tag 'civica-docs', defer: true %>
 </body></html>
