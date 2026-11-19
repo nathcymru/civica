@@ -232,12 +232,12 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 .c-illustrated-header .c-breadcrumbs a:focus-visible { color:#0b0c0c; }
 .c-illustrated-header__art { min-width:0; display:grid; place-items:center; background:var(--hero-light,#f3f6f9); }
 .c-illustrated-header__art img { display:block; width:100%; max-width:640px; height:auto; margin:0; }
-@media(max-width:1100px) and (min-width:761px) {
+@media(max-width:1100px) and (min-width:641px) {
   .technical-documentation .c-illustrated-header h1 { font-size:36px; }
   .technical-documentation .c-illustrated-header__summary { font-size:21px; }
   .c-illustrated-header__text { padding:25px; }
 }
-@media(max-width:760px) {
+@media(max-width:640px) {
   .c-page--illustrated { display:block; padding:0 0 60px; }
   .c-illustrated-header { grid-template-columns:minmax(0,1fr); min-height:0; }
   .c-illustrated-header__text { padding:25px 20px 35px; }
@@ -298,7 +298,7 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 .c-illustrated-header { margin-top:0; }
 .c-illustrated-header__text { padding-top:var(--page-top); }
 .c-caption { margin:0 0 5px; font-size:1.5rem; line-height:1.15; font-weight:400; color:#505a5f; }
-@media(max-width:760px) {
+@media(max-width:640px) {
   :root { --page-top:30px; }
   .c-page { padding-top:0; }
   .c-content:not(.c-content--illustrated) { padding-top:30px; }
@@ -321,3 +321,6 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 .c-footer__columns li { margin:0 0 10px; }
 @media (max-width:760px) { .c-footer__columns { grid-template-columns:1fr; } }
 @media print { .c-footer__share,.c-footer__useful { display:none; } }
+
+/* Measured type scale, spacing and page frame (last, so it wins over earlier ad hoc sizes). */
+@import 'type-scale';
