@@ -352,7 +352,7 @@ test('mobile navigation works by keyboard and remains available after resizing',
   await expect(links).toBeVisible();
   // Matches the GOV.UK sub-navigation: a labelled nav with a marked current item.
   await expect(page.getByRole('navigation', { name: 'Pages in this section' })).toBeVisible();
-  await expect(page.locator('.app-subnav__section-item--current > a[aria-current="page"]')).toBeVisible();
+  await expect(page.locator('.app-subnav a[aria-current="page"]')).toBeVisible();
   await page.setViewportSize({ width: 320, height: 800 });
   await expect(menu).toBeVisible();
   await expect(links).toBeHidden();

@@ -182,16 +182,14 @@ test('without JavaScript the full A to Z list remains and the combobox is not of
   } finally { await context.close(); }
 });
 
-test('the sidebar is one flat A to Z list of published parents with the current page marked', async ({ page }) => {
-  const expected = [...available.map(parent => parent.parent), ...legacy.map(item => item.title)].sort(byName);
-  for (const [route, current] of [['/components/buttons.html', 'Button'], ...legacy.map(item => [item.route, item.title])]) {
+test('the sidebar is the shared section menu: Introduction first, the current page marked, its branch open', async ({ page }) => {
+  for (const [route, current] of [['/components/buttons.html', 'Buttons'], ...legacy.map(item => [item.route, item.title])]) {
     await page.goto(`/docs/build${route}`);
     const sidebar = page.getByRole('navigation', { name: 'Pages in this section' });
     await expect(sidebar.locator('.app-subnav__theme')).toHaveCount(0);
-    await expect(sidebar.locator('ul.app-subnav__section')).toHaveCount(1);
-    const names = await sidebar.locator('.app-subnav__section-item a').allTextContents();
-    expect(names.map(name => name.trim()), route).toEqual(expected);
-    await expect(sidebar.locator('.app-subnav__section-item--current > a[aria-current="page"]')).toHaveText(current);
+    await expect(sidebar.locator('ul.app-subnav__tree')).toHaveCount(1);
+    await expect(sidebar.locator('.app-subnav__tree > li').first()).toHaveText('Introduction');
+    await expect(sidebar.locator('a[aria-current="page"]'), route).toHaveCount(1);
   }
 });
 

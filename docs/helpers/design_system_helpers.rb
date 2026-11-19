@@ -1,4 +1,5 @@
 module DesignSystemHelpers
+  SECTION_GROUP_ORDER = ['Guidance', 'Colour', 'Typography', 'Structure', 'Icons and images', 'Data visualisation', 'Illustration', 'Writing standards', 'Writing guidelines', 'Formatting content', 'Publish, update or retire', 'Lexicons', 'Quick reference', 'Home Assistant components', 'Form elements', 'Content presentation', 'Navigation', 'Publishing components', 'Task patterns', 'Page patterns', 'Inclusive content', 'Publishing patterns', 'Publishing guide', 'Home Assistant: controls', 'Home Assistant: flows', 'Home Assistant: interface coverage', 'Page templates', 'Review'].freeze
   def escape(value)
     ERB::Util.html_escape(value.to_s)
   end
@@ -49,17 +50,31 @@ module DesignSystemHelpers
       .map { |group, resources| [group, resources.sort_by { |resource| [resource.data.nav_order || 100, resource.data.title.downcase] }] }
   end
 
-  # A section menu where each top-level item links to an overview page and the
-  # sub-pages show only under the branch the reader is in. The section's own
-  # page is the first item, "Introduction". A group with one page is a plain
-  # item. Enabled per section with `tree: true` in data/navigation.yml.
+  # The section menu used on every section: "Introduction" first, then one
+  # top-level item per group. A group with an overview page links to it and lists
+  # its other pages below; a group with one page is a plain link; a group with
+  # several pages and no overview page is a toggle with the same look. Only the
+  # branch the reader is in is open.
   def section_tree(section_id)
     section = data.navigation.sections.find { |item| item.id == section_id }
     home = guide_pages.find { |resource| '/' + resource.destination_path == section.path }
     tree = [{ title: 'Introduction', resource: home, children: [] }]
-    section_groups(section_id).each do |_group, resources|
-      overview = resources.find { |resource| resource.data.nav_order == 0 } || resources.first
-      tree << { title: overview.data.title, resource: overview, children: resources - [overview] }
+    pages = guide_pages.select do |resource|
+      section_for(resource) == section_id && '/' + resource.destination_path != section.path && resource.data.status != 'retired'
+    end
+    default_group = section_id == 'components' ? 'Home Assistant components' : 'Guidance'
+    groups = pages.group_by { |resource| resource.data.group || default_group }
+    groups.sort_by { |group, _| [SECTION_GROUP_ORDER.index(group) || 99, group] }.each do |group, resources|
+      sorted = resources.sort_by { |resource| [resource.data.nav_order || 100, resource.data.title.downcase] }
+      overview = sorted.find { |resource| resource.data.nav_order == 0 } ||
+                 sorted.find { |resource| resource.destination_path.end_with?('index.html') }
+      if sorted.size == 1
+        tree << { title: sorted.first.data.title, resource: sorted.first, children: [] }
+      elsif overview
+        tree << { title: overview.data.title, resource: overview, children: sorted - [overview] }
+      else
+        tree << { title: group, resource: nil, children: sorted }
+      end
     end
     tree
   end
