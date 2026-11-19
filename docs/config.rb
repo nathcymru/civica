@@ -89,6 +89,15 @@ helpers do
     Pathname.new(path).relative_path_from(Pathname.new('/' + current_page.destination_path).dirname).to_s
   end
 
+  # Absolute address of the current page, used by the footer share and report links.
+  def page_address
+    'https://nathcymru.github.io/civica/' + current_page.destination_path
+  end
+
+  def encode_param(value)
+    ERB::Util.url_encode(value)
+  end
+
   def current_section
     current_page.data.section || current_page.url.split('/')[1] || 'home'
   end
