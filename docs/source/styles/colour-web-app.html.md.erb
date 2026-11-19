@@ -1,0 +1,175 @@
+---
+no_contents: true
+title: "Web-app colours"
+description: "The civica web-app palette, the theme colour a household picks from it, and the functional colours for Home Assistant dashboards and the Companion app, with every value ready to copy."
+group: "Colour"
+nav_order: 1
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-18"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-18"
+    description: "First published, with the civica web palette and functional colours."
+  - date: "2026-11-18"
+    description: "Added the rules on choosing a colour by its job, separating dividers from editable boundaries, and keeping device, warning and notification meaning, with their examples, moved from the Colour roles and accessibility page, which has been deleted."
+  - date: "2026-11-18"
+    description: "Swatches now show a round sample, the name, and RGB and hex values with copy icons. Added the list of colour groups. Removed the Sass and theme property rows from each swatch."
+  - date: "2026-11-18"
+    description: "Added a Web palette example: a drawing of a dashboard for an invented household in a desktop browser, using only web palette colours. It is not a screenshot of civica or Home Assistant."
+  - date: "2026-11-18"
+    description: "Rewritten for Home Assistant users: removed outside source names, visible rule IDs and the Sass notes, gave each example a caption saying what to notice, and replaced the shared example disclaimer with those captions."
+  - date: "2026-11-18"
+    description: "Listed the civica theme variable for each functional colour, said which have none, rebuilt the device state example as an entities card and the border example as renaming an area, and said what to copy from the dashboard drawing."
+  - date: "2026-11-18"
+    description: "Redrew the Web palette example as a Home Assistant dashboard with the civica theme: Home Assistant’s own sidebar, the Primary blue toolbar with view tabs, and an entities card, a thermostat card, sensor tiles and a card with a link on a White background. Removed the Menu button and the tinted page background, which a dashboard does not have."
+  - date: "2026-11-18"
+    description: "The device states example is now drawn as an entities card, with an icon, a name and a state on each row."
+  - date: "2026-11-19"
+    description: "App colours is now part of this page, renamed Web-app colours. The web-app palettes are shown as one palette, with browns marked Web only and the accents and dark mode blues marked App only. Added Theme colour, which says how a household picks its theme colour from this palette. The App header pictures and the tinted tiles and menus picture moved here under App colours."
+  - date: "2026-11-19"
+    description: "Added copy buttons to the dark mode and status colour values written in the functional colours table and the colour roles text."
+ai_instructions: "Use this page for any colour shown on a web page, a Home Assistant dashboard, the Companion app or an app-like graphic. It holds one palette that combines the web-app palettes: every colour in both is unmarked, the 4 browns are Web only, and the 7 accents and the 2 dark mode blues are App only. Values are rendered from the shared colour data file by the colour helpers: never type a hex value from memory. A household picks its theme colour from the 7 primary colours of this palette (Blue, Green, Teal, Purple, Magenta, Red, Black) in the Theme colour control in their Home Assistant profile; Colour owns what the theme colour changes and Change theme colours owns how to choose it. Prefer the functional colour for its job (for example brand, link, error, focus) and use the civica theme variable listed for it, written var(--variable-name) in a card's CSS. Palette colours have no theme variable: copy the swatch value. template-background, body-background, link-hover, link-visited, link-active, hover and the surface colours have no civica variable; Home Assistant uses primary-background-color and card-background-color, which civica sets to White in light mode. A dashboard uses the same colours in the Companion app. Accent teal is never the theme accent-color, and the civica theme does not use the dark mode blues. Never use colour alone to give meaning. Chart colours have their own page. The rules anchored bg-col-02, bg-col-04 and bg-col-05 are on this page. The pictures are drawings with invented household details, not screenshots. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-056, WG-081."
+ai_related:
+  - path: "/styles/colour.html"
+    title: "Colour"
+    relationship: "Owns what the theme colour changes and keeps, light and dark modes, and the general colour rules."
+  - path: "/styles/chart-colour.html"
+    title: "Chart colours"
+    relationship: "Owns which colours a chart uses. Read before colouring any data."
+  - path: "/get-started/colour-settings.html"
+    title: "Change theme colours"
+    relationship: "Owns how a household changes the theme colour in Home Assistant."
+---
+
+# Web-app colours
+
+Use these colours on web pages, Home Assistant dashboards and app screens. A dashboard looks the same in a browser and in the Home Assistant Companion app, because both show it with the same civica theme. Use a functional colour for its job first, such as the brand, link or error colour.
+
+<%= colour_copy_status %>
+<% copy_hex = ->(hex, name) { %(<button type="button" class="c-copy-value" data-copy-value="#{hex}" aria-label="Copy hex #{hex} for #{name}" hidden>#{ColourHelpers::COPY_ICON}</button>) } %>
+
+## Theme colour
+
+Each household picks one theme colour from this palette. They choose it with **Theme colour** in the theme settings of their Home Assistant profile. The 7 choices are the primary colours of the [Blues](#blues), [Greens](#greens), [Teals](#teals), [Purples](#purples), [Magentas](#magentas) and [Reds](#reds), and [Black](#neutrals). Blue is the default.
+
+The theme colour fills the header, buttons, switches and highlights. Every other colour on this page stays the same whichever colour the household picks. [Theme colour](colour.html#theme-colour) lists exactly what changes, and [Change theme colours](../get-started/colour-settings.html) explains the control and the Home Assistant theme names.
+
+To make a custom card follow the household's choice, use the theme variable, not a hex value. For example, in the Morgan household's Blue theme, `var(--civica-brand-primary)` is Primary blue. If they switch to Teal, it becomes Primary teal without any change to the card.
+
+## Web-app palette
+
+Use these colours for supporting elements, such as an illustration, a custom card or a picture of an app screen. Palette colours have no theme variable, so copy the value from the swatch. For text, links, borders, focus, errors and success, use the [functional colours](#functional-colours) instead.
+
+Most colours have tints at 25%, 50%, 80% and 95%, and shades at 25% and 50%. Blue also has a 10% shade. Black has tints for greys. White has no variants.
+
+Most colours are for both web pages and app screens. Some swatches have a note:
+
+- **Web only**: the 4 browns, which app screens do not use
+- **App only**: 7 bright accents and the 2 dark mode blues, for [app screens and app-like graphics](#app-colours)
+
+Accent teal has no note, because it is for both.
+
+The palette has:
+
+<%= colour_group_links('web', 'functional colours' => '#functional-colours') %>
+
+<%=
+  web_groups = colour_page('web').fetch('palette')
+  app_groups = colour_page('app').fetch('palette')
+  web_ids = web_groups.flat_map { |group| group.fetch('colours') }
+  app_ids = app_groups.flat_map { |group| group.fetch('colours') }
+  titles = (web_groups + app_groups).map { |group| group.fetch('title') }.uniq
+  titles.map do |title|
+    ids = [web_groups, app_groups].map { |groups| groups.find { |group| group.fetch('title') == title }&.fetch('colours') || [] }.reduce(:|)
+    swatches = ids.map do |id|
+      note = if !app_ids.include?(id) then 'Web only' elsif !web_ids.include?(id) then 'App only' end
+      colour_swatch(id, note: note)
+    end
+    %(<h3 id="#{colour_slug(title)}">#{escape(title)}</h3>\n) + colour_swatch_list(swatches)
+  end.join("\n")
+%>
+
+## Functional colours
+
+A functional colour has one job. Use it only for that job, and use the palette for anything else.
+
+In Home Assistant, use the civica theme variable rather than the value, so that the colour follows the theme colour and light or dark mode. In a custom card's CSS, write it as `var(--civica-border-quiet)`.
+
+| Functional colour | Use it for | civica theme variable | In dark mode |
+| --- | --- | --- | --- |
+| `brand` | The header | `civica-brand-primary`, which is the household's theme colour | The same colour |
+| `brand` | Buttons, highlights and on states | `primary-color` | A lighter tint of the theme colour |
+| `text` | Text | `primary-text-color` | White |
+| `secondary-text` | Hints and less important text | `secondary-text-color` | `#CBD0D3`<%= copy_hex.('#CBD0D3', 'secondary-text in dark mode') %> |
+| `inverse-text` | Text on buttons filled with the theme colour | `text-primary-color` | Black, because buttons use a light tint in dark mode |
+| `link` | Links | `link-color` | Follows the theme colour |
+| `border` | Dividers and quiet card edges | `civica-border-quiet` | `#50565A`<%= copy_hex.('#50565A', 'border in dark mode') %> |
+| `input-border` | Fields people type in | `civica-input-border` | White |
+| `focus` and `focus-text` | The element with keyboard focus, and its text | `civica-focus-background` and `civica-focus-text` | The same colours |
+| `error` | Error messages only | `error-color` | `#F0C6C6`<%= copy_hex.('#F0C6C6', 'error in dark mode') %> |
+| `success` | Success messages only | `success-color` | `#BCDACF`<%= copy_hex.('#BCDACF', 'success in dark mode') %> |
+
+civica ships no variable for `template-background`, `body-background`, `link-hover`, `link-visited`, `link-active`, `hover` or the surface colours. Home Assistant draws the page with `primary-background-color` and cards with `card-background-color`, which civica sets to White in light mode, and `#17191B`<%= copy_hex.('#17191B', 'the page background in dark mode') %> and `#24282B`<%= copy_hex.('#24282B', 'the card background in dark mode') %> in dark mode.
+
+<%= colour_functional_tokens %>
+
+### Dashboard example
+
+<%= colour_example('web-colour-dashboard', callout: false) %>
+
+## App colours
+
+Use the App only colours for app-like graphics you design, such as a phone screen in a guide or a picture for a release post. Do not add them to a dashboard: it keeps the same theme and colours in the Companion app.
+
+Use the accents for small highlights, such as a badge or a label. Accent teal is not the theme's accent colour: in the civica theme, that is the household's theme colour.
+
+The 2 dark mode blues are a pair for dark app screens. Dark mode primary blue on Dark mode blue shade 80% has 6.8:1 contrast, so it works for text and controls. The civica theme does not use them: in dark mode it uses lighter tints of the theme colour, as [Light and dark modes](colour.html#light-and-dark-modes) explains.
+
+### App header
+
+Keep the Primary blue header on key screens, in the app and in a phone browser. It gives each screen a clear starting point and makes the household's interface easy to recognise.
+
+#### Mobile web header
+
+<%= colour_example('app-colour-mobile-web-header', callout: false) %>
+
+#### App screens
+
+<%= colour_example('app-colour-header', callout: false) %>
+
+### Tinted tiles and menus
+
+Tinted tiles and menus can add structure and help people find their way. Add colour only where it does not clutter the screen or make it harder to use.
+
+<%= colour_example('app-colour-examples', callout: false) %>
+
+## Colour roles in Home Assistant
+
+These rules apply the functional colours to a Home Assistant interface.
+
+<h3 id="bg-col-02">Choose a colour by its job</h3>
+
+Give identity, reading, interaction, state and data their own colours. The theme colour marks navigation and actions. Text colours are for reading. Focus and error colours mark an interaction state. Device colours show a native device state. Chart colours name a source.
+
+The Red theme colour is the same as the error colour (`#CA3535`<%= copy_hex.('#CA3535', 'the error colour in light mode') %> in light mode and `#F0C6C6`<%= copy_hex.('#F0C6C6', 'the error colour in dark mode') %> in dark mode), and the Green theme colour is the same as the success colour (`#0F7A52`<%= copy_hex.('#0F7A52', 'the success colour in light mode') %> in light mode and `#BCDACF`<%= copy_hex.('#BCDACF', 'the success colour in dark mode') %> in dark mode). With either theme colour, say an error or success in words, as [Test combinations and keep another cue](colour.html#bg-col-03) explains: a green button is not proof that something worked, and a yellow lighting scene is not a warning. Choose a status fill and its text colour together, because a dark-mode error text colour is not always a safe button background.
+
+This example shows 3 entities on a dashboard card. Notice that each state is written out, so none of them depends on its colour, and that Unavailable is not shown as 0°C.
+
+<%= example('bg-colour-state-labels') %>
+
+<h3 id="bg-col-04">Separate dividers from editable boundaries</h3>
+
+Use `civica-border-quiet` for dividers and quiet card edges. Use `civica-border-interactive` for the edges of controls people need to find, and `civica-input-border` for fields people can type in. Keep the strong input and focus styles.
+
+Do not outline every part of a dashboard in black: group content with headings and spacing first. Do not lighten every border either, because a text field, a focus ring and a card edge do different jobs. Keep native circle and pill shapes where they carry meaning, as on a switch, radio button, badge, avatar or gauge.
+
+This example shows the field for renaming an area. Notice that the card edge is quiet, while the text field has a strong border and, when selected, a clear focus ring.
+
+<%= example('bg-colour-boundaries') %>
+
+<h3 id="bg-col-05">Keep device, warning and notification meaning</h3>
+
+Keep the native icon and state colours for a device, and keep the device name and state readable. An unavailable sensor is not a zero reading or a device that is off. A manufacturer's logo can help people recognise a device, but it is content, not part of the interface's identity.
+
+The [notification badge](../components/notification-badge.html) keeps its fixed colour and rounded shape with every theme colour. Its count is not an alarm level, and a coloured dot does not replace a warning message. Give confirmed success, a pending action and a failure their own wording as well as their own look.

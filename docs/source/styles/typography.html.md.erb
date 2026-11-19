@@ -1,6 +1,9 @@
 ---
 title: "Typography"
-description: "Set Home Assistant dashboards and civica cards in Arial, with type sizes that keep room names, readings and headings readable."
+description: "How civica sets text on Home Assistant dashboards, in the Companion app, in print and in social images, and which page covers each part."
+group: "Typography"
+nav_order: 0
+no_contents: true
 last_reviewed_on: 2026-11-19
 review_in: 3 months
 updated_on: "2026-11-19"
@@ -24,211 +27,83 @@ updates:
     description: "Added a type scale specimen that sets each role at its size, and a chart comparing each size on wide and narrow screens, with the same sizes as a table."
   - date: "2026-11-19"
     description: "Added a Glyphs section with a character set specimen for letters, numerals, punctuation and the symbols Home Assistant needs, and a rule for missing glyphs and fallbacks."
-ai_instructions: "Apply when choosing a font, size, weight or heading for a Home Assistant card, dashboard or civica documentation page. Use Arial, Helvetica, sans-serif at weights 400 and 700 only. Take sizes from the type scale table: maintained civica UI uses civica-font-size-body (19px), civica-font-size-small (16px) and civica-font-size-heading (24px); native dense controls keep ha-font-size-xs, s, m and l (12, 14, 16 and 19px). Every size is multiplied by --ha-font-size-scale, so never set a fixed px font size in a card. Heading cards use the 24px bold card heading. A large sensor reading is a value, not a heading. Do not add any other typeface to a font stack. Values, units, native screens and print are owned by Typography in context. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-002, WG-080."
+  - date: "2026-11-19"
+    description: "Split into an overview and sub-pages, one for each topic. The typeface, glyphs, type scale, headings, paragraphs, links, lists and text style overrides now each have their own page, with Web-app, Social and Print typography. Typography in context is retired and its rules are on those pages. This page keeps the text in each context table and chart."
+ai_instructions: "Start here for any typography question. civica sets text in Arial, Helvetica, sans-serif at weights 400 and 700, with sizes from the type scale, which grow with --ha-font-size-scale. This overview owns the text in each context table and chart. Each sub-page owns one topic: Typeface (font stack, weights, glyphs), Type scale (sizes, line heights, font variables), Headings, Paragraphs, Links, Lists, Text style overrides, and Web-app, Social and Print typography. Link to the sub-page; do not repeat its rules. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-002, WG-080."
 ai_related:
-  - path: "/styles/brand-typography.html"
-    title: "Typography in context"
-    relationship: "Owns readings and units, native app screens, text scaling checks and print."
+  - path: "/styles/typography-typeface.html"
+    title: "Typeface"
+    relationship: "Owns the font stack, weights and glyphs."
+  - path: "/styles/typography-type-scale.html"
+    title: "Type scale"
+    relationship: "Owns every size, line height and font variable."
+  - path: "/styles/typography-web-app.html"
+    title: "Web-app typography"
+    relationship: "Owns readings and units, native screens and checks at larger text sizes."
   - path: "/styles/layout.html"
     title: "Layout and spacing"
     relationship: "Owns the grid, screen sizes and spacing around text."
-  - path: "/accessibility/index.html"
-    title: "Accessibility"
-    relationship: "Owns text resizing and reflow requirements."
 ---
 
 # Typography
 
-Set all text in Arial, using 2 weights: regular and bold. Take every size from the type scale on this page, so a room name, a reading and a heading look the same on every dashboard.
+Set all civica text in Arial, at 2 weights: regular and bold. Take every size from the type scale. Then a room name, a reading and a heading look the same on every dashboard.
 
-Arial, or the very similar Helvetica, is already on most computers, iPhones and iPads. Android devices use their own sans-serif font instead. So Home Assistant never has to download a font before it shows the dashboard.
+Arial is already on most computers, phones and tablets, so Home Assistant never has to download a font before it shows a dashboard.
 
-## Typeface
+## Text in each context
 
-Use this font stack in a custom card or a theme:
+This table shows the typeface and the smallest text to use in each place civica text appears.
 
-```css
-font-family: Arial, Helvetica, sans-serif;
-```
+| Context | Typeface | Smallest text | Who controls it |
+| --- | --- | --- | --- |
+| civica card or panel on a dashboard | Arial | 16px supporting text | The civica theme |
+| Native Home Assistant screen | Arial | 12px compact extra text | Home Assistant, with civica sizes |
+| Chart label or legend | Arial | 14px | The civica chart cards |
+| Companion app settings, keyboard and share sheet | The phone's own font | Set by the phone | The phone's operating system |
+| Printed household handover | Arial | 12pt body text | The person printing it |
+| Social image or release picture | Arial | Large enough to read on a phone | The person making it |
 
-If Arial is missing, the device uses Helvetica, then its own sans-serif font. Do not add another typeface to the stack, and do not download or bundle a font with a card. The civica wordmark is artwork, not a font. Do not use it to set text.
+Every screen size in this table grows with Home Assistant's font size scale and with browser or app zoom.
 
-The civica theme sets the Home Assistant font variables for you, including `ha-font-family-body` and `ha-font-family-heading`. Code editors keep a monospace font, `'Courier New', monospace`, because the alignment of code carries meaning.
-
-### Weights
-
-| Weight | Value | Use it for |
-| --- | --- | --- |
-| Regular | 400 | Body text, labels, hints, readings and buttons |
-| Bold | 700 | Headings, and a few words that need emphasis |
-
-Do not use a light or medium weight. Most devices have neither for Arial, so they show regular instead and the difference you designed disappears. The civica theme sets Home Assistant's medium weight, `ha-font-weight-medium`, to 400 for this reason.
-
-### Specimen
-
-This specimen shows the characters a Home Assistant dashboard often needs, in Arial regular and bold.
-
-<figure>
-<p style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:400;line-height:1.5;margin:0 0 10px">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>0 1 2 3 4 5 6 7 8 9 °C % kWh kW −0.4 ½ · : / ( )</p>
-<p style="font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:700;line-height:1.5;margin:0 0 10px">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>0 1 2 3 4 5 6 7 8 9 °C % kWh kW −0.4 ½ · : / ( )</p>
-<figcaption>Arial regular (400), then Arial bold (700), at 24px. The second row includes the degree sign, units, a true minus sign and the separators used in times and readings.</figcaption>
-</figure>
-
-Use a true minus sign (−) for a negative reading, such as an export of −0.4 kW. A hyphen is shorter and easy to miss.
-
-## Glyphs
-
-Arial covers every character a Home Assistant dashboard normally needs. Use the sets below, and check any other symbol before you rely on it.
-
-<%=
-  sets = [
-    ['Capital letters', 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'],
-    ['Lower case letters', 'a b c d e f g h i j k l m n o p q r s t u v w x y z'],
-    ['Welsh letters', 'Â Ê Î Ô Û Ŵ Ŷ â ê î ô û ŵ ŷ'],
-    ['Numerals', '0 1 2 3 4 5 6 7 8 9'],
-    ['Punctuation', '. , : ; ! ? \' " ( ) / – − … · &amp;'],
-    ['Units and symbols', '° °C °F % kWh kW W V A Hz £ p € ½ × ±'],
-    ['Arrows', '← ↑ → ↓']
-  ]
-  rows = sets.map { |name, chars| %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">#{name}</th><td class="govuk-table__cell" style="font-family:Arial,Helvetica,sans-serif;font-size:24px;line-height:1.5;overflow-wrap:anywhere">#{chars}</td></tr>) }
-  %(<div class="civica-table-scroll" role="region" tabindex="0" aria-label="Character set in Arial"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">Characters for Home Assistant dashboards, in Arial regular at 24px</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Set</th><th scope="col" class="govuk-table__header">Characters</th></tr></thead><tbody class="govuk-table__body">#{rows.join}</tbody></table></div>)
-%>
-
-Write a unit as a unit, such as “21.4°C” or “3.2 kWh”, not as a picture. Use the pound sign (£) for money and a true minus sign (−) for a negative reading.
-
-### Missing glyphs and fallbacks
-
-If a device has no glyph for a character, it takes that character from the next font in the stack, then from its own sans-serif font. The shape may then differ from the characters around it.
-
-- Prefer the characters in the table. They are in Arial, Helvetica and the sans-serif fonts on phones and tablets.
-- Do not use emoji, or a symbol outside the table, to carry meaning. Use an `mdi:` icon with a text label instead.
-- If a character shows as an empty box, replace it with words. For example, write “up” where an arrow does not show.
-- Do not add a font to the stack to supply one symbol.
-
-## Type scale
-
-Each role has one size on wide screens and one on narrow screens, such as a phone. The civica theme multiplies every size by Home Assistant's font size scale, `--ha-font-size-scale`, so all text grows together if the scale is raised. Browser and app zoom make it larger too.
-
-| Role | Wide screens | Narrow screens | Line height | Weight | civica or Home Assistant variable |
-| --- | --- | --- | --- | --- | --- |
-| Page heading | 48px | 36px | 1.1 | Bold | None. Used on documentation pages and custom panels only |
-| Section heading | 30px | 24px | 1.2 | Bold | None. Used on documentation pages and custom panels only |
-| Card heading | 24px | 20px to 24px | 1.25 | Bold | `civica-font-size-heading` |
-| Main reading | 32px to 48px | Large enough to fit the value and unit | 1.25, from `ha-line-height-condensed` | Regular or bold | None. Size it to fit the card |
-| Body text and main controls | 19px | 18px to 19px | 1.5 | Regular | `civica-font-size-body` |
-| Supporting text | 16px | 16px | 1.5 | Regular | `civica-font-size-small` |
-
-These sizes are for maintained civica cards and panels. On a phone, the narrow sizes stop a heading from taking the whole screen.
-
-### Type scale specimen
-
-This specimen sets each role at its wide-screen size, with text from an invented household's dashboard. On a phone, the page and section headings use their narrow sizes instead.
-
-<%=
-  samples = [
-    ['Hughes home', 'Page heading', 48, 700, 1.1],
-    ['Downstairs', 'Section heading', 30, 700, 1.2],
-    ['Living room', 'Card heading', 24, 700, 1.25],
-    ['21.4°C', 'Main reading, shown here at 40px', 40, 400, 1.25],
-    ['The heating is on until 22:00.', 'Body text and main controls', 19, 400, 1.5],
-    ['Updated 14:05', 'Supporting text', 16, 400, 1.5]
-  ]
-  items = samples.map do |text, role, size, weight, line|
-    detail = role.include?('40px') ? "#{role}, #{weight == 700 ? 'bold' : 'regular'}, line height #{line}" : "#{role}, #{size}px #{weight == 700 ? 'bold' : 'regular'}, line height #{line}"
-    %(<div style="margin:0 0 20px"><p style="font-family:Arial,Helvetica,sans-serif;font-size:#{size}px;font-weight:#{weight};line-height:#{line};margin:0;overflow-wrap:anywhere">#{text}</p><p style="font-size:16px;line-height:1.5;margin:5px 0 0">#{detail}</p></div>)
-  end
-  %(<figure style="margin:0 0 30px">#{items.join}<figcaption>Each role at its wide-screen size. The large text is a sample, not a heading, so it is not marked up as one.</figcaption></figure>)
-%>
-
-### Type scale compared
-
-This comparison shows how much each size changes between wide and narrow screens. Headings change most. Body and supporting text barely change, so they stay easy to read on a phone.
+This chart compares the smallest screen text in each context. 3 contexts have no bar. Their smallest size is set by the phone, measured in points on paper, or not fixed. None of them is 0.
 
 <%=
   hex = ->(id) { govuk_colour(id).fetch('hex') }
-  ink, grid, wide_c, narrow_c = hex.('black'), hex.('black-tint-80'), hex.('blue'), hex.('magenta')
-  roles = [
-    ['Page heading', [48, 48], [36, 36]],
-    ['Section heading', [30, 30], [24, 24]],
-    ['Card heading', [24, 24], [20, 24]],
-    ['Main reading', [32, 48], nil],
-    ['Body text and main controls', [19, 19], [18, 19]],
-    ['Supporting text', [16, 16], [16, 16]]
+  ink, grid, blue = hex.('black'), hex.('black-tint-80'), hex.('blue')
+  contexts = [
+    ['civica card or panel', 16, nil],
+    ['Native Home Assistant screen', 12, nil],
+    ['Chart label or legend', 14, nil],
+    ['Companion app settings', nil, 'Set by the phone'],
+    ['Printed household handover', nil, '12pt on paper, not on this scale'],
+    ['Social image or release picture', nil, 'Not fixed: large enough to read on a phone']
   ]
-  x_of = ->(px) { 60 + px * 4 }
-  label = ->(r) { r[0] == r[1] ? "#{r[0]}px" : "#{r[0]} to #{r[1]}px" }
-  bar = lambda do |range, y, colour|
-    out = %(<rect x="60" y="#{y}" width="#{range[0] * 4}" height="12" fill="#{colour}"/>)
-    out += %(<rect x="#{x_of.(range[0])}" y="#{y + 1}" width="#{(range[1] - range[0]) * 4}" height="10" fill="none" stroke="#{colour}" stroke-width="2" stroke-dasharray="4 2"/>) if range[1] > range[0]
-    out + %(<text x="#{x_of.(range[1]) + 5}" y="#{y + 10}" font-size="10" fill="#{ink}">#{label.(range)}</text>)
-  end
+  x_of = ->(px) { 4 + px * 12 }
   svg = []
-  [0, 12, 24, 36, 48].each { |v| svg << %(<line x1="#{x_of.(v)}" y1="8" x2="#{x_of.(v)}" y2="272" stroke="#{grid}" stroke-width="1"/><text x="#{x_of.(v)}" y="286" font-size="10" text-anchor="middle" fill="#{ink}">#{v}</text>) }
-  svg << %(<text x="#{x_of.(48)}" y="299" font-size="10" text-anchor="middle" fill="#{ink}">Size (px)</text>)
-  roles.each_with_index do |(role, wide, narrow), i|
-    y = 18 + i * 44
-    svg << %(<text x="0" y="#{y}" font-size="11" font-weight="700" fill="#{ink}">#{role}</text>)
-    svg << %(<text x="0" y="#{y + 14}" font-size="10" fill="#{ink}">Wide</text>) << bar.(wide, y + 4, wide_c)
-    svg << %(<text x="0" y="#{y + 29}" font-size="10" fill="#{ink}">Narrow</text>)
-    svg << (narrow ? bar.(narrow, y + 19, narrow_c) : %(<text x="62" y="#{y + 29}" font-size="10" fill="#{ink}">Not fixed: large enough to fit the value and unit</text>))
+  [0, 4, 8, 12, 16].each { |v| svg << %(<line x1="#{x_of.(v)}" y1="4" x2="#{x_of.(v)}" y2="208" stroke="#{grid}" stroke-width="1"/><text x="#{x_of.(v)}" y="222" font-size="10" text-anchor="middle" fill="#{ink}">#{v}</text>) }
+  svg << %(<text x="#{x_of.(16)}" y="236" font-size="10" text-anchor="middle" fill="#{ink}">Smallest text (px)</text>)
+  contexts.each_with_index do |(name, px, note), i|
+    y = 16 + i * 33
+    svg << %(<text x="4" y="#{y}" font-size="11" font-weight="700" fill="#{ink}">#{name}</text>)
+    svg << (px ? %(<rect x="4" y="#{y + 5}" width="#{px * 12}" height="12" fill="#{blue}"/><text x="#{x_of.(px) + 5}" y="#{y + 15}" font-size="10" fill="#{ink}">#{px}px</text>) : %(<text x="6" y="#{y + 15}" font-size="10" fill="#{ink}">No bar. #{note}</text>))
   end
-  rows = roles.map { |role, wide, narrow| %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">#{role}</th><td class="govuk-table__cell">#{label.(wide)}</td><td class="govuk-table__cell">#{narrow ? label.(narrow) : 'Not fixed. Large enough to fit the value and unit.'}</td></tr>) }
+  specimen = contexts.select { |c| c[1] }.map { |name, px, _| %(<p style="font-family:Arial,Helvetica,sans-serif;font-size:#{px}px;line-height:1.5;margin:0 0 5px">Living room 21.4°C, updated 14:05 <span style="font-size:16px">(#{name}, #{px}px)</span></p>) }.join
   %(<div class="c-colour-example"><figure style="margin:0 0 20px">) +
-    %(<svg role="img" aria-labelledby="scale-compared-title scale-compared-desc" viewBox="0 0 320 304" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif"><title id="scale-compared-title">Bar chart comparing each type size on wide and narrow screens</title><desc id="scale-compared-desc">Each role has a wide-screen bar and a narrow-screen bar, labelled Wide and Narrow, with the size in pixels at the end of each bar. A solid bar shows a fixed size, and a dashed outline after it shows a range. The page heading drops from 48px to 36px and the section heading from 30px to 24px. The card heading is 24px wide and 20 to 24px narrow. The main reading is 32 to 48px wide and not fixed on narrow screens, so it has no narrow bar. Body text is 19px wide and 18 to 19px narrow. Supporting text is 16px on both. The table after the chart gives every size.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
-    %(<figcaption>Type sizes in px on wide and narrow screens, before the font size scale. A dashed outline shows a range of sizes. A role with no narrow bar has no fixed narrow size: it is not 0.</figcaption></figure>) +
-    %(<details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Show the data: type sizes on wide and narrow screens</span></summary><div class="govuk-details__text"><div class="civica-table-scroll" role="region" tabindex="0" aria-label="Type sizes on wide and narrow screens"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">Type sizes on wide and narrow screens</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Role</th><th scope="col" class="govuk-table__header">Wide screens</th><th scope="col" class="govuk-table__header">Narrow screens</th></tr></thead><tbody class="govuk-table__body">#{rows.join}</tbody></table></div></div></details></div>)
+    %(<svg role="img" aria-labelledby="context-sizes-title context-sizes-desc" viewBox="0 0 320 240" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif"><title id="context-sizes-title">Bar chart of the smallest screen text in each context</title><desc id="context-sizes-desc">A civica card or panel has the largest smallest text, 16px. A chart label or legend is 14px, and a native Home Assistant screen 12px. The Companion app settings have no bar because the phone sets the size. The printed handover has no bar because it is measured in points on paper: 12pt. A social image has no bar because its size is not fixed. The table above gives the same facts.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
+    %(<p style="margin:20px 0 10px">The same reading at each fixed screen size:</p>#{specimen}) +
+    %(<figcaption>Smallest text in each context, before the font size scale and zoom. The table above gives the same facts.</figcaption></figure></div>)
 %>
 
-### Native Home Assistant sizes
+## Typography pages
 
-Native Home Assistant screens are denser than a civica card, so they keep smaller sizes. The civica theme raises each native size by one step, to these values:
-
-| Home Assistant variable | Size | Used for |
-| --- | --- | --- |
-| `ha-font-size-l` | 19px | Larger native text |
-| `ha-font-size-m` | 16px | Native controls and body text |
-| `ha-font-size-s` | 14px | Supporting labels |
-| `ha-font-size-xs` | 12px | Compact extra text, such as a secondary detail in a row |
-
-Do not make every native row bigger to match a civica card. That pushes controls off the screen and breaks the native layout. Check native screens at 200% text size instead.
-
-### Set sizes in a card
-
-Use the variable, not a pixel value, so the size follows the font size scale. Each variable is written as a `calc()` that multiplies the base size by `--ha-font-size-scale`.
-
-```css
-.reading-label {
-  font-size: var(--civica-font-size-small);
-  line-height: 1.5;
-}
-```
-
-Heading cards already use the card heading size. The civica theme sets `ha-heading-card-title-font-size` to the card heading variable, with weight 700 and line height 1.25. This keeps a section title as strong as the cards under it. Subtitles keep their native supporting style.
-
-```yaml
-type: heading
-heading: Living room
-heading_style: title
-```
-
-## Headings
-
-Use one main heading on a page, and keep heading levels in order. Choose the level for the structure of the page, not for the size you want. If a heading looks too big, use a different size. Do not skip a level.
-
-A large reading, such as “21°C”, is a value, not a heading. Do not mark it up as a heading to make it bigger, and do not make a paragraph look like a heading while leaving it as a paragraph. Screen reader users move around a page by its headings.
-
-## Write readable text
-
-- Use sentence case for headings, card names and buttons. Do not use capitals for a whole label.
-- Use bold for a few words, not whole paragraphs.
-- Do not use italics for an instruction people need to follow.
-- Do not use pale grey text. Use the supporting text colour on [Web and app colours](colour-web.html#functional-colours).
-- Let a long room or device name wrap onto 2 lines. Do not cut it off with “…” if people need it to tell 2 devices apart.
-
-These examples show a heading structure and a long device name that wraps.
-
-<%= example('local-type-hierarchy') %>
-
-<%= example('local-type-wrapping') %>
-
-[Typography in context](brand-typography.html) explains how to show readings and units, how text behaves on native app screens, and how to set type for print.
+- [Web-app typography](typography-web-app.html): readings and units on dashboards, native screens and the Companion app, and checks at larger text sizes.
+- [Social typography](typography-social.html): headlines, body text and labels in social images and release pictures.
+- [Print typography](typography-print.html): text sizes for a printed household handover.
+- [Typeface](typography-typeface.html): the Arial font stack, the 2 weights and the characters a dashboard needs.
+- [Type scale](typography-type-scale.html): every size and line height, on wide and narrow screens, with its font variable.
+- [Headings](typography-headings.html): heading levels, heading cards and why a reading is not a heading.
+- [Paragraphs](typography-paragraphs.html): body text, supporting text and how to lay out text for reading.
+- [Links](typography-links.html): how links look in civica cards, in light and dark mode.
+- [Lists](typography-lists.html): bulleted and numbered lists in a Markdown card.
+- [Text style overrides](typography-overrides.html): how to change alignment, size, weight or number spacing in one card.

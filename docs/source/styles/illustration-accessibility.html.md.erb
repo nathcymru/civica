@@ -1,0 +1,75 @@
+---
+title: "Illustration accessibility"
+description: "How to give a civica illustration the right alternative text, keep its meaning in text and colour-independent, and handle motion on a Home Assistant dashboard."
+section: "styles"
+group: "Illustration"
+nav_order: 9
+status: "reference"
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+last_reviewed_on: "2026-11-19"
+review_in: "3 months"
+updates:
+  - date: "2026-11-19"
+    description: "First published. The accessibility rules moved here from Illustration, with the sensor location diagram and the connection diagram. The rules on reading order and animation moved here from Layout of a scene."
+ai_instructions: "Apply when adding any civica illustration to a page, a dashboard or a post. Decide whether it adds information or repeats nearby text. Informative: alternative text that says what the text does not, or an inline SVG with title, desc and role img. Repeats the text: alt empty, or an inline SVG with aria-hidden true; never leave out the alt attribute. Keep labels, steps and values in HTML text and never rely on colour alone. A Home Assistant picture card takes alternative text in its alt_text option. Keep image and text together on narrow screens, give panels a reading order, do not animate for attention, and respect reduced motion. This page owns anchor bg-ill-06. The diagrams are invented examples, not installation guidance. Do not show rule IDs or name outside sources in page text. Rules WG-082, WG-056."
+ai_related:
+  - path: "/content/formatting-content/images.html"
+    title: "Images"
+    relationship: "Owns the wording of alternative text."
+  - path: "/styles/colour-illustrations.html"
+    title: "Illustration colours"
+    relationship: "Owns how to check contrast and colour blindness."
+  - path: "/styles/illustration-formats.html"
+    title: "File formats and exporting"
+    relationship: "Owns the checks on the exported file."
+---
+
+# Illustration accessibility
+
+Make sure everyone gets the same meaning, whether or not they can see the illustration. This applies on guidance pages, dashboards and social posts.
+
+<h2 id="bg-ill-06">Alternative text</h2>
+
+Decide whether the illustration adds information or repeats the text beside it. [Images](../content/formatting-content/images.html) owns the wording of alternative text.
+
+### When it adds information
+
+Describe what the text does not already say, such as “Floor plan: the temperature sensor is on the hall wall, away from the radiator.” A complex diagram also needs a nearby explanation or a table.
+
+Give an informative inline SVG a `title`, a `desc` and `role="img"`. This example does that. Its caption says that a real sensor needs the manufacturer’s placement instructions.
+
+<%= example('bg-illustration-sensor-placement') %>
+
+### When it repeats the text
+
+Give it an empty alternative (`alt=""`). Never leave out the `alt` attribute. Hide a decorative inline SVG with `aria-hidden="true"`.
+
+This example shows a phone, Home Assistant, a hub and a sensor. The drawing is hidden from screen readers because the sentence underneath says the same thing.
+
+<%= example('bg-illustration-network') %>
+
+### In Home Assistant
+
+Give a picture card its alternative text with the `alt_text` option.
+
+```yaml
+type: picture
+image: /local/illustrations/hall-sensor.svg
+alt_text: "Floor plan: the temperature sensor is on the hall wall, away from the radiator."
+```
+
+If the card next to it already says the same thing, use `alt_text: ""`.
+
+## Text and colour
+
+Keep labels, steps and values as HTML text, not inside the image, so they can be read aloud, translated and resized.
+
+Do not rely on colour alone to show which object matters. Use shape, size or position as well. [Illustration colours](colour-illustrations.html#using-contrast) explains how to check contrast and colour blindness.
+
+## Layout and motion
+
+- Keep the illustration and its text together on narrow screens.
+- Give a row of panels a clear reading order and matching text.
+- Do not animate a scene to attract attention.
+- If a process needs animation, provide a still version and a way to pause it, and respect the reduced motion setting.

@@ -1,0 +1,83 @@
+---
+title: "Data examples"
+description: "Working examples of civica charts for invented households: power now from the Energy adapter, and room temperatures against the heating target over a day."
+section: "styles"
+group: "Data visualisation"
+nav_order: 4
+status: "reference"
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+last_reviewed_on: "2026-11-19"
+review_in: "3 months"
+updates:
+  - date: "2026-11-19"
+    description: "First published. The power now chart and the room temperatures chart moved here from Data visualisation. The other examples are on the page that owns their rule."
+ai_instructions: "Use these examples as finished references for household data charts. The power now chart is a working Energy adapter example with invented readings; the room temperatures chart is a drawing with invented readings and a table. Neither shows a real home or operates a device. Chart rules are owned by /styles/brand-data-charts.html and chart colours by /styles/chart-colour.html. Do not show rule IDs or name outside sources in page text. Rules WG-056, WG-074, WG-076, WG-077."
+ai_related:
+  - path: "/styles/brand-data-charts.html"
+    title: "Charts"
+    relationship: "Owns the rules these examples follow."
+  - path: "/components/chart-examples.html"
+    title: "Chart examples"
+    relationship: "Holds more working Energy charts."
+  - path: "/styles/chart-colour.html"
+    title: "Chart colours"
+    relationship: "Owns the colours these examples use."
+---
+
+# Data examples
+
+These examples use invented households and simulated data. They do not show a real home or operate devices. Other examples sit with the rule they show: the parts of a chart on [Charts](brand-data-charts.html), a wall tablet and a fixed summary on [Dashboards](brand-data-dashboards.html), and a map of phones on [Maps](brand-data-maps.html).
+
+## Energy: power now
+
+This working chart uses the civica Energy adapter with invented readings. Notice the separate unfilled line for each source, the legend that matches each line, and the **View data** table below the chart.
+
+<%= example('bg-data-operational-power') %>
+
+## Climate: room temperatures over a day
+
+This line chart compares the temperature in each room across one day, with the heating target for reference. Notice that each room has its own line style and a label at the end of its line, that the target is a thin black step line, and that the missing bedroom reading at 12:00 is a gap, not a drop to 0.
+
+<%=
+  hex = ->(id) { govuk_colour(id).fetch('hex') }
+  ink, grid = hex.('black'), hex.('black-tint-80')
+  times = %w[00:00 03:00 06:00 09:00 12:00 15:00 18:00 21:00]
+  rooms = [
+    ['Living room', 'sensor.living_room_temperature', 'blue', nil, 'solid line', [17.2, 16.6, 16.4, 19.6, 20.1, 20.4, 20.8, 20.3], 108],
+    ['Kitchen', 'sensor.kitchen_temperature', 'magenta', '8 4', 'dashed line', [16.9, 16.1, 16.3, 20.2, 19.4, 19.0, 21.3, 19.9], 124],
+    ['Bedroom', 'sensor.bedroom_temperature', 'teal-tint-25', '2 3', 'dotted line', [18.1, 17.6, 17.3, 18.4, nil, 17.9, 18.6, 18.9], 146]
+  ]
+  x_of = ->(h) { (34 + h * 200.0 / 21).round(1) }
+  y_of = ->(v) { (250 - (v - 14) * 22).round(1) }
+  svg = []
+  rooms.each_with_index do |(name, _, colour, dash, _, _, _), i|
+    lx = [0, 110, 0][i]; ly = [12, 12, 30][i]
+    svg << %(<line x1="#{lx}" y1="#{ly}" x2="#{lx + 24}" y2="#{ly}" stroke="#{hex.(colour)}" stroke-width="3"#{%( stroke-dasharray="#{dash}") if dash}/><text x="#{lx + 30}" y="#{ly + 4}" font-size="11" fill="#{ink}">#{name}</text>)
+  end
+  svg << %(<line x1="110" y1="30" x2="134" y2="30" stroke="#{ink}" stroke-width="1.5" stroke-dasharray="12 4"/><text x="140" y="34" font-size="11" fill="#{ink}">Heating target</text>)
+  svg << %(<text x="0" y="62" font-size="12" fill="#{ink}">°C</text>)
+  [14, 16, 18, 20, 22].each { |v| svg << %(<line x1="34" y1="#{y_of.(v)}" x2="234" y2="#{y_of.(v)}" stroke="#{grid}" stroke-width="1"/><text x="28" y="#{y_of.(v) + 4}" font-size="11" text-anchor="end" fill="#{ink}">#{v}</text>) }
+  [0, 6, 12, 18].each { |h| svg << %(<text x="#{x_of.(h)}" y="268" font-size="11" text-anchor="middle" fill="#{ink}">#{format('%02d:00', h)}</text>) }
+  svg << %(<path d="M34 #{y_of.(16)} H#{x_of.(6)} V#{y_of.(20)} H234" fill="none" stroke="#{ink}" stroke-width="1.5" stroke-dasharray="12 4"/><text x="38" y="#{y_of.(20) - 6}" font-size="10" fill="#{ink}">Target</text>)
+  rooms.each do |name, id, colour, dash, _, values, label_y|
+    segments = values.each_with_index.chunk_while { |(a, _), (b, _)| a && b }.map { |run| run.reject { |v, _| v.nil? } }.reject(&:empty?)
+    segments.each do |run|
+      d = run.map { |v, i| "#{x_of.(i * 3)} #{y_of.(v)}" }.join(' L')
+      svg << %(<path data-series="#{id}" d="M#{d}" fill="none" stroke="#{hex.(colour)}" stroke-width="3"#{%( stroke-dasharray="#{dash}") if dash}/>)
+    end
+    svg << %(<text x="240" y="#{label_y}" font-size="11" fill="#{ink}">#{name}</text>)
+  end
+  svg << %(<text x="#{x_of.(12) + 2}" y="166" font-size="10" text-anchor="middle" fill="#{ink}">No reading</text>)
+  head = %(<tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Time</th>) + rooms.map { |r| %(<th scope="col" class="govuk-table__header">#{r[0]}</th>) }.join + %(<th scope="col" class="govuk-table__header">Heating target</th></tr>)
+  body = times.each_with_index.map do |t, i|
+    cells = rooms.map { |r| v = r[5][i]; %(<td class="govuk-table__cell">#{v ? format('%.1f', v) : 'No reading'}</td>) }.join
+    %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">#{t}</th>#{cells}<td class="govuk-table__cell">#{i < 2 ? '16.0' : '20.0'}</td></tr>)
+  end
+  %(<div class="c-colour-example"><figure style="margin:0 0 20px">) +
+    %(<svg role="img" aria-labelledby="climate-title climate-desc" viewBox="0 0 320 280" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif"><title id="climate-title">Line chart of 3 room temperatures and the heating target, in degrees Celsius, over one day</title><desc id="climate-desc">The living room is a solid line, the kitchen dashed and the bedroom dotted. The heating target is 16°C until 06:00 and 20°C after it. The living room and kitchen reach the target in the afternoon and evening. The bedroom stays between 17.3°C and 18.9°C all day. There is no bedroom reading at 12:00, shown as a gap. The table after the chart gives every reading.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
+    %(<figcaption>Room temperatures (°C) every 3 hours, Tuesday 17 November 2026, Europe/London. Invented readings for the Hughes household. The heating target comes from <code>climate.hughes_heating</code>, and is 20°C from 06:00 to 22:00.</figcaption></figure>) +
+    %(<details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Show the data: room temperatures, 17 November 2026</span></summary><div class="govuk-details__text"><div class="civica-table-scroll" role="region" tabindex="0" aria-label="Room temperatures and heating target"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">Room temperatures and heating target (°C), 17 November 2026 (invented readings)</caption><thead class="govuk-table__head">#{head}</thead><tbody class="govuk-table__body">#{body.join}</tbody></table></div><p>Entities: #{rooms.map { |r| "<code>#{r[1]}</code> (#{r[4]})" }.join(', ')}.</p></div></details></div>)
+%>
+
+In Home Assistant, a History graph card that shows a thermostat's climate entity draws its target temperature next to the room temperature. The card draws solid lines only, so give each entity a clear name for the legend.

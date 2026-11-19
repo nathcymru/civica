@@ -15,16 +15,16 @@ updates:
   - date: "2026-11-17"
     description: "Rewritten to lead with the rule and remove source commentary."
   - date: "2026-11-19"
-    description: "Rewritten around phone, tablet and wall panel layouts. Added the Home Assistant screen sizes, the sections grid and card widths with YAML, the civica spacing scale beside the native spacing, and how to show a card on some screens only. Border colours now link to Web and app colours instead of repeating them."
+    description: "Rewritten around phone, tablet and wall panel layouts. Added the Home Assistant screen sizes, the sections grid and card widths with YAML, the civica spacing scale beside the native spacing, and how to show a card on some screens only. Border colours now link to Web-app colours instead of repeating them."
   - date: "2026-11-19"
     description: "Added diagrams of one dashboard at mobile, tablet and wall panel sizes, a to-scale 12-column section grid, and bars for the spacing scale."
-ai_instructions: "Apply when laying out a Home Assistant dashboard, a section or a maintained custom card. Design for a phone first. Use the native Sections view: sections are at least 320px and at most 500px wide, up to 4 side by side by default (max_columns); each section is a 12-column grid with 56px rows and 8px gaps; a Tile card is 6 columns by default. Home Assistant's screen sizes are Mobile under 768px, Tablet 768 to 1023px, Desktop 1024 to 1279px and Wide from 1280px; the sidebar becomes a menu at 870px and below. Use the civica 5px spacing scale (5, 10, 15, 20, 25, 30, 40, 50, 60px) in custom card CSS and leave native --ha-space-N spacing alone. Use civica-border-quiet, civica-border-interactive and civica-input-border for edges; colour values are owned by Web and app colours. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-050, WG-081."
+ai_instructions: "Apply when laying out a Home Assistant dashboard, a section or a maintained custom card. Design for a phone first. Use the native Sections view: sections are at least 320px and at most 500px wide, up to 4 side by side by default (max_columns); each section is a 12-column grid with 56px rows and 8px gaps; a Tile card is 6 columns by default. Home Assistant's screen sizes are Mobile under 768px, Tablet 768 to 1023px, Desktop 1024 to 1279px and Wide from 1280px; the sidebar becomes a menu at 870px and below. Use the civica 5px spacing scale (5, 10, 15, 20, 25, 30, 40, 50, 60px) in custom card CSS and leave native --ha-space-N spacing alone. Use civica-border-quiet, civica-border-interactive and civica-input-border for edges; colour values are owned by Web-app colours. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-050, WG-081."
 ai_related:
   - path: "/home-assistant/dashboard-composition.html"
     title: "Dashboard composition and card features"
     relationship: "Owns the four native view types and which card to use for each task."
-  - path: "/styles/colour-web.html"
-    title: "Web and app colours"
+  - path: "/styles/colour-web-app.html"
+    title: "Web-app colours"
     relationship: "Owns the border, input and focus colour values used on this page."
   - path: "/accessibility/testing.html"
     title: "Test the interface"
@@ -186,7 +186,7 @@ Group content with spacing and headings first. Add a 1px border only where a gro
 | Text field people type in | `civica-input-border` | 2px |
 | Keyboard focus | `civica-focus-background` and `civica-focus-text` | 3px |
 
-[Web and app colours](colour-web.html#functional-colours) gives the light and dark values for each variable. Do not weaken a text field's border or the focus style to make a busy dashboard look quieter.
+[Web-app colours](colour-web-app.html#functional-colours) gives the light and dark values for each variable. Do not weaken a text field's border or the focus style to make a busy dashboard look quieter.
 
 Use square corners on maintained cards, buttons, fields and dialogs. Keep the native round shapes that carry meaning, such as a switch, a radio button, a [notification badge](../components/notification-badge.html), an avatar or a gauge. Do not add glows or large shadows.
 

@@ -1,0 +1,80 @@
+---
+title: "Web-app typography"
+description: "Set readings, units and times on Home Assistant dashboards in a browser or the Companion app, keep native screens dense, and check text at larger sizes."
+group: "Typography"
+nav_order: 1
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published. The rules on the phone's own screens, readings and units, native screens and checks at larger sizes moved here from Typography in context, with the power readings example."
+ai_instructions: "Apply when setting text on a Home Assistant dashboard in a browser or the Companion app, a native Home Assistant screen or a civica chart card. A dashboard uses the same civica theme in a browser and in the Companion app. Keep the Companion app settings, keyboard, share sheet and permission requests in the phone's own font. Show every reading with its unit, sign and time; never cut off the minus sign, decimal, unit, name or an Unavailable or stale qualifier; use tabular-nums in columns; keep the household's language, number, time format and time zone. Native screens keep the smaller native sizes. Chart labels are at least 14px, scaled by --ha-font-size-scale. Check cards with zoom and a raised font size scale. The rules anchored bg-typ-03, bg-typ-04 and bg-typ-05 are on this page; do not show their IDs as text or name outside sources. Rules WG-001, WG-002, WG-071, WG-073, WG-074."
+ai_related:
+  - path: "/styles/typography.html"
+    title: "Typography"
+    relationship: "Overview of all typography pages."
+  - path: "/styles/typography-type-scale.html"
+    title: "Type scale"
+    relationship: "Owns the civica and native sizes."
+  - path: "/content/formatting-content/charts-and-data.html"
+    title: "Charts and data"
+    relationship: "Owns how to word numbers, units and times."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the full zoom and reflow checks."
+---
+
+# Web-app typography
+
+A Home Assistant dashboard looks the same in a web browser and in the Companion app, because both show it with the civica theme. Set its text once, with the [typeface](typography-typeface.html) and [type scale](typography-type-scale.html), and it works in both.
+
+Most text on a dashboard is readings, names and states that people check many times a day. Set them so the number, its unit and how recent it is can be read at a glance.
+
+<h2 id="the-phones-own-screens">The phone's own screens</h2>
+
+Do not restyle text that the phone draws itself. In the Companion app, the app's own settings screens, the keyboard, the share sheet and permission requests use the phone's own font. Leave them as they are. They match the rest of the phone, and people already know how to use them.
+
+<h2 id="bg-typ-03">Keep readings, units and times together</h2>
+
+Show a reading with its unit and the time it was taken. For example: “Living room 21°C, updated 14:05”. Keep the text selectable, so people can copy a reading.
+
+| Do | Do not |
+| --- | --- |
+| −0.16 kW | 0.16 kW, when the house is exporting |
+| 21.5°C | 21°C, when the half degree matters |
+| Unavailable | 0°C, or a blank space |
+| 18.2°C, updated 09:10 | 18.2°C, with no time, from a sensor that stopped reporting yesterday |
+
+Never cut off the minus sign, the decimal part, the unit, the device name or a word such as “Unavailable” or “stale”. Line up digits in a column with [tabular numbers](typography-overrides.html#what-you-can-change).
+
+Keep the language, number format, time format and time zone the household chose in Home Assistant. [Charts and data](../content/formatting-content/charts-and-data.html) explains how to word numbers and times.
+
+Do not put a changing reading inside an image. It cannot update, and a screen reader cannot read it.
+
+This example shows power readings in a table. Notice the minus sign on the grid export, the unit on every value and the time of each reading.
+
+<%= example('bg-type-values') %>
+
+<h2 id="bg-typ-04">Keep native screens dense</h2>
+
+Native Home Assistant screens, such as entity settings and the automation editor, show a lot of information. They keep the smaller [native sizes](typography-type-scale.html#native-home-assistant-sizes). Do not make every editor row the size of a heading. That pushes controls off the screen and breaks the native layout.
+
+Chart labels and legends in civica chart cards are at least 14px, and grow with the font size scale.
+
+These are civica settings for its own theme and cards. A card from another developer may not follow them.
+
+<h2 id="bg-typ-05">Check text at larger sizes and in difficult states</h2>
+
+Check every card with browser zoom and with a raised font size scale. Labels, errors and help text must get taller, not be cut off. Test with:
+
+- a long room name, such as “Upstairs landing by the airing cupboard”
+- a large reading, such as 1,284.6 kWh
+- a reading with no unit, an Unavailable state and an empty list
+- a Welsh or other translated label, which is often longer than the English
+
+A tooltip only adds detail. Keyboard and touch users need the name and state without hovering. If a compact native control cuts off text that is not essential, keep the full name available to screen readers. Give a way to see it by keyboard and touch. Do not turn off zoom or fix a card's height to hide text that does not fit.
+
+[Test the interface](../accessibility/testing.html) gives the full zoom and reflow checks.

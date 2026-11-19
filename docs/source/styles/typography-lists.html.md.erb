@@ -1,0 +1,65 @@
+---
+title: "Lists"
+description: "Use bulleted and numbered lists in a Markdown card or a civica page to break text into short, easy-to-scan pieces."
+group: "Typography"
+nav_order: 9
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published, with bulleted and numbered lists in a Markdown card."
+ai_instructions: "Apply when adding a list to a Home Assistant Markdown card, a custom card or a civica documentation page. Use a real list, not typed bullet characters or line breaks. Use a bulleted list when order does not matter and a numbered list for steps in order. List wording (lead-in line, lower case, punctuation) is owned by Text formatting: link there, do not repeat it. Lists use body text size and let each item wrap. Do not show rule IDs or name outside sources in page text. Rules WG-080."
+ai_related:
+  - path: "/styles/typography.html"
+    title: "Typography"
+    relationship: "Overview of all typography pages."
+  - path: "/content/formatting-content/text-formatting.html"
+    title: "Text formatting"
+    relationship: "Owns how to word and punctuate a list."
+  - path: "/styles/typography-paragraphs.html"
+    title: "Paragraphs"
+    relationship: "Owns the body text size that lists use."
+---
+
+# Lists
+
+Use a list to break text into short pieces that are quick to scan. Use a real list, not bullet characters typed into a paragraph. Screen readers announce a real list and how many items it has.
+
+How to word a list, with a lead-in line and the right punctuation, is on [Text formatting](../content/formatting-content/text-formatting.html#lists).
+
+## Bulleted lists
+
+Use a bulleted list when the order of the items does not matter. In a Markdown card, start each item with a hyphen.
+
+```yaml
+type: markdown
+content: |
+  Before you go away, check that:
+
+  - the back door is locked
+  - the heating is set to frost protection
+  - the porch light is on its timer
+```
+
+## Numbered lists
+
+Use a numbered list for steps that people must follow in order.
+
+```yaml
+type: markdown
+content: |
+  To reset the hall motion sensor:
+
+  1. Take out the battery.
+  2. Hold the button for 5 seconds.
+  3. Put the battery back in.
+```
+
+## Long list items
+
+Set list items in body text, the same size as paragraphs. Let a long item wrap onto the next line. Do not cut it off, and do not make the text smaller to fit.
+
+If most items run over 2 lines, the list is hard to scan. Shorten the items, or split the list under 2 headings.

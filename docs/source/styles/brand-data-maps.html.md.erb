@@ -1,0 +1,117 @@
+---
+title: "Maps"
+description: "When to use a map of household locations in Home Assistant, the parts every map needs, projection, scale and detail, and how to make a map accessible."
+section: "styles"
+group: "Data visualisation"
+nav_order: 3
+status: "reference"
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+last_reviewed_on: "2026-11-19"
+review_in: "3 months"
+updates:
+  - date: "2026-11-19"
+    description: "First published. The map guidance, the map of an invented household's phones and the locations as text example moved here from Data visualisation. Repeated advice on scale and detail now appears once."
+ai_instructions: "Apply when designing or reviewing a map of household locations, zones or a floor plan in Home Assistant. Use a map only when location answers the question. Give it a neutral title, labels or a legend at the upper left, a quiet base map and a source. Use one projection; a floor plan has none. Show scale only when distance matters. Give every record as a list or table. Map behaviour is owned by /home-assistant/maps-and-zones.html and map colours, with the working OpenStreetMap example, by /styles/colour-maps.html. The rule anchored bg-dat-08 is on this page. The map is a drawing with invented people and places; no device is tracked. Do not show rule IDs or name outside sources in page text. Rules WG-056, WG-074, WG-077, WG-082."
+ai_related:
+  - path: "/styles/brand-data.html"
+    title: "Data visualisation"
+    relationship: "Owns the principles and choosing a visualisation."
+  - path: "/home-assistant/maps-and-zones.html"
+    title: "Maps, zones and location records"
+    relationship: "Owns map and location behaviour."
+  - path: "/styles/colour-maps.html"
+    title: "Map colours"
+    relationship: "Owns the civica map colours and the working OpenStreetMap example."
+  - path: "/styles/images.html"
+    title: "Icons and images"
+    relationship: "Owns floor plans on a dashboard and their text alternative."
+---
+
+# Maps
+
+A map shows where things are. [Map colours](colour-maps.html) owns the map palette and shows a working OpenStreetMap example. [Maps, zones and location records](../home-assistant/maps-and-zones.html) owns how a map behaves in Home Assistant.
+
+<h2 id="bg-dat-08">When to use a map</h2>
+
+Use a map only when location answers the household’s question, such as which zone a phone is in. If a list of rooms answers it, use the list. A floor plan is a diagram, not a map, so label it as a floor plan.
+
+## Elements of a map
+
+Every map needs these parts. The linked page explains each one.
+
+| Element | What it does | Detail |
+| --- | --- | --- |
+| Title | Says what the map shows, neutrally if the data changes, such as “Reported locations”. | [Title, source and observation context](../home-assistant/maps-and-zones.html#map-context) |
+| Labels | Names each marker or zone on the map, so a few features need no legend. | [Map hierarchy, extent and scale](../home-assistant/maps-and-zones.html#map-composition) |
+| Legend | Explains several categories, placed before the map at its upper left. | [Map hierarchy, extent and scale](../home-assistant/maps-and-zones.html#map-composition) |
+| Base map | Gives context, such as streets and place names, without competing with the markers. | [Using colour combinations on maps](colour-maps.html#using-colour-combinations-on-maps) |
+| Source | Names the tracker that reported each location and the provider of the base map. | [Title, source and observation context](../home-assistant/maps-and-zones.html#map-context) |
+
+Make the household’s markers the strongest thing on the map, and keep the base map quiet. Fit the first view to the places the task needs, such as home and the school zone, not the whole country.
+
+## Map projections
+
+Use one projection for each map. Do not lay a map in one projection over a base map in another.
+
+- **Street maps:** use the projection of the base map. OpenStreetMap tiles use Web Mercator, so zone circles, markers and tracker positions line up with the streets.
+- **Floor plans:** use a flat plan, drawn to one scale, with no projection. A floor plan shows rooms, not places on the earth, so do not add latitude and longitude.
+- Do not put a floor plan on a street map unless you have placed and scaled it to match.
+
+## Show scale only when distance matters
+
+Show scale when distance matters, such as how far a phone is from the Home zone. Use a scale bar with a plain label, such as “500m”, not a ratio. On a floor plan, say what the bar measures, such as “1m”. If the map zooms, the bar must change with it. Leave the scale out when people only need to know which zone a phone is in.
+
+## Remove extra detail
+
+Show only what answers the question. On a street map, hide layers the household does not need, such as shop names or transport routes. On a floor plan, show the rooms and the devices on the dashboard, not every wall socket. Keep the provider’s place names and attribution. Remove detail people cannot read at the size of the card.
+
+## Map accessibility
+
+- Say in text what the map shows. For a complex map, add a longer description nearby.
+- Give the same records as a list or table, with each place, its source and when it was reported. [Every record remains reachable](../home-assistant/maps-and-zones.html#map-records) owns this.
+- Use letters, shapes or line styles as well as colour.
+- Check the contrast of markers, lines and labels against the real base map.
+- When you can, test the map with people who use a screen reader.
+
+Do not recolour map tiles, cover a weather layer, or move a marker to fit a layout. The Energy adapter does not restyle native map cards.
+
+## Map example
+
+This drawing shows where the phones in an invented household last reported. Notice the neutral title, the legend at the upper left, the letters and shapes that tell the markers apart, the scale bar and the source. The third phone has no location, so it is not on the map, and the table says so.
+
+<%=
+  hex = ->(id) { govuk_colour(id).fetch('hex') }
+  ink, paper, land, edge, sea, coast, point, outline = %w[black white black-tint-95 black-tint-80 teal-tint-95 teal-tint-80 green-accent green].map { |id| hex.(id) }
+  shore = 'M0 56 H320 V100 C290 116 270 150 240 160 C200 172 190 204 150 220 C130 228 120 236 120 236 H0 Z'
+  marker_a = ->(x, y, r) { %(<circle cx="#{x}" cy="#{y}" r="#{r}" fill="#{point}" stroke="#{outline}" stroke-width="2"/><text x="#{x}" y="#{y + 4}" font-size="11" font-weight="700" text-anchor="middle" fill="#{ink}">A</text>) }
+  marker_b = ->(x, y, r) { %(<path d="M#{x} #{y - r} L#{x + r} #{y} L#{x} #{y + r} L#{x - r} #{y} Z" fill="#{point}" stroke="#{outline}" stroke-width="2"/><text x="#{x}" y="#{y + 4}" font-size="11" font-weight="700" text-anchor="middle" fill="#{ink}">B</text>) }
+  svg = []
+  svg << %(<text x="0" y="16" font-size="14" font-weight="700" fill="#{ink}">Reported locations</text><text x="0" y="34" font-size="11" fill="#{ink}">Hughes household phones, 17 November 2026, 07:40</text>)
+  svg << %(<rect x="0" y="56" width="320" height="180" fill="#{sea}"/><path d="#{shore}" fill="none" stroke="#{coast}" stroke-width="12" stroke-linejoin="round"/><path d="#{shore}" fill="#{land}" stroke="#{edge}" stroke-width="1"/>)
+  svg << %(<circle cx="204" cy="118" r="26" fill="#{point}" stroke="#{outline}" stroke-width="2"/><text x="204" y="160" font-size="12" font-weight="700" text-anchor="middle" fill="#{ink}">Home</text>)
+  svg << %(<circle cx="216" cy="114" r="12" fill="none" stroke="#{paper}" stroke-width="3"/>) << marker_b.(216, 114, 10)
+  svg << %(<circle cx="96" cy="178" r="11" fill="none" stroke="#{paper}" stroke-width="3"/>) << marker_a.(96, 178, 9)
+  svg << %(<rect x="6" y="62" width="128" height="62" fill="#{paper}" stroke="#{edge}" stroke-width="1"/><circle cx="18" cy="76" r="7" fill="#{point}" stroke="#{outline}" stroke-width="2"/><text x="30" y="80" font-size="10" fill="#{ink}">Zone, with its name</text>)
+  svg << marker_a.(18, 96, 8) << %(<text x="30" y="100" font-size="10" fill="#{ink}">Rhys's phone</text>) << marker_b.(18, 114, 8) << %(<text x="30" y="118" font-size="10" fill="#{ink}">Ffion's phone</text>)
+  svg << %(<line x1="10" y1="226" x2="70" y2="226" stroke="#{ink}" stroke-width="2"/><line x1="10" y1="221" x2="10" y2="231" stroke="#{ink}" stroke-width="2"/><line x1="70" y1="221" x2="70" y2="231" stroke="#{ink}" stroke-width="2"/><text x="76" y="230" font-size="10" fill="#{ink}">500m</text>)
+  svg << %(<text x="0" y="252" font-size="10" fill="#{ink}">Source: Companion app. Base map drawn for this example.</text>)
+  records = [
+    ["Rhys's phone", 'A, circle', 'In town, 1.1km from Home', '07:36', '20 metres', 'device_tracker.rhys_phone'],
+    ["Ffion's phone", 'B, diamond', 'Home zone', '07:38', '12 metres', 'device_tracker.ffion_phone'],
+    ["Owen's phone", 'Not on the map', 'Not supplied. This does not mean Owen is away.', 'No report today', 'Not supplied', 'device_tracker.owen_phone']
+  ]
+  body = records.map { |r| %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">#{r[0]}<br><code>#{r[5]}</code></th>#{r[1..4].map { |c| %(<td class="govuk-table__cell">#{c}</td>) }.join}</tr>) }.join
+  %(<div class="c-colour-example"><figure style="margin:0 0 20px">) +
+    %(<svg role="img" aria-labelledby="map-example-title map-example-desc" viewBox="0 0 320 260" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif"><title id="map-example-title">Map of the reported locations of 2 phones</title><desc id="map-example-desc">An invented coastline with land at the top left and sea at the bottom right. The Home zone is a circle near the coast. Diamond B, Ffion's phone, is inside the Home zone. Circle A, Rhys's phone, is in town, about 1.1km to the south-west. A legend at the upper left names the zone and the 2 markers, and a scale bar shows 500m. Owen's phone has no reported location and is not drawn. The table after the map lists all 3 phones.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
+    %(<figcaption>A drawing in the map colours, not a real place. The household, phones and locations are invented, and no device is tracked.</figcaption></figure>) +
+    %(<div class="civica-table-scroll" role="region" tabindex="0" aria-label="All 3 phones and their location records"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">All 3 phones and their location records, 17 November 2026 (invented)</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Phone</th><th scope="col" class="govuk-table__header">Marker</th><th scope="col" class="govuk-table__header">Reported location</th><th scope="col" class="govuk-table__header">Reported at</th><th scope="col" class="govuk-table__header">Accuracy</th></tr></thead><tbody class="govuk-table__body">#{body}</tbody></table></div></div>)
+%>
+
+[Map colours](colour-maps.html) lists every colour in this drawing, with values to copy.
+
+## Locations as text
+
+This list shows where the sensors are, so the information does not depend on a floor plan or a map. A real floor plan or map would keep its own title, legend and source beside the same list.
+
+<%= example('bg-data-location-alternative') %>

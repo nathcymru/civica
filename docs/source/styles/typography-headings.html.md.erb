@@ -1,0 +1,66 @@
+---
+title: "Headings"
+description: "Use heading levels for the structure of a dashboard or page, set heading cards in the civica card heading style, and keep readings out of headings."
+group: "Typography"
+nav_order: 6
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published. The heading rules and the heading card example moved here from Typography, with the long room name example from Typography in context."
+ai_instructions: "Apply when adding a heading to a Home Assistant dashboard, a heading card, a custom card or a civica documentation page. Use one main heading, keep levels in order, choose the level for structure not size, and write headings in sentence case. A large sensor reading is a value, not a heading. The civica theme sets ha-heading-card-title-font-size to civica-font-size-heading, weight 700, line height 1.25; subtitles keep their native supporting style. Sizes are owned by Type scale. Do not show rule IDs or name outside sources in page text. Rules WG-030, WG-080."
+ai_related:
+  - path: "/styles/typography.html"
+    title: "Typography"
+    relationship: "Overview of all typography pages."
+  - path: "/styles/typography-type-scale.html"
+    title: "Type scale"
+    relationship: "Owns the size and line height of each heading."
+  - path: "/content/formatting-content/text-formatting.html"
+    title: "Text formatting"
+    relationship: "Owns using real headings, lists and tables."
+  - path: "/content/writing-guidelines/clear-titles.html"
+    title: "Write clear titles"
+    relationship: "Owns the words in a heading or card name."
+---
+
+# Headings
+
+Use headings to show the structure of a dashboard or page. Choose each level for the structure, not for the size you want. Screen reader users move around a page by its headings.
+
+## Heading levels
+
+Use one main heading on a page, and keep heading levels in order. Do not skip a level. If a heading looks too big, give it a different size. Do not change its level.
+
+Write headings in sentence case, such as “Living room lights”. Do not write a whole heading in capitals. [Write clear titles](../content/writing-guidelines/clear-titles.html) explains how to word them.
+
+## A reading is not a heading
+
+A large reading, such as “21°C”, is a value, not a heading. Do not mark it up as a heading to make it bigger. Do not make a paragraph look like a heading while leaving it as a paragraph.
+
+This example shows a long room name as the main heading, a section heading, then a reading under it. Notice that the reading is large but is not a heading, and the room name wraps.
+
+<%= example('bg-type-household-hierarchy') %>
+
+<h2 id="heading-cards">Heading cards</h2>
+
+A heading card names a group of cards on a dashboard. The civica theme sets its title in the card heading style: 24px bold, line height 1.25. This keeps a section title as strong as the cards under it.
+
+```yaml
+type: heading
+heading: Living room
+heading_style: title
+```
+
+Use `heading_style: subtitle` for a smaller heading inside a group, such as “Lamps” under “Living room”. Subtitles keep their native supporting style.
+
+```yaml
+type: heading
+heading: Lamps
+heading_style: subtitle
+```
+
+[Type scale](typography-type-scale.html) gives the size of every heading on wide and narrow screens.
