@@ -1,0 +1,69 @@
+---
+title: "Hide elements and keep them accessible to screen readers"
+description: "Add text that only screen readers announce in a maintained custom card, and know that a hidden dashboard card is hidden from everyone."
+group: "Structure"
+nav_order: 8
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published, with the visually hidden class used in the civica house lighting card and the limits of hiding cards in Home Assistant."
+ai_instructions: "Apply when some text should be read by a screen reader but not shown on screen. Home Assistant dashboard YAML has no option for this: a visibility condition, hide_state or show_name: false hides the item from everyone, including screen readers. In a maintained custom card, use a visually hidden class (the civica house lighting card uses .vh: position absolute, 1px by 1px, overflow hidden, clip-path inset(50%), white-space nowrap) for extra context such as 'Settings for Kitchen' on an icon-only button or 'Error:' before an error message. Use aria-hidden only on decorative icons. Never visually hide a control or focusable element. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-030."
+ai_related:
+  - path: "/styles/structure.html"
+    title: "Structure"
+    relationship: "Overview of all structure pages."
+  - path: "/styles/structure-display-overrides.html"
+    title: "Override how elements display"
+    relationship: "Owns visibility conditions and card show options, which hide items from everyone."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the screen reader tests."
+---
+
+# Hide elements and keep them accessible to screen readers
+
+Use visually hidden text to give screen reader users context that sighted people get from the layout. Only a maintained custom card can do this. Home Assistant has no dashboard setting for it.
+
+## Hiding in a dashboard hides it from everyone
+
+A visibility condition removes a card, badge or section from the screen and from screen readers. So do options such as `hide_state` and `show_name: false`. [Override how elements display](structure-display-overrides.html) explains these settings.
+
+So give every native card a visible name that makes sense on its own. For example, name 2 Tile cards **Kitchen light** and **Hall light**, not **Light** twice. Then nobody needs hidden text to tell them apart.
+
+## Visually hidden text in a custom card
+
+In a maintained custom card, use a visually hidden class. It keeps the text in the page for screen readers but takes it off the screen. This is the class from the civica house lighting card.
+
+```css
+.vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+```
+
+The house lighting card uses it in 2 places:
+
+- an icon-only settings button, which screen readers announce as "Settings for Kitchen"
+- an error message, which starts with "Error:" so screen reader users know it is an error and not a hint
+
+```html
+<button type="button" class="btn btn--secondary">
+  <svg aria-hidden="true" focusable="false">…</svg>
+  <span class="vh">Settings for Kitchen</span>
+</button>
+```
+
+## What not to hide
+
+- Do not use `display: none` or the `hidden` attribute for text that screen readers need. They hide it from everyone.
+- Do not visually hide a button, link or field. Someone using a keyboard would move focus to something they cannot see.
+- Do not hide text that sighted people need too. If the name helps everyone, show it.
+- Add `aria-hidden="true"` only to decorative icons that sit next to a text label.

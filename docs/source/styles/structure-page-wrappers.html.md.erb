@@ -1,0 +1,59 @@
+---
+title: "Setting up page wrappers"
+description: "What the view, the section and the card each control on a Home Assistant dashboard, and which of them civica changes."
+group: "Structure"
+nav_order: 4
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published, with what the view, the section and the card each control, checked against the Home Assistant Sections view and the civica card."
+ai_instructions: "Apply when you need to know which part of a Sections view sets a width, gap or padding. The view centres the sections and is never wider than the sections at their greatest width plus the gaps; its side padding equals the gap between sections. Section sizes and gaps are owned by /styles/structure-grid.html. max_columns sets how many sections fit side by side (4 by default). Leave top_margin (Add additional space above, 80px) and dense_section_placement off, so urgent cards stay at the top and the order stays predictable. A card is ha-card; the civica theme gives it square corners and a 1px border. A maintained custom card sets its own inner padding: 15px on narrow screens and 20px from 641px. Do not override the view or section variables. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-081."
+ai_related:
+  - path: "/styles/structure.html"
+    title: "Structure"
+    relationship: "Overview of all structure pages."
+  - path: "/styles/structure-grid.html"
+    title: "Using the grid system"
+    relationship: "Owns the grid inside a section and card widths."
+  - path: "/styles/structure-spacing.html"
+    title: "Spacing"
+    relationship: "Owns the spacing scale used inside a maintained custom card."
+---
+
+# Setting up page wrappers
+
+A dashboard has 3 wrappers, one inside another: the view, the section and the card. Home Assistant sets the view and the section. civica sets only the inside of its own cards.
+
+| Wrapper | What it controls | Who sets it |
+| --- | --- | --- |
+| View | The greatest width of the dashboard, the space at the sides and how many sections fit side by side | Home Assistant, with `max_columns` in the view settings |
+| Section | One column of the view, the gaps between sections and the grid inside | Home Assistant, with `column_span` in the section settings |
+| Card | The edge of the card and the space inside it | The civica theme for the edge. The card itself for the space inside |
+
+## The view
+
+The view centres the sections on the screen. It is never wider than the sections it holds, at their greatest width, plus the gaps between them. On a wall panel wider than that, the extra space is shared at both sides.
+
+The view adds space at the left and right, the same width as the gap between sections.
+
+Set **Max sections side by side** (`max_columns`) to fewer than 4 to keep a wide screen to fewer columns. For example, set 2 on a hall wall panel so people read down 2 columns, not across 4.
+
+Leave **Add additional space above** (`top_margin`) off. It adds 80px above the first sections to show more of the background, and pushes urgent cards down on a phone.
+
+Leave **Dense section placement** (`dense_section_placement`) off. It moves sections into gaps, so the order is no longer the one people learned.
+
+## The section
+
+A section is one column of the view. A section can span more than one column. [Using the grid system](structure-grid.html#grid-and-columns) gives its sizes, the gaps around it and the grid inside it.
+
+## The card
+
+Every card sits in a card wrapper. The civica theme gives it square corners and a 1px border in the same colour as `civica-border-quiet`. [Section break](structure-section-break.html#surfaces-and-borders) owns when to add other borders.
+
+A maintained custom card sets the space inside its own edge. The civica house lighting card uses 15px on narrow screens and 20px from 641px wide. [Spacing](structure-spacing.html) gives the full scale.
+
+Do not change the native view or section spacing to make a dashboard look tighter. Every card that follows the native gaps lines up at every screen size.

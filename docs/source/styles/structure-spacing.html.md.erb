@@ -1,0 +1,81 @@
+---
+title: "Spacing"
+description: "Space a maintained custom card with the civica 5px spacing scale, and leave the native Home Assistant spacing as it is."
+group: "Structure"
+nav_order: 9
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published, with the civica spacing scale, its bar chart, the custom card CSS and native Home Assistant spacing, moved from Layout and spacing. Added the smaller spacing the civica house lighting card uses on narrow screens."
+ai_instructions: "Apply when setting padding or margins in a maintained custom card. Use the civica 5px spacing scale (unit 1 to 9: 5, 10, 15, 20, 25, 30, 40, 50, 60px). civica has no spacing variable, so write the value in the card's CSS. On screens up to 640px the civica house lighting card steps down one unit for card padding (15px, 20px from 641px) and two for the gap below the room list (20px, 30px from 641px). Leave native --ha-space-1 to --ha-space-20 (4px steps) alone. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-081."
+ai_related:
+  - path: "/styles/structure.html"
+    title: "Structure"
+    relationship: "Overview of all structure pages."
+  - path: "/styles/structure-page-wrappers.html"
+    title: "Setting up page wrappers"
+    relationship: "Owns which wrapper sets each gap."
+  - path: "/styles/structure-section-break.html"
+    title: "Section break"
+    relationship: "Owns dividers and borders between groups."
+---
+
+# Spacing
+
+Use the civica spacing scale in a maintained custom card. Every step is a multiple of 5px. civica has no spacing variable, so write the value in the card's CSS.
+
+## Spacing scale
+
+| Unit | Value | Use it for |
+| --- | --- | --- |
+| 1 | 5px | Between an icon and its label |
+| 2 | 10px | Between a label and its hint, and between items in a row |
+| 3 | 15px | Inside a compact card, and between rows |
+| 4 | 20px | Inside a card |
+| 5 | 25px | Between groups in a busy card |
+| 6 | 30px | Between related groups |
+| 7 | 40px | Between sections of a custom panel |
+| 8 | 50px | Between sections of a custom panel on a wall panel |
+| 9 | 60px | Around the main heading of a custom panel |
+
+<%= colour_example('layout-spacing-scale', callout: false) %>
+
+This CSS gives a custom card 20px padding and 30px between 2 groups of controls.
+
+```css
+ha-card {
+  padding: 20px;
+}
+.civica-group + .civica-group {
+  margin-top: 30px;
+}
+```
+
+## Spacing on narrow screens
+
+Use smaller spacing on a phone, so more of the card fits on the screen. The civica house lighting card steps down on screens up to 640px wide.
+
+| Space | Up to 640px | From 641px |
+| --- | --- | --- |
+| Inside the card | 15px | 20px |
+| Below the list of rooms | 20px | 30px |
+
+```css
+.body { padding: 15px; }
+.rooms { margin-bottom: 20px; }
+
+@media (min-width: 641px) {
+  .body { padding: 20px; }
+  .rooms { margin-bottom: 30px; }
+}
+```
+
+Keep 5px, 10px and 15px the same on every screen. They are already small.
+
+### Native Home Assistant spacing
+
+Home Assistant spaces its own cards with `--ha-space-1` to `--ha-space-20`, which go up in steps of 4px. Leave these as they are. civica does not override native padding to fit its 5px scale, because that would break the native layout.
