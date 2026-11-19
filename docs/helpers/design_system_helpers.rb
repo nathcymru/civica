@@ -53,7 +53,7 @@ module DesignSystemHelpers
   # The section menu used on every section: "Introduction" first, then one
   # top-level item per group. A group with an overview page links to it and lists
   # its other pages below; a group with one page is a plain link; a group with
-  # several pages and no overview page is a toggle with the same look. Only the
+  # several pages and no overview page links to its first page and lists them all. Only the
   # branch the reader is in is open.
   def section_tree(section_id)
     section = data.navigation.sections.find { |item| item.id == section_id }
@@ -73,7 +73,9 @@ module DesignSystemHelpers
       elsif overview
         tree << { title: overview.data.title, resource: overview, children: sorted - [overview] }
       else
-        tree << { title: group, resource: nil, children: sorted }
+        # No overview page: the group name links to its first page and every page
+        # is listed below it, so there is never a toggle that behaves differently.
+        tree << { title: group, resource: sorted.first, children: sorted, group_link: true }
       end
     end
     tree
