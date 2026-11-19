@@ -1,0 +1,70 @@
+---
+title: "Width overrides"
+description: "Make a section or a card wider or narrower in the Sections view with column_span and grid_options."
+group: "Structure"
+nav_order: 6
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published, with section width (column_span) and card size (grid_options), checked against the Home Assistant Sections view. The Energy section example and the fixed height rule moved from Layout and spacing."
+ai_instructions: "Apply when a section or card in a Home Assistant Sections view needs a different width. Change a width only when the layout needs it. column_span on a section (1 by default, up to max_columns) makes it span more view columns; the grid inside grows to 12 columns per span, so 24 in a 2-column section. On a phone a section always takes the full width. grid_options on a card sets columns (a number or full) and rows (a number or auto); in the editor this is the card's Layout tab. Do not give a card with text a fixed number of rows. Grid options do nothing in a Masonry or Panel view. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-081."
+ai_related:
+  - path: "/styles/structure.html"
+    title: "Structure"
+    relationship: "Overview of all structure pages."
+  - path: "/styles/structure-grid.html"
+    title: "Using the grid system"
+    relationship: "Owns the default grid and card widths."
+  - path: "/styles/structure-common-layouts.html"
+    title: "Common layouts"
+    relationship: "Shows when to use a wide section."
+---
+
+# Width overrides
+
+Most sections and cards choose a sensible width themselves. Change a width only when the layout needs it, such as a graph that is hard to read at half width.
+
+These settings work in the Sections view only. A Masonry or Panel view ignores them.
+
+## Make a section wider
+
+Set **Width** in the section settings, or `column_span` in YAML. A section is 1 column wide by default. It can span up to the number of sections set for the view.
+
+To make the Energy section span 2 columns on a tablet or wall panel, set its width in the section settings. On a phone it still takes the full width.
+
+```yaml
+type: grid
+column_span: 2
+cards:
+  - type: heading
+    heading: Energy today
+  - type: energy-usage-graph
+```
+
+A wider section has a wider grid: 12 columns for each column it spans. In a section 2 columns wide, a card set to 12 columns fills half of it. Use `full` to fill the whole width at any span.
+
+## Change a card's size
+
+Open the card's **Layout** tab, or set `grid_options` in YAML.
+
+| Option | What it sets | Values |
+| --- | --- | --- |
+| `columns` | How many grid columns the card takes | A number, or `full` |
+| `rows` | How many 56px rows the card takes | A number, or `auto` to fit the content |
+
+This YAML sets 3 room temperatures in a row, each a third of a section wide. Each card keeps `rows: auto`, so it grows if a room name wraps.
+
+```yaml
+- type: tile
+  entity: sensor.kitchen_temperature
+  name: Kitchen
+  grid_options:
+    columns: 4
+    rows: auto
+```
+
+Do not give a card with text a fixed height. A long room name or a translated label must be able to wrap.

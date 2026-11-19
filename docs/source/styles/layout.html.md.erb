@@ -1,7 +1,9 @@
 ---
+no_contents: true
 title: "Layout and spacing"
-group: "Layout and spacing"
-description: "Lay out Home Assistant dashboards for phones, tablets and wall panels with the native sections grid and the civica spacing scale."
+description: "Layout and spacing is now the Structure section."
+group: "Structure"
+status: "retired"
 last_reviewed_on: 2026-11-19
 review_in: 3 months
 published_on: "2026-11-11"
@@ -19,190 +21,15 @@ updates:
     description: "Rewritten around phone, tablet and wall panel layouts. Added the Home Assistant screen sizes, the sections grid and card widths with YAML, the civica spacing scale beside the native spacing, and how to show a card on some screens only. Border colours now link to Web-app colours instead of repeating them."
   - date: "2026-11-19"
     description: "Added diagrams of one dashboard at mobile, tablet and wall panel sizes, a to-scale 12-column section grid, and bars for the spacing scale."
-ai_instructions: "Apply when laying out a Home Assistant dashboard, a section or a maintained custom card. Design for a phone first. Use the native Sections view: sections are at least 320px and at most 500px wide, up to 4 side by side by default (max_columns); each section is a 12-column grid with 56px rows and 8px gaps; a Tile card is 6 columns by default. Home Assistant's screen sizes are Mobile under 768px, Tablet 768 to 1023px, Desktop 1024 to 1279px and Wide from 1280px; the sidebar becomes a menu at 870px and below. Use the civica 5px spacing scale (5, 10, 15, 20, 25, 30, 40, 50, 60px) in custom card CSS and leave native --ha-space-N spacing alone. Use civica-border-quiet, civica-border-interactive and civica-input-border for edges; colour values are owned by Web-app colours. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-050, WG-081."
+  - date: "2026-11-19"
+    description: "Retired. The page is now the Structure section: an overview and 10 pages, one for each topic, such as Screen size, Using the grid system and Spacing."
+ai_instructions: "Retired page. Do not use it as a source. Send readers and answers to Structure (/styles/structure.html) and its sub-pages: screen sizes on /styles/structure-screen-size.html, the sections grid and card widths on /styles/structure-grid.html, column_span and grid_options on /styles/structure-width-overrides.html, screen conditions on /styles/structure-display-overrides.html, the spacing scale on /styles/structure-spacing.html, surfaces and borders on /styles/structure-section-break.html. Do not name outside sources or show rule IDs. Rule WG-091."
 ai_related:
-  - path: "/home-assistant/dashboard-composition.html"
-    title: "Dashboard composition and card features"
-    relationship: "Owns the four native view types and which card to use for each task."
-  - path: "/styles/colour-web-app.html"
-    title: "Web-app colours"
-    relationship: "Owns the border, input and focus colour values used on this page."
-  - path: "/accessibility/testing.html"
-    title: "Test the interface"
-    relationship: "Owns the reflow, zoom and target size tests."
+  - path: "/styles/structure.html"
+    title: "Structure"
+    relationship: "Replaces this page. Lists every structure page."
 ---
 
 # Layout and spacing
 
-Put the thing a household needs most at the top of the screen, then routine readings, then controls they use less often. Start with a phone layout and let Home Assistant add columns as the screen gets wider.
-
-A predictable order helps people who check the same dashboard many times a day. They learn where the front door lock is and find it without reading every card.
-
-## Design for the screen, not the device
-
-Design for screen widths, not for a particular phone or tablet. The same household might open one dashboard on a phone in the garden, on a tablet on the sofa and on a wall panel in the hall.
-
-- Start with one column. Put urgent information, such as an open door or a water leak, first.
-- Let sections stack on a phone. Do not shrink a wide dashboard into small cards that are hard to read.
-- Keep text in a section column. A section is never wider than 500px, so lines of text stay short enough to read.
-
-## Screen sizes
-
-Home Assistant uses 4 screen sizes. You choose them in a card's or section's **Visibility** settings, under **Screen**.
-
-| Screen size | Width | Where a household sees it | What Home Assistant does |
-| --- | --- | --- | --- |
-| Mobile | Under 768px | A phone, in the Companion app or a browser | On a phone held upright, sections stack one under another. The sidebar is behind the menu button. |
-| Tablet | 768px to 1023px | A tablet held upright, or a small laptop window | 1 or 2 sections side by side. Up to 870px wide, the sidebar is behind the menu button. |
-| Desktop | 1024px to 1279px | A wall panel, or a laptop | 2 or 3 sections side by side. |
-| Wide | 1280px and over | A large wall panel, a desktop browser or a television | Up to 4 sections side by side, if there is room. |
-
-Each section needs at least 320px, so Home Assistant fits in as many as there is room for, up to the maximum you set. An open sidebar takes room from the sections.
-
-In civica, a wall panel is a screen fixed in one place, such as a tablet on the hall wall. People read it from further away and often touch it without looking closely. Give it fewer, larger cards, and put the readings people check in passing at the top.
-
-### Layouts at each screen size
-
-These layouts show the same invented household dashboard at each screen size, with the urgent section first each time.
-
-| Screen size | Section order |
-| --- | --- |
-| Mobile | Alerts, Heating, Lights, Energy, one under another |
-| Tablet | Alerts and Heating in the first row, Lights and Energy in the second |
-| Wall panel | Alerts, Heating and Lights in one row, with Energy across the full width below |
-
-<%= colour_example('layout-screen-sizes', callout: false) %>
-
-## Grid and columns
-
-Use the native **Sections** view for a new dashboard. It sets the column widths and gaps for you, so cards line up at every screen size.
-
-| Part | Size | Setting |
-| --- | --- | --- |
-| Section column | At least 320px and at most 500px wide | Set by Home Assistant |
-| Gap between sections | 32px across and 24px down. 8px across on screens up to 600px wide | Set by Home Assistant |
-| Sections side by side | Up to 4 by default | **Max sections side by side** in the view settings (`max_columns`) |
-| Section width | 1 column, 2, 3 or full width | **Width** in the section settings (`column_span`) |
-| Grid inside a section | 12 columns, with 56px rows and 8px gaps | Set by Home Assistant |
-
-### Card widths
-
-A card's width is a number of the section's 12 columns. Most cards choose a sensible size themselves. Change it only when the layout needs it.
-
-| Card width | Columns | Use it for |
-| --- | --- | --- |
-| Full | 12 | A heading, a graph, a thermostat or a map |
-| Half | 6 | A Tile card, which is 6 columns by default |
-| Third | 4 | 3 short readings in a row, such as room temperatures |
-| Quarter | 3 | A button that has a short, clear name |
-
-<%= colour_example('layout-section-grid', callout: false) %>
-
-This YAML shows a Heating section for an invented household. The heading and the thermostat take the full width, and 2 Tile cards share a row.
-
-```yaml
-type: grid
-cards:
-  - type: heading
-    heading: Heating
-  - type: thermostat
-    entity: climate.hallway
-  - type: tile
-    entity: sensor.kitchen_temperature
-    name: Kitchen
-    grid_options:
-      columns: 6
-  - type: tile
-    entity: sensor.bedroom_temperature
-    name: Bedroom
-    grid_options:
-      columns: 6
-```
-
-To make the Energy section span 2 columns on a tablet or wall panel, set its width in the section settings. On a phone it still takes the full width.
-
-```yaml
-type: grid
-column_span: 2
-cards:
-  - type: heading
-    heading: Energy today
-  - type: energy-usage-graph
-```
-
-[Dashboard composition and card features](../home-assistant/dashboard-composition.html) explains the Masonry, Panel and Sidebar views and which card suits each task.
-
-### Show a card on some screens only
-
-Use a screen condition when a card only makes sense at some widths. For example, show a large clock on the hall wall panel but not on a phone. Do not use it to hide a control that someone needs on a phone.
-
-```yaml
-type: clock
-visibility:
-  - condition: screen
-    media_query: "(min-width: 1024px)"
-```
-
-## Spacing scale
-
-Use the civica spacing scale in a maintained custom card. Every step is a multiple of 5px. civica has no spacing variable, so write the value in the card's CSS.
-
-| Unit | Value | Use it for |
-| --- | --- | --- |
-| 1 | 5px | Between an icon and its label |
-| 2 | 10px | Between a label and its hint, and between items in a row |
-| 3 | 15px | Inside a compact card, and between rows |
-| 4 | 20px | Inside a card |
-| 5 | 25px | Between groups in a busy card |
-| 6 | 30px | Between related groups |
-| 7 | 40px | Between sections of a custom panel |
-| 8 | 50px | Between sections of a custom panel on a wall panel |
-| 9 | 60px | Around the main heading of a custom panel |
-
-<%= colour_example('layout-spacing-scale', callout: false) %>
-
-This CSS gives a custom card 20px padding and 30px between 2 groups of controls.
-
-```css
-ha-card {
-  padding: 20px;
-}
-.civica-group + .civica-group {
-  margin-top: 30px;
-}
-```
-
-### Native Home Assistant spacing
-
-Home Assistant spaces its own cards with `--ha-space-1` to `--ha-space-20`, which go up in steps of 4px. Leave these as they are. civica does not override native padding to fit its 5px scale, because that would break the native layout.
-
-## Surfaces and borders
-
-Group content with spacing and headings first. Add a 1px border only where a group needs an edge. Do not put a box around a card, then around each section in it, then around each row.
-
-| Edge | civica theme variable | Width |
-| --- | --- | --- |
-| Card edge or divider between rows | `civica-border-quiet` | 1px |
-| Edge of a control people need to find | `civica-border-interactive` | 1px or 2px |
-| Text field people type in | `civica-input-border` | 2px |
-| Keyboard focus | `civica-focus-background` and `civica-focus-text` | 3px |
-
-[Web-app colours](colour-web-app.html#functional-colours) gives the light and dark values for each variable. Do not weaken a text field's border or the focus style to make a busy dashboard look quieter.
-
-Use square corners on maintained cards, buttons, fields and dialogs. Keep the native round shapes that carry meaning, such as a switch, a radio button, a [notification badge](../components/notification-badge.html), an avatar or a gauge. Do not add glows or large shadows.
-
-## Dense dashboards
-
-A home dashboard can hold more than a one-task form, because people use it every day. Keep labels readable and keep every control in maintained custom UI at least 44px high. Do not make text or controls smaller to fit more cards. Move less-used cards to another view instead.
-
-Do not give a card with text a fixed height. A long room name or a translated label must be able to wrap.
-
-## Dashboard background
-
-Use a plain background behind controls and readings. A photograph or moving scene behind the whole dashboard makes text harder to read and draws attention from the cards. If a household wants a photograph, put it in a Picture card that has a job, such as showing the garden camera.
-
-## Check the layout
-
-Open the dashboard at each screen size in the table above, and at 200% text size. [Test the interface](../accessibility/testing.html) gives the full reflow, zoom and target size checks. The whole page must not scroll sideways. A wide table or graph may scroll inside its own card.
-
-Keep Home Assistant's own navigation. Do not hide the sidebar or the menu button to make a dashboard look tidier, because people need them to get back to their settings.
+Layout and spacing is now the [Structure](structure.html) section. It has one page for each topic, such as [Screen size](structure-screen-size.html), [Using the grid system](structure-grid.html) and [Spacing](structure-spacing.html).

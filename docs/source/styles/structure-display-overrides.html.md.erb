@@ -1,0 +1,78 @@
+---
+title: "Override how elements display"
+description: "Choose when a card, badge or section shows with visibility conditions, and what a card shows with its own options."
+group: "Structure"
+nav_order: 7
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published, with visibility conditions and the show options on Tile cards, badges and Heading cards, checked against Home Assistant. The screen condition example moved from Layout and spacing."
+ai_instructions: "Apply when a card, badge or section should show only some of the time, or show less. Use the native Visibility settings (visibility conditions: screen, state, numeric_state, user, and and/or to combine them) and the card's own options (Tile: hide_state, vertical, show_entity_picture; entity badge: show_name, show_state, show_icon; Heading: heading_style title or subtitle). Do not write CSS to hide or restyle native cards. Do not hide a control someone needs on a phone, or the state of a lock, door or alarm. A hidden card is hidden from screen readers too; that is owned by /styles/structure-hiding-elements.html. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-052."
+ai_related:
+  - path: "/styles/structure.html"
+    title: "Structure"
+    relationship: "Overview of all structure pages."
+  - path: "/styles/structure-screen-size.html"
+    title: "Screen size"
+    relationship: "Owns the 4 screen sizes used by the screen condition."
+  - path: "/styles/structure-hiding-elements.html"
+    title: "Hide elements and keep them accessible to screen readers"
+    relationship: "Owns text that only screen readers announce."
+---
+
+# Override how elements display
+
+Use a card's **Visibility** settings to choose when it shows, and its own options to choose what it shows. Do not write CSS to hide or restyle a native card. CSS breaks when Home Assistant updates the card.
+
+## Show a card on some screens only
+
+Use a screen condition when a card only makes sense at some widths. For example, show a large clock on the hall wall panel but not on a phone. Do not use it to hide a control that someone needs on a phone.
+
+```yaml
+type: clock
+visibility:
+  - condition: screen
+    media_query: "(min-width: 1024px)"
+```
+
+## Other visibility conditions
+
+Cards, badges and sections all have visibility conditions. Find them on the **Visibility** tab in the editor.
+
+| Condition | Shows the item when | Example |
+| --- | --- | --- |
+| Screen | The screen is one of the sizes you choose | A clock on the wall panel only |
+| Entity state | An entity is in the state you choose | A **Close garage door** button while the garage door is open |
+| Entity numeric state | A reading is above or below a number | A dehumidifier card when the bathroom humidity is above 70% |
+| User | One of the people you choose is signed in | A **Server** section for the person who looks after Home Assistant |
+| And, Or | All or any of several conditions are met | A frost warning on the wall panel only, when it is below 3°C |
+
+Hide a card only when it has nothing useful to show. Do not hide the state of a lock, a door or an alarm, because people check that it is safe.
+
+## Show less on a card
+
+Many native cards have options that turn parts of the card off. Use them before you choose a different card.
+
+| Card | Option | What it does |
+| --- | --- | --- |
+| Tile | `hide_state` | Hides the state under the name |
+| Tile | `vertical` | Puts the icon above the name instead of beside it |
+| Tile | `show_entity_picture` | Shows the entity's picture instead of its icon |
+| Entity badge | `show_name`, `show_state`, `show_icon` | Shows or hides each part of the badge |
+| Heading | `heading_style` | `title` for a section heading, `subtitle` for a smaller one |
+
+This badge shows the name and state of the front door. Keep the name on, because a door icon alone does not say which door is open.
+
+```yaml
+type: entity
+entity: binary_sensor.front_door
+show_name: true
+show_state: true
+show_icon: true
+```
+
+A card or badge hidden by a condition or an option is hidden from screen readers too. [Hide elements and keep them accessible to screen readers](structure-hiding-elements.html) explains what to do instead.

@@ -1,0 +1,70 @@
+---
+title: "Screen size"
+description: "Design civica dashboards for screen widths, from a phone to a wall panel, using the 4 Home Assistant screen sizes."
+group: "Structure"
+nav_order: 2
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published, with the Home Assistant screen sizes, the wall panel rule, diagrams of one dashboard at 3 sizes and the layout checks, moved from Layout and spacing."
+ai_instructions: "Apply when deciding how a dashboard should look on a phone, a tablet or a wall panel. Design for screen widths, not devices, and start with one column. Home Assistant's screen sizes are Mobile under 768px, Tablet 768 to 1023px, Desktop 1024 to 1279px and Wide from 1280px; the sidebar becomes a menu at 870px and below. Each section needs at least 320px. A wall panel gets fewer, larger cards. Check each size and 200% text size; the full tests are owned by /accessibility/testing.html. Showing a card at some sizes only is owned by /styles/structure-display-overrides.html. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-050."
+ai_related:
+  - path: "/styles/structure.html"
+    title: "Structure"
+    relationship: "Overview of all structure pages."
+  - path: "/styles/structure-display-overrides.html"
+    title: "Override how elements display"
+    relationship: "Owns the screen condition that shows a card at some sizes only."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the reflow, zoom and target size tests."
+---
+
+# Screen size
+
+Design for screen widths, not for a particular phone or tablet. Start with one column and let Home Assistant add columns as the screen gets wider.
+
+## Design for the screen, not the device
+
+The same household might open one dashboard on a phone in the garden, on a tablet on the sofa and on a wall panel in the hall.
+
+- Start with one column. Put urgent information, such as an open door or a water leak, first.
+- Let sections stack on a phone. Do not shrink a wide dashboard into small cards that are hard to read.
+- Keep text in a section column. A section is never wider than 500px, so lines of text stay short enough to read.
+
+## Screen sizes
+
+Home Assistant uses 4 screen sizes. You choose them in a card's or section's **Visibility** settings, under **Screen**.
+
+| Screen size | Width | Where a household sees it | What Home Assistant does |
+| --- | --- | --- | --- |
+| Mobile | Under 768px | A phone, in the Companion app or a browser | On a phone held upright, sections stack one under another. The sidebar is behind the menu button. |
+| Tablet | 768px to 1023px | A tablet held upright, or a small laptop window | 1 or 2 sections side by side. Up to 870px wide, the sidebar is behind the menu button. |
+| Desktop | 1024px to 1279px | A wall panel, or a laptop | 2 or 3 sections side by side. |
+| Wide | 1280px and over | A large wall panel, a desktop browser or a television | Up to 4 sections side by side, if there is room. |
+
+Each section needs at least 320px, so Home Assistant fits in as many as there is room for, up to the maximum you set. An open sidebar takes room from the sections.
+
+In civica, a wall panel is a screen fixed in one place, such as a tablet on the hall wall. People read it from further away and often touch it without looking closely. Give it fewer, larger cards, and put the readings people check in passing at the top.
+
+### Layouts at each screen size
+
+These layouts show the same invented household dashboard at each screen size, with the urgent section first each time.
+
+| Screen size | Section order |
+| --- | --- |
+| Mobile | Alerts, Heating, Lights, Energy, one under another |
+| Tablet | Alerts and Heating in the first row, Lights and Energy in the second |
+| Wall panel | Alerts, Heating and Lights in one row, with Energy across the full width below |
+
+<%= colour_example('layout-screen-sizes', callout: false) %>
+
+To show a card at some screen sizes only, use a screen condition. [Override how elements display](structure-display-overrides.html#show-a-card-on-some-screens-only) explains how.
+
+## Check the layout
+
+Open the dashboard at each screen size in the table above, and at 200% text size. [Test the interface](../accessibility/testing.html) gives the full reflow, zoom and target size checks. The whole page must not scroll sideways. A wide table or graph may scroll inside its own card.

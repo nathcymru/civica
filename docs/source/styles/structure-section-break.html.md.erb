@@ -1,0 +1,78 @@
+---
+title: "Section break"
+description: "Separate groups of cards with space and headings first, and add a 1px line or border only where a group needs an edge."
+group: "Structure"
+nav_order: 10
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published, with section breaks in a dashboard and in an Entities card, a divider in a custom card, and the surfaces and borders rules moved from Layout and spacing."
+ai_instructions: "Apply when separating groups of content on a Home Assistant dashboard or in a maintained custom card. Use a new section or a Heading card first; inside an Entities card use the section row (with a label) or the divider row. In a maintained custom card, use space from the spacing scale, then a 1px line in civica-border-quiet. Edges: civica-border-quiet 1px for card edges and dividers, civica-border-interactive 1px or 2px for controls, civica-input-border 2px for text fields, civica-focus-background and civica-focus-text 3px for focus. Colour values are owned by /styles/colour-web-app.html. Square corners on maintained UI; keep meaningful native round shapes; no glows or large shadows. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-081."
+ai_related:
+  - path: "/styles/structure.html"
+    title: "Structure"
+    relationship: "Overview of all structure pages."
+  - path: "/styles/colour-web-app.html"
+    title: "Web-app colours"
+    relationship: "Owns the border, input and focus colour values used on this page."
+  - path: "/styles/structure-spacing.html"
+    title: "Spacing"
+    relationship: "Owns the space between groups."
+---
+
+# Section break
+
+Separate groups of cards with space and a heading first. Add a line or border only where a group needs an edge.
+
+## Breaks on a dashboard
+
+Start a new section for a new room or task. Inside a section, use a Heading card to start a new group. Set `heading_style: subtitle` for a smaller heading under the section heading.
+
+```yaml
+- type: heading
+  heading: Upstairs
+  heading_style: subtitle
+```
+
+In an Entities card, use a section row to start a labelled group, or a divider row for a plain line.
+
+```yaml
+type: entities
+entities:
+  - type: section
+    label: Downstairs
+  - entity: light.kitchen
+  - entity: light.hall
+  - type: divider
+  - entity: light.porch
+```
+
+## Breaks in a custom card
+
+In a maintained custom card, put space from the [spacing scale](structure-spacing.html) between groups first. Add a 1px line in `civica-border-quiet` only between rows that are hard to tell apart, such as a list of rooms.
+
+```css
+.row {
+  padding: 15px 0;
+  border-bottom: 1px solid var(--civica-border-quiet);
+}
+```
+
+## Surfaces and borders
+
+Choose each edge from this table. Do not put a box around a card, then around each section in it, then around each row.
+
+| Edge | civica theme variable | Width |
+| --- | --- | --- |
+| Card edge or divider between rows | `civica-border-quiet` | 1px |
+| Edge of a control people need to find | `civica-border-interactive` | 1px or 2px |
+| Text field people type in | `civica-input-border` | 2px |
+| Keyboard focus | `civica-focus-background` and `civica-focus-text` | 3px |
+
+[Web-app colours](colour-web-app.html#functional-colours) gives the light and dark values for each variable. Do not weaken a text field's border or the focus style to make a busy dashboard look quieter.
+
+Use square corners on maintained cards, buttons, fields and dialogs. Keep the native round shapes that carry meaning, such as a switch, a radio button, a [notification badge](../components/notification-badge.html), an avatar or a gauge. Do not add glows or large shadows.

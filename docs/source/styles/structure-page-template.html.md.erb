@@ -1,0 +1,90 @@
+---
+title: "Page template"
+description: "Build every dashboard view in the same order: a title, badges for urgent states, then sections in order of need."
+group: "Structure"
+nav_order: 1
+no_contents: true
+last_reviewed_on: 2026-11-19
+review_in: 3 months
+published_on: "2026-11-19"
+updated_on: "2026-11-19"
+updates:
+  - date: "2026-11-19"
+    description: "First published, with the parts of a Sections view in order, a view template in YAML, subviews and the dashboard background rule moved from Layout and spacing."
+ai_instructions: "Apply when starting a new Home Assistant dashboard view. Keep the native frame (sidebar, menu button, view tabs) visible. A civica view has a title, icon and path, badges for states that need attention, then sections in order of need, each starting with a Heading card. Use a subview (subview: true, back_path) for detail such as one room. Use a plain background; put a photograph in a Picture card that has a job. Widths and gaps are owned by /styles/structure-page-wrappers.html and the grid by /styles/structure-grid.html. Do not show rule IDs or name outside sources in page text. Rules WG-050, WG-052."
+ai_related:
+  - path: "/styles/structure.html"
+    title: "Structure"
+    relationship: "Overview of all structure pages."
+  - path: "/styles/structure-page-wrappers.html"
+    title: "Setting up page wrappers"
+    relationship: "Owns the widths and gaps of the view, sections and cards."
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns the four native view types and which card to use for each task."
+---
+
+# Page template
+
+Build every civica dashboard view in the same order: a title, badges for anything that needs attention, then sections in order of need. Then a household finds the same things in the same place on every view.
+
+## Keep the Home Assistant frame
+
+Home Assistant draws the frame around every dashboard: the sidebar, the menu button, the view tabs and the edit menu. The civica theme sets their colours but does not change how they work.
+
+Keep Home Assistant's own navigation. Do not hide the sidebar or the menu button to make a dashboard look tidier, because people need them to get back to their settings.
+
+## Parts of a view
+
+| Part | What goes in it | YAML |
+| --- | --- | --- |
+| Title, icon and path | The name on the view tab, such as **Home** | `title`, `icon`, `path` |
+| Badges | Short states that need attention, such as an open door | `badges` |
+| Sections | One group of cards for a room or a task, most urgent first | `sections` |
+
+Start each section with a Heading card that names it, such as **Heating** or **Alerts**. People who use a screen reader can then jump from section to section.
+
+## View template
+
+This YAML is the start of a Home view for an invented household. The badge shows the front door, and the Alerts section comes first.
+
+```yaml
+title: Home
+path: home
+icon: mdi:home
+type: sections
+max_columns: 4
+badges:
+  - type: entity
+    entity: binary_sensor.front_door
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        heading: Alerts
+      - type: tile
+        entity: binary_sensor.kitchen_leak
+        name: Kitchen leak
+  - type: grid
+    cards:
+      - type: heading
+        heading: Heating
+      - type: thermostat
+        entity: climate.hallway
+```
+
+## Subviews for detail
+
+Use a subview for detail that people open from another view, such as all the lights in one room. A subview has no tab. It shows a back arrow that returns to the view set in `back_path`.
+
+```yaml
+title: Kitchen
+path: kitchen
+subview: true
+back_path: /dashboard-home/home
+type: sections
+```
+
+## Dashboard background
+
+Use a plain background behind controls and readings. A photograph or moving scene behind the whole dashboard makes text harder to read and draws attention from the cards. If a household wants a photograph, put it in a Picture card that has a job, such as showing the garden camera.
