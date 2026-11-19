@@ -222,3 +222,19 @@
     });
   }
 })();
+
+/* Is this page useful? Nothing is stored or sent: there is no vote count yet. The buttons stay hidden without JavaScript. */
+(() => {
+  const box = document.querySelector('[data-page-useful]');
+  if (!box) return;
+  const status = box.querySelector('[data-useful-status]');
+  box.querySelectorAll('[data-useful]').forEach((button) => {
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      box.querySelectorAll('[data-useful]').forEach((other) => { other.disabled = true; });
+      status.textContent = button.dataset.useful === 'yes'
+        ? 'Thank you. Your answer has not been recorded, because this site does not count votes yet.'
+        : 'Thank you. Your answer has not been recorded, because this site does not count votes yet. Use “Report a problem with this page” to tell us what was missing.';
+    });
+  });
+})();
