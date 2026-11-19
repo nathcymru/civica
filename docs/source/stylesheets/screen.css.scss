@@ -292,12 +292,11 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 .c-page--illustrated { padding-top:0; }
 .c-illustrated-header { margin-top:0; }
 .c-illustrated-header__text { padding-top:var(--page-top); }
-.c-caption { margin:0 0 5px; font-size:1.5rem; line-height:1.15; font-weight:400; color:#505a5f; }
+.c-caption { margin:0 0 5px; font-weight:400; }
 @media(max-width:640px) {
   :root { --page-top:30px; }
   .c-page { padding-top:0; }
   .c-content:not(.c-content--illustrated) { padding-top:30px; }
-  .c-caption { font-size:1.1875rem; }
 }
 @media print { .c-sidebar { padding-top:0; } .c-content:not(.c-content--illustrated) { padding-top:0; } }
 .app-subnav__tree > .app-subnav__section-item:first-child { padding-top:0; }
