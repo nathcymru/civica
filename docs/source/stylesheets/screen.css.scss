@@ -285,3 +285,24 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 .app-subnav__child--current::before { content:''; position:absolute; left:-16px; top:12px; width:8px; height:8px; border-radius:50%; background:#1d70b8; }
 .app-subnav__theme { margin:0; padding:10px 15px 10px 0; font-size:1.1875rem; font-weight:400; line-height:1.3157894737; color:#484949; }
 .app-subnav__theme:first-of-type { padding-top:0; }
+
+/* Page spacing, one rule for every page except the home page. The menu and the
+   first line of the content column (a breadcrumb or, on a hero, the breadcrumb
+   inside the hero) start at the same height, --page-top below the navigation. A
+   hero sits flush under the navigation. */
+:root { --page-top:45px; }
+.c-page { padding-top:0; }
+.c-sidebar { padding-top:var(--page-top); }
+.c-content:not(.c-content--illustrated) { padding-top:var(--page-top); }
+.c-page--illustrated { padding-top:0; }
+.c-illustrated-header { margin-top:0; }
+.c-illustrated-header__text { padding-top:var(--page-top); }
+.c-caption { margin:0 0 5px; font-size:1.5rem; line-height:1.15; font-weight:400; color:#505a5f; }
+@media(max-width:760px) {
+  :root { --page-top:30px; }
+  .c-page { padding-top:0; }
+  .c-content:not(.c-content--illustrated) { padding-top:30px; }
+  .c-caption { font-size:1.1875rem; }
+}
+@media print { .c-sidebar { padding-top:0; } .c-content:not(.c-content--illustrated) { padding-top:0; } }
+.app-subnav__tree > .app-subnav__section-item:first-child { padding-top:0; }
