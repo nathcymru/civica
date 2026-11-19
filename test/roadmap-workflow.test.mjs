@@ -48,8 +48,10 @@ test('publication is serialised and a pending publication is never cancelled', (
 
 test('pull requests run every fast check and a browser smoke test; nightly runs the full suite', () => {
   const runs = checks.steps.map(step => step.run).filter(Boolean);
+  assert.ok(runs.includes('npm run check'), 'npm run check must run on pull requests');
+  const script = JSON.parse(readFileSync('package.json', 'utf8')).scripts.check.split(' && ');
   for (const command of ['npm test', 'npm run check:guidance', 'npm run check:coverage', 'npm run check:brand -- --check-built', 'npm run check:naming', 'npm run check:components', 'npm run check:colours', 'npm run check:content', 'python3 scripts/check-docs.py']) {
-    assert.ok(runs.includes(command), `${command} must run on pull requests`);
+    assert.ok(script.includes(command), `${command} must be part of npm run check`);
   }
   const smoke = checks.steps.find(step => step.run === 'npm run test:browser:smoke');
   const full = checks.steps.find(step => step.run === 'npm run test:browser');

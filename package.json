@@ -22,7 +22,8 @@
     "check:components": "node scripts/check-components.mjs",
     "check:colours": "node scripts/check-colours.mjs",
     "check:content": "node scripts/check-content-rules.mjs",
-    "check:licences": "node scripts/audit-licences.mjs"
+    "check:licences": "node scripts/audit-licences.mjs",
+    "check": "npm run build && npm run check:licences && npm run typecheck && npm test && python3 docs/scripts/sync-palettes.py --check && python3 docs/scripts/sync-brand.py --check && npm run check:ha && python3 docs/scripts/generate-web-app-examples.py --check && python3 docs/scripts/generate-data-colour-examples.py --check && npm run docs:build && python3 scripts/check-docs.py && npm run check:guidance && npm run check:coverage && npm run check:brand -- --check-built && npm run check:naming && npm run check:components && npm run check:colours && npm run check:content"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
