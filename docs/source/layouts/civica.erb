@@ -49,6 +49,13 @@
   if illustration && (heading = fragment.at_css('h1'))
     header = Nokogiri::XML::Node.new('header', fragment.document)
     header['class'] = 'c-illustrated-header'
+    # Each hero has its own palette colour: a dark panel for the text and a pale
+    # panel for the art, as in the reference site. Blue keeps the base artwork.
+    family = illustration['colour']
+    if family
+      dark, light = hero_colours(family)
+      header['style'] = "--hero-dark:#{dark};--hero-light:#{light}"
+    end
     text_panel = Nokogiri::XML::Node.new('div', fragment.document)
     text_panel['class'] = 'c-illustrated-header__text'
     text_panel.add_child(partial('partials/breadcrumbs'))
@@ -61,7 +68,8 @@
     art_panel = Nokogiri::XML::Node.new('div', fragment.document)
     art_panel['class'] = 'c-illustrated-header__art'
     artwork = Nokogiri::XML::Node.new('img', fragment.document)
-    artwork['src'] = docs_path('/images/' + illustration['asset'])
+    asset = (family && family != 'blue') ? "hero/#{family}-#{illustration['asset']}" : illustration['asset']
+    artwork['src'] = docs_path('/images/' + asset)
     artwork['alt'] = ''
     artwork['width'] = '640'
     artwork['height'] = '480'

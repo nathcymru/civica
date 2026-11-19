@@ -15,6 +15,17 @@ module ColourHelpers
     govuk_colours.fetch('colours').fetch(id) { raise "Unknown GOV.UK colour #{id}" }
   end
 
+  # Section hero colours: the darkest step that gives white text 4.5:1, and a
+  # pale tint for the art panel. Mirrors docs/scripts/generate-hero-art.py.
+  def hero_colours(family)
+    dark = %w[shade-25 shade-50].map { |step| govuk_colours.fetch('colours')["#{family}-#{step}"] }.compact.find do |colour|
+      channels = colour['rgb'].map { |value| value / 255.0 }.map { |c| c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055)**2.4 }
+      1.05 / (0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2] + 0.05) >= 4.5
+    end
+    raise "No hero colour for #{family}" unless dark
+    [dark['hex'], govuk_colour("#{family}-tint-95")['hex']]
+  end
+
   def colour_slug(text)
     text.downcase.gsub('&', 'and').gsub(/[^a-z0-9]+/, '-').gsub(/\A-|-\z/, '')
   end
