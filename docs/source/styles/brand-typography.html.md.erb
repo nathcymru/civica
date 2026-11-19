@@ -1,13 +1,12 @@
 ---
 title: "Typography in context"
-description: "Use Arial and a meaningful hierarchy, and adapt type for values, native screens and print."
+description: "Set readings, units and times so they stay clear, keep native app screens as they are, check text at larger sizes and set type for print and social images."
 section: "styles"
 group: "Guidance"
-source_url: "https://brand.design-system.service.gov.uk/typography/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-17"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-19"
+last_reviewed_on: "2026-11-19"
 review_in: "3 months"
 updates:
   - date: "2026-11-13"
@@ -18,87 +17,137 @@ updates:
     description: "Added source-mapped civica.uk rules, contextual examples and explicit adoption boundaries."
   - date: "2026-11-17"
     description: "Rewritten to lead with the rule, corrected the wordmark description and moved per-rule source lines to the Styles index."
-ai_instructions: "Apply when setting type in a card, a value, a native screen or a printed handover. Use Arial at 400 and 700, build hierarchy from heading level and size, show every value with its unit and time, and let text grow with the user's settings. Keep rule anchors BG-TYP-01 to BG-TYP-06 unchanged. Type sizes live on the Typography page. Rules WG-001, WG-002."
+  - date: "2026-11-19"
+    description: "Rewritten for Home Assistant users. Removed the visible rule numbers, outside source names and the review-records section. The typeface, weights and sizes are now only on Typography. Added the text in each context table, a reading-format table, guidance for Companion app screens, and a caption for each example."
+  - date: "2026-11-19"
+    description: "Added a chart of the smallest screen text in each context, with the same reading set at each fixed size."
+ai_instructions: "Apply when setting type for a reading, a native Home Assistant or Companion app screen, a chart label, a printed household handover or a social image. The typeface, weights and type scale are owned by Typography: link there, do not repeat sizes. Show every reading with its unit, sign and time, and never cut off the minus sign, decimal, unit, name or an Unavailable or stale qualifier. Keep native app screens, keyboards and share sheets in the phone's own font. Chart labels are at least 14px, scaled by --ha-font-size-scale. Print starts at 12pt body and 16pt headings. Keep the anchors bg-typ-01 to bg-typ-06 unchanged; do not show their IDs as text. Do not name outside sources in page text. Rules WG-001, WG-002, WG-071, WG-073, WG-074."
 ai_related:
   - path: "/styles/typography.html"
     title: "Typography"
-    relationship: "Owns the type scale, tokens and native density exception."
-  - path: "/accessibility/index.html"
-    title: "Accessibility"
-    relationship: "Owns text resizing and reflow requirements."
+    relationship: "Owns the typeface, weights, type scale and font variables."
+  - path: "/content/formatting-content/charts-and-data.html"
+    title: "Charts and data"
+    relationship: "Owns how to word numbers, units and times."
   - path: "/styles/brand-data.html"
     title: "Data visualisation"
-    relationship: "Owns chart labels and units."
+    relationship: "Owns chart labels, legends and units."
 ---
 
 # Typography in context
 
-Use type to make repeated household tasks quick to scan. Set it in Arial, on the [type scale](typography.html) that owns the sizes. Official font identity and promotional type treatments never override native Home Assistant usability.
+Type on a dashboard is mostly readings, names and states that people check many times a day. Set them so the number, its unit and how recent it is can be read at a glance, on any screen and on paper.
 
-## Examples
+[Typography](typography.html) owns the typeface, the weights and the type scale. This page explains how to use them in each place a household meets civica text.
 
-These examples use invented household details. They do not operate devices, and they do not show that every native Home Assistant surface follows this guidance.
+## Text in each context
+
+This comparison shows the typeface and the smallest text size to use in each place civica text appears.
+
+| Context | Typeface | Smallest text | Who controls it |
+| --- | --- | --- | --- |
+| civica card or panel on a dashboard | Arial | 16px supporting text | The civica theme |
+| Native Home Assistant screen | Arial | 12px compact extra text | Home Assistant, with civica sizes |
+| Chart label or legend | Arial | 14px | The civica chart cards |
+| Companion app settings, keyboard and share sheet | The phone's own font | Set by the phone | The phone's operating system |
+| Printed household handover | Arial | 12pt body text | The person printing it |
+| Social image or release picture | Arial | Large enough to read on a phone | The person making it |
+
+Every screen size in this table grows with Home Assistant's font size scale and with browser or app zoom.
+
+This chart compares the smallest screen text in each context. Notice that 3 contexts have no bar: their smallest size is set by the phone, measured in points on paper, or not fixed, and none of them is 0.
+
+<%=
+  hex = ->(id) { govuk_colour(id).fetch('hex') }
+  ink, grid, blue = hex.('black'), hex.('black-tint-80'), hex.('blue')
+  contexts = [
+    ['civica card or panel', 16, nil],
+    ['Native Home Assistant screen', 12, nil],
+    ['Chart label or legend', 14, nil],
+    ['Companion app settings', nil, 'Set by the phone'],
+    ['Printed household handover', nil, '12pt on paper, not on this scale'],
+    ['Social image or release picture', nil, 'Not fixed: large enough to read on a phone']
+  ]
+  x_of = ->(px) { 4 + px * 12 }
+  svg = []
+  [0, 4, 8, 12, 16].each { |v| svg << %(<line x1="#{x_of.(v)}" y1="4" x2="#{x_of.(v)}" y2="208" stroke="#{grid}" stroke-width="1"/><text x="#{x_of.(v)}" y="222" font-size="10" text-anchor="middle" fill="#{ink}">#{v}</text>) }
+  svg << %(<text x="#{x_of.(16)}" y="236" font-size="10" text-anchor="middle" fill="#{ink}">Smallest text (px)</text>)
+  contexts.each_with_index do |(name, px, note), i|
+    y = 16 + i * 33
+    svg << %(<text x="4" y="#{y}" font-size="11" font-weight="700" fill="#{ink}">#{name}</text>)
+    svg << (px ? %(<rect x="4" y="#{y + 5}" width="#{px * 12}" height="12" fill="#{blue}"/><text x="#{x_of.(px) + 5}" y="#{y + 15}" font-size="10" fill="#{ink}">#{px}px</text>) : %(<text x="6" y="#{y + 15}" font-size="10" fill="#{ink}">No bar. #{note}</text>))
+  end
+  specimen = contexts.select { |c| c[1] }.map { |name, px, _| %(<p style="font-family:Arial,Helvetica,sans-serif;font-size:#{px}px;line-height:1.5;margin:0 0 5px">Living room 21.4°C, updated 14:05 <span style="font-size:16px">(#{name}, #{px}px)</span></p>) }.join
+  %(<div class="c-colour-example"><figure style="margin:0 0 20px">) +
+    %(<svg role="img" aria-labelledby="context-sizes-title context-sizes-desc" viewBox="0 0 320 240" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif"><title id="context-sizes-title">Bar chart of the smallest screen text in each context</title><desc id="context-sizes-desc">A civica card or panel has the largest smallest text, 16px. A chart label or legend is 14px, and a native Home Assistant screen 12px. The Companion app settings have no bar because the phone sets the size. The printed handover has no bar because it is measured in points on paper: 12pt. A social image has no bar because its size is not fixed. The table above gives the same facts.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
+    %(<p style="margin:20px 0 10px">The same reading at each fixed screen size:</p>#{specimen}) +
+    %(<figcaption>Smallest text in each context, before the font size scale and zoom. The table above gives the same facts.</figcaption></figure></div>)
+%>
+
+<h2 id="bg-typ-01">Use Arial everywhere civica sets the text</h2>
+
+Use Arial on dashboards, in custom cards, in documentation, on printed handovers and in social images. Take the font stack and weights from [Typography](typography.html#typeface).
+
+Do not restyle text that the phone draws itself. In the Home Assistant Companion app, dashboards use the civica theme. The app's own settings screens, the keyboard, the share sheet and permission requests use the phone's own font. Leave them as they are. They match the rest of the phone, and people already know how to use them.
+
+<h2 id="bg-typ-02">Lay out text for reading</h2>
+
+Left-align instructions, labels and help text, in English and in Welsh. A straight left edge makes long text quicker to read. Centre text only for a short, deliberate line, such as a large reading in the middle of a gauge.
+
+Do not shorten a device name or an error message to fit a headline length. Let it wrap. [Typography](typography.html#headings) explains heading levels and how a reading differs from a heading.
+
+This example shows a long room name that wraps, with a section heading and a reading under it.
 
 <%= example('bg-type-household-hierarchy') %>
 
+<h2 id="bg-typ-03">Keep readings, units and times together</h2>
+
+Show a reading with its unit and the time it was taken. For example: “Living room 21°C, updated 14:05”. Keep the text selectable, so people can copy a reading.
+
+| Do | Do not |
+| --- | --- |
+| −0.16 kW | 0.16 kW, when the house is exporting |
+| 21.5°C | 21°C, when the half degree matters |
+| Unavailable | 0°C, or a blank space |
+| 18.2°C, updated 09:10 | 18.2°C, with no time, from a sensor that stopped reporting yesterday |
+
+Never cut off the minus sign, the decimal part, the unit, the device name or a word such as “Unavailable” or “stale”. Use tabular numerals, `font-variant-numeric: tabular-nums`, where people compare readings in a column, so the digits line up.
+
+Keep the language, number format, time format and time zone the household chose in Home Assistant. A written report says which period and time zone it covers when a reader could be unsure. [Charts and data](../content/formatting-content/charts-and-data.html) explains how to word numbers and times.
+
+Do not put a changing reading inside an image. It cannot update, and a screen reader cannot read it.
+
+This example shows power readings in a table. Notice the minus sign on the grid export, the unit on every value and the time of each reading.
+
 <%= example('bg-type-values') %>
+
+<h2 id="bg-typ-04">Keep native screens dense</h2>
+
+Native Home Assistant screens, such as entity settings and the automation editor, show a lot of information. They keep the smaller native sizes in [the type scale](typography.html#native-home-assistant-sizes). Do not make every editor row the size of a heading.
+
+Chart labels and legends in civica chart cards are at least 14px, and grow with the font size scale. Code editors keep a monospace font, because the alignment of code carries meaning.
+
+These are civica settings for its own theme and cards. A card from another developer may not follow them.
+
+<h2 id="bg-typ-05">Check text at larger sizes and in difficult states</h2>
+
+Check every card with browser zoom and with a raised font size scale. Labels, errors and help text must get taller, not be cut off. Test with:
+
+- a long room name, such as “Upstairs landing by the airing cupboard”
+- a large reading, such as 1,284.6 kWh
+- a reading with no unit, an Unavailable state and an empty list
+- a Welsh or other translated label, which is often longer than the English
+
+A tooltip only adds detail. Keyboard and touch users need the name and state without hovering. If a compact native control cuts off text that is not essential, keep the full name available to screen readers and give a way to see it by keyboard and touch. Do not turn off zoom or fix a card's height to hide text that does not fit.
+
+[Test the interface](../accessibility/testing.html) gives the full zoom and reflow checks.
+
+<h2 id="bg-typ-06">Set type for print and social images</h2>
+
+For a printed household handover, use at least 12pt for body text and 16pt for headings. Use bigger text if the reader needs it. Print a test page and read it, because a page that looks fine on screen can be too small on paper. Use the household's own name for the document. It does not need a civica logo.
+
+This example shows the start of a printed handover in Arial, with 16pt headings and 12pt body text.
 
 <%= example('bg-type-handover') %>
 
-<h2 id="bg-typ-01">BG-TYP-01: Use the approved typeface, not the official identity font</h2>
-
-**Local requirement: MUST.** Applies to maintained civica interface and documentation typography.
-
-Set civica interface text and documentation in `Arial, Helvetica, sans-serif`. Use regular 400 and bold 700. Do not thin Arial to imitate GDS Transport Light. The supplied civica lockup is artwork, not a font for body text.
-
-GDS Transport is an official GOV.UK identity element, and GOV.UK asks services outside its official domain to use an alternative. Arial is therefore a deliberate choice, not a stand-in for a missing font. Do not download, bundle or silently select GDS Transport from a person’s machine.
-
-
-<h2 id="bg-typ-02">BG-TYP-02: Build hierarchy with meaning, size and weight</h2>
-
-**Local requirement: MUST.** Applies to headings, labels and explanatory text.
-
-Take page, section and card heading sizes from the [type hierarchy](typography.html). Choose a heading level for the document structure, not for the font size you want. A sensor value is content, not automatically a heading. Use sentence case, readable spacing and bold for selective emphasis.
-
-Left-align instructions in English and Welsh layouts. Long text needs a steady reading edge, so keep centred text for short, deliberate cases. Do not apply a social-media headline length limit to a device name or an error message that needs to wrap.
-
-
-<h2 id="bg-typ-03">BG-TYP-03: Keep values, units and dates understandable</h2>
-
-**Local requirement: MUST.** Applies to operational readings and exported measurement text.
-
-Show a measurement with its unit and the time it applies to. For example, “Living room 21 °C, updated 14:05”. Use tabular numerals where comparison helps, and keep the text selectable. Never cut off the minus sign, the decimal part, the unit, the entity name or a “stale” or “unavailable” qualifier.
-
-Keep Home Assistant’s language, number, time and timezone preferences for native data. A written report states its period and timezone when the reader could be unsure. Do not bake changing readings into images, and do not set measurements in a display font.
-
-
-<h2 id="bg-typ-04">BG-TYP-04: Respect native density and operating-system controls</h2>
-
-**Local requirement: MUST.** Applies to custom UI, native dense surfaces, charts and OS-owned controls.
-
-Maintained civica UI uses 19px body text, 16px supporting text and 24px bold card headings, all scaled by Home Assistant’s text preference. Native dense surfaces keep the documented 12, 14, 16 and 19px scale to protect their layout, and native heading-card titles are 24px bold. Chart labels use the adapter’s minimum 14px base.
-
-Do not enlarge every editor row to headline size. Do not restyle the mobile operating system’s share sheet, keyboard or permission dialog, which stay native. Keep monospace in code editors where alignment carries meaning. This is a deliberate Home Assistant adaptation. It does not show that every third-party card follows the type system.
-
-
-<h2 id="bg-typ-05">BG-TYP-05: Verify text scaling and failure states</h2>
-
-**Local requirement: MUST.** Applies to affected text and controls at narrow widths and user text settings.
-
-Check browser zoom, Home Assistant text scaling and user text-spacing overrides. Let labels, errors and help text grow taller. Test a long room name, a large reading, a missing unit, a translated string and a no-data message. Do not rely on the shortest English demo label.
-
-A tooltip is only a supplement, because keyboard and touch users need the name and essential state without hovering. If a compact native control cuts off non-essential text, keep an accessible full name and a keyboard and touch route to the detail. Do not disable zoom or fix a card’s height to hide overflow.
-
-
-<h2 id="bg-typ-06">BG-TYP-06: Separate document and promotional typography</h2>
-
-**Local recommendation: SHOULD.** Applies to printable household documents and promotional text.
-
-For a printable household handover, start no smaller than 12pt body text and 16pt headings, as the GOV.UK Brand print typography guidance recommends. Use larger text when the reader needs it, and use the household’s own name if it has one. A handover does not need a civica logo. These sizes are a recommendation, not an accessibility guarantee, so inspect the exported pages. Screen CSS does not prove print legibility.
-
-For a release illustration or social image, use a short, readable headline and give the same message as accessible text beside it. Do not replace an HTML guide with a picture of paragraphs. Keep dates, links, measurements and instructions outside the bitmap.
-
-
-## Review and evidence
-
-The source inventory and rule checklist are in `docs/data/brand-guidance-inventory.json` and `docs/data/brand-guidance-checklist.json`. A reviewed source supports a design decision. It is not a pass for an interface. Before closing a checklist item, record the page or component, the theme and mode, the test result and any remaining issue. Check again after a change to a source, palette, component or renderer.
+For a social image or release picture, use a short headline that can be read on a phone. Put the same message in the post text, so people who cannot see the image get it too. Keep dates, links, readings and instructions in text, not in the picture. [Social colours](colour-social.html) gives the colours for social images.

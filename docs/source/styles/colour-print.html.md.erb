@@ -1,30 +1,42 @@
 ---
 no_contents: true
 title: "Print colours"
-description: "The GOV.UK print palette, with CMYK and Pantone references for printed material."
+description: "The civica print palette, with CMYK and Pantone references for a household guide, a device label or other printed material."
 group: "Colour"
 nav_order: 5
-last_reviewed_on: 2026-11-18
+last_reviewed_on: 2026-11-19
 review_in: 3 months
 published_on: "2026-11-18"
-updated_on: "2026-11-18"
+updated_on: "2026-11-19"
 updates:
   - date: "2026-11-18"
-    description: "First published, with the GOV.UK print palette copied exactly from the GOV.UK Brand Guidelines."
+    description: "First published, with the civica print palette."
   - date: "2026-11-18"
-    description: "Swatches now use the GOV.UK Brand layout: a round sample, the name, and CMYK and Pantone values with copy icons."
-ai_instructions: "Use this page only for printed material, such as a household guide, a label or a sign for a device. Every value comes unchanged from the GOV.UK Brand Guidelines print page and is rendered from docs/data/govuk-brand-colours.json. Print values are CMYK and Pantone; the page gives no screen values. For screens, use Web colours. Do not convert between print and screen values yourself."
+    description: "Swatches now show a round sample, the name, and CMYK and Pantone values with copy icons."
+  - date: "2026-11-19"
+    description: "Removed outside source names, said that the CMYK and Pantone values are references to check against a printed proof, and added a household guide example of where each colour goes."
+ai_instructions: "Use this page only for printed material, such as a household guide, a label or a sign for a device. Values are rendered from the shared colour data file by the colour helpers; never type a value. Print values are CMYK and Pantone references, not measured matches: check a printed proof. White has no print value. For screens, use Web and app colours. Do not convert between print and screen values yourself. Do not name outside sources or show rule IDs. Rules WG-001, WG-081."
 ai_related:
   - path: "/styles/colour-web.html"
-    title: "Web colours"
+    title: "Web and app colours"
     relationship: "Owns the screen values (hex and RGB) for the same colours."
+  - path: "/styles/colour.html"
+    title: "Colour"
+    relationship: "Owns the rule that print values are references and need a printed proof."
 ---
 
 # Print colours
 
-Use these colours for printed material, such as a household guide or a label for a device, or in custom formats where it is appropriate. For screens, use [Web colours](colour-web.html).
+Use these colours for printed material, such as a household guide, a label for a device or a sign by the boiler. For screens, use [Web and app colours](colour-web.html).
 
-Each colour except White has a CMYK and a Pantone reference. Every value is the GOV.UK print palette, unchanged.
+Each colour except White has a CMYK and a Pantone reference. White has neither. The values are references, not measured matches, so [check a printed proof](colour.html#bg-col-08) before you print many copies.
+
+For example, a printed guide to the Morgan household's heating could use:
+
+- Primary blue for the cover band and headings
+- Black for body text and Black tint 25% for notes
+- Blue tint 80% behind a box such as “If the boiler shows a fault”
+- Primary red only beside the words “Turn off the gas supply”, so the warning does not depend on colour
 
 <%= colour_copy_status %>
 

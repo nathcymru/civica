@@ -12,7 +12,7 @@
 
 ## Canonical implementation sources in the repository
 
-- design-system/palettes.json: the seven GOV.UK theme colours (Blue, Green, Teal, Purple, Magenta, Red and Black).
+- design-system/palettes.json: the seven theme colours (Blue, Green, Teal, Purple, Magenta, Red and Black).
 - design-system/themes.json: generated resolved HA variables with separate light/dark modes.
 - design-system/upstream-sources.json: immutable Home Assistant frontend sources inspected.
 - themes/civica.yaml: the default civica theme (Blue) and one theme per theme colour, named civica {colour}.
@@ -28,15 +28,16 @@
 - [Personalise your home](get-started/personalisation.html): family or business name, optional crest/logo, native dashboard options and proposed shell behaviour.
 - [Project identity](styles/brand.html): Revised civica artwork for project documentation and promotion, with preserved geometry and provenance.
 - [Artwork manifest](reference/brand-assets.json): byte-identical documentation copies mapped to the supplied archive.
-- [Colour](styles/colour.html): how civica uses the GOV.UK palette and the seven theme colours a household can choose.
-- [Web colours](styles/colour-web.html), [App colours](styles/colour-app.html) and [Print colours](styles/colour-print.html): the GOV.UK Brand Guidelines palettes, unchanged, with RGB and hex values (CMYK and Pantone for print), and the GOV.UK functional colours on Web colours. Machine-readable source: repository file docs/data/govuk-brand-colours.json (not published).
-- [Social colours](styles/colour-social.html): the GOV.UK social palette and 9 companion pairings, unchanged, with tone guidance and example social tiles; not for the Home Assistant interface.
-- [Map colours](styles/colour-maps.html): the GOV.UK map palette, unchanged, and the GOV.UK base map and data colours, applied to Home Assistant zones and locations; the same in light and dark mode.
-- [Illustration colours](styles/colour-illustrations.html): how to choose, pair and contrast GOV.UK colours in an illustration: Primary blue as the base, Accent teal and Accent blue for a key component, 4 to 6 colours from the channel palette.
+- [Colour](styles/colour.html): the civica colour palette, the seven theme colours a household can choose, and the general colour rules.
+- [Web and app colours](styles/colour-web.html) and [Print colours](styles/colour-print.html): the civica web and app palette as one palette (browns Web only; accents and dark mode blues App only), how a household picks its theme colour from it, the functional colours with their civica theme variables, and the print palette with CMYK and Pantone references. Every value has RGB and hex (CMYK and Pantone for print). App colours (styles/colour-app.html) is retired and points here.
+- [Social colours](styles/colour-social.html): the civica social palette and 9 companion pairings, with tone guidance and example social tiles; not for the Home Assistant interface.
+- [Map colours](styles/colour-maps.html): the civica map palette and the base map and data colours, applied to Home Assistant zones and locations, with a working OpenStreetMap example; the same in light and dark mode.
+- [Illustration colours](styles/colour-illustrations.html): how to choose, pair and contrast civica colours in an illustration: Primary blue as the base, Accent teal and Accent blue for a key component, 4 to 6 colours from the channel palette.
 - [Theme colour JSON](reference/palettes.json): published copy of the seven theme colours.
-- [Typography](styles/typography.html): Arial, readable hierarchy and wrapping.
-- [Layout](styles/layout.html): native responsive grids and consistent spacing.
-- [Images](styles/images.html): purposeful icons and images with labels.
+- [Typography](styles/typography.html): Arial at 400 and 700, the type scale for wide and narrow screens, civica and native Home Assistant font variables, and heading structure.
+- [Typography in context](styles/brand-typography.html): readings with units and times, Companion app screens, checks at larger text sizes, print and social images.
+- [Layout and spacing](styles/layout.html): Home Assistant screen sizes (Mobile, Tablet, Desktop, Wide) for phone, tablet and wall panel layouts, the Sections view grid and card widths, and the civica 5px spacing scale.
+- [Icons and images](styles/images.html): native mdi: icons with names and states, photographs and camera images, keeping text out of images, floor plans and alt text.
 - [Notification badge](components/notification-badge.html): exact MOJ rounded red geometry, count limits and HA live-update adaptation.
 - [Writing guide](content/index.html): a main section for plain UK English, precise state/action wording and dated Home Assistant terminology. Existing /content/ links and rule anchors are preserved; /styles/content.html is a legacy entry point.
 
@@ -68,8 +69,8 @@
 
 Do not equate a local build, screenshot or token test with live Home Assistant deployment. Do not claim full WCAG compliance from colour tests. Preserve native Energy, Map, device semantics, permissions and translations. Do not modify live household configuration merely to preview this documentation.
 
-- [Chart colours](styles/chart-colour.html): the GOV.UK chart palette, stable series styles (colour, pattern, line dash, marker), scales and limits.
-- [Chart colour contract](reference/chart-colours.json): machine-readable GOV.UK chart colours, energy roles and identity policy.
+- [Chart colours](styles/chart-colour.html): the civica chart palette, stable series styles (colour, pattern, line dash, marker), scales and limits.
+- [Chart colour contract](reference/chart-colours.json): machine-readable civica chart colours, energy roles and identity policy.
 
 ## Expanded documentation catalogue
 
@@ -85,7 +86,7 @@ Reference catalogue coverage does not mean those components have replaced native
 
 ## Design styles, writing and whole-system audit
 
-- [Colour rules](styles/colour.html#colour-rules), [typography principles](styles/brand-typography.html), [data communication](styles/brand-data.html), [illustration](styles/illustration.html): selected GOV.UK Brand guidance adapted to civica; local rule IDs and explicit exclusions.
+- [Colour rules](styles/colour.html#colour-rules), [typography principles](styles/brand-typography.html), [data communication](styles/brand-data.html), [illustration](styles/illustration.html): selected brand guidance adapted to civica; local rule IDs and explicit exclusions.
 - [Writing guide](content/index.html): bespoke household content rules, with examples and source decisions. Every page in the guide carries `ai-instructions`, `ai-related` and `ai-guide-context` meta tags that say how to apply that page and how it depends on the others.
 - [Design-style rules and source evidence](reference/brand-guidance.json), [writing rules and evidence](reference/writing-guide.json): machine-readable rules and source coverage.
 - [Work-package checklist](community/guidance-work-package.html): original review and follow-up remediation phases, evidence and repeatable checks.

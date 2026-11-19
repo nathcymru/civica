@@ -1,13 +1,12 @@
 ---
 title: "Illustration"
-description: "Purposeful original civica illustrations, separated from functional icons and operational household imagery."
+description: "When to use an illustration in civica guidance and Home Assistant dashboards, how to draw and lay out a scene, and how to make it accessible and export it."
 section: "styles"
 group: "Guidance"
-source_url: "https://brand.design-system.service.gov.uk/illustration/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-18"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-19"
+last_reviewed_on: "2026-11-19"
 review_in: "3 months"
 updates:
   - date: "2026-11-13"
@@ -21,8 +20,12 @@ updates:
   - date: "2026-11-17"
     description: "Rewritten to lead each rule with the action, remove per-rule source links and state only layout facts that the stylesheet and artwork register confirm. Rule IDs and anchors are unchanged."
   - date: "2026-11-18"
-    description: "Linked to the new Illustration colours page. BG-ILL-03 now takes the base colour and the number of colours from that page."
-ai_instructions: "Apply when adding or reviewing explanatory artwork, section headers or images in civica documentation. Use an illustration only to explain a task, draw it originally, give it the right alternative text and never use it as a device state, photograph or chart. Rules WG-056, WG-082."
+    description: "Linked to the new Illustration colours page. The palette rule now takes the base colour and the number of colours from that page."
+  - date: "2026-11-19"
+    description: "Reorganised into principles, layout of a scene, people and objects, things to avoid, examples, accessibility, and file formats and exporting, with Home Assistant subjects throughout. Icons, photographs and camera images now point to Icons and images, which owns them. Removed outside source names, visible rule IDs and the repeated review paragraph. Anchors are unchanged."
+  - date: "2026-11-19"
+    description: "Added pictures for the Companion app, social posts, building a composition, adding detail, showing movement, and people, hands and objects, and 4 do and do-not pairs under Things to avoid. All are original drawings for invented households."
+ai_instructions: "Apply when adding or reviewing explanatory artwork, section headers or images in civica documentation or on a Home Assistant dashboard. Use an illustration only to explain a task, a place or a relationship, such as where a sensor goes on a floor plan or how a phone reaches a hub. Draw it originally in flat colour and simple shapes, compose it around one action, take colours from /styles/colour-illustrations.html, give it the right alternative text and keep the full meaning in HTML text. Never use an illustration as a device state, a camera image, a photograph or a chart. Icons and photographs are owned by /styles/images.html. Keep anchors bg-ill-01 to bg-ill-10. Do not show rule IDs or name outside sources in page text. Rules WG-056, WG-082."
 ai_related:
   - path: "/styles/colour-illustrations.html"
     title: "Illustration colours"
@@ -33,6 +36,9 @@ ai_related:
   - path: "/content/formatting-content/images.html"
     title: "Images"
     relationship: "Owns the wording of alternative text."
+  - path: "/styles/brand-data.html"
+    title: "Data visualisation"
+    relationship: "Owns charts, dashboards and maps. Use it when the picture is really data."
   - path: "/styles/brand.html"
     title: "Project identity"
     relationship: "Owns civica project artwork and identity assets."
@@ -40,118 +46,257 @@ ai_related:
 
 # Illustration
 
-Use an illustration to explain a task or a relationship. An illustration is not a device state, a photograph, a chart or a replacement for Home Assistant’s familiar icons. civica draws its own artwork and does not reuse government identity assets.
+Use an illustration to explain something that words alone make hard: where a sensor goes in a room, how a phone reaches a hub, or the steps of a bedtime routine. Put the full explanation in text beside it.
 
-For the colours to use, see [Illustration colours](colour-illustrations.html).
+An illustration is not a device state, a camera image, a photograph or a chart. For the colours to use, see [Illustration colours](colour-illustrations.html).
 
-## Section headers and homepage cards
+## Why use illustrations
 
-Use the original header family on the seven section landing pages and on the Colour, Data and Illustration guides. Detailed component pages keep their space for rendered examples. Each scene explains its section: typography and swatches for Styles, reusable controls for Components, a connected task sequence for Patterns.
+Use an illustration when it saves someone time or helps them understand.
 
-The Styles, Components and Patterns homepage cards reuse the geometry of their section header. Keep that link when either asset changes. A header is 640 by 480 and a homepage card is 320 by 140. Show the whole header illustration without cropping or distortion, beside the heading and introduction on wide screens (minimum height 450 pixels) and below them on narrow screens. Do not put headings in the image.
+- **It makes an idea clearer.** A drawing of a hall, a door and a motion sensor explains placement faster than a paragraph. It also helps people who find long text hard or who are reading in a second language.
+- **It makes civica recognisable.** One drawing style across guidance pages, dashboards and posts tells people they are in the same place.
+- **It saves effort.** A shared style and a small set of shapes mean contributors draw less and reuse more.
 
-These illustrations repeat the introduction beside them, so the page images have empty alternatives. The [artwork register](../reference/documentation-artwork.json) records a description for informative reuse, the editable sources, the five-colour palette and the review evidence. An illustration is never the only explanation or navigation label. Its pale background sits beside the dark blue text panel and does not change with a household palette.
+<h2 id="bg-ill-01">When to use an illustration</h2>
 
-## Examples
+Decide the message and the task first. Then decide whether a picture helps.
 
-These examples use invented household details. They are simulations: they do not operate devices, and they do not show that every native Home Assistant screen follows this guidance.
+Use an illustration to show:
 
-<%= example('bg-illustration-sensor-placement') %>
+- a place, such as where to mount a temperature sensor on a floor plan
+- a relationship, such as a phone, Home Assistant, a hub and a sensor
+- a sequence, such as the steps of a routine that turns the heating down at night
 
-<%= example('bg-illustration-network') %>
+Do not fill an empty dashboard card with decoration. Do not use a cheerful scene to suggest a device is online, or a drawing of a camera in place of its real image. If the task needs a real state, a photograph or a reading, use an icon, an image or a chart instead.
+
+### Illustrations, icons and photographs
+
+An illustration is detailed and tells a story. An icon is small and does one job: it labels a device or an action. A photograph or camera image shows something real.
+
+<h3 id="bg-ill-07">Icons</h3>
+
+Use Home Assistant’s own icons for devices, entities and actions, and keep their state variants. Do not turn an icon into an illustration or an illustration into an icon. [Icons and images](images.html#icons) owns how to choose and label icons.
+
+This example shows a functional arrow. It keeps its outline stroke because it is a navigation symbol, and the visible link text names the destination.
 
 <%= example('bg-illustration-functional-icon') %>
 
-<h2 id="bg-ill-01">BG-ILL-01: Use an illustration only when it explains something</h2>
+<h3 id="bg-ill-08">Photographs, camera images and map tiles</h3>
 
-**Local requirement: MUST.** Applies to new explanatory illustrations and dashboard imagery.
+Room photos, device images, camera feeds and map tiles show real things and have their own rights. Do not flatten, recolour or crop them to look like an illustration. A diagram can explain how a doorbell camera works, but label it as a diagram and never let it stand in for the camera’s real image. [Icons and images](images.html#images) owns how to use photographs and camera images.
 
-Decide the message and the task first. An illustration can explain where to put a sensor, how a phone relates to a hub, or a setup step that words alone make hard. Put the full instruction beside it.
+<h2 id="bg-ill-02">Illustration principles</h2>
 
-Do not fill an empty dashboard card with decoration. Do not use a cheerful picture to suggest a device is online, or a comforting scene to replace a camera view. Choose an operational image, a functional icon or a chart when the task needs one. [Icons and images](images.html) owns those.
+Follow these 6 principles so that every civica illustration looks like it belongs to the same family.
 
+### Use flat colour and simple shapes
 
-<h2 id="bg-ill-02">BG-ILL-02: Draw original, simple civica artwork</h2>
+Build each object from circles, rectangles and parts of circles, in flat colour with no shading. Combine simple shapes to make a more detailed scene, such as a kitchen with a fridge, a hob and a smart plug.
 
-**Local requirement: MUST.** Applies to new civica explanatory artwork.
+### Keep detail to a minimum
 
-Use flat geometric shapes, little detail and one clear focal point. Keep each illustration recognisable at the size it is shown. Draw from real objects where accuracy matters and remove details that do not explain the action.
+Show only what explains the action. The illustration must still read when it is small on a phone. Leave out facial features, so that people look at the whole scene rather than one expression.
 
-Do not copy GOV.UK characters, its crown, its dot-derived graphic device or its identity compositions. Circles and rectangles are drawing tools, not permission to reproduce another identity. Use supplied identity artwork unchanged and only in its proper context. civica identity belongs to project documentation and promotion. A household interface does not need it. The examples on this page are original schematic SVGs.
+### Balance rounded and square corners
 
+civica cards and buttons have square corners. Balance them with rounded shapes, such as a round thermostat dial or a curved speech bubble. The mix looks more natural and makes objects easier to recognise.
 
-<h2 id="bg-ill-03">BG-ILL-03: Use a restrained palette without borrowing status</h2>
+### Layer shapes to show depth
 
-**Local requirement: MUST.** Applies to explanatory illustration family, excluding functional icons and data marks.
+Overlap shapes a little to show what is in front. Use layering to bring the key object forward, such as a sensor in front of a wall.
 
-Take the base colour, the number of colours and how to pair them from [Illustration colours](colour-illustrations.html). A simple diagram may need fewer colours than a scene. Check neighbouring shapes and essential edges against the real background.
+<h3 id="bg-ill-03">Use a small palette</h3>
 
-Do not use a warning or success colour to decorate a scene that shows no such state. Avoid gradients, textures, outlines and 3D effects in this illustration family. Functional icon strokes and chart hatching stay, because their own specifications require them. Do not remove accessibility cues from controls or data in the name of restraint.
+Use only a few colours, so that a set of illustrations looks like one family. [Illustration colours](colour-illustrations.html) owns the palette, the base colour, how many colours to use and how to pair them.
 
+Do not use a warning or success colour to decorate a scene that shows no such state. A red radiator in a drawing can look like a heating fault on a dashboard.
 
-<h2 id="bg-ill-04">BG-ILL-04: Compose around the action</h2>
+### Use contrasting colours and tones
 
-**Local recommendation: SHOULD.** Applies to composition and sequencing of explanatory illustrations.
+Put warm colours beside cool ones, and light tones beside dark ones, so the key object stands out. This also helps people with low vision. [Illustration colours](colour-illustrations.html#using-contrast) explains how to test contrast.
 
-Use whitespace, scale and a little overlap to make the subject clear. A frame or background shape may set the scene, but it must not hide a hand, a device label or the action. Keep the illustration and its text together on narrow screens.
+### Choose an approach
 
-A sequence of panels can explain several steps. Give each panel a readable order and matching text. Do not add movement just to attract attention. If a process needs animation, provide a static version, a playback control where needed, and respect reduced motion.
+Before you draw, answer three questions.
 
+| Question | Choose | Home Assistant example |
+| --- | --- | --- |
+| One picture or several? | One scene to show everything at once, or a row of panels to show steps in order. | One scene of a living room. 3 panels for “Leave home”, “Heating turns down”, “Lights turn off”. |
+| Is it led by people? | Show people doing something together, such as fitting a sensor or checking a tablet on the wall. | 2 people setting up a plant moisture sensor. |
+| Is it led by information? | Show the process, not the people. If the main point is a number or a trend, use a chart instead. | A floor plan showing which rooms have a temperature sensor. |
 
-<h2 id="bg-ill-05">BG-ILL-05: Represent people and gestures carefully</h2>
+Add details people recognise from their own homes: a radiator under a window, a plug socket with a switch, a recycling bin by the back door.
 
-**Local requirement: MUST.** Applies to illustrated people, gestures and avatars.
+### Inform or inspire
 
-If people help explain the task, draw believable proportions and show a range of age, skin tone, body type, clothing and disability. Do not assume who owns the home or who does a chore. Do not use an avatar’s look to suggest identity, gender or capability.
+Decide where your illustration sits on this scale, from most informing on the left to most inspiring on the right. Most civica illustrations sit towards the informing end.
 
-A hand that points to a control must point to the right one. Sign language, safety instructions and accessibility gestures need review by someone who knows the subject. A generic geometric hand cannot stand in for them. civica does not specify a character system.
+| Scale | Inform | Explain | Inspire |
+| --- | --- | --- | --- |
+| What it does | Shows each step of a task | Shows a place or a relationship | Tells a story about a household |
+| Home Assistant example | How to pair a door sensor | Where the hall sensor sits on a floor plan | A household’s evening routine, from coming home to lights out |
 
+<h2 id="bg-ill-04">Layout of a scene</h2>
 
-<h2 id="bg-ill-06">BG-ILL-06: Give the image the right alternative</h2>
+Use these techniques to make a scene easy to read, whether it is a single sensor or a whole room.
 
-**Local requirement: MUST.** Applies to informative, redundant and decorative image alternatives.
+### Building a composition
 
-For an informative image, describe what the surrounding text does not already say. A complex diagram also needs a nearby explanation or a structured alternative. Keep labels and instructions as HTML where you can. [Images](../content/formatting-content/images.html) owns the wording.
+Arrange the main shapes so the eye goes to the action first.
 
-If an image only repeats the text beside it, give it an empty alternative, or hide a redundant inline SVG from assistive technology. Do not leave out the `alt` attribute on an `<img>` because the image is decorative. Give an informative inline SVG an accessible name, and stop its decorative shapes becoming extra stops for a screen reader.
+- **Overlap:** put objects slightly in front of each other to show depth without losing clarity, such as a thermostat in front of a hall wall.
+- **Space:** leave plain areas around the key object so the scene stays calm.
+- **Frame:** use a larger shape, such as a window, a doorway or a phone screen, to draw attention to the action inside it.
 
+<%= colour_example('illustration-composition', callout: false) %>
 
-<h2 id="bg-ill-07">BG-ILL-07: Keep icons functional and recognisable</h2>
+### Adding detail
 
-**Local requirement: MUST.** Applies to functional entity/domain and navigation icons.
+Add only the detail that places the scene in a real home.
 
-Use Home Assistant’s own entity and domain icons, with their state variants, for repeated household controls. Pair each icon with a name and a state. Give an icon-only action an accessible name and a large enough target. Keep manufacturer artwork when it identifies the device, without implying the manufacturer owns civica.
+- **Protect the action:** never let a background object cover a hand, a device label or the step being shown.
+- **Make it familiar:** add details that say where the scene is, such as a boiler in a kitchen cupboard or a meter by the front door.
+- **Add context quietly:** a sofa or a bookshelf can set the room without competing with the sensor on the wall.
 
-Do not turn native icons into faceless illustrations or replace a meaningful outline icon with a solid blob. The action-link arrow and native 24px symbols are functional vectors. Their strokes, alignment and focus follow their component specification, not this illustration family.
+<%= colour_example('illustration-detail', callout: false) %>
 
+### Showing movement
 
-<h2 id="bg-ill-08">BG-ILL-08: Preserve photographs, video and map evidence</h2>
+Use movement only when it helps explain the action.
 
-**Local requirement: MUST.** Applies to photos, media, cameras, map tiles and illustrative stand-ins.
+- **Tilt along a diagonal:** lean a person or an object slightly to show they are doing something, such as reaching up to a smoke alarm.
+- **Follow a line of movement:** let the pose match what the person is doing and feeling, such as hurrying out of the door.
+- **Match the details:** a door swinging open or a curtain moving should follow the same direction as the main action.
 
-Room photos, device images, media artwork, camera feeds and map tiles are operational content with their own purpose and rights. Do not flatten, recolour or crop out identifying detail to make them look like an illustration. Give a camera image its location, whether it is available and when it last updated. A still frame does not prove a live stream.
+<%= colour_example('illustration-movement', callout: false) %>
 
-Show unavailable media as unavailable and keep the native player or camera controls. Put text and controls over an image on a tested solid surface where possible. An illustration may explain how a camera works if you label it as a diagram. It must not stand in for the camera’s real state.
+Keep the illustration and its text together on narrow screens. Give a row of panels a clear reading order and matching text. Do not animate a scene to attract attention. If a process needs animation, provide a still version and a way to pause it, and respect the reduced motion setting.
 
+<h2 id="bg-ill-05">People, hands and objects</h2>
 
-<h2 id="bg-ill-09">BG-ILL-09: Limit personal information in shared imagery</h2>
+Draw people, hands and devices so that they explain the task and include everyone.
 
-**Local requirement: MUST.** Applies to public examples and personal household imagery.
+### Characters
 
-Use invented household details in public examples. Before you publish a screenshot, remove access tokens, exact home coordinates, faces, number plates and any names the task does not need. Get permission for identifiable people and for photos someone else supplied. Record who holds the rights. A photo being public is not permission.
+Show a range of ages, skin tones, body types, clothing and disabilities. Draw believable proportions. Do not assume who owns the home or who does a chore, and do not use a person’s look to suggest their identity or ability. civica has no fixed set of characters.
 
-Presence avatars and camera previews are personal content. Keep their access controls and Home Assistant’s privacy choices. Do not add faces, guess identities or show a precise location to make a dashboard feel more personal.
+### Hands and gestures
 
+Draw a hand only when it helps explain the action, such as pressing the button on a smart plug. A hand that points to a control must point to the right one. Sign language, safety steps and accessibility gestures need checking by someone who knows the subject.
 
-<h2 id="bg-ill-10">BG-ILL-10: Deliver and review the complete asset</h2>
+### Objects and props
 
-**Local requirement: MUST.** Applies to new asset delivery, rights metadata and rendered review.
+Draw devices from real objects, then remove the detail that does not explain the action. A thermostat needs its dial and display, not its screws. Do not draw a manufacturer’s logo on a device, and do not invent a device that does not exist.
 
-Keep the editable source, author, licence, purpose, alternative-text decision and intended background with each new asset (see `docs/data/illustration-assets.json`). Deliver a web format: SVG for simple vectors, a suitable raster format for photographs. Do not make people view an EPS or AI production file. Optimise the file without losing meaningful detail.
+<%= colour_example('illustration-people-objects', callout: false) %>
 
-Check the rendered image at small and large sizes, in light and dark contexts, with images switched off and, where useful, with a colour-vision simulation. A successful SVG parse is not a usability or accessibility pass. Record remaining limitations and test evidence in the checklist.
+## Things to avoid
 
+These approaches make an illustration harder to read or less honest.
 
-## Review and evidence
+| Do | Do not |
+| --- | --- |
+| Use flat colour and simple shapes. | Add gradients, textures, heavy outlines or 3D effects. |
+| Keep one clear focal point, such as the sensor on the wall. | Fill the scene with objects that compete for attention. |
+| Put the instruction in text beside the picture. | Put words, headings or values inside the image. |
+| Show a neutral scene. | Use a green tick or a red light to suggest a device state that the drawing cannot know. |
+| Draw original civica artwork. | Trace or reuse another organisation’s characters, logos, crests or shapes. |
+| Show people doing real tasks. | Use a cartoon expression or a joke that could confuse or exclude. |
 
-The rule inventory and checklist are `docs/data/brand-guidance-inventory.json` and `docs/data/brand-guidance-checklist.json`. Reviewing a source is not a pass for an interface. Before you close a checklist item, record the page or component, theme and mode, test result and any remaining issue. Recheck after a palette, component or renderer change.
+<%= colour_example('illustration-do-dont', callout: false) %>
+
+Functional icon strokes and chart hatching are not illustrations. Keep them, because their own rules need them.
+
+## Illustration examples
+
+These examples use invented households. They are drawings, not screenshots, and they do not operate devices.
+
+### On a dashboard
+
+An illustration in a picture card can explain a room or a routine beside the cards that control it.
+
+This example shows a diagram that makes a sensor location clear. The caption tells people to follow the manufacturer’s placement instructions for a real sensor.
+
+<%= example('bg-illustration-sensor-placement') %>
+
+### In guidance pages
+
+A simple diagram can explain how devices connect, with the full meaning in the text below it.
+
+This example shows a phone, Home Assistant, a hub and a sensor. The drawing is hidden from screen readers because the sentence underneath says the same thing.
+
+<%= example('bg-illustration-network') %>
+
+### In the Companion app
+
+On a phone, an illustration must stay readable at a small size and sit above its text, not beside it.
+
+<%= colour_example('illustration-companion-app', callout: false) %>
+
+### On social media
+
+A post can use an illustration with a short headline to announce a guide or a release.
+
+<%= colour_example('illustration-social', callout: false) %>
+
+### Section headers and homepage cards
+
+The 7 section landing pages and the Colour, Data and Illustration guides each have an original header. Each one explains its section: typography and swatches for Styles, controls for Components, a connected sequence of steps for Patterns. Detailed component pages leave the space for working examples.
+
+The Styles, Components and Patterns cards on the homepage reuse the shapes of their section header. Keep the two matched when either changes. A header is 640 by 480 and a homepage card is 320 by 140. Show the whole header without cropping or stretching: beside the heading and introduction on wide screens, with a minimum height of 450 pixels, and below them on narrow screens. Do not put headings in the image.
+
+These headers repeat the introduction beside them, so they have empty alternative text. Their pale background sits beside the dark blue text panel and does not change with a household’s theme colour.
+
+<h2 id="bg-ill-09">Use invented households</h2>
+
+Use invented names, rooms and devices in every public example. Before you share a screenshot of a real dashboard, remove access tokens, exact home locations, faces, number plates and any names the task does not need.
+
+Get permission from anyone who can be identified, and for any photo someone else supplied. Record who holds the rights. A photo being public is not permission. Presence avatars and camera previews are personal: do not add faces or show a precise location to make a dashboard feel more personal.
+
+<h2 id="bg-ill-06">Accessibility</h2>
+
+Make sure everyone gets the same meaning, whether or not they can see the illustration.
+
+### Alternative text
+
+Decide whether the illustration adds information or repeats the text beside it.
+
+- If it adds information, describe what the text does not already say, such as “Floor plan: the temperature sensor is on the hall wall, away from the radiator.” A complex diagram also needs a nearby explanation or a table.
+- If it repeats the text, give it an empty alternative (`alt=""`). Never leave out the `alt` attribute.
+- Give an informative inline SVG a `title` and `desc` and `role="img"`. Hide a decorative inline SVG with `aria-hidden="true"`.
+
+[Images](../content/formatting-content/images.html) owns the wording of alternative text.
+
+### Text and colour
+
+Keep labels, steps and values as HTML text, not inside the image, so they can be read aloud, translated and resized. Do not rely on colour alone to show which object matters. [Illustration colours](colour-illustrations.html#using-contrast) explains how to check contrast and colour blindness.
+
+### In Home Assistant
+
+Give a picture card its alternative text with the `alt_text` option.
+
+```yaml
+type: picture
+image: /local/illustrations/hall-sensor.svg
+alt_text: "Floor plan: the temperature sensor is on the hall wall, away from the radiator."
+```
+
+If the card next to it already says the same thing, use `alt_text: ""`.
+
+<h2 id="bg-ill-10">File formats and exporting</h2>
+
+Deliver each illustration in a format people can open, and keep the files you need to change it later.
+
+| Use | Format | Notes |
+| --- | --- | --- |
+| Guidance pages and dashboards | SVG | Keep it small. Remove hidden layers and editor data. Set a `viewBox` so it scales. |
+| Social media posts | PNG | Export at the size the platform asks for, at twice the pixel density for sharp screens. |
+| Photographs | JPEG or WebP | Photographs are not illustrations. See [Icons and images](images.html#images). |
+| Editable source | The design tool’s own file | Keep it with the asset. Do not ask people to open it to see the illustration. |
+
+In Home Assistant, put files in the `www` folder inside your configuration folder. Home Assistant serves them from `/local/`, so `www/illustrations/hall-sensor.svg` becomes `/local/illustrations/hall-sensor.svg`.
+
+For each new civica asset, record the editable source, author, licence, purpose, alternative text decision and intended background in `docs/data/illustration-assets.json`. The [artwork register](../reference/documentation-artwork.json) holds the same details for section headers.
+
+Check the exported file at small and large sizes, on light and dark backgrounds, with images switched off and with a colour blindness simulator. A file that opens without errors has not passed an accessibility check. Record what you tested and anything still to fix in `docs/data/brand-guidance-checklist.json`.
