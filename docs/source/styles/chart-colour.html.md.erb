@@ -4,9 +4,9 @@ title: "Chart colours"
 group: "Colour"
 nav_order: 6
 description: "The civica chart colours, how to give each device a stable colour and pattern, and how to colour amounts and missing data."
-last_reviewed_on: 2026-11-18
+last_reviewed_on: 2026-11-19
 review_in: 3 months
-updated_on: "2026-11-18"
+updated_on: "2026-11-19"
 published_on: "2026-11-11"
 updates:
   - date: "2026-11-13"
@@ -35,6 +35,8 @@ updates:
     description: "Redrew the categorical example as a line chart of humidity in 4 rooms and the scale example as 2 heatmaps of a week of room data. The Multiple categories chart now uses civica-chart-1 to civica-chart-4 in order. The social media chart no longer draws an example label or a data note inside the picture."
   - date: "2026-11-18"
     description: "The humidity example now shows a History graph card and sits under In Home Assistant. Said that Black becomes White in dark mode and that Blue shade 50% is hard to see on a dark card. Said which colours a History graph card uses after the 24th series, checked against the Home Assistant frontend source."
+  - date: "2026-11-19"
+    description: "Added the scale steps of each colour family in order from light to dark."
 ai_instructions: "Apply when colouring a chart series or heatmap, and for the scale rules of a map layer that shows an amount (its colours come from Map colours). Use only the civica chart colours on this page, in both light and dark mode and with every theme colour: six categorical colours, Black tint 80% for axes and grid lines, Black (White in dark mode) for labels. Decide whether colour names a source or shows an amount. On the Energy dashboard the civica companion gives each source its style from its stable ID with chartSeriesStyle; native History graph and Statistics graph cards take civica-chart-1 to civica-chart-24 by position and draw no patterns or dashes, so never claim they do; from the 25th series they use Home Assistant's default colours, wrapping after 54. Always add a name, pattern or table. Amounts use the listed tints and shades of one family, never calculated in-between colours, and no more than two scales per chart. Missing values get no numeric colour. The additional colours are for social media graphics only. Never dropping a series is owned by Charts and tables. Do not name outside sources or show rule IDs on the page. The rule anchored bg-col-07 is on this page. Rules WG-076, WG-077, WG-081."
 ai_related:
   - path: "/styles/colour.html"
@@ -79,6 +81,24 @@ Use these 6 colours for sources, such as devices or energy sources. Use Black ti
 Use the tints and shades of one colour family to show an amount, from light for less to dark for more. Use two families with a neutral centre to show a difference above or below a target. Use only the steps listed here: do not blend new colours between them.
 
 <%= colour_groups(colour_page('charts').fetch('sequential'), level: 4, key: 'scale') %>
+
+#### Scale steps from light to dark
+
+The swatches above list each family's primary colour first. On a scale, use the same steps in order of lightness, as shown here: the lightest step for the smallest amount and the darkest for the largest. Blues have 7 steps, because they include Blue shade 10%. Every other family has 6.
+
+<%=
+  edge = govuk_colour('black-tint-80').fetch('hex')
+  families = colour_page('charts').fetch('sequential').map do |group|
+    steps = group.fetch('colours').sort_by { |id| -colour_luminance(govuk_colour(id).fetch('hex')) }
+    chips = steps.each_with_index.map do |id, index|
+      colour = govuk_colour(id)
+      short = colour.fetch('name').sub(/\APrimary \w+\z/, 'Primary').sub(/\A(Blue|Magenta|Red|Green|Purple|Teal|Orange|Black) (tint|shade)/) { "#{$2.capitalize}" }
+      %(<li style="width:72px;margin:0;font-size:16px;line-height:1.25"><span aria-hidden="true" style="display:block;height:32px;margin-bottom:5px;border:1px solid #{edge};background:#{colour.fetch('hex')}"></span><span class="govuk-visually-hidden">Step #{index + 1}: #{colour.fetch('name')}</span><span aria-hidden="true">#{short}</span></li>)
+    end
+    %(<h5 style="margin:15px 0 5px">#{escape(group.fetch('title'))}, light to dark</h5><ol class="govuk-list" style="display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0 0 15px;list-style:none">#{chips.join}</ol>)
+  end
+  %(<div class="c-colour-example">#{families.join}</div>)
+%>
 
 ### Additional palette for illustrative infographics
 
@@ -168,7 +188,7 @@ For a heatmap or a map layer that shows an amount, write down the quantity, unit
 
 Keep labels outside coloured areas unless you have tested the text on that fill. Pale steps can disappear on a white background, so add outlines and direct labels. Give a missing value a crossed empty swatch and the words “Not supplied”, never a colour from the scale.
 
-This example shows a week of energy used in each room on a 0 to 2 kWh scale, and a week of room temperatures as a difference from a 20 °C target, as 2 heatmaps. Notice that each cell prints its value, that the garage's readings of 0.00 kWh take the lightest step, and that a missing reading is a crossed empty cell with no colour from the scale.
+This example shows a week of energy used in each room on a 0 to 2 kWh scale, and a week of room temperatures as a difference from a 20°C target, as 2 heatmaps. Notice that each cell prints its value, that the garage's readings of 0.00 kWh take the lightest step, and that a missing reading is a crossed empty cell with no colour from the scale.
 
 <%= example('data-colour-quantitative') %>
 

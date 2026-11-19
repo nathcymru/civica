@@ -45,7 +45,7 @@ Each colour family has a primary colour, lighter tints for backgrounds and highl
 ## Choose the palette for the job
 
 - [Web colours](colour-web.html): web pages, Home Assistant dashboards and the functional colours for text, links, focus, errors and success.
-- [App colours](colour-app.html): the Home Assistant Companion app, including dark mode blues.
+- [App colours](colour-web.html#app-colours): the Home Assistant Companion app, including dark mode blues.
 - [Social colours](colour-social.html): social media graphics and promotional tiles, with the companion colour set.
 - [Print colours](colour-print.html): printed material, with CMYK and Pantone references.
 - [Chart colours](chart-colour.html): charts, with a stable colour and pattern for each series.

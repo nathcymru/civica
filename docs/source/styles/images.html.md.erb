@@ -1,10 +1,10 @@
 ---
 title: Icons and images
-description: Icons and images for the civica Home Assistant design system.
-last_reviewed_on: 2026-11-11
+description: "Choose icons, photographs, camera images and floor plans for a Home Assistant dashboard, keep text out of images and give every meaningful image alt text."
+last_reviewed_on: 2026-11-19
 review_in: 3 months
 published_on: 2026-11-11
-updated_on: "2026-11-17"
+updated_on: "2026-11-19"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to civica."
@@ -20,67 +20,169 @@ updates:
     description: "First published in the civica.uk design system."
   - date: "2026-11-17"
     description: "Rewritten to lead with the rule, remove source commentary and give alternative text to the images guide."
-ai_instructions: "Apply to every icon, device image, photograph and camera image. Keep Home Assistant's native icons and state variants, pair an icon with a name and state, give meaningful images alternative text and keep text out of bitmaps. Rules WG-030, WG-056, WG-082."
+  - date: "2026-11-19"
+    description: "Rewritten around the choices a household makes on a dashboard. Added sections on photographs and camera images, keeping text out of images, floor plans and charts, and when to leave alt text empty, with YAML for a Tile card icon and Picture card alt text, and a caption for each example."
+  - date: "2026-11-19"
+    description: "Added do and do-not icon pairs, 6 drawn Tile cards with icons, names and states, and a floor plan with its sensors listed in text."
+ai_instructions: "Apply to every icon, photograph, camera image, floor plan and diagram on a Home Assistant dashboard or civica page. Use an image only when it helps someone identify, find or check something. Keep Home Assistant's native mdi: icons and their state variants, and always show an icon with a visible name and state. Keep text, readings and instructions out of images. The Picture card has an alt_text option; the Picture elements card has none, so describe a floor plan in text next to it. Give an informative image alt text and a decorative one alt=\"\". Alt text wording is owned by the writing guide Images page; illustration style is owned by Illustration. Do not show rule IDs or name outside sources in page text. Rules WG-030, WG-056, WG-081, WG-082."
 ai_related:
-  - path: "/styles/illustration.html"
-    title: "Illustration"
-    relationship: "Owns authored explanatory artwork and section headers."
   - path: "/content/formatting-content/images.html"
     title: "Images"
-    relationship: "Owns alternative text wording."
-  - path: "/get-started/personalisation.html"
-    title: "Personalise your home"
-    relationship: "Owns a household's own crest or logo."
+    relationship: "Owns how to word alt text."
+  - path: "/styles/illustration.html"
+    title: "Illustration"
+    relationship: "Owns the style of authored explanatory artwork and section headers."
+  - path: "/home-assistant/cameras.html"
+    title: "Cameras, streams and snapshots"
+    relationship: "Owns camera states, snapshots and privacy."
 ---
 
 # Icons and images
 
-Use icons and images to help people recognise a device or room quickly. Keep each one tied to a real task: identifying a light, checking a camera or finding a room.
+Use an icon or an image only when it helps someone identify, find or check something faster than words alone. Always put the information in text as well, so it reaches people who cannot see the image.
+
+Most dashboards work best with few images. Write clear names and states first. Then add an image where it answers a real question, such as which light is on or who is at the front door.
 
 ## Choose the right kind of image
 
-Use [Illustration](illustration.html) for authored explanatory artwork. Its flat style does not remove functional icon strokes, chart hatching, photographs or camera images. Write alternative text and set reading order using [Images](../content/formatting-content/images.html) and [Text formatting](../content/formatting-content/text-formatting.html).
-
-## Examples
-
-These examples use invented household details. They are simulations: the buttons do not control a home. Open an example to see it at full width or to read its HTML.
-
-<%= example('local-icon-label') %>
-
-<%= example('local-image-purpose') %>
-
-The informative specimen describes the rooms, window, lamp and thermostat in the original artwork. It is not a screenshot and does not show a current device state. The homepage uses the same artwork as decoration, with empty alt text. The artwork’s source and rights are in `docs/data/illustration-assets.json`.
+| Kind | Use it to | Owned by |
+| --- | --- | --- |
+| Icon | Help people recognise a device, room or action they already know by name | This page |
+| Photograph | Show what a real thing looks like, such as a device to find in a cupboard | This page |
+| Camera image | Show what is happening at a place now, such as the front door | [Cameras, streams and snapshots](../home-assistant/cameras.html) |
+| Floor plan | Show where rooms and devices are in the home | This page and [Pictures, rich content and embedded pages](../home-assistant/pictures-and-embedded-content.html) |
+| Illustration | Explain something complex in a simple way, such as where to put a motion sensor | [Illustration](illustration.html) |
+| Chart | Show how a reading changes over time | [Data visualisation](brand-data.html) |
 
 ## Icons
 
-Use Home Assistant’s existing icons. Keep an icon’s meaning the same everywhere. Put a device icon beside its name and state, because a coloured bulb alone does not say which light it is or whether it is available.
+Use Home Assistant's own icons. They come from the Material Design Icons set, written with an `mdi:` prefix. Keep an icon's meaning the same on every dashboard.
 
-Add a visible text label to any unfamiliar action. Give an icon-only control an accessible name and a large enough target. A tooltip adds to that name. It does not replace it.
+Always show an icon with a visible name and state. A yellow bulb alone does not say which light it is, or whether it is on, off or unavailable.
 
-Do not recolour every icon to the selected palette. Keep warning and error colours, manufacturer artwork that identifies a device, and native state colours that carry meaning.
+This YAML gives a Tile card a clear name and a lamp icon. The card still shows the state, such as On or Unavailable, in words.
+
+```yaml
+type: tile
+entity: light.hallway_lamp
+name: Hallway lamp
+icon: mdi:floor-lamp
+```
 
 ### Choose an icon
 
-- For a known device or entity, keep its native domain icon and any state variant that means something.
-- For a maintained shell action, use one consistent vector symbol. Prefer an existing Home Assistant symbol or a documented component symbol.
-- Do not mix emoji, font glyphs, unrelated pictogram sets and hand-drawn icons in one set of controls.
-- Treat the visible icon and its target separately. A small, crisp symbol can sit inside a 44px control. Keep its viewBox and aspect ratio, and align neighbouring symbols without distorting them.
-- Use `currentColor` where the source allows it. Hide a decorative SVG from assistive technology when the control already has a name.
+| Do | Do not |
+| --- | --- |
+| Keep a device's native icon and the state icons that go with it, such as an open and a closed door | Replace every device icon with one shape to make the dashboard look neat |
+| Use one icon for one meaning, such as `mdi:magnify` only for search | Use the same icon for 2 different actions |
+| Add a visible label to an action people may not recognise | Rely on a tooltip to explain an icon-only button |
+| Use one set of icons for a set of controls | Mix emoji, font symbols and hand-drawn icons in one row |
+| Keep warning, error and manufacturer colours that carry meaning | Recolour every icon to the theme colour |
 
-A replacement icon needs a record of its source, licence, purpose, original geometry and affected components. Test it at its real size in light and dark mode, in forced colours and at high zoom. Do not change manufacturer artwork, supplied civica marks or an informative device state just to make every icon one colour. The [visual review](../community/visual-audit.html) separates real source defects from style preferences.
+These pairs show 4 of these choices. The first shows the same light as an icon on its own and as an icon with its name and state, so you can see what the label adds.
 
-The maintained lighting scene controls use native Home Assistant Material Design icons at 24px: `mdi:string-lights`, `mdi:soccer`, `mdi:rugby`, `mdi:halloween` and `mdi:alarm-light-outline`. The visible scene name carries the meaning. The small colour strip shows a light recipe, not a theme state. The existing scene illustration files stay as they are. Do not flatten them to white to make an icon set.
+<%= colour_example('images-icon-do-dont', callout: false) %>
 
-### Action-link arrows
+Give an icon-only control an accessible name and a touch target of at least 44px. The icon can be smaller than the target, so a 24px icon can sit in a 44px button.
 
-The action-link arrow and the search magnifying glass belong to those components. Use the symbol only when you adopt the component’s purpose and interaction. Do not replace device symbols with arrows to copy a homepage. Government crowns, logos and other identity assets are not used in civica.
+### Icon examples
 
-## Images
+This example shows 6 Tile cards for an invented household. Notice that each icon has a visible name and state, and that the open and closed doors have different icons.
 
-Use a room or device image when it helps someone identify the thing. Use a live camera image only in a security or monitoring context, with a visible location and a sign of how fresh it is. Do not add stock photography to fill space.
+<%= colour_example('images-icon-examples', callout: false) %>
 
-Give an informative image alternative text. Give a decorative image an empty alternative. Do not repeat the words around it. Keep text, such as device state or instructions, as real text and not inside a bitmap.
+The civica lighting scene controls use 24px native icons: `mdi:string-lights`, `mdi:soccer`, `mdi:rugby`, `mdi:halloween` and `mdi:alarm-light-outline`. The scene name next to each icon carries the meaning. The small colour strip shows the scene's light colours. It does not show a theme or a state.
+
+This example shows an action link. The arrow is decorative, and the link text says where it goes.
+
+<%= example('local-icon-label') %>
+
+### Make a new icon
+
+Use an existing Home Assistant icon if there is one. If you must draw a new one for a maintained civica card:
+
+- draw it as an SVG and use `currentColor`, so it follows light and dark mode
+- keep its viewBox and proportions, and line it up with the icons next to it without stretching it
+- hide it from screen readers with `aria-hidden="true"` when the control already has a name
+- record its source, licence and purpose, and check it at its real size in light mode, dark mode and high contrast
+
+Do not change manufacturer artwork or civica marks to make every icon one colour. The [visual review](../community/visual-audit.html) separates real faults in a source icon from matters of taste.
+
+The action link arrow and the search magnifying glass belong to those components. Use them only for the same purpose.
+
+<span id="images"></span>
+
+## Photographs and camera images
+
+Use a photograph when it matters what a real thing looks like. For example, show the boiler's reset button in a household guide, so someone can find it. Do not use stock photographs or a photograph that only sets a mood.
+
+Show a camera image only where someone needs to check a place, such as a security view. Say which camera it is and when the picture was taken. A snapshot from 9 minutes ago is not live. [Cameras, streams and snapshots](../home-assistant/cameras.html) explains snapshot times, streams and privacy.
+
+## Keep text out of images
+
+Put words in text, not inside a picture. Text in an image cannot be resized, recoloured, copied, translated or read by every screen reader, and it goes blurry when someone zooms in.
+
+Do not use a picture to show:
+
+- a reading or state, such as “Front door: locked”
+- the steps of an instruction
+- a screenshot of an automation, when the steps could be written out
+
+### When an image may contain text
+
+Text in an image is fine when it is not the point of the image, such as a label on a boiler in a photograph. Write alt text that gives the meaning of the image, not the label.
+
+Text is part of the image when removing it would change what the image means. For example:
+
+- a household's own crest or logo, where the words are part of the design
+- a photograph of the label on a device, so someone can match the model number
+
+Even then, put any information people need, such as the model number, in text nearby.
+
+### Other ways to show text with an image
+
+- Put real text on top of the image with HTML, and check the contrast between the text and every part of the image under it, at every screen size.
+- Draw the image as an SVG, so any text in it stays sharp when people zoom in. Check its contrast too.
+
+## Floor plans, charts and diagrams
+
+Give every floor plan, chart and diagram a short text description and, where it holds data, the same facts in text. Make that text visible to everyone, not only to screen readers.
+
+The Picture card has an `alt_text` option. Use it for a photograph or a plan with a single meaning.
+
+```yaml
+type: picture
+image: /local/garden-plan.png
+alt_text: Back garden. The shed is at the far end, with the water butt on its left.
+```
+
+The Picture elements card has no alt text option. Put a heading or a Markdown card next to the floor plan that lists the rooms and the devices that matter, so people can use the dashboard without seeing the plan.
+
+This example shows a floor plan with its sensors. Notice that each kind of sensor has its own shape, not only its own colour, and that the list under the plan gives the same facts in text.
+
+<%= colour_example('images-floor-plan', callout: false) %>
+
+[Data visualisation](brand-data.html) explains how to give a chart a text equivalent.
+
+## Alt text
+
+Give every image an `alt` attribute. Write alt text for an image that carries information. Leave it empty, `alt=""`, when the image adds nothing that the text around it does not already say.
+
+| Image | Alt text |
+| --- | --- |
+| A floor plan or photograph that gives information | Describe what it shows that people need |
+| A decorative picture | `alt=""` |
+| An icon beside a visible label | `alt=""`, because the label already says it |
+| An image inside a link, where the link text names the destination | `alt=""` |
+
+This example shows an informative illustration. Notice that the alt text names the rooms and objects, and the caption says where they are and that it does not show a real device state.
+
+<%= example('local-image-purpose') %>
+
+The homepage uses the same artwork as decoration, with `alt=""`. Its source and rights are recorded in `docs/data/illustration-assets.json`.
+
+[Images](../content/formatting-content/images.html) in the writing guide explains how to word alt text, with examples.
 
 ## Household identity images
 
-A household or business name can stand alone. If someone chooses a crest or logo, keep its proportions and colours, and keep the name readable without the image. Follow [Personalise your home](../get-started/personalisation.html). Supplied civica artwork belongs to [Project identity](brand.html). Its asset checks do not show that a personalised interface is accessible.
+A household or business name can be used on its own, with no image. If a household adds a crest or logo, keep its proportions and colours, and keep the name readable without it. [Personalise your home](../get-started/personalisation.html) explains how. The civica artwork belongs to [Project identity](brand.html).

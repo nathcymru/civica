@@ -1,13 +1,12 @@
 ---
 title: "Data visualisation"
-description: "Design clear charts, dashboards and OpenStreetMap-based maps, with meaningful colour, sources and accessible alternatives."
+description: "Principles for charts, dashboards and maps of household data in Home Assistant, with the elements each one needs and accessible alternatives."
 section: "styles"
 group: "Guidance"
-source_url: "https://brand.design-system.service.gov.uk/data/"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-18"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-19"
+last_reviewed_on: "2026-11-19"
 review_in: "3 months"
 updates:
   - date: "2026-11-12"
@@ -19,127 +18,445 @@ updates:
   - date: "2026-11-17"
     description: "Rewritten to lead each rule with the action, remove per-rule source links and use Home Assistant wording. Rule IDs and anchors are unchanged."
   - date: "2026-11-18"
-    description: "Chart colours now come from the GOV.UK chart palette and are the same in light and dark mode."
-ai_instructions: "Apply when designing a chart, dashboard or map for household data. Start from the question the person needs answered, keep native values and units, show gaps as gaps and give a text alternative. Operational charts follow the chart specification, not publicity graphics. Rules WG-038, WG-043, WG-056, WG-082."
+    description: "Chart colours now come from the civica chart colours and are the same in light and dark mode."
+  - date: "2026-11-19"
+    description: "Reorganised into principles, choosing a visualisation, charts, dashboards, maps and examples, with Home Assistant energy, climate and location subjects. Detailed chart, map and table rules now link to the pages that own them. Removed outside source names, visible rule IDs and the repeated review paragraph. Anchors are unchanged."
+  - date: "2026-11-19"
+    description: "Added a numbered diagram of the parts of a chart, a line chart of room temperatures against the heating target over a day, a drawing of a wall tablet dashboard, and a map of where an invented household's phones last reported. Each has a caption and the same facts as a table."
+  - date: "2026-11-19"
+    description: "Added map projection, scale and detail guidance to the maps section."
+ai_instructions: "Apply when designing a chart, dashboard or map for household data in Home Assistant. Start from the question the person needs answered, choose the chart from the relationship in the data, give it a title, units, period and source, keep native values and units, show gaps as gaps and give a table or text alternative. Use only the civica chart colours from /styles/chart-colour.html. Operational Energy charts follow /components/charts.html. Map behaviour is owned by /home-assistant/maps-and-zones.html and map colours by /styles/colour-maps.html. Keep anchors bg-dat-01 to bg-dat-09. Do not show rule IDs or name outside sources in page text. Rules WG-038, WG-043, WG-056, WG-070 to WG-078, WG-082."
 ai_related:
   - path: "/components/charts.html"
     title: "Charts and tables"
-    relationship: "Owns the operational chart specification."
+    relationship: "Owns the operational chart specification, the Energy adapter and the View data table."
   - path: "/styles/chart-colour.html"
     title: "Chart colours"
-    relationship: "Owns the GOV.UK chart palette, series styles and legend keys."
+    relationship: "Owns the civica chart colours, series styles and legend keys."
+  - path: "/styles/colour-maps.html"
+    title: "Map colours"
+    relationship: "Owns the civica map colours and the working OpenStreetMap example."
   - path: "/home-assistant/maps-and-zones.html"
     title: "Maps, zones and location records"
     relationship: "Owns map and location behaviour."
+  - path: "/content/formatting-content/charts-and-data.html"
+    title: "Charts and data"
+    relationship: "Owns the wording of quantities, units, times and gaps."
+  - path: "/patterns/home.html"
+    title: "Home and rooms"
+    relationship: "Owns household overview dashboards."
 ---
 
 # Data visualisation
 
-Design every chart, dashboard and map around a question a household needs answered. Operational charts follow [Charts and tables](../components/charts.html), [Chart colours](chart-colour.html) and the production Energy adapter. Project publicity graphics are a separate output. The same accuracy and accessibility rules apply to both, but a promotional layout must not replace an operational chart.
+Data visualisation turns readings into shapes, lines and colours so that people can understand them quickly. In Home Assistant that might be the power the house is using now, how warm each room was overnight, or where everyone’s phone last reported.
 
-## Choose the right data pattern
+A clear chart helps a household decide what to do: turn the heating down, move a sensor, or check why the freezer used more energy this week. Design every chart, dashboard and map around that decision.
 
-| What someone needs to understand | Design guidance and examples |
-| --- | --- |
-| Change over time or a comparison | [Charts and tables](../components/charts.html) and [working chart examples](../components/chart-examples.html) |
-| Several related indicators checked repeatedly | [Dashboard monitoring and household overviews](../patterns/home.html) |
-| Location, distance or a spatial pattern | [OpenStreetMap-based maps and location records](../home-assistant/maps-and-zones.html) |
-| Categories, increasing values or change from a target | [Chart and map colour scales](chart-colour.html) |
-| Flow, part-to-whole or a bounded reading | [Energy flow and other chart families](../home-assistant/energy-flow-and-other-charts.html) |
+This page sets the principles. These pages own the detail:
 
-These are design-system specifications and working reference examples. They do not change a Home Assistant installation. The guidance applies whatever a household’s name or logo.
+- [Chart colours](chart-colour.html) for the only chart palette
+- [Charts and tables](../components/charts.html) for the operational chart specification and the **View data** table
+- [Map colours](colour-maps.html) and [Maps, zones and location records](../home-assistant/maps-and-zones.html) for maps
+- [Charts and data](../content/formatting-content/charts-and-data.html) for how to write quantities, units, times and gaps
+
+## Principles
+
+Follow these 5 principles for every chart, dashboard and map.
+
+1. **Clarity.** Show only what the household needs for the task. Use a clear order, consistent labels and the civica styles.
+2. **Accessibility.** Give everyone the same information. Do not use colour alone, meet the contrast requirements and provide the data as a table or text.
+3. **Accuracy.** Show readings as Home Assistant recorded them, at even intervals, with gaps shown as gaps. Say where the data comes from.
+4. **Consistency.** Give each device the same colour, name and unit everywhere, so that people learn what they are looking at.
+5. **Engagement.** Make the important reading easy to find and remember, so people can act on it when it matters.
+
+<h2 id="bg-dat-01">Tell a clear story</h2>
+
+Before you choose a chart, write down what the person needs to know. For example: what is using power now, which room is coldest, which sensor is unavailable, or where a phone is.
+
+1. **Know the purpose.** Decide who will look at it and what they already know. A household member checking the heating needs less detail than someone tuning an automation.
+2. **Know the story.** Decide the one thing the chart should show, such as “the hall gets cold after midnight”, and arrange the chart around it.
+3. **Know what matters.** Remove anything that does not help. Put the main reading where people look first.
+
+Show the main reading without making people click to find it. A live card must stay true as the data changes, so give it a neutral title such as “Power sources”, not a fixed claim such as “Usage is falling”. Do not write a reassuring message when readings are missing.
+
+<h2 id="bg-dat-02">Choose a visualisation type</h2>
+
+Choose the chart from the relationship in the data, the message and who will read it. This table suggests a chart for each relationship, with a Home Assistant example.
+
+| Relationship | Home Assistant example | Chart to use | In Home Assistant |
+| --- | --- | --- | --- |
+| Time | Living room temperature over the last 24 hours | Line chart | History graph card or Statistics graph card |
+| Magnitude | Energy used by each circuit today | Column or bar chart | Statistics graph card, as a bar chart |
+| Rank | Devices ordered by energy used this week | Horizontal bar chart | Devices energy graph on the Energy dashboard |
+| Deviation | Each room’s temperature against its target | Bar chart or dot plot | Thermostat card for one room. A table for several rooms. |
+| Part-to-whole | Today’s electricity from the grid, solar panels and battery | Stacked bar or a table of shares | Energy usage graph or a table |
+| Flow | Energy moving from solar panels to the battery and the home | Flow diagram | Energy distribution card, or the Sankey card where available |
+| Distribution | How many nights the bedroom was below 16°C, 16 to 18°C or above 18°C this month | Column chart of ranges | No native card. Use a table. |
+| Correlation | Outdoor temperature against how long the boiler ran each day | Scatter plot | No native card. Use a table. |
+| Spatial | Where each household member’s phone last reported | Map | Map card |
+
+Keep power (W or kW) and energy (Wh or kWh) on separate charts. Use a map only when location answers the question: if a list of rooms answers it, use the list. A floor plan is a diagram, not a map, so label it as a floor plan. [Energy flow and other chart families](../home-assistant/energy-flow-and-other-charts.html) owns the distribution diagram, gauges and Sankey cards.
+
+## Charts
+
+[Chart colours](chart-colour.html) owns the chart palette and how to use colour in a chart. Use no other chart colours.
+
+<h3 id="bg-dat-03">Elements of a chart</h3>
+
+Most charts share the same parts: a title, a plot area, axes with tick marks and labels, gridlines, the marks that show the data, a legend and a source. Each one helps people read the chart correctly.
+
+This diagram labels each part on a fixed report of one hall sensor. The numbers on the diagram match the list under it.
+
+<%=
+  hex = ->(id) { govuk_colour(id).fetch('hex') }
+  blue, ink, grid, paper = hex.('blue'), hex.('black'), hex.('black-tint-80'), hex.('white')
+  nights = [['Sun', 1, 18.6], ['Mon', 2, 17.4], ['Tue', 3, 18.2], ['Wed', 4, 17.8], ['Thu', 5, 18.9], ['Fri', 6, 17.6], ['Sat', 7, 18.4]]
+  y_of = ->(v) { (276 - (v - 16) * 40).round(1) }
+  x_of = ->(i) { (34 + 228.0 / 7 * (i + 0.5)).round(1) }
+  callout = ->(n, cx, cy) { %(<circle cx="#{cx}" cy="#{cy}" r="7.5" fill="#{paper}" stroke="#{ink}" stroke-width="1.5"/><text x="#{cx}" y="#{cy + 3.5}" font-size="10" font-weight="700" text-anchor="middle" fill="#{ink}">#{n}</text>) }
+  svg = []
+  svg << %(<text x="0" y="18" font-size="14" font-weight="700" fill="#{ink}">Hall fell below 18°C on 3 nights</text>)
+  svg << %(<text x="0" y="36" font-size="11" fill="#{ink}">Lowest overnight temperature (°C), hall sensor</text><text x="0" y="50" font-size="11" fill="#{ink}">Nights starting 1 to 7 November 2026</text>)
+  svg << %(<line x1="0" y1="68" x2="24" y2="68" stroke="#{blue}" stroke-width="2.5"/><circle cx="12" cy="68" r="3.5" fill="#{blue}"/><text x="30" y="72" font-size="11" fill="#{ink}">Hall lowest</text><line x1="104" y1="68" x2="128" y2="68" stroke="#{ink}" stroke-width="1.5" stroke-dasharray="6 3"/><text x="134" y="72" font-size="11" fill="#{ink}">18°C threshold</text>)
+  svg << %(<text x="0" y="98" font-size="12" fill="#{ink}">°C</text>)
+  [16, 17, 18, 19, 20].each do |v|
+    svg << %(<line x1="34" y1="#{y_of.(v)}" x2="262" y2="#{y_of.(v)}" stroke="#{grid}" stroke-width="1"/><text x="28" y="#{y_of.(v) + 4}" font-size="11" text-anchor="end" fill="#{ink}">#{v}</text>)
+  end
+  svg << %(<line x1="34" y1="#{y_of.(18)}" x2="262" y2="#{y_of.(18)}" stroke="#{ink}" stroke-width="1.5" stroke-dasharray="6 3"/>)
+  nights.each_with_index do |(day, date, _), i|
+    svg << %(<line x1="#{x_of.(i)}" y1="276" x2="#{x_of.(i)}" y2="281" stroke="#{ink}" stroke-width="1"/><text x="#{x_of.(i)}" y="294" font-size="11" text-anchor="middle" fill="#{ink}">#{day}</text><text x="#{x_of.(i)}" y="307" font-size="11" text-anchor="middle" fill="#{ink}">#{date}</text>)
+  end
+  points = nights.each_with_index.map { |(_, _, v), i| "#{x_of.(i)} #{y_of.(v)}" }
+  svg << %(<path d="M#{points.join(' L')}" fill="none" stroke="#{blue}" stroke-width="2.5"/>)
+  nights.each_with_index { |(_, _, v), i| svg << %(<circle cx="#{x_of.(i)}" cy="#{y_of.(v)}" r="3.5" fill="#{blue}"/>) }
+  svg << %(<line x1="#{x_of.(1)}" y1="#{y_of.(17.4) + 6}" x2="#{x_of.(1)}" y2="249" stroke="#{ink}" stroke-width="1"/><text x="#{x_of.(1) - 16}" y="261" font-size="11" fill="#{ink}">Coldest night: 17.4°C</text>)
+  svg << %(<text x="0" y="330" font-size="11" fill="#{ink}">Source: Hall temperature, Zigbee Home Automation</text>)
+  svg << callout.(1, 272, 13) << callout.(2, 272, 32) << callout.(3, 228, 68) << callout.(4, 26, 94) << callout.(5, 9, 137)
+  svg << callout.(6, 274, 280) << callout.(7, 274, 156) << callout.(8, 250, 130) << %(<line x1="#{x_of.(4) + 4}" y1="#{y_of.(18.9) - 4}" x2="190" y2="146" stroke="#{ink}" stroke-width="1"/>) << callout.(9, 196, 141)
+  svg << callout.(10, 196, 257) << callout.(11, 282, 326)
+  rows = nights.map { |day, date, v| %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Night starting #{{ 'Sun' => 'Sunday', 'Mon' => 'Monday', 'Tue' => 'Tuesday', 'Wed' => 'Wednesday', 'Thu' => 'Thursday', 'Fri' => 'Friday', 'Sat' => 'Saturday' }.fetch(day)} #{date} November</th><td class="govuk-table__cell">#{v}</td><td class="govuk-table__cell">#{v < 18 ? 'Yes' : 'No'}</td></tr>) }
+  html = %(<div class="c-colour-example"><figure style="margin:0 0 20px">) +
+    %(<svg role="img" aria-labelledby="anatomy-title anatomy-desc" viewBox="0 0 320 340" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif"><title id="anatomy-title">Diagram of the parts of a line chart, numbered 1 to 11</title><desc id="anatomy-desc">A line chart of the lowest hall temperature on each of 7 nights, with a dashed line at 18°C. Numbered circles mark the title, subtitle, legend, axis title, axis labels, tick marks, gridlines, plot area, marks, annotation and source. The list after the diagram names each part.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
+    %(<figcaption>The parts of a chart, on invented readings from the Hughes household's hall sensor, <code>sensor.hall_temperature</code>.</figcaption></figure>) +
+    %(<details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Show the data: lowest hall temperature each night</span></summary><div class="govuk-details__text"><div class="civica-table-scroll" role="region" tabindex="0" aria-label="Lowest hall temperature each night"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">Lowest hall temperature each night, 1 to 7 November 2026 (invented readings)</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Night</th><th scope="col" class="govuk-table__header">Lowest temperature (°C)</th><th scope="col" class="govuk-table__header">Below 18°C</th></tr></thead><tbody class="govuk-table__body">#{rows.join}</tbody></table></div></div></details></div>)
+  html
+%>
+
+1. **Title**: in a fixed report, it states the finding.
+2. **Subtitle**: the measure and unit, the sensor and the period.
+3. **Legend**: names each line and shows its line style.
+4. **Axis title**: gives the unit once, so the labels do not repeat it.
+5. **Axis labels**: the values on the scale.
+6. **Tick marks**: show where each night sits on the axis.
+7. **Gridlines**: help people read a value across the chart. Keep them quiet.
+8. **Plot area**: the space inside the axes where the data is drawn.
+9. **Marks**: the line and points that show each reading.
+10. **Annotation**: explains one point, next to that point.
+11. **Source**: the entity and the integration the readings came from.
+
+#### Titles
+
+Give every chart a title, and a subtitle when the chart is published as a fixed report.
+
+On a live dashboard card, name what is measured, such as “Hall temperature” or “Power now”, because the data will change under the title. In a fixed report, the title can state the main finding.
+
+Write titles that are:
+
+- front-loaded, with the most important words first
+- in the active voice
+- in sentence case
+- as short as possible
+
+Give a fixed report a subtitle with the measure and unit, the rooms or devices covered and the period. For example:
+
+> **The hall fell below 18°C on 3 nights this week**
+>
+> Hourly mean temperature in °C, hall sensor, 1 to 7 November 2026
+
+#### Axes
+
+Axes show what is measured, such as time, temperature or energy. Keep Home Assistant’s native axes and units.
+
+- Put the unit in the axis title or subtitle, such as “Temperature (°C)”, not after every label. Put `%` and `£` in the labels themselves.
+- Do not repeat the chart title in the axis title.
+- Keep device and room names short. Use the friendly name the household set, not the entity ID.
+
+#### Annotations
+
+Use an annotation to explain one point, such as “Boiler service, no readings”.
+
+- Keep it to one sentence of about 10 words.
+- Put it next to the point it explains, with space around it so it does not cover the data.
+- Repeat anything essential in the text or the table, because annotations are hard to reach with a screen reader.
+- Do not add a fixed annotation that claims something the integration did not supply.
+
+#### Sources and footnotes
+
+Say where every chart’s data comes from. Use this format: [entity or statistic] from [integration]. For example: “Source: Hall temperature from the Zigbee Home Automation integration, Home Assistant long-term statistics.”
+
+Use a footnote only for context that changes how people read the chart, such as “No readings from 02:00 to 03:10 while the hub restarted.” Too many footnotes interrupt the reading.
+
+<h3 id="bg-dat-04">Keep the readings true</h3>
+
+Show readings exactly as Home Assistant supplies them: native values, IDs, timestamps, units and gaps.
+
+- Show a missing reading as a gap, never as 0.
+- Do not smooth away a peak or force a line chart to start at zero.
+- Keep a comparison on its original dates, such as this week against the same days last week.
+- Say in words when a value is a forecast, a comparison or an export shown as a negative number.
+
+[Charts and tables](../components/charts.html#visual-rules) explains how the civica Energy adapter keeps native values while it restyles the chart.
+
+<h3 id="bg-dat-05">Use the chart specification</h3>
+
+Operational Energy charts follow [Charts and tables](../components/charts.html) and take their colours from [Chart colours](chart-colour.html). Those pages own line widths, legend keys, hatching and how colours stay the same with every theme colour. Hatching, markers and line styles are cues that do not depend on colour, so the [illustration](illustration.html) limits on texture and outline do not apply to them.
+
+<h3 id="bg-dat-06">Interactive charts</h3>
+
+An interactive chart lets people change what it shows, for example by choosing a date, hiding a source or zooming in.
+
+Use interaction when:
+
+- people want to see their own detail, such as one room or one device
+- there is no clear way to show the data without it
+- different household members care about different rooms or devices
+
+Interaction has costs. People must act before they see the information, so they can miss the main message. If interaction is not needed, show the main finding in a fixed chart, or use several small charts side by side instead of one crowded chart.
+
+Keep the native interaction Home Assistant already gives: the date picker, legend toggles, zoom, tooltips and keyboard controls. Do not replace a working native chart with an image people cannot use. civica does not add a second chart renderer. [Compatibility and limits](../get-started/compatibility.html) explains which frontend versions the Energy adapter supports.
+
+<h3 id="bg-dat-07">Give a text alternative</h3>
+
+Give every chart a table or a sentence with the same facts. For supported Energy charts, the **View data** table does this. [Charts and tables](../components/charts.html#accessible-values) owns what that table contains.
+
+For a new chart or a fixed report, add a matching table or a short summary, such as “Hall temperature, 10 to 11 November 2026: lowest 17.8°C at 03:20, highest 21.5°C at 18:05.” Label invented example data as invented. Test the chart and its alternative separately, because a good table does not prove the chart’s focus order or colours work.
+
+### Tips for publishing charts
+
+Some places accept only certain image sizes or file formats. Check what a forum, a release page or a social media platform accepts before you export a chart.
+
+## Dashboards
+
+A dashboard brings several cards together to give an overview, such as the energy the home is using, the temperature in each room and which doors are open. It updates as readings arrive, so people come back to it many times a day.
+
+### When to use a dashboard
+
+Use a dashboard when:
+
+- people need a quick overview, not a detailed explanation
+- the information matters every day and people already know what it means
+- the data changes often and people check it again and again
+- Home Assistant updates the readings automatically
+
+Base the dashboard on what the household actually checks. [Home and rooms](../patterns/home.html) owns household overview dashboards.
+
+### Disadvantages of dashboards
+
+A dashboard is not always the right answer. Dashboards often:
+
+- leave people to work out what the readings mean
+- cannot explain data that needs a lot of context
+- go out of date as the household’s needs change
+- need regular care when devices are added or renamed
+- are hard to make work well on a phone, a tablet on the wall and a desktop
+
+To explain something in depth, such as why the energy bill went up, use a page with a few related charts and text instead.
+
+### Tips
+
+- Put the most important cards first, such as current power or open doors, and group the rest by room or task.
+- Give each card a short explanation where people need it, without crowding the reading.
+- Prefer native cards. A custom card may not support keyboard access, the civica theme or a data table, so check before you rely on it.
+- Check the dashboard on a phone, a tablet and a desktop, with long device names and many devices. [Layout and spacing](layout.html) owns the dashboard grid.
+
+<h3 id="bg-dat-09">Keep reports apart from live dashboards</h3>
+
+A fixed report, such as a monthly energy summary for a household newsletter, can show one result with a large number or a simple shape. Give its date, what it counts, how it is rounded and its source, as real text. Do not use size, area or motion to exaggerate the result.
+
+A live dashboard needs accurate current states and comparisons that repeat reliably. Do not bring celebratory colours, gradients, oversized lines or claims from a report into it.
+
+<h2 id="bg-dat-08">Maps</h2>
+
+Use a map when location answers the household’s question, such as which zone a phone is in. [Map colours](colour-maps.html) owns the map palette and shows a working OpenStreetMap example. [Maps, zones and location records](../home-assistant/maps-and-zones.html) owns how a map behaves in Home Assistant.
+
+### Elements of a map
+
+Every map needs these parts. The owning page explains each one.
+
+| Element | What it does | Detail |
+| --- | --- | --- |
+| Title | Says what the map shows, neutrally if the data changes, such as “Reported locations”. | [Title, source and observation context](../home-assistant/maps-and-zones.html#map-context) |
+| Labels | Names each marker or zone on the map, so a few features need no legend. | [Map hierarchy, extent and scale](../home-assistant/maps-and-zones.html#map-composition) |
+| Legend | Explains several categories, placed before the map at its upper left. | [Map hierarchy, extent and scale](../home-assistant/maps-and-zones.html#map-composition) |
+| Base map | Gives context, such as streets and place names, without competing with the markers. | [Using colour combinations on maps](colour-maps.html#using-colour-combinations-on-maps) |
+| Source | Names the tracker that reported each location and the provider of the base map. | [Title, source and observation context](../home-assistant/maps-and-zones.html#map-context) |
+
+### Map considerations
+
+- **Hierarchy:** make the household’s markers the strongest thing on the map. Keep the base map quiet.
+- **Fewer features:** leave out anything that does not help the question. Keep the provider’s place names and attribution.
+- **Extent:** fit the first view to the places the task needs, such as home and the school zone, not the whole country.
+- **Scale:** add a scale bar only when distance matters, such as how far a phone is from home.
+
+### Map projections
+
+Use one projection for each map. Do not mix projections, or lay a map in one projection over a base map in another.
+
+- **Street maps:** use the projection of the base map provider. OpenStreetMap tiles use Web Mercator, so zone circles, markers and tracker positions line up with the streets.
+- **Household and floor plan maps:** use a flat plan with no projection, drawn to a single scale. A floor plan shows rooms, not places on the earth, so do not add latitude and longitude to it.
+- Do not put a floor plan on a street map, or street markers on a floor plan, unless you have placed and scaled the plan to match.
+
+### Showing scale
+
+Show scale when distance matters, such as how far a phone is from the Home zone. Use a scale bar with a plain label, such as “500m”, not a ratio. On a floor plan, say what the bar measures, such as “1m”. If the map zooms, the bar must change with it. Leave the scale out when people only need to know which zone a phone is in.
+
+### Remove extra detail
+
+Show only what answers the question. On a street map, hide the base map layers the household does not need, such as shop names or transport routes. On a floor plan, show the rooms and the devices on the dashboard, not every wall socket. Keep the provider’s attribution. Detail that people cannot read at the size of the card is noise, so remove it.
+
+### Map accessibility
+
+- Say in text what the map shows. For a complex map, add a longer description nearby.
+- Give the same records as a list or table, with each place, its source and when it was reported. [Every record remains reachable](../home-assistant/maps-and-zones.html#map-records) owns this.
+- Use letters, shapes or line styles as well as colour, so that people who cannot tell colours apart can still read the map.
+- Check the contrast of markers, lines and labels against the real base map.
+- When you can, test the map with people who use a screen reader or other assistive technology.
+
+Do not recolour map tiles, cover a weather layer, or move a marker to fit a layout. The Energy adapter does not restyle native map cards.
+
+### Map example
+
+This drawing shows where the phones in an invented household last reported. Notice the neutral title, the legend at the upper left, the letters and shapes that tell the markers apart, the scale bar and the source. The third phone has no location, so it is not on the map, and the table says so.
+
+<%=
+  hex = ->(id) { govuk_colour(id).fetch('hex') }
+  ink, paper, land, edge, sea, coast, point, outline = %w[black white black-tint-95 black-tint-80 teal-tint-95 teal-tint-80 green-accent green].map { |id| hex.(id) }
+  shore = 'M0 56 H320 V100 C290 116 270 150 240 160 C200 172 190 204 150 220 C130 228 120 236 120 236 H0 Z'
+  marker_a = ->(x, y, r) { %(<circle cx="#{x}" cy="#{y}" r="#{r}" fill="#{point}" stroke="#{outline}" stroke-width="2"/><text x="#{x}" y="#{y + 4}" font-size="11" font-weight="700" text-anchor="middle" fill="#{ink}">A</text>) }
+  marker_b = ->(x, y, r) { %(<path d="M#{x} #{y - r} L#{x + r} #{y} L#{x} #{y + r} L#{x - r} #{y} Z" fill="#{point}" stroke="#{outline}" stroke-width="2"/><text x="#{x}" y="#{y + 4}" font-size="11" font-weight="700" text-anchor="middle" fill="#{ink}">B</text>) }
+  svg = []
+  svg << %(<text x="0" y="16" font-size="14" font-weight="700" fill="#{ink}">Reported locations</text><text x="0" y="34" font-size="11" fill="#{ink}">Hughes household phones, 17 November 2026, 07:40</text>)
+  svg << %(<rect x="0" y="56" width="320" height="180" fill="#{sea}"/><path d="#{shore}" fill="none" stroke="#{coast}" stroke-width="12" stroke-linejoin="round"/><path d="#{shore}" fill="#{land}" stroke="#{edge}" stroke-width="1"/>)
+  svg << %(<circle cx="204" cy="118" r="26" fill="#{point}" stroke="#{outline}" stroke-width="2"/><text x="204" y="160" font-size="12" font-weight="700" text-anchor="middle" fill="#{ink}">Home</text>)
+  svg << %(<circle cx="216" cy="114" r="12" fill="none" stroke="#{paper}" stroke-width="3"/>) << marker_b.(216, 114, 10)
+  svg << %(<circle cx="96" cy="178" r="11" fill="none" stroke="#{paper}" stroke-width="3"/>) << marker_a.(96, 178, 9)
+  svg << %(<rect x="6" y="62" width="128" height="62" fill="#{paper}" stroke="#{edge}" stroke-width="1"/><circle cx="18" cy="76" r="7" fill="#{point}" stroke="#{outline}" stroke-width="2"/><text x="30" y="80" font-size="10" fill="#{ink}">Zone, with its name</text>)
+  svg << marker_a.(18, 96, 8) << %(<text x="30" y="100" font-size="10" fill="#{ink}">Rhys's phone</text>) << marker_b.(18, 114, 8) << %(<text x="30" y="118" font-size="10" fill="#{ink}">Ffion's phone</text>)
+  svg << %(<line x1="10" y1="226" x2="70" y2="226" stroke="#{ink}" stroke-width="2"/><line x1="10" y1="221" x2="10" y2="231" stroke="#{ink}" stroke-width="2"/><line x1="70" y1="221" x2="70" y2="231" stroke="#{ink}" stroke-width="2"/><text x="76" y="230" font-size="10" fill="#{ink}">500m</text>)
+  svg << %(<text x="0" y="252" font-size="10" fill="#{ink}">Source: Companion app. Base map drawn for this example.</text>)
+  records = [
+    ["Rhys's phone", 'A, circle', 'In town, 1.1km from Home', '07:36', '20 metres', 'device_tracker.rhys_phone'],
+    ["Ffion's phone", 'B, diamond', 'Home zone', '07:38', '12 metres', 'device_tracker.ffion_phone'],
+    ["Owen's phone", 'Not on the map', 'Not supplied. This does not mean Owen is away.', 'No report today', 'Not supplied', 'device_tracker.owen_phone']
+  ]
+  body = records.map { |r| %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">#{r[0]}<br><code>#{r[5]}</code></th>#{r[1..4].map { |c| %(<td class="govuk-table__cell">#{c}</td>) }.join}</tr>) }.join
+  %(<div class="c-colour-example"><figure style="margin:0 0 20px">) +
+    %(<svg role="img" aria-labelledby="map-example-title map-example-desc" viewBox="0 0 320 260" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif"><title id="map-example-title">Map of the reported locations of 2 phones</title><desc id="map-example-desc">An invented coastline with land at the top left and sea at the bottom right. The Home zone is a circle near the coast. Diamond B, Ffion's phone, is inside the Home zone. Circle A, Rhys's phone, is in town, about 1.1km to the south-west. A legend at the upper left names the zone and the 2 markers, and a scale bar shows 500m. Owen's phone has no reported location and is not drawn. The table after the map lists all 3 phones.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
+    %(<figcaption>A drawing in the map colours, not a real place. The household, phones and locations are invented, and no device is tracked.</figcaption></figure>) +
+    %(<div class="civica-table-scroll" role="region" tabindex="0" aria-label="All 3 phones and their location records"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">All 3 phones and their location records, 17 November 2026 (invented)</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Phone</th><th scope="col" class="govuk-table__header">Marker</th><th scope="col" class="govuk-table__header">Reported location</th><th scope="col" class="govuk-table__header">Reported at</th><th scope="col" class="govuk-table__header">Accuracy</th></tr></thead><tbody class="govuk-table__body">#{body}</tbody></table></div></div>)
+%>
+
+[Map colours](colour-maps.html) lists every colour in this drawing, with values to copy.
 
 ## Examples
 
-These examples use invented household details. They are simulations: they do not operate devices, and they do not show that every native Home Assistant screen follows this guidance.
+These examples use invented households and simulated data. They do not show a real home or operate devices.
+
+### Energy: power now
+
+This working chart uses the civica Energy adapter with invented readings. Notice the separate unfilled line for each source, the legend that matches each line, and the **View data** table below the chart.
 
 <%= example('bg-data-operational-power') %>
 
+### Climate: room temperatures over a day
+
+A line chart can compare the temperature in each room across one day, with the target temperature for reference. Notice that each room has its own line style and a label at the end of its line, that the target is a thin black step line, and that the missing bedroom reading at 12:00 is a gap, not a drop to 0.
+
+<%=
+  hex = ->(id) { govuk_colour(id).fetch('hex') }
+  ink, grid = hex.('black'), hex.('black-tint-80')
+  times = %w[00:00 03:00 06:00 09:00 12:00 15:00 18:00 21:00]
+  rooms = [
+    ['Living room', 'sensor.living_room_temperature', 'blue', nil, 'solid line', [17.2, 16.6, 16.4, 19.6, 20.1, 20.4, 20.8, 20.3], 108],
+    ['Kitchen', 'sensor.kitchen_temperature', 'magenta', '8 4', 'dashed line', [16.9, 16.1, 16.3, 20.2, 19.4, 19.0, 21.3, 19.9], 124],
+    ['Bedroom', 'sensor.bedroom_temperature', 'teal-tint-25', '2 3', 'dotted line', [18.1, 17.6, 17.3, 18.4, nil, 17.9, 18.6, 18.9], 146]
+  ]
+  x_of = ->(h) { (34 + h * 200.0 / 21).round(1) }
+  y_of = ->(v) { (250 - (v - 14) * 22).round(1) }
+  svg = []
+  rooms.each_with_index do |(name, _, colour, dash, _, _, _), i|
+    lx = [0, 110, 0][i]; ly = [12, 12, 30][i]
+    svg << %(<line x1="#{lx}" y1="#{ly}" x2="#{lx + 24}" y2="#{ly}" stroke="#{hex.(colour)}" stroke-width="3"#{%( stroke-dasharray="#{dash}") if dash}/><text x="#{lx + 30}" y="#{ly + 4}" font-size="11" fill="#{ink}">#{name}</text>)
+  end
+  svg << %(<line x1="110" y1="30" x2="134" y2="30" stroke="#{ink}" stroke-width="1.5" stroke-dasharray="12 4"/><text x="140" y="34" font-size="11" fill="#{ink}">Heating target</text>)
+  svg << %(<text x="0" y="62" font-size="12" fill="#{ink}">°C</text>)
+  [14, 16, 18, 20, 22].each { |v| svg << %(<line x1="34" y1="#{y_of.(v)}" x2="234" y2="#{y_of.(v)}" stroke="#{grid}" stroke-width="1"/><text x="28" y="#{y_of.(v) + 4}" font-size="11" text-anchor="end" fill="#{ink}">#{v}</text>) }
+  [0, 6, 12, 18].each { |h| svg << %(<text x="#{x_of.(h)}" y="268" font-size="11" text-anchor="middle" fill="#{ink}">#{format('%02d:00', h)}</text>) }
+  svg << %(<path d="M34 #{y_of.(16)} H#{x_of.(6)} V#{y_of.(20)} H234" fill="none" stroke="#{ink}" stroke-width="1.5" stroke-dasharray="12 4"/><text x="38" y="#{y_of.(20) - 6}" font-size="10" fill="#{ink}">Target</text>)
+  rooms.each do |name, id, colour, dash, _, values, label_y|
+    segments = values.each_with_index.chunk_while { |(a, _), (b, _)| a && b }.map { |run| run.reject { |v, _| v.nil? } }.reject(&:empty?)
+    segments.each do |run|
+      d = run.map { |v, i| "#{x_of.(i * 3)} #{y_of.(v)}" }.join(' L')
+      svg << %(<path data-series="#{id}" d="M#{d}" fill="none" stroke="#{hex.(colour)}" stroke-width="3"#{%( stroke-dasharray="#{dash}") if dash}/>)
+    end
+    svg << %(<text x="240" y="#{label_y}" font-size="11" fill="#{ink}">#{name}</text>)
+  end
+  svg << %(<text x="#{x_of.(12) + 2}" y="166" font-size="10" text-anchor="middle" fill="#{ink}">No reading</text>)
+  head = %(<tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Time</th>) + rooms.map { |r| %(<th scope="col" class="govuk-table__header">#{r[0]}</th>) }.join + %(<th scope="col" class="govuk-table__header">Heating target</th></tr>)
+  body = times.each_with_index.map do |t, i|
+    cells = rooms.map { |r| v = r[5][i]; %(<td class="govuk-table__cell">#{v ? format('%.1f', v) : 'No reading'}</td>) }.join
+    %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">#{t}</th>#{cells}<td class="govuk-table__cell">#{i < 2 ? '16.0' : '20.0'}</td></tr>)
+  end
+  %(<div class="c-colour-example"><figure style="margin:0 0 20px">) +
+    %(<svg role="img" aria-labelledby="climate-title climate-desc" viewBox="0 0 320 280" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif"><title id="climate-title">Line chart of 3 room temperatures and the heating target, in degrees Celsius, over one day</title><desc id="climate-desc">The living room is a solid line, the kitchen dashed and the bedroom dotted. The heating target is 16°C until 06:00 and 20°C after it. The living room and kitchen reach the target in the afternoon and evening. The bedroom stays between 17.3°C and 18.9°C all day. There is no bedroom reading at 12:00, shown as a gap. The table after the chart gives every reading.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
+    %(<figcaption>Room temperatures (°C) every 3 hours, Tuesday 17 November 2026, Europe/London. Invented readings for the Hughes household. The heating target comes from <code>climate.hughes_heating</code>, and is 20°C from 06:00 to 22:00.</figcaption></figure>) +
+    %(<details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Show the data: room temperatures, 17 November 2026</span></summary><div class="govuk-details__text"><div class="civica-table-scroll" role="region" tabindex="0" aria-label="Room temperatures and heating target"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">Room temperatures and heating target (°C), 17 November 2026 (invented readings)</caption><thead class="govuk-table__head">#{head}</thead><tbody class="govuk-table__body">#{body.join}</tbody></table></div><p>Entities: #{rooms.map { |r| "<code>#{r[1]}</code> (#{r[4]})" }.join(', ')}.</p></div></details></div>)
+%>
+
+In Home Assistant, a History graph card that shows a thermostat's climate entity draws its target temperature next to the room temperature. The card draws solid lines only, so give each entity a clear name for the legend.
+
+### A dashboard on a tablet on the wall
+
+A dashboard for a tablet on the wall shows the few readings a household checks most, large enough to read from across the room. Notice that each card has one large reading with its unit and one line of context, and that the hour still in progress on the energy chart is drawn as an outline, not as a full bar.
+
+<%=
+  hex = ->(id) { govuk_colour(id).fetch('hex') }
+  ink, grid, quiet, paper, blue = hex.('black'), hex.('black-tint-80'), hex.('black-tint-95'), hex.('white'), hex.('blue')
+  hours = [0.31, 0.28, 0.27, 0.29, 0.30, 0.35, 0.62, 0.88]
+  tiles = [['Power now', '1.42kW', 'From the grid'], ['Hall', '18.6°C', 'Target 20°C'], ['Back door', 'Open', 'Since 07:31']]
+  svg = []
+  svg << %(<rect x="0" y="0" width="360" height="240" rx="14" fill="#{ink}"/><rect x="12" y="12" width="336" height="216" fill="#{paper}"/><rect x="12" y="12" width="336" height="28" fill="#{quiet}"/>)
+  svg << %(<text x="22" y="31" font-size="13" font-weight="700" fill="#{ink}">Hughes home</text><text x="338" y="31" font-size="11" text-anchor="end" fill="#{ink}">Tuesday 17 November, 07:40</text>)
+  tiles.each_with_index do |(label, value, note), i|
+    x = 20 + i * 109
+    svg << %(<rect x="#{x}" y="48" width="101" height="78" fill="#{paper}" stroke="#{grid}" stroke-width="1"/><text x="#{x + 8}" y="66" font-size="12" fill="#{ink}">#{label}</text><text x="#{x + 8}" y="98" font-size="24" font-weight="700" fill="#{ink}">#{value}</text><text x="#{x + 8}" y="117" font-size="11" fill="#{ink}">#{note}</text>)
+  end
+  svg << %(<rect x="20" y="134" width="320" height="86" fill="#{paper}" stroke="#{grid}" stroke-width="1"/><text x="28" y="151" font-size="12" fill="#{ink}">Energy used today (kWh)</text><text x="332" y="151" font-size="12" font-weight="700" text-anchor="end" fill="#{ink}">3.30kWh so far</text>)
+  svg << %(<line x1="28" y1="200" x2="332" y2="200" stroke="#{grid}" stroke-width="1"/>)
+  hours.each_with_index do |v, i|
+    x = 36 + i * 37; h = (v * 40).round(1)
+    style = i == 7 ? %(fill="#{paper}" stroke="#{blue}" stroke-width="2" stroke-dasharray="4 2") : %(fill="#{blue}")
+    svg << %(<rect x="#{x}" y="#{(200 - h).round(1)}" width="24" height="#{h}" #{style}/>)
+    svg << %(<text x="#{x + 12}" y="213" font-size="10" text-anchor="middle" fill="#{ink}">#{format('%02d', i)}#{' so far' if i == 7}</text>) if i.even? || i == 7
+  end
+  rows = hours.each_with_index.map { |v, i| %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">#{format('%02d:00', i)} to #{i == 7 ? '07:40, still in progress' : format('%02d:00', i + 1)}</th><td class="govuk-table__cell">#{format('%.2f', v)}</td></tr>) }
+  %(<div class="c-colour-example"><figure style="margin:0 0 20px">) +
+    %(<svg role="img" aria-labelledby="tablet-title tablet-desc" viewBox="0 0 360 240" style="display:block;width:100%;max-width:560px;height:auto;font-family:Arial,Helvetica,sans-serif"><title id="tablet-title">Drawing of a dashboard on a wall tablet</title><desc id="tablet-desc">A landscape tablet shows the Hughes home dashboard at 07:40 on Tuesday 17 November. 3 cards show power now, 1.42kW from the grid; the hall, 18.6°C with a target of 20°C; and the back door, open since 07:31. A wide card shows energy used today in hourly bars, 3.30kWh so far, with the hour from 07:00 drawn as an outline because it is still in progress. The table after the drawing gives every value.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
+    %(<figcaption>A drawing of a wall tablet dashboard, not a screenshot. The household and readings are invented. Entities: <code>sensor.grid_power</code>, <code>sensor.hall_temperature</code>, <code>binary_sensor.back_door</code> and <code>sensor.energy_today</code>.</figcaption></figure>) +
+    %(<details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Show the data: wall tablet dashboard at 07:40</span></summary><div class="govuk-details__text"><div class="civica-table-scroll" role="region" tabindex="0" aria-label="Wall tablet dashboard readings"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">Readings at 07:40, 17 November 2026 (invented)</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Card</th><th scope="col" class="govuk-table__header">Reading</th></tr></thead><tbody class="govuk-table__body">#{tiles.map { |l, v, n| %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">#{l}</th><td class="govuk-table__cell">#{v}, #{n.sub(/\A\w/, &:downcase)}</td></tr>) }.join}</tbody></table></div><div class="civica-table-scroll" role="region" tabindex="0" aria-label="Energy used today by hour"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">Energy used today by hour (kWh)</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Hour</th><th scope="col" class="govuk-table__header">Energy (kWh)</th></tr></thead><tbody class="govuk-table__body">#{rows.join}</tbody><tfoot><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Total so far</th><td class="govuk-table__cell">3.30</td></tr></tfoot></table></div></div></details></div>)
+%>
+
+Power now is in kW and energy today is in kWh, so they are on separate cards. [Layout and spacing](layout.html) owns how the cards fit a tablet screen.
+
+### A fixed household summary
+
+This example is a fixed report, not a live card. Notice that the title states the finding, the text gives the date and what is counted, and the table holds the same facts.
+
 <%= example('bg-data-editorial-summary') %>
 
+### Locations as text
+
+This example shows where the sensors are as a list, so the information does not depend on a floor plan or a map. A real floor plan or map would keep its own title, legend and source beside the same list.
+
 <%= example('bg-data-location-alternative') %>
-
-<h2 id="bg-dat-01">BG-DAT-01: Start with a household question</h2>
-
-**Local requirement: MUST.** Applies to dashboard and publication data presentation.
-
-Write down what the person needs to know before you choose a graphic. For example: what is using power now, how usage changed, which device is unavailable, or where a sensor is. A frequently refreshed overview suits monitoring. A detailed explanation may need a report or a few related charts.
-
-Show the main observation without making people click to find it. Do not write a reassuring message when readings are missing. A neutral title such as “Power sources” is more honest than a fixed claim that consumption is falling.
-
-
-<h2 id="bg-dat-02">BG-DAT-02: Choose a chart type for the data relationship</h2>
-
-**Local requirement: MUST.** Applies to chart type choice and maintained Energy chart scope.
-
-Use lines for a time series, columns for interval quantities and horizontal bars to compare devices. Keep power (kW) and energy (kWh) apart. Use a map only when location answers the question. A pictorial percentage in a release graphic is not a template for a live consumption chart.
-
-The maintained Energy adapter draws each Power series as its own unfilled, unsmoothed line and draws consumption and device bars with opaque fills. It keeps valid native bar stacks. Other chart families stay native unless the adapter contract lists them. Do not replace every chart with one decorative shape for consistency.
-
-
-<h2 id="bg-dat-03">BG-DAT-03: Give each chart enough context</h2>
-
-**Local requirement: MUST.** Applies to operational charts, static charts and exported data.
-
-Give each chart a meaningful title, the measure and unit, the selected period and the source. In Home Assistant, the card title, native axis, date selector and device labels can supply these together, so do not repeat every label inside the plot. Give exported data its own caption, because the dashboard controls do not travel with it.
-
-Say in words when a value is a forecast, when it compares another period, when exports are shown as negative values, or when data is missing. Put a short annotation next to its point and repeat essential context in text or the table. Do not add fixed annotations that claim something the integration has not supplied.
-
-
-<h2 id="bg-dat-04">BG-DAT-04: Protect the underlying observations</h2>
-
-**Local requirement: MUST.** Applies to native chart adaptation, data alternatives and lifecycle restoration.
-
-Keep native values, IDs, timestamps, units, null values and controls as Home Assistant supplies them. Show a missing reading as a gap, not as zero. Do not smooth away a peak, force a line scale to start at zero, or use a thick plot edge to suggest a zero baseline that is outside the view. Comparisons keep their original observation dates.
-
-The Power adapter’s signed projection picks the existing signed sample from verified pairs of native series. It does not calculate a new reading, and it leaves ambiguous pairs unchanged. A data table and its plot must cover the same rendered period, including while native updates arrive. When the adapter is removed, restore the native chart without bringing back stale observations.
-
-
-<h2 id="bg-dat-05">BG-DAT-05: Use the operational chart specification</h2>
-
-**Local requirement: MUST.** Applies to supported operational Energy plots, legends and tooltip markers.
-
-Use the [GOV.UK chart colours and series styles](chart-colour.html), legend keys that match the line or pattern, opaque paints and a **1.5px** line width in every state. Hover must not thicken a line or fade the other series.
-
-A theme colour change leaves each source’s colour unchanged, and chart colours are the same in light and dark mode. A comparison keeps its source colour and adds hatching. Hatching, markers and functional strokes are deliberate cues that do not rely on colour, so the [illustration](illustration.html) limits on texture and outline do not apply to them. Infographic accents and other palettes do not replace this contract.
-
-
-<h2 id="bg-dat-06">BG-DAT-06: Retain useful native interaction</h2>
-
-**Local requirement: MUST.** Applies to maintained native Energy adapter and existing chart interaction.
-
-Keep the native controls that answer repeated household questions: date changes, source visibility and device comparison. Preserve native keyboard controls, Chart2Music, zoom, legends and tooltips where Home Assistant supplies them. Explain any interaction that is unfamiliar. Do not replace a working native chart with an image that people cannot operate.
-
-Home Assistant already owns ECharts and the chart data lifecycle, so civica does not add a second chart renderer. The maintained adapter uses the public ECharts calls `getOption` and `setOption`. It also depends on a private, version-sensitive host contract, described in [Compatibility and limits](../get-started/compatibility.html). Check that contract against the supported frontend version.
-
-
-<h2 id="bg-dat-07">BG-DAT-07: Provide a usable alternative and honest scope</h2>
-
-**Local requirement: MUST.** Applies to supported Energy data tables and proposed chart alternatives.
-
-Use **View data** for supported Energy series. Show source names, original dates, units and signed values. Keep the native chart’s accessible name and keyboard interface. Say that the table holds the plotted values for the selected period, including hidden series, and is not a complete meter export. A missing interval cannot be rebuilt from a point the native chart left out.
-
-Give every new chart or static report a matching table or a clear text summary. Label example data as invented. A table alone does not show that the chart’s colour, focus order or interaction work, so test the visual chart and the alternative separately.
-
-
-<h2 id="bg-dat-08">BG-DAT-08: Treat maps as operational evidence</h2>
-
-**Local requirement: MUST.** Applies to native map content and future spatial adapters.
-
-Keep place labels, source attribution, observation time and a suitable extent. Give each marker a label or a distinct shape as well as colour. Keep a scale when distance matters. Add a text list of locations and statuses for people who cannot use the map.
-
-Do not recolour tiles, cover a weather or flood layer, or move a position marker to fit a brand layout. Keep legend thresholds and source warnings. Label a floor plan as a floor plan, not a map, and label invented diagrams. These rules guide future map work. The Energy adapter does not restyle native map providers.
-
-
-<h2 id="bg-dat-09">BG-DAT-09: Separate publishing graphics from live monitoring</h2>
-
-**Local requirement: MUST.** Applies to publishing summaries versus operational monitoring.
-
-A release graphic may sum up one fixed, sourced result with a simple shape or a large number. State its date, denominator, rounding and source, and give the facts as real text. Do not use area, size or motion to exaggerate the result. Say beside the graphic when an example is invented.
-
-Operational dashboards need comparisons that repeat reliably and an accurate current state. Do not carry campaign gradients, oversized strokes, celebratory colours or unsupported claims into them. Review charts at narrow and desktop widths, with long labels and many devices. Verify the maintained adapter on the live route before you claim it is deployed.
-
-
-## Review and evidence
-
-The rule inventory and checklist are `docs/data/brand-guidance-inventory.json` and `docs/data/brand-guidance-checklist.json`. Reviewing a source is not a pass for an interface. Before you close a checklist item, record the page or component, theme and mode, test result and any remaining issue. Recheck after a palette, component or renderer change.
