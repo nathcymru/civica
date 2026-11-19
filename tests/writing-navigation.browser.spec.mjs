@@ -30,12 +30,12 @@ test('writing pages have the correct active navigation, breadcrumbs and a single
     await expect(main.getByRole('link', { name: 'Writing guide', exact: true })).toHaveAttribute('aria-current', 'true');
     await expect(main.locator('a[aria-current]')).toHaveCount(1);
     await expect(main.getByRole('link', { name: 'Styles', exact: true })).not.toHaveAttribute('aria-current');
-    // As on the GOV.UK Design System, the sidebar lists pages in themed groups and
-    // does not repeat the section home, which is reached from the breadcrumb.
+    // The shared section menu: Introduction first (the section home), then one
+    // top-level item for each group, with only the current branch open.
     const sidebar = page.getByRole('navigation', { name: 'Pages in this section' });
-    expect((await sidebar.locator('a').evaluateAll(relativePaths)).filter(path => path === '/content/index.html')).toHaveLength(0);
-    await expect(sidebar.locator('a[aria-current="page"]')).toHaveCount(path === '/content/index.html' ? 0 : 1);
-    await expect(sidebar.locator('.app-subnav__theme')).toHaveText(['Writing guidelines', 'Formatting content', 'Publish, update or retire', 'Lexicons', 'Quick reference']);
+    await expect(sidebar.locator('.app-subnav__tree > li').first()).toHaveText('Introduction');
+    await expect(sidebar.locator('a[aria-current="page"]')).toHaveCount(1);
+    await expect(sidebar.getByRole('link', { name: 'Writing guidelines', exact: true }).first()).toBeVisible();
     const breadcrumb = page.getByRole('navigation', { name: 'Breadcrumb' });
     await expect(breadcrumb).toContainText('Writing guide');
     await expect(breadcrumb.getByRole('link', { name: 'Styles', exact: true })).toHaveCount(0);
