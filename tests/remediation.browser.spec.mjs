@@ -200,7 +200,7 @@ test('the legacy lighting element loads from the stable bundle and preserves the
 
 test('quiet structural borders remain distinct from input boundaries in the built documentation', async ({ page }) => {
   await page.goto('/docs/build/components/cards.html');
-  for (const selector of ['.c-example', '.c-history', '.c-contribute']) {
+  for (const selector of ['.c-example', '.c-history']) {
     const style = await page.locator(selector).first().evaluate(node => ({ color: getComputedStyle(node).borderTopColor, width: getComputedStyle(node).borderTopWidth }));
     expect(style, selector).toEqual({ color: 'rgb(206, 206, 206)', width: '1px' });
   }

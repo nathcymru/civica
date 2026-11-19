@@ -154,10 +154,10 @@ test('notice and footer remain readable without JavaScript and dismissal does no
     await expect(notice(page)).toBeVisible();
     await expect(dismiss(page)).toBeHidden();
     await expect(page.locator('main h1')).toBeVisible();
-    await expect(page.locator('.c-footer')).toBeVisible();
+    await expect(page.locator('.govuk-footer')).toBeVisible();
     expect((await context.cookies()).filter(cookie => cookie.name === NAME)).toEqual([]);
     await reflow(page);
-    await page.locator('.c-footer').getByRole('link', { name: /licen[cs]/i }).first().click();
+    await page.locator('.govuk-footer').getByRole('link', { name: /licen[cs]/i }).first().click();
     await expect(page).toHaveURL(/\/community\/licensing\.html$/);
     await expect(page.locator('[data-license-content]')).toBeVisible();
     await expect(notice(page)).toBeVisible();
@@ -176,7 +176,7 @@ test('notice is in document flow and remains accessible at 320px with doubled te
   const result = await new AxeBuilder({ page }).exclude('iframe').analyze();
   expect(result.violations.map(item => ({ id: item.id, targets: item.nodes.map(node => node.target) }))).toEqual([]);
   await page.evaluate(() => {
-    const nodes = document.querySelectorAll('[data-site-notice] h2, [data-site-notice] p, [data-site-notice] a, [data-site-notice] button, .c-footer p, .c-footer li, .c-footer a');
+    const nodes = document.querySelectorAll('[data-site-notice] h2, [data-site-notice] p, [data-site-notice] a, [data-site-notice] button, .govuk-footer p, .govuk-footer li, .govuk-footer a');
     const sizes = [...nodes].map(node => [node, parseFloat(getComputedStyle(node).fontSize)]);
     for (const [node, size] of sizes) node.style.fontSize = `${size * 2}px`;
   });
@@ -243,9 +243,10 @@ test('the public licence block identifies the exact canonical LICENSE.md source'
     return { actual: structure(actual), expected: structure(expected) };
   }, expectedHtml);
   expect(parity.actual).toEqual(parity.expected);
-  await expect(page.locator('.c-contribute').getByRole('link', { name: 'View this page’s source', exact: true }))
-    .toHaveAttribute('href', 'https://github.com/nathcymru/civica/blob/main/LICENSE.md');
-  const footer = page.locator('.c-footer');
+  await expect(page.locator('.c-history').getByRole('link', { name: /Edit this page/ }))
+    .toHaveAttribute('href', 'https://github.com/nathcymru/civica/edit/main/LICENSE.md');
+  await expect(page.getByText('Help improve this guidance')).toHaveCount(0);
+  const footer = page.locator('.govuk-footer');
   await expect(footer).toContainText('civica is independent of the UK Government');
   await expect(footer).toContainText('GOV.UK Frontend components');
   for (const label of ['Licence', 'Licence and attribution']) {
