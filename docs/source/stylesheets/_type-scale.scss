@@ -38,6 +38,18 @@ $frame-text-width: 720px;
   --frame-gutter: #{$frame-gutter};
 }
 
+// Page base: 19/25 everywhere, so header, notice, cards and footer text sit on
+// the same line grid as the content (the reference sets 19/25 on phone too).
+body { font-size: 19px; line-height: 25px; letter-spacing: normal; }
+
+// Header and main navigation (reference: 61 px bar, 59 px navigation, 40 px search).
+.c-header__inner { padding-top: 8px; padding-bottom: 8px; }
+.c-search { width: 370px; height: 40px; }
+.c-search input { height: 100%; padding: 0 10px; line-height: 25px; }
+.c-navigation a { line-height: 29px; padding: 15px 0 11px; }
+@media (max-width: $bp-desktop - 1px) { .c-search { width: 280px; } }
+@media (max-width: $bp-tablet - 1px) { .c-search { width: 100%; } .c-navigation a { padding: 12px 0 8px; } }
+
 // Frame ---------------------------------------------------------------------
 
 .c-container:not(.c-page--illustrated) { max-width: $frame-width + 2 * $frame-gutter; padding-left: $frame-gutter; padding-right: $frame-gutter; }
@@ -64,7 +76,7 @@ $frame-text-width: 720px;
 
 // Body copy -----------------------------------------------------------------
 
-.technical-documentation { color: $type-colour; }
+.technical-documentation { @include type(19px, 25px); color: $type-colour; }
 .technical-documentation p,
 .technical-documentation li,
 .technical-documentation dd,
@@ -147,6 +159,15 @@ $frame-text-width: 720px;
 .app-subnav__child { @include type(16px, 20px); padding-top: 5px; padding-bottom: 5px; }
 .app-subnav__theme { @include type(19px, 25px); }
 .c-breadcrumbs { @include type(16px, 20px); margin: 5px 0 10px; }
+.technical-documentation .c-breadcrumbs ol { @include type(16px, 20px); padding-bottom: 5px; }
+.technical-documentation .c-breadcrumbs li { font-size: inherit; line-height: inherit; }
+
+// Example panels: small text is 16/20 as in the reference.
+.c-example__top,
+.c-example__code > summary,
+.technical-documentation .c-example__description,
+.c-code-panel,
+.c-code-tabs__list a { @include type(16px, 20px); }
 
 // Hero text -----------------------------------------------------------------
 
