@@ -12,6 +12,8 @@ review_in: "3 months"
 updates:
   - date: "2026-11-19"
     description: "First published. The dashboard guidance, the wall tablet drawing, the fixed household summary and the rule on keeping reports apart from live dashboards moved here from Data visualisation, and were shortened."
+  - date: "2026-11-19"
+    description: "Shortened the page for easier reading: shorter sentences and no repeated text. All examples and links are unchanged."
 ai_instructions: "Apply when deciding whether to build a Home Assistant dashboard of household data and how to arrange it. Use a dashboard for a quick, daily overview of readings that change often. Put the most important cards first, prefer native cards and check phone, tablet and desktop. Keep fixed reports apart from live dashboards (anchor bg-dat-09). Household overview dashboards are owned by /patterns/home.html and the dashboard grid by /styles/layout.html. The wall tablet is a drawing with invented readings, not a screenshot. Do not show rule IDs or name outside sources in page text. Rules WG-038, WG-043, WG-056, WG-073, WG-077."
 ai_related:
   - path: "/styles/brand-data.html"
@@ -30,16 +32,15 @@ ai_related:
 
 # Dashboards
 
-A dashboard brings several cards together to give an overview, such as the energy the home is using, the temperature in each room and which doors are open. It updates as readings arrive, so people come back to it many times a day. [Home and rooms](../patterns/home.html) owns household overview dashboards.
+A dashboard brings cards together for an overview, such as power use, room temperatures and open doors. It updates as readings arrive, so people check it many times a day. [Home and rooms](../patterns/home.html) owns household overview dashboards.
 
 ## When to use a dashboard
 
 Use a dashboard when:
 
 - people need a quick overview, not a detailed explanation
-- the information matters every day and people already know what it means
-- the data changes often and people check it again and again
-- Home Assistant updates the readings automatically
+- the information matters every day and people know what it means
+- the data changes often and Home Assistant updates it automatically
 
 Base the dashboard on what the household actually checks.
 
@@ -48,23 +49,22 @@ Base the dashboard on what the household actually checks.
 Dashboards often:
 
 - leave people to work out what the readings mean
-- cannot explain data that needs a lot of context
-- go out of date as the household’s needs change
-- need care when devices are added or renamed
-- are hard to make work on a phone, a wall tablet and a desktop
+- cannot explain data that needs context
+- go out of date as needs change, or when devices are added or renamed
+- are hard to make work on every screen
 
-To explain something in depth, such as why the energy bill went up, use a page with a few related charts and text.
+To explain something in depth, such as why the energy bill went up, use a page with a few charts and text.
 
 ## Arrange the cards
 
 - Put the most important cards first, such as current power or open doors. Group the rest by room or task.
-- Give a card a short explanation only where people need it.
-- Prefer native cards. A custom card may not support keyboard access, the civica theme or a data table, so check before you rely on it.
-- Check the dashboard on a phone, a tablet and a desktop, with long device names and many devices. [Layout and spacing](layout.html) owns the dashboard grid.
+- Explain a card only where people need it.
+- Prefer native cards. A custom card may not support keyboard access, the civica theme or a data table.
+- Check the dashboard on a phone, a tablet and a desktop, with long names and many devices. [Layout and spacing](layout.html) owns the grid.
 
 ### Example: a wall tablet
 
-A wall tablet shows the few readings a household checks most, large enough to read from across the room. Notice that each card has one large reading with its unit and one line of context. The hour still in progress on the energy chart is an outline, not a full bar.
+A wall tablet shows the few readings a household checks most, readable from across the room. Each card has one large reading with its unit and one line of context. The hour still in progress is an outline, not a full bar.
 
 <%=
   hex = ->(id) { govuk_colour(id).fetch('hex') }
@@ -97,10 +97,10 @@ Power now is in kW and energy today is in kWh, so they are on separate cards.
 
 <h2 id="bg-dat-09">Keep reports apart from live dashboards</h2>
 
-A fixed report, such as a monthly energy summary for the household, can show one result with a large number or a simple shape. Give its date, what it counts, how it is rounded and its source, as real text. Do not use size, area or motion to exaggerate the result.
+A fixed report, such as a monthly energy summary, can show one result as a large number or simple shape. Give its date, what it counts, its rounding and its source as real text. Do not use size, area or motion to exaggerate the result.
 
-A live dashboard needs accurate current states and comparisons that repeat reliably. Do not bring celebratory colours, gradients, oversized lines or claims from a report into it.
+A live dashboard needs accurate current states. Keep a report's celebratory colours, gradients and claims out of it.
 
-This fixed report states its finding in the title. Notice that the text gives the date and what is counted, and the table holds the same facts.
+This fixed report states its finding in the title. The text gives the date and what is counted, and the table holds the same facts.
 
 <%= example('bg-data-editorial-summary') %>
