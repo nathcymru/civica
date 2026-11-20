@@ -1,6 +1,6 @@
-# civica house lighting
+# Civica house lighting
 
-The lighting card presents a floor plan and room controls. Home Assistant runs the scenes and supplies the native brightness, colour and temperature controls. The `govuk` filenames and service IDs remain for compatibility; the visible product identity is civica.
+The lighting card presents a floor plan and room controls. Home Assistant runs the scenes and supplies the native brightness, colour and temperature controls. The `govuk` filenames and service IDs remain for compatibility; the visible product identity is Civica.
 
 | Part | Source | Purpose |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ Adapting the lighting controller requires a [source checkout](https://github.com
 
 The old `custom:govuk-house-lighting-card` name is still supported. Existing `/local/govuk-lighting/dist/govuk-house-lighting-card.js` installations remain supported by the compatibility import. Copy both JavaScript files to the existing `dist/` folder and keep adjacent assets at `www/govuk-lighting/assets/`. Register only one resource URL.
 
-The card needs no card-mod or floor-plan add-on. Install the civica themes separately using the [repository installation guide](../README.md). HACS theme installation does not install this card, its assets or the controller package.
+The card needs no card-mod or floor-plan add-on. Install the Civica themes separately using the [repository installation guide](../README.md). HACS theme installation does not install this card, its assets or the controller package.
 
 Do not install `lighting/ha/front_door.yaml` as part of a generic card installation. It is a separate, installation-specific example with real entity IDs.
 

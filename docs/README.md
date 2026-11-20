@@ -1,6 +1,6 @@
-# civica documentation
+# Civica documentation
 
-This is a real [GOV.UK Tech Docs Template](https://github.com/alphagov/tech-docs-template) site, using Middleman and pinned `govuk_tech_docs` 6.6.0. It follows the GOV.UK Design System's Get started / Styles / Components / Patterns / Community / Accessibility organisation, with Writing guide added as a separate main section and an independent civica identity.
+This is a real [GOV.UK Tech Docs Template](https://github.com/alphagov/tech-docs-template) site, using Middleman and pinned `govuk_tech_docs` 6.6.0. It follows the GOV.UK Design System's Get started / Styles / Components / Patterns / Community / Accessibility organisation, with Writing guide added as a separate main section and an independent Civica identity.
 
 The upstream GOV.UK Design System website uses Node. This project maps its information architecture and layout into Middleman's `source/`, `layouts/`, `data/` and `config/` structure. It does not claim that the upstream Node repository is a Middleman template.
 
@@ -55,7 +55,7 @@ Run `node --test test/roadmap.test.mjs test/roadmap-workflow.test.mjs` and, afte
 
 ## Project identity
 
-The template's renderer, syntax highlighting, contents helpers and selected component styles are used. The local shell replaces all official identity. It uses civica identity for project documentation, keeps household personalisation separate, excludes upstream branded assets, and omits GDS Transport font-face rules. The built output must be checked after dependency upgrades.
+The template's renderer, syntax highlighting, contents helpers and selected component styles are used. The local shell replaces all official identity. It uses Civica identity for project documentation, keeps household personalisation separate, excludes upstream branded assets, and omits GDS Transport font-face rules. The built output must be checked after dependency upgrades.
 
 `source/images/` contains byte-for-byte copies of accepted core, icon and palette assets from the revised `civica_brand_assets_revised.zip` pack in `brand/civica/`. Keep accepted originals and provenance there unchanged. The accepted-file inventory records the source checksum self-hash defect and the excluded empty WebP. Run `python3 docs/scripts/sync-brand.py` after an authorised asset-pack update; it also regenerates the published artwork manifest. This site does not claim official government affiliation or a completed accessibility certification.
 
@@ -80,7 +80,7 @@ It checks guide structure/history, source-to-preview parity, every standalone ex
 
 ## First-visit notice and licence page
 
-`/community/licensing.html` renders the repository's `LICENSE.md` through `repository_licence_markdown` on every Middleman build. It does not fetch legal text in the visitor's browser. The helper resolves repository-relative `licences/` links to exact files copied into `build/reference/licences/` by the build hook. The rendered block carries the source SHA-256, and its source link points to the root Markdown file. `LICENSE` contains the custom civica Free Use Licence, and the licence check verifies that its full text also appears unchanged in `LICENSE.md`. Do not label these no-sale and no-paid-services terms as MIT or OSI open source. Dependencies and previously licensed materials retain their separate terms.
+`/community/licensing.html` renders the repository's `LICENSE.md` through `repository_licence_markdown` on every Middleman build. It does not fetch legal text in the visitor's browser. The helper resolves repository-relative `licences/` links to exact files copied into `build/reference/licences/` by the build hook. The rendered block carries the source SHA-256, and its source link points to the root Markdown file. `LICENSE` contains the custom Civica Free Use Licence, and the licence check verifies that its full text also appears unchanged in `LICENSE.md`. Do not label these no-sale and no-paid-services terms as MIT or OSI open source. Dependencies and previously licensed materials retain their separate terms.
 
 The deployed notice and `core-cookie-essential` example share the example's HTML record. The helper changes only its destinations and persistence mode for the live shell. `site-notice.js` runs immediately after the notice, so a valid acknowledgement hides it before the rest of the page is parsed. With JavaScript off, the explanation stays visible and its dismiss button remains hidden. The example never saves a cookie.
 

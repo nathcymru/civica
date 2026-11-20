@@ -1,6 +1,6 @@
 ---
 title: "Type scale"
-description: "Every civica text size and line height on wide and narrow screens, with the civica and Home Assistant font variables to use in a card."
+description: "Every Civica text size and line height on wide and narrow screens, with the Civica and Home Assistant font variables to use in a card."
 group: "Typography"
 nav_order: 5
 no_contents: true
@@ -11,7 +11,7 @@ updated_on: "2026-11-19"
 updates:
   - date: "2026-11-19"
     description: "First published. The type scale table, specimen, comparison chart, native Home Assistant sizes and the card CSS example moved here from Typography."
-ai_instructions: "Apply when choosing a font size or line height for a Home Assistant card, panel or civica documentation page. Take sizes from the type scale table: maintained civica UI uses civica-font-size-body (19px), civica-font-size-small (16px) and civica-font-size-heading (24px); native dense controls keep ha-font-size-xs, s, m and l (12, 14, 16 and 19px). Every size is multiplied by --ha-font-size-scale, so never set a fixed px font size in a card: use var(--variable). A large sensor reading is sized to fit the card. Headings own heading levels; Web-app typography owns when to keep native screens dense. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-080."
+ai_instructions: "Apply when choosing a font size or line height for a Home Assistant card, panel or Civica documentation page. Take sizes from the type scale table: maintained Civica UI uses civica-font-size-body (19px), civica-font-size-small (16px) and civica-font-size-heading (24px); native dense controls keep ha-font-size-xs, s, m and l (12, 14, 16 and 19px). Every size is multiplied by --ha-font-size-scale, so never set a fixed px font size in a card: use var(--variable). A large sensor reading is sized to fit the card. Headings own heading levels; Web-app typography owns when to keep native screens dense. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-080."
 ai_related:
   - path: "/styles/typography.html"
     title: "Typography"
@@ -31,11 +31,11 @@ ai_related:
 
 Take every text size from this scale. Do not make up a new size for one card.
 
-Each role has one size on wide screens and one on narrow screens, such as a phone. The civica theme multiplies every size by Home Assistant's font size scale, `--ha-font-size-scale`, so all text grows together if the scale is raised. Browser and app zoom make it larger too.
+Each role has one size on wide screens and one on narrow screens, such as a phone. The Civica theme multiplies every size by Home Assistant's font size scale, `--ha-font-size-scale`, so all text grows together if the scale is raised. Browser and app zoom make it larger too.
 
 ## Sizes for each role
 
-| Role | Wide screens | Narrow screens | Line height | Weight | civica or Home Assistant variable |
+| Role | Wide screens | Narrow screens | Line height | Weight | Civica or Home Assistant variable |
 | --- | --- | --- | --- | --- | --- |
 | Page heading | 48px | 36px | 1.1 | Bold | None. Used on documentation pages and custom panels only |
 | Section heading | 30px | 24px | 1.2 | Bold | None. Used on documentation pages and custom panels only |
@@ -44,7 +44,7 @@ Each role has one size on wide screens and one on narrow screens, such as a phon
 | Body text and main controls | 19px | 18px to 19px | 1.5 | Regular | `civica-font-size-body` |
 | Supporting text | 16px | 16px | 1.5 | Regular | `civica-font-size-small` |
 
-These sizes are for maintained civica cards and panels. On a phone, the narrow sizes stop a heading from taking the whole screen.
+These sizes are for maintained Civica cards and panels. On a phone, the narrow sizes stop a heading from taking the whole screen.
 
 ## Specimen
 
@@ -107,7 +107,7 @@ This comparison shows how much each size changes between wide and narrow screens
 
 <h2 id="native-home-assistant-sizes">Native Home Assistant sizes</h2>
 
-Native Home Assistant screens are denser than a civica card, so they keep smaller sizes. The civica theme raises each native size by one step, to these values:
+Native Home Assistant screens are denser than a Civica card, so they keep smaller sizes. The Civica theme raises each native size by one step, to these values:
 
 | Home Assistant variable | Size | Used for |
 | --- | --- | --- |

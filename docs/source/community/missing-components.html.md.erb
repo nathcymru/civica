@@ -1,6 +1,6 @@
 ---
 title: "Home Assistant specification coverage"
-description: "Completed design contracts and acceptance recipes for native Home Assistant capabilities, with current civica coverage kept explicit."
+description: "Completed design contracts and acceptance recipes for native Home Assistant capabilities, with current Civica coverage kept explicit."
 section: community
 group: Review
 status: reference
@@ -8,14 +8,14 @@ published_on: 2026-11-11
 updated_on: "2026-11-17"
 updates:
   - date: "2026-11-13"
-    description: "Updated the current project name and repository links to civica."
+    description: "Updated the current project name and repository links to Civica."
   - date: 2026-11-11
     description: "Linked 30 completed Home Assistant specifications and their task-specific examples, retaining native implementation boundaries."
   - date: 2026-11-11
     description: "Recorded 30 proposed household design-specification gaps, native capability evidence and testable acceptance criteria."
   - date: "2026-11-17"
     description: "Rewritten to lead with what the register does and does not claim, with the generated specifications, evidence and links unchanged."
-ai_instructions: "Apply when saying that Home Assistant lacks something or that civica covers it. The register lists gaps in civica design specifications, never missing Home Assistant features. Completion means design coverage, not a native adapter or a live device test. Keep native capability, civica implementation and design specification as three separate claims. Rules WG-002, WG-043, WG-056."
+ai_instructions: "Apply when saying that Home Assistant lacks something or that Civica covers it. The register lists gaps in Civica design specifications, never missing Home Assistant features. Completion means design coverage, not a native adapter or a live device test. Keep native capability, Civica implementation and design specification as three separate claims. Rules WG-002, WG-043, WG-056."
 ai_related:
   - path: "/home-assistant/index.html"
     title: "Home Assistant controls and flows"
@@ -33,7 +33,7 @@ ai_related:
 
 # Home Assistant specification coverage
 
-Do not read this register as a list of features Home Assistant lacks. Home Assistant already provides device controls, automation editors, schedules, history, account management and recovery flows. The gaps below concern **civica design specifications and acceptance coverage** for those capabilities.
+Do not read this register as a list of features Home Assistant lacks. Home Assistant already provides device controls, automation editors, schedules, history, account management and recovery flows. The gaps below concern **Civica design specifications and acceptance coverage** for those capabilities.
 
 The audience is maintainers and reviewers. The review identified 30 areas needing a dedicated specification or a more complete task contract. Each now has a linked guide with state/capability decisions, complete examples, accessibility and recovery guidance, and integration acceptance recipes. Start with the [Home Assistant catalogue](../home-assistant/index.html). Completion means design coverage. It does not mean a new native adapter or a live device test.
 
@@ -45,7 +45,7 @@ The audience is maintainers and reviewers. The review identified 30 areas needin
 | Part | Evidence required |
 | --- | --- |
 | Native capability | Official Home Assistant documentation or source shows that the feature exists |
-| civica implementation | A named maintained component or bounded adapter implements a change; theme variables alone are a narrower claim |
+| Civica implementation | A named maintained component or bounded adapter implements a change; theme variables alone are a narrower claim |
 | Design specification | The guide explains capability, state, content, accessibility and failure behaviour, with task-specific acceptance checks |
 
 The current companion adapts known shell hosts, profile colour settings, numeric attention badges, seven native Energy graph types and three named household cards. It also supplies action links. The maintained lighting card adds its own room and scene controls. Other native surfaces keep their own behaviour and the styles they expose. See [Compatibility and limits](../get-started/compatibility.html) for the exact boundary.
@@ -67,7 +67,7 @@ Each entry below is generated from the gap register. The native capability line 
 <p><strong><%= escape(finding['priority']) %> · <%= escape(finding['designCoverage'].tr('-', ' ')) %>.</strong> <%= escape(finding['proposal']) %></p>
 <% if finding['specification'] %><p><strong>Completed specification:</strong> <a href="<%= docs_path(finding['specification']['url']) %>"><%= escape(finding['specification']['title']) %></a> — <%= finding['specification']['examples'].length %> complete examples.</p><% end %>
 <p><strong>Native capability:</strong> <%= escape(finding['nativeCapability']['evidence']) %></p>
-<p><strong>Current civica scope:</strong> <%= escape(finding['civicaRuntime']) %>.</p>
+<p><strong>Current Civica scope:</strong> <%= escape(finding['civicaRuntime']) %>.</p>
 <p><strong>Affected surfaces:</strong> <%= escape(finding['surfaces'].join(', ')) %>.</p>
 <p><strong>Integration acceptance criteria:</strong></p>
 <ul><% finding['acceptanceCriteria'].each do |check| %><li><%= escape(check) %></li><% end %></ul>

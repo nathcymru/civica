@@ -11,14 +11,14 @@ updated_on: "2026-11-19"
 updates:
   - date: "2026-11-19"
     description: "First published. The rules on the phone's own screens, readings and units, native screens and checks at larger sizes moved here from Typography in context, with the power readings example."
-ai_instructions: "Apply when setting text on a Home Assistant dashboard in a browser or the Companion app, a native Home Assistant screen or a civica chart card. A dashboard uses the same civica theme in a browser and in the Companion app. Keep the Companion app settings, keyboard, share sheet and permission requests in the phone's own font. Show every reading with its unit, sign and time; never cut off the minus sign, decimal, unit, name or an Unavailable or stale qualifier; use tabular-nums in columns; keep the household's language, number, time format and time zone. Native screens keep the smaller native sizes. Chart labels are at least 14px, scaled by --ha-font-size-scale. Check cards with zoom and a raised font size scale. The rules anchored bg-typ-03, bg-typ-04 and bg-typ-05 are on this page; do not show their IDs as text or name outside sources. Rules WG-001, WG-002, WG-071, WG-073, WG-074."
+ai_instructions: "Apply when setting text on a Home Assistant dashboard in a browser or the Companion app, a native Home Assistant screen or a Civica chart card. A dashboard uses the same Civica theme in a browser and in the Companion app. Keep the Companion app settings, keyboard, share sheet and permission requests in the phone's own font. Show every reading with its unit, sign and time; never cut off the minus sign, decimal, unit, name or an Unavailable or stale qualifier; use tabular-nums in columns; keep the household's language, number, time format and time zone. Native screens keep the smaller native sizes. Chart labels are at least 14px, scaled by --ha-font-size-scale. Check cards with zoom and a raised font size scale. The rules anchored bg-typ-03, bg-typ-04 and bg-typ-05 are on this page; do not show their IDs as text or name outside sources. Rules WG-001, WG-002, WG-071, WG-073, WG-074."
 ai_related:
   - path: "/styles/typography.html"
     title: "Typography"
     relationship: "Overview of all typography pages."
   - path: "/styles/typography-type-scale.html"
     title: "Type scale"
-    relationship: "Owns the civica and native sizes."
+    relationship: "Owns the Civica and native sizes."
   - path: "/content/formatting-content/charts-and-data.html"
     title: "Charts and data"
     relationship: "Owns how to word numbers, units and times."
@@ -29,7 +29,7 @@ ai_related:
 
 # Web-app typography
 
-A Home Assistant dashboard looks the same in a web browser and in the Companion app, because both show it with the civica theme. Set its text once, with the [typeface](typography-typeface.html) and [type scale](typography-type-scale.html), and it works in both.
+A Home Assistant dashboard looks the same in a web browser and in the Companion app, because both show it with the Civica theme. Set its text once, with the [typeface](typography-typeface.html) and [type scale](typography-type-scale.html), and it works in both.
 
 Most text on a dashboard is readings, names and states that people check many times a day. Set them so the number, its unit and how recent it is can be read at a glance.
 
@@ -62,9 +62,9 @@ This example shows power readings in a table. Notice the minus sign on the grid 
 
 Native Home Assistant screens, such as entity settings and the automation editor, show a lot of information. They keep the smaller [native sizes](typography-type-scale.html#native-home-assistant-sizes). Do not make every editor row the size of a heading. That pushes controls off the screen and breaks the native layout.
 
-Chart labels and legends in civica chart cards are at least 14px, and grow with the font size scale.
+Chart labels and legends in Civica chart cards are at least 14px, and grow with the font size scale.
 
-These are civica settings for its own theme and cards. A card from another developer may not follow them.
+These are Civica settings for its own theme and cards. A card from another developer may not follow them.
 
 <h2 id="bg-typ-05">Check text at larger sizes and in difficult states</h2>
 

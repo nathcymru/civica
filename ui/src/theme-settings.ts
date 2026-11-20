@@ -8,13 +8,15 @@ export interface ThemeHass {
 }
 
 // One theme per GOV.UK theme colour. Chart colours do not follow this choice.
-export const themeName = (name: string) => `civica ${name}`;
+export const themeName = (name: string) => `Civica ${name}`;
 export function selectedVariant(hass?: ThemeHass) {
   const name = hass?.themes?.theme || hass?.selectedTheme?.theme || hass?.themes?.default_theme;
-  const palette = palettes.palettes.find(item => name === themeName(item.name));
+  // Installations that chose a theme before the capital letter was adopted keep working.
+  const lower = name?.toLowerCase();
+  const palette = palettes.palettes.find(item => lower === themeName(item.name).toLowerCase());
   if (palette) return { palette };
   const defaultPalette = palettes.palettes.find(item => item.id === palettes.defaultPalette)!;
-  return name === 'civica' || name === 'govuk' ? { palette: defaultPalette } : undefined;
+  return lower === 'civica' || lower === 'govuk' ? { palette: defaultPalette } : undefined;
 }
 
 const CSS = `
@@ -46,7 +48,7 @@ export class CivicaThemeSettings extends HTMLElement {
     const root = this.attachShadow({ mode: 'open' });
     const style = document.createElement('style'); style.textContent = CSS;
     const section = document.createElement('section'); section.setAttribute('aria-labelledby', 'title');
-    const title = document.createElement('h2'); title.id = 'title'; title.textContent = 'civica colours';
+    const title = document.createElement('h2'); title.id = 'title'; title.textContent = 'Civica colours';
     const label = document.createElement('label'); label.htmlFor = 'palette'; label.textContent = 'Theme colour';
     this.select = document.createElement('select'); this.select.id = 'palette'; this.select.setAttribute('aria-describedby', 'hint');
     const placeholder = document.createElement('option'); placeholder.value = ''; placeholder.textContent = 'Choose a theme colour'; placeholder.disabled = true; this.select.append(placeholder);
@@ -79,7 +81,7 @@ export class CivicaThemeSettings extends HTMLElement {
     const hasAll = palettes.palettes.every(p => themeName(p.name) in available);
     this.select.disabled = !hasAll || Boolean(recovery);
     this.select.value = variant?.palette.id || '';
-    this.status.textContent = recovery ? 'Colour controls are unavailable in safe or recovery mode.' : loading ? 'Colour settings are loading.' : !hasAll ? 'Install all civica themes and reload themes to use these controls.' : variant ? `${variant.palette.name} theme colour selected.` : 'Choose a theme colour to use civica colours.';
+    this.status.textContent = recovery ? 'Colour controls are unavailable in safe or recovery mode.' : loading ? 'Colour settings are loading.' : !hasAll ? 'Install all Civica themes and reload themes to use these controls.' : variant ? `${variant.palette.name} theme colour selected.` : 'Choose a theme colour to use civica colours.';
   }
   private apply() {
     const palette = palettes.palettes.find(p => p.id === this.select.value);
@@ -99,4 +101,4 @@ export class CivicaThemeSettings extends HTMLElement {
 if (!customElements.get('civica-theme-settings')) customElements.define('civica-theme-settings', CivicaThemeSettings);
 const registry = window as unknown as { customCards?: object[] };
 registry.customCards ||= [];
-if (!registry.customCards.some((c: any) => c.type === 'civica-theme-settings')) registry.customCards.push({ type: 'civica-theme-settings', name: 'civica colours', description: 'Choose the theme colour from the GOV.UK palette.' });
+if (!registry.customCards.some((c: any) => c.type === 'civica-theme-settings')) registry.customCards.push({ type: 'civica-theme-settings', name: 'Civica colours', description: 'Choose the theme colour from the GOV.UK palette.' });

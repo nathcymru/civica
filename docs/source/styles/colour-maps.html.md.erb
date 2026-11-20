@@ -1,7 +1,7 @@
 ---
 no_contents: true
 title: "Map colours"
-description: "The civica map colours, how to combine them on a base map, and a working OpenStreetMap example that uses them."
+description: "The Civica map colours, how to combine them on a base map, and a working OpenStreetMap example that uses them."
 group: "Colour"
 nav_order: 7
 last_reviewed_on: 2026-11-19
@@ -10,7 +10,7 @@ published_on: "2026-11-18"
 updated_on: "2026-11-19"
 updates:
   - date: "2026-11-18"
-    description: "First published, with the civica map palette and the colours for a base map with data."
+    description: "First published, with the Civica map palette and the colours for a base map with data."
   - date: "2026-11-18"
     description: "Swatches now show a round colour sample, the zones drawing is shown on the page, and Colours used in example lists the colours for points of interest and the base map. Moved maintenance notes to Colour."
   - date: "2026-11-18"
@@ -21,7 +21,7 @@ updates:
     description: "Said that a custom map style colours only the base map, not the Map card's zones and markers. Added White to the base map colours and removed the repeated colour list under the working example. The zones drawing now fits narrow screens."
   - date: "2026-11-19"
     description: "Shortened the page for easier reading: shorter sentences and no repeated text. All colours, examples and links are unchanged."
-ai_instructions: "Apply when colouring a map: a base map, zones, device or person locations, or areas. Use only the civica map palette on this page, rendered from the shared colour data file; never type a hex value. For a base map with data: land Black tint 95% with a Black tint 80% outline, sea Teal tint 95%, coastal areas Teal tint 80%, one data colour (Accent green with a Primary green outline), labels Black. Tell zones and markers apart by shape, letter and label, not by a second colour. On the working OpenStreetMap example, roads are White with Black tint 80% edges and buildings Black tint 80%; rivers are Teal tint 80% lines with low contrast against the land. Map colours are the same in light and dark mode and never follow the theme colour; the exception is the native Map card's Home zone, which takes primary-color and so follows the theme colour and mode. The native Map card can take the base map colours through a custom map_style with colors and colors_dark; that setting does not colour zones or markers: the Home zone takes primary-color (which follows the theme colour and mode), passive zones secondary-text-color, other zones, people and trackers color-N in creation order (civica chart colours), so Accent green zones and markers apply only to maps you draw yourself. civica ships no Map card restyle. Attribution, locations and uncertainty are owned by Maps, zones and location records. Do not name outside sources on the page. Rules WG-001, WG-002, WG-081."
+ai_instructions: "Apply when colouring a map: a base map, zones, device or person locations, or areas. Use only the Civica map palette on this page, rendered from the shared colour data file; never type a hex value. For a base map with data: land Black tint 95% with a Black tint 80% outline, sea Teal tint 95%, coastal areas Teal tint 80%, one data colour (Accent green with a Primary green outline), labels Black. Tell zones and markers apart by shape, letter and label, not by a second colour. On the working OpenStreetMap example, roads are White with Black tint 80% edges and buildings Black tint 80%; rivers are Teal tint 80% lines with low contrast against the land. Map colours are the same in light and dark mode and never follow the theme colour; the exception is the native Map card's Home zone, which takes primary-color and so follows the theme colour and mode. The native Map card can take the base map colours through a custom map_style with colors and colors_dark; that setting does not colour zones or markers: the Home zone takes primary-color (which follows the theme colour and mode), passive zones secondary-text-color, other zones, people and trackers color-N in creation order (Civica chart colours), so Accent green zones and markers apply only to maps you draw yourself. Civica ships no Map card restyle. Attribution, locations and uncertainty are owned by Maps, zones and location records. Do not name outside sources on the page. Rules WG-001, WG-002, WG-081."
 ai_related:
   - path: "/home-assistant/maps-and-zones.html"
     title: "Maps, zones and location records"
@@ -92,7 +92,7 @@ Rivers are thin Teal tint 80% lines with low contrast, so do not rely on them to
 
 ## In Home Assistant
 
-civica does not restyle the native Map card. You can give its base map these colours with a custom `map_style` that sets `colors` and `colors_dark`. Use the same colours for both. [What the native Map card offers](../home-assistant/maps-and-zones.html#what-the-native-map-card-offers) explains the options.
+Civica does not restyle the native Map card. You can give its base map these colours with a custom `map_style` that sets `colors` and `colors_dark`. Use the same colours for both. [What the native Map card offers](../home-assistant/maps-and-zones.html#what-the-native-map-card-offers) explains the options.
 
 The `colors` setting covers only the base map, such as land, water, roads and buildings. The card colours zones and markers from the theme:
 

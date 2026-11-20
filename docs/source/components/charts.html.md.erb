@@ -7,7 +7,7 @@ published_on: 2026-11-11
 updated_on: "2026-11-18"
 updates:
   - date: "2026-11-13"
-    description: "Updated the current project name and repository links to civica."
+    description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-12"
     description: "Connected data and colour rules to the existing ONS-informed chart contract and quantitative scale examples."
   - date: "2026-11-11"
@@ -28,7 +28,7 @@ updates:
 
 # Charts and tables
 
-Charts help people compare values and understand change. The civica chart pattern adapts the **ONS Design System chart components** to Home Assistant: their geometry, axes, legend and figure structure, from the ONS chart build specifications. Colours follow the GOV.UK chart palette. A change to series colours alone does not implement this pattern.
+Charts help people compare values and understand change. The Civica chart pattern adapts the **ONS Design System chart components** to Home Assistant: their geometry, axes, legend and figure structure, from the ONS chart build specifications. Colours follow the GOV.UK chart palette. A change to series colours alone does not implement this pattern.
 
 Use the [Energy and history pattern](../patterns/energy.html) for consumption, power and distribution. The [machine-readable ONS source record](../reference/ons-chart-sources.json) records the upstream release, source hashes, reference values and controlled deviations.
 
@@ -66,7 +66,7 @@ These isolated examples illustrate the decisions on this page. Any household val
 
 ## Source and implementation boundary
 
-The reviewed ONS components are [bar charts](https://service-manual.ons.gov.uk/design-system/components/bar-chart-component), [column charts](https://service-manual.ons.gov.uk/design-system/components/column-chart-component) and [line charts](https://service-manual.ons.gov.uk/design-system/components/line-chart-component). Their published implementation uses Highcharts. This project applies the design to Home Assistant's existing ECharts renderer through the optional civica companion; it does not install Highcharts or replace the Energy dashboard.
+The reviewed ONS components are [bar charts](https://service-manual.ons.gov.uk/design-system/components/bar-chart-component), [column charts](https://service-manual.ons.gov.uk/design-system/components/column-chart-component) and [line charts](https://service-manual.ons.gov.uk/design-system/components/line-chart-component). Their published implementation uses Highcharts. This project applies the design to Home Assistant's existing ECharts renderer through the optional Civica companion; it does not install Highcharts or replace the Energy dashboard.
 
 The source baseline is [ONS Design System 74.0.0](https://github.com/ONSdigital/design-system/releases/tag/74.0.0), reviewed on 11 November 2026. The companion must leave native chart data, unit conversion, statistics, routing, selection and date handling under Home Assistant's control. Theme YAML provides colour roles; the companion is required for chart geometry, captions and data alternatives. See [installation](../get-started/install.html).
 
@@ -82,12 +82,12 @@ Provide a named chart region and a route to its values without hovering. Support
 
 These are chart roles, separate from card borders and input boundaries. Values are CSS pixels at the default text scale.
 
-| Element | ONS reference | civica adaptation |
+| Element | ONS reference | Civica adaptation |
 | --- | --- | --- |
 | Plot | Transparent background; no decorative frame | Inherit the themed card canvas; no extra plot box |
 | Numeric grid | 1px | GOV.UK Black tint 80% `#CECECE`, 1px, in both modes |
 | Zero reference | 1.5px | Use the true zero crossing where established; GOV.UK Black tint 50% `#858686` in both modes |
-| Axis labels | At least 14px, horizontal | Use the civica font, respect user text scaling and reduce tick density before shrinking text |
+| Axis labels | At least 14px, horizontal | Use the Civica font, respect user text scaling and reduce tick density before shrinking text |
 | Legend text | At least 14px, normal weight | Keep native labels and expose values in the accompanying table |
 | Filled-series key | 12px circle | Match the opaque series colour and comparison pattern; preserve native visibility controls |
 | Line-series key | 20px wide, 3px stroke | Match the line colour and dash pattern at the local 1.5px width; preserve native controls |
@@ -108,7 +108,7 @@ Place the legend above the plot, aligned left, and wrap whole labelled items. Pr
 
 ## Colour and typography deviations
 
-Chart colours are the [GOV.UK chart palette](../styles/chart-colour.html), unchanged, in light and dark mode and with every theme colour. Each energy role has a fixed colour, and every other series takes one of the six categorical colours plus a pattern, line dash and marker from its stable ID. Colours are opaque, with no native alpha suffixes or gradients. Text uses the civica Arial stack. Labels are GOV.UK Black (`#0B0C0C`) and axes and grid lines Black tint 80% (`#CECECE`). In dark mode labels are White; the zero line uses Black tint 50% (`#858686`) in both modes. White labels in dark mode are a civica adaptation, because GOV.UK gives no dark-mode chart guidance; the Black tint 50% zero line is a civica choice so that it stands out from the grid.
+Chart colours are the [GOV.UK chart palette](../styles/chart-colour.html), unchanged, in light and dark mode and with every theme colour. Each energy role has a fixed colour, and every other series takes one of the six categorical colours plus a pattern, line dash and marker from its stable ID. Colours are opaque, with no native alpha suffixes or gradients. Text uses the Civica Arial stack. Labels are GOV.UK Black (`#0B0C0C`) and axes and grid lines Black tint 80% (`#CECECE`). In dark mode labels are White; the zero line uses Black tint 50% (`#858686`) in both modes. White labels in dark mode are a Civica adaptation, because GOV.UK gives no dark-mode chart guidance; the Black tint 50% zero line is a Civica choice so that it stands out from the grid.
 
 GOV.UK advises limiting the number of colours in a chart. An existing Home Assistant chart may contain more series than there are colours: **never truncate, regroup or discard native series** to fit. Use names, data values, patterns and line styles to supplement colour. Audit the actual rendered combinations.
 

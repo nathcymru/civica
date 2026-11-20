@@ -10,8 +10,8 @@ published_on: "2026-11-19"
 updated_on: "2026-11-19"
 updates:
   - date: "2026-11-19"
-    description: "First published, with the visually hidden class used in the civica house lighting card and the limits of hiding cards in Home Assistant."
-ai_instructions: "Apply when some text should be read by a screen reader but not shown on screen. Home Assistant dashboard YAML has no option for this: a visibility condition, hide_state or show_name: false hides the item from everyone, including screen readers. In a maintained custom card, use a visually hidden class (the civica house lighting card uses .vh: position absolute, 1px by 1px, overflow hidden, clip-path inset(50%), white-space nowrap) for extra context such as 'Settings for Kitchen' on an icon-only button or 'Error:' before an error message. Use aria-hidden only on decorative icons. Never visually hide a control or focusable element. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-030."
+    description: "First published, with the visually hidden class used in the Civica house lighting card and the limits of hiding cards in Home Assistant."
+ai_instructions: "Apply when some text should be read by a screen reader but not shown on screen. Home Assistant dashboard YAML has no option for this: a visibility condition, hide_state or show_name: false hides the item from everyone, including screen readers. In a maintained custom card, use a visually hidden class (the Civica house lighting card uses .vh: position absolute, 1px by 1px, overflow hidden, clip-path inset(50%), white-space nowrap) for extra context such as 'Settings for Kitchen' on an icon-only button or 'Error:' before an error message. Use aria-hidden only on decorative icons. Never visually hide a control or focusable element. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-030."
 ai_related:
   - path: "/styles/structure.html"
     title: "Structure"
@@ -36,7 +36,7 @@ So give every native card a visible name that makes sense on its own. For exampl
 
 ## Visually hidden text in a custom card
 
-In a maintained custom card, use a visually hidden class. It keeps the text in the page for screen readers but takes it off the screen. This is the class from the civica house lighting card.
+In a maintained custom card, use a visually hidden class. It keeps the text in the page for screen readers but takes it off the screen. This is the class from the Civica house lighting card.
 
 ```css
 .vh {

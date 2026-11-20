@@ -1,6 +1,6 @@
 ---
 title: "Spacing"
-description: "Space a maintained custom card with the civica 5px spacing scale, and leave the native Home Assistant spacing as it is."
+description: "Space a maintained custom card with the Civica 5px spacing scale, and leave the native Home Assistant spacing as it is."
 group: "Structure"
 nav_order: 9
 no_contents: true
@@ -10,8 +10,8 @@ published_on: "2026-11-19"
 updated_on: "2026-11-19"
 updates:
   - date: "2026-11-19"
-    description: "First published, with the civica spacing scale, its bar chart, the custom card CSS and native Home Assistant spacing, moved from Layout and spacing. Added the smaller spacing the civica house lighting card uses on narrow screens."
-ai_instructions: "Apply when setting padding or margins in a maintained custom card. Use the civica 5px spacing scale (unit 1 to 9: 5, 10, 15, 20, 25, 30, 40, 50, 60px). civica has no spacing variable, so write the value in the card's CSS. On screens up to 640px the civica house lighting card steps down one unit for card padding (15px, 20px from 641px) and two for the gap below the room list (20px, 30px from 641px). Leave native --ha-space-1 to --ha-space-20 (4px steps) alone. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-081."
+    description: "First published, with the Civica spacing scale, its bar chart, the custom card CSS and native Home Assistant spacing, moved from Layout and spacing. Added the smaller spacing the Civica house lighting card uses on narrow screens."
+ai_instructions: "Apply when setting padding or margins in a maintained custom card. Use the Civica 5px spacing scale (unit 1 to 9: 5, 10, 15, 20, 25, 30, 40, 50, 60px). Civica has no spacing variable, so write the value in the card's CSS. On screens up to 640px the Civica house lighting card steps down one unit for card padding (15px, 20px from 641px) and two for the gap below the room list (20px, 30px from 641px). Leave native --ha-space-1 to --ha-space-20 (4px steps) alone. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-081."
 ai_related:
   - path: "/styles/structure.html"
     title: "Structure"
@@ -26,7 +26,7 @@ ai_related:
 
 # Spacing
 
-Use the civica spacing scale in a maintained custom card. Every step is a multiple of 5px. civica has no spacing variable, so write the value in the card's CSS.
+Use the Civica spacing scale in a maintained custom card. Every step is a multiple of 5px. Civica has no spacing variable, so write the value in the card's CSS.
 
 ## Spacing scale
 
@@ -57,7 +57,7 @@ ha-card {
 
 ## Spacing on narrow screens
 
-Use smaller spacing on a phone, so more of the card fits on the screen. The civica house lighting card steps down on screens up to 640px wide.
+Use smaller spacing on a phone, so more of the card fits on the screen. The Civica house lighting card steps down on screens up to 640px wide.
 
 | Space | Up to 640px | From 641px |
 | --- | --- | --- |
@@ -78,4 +78,4 @@ Keep 5px, 10px and 15px the same on every screen. They are already small.
 
 ### Native Home Assistant spacing
 
-Home Assistant spaces its own cards with `--ha-space-1` to `--ha-space-20`, which go up in steps of 4px. Leave these as they are. civica does not override native padding to fit its 5px scale, because that would break the native layout.
+Home Assistant spaces its own cards with `--ha-space-1` to `--ha-space-20`, which go up in steps of 4px. Leave these as they are. Civica does not override native padding to fit its 5px scale, because that would break the native layout.

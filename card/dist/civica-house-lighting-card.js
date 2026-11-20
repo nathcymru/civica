@@ -1454,4 +1454,4 @@ if (!customElements.get("govuk-house-lighting-card")) customElements.define("gov
 window.customCards = window.customCards ?? [];
 if (!customElements.get("civica-house-lighting-card")) customElements.define("civica-house-lighting-card", class extends GovukHouseLightingCard {
 });
-window.customCards.push({ type: "civica-house-lighting-card", name: "civica house lighting", description: "Room lighting with floor plan, whites, colours and dynamic scenes." });
+window.customCards.push({ type: "civica-house-lighting-card", name: "Civica house lighting", description: "Room lighting with floor plan, whites, colours and dynamic scenes." });

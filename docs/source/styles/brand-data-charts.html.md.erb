@@ -12,14 +12,14 @@ review_in: "3 months"
 updates:
   - date: "2026-11-19"
     description: "First published. The chart guidance, the numbered diagram of the parts of a chart and the rules on chart parts, true readings, the chart specification, interaction and text alternatives moved here from Data visualisation, and were shortened."
-ai_instructions: "Apply when designing or reviewing a chart of household data in Home Assistant. Give it a title, and in a fixed report a subtitle with measure, unit, devices and period. Keep native axes, values, units and gaps. Say where the data comes from as entity or statistic plus integration. Keep native interaction. Give every chart a table or a sentence with the same facts. Use only the civica chart colours from /styles/chart-colour.html. Operational Energy charts follow /components/charts.html. The rules anchored bg-dat-03 to bg-dat-07 are on this page. The diagram uses invented readings. Do not show rule IDs or name outside sources in page text. Rules WG-038, WG-056, WG-070 to WG-078."
+ai_instructions: "Apply when designing or reviewing a chart of household data in Home Assistant. Give it a title, and in a fixed report a subtitle with measure, unit, devices and period. Keep native axes, values, units and gaps. Say where the data comes from as entity or statistic plus integration. Keep native interaction. Give every chart a table or a sentence with the same facts. Use only the Civica chart colours from /styles/chart-colour.html. Operational Energy charts follow /components/charts.html. The rules anchored bg-dat-03 to bg-dat-07 are on this page. The diagram uses invented readings. Do not show rule IDs or name outside sources in page text. Rules WG-038, WG-056, WG-070 to WG-078."
 ai_related:
   - path: "/styles/brand-data.html"
     title: "Data visualisation"
     relationship: "Owns the principles and choosing a visualisation."
   - path: "/styles/chart-colour.html"
     title: "Chart colours"
-    relationship: "Owns the civica chart colours, series styles and legend keys."
+    relationship: "Owns the Civica chart colours, series styles and legend keys."
   - path: "/components/charts.html"
     title: "Charts and tables"
     relationship: "Owns the operational chart specification, the Energy adapter and the View data table."
@@ -130,7 +130,7 @@ Show readings exactly as Home Assistant supplies them: native values, IDs, times
 - Keep a comparison on its original dates, such as this week against the same days last week.
 - Say in words when a value is a forecast, a comparison or an export shown as a negative number.
 
-[Charts and tables](../components/charts.html#visual-rules) explains how the civica Energy adapter keeps native values while it restyles the chart.
+[Charts and tables](../components/charts.html#visual-rules) explains how the Civica Energy adapter keeps native values while it restyles the chart.
 
 <h2 id="bg-dat-05">Use the chart specification</h2>
 
@@ -142,7 +142,7 @@ An interactive chart lets people change what it shows, for example by choosing a
 
 People must act before they see the information, so they can miss the main message. If interaction is not needed, show the finding in a fixed chart, or use several small charts side by side.
 
-Keep the native interaction Home Assistant gives: the date picker, legend toggles, zoom, tooltips and keyboard controls. Do not replace a working native chart with an image. civica does not add a second chart renderer. [Compatibility and limits](../get-started/compatibility.html) lists the frontend versions the Energy adapter supports.
+Keep the native interaction Home Assistant gives: the date picker, legend toggles, zoom, tooltips and keyboard controls. Do not replace a working native chart with an image. Civica does not add a second chart renderer. [Compatibility and limits](../get-started/compatibility.html) lists the frontend versions the Energy adapter supports.
 
 <h2 id="bg-dat-07">Give a text alternative</h2>
 

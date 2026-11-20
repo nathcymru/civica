@@ -9,7 +9,7 @@ examples:
     height: 1500
     html: |-
       <section aria-labelledby="categorical-heading">
-      <h2 class="govuk-heading-m" id="categorical-heading">A History graph card with the civica theme</h2>
+      <h2 class="govuk-heading-m" id="categorical-heading">A History graph card with the Civica theme</h2>
       <p class="govuk-body">
       <strong>Synthetic data.</strong> Relative humidity from 4 room sensors every 3 hours on 12 November 2026, Europe/London, drawn in light and dark mode.</p>
       <figure style="margin:0 0 30px;">
@@ -200,7 +200,7 @@ examples:
       </section>
     chart_data:
       classification: Synthetic documentation data; not readings from a Home Assistant instance
-      card: 'History graph card as drawn with the civica theme: solid lines, legend under the plot, no dashes, markers or end labels'
+      card: 'History graph card as drawn with the Civica theme: solid lines, legend under the plot, no dashes, markers or end labels'
       measure: Relative humidity
       unit: '%'
       time_zone: Europe/London
@@ -243,7 +243,7 @@ examples:
       missing: 'No reading: a gap in the line, “No data” under the gap and “Not supplied” in the table.'
     colour_reference:
       reviewed_on: '2026-11-18'
-      classification: civica chart palette, categorical colours by entity position; the same in light and dark mode
+      classification: Civica chart palette, categorical colours by entity position; the same in light and dark mode
       generator: docs/scripts/generate-data-colour-examples.py
       source: https://brand.design-system.service.gov.uk/colour/charts/
       colours:
@@ -691,7 +691,7 @@ examples:
       </section>
     colour_reference:
       reviewed_on: '2026-11-18'
-      classification: civica chart palette, listed scale steps only; nothing interpolated
+      classification: Civica chart palette, listed scale steps only; nothing interpolated
       generator: docs/scripts/generate-data-colour-examples.py
       source: https://brand.design-system.service.gov.uk/colour/charts/
       time_zone: Europe/London

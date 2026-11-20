@@ -1,13 +1,13 @@
 ---
 title: "Compatibility and limits"
-description: "Compatibility and limits for the civica Home Assistant design system."
+description: "Compatibility and limits for the Civica Home Assistant design system."
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 updated_on: "2026-11-18"
 published_on: "2026-11-11"
 updates:
   - date: "2026-11-13"
-    description: "Updated the current project name and repository links to civica."
+    description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-12"
     description: "Documented the existing companion identity behaviour and the boundary of the proposed household personalisation settings."
   - date: "2026-11-11"
@@ -22,10 +22,10 @@ updates:
     description: "The profile settings row now names the Theme colour select and no longer refers to palette settings."
   - date: "2026-11-18"
     description: "Energy chart rows now say ONS-based chart structure; chart colours come from GOV.UK."
-ai_instructions: "Use as the single owner of what civica can and cannot change in native and third-party components. Do not claim a component is covered unless it is listed here. Do not describe the proposed family-name or crest settings as available. Say a local preview is not proof of a live deployment. Rules WG-002, WG-034, WG-043, WG-086, WG-095."
+ai_instructions: "Use as the single owner of what Civica can and cannot change in native and third-party components. Do not claim a component is covered unless it is listed here. Do not describe the proposed family-name or crest settings as available. Say a local preview is not proof of a live deployment. Rules WG-002, WG-034, WG-043, WG-086, WG-095."
 ai_related:
   - path: "/get-started/install.html"
-    title: "Install civica"
+    title: "Install Civica"
     relationship: "Install the module whose adapters this page describes."
   - path: "/accessibility/testing.html"
     title: "Test the interface"
@@ -61,7 +61,7 @@ These isolated examples illustrate the decisions on this page. Any household val
 | Native Map | Preserve map attribution, controls, markers and navigation | Actual map provider and marker contrast |
 | Custom cards | Use public variables where available | Each installed card's private styles and updates |
 | Three known household cards | Scoped presentation for appliances, waste collections and gas safety | Their actual versions, responsive layouts and native actions |
-| civica action links | Native local links and existing fragment navigation | Each configured destination and pop-up |
+| Civica action links | Native local links and existing fragment navigation | Each configured destination and pop-up |
 | Authentication and companion apps | Native branding and authentication remain outside module coverage | Separate native application work would be required |
 
 ## Maintained custom cards and legacy configurations
@@ -83,7 +83,7 @@ The module targets known component types through their open component roots:
 | `pa-gas-safety-card` | Shared type, record layout, details and actions |
 | `ha-panel-energy` → supported native graph card → `ha-chart-base` | ONS-based chart structure on the existing ECharts instance and a read-only data table; see the exact [chart support list](../components/charts.html) |
 
-The three household-card adapters use adopted stylesheets, scoped to those exact hosts. They survive ordinary card content updates and are removed when civica is inactive. They change presentation only: device permissions, services, dates, records and action handlers remain with the existing card. Other third-party cards are not covered by these private selectors.
+The three household-card adapters use adopted stylesheets, scoped to those exact hosts. They survive ordinary card content updates and are removed when Civica is inactive. They change presentation only: device permissions, services, dates, records and action handlers remain with the existing card. Other third-party cards are not covered by these private selectors.
 
 Startup, navigation and theme changes trigger a bounded search for these hosts. The module watches the document's theme style attribute and the sidebar's own badge text. The sidebar observer updates only the presentation and accessible description of numeric attention counts. It does not observe device state or create, clear or acknowledge notifications.
 
@@ -93,7 +93,7 @@ These adapters depend on the Home Assistant version. If an expected component is
 
 Safe and recovery modes disable colour controls and restore native branding. Repeated module imports must not add duplicate controls or listeners.
 
-Avoid monkey-patching browser prototypes, replacing native controls wholesale or assuming a selector is a public Home Assistant API. Document each adapter and test its cleanup when the user switches away from civica.
+Avoid monkey-patching browser prototypes, replacing native controls wholesale or assuming a selector is a public Home Assistant API. Document each adapter and test its cleanup when the user switches away from Civica.
 
 ## CSS cannot correct everything
 
@@ -107,6 +107,6 @@ Follow [Test the interface](../accessibility/testing.html) for native panels and
 
 ## Household identity transition
 
-civica identifies the project and its documentation. It is not required as your home's identity.
+Civica identifies the project and its documentation. It is not required as your home's identity.
 
-The existing companion still replaces supported sidebar titles and browser and app icons with civica artwork. It does not yet provide the proposed family-name or custom-crest settings, and this documentation does not change any installation. Do not describe the personalisation examples as available global theme settings. [Personalise your home](personalisation.html) separates current native dashboard titles and picture cards from that proposed behaviour.
+The existing companion still replaces supported sidebar titles and browser and app icons with Civica artwork. It does not yet provide the proposed family-name or custom-crest settings, and this documentation does not change any installation. Do not describe the personalisation examples as available global theme settings. [Personalise your home](personalisation.html) separates current native dashboard titles and picture cards from that proposed behaviour.

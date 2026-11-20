@@ -11,12 +11,12 @@ test('default civica theme and legacy alias resolve to the same complete palette
   const installed = parse(files['themes/civica.yaml']);
   const legacy = parse(files['themes/govuk.yaml']).govuk;
   assert.equal(Object.keys(installed).length, 8);
-  const { 'card-mod-theme': defaultName, ...defaultTokens } = installed.civica;
+  const { 'card-mod-theme': defaultName, ...defaultTokens } = installed.Civica;
   const { 'card-mod-theme': legacyName, ...legacyTokens } = legacy;
-  const { 'card-mod-theme': variantName, ...variantTokens } = installed['civica Blue'];
-  assert.equal(defaultName, 'civica');
+  const { 'card-mod-theme': variantName, ...variantTokens } = installed['Civica Blue'];
+  assert.equal(defaultName, 'Civica');
   assert.equal(legacyName, 'govuk');
-  assert.equal(variantName, 'civica Blue');
+  assert.equal(variantName, 'Civica Blue');
   assert.deepEqual(defaultTokens, variantTokens);
   assert.deepEqual(legacyTokens, variantTokens);
   for (const [name, theme] of Object.entries(themes)) assert.deepEqual(installed[name], theme);
@@ -44,7 +44,7 @@ test('theme colours are the GOV.UK primaries that pass 4.5:1 with white text, co
 test('7 native themes each offer separate light and dark modes without restricted branding fonts', () => {
   assert.equal(Object.keys(themes).length, 7);
   for (const [name, theme] of Object.entries(themes)) {
-    assert.match(name, /^civica /);
+    assert.match(name, /^Civica /);
     assert.deepEqual(Object.keys(theme.modes), ['light', 'dark']);
     assert.ok(!JSON.stringify(theme).includes('GDS Transport'));
     assert.equal(theme['ha-border-radius-circle'], undefined, 'preserve native radio/avatar circle');
