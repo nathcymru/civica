@@ -107,7 +107,9 @@ body { font-size: 19px; line-height: 25px; letter-spacing: normal; }
 
 // Captions (section name above a sub-page title) ------------------------------
 
-.c-caption { @include type(24px, 30px); margin: 0 0 5px; color: $type-secondary; }
+// Section name above a sub-page title: 27/30 grey, 5 px above the title and 50 px
+// below the breadcrumbs (10 px breadcrumb margin plus 40 px page padding).
+.technical-documentation .c-caption { @include type(27px, 30px); margin: 50px 0 5px; color: #484949; font-weight: 400; max-width: none; }
 
 // Lists ---------------------------------------------------------------------
 // Only plain lists take the reference spacing; lists with a class (breadcrumbs,
@@ -158,9 +160,9 @@ body { font-size: 19px; line-height: 25px; letter-spacing: normal; }
 .app-subnav__tree .app-subnav__section-item { @include type(19px, 25px); padding-top: 7px; padding-bottom: 7px; }
 .app-subnav__child { @include type(16px, 20px); padding-top: 5px; padding-bottom: 5px; }
 .app-subnav__theme { @include type(19px, 25px); }
-.c-breadcrumbs { @include type(16px, 20px); margin: 5px 0 10px; }
-.technical-documentation .c-breadcrumbs ol { @include type(16px, 20px); padding-bottom: 5px; }
-.technical-documentation .c-breadcrumbs li { font-size: inherit; line-height: inherit; }
+.c-breadcrumbs { @include type(16px, 20px); margin: 5px 0 10px; padding-bottom: 5px; }
+.technical-documentation .c-breadcrumbs ol { @include type(16px, 20px); margin: 0; padding: 0; }
+.technical-documentation .c-breadcrumbs ol > li { font-size: inherit; line-height: inherit; margin: 0; }
 
 // Example panels: small text is 16/20 as in the reference.
 .c-example__top,
@@ -202,7 +204,7 @@ body { font-size: 19px; line-height: 25px; letter-spacing: normal; }
   .technical-documentation h4,
   .technical-documentation h5,
   .technical-documentation h6 { margin-bottom: 15px; }
-  .c-caption { @include type(19px, 25px); }
+  .technical-documentation .c-caption { @include type(21px, 25px); margin-top: 30px; }
   .c-lead { @include type(21px, 25px); }
   .technical-documentation .c-lead { margin-bottom: 20px; }
   .c-note { margin: 20px 0; }
