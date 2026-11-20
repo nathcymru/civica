@@ -13,7 +13,7 @@ test('every GOV.UK theme colour selects its installed theme and preserves dark m
   await expect(page.getByRole('switch')).toHaveCount(0);
   for (const palette of palettes.palettes) {
     await page.getByLabel('Theme colour').selectOption(palette.id);
-    await expect.poll(() => page.evaluate(() => window.fixture.app.hass.selectedTheme)).toEqual({ theme: `civica ${palette.name}`, dark: true });
+    await expect.poll(() => page.evaluate(() => window.fixture.app.hass.selectedTheme)).toEqual({ theme: `Civica ${palette.name}`, dark: true });
     const detail = await page.evaluate(() => { const event = window.events.at(-1); return { overrideReset: Object.hasOwn(event, 'primaryColor') && event.primaryColor === undefined && Object.hasOwn(event, 'accentColor') && event.accentColor === undefined, changesMode: Object.hasOwn(event, 'dark') }; });
     expect(detail).toEqual({ overrideReset: true, changesMode: false });
     await expect(page.locator('civica-theme-settings [role="status"]')).toHaveText(`${palette.name} theme colour selected.`);
@@ -27,7 +27,7 @@ test('keyboard selection, accessible names and 320px reflow', async ({ page }) =
   expect(await select.evaluate(el => getComputedStyle(el).fontSize)).toBe('19px');
   expect(await page.locator('civica-theme-settings h2').evaluate(el => getComputedStyle(el).fontSize)).toBe('24px');
   await page.keyboard.press('ArrowDown');
-  await expect.poll(() => page.evaluate(() => window.fixture.app.hass.selectedTheme.theme)).toBe('civica Green');
+  await expect.poll(() => page.evaluate(() => window.fixture.app.hass.selectedTheme.theme)).toBe('Civica Green');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
   const results = await new AxeBuilder({ page }).include('civica-theme-settings').analyze();
   expect(results.violations).toEqual([]);
@@ -35,12 +35,12 @@ test('keyboard selection, accessible names and 320px reflow', async ({ page }) =
 
 test('external native theme changes synchronise and missing themes disable the controls', async ({ page }) => {
   await page.evaluate(() => {
-    window.fixture.app.hass.selectedTheme = { theme: 'civica Teal' };
+    window.fixture.app.hass.selectedTheme = { theme: 'Civica Teal' };
     window.fixture.paint();
   });
   await expect(page.getByLabel('Theme colour')).toHaveValue('teal');
   await page.evaluate(() => {
-    delete window.fixture.app.hass.themes.themes['civica Teal'];
+    delete window.fixture.app.hass.themes.themes['Civica Teal'];
     document.querySelector('civica-theme-settings').hass = window.fixture.app.hass;
   });
   await expect(page.getByLabel('Theme colour')).toBeDisabled();
@@ -59,7 +59,7 @@ test('profile adapter mounts once, preserves native controls and restores brandi
   const profile = page.locator('ha-pick-theme-row');
   await expect(profile.locator('civica-theme-settings')).toHaveCount(1);
   await expect(profile.locator('ha-theme-settings')).toHaveCount(1);
-  await expect(page.locator('ha-sidebar img')).toHaveAttribute('alt', 'civica');
+  await expect(page.locator('ha-sidebar img')).toHaveAttribute('alt', 'Civica');
   // Resource cache-busting can accidentally load a second URL in a session.
   await page.evaluate(async () => { await import('/ui/dist/civica-ui.js?duplicate-resource'); });
   await page.evaluate(() => window.dispatchEvent(new Event('location-changed')));
@@ -77,7 +77,7 @@ test('default theme can select Blue and recovery mode retains native identity', 
   });
   await expect(page.getByLabel('Theme colour')).toHaveValue('');
   await page.getByLabel('Theme colour').selectOption('blue');
-  await expect.poll(() => page.evaluate(() => window.fixture.app.hass.selectedTheme.theme)).toBe('civica Blue');
+  await expect.poll(() => page.evaluate(() => window.fixture.app.hass.selectedTheme.theme)).toBe('Civica Blue');
   await page.evaluate(() => {
     const { app } = window.fixture; app.hass.config = { recovery_mode: true }; app.hass.themes.theme = 'default';
     document.querySelector('civica-theme-settings').hass = app.hass;
@@ -124,7 +124,7 @@ test('the white lock-up and project icon serve every theme colour in both displa
     document.head.append(touch);
     const attributes = [icon, touch].map(el => Object.fromEntries(['href', 'type', 'sizes'].map(name => [name, el.getAttribute(name)])));
     window.fixture.app.shadowRoot.append(document.createElement('ha-sidebar'));
-    window.fixture.app.hass.selectedTheme.theme = window.fixture.app.hass.themes.theme = 'civica Blue';
+    window.fixture.app.hass.selectedTheme.theme = window.fixture.app.hass.themes.theme = 'Civica Blue';
     window.dispatchEvent(new Event('location-changed'));
     return attributes;
   });
@@ -162,7 +162,7 @@ test('the white lock-up and project icon serve every theme colour in both displa
 test('legacy alias uses the project icon and unknown civica names do not replace native identity', async ({ page }) => {
   await page.evaluate(() => {
     const { app } = window.fixture;
-    app.hass.themes.themes.govuk = app.hass.themes.themes['civica Blue'];
+    app.hass.themes.themes.govuk = app.hass.themes.themes['Civica Blue'];
     app.hass.themes.theme = app.hass.selectedTheme.theme = 'govuk';
     window.dispatchEvent(new Event('settheme'));
   });
@@ -178,14 +178,14 @@ test('legacy alias uses the project icon and unknown civica names do not replace
 
 test('civica default selects Blue and can change colour without resetting display mode', async ({ page }) => {
   await page.evaluate(() => {
-    window.fixture.app.hass.selectedTheme = { theme: 'civica', dark: true };
+    window.fixture.app.hass.selectedTheme = { theme: 'Civica', dark: true };
     window.fixture.paint();
     window.dispatchEvent(new Event('settheme'));
   });
   await expect(page.getByLabel('Theme colour')).toHaveValue('blue');
   await expect(page.locator('head link[rel="icon"]')).toHaveAttribute('href', /icons\/app-icon\.svg\?v=1\.4\.1$/);
   await page.getByLabel('Theme colour').selectOption('purple');
-  expect(await page.evaluate(() => window.fixture.app.hass.selectedTheme)).toEqual({ theme: 'civica Purple', dark: true });
+  expect(await page.evaluate(() => window.fixture.app.hass.selectedTheme)).toEqual({ theme: 'Civica Purple', dark: true });
 });
 
 test('missing theme data during startup and navigation stays quiet and recovers without changing preferences', async ({ page }) => {
@@ -202,7 +202,7 @@ test('missing theme data during startup and navigation stays quiet and recovers 
     app.shadowRoot.append(document.createElement('ha-sidebar'));
     window.dispatchEvent(new Event('location-changed'));
   });
-  await expect(page.locator('ha-sidebar img')).toHaveAttribute('alt', 'civica');
+  await expect(page.locator('ha-sidebar img')).toHaveAttribute('alt', 'Civica');
   for (const state of ['absent', 'null', 'pending', 'null-map']) {
     await page.evaluate(state => {
       const { app } = window.fixture;
@@ -220,9 +220,9 @@ test('missing theme data during startup and navigation stays quiet and recovers 
     document.documentElement.style.setProperty('--theme-readiness-fixture', 'ready');
   });
   await expect(page.getByLabel('Theme colour')).toBeEnabled();
-  await expect(page.locator('ha-sidebar img')).toHaveAttribute('alt', 'civica');
+  await expect(page.locator('ha-sidebar img')).toHaveAttribute('alt', 'Civica');
   await expect(page.locator('head link[rel="icon"]')).toHaveAttribute('href', /app-icon\.svg\?v=1\.4\.1$/);
-  expect(await page.evaluate(() => window.fixture.app.hass.selectedTheme)).toEqual({theme:'civica Blue', dark:true});
+  expect(await page.evaluate(() => window.fixture.app.hass.selectedTheme)).toEqual({theme:'Civica Blue', dark:true});
   expect(await page.evaluate(() => window.events)).toEqual([]);
   expect(errors).toEqual([]);
 });
@@ -356,7 +356,7 @@ test('adopted HA styles keep nested masthead icons white without recolouring sid
     page.locator('hass-subpage > ha-icon-button[slot="toolbar-icon"] button'),
     page.locator('ha-top-app-bar-fixed .top-app-bar ha-menu-button button'),
   ];
-  for (const name of ['civica Teal', 'civica Black', 'civica Blue']) {
+  for (const name of ['Civica Teal', 'Civica Black', 'Civica Blue']) {
     await page.evaluate(theme => {
       window.fixture.app.hass.selectedTheme.theme = theme; window.fixture.paint();
       // Real HA resolves these neutral roles on the document, independently

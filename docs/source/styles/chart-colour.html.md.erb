@@ -3,14 +3,14 @@ no_contents: true
 title: "Chart colours"
 group: "Colour"
 nav_order: 6
-description: "The civica chart colours, how to give each device a stable colour and pattern, and how to colour amounts and missing data."
+description: "The Civica chart colours, how to give each device a stable colour and pattern, and how to colour amounts and missing data."
 last_reviewed_on: 2026-11-19
 review_in: 3 months
 updated_on: "2026-11-19"
 published_on: "2026-11-11"
 updates:
   - date: "2026-11-13"
-    description: "Updated the current project name and repository links to civica."
+    description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-12"
     description: "Added categorical and quantitative colour examples with explicit values, missing-data rules and scale boundaries."
   - date: "2026-11-12"
@@ -18,9 +18,9 @@ updates:
   - date: "2026-11-17"
     description: "Rewritten to lead with the rule, with outside source commentary moved to the Styles index."
   - date: "2026-11-18"
-    description: "Every civica theme now uses the Vivid chart tone, because the theme colour control has no tone choice."
+    description: "Every Civica theme now uses the Vivid chart tone, because the theme colour control has no tone choice."
   - date: "2026-11-18"
-    description: "Replaced the generated chart colours and their Vivid and Muted tones with the civica chart palette: 6 categorical colours and fixed scale steps, the same in light and dark mode."
+    description: "Replaced the generated chart colours and their Vivid and Muted tones with the Civica chart palette: 6 categorical colours and fixed scale steps, the same in light and dark mode."
   - date: "2026-11-18"
     description: "Map colours now belong to the Map colours page; this page keeps scales for maps that show a quantity. Swatches now show hex, RGB and Sass only, because chart colours do not follow the theme colour."
   - date: "2026-11-18"
@@ -30,7 +30,7 @@ updates:
   - date: "2026-11-18"
     description: "Rewritten for Home Assistant users: each example now says what it shows and what to notice, repeated rules are merged into one place, and outside source names, visible rule IDs and maintenance notes were removed. The working Energy charts now live only on Chart examples."
   - date: "2026-11-18"
-    description: "Said what native Home Assistant charts do with the civica theme, gave each numbered chart colour its role, renamed 2 sections to say what they cover, and stated each rule once."
+    description: "Said what native Home Assistant charts do with the Civica theme, gave each numbered chart colour its role, renamed 2 sections to say what they cover, and stated each rule once."
   - date: "2026-11-18"
     description: "Redrew the categorical example as a line chart of humidity in 4 rooms and the scale example as 2 heatmaps of a week of room data. The Multiple categories chart now uses civica-chart-1 to civica-chart-4 in order. The social media chart no longer draws an example label or a data note inside the picture."
   - date: "2026-11-18"
@@ -39,7 +39,7 @@ updates:
     description: "Added the scale steps of each colour family in order from light to dark."
   - date: "2026-11-19"
     description: "Shortened the page for easier reading: shorter sentences and no repeated text. All colours, examples and links are unchanged."
-ai_instructions: "Apply when colouring a chart series or heatmap, and for the scale rules of a map layer that shows an amount (its colours come from Map colours). Use only the civica chart colours on this page, in both light and dark mode and with every theme colour: six categorical colours, Black tint 80% for axes and grid lines, Black (White in dark mode) for labels. Decide whether colour names a source or shows an amount. On the Energy dashboard the civica companion gives each source its style from its stable ID with chartSeriesStyle; native History graph and Statistics graph cards take civica-chart-1 to civica-chart-24 by position and draw no patterns or dashes, so never claim they do; from the 25th series they use Home Assistant's default colours, wrapping after 54. Always add a name, pattern or table. Amounts use the listed tints and shades of one family, never calculated in-between colours, and no more than two scales per chart. Missing values get no numeric colour. The additional colours are for social media graphics only. Never dropping a series is owned by Charts and tables. Do not name outside sources or show rule IDs on the page. The rule anchored bg-col-07 is on this page. Rules WG-076, WG-077, WG-081."
+ai_instructions: "Apply when colouring a chart series or heatmap, and for the scale rules of a map layer that shows an amount (its colours come from Map colours). Use only the Civica chart colours on this page, in both light and dark mode and with every theme colour: six categorical colours, Black tint 80% for axes and grid lines, Black (White in dark mode) for labels. Decide whether colour names a source or shows an amount. On the Energy dashboard the Civica companion gives each source its style from its stable ID with chartSeriesStyle; native History graph and Statistics graph cards take civica-chart-1 to civica-chart-24 by position and draw no patterns or dashes, so never claim they do; from the 25th series they use Home Assistant's default colours, wrapping after 54. Always add a name, pattern or table. Amounts use the listed tints and shades of one family, never calculated in-between colours, and no more than two scales per chart. Missing values get no numeric colour. The additional colours are for social media graphics only. Never dropping a series is owned by Charts and tables. Do not name outside sources or show rule IDs on the page. The rule anchored bg-col-07 is on this page. Rules WG-076, WG-077, WG-081."
 ai_related:
   - path: "/styles/colour.html"
     title: "Colour"
@@ -139,7 +139,7 @@ In a social media post, use larger, bolder shapes. This example shows a month's 
 
 <h2 id="give-each-series-a-stable-colour">Give each device a stable colour</h2>
 
-With the civica companion installed, each device on the Energy dashboard keeps its colour, pattern and marker. Adding, hiding or reordering devices does not change it.
+With the Civica companion installed, each device on the Energy dashboard keeps its colour, pattern and marker. Adding, hiding or reordering devices does not change it.
 
 Energy roles have fixed colours:
 
@@ -188,9 +188,9 @@ This example shows 2 heatmaps of one week: energy per room from 0 to 2 kWh, and 
 
 ## In Home Assistant
 
-Each native card draws the civica chart colours its own way:
+Each native card draws the Civica chart colours its own way:
 
-- **Energy dashboard cards**: with the optional civica companion, each role and device gets its style from this page, plus a **View data** table. Without it, devices take the numbered colours by position.
+- **Energy dashboard cards**: with the optional Civica companion, each role and device gets its style from this page, plus a **View data** table. Without it, devices take the numbered colours by position.
 - **History graph and Statistics graph cards**: each series takes a numbered colour, `civica-chart-1` to `civica-chart-24`, by its position in the card. The theme also sets these as Home Assistant's `color-1` to `color-24`. Lines are solid, with no patterns or end labels, so give each entity a clear name. Reordering entities can change their colours. From the 25th series the card uses Home Assistant's default colours, wrapping after the 54th. In dark mode, the 1st, 4th, 10th, 11th, 16th, 17th, 22nd and 23rd series are hard to see, so check them in the legend.
 
 The 24 numbered colours follow the energy roles first, then repeat the 6 categorical colours:

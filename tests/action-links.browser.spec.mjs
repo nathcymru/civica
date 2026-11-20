@@ -122,7 +122,7 @@ test('civica and all 7 theme colours in both modes keep link and circle-arrow co
   }
   // The Blue light circle matches the publishing pattern's visible
   // tint, rather than the near-white quiet-fill token that hid its shape.
-  expect(measurements.find(state => state.theme === 'civica Blue' && !state.dark).circle).toEqual([210, 226, 241]);
+  expect(measurements.find(state => state.theme === 'Civica Blue' && !state.dark).circle).toEqual([210, 226, 241]);
   const link = page.locator('civica-action-links a').first();
   await page.keyboard.press('Tab');
   await expect(link).toBeFocused();

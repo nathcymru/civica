@@ -1,6 +1,6 @@
 # Artwork and brand identity
 
-`brand/civica/` contains the accepted files from the user-supplied **civica_brand_assets_revised.zip**, received and reviewed on 13 November 2026. It replaces the previous supplied identity completely. The project is named **civica**; the supplied wordmark reads **Civica**. The archive SHA-256 is `0d1a44c3526ccaafa773e1d7314d0d3df6e2e77065be7c3f9c2e1de36dc14d2a`.
+`brand/civica/` contains the accepted files from the user-supplied **civica_brand_assets_revised.zip**, received and reviewed on 13 November 2026. It replaces the previous supplied identity completely. The project is named **Civica**; the supplied wordmark reads **Civica**. The archive SHA-256 is `0d1a44c3526ccaafa773e1d7314d0d3df6e2e77065be7c3f9c2e1de36dc14d2a`.
 
 The archive supplies no numeric version. The local provenance label is `revised-2026-11-13`. Its 225 file entries contain 219 images. We accept 224 supplied files unchanged, including 218 images, and add one local manifest. The active package therefore contains 225 files. Previous logos are removed from the working tree and release inputs; their earlier revisions remain in Git history.
 
@@ -32,11 +32,11 @@ Supplied colours and successful image decoding do not certify surrounding interf
 
 The archive does not include a separate redistribution licence for its artwork. The project software licence does not automatically apply to these supplied marks or third-party artwork. Inclusion follows the owner's request to use this identity in the project; downstream users must establish permission for reuse of the artwork.
 
-No GOV.UK crown, official wordmark, crest or GDS Transport font is included in this supplied package or the deployable documentation identity. Links and factual attributions to official design systems remain. civica is independent of the UK Government and Home Assistant. The project repository is `nathcymru/civica`.
+No GOV.UK crown, official wordmark, crest or GDS Transport font is included in this supplied package or the deployable documentation identity. Links and factual attributions to official design systems remain. Civica is independent of the UK Government and Home Assistant. The project repository is `nathcymru/civica`.
 
 The five unused legacy scene SVGs under `card/assets/icons/` were removed on 13 November 2026. They included the Everton FC crest and the WRU mark; no redistribution grant was recorded for those files or the other three scene images. The lighting card already uses Home Assistant’s native scene icons and does not reference the removed files. They are excluded from current source and future release packages; Git history retains the historical files without granting new rights.
 
-`card/assets/floorplan.png` is an existing supplied household image. It remains in use by the lighting card, but no separate redistribution licence or author permission record was supplied in this repository. Its hash establishes file identity, not ownership or permission. It is excluded from the project software licence; downstream users must establish permission or provide their own authorised floor plan. The same unresolved redistribution-grant boundary applies to the revised civica marks described above.
+`card/assets/floorplan.png` is an existing supplied household image. It remains in use by the lighting card, but no separate redistribution licence or author permission record was supplied in this repository. Its hash establishes file identity, not ownership or permission. It is excluded from the project software licence; downstream users must establish permission or provide their own authorised floor plan. The same unresolved redistribution-grant boundary applies to the revised Civica marks described above.
 
 The card’s inline cog follows the Material Design icon source; native `mdi:` names refer to Home Assistant’s own icon system. Their licence and attribution treatment is separate from original project code. Do not infer a blanket artwork licence from the software licence.
 
@@ -47,6 +47,6 @@ The homepage household scene and three category illustrations form a flat Civic 
 
 ## Surface coverage
 
-civica is the project and documentation identity. Households may choose their own home, family or organisation identity through the documented personalisation boundaries.
+Civica is the project and documentation identity. Households may choose their own home, family or organisation identity through the documented personalisation boundaries.
 
-The companion changes the authenticated sidebar label and browser icons only while a civica theme is selected. It restores native identity when the user switches away or enters safe/recovery mode. Home Assistant's login, startup, native app icon and installed PWA manifest are owned by Home Assistant and are not replaced by this theme. The native Energy and Map interfaces retain their names and functions.
+The companion changes the authenticated sidebar label and browser icons only while a Civica theme is selected. It restores native identity when the user switches away or enters safe/recovery mode. Home Assistant's login, startup, native app icon and installed PWA manifest are owned by Home Assistant and are not replaced by this theme. The native Energy and Map interfaces retain their names and functions.

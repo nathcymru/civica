@@ -5,7 +5,7 @@ import themes from '../design-system/themes.json' with { type: 'json' };
 // Exercise the adapter against HA's actual two-slot count structure and adopted
 // style precedence (frontend e32bc069), without touching notification services.
 const moduleSource = buildSync({ entryPoints: ['ui/src/sidebar-badges.ts'], bundle: true, format: 'esm', target: 'es2022', write: false }).outputFiles[0].text;
-const theme = themes.themes['civica Blue'];
+const theme = themes.themes['Civica Blue'];
 const applyMode = async (page, dark = false) => page.evaluate(({ common, mode }) => {
   for (const [key, value] of Object.entries({ ...common, ...mode })) {
     if (typeof value === 'string' || typeof value === 'number') document.documentElement.style.setProperty(`--${key}`, String(value));

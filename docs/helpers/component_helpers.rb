@@ -136,9 +136,9 @@ module ComponentHelpers
     end).gsub('</', '<\/')
   end
 
-  # Display form of an origin. The data value is "Civica"; the brand is written civica.
+  # Display form of an origin. The data value is "Civica"; the brand is written Civica.
   def component_origin_label(origin)
-    origin == 'Civica' ? 'civica' : origin
+    origin == 'Civica' ? 'Civica' : origin
   end
 
   def component_origin_summary(parent)

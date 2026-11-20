@@ -100,7 +100,7 @@ function updateBrand(app: App, targets: HTMLElement[]) {
     let logo = title.querySelector<HTMLImageElement>('img[data-civica-logo]');
     if (!logo) {
       if (!originalTitles.has(title)) originalTitles.set(title, Array.from(title.childNodes));
-      logo = document.createElement('img'); logo.dataset.civicaLogo = ''; logo.alt = 'civica';
+      logo = document.createElement('img'); logo.dataset.civicaLogo = ''; logo.alt = 'Civica';
       logo.style.cssText = 'display:block;width:100%;max-width:176px;height:auto;box-sizing:border-box;padding:5px 8px;';
       title.replaceChildren(logo);
     }

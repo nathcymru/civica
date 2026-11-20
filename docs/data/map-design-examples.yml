@@ -2,7 +2,7 @@
 examples:
   map-neighbourhood-records:
     title: A styled OpenStreetMap with uncertainty and every location record
-    description: OpenStreetMap data around Cardiff Bay in the civica map colours, with 2 labelled device markers.
+    description: OpenStreetMap data around Cardiff Bay in the Civica map colours, with 2 labelled device markers.
     height: 1550
     html: |
       <link rel="stylesheet" href="../stylesheets/maplibre-examples.css">
@@ -25,7 +25,7 @@ examples:
           <div class="civica-map-demo__navigation" role="group" aria-label="Map controls"><button type="button" class="govuk-button govuk-button--secondary" data-map-command="in" disabled>Zoom in</button><button type="button" class="govuk-button govuk-button--secondary" data-map-command="out" disabled>Zoom out</button><button type="button" class="govuk-button govuk-button--secondary" data-map-command="reset" disabled>Reset to Cardiff Bay</button></div>
           <div class="civica-map-demo__canvas" data-map-canvas hidden></div>
           <p class="govuk-body civica-map-demo__attribution">Map data: © <a class="govuk-link" href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, Open Database Licence. <a class="govuk-link" href="https://www.openstreetmap.org/fixthemap">Report a map-data problem</a>. The dataset is continuously maintained; it is not a historical map for the device-observation date.</p>
-          <figcaption class="govuk-body" id="map-figure-caption">Real OpenStreetMap streets, buildings and water in the civica map colours. The 2 devices and their locations are invented, and no device is tracked. The dashed outline shows that the bicycle's reported location is accurate to 30 metres; it is not a property or zone boundary. The scale bar changes as you zoom.</figcaption>
+          <figcaption class="govuk-body" id="map-figure-caption">Real OpenStreetMap streets, buildings and water in the Civica map colours. The 2 devices and their locations are invented, and no device is tracked. The dashed outline shows that the bicycle's reported location is accurate to 30 metres; it is not a property or zone boundary. The scale bar changes as you zoom.</figcaption>
           <noscript><p class="govuk-body">The map needs JavaScript. No provider request is made, and the complete records below remain available.</p></noscript>
         </figure>
         <h3 class="govuk-heading-s">Selected location record</h3>
@@ -52,12 +52,12 @@ examples:
       source: docs/data/map-design-examples.yml#map-neighbourhood-records
       provenance: Original HTML marker/key symbols and invented device observations. Geographic background is attributed OpenStreetMap data loaded from the OSMF vector service only after explicit activation; it is not original project artwork.
       purpose: Demonstrate marker identity, a selected record, uncertainty and full membership without exposing a real household location.
-      intended_background: The civica map colours, the same in light and dark mode, declared in docs/javascript/map-examples.mjs. Marker shapes and letters remain distinct without colour.
+      intended_background: The Civica map colours, the same in light and dark mode, declared in docs/javascript/map-examples.mjs. Marker shapes and letters remain distinct without colour.
       alternative_text_decision: The live canvas has a task-specific accessible name and keyboard instructions; the key, controls, observations, sources and uncertainty are also real HTML. Glyphs use local Arial; no external icon or font service is requested.
       review_status: Source checks only; integrated rendered review is recorded separately.
   map-govuk-zones:
     title: Home Assistant zones in the map colours
-    description: A no-network drawing of three invented Home Assistant zones on a coastline in the civica map colours, with a key and a table of the same zones.
+    description: A no-network drawing of three invented Home Assistant zones on a coastline in the Civica map colours, with a key and a table of the same zones.
     height: 1150
     html: |
       <section class="civica-map-demo" aria-labelledby="map-zones-title">
@@ -99,11 +99,11 @@ examples:
         <p class="govuk-body">A zone does not show that anyone is there.</p>
       </section>
     artwork:
-      creator: civica project; original SVG markup
+      creator: Civica project; original SVG markup
       licence: MIT, original project documentation code under LICENSE
       source: docs/data/map-design-examples.yml#map-govuk-zones
-      provenance: Original invented coastline and zone circles. Colours are the civica map colours from docs/data/govuk-brand-colours.json (pages.maps.example). No provider tiles, imported paths or personal data.
-      purpose: Show the civica map colours applied to Home Assistant zones without loading a map provider.
+      provenance: Original invented coastline and zone circles. Colours are the Civica map colours from docs/data/govuk-brand-colours.json (pages.maps.example). No provider tiles, imported paths or personal data.
+      purpose: Show the Civica map colours applied to Home Assistant zones without loading a map provider.
       intended_background: Teal tint 95% sea and Black tint 95% land, the same in light and dark mode. Zone names are text labels, so the colour is not the only cue.
       alternative_text_decision: The SVG has a title and description, and the table lists every zone with the same facts.
       review_status: Source checks only; integrated rendered review is recorded separately.

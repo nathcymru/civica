@@ -75,7 +75,7 @@ function build(target: HTMLElement) {
   for (const p of palettes.palettes) { const option = element('option', p.name); option.value = p.id; palette.append(option); }
   paletteLabel.append(palette);
   const checkbox = (text: string, checked = false) => { const label = element('label'), input = element('input'); input.type = 'checkbox'; input.checked = checked; label.append(input, text); return { label, input }; };
-  const dark = checkbox('Dark example'), enabled = checkbox('Apply civica chart styles', !new URLSearchParams(location.search).has('native'));
+  const dark = checkbox('Dark example'), enabled = checkbox('Apply Civica chart styles', !new URLSearchParams(location.search).has('native'));
   const nextDay = element('button', 'Show next sample day'); nextDay.type = 'button';
   nextDay.hidden = ['devices', 'empty'].includes(target.dataset.exampleChart ?? '');
   if (!target.dataset.exampleChart) nextDay.textContent = 'Show next sample day for time charts';
@@ -149,7 +149,7 @@ function build(target: HTMLElement) {
   function paintTheme() {
     const p = palettes.palettes.find(item => item.id === palette.value)!;
     // One theme per GOV.UK theme colour.
-    const name = `civica ${p.name}`;
+    const name = `Civica ${p.name}`;
     const theme = (source.themes as Record<string, any>)[name];
     for (const [key, value] of Object.entries({ ...theme, ...theme.modes[dark.input.checked ? 'dark' : 'light'] })) if (typeof value === 'string' && !key.startsWith('card-mod')) target.style.setProperty(`--${key}`, value);
     target.style.setProperty('--civica-chart-mode', dark.input.checked ? 'dark' : 'light');

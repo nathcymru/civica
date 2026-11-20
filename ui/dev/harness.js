@@ -8,7 +8,7 @@ const source = await fetch('../../design-system/themes.json').then(r => r.json()
 const themes = source.themes || source;
 const app = document.querySelector('home-assistant');
 app.attachShadow({mode:'open'});
-app.hass = { themes: { themes, theme: 'civica Blue', darkMode: false }, selectedTheme: { theme: 'civica Blue', dark: false } };
+app.hass = { themes: { themes, theme: 'Civica Blue', darkMode: false }, selectedTheme: { theme: 'Civica Blue', dark: false } };
 window.events = [];
 function paint() {
   const theme = themes[app.hass.selectedTheme.theme];
@@ -17,7 +17,7 @@ function paint() {
   app.hass.themes.theme = app.hass.selectedTheme.theme;
   app.hass.themes.darkMode = app.hass.selectedTheme.dark;
   // Every GOV.UK theme colour uses the same white lock-up on its masthead.
-  if (palettes.palettes.some(palette => app.hass.themes.theme === `civica ${palette.name}`)) document.querySelector('header img').src = '../../brand/civica/core/lockup-white.svg';
+  if (palettes.palettes.some(palette => app.hass.themes.theme === `Civica ${palette.name}`)) document.querySelector('header img').src = '../../brand/civica/core/lockup-white.svg';
   document.querySelector('civica-theme-settings').hass = app.hass;
 }
 document.addEventListener('settheme', e => { window.events.push(e.detail); app.hass.selectedTheme = { ...app.hass.selectedTheme, ...e.detail }; paint(); });

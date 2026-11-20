@@ -1,4 +1,4 @@
-# civica design tokens
+# Civica design tokens
 
 `palettes.json` is the canonical, human- and machine-readable list of theme colours. It holds seven colours from the GOV.UK colour palette: Primary blue, green, teal, purple, magenta and red, and Black. Each value is copied from `docs/data/govuk-brand-colours.json`, the record of the GOV.UK Brand Guidelines colour pages. These are the GOV.UK primary colours that pass 4.5:1 contrast with white text. Primary orange, yellow and brown are not offered because white text on them falls below 4.5:1.
 
@@ -12,13 +12,13 @@ Run `npm run generate:themes` after editing theme colour data or `scripts/genera
 
 - Theme colour IDs are stable, lower-case strings, for example `teal`.
 - There are no tones. The theme colour is independent of Home Assistant's `light`, `dark` and automatic mode preference.
-- Native theme names use the form `civica {colour name}`, for example `civica Teal`. `civica` is the same as `civica Blue`.
+- Native theme names use the form `civica {colour name}`, for example `Civica Teal`. `civica` is the same as `Civica Blue`.
 - `govuk` is a migration alias for Blue. It does not use official branding.
 - Light mode uses the exact theme colour on a white canvas. Links use GOV.UK link blue `#1A65A6` with every theme colour. Dark mode derives lighter interaction colours and uses neutral dark surfaces. It keeps the exact theme colour as `civica-brand-primary`, the app header and sidebar masthead colour.
 
 ## Roles and controlled adaptations
 
-Brand colour changes must not change the meaning of errors, warnings, success, unavailable devices or chart series. The error and success base colours are `#CA3535` and `#0F7A52`, following the current GOV.UK Frontend 6.6 values. Secondary light text is `#484949`. Warning text uses dark ochre `#8A6100` so it remains readable on light surfaces; warning bands use yellow `#FFDD00` with ink text. This is a civica adaptation, not an official new GOV.UK token.
+Brand colour changes must not change the meaning of errors, warnings, success, unavailable devices or chart series. The error and success base colours are `#CA3535` and `#0F7A52`, following the current GOV.UK Frontend 6.6 values. Secondary light text is `#484949`. Warning text uses dark ochre `#8A6100` so it remains readable on light surfaces; warning bands use yellow `#FFDD00` with ink text. This is a Civica adaptation, not an official new GOV.UK token.
 
 The `civica-danger-fill`, `civica-success-fill`, `civica-warning-fill` and `civica-notice-fill` tokens have explicit `civica-on-*` foregrounds. Use those pairs for persistent banners and destructive buttons. Do not assume white text is readable on `error-color` in dark mode: that variable is an accessible lighter text/icon colour.
 

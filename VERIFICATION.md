@@ -8,9 +8,9 @@ Live acceptance identified a transient startup error when Home Assistant supplie
 
 This patch changes the companion and installation cache versions. Supplied artwork, theme values, card behaviour and household configuration remain as released in 1.4.0. Final CI and live acceptance are recorded on the patch release pull request.
 
-## v1.4.0 — civica rename and revised artwork (13 November 2026)
+## v1.4.0 — Civica rename and revised artwork (13 November 2026)
 
-The current product, repository links, documentation and installation package use **civica**. The revised supplied artwork replaces the previous logos. The accepted inventory contains 224 unchanged supplied files, including 218 valid images and all 20 palette variants. One empty WebP is excluded and the supplied metadata discrepancies are recorded in `brand/civica/docs/accepted-assets.json`.
+The current product, repository links, documentation and installation package use **Civica**. The revised supplied artwork replaces the previous logos. The accepted inventory contains 224 unchanged supplied files, including 218 valid images and all 20 palette variants. One empty WebP is excluded and the supplied metadata discrepancies are recorded in `brand/civica/docs/accepted-assets.json`.
 
 The default `civica` theme is Civic Cobalt Vivid. All 20 named palette variants, the optional `govuk` theme alias and existing automation/entity identifiers remain compatible. The new lighting module is `civica-house-lighting-card.js`; the previous filename imports that same module. The companion versions its logo and icon URLs to avoid showing cached artwork after an upgrade.
 

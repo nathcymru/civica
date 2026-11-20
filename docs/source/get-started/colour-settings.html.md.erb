@@ -1,13 +1,13 @@
 ---
 title: "Change theme colours"
-description: "Change theme colours for the civica Home Assistant design system."
+description: "Change theme colours for the Civica Home Assistant design system."
 last_reviewed_on: 2026-11-18
 review_in: 3 months
 published_on: "2026-11-11"
 updated_on: "2026-11-18"
 updates:
   - date: "2026-11-13"
-    description: "Updated the current project name and repository links to civica."
+    description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
@@ -17,14 +17,14 @@ updates:
   - date: "2026-11-18"
     description: "Rewritten for the Theme colour control: choose one of seven colours. The ten palettes and the Use muted colours control were removed."
   - date: "2026-11-18"
-    description: "What the theme colour changes now links to the Colour page instead of repeating it, and the page says the civica lock-up appears in the sidebar title."
-ai_instructions: "Use for choosing the civica theme colour. Name the control exactly as it appears: Theme colour. It offers seven colours: Blue, Green, Teal, Purple, Magenta, Red and Black. What the theme colour changes and keeps is owned by Colour (/styles/colour.html#theme-colour): link to it, do not repeat it. With the module installed, the white civica lock-up appears in the sidebar title, not the header. The light, dark or automatic mode stays as it was. Do not say the module stores its own preference. Do not name outside sources on the page. Rules WG-021, WG-050, WG-052, WG-051."
+    description: "What the theme colour changes now links to the Colour page instead of repeating it, and the page says the Civica lock-up appears in the sidebar title."
+ai_instructions: "Use for choosing the Civica theme colour. Name the control exactly as it appears: Theme colour. It offers seven colours: Blue, Green, Teal, Purple, Magenta, Red and Black. What the theme colour changes and keeps is owned by Colour (/styles/colour.html#theme-colour): link to it, do not repeat it. With the module installed, the white Civica lock-up appears in the sidebar title, not the header. The light, dark or automatic mode stays as it was. Do not say the module stores its own preference. Do not name outside sources on the page. Rules WG-021, WG-050, WG-052, WG-051."
 ai_related:
   - path: "/styles/colour.html"
     title: "Colour"
     relationship: "Owns what the theme colour changes and what stays the same."
   - path: "/get-started/install.html"
-    title: "Install civica"
+    title: "Install Civica"
     relationship: "Install the themes and module before the colour controls can work."
   - path: "/get-started/compatibility.html"
     title: "Compatibility and limits"
@@ -36,12 +36,12 @@ ai_related:
 
 # Change theme colours
 
-Open your Home Assistant profile and find the theme settings. Use **Theme colour** to choose a colour. You can also select a **civica** theme from Home Assistant's own theme dropdown.
+Open your Home Assistant profile and find the theme settings. Use **Theme colour** to choose a colour. You can also select a **Civica** theme from Home Assistant's own theme dropdown.
 
 
 ## Examples
 
-These examples show Home Assistant’s sidebar title, with the white civica lock-up on the Blue and the Purple theme colour. Notice that the lock-up stays white whichever colour you choose.
+These examples show Home Assistant’s sidebar title, with the white Civica lock-up on the Blue and the Purple theme colour. Notice that the lock-up stays white whichever colour you choose.
 
 <%= example('local-theme-blue') %>
 
@@ -54,9 +54,9 @@ Use **Theme colour** to choose one of seven colours: Blue, Green, Teal, Purple, 
 
 [Theme colour](../styles/colour.html#theme-colour) explains what the theme colour changes and what stays the same.
 
-Each theme colour has its own Home Assistant theme, named `civica Blue`, `civica Green` and so on. The `civica` theme is the same as `civica Blue`.
+Each theme colour has its own Home Assistant theme, named `Civica Blue`, `Civica Green` and so on. The `Civica` theme is the same as `Civica Blue`. An older `civica` selection keeps working.
 
-With the module installed, the sidebar title shows the white civica lock-up on every theme colour, because every theme colour passes 4.5:1 contrast with white. There is no setting for a household name, crest or logo.
+With the module installed, the sidebar title shows the white Civica lock-up on every theme colour, because every theme colour passes 4.5:1 contrast with white. There is no setting for a household name, crest or logo.
 
 ## How the setting is saved
 
@@ -74,7 +74,7 @@ The controls are placed in your profile using Home Assistant's internal componen
 type: custom:civica-theme-settings
 ```
 
-Keep the native dropdown available. Do not remove it to force people through the civica control.
+Keep the native dropdown available. Do not remove it to force people through the Civica control.
 
 ## Safe and recovery mode
 
@@ -84,5 +84,5 @@ The colour controls are disabled in Home Assistant safe mode and recovery mode, 
 
 - Changing the theme colour must not reload the page, move keyboard focus away from the control or change any device.
 - Announce the chosen colour once, with a polite status message, for example “Teal theme colour selected.”
-- If any of the seven civica theme colours is missing, keep the control disabled and say that all civica themes must be installed and themes reloaded.
+- If any of the seven Civica theme colours is missing, keep the control disabled and say that all Civica themes must be installed and themes reloaded.
 - Never choose a different colour silently when a theme is missing.

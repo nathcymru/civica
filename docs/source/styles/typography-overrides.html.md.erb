@@ -11,7 +11,7 @@ updated_on: "2026-11-19"
 updates:
   - date: "2026-11-19"
     description: "First published, with the ways to adjust text in a single card."
-ai_instructions: "Apply when someone wants to change how text looks in one Home Assistant card. Home Assistant has no text style classes. To make all text bigger, use the font size scale (--ha-font-size-scale), not a per-card size. To change one card, use card-mod, a separate custom integration, with a style block on ha-card: text-align, font-size from a civica variable, font-weight 400 or 700, font-variant-numeric: tabular-nums, overflow-wrap: anywhere. A Markdown card can add structure (headings, lists, bold) but cannot change text size without card-mod. Do not justify text, set fixed px sizes, use other weights or another typeface. Use overrides sparingly. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-080."
+ai_instructions: "Apply when someone wants to change how text looks in one Home Assistant card. Home Assistant has no text style classes. To make all text bigger, use the font size scale (--ha-font-size-scale), not a per-card size. To change one card, use card-mod, a separate custom integration, with a style block on ha-card: text-align, font-size from a Civica variable, font-weight 400 or 700, font-variant-numeric: tabular-nums, overflow-wrap: anywhere. A Markdown card can add structure (headings, lists, bold) but cannot change text size without card-mod. Do not justify text, set fixed px sizes, use other weights or another typeface. Use overrides sparingly. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-080."
 ai_related:
   - path: "/styles/typography.html"
     title: "Typography"
@@ -38,11 +38,11 @@ Home Assistant has no text style classes. You can change text in 2 ways:
 
 ## Make all text bigger
 
-To make text bigger on every dashboard, raise Home Assistant's font size scale, `--ha-font-size-scale`. Every civica size is multiplied by it, so the whole type scale grows together. Do not raise the size in each card instead.
+To make text bigger on every dashboard, raise Home Assistant's font size scale, `--ha-font-size-scale`. Every Civica size is multiplied by it, so the whole type scale grows together. Do not raise the size in each card instead.
 
 ## Change one card with card-mod
 
-card-mod is a separate custom integration. Some civica cards, such as the action buttons, already need it. Add a `card_mod` style to the card, and change only the property you need.
+card-mod is a separate custom integration. Some Civica cards, such as the action buttons, already need it. Add a `card_mod` style to the card, and change only the property you need.
 
 This example is a Markdown card for an invented household's energy summary. It lines up the digits and lets a long device name wrap.
 
@@ -72,7 +72,7 @@ A Markdown card on its own can add headings, lists and bold text. It cannot chan
 | Change the size | `font-size: var(--civica-font-size-body)` | Use a variable from the [type scale](typography-type-scale.html), never a fixed px size. |
 | Change the weight | `font-weight: 400` or `700` | Use only regular and bold. |
 | Line up numbers | `font-variant-numeric: tabular-nums` | Every digit has the same width, so readings in a column line up and a changing number does not jump. |
-| Break long words | `overflow-wrap: anywhere` | A long name or address wraps instead of spilling out of the card. civica cards already do this. |
+| Break long words | `overflow-wrap: anywhere` | A long name or address wraps instead of spilling out of the card. Civica cards already do this. |
 
 Use `text-align: start`, not `left`. Then text in a right-to-left language aligns to the right edge.
 

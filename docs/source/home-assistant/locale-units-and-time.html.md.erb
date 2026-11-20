@@ -37,7 +37,7 @@ Use the person’s own Home Assistant language, units and time settings. UK Engl
 
 ## Scope and native ownership
 
-Home Assistant profile settings supply the localisation preferences. The civica Energy tables already read the native number format, clock format and time zone. This page covers other surfaces and does not claim they all have an adapter. For the native settings, see the Home Assistant [user configuration documentation](https://www.home-assistant.io/docs/configuration/user-configuration/).
+Home Assistant profile settings supply the localisation preferences. The Civica Energy tables already read the native number format, clock format and time zone. This page covers other surfaces and does not claim they all have an adapter. For the native settings, see the Home Assistant [user configuration documentation](https://www.home-assistant.io/docs/configuration/user-configuration/).
 
 The examples are simulated. They do not show that a native feature or adapter has been installed. An application that follows this page must pass the acceptance checks below.
 
@@ -53,7 +53,7 @@ The examples are simulated. They do not show that a native feature or adapter ha
 
 ## Integration contract
 
-1. Use the native locale, number separators, units and 12 or 24 hour setting. Do not take them from the chosen civica palette or only from the browser language.
+1. Use the native locale, number separators, units and 12 or 24 hour setting. Do not take them from the chosen Civica palette or only from the browser language.
 2. Keep date-only values, instants, durations and recurring local schedules as different data types. Convert only when the source calls for it.
 3. At a daylight-saving change, tell equal clock times apart by their offset or by the whole period. Keep the original dates of a comparison series and do not relabel them as today.
 4. Isolate identifiers inside right-to-left text. Mirror the layout where it suits, but do not reverse physical directions, media, units or chart meaning automatically.

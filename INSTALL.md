@@ -1,4 +1,4 @@
-# Install civica for Home Assistant
+# Install Civica for Home Assistant
 
 This package contains themes, the optional colour controls and branding companion, the lighting card, its assets and lighting setup files. It does not change your Home Assistant configuration automatically.
 
@@ -13,14 +13,14 @@ frontend:
     - /local/civica/civica-ui.js?v=1.4.1
 ```
 
-4. Restart Home Assistant, then reload your browser. Choose a civica theme in **Profile → Theme**. Choose a **Theme colour**. Your Light/Dark/Auto setting is separate. The native theme dropdown also works without the companion.
+4. Restart Home Assistant, then reload your browser. Choose a Civica theme in **Profile → Theme**. Choose a **Theme colour**. Your Light/Dark/Auto setting is separate. The native theme dropdown also works without the companion.
 5. If Profile's layout changes in a later Home Assistant version, add `type: custom:civica-theme-settings` as a dashboard card. The companion must be loaded for that card to work.
 
 The companion clears native primary/accent colour overrides when you select a theme colour, so they cannot mask part of the theme. Home Assistant saves the preference and reports failures. Colours are unavailable in safe/recovery mode. Switching to a non-civica theme restores the sidebar and browser icon changes.
 
 ## Renamed project and existing installations
 
-In HACS, use **Update information** on the existing repository entry and check that it now points to `nathcymru/civica`. Keep its existing theme folder and YAML filenames; do not install a second copy. The default theme is **civica** (Blue). The optional `govuk` alias still works. Earlier palette selections, such as `civica Civic Cobalt Vivid`, no longer exist: choose a theme colour again.
+In HACS, use **Update information** on the existing repository entry and check that it now points to `nathcymru/civica`. Keep its existing theme folder and YAML filenames; do not install a second copy. The default theme is **Civica** (Blue). The optional `govuk` alias still works. Earlier palette selections, such as `civica Civic Cobalt Vivid`, no longer exist: choose a theme colour again.
 
 When upgrading the optional companion, back up and replace its owned `config/www/civica/brand/` folder with the new package’s `www/civica/brand/` folder. Replacing this folder removes obsolete logos that a merge would leave behind. Keep unrelated files.
 
@@ -40,7 +40,7 @@ The dashboard snippets in `examples/cards/` require card-mod where indicated. Th
 
 HACS users update the theme through HACS and copy only `www/civica/` from this archive. Manual users update their one existing theme location and `www/civica/`. After a YAML-only update, run `frontend.reload_themes`. After a JavaScript update, increment the `?v=` value and reload the browser. Changes to `configuration.yaml` require restart.
 
-If old styling remains, check all YAML files under the included `config/themes/` directory for duplicate `civica …` or `govuk` definitions. Home Assistant merges these files; an older copy can override the updated one. Keep one installation owner and move the superseded civica files to a backup outside the included directory, for example `config/civica-theme-backups/`. A backup folder inside `config/themes/` can still load. Preserve unrelated themes, run `frontend.reload_themes`, reload the browser and select the theme again.
+If old styling remains, check all YAML files under the included `config/themes/` directory for duplicate `civica …` or `govuk` definitions. Home Assistant merges these files; an older copy can override the updated one. Keep one installation owner and move the superseded Civica files to a backup outside the included directory, for example `config/civica-theme-backups/`. A backup folder inside `config/themes/` can still load. Preserve unrelated themes, run `frontend.reload_themes`, reload the browser and select the theme again.
 
 To remove the theme, choose Home Assistant's default theme, remove the companion entry and dashboard cards/resources that use it, then remove the copied files and restart. Existing lighting automations are separate; remove only those you deliberately installed.
 
@@ -52,4 +52,4 @@ https://github.com/nathcymru/civica
 
 The repository was checked with automated and browser fixtures. A live deployment still needs the acceptance checks in `docs/source/accessibility/`. The theme cannot replace native Energy, Map, authentication, native app branding or arbitrary third-party component internals.
 
-See `LICENSE` for software terms and `ARTWORK.md` for supplied artwork provenance. civica is an independent project, not a government service.
+See `LICENSE` for software terms and `ARTWORK.md` for supplied artwork provenance. Civica is an independent project, not a government service.

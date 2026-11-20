@@ -1,6 +1,6 @@
 ---
-title: "Install civica"
-description: "Install civica for the civica Home Assistant design system."
+title: "Install Civica"
+description: "Install Civica for the Civica Home Assistant design system."
 last_reviewed_on: 2026-11-13
 review_in: 3 months
 published_on: "2026-11-11"
@@ -9,7 +9,7 @@ updates:
   - date: "2026-11-13"
     description: "Updated the module resource cache versions for the startup theme-registry readiness fix in v1.4.1."
   - date: "2026-11-13"
-    description: "Updated the project identity, default theme, release paths and existing-installation migration guidance for civica."
+    description: "Updated the project identity, default theme, release paths and existing-installation migration guidance for Civica."
   - date: "2026-11-11"
     description: "Updated the module resource cache version for the lighting request and count fixes."
   - date: "2026-11-11"
@@ -20,7 +20,7 @@ updates:
     description: "Rewritten to lead with the choice of installer, tighten the steps and link to the owning pages."
   - date: "2026-11-18"
     description: "The ten palettes and their Vivid and Muted themes were replaced by seven GOV.UK theme colours, with a note for upgrades."
-ai_instructions: "Use for installing, updating and removing civica. Keep exactly one installed definition of each theme and one owner for the theme YAML, either HACS or manual. Keep the govuk and lighting-card compatibility names. Do not copy themes/ from the archive when HACS manages the theme. Rules WG-050, WG-051, WG-052, WG-025."
+ai_instructions: "Use for installing, updating and removing Civica. Keep exactly one installed definition of each theme and one owner for the theme YAML, either HACS or manual. Keep the govuk and lighting-card compatibility names. Do not copy themes/ from the archive when HACS manages the theme. Rules WG-050, WG-051, WG-052, WG-025."
 ai_related:
   - path: "/get-started/colour-settings.html"
     title: "Change theme colours"
@@ -33,7 +33,7 @@ ai_related:
     relationship: "Check the installation before relying on it."
 ---
 
-# Install civica
+# Install Civica
 
 Back up your current theme configuration before you replace an existing installation. Your dashboards and integrations stay as they are.
 
@@ -63,9 +63,9 @@ frontend:
 
 If `frontend:` already exists, add `themes:` to that section. Do not create a second `frontend:` key.
 
-Run the `frontend.reload_themes` action, or restart Home Assistant after a configuration check. Open your profile and select **civica** for the default Blue theme colour. Seven theme colours are available, from **civica Blue** to **civica Black**. The theme colour is independent of Home Assistant's light and dark mode.
+Run the `frontend.reload_themes` action, or restart Home Assistant after a configuration check. Open your profile and select **Civica** for the default Blue theme colour. Seven theme colours are available, from **Civica Blue** to **Civica Black**. The theme colour is independent of Home Assistant's light and dark mode.
 
-If you used a civica palette before 18 November 2026, such as **civica Civic Cobalt Vivid**, that theme is no longer installed. Home Assistant shows its built-in appearance until you choose a theme colour again in your profile. Update any automation that calls `frontend.set_theme` with an old theme name.
+If you used a Civica palette before 18 November 2026, such as **Civica Civic Cobalt Vivid**, that theme is no longer installed. Home Assistant shows its built-in appearance until you choose a theme colour again in your profile. Update any automation that calls `frontend.set_theme` with an old theme name.
 
 HACS's Theme category installs and updates the YAML in its repository folder under `/config/themes/`. An existing installation may use `/config/themes/govuk/`; keep that HACS-managed location. HACS does not install the optional JavaScript module or image files automatically. When adding those from the release archive, copy only `www/civica/`, not a second set of themes.
 
@@ -75,7 +75,7 @@ If HACS already manages this repository, keep the existing entry and its install
 
 The current repository is [nathcymru/civica](https://github.com/nathcymru/civica). GitHub redirects the former repository address, including its issues and Git operations, but does not automatically redirect the project's GitHub Pages URLs. Update documentation bookmarks to [nathcymru.github.io/civica/](https://nathcymru.github.io/civica/). The page paths beneath that address remain the same. See [GitHub's repository-renaming guidance](https://docs.github.com/en/repositories/creating-and-managing-repositories/renaming-a-repository).
 
-Existing `govuk` theme selections, lighting-card types and script/entity identifiers remain compatibility names. They are not the current project name. Use the new civica release paths for new resource entries and keep just one installed definition of each theme.
+Existing `govuk` theme selections, lighting-card types and script/entity identifiers remain compatibility names. They are not the current project name. Use the new Civica release paths for new resource entries and keep just one installed definition of each theme.
 
 ## Download or build the installation archive
 
@@ -94,7 +94,7 @@ The archive is `dist/civica.zip`. Its `README.md` gives the complete installatio
 
 Extract the archive. Copy its `www/civica/` directory into `/config/www/civica/`, preserving the complete structure. The module, lighting bundle and assets need their relative paths intact.
 
-When upgrading, back up the existing `/config/www/civica/brand/` directory. Remove that owned brand directory and copy in the release's complete `www/civica/brand/` directory. Replace this directory rather than merging its contents, so obsolete logos are removed. This replacement concerns the supplied civica brand files only.
+When upgrading, back up the existing `/config/www/civica/brand/` directory. Remove that owned brand directory and copy in the release's complete `www/civica/brand/` directory. Replace this directory rather than merging its contents, so obsolete logos are removed. This replacement concerns the supplied Civica brand files only.
 
 **If HACS manages the theme, do not copy the archive's `themes/` directory.** Use HACS to update its installed theme files. If you use manual installation, follow the manual steps below and maintain that one theme location.
 
@@ -107,7 +107,7 @@ frontend:
     - /local/civica/civica-ui.js?v=1.4.1
 ```
 
-Restart Home Assistant after a configuration check and reload the browser. The module adds civica settings beside Home Assistant's theme settings and provides the dashboard settings card. From a non-civica theme, choose a theme colour to start using civica.
+Restart Home Assistant after a configuration check and reload the browser. The module adds Civica settings beside Home Assistant's theme settings and provides the dashboard settings card. From a non-civica theme, choose a theme colour to start using Civica.
 
 Use `extra_module_url` so the module loads everywhere. If you load it only as a dashboard resource, the settings and native panels stay unstyled until someone opens that dashboard.
 
@@ -123,16 +123,16 @@ The artwork is served from `/local/civica/card/assets/`. Do not install the sepa
 
 Use these steps only when HACS does not manage this theme. Copy the archive's `themes/civica/` into `/config/themes/civica/` once. From a repository checkout, copy `themes/civica.yaml` into that directory instead. These are alternative sources for the same generated themes. For later updates, replace the files in the same location rather than adding another folder.
 
-Keep `govuk.yaml` only if an existing profile or dashboard uses the old `govuk` theme name. It maps to the Blue theme colour. Replace or retire an existing alias as part of the same installation; do not add a second included `govuk` definition. Choose a named civica theme for the Theme colour control. Load and select it as described above.
+Keep `govuk.yaml` only if an existing profile or dashboard uses the old `govuk` theme name. It maps to the Blue theme colour. Replace or retire an existing alias as part of the same installation; do not add a second included `govuk` definition. Choose a named Civica theme for the Theme colour control. Load and select it as described above.
 
 ## Resolve duplicate theme definitions
 
 If borders, colours or other theme variables remain from an older release after reloading, check for more than one included copy before treating the result as a browser cache issue.
 
-1. Inspect all YAML files under the directory loaded by `!include_dir_merge_named themes`. Look for repeated `civica`, named `civica …` variants and the `govuk` alias. A HACS file such as `/config/themes/govuk/civica.yaml` and a manual file such as `/config/themes/civica/civica.yaml` define the same themes.
+1. Inspect all YAML files under the directory loaded by `!include_dir_merge_named themes`. Look for repeated `Civica`, named `Civica …` variants, the older lower-case `civica` names and the `govuk` alias. A HACS file such as `/config/themes/govuk/civica.yaml` and a manual file such as `/config/themes/civica/civica.yaml` define the same themes.
 2. Choose one installation owner. For HACS, update the repository through HACS and retain its managed files. For manual ownership, remove this repository from HACS so a later HACS update cannot recreate a duplicate, then retain the manual location.
-3. Back up the superseded civica YAML **outside** the included themes directory, for example `/config/civica-theme-backups/`. Move only the superseded civica files or definitions; preserve unrelated themes. Renaming a folder to `backup` inside `/config/themes/` does not exclude its YAML from loading.
-4. Confirm each civica theme and the optional `govuk` alias has one included definition. Run `frontend.reload_themes`, reload the browser and select the theme again. Check that the current release's colours and structural borders appear.
+3. Back up the superseded Civica YAML **outside** the included themes directory, for example `/config/civica-theme-backups/`. Move only the superseded Civica files or definitions; preserve unrelated themes. Renaming a folder to `backup` inside `/config/themes/` does not exclude its YAML from loading.
+4. Confirm each Civica theme and the optional `govuk` alias has one included definition. Run `frontend.reload_themes`, reload the browser and select the theme again. Check that the current release's colours and structural borders appear.
 
 Keep theme and runtime updates aligned: HACS owns YAML updates; the archive's `www/civica/` supplies the matching interface module and assets.
 
@@ -148,6 +148,6 @@ This is also the fallback when an updated Home Assistant profile layout prevents
 
 ## Remove the theme
 
-Select a built-in or other theme first. Remove the module's `extra_module_url` entry, restart, and reload. Remove civica files only after checking that no dashboards or theme selectors still reference them. Existing device entities and automations are not changed by selecting a theme.
+Select a built-in or other theme first. Remove the module's `extra_module_url` entry, restart, and reload. Remove Civica files only after checking that no dashboards or theme selectors still reference them. Existing device entities and automations are not changed by selecting a theme.
 
 For how Home Assistant loads themes, see its [Frontend integration reference](https://www.home-assistant.io/integrations/frontend/). To choose a theme colour next, [change theme colours](colour-settings.html).

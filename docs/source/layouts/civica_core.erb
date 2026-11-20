@@ -3,13 +3,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#1d70b8">
-<title><%= escape(current_page.data.title) %> – civica Design System</title>
+<title><%= escape(current_page.data.title) %> – Civica Design System</title>
 <meta name="description" content="<%= escape(current_page.data.description || 'A clear, consistent Home Assistant interface inspired by UK public service design.') %>">
 <% if current_page.data.ai_instructions %>
 <% if current_page.data.section == "content" %>
-<meta name="ai-guide-context" content="This page is part of the civica writing guide for Home Assistant. The guide has four parts that depend on each other: Writing guidelines (what to say), Formatting content (how to lay it out), Publish, update or retire (how content is checked, changed and removed) and Lexicons (A to Z General and A to Z Technical, for looking up single words). Apply the writing guidelines first, then formatting, then the lifecycle checks, and use the lexicons to settle individual words. Rules have IDs such as WG-031 and anchors such as #wg-031. Each rule is a statement, a reason and a Before and After pair. Write in British English. State only what Home Assistant has reported.">
+<meta name="ai-guide-context" content="This page is part of the Civica writing guide for Home Assistant. The guide has four parts that depend on each other: Writing guidelines (what to say), Formatting content (how to lay it out), Publish, update or retire (how content is checked, changed and removed) and Lexicons (A to Z General and A to Z Technical, for looking up single words). Apply the writing guidelines first, then formatting, then the lifecycle checks, and use the lexicons to settle individual words. Rules have IDs such as WG-031 and anchors such as #wg-031. Each rule is a statement, a reason and a Before and After pair. Write in British English. State only what Home Assistant has reported.">
 <% else %>
-<meta name="ai-guide-context" content="This page is part of the civica Design System for Home Assistant. Pages state rules for dashboards, cards and controls, with examples that are documentation only and do not change a real device. Apply the page's own rules first, follow its related pages for anything it does not own, and use the civica writing guide (content section) for wording. Write in British English. State only what Home Assistant has reported.">
+<meta name="ai-guide-context" content="This page is part of the Civica Design System for Home Assistant. Pages state rules for dashboards, cards and controls, with examples that are documentation only and do not change a real device. Apply the page's own rules first, follow its related pages for anything it does not own, and use the Civica writing guide (content section) for wording. Write in British English. State only what Home Assistant has reported.">
 <% end %>
 <meta name="ai-instructions" content="<%= escape(current_page.data.ai_instructions) %>">
 <% Array(current_page.data.ai_related).each do |related| %><meta name="ai-related" content="<%= escape(related['title']) %> (<%= escape(related['path']) %>): <%= escape(related['relationship']) %>">
@@ -23,7 +23,7 @@
 <%= site_notice %>
 <%= javascript_include_tag 'site-notice' %>
 <header class="c-header"><div class="c-container c-header__inner">
-<a class="c-brand" href="<%= docs_path('/index.html') %>" aria-label="civica Design System home"><img src="<%= docs_path('/images/civica-lockup.svg') %>" alt="civica" width="236" height="52"><span class="c-header__name">Design System</span></a>
+<a class="c-brand" href="<%= docs_path('/index.html') %>" aria-label="Civica Design System home"><img src="<%= docs_path('/images/civica-lockup.svg') %>" alt="Civica" width="236" height="52"><span class="c-header__name">Design System</span></a>
 <form class="c-search" role="search" action="<%= docs_path('/search.html') %>"><label class="govuk-visually-hidden" for="site-search">Search Design System</label><input id="site-search" name="q" type="search" placeholder="Search Design System"><button type="submit" aria-label="Search"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><circle cx="10" cy="10" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="m15 15 6 6" stroke="currentColor" stroke-width="2"/></svg></button></form>
 </div></header>
 <nav class="c-navigation" aria-label="Main navigation"><div class="c-container"><button type="button" class="c-menu-toggle" aria-expanded="true" aria-controls="primary-navigation" hidden>Menu</button><ul id="primary-navigation">
