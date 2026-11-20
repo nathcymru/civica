@@ -1,4 +1,3 @@
-<%# Share links: the share-links component markup, unchanged except for the links and their icons. %>
 <% address = page_address %>
 <% prompt = "Read #{address} and help me understand how to apply it. It is guidance from the civica Design System for Home Assistant. Write in British English and state only what the page says." %>
 <% circle = 'M36.92,0A36.92,36.92,0,1,0,73.84,36.92,36.92,36.92,0,0,0,36.92,0Z' %>
@@ -7,7 +6,7 @@
   { label: 'Microsoft Teams', via: 'Share on', href: "https://teams.microsoft.com/share?href=#{encode_param(address)}", glyph: 'M56.3,48.27a1.42,1.42,0,0,1-1.42,1.42h-19v9.18l-9.18-9.18H19a1.43,1.43,0,0,1-1.43-1.43V20.52A1.43,1.43,0,0,1,19,19.09H54.88a1.43,1.43,0,0,1,1.42,1.42Z' },
   { label: 'Claude', via: 'Ask', href: "https://claude.ai/new?q=#{encode_param(prompt)}", glyph: 'M36.92,16.5l4.6,14.8,14.8,4.6-14.8,4.6-4.6,14.8-4.6-14.8-14.8-4.6,14.8-4.6Z' },
   { label: 'Codex', via: 'Ask', href: "https://chatgpt.com/codex?prompt=#{encode_param(prompt)}", glyph: 'M36.92,16.5l4.6,14.8,14.8,4.6-14.8,4.6-4.6,14.8-4.6-14.8-14.8-4.6,14.8-4.6Z' },
-  { label: 'Mistral AI', via: 'Ask', href: "https://chat.mistral.ai/chat?q=#{encode_param(prompt)}", glyph: 'M36.92,16.5l4.6,14.8,14.8,4.6-14.8,4.6-4.6,14.8-4.6-14.8-14.8-4.6,14.8-4.6Z' }
+  { label: 'Mistral', via: 'Ask', href: "https://chat.mistral.ai/chat?q=#{encode_param(prompt)}", glyph: 'M36.92,16.5l4.6,14.8,14.8,4.6-14.8,4.6-4.6,14.8-4.6-14.8-14.8-4.6,14.8-4.6Z' }
 ] %>
 <div class="share-links govuk-!-display-none-print" dir="ltr" title="Share this page">
 <h2 class="govuk-heading-s">Share this page</h2>

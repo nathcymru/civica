@@ -247,7 +247,7 @@ test('the public licence block identifies the exact canonical LICENSE.md source'
     .toHaveAttribute('href', 'https://github.com/nathcymru/civica/edit/main/LICENSE.md');
   await expect(page.getByText('Help improve this guidance')).toHaveCount(0);
   const footer = page.locator('.govuk-footer');
-  await expect(footer).toContainText('civica is independent of the UK Government');
+  await expect(footer).toContainText('Civica is independent of the UK Government');
   await expect(footer).toContainText('GOV.UK Frontend components');
   for (const label of ['Licence', 'Licence and attribution']) {
     const href = await footer.getByRole('link', { name: label, exact: true }).getAttribute('href');

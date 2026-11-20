@@ -223,7 +223,7 @@
   }
 })();
 
-/* Is this page useful? Nothing is stored or sent: there is no vote count yet. The questions stay hidden without JavaScript. */
+/* Is this page useful? The questions stay hidden without JavaScript. */
 (() => {
   const box = document.querySelector('.gem-c-feedback');
   if (!box) return;
