@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Generate docs/data/web-app-colour-examples.yml: a civica Home Assistant
+"""Generate docs/data/web-app-colour-examples.yml: a Civica Home Assistant
 dashboard in a desktop browser (web palette), and the Home Assistant Companion
 app showing the same frontend at phone width (app palette). Each picture is
-drawn as Home Assistant looks with the civica theme in light mode.
+drawn as Home Assistant looks with the Civica theme in light mode.
 Run from the repository root: python3 docs/scripts/generate-web-app-examples.py
 Pass --check to fail if the YAML differs from what this script writes.
 Every colour comes from docs/data/govuk-brand-colours.json by its ID. The script
@@ -139,7 +139,7 @@ def status_icons(p, right, y, colour):
     return bars + wifi + battery
 
 
-# The civica lock-up, as the civica companion puts it in the sidebar: the
+# The Civica lock-up, as the Civica companion puts it in the sidebar: the
 # supplied brand/civica/core/lockup-white.svg geometry, unchanged and scaled.
 def lockup(p, x, y, width):
     ink = p.c('white')
@@ -150,13 +150,13 @@ def lockup(p, x, y, width):
             + f'</g><text x="290" y="186" font-family="Arial, Helvetica, Liberation Sans, Arimo, sans-serif" font-weight="700" font-size="178" fill="{ink}">Civica</text></g>')
 
 
-# Home Assistant parts, in the colours the civica theme sets in light mode:
+# Home Assistant parts, in the colours the Civica theme sets in light mode:
 # app-header-background-color Primary blue with White text, White page,
 # sidebar and cards, card-border and divider Black tint 80%, primary text
 # Black, secondary text and sidebar icons Black tint 25%, link Blue shade 10%.
 # Two theme values are not palette colours, so the nearest one stands in:
 # the selected sidebar row (#E8EEF3) is Black tint 95% and its text (#19578D)
-# Blue shade 25%. Home Assistant's own device colours, which civica does not
+# Blue shade 25%. Home Assistant's own device colours, which Civica does not
 # set, are drawn with the nearest palette colour: amber for a light that is on
 # as Primary yellow, orange for heating as Primary orange, each with its tint
 # for the icon circle.
@@ -232,8 +232,8 @@ def sidebar_rows(p, x, y, w, rows, selected, gap=44):
 
 
 def sidebar(p, x, y, w, h, selected, rows, foot=140):
-    """Home Assistant's sidebar with the civica theme and companion: the menu
-    row in the theme colour with the civica lock-up, then the panels, then
+    """Home Assistant's sidebar with the Civica theme and companion: the menu
+    row in the theme colour with the Civica lock-up, then the panels, then
     Settings, Notifications and the user's profile."""
     out = (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{p.c("white")}"/>'
            f'<rect x="{x}" y="{y}" width="{w}" height="56" fill="{p.c("blue")}"/>' + icon(p, 'menu', x + 28, y + 28, 'white')
@@ -322,8 +322,8 @@ body = (f'<rect width="800" height="540" fill="{p.c("white")}"/>'
         + card(p, 508, 390, 276, 80) + p.text(524, 422, 'Bins go out on Thursday.', 15, 'black', 'white')
         + p.text(524, 450, 'See the bin calendar', 15, 'blue-shade-10', 'white') + f'<rect x="524" y="453" width="131" height="1.5" fill="{p.c("blue-shade-10")}"/>'
         + f'<rect x="0.5" y="0.5" width="799" height="539" fill="none" stroke="{p.c("black-tint-80")}"/>')
-web_desc = ('A desktop browser shows a Home Assistant dashboard with the civica theme and companion on a White background. '
-            'On the left is Home Assistant’s sidebar: a Primary blue row with the menu icon and the civica logo in White, which the civica companion adds, then Overview, which is selected, on a Black tint 95% row with its icon and name in Blue shade 25%, Energy, Map, Logbook and History, and at the bottom Settings, Notifications and the user Alex Morgan. '
+web_desc = ('A desktop browser shows a Home Assistant dashboard with the Civica theme and companion on a White background. '
+            'On the left is Home Assistant’s sidebar: a Primary blue row with the menu icon and the Civica logo in White, which the Civica companion adds, then Overview, which is selected, on a Black tint 95% row with its icon and name in Blue shade 25%, Energy, Map, Logbook and History, and at the bottom Settings, Notifications and the user Alex Morgan. '
             'The Primary blue toolbar has the view tabs Home, Upstairs and Garden in White, with Home underlined, and Search, Assist and menu icons. '
             'The Home view has 2 badges, 9.5 °C and 1.2 kW, and 2 sections. Living room has an entities card where Main light is on, with a Primary blue switch, and Lamp is off, and a thermostat card heating to 21 °C with a current temperature of 19.5 °C on a Primary orange dial. '
             'Kitchen has tiles for Temperature 20.5 °C, Humidity 48 % and Window Closed, and a card that says bins go out on Thursday with a link to the bin calendar in Blue shade 10%. '
@@ -336,10 +336,10 @@ web = figure('web-dashboard',
              ['white', 'blue', 'black-tint-80', 'black', 'black-tint-25', 'blue-shade-10'])
 examples['web-colour-dashboard'] = {
     'title': 'A Home Assistant dashboard in the web palette',
-    'description': 'A Home Assistant dashboard with the civica theme and companion in a desktop browser: Home Assistant’s sidebar, the Primary blue toolbar with view tabs, and White cards with quiet borders on a White background.',
+    'description': 'A Home Assistant dashboard with the Civica theme and companion in a desktop browser: Home Assistant’s sidebar, the Primary blue toolbar with view tabs, and White cards with quiet borders on a White background.',
     'height': 700,
     'html': '<section aria-labelledby="web-dashboard-h"><h2 class="govuk-heading-m" id="web-dashboard-h">Web palette example</h2>' + block(
-        'A Home Assistant dashboard with the civica theme and companion in a desktop browser. Notice the White background and cards, the Primary blue toolbar with the view tabs in White, '
+        'A Home Assistant dashboard with the Civica theme and companion in a desktop browser. Notice the White background and cards, the Primary blue toolbar with the view tabs in White, '
         'Black tint 80% card borders, Black text with secondary text and sidebar icons in Black tint 25%, and the link in Blue shade 10%. '
         'The switch that is on is Primary blue. The heating dial uses Home Assistant’s own orange for heating, drawn in the nearest palette colour, Primary orange. '
         'The theme colours for the selected sidebar row, #E8EEF3 and #19578D, are not palette colours either, so the row is drawn as Black tint 95% with Blue shade 25% text.', [web]) + '</section>',
@@ -469,7 +469,7 @@ examples_pictures = [
         'Bedside lamp and Desk lamp are on, with yellow icons on Yellow tint 80%; Heating is heating, with an orange icon on Orange tint 80%; Ceiling light, Spotlights and the sensors have Black tint 25% icons on Black tint 80%. '
         'The tiles themselves stay White with Black tint 80% borders.', phone(p, 'app-examples-clip', upstairs), 380, 760),
     svg('app-examples-b', 'App examples: the sidebar with a tinted row', 'The Companion app shows Home Assistant’s sidebar, opened from the menu icon, over the dimmed dashboard. '
-        'It starts with a Primary blue row with the menu icon and the civica logo in White, which appears when the civica companion is installed. Overview, the open dashboard, is on a Black tint 95% row with its icon and name in Blue shade 25%. '
+        'It starts with a Primary blue row with the menu icon and the Civica logo in White, which appears when the Civica companion is installed. Overview, the open dashboard, is on a Black tint 95% row with its icon and name in Blue shade 25%. '
         'Below are Energy, Map, Logbook, History and To-do lists, then Settings, Notifications and the user Alex Morgan.', phone(p, 'app-examples-b-clip', drawer), 380, 760),
 ]
 example_figure = figure('app-examples', phones(*examples_pictures),
@@ -484,18 +484,18 @@ examples['app-colour-examples'] = {
         'Notice the Accent yellow guide label, an App palette colour, with Black text and a Black border, pointing at the menu icon. '
         'Notice too that each tile tints only its icon circle, Yellow tint 80% for a light that is on and Black tint 80% for one that is off, '
         'and that the sidebar marks the open dashboard with a Black tint 95% row and Blue shade 25% text. The tints add structure without filling whole cards. '
-        'The sidebar’s Primary blue row with the civica logo appears when the civica companion is installed. '
+        'The sidebar’s Primary blue row with the Civica logo appears when the Civica companion is installed. '
         'Home Assistant’s own amber for lights and orange for heating, and the theme’s #E8EEF3 and #19578D for the open dashboard’s sidebar row, are not palette colours, so they are drawn with the nearest palette colours.', [example_figure]) + '</section>',
 }
 
 
 for ex in examples.values():
     ex['artwork'] = {
-        'creator': 'civica project; original SVG markup',
+        'creator': 'Civica project; original SVG markup',
         'licence': 'MIT, original project documentation code under LICENSE',
         'source': 'docs/data/web-app-colour-examples.yml',
-        'provenance': 'Original drawings of the Home Assistant frontend with the civica theme in light mode and an invented household, generated by docs/scripts/generate-web-app-examples.py from docs/data/govuk-brand-colours.json; the layout follows Home Assistant’s own sidebar, toolbar and cards, and the colours follow themes/civica.yaml, with the nearest palette colour where a theme or Home Assistant value is not a palette colour. The only identity device is the supplied civica lock-up (brand/civica/core/lockup-white.svg), unchanged and scaled, where the civica companion puts it in the sidebar. No Home Assistant, government or other third-party artwork, screenshot or icon file is copied; the icons are drawn with simple shapes.',
-        'purpose': 'Show the civica web-app palettes in drawings of a Home Assistant dashboard and Companion app screens; they are not screenshots of civica, Home Assistant or the Companion app.',
+        'provenance': 'Original drawings of the Home Assistant frontend with the Civica theme in light mode and an invented household, generated by docs/scripts/generate-web-app-examples.py from docs/data/govuk-brand-colours.json; the layout follows Home Assistant’s own sidebar, toolbar and cards, and the colours follow themes/civica.yaml, with the nearest palette colour where a theme or Home Assistant value is not a palette colour. The only identity device is the supplied Civica lock-up (brand/civica/core/lockup-white.svg), unchanged and scaled, where the Civica companion puts it in the sidebar. No Home Assistant, government or other third-party artwork, screenshot or icon file is copied; the icons are drawn with simple shapes.',
+        'purpose': 'Show the Civica web and app palettes in drawings of a Home Assistant dashboard and Companion app screens; they are not screenshots of Civica, Home Assistant or the Companion app.',
         'intended_background': 'Each picture carries its own background; every text pair reaches at least 4.5:1, checked when the script runs.',
         'alternative_text_decision': 'Each picture is an SVG image with a title and a description that names what it shows and its colours; the caption names the colours to notice. The page text gives the guidance, so the page works without the pictures.',
         'review_status': 'Source checks only; integrated rendered review is recorded separately.',

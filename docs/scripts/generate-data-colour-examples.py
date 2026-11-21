@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate the data-colour-categorical and data-colour-quantitative examples in
 docs/data/data-colour-examples.yml: a line chart and two heatmaps of synthetic
-Home Assistant data in the civica chart colours.
+Home Assistant data in the Civica chart colours.
 Run from the repository root: python3 docs/scripts/generate-data-colour-examples.py
 Pass --check to fail if the YAML differs from what this script writes.
 The other examples in the file are not touched.
@@ -30,7 +30,7 @@ CHART_IDS = [item['colour'] for item in CHARTS['categorical'] if 'role' not in i
 SCALE_IDS = {scale['title']: scale['colours'] for scale in CHARTS['sequential']}
 GRID = 'black-tint-80'
 SURFACES = {
-    # Card backgrounds of the civica theme: White, and the dark-mode card colour.
+    # Card backgrounds of the Civica theme: White, and the dark-mode card colour.
     'light': {'surface': '#FFFFFF', 'label': 'black', 'title': 'Light mode'},
     'dark': {'surface': '#24282B', 'label': 'white', 'title': 'Dark mode'},
 }
@@ -105,7 +105,7 @@ def colours_used(items):
 
 # ---------------------------------------------------------------------------
 # 1. Categorical: relative humidity in 4 rooms, as a native History graph card
-#    draws it with the civica theme: solid lines, colour by entity position,
+#    draws it with the Civica theme: solid lines, colour by entity position,
 #    a legend of coloured circles and names under the plot, a gap where an
 #    entity has no reading. No dashes, markers or end labels.
 # ---------------------------------------------------------------------------
@@ -203,7 +203,7 @@ def categorical():
         raise SystemExit('Blue shade 50% is no longer the hard-to-see series in dark mode; rewrite the Chart colours page')
     html = ''.join([
         '<section aria-labelledby="categorical-heading">',
-        '<h2 class="govuk-heading-m" id="categorical-heading">A History graph card with the civica theme</h2>',
+        '<h2 class="govuk-heading-m" id="categorical-heading">A History graph card with the Civica theme</h2>',
         '<p class="govuk-body"><strong>Synthetic data.</strong> '
         'Relative humidity from 4 room sensors every 3 hours on 12 November 2026, Europe/London, '
         'drawn in light and dark mode.</p>',
@@ -216,7 +216,7 @@ def categorical():
     ])
     record = {
         'classification': 'Synthetic documentation data; not readings from a Home Assistant instance',
-        'card': 'History graph card as drawn with the civica theme: solid lines, legend under the plot, no dashes, markers or end labels',
+        'card': 'History graph card as drawn with the Civica theme: solid lines, legend under the plot, no dashes, markers or end labels',
         'measure': 'Relative humidity',
         'unit': '%',
         'time_zone': 'Europe/London',
@@ -238,7 +238,7 @@ def categorical():
         'chart_data': record,
         'colour_reference': {
             'reviewed_on': '2026-11-18',
-            'classification': 'civica chart palette, categorical colours by entity position; the same in light and dark mode',
+            'classification': 'Civica chart palette, categorical colours by entity position; the same in light and dark mode',
             'generator': 'docs/scripts/generate-data-colour-examples.py',
             'source': CHARTS['url'],
             'colours': [{'id': colour, 'name': name(colour), 'hex': hexof(colour), 'role': role, **({'theme_colour': token} if token else {})}
@@ -433,7 +433,7 @@ def quantitative():
         'html': html,
         'colour_reference': {
             'reviewed_on': '2026-11-18',
-            'classification': 'civica chart palette, listed scale steps only; nothing interpolated',
+            'classification': 'Civica chart palette, listed scale steps only; nothing interpolated',
             'generator': 'docs/scripts/generate-data-colour-examples.py',
             'source': CHARTS['url'],
             'time_zone': 'Europe/London',
