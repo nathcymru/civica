@@ -26,7 +26,7 @@ module DesignSystemHelpers
   # A paged index page (one letter of Components or Patterns) shows the same
   # section artwork as the section index it belongs to.
   def page_illustration
-    data['page-illustrations'][current_page.data.az_home || current_page.destination_path]
+    data['page-illustrations'][page_home_path]
   end
 
   def home_page?
@@ -35,7 +35,7 @@ module DesignSystemHelpers
 
   def guide_pages
     sitemap.resources.select do |resource|
-      resource.destination_path.end_with?('.html') && resource.data.title && !resource.destination_path.include?('/a-z/') &&
+      resource.destination_path.end_with?('.html') && resource.data.title && !config[:az_letter_pages].include?(resource.destination_path) &&
         !resource.destination_path.start_with?('examples/') && !resource.ignored?
     end
   end

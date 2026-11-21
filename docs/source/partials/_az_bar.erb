@@ -1,0 +1,3 @@
+<nav aria-label="A to Z navigation">
+<ol class="style-a-z" role="list"><% AzHelpers::AZ_BUCKETS.each do |letter| %><li><% if letter == bucket %><a class="govuk-link govuk-link--no-visited-state style-a-z__current" href="<%= hrefs.fetch(letter) %>" aria-current="page"><%= letter %></a><% elsif hrefs.key?(letter) %><a class="govuk-link govuk-link--no-visited-state" href="<%= hrefs.fetch(letter) %>"><%= letter %></a><% else %><span class="style-a-z__empty"><%= letter %></span><% end %></li><% end %></ol>
+</nav>

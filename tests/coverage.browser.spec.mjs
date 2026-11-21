@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import AxeBuilder from '@axe-core/playwright';
 
 const read = name => JSON.parse(readFileSync(`docs/data/${name}.json`, 'utf8'));
@@ -34,24 +34,34 @@ test('every interface registry remains readable when expanded on a narrow screen
 });
 
 test('/content/style-guides/technical-a-to-z.html: every term and native label can be read without horizontal page scrolling', async ({ page }) => {
-  test.setTimeout(180000);
+  test.setTimeout(300000);
   const path = '/content/style-guides/technical-a-to-z.html';
-  await page.setViewportSize({ width: 320, height: 900 });
-  await page.goto(route(path));
+  // The lexicon is published one letter per page; the index page is the first letter.
+  const pages = [path, ...readdirSync('docs/build/content/style-guides')
+    .filter(name => /^technical-a-to-z-[a-z0-9]+\.html$/.test(name)).sort().map(name => `/content/style-guides/${name}`)];
   const expected = terms.terms.filter(term => term.local_path?.split('#')[0] === path);
   // Card types, card features, selector types and settings destinations are grouped into one entry each,
   // with a table row for every term. Every term still has its own anchor.
   const grouped = new Set(['card-types', 'card-features', 'selector-types', 'settings-labels']);
   const single = expected.filter(term => !grouped.has(term.category));
-  await expect(page.locator('.lexicon-entry')).toHaveCount(single.length + grouped.size);
-  await expect(page.locator('tr[id^="ht-card-"], tr[id^="ht-feature-"], tr[id^="ht-selector-"], tr[id^="ht-settings-"]')).toHaveCount(expected.length - single.length);
-  await openAll(page, 'details');
-  await noOverflow(page);
-  await expect(page.locator('tr[id^="ht-native-"]')).toHaveCount(terms.native_values.length);
-  await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
-  await noOverflow(page);
-  const results = await new AxeBuilder({ page }).exclude('iframe').analyze();
-  expect(results.violations.map(({ id, nodes }) => ({ id, targets: nodes.map(node => node.target) }))).toEqual([]);
+  const totals = { entries: 0, rows: 0, natives: 0 };
+  await page.setViewportSize({ width: 320, height: 900 });
+  for (const letterPage of pages) {
+    await page.goto(route(letterPage));
+    totals.entries += await page.locator('.lexicon-entry').count();
+    totals.rows += await page.locator('tr[id^="ht-card-"], tr[id^="ht-feature-"], tr[id^="ht-selector-"], tr[id^="ht-settings-"]').count();
+    await openAll(page, 'details');
+    await noOverflow(page);
+    totals.natives += await page.locator('tr[id^="ht-native-"]').count();
+    await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });
+    await noOverflow(page);
+    const results = await new AxeBuilder({ page }).exclude('iframe').analyze();
+    expect(results.violations.map(({ id, nodes }) => ({ id, targets: nodes.map(node => node.target) })), letterPage).toEqual([]);
+    await page.evaluate(() => { document.documentElement.style.fontSize = ''; });
+  }
+  expect(totals.entries).toBe(single.length + grouped.size);
+  expect(totals.rows).toBe(expected.length - single.length);
+  expect(totals.natives).toBe(terms.native_values.length);
 });
 
 test('complete interface and terminology records are linked from the visible audit page', async ({ page, request }) => {

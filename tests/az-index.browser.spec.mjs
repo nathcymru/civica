@@ -47,3 +47,25 @@ test('every pattern appears on exactly one letter page and the pages reflow at 3
   }
   expect(new Set(seen).size).toBe(seen.length);
 });
+
+test('the two A to Z style guides are paged the same way and entry links reach the right letter', async ({ page }) => {
+  for (const name of ['a-to-z', 'technical-a-to-z']) {
+    await page.goto(`/docs/build/content/style-guides/${name}.html`);
+    const bar = page.getByRole('navigation', { name: 'A to Z navigation' });
+    await expect(bar.locator('ol.style-a-z > li')).toHaveCount(27);
+    await expect(bar.locator('a[aria-current="page"]')).toHaveText('A');
+    await expect(page.locator('h2.style-a-z__letter')).toHaveCount(1);
+    const pager = page.getByRole('navigation', { name: /pages$/ });
+    await pager.getByRole('link', { name: /^Next/ }).click();
+    await expect(page.locator('h2.style-a-z__letter')).toHaveText('B');
+    await expect(page).toHaveURL(new RegExp(`${name}-b\\.html$`));
+    await expect(page.getByRole('heading', { level: 1 })).toHaveCount(1);
+    await page.reload();
+    await expect(page.locator('h2.style-a-z__letter')).toHaveText('B');
+  }
+  // A link to an entry on another letter opens that letter page at the entry.
+  await page.goto('/docs/build/content/style-guides/a-to-z-e.html');
+  await page.locator('a[href="technical-a-to-z-e.html#ht-entity"]').first().click();
+  await expect(page).toHaveURL(/technical-a-to-z-e\.html#ht-entity$/);
+  await expect(page.locator('#ht-entity')).toBeVisible();
+});

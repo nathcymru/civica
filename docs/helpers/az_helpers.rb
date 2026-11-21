@@ -110,4 +110,89 @@ module AzHelpers
   def az_entry_path(section, entry)
     az_path(section, entry.fetch('bucket'))
   end
+
+  # The page a letter page belongs to: itself for an index, otherwise the index
+  # it is a letter of.
+  def page_home_path
+    current_page.metadata.fetch(:locals, {})[:az_home] || current_page.destination_path
+  end
+
+  # Lexicons (A to Z General and A to Z Technical) keep one authored source
+  # each. Their rendered letter sections are split into one page per letter at
+  # build time, so every entry anchor is unchanged and only its page differs.
+  # The registry holds, for each lexicon, its populated letters and the letter
+  # that holds each anchor.
+  def az_lexicon_registry(html)
+    segments = html.split(/(?=<h2 class="style-a-z__letter" id=")/).drop(1)
+    populated = []
+    anchors = {}
+    segments.each do |segment|
+      bucket = segment[/id="([a-z0-9-]+)"/, 1].upcase
+      bucket = '0-9' if bucket =~ /\A\d/
+      populated << bucket
+      segment.scan(/\bid="([^"]+)"/).flatten.each { |anchor| anchors[anchor] = bucket }
+    end
+    { populated: AZ_BUCKETS & populated, anchors: anchors }
+  end
+
+  def az_lexicon_page_for(home, bucket, populated)
+    bucket == populated.first ? home : home.sub(/\.html\z/, "-#{az_slug(bucket)}.html")
+  end
+
+  def az_lexicon_page?
+    !!current_page.data.az_lexicon
+  end
+
+  # Keeps the current letter's entries and puts the shared bar and pager around
+  # them. The introduction is shown on the first page only.
+  def az_lexicon_apply(fragment)
+    home = page_home_path
+    lexicon = config[:az_lexicons].fetch(home)
+    populated = lexicon[:populated]
+    bucket = current_page.metadata.fetch(:locals, {})[:az_bucket] || populated.first
+    hrefs = populated.to_h { |letter| [letter, docs_path('/' + az_lexicon_page_for(home, letter, populated))] }
+    fragment.at_css('nav[aria-label="A to Z navigation"]')&.unlink
+    intro = []
+    sections = Hash.new { |hash, key| hash[key] = [] }
+    current = nil
+    fragment.children.to_a.each do |node|
+      if node.name == 'h2' && node['class'].to_s.include?('style-a-z__letter')
+        current = node['id'].upcase
+        current = '0-9' if current =~ /\A\d/
+      end
+      (current ? sections[current] : intro) << node.unlink
+    end
+    heading = intro.find { |node| node.name == 'h1' }
+    kept = bucket == populated.first ? intro : [heading].compact
+    kept.each { |node| fragment.add_child(node) }
+    fragment.add_child(partial('partials/az_bar', locals: { bucket: bucket, hrefs: hrefs }))
+    sections[bucket].each { |node| fragment.add_child(node) }
+    fragment.add_child(partial('partials/az_pager', locals: { bucket: bucket, hrefs: hrefs, label: current_page.data.title }))
+  end
+
+  # A link to an entry in a lexicon points at the letter page that holds it.
+  def az_rewrite_lexicon_links(fragment)
+    lexicons = config[:az_lexicons]
+    folder = File.dirname('/' + current_page.destination_path)
+    current_lexicon = lexicons[page_home_path]
+    current_bucket = current_page.metadata.fetch(:locals, {})[:az_bucket] || current_lexicon&.fetch(:populated)&.first
+    fragment.css('a[href^="#"]').each do |link|
+      anchor = link['href'][1..]
+      bucket = current_lexicon && current_lexicon[:anchors][anchor]
+      next if bucket.nil? || bucket == current_bucket
+
+      link['href'] = docs_path('/' + az_lexicon_page_for(page_home_path, bucket, current_lexicon[:populated])) + '#' + anchor
+    end
+    fragment.css('a[href*="a-to-z.html#"]').each do |link|
+      uri = URI.parse(link['href']) rescue next
+      next if uri.host || uri.path.to_s.empty? || uri.fragment.to_s.empty?
+
+      target = Pathname.new(File.join(folder, uri.path)).cleanpath.to_s.sub(%r{\A/}, '')
+      lexicon = lexicons[target]
+      bucket = lexicon && lexicon[:anchors][uri.fragment]
+      next if bucket.nil? || bucket == lexicon[:populated].first
+
+      link['href'] = docs_path('/' + az_lexicon_page_for(target, bucket, lexicon[:populated])) + '#' + uri.fragment
+    end
+  end
 end

@@ -49,7 +49,14 @@ function route(raw, context) {
   const html = routeCache.get(file);
   check(html !== null, `${context}: built route does not exist: ${raw}`);
   if (html && fragment) {
-    const ids = new Set([...html.matchAll(/\bid\s*=\s*["']([^"']+)["']/g)].map(match => match[1]));
+    const pages = [html];
+    // A lexicon is published one letter per page; an entry anchor is on one of them.
+    if (/a-to-z\.html$/.test(file)) {
+      const folder = path.dirname(file);
+      const stem = path.basename(file, '.html');
+      for (const name of fs.readdirSync(folder)) if (name.startsWith(`${stem}-`) && name.endsWith('.html')) pages.push(fs.readFileSync(path.join(folder, name), 'utf8'));
+    }
+    const ids = new Set(pages.flatMap(page => [...page.matchAll(/\bid\s*=\s*["']([^"']+)["']/g)].map(match => match[1])));
     check(ids.has(decodeURIComponent(fragment)), `${context}: built anchor does not exist: ${raw}`);
   }
 }

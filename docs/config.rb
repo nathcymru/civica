@@ -84,17 +84,29 @@ examples.each_key do |id|
   proxy "/examples/#{id}.html", '/example.html', locals: { example_id: id }, layout: false
 end
 
-# Components and Patterns share one paged A to Z index. The first populated
-# letter is the section index; every other populated letter, and 0-9, gets a
-# page of its own from the same template.
+# Components, Patterns and the two lexicons share one paged A to Z design. The
+# first populated letter is the index page itself; every other populated
+# letter, and 0-9, gets a page of its own from the same source.
+set :az_lexicons, {}
+set :az_letter_pages, []
 ready do
   extend AzHelpers
   extend ComponentHelpers
   extend DesignSystemHelpers
   AzHelpers::AZ_SECTIONS.each do |section, info|
     az_extra_pages(section).each do |path, bucket|
-      proxy path, info.fetch('path'), locals: { az_bucket: bucket },
-                                      data: { az_home: info.fetch('path').sub(%r{\A/}, '') }
+      proxy path, info.fetch('path'), locals: { az_bucket: bucket, az_home: info.fetch('path').sub(%r{\A/}, '') }
+      config[:az_letter_pages] << path.sub(%r{\A/}, '')
+    end
+  end
+  sitemap.resources.select { |resource| resource.data.az_lexicon }.each do |resource|
+    home = resource.destination_path
+    registry = az_lexicon_registry(resource.render(layout: false))
+    config[:az_lexicons][home] = registry
+    registry[:populated].drop(1).each do |bucket|
+      path = az_lexicon_page_for(home, bucket, registry[:populated])
+      proxy '/' + path, '/' + home, locals: { az_bucket: bucket, az_home: home }
+      config[:az_letter_pages] << path
     end
   end
 end
