@@ -9,6 +9,8 @@ module DesignSystemHelpers
     # to their copied public files for the static documentation site.
     File.read(File.expand_path('../LICENSE.md', root)).gsub(/\]\((licences\/[^)]+)\)/) do
       "](#{docs_path('/reference/' + Regexp.last_match(1))})"
+    end.gsub(/\]\(docs\/source(\/images\/[^)]+)\)/) do
+      "](#{docs_path(Regexp.last_match(1))})"
     end
   end
 

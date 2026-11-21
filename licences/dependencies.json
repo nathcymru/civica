@@ -3,15 +3,22 @@
   "reviewed_on": "2026-11-13",
   "purpose": "Exact dependency and notice evidence, not a guarantee of rights clearance or legal compatibility.",
   "inputs": {
-    "package-lock.json": "2805e323c494fdbb80a46d5c901e9b7b98b360743db29ad22272be492599cf2e",
+    "package-lock.json": "1a4999584d34960960f0fcaf9b1a728115dd021f1c628b417c635a7091d31fe1",
     "docs/Gemfile.lock": "5b2212de1fd00aadae33de3635519d18f0294740e59692a0289a93bd93f09fde"
   },
   "project_licence": {
     "path": "LICENSE",
-    "sha256": "eee5fc07596254061beda945a0b1b535e799bd1bd4d1ead4b35b64df96bafc8c",
-    "expression": "LicenseRef-civica-Free-Use-1.0",
-    "identifier_type": "Project-specific LicenseRef; not an SPDX-listed or OSI-approved licence",
-    "scope": "Original civica contributions supplied under these terms, subject to the licence exclusions for prior permissions, third-party components and separately licensed artwork. This is not a licence expression for the whole mixed distribution.",
+    "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+    "expression": "GPL-3.0-or-later",
+    "identifier_type": "SPDX licence identifier",
+    "scope": "Original Civica code (theme files, lighting card, companion code, scripts, tests and documentation-site code), subject to the exclusions for prior permissions, third-party components and separately licensed artwork. This is not a licence expression for the whole mixed distribution.",
+    "documentation_licence": {
+      "path": "LICENSE-DOCS.txt",
+      "sha256": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5",
+      "expression": "CC-BY-SA-4.0",
+      "identifier_type": "SPDX licence identifier",
+      "scope": "Original Civica documentation, guidance and written examples, subject to the same exclusions."
+    },
     "previous_permissions_cutoff_commit": "d6dd7c869fd419baa8ee29a572b4b69ddd639f14",
     "historical_notice": {
       "path": "licences/history/LICENSE-v1.4.1.txt",

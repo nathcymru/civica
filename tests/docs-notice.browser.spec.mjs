@@ -253,5 +253,6 @@ test('the public licence block identifies the exact canonical LICENSE.md source'
     const href = await footer.getByRole('link', { name: label, exact: true }).getAttribute('href');
     expect(new URL(href, page.url()).pathname).toBe('/docs/build/community/licensing.html');
   }
-  await expect(footer.locator('img')).toHaveAttribute('alt', '');
+  await expect(footer.getByRole('img', { name: 'GNU General Public Licence version 3 or later' })).toBeVisible();
+  await expect(footer.getByRole('img', { name: 'Creative Commons Attribution-ShareAlike 4.0 licence' })).toBeVisible();
 });

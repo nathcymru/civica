@@ -6,11 +6,11 @@ This inventory is evidence about the reviewed files. It does not grant rights to
 
 ## Current project terms and previous permissions
 
-The inventory uses `LicenseRef-civica-Free-Use-1.0` for original civica work supplied under the current project licence. This is a local identifier for custom terms, not an SPDX-listed or OSI-approved licence. It does not describe every item in this mixed distribution. The complete terms permit personal and internal business use while prohibiting sale and paid services involving the covered work.
+The inventory uses the SPDX identifier `GPL-3.0-or-later` for original Civica code and `CC-BY-SA-4.0` for original documentation. The [GNU General Public Licence](../LICENSE) and the [Creative Commons legal code](../LICENSE-DOCS.txt) are the complete terms. These identifiers do not describe every item in this mixed distribution.
 
-The [historical project notice](history/LICENSE-v1.4.1.txt) is an exact copy from commit `d6dd7c869fd419baa8ee29a572b4b69ddd639f14`, published as v1.4.1. The inventory pins its bytes and immutable commit separately from the current licence. It preserves the previous MIT permission, including for existing original documentation artwork. Its original introductory attribution is historical evidence; use the current source notices for the reviewed third-party terms.
+The [historical project notice](history/LICENSE-v1.4.1.txt) is an exact copy from commit `d6dd7c869fd419baa8ee29a572b4b69ddd639f14`, published as v1.4.1. The inventory pins its bytes and immutable commit separately from the current licences. It preserves the previous MIT permission, including for existing original documentation artwork. Its original introductory attribution is historical evidence; use the current source notices for the reviewed third-party terms.
 
-The current terms expressly preserve earlier permissions. Replacing a current download or changing a release description does not amend those retained grants. Third-party packages and separately licensed artwork continue to use their own terms. Read the complete project licence for its scope rather than treating the identifier as a blanket restriction on all files.
+Earlier releases keep the permissions they were published with. Replacing a current download or changing a release description does not amend those retained grants. Third-party packages and separately licensed artwork continue to use their own terms. Read the complete project licences for their scope rather than treating an identifier as a blanket statement about all files.
 
 ## Code distributed to browsers
 

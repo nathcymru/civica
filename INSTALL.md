@@ -52,4 +52,4 @@ https://github.com/nathcymru/civica
 
 The repository was checked with automated and browser fixtures. A live deployment still needs the acceptance checks in `docs/source/accessibility/`. The theme cannot replace native Energy, Map, authentication, native app branding or arbitrary third-party component internals.
 
-See `LICENSE` for software terms and `ARTWORK.md` for supplied artwork provenance. Civica is an independent project, not a government service.
+See `LICENSE` for the software licence, `LICENSE-DOCS.txt` for the documentation licence and `ARTWORK.md` for supplied artwork provenance. Civica is an independent project, not a government service.
