@@ -307,7 +307,8 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 /* Page footer details. */
 .c-footer__brand { display:block; }
 .c-footer__brand img { display:block; max-width:100%; height:auto; }
-.govuk-footer__licence-logo { height:31px; width:88px; }
+.govuk-footer__licence-logos { display:inline-flex; flex-wrap:wrap; gap:10px; margin-right:10px; vertical-align:middle; }
+.govuk-footer__licence-logo { height:40px; width:105px; }
 .c-history__edit-icon { color:#1a65a6; }
 .technical-documentation .c-history p,
 .technical-documentation .c-history li,

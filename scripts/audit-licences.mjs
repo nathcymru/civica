@@ -9,8 +9,9 @@ import { build } from 'esbuild';
 process.chdir(resolve(dirname(fileURLToPath(import.meta.url)), '..'));
 assert.ok(process.argv.slice(2).every(arg => ['--check', '--write'].includes(arg)), 'Use --check or --write');
 const inventoryPath = 'licences/dependencies.json';
-// A project-specific reference, not an SPDX-listed or OSI-approved licence.
-const projectLicenceExpression = 'LicenseRef-civica-Free-Use-1.0';
+const projectLicenceExpression = 'GPL-3.0-or-later';
+const documentationLicenceExpression = 'CC-BY-SA-4.0';
+const packageLicenceExpression = `${projectLicenceExpression} AND ${documentationLicenceExpression}`;
 const historicalProjectLicence = {
   path: 'licences/history/LICENSE-v1.4.1.txt',
   sha256: '355e0fe8ecb21ab04610f27a1e001a2980f95cf66a10f15883b7bac07935ae7f',
@@ -34,8 +35,13 @@ function projectLicence() {
   assert.equal(hash(historicalProjectLicence.path), historicalProjectLicence.sha256, 'Published historical project notice must remain byte-identical');
   return {
     path: 'LICENSE', sha256: hash('LICENSE'), expression: projectLicenceExpression,
-    identifier_type: 'Project-specific LicenseRef; not an SPDX-listed or OSI-approved licence',
-    scope: 'Original civica contributions supplied under these terms, subject to the licence exclusions for prior permissions, third-party components and separately licensed artwork. This is not a licence expression for the whole mixed distribution.',
+    identifier_type: 'SPDX licence identifier',
+    scope: 'Original Civica code (theme files, lighting card, companion code, scripts, tests and documentation-site code), subject to the exclusions for prior permissions, third-party components and separately licensed artwork. This is not a licence expression for the whole mixed distribution.',
+    documentation_licence: {
+      path: 'LICENSE-DOCS.txt', sha256: hash('LICENSE-DOCS.txt'), expression: documentationLicenceExpression,
+      identifier_type: 'SPDX licence identifier',
+      scope: 'Original Civica documentation, guidance and written examples, subject to the same exclusions.',
+    },
     previous_permissions_cutoff_commit: historicalProjectLicence.source_commit,
     historical_notice: historicalProjectLicence,
   };
@@ -143,9 +149,10 @@ async function generate() {
 async function check() {
   const data=json(inventoryPath);
   assert.deepEqual(data.project_licence, projectLicence(), 'Original-work licence or historical scope changed; review the inventory');
-  assert.equal(rootPackage.license, 'SEE LICENSE IN LICENSE', 'Package metadata must identify the custom project licence file');
+  assert.equal(rootPackage.license, packageLicenceExpression, 'Package metadata must identify the code and documentation licences');
   assert.equal(lock.packages[''].license, rootPackage.license, 'Package lock must retain the same custom licence metadata');
-  assert.ok(read('LICENSE.md').includes(read('LICENSE').trim()),'LICENSE.md must retain the complete LICENSE text verbatim');
+  assert.ok(read('LICENSE').includes('GNU GENERAL PUBLIC LICENSE') && read('LICENSE').includes('Version 3, 29 June 2007'), 'LICENSE must contain the GNU General Public Licence version 3');
+  assert.ok(read('LICENSE-DOCS.txt').includes('Attribution-ShareAlike 4.0 International'), 'LICENSE-DOCS.txt must contain the Creative Commons Attribution-ShareAlike 4.0 legal code');
   for(const [path,value] of Object.entries(data.inputs))assert.equal(hash(path),value,`${path}: dependency lock changed; refresh the licence inventory`);
   assert.deepEqual(data.direct_npm_dependencies,direct,'Direct dependencies changed');
   assert.deepEqual(data.npm.map(x=>[x.lock_path,x.version]),lockEntries.map(([p,x])=>[p,x.version]),'Every locked npm package must be inventoried exactly once');
