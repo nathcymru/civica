@@ -1,5 +1,7 @@
 <%
   fragment = Nokogiri::HTML::DocumentFragment.parse(yield)
+  az_lexicon_apply(fragment) if az_lexicon_page?
+  az_rewrite_lexicon_links(fragment)
   headings = fragment.children.select { |node| node.name == 'h2' }
   # Component pages lead with the default rendered example, as the official
   # Design System does; supporting variants remain beside their guidance.
@@ -48,8 +50,8 @@
   if (heading = fragment.at_css('h1')) && !page_illustration && current_section &&
      (tree_section = data.navigation.sections.find { |item| item.id == current_section }) && tree_section.tree
     parent = section_tree(current_section).find do |entry|
-      entry[:children].any? { |child| child.destination_path == current_page.destination_path } &&
-        (entry[:group_link] || entry[:resource].destination_path != current_page.destination_path)
+      entry[:children].any? { |child| child.destination_path == page_home_path } &&
+        (entry[:group_link] || entry[:resource].destination_path != page_home_path)
     end
     if parent
       caption = Nokogiri::XML::Node.new('p', fragment.document)

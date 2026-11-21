@@ -34,7 +34,7 @@ module ComponentHelpers
     sitemap.resources.select do |resource|
       path = resource.destination_path
       path.start_with?('components/') && path.end_with?('.html') && path != 'components/index.html' &&
-        !resource.ignored? && !resource.destination_path.include?('/a-z/') && !routes.include?(path)
+        !resource.ignored? && !config[:az_letter_pages].include?(resource.destination_path) && !routes.include?(path)
     end
   end
 

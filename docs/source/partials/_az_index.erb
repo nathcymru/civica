@@ -3,13 +3,11 @@
   bucket = az_current_bucket(section)
   populated = az_populated(section)
   entries = az_buckets(section).fetch(bucket)
-  pager = az_pager(section, bucket)
+  hrefs = populated.to_h { |letter| [letter, docs_path(az_path(section, letter))] }
 %>
 <h1><%= info['title'] %></h1>
 <% unless az_letter_page? %><p class="c-lead"><%= lead %></p><% end %>
-<nav aria-label="A to Z navigation">
-<ol class="style-a-z" role="list"><% AzHelpers::AZ_BUCKETS.each do |letter| %><li><% if letter == bucket %><a class="govuk-link govuk-link--no-visited-state style-a-z__current" href="<%= docs_path(az_path(section, letter)) %>" aria-current="page"><%= letter %></a><% elsif populated.include?(letter) %><a class="govuk-link govuk-link--no-visited-state" href="<%= docs_path(az_path(section, letter)) %>"><%= letter %></a><% else %><span class="style-a-z__empty"><%= letter %></span><% end %></li><% end %></ol>
-</nav>
+<%= partial 'partials/az_bar', locals: { bucket: bucket, hrefs: hrefs } %>
 <% if section == 'components' %>
 <div class="c-search-filter c-component-search" data-component-search hidden>
 <label for="component-search">Find a component or element</label>
@@ -28,10 +26,4 @@
 <% entries.each do |entry| %><li id="<%= entry['id'] %>" data-az-entry="<%= escape(entry['title']) %>"><% if entry['href'] %><a class="govuk-link" href="<%= docs_path(entry['href']) %>"><%= escape(entry['title']) %></a><% else %><span class="c-az__name"><%= escape(entry['title']) %></span><% end %><% if entry['summary'] %><span class="c-az__summary"><%= escape(entry['summary']) %></span><% end %><% if entry['meta'] %> <span class="c-az__meta"><%= escape(entry['meta']) %></span><% end %></li>
 <% end %></ul>
 </div>
-<nav class="c-az-pager" aria-label="<%= info['title'] %> pages">
-<ul class="c-az-pager__list" role="list">
-<% [[:first, 'First'], [:previous, 'Previous']].each do |key, label| %><li><% if pager[key] %><a class="govuk-link govuk-link--no-visited-state" href="<%= docs_path(az_path(section, pager[key])) %>"><%= label %><span class="govuk-visually-hidden">, <%= pager[key] %></span></a><% else %><span class="c-az-pager__disabled" aria-disabled="true"><%= label %></span><% end %></li>
-<% end %><li><span class="c-az-pager__current" aria-current="page"><span class="govuk-visually-hidden">Current page, </span><%= bucket %></span></li>
-<% [[:next, 'Next'], [:last, 'Last']].each do |key, label| %><li><% if pager[key] %><a class="govuk-link govuk-link--no-visited-state" href="<%= docs_path(az_path(section, pager[key])) %>"><%= label %><span class="govuk-visually-hidden">, <%= pager[key] %></span></a><% else %><span class="c-az-pager__disabled" aria-disabled="true"><%= label %></span><% end %></li>
-<% end %></ul>
-</nav>
+<%= partial 'partials/az_pager', locals: { bucket: bucket, hrefs: hrefs, label: info['title'] } %>

@@ -1,0 +1,18 @@
+<%
+  populated = hrefs.keys
+  position = populated.index(bucket)
+  last_position = populated.length - 1
+  pager = {
+    first: position.positive? ? populated.first : nil,
+    previous: position.positive? ? populated[position - 1] : nil,
+    next: position < last_position ? populated[position + 1] : nil,
+    last: position < last_position ? populated.last : nil
+  }
+%>
+<nav class="c-az-pager" aria-label="<%= label %> pages">
+<ul class="c-az-pager__list" role="list">
+<% [[:first, 'First'], [:previous, 'Previous']].each do |key, text| %><li><% if pager[key] %><a class="govuk-link govuk-link--no-visited-state" href="<%= hrefs.fetch(pager[key]) %>"><%= text %><span class="govuk-visually-hidden">, <%= pager[key] %></span></a><% else %><span class="c-az-pager__disabled" aria-disabled="true"><%= text %></span><% end %></li>
+<% end %><li><span class="c-az-pager__current" aria-current="page"><span class="govuk-visually-hidden">Current page, </span><%= bucket %></span></li>
+<% [[:next, 'Next'], [:last, 'Last']].each do |key, text| %><li><% if pager[key] %><a class="govuk-link govuk-link--no-visited-state" href="<%= hrefs.fetch(pager[key]) %>"><%= text %><span class="govuk-visually-hidden">, <%= pager[key] %></span></a><% else %><span class="c-az-pager__disabled" aria-disabled="true"><%= text %></span><% end %></li>
+<% end %></ul>
+</nav>

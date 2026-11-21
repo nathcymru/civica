@@ -37,7 +37,8 @@ const inventories = [
 const migratedHistory = YAML.parse(readFileSync('docs/data/page_history.yml', 'utf8'));
 function expectedMetadata(file) {
   // A letter page of Components or Patterns is built from its section index.
-  const destination = file.slice(buildRoot.length + 1).replace(/^(components|patterns)\/a-z\/[^/]+$/, '$1/index.html');
+  const destination = file.slice(buildRoot.length + 1).replace(/^(components|patterns)\/a-z\/[^/]+$/, '$1/index.html')
+    .replace(/^(content\/style-guides\/(?:technical-)?a-to-z)-[a-z0-9]+\.html$/, '$1.html');
   const source = ['.md.erb', '.md', '.erb', ''].map(suffix => `docs/source/${destination}${suffix}`).find(existsSync);
   const text = source ? readFileSync(source, 'utf8') : '';
   const header = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
