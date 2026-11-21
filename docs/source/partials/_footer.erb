@@ -5,18 +5,23 @@
 <div class="govuk-footer__navigation">
 <div class="govuk-grid-column-two-thirds govuk-!-display-none-print">
 <h2 class="govuk-footer__heading govuk-heading-m">Civica Design System</h2>
-<ul class="govuk-footer__list govuk-footer__list--columns-2">
+<div class="govuk-grid-row">
+<div class="govuk-grid-column-one-half">
+<ul class="govuk-footer__list govuk-footer__list--columns-1">
 <% data.navigation.sections.each do |section| %><li class="govuk-footer__list-item"><a class="govuk-footer__link" href="<%= docs_path(section.path) %>"><%= section.title %></a></li>
 <% end %></ul>
 </div>
-<div class="govuk-grid-column-one-third govuk-!-display-none-print">
-<h2 class="govuk-footer__heading govuk-heading-m">Project</h2>
+<div class="govuk-grid-column-one-half">
 <ul class="govuk-footer__list govuk-footer__list--columns-1">
 <li class="govuk-footer__list-item"><a class="govuk-footer__link" href="https://github.com/nathcymru/civica">GitHub repository</a></li>
 <li class="govuk-footer__list-item"><a class="govuk-footer__link" href="https://github.com/nathcymru/civica/issues/new?template=bug_report.yml">Report a bug</a></li>
 <li class="govuk-footer__list-item"><a class="govuk-footer__link" href="https://github.com/nathcymru/civica/issues/new?template=roadmap_item.yml">Suggest a feature</a></li>
 <li class="govuk-footer__list-item"><a class="govuk-footer__link" href="<%= docs_path('/llms.txt') %>">AI reading guide</a></li>
 </ul>
+</div>
+</div>
+</div>
+<div class="govuk-grid-column-one-third govuk-!-display-none-print">
 <h2 class="govuk-footer__heading govuk-heading-m">Home Assistant</h2>
 <ul class="govuk-footer__list govuk-footer__list--columns-1">
 <li class="govuk-footer__list-item"><a class="govuk-footer__link" href="https://my.home-assistant.io/redirect/hacs_repository/?owner=nathcymru&amp;repository=civica&amp;category=theme">Install Civica with HACS</a></li>
