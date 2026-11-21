@@ -34,7 +34,7 @@ module ComponentHelpers
     sitemap.resources.select do |resource|
       path = resource.destination_path
       path.start_with?('components/') && path.end_with?('.html') && path != 'components/index.html' &&
-        !resource.ignored? && !routes.include?(path)
+        !resource.ignored? && !resource.destination_path.include?('/a-z/') && !routes.include?(path)
     end
   end
 
@@ -123,7 +123,7 @@ module ComponentHelpers
       href = if entry.fetch('available')
                docs_path(entry.fetch('route')) + (entry['anchor'] && entry['anchor_published'] ? '#' + entry['anchor'] : '')
              else
-               '#parent-' + component_slug(entry.fetch('owner'))
+               docs_path(az_path('components', az_bucket_for(entry.fetch('owner')))) + '#parent-' + component_slug(entry.fetch('owner'))
              end
       listed = also[[entry.fetch('name'), entry.fetch('owner')]]
       # Only cross-reference notes are shown; other inventory notes are internal records.

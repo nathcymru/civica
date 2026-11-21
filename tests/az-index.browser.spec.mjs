@@ -1,0 +1,49 @@
+// Patterns index: the same paged A to Z template as Components.
+import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+
+const index = '/docs/build/patterns/index.html';
+
+test('patterns are split by letter and the first letter page is the index', async ({ page }) => {
+  await page.goto(index);
+  const bar = page.getByRole('navigation', { name: 'A to Z navigation' });
+  await expect(bar.locator('ol.style-a-z > li')).toHaveCount(27);
+  await expect(bar.locator('a[aria-current="page"]')).toHaveText('A');
+  const entries = page.locator('[data-az-list] [data-az-entry]');
+  expect(await entries.count()).toBeGreaterThan(0);
+  for (const title of await entries.evaluateAll(nodes => nodes.map(node => node.dataset.azEntry))) expect(title.match(/[A-Za-z0-9]/)?.[0].toUpperCase()).toBe('A');
+});
+
+test('the bar and the pager step through every populated letter in order', async ({ page }) => {
+  await page.goto(index);
+  const bar = page.getByRole('navigation', { name: 'A to Z navigation' });
+  const letters = await bar.locator('ol.style-a-z > li a').evaluateAll(nodes => nodes.map(node => node.textContent));
+  const pager = page.getByRole('navigation', { name: 'Patterns pages' });
+  for (const letter of letters.slice(1)) {
+    await pager.getByRole('link', { name: /^Next/ }).click();
+    await expect(page.locator('h2.style-a-z__letter')).toHaveText(letter);
+    await expect(bar.locator('a[aria-current="page"]')).toHaveText(letter);
+    await expect(pager.locator('li').nth(2)).toContainText(letter);
+    for (const title of await page.locator('[data-az-entry]').evaluateAll(nodes => nodes.map(node => node.dataset.azEntry))) {
+      const first = title.normalize('NFD').replace(/\p{Mn}/gu, '').match(/[A-Za-z0-9]/)?.[0];
+      expect(/\d/.test(first) ? '0-9' : first.toUpperCase()).toBe(letter);
+    }
+  }
+  await expect(pager.locator('li').nth(3).locator('a')).toHaveCount(0);
+  await expect(pager.locator('li').nth(4).locator('a')).toHaveCount(0);
+});
+
+test('every pattern appears on exactly one letter page and the pages reflow at 320px', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 800 });
+  await page.goto(index);
+  const bar = page.getByRole('navigation', { name: 'A to Z navigation' });
+  const hrefs = await bar.locator('ol.style-a-z > li a').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')));
+  const seen = [];
+  for (const href of hrefs) {
+    await page.goto(new URL(href, `http://127.0.0.1:4173${index}`).pathname);
+    seen.push(...await page.locator('[data-az-entry]').evaluateAll(nodes => nodes.map(node => node.dataset.azEntry)));
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    expect((await new AxeBuilder({ page }).include('main').analyze()).violations).toEqual([]);
+  }
+  expect(new Set(seen).size).toBe(seen.length);
+});

@@ -1,0 +1,37 @@
+<%
+  info = AzHelpers::AZ_SECTIONS.fetch(section)
+  bucket = az_current_bucket(section)
+  populated = az_populated(section)
+  entries = az_buckets(section).fetch(bucket)
+  pager = az_pager(section, bucket)
+%>
+<h1><%= info['title'] %></h1>
+<% unless az_letter_page? %><p class="c-lead"><%= lead %></p><% end %>
+<nav aria-label="A to Z navigation">
+<ol class="style-a-z" role="list"><% AzHelpers::AZ_BUCKETS.each do |letter| %><li><% if letter == bucket %><a class="govuk-link govuk-link--no-visited-state style-a-z__current" href="<%= docs_path(az_path(section, letter)) %>" aria-current="page"><%= letter %></a><% elsif populated.include?(letter) %><a class="govuk-link govuk-link--no-visited-state" href="<%= docs_path(az_path(section, letter)) %>"><%= letter %></a><% else %><span class="style-a-z__empty"><%= letter %></span><% end %></li><% end %></ol>
+</nav>
+<% if section == 'components' %>
+<div class="c-search-filter c-component-search" data-component-search hidden>
+<label for="component-search">Find a component or element</label>
+<p class="c-component-search__hint" id="component-search-hint">Type a component name, a Home Assistant element such as hui-tile-card, or an HTML element such as &lt;details&gt;.</p>
+<div class="c-component-search__field">
+<input id="component-search" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="component-search-listbox" aria-describedby="component-search-hint" autocomplete="off" autocapitalize="off" spellcheck="false">
+<ul class="c-component-search__listbox" id="component-search-listbox" role="listbox" aria-label="Matching components and elements" hidden></ul>
+</div>
+<p class="govuk-visually-hidden" role="status" data-component-search-status></p>
+</div>
+<script type="application/json" id="component-search-data"><%= component_search_json %></script>
+<% end %>
+<div class="c-az" data-az-list data-az-section="<%= section %>" data-az-bucket="<%= bucket %>">
+<h2 class="style-a-z__letter" id="<%= az_slug(bucket) %>"><%= bucket %></h2>
+<ul class="c-az__list" role="list">
+<% entries.each do |entry| %><li id="<%= entry['id'] %>" data-az-entry="<%= escape(entry['title']) %>"><% if entry['href'] %><a class="govuk-link" href="<%= docs_path(entry['href']) %>"><%= escape(entry['title']) %></a><% else %><span class="c-az__name"><%= escape(entry['title']) %></span><% end %><% if entry['summary'] %><span class="c-az__summary"><%= escape(entry['summary']) %></span><% end %><% if entry['meta'] %> <span class="c-az__meta"><%= escape(entry['meta']) %></span><% end %></li>
+<% end %></ul>
+</div>
+<nav class="c-az-pager" aria-label="<%= info['title'] %> pages">
+<ul class="c-az-pager__list" role="list">
+<% [[:first, 'First'], [:previous, 'Previous']].each do |key, label| %><li><% if pager[key] %><a class="govuk-link govuk-link--no-visited-state" href="<%= docs_path(az_path(section, pager[key])) %>"><%= label %><span class="govuk-visually-hidden">, <%= pager[key] %></span></a><% else %><span class="c-az-pager__disabled" aria-disabled="true"><%= label %></span><% end %></li>
+<% end %><li><span class="c-az-pager__current" aria-current="page"><span class="govuk-visually-hidden">Current page, </span><%= bucket %></span></li>
+<% [[:next, 'Next'], [:last, 'Last']].each do |key, label| %><li><% if pager[key] %><a class="govuk-link govuk-link--no-visited-state" href="<%= docs_path(az_path(section, pager[key])) %>"><%= label %><span class="govuk-visually-hidden">, <%= pager[key] %></span></a><% else %><span class="c-az-pager__disabled" aria-disabled="true"><%= label %></span><% end %></li>
+<% end %></ul>
+</nav>

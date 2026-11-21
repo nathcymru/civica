@@ -75,9 +75,10 @@ h2.style-a-z__letter {
   background-color: $civica-primary;
 }
 
-// Components index: A to Z list and combobox. Reuses the Lexicon A to Z bar
-// and letter headings; only the list entries and the popup need styles.
-.c-component-az__list {
+// Paged A to Z index shared by Components and Patterns. It reuses the Lexicon
+// A to Z bar and letter heading; only the list, the current letter and the
+// pagination row need styles.
+.c-az__list {
   margin: 0 0 20px;
   padding: 0;
   list-style: none;
@@ -85,12 +86,61 @@ h2.style-a-z__letter {
   li { margin: 0 0 10px; }
 }
 
-.c-component-az__name { font-weight: 700; }
+.c-az__name { font-weight: 700; }
 
-.c-component-az__meta {
+.c-az__summary,
+.c-az__meta {
   display: block;
   color: $civica-secondary-text;
   font-size: 1rem;
+}
+
+// The selected letter: white on blue, as the letter heading below the bar.
+.style-a-z a.style-a-z__current,
+.style-a-z a.style-a-z__current:visited,
+.style-a-z a.style-a-z__current:hover {
+  padding: 2px 8px;
+  color: #fff;
+  background-color: $civica-primary;
+  text-decoration: none;
+}
+
+.style-a-z a.style-a-z__current:focus {
+  color: #0b0c0c;
+}
+
+.c-az-pager {
+  margin: 30px 0;
+}
+
+.c-az-pager__list {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px 15px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 700;
+
+  li { margin: 0; }
+}
+
+.c-az-pager__current {
+  display: inline-block;
+  padding: 2px 8px;
+  color: #fff;
+  background-color: $civica-primary;
+}
+
+.c-az-pager__disabled {
+  color: #505a5f;
+  font-weight: 400;
+}
+
+@media (max-width: 40.0525em) {
+  .c-az-pager__list { gap: 5px 10px; }
 }
 
 .c-component-search__hint {

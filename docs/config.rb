@@ -84,6 +84,21 @@ examples.each_key do |id|
   proxy "/examples/#{id}.html", '/example.html', locals: { example_id: id }, layout: false
 end
 
+# Components and Patterns share one paged A to Z index. The first populated
+# letter is the section index; every other populated letter, and 0-9, gets a
+# page of its own from the same template.
+ready do
+  extend AzHelpers
+  extend ComponentHelpers
+  extend DesignSystemHelpers
+  AzHelpers::AZ_SECTIONS.each do |section, info|
+    az_extra_pages(section).each do |path, bucket|
+      proxy path, info.fetch('path'), locals: { az_bucket: bucket },
+                                      data: { az_home: info.fetch('path').sub(%r{\A/}, '') }
+    end
+  end
+end
+
 helpers do
   def docs_path(path)
     Pathname.new(path).relative_path_from(Pathname.new('/' + current_page.destination_path).dirname).to_s

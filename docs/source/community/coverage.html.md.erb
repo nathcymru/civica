@@ -3,7 +3,7 @@ title: "Source coverage and implementation status"
 description: "An auditable mapping of the GOV.UK, NHS and publishing-guide catalogues to Civica guidance and examples."
 section: community
 published_on: 2026-11-11
-updated_on: "2026-11-17"
+updated_on: "2026-11-21"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
@@ -15,6 +15,8 @@ updates:
     description: "Added the complete component and pattern source mapping, example catalogue and implementation boundaries."
   - date: "2026-11-17"
     description: "Rewritten to lead with what coverage means and does not mean, with the source counts, build-time counts and links unchanged."
+  - date: "2026-11-21"
+    description: "Added the statement that a reference example does not replace the native Home Assistant interface, moved from the Components and Patterns indexes."
 ai_instructions: "Apply when claiming that a source component, pattern or Home Assistant interface is covered. Coverage means local guidance plus an example or a stated replacement, never an installed Home Assistant feature. Keep source status, local examples and native implementation separate. Rules WG-043, WG-056, WG-090."
 ai_related:
   - path: "/community/component-audit.html"
@@ -47,7 +49,7 @@ State which status you mean. Otherwise a reader may take a design reference for 
 | Reference component or pattern | An authored, inspectable design with usage and testing guidance | A connected backend, device action or native HA replacement |
 | Withdrawn source | A recorded source decision and a recommended replacement | A recommendation to build the obsolete component |
 
-A documentation control proves only the behaviour of its local example. A claim about live Home Assistant needs separate installation and route checks. The examples use invented data and local actions.
+A reference example in Components or Patterns does not mean the native Home Assistant interface has been replaced. Each pattern states its usage guidance, accessibility checks and Home Assistant implementation boundary. A documentation control proves only the behaviour of its local example. A claim about live Home Assistant needs separate installation and route checks. The examples use invented data and local actions.
 
 ## Source inventories
 
