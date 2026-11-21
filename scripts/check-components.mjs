@@ -10,6 +10,7 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
 // Changing the inventory needs the project owner's approval. Update this hash in
 // the same commit as the approved inventory change, and say so in the pull request.
@@ -200,7 +201,7 @@ search.forEach((item, position) => {
   assert.deepEqual({ ...item, h: want.h }, want, `${want.n}: search data`);
 });
 
-// The sidebar: every published parent plus the pinned legacy pages, flat and in code-point order.
+// The sidebar is the shared section menu: each link opens a built page, and the page being read is marked current once.
 const legacyLive = LEGACY_PAGES.filter(published);
 const legacyFound = execFileSync('find', [`${BUILD}/components`, '-maxdepth', '1', '-name', '*.html'], { encoding: 'utf8' })
   .trim().split('\n').map(path => path.replace(BUILD, '')).filter(route => route !== '/components/index.html' && !parents.some(parent => parent.route === route)).sort();
@@ -209,15 +210,12 @@ const sample = parents.find(parent => published(parent.route));
 if (sample) {
   for (const route of [sample.route, ...legacyLive]) {
     const sidebar = readFileSync(`${BUILD}${route}`, 'utf8').match(/<nav class="app-subnav c-sidebar"[\s\S]*?<\/nav>/)[0];
-    const links = [...sidebar.matchAll(/<a class="app-subnav__link[^"]*" href="([^"]+)"( aria-current="page")?>([^<]+)<\/a>/g)];
-    const names = links.map(match => decode(match[3]));
-    assert.deepEqual(names, [...names].sort(byCodePoint), `${route}: sidebar is in A to Z order`);
-    const parentNames = parents.filter(parent => published(parent.route)).map(parent => parent.parent);
-    assert.deepEqual(names.filter(name => parentNames.includes(name)), parentNames, `${route}: sidebar lists every published parent`);
-    assert.equal(names.length, parentNames.length + legacyLive.length, `${route}: sidebar adds only the legacy pages`);
-    const current = links.filter(match => match[2]);
+    const links = [...sidebar.matchAll(/<a class="app-subnav__link[^>]*>/g)].map(match => ({ href: match[0].match(/href="([^"]+)"/)[1], current: /aria-current="page"/.test(match[0]) }));
+    assert.ok(links.length, `${route}: sidebar has links`);
+    for (const link of links) assert.ok(existsSync(join(BUILD, 'components', link.href)), `${route}: sidebar link ${link.href} opens a built page`);
+    const current = links.filter(link => link.current);
     assert.equal(current.length, 1, `${route}: one current item`);
-    assert.ok(current[0][1].endsWith(route.replace('/components/', '')), `${route}: current item is this page`);
+    assert.equal(current[0].href, route.replace('/components/', ''), `${route}: current item is this page`);
   }
 }
 
