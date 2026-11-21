@@ -35,45 +35,82 @@ test('the inventory is complete, alphabetical and owns each element once', () =>
   expect(new Set(owned).size).toBe(owned.length);
 });
 
-test('the A to Z jump bar follows the hero and matches the Lexicon markup', async ({ page }) => {
-  await page.goto(index);
-  const nav = page.getByRole('navigation', { name: 'A to Z navigation' });
-  await expect(nav).toBeVisible();
-  const items = nav.locator('ol.style-a-z > li');
-  await expect(items).toHaveCount(26);
-  for (const [position, letter] of letters.entries()) {
-    const item = items.nth(position);
-    if (used.has(letter)) {
-      const link = item.locator('a.govuk-link');
-      await expect(link).toHaveText(letter);
-      await expect(link).toHaveAttribute('href', `#${letter.toLowerCase()}`);
-      await expect(page.locator(`h2.style-a-z__letter#${letter.toLowerCase()}`)).toHaveText(letter);
-    } else {
-      await expect(item.locator('span.style-a-z__empty')).toHaveText(letter);
-      await expect(item.locator('a')).toHaveCount(0);
+const bucketOf = name => {
+  const first = name.normalize('NFD').replace(/\p{Mn}/gu, '').match(/[A-Za-z0-9]/)?.[0];
+  return /\d/.test(first) ? '0-9' : first.toUpperCase();
+};
+const buckets = [...letters, '0-9'];
+const populated = buckets.filter(bucket => parents.some(parent => bucketOf(parent.parent) === bucket));
+const pageFor = bucket => (bucket === populated[0] ? index : `/docs/build/components/a-z/${bucket.toLowerCase()}.html`);
+
+test('the A to Z bar lists every letter and 0-9, marks the current one and mutes the empty ones', async ({ page }) => {
+  for (const current of populated) {
+    await page.goto(pageFor(current));
+    const nav = page.getByRole('navigation', { name: 'A to Z navigation' });
+    await expect(nav).toBeVisible();
+    const items = nav.locator('ol.style-a-z > li');
+    await expect(items).toHaveCount(27);
+    for (const [position, bucket] of buckets.entries()) {
+      const item = items.nth(position);
+      if (bucket === current) {
+        const link = item.locator('a[aria-current="page"]');
+        await expect(link).toHaveText(bucket);
+        // White on the blue used by the letter heading.
+        const styles = await link.evaluate(node => { const style = getComputedStyle(node); return [style.color, style.backgroundColor]; });
+        const heading = await page.locator('h2.style-a-z__letter').evaluate(node => { const style = getComputedStyle(node); return [style.color, style.backgroundColor]; });
+        expect(styles).toEqual(heading);
+      } else if (populated.includes(bucket)) {
+        await expect(item.locator('a.govuk-link')).toHaveText(bucket);
+        await expect(item.locator('a[aria-current]')).toHaveCount(0);
+      } else {
+        await expect(item.locator('span.style-a-z__empty')).toHaveText(bucket);
+        await expect(item.locator('a')).toHaveCount(0);
+      }
     }
+    await expect(page.locator('h2.style-a-z__letter')).toHaveText(current);
   }
-  // The jump bar comes straight after the hero, before the search and the list.
-  const order = await page.locator('main').evaluate(main => {
-    const nav = main.querySelector('nav[aria-label="A to Z navigation"]');
-    const search = main.querySelector('[data-component-search]');
-    const list = main.querySelector('[data-component-list]');
-    return [nav.compareDocumentPosition(search) & Node.DOCUMENT_POSITION_FOLLOWING, search.compareDocumentPosition(list) & Node.DOCUMENT_POSITION_FOLLOWING];
-  });
-  expect(order.every(Boolean)).toBe(true);
 });
 
-test('the A to Z list names every parent once, links published pages and marks the rest', async ({ page }) => {
+test('the bar and the pager move between letter pages and stay in step', async ({ page }) => {
   await page.goto(index);
-  const entries = page.locator('[data-component-list] [data-component-parent]');
-  await expect(entries).toHaveCount(parents.length);
-  expect(await entries.evaluateAll(nodes => nodes.map(node => node.dataset.componentParent))).toEqual(parents.map(parent => parent.parent));
-  for (const parent of parents) {
-    const entry = page.locator(`[data-component-parent="${parent.parent.replace(/"/g, '\\"')}"]`);
-    if (available.includes(parent)) await expect(entry.locator('a')).toHaveAttribute('href', parent.route.replace('/components/', ''));
-    else {
-      await expect(entry.locator('a')).toHaveCount(0);
-      await expect(entry).toContainText('Specification not yet published');
+  const pager = page.getByRole('navigation', { name: 'Components pages' });
+  await expect(pager.locator('li')).toHaveCount(5);
+  await expect(pager.locator('li').nth(0)).toHaveText('First');
+  await expect(pager.locator('li').nth(0).locator('a')).toHaveCount(0);
+  await expect(pager.locator('li').nth(1).locator('a')).toHaveCount(0);
+  await expect(pager.locator('li').nth(2)).toContainText(populated[0]);
+  await pager.getByRole('link', { name: /^Next/ }).click();
+  await expect(page).toHaveURL(new RegExp(`${pageFor(populated[1]).replace(/\./g, '\\.')}$`));
+  await expect(page.locator('h2.style-a-z__letter')).toHaveText(populated[1]);
+  await expect(page.getByRole('navigation', { name: 'A to Z navigation' }).locator('a[aria-current="page"]')).toHaveText(populated[1]);
+  await pager.getByRole('link', { name: /^Last/ }).click();
+  await expect(page.locator('h2.style-a-z__letter')).toHaveText(populated.at(-1));
+  await expect(pager.locator('li').nth(3).locator('a')).toHaveCount(0);
+  await expect(pager.locator('li').nth(4).locator('a')).toHaveCount(0);
+  await pager.getByRole('link', { name: /^Previous/ }).click();
+  await expect(page.locator('h2.style-a-z__letter')).toHaveText(populated.at(-2));
+  await pager.getByRole('link', { name: /^First/ }).click();
+  await expect(page.locator('h2.style-a-z__letter')).toHaveText(populated[0]);
+  // A letter page can be opened and refreshed directly.
+  await page.goto(pageFor('T'));
+  await page.reload();
+  await expect(page.locator('h2.style-a-z__letter')).toHaveText('T');
+});
+
+test('each letter page lists exactly the parents that start with that letter, links published pages and marks the rest', async ({ page }) => {
+  for (const bucket of populated) {
+    await page.goto(pageFor(bucket));
+    const wanted = parents.filter(parent => bucketOf(parent.parent) === bucket);
+    const entries = page.locator('[data-az-list] [data-az-entry]');
+    await expect(entries).toHaveCount(wanted.length);
+    expect(await entries.evaluateAll(nodes => nodes.map(node => node.dataset.azEntry))).toEqual(wanted.map(parent => parent.parent));
+    for (const parent of wanted) {
+      const entry = page.locator(`[data-az-entry="${parent.parent.replace(/"/g, '\\"')}"]`);
+      if (available.includes(parent)) await expect(entry.locator('a')).toHaveAttribute('href', new RegExp(`${parent.route.replace('/components/', '').replace(/\./g, '\\.')}$`));
+      else {
+        await expect(entry.locator('a')).toHaveCount(0);
+        await expect(entry).toContainText('Specification not yet published');
+      }
     }
   }
 });
@@ -120,7 +157,7 @@ test('the combobox finds parents, elements and variants and goes to the owning a
   const tile = parents.find(parent => parent.parent === 'Tile Card');
   if (available.includes(tile)) await expect(page).toHaveURL(new RegExp(`tile-card\\.html${anchorPattern(tile, 'child-hui-tile-card')}`));
   else {
-    await expect(page).toHaveURL(/index\.html#parent-tile-card$/);
+    await expect(page).toHaveURL(/components\/a-z\/t\.html#parent-tile-card$/);
     await expect(page.locator('#parent-tile-card')).toBeFocused();
   }
 });
@@ -172,13 +209,13 @@ test('the index passes automated accessibility checks and reflows at 320px', asy
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
 });
 
-test('without JavaScript the full A to Z list remains and the combobox is not offered', async ({ browser }) => {
+test('without JavaScript the A to Z pages remain and the combobox is not offered', async ({ browser }) => {
   const context = await browser.newContext({ javaScriptEnabled: false });
   const page = await context.newPage();
   try {
     await page.goto(`http://127.0.0.1:4173${index}`);
     await expect(page.locator('[data-component-search]')).toBeHidden();
-    await expect(page.locator('[data-component-list] [data-component-parent]')).toHaveCount(parents.length);
+    await expect(page.locator('[data-az-list] [data-az-entry]')).toHaveCount(parents.filter(parent => bucketOf(parent.parent) === populated[0]).length);
   } finally { await context.close(); }
 });
 

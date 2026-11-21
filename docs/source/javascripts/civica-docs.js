@@ -78,10 +78,19 @@
   }
 })();
 
+/* Paged A to Z index: arriving from a search result on another letter page,
+   move focus to the entry the address points at. */
+(() => {
+  const target = location.hash.length > 1 ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+  if (!target || !target.matches('[data-az-entry]')) return;
+  target.setAttribute('tabindex', '-1');
+  target.focus();
+})();
+
 /* Components combobox (ARIA 1.2 editable combobox with a list popup).
    The data is the same inventory-derived record as /reference/component-index.json,
    embedded in the page, so searching makes no network request. Without JavaScript
-   the full A to Z list below remains the way to find a component. */
+   the A to Z pages remain the way to find a component. */
 (() => {
   const root = document.querySelector('[data-component-search]');
   const source = document.getElementById('component-search-data');
@@ -129,12 +138,13 @@
   };
   const go = entry => {
     close();
-    if (entry.h.startsWith('#')) {
-      location.hash = entry.h;
-      const target = document.getElementById(entry.h.slice(1));
+    const url = new URL(entry.h, location.href);
+    if (url.pathname === location.pathname && url.hash) {
+      location.hash = url.hash;
+      const target = document.getElementById(url.hash.slice(1));
       target?.setAttribute('tabindex', '-1');
       target?.focus();
-    } else location.assign(entry.h);
+    } else location.assign(url.href);
   };
   const render = () => {
     const query = input.value.toLocaleLowerCase().trim();

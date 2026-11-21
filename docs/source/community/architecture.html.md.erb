@@ -4,7 +4,7 @@ description: "Documentation architecture for the Civica Home Assistant design sy
 last_reviewed_on: 2026-11-11
 review_in: 3 months
 published_on: "2026-11-11"
-updated_on: "2026-11-17"
+updated_on: "2026-11-21"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
@@ -14,6 +14,8 @@ updates:
     description: "First published in the civica.uk design system."
   - date: "2026-11-17"
     description: "Rewritten to lead with the build rule, add an example of adding a page, and point to licensing and sources as owners."
+  - date: "2026-11-21"
+    description: "Added how the Components and Patterns indexes are paged and where the machine-readable component list is published."
 ai_instructions: "Use as the owner of how the documentation site is built: Middleman with the pinned govuk_tech_docs gem, unbranded, with navigation derived from page front matter. Do not claim the upstream Node site is Middleman, and do not publish official branding. Rules WG-090, WG-091, WG-092."
 ai_related:
   - path: "/community/index.html"
@@ -72,6 +74,10 @@ docs/
     llms.txt             # AI reading guide
   scripts/               # Palette and supplied-artwork synchronisation
 ```
+
+## Component and pattern indexes
+
+Each component has one page that owns it and every element and variant it contains. A component without a page yet is marked Specification not yet published, and a search result for one of its elements opens its entry on the index. Components and Patterns share one index template that shows one letter, or 0-9, at a time. The Components list is also available to machine readers as [component-index.json](../reference/component-index.json).
 
 ## Keep the build unbranded
 

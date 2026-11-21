@@ -1,9 +1,9 @@
-<% illustrated_page = !!data['page-illustrations'][current_page.destination_path] %>
+<% illustrated_page = !!page_illustration %>
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#1d70b8">
-<title><%= escape(current_page.data.title) %> – Civica Design System</title>
+<title><%= escape(az_page_title) %> – Civica Design System</title>
 <meta name="description" content="<%= escape(current_page.data.description || 'A clear, consistent Home Assistant interface inspired by UK public service design.') %>">
 <% if current_page.data.ai_instructions %>
 <% if current_page.data.section == "content" %>

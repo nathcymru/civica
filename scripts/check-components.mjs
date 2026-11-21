@@ -108,38 +108,75 @@ for (const { route, declared } of index.declarations) {
 }
 
 // 4. The index page, its embedded search data and the sidebar show exactly the derived lists.
-const page = readFileSync(`${BUILD}/components/index.html`, 'utf8');
 const decode = text => text.replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 const slug = text => text.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-const used = new Set(parents.map(parent => parent.letter));
-const bar = page.match(/<nav[^>]*aria-label="A to Z navigation"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || '';
-const barItems = [...bar.matchAll(/<li>([\s\S]*?)<\/li>/g)].map(match => match[1]);
-assert.equal(barItems.length, 26, 'A to Z bar has 26 letters');
-'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach((letter, position) => {
-  const wanted = used.has(letter)
-    ? `<a class="govuk-link govuk-link--no-visited-state" href="#${letter.toLowerCase()}">${letter}</a>`
-    : `<span class="style-a-z__empty">${letter}</span>`;
-  assert.equal(barItems[position], wanted, `A to Z bar item ${letter}`);
-});
-const list = page.match(/<div class="c-component-az" data-component-list>([\s\S]*?)<\/div>/)?.[1] || '';
-assert.deepEqual([...list.matchAll(/<h2 class="style-a-z__letter" id="([a-z])">([A-Z])<\/h2>/g)].map(match => [match[1], match[2]]),
-  [...used].map(letter => [letter.toLowerCase(), letter]), 'Letter headings match the used letters, in order');
-const items = [...list.matchAll(/<li id="([^"]+)" data-component-parent="([^"]+)">([\s\S]*?)<\/li>/g)];
-assert.deepEqual(items.map(match => decode(match[2])), parents.map(parent => parent.parent), 'Index lists every parent once in order');
-items.forEach((match, position) => {
-  const parent = parents[position];
-  assert.equal(match[1], `parent-${slug(parent.parent)}`, `${parent.parent}: list anchor`);
-  const linked = /<a class="govuk-link" href="([^"]+)">/.exec(match[3]);
-  if (published(parent.route)) {
-    assert.ok(linked && linked[1].endsWith(parent.route.replace('/components/', '')), `${parent.parent}: linked to its page`);
-    assert.ok(!match[3].includes('Specification not yet published'), `${parent.parent}: not marked pending`);
-  } else {
-    assert.ok(!linked, `${parent.parent}: pending parent is not linked`);
-    assert.ok(match[3].includes('Specification not yet published'), `${parent.parent}: marked pending`);
-  }
-  const origins = parent.origins.map(origin => (origin === 'Civica' ? 'civica' : origin)).join(', ');
-  assert.ok(decode(match[3]).includes(`Origin: ${origins}`), `${parent.parent}: origin line`);
-});
+const BUCKETS = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ', '0-9'];
+const bucketOf = name => {
+  const first = name.normalize('NFD').replace(/\p{Mn}/gu, '').match(/[A-Za-z0-9]/)?.[0];
+  return /\d/.test(first) ? '0-9' : first.toUpperCase();
+};
+const grouped = new Map(BUCKETS.map(bucket => [bucket, []]));
+for (const parent of parents) grouped.get(bucketOf(parent.parent)).push(parent);
+const populated = BUCKETS.filter(bucket => grouped.get(bucket).length);
+const pathFor = bucket => (bucket === populated[0] ? 'index.html' : `a-z/${bucket.toLowerCase()}.html`);
+const pageFor = bucket => `${BUILD}/components/${pathFor(bucket)}`;
+// Links are relative to the page they are on: letter pages sit one folder down.
+const hrefFrom = (bucket, target) => (bucket === populated[0] ? target : target === 'index.html' ? '../index.html' : target.replace(/^a-z\//, ''));
+const publishedLetterPages = execFileSync('find', [`${BUILD}/components/a-z`, '-name', '*.html'], { encoding: 'utf8' })
+  .trim().split('\n').filter(Boolean).map(path => path.replace(`${BUILD}/components/`, '')).sort();
+assert.deepEqual(publishedLetterPages, populated.slice(1).map(pathFor).sort(), 'One page for each populated letter after the first, and none for an empty one');
+for (const [position, parent] of parents.entries()) assert.equal(parent.letter, bucketOf(parent.parent), `${parent.parent}: inventory letter is its first letter or digit`);
+
+const page = readFileSync(pageFor(populated[0]), 'utf8');
+for (const bucket of populated) {
+  const html = readFileSync(pageFor(bucket), 'utf8');
+  const where = `Components ${bucket}`;
+  const bar = html.match(/<nav[^>]*aria-label="A to Z navigation"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || '';
+  const barItems = [...bar.matchAll(/<li>([\s\S]*?)<\/li>/g)].map(match => match[1]);
+  assert.equal(barItems.length, 27, `${where}: A to Z bar has 26 letters and 0-9`);
+  BUCKETS.forEach((letter, position) => {
+    const wanted = letter === bucket
+      ? `<a class="govuk-link govuk-link--no-visited-state style-a-z__current" href="${hrefFrom(bucket, pathFor(letter))}" aria-current="page">${letter}</a>`
+      : populated.includes(letter)
+        ? `<a class="govuk-link govuk-link--no-visited-state" href="${hrefFrom(bucket, pathFor(letter))}">${letter}</a>`
+        : `<span class="style-a-z__empty">${letter}</span>`;
+    assert.equal(barItems[position], wanted, `${where}: A to Z bar item ${letter}`);
+  });
+  const list = html.match(/<div class="c-az" data-az-list data-az-section="components" data-az-bucket="([^"]+)">([\s\S]*?)<\/div>/);
+  assert.equal(list?.[1], bucket, `${where}: list is for this letter`);
+  assert.deepEqual([...list[2].matchAll(/<h2 class="style-a-z__letter" id="([a-z0-9-]+)">([A-Z0-9-]+)<\/h2>/g)].map(match => [match[1], match[2]]),
+    [[bucket.toLowerCase(), bucket]], `${where}: one letter heading`);
+  const items = [...list[2].matchAll(/<li id="([^"]+)" data-az-entry="([^"]+)">([\s\S]*?)<\/li>/g)];
+  assert.deepEqual(items.map(match => decode(match[2])), grouped.get(bucket).map(parent => parent.parent), `${where}: lists its parents once, in order`);
+  items.forEach((match, position) => {
+    const parent = grouped.get(bucket)[position];
+    assert.equal(match[1], `parent-${slug(parent.parent)}`, `${parent.parent}: list anchor`);
+    const linked = /<a class="govuk-link" href="([^"]+)">/.exec(match[3]);
+    if (published(parent.route)) {
+      assert.ok(linked && linked[1].endsWith(parent.route.replace('/components/', '')), `${parent.parent}: linked to its page`);
+      assert.ok(!match[3].includes('Specification not yet published'), `${parent.parent}: not marked pending`);
+    } else {
+      assert.ok(!linked, `${parent.parent}: pending parent is not linked`);
+      assert.ok(match[3].includes('Specification not yet published'), `${parent.parent}: marked pending`);
+    }
+    const origins = parent.origins.join(', ');
+    assert.ok(decode(match[3]).includes(`Origin: ${origins}`), `${parent.parent}: origin line`);
+  });
+  // The pager: First, Previous, the current letter, Next and Last, in one row.
+  const pager = html.match(/<nav class="c-az-pager"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || '';
+  const cells = [...pager.matchAll(/<li>([\s\S]*?)<\/li>/g)].map(match => match[1]);
+  const at = populated.indexOf(bucket);
+  const cell = (label, target) => (target
+    ? `<a class="govuk-link govuk-link--no-visited-state" href="${hrefFrom(bucket, pathFor(target))}">${label}<span class="govuk-visually-hidden">, ${target}</span></a>`
+    : `<span class="c-az-pager__disabled" aria-disabled="true">${label}</span>`);
+  assert.deepEqual(cells, [
+    cell('First', at > 0 ? populated[0] : null),
+    cell('Previous', at > 0 ? populated[at - 1] : null),
+    `<span class="c-az-pager__current" aria-current="page"><span class="govuk-visually-hidden">Current page, </span>${bucket}</span>`,
+    cell('Next', at < populated.length - 1 ? populated[at + 1] : null),
+    cell('Last', at < populated.length - 1 ? populated.at(-1) : null)
+  ], `${where}: pager`);
+}
 
 // The combobox data is the published entries, with cross-references folded into their owner entry.
 const search = JSON.parse(page.match(/<script type="application\/json" id="component-search-data">([\s\S]*?)<\/script>/)[1]);
@@ -148,10 +185,10 @@ const expectedSearch = expected.filter(entry => !entry.listed_on).map(entry => {
   const notes = also.map(other => other.note).filter(Boolean);
   const href = entry.available
     ? `${entry.route.replace('/components/', '')}${entry.anchor && entry.anchor_published ? `#${entry.anchor}` : ''}`
-    : `#parent-${slug(entry.owner)}`;
+    : `${pathFor(bucketOf(entry.owner))}#parent-${slug(entry.owner)}`;
   const item = { n: entry.name, k: entry.kind, o: entry.owner, h: href, a: entry.available };
   if (entry.within) item.w = entry.within;
-  if (entry.origin) item.g = entry.origin === 'Civica' ? 'civica' : entry.origin;
+  if (entry.origin) item.g = entry.origin;
   if (also.length) item.l = also.map(other => other.listed_on);
   if (notes.length) item.t = notes.join(' ');
   return item;

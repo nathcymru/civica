@@ -45,7 +45,7 @@
   end
   # A sub-page names its section above the heading, as the reference guidance
   # does, so the heading never stands alone. Overviews and hero pages do not.
-  if (heading = fragment.at_css('h1')) && !data['page-illustrations'][current_page.destination_path] && current_section &&
+  if (heading = fragment.at_css('h1')) && !page_illustration && current_section &&
      (tree_section = data.navigation.sections.find { |item| item.id == current_section }) && tree_section.tree
     parent = section_tree(current_section).find do |entry|
       entry[:children].any? { |child| child.destination_path == current_page.destination_path } &&
@@ -60,7 +60,7 @@
   end
   # The title, lead and original art form one wide hero, as in the source
   # guidance. Keep the breadcrumb in that panel and all copy as real HTML.
-  illustration = data['page-illustrations'][current_page.destination_path]
+  illustration = page_illustration
   if illustration && (heading = fragment.at_css('h1'))
     header = Nokogiri::XML::Node.new('header', fragment.document)
     header['class'] = 'c-illustrated-header'
