@@ -6,8 +6,10 @@ group: "Writing guidelines"
 nav_order: 4
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-15"
+updated_on: "2026-11-22"
 updates:
+  - date: "2026-11-22"
+    description: "Shortened to clear points with realistic examples."
   - date: "2026-11-15"
     description: "Rewritten with plain rules and Before and After examples."
 ai_instructions: "Apply to set how sure and how calm the copy sounds. Match certainty to the evidence the system has, never blame the person and never raise a false alarm. Rules WG-011, WG-012, WG-046 and WG-066 (presence)."
@@ -25,47 +27,45 @@ ai_related:
 
 # Use the right tone
 
-Write as someone who knows what the system can and cannot tell you. Be brisk but not curt. Say “you” where it helps the person.
+<h2 id="speak-to-the-household-directly">Speak to the household directly</h2>
+
+Say “you” and say who the message is from.
+
+| Before | After |
+| --- | --- |
+| The user’s heating has been turned off. | Your heating is off. Home Assistant turned it off at 22:00. |
 
 <h2 id="wg-011">Match certainty to evidence</h2>
 
-Say what was observed. Do not turn an estimate, an old reading or a request into a fact.
+Say what was observed. Do not turn an old reading or a request into a fact.
 
 | Before | After |
 | --- | --- |
-| Alex is home. | Alex’s phone reported Home at 17:40. |
-| The front door is locked. | The lock reports Locked. |
-| The appliance is safe. | The socket reports Off. This does not confirm the appliance is safe to work on. |
-
-Avoid “always”, “guaranteed”, “safe” and “real time” unless the device really promises them.
+| The front door is locked. | The front door lock reports Locked. |
 
 <h2 id="wg-012">Be calm without false reassurance</h2>
 
-Give facts and a next step. Do not joke, blame the device or say “do not worry”.
+Give the fact and a next step. Do not joke, blame the device or say “do not worry”.
 
 | Before | After |
 | --- | --- |
-| Oops! Your pesky lamp is being stubborn. Just try again! | The lamp has not reported its new state. The request may still complete. Check the lamp before you try again. |
-| Don’t worry, it’s probably fine. | The last reading was 9 minutes ago. |
-
-Do not celebrate routine actions. “Light on” is enough. Use “we” only when it is clear who “we” is. Software is not a person watching the house.
+| Oops! Your pesky lamp is being stubborn. Just try again! | The lamp has not reported its new state. Check the lamp, then try again. |
 
 <h2 id="wg-046">Do not blame or raise false alarms</h2>
 
-Reserve alarm wording for real alarms. Do not blame the person or the device. Too many urgent messages teach people to ignore all of them.
+Do not blame the person. Keep alarm wording for real alarms, because too many urgent messages teach people to ignore them.
 
 | Before | After |
 | --- | --- |
-| URGENT: You left the window open! | The bedroom window sensor reports Open. It has been open for 40 minutes. |
-| Error! Error! Error! | Heating cannot reach the thermostat. It will keep the last schedule. |
+| You left the window open again. | The bedroom window sensor reports Open. It has been open for 40 minutes. |
+| URGENT: Front door lock battery critical!!! | Front door lock battery at 20%. Replace it soon. |
 
 <h2 id="wg-066">Treat presence as sensitive and uncertain</h2>
 
-A tracker or sensor reports a device or movement, not a person. Say that, and do not show it on a shared screen unless the household chose to.
+A tracker reports a device, not a person. Hide presence on shared screens unless the household chose to show it.
 
 <%= example('wg-presence') %>
 
 | Before | After |
 | --- | --- |
-| Alex is out. House empty. | Alex’s phone last reported Away at 17:40. This does not confirm the house is empty. |
-| Mum arrived home at 16:02. | Presence details hidden. (On a shared hallway display.) |
+| Alex is out. House empty. | Alex’s phone last reported Away at 17:40. |

@@ -6,8 +6,10 @@ group: "Writing guidelines"
 nav_order: 5
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-15"
+updated_on: "2026-11-22"
 updates:
+  - date: "2026-11-22"
+    description: "Shortened to clear points with realistic examples. Removed an example that named an outside source."
   - date: "2026-11-15"
     description: "Rewritten with plain rules and Before and After examples."
 ai_instructions: "Apply to every link. Link text must describe the destination, and say when a link leaves Home Assistant. Rules WG-083 and WG-037."
@@ -27,26 +29,26 @@ ai_related:
 
 <h2 id="wg-083">Describe the destination in the link text</h2>
 
-The link text must make sense on its own. Do not use “click here”, “more” or a bare URL. A link goes somewhere. It does not run a device action.
-
-<%= example('wg-accessible-links') %>
+Link text must make sense on its own. Do not use “click here” or “more”. A link goes somewhere. It does not run a device action.
 
 | Before | After |
 | --- | --- |
-| For help, click here. | Read how to [reset the hallway motion sensor](#). |
-| More | [Open the Zigbee router guide](#) |
-| Turn off the heating (a link that switches it off) | Select the **Turn off heating** button. |
+| For file links, [click here](../formatting-content/attachments.html). | See [Attachments](../formatting-content/attachments.html) for file links. |
+| [Turn off heating](../formatting-content/attachments.html) (a link that switches it off) | Select the **Turn off heating** button. |
 
-Put each link in the sentence where it is useful. Do not collect them at the bottom.
+<h2 id="link-to-a-specific-page">Link to a specific page</h2>
+
+Link to the page that answers the question, not a section home.
+
+| Before | After |
+| --- | --- |
+| Look up terms in the [style guides](../style-guides/index.html). | Look up Home Assistant words in [A to Z Technical](../style-guides/technical-a-to-z.html). |
 
 <h2 id="wg-037">Say when a link leaves Home Assistant</h2>
 
-Name external services, downloads and new tabs before the person selects. Do not put personal data, passwords or tokens in a link.
+Name external sites and downloads before the person selects. Never put a password or token in a link.
 
 | Before | After |
 | --- | --- |
-| More | [Open the manufacturer’s support page (opens another website)](#) |
-| Download | [Download the diagnostics file (.json, 140KB)](#) |
-| https://example.com/reset?user=nain&token=abc123 | [Reset your password on the manufacturer’s website](#) |
-
-Link to the specific page, not a homepage. Do not link to a service that needs an account to read the answer unless the task needs it. Do not claim an external page works without the internet.
+| More | Manufacturer support page (opens another website) |
+| Download | Download diagnostics (.json, 140KB) |
