@@ -6,8 +6,10 @@ group: "Writing guidelines"
 nav_order: 9
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-15"
+updated_on: "2026-11-22"
 updates:
+  - date: "2026-11-22"
+    description: "Shortened to one pair for each rule with realistic examples."
   - date: "2026-11-15"
     description: "Merged interface copy and errors and alerts into one page, with Before and After examples."
 ai_instructions: "Apply to anything that reports a state, a request, a result or a problem. Keep what a device reported, what was requested and what happened apart, and never claim more than the system knows. Contains the warning, toast, alert and repair rules in WG-042. Rules WG-031 to WG-044."
@@ -28,39 +30,27 @@ ai_related:
 
 # States, requests and errors
 
-A lamp may or may not have turned on. A request, a stored setting and a physical result are three different facts. Never write one as if it were another.
-
-## States and requests
+A request, a stored setting and a physical result are three different facts. Never write one as if it were another.
 
 <h2 id="wg-031">Separate state from action</h2>
 
-Label what a device last reported separately from what a button will ask it to do.
+Label what a device reported apart from what a button asks it to do.
 
 <%= example('wg-state-action') %>
 
-| Before | After |
-| --- | --- |
-| Reading lamp: Turn on | Reading lamp: Off<br>Button: **Turn on reading lamp** |
-| The switch shows On (before the device replied) | Turning on… (pending) |
+<h3 id="wg-032">Say a request was sent, not that it worked</h3>
 
-<h2 id="wg-032">Say a request was sent, not that it worked</h2>
-
-Say “Request sent” until the device reports a result. Say what you saw, not what you hope happened.
+Say what you saw, not what you hope happened.
 
 <%= example('wg-command-progress') %>
 
-| Before | After |
-| --- | --- |
-| Door locked. | Request sent. Waiting for the lock to report. |
-| Success! | Home Assistant accepted the request. The lock has not reported a new state. |
+<h3 id="wg-044">Explain pending and uncertain outcomes</h3>
 
-<h2 id="wg-044">Explain pending and uncertain outcomes</h2>
-
-If no result has come back, say so, say the request may still complete, and warn before a retry that could repeat it.
+Say the request may still complete, and warn before a retry that could repeat it.
 
 | Before | After |
 | --- | --- |
-| Failed. Try again. | The garage door has not reported a new state. It may still be moving. Check it before you send another request. |
+| Garage door failed. Try again. | The garage door has not reported a new state. It may still be moving. Check it before you send another request. |
 
 <h2 id="wg-033">Keep unavailable, unknown, stale and offline apart</h2>
 
@@ -70,80 +60,58 @@ Use the state the source gave, with a time. Say “offline” only if you know t
 
 | Before | After |
 | --- | --- |
-| Hall sensor offline. | Hall sensor unavailable. Home Assistant cannot get its state. |
-| Temperature: 0°C | Temperature unknown. No reading has been supplied. |
-| Temperature: 19.4°C | 19.4°C at 09:15. No newer reading. |
-
-A door contact sensor may not change for days. Do not call it stale because its last-changed time is old.
+| Hall sensor offline. | Hall sensor unavailable since 18:42. Home Assistant cannot get its state. |
 
 <h2 id="wg-034">Explain what the control can and cannot do</h2>
 
-Show only actions that are supported. Say why one is missing, and who can change that.
+Show only supported actions. Say why one is missing and who can change that.
 
 <%= example('wg-permission') %>
 
-| Before | After |
-| --- | --- |
-| Start cycle (greyed out) | Remote control is off. Turn on remote control on the washing machine to start a cycle from here. |
-| Something went wrong. | Your account cannot change the alarm. Ask the household owner. |
-
-Do not add Start, Pause or Reset because another appliance has them. Do not tell people to bypass a safety lock.
-
 <h2 id="wg-035">Keep saved, enabled and running apart</h2>
 
-Say whether a change was saved, whether it will start automatically and whether it is running now.
+Say whether a change was saved, will start automatically and is running now.
 
 <%= example('wg-automation-status') %>
 
 | Before | After |
 | --- | --- |
-| Automation active. | Saved. On. Not running now. |
-| Turned off the hall lights automation. | Future starts are off. A run already in progress may finish. |
-| Scene applied. | 4 requests sent. 3 lights report On. The hall light has not reported. |
+| Disabled. | Hall lights automation turned off. It will not start again until you turn it on. |
 
 <h2 id="wg-036">Say what Cancel, Stop and Delete do</h2>
 
-Name the thing, and say what will stop, continue or be lost.
+Name the thing and say what stops, continues or is lost. Say “you can undo this” only when the system can undo it.
 
 | Before | After |
 | --- | --- |
 | Are you sure? | Delete the automation “Porch light at sunset”? This cannot be undone. |
-| Cancel | Cancel changes. The heating schedule stays as it was. |
-| Stop | Stop the script. Requests already sent are not undone. |
-
-Say “you can undo this” only when the system can really undo it.
+| Stop? | Stop the vacuum? It will stay where it stops. |
 
 <h2 id="wg-038">Make empty and missing states clear</h2>
 
-Tell “nothing found” from “nothing exists” from “could not load”. Label every field. A placeholder is not a label.
+Tell “nothing found” from “nothing exists yet” from “could not load”.
 
 | Before | After |
 | --- | --- |
 | No data | No devices match these filters. |
-| No data | No devices have been added yet. |
 | No data | Devices could not be loaded. |
-
-## Errors
+| No data | No devices have been added yet. |
 
 <h2 id="wg-040">Give a recovery that matches the cause</h2>
 
-Name the confirmed cause. Offer one step that fits it. Do not guess.
+Name the confirmed cause and offer one step that fits it.
 
 | Before | After |
 | --- | --- |
-| Failed. Please restart your router. | The schedule was not saved because your sign-in ended. Sign in again. Your changes are still on this page. |
-| Error 500. | Home Assistant could not save the schedule. Try again in a minute. |
+| Failed. Please restart your router. | The heating hub did not answer. Wait a minute, then save the schedule again. |
 
-Promise kept changes only when they are kept.
+<h3 id="wg-041">Tell a mistake from a fault</h3>
 
-<h2 id="wg-041">Tell a mistake from a fault</h2>
-
-If the person can fix it, say what to fix. If it is the system’s fault, say so.
+If the person can fix it, say what to fix. If the system failed, say so.
 
 | Before | After |
 | --- | --- |
 | Invalid input. | Enter a temperature between 5°C and 30°C. |
-| Your request could not be processed. | The heating hub did not answer. This is not caused by what you entered. |
 
 <h2 id="wg-042">Choose urgency from evidence</h2>
 
@@ -151,39 +119,26 @@ Use alarm wording only for a real alarm. A reminder is not an emergency.
 
 <%= example('wg-warning-context') %>
 
-| Before | After |
-| --- | --- |
-| WARNING: Boiler service overdue! | Service date needs checking. The saved date is 2 November 2025. |
-| Danger! | Smoke alarm: smoke detected in the kitchen. Leave the house and call 999. |
+<h3 id="write-a-warning">Write a warning</h3>
 
-### Write a warning
-
-Put a warning before the step it affects. Say the hazard, what happens and what to do. Use “Danger”, “Warning” and “Caution” only for a risk to people. For a loss of data or settings, no signal word is needed: say what will be lost.
+Put it before the step it affects. Say the hazard, what happens and what to do. Use “Danger”, “Warning” and “Caution” only for risks to people.
 
 | Before | After |
 | --- | --- |
-| Be careful with the cover. | Warning: mains electricity. Turn off the socket at the wall before you open the cover. The plug can stay live. |
-| Do not unplug the hub. | Do not unplug the hub during the update. The update will fail and the hub may not start. |
+| Be careful with the cover. | Warning: mains electricity. You could get an electric shock. Turn off the socket at the wall before you open the cover. |
 
-A safety step may stress one critical word in bold: “Do **not** open the cover while the plug is in.” Do this for safety steps only.
+<h3 id="choose-a-toast-an-alert-or-a-repair">Choose a toast, an alert or a repair</h3>
 
-### Choose a toast, an alert or a repair
-
-- A **toast** is for feedback the person does not need to act on, such as “Light turned on.” It disappears, so never put anything in it that someone must read to fix a problem.
-- An **alert** stays on screen until the problem is gone. Use it for a fault the person should know about.
-- A **repair** tells the person what is wrong, why it matters, and gives the exact fix as a numbered list.
-- Offer **Undo** after an action the person can reverse.
+A toast disappears, so never put a needed fix in it. An alert stays until the problem is gone. A repair gives the cause and the fix as numbered steps.
 
 | Before | After |
 | --- | --- |
-| (Toast) Hub offline. Select Settings, then Network, then restart the router. | (Alert, stays on screen) Hub offline. Lights cannot be controlled. |
-| (Alert) Fix the integration. | (Repair) Hall sensor cannot connect. Heating will use the last schedule.<br>1. Replace the battery.<br>2. Select **Retry**.<br>The sensor should report within a minute. |
+| (Toast) Hub offline. Restart the router. | (Repair) Hub offline. 1. Check the hub has power. 2. Check it is connected to your network. 3. Wait a minute, then check again. |
 
 <h2 id="wg-043">Stay inside what the system can know</h2>
 
-Do not give safety, medical or legal advice the system cannot support. Point to a qualified source.
+Do not give safety, medical or legal advice the system cannot support.
 
 | Before | After |
 | --- | --- |
 | Your home is safe. | No smoke alarms reported smoke in the last hour. This does not mean the house is safe. |
-| The pipe is not frozen. | The pipe sensor reports 2°C. It does not measure ice. |
