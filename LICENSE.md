@@ -94,20 +94,8 @@ Plain English Campaign retains copyright in its guides. The project links to the
 
 See the [design-system source register](https://nathcymru.github.io/civica/community/sources.html), [Plain English Campaign guides](https://www.plainenglish.co.uk/free-guides) and [SCULPT source and licence](https://www.worcestershire.gov.uk/council-services/business/digital-worcestershire/sculpt-accessibility/what-sculpt).
 
-## Cookies and site information
-
-This documentation site uses one essential cookie to remember that you have hidden the first-visit notice. It does not use analytics or advertising cookies. Hiding the notice is an acknowledgement, not consent to optional tracking or acceptance of licence terms.
-
-| Cookie | Purpose | Duration |
-| --- | --- | --- |
-| `civica_docs_notice` | Remembers the notice version you have hidden; contains no account or household details | Up to one year |
-
-The cookie is set only when you select **Hide this notice**. It is limited to the documentation site's path. It uses `SameSite=Lax` and `Secure` on HTTPS. Clearing this cookie in your browser makes the notice appear again. It is not shared across browsers or devices.
-
-If your browser blocks storage, you can hide the notice for the current page. It may appear again when you navigate or return. With JavaScript off, the notice remains visible and all licence information is still readable. The site does not save accordion example choices.
-
-GitHub Pages hosts this site. GitHub may keep service logs under its own [privacy statement](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement). This is separate from Civica's browser storage. External links and map requests are subject to the destination provider's policies.
-
 ## Keeping this information current
 
-This page is built directly from the repository's `LICENSE.md`. The build also publishes the dependency inventory and preserved notices. Changes to dependencies, bundled assets or storage behaviour require a fresh review; this record is not a guarantee about future releases or third-party services.
+This page is built directly from the repository's `LICENSE.md`. The build also publishes the dependency inventory and preserved notices. Changes to dependencies or bundled assets require a fresh review; this record is not a guarantee about future releases or third-party services.
+
+For how the site handles browser storage and visitor data, read the [Cookies](https://nathcymru.github.io/civica/community/cookies.html) and [Privacy notice](https://nathcymru.github.io/civica/community/privacy.html) pages.
