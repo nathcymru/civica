@@ -6,8 +6,10 @@ group: "Writing guidelines"
 nav_order: 1
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-15"
+updated_on: "2026-11-22"
 updates:
+  - date: "2026-11-22"
+    description: "Shortened to two rules with clearer Home Assistant examples."
   - date: "2026-11-15"
     description: "Rewritten with plain rules and Before and After examples."
 ai_instructions: "Apply first, before choosing any words. Decide the household task the copy supports and whether Civica owns the content. If Civica does not own it, do not rewrite it. Rules WG-001 and WG-002."
@@ -27,28 +29,20 @@ ai_related:
 
 <h2 id="wg-001">Start with the household task</h2>
 
-Name who needs the content, what they need to do and where they will be when they read it.
-
-Someone checking the heating at night needs the current temperature and one control. They do not need an explanation of the integration. Someone fixing an install may need the exact diagnostic name. Write for one of them at a time.
+Say who needs the content and what they want to do. Put that first and cut the rest.
 
 | Before | After |
 | --- | --- |
-| The environmental control subsystem is now available for interaction. | Change the living room temperature. |
-| Climate entity configuration options | Set when the heating comes on |
-
-Put the most useful information first. Cut anything that does not help the task.
+| Hallway motion sensor diagnostics | Check the hallway motion sensor |
 
 <h2 id="wg-002">Change only what Civica owns</h2>
 
-Rewrite Civica labels and help. Never rewrite a native Home Assistant label, a translation or a name someone gave a device.
-
-People find their way round Home Assistant by its own labels. A name like “Nain’s lamp” may be Welsh, abbreviated or meaningful only to that household. Keep both. If a native term is unfamiliar, explain it next to the term. Do not rename it.
+Rewrite Civica labels and help. Never rewrite a native Home Assistant label, a translation or a name someone gave a device. If a native term is unfamiliar, explain it beside the term.
 
 <%= example('wg-scope') %>
 
 | Before | After |
 | --- | --- |
-| Rename “Notifications” to “Messages” in the help text. | Open **Notifications**. This shows messages from your automations. |
-| Nain’s Lamp → Nain’s lamp (title case removed) | Nain’s Lamp stays exactly as the household typed it. |
+| Nain’s Lamp is unavailable | Nain’s lamp is unavailable |
 
-Documents that describe a proposed pattern must say it is proposed. Do not imply Civica already installs it.
+The name stays exactly as the household typed it.
