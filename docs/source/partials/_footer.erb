@@ -4,21 +4,22 @@
 <div class="govuk-footer__navigation">
 <div class="govuk-grid-column-two-thirds govuk-!-display-none-print">
 <h2 class="govuk-footer__heading govuk-heading-m">Civica Design System</h2>
+<%
+  footer_links = data.navigation.sections.map { |section| [section.title, docs_path(section.path)] } + [
+    ['GitHub repository', 'https://github.com/nathcymru/civica'],
+    ['Report a bug', 'https://github.com/nathcymru/civica/issues/new?template=bug_report.yml'],
+    ['Suggest a feature', 'https://github.com/nathcymru/civica/issues/new?template=roadmap_item.yml'],
+    ['AI reading guide', docs_path('/llms.txt')]
+  ]
+  split_at = (footer_links.length / 2.0).ceil
+%>
 <div class="govuk-grid-row">
-<div class="govuk-grid-column-one-half">
+<% [footer_links[0...split_at], footer_links[split_at..-1]].each do |column| %><div class="govuk-grid-column-one-half">
 <ul class="govuk-footer__list govuk-footer__list--columns-1">
-<% data.navigation.sections.each do |section| %><li class="govuk-footer__list-item"><a class="govuk-footer__link" href="<%= docs_path(section.path) %>"><%= section.title %></a></li>
+<% column.each do |title, href| %><li class="govuk-footer__list-item"><a class="govuk-footer__link" href="<%= href %>"><%= title %></a></li>
 <% end %></ul>
 </div>
-<div class="govuk-grid-column-one-half">
-<ul class="govuk-footer__list govuk-footer__list--columns-1">
-<li class="govuk-footer__list-item"><a class="govuk-footer__link" href="https://github.com/nathcymru/civica">GitHub repository</a></li>
-<li class="govuk-footer__list-item"><a class="govuk-footer__link" href="https://github.com/nathcymru/civica/issues/new?template=bug_report.yml">Report a bug</a></li>
-<li class="govuk-footer__list-item"><a class="govuk-footer__link" href="https://github.com/nathcymru/civica/issues/new?template=roadmap_item.yml">Suggest a feature</a></li>
-<li class="govuk-footer__list-item"><a class="govuk-footer__link" href="<%= docs_path('/llms.txt') %>">AI reading guide</a></li>
-</ul>
-</div>
-</div>
+<% end %></div>
 </div>
 <div class="govuk-grid-column-one-third govuk-!-display-none-print">
 <h2 class="govuk-footer__heading govuk-heading-m">Home Assistant</h2>
@@ -43,7 +44,7 @@
 <span class="govuk-footer__licence-description">Civica code is free software under the GNU General Public Licence, version 3 or later. Civica guidance is licensed under Creative Commons Attribution-ShareAlike 4.0. Civica is independent of the UK Government and uses open-source GOV.UK Frontend components; see <a class="govuk-footer__link" href="<%= docs_path('/community/licensing.html') %>">Licence and attribution</a>.</span>
 </div>
 <div class="govuk-footer__meta-item">
-<a class="govuk-footer__link c-footer__brand" href="<%= docs_path('/index.html') %>"><img src="<%= docs_path('/images/civica-lockup-on-white.svg') %>" alt="Civica" width="260" height="57"></a>
+<a class="govuk-footer__link c-footer__brand" href="<%= docs_path('/index.html') %>"><img src="<%= docs_path('/images/civica-lockup-footer.svg') %>" alt="Civica" width="220" height="55"></a>
 <span class="govuk-footer__licence-logos"><a class="govuk-footer__link" href="https://www.gnu.org/licenses/gpl-3.0.html"><img class="govuk-footer__licence-logo" src="<%= docs_path('/images/license-gnu-gpl-v3.svg') %>" alt="GNU General Public Licence version 3 or later" width="105" height="40"></a> <a class="govuk-footer__link" href="https://creativecommons.org/licenses/by-sa/4.0/"><img class="govuk-footer__licence-logo" src="<%= docs_path('/images/license-cc-by-sa-4.0.svg') %>" alt="Creative Commons Attribution-ShareAlike 4.0 licence" width="105" height="40"></a></span>
 </div>
 </div>
