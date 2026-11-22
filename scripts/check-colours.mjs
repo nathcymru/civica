@@ -270,7 +270,9 @@ for (const [page, file, show] of [['web+app', 'colour-web-app', ['hex', 'rgb']],
       return main.slice(match.index);
     });
     assert.ok(examples.length > 0, `${file}: has colour examples`);
+    // Swatch blocks and palette pictures carry no data, so only examples that draw data need the statement.
     for (const [index, example] of examples.entries()) {
+      if (!/<svg\b/.test(example)) continue;
       const words = decode(example.replace(/<svg\b[\s\S]*?<\/svg>/g, ' ').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
       const statements = words.split(/(?<=[.!?])\s+/).filter(sentence => /\b(invented|synthetic|simulated)\b/i.test(sentence));
       assert.equal(statements.length, 1, `${file}: colour example ${index + 1} says once that it is invented (found ${statements.length}: ${statements.join(' | ')})`);
