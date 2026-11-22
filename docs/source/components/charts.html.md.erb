@@ -15,7 +15,7 @@ updates:
   - date: "2026-11-11"
     description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
-    description: "First published in the civica.uk design system."
+    description: "First published in the Civica design system."
   - date: "2026-11-18"
     description: "Chart identities no longer follow a Vivid or Muted tone: they stay the same with every GOV.UK theme colour."
   - date: "2026-11-18"
@@ -126,6 +126,6 @@ ONS's component supplies its own Highcharts accessibility implementation. Our se
 
 ## Compatibility and acceptance
 
-The adapter must be reversible: selecting a non-civica theme restores native options and removes added presentation. Unsupported chart internals fail back to Home Assistant. A third-party chart is not covered simply because it uses a canvas or resembles an Energy card.
+The adapter must be reversible: selecting a non-Civica theme restores native options and removes added presentation. Unsupported chart internals fail back to Home Assistant. A third-party chart is not covered simply because it uses a canvas or resembles an Energy card.
 
 Accept a change only when rendered options, visual output and data preservation agree. Test fixtures must begin with actual native shapes: alpha-suffixed column colours, per-point styling, gradient areas, smooth/stacked power series, thin native boundaries and emphasis defaults. The adapter must convert these to the same visual contract shown by the examples. Testing only simplified opaque bars and unfilled lines misses the native presentation differences. Check light and dark modes, a 320px viewport, keyboard access, text scaling, legend changes, date changes, missing values, comparison series, repeated navigation and theme restoration. A mock chart proves the adapter contract; a fresh load of the installed native Energy route proves that the adapter actually runs there. Record those separately.
