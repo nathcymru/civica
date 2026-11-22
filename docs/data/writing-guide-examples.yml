@@ -17,7 +17,7 @@ examples:
     description: "The state shows what the lamp last reported. The button says what will be requested."
     height: 500
     html: |
-      <h1 class="govuk-heading-l">Reading lamp</h1><p class="govuk-body">Reported state: Off</p><p class="govuk-body">Last reported: 11 November 2026 at 18:42</p><button type="button" class="govuk-button" data-demo-message="Example request only. No lamp was changed. A real control would now wait for a reported state.">Turn on reading lamp</button><p class="govuk-body" data-demo-status role="status" aria-live="polite"></p><p class="govuk-body">The action says what will be requested. The state says what the device last reported.</p>
+      <h1 class="govuk-heading-l">Reading lamp</h1><p class="govuk-body">Reported state: Off</p><p class="govuk-body">Last reported: 11 November 2026 at 18:42</p><button type="button" class="govuk-button" data-demo-message="Request sent. Waiting for the lamp to report its state.">Turn on reading lamp</button><p class="govuk-body" data-demo-status role="status" aria-live="polite"></p><p class="govuk-body">The action says what will be requested. The state says what the device last reported.</p>
   wg-command-progress:
     title: "Show the stages of a device request"
     description: "A request can end in more than one way."
@@ -59,7 +59,7 @@ examples:
     description: "A question gives the format of the answer and an example."
     height: 500
     html: |
-      <h1 class="govuk-heading-l">When should the porch light turn off?</h1><form data-demo-form data-demo-success="Example answer received locally. No schedule was saved."><div class="govuk-form-group"><label class="govuk-label" for="wg-off-time">Turn-off time</label><p class="govuk-hint" id="wg-off-time-hint">This example uses the household time zone, Europe/London. Enter a time such as 23:00.</p><input class="govuk-input govuk-input--width-5" id="wg-off-time" name="off-time" type="time" aria-describedby="wg-off-time-hint" required></div><button type="submit" class="govuk-button">Continue</button><p class="govuk-body" data-demo-status role="status" aria-live="polite"></p></form>
+      <h1 class="govuk-heading-l">When should the porch light turn off?</h1><form data-demo-form data-demo-success="Time accepted."><div class="govuk-form-group"><label class="govuk-label" for="wg-off-time">Turn-off time</label><p class="govuk-hint" id="wg-off-time-hint">This example uses the household time zone, Europe/London. Enter a time such as 23:00.</p><input class="govuk-input govuk-input--width-5" id="wg-off-time" name="off-time" type="time" aria-describedby="wg-off-time-hint" required></div><button type="submit" class="govuk-button">Continue</button><p class="govuk-body" data-demo-status role="status" aria-live="polite"></p></form>
   wg-presence:
     title: "Describe presence without claiming certainty"
     description: "A presence display says what it knows and what it does not."
@@ -84,12 +84,6 @@ examples:
     height: 500
     html: |
       <h1 class="govuk-heading-l">Hourly electricity use</h1><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--m">11 November 2026, Europe/London; interval start shown</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th class="govuk-table__header" scope="col">Interval start</th><th class="govuk-table__header" scope="col">Energy (kWh)</th></tr></thead><tbody class="govuk-table__body"><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">09:00</th><td class="govuk-table__cell">0.00</td></tr><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">10:00</th><td class="govuk-table__cell">No reading</td></tr><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">11:00</th><td class="govuk-table__cell">0.42</td></tr></tbody></table><p class="govuk-body">The 10:00 reading is missing. A total for these rows would be incomplete.</p>
-  wg-accessible-links:
-    title: "Write links that identify their destination"
-    description: "Link text says where each link goes."
-    height: 500
-    html: |
-      <h1 class="govuk-heading-l">Help with accessible content</h1><p class="govuk-body">Read the <a class="govuk-link" href="https://service-manual.nhs.uk/content/formatting">NHS guidance on headings, lists and links</a>.</p><p class="govuk-body">For a household guide, use the same clear link purpose and preserve a visible focus indicator.</p><p class="govuk-body">Avoid “click here”, a bare “more”, or a link that unexpectedly starts a device action.</p>
   wg-accessible-structure:
     title: "Use structure that communicates meaning"
     description: "A help section with headings, a list and a plain text state."
