@@ -134,6 +134,24 @@ helpers do
   end
 end
 
+# The page not found page is served by GitHub Pages at any depth beneath the
+# site, so its relative asset and page links would break. Rewrite them to
+# absolute paths from the site address once the build has finished.
+after_build do
+  path = File.join(config[:build_dir], '404.html')
+  next unless File.exist?(path)
+  base = '/civica/'
+  document = Nokogiri::HTML(File.read(path))
+  relative = ->(value) { value && !value.empty? && !value.match?(%r{\A(?:[a-z][a-z0-9+.-]*:|/|#)}i) }
+  { 'href' => nil, 'src' => nil, 'data-docs-home' => nil }.each_key do |attribute|
+    document.css("[#{attribute}]").each do |node|
+      value = node[attribute]
+      node[attribute] = base + value.sub(%r{\A(?:\./)+}, '') if relative.call(value)
+    end
+  end
+  File.write(path, document.to_html)
+end
+
 # Publish the exact reviewed notices beside the page rendered from LICENSE.md.
 after_build do
   destination = File.join(config[:build_dir], 'reference', 'licences')

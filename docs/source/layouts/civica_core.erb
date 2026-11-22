@@ -31,6 +31,10 @@
 </ul></div></nav>
 <% if home_page? %>
 <main id="main-content" class="c-home-content" tabindex="-1"><%= yield %></main>
+<% elsif current_page.data.not_found %>
+<div class="c-container c-page c-page--plain">
+<main class="technical-documentation c-content" id="main-content" tabindex="-1"><%= yield %></main>
+</div>
 <% else %>
 <div class="c-container c-page<%= ' c-page--illustrated' if illustrated_page %>">
 <%# Section navigation follows the GOV.UK Design System sub-navigation: a labelled nav, plain theme headings and lists, and a marked current item. %>
@@ -59,7 +63,7 @@
 <%= partial 'partials/page_details' %>
 <%= '</div>' if illustrated_page %>
 </main></div><% end %>
-<%= partial 'partials/page_feedback' %>
+<%= partial 'partials/page_feedback' unless current_page.data.not_found %>
 <%= partial 'partials/footer' %>
 <%= javascript_include_tag 'civica-docs', defer: true %>
 </body></html>

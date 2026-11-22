@@ -338,3 +338,6 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 .technical-documentation .share-links__list-item { font-size:14px; line-height:normal; min-height:30px; padding-top:3px; padding-left:32px; padding-right:0; margin-bottom:5px; }
 .technical-documentation .share-links__link { font-size:14px; line-height:20px; margin-right:20px; }
 .technical-documentation .share-links__link-icon { top:3px; width:24px; height:24px; line-height:24px; }
+
+/* Page not found: one column with no section menu. */
+.c-page--plain { display:block; }
