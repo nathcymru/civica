@@ -144,7 +144,7 @@ module DesignSystemHelpers
     {
       published: current_page.data.published_on || stored['published_on'],
       updated: current_page.data.updated_on || stored['updated_on'],
-      changes: changes
+      changes: changes.each_with_index.sort_by { |change, index| [-Date.parse(change['date'].to_s).jd, index] }.map(&:first)
     }
   end
 
