@@ -5,14 +5,21 @@ import AxeBuilder from '@axe-core/playwright';
 import { readFileSync } from 'node:fs';
 
 const data = JSON.parse(readFileSync('docs/data/govuk-brand-colours.json', 'utf8'));
-const page = name => `/docs/build/styles/colour-${name}.html`;
+// Web and app colours share one page; the other palettes keep their own.
+const page = name => `/docs/build/styles/colour-${name === 'web' || name === 'app' ? 'web-app' : name}.html`;
 const ids = name => data.pages[name].palette.flatMap(group => group.colours);
 
 for (const name of ['web', 'app', 'print']) {
-  test(`${name} colours show every GOV.UK colour in order`, async ({ page: browser }) => {
+  test(`${name} colours show every GOV.UK colour`, async ({ page: browser }) => {
     await browser.goto(page(name));
     const names = await browser.locator('.c-swatch-list').first().locator('xpath=ancestor::main').locator('.c-swatch__name').allTextContents();
-    expect(names.slice(0, ids(name).length).map(text => text.trim())).toEqual(ids(name).map(id => data.colours[id].name));
+    const shown = names.map(text => text.trim());
+    if (name === 'web' || name === 'app') {
+      // The shared page lists each colour of both palettes, so check that every colour of this one appears.
+      for (const id of ids(name)) expect(shown, data.colours[id].name).toContain(data.colours[id].name);
+    } else {
+      expect(shown.slice(0, ids(name).length)).toEqual(ids(name).map(id => data.colours[id].name));
+    }
   });
 
   test(`${name} colours pass automated accessibility checks and reflow at 320px`, async ({ page: browser }) => {

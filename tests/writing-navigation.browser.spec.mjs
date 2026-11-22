@@ -13,7 +13,7 @@ const reflow = async page => expect(await page.evaluate(() => document.documentE
 
 test('all existing writing URLs belong to one top-level section', () => {
   const navigation = YAML.parse(readFileSync('docs/data/navigation.yml', 'utf8')).sections;
-  expect(navigation.filter(section => section.id === 'content')).toEqual([{ id: 'content', title: 'Writing guide', path: '/content/index.html' }]);
+  expect(navigation.filter(section => section.id === 'content')).toEqual([{ id: 'content', title: 'Writing guide', path: '/content/index.html', tree: true }]);
   expect(new Set(navigation.map(section => section.path)).size).toBe(navigation.length);
   for (const page of contentPages) expect(page.data.section, page.path).toBe('content');
   const legacy = frontmatter(readFileSync('docs/source/styles/content.html.md.erb', 'utf8'));

@@ -72,7 +72,7 @@ test('project-subpath charts load hashed catalogue scripts and expose identical 
   page.on('pageerror', error => errors.push(error.message));
   for (const [guide, id] of [
     ['components/charts.html', 'local-chart-power'],
-    ['styles/brand-data.html', 'bg-data-operational-power'],
+    ['styles/brand-data-examples.html', 'bg-data-operational-power'],
   ]) {
     await page.goto(`/civica/${guide}`);
     const preview = page.locator(`#example-${id}`);

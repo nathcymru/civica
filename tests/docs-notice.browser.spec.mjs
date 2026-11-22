@@ -235,7 +235,7 @@ test('the public licence block identifies the exact canonical LICENSE.md source'
   await expect(content).toHaveAttribute('data-source-sha256', createHash('sha256').update(source).digest('hex'));
   const parity = await content.evaluate((node, expectedHtml) => {
     const actual = node.cloneNode(true);
-    actual.querySelectorAll('nav.c-on-this-page').forEach(item => item.remove());
+    actual.querySelectorAll('nav.c-on-this-page, .c-caption').forEach(item => item.remove());
     const expected = new DOMParser().parseFromString(expectedHtml, 'text/html').body;
     const text = element => element.textContent.replace(/\s+/g, ' ').trim();
     const structure = element => [...element.querySelectorAll('h1,h2,h3,h4,p,li,pre,th,td')]
