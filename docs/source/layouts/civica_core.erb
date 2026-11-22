@@ -56,8 +56,7 @@
 <% if illustrated_page %><%= yield_content :illustrated_header %><div class="c-reading-content"><% else %><%= partial 'partials/breadcrumbs' %><% end %>
 <%= yield %>
 <%= partial 'partials/component_family' %>
-<%= partial 'partials/history' %>
-<%= partial 'partials/share_links' %>
+<%= partial 'partials/page_details' %>
 <%= '</div>' if illustrated_page %>
 </main></div><% end %>
 <%= partial 'partials/page_feedback' %>
