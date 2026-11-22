@@ -21,7 +21,7 @@ module DesignSystemHelpers
     notice = fragment.at_css('[data-site-notice]')
     notice['data-site-notice'] = 'live'
     notice['data-docs-home'] = docs_path('/index.html')
-    fragment.at_css('[data-site-licence]')['href'] = docs_path('/community/licensing.html')
+    fragment.at_css('[data-site-cookies]')['href'] = docs_path('/community/cookies.html')
     fragment.to_html
   end
 
