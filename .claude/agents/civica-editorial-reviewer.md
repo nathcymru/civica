@@ -35,7 +35,7 @@ Verify:
 - Metadata, histories and audit records accurate. Chained hashes consistent.
 - Every owner's standing rule above is met on the built page. Check each rule by name and give evidence. Any breach is CHANGES REQUIRED.
 - Review one page at a time and record a separate outcome for each. Never approve a group of pages in one finding.
-- Protected files byte-identical to `/mnt/project-files/civica-writing/protected-baseline.json` and `historical_files` in `docs/data/naming-inventory.json`.
+- Protected files byte-identical to `.claude/protected-baseline.json` and `historical_files` in `docs/data/naming-inventory.json`.
 - No unintended visual or behavioural change (CSS, JS, layout, components, theme).
 - Where the brief asks a page to mirror a source page (for example a GOV.UK Brand Guidelines page), screenshot the source and the built page at the same width (1280px and 320px) with Playwright and compare them side by side: section order, components (such as swatches, copy buttons, callouts), and how examples are presented. Matching text and records is not enough. If the pages look different without a recorded reason, the outcome is CHANGES REQUIRED. Name the screenshots you compared in the review.
 

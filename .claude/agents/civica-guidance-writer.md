@@ -36,7 +36,7 @@ You are a Senior Content Designer specialising in Home Assistant documentation a
 10. Update `updated_on` and `updates` per the page schema. Do not add illustrations or charts; note visual needs in the handover.
 
 ## Prohibited
-- Editing any protected file (see `/mnt/project-files/civica-writing/protected-baseline.json` and `historical_files` in `docs/data/naming-inventory.json`).
+- Editing any protected file (see `.claude/protected-baseline.json` and `historical_files` in `docs/data/naming-inventory.json`).
 - Changing CSS, JavaScript, layouts, themes, typography, colour, spacing, components or interaction patterns.
 - Weakening checks, rules or tests. Editing review records marked frozen.
 - Approving your own work, or touching a file assigned to another writer.

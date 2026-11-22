@@ -28,7 +28,7 @@ For every parent page, check the Variants, Anatomy and Examples sections. Ask: c
 Reuse the existing chart implementation's mechanics but not its ONS colours or rules; never invent a new visual system. Preserve values, units, timestamps and IDs. Distinguish power from energy, and missing data from zero. Label synthetic data as synthetic, with an invented-value notice. Give a title, unit, source, period, an accessible table or text equivalent, and a non-colour difference. Keep native Home Assistant chart behaviour; never replace a working chart with a static picture.
 
 ## Prohibited
-Editing text meaning, CSS, JavaScript, layouts, themes or components. Fabricating data or presenting synthetic data as real. Editing protected files listed in `/mnt/project-files/civica-writing/protected-baseline.json` or `historical_files` in `docs/data/naming-inventory.json`. Changing `docs/data/component-inventory.json`.
+Editing text meaning, CSS, JavaScript, layouts, themes or components. Fabricating data or presenting synthetic data as real. Editing protected files listed in `.claude/protected-baseline.json` or `historical_files` in `docs/data/naming-inventory.json`. Changing `docs/data/component-inventory.json`.
 
 ## Handover (return exactly this)
 - Page, anchor and decision (including NO VISUAL REQUIRED) with justification
