@@ -15,8 +15,10 @@ test('all published styles and scripts have resolvable content-hashed URLs while
       const url = new URL(attribute, `https://docs.invalid/${relative(buildRoot, file)}`);
       if (url.origin !== 'https://docs.invalid' || !/\.(?:css|js)$/.test(url.pathname)) continue;
       expect(url.pathname, `${relative(buildRoot, file)}: cache-safe asset URL`).toMatch(fingerprint);
-      expect(existsSync(resolve(buildRoot, '.' + decodeURIComponent(url.pathname))), url.pathname).toBe(true);
-      assets.add(url.pathname);
+      // The page not found page links from the published site address, /civica/.
+      const sitePath = url.pathname.replace(/^\/civica\//, '/');
+      expect(existsSync(resolve(buildRoot, '.' + decodeURIComponent(sitePath))), url.pathname).toBe(true);
+      assets.add(sitePath);
     }
   }
   expect(assets.size).toBeGreaterThanOrEqual(6);
