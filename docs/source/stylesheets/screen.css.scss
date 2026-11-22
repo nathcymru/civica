@@ -258,8 +258,6 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 @import 'roadmap';
 
 /* Essential notice stays in flow and never covers the current task. */
-.c-site-notice { border-bottom:1px solid var(--c-border); }
-.c-site-notice .govuk-cookie-banner__content { max-width:75ch; }
 .c-site-notice-status { padding-top:15px; padding-bottom:15px; }
 @media print { .c-site-notice,.c-site-notice-status { display:none; } }
 

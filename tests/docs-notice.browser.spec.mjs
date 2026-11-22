@@ -48,8 +48,8 @@ for (const deployment of [
     await page.goto(url(deployment.prefix ? '/components/footer.html' : '/index.html'));
     await expect(notice(page)).toBeVisible();
     await expect(notice(page)).toHaveAttribute('role', 'region');
-    await expect(notice(page)).toHaveAccessibleName('About this site and cookies');
-    await expect(page.locator('#site-notice-heading')).toHaveText('About this site and cookies');
+    await expect(notice(page)).toHaveAccessibleName('Cookies on Civica');
+    await expect(page.locator('#site-notice-heading')).toHaveText('Cookies on Civica');
     await expect(notice(page).getByRole('button')).toHaveCount(1);
     await expect(notice(page).getByRole('button', { name: /accept|reject|consent|preferences/i })).toHaveCount(0);
     await expect(notice(page).locator('input, select, [role="switch"]')).toHaveCount(0);
