@@ -1,0 +1,5 @@
+<% details_off = current_page.data.page_details == false %>
+<% unless details_off %>
+<% unless current_page.data.show_history == false %><%= partial 'partials/history' %><% end %>
+<% unless current_page.data.show_share == false %><%= partial 'partials/share_links' %><% end %>
+<% end %>
