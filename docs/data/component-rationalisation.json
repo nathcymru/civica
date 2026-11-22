@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "reviewedOn": "2026-11-12",
   "status": "organisation-implemented",
-  "scope": "The original 147-guide ownership snapshot and all 68 baseline component routes remain recorded. A separately marked slider addition extends current ownership; baseline counts are historical.",
+  "scope": "The original 146-guide ownership snapshot and all 68 baseline component routes remain recorded. A separately marked slider addition extends current ownership; baseline counts are historical.",
   "baseline": {
-    "guides": 147,
+    "guides": 146,
     "examples": 263,
     "coreComponentPages": 57,
     "publishingComponentPages": 11,
@@ -1244,16 +1244,6 @@
       "canonicalOwner": "/styles/index.html",
       "memberPages": [
         "/styles/index.html"
-      ],
-      "componentPages": [],
-      "rule": "One shared behaviour contract; retain distinct variants and source provenance. No page removal is proposed by this family assignment."
-    },
-    {
-      "id": "FAMILY-styles-layout",
-      "title": "Layout and spacing",
-      "canonicalOwner": "/styles/layout.html",
-      "memberPages": [
-        "/styles/layout.html"
       ],
       "componentPages": [],
       "rule": "One shared behaviour contract; retain distinct variants and source provenance. No page removal is proposed by this family assignment."
@@ -4678,38 +4668,6 @@
       }
     },
     {
-      "sourceFile": "docs/source/styles/layout.html.md.erb",
-      "url": "/styles/layout.html",
-      "title": "Layout and spacing",
-      "section": "styles",
-      "group": null,
-      "sha256": "d4709bc4fa5c5b884d910f31a508a2ea8d284875f7e5c812463d8c3b28507bde",
-      "examples": [
-        "local-layout-grid",
-        "local-layout-groups"
-      ],
-      "kind": "foundation-or-governance",
-      "familyId": "FAMILY-styles-layout",
-      "canonicalOwner": "/styles/layout.html",
-      "relationship": "canonical",
-      "decision": "One canonical guide owns this family.",
-      "publishedUrlDisposition": "retain",
-      "proposedRedirect": null,
-      "sourceMappings": [],
-      "runtimeEvidenceFiles": [],
-      "coverageMeaning": "A guide and its local examples do not establish runtime coverage beyond separately listed modules.",
-      "evidence": {
-        "file": "docs/source/styles/layout.html.md.erb",
-        "line": 3,
-        "excerpt": "title: \"Layout and spacing\""
-      },
-      "original_evidence": {
-        "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
-        "file": "docs/source/styles/layout.html.md.erb",
-        "line": 8
-      }
-    },
-    {
       "sourceFile": "docs/source/styles/typography.html.md.erb",
       "url": "/styles/typography.html",
       "title": "Typography",
@@ -7981,12 +7939,9 @@
       "sha256": "ae152052de0a70f19c28773e4f418e1d799b1e54657d2572365397f167e758cf",
       "ownerPage": "/patterns/home.html",
       "referencedBy": [
-        "/patterns/home.html",
-        "/styles/layout.html"
+        "/patterns/home.html"
       ],
-      "additionalFamilyReferences": [
-        "/styles/layout.html"
-      ],
+      "additionalFamilyReferences": [],
       "runtimeClaim": "isolated-documentation-example",
       "disposition": "retain; deduplicate only after behaviour/content equivalence review"
     },
@@ -7997,12 +7952,9 @@
       "sha256": "8e0684bb62c88e9124cbeebcbce19a0839342edb93a5eb2f34eedb9d4d7ca9a9",
       "ownerPage": "/community/visual-audit.html",
       "referencedBy": [
-        "/community/visual-audit.html",
-        "/styles/layout.html"
+        "/community/visual-audit.html"
       ],
-      "additionalFamilyReferences": [
-        "/styles/layout.html"
-      ],
+      "additionalFamilyReferences": [],
       "runtimeClaim": "isolated-documentation-example",
       "disposition": "retain; deduplicate only after behaviour/content equivalence review"
     },
@@ -12840,7 +12792,7 @@
     "reviewedOn": "2026-11-13",
     "brand": {
       "file": "docs/data/brand-guidance-inventory.json",
-      "sha256": "b0824c8a4cb2497a7b5f13e5f8415f89c2a815851c18ed75ffcb4c9dea555615",
+      "sha256": "3956c27189187b8a985f1f01a5bdf3dfd8d213642382e3385cb62163c8a0639b",
       "ruleCount": 33,
       "authorFreezeConfirmed": true
     },
