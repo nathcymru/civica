@@ -38,7 +38,7 @@ module DesignSystemHelpers
   def guide_pages
     sitemap.resources.select do |resource|
       resource.destination_path.end_with?('.html') && resource.data.title && !config[:az_letter_pages].include?(resource.destination_path) &&
-        !resource.destination_path.start_with?('examples/') && !resource.ignored?
+        !resource.destination_path.start_with?('examples/') && !resource.data.not_found && !resource.ignored?
     end
   end
 

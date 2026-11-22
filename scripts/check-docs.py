@@ -25,7 +25,10 @@ for page, data in pages.items():
     for link in data.links:
         url = urlparse(urljoin('https://docs.invalid/' + page.relative_to(root).as_posix(), link))
         if url.netloc != 'docs.invalid' or url.scheme != 'https': continue
-        dest = root / unquote(url.path).lstrip('/')
+        # Published links start at the site address, /civica/, on the page not found page.
+        path = unquote(url.path)
+        if path.startswith('/civica/'): path = path[len('/civica/'):]
+        dest = root / path.lstrip('/')
         if dest.is_dir(): dest /= 'index.html'
         if not dest.exists(): errors.append(f'{page.relative_to(root)}: missing {link}')
         elif url.fragment and dest in pages and unquote(url.fragment) not in pages[dest].ids:

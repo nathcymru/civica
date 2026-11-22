@@ -10,7 +10,7 @@ const hash = path => createHash('sha256').update(readFileSync(path)).digest('hex
 const files = dir => readdirSync(dir, { withFileTypes: true }).flatMap(item => item.isDirectory() ? files(`${dir}/${item.name}`) : [`${dir}/${item.name}`]);
 const unique = (values, label) => assert.equal(new Set(values).size, values.length, `${label}: duplicate identifier`);
 const same = (actual, expected, label) => assert.deepEqual([...actual].sort(), [...expected].sort(), label);
-const guides = files('docs/source').filter(path => /\.html\.(?:md\.)?erb$/.test(path) && /^---\n[\s\S]*?\btitle:/.test(read(path)));
+const guides = files('docs/source').filter(path => /\.html\.(?:md\.)?erb$/.test(path) && /^---\n[\s\S]*?\btitle:/.test(read(path)) && !/^not_found: true$/m.test(read(path)));
 const brand = json('brand-guidance-inventory');
 const writing = json('writing-guide-inventory');
 const audit = json('design-system-audit');
