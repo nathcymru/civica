@@ -27,7 +27,7 @@ const update = process.argv.includes('--update');
 
 // Pages whose purpose is to credit or compare outside sources. They may name
 // them; every other page may not.
-const ATTRIBUTION_PAGES = new Set(['community/licensing', 'community/sources']);
+const ATTRIBUTION_PAGES = new Set(['community/licence', 'community/sources']);
 // Generated pages that repeat other pages' text by design.
 const SKIP = new Set(['search', '404']);
 

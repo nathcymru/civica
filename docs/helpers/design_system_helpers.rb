@@ -21,7 +21,7 @@ module DesignSystemHelpers
     notice = fragment.at_css('[data-site-notice]')
     notice['data-site-notice'] = 'live'
     notice['data-docs-home'] = docs_path('/index.html')
-    fragment.at_css('[data-site-licence]')['href'] = docs_path('/community/licensing.html')
+    fragment.at_css('[data-site-cookies]')['href'] = docs_path('/community/cookies.html')
     fragment.to_html
   end
 
@@ -144,7 +144,7 @@ module DesignSystemHelpers
     {
       published: current_page.data.published_on || stored['published_on'],
       updated: current_page.data.updated_on || stored['updated_on'],
-      changes: changes
+      changes: changes.each_with_index.sort_by { |change, index| [-Date.parse(change['date'].to_s).jd, index] }.map(&:first)
     }
   end
 

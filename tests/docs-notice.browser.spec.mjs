@@ -158,7 +158,7 @@ test('notice and footer remain readable without JavaScript and dismissal does no
     expect((await context.cookies()).filter(cookie => cookie.name === NAME)).toEqual([]);
     await reflow(page);
     await page.locator('.govuk-footer').getByRole('link', { name: /licen[cs]/i }).first().click();
-    await expect(page).toHaveURL(/\/community\/licensing\.html$/);
+    await expect(page).toHaveURL(/\/community\/licence\.html$/);
     await expect(page.locator('[data-license-content]')).toBeVisible();
     await expect(notice(page)).toBeVisible();
     await expect(dismiss(page)).toBeHidden();
@@ -201,7 +201,7 @@ test('the essential-only component example shares the live markup but never pers
     const copy = node.cloneNode(true);
     copy.removeAttribute('data-site-notice');
     copy.removeAttribute('data-docs-home');
-    copy.querySelector('[data-site-licence]').setAttribute('href', '/community/licensing.html');
+    copy.querySelector('[data-site-cookies]').setAttribute('href', '/community/cookies.html');
     return copy.outerHTML.replace(/>\s+</g, '><').trim();
   });
   await page.goto('/docs/build/examples/core-cookie-essential.html');
@@ -228,7 +228,7 @@ test('the public licence block identifies the exact canonical LICENSE.md source'
     print Redcarpet::Markdown.new(LicenceRenderer.new,
       fenced_code_blocks: true, tables: true, no_intra_emphasis: true).render(STDIN.read)
   `], { cwd: 'docs', input: source, encoding: 'utf8', timeout: 20000 });
-  await page.goto('/docs/build/community/licensing.html');
+  await page.goto('/docs/build/community/licence.html');
   await expect(page.locator('main h1')).toHaveCount(1);
   const content = page.locator('[data-license-content]');
   await expect(content).toBeVisible();
@@ -251,7 +251,7 @@ test('the public licence block identifies the exact canonical LICENSE.md source'
   await expect(footer).toContainText('GOV.UK Frontend components');
   for (const label of ['Licence', 'Licence and attribution']) {
     const href = await footer.getByRole('link', { name: label, exact: true }).getAttribute('href');
-    expect(new URL(href, page.url()).pathname).toBe('/docs/build/community/licensing.html');
+    expect(new URL(href, page.url()).pathname).toBe('/docs/build/community/licence.html');
   }
   await expect(footer.getByRole('img', { name: 'GNU General Public Licence version 3 or later' })).toBeVisible();
   await expect(footer.getByRole('img', { name: 'Creative Commons Attribution-ShareAlike 4.0 licence' })).toBeVisible();

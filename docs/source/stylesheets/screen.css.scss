@@ -122,14 +122,18 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 .c-content { max-width:800px; }
 .c-content > p,.c-content > ul,.c-content > ol { max-width:65ch; }
 .c-content > h1 { margin-bottom:30px; }
-.c-history { border-top:1px solid var(--c-border); margin-top:50px; padding:20px 0; font-size:16px; }
-.c-history p { margin:0 0 10px; }
+.c-history { border-top:1px solid var(--c-border); margin-top:30px; padding:15px 0 0; font-size:14px; line-height:20px; display:flex; flex-wrap:wrap; align-items:flex-start; column-gap:30px; row-gap:10px; }
+.c-history p { margin:0; }
 .c-history__edit { display:flex; align-items:center; gap:6px; }
 .c-history__edit-icon { flex:none; }
-.c-history details { margin:0; }
-.c-history summary { color:#1d70b8; text-decoration:underline; cursor:pointer; }
-.c-history ol { margin:20px 0 0 5px; padding:0 0 0 20px; border-left:1px solid var(--c-border); list-style:none; }
+.c-history details { margin:0; flex-basis:100%; }
+.c-history summary { display:flex; align-items:center; gap:6px; color:#1d70b8; text-decoration:underline; cursor:pointer; list-style:none; }
+.c-history summary::-webkit-details-marker { display:none; }
+.c-history summary::before { content:''; flex:none; width:16px; height:16px; background:currentColor; clip-path:polygon(25% 15%,85% 50%,25% 85%); }
+.c-history details[open] > summary::before { transform:rotate(90deg); }
+.c-history ol { margin:15px 0 0 8px; padding:0 0 0 20px; border-left:1px solid var(--c-border); list-style:none; }
 .c-history li { padding:0 0 15px; }
+.c-history li:last-child { padding-bottom:0; }
 .c-history time { font-weight:700; }
 .c-history p time { font-weight:400; }
 .c-history li p { margin-top:5px; }
@@ -322,11 +326,17 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 .c-history__edit-icon { color:#1a65a6; }
 .technical-documentation .c-history p,
 .technical-documentation .c-history li,
-.technical-documentation .c-history summary { font-size:16px; line-height:24px; }
-.technical-documentation .share-links h2 { font-size:19px; line-height:25px; margin:0 0 20px; }
-.technical-documentation .share-links p { font-size:16px; line-height:20px; margin:0 0 20px; }
-@media (max-width:40.0525em) {
-  .technical-documentation .share-links h2 { margin-bottom:15px; }
-  .technical-documentation .share-links p { margin-bottom:15px; }
-}
-.technical-documentation .share-links__list-item { font-size:15px; line-height:normal; }
+.technical-documentation .c-history summary { font-size:14px; line-height:20px; }
+.technical-documentation .c-history > p { margin:0; }
+.technical-documentation .c-history li p { margin:5px 0 0; }
+.technical-documentation .c-history ol,
+.technical-documentation .c-history li { margin-bottom:0; }
+.technical-documentation .c-history ol { margin-top:15px; }
+.technical-documentation .c-history li { padding-bottom:15px; }
+.technical-documentation .c-history li:last-child { padding-bottom:0; }
+.technical-documentation .share-links { margin-top:20px; }
+.technical-documentation .share-links h2 { font-size:16px; line-height:20px; margin:0 0 5px; }
+.technical-documentation .share-links p { font-size:14px; line-height:20px; margin:0 0 10px; }
+.technical-documentation .share-links__list-item { font-size:14px; line-height:normal; min-height:30px; padding-top:3px; padding-left:32px; padding-right:0; margin-bottom:5px; }
+.technical-documentation .share-links__link { font-size:14px; line-height:20px; margin-right:20px; }
+.technical-documentation .share-links__link-icon { top:3px; width:24px; height:24px; line-height:24px; }
