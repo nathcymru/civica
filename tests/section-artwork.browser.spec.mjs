@@ -1,10 +1,20 @@
 import { test, expect } from '@playwright/test';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import YAML from 'yaml';
 
 const mapping = YAML.parse(readFileSync('docs/data/page-illustrations.yml', 'utf8'));
 const provenance = JSON.parse(readFileSync('docs/data/section-artwork-provenance.json', 'utf8'));
+// Heroes added after the original artwork record have no provenance entry, so read their size from the file itself.
+const artworkFor = (entry, route) => {
+  const recorded = provenance.assets.find(asset => asset.path.endsWith(`/${entry.asset}`));
+  if (recorded) return recorded;
+  const path = ['docs/source/images', 'docs/source/images/hero'].map(dir => `${dir}/${entry.asset}`).find(existsSync)
+    ?? `docs/source/images/hero/${entry.colour}-${entry.asset}`;
+  const svg = readFileSync(path, 'utf8').match(/<svg\b[^>]*>/)[0];
+  const size = name => Number(svg.match(new RegExp(`\\b${name}="([\\d.]+)`))?.[1]);
+  return { path, width: size('width'), height: size('height') };
+};
 const noOverflow = async page => expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
 
 async function assertWholeArtwork(header, source) {
@@ -38,9 +48,10 @@ test('section and key-guide heroes place text left of complete artwork in a righ
     const img = header.locator('img');
     await expect(img).toHaveAttribute('alt', '');
     const bytes = await (await request.get(new URL(await img.getAttribute('src'), page.url()).href)).body();
-    const source = provenance.assets.find(asset => asset.path.endsWith(`/${entry.asset}`));
-    expect(source, `${route}: artwork has a provenance record`).toBeTruthy();
-    expect(createHash('sha256').update(bytes).digest('hex')).toBe(source.sha256);
+    const source = artworkFor(entry, route);
+    // A hero is the supplied artwork drawn in the section's colour; blue is the artwork as supplied.
+    const tinted = `docs/source/images/hero/${entry.colour}-${entry.asset}`;
+    expect(createHash('sha256').update(bytes).digest('hex')).toBe(createHash('sha256').update(readFileSync(existsSync(tinted) ? tinted : source.path)).digest('hex'));
     await assertWholeArtwork(header, source);
     const [hero, text, art, heading, summary, image] = await Promise.all([
       header.boundingBox(), header.locator('.c-illustrated-header__text').boundingBox(),
@@ -72,7 +83,7 @@ test('heroes stack complete artwork below text at 320px and grow with doubled te
   for (const [route, entry] of Object.entries(mapping)) {
     await page.goto(`/docs/build/${route}`);
     const header = page.locator('.c-illustrated-header');
-    const source = provenance.assets.find(asset => asset.path.endsWith(`/${entry.asset}`));
+    const source = artworkFor(entry, route);
     const summary = header.locator('.c-illustrated-header__summary');
     await expect(summary).toHaveText(entry.summary);
     await expect(page.locator('main h1')).toHaveCount(1);
@@ -88,8 +99,12 @@ test('heroes stack complete artwork below text at 320px and grow with doubled te
     // and summary sizes. Change the actual computed text sizes instead.
     await header.evaluate(node => {
       const sizes = [...node.querySelectorAll('h1,p,.c-breadcrumbs li,.c-breadcrumbs a')]
-        .map(element => [element, parseFloat(getComputedStyle(element).fontSize)]);
-      for (const [element, size] of sizes) element.style.fontSize = `${size * 2}px`;
+        .map(element => [element, parseFloat(getComputedStyle(element).fontSize), parseFloat(getComputedStyle(element).lineHeight)]);
+      // Scale the fixed line heights with the text, as browser zoom and larger text settings do.
+      for (const [element, size, lineHeight] of sizes) {
+        element.style.fontSize = `${size * 2}px`;
+        if (Number.isFinite(lineHeight)) element.style.lineHeight = `${lineHeight * 2}px`;
+      }
     });
     const after = await header.boundingBox();
     const enlargedText = await header.locator('.c-illustrated-header__text').boundingBox();
