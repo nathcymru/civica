@@ -6,11 +6,13 @@ group: "Writing guidelines"
 nav_order: 7
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-15"
+updated_on: "2026-11-22"
 updates:
+  - date: "2026-11-22"
+    description: "Shortened to one point per heading with realistic examples."
   - date: "2026-11-15"
     description: "Rewritten with plain rules and Before and After examples."
-ai_instructions: "Apply to hints, helper text, previews and short summaries. They must add something the title does not, and must not repeat it. Rules WG-053, WG-055 and WG-056."
+ai_instructions: "Apply to hints, helper text, previews and short summaries. Use common words, keep the main point in the first 160 characters, end with a full stop, leave out content-type labels, start with a verb, and add something the title does not say. Rules WG-053, WG-055 and WG-056."
 ai_related:
   - path: "/content/writing-guidelines/clear-titles.html"
     title: "Write clear titles"
@@ -25,40 +27,75 @@ ai_related:
 
 # Write clear summaries
 
-A summary is the line under a title: helper text on a card, a hint under a field, the preview of a notification. It should tell someone in one line whether this is the right place.
+<h2 id="add-something-the-title-does-not-say">Add something the title does not say</h2>
 
-## Add something the title does not say
-
-Do not repeat the title. Start with a verb or the fact. End with a full stop. Keep the main point in the first 160 characters.
+A summary is the line under a title: helper text on a card, a hint under a field or a notification preview. Do not repeat the title.
 
 | Before | After |
 | --- | --- |
-| Living room lights. This card shows the living room lights. | 2 of 4 lights on. |
-| Schedule. A schedule. | Choose when the heating comes on each day. |
-| Notification. You have a notification. | Front door opened at 22:15. |
+| Living room lights. This card shows the living room lights. | Living room lights. 2 of 4 lights on. |
+| Notification. You have a notification. | Front door. Opened at 22:15. |
 
-Do not say what type of thing it is (“this card shows…”).
+<h2 id="use-common-words">Use clear and common words</h2>
+
+Use the words people use for the thing, not the words on the device box.
+
+| Before | After |
+| --- | --- |
+| Adjust the PIR trigger timeout. | Set how long the hallway light stays on after movement. |
+
+<h2 id="keep-it-short">Keep it short</h2>
+
+Put the main point first and aim for 160 characters or fewer. Cut anything the person does not need to decide.
+
+| Before | After |
+| --- | --- |
+| This schedule lets you decide, for every day of the week, the times at which the heating should switch on and off, and it can also be changed later. | Choose when the heating comes on and goes off each day. |
+
+<h2 id="end-with-a-full-stop">End with a full stop</h2>
+
+A full stop gives screen readers a clear pause.
+
+| Before | After |
+| --- | --- |
+| Front door opened at 22:15 | Front door opened at 22:15. |
+
+<h2 id="leave-out-introductory-words">Leave out introductory words</h2>
+
+Do not say what type of thing it is.
+
+| Before | After |
+| --- | --- |
+| Card: 6.2 kWh used so far today. | 6.2 kWh used so far today. |
+
+<h2 id="start-with-a-verb">Start with a verb</h2>
+
+Tell the person what they can do.
+
+| Before | After |
+| --- | --- |
+| Heating times can be set here. | Set when the heating comes on. |
 
 <h2 id="wg-053">Put help beside the decision</h2>
 
-Place a hint where the person is deciding. Do not send them to another page to understand a field.
+Place a hint where the person decides. Do not send them to another page to understand a field.
 
 | Before | After |
 | --- | --- |
-| Duration (see the help centre for details) | Duration<br>How long the light stays on after movement. For example, 5 minutes. |
+| Duration (see the documentation for details) | Duration. How long the light stays on after movement, for example 5 minutes. |
 
 <h2 id="wg-055">Support learning without overloading the task</h2>
 
-Give the one fact needed now. Offer more as a clearly named option, not as extra text in the way.
+Give the one fact needed now. Leave the detail for the full documentation.
 
 | Before | After |
 | --- | --- |
-| Zigbee is a low-power mesh protocol that uses 2.4GHz, supports up to hundreds of nodes and routes through mains-powered devices to extend range… | Zigbee devices pass messages through each other. Plug in a mains-powered Zigbee device between the hub and the sensor.<br>Then add a details section titled “How Zigbee routing works”. |
+| Zigbee is a low-power mesh protocol that uses 2.4 GHz, supports hundreds of nodes and routes through mains-powered devices to extend range. | Mains-powered Zigbee devices pass messages along. Plug one in between the coordinator and the sensor. |
 
 <h2 id="wg-056">Keep examples honest</h2>
 
-A hint may give an example. Say it is an example and make sure it works in this household.
+Say it is an example and make sure it works in this home.
 
 | Before | After |
 | --- | --- |
-| Example: light.bedroom | For example, `light.reading_lamp`. This is an example only. Use the ID of your own light. |
+| Entity ID: `light.reading_lamp` | Entity ID. For example, `light.reading_lamp`. Use the entity ID of your own light. |
