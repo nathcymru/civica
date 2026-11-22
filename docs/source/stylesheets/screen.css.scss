@@ -311,9 +311,18 @@ a:focus-visible { background:#ffdd00; color:#0b0c0c; text-decoration:none; }
 /* Page footer details. */
 .c-footer__brand { display:block; }
 .c-footer__brand img { display:block; max-width:100%; height:auto; }
-.govuk-footer__licence-logos { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:20px; }
+/* A compact footer: tighter link and heading spacing, a smaller licence statement, and the lock-up as wide as the two licence badges. */
+.gem-c-layout-footer .govuk-footer__heading { margin-bottom:20px; padding-bottom:10px; }
+.gem-c-layout-footer .govuk-footer__list { padding-bottom:20px; }
+.gem-c-layout-footer .govuk-footer__list .govuk-footer__list-item { margin-bottom:10px; }
+.gem-c-layout-footer .govuk-footer__section-break { margin-bottom:30px; }
+@media (min-width:40.0625em) { .gem-c-layout-footer { padding-top:30px; } }
+.govuk-footer__licence-description { display:block; margin-top:10px; font-size:14px; line-height:20px; }
+.c-footer__brand img { width:220px; max-width:100%; }
+.govuk-footer__licence-logos { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:10px; }
 .govuk-footer__meta-item:not(.govuk-footer__meta-item--grow) { display:flex; flex-direction:column; align-items:center; justify-content:center; }
-.govuk-footer__licence-logo { height:40px; width:105px; }
+.govuk-footer__licence-logos a { display:block; flex:none; margin:0; padding:0; }
+.govuk-footer__licence-logo { display:block; margin:0; height:40px; width:105px; }
 .c-history__edit-icon { color:#1a65a6; }
 .technical-documentation .c-history p,
 .technical-documentation .c-history li,
