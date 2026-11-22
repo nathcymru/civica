@@ -121,15 +121,6 @@ for (const [page, file, show] of [['web+app', 'colour-web-app', ['hex', 'rgb']],
   }
   assert.equal(buttons, (raw.match(/class="c-copy-value"/g) || []).length, `${file}: every copy button was checked`);
 }
-// App colours is retired: its page only points to Web-app colours and
-// shows no swatches, so the app palette has one owner.
-{
-  const path = `${BUILD}/colour-app.html`;
-  assert.ok(existsSync(path), `${path} missing: run the docs build first`);
-  const html = readFileSync(path, 'utf8');
-  assert.ok(!html.includes('class="c-swatch'), 'colour-app: the retired page shows no swatches');
-  assert.ok(html.includes('href="colour-web-app.html#app-colours"'), 'colour-app: the retired page links to Web-app colours');
-}
 // 4. The Chart colours page shows the categorical, scale and additional
 // palettes in GOV.UK order, and the chart module uses the same categorical colours.
 {

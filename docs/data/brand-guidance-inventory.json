@@ -354,8 +354,8 @@
       ]
     },
     {
-      "path": "/styles/brand-typography.html",
-      "title": "Typography in context",
+      "path": "/styles/typography.html",
+      "title": "Typography",
       "example_ids": [
         "bg-type-household-hierarchy",
         "bg-type-values",
@@ -474,8 +474,7 @@
         "No global radius reset or border override damages native controls."
       ],
       "implementation_evidence": [
-        "scripts/generate-themes.mjs",
-        "docs/source/styles/layout.html.md.erb"
+        "scripts/generate-themes.mjs"
       ],
       "local_path": "/styles/colour-web-app.html#bg-col-04",
       "example_ids": [
