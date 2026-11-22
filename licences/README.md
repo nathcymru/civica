@@ -2,7 +2,7 @@
 
 The [machine-readable inventory](dependencies.json) records the exact locked Node.js and Ruby dependencies reviewed on 13 November 2026. It distinguishes shipped documentation code from build and test tools. It also records five JavaScript packages included inside the installed GOV.UK Tech Docs gem.
 
-This inventory is evidence about the reviewed files. It does not grant rights to supplied artwork, government marks, external map data or services. Read the project's [licence and attribution page](https://nathcymru.github.io/civica/community/licensing.html) and [artwork record](https://github.com/nathcymru/civica/blob/main/ARTWORK.md) for those boundaries.
+This inventory is evidence about the reviewed files. It does not grant rights to supplied artwork, government marks, external map data or services. Read the project's [licence and attribution page](https://nathcymru.github.io/civica/community/licence.html) and [artwork record](https://github.com/nathcymru/civica/blob/main/ARTWORK.md) for those boundaries.
 
 ## Current project terms and previous permissions
 
