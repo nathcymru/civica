@@ -1,14 +1,16 @@
 # Civica
 
-A consistent Home Assistant theme and component system inspired by the GOV.UK Design System, using the supplied **Civica** identity. Seven theme colours from the GOV.UK colour palette, accessible light and dark modes, and a Theme colour control beside Home Assistant's theme settings.
+A consistent Home Assistant theme and component system, using the supplied **Civica** identity. Seven theme colours, accessible light and dark modes, and a Theme colour control beside Home Assistant's theme settings.
 
 This is an independent project. It is not a government service or an official Home Assistant product. Existing `govuk` entity IDs and the `govuk` theme name remain compatible with older installations. The ten earlier palette themes, such as `civica Civic Cobalt Vivid`, were replaced on 18 November 2026: choose a theme colour again after upgrading.
 
 The repository is now `nathcymru/civica`. GitHub redirects old repository links. The documentation has moved to [nathcymru.github.io/civica](https://nathcymru.github.io/civica/); the former Pages address does not redirect.
 
+Source note: Civica's colours, chart colours and documentation structure draw on the GOV.UK Design System and GOV.UK Brand Guidelines, published under the Open Government Licence v3.0.
+
 ## Start with the design system
 
-The comprehensive [design system in `/docs`](docs/README.md) uses the **GOV.UK Tech Docs Template (`govuk_tech_docs` 6.6.0), powered by Middleman**. Its Get started, Styles, Components, Patterns, Community and Accessibility sections follow the official GOV.UK Design System's information architecture. That upstream website uses Node; this site deliberately implements the same organisation with the requested Middleman template.
+The comprehensive [design system in `/docs`](docs/README.md) is a Middleman site. It has Get started, Styles, Components, Patterns, Community and Accessibility sections.
 
 - [Live design system](https://nathcymru.github.io/civica/)
 - [Download the installation package](https://github.com/nathcymru/civica/releases/latest)
@@ -20,9 +22,9 @@ The comprehensive [design system in `/docs`](docs/README.md) uses the **GOV.UK T
 
 ## Included
 
-- **Civica and 7 theme colours:** Blue, Green, Teal, Purple, Magenta, Red and Black, taken unchanged from the GOV.UK colour palette. Each passes 4.5:1 contrast with white text.
+- **Civica and 7 theme colours:** Blue, Green, Teal, Purple, Magenta, Red and Black. Each passes 4.5:1 contrast with white text.
 - **One shared token system:** native panels, dashboards, tables, forms, buttons, switches, dialogs, the lighting card and examples use consistent colours and surfaces. Error, warning and chart meanings stay independent of the selected theme colour.
-- **ONS-based Energy charts:** the companion applies individual unfilled power lines, opaque consumption columns, consistent 1.5px strokes and matching keys to supported native Energy graphs, with an accessible View data table. Chart colours are the GOV.UK chart palette, unchanged in light and dark mode; each series also gets a stable pattern, line dash and marker, and the theme supplies 24 numbered fallback slots. Native statistics, date controls, comparisons and chart interaction are retained. See the [chart specification](https://nathcymru.github.io/civica/components/charts.html) and [working examples](https://nathcymru.github.io/civica/components/chart-examples.html).
+- **Energy charts:** the companion applies individual unfilled power lines, opaque consumption columns, consistent 1.5px strokes and matching keys to supported native Energy graphs, with an accessible View data table. Chart colours are the six Civica chart colours, the same in light and dark mode; each series also gets a stable pattern, line dash and marker, and the theme supplies 24 numbered fallback slots. Native statistics, date controls, comparisons and chart interaction are retained. See the [chart specification](https://nathcymru.github.io/civica/components/charts.html) and [working examples](https://nathcymru.github.io/civica/components/chart-examples.html).
 - **Colour control:** a Theme colour selector beside Profile theme settings, plus a dashboard card fallback. Home Assistant handles application and preference storage. Light/Dark/Auto is preserved.
 - **Civica assets:** supplied logos and icons, used without redrawing or recolouring. Original files and their checksum manifest are retained.
 - **Lighting card repairs:** visible unavailable states, accessible errors, keyboard focus, touch targets, responsive layout and native dialog scrolling. Existing lighting automation and reserved-device behaviour are retained.
