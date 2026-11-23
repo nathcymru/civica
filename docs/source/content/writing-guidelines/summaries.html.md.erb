@@ -1,18 +1,20 @@
 ---
 title: "Write clear summaries"
-description: "Write short hints, helper text and notification previews that add something the title does not."
+description: "Write a short line under each title that tells people what it covers, in common words, ending with a full stop."
 section: "content"
 group: "Writing guidelines"
 nav_order: 7
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-22"
+updated_on: "2026-11-23"
 updates:
+  - date: "2026-11-23"
+    description: "Reworked so each section keeps its purpose, with Home Assistant and Civica examples."
   - date: "2026-11-22"
     description: "Shortened to one point per heading with realistic examples."
   - date: "2026-11-15"
     description: "Rewritten with plain rules and Before and After examples."
-ai_instructions: "Apply to hints, helper text, previews and short summaries. Use common words, keep the main point in the first 160 characters, end with a full stop, leave out content-type labels, start with a verb, and add something the title does not say. Rules WG-053, WG-055 and WG-056."
+ai_instructions: "Apply to page descriptions, helper text, hints and notification previews. Use common words the title does not already use, keep the main point in the first 160 characters, end with a full stop, leave out content-type words, use active language, and put help where the decision is. Rules WG-053, WG-055 and WG-056."
 ai_related:
   - path: "/content/writing-guidelines/clear-titles.html"
     title: "Write clear titles"
@@ -27,75 +29,50 @@ ai_related:
 
 # Write clear summaries
 
-<h2 id="add-something-the-title-does-not-say">Add something the title does not say</h2>
+A summary is the line under a title: a Civica page description, the helper text on a card, a hint under a field or a notification preview.
 
-A summary is the line under a title: helper text on a card, a hint under a field or a notification preview. Do not repeat the title.
+With the title, it says what the content covers, so people can tell at a glance if it is for them.
 
-| Before | After |
-| --- | --- |
-| Living room lights. This card shows the living room lights. | Living room lights. 2 of 4 lights on. |
-| Notification. You have a notification. | Front door. Opened at 22:15. |
+## Use clear and common language
 
-<h2 id="use-common-words">Use clear and common words</h2>
+Describe the content in plain words, from the reader’s side, so they can judge whether it applies to them.
 
-Use the words people use for the thing, not the words on the device box.
+Choose words [as you would for a title](clear-titles.html#use-clear-and-common-language). Use the summary for familiar words the title had no room for.
 
-| Before | After |
-| --- | --- |
-| Adjust the PIR trigger timeout. | Set how long the hallway light stays on after movement. |
+Those extra words also help people find the page when they search.
 
-<h2 id="keep-it-short">Keep it short</h2>
+## Keep your summary short
 
-Put the main point first and aim for 160 characters or fewer. Cut anything the person does not need to decide.
+Keep every summary to 160 characters or fewer, spaces included. That is roughly what a search result shows.
 
-| Before | After |
-| --- | --- |
-| This schedule lets you decide, for every day of the week, the times at which the heating should switch on and off, and it can also be changed later. | Choose when the heating comes on and goes off each day. |
+When a summary runs longer, someone who reads only the first 160 characters must still get the main point.
 
-<h2 id="end-with-a-full-stop">End with a full stop</h2>
+## Include punctuation
 
-A full stop gives screen readers a clear pause.
+End with a full stop, so that a screen reader pauses before whatever comes next.
 
-| Before | After |
-| --- | --- |
-| Front door opened at 22:15 | Front door opened at 22:15. |
+## Avoid redundant introductory words
 
-<h2 id="leave-out-introductory-words">Leave out introductory words</h2>
+Do not open by naming the kind of thing it is, such as “This card shows…” or “An automation that…”.
 
-Do not say what type of thing it is.
+Spend the space on new words, not on words the title already has.
 
-| Before | After |
-| --- | --- |
-| Card: 6.2 kWh used so far today. | 6.2 kWh used so far today. |
+## Use active language
 
-<h2 id="start-with-a-verb">Start with a verb</h2>
+Every summary needs a verb, in the active voice.
 
-Tell the person what they can do.
+Starting with “How…”, “What…” or “When…” is an easy way in, for example “What to check before you restore a backup.”
 
-| Before | After |
-| --- | --- |
-| Heating times can be set here. | Set when the heating comes on. |
+## Give help in the right place
 
-<h2 id="wg-053">Put help beside the decision</h2>
+<h3 id="wg-053">Put help beside the decision</h3>
 
-Place a hint where the person decides. Do not send them to another page to understand a field.
+Write the hint next to the field it explains, for example “How long the light stays on after the last movement.” Do not send people to another page to understand a field.
 
-| Before | After |
-| --- | --- |
-| Duration (see the documentation for details) | Duration. How long the light stays on after movement, for example 5 minutes. |
+<h3 id="wg-055">Support learning without overloading the task</h3>
 
-<h2 id="wg-055">Support learning without overloading the task</h2>
+Give the one fact people need now, such as “A mains-powered Zigbee device usually passes messages on, so a Zigbee smart plug can help a distant sensor connect.” Offer more as a named link.
 
-Give the one fact needed now. Leave the detail for the full documentation.
+<h3 id="wg-056">Keep examples honest</h3>
 
-| Before | After |
-| --- | --- |
-| Zigbee is a low-power mesh protocol that uses 2.4 GHz, supports hundreds of nodes and routes through mains-powered devices to extend range. | Mains-powered Zigbee devices pass messages along. Plug one in between the coordinator and the sensor. |
-
-<h2 id="wg-056">Keep examples honest</h2>
-
-Say it is an example and make sure it works in this home.
-
-| Before | After |
-| --- | --- |
-| Entity ID: `light.reading_lamp` | Entity ID. For example, `light.reading_lamp`. Use the entity ID of your own light. |
+Say when something is an example, and tell people what to use instead: “For example, `light.reading_lamp`. Use the entity ID of your own light.”

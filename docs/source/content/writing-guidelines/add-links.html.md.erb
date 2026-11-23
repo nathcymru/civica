@@ -1,18 +1,20 @@
 ---
 title: "Write effective links"
-description: "Make link text say where the link goes, and say when a link leaves Home Assistant."
+description: "Choose links with care, put them where they help, and write link text that says where each one goes."
 section: "content"
 group: "Writing guidelines"
 nav_order: 5
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-22"
+updated_on: "2026-11-23"
 updates:
+  - date: "2026-11-23"
+    description: "Reworked so each section keeps its purpose, with Home Assistant and Civica examples."
   - date: "2026-11-22"
     description: "Shortened to clear points with realistic examples. Removed an example that named an outside source."
   - date: "2026-11-15"
     description: "Rewritten with plain rules and Before and After examples."
-ai_instructions: "Apply to every link. Link text must describe the destination, and say when a link leaves Home Assistant. Rules WG-083 and WG-037."
+ai_instructions: "Apply to every link. Choose links only when they are needed, place them where they help, make the link text describe the destination, and say when a link leaves Home Assistant. Rules WG-083 and WG-037."
 ai_related:
   - path: "/content/formatting-content/attachments.html"
     title: "Attachments"
@@ -27,28 +29,92 @@ ai_related:
 
 # Write effective links
 
-<h2 id="wg-083">Describe the destination in the link text</h2>
+Put links in body text only. Keep them out of titles, card titles, summaries and headings.
 
-Link text must make sense on its own. Do not use “click here” or “more”. A link goes somewhere. It does not run a device action.
+## Choose which links to use
 
-| Before | After |
-| --- | --- |
-| For file links, [click here](../formatting-content/attachments.html). | See [Attachments](../formatting-content/attachments.html) for file links. |
-| [Turn off heating](../formatting-content/attachments.html) (a link that switches it off) | Select the **Turn off heating** button. |
+Do not write something twice. If a Civica page or the Home Assistant documentation already explains it, link there.
 
-<h2 id="link-to-a-specific-page">Link to a specific page</h2>
+Link to a site outside Civica only when:
 
-Link to the page that answers the question, not a section home.
+- it is the Home Assistant documentation
+- the task can only be done on an integration’s or a manufacturer’s site, for example creating the account a cloud integration needs before it can connect
+- people need information Civica does not hold, for example the safety instructions for a device
+- a reliable site does the job better, for example with a device compatibility checker
 
-| Before | After |
-| --- | --- |
-| Look up terms in the [style guides](../style-guides/index.html). | Look up Home Assistant words in [A to Z Technical](../style-guides/technical-a-to-z.html). |
+Before you add an outside link, check that:
 
-<h2 id="wg-037">Say when a link leaves Home Assistant</h2>
+- it goes straight to the page people need, not the front page of the site
+- people can read it for free, without signing up
+- you can explain why you chose one shop or manufacturer over another that offers the same thing
+- people can use it with a screen reader, a keyboard or a small phone screen
+- you have read its privacy and cookie policies and found nothing that puts people at risk
+- someone will check the link from time to time, because outside pages move, go stale or start redirecting somewhere unsuitable
 
-Name external sites and downloads before the person selects. Never put a password or token in a link.
+When you add a link:
 
-| Before | After |
-| --- | --- |
-| More | Manufacturer support page (opens another website) |
-| Download | Download diagnostics (.json, 140KB) |
+- offer the online route before a phone number or postal address, unless one of those works better for the people reading
+- remove tracking and redirect parts from any address you paste in, for example from an email or a forum post
+- for a Civica download, link to the page that offers it, not to the file
+- for a document on another site, link to the page it sits on and name the document people need there
+
+## Add links in appropriate places
+
+Put each link inside the sentence where the reader needs it.
+
+Do not:
+
+- gather the links at the foot of the page
+- add a loose list such as “Useful links” or “See also”
+- use so many links that people cannot tell which one matters
+- link to the same page again and again
+
+## Write clear link text
+
+Good link text:
+
+- says what is at the other end, never “click here” or “more”
+- starts with the words that matter
+- is long enough to select easily: if it is one word, choose one of 3 syllables or more
+- is different for each different page
+- is the same, or means the same, each time it points to the same page
+- says when the link leaves Civica or Home Assistant, for example “the [Zigbee Home Automation documentation](https://www.home-assistant.io/integrations/zha/) (opens Home Assistant website)”
+- names the language if the page is not in English, for example “Zigbee adapter set-up guide (in German)”
+- gives the format and size when you have to link to a file, for example “diagnostics file (JSON, 140KB)”
+
+For a link to information, make the topic the link text, such as “Zigbee coordinators”. The destination page’s title is often the best choice.
+
+For a link to a page where people carry out a task, open with the action, such as “Add a Zigbee device”.
+
+<h3 id="wg-083">Describe the destination in the link text</h3>
+
+A link takes people to a page. It never changes a device. On a dashboard, “Turn off heating” is a button, not a link.
+
+<h3 id="wg-037">Say when a link leaves Home Assistant</h3>
+
+Also say when a link starts a download or opens a new tab. Never put a password, a token or personal details in a link address.
+
+## Be careful with anchor links
+
+An anchor link takes people to one section of a page. That section can be:
+
+- further up or down the same page
+- on another page
+
+Use them as little as you can. Landing part-way down a page can confuse people, especially some people with access needs.
+
+Needing to jump within a page is a sign that the page is in the wrong order. Reorder it instead.
+
+Linking to a section of another page is sometimes worth it, for example when people need only one section of a long integration page.
+
+When you do this, make the link text say exactly what people will find, for example “read the interference section of the Zigbee Home Automation documentation to find out where to put your Zigbee adapter”. The link text tells people:
+
+- where they are going: “the Zigbee Home Automation documentation”
+- what to do there: “read the interference section”
+- why: “to find out where to put your Zigbee adapter”
+
+## Check services that collect personal data
+
+Link only to forms and survey services that the Civica maintainers have approved.
+
+If you are not sure, ask the maintainers before you publish, using the contact details in the [Civica privacy notice](../../community/privacy.html#how-to-contact-us).

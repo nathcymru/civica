@@ -1,18 +1,20 @@
 ---
 title: "Write clear titles"
-description: "Name controls, cards, dashboards and help pages with the words people use."
+description: "Give pages, dashboards, views, cards and headings short, unique titles in the words people use."
 section: "content"
 group: "Writing guidelines"
 nav_order: 6
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-22"
+updated_on: "2026-11-23"
 updates:
+  - date: "2026-11-23"
+    description: "Reworked so each section keeps its purpose, with Home Assistant and Civica examples."
   - date: "2026-11-22"
     description: "Shortened to one point per heading with realistic examples."
   - date: "2026-11-15"
     description: "Rewritten with plain rules and Before and After examples."
-ai_instructions: "Apply to every label, button, card title, dashboard name and page title. Name the action and its object. Rule WG-030."
+ai_instructions: "Apply to every page title, dashboard and view name, card title and heading, and to every button or control label. Keep titles unique, short and in the words people use. Name the action and its object. Rule WG-030."
 ai_related:
   - path: "/content/writing-guidelines/summaries.html"
     title: "Write clear summaries"
@@ -27,45 +29,99 @@ ai_related:
 
 # Write clear titles
 
-<h2 id="wg-030">Name the action and its object</h2>
+Here, a title means a page title, a dashboard or view name, a card title or a heading. People find things by scanning a dashboard, the sidebar or search results, so use the household’s own words.
 
-Start a control label with a verb and say what it affects. Use sentence case.
+Anything people cannot find goes unused, and they never learn it was there for them.
 
-| Before | After |
-| --- | --- |
-| Submit | Save schedule |
-| On | Turn on reading lamp |
+## Make your title unique
 
-<h2 id="keep-titles-short">Keep titles short</h2>
+A title that no other page, view or card shares tells people where they are.
 
-Aim for 65 characters or fewer, without dropping the room name.
+Two titles that are the same cause mistakes, for example two cards both called “Lights” on one dashboard. People with visual, cognitive or motor impairments find this hardest, because they may jump between titles, or say one aloud to select it, without seeing the rest of the screen.
 
-| Before | After |
-| --- | --- |
-| Hallway motion sensor battery level and connection status for the ground floor | Hallway motion sensor status |
+Before you choose a title, look at the names already in use on the dashboard, in the sidebar and on this site.
 
-<h2 id="make-titles-unique">Make titles unique</h2>
+## Keep your title short, where possible
 
-Give repeated titles different names.
+Keep a Civica page title to 65 characters or fewer, counting spaces.
 
-| Before | After |
-| --- | --- |
-| Settings, Settings | Lounge lamp settings, Hallway lamp settings |
+Go past 65 only when the title cannot be clear or unique any other way. Keep that rare, because:
 
-<h2 id="describe-the-content">Describe the content</h2>
+- search engines show only about the first 65 characters
+- a long title takes longer to understand
 
-| Before | After |
-| --- | --- |
-| Information | Hallway motion sensor battery |
+Keep card and view titles much shorter, because they have far less room, especially on a phone.
 
-<h2 id="avoid-repeating-yourself">Avoid saying the same thing twice</h2>
+## Check your title makes sense
 
-| Before | After |
-| --- | --- |
-| Heating: heating schedule | Heating schedule |
+Make sure the title is clear:
 
-<h2 id="leave-out-the-content-type">Leave out the content type</h2>
+- on its own: “Status” says little, but “Hallway motion sensor status” says what it shows
+- in search results
+- in the sidebar or a list of views
 
-| Before | After |
-| --- | --- |
-| Card: Energy usage | Energy usage |
+## Use clear and common language
+
+A title does not need to use the device’s model name or the name on the box. Write it for the person reading, so they can tell straight away whether it is what they want.
+
+Use the words the household says, and the names Home Assistant shows. People say “motion”, whatever the box calls it, so write “Motion sensors”, not “PIR sensors”.
+
+Lead the title with the words people use most. Search then finds it more easily too.
+
+Abbreviations that everyone knows, such as USB, need no explanation. Read the [A to Z entry on abbreviations](../style-guides/a-to-z.html#abbreviations-acronyms-and-initialisms).
+
+For a less familiar one, give the full term with the abbreviation in brackets, for example “Residual current device (RCD)”.
+
+## Make your titles descriptive
+
+Give enough context for people to see at once whether this is the right place. A vague title leaves them wondering what it covers.
+
+Not: Backups update
+
+Instead: How to restore Home Assistant from a backup
+
+## Avoid saying the same thing twice
+
+Words that repeat a point take up space you could use to say something new.
+
+Not: Adding and pairing a Zigbee device
+
+Instead: Adding a Zigbee device
+
+## Use the right verb in your title
+
+If people do the task right there, start with the verb, for example a dashboard view called “Set heating times” where the household changes the schedule.
+
+If the page explains a task that people carry out somewhere else in Home Assistant, use the “-ing” form of the verb, for example “Adding Zigbee devices”.
+
+<h3 id="wg-030">Name the action and its object</h3>
+
+Start a button or control label with a verb and say what it acts on. Write “Save schedule”, not “Submit”.
+
+## Do not include the content type in the title
+
+Leave out words that only say what kind of thing it is, such as “card”, “view” or “guide”. People can already see that.
+
+Not: Thermostat card
+
+Instead: Living room heating
+
+## Remove the date unless it makes the title unique
+
+A date earns its place only in a series where every item has the same name.
+
+For example, yearly energy views on a dashboard:
+
+- Energy use 2026
+- Energy use 2025
+- Energy use 2024
+
+When a series has several items a year, name the months each one covers, for example “January to June 2026” and “July to December 2026”.
+
+## Do not include Civica or a brand unless it makes the title unique
+
+Leave “Civica”, or the brand of a device, out of a title unless the page is about it.
+
+Title example: Install Civica
+
+“Install the theme” could mean any Home Assistant theme, so here the name helps.
