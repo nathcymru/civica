@@ -1,11 +1,5 @@
 # Original Civica writing examples. All household data is synthetic.
 examples:
-  wg-scope:
-    title: "Keep names and native labels intact"
-    description: "Help text can change. A name someone chose and a native label stay as they are."
-    height: 500
-    html: |
-      <h1 class="govuk-heading-l">Choose the right words to change</h1><dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Authored help</dt><dd class="govuk-summary-list__value">Choose a light to add to this room.</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">User-chosen name</dt><dd class="govuk-summary-list__value">Nain’s lamp</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Native feature</dt><dd class="govuk-summary-list__value">Notifications</dd></div></dl><p class="govuk-body">Improve the help. Preserve the lamp name and the translated native feature label. Do not silently rename either.</p>
   wg-household-terms:
     title: "Use the same word for the same action"
     description: "The card button, the automation action and the notification button all call the action “Turn off”."
