@@ -1,18 +1,20 @@
 ---
 title: "Use the right tone"
-description: "Sound calm and specific. Say what you know, what you do not, and do not blame or panic."
+description: "Write calmly and directly to one person in the home, and say only what Home Assistant knows."
 section: "content"
 group: "Writing guidelines"
 nav_order: 4
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-22"
+updated_on: "2026-11-23"
 updates:
+  - date: "2026-11-23"
+    description: "Reworked so each section keeps its original purpose, with Home Assistant examples."
   - date: "2026-11-22"
     description: "Shortened to clear points with realistic examples."
   - date: "2026-11-15"
     description: "Rewritten with plain rules and Before and After examples."
-ai_instructions: "Apply to set how sure and how calm the copy sounds. Match certainty to the evidence the system has, never blame the person and never raise a false alarm. Rules WG-011, WG-012, WG-046 and WG-066 (presence)."
+ai_instructions: "Apply to set how the copy sounds. Speak to the reader as “you”, say who acted, match certainty to the evidence the system has, never blame the person, never raise a false alarm and never use offensive language. Rules WG-011, WG-012, WG-046 and WG-066 (presence)."
 ai_related:
   - path: "/content/writing-guidelines/states-and-errors.html"
     title: "States, requests and errors"
@@ -27,45 +29,73 @@ ai_related:
 
 # Use the right tone
 
-<h2 id="speak-to-the-household-directly">Speak to the household directly</h2>
+Write Civica text so it is:
 
-Say “you” and say who the message is from.
+- specific
+- informative
+- clear and concise
+- brisk, but not curt
+- precise, but human: friendliness can add vague, extra words, but the text should never sound like a machine
+- serious, but not self-important
+- free of emotion: adjectives are a matter of opinion and can sound like a sales pitch
 
-| Before | After |
-| --- | --- |
-| The user’s heating has been turned off. | Your heating is off. Home Assistant turned it off at 22:00. |
+Write conversationally, as you would speak to one person in the home, and sound like someone who can help them. Use the [active voice](clear-language.html#use-the-active-voice).
 
-<h2 id="wg-011">Match certainty to evidence</h2>
+You rarely need “please” or “please note”, even in an instruction. Write “Restart Home Assistant”, not “Please restart Home Assistant”.
 
-Say what was observed. Do not turn an old reading or a request into a fact.
+Do not write long text in capital letters. Capitals slow reading down and come across as shouting.
 
-| Before | After |
-| --- | --- |
-| The front door is locked. | The front door lock reports Locked. |
+<h2 id="match-the-words-to-what-is-known">Match the words to what is known</h2>
 
-<h2 id="wg-012">Be calm without false reassurance</h2>
+<h3 id="wg-011">Say only what Home Assistant knows</h3>
 
-Give the fact and a next step. Do not joke, blame the device or say “do not worry”.
+A reading or a request is not a fact. Say what the device reported: “The front door lock reports Locked”, not “The front door is locked”.
 
-| Before | After |
-| --- | --- |
-| Oops! Your pesky lamp is being stubborn. Just try again! | The lamp has not reported its new state. Check the lamp, then try again. |
+<h3 id="wg-012">Be calm without false reassurance</h3>
 
-<h2 id="wg-046">Do not blame or raise false alarms</h2>
+Give the fact and the next step. Do not joke or say “do not worry”: “The lamp has not reported its new state. Check the lamp is plugged in, then try again.”
 
-Do not blame the person. Keep alarm wording for real alarms, because too many urgent messages teach people to ignore them.
+<h3 id="wg-046">Do not blame or raise false alarms</h3>
 
-| Before | After |
-| --- | --- |
-| You left the window open again. | The bedroom window sensor reports Open. It has been open for 40 minutes. |
-| URGENT: Front door lock battery critical!!! | Front door lock battery at 20%. Replace it soon. |
+Say what the sensor reports, not what someone did wrong: “The bedroom window sensor has reported Open for 40 minutes”, not “You left the window open again”. Keep urgent wording for real alarms, such as smoke or a water leak. If every message is urgent, people stop reading them.
 
-<h2 id="wg-066">Treat presence as sensitive and uncertain</h2>
+## Do not use offensive language
 
-A tracker reports a device, not a person. Hide presence on shared screens unless the household chose to show it.
+Civica text must never contain offensive language. Do not swear, and do not use words in an offensive way about:
 
-<%= example('wg-presence') %>
+- race
+- ethnicity
+- nationality
+- religion
+- disability
+- mental health
+- gender identity
+- sexual orientation
+- body parts
+- sexual references
 
-| Before | After |
-| --- | --- |
-| Alex is out. House empty. | Alex’s phone last reported Away at 17:40. |
+The one exception is a name that someone in the home typed. Show it exactly as they typed it.
+
+For help choosing words, read [Use respectful, specific language](clear-language.html#wg-062).
+
+## Address the user directly
+
+Speak to the reader as “you” wherever you can.
+
+Civica text often asks someone to do something. Ask them directly: “Turn off the heating” or “You can change this in **Settings**”.
+
+When you write about someone else, use “they”: “They can turn on the porch light”, not “He or she can turn on the porch light”.
+
+<h3 id="wg-066">Treat presence as sensitive and uncertain</h3>
+
+When you write about someone in the home, say what their device reported, not where they are: “Alex’s phone last reported Away at 17:40.” Do not show presence on a shared screen unless the household chose to show it.
+
+## Make it clear who did it
+
+Before you write “it” or “we”, name who acted:
+
+- Home Assistant, for something it did by itself
+- the automation, by its name
+- the person, for something someone in the home did
+
+Write “Home Assistant turned off the heating at 22:00”, not “We turned off the heating”.

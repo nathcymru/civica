@@ -1,18 +1,20 @@
 ---
 title: "Create a clear structure"
-description: "Order instructions around the task, state what is needed first and ask only for what you need."
+description: "Put the most important thing first, break up text with clear headings and steps, and ask only what you need."
 section: "content"
 group: "Writing guidelines"
 nav_order: 2
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-22"
+updated_on: "2026-11-23"
 updates:
+  - date: "2026-11-23"
+    description: "Reworked so each section keeps its original purpose, with Home Assistant examples."
   - date: "2026-11-22"
     description: "Shortened to one point per heading with realistic examples."
   - date: "2026-11-15"
     description: "Rewritten with plain rules and Before and After examples."
-ai_instructions: "Apply to instructions, forms and help with steps. Put the most important thing first, use numbered lists for steps, state real prerequisites, name the interface as it appears, ask only for what is needed, and show the result after each step. Rules WG-050, WG-051, WG-052, WG-054 and WG-061."
+ai_instructions: "Apply to instructions, forms and help with steps. Put the most important thing first, use descriptive headings and numbered lists for steps, state real prerequisites, name the interface as it appears, ask only for what is needed, and show the result after each step. Rules WG-050, WG-051, WG-052, WG-054 and WG-061."
 ai_related:
   - path: "/content/publish-update-retire/choose-content-type.html"
     title: "Choose a content type"
@@ -27,62 +29,77 @@ ai_related:
 
 # Create a clear structure
 
-<h2 id="put-the-most-important-thing-first">Put the most important thing first</h2>
+People rarely read every word on a screen. They skim. Most people:
 
-Start with what the person needs most. Use headings that say what the section is for.
+- [read only 20 to 28% of the words on a web page](https://www.nngroup.com/articles/how-little-do-users-read/), and skim even more when they are impatient
+- [read in an F-shaped pattern](https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/): across the top, down the left side, then across again until they find what they need
 
-| Before | After |
-| --- | --- |
-| Introduction | Check the hallway motion sensor |
+People in the home may also be tired, half-asleep or holding the shopping. They may be glancing at a wall tablet while an alarm sounds. A clear structure helps them finish the task quickly and get back to what they were doing.
 
-<h2 id="use-lists-for-steps">Use numbered lists for steps</h2>
+## Frontload your content
 
-Use a numbered list when the order matters.
+Lead with what matters most. The sooner you make your point, the more likely people are to see it.
 
-| Before | After |
-| --- | --- |
-| Check the battery, then move the sensor closer, then restart it. | 1. Check the battery.<br>2. Move the sensor closer.<br>3. Restart the sensor. |
+Then move to the details. This shape is known as an “inverted pyramid”. A notification, for example, starts with what happened, “The back door has been open for 15 minutes”, then gives the detail.
 
-<h2 id="wg-050">Order instructions around the task</h2>
+<h3 id="wg-051">Say what must be true and what will change</h3>
 
-Put the step first, then the reason. Give one action per step and say what the person should see.
+Before a step, say what the person needs already: “You need the Home Assistant Companion app on your phone.” Before a risky step, say what it will change: “Restoring a backup replaces your current settings. Changes made since the backup are lost.” For warnings about risks to people, see [Choose urgency from evidence](states-and-errors.html#wg-042).
 
-<%= example('wg-instructions') %>
+## Break up the text with headings
 
-| Before | After |
-| --- | --- |
-| You may want to consider opening the lamp’s settings to rename it. | 1. Open the lamp’s settings. The name field appears.<br>2. Enter the new name.<br>3. Save it. The lamp shows the new name. |
+The title already uses H1, so start your headings at H2 and go no deeper than H4. Read how to [format headings](../formatting-content/text-formatting.html#wg-080).
 
-<h2 id="wg-051">State real prerequisites and consequences</h2>
+Make headings:
 
-Before a step, say what must be true. Before a risky step, say what will happen. For risks to people, see [Write a warning](states-and-errors.html#wg-042).
+- descriptive: avoid general headings such as “Introduction”
+- frontloaded: put the most important words first
+- active: start with a verb where you can, such as “Add a Zigbee device” rather than “You can add a Zigbee device”
+- removable: the text still makes sense without them
 
-| Before | After |
-| --- | --- |
-| Restore the backup. | Restoring a backup replaces your current settings. Changes made since the backup was taken are lost. |
+Do not write headings that:
 
-<h2 id="wg-052">Refer to the actual interface</h2>
+- are questions: a question is hard to frontload, and people came for an answer
+- use technical terms you have not explained yet
 
-Use the label shown on screen. Write “select”, not “click”.
+A heading can sit straight under another, though a line of context often helps.
 
-| Before | After |
-| --- | --- |
-| Click the cog, then disable the automation. | Select **Settings**, then **Automations & scenes**. Turn off **Porch light at sunset**. |
+Put a main button under a heading that names its task. For example, on a dashboard, put the robot vacuum’s **Start** button under a heading such as “Clean downstairs”.
+
+## Use bullet point lists and steps
+
+Bulleted lists and numbered steps:
+
+- cut repetition
+- make a list quicker to scan
+
+[Text formatting](../formatting-content/text-formatting.html#lists) explains how to format them.
+
+<h3 id="wg-050">Order instructions around the task</h3>
+
+Give one action per step, in the order the person does them. Put the step before the reason, and say what the person will see.
+
+<h3 id="wg-052">Refer to the actual interface</h3>
+
+Use the label shown on screen, in bold. Write “select”, not “click”. To add a utility room:
+
+1. Select **Settings**, then **Areas, labels & zones**. Your areas appear.
+2. Select **Create area**. A dialog opens.
+3. In **Name**, enter “Utility room”.
+4. Select **Create**. Utility room appears in your areas.
+
+## Avoid footnotes
+
+Leave out footnotes. They were made for print, not screens. Put anything important in the main text, and drop the rest.
+
+## Do not repeat yourself
+
+If there is a [summary](summaries.html) under the title, do not say it again in the first paragraph.
 
 <h2 id="wg-054">Ask only what you need</h2>
 
-Every question must change what happens next. Mark optional questions.
+Ask a question only if the answer changes what happens next. Mark optional questions with “(optional)”.
 
-<%= example('wg-form-purpose') %>
+<h3 id="wg-061">Ask for personal information only when needed</h3>
 
-| Before | After |
-| --- | --- |
-| Alert settings | Alert when the front door opens after 10pm? (optional) Leave blank for no door alerts. |
-
-<h2 id="wg-061">Ask for personal information only when needed</h2>
-
-Say why you need it and what happens if it is left blank.
-
-| Before | After |
-| --- | --- |
-| Enter your phone number. | Phone number (optional). Used only to text you when the alarm sounds. |
+Say why you need it and what happens if it is left blank: “Phone number (optional). Used only to text you when the alarm sounds. Leave it blank to get alarms in the app only.”
