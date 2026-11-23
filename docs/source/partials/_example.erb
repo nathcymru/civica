@@ -1,7 +1,11 @@
 <section class="c-example" aria-label="<%= escape(spec['title']) %> example" id="example-<%= id %>">
   <div class="c-example__top"><span>Example: <%= escape(spec['title']) %></span><a href="<%= docs_path("/examples/#{id}.html") %>" target="_blank" rel="noopener">Open this example in a new tab<span class="govuk-visually-hidden">: <%= escape(spec['title']) %></span></a></div>
   <% if spec['description'] %><p class="c-example__description"><%= escape(spec['description']) %></p><% end %>
+  <%# The device frame keeps the preview visibly separate from the page text. spec['device'] may be ipad-landscape, ipad-portrait, iphone-landscape or iphone-portrait. %>
+  <% device = spec['device'] || ((spec['height'] || 300) > 700 ? 'ipad-portrait' : 'ipad-landscape') %>
+  <div class="c-device c-device--<%= device %>"><div class="c-device__body"><div class="c-device__screen">
   <iframe class="c-example__frame" src="<%= docs_path("/examples/#{id}.html") %>?embed=1" title="<%= escape(spec['title']) %> example" loading="lazy" height="<%= spec['height'] || 300 %>"></iframe>
+  </div></div></div>
   <details class="c-example__code"><summary>View example code</summary>
     <div class="c-code-tabs" data-code-tabs>
       <div class="c-code-tabs__list"><a href="#html-<%= id %>">HTML</a><a href="#usage-<%= id %>">Use this example</a></div>
