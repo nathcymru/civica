@@ -1,18 +1,20 @@
 ---
 title: "Write change notes"
-description: "Say what changed in a dashboard, automation or help page, and what it means for the household."
+description: "When to add a change note to a Civica page, a dashboard or an automation, who reads it and how to say what changed."
 section: "content"
 group: "Writing guidelines"
 nav_order: 8
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-22"
+updated_on: "2026-11-23"
 updates:
+  - date: "2026-11-23"
+    description: "Reworked with Home Assistant and Civica examples. Added when a note is not needed, who reads notes and how to write one."
   - date: "2026-11-22"
     description: "Shortened to two points with realistic examples."
   - date: "2026-11-15"
     description: "Rewritten with plain rules and Before and After examples."
-ai_instructions: "Apply when recording what changed in a dashboard, automation or help page. Assume the note is public and may be emailed. Say what changed and where, in full sentences, with the key point first. Rule WG-091."
+ai_instructions: "Apply when recording what changed in a dashboard, automation or help page. Assume the note is public. Say what changed and where, in full sentences, with the key point first. Rule WG-091."
 ai_related:
   - path: "/content/publish-update-retire/update.html"
     title: "Update"
@@ -27,25 +29,66 @@ ai_related:
 
 # Write change notes
 
+Once people rely on a Civica page, a dashboard’s help text or an automation’s description, some changes to it need a change note.
+
+Skip the note if you only:
+
+- corrected a typing mistake
+- changed the style, such as a heading’s wording or a view’s layout
+- fixed or removed a broken link, unless people need what it leads to
+
+Add a note if you have:
+
+- added information that means people must act differently or now know something new
+- taken out guidance that was out of date or could mislead
+- changed a requirement, such as the lowest Home Assistant version Civica supports
+- changed the Civica licence or privacy notice
+
 <h2 id="know-who-can-see-change-notes">Know who can see change notes</h2>
 
-Anyone can read a change note, and it may be emailed to people who follow the page. Leave out names, addresses and anything private.
+Anyone can read a change note. Notes for a Civica page appear under “See all updates” on that page, newest first, with the date. In a dashboard or an automation, anyone who can open it can read the note.
 
-| Before | After |
-| --- | --- |
-| Fixed the lock help after Sam’s lock failed at 14 Elm Road. | Clarified what happens when a lock does not report a new state. |
+So every note must:
 
-<h2 id="wg-091">Say what changed and why it matters</h2>
+- say plainly what changed, and where on the page, view or card
+- be kept for changes that matter, so people do not read about ones that do not affect them
 
-Write a note when a meaning, a step or a result changed. Say what it means for the household. Put the key point first, name the page, card or section, and use full sentences. Do not write one for a typo, layout or a fixed link.
+Notes are public, so leave out names, addresses and anything private.
+
+Open “See all updates” on any Civica page to see how notes look.
+
+<h2 id="wg-091">Write clear change notes</h2>
+
+You are ready to write when you:
+
+- know what changed and why it matters to the people who use it
+- have asked anyone you need to help you explain the change and its effects
+
+Where you can, put the new information in the note, so people learn it without opening the page.
+
+For a large change, sum up:
+
+- what changed
+- where, such as the section, view, card or step number
+
+Make each note:
+
+- precise
+- written in full sentences
+- led by the change that matters most
+
+A note that only says something was updated tells people nothing. Name the change.
 
 Good change notes:
 
-- Clarified that a lock can take a few seconds to report its new state.
-- Changed “Switch” to “Turn on” on the hall light card so the label matches the action.
+- The Civica palettes are now 7 theme colours. If you used a palette such as Civica Civic Cobalt Vivid, choose a theme colour again in your profile.
+- Removed the restart from Install Civica. After you add the theme files, reloading themes is enough.
+- The button on the Living room heating card now reads “Boost for 1 hour”, not “Boost”.
+- The landing light now stays on for 5 minutes after the last movement, not 2 minutes.
 
 Poor change notes:
 
-- Updated the page.
-- Changed some labels.
-- Made improvements to the dashboard help.
+- Help updated.
+- Changed the files behind this page so its summary shows in search.
+- Added preview images for sharing this page.
+- Removed broken link.

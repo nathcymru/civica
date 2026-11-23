@@ -1,13 +1,15 @@
 ---
 title: "States, requests and errors"
-description: "Say what a device reported, what was requested and what went wrong, without claiming more than you know."
+description: "How to report a state, a request or a problem in Home Assistant without claiming more than the system knows."
 section: "content"
 group: "Writing guidelines"
 nav_order: 9
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-22"
+updated_on: "2026-11-23"
 updates:
+  - date: "2026-11-23"
+    description: "Grouped the rules under states, requests and problems. Added a table of missing states and cut repeated examples."
   - date: "2026-11-22"
     description: "Shortened to one pair for each rule with realistic examples."
   - date: "2026-11-15"
@@ -32,113 +34,108 @@ ai_related:
 
 A request, a stored setting and a physical result are three different facts. Never write one as if it were another.
 
-<h2 id="wg-031">Separate state from action</h2>
+<h2 id="report-states">Report states</h2>
 
-Label what a device reported apart from what a button asks it to do.
+<h3 id="wg-031">Separate state from action</h3>
+
+Show what a device last reported apart from what a button will ask it to do.
 
 <%= example('wg-state-action') %>
 
+<h3 id="wg-033">Keep unavailable, unknown, stale and offline apart</h3>
+
+Use the state Home Assistant gives, and show the time with any old reading. None of these means zero, off or broken.
+
+| State | What it means | How to write it |
+| --- | --- | --- |
+| Unavailable | Home Assistant cannot get the entity’s state now, for example because the integration cannot reach the device. | Hall sensor unavailable since 18:42. |
+| Unknown | The entity exists but Home Assistant has no usable value for it, for example just after Home Assistant starts. | Temperature unknown. No value reported yet. |
+| An old reading | The last value received. Nothing newer has arrived. | Last reported 19.4°C at 09:15. |
+| Offline | The connection is known to be lost, for example a connectivity sensor reports Disconnected. Without that evidence, write unavailable. | Hub offline since 07:10. |
+
+Read the full meanings of [unavailable](../style-guides/technical-a-to-z-u.html#ht-state-records-unavailable) and [unknown](../style-guides/technical-a-to-z-u.html#ht-state-records-unknown) in the technical A to Z.
+
+<h3 id="wg-038">Make empty and missing states clear</h3>
+
+Say which of three things happened: nothing matches, nothing exists yet, or something could not load.
+
+Write “No devices match these filters”, “No devices have been added yet” or “Devices could not be loaded”, never “No data” for all three.
+
+<h2 id="report-requests-and-actions">Report requests and actions</h2>
+
 <h3 id="wg-032">Say a request was sent, not that it worked</h3>
 
-Say what you saw, not what you hope happened.
+Selecting a control sends a request. Only a new state from the device shows whether it worked.
 
-<%= example('wg-command-progress') %>
+Not: Front door locked.
+
+Instead: Lock request sent. Waiting for the front door lock to report its state.
 
 <h3 id="wg-044">Explain pending and uncertain outcomes</h3>
 
-Say the request may still complete, and warn before a retry that could repeat it.
+When no new state arrives, say the request may still complete. If sending it again could repeat the action, warn people before they try.
 
-| Before | After |
-| --- | --- |
-| Garage door failed. Try again. | The garage door has not reported a new state. It may still be moving. Check it before you send another request. |
+Not: Garage door failed. Try again.
 
-<h2 id="wg-033">Keep unavailable, unknown, stale and offline apart</h2>
+Instead: The garage door has not reported a new state. It may still be moving. Check the door before you send another request.
 
-Use the state the source gave, with a time. Say “offline” only if you know the connection is lost.
+<h3 id="wg-035">Keep saved, enabled and running apart</h3>
 
-<%= example('wg-availability') %>
-
-| Before | After |
-| --- | --- |
-| Hall sensor offline. | Hall sensor unavailable since 18:42. Home Assistant cannot get its state. |
-
-<h2 id="wg-034">Explain what the control can and cannot do</h2>
-
-Show only supported actions. Say why one is missing and who can change that.
-
-<%= example('wg-permission') %>
-
-<h2 id="wg-035">Keep saved, enabled and running apart</h2>
-
-Say whether a change was saved, will start automatically and is running now.
+An automation can be saved, turned on so it starts by itself, and running now. Say which of these changed.
 
 <%= example('wg-automation-status') %>
 
-| Before | After |
-| --- | --- |
-| Disabled. | Hall lights automation turned off. It will not start again until you turn it on. |
+<h3 id="wg-034">Explain what the control can and cannot do</h3>
 
-<h2 id="wg-036">Say what Cancel, Stop and Delete do</h2>
+Show only the actions a device supports. When one is missing or cannot be used, say why and who can change that.
 
-Name the thing and say what stops, continues or is lost. Say “you can undo this” only when the system can undo it.
+For example: “The washing machine reports that remote start is off, so Home Assistant cannot start a cycle. Turn on remote start on the machine.”
 
-| Before | After |
-| --- | --- |
-| Are you sure? | Delete the automation “Porch light at sunset”? This cannot be undone. |
-| Stop? | Stop the vacuum? It will stay where it stops. |
+<h3 id="wg-036">Say what Cancel, Stop and Delete do</h3>
 
-<h2 id="wg-038">Make empty and missing states clear</h2>
+Name the thing, and say what stops, what carries on and what is lost. Say “you can undo this” only when it can be undone.
 
-Tell “nothing found” from “nothing exists yet” from “could not load”.
+Not: Are you sure?
 
-| Before | After |
-| --- | --- |
-| No data | No devices match these filters. |
-| No data | Devices could not be loaded. |
-| No data | No devices have been added yet. |
+Instead: Stop the garden watering now? Tomorrow’s 06:00 watering will still run.
 
-<h2 id="wg-040">Give a recovery that matches the cause</h2>
+<h2 id="report-problems">Report problems</h2>
 
-Name the confirmed cause and offer one step that fits it.
+<h3 id="wg-040">Give a recovery that matches the cause</h3>
 
-| Before | After |
-| --- | --- |
-| Failed. Please restart your router. | The heating hub did not answer. Wait a minute, then save the schedule again. |
+Name the cause you know, and offer one step that fits it. Do not ask people to fix something that may not be wrong.
+
+Not: Failed. Restart your router.
+
+Instead: The heating hub did not reply. Wait a minute, then save the schedule again.
 
 <h3 id="wg-041">Tell a mistake from a fault</h3>
 
-If the person can fix it, say what to fix. If the system failed, say so.
+If the person can fix it, say exactly what to change. If the system failed, say so.
 
-| Before | After |
-| --- | --- |
-| Invalid input. | Enter a temperature between 5°C and 30°C. |
+Not: Invalid input.
 
-<h2 id="wg-042">Choose urgency from evidence</h2>
+Instead: Enter a temperature between 5°C and 30°C.
 
-Use alarm wording only for a real alarm. A reminder is not an emergency.
+<h3 id="wg-042">Choose urgency from evidence</h3>
+
+Base urgency on what a sensor or record shows, and [keep alarm wording for real alarms](right-tone.html#wg-046). A date in a record that needs checking is a reminder, not an emergency.
 
 <%= example('wg-warning-context') %>
 
-<h3 id="write-a-warning">Write a warning</h3>
+Put a warning before the step it affects. Say what the hazard is, what could happen and what to do. Use “Danger”, “Warning” and “Caution” only for risks to people, not for risks to a device.
 
-Put it before the step it affects. Say the hazard, what happens and what to do. Use “Danger”, “Warning” and “Caution” only for risks to people.
+Match the message to how long it needs to stay:
 
-| Before | After |
-| --- | --- |
-| Be careful with the cover. | Warning: mains electricity. You could get an electric shock. Turn off the socket at the wall before you open the cover. |
+- a toast disappears after a few seconds, so never put a fix people need in one
+- an alert stays until the problem is gone
 
-<h3 id="choose-a-toast-an-alert-or-a-repair">Choose a toast, an alert or a repair</h3>
+A repair comes from Home Assistant or an integration, not from you. If one covers the problem, point people to the repair rather than repeating its steps.
 
-A toast disappears, so never put a needed fix in it. An alert stays until the problem is gone. A repair gives the cause and the fix as numbered steps.
+<h3 id="wg-043">Stay inside what the system can know</h3>
 
-| Before | After |
-| --- | --- |
-| (Toast) Hub offline. Restart the router. | (Repair) Hub offline. 1. Check the hub has power. 2. Check it is connected to your network. 3. Wait a minute, then check again. |
+Do not give safety, medical or legal advice that the system cannot back up. Say what the sensors reported, and what that does not prove.
 
-<h2 id="wg-043">Stay inside what the system can know</h2>
+Not: Your home is safe.
 
-Do not give safety, medical or legal advice the system cannot support.
-
-| Before | After |
-| --- | --- |
-| Your home is safe. | No smoke alarms reported smoke in the last hour. This does not mean the house is safe. |
+Instead: No smoke alarm has reported smoke in the last hour. This does not mean the house is safe.

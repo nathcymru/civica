@@ -6831,16 +6831,13 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "ce4393b51968dcdc192983bef584c0849d231bf5681a82d9f7a926aa3bc010b0",
+      "note": "Reworked on 23 November 2026 with Home Assistant and Civica examples. Covers when a note is needed, who can read notes and how to write a clear one. No example frames embedded.",
+      "sha256": "4327472142b081f8aed3f662bfe45222cb753fb2d58183c00fc5571532da685a",
       "url": "/content/writing-guidelines/change-notes.html",
-      "title": "Writing for a connected home",
-      "example_ids": [
-        "wg-task-first",
-        "wg-scope"
-      ],
+      "title": "Write change notes",
+      "example_ids": [],
       "resolved_finding_ids": [],
-      "current_review_on": "2026-11-12",
+      "current_review_on": "2026-11-23",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
     },
     {
@@ -7044,16 +7041,17 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "d2827b4839fc0685be21a5caa3f7f362d634af4f88ae2eef039748994661a76c",
+      "note": "Reworked on 23 November 2026. Rules grouped under Report states, Report requests and actions, and Report problems, with one table of missing states and at most one example for each rule.",
+      "sha256": "3c6d48201022d75cd04ca4c266cc862137acaa33c44d5393d9ed75177bd442e0",
       "url": "/content/writing-guidelines/states-and-errors.html",
-      "title": "Writing for a connected home",
+      "title": "States, requests and errors",
       "example_ids": [
-        "wg-task-first",
-        "wg-scope"
+        "wg-state-action",
+        "wg-automation-status",
+        "wg-warning-context"
       ],
       "resolved_finding_ids": [],
-      "current_review_on": "2026-11-12",
+      "current_review_on": "2026-11-23",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
     },
     {
