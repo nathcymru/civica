@@ -1,79 +1,73 @@
 <%
   # Four-nation adult reading infographic for /content/writing-guidelines/clear-language.html.
   # Real published figures; provenance and URLs are on /community/sources.html.
-  # Colours come only from design-system/chart-colours.json ids (categorical "blue",
-  # labels.light "black", paper "white"), resolved through govuk_colour so no hex is typed here.
-  # Each nation used its own survey, test and year, so panels share no axis and are not ranked.
-  # The 1 in 28 row is drawn as 2 rows of 14 so each figure stays legible at 320px.
-  # The table sits before the nation headings so the layout names its region after the section heading.
-  # Output is built as one line of HTML so the Markdown renderer leaves it alone.
+  # Layout follows Nathan's reference (23 Nov 2026): a nations map beside four compact
+  # cards, each with a large "1 in N", one short line and a row of people.
+  # Map outlines come from docs/data/uk-nations-map.json, generated from Natural Earth
+  # (public domain) by docs/scripts/generate-uk-nations-map.py; never hand-edit the paths.
+  # Colours are chart categorical ids (design-system/chart-colours.json) via govuk_colour, because
+  # the coloured people are a pictogram chart. Each keeps white header text at 4.5:1 or more.
+  # No success or error colour is used, so no nation reads as better or worse.
+  # Each nation used its own survey, test and year, so the cards share no scale and are not ranked;
+  # the footnote says so and the table gives the exact figures.
+  # The map, the reader and the pictograms repeat the card text, so they are hidden from
+  # assistive technology. Output is one line of HTML so the Markdown renderer leaves it alone.
   hex = ->(id) { govuk_colour(id).fetch('hex') }
-  blue, ink, paper = hex.('blue'), hex.('black'), hex.('white')
-
-  # One person: round head, body with a rounded top and square base. No face.
-  person = lambda do |x, y, filled|
-    style = filled ? %(fill="#{blue}" stroke="#{blue}") : %(fill="#{paper}" stroke="#{ink}")
-    %(<g transform="translate(#{x} #{y})" #{style} stroke-width="1.5"><circle cx="12" cy="8" r="6"/><path d="M3 42V25a9 9 0 0 1 18 0V42Z"/></g>)
-  end
-
-  # A pictogram of `total` people, `per_row` to a row, with the first one filled.
-  pictogram = lambda do |total, per_row, scale|
-    rows = (total.to_f / per_row).ceil
-    width = per_row * 24
-    height = rows * 48 - 4
-    people = (0...total).map { |i| person.((i % per_row) * 24, (i / per_row) * 48, i.zero?) }
-    %(<svg aria-hidden="true" focusable="false" viewBox="-1 -1 #{width + 2} #{height + 2}" style="display:block;width:100%;max-width:#{((width + 2) * scale).round}px;height:auto;margin:0 0 10px">#{people.join}</svg>)
-  end
-
+  grey, white, ink = hex.('black-tint-50'), hex.('white'), hex.('black')
+  map = JSON.parse(File.read(File.join(root, 'data', 'uk-nations-map.json')))
   link = docs_path('/community/sources.html')
 
-  panels = [
-    {
-      nation: 'England', year: '2023',
-      parts: [
-        [6, 6, 1.25, '<strong>About 1 in 6 adults (18%)</strong> can find a fact in a short, simple text, but find it hard to read longer text with a lot of other detail.']
-      ]
-    },
-    {
-      nation: 'Northern Ireland', year: '2012',
-      parts: [
-        [6, 6, 1.25, '<strong>About 1 in 6 adults (18%)</strong> could manage short, simple texts but struggled with longer, detailed ones. In 1996 it was nearer 1 in 4 (23%).']
-      ]
-    },
-    {
-      nation: 'Wales', year: '2010',
-      parts: [
-        [8, 8, 1.25, '<strong>About 1 in 8 adults (12%)</strong> read and write English below the level needed for everyday life. In 2004 it was 25%.']
-      ]
-    },
-    {
-      nation: 'Scotland', year: '2009',
-      parts: [
-        [4, 4, 1.25, '<strong>Just over 1 in 4 adults (26.7%)</strong> may sometimes find reading and writing hard, but generally cope.'],
-        [28, 14, 0.83, 'This includes <strong>about 1 in 28 adults (3.6%)</strong> who find reading and writing seriously hard.']
-      ]
-    }
+  nations = [
+    { name: 'Scotland', year: '2009', n: 4, colour: hex.('purple-tint-25'), text: 'adults sometimes find reading and writing hard' },
+    { name: 'Northern Ireland', year: '2012', n: 6, colour: hex.('blue'), text: 'adults struggle with longer, detailed text' },
+    { name: 'Wales', year: '2010', n: 8, colour: hex.('magenta'), text: 'adults lack the reading and writing skills everyday life needs' },
+    { name: 'England', year: '2023', n: 6, colour: hex.('blue-shade-50'), text: 'adults struggle with longer, detailed text' }
   ]
+  colour_of = nations.to_h { |nation| [nation[:name], nation[:colour]] }
 
-  panel_html = panels.map do |panel|
-    body = panel[:parts].map { |total, per_row, scale, text| pictogram.(total, per_row, scale) + %(<p class="govuk-body">#{text}</p>) }.join
-    %(<div class="govuk-grid-column-one-half"><h3 class="govuk-heading-s">#{panel[:nation]}, #{panel[:year]}</h3>#{body}</div>)
+  # One standing person, flat shapes and no face: round head, body with a rounded top, two legs.
+  person = lambda do |x, fill|
+    %(<g transform="translate(#{x} 0)" fill="#{fill}"><circle cx="9" cy="5" r="5"/><path d="M1 30V18a8 8 0 0 1 16 0V30Z"/><rect x="3" y="29" width="5" height="15"/><rect x="10" y="29" width="5" height="15"/></g>)
+  end
+  pictogram = lambda do |total, colour|
+    people = (0...total).map { |i| person.(i * 22, i.zero? ? colour : grey) }
+    %(<svg aria-hidden="true" focusable="false" viewBox="0 0 #{total * 22 - 4} 44" style="display:block;height:clamp(26px, 7vw, 44px);width:auto;max-width:100%">#{people.join}</svg>)
+  end
+
+  # A person sitting and reading, in the empty sea area south-west of the map.
+  reader = %(<g transform="translate(2 452) scale(1.4)">) +
+    %(<rect x="0" y="50" width="70" height="6" fill="#{hex.('black-tint-80')}"/><rect x="6" y="56" width="5" height="24" fill="#{hex.('black-tint-80')}"/><rect x="59" y="56" width="5" height="24" fill="#{hex.('black-tint-80')}"/>) +
+    %(<circle cx="22" cy="10" r="8" fill="#{hex.('brown')}"/>) +
+    %(<path d="M12 50V30a10 10 0 0 1 20 0V50Z" fill="#{hex.('blue')}"/>) +
+    %(<path d="M18 42H46V50H18Z" fill="#{hex.('black-tint-50')}"/><rect x="40" y="46" width="7" height="32" fill="#{hex.('black-tint-50')}"/><rect x="40" y="76" width="12" height="4" fill="#{ink}"/>) +
+    %(<path d="M34 22L44 26V40L34 36Z" fill="#{white}" stroke="#{ink}" stroke-width="1.2"/><path d="M44 26L54 22V36L44 40Z" fill="#{white}" stroke="#{ink}" stroke-width="1.2"/>) +
+    %(<path d="M26 32L36 34" stroke="#{hex.('blue')}" stroke-width="5" stroke-linecap="round"/></g>)
+
+  map_svg = %(<svg aria-hidden="true" focusable="false" viewBox="#{map['view_box']}" style="display:block;width:100%;max-width:min(220px, 50vw);height:auto;margin:0 auto 20px">) +
+    map['paths'].map { |name, d| %(<path d="#{d}" fill="#{colour_of.fetch(name)}" stroke="#{white}" stroke-width="1" stroke-linejoin="round"/>) }.join +
+    reader + %(</svg>)
+
+  card = lambda do |nation|
+    %(<div style="flex:0 0 calc(50% - 8px);min-width:0;box-sizing:border-box;border:3px solid #{nation[:colour]};background:#{white}">) +
+      %(<h3 class="govuk-heading-s" style="margin:0;padding:6px 12px;background:#{nation[:colour]};color:#{white}">#{nation[:name]}</h3>) +
+      %(<div style="padding:6px 12px 12px"><p style="margin:0;font-size:clamp(32px, 8vw, 48px);line-height:1.15;font-weight:700;color:#{ink}">1 in #{nation[:n]}</p>) +
+      %(<p class="govuk-body-s" style="margin:0 0 10px;min-height:4.2em;font-size:clamp(14px, 3.8vw, 16px);line-height:1.35">#{nation[:text]}<br><span style="color:#{hex.('black-tint-25')}">Survey #{nation[:year]}</span></p>#{pictogram.(nation[:n], nation[:colour])}</div></div>)
   end
 
   table_rows = [
-    ['England', '2023', '18% (about 1 in 6)', 'Can find a fact in a short, simple text, but finds it hard to read longer text with a lot of other detail.'],
+    ['Scotland', '2009', '26.7% (just over 1 in 4), including 3.6% (about 1 in 28)', 'May sometimes find reading and writing hard, but generally copes. The 3.6% find reading and writing seriously hard.'],
     ['Northern Ireland', '2012', '18% (about 1 in 6)', 'Could manage short, simple texts but struggled with longer, detailed ones. In 1996 it was 23%.'],
     ['Wales', '2010', '12% (about 1 in 8)', 'Reads and writes English below the level needed for everyday life. In 2004 it was 25%.'],
-    ['Scotland', '2009', '26.7% (just over 1 in 4), including 3.6% (about 1 in 28)', 'May sometimes find reading and writing hard, but generally copes. The 3.6% find reading and writing seriously hard.']
+    ['England', '2023', '18% (about 1 in 6)', 'Can find a fact in a short, simple text, but finds it hard to read longer text with a lot of other detail.']
   ].map do |nation, year, share, meaning|
     %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">#{nation}</th><td class="govuk-table__cell">#{year}</td><td class="govuk-table__cell">#{share}</td><td class="govuk-table__cell">#{meaning}</td></tr>)
   end
 
-  html = %(<div class="c-colour-example"><figure style="margin:0 0 20px">) +
-    %(<figcaption class="govuk-body"><strong>How many adults find reading hard, by nation</strong><br>Adults aged 16 to 65, from a national survey of adults in each nation.</figcaption>) +
+  html = %(<figure style="margin:0 0 20px">) +
+    %(<figcaption class="govuk-heading-m" style="margin-bottom:15px">How many adults find reading hard</figcaption>) +
+    %(<div class="govuk-grid-row"><div class="govuk-grid-column-one-third">#{map_svg}</div>) +
+    %(<div class="govuk-grid-column-two-thirds"><div style="display:flex;flex-wrap:wrap;gap:15px;margin-bottom:20px">#{nations.map { |nation| card.(nation) }.join}</div></div></div>) +
+    %(<p class="govuk-body-s">Adults aged 16 to 65. Each nation measured reading in its own survey and year, so do not compare the numbers between nations. <a class="govuk-link" href="#{link}">Sources</a></p>) +
     %(<details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Show the figures as a table</span></summary><div class="govuk-details__text"><div class="civica-table-scroll" role="region" tabindex="0" aria-label="Adults who find reading hard, by nation"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">Adults who find reading hard, by nation</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Nation</th><th scope="col" class="govuk-table__header">Year</th><th scope="col" class="govuk-table__header">Share of adults aged 16 to 65</th><th scope="col" class="govuk-table__header">What it means</th></tr></thead><tbody class="govuk-table__body">#{table_rows.join}</tbody></table></div></div></details>) +
-    %(<div class="govuk-grid-row">#{panel_html[0]}#{panel_html[1]}</div>) +
-    %(<div class="govuk-grid-row">#{panel_html[2]}#{panel_html[3]}</div>) +
-    %(<p class="govuk-body-s">Each nation measured reading in its own survey and year, so do not compare the numbers between nations. <a class="govuk-link" href="#{link}">Sources</a></p>) +
-    %(</figure></div>)
+    %(</figure>)
 %><%= html %>

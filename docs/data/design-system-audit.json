@@ -604,7 +604,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Source families, reviewed scope and linked inventories are recorded. Source authority does not imply current native deployment or endorsement. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "ab632e2b12b4c9329b5d9e7f2b7437a54db19ca1de4fa034c800fbaf16d645dd",
+      "sha256": "cfaac0304f026c62ea2fdaf42b9b01bc73ccd6610317e17e6f0892aca0c43f07",
       "url": "/community/sources.html",
       "title": "Sources and provenance",
       "example_ids": [
@@ -20111,8 +20111,18 @@
     },
     {
       "path": "docs/source/partials/_four_nations_reading.erb",
-      "sha256": "09cc91465bb09f5e2aad87e13536a7dda4b33849711077a5c7d82aaab33349ab",
+      "sha256": "c6afe2970ef47f504ee5aef73e22377a02943d62c67e8474264be3fb577ff15f",
       "scope": "Reading figures infographic owned by /content/writing-guidelines/clear-language.html. Figures verified against the four national surveys listed on /community/sources.html on 23 November 2026."
+    },
+    {
+      "path": "docs/data/uk-nations-map.json",
+      "sha256": "a59d0f80d385a74549726fec21338df3c30898b09a5418e14a76681fd625185c",
+      "scope": "Nations outline for the reading infographic on /content/writing-guidelines/clear-language.html, generated from Natural Earth 1:50m map units v5.1.2 (public domain) by docs/scripts/generate-uk-nations-map.py."
+    },
+    {
+      "path": "docs/scripts/generate-uk-nations-map.py",
+      "sha256": "4c32e8441a60fa0669c48db4f1e6babeac062a8c9e5900d0e62ab8128e28856e",
+      "scope": "Generator for docs/data/uk-nations-map.json, pinned to Natural Earth 1:50m map units v5.1.2 by full SHA-256."
     }
   ],
   "limitations": [
