@@ -1,15 +1,15 @@
 examples:
   term-device-entity:
     title: One device, two different entities
-    description: Synthetic household names distinguish a physical product from its reading and control. No device is connected.
+    description: Nain’s reading lamp is one device. Home Assistant shows it as two entities, one to control the light and one for its power reading.
     html: |
       <h2 class="govuk-heading-m">Nain’s reading lamp</h2>
-      <p class="govuk-body">Example device in the living room. Its name is kept exactly as supplied.</p>
+      <p class="govuk-body">A device is the product itself, here a lamp in the living room. An entity is one reading or control that the device gives Home Assistant. This lamp has two.</p>
       <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Light control</dt><dd class="govuk-summary-list__value">Home Assistant reports Off<br><code>light.nains_reading_lamp</code></dd></div>
+        <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Light control</dt><dd class="govuk-summary-list__value">Off<br><code>light.nains_reading_lamp</code></dd></div>
         <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Power reading</dt><dd class="govuk-summary-list__value">0 W<br><code>sensor.nains_reading_lamp_power</code></dd></div>
       </dl>
-      <p class="govuk-body">These example values were recorded at <time datetime="2026-11-12T14:30:00Z">14:30 on 12 November 2026</time>, Europe/London. Off is a reported control state; it does not establish safe electrical isolation.</p>
+      <p class="govuk-body">Readings at <time datetime="2026-11-12T14:30:00Z">14:30 on 12 November 2026</time>. Off means the lamp reports that it is off. It does not mean the power to it is safely disconnected.</p>
   term-same-word-different-layer:
     title: Apps, integrations and the Companion app
     description: A complete comparison keeps the current Apps label separate from integration and mobile-app concepts.
@@ -102,9 +102,9 @@ examples:
       <h3 class="govuk-heading-s" id="term-lamp-details">Example lamp details</h3>
       <p class="govuk-body">The link changes the reading position in this example. The button demonstrates request wording through local feedback. Neither claims a live device result.</p>
   term-power-energy:
-    title: Power, energy and cost remain separate
-    description: Complete synthetic quantity and time labels prevent rate, accumulated use and monetary estimates being treated as synonyms.
+    title: Power, energy and cost are different
+    description: Power is how fast electricity is being used at one moment. Energy is how much has been used over a period. Cost is an estimate worked out from the energy.
     html: |
-      <h2 class="govuk-heading-m">Example electricity summary</h2>
-      <dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Power at 14:30</dt><dd class="govuk-summary-list__value">0.8 kW</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Energy from 00:00 to 14:30</dt><dd class="govuk-summary-list__value">4 kWh</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Estimated usage cost</dt><dd class="govuk-summary-list__value">£1.00, using an example rate of £0.25 per kWh. Standing charges and other bill items are not included.</dd></div></dl>
-      <p class="govuk-body">Invented data for 12 November 2026, Europe/London. The energy total covers part of the day; the power value is a reading at one time.</p>
+      <h2 class="govuk-heading-m">Electricity so far today</h2>
+      <dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Power at 14:30</dt><dd class="govuk-summary-list__value">0.8 kW</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Energy from 00:00 to 14:30</dt><dd class="govuk-summary-list__value">4 kWh</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Estimated usage cost</dt><dd class="govuk-summary-list__value">£1.00, at £0.25 per kWh. Standing charges and other bill items are not included.</dd></div></dl>
+      <p class="govuk-body">Power, in kilowatts (kW), is a reading at one moment. Energy, in kilowatt-hours (kWh), adds up over time: here, from midnight to 14:30 on 12 November 2026.</p>

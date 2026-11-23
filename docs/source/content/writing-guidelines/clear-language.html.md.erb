@@ -6,13 +6,15 @@ group: "Writing guidelines"
 nav_order: 3
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-22"
+updated_on: "2026-11-23"
 updates:
+  - date: "2026-11-23"
+    description: "Rewritten with plain reading figures for all four UK nations. New sections on experienced users, must, need and can, and the active voice. Fewer, clearer examples."
   - date: "2026-11-22"
     description: "Shortened to one rule per heading with realistic Home Assistant examples. Added a section on writing for the reader you have."
   - date: "2026-11-15"
     description: "Rewritten with plain rules and Before and After examples. Merged the inclusive language rules."
-ai_instructions: "Apply to every sentence you write. Prefer plain, concrete words, keep native Home Assistant labels, names and values exactly as they appear, and do not assume who is reading. Look up single words in the lexicons rather than guessing. Rules WG-010 to WG-025, WG-060, WG-062, WG-063 and WG-065."
+ai_instructions: "Apply to every sentence you write. Prefer plain, concrete words, keep native Home Assistant labels, names and values exactly as they appear, use must, need and can as this page sets out, and do not assume who is reading. Look up single words in the lexicons rather than guessing. Rules WG-010 to WG-025, WG-060, WG-062, WG-063 and WG-065."
 ai_related:
   - path: "/content/style-guides/a-to-z.html"
     title: "A to Z General"
@@ -30,131 +32,102 @@ ai_related:
 
 # Use clear language
 
-<h2 id="write-for-the-reader-you-have">Write for the reader you have</h2>
+Write so anyone can read a notification, card or dialog once and know what to do.
 
-Many adults find long or dense text hard to read. Plain wording helps everyone.
+<h2 id="write-for-the-reader-you-have">Write for everyone in the home</h2>
 
-Of adults aged 16 to 65 in England, 18% (6% below Level 1 and 12% at Level 1) read at Level 1 or below. At that level a long page with a lot of detail around the answer is hard to use.
+Everyone in the home reads Home Assistant text, including guests and children, often when tired, rushed or worried. Some read English as a second language.
 
-<figure style="margin:0 0 20px;">
-<figcaption class="govuk-heading-s" id="literacy-caption">Share of adults in England aged 16 to 65 at each literacy level (%)</figcaption>
-<svg role="img" aria-labelledby="literacy-title literacy-desc" viewBox="0 0 320 270" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif;"><title id="literacy-title">Bar chart of adult literacy proficiency levels in England</title><desc id="literacy-desc">Six bars, one for each level. Level 3 is the largest group at 37% and Level 2 follows at 32%. Below Level 1 is 6% and Level 1 is 12%, so 18% of adults are at Level 1 or below. The table below gives every value.</desc><g aria-hidden="true"><rect width="320" height="270" fill="#FFFFFF"/><text x="0" y="18" font-size="13" fill="#0B0C0C">% of adults</text><line x1="34" y1="222" x2="314" y2="222" stroke="#CECECE" stroke-width="1"/><text x="28" y="226" text-anchor="end" font-size="13" fill="#0B0C0C">0</text><line x1="34" y1="177" x2="314" y2="177" stroke="#CECECE" stroke-width="1"/><text x="28" y="181" text-anchor="end" font-size="13" fill="#0B0C0C">10</text><line x1="34" y1="132" x2="314" y2="132" stroke="#CECECE" stroke-width="1"/><text x="28" y="136" text-anchor="end" font-size="13" fill="#0B0C0C">20</text><line x1="34" y1="87" x2="314" y2="87" stroke="#CECECE" stroke-width="1"/><text x="28" y="91" text-anchor="end" font-size="13" fill="#0B0C0C">30</text><line x1="34" y1="42" x2="314" y2="42" stroke="#CECECE" stroke-width="1"/><text x="28" y="46" text-anchor="end" font-size="13" fill="#0B0C0C">40</text><rect data-label="Below Level 1" data-value="6" x="42.3" y="195" width="30" height="27" fill="#1D70B8"/><text x="57.3" y="190" text-anchor="middle" font-size="13" font-weight="bold" fill="#0B0C0C">6%</text><text x="57.3" y="240" text-anchor="middle" font-size="12" fill="#0B0C0C">Below</text><text x="57.3" y="255" text-anchor="middle" font-size="12" fill="#0B0C0C">Level 1</text><rect data-label="Level 1" data-value="12" x="89.0" y="168" width="30" height="54" fill="#1D70B8"/><text x="104.0" y="163" text-anchor="middle" font-size="13" font-weight="bold" fill="#0B0C0C">12%</text><text x="104.0" y="240" text-anchor="middle" font-size="12" fill="#0B0C0C">Level</text><text x="104.0" y="255" text-anchor="middle" font-size="12" fill="#0B0C0C">1</text><rect data-label="Level 2" data-value="32" x="135.7" y="78" width="30" height="144" fill="#1D70B8"/><text x="150.7" y="73" text-anchor="middle" font-size="13" font-weight="bold" fill="#0B0C0C">32%</text><text x="150.7" y="240" text-anchor="middle" font-size="12" fill="#0B0C0C">Level</text><text x="150.7" y="255" text-anchor="middle" font-size="12" fill="#0B0C0C">2</text><rect data-label="Level 3" data-value="37" x="182.3" y="55.5" width="30" height="166.5" fill="#1D70B8"/><text x="197.3" y="50.5" text-anchor="middle" font-size="13" font-weight="bold" fill="#0B0C0C">37%</text><text x="197.3" y="240" text-anchor="middle" font-size="12" fill="#0B0C0C">Level</text><text x="197.3" y="255" text-anchor="middle" font-size="12" fill="#0B0C0C">3</text><rect data-label="Level 4" data-value="13" x="229.0" y="163.5" width="30" height="58.5" fill="#1D70B8"/><text x="244.0" y="158.5" text-anchor="middle" font-size="13" font-weight="bold" fill="#0B0C0C">13%</text><text x="244.0" y="240" text-anchor="middle" font-size="12" fill="#0B0C0C">Level</text><text x="244.0" y="255" text-anchor="middle" font-size="12" fill="#0B0C0C">4</text><rect data-label="Level 5" data-value="1" x="275.7" y="217.5" width="30" height="4.5" fill="#1D70B8"/><text x="290.7" y="212.5" text-anchor="middle" font-size="13" font-weight="bold" fill="#0B0C0C">1%</text><text x="290.7" y="240" text-anchor="middle" font-size="12" fill="#0B0C0C">Level</text><text x="290.7" y="255" text-anchor="middle" font-size="12" fill="#0B0C0C">5</text><path d="M42 148 V142 H119 V148" fill="none" stroke="#0B0C0C" stroke-width="1.5"/><text x="42" y="96" font-size="13" font-weight="bold" fill="#0B0C0C">18% at</text><text x="42" y="111" font-size="13" font-weight="bold" fill="#0B0C0C">Level 1</text><text x="42" y="126" font-size="13" font-weight="bold" fill="#0B0C0C">or below</text></g></svg>
-</figure>
-<div class="civica-table-scroll" role="region" tabindex="0" aria-label="Literacy levels of adults in England"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--m">Literacy levels of adults in England, 2022 to 2023</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Literacy level</th><th scope="col" class="govuk-table__header">Share of adults (%)</th></tr></thead><tbody class="govuk-table__body"><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Below Level 1</th><td class="govuk-table__cell">6</td></tr><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Level 1</th><td class="govuk-table__cell">12</td></tr><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Level 2</th><td class="govuk-table__cell">32</td></tr><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Level 3</th><td class="govuk-table__cell">37</td></tr><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Level 4</th><td class="govuk-table__cell">13</td></tr><tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Level 5</th><td class="govuk-table__cell">1</td></tr></tbody></table></div>
-<p class="govuk-body-s">Survey carried out September 2022 to June 2023. Rounded to whole percentages, so the shares add up to 101%.<br>Figures come from a national adult skills survey of England. <a href="../../community/sources.html">Sources</a></p>
+<%= partial 'partials/four_nations_reading' %>
 
-<h2 id="wg-010">Use familiar, concrete words</h2>
+<h2 id="write-clearly-for-experienced-users">Write clearly for experienced users too</h2>
 
-Use the shortest word that keeps the technical meaning. Keep a technical term when it is the exact label.
+Experienced Home Assistant users still prefer plain words: they read them faster. Others in the home read their notifications too.
 
-| Before | After |
-| --- | --- |
-| Initiate the pairing procedure. | Start pairing. |
-| The actuator is de-energised. | The socket reports that it is off. |
+<h2 id="wg-010">Use everyday words</h2>
 
-<h2 id="wg-013">Make sentences easy to follow</h2>
+Use the short word: “start”, not “initiate”; “about”, not “approximately”.
 
-One idea per sentence. Put a condition before the action it limits.
+Turn “-ion” and “-ment” words back into verbs. Replace vague words such as “optimise” with what happens. In a repair:
 
 | Before | After |
 | --- | --- |
-| The schedule is unable to be saved as a result of the connection having been interrupted. | Home Assistant could not save the schedule. The connection dropped. |
-| The heating stays on if the window sensor reports Closed and the target is above 16°C. | If the window sensor reports Closed and the target is above 16°C, the heating stays on. |
+| Completion of the update installation requires a restart. | Restart Home Assistant to finish the update. |
 
-<h2 id="wg-014">Write important conditions in full</h2>
+<h2 id="home-assistant-words-in-use">Explain Home Assistant terms the first time</h2>
 
-Use “cannot” and “do not” in conditions, warnings and short instructions.
-
-| Before | After |
-| --- | --- |
-| Don’t unplug the hub. | Do not unplug the hub during the update. |
-
-<h2 id="wg-020">Use one word for one operation</h2>
-
-Use the same word for the same operation, so “Delete” never means “Turn off”.
-
-<%= example('wg-household-terms') %>
-
-<h2 id="wg-021">Keep native labels and translations</h2>
-
-Use the label Home Assistant shows, in the language it shows.
-
-| Before | After |
-| --- | --- |
-| Find the identification of the light. | Find the **Entity ID** of the light. |
-
-<h2 id="wg-022">Keep names exactly as people typed them</h2>
-
-Do not change the case, spelling or language of a name someone gave.
-
-| Before | After |
-| --- | --- |
-| Mam’s heater changed to Mother’s heater | Mam’s heater |
-
-<h2 id="wg-025">Keep literal values literal</h2>
-
-Put entity IDs, keys and paths in code formatting. Do not change characters inside them.
-
-| Before | After |
-| --- | --- |
-| Entity ID: light.reading-lamp | Entity ID: `light.reading_lamp` |
-
-<h2 id="home-assistant-words-in-use">Use Home Assistant words accurately</h2>
-
-Look up each word in [A to Z Technical](../style-guides/technical-a-to-z.html).
+Keep a Home Assistant term when people need it, and explain it in plain words the first time. Check terms in [A to Z Technical](../style-guides/technical-a-to-z.html).
 
 <%= example('term-device-entity') %>
 
-<%= example('term-same-word-different-layer') %>
-
-<%= example('term-identifiers') %>
-
-<%= example('term-event-action') %>
-
-<%= example('term-native-label') %>
-
-<%= example('term-historical-name') %>
-
-<%= example('term-contextual-on') %>
-
-<%= example('term-climate-meaning') %>
-
-<%= example('term-missing-state') %>
-
-<%= example('term-all-condition') %>
-
-<%= example('term-navigation-action') %>
-
 <%= example('term-power-energy') %>
+
+<h2 id="use-the-words-people-use">Use the words people in the home use</h2>
+
+Name things the way the household does: “heating”, not “climate control”; “bin day”, not “waste collection schedule”.
+
+<h3 id="wg-020">Use one word for one action</h3>
+
+Once a button says “Turn off”, do not call the same action “Switch off” or “Deactivate” elsewhere.
+
+<%= example('wg-household-terms') %>
+
+<h3 id="wg-021">Keep native labels and translations</h3>
+
+Use the label Home Assistant shows, in its language: “Go to **Settings** > **Devices & services**”, not “open the integrations page”.
+
+<h3 id="wg-022">Keep names exactly as people typed them</h3>
+
+A device named “Mam’s heater” stays “Mam’s heater” everywhere. Do not correct or translate it.
+
+<h3 id="wg-025">Keep literal values literal</h3>
+
+Put entity IDs, keys and paths in code formatting and copy them exactly: `light.reading_lamp`, not light.reading-lamp.
+
+<h2 id="wg-014">Be careful with contractions</h2>
+
+“You’ll” and “it’s” are fine. Write “cannot” and “do not” in full, especially in warnings and conditions. Readers can miss “n’t” and do the opposite. In a dialog warning:
+
+| Before | After |
+| --- | --- |
+| Don’t unplug the hub while it’s updating. | Do not unplug the hub until the update finishes. |
+
+<h2 id="make-requirements-clear">Make requirements clear</h2>
+
+- Use “must” only for a firm safety or legal requirement: “You must turn off the power at the consumer unit before fitting a smart switch.”
+- Use “need” when the task cannot go on without something: “You need a Zigbee coordinator to add Zigbee devices.”
+- Use “can” for an option: “You can add the sensor to an area later.” Avoid “you may be able to”.
+
+<h2 id="use-the-active-voice">Use the active voice</h2>
+
+Say who acts: Home Assistant, the device or a person. It is shorter. In a notification:
+
+| Before | After |
+| --- | --- |
+| Your heating schedule has been paused by Home Assistant until 06:00. | Home Assistant paused your heating schedule until 06:00. |
+
+Use the passive when the result matters more than who acted: “The bin day reminder was turned off.”
+
+<h2 id="wg-013">Keep sentences and paragraphs short</h2>
+
+One idea per sentence, with any condition before the action. Split sentences over 25 words. Keep paragraphs to 5 sentences. In a notification:
+
+| Before | After |
+| --- | --- |
+| The heating in the living room was turned off by Home Assistant at 18:05 because the window sensor reported the window open for more than 10 minutes. | The living room window was open for more than 10 minutes. Home Assistant turned off the heating at 18:05. |
 
 <h2 id="wg-060">Do not assume who is reading</h2>
 
-Do not assume a relationship, ownership, ability or who is at home.
+Do not assume a relationship, ownership, ability or who is at home. Write “The garage door has been open for 20 minutes”, not “Ask Dad to close the garage”.
 
-| Before | After |
-| --- | --- |
-| Ask your husband to check the fuse box. | Ask someone who can help with the device. |
+<h3 id="wg-062">Use respectful, specific language</h3>
 
-<h2 id="wg-062">Use respectful, specific language</h2>
+Describe what happens, not what a person is like. Leave out “simply”, “obviously” and “just”. Write “Turn the router off, wait 30 seconds, then turn it on”, not “Simply restart the router”.
 
-Describe what happens. Avoid “simply”, “obviously” and “just”.
+<h3 id="wg-063">Do not assume one way to see, hear or act</h3>
 
-| Before | After |
-| --- | --- |
-| Simply restart the router. | Turn the router off, wait 30 seconds, then turn it on again. |
+Do not rely on colour, sound, position or a gesture alone. Write “Select **Turn on**”, not “Tap the green button on the right”.
 
-<h2 id="wg-063">Do not assume one way to see, hear or act</h2>
+<h2 id="wg-065">Keep each language separate and checked</h2>
 
-Do not rely on colour, sound or position alone.
-
-| Before | After |
-| --- | --- |
-| Tap the green button on the right. | Select **Turn on**. |
-
-<h2 id="wg-065">Preserve language and translation</h2>
-
-Ask a Welsh speaker to write Welsh. Do not publish unchecked machine translation.
-
-| Before | After |
-| --- | --- |
-| One button labelled “Save / Cadw” | A separate English button and Welsh button, with the Welsh written by a Welsh speaker. |
+Give each language its own wording, written or checked by a fluent speaker: the button says “Save” in English and “Cadw” in Welsh, never “Save / Cadw”. Do not publish unchecked machine translation.
