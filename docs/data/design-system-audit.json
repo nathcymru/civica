@@ -604,7 +604,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Source families, reviewed scope and linked inventories are recorded. Source authority does not imply current native deployment or endorsement. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "170aabbd270efb6addf55f60240d0b3a79bd73aa210455a7a2094bc965a80259",
+      "sha256": "cfaac0304f026c62ea2fdaf42b9b01bc73ccd6610317e17e6f0892aca0c43f07",
       "url": "/community/sources.html",
       "title": "Sources and provenance",
       "example_ids": [
@@ -6866,16 +6866,17 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "b6da51705f4bb17586b394c3b5a8f9a59a2f850e0bc78f78719c12d955355be5",
+      "note": "Rebuilt on 23 November 2026 from a section-by-section map of the original language guidance, with a four-nations reading infographic in docs/source/partials/_four_nations_reading.erb. Writer, editor, data visualiser and final editor passes recorded in the pull request.",
+      "sha256": "27c265c41117f8f7f3f8d0d08f58c615fbadb86ff64d73a98741d2411e83c174",
       "url": "/content/writing-guidelines/clear-language.html",
-      "title": "Writing for a connected home",
+      "title": "Use clear language",
       "example_ids": [
-        "wg-task-first",
-        "wg-scope"
+        "term-device-entity",
+        "term-power-energy",
+        "wg-household-terms"
       ],
       "resolved_finding_ids": [],
-      "current_review_on": "2026-11-12",
+      "current_review_on": "2026-11-23",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
     },
     {
@@ -16648,7 +16649,7 @@
       "title": "A technical All result is not physical confirmation",
       "path": "docs/data/terminology-examples.yml",
       "source_file": "docs/data/terminology-examples.yml",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc",
       "authored_html_sha256": "11b1f3c97983ff468f2c109b3ab4a80abc9b8b1ed2ce445add1f3b75c1e15c46",
       "owners": [
         "/content/style-guides/technical-a-to-z.html"
@@ -16667,7 +16668,7 @@
       "title": "Mode, current action and temperature are different",
       "path": "docs/data/terminology-examples.yml",
       "source_file": "docs/data/terminology-examples.yml",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc",
       "authored_html_sha256": "7acf1c00008ede77eba950254855f2349baeb6915b10d03fec9b1d604c6a9d09",
       "owners": [
         "/content/style-guides/technical-a-to-z.html"
@@ -16686,7 +16687,7 @@
       "title": "The same raw state can have different meanings",
       "path": "docs/data/terminology-examples.yml",
       "source_file": "docs/data/terminology-examples.yml",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc",
       "authored_html_sha256": "3c32a05d787a86ad51995752800f5033021b839a15393b0c43cd7b37fc0d1a6e",
       "owners": [
         "/content/style-guides/technical-a-to-z.html"
@@ -16705,8 +16706,8 @@
       "title": "One device, two different entities",
       "path": "docs/data/terminology-examples.yml",
       "source_file": "docs/data/terminology-examples.yml",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
-      "authored_html_sha256": "e4b73c1683c582d735c8da3e11c92b836da35dafd3caea0a458b08035dd931fa",
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc",
+      "authored_html_sha256": "3aeb262a8dba02ed340351cef4be4b013bcf84fab41df17e65db995ac3edcbe0",
       "owners": [
         "/content/style-guides/technical-a-to-z.html"
       ],
@@ -16724,7 +16725,7 @@
       "title": "An event and an action describe different things",
       "path": "docs/data/terminology-examples.yml",
       "source_file": "docs/data/terminology-examples.yml",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc",
       "authored_html_sha256": "b18f3b83356d2e313072b553770ec887585940c9efe486c146c2a3a2f33e4481",
       "owners": [
         "/content/style-guides/technical-a-to-z.html"
@@ -16743,7 +16744,7 @@
       "title": "Explain an older name while preserving a literal path",
       "path": "docs/data/terminology-examples.yml",
       "source_file": "docs/data/terminology-examples.yml",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc",
       "authored_html_sha256": "cfb225f2e2447e7417c0a45758170a897badb13b24db58a3a89be4e4b8edc832",
       "owners": [
         "/content/style-guides/technical-a-to-z.html"
@@ -16762,7 +16763,7 @@
       "title": "Explain an identifier without changing it",
       "path": "docs/data/terminology-examples.yml",
       "source_file": "docs/data/terminology-examples.yml",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc",
       "authored_html_sha256": "3728e552c77a42cabcd54c79d8c3e790c001080f861408324be0a65f8bbefdb9",
       "owners": [
         "/content/style-guides/technical-a-to-z.html"
@@ -16781,7 +16782,7 @@
       "title": "Missing states and an old report need different wording",
       "path": "docs/data/terminology-examples.yml",
       "source_file": "docs/data/terminology-examples.yml",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc",
       "authored_html_sha256": "252fed608aaf1cff011fa8c9813dd6a88b44b03e5441b57a36338963b5db37ce",
       "owners": [
         "/content/style-guides/technical-a-to-z.html"
@@ -16800,7 +16801,7 @@
       "title": "Keep the native label, explain it nearby",
       "path": "docs/data/terminology-examples.yml",
       "source_file": "docs/data/terminology-examples.yml",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc",
       "authored_html_sha256": "f63fb73e30a6857f968cb6a322a0ccecf85f8abe264a2da708e7bda757700c2e",
       "owners": [
         "/content/style-guides/technical-a-to-z.html"
@@ -16819,7 +16820,7 @@
       "title": "Navigation and a request have different labels",
       "path": "docs/data/terminology-examples.yml",
       "source_file": "docs/data/terminology-examples.yml",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc",
       "authored_html_sha256": "206817c78c3d574127eec1ac07f14d3f7af49c50c73d506ab314917c763a9dea",
       "owners": [
         "/content/style-guides/technical-a-to-z.html"
@@ -16835,11 +16836,11 @@
     },
     {
       "id": "term-power-energy",
-      "title": "Power, energy and cost remain separate",
+      "title": "Power, energy and cost are different",
       "path": "docs/data/terminology-examples.yml",
       "source_file": "docs/data/terminology-examples.yml",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
-      "authored_html_sha256": "4077de053473d69acf0a3a645c246e4dfc3e05bbe59168e06193a0437ca6c924",
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc",
+      "authored_html_sha256": "e1a71969de8abf13241ead76784996c46cd5858be5e358dc22a7a739752a2291",
       "owners": [
         "/content/style-guides/technical-a-to-z.html"
       ],
@@ -16857,7 +16858,7 @@
       "title": "Apps, integrations and the Companion app",
       "path": "docs/data/terminology-examples.yml",
       "source_file": "docs/data/terminology-examples.yml",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a",
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc",
       "authored_html_sha256": "7b73e7ad25a6bd494a2e14f27d15bc95325a67c8bef5652a9928c1e207ed443c",
       "owners": [
         "/content/style-guides/technical-a-to-z.html"
@@ -16889,13 +16890,13 @@
       "finding_ids": [],
       "review_note": "Read the Use structure that communicates meaning specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-automation-status",
       "title": "Keep saved, enabled and running separate",
       "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "21454f39625ef68e5105ee856b040a3960b348684068210b1f1e53daa1cf90be",
+      "authored_html_sha256": "4cb1efe3992a2c479ff8eacc07a8d3fd00d7972398a3a6c58f28555b865622d2",
       "owners": [
         "/content/writing-guidelines/states-and-errors.html"
       ],
@@ -16909,7 +16910,7 @@
       "finding_ids": [],
       "review_note": "Read the Keep saved, enabled and running separate specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-availability",
@@ -16929,7 +16930,7 @@
       "finding_ids": [],
       "review_note": "Read the Give different missing states different meanings specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-bsl-status",
@@ -16949,7 +16950,7 @@
       "finding_ids": [],
       "review_note": "Read the Be honest about available formats specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-command-progress",
@@ -16969,7 +16970,7 @@
       "finding_ids": [],
       "review_note": "Read the Show the stages of a device request specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-data-gaps",
@@ -16989,7 +16990,7 @@
       "finding_ids": [],
       "review_note": "Read the Distinguish zero from no reading specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-data-meaning",
@@ -17009,13 +17010,13 @@
       "finding_ids": [],
       "review_note": "Read the Keep power and energy distinct specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-form-purpose",
       "title": "Explain why a question is needed",
       "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "459b30fd082e6c0bbb3b24c9464d162a9adc17f858883a328c4f9c3d9925660f",
+      "authored_html_sha256": "9d7cd96a4357fdf3f13d58ec8f7b121beb503c8d6d29ee72dd2d0c808e0cecc5",
       "owners": [
         "/content/writing-guidelines/clear-structure.html"
       ],
@@ -17029,13 +17030,13 @@
       "finding_ids": [],
       "review_note": "Read the Explain why a question is needed specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-household-terms",
-      "title": "Choose a household term by meaning",
+      "title": "Use the same word for the same action",
       "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "0a9940f4d528e7c8ad624484746461a755747448d5210e8fafdc9af12232821a",
+      "authored_html_sha256": "d829488198975bcf51b256031b62fd0442bdbf2a1ae20683fb65b2a1a5fc61fd",
       "owners": [
         "/content/writing-guidelines/clear-language.html"
       ],
@@ -17049,7 +17050,7 @@
       "finding_ids": [],
       "review_note": "Read the Choose a household term by meaning specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-instructions",
@@ -17069,7 +17070,7 @@
       "finding_ids": [],
       "review_note": "Read the Write steps someone can follow specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-permission",
@@ -17089,7 +17090,7 @@
       "finding_ids": [],
       "review_note": "Read the Explain a control that is not available specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-presence",
@@ -17109,7 +17110,7 @@
       "finding_ids": [],
       "review_note": "Read the Describe presence without claiming certainty specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-review-record",
@@ -17129,7 +17130,7 @@
       "finding_ids": [],
       "review_note": "Read the Record what was reviewed specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-scope",
@@ -17149,13 +17150,13 @@
       "finding_ids": [],
       "review_note": "Read the Keep names and native labels intact specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-state-action",
       "title": "Separate the reported state from the action",
       "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "f2dbeb6f9b30ddb6499cf836421633642271148ea864567d51f624b396c8ede2",
+      "authored_html_sha256": "cebb41b15417ac41d6ae634e066213a28aed8c04dcea04406e60076e83a1d1bc",
       "owners": [
         "/content/writing-guidelines/states-and-errors.html"
       ],
@@ -17169,7 +17170,7 @@
       "finding_ids": [],
       "review_note": "Read the Separate the reported state from the action specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "wg-warning-context",
@@ -17189,7 +17190,7 @@
       "finding_ids": [],
       "review_note": "Read the Distinguish a maintenance record from an alarm specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde"
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c"
     },
     {
       "id": "card-primary-linked",
@@ -19480,7 +19481,7 @@
     },
     {
       "path": "docs/data/writing-guide-examples.yml",
-      "sha256": "182190bf573a1dcc6bc5ff1953926e0d70477af16b3bf08deb5644981566bdde",
+      "sha256": "9e1ea48056be12f06e86b0bfe656c918980ace861025c632a0692a58a2b3aa5c",
       "scope": "Authored/shared documentation source review."
     },
     {
@@ -19626,7 +19627,7 @@
     {
       "path": "docs/data/terminology-examples.yml",
       "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-      "sha256": "505804b8ced997466985f5760c40972708f1ab34f473ba6bfe75f942649c663a"
+      "sha256": "9f5eeb3533c91735cec269b2502591931a3cc4359b18184a9e9e9eec86096fcc"
     },
     {
       "path": "docs/data/navigation.yml",
@@ -20107,6 +20108,21 @@
       "path": "docs/data/card-variants-examples.yml",
       "scope": "Nine original Civica Home Assistant card example variants with reference-only links and data.",
       "sha256": "055eefc213937a9a7f5570e9530ec96caf9d7aaab32213df1b12191293901f1a"
+    },
+    {
+      "path": "docs/source/partials/_four_nations_reading.erb",
+      "sha256": "b9c267757d49f8c2b07f1f78cc4bd5929da4db500c2e22127d0f5c15f05c0a41",
+      "scope": "Reading figures infographic owned by /content/writing-guidelines/clear-language.html. Figures verified against the four national surveys listed on /community/sources.html on 23 November 2026."
+    },
+    {
+      "path": "docs/data/uk-nations-map.json",
+      "sha256": "a59d0f80d385a74549726fec21338df3c30898b09a5418e14a76681fd625185c",
+      "scope": "Nations outline for the reading infographic on /content/writing-guidelines/clear-language.html, generated from Natural Earth 1:50m map units v5.1.2 (public domain) by docs/scripts/generate-uk-nations-map.py."
+    },
+    {
+      "path": "docs/scripts/generate-uk-nations-map.py",
+      "sha256": "4c32e8441a60fa0669c48db4f1e6babeac062a8c9e5900d0e62ab8128e28856e",
+      "scope": "Generator for docs/data/uk-nations-map.json, pinned to Natural Earth 1:50m map units v5.1.2 by full SHA-256."
     }
   ],
   "limitations": [
