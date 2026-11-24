@@ -6354,7 +6354,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "94cd2c33b9ba84ed5388a723c058d19df8dc1d63b447b3c122dc1d0b00adc6fd",
+      "sha256": "b27a7ed4195ecb1059a7399d643e03b34ac4b9eb88975d20bd9f30f88aee5a3b",
       "url": "/content/formatting-content/attachments.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -6385,7 +6385,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "b86ab40d7d5ea2b504b0d95fa5f1325db4de92cc718adb6d9cbda0540f71b5b9",
+      "sha256": "8a90543808b57bf31c492cfb8b70af1413782b3000577134ad09b682907a3e11",
       "url": "/content/formatting-content/charts-and-data.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -6509,7 +6509,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "6c91439df2a3c43cc8c87ad39a223786560cc79000c3115adfc073bf0f1f0d6a",
+      "sha256": "e84b606833ef318533ddb60f086971f5d16db293e5805b71ffd747bdca3bcf29",
       "url": "/content/formatting-content/text-formatting.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -6602,7 +6602,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "New page written on 15 November 2026 as part of the writing guide rewrite. Hash recorded after the rewrite. No independent review has been done yet.",
-      "sha256": "ab40031d4d305c612be014d9599da1747a0b6b23ec17b69d897d396513e37db4",
+      "sha256": "43470a0f4794bafac34f9431876133dd2079325fad12fe0ed1ac9c0b791ded90",
       "url": "/content/publish-update-retire/publish.html",
       "title": "Writing for a connected home",
       "example_ids": [
@@ -6846,13 +6846,12 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Rebuilt on 23 November 2026 from a section-by-section map of the original language guidance, with a four-nations reading infographic in docs/source/partials/_four_nations_reading.erb. Writer, editor, data visualiser and final editor passes recorded in the pull request.",
-      "sha256": "27c265c41117f8f7f3f8d0d08f58c615fbadb86ff64d73a98741d2411e83c174",
+      "sha256": "289170526a91acffd35a6ce32461571d2a861bf5490d29f11d1568a060726bee",
       "url": "/content/writing-guidelines/clear-language.html",
       "title": "Use clear language",
       "example_ids": [
         "term-device-entity",
-        "term-power-energy",
-        "wg-household-terms"
+        "term-power-energy"
       ],
       "resolved_finding_ids": [],
       "current_review_on": "2026-11-23",
@@ -7026,7 +7025,7 @@
       "result": "no_confirmed_finding",
       "finding_ids": [],
       "note": "Reworked on 23 November 2026. Rules grouped under Report states, Report requests and actions, and Report problems, with one table of missing states and at most one example for each rule.",
-      "sha256": "3c6d48201022d75cd04ca4c266cc862137acaa33c44d5393d9ed75177bd442e0",
+      "sha256": "8bcaf51acf8d4f18f6ea7ca22442a1ed073aaabcd2f758ba82c863c12232e719",
       "url": "/content/writing-guidelines/states-and-errors.html",
       "title": "States, requests and errors",
       "example_ids": [
@@ -16837,30 +16836,10 @@
       "review_note": "OS App, Integration and Companion app have separate roles; no installation or universal OS-only instruction is implied."
     },
     {
-      "id": "wg-accessible-structure",
-      "title": "Use structure that communicates meaning",
-      "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "5f872a9b990e7b042b219f77dba6a4db3596a9bdd58ee230a6de0233a10ebb5d",
-      "owners": [
-        "/content/formatting-content/text-formatting.html"
-      ],
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "finding_ids": [],
-      "review_note": "Read the Use structure that communicates meaning specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
-      "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
-    },
-    {
       "id": "wg-automation-status",
-      "title": "Keep saved, enabled and running separate",
+      "title": "Hall lights automation card",
       "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "4cb1efe3992a2c479ff8eacc07a8d3fd00d7972398a3a6c58f28555b865622d2",
+      "authored_html_sha256": "c7d82fc6bea90d4e1389753bb5471ba2fdc49d58a789308f5f0c4c84cc66da6b",
       "owners": [
         "/content/writing-guidelines/states-and-errors.html"
       ],
@@ -16872,75 +16851,15 @@
         "WG"
       ],
       "finding_ids": [],
-      "review_note": "Read the Keep saved, enabled and running separate specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
+      "review_note": "Read the Hall lights automation card specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
-    },
-    {
-      "id": "wg-availability",
-      "title": "Give different missing states different meanings",
-      "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "9104b8c281f0b6b9dc20335f57993ae41bfc71afe8a9e65e6e91a5b433ae8aa8",
-      "owners": [
-        "/content/writing-guidelines/states-and-errors.html"
-      ],
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "finding_ids": [],
-      "review_note": "Read the Give different missing states different meanings specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
-      "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
-    },
-    {
-      "id": "wg-bsl-status",
-      "title": "Be honest about available formats",
-      "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "a94d155ef5b67b37463f22fa4ef9f17b50d1c3401d892b5846954dc6a8a427f5",
-      "owners": [
-        "/content/formatting-content/attachments.html"
-      ],
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "finding_ids": [],
-      "review_note": "Read the Be honest about available formats specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
-      "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
-    },
-    {
-      "id": "wg-command-progress",
-      "title": "Show the stages of a device request",
-      "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "bdeee007031596b58173dcd39716eba6726396068d243ecdd4ffb65d651327ed",
-      "owners": [
-        "/content/writing-guidelines/states-and-errors.html"
-      ],
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "finding_ids": [],
-      "review_note": "Read the Show the stages of a device request specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
-      "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
+      "sha256": "5a72b7e0c12bd9b55dd93159191e34b4175347490bd702e458253b8a085fae4f"
     },
     {
       "id": "wg-data-gaps",
-      "title": "Distinguish zero from no reading",
+      "title": "Car charger hourly use card",
       "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "928bcfc0acc56d0e9767ba500925f1d98051639e5a15de91df7317985bb42dd4",
+      "authored_html_sha256": "7caff51a30c9543c99fffeeeb613f374ce79d0ee7be7d5f9e247d8cdd703e009",
       "owners": [
         "/content/formatting-content/charts-and-data.html"
       ],
@@ -16952,15 +16871,15 @@
         "WG"
       ],
       "finding_ids": [],
-      "review_note": "Read the Distinguish zero from no reading specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
+      "review_note": "Read the Car charger hourly use card specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
+      "sha256": "5a72b7e0c12bd9b55dd93159191e34b4175347490bd702e458253b8a085fae4f"
     },
     {
       "id": "wg-data-meaning",
-      "title": "Keep power and energy distinct",
+      "title": "Power and energy cards",
       "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "b9bb128f3aa4db32029c083c92c79b65a00b9c5a52872b849b27bd46b2e281ea",
+      "authored_html_sha256": "f1afd58a0de102a2d230b7ff0ffd41429649462eb05919e81cac80077d12fbe7",
       "owners": [
         "/content/formatting-content/charts-and-data.html"
       ],
@@ -16972,135 +16891,15 @@
         "WG"
       ],
       "finding_ids": [],
-      "review_note": "Read the Keep power and energy distinct specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
+      "review_note": "Read the Power and energy cards specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
-    },
-    {
-      "id": "wg-form-purpose",
-      "title": "Explain why a question is needed",
-      "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "9d7cd96a4357fdf3f13d58ec8f7b121beb503c8d6d29ee72dd2d0c808e0cecc5",
-      "owners": [
-        "/content/writing-guidelines/clear-structure.html"
-      ],
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "finding_ids": [],
-      "review_note": "Read the Explain why a question is needed specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
-      "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
-    },
-    {
-      "id": "wg-household-terms",
-      "title": "Use the same word for the same action",
-      "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "d829488198975bcf51b256031b62fd0442bdbf2a1ae20683fb65b2a1a5fc61fd",
-      "owners": [
-        "/content/writing-guidelines/clear-language.html"
-      ],
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "finding_ids": [],
-      "review_note": "Read the Choose a household term by meaning specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
-      "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
-    },
-    {
-      "id": "wg-instructions",
-      "title": "Write steps someone can follow",
-      "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "7aed07bf02a925f8aa48587d1cfaf1635f8e5248bf7b30940784e0a411681fa3",
-      "owners": [
-        "/content/writing-guidelines/clear-structure.html"
-      ],
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "finding_ids": [],
-      "review_note": "Read the Write steps someone can follow specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
-      "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
-    },
-    {
-      "id": "wg-permission",
-      "title": "Explain a control that is not available",
-      "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "f9f8f64dff64a9a4e9035e522c187e3abb5a6c34e59b6623b84f5c7fcfd5eac2",
-      "owners": [
-        "/content/writing-guidelines/states-and-errors.html"
-      ],
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "finding_ids": [],
-      "review_note": "Read the Explain a control that is not available specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
-      "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
-    },
-    {
-      "id": "wg-presence",
-      "title": "Describe presence without claiming certainty",
-      "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "c0ddf7e9fec24b73a6ae95992f2aa9a7b1025d9b1e720afd2f9f8f7d1f28da4f",
-      "owners": [
-        "/content/writing-guidelines/right-tone.html"
-      ],
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "finding_ids": [],
-      "review_note": "Read the Describe presence without claiming certainty specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
-      "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
-    },
-    {
-      "id": "wg-review-record",
-      "title": "Record what was reviewed",
-      "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "bb6ecec70a7d57e43c501425459f84bc39d9c1c537c69018015dbcc3f13003d2",
-      "owners": [
-        "/content/publish-update-retire/publish.html"
-      ],
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "finding_ids": [],
-      "review_note": "Read the Record what was reviewed specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
-      "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
+      "sha256": "5a72b7e0c12bd9b55dd93159191e34b4175347490bd702e458253b8a085fae4f"
     },
     {
       "id": "wg-state-action",
-      "title": "Separate the reported state from the action",
+      "title": "Reading lamp card",
       "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "cebb41b15417ac41d6ae634e066213a28aed8c04dcea04406e60076e83a1d1bc",
+      "authored_html_sha256": "069e6262c22282a234932a287789f5b746fa90454be4fad43f29aa6aa047afeb",
       "owners": [
         "/content/writing-guidelines/states-and-errors.html"
       ],
@@ -17112,15 +16911,15 @@
         "WG"
       ],
       "finding_ids": [],
-      "review_note": "Read the Separate the reported state from the action specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
+      "review_note": "Read the Reading lamp card specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
+      "sha256": "5a72b7e0c12bd9b55dd93159191e34b4175347490bd702e458253b8a085fae4f"
     },
     {
       "id": "wg-warning-context",
-      "title": "Distinguish a maintenance record from an alarm",
+      "title": "Boiler service reminder card",
       "path": "docs/data/writing-guide-examples.yml",
-      "authored_html_sha256": "d1921748f2a4573c73bead471cbc55bac70e3edc1a041241c457f076b373afd0",
+      "authored_html_sha256": "3fdff34d464e356b460f075223b2fbe2f7df84eeeadde38f10c9beb70ef94029",
       "owners": [
         "/content/writing-guidelines/states-and-errors.html"
       ],
@@ -17132,9 +16931,9 @@
         "WG"
       ],
       "finding_ids": [],
-      "review_note": "Read the Distinguish a maintenance record from an alarm specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
+      "review_note": "Read the Boiler service reminder card specimen with its owning guide: complete local destination/feedback, state/action meaning, semantic structure and native integration boundaries checked. Rendered acceptance is recorded separately.",
       "source_file": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839"
+      "sha256": "5a72b7e0c12bd9b55dd93159191e34b4175347490bd702e458253b8a085fae4f"
     },
     {
       "id": "card-primary-linked",
@@ -19425,7 +19224,7 @@
     },
     {
       "path": "docs/data/writing-guide-examples.yml",
-      "sha256": "53ccfb49ade0ff5d0dbf95b2f5cd6e3aa9e0a12b8648ddefa8b4395ce5904839",
+      "sha256": "5a72b7e0c12bd9b55dd93159191e34b4175347490bd702e458253b8a085fae4f",
       "scope": "Authored/shared documentation source review."
     },
     {
@@ -19435,7 +19234,7 @@
     },
     {
       "path": "docs/data/writing-guide-inventory.json",
-      "sha256": "e95caa121267bbb916e343476ab2eb21e00439017509f8901c773548d65c5c4b",
+      "sha256": "a09b3e2ecf5f45a1bd2d5ed2ff74620a322f82d34f53932cd23573dde2c45d4b",
       "scope": "Authored/shared documentation source review."
     },
     {
