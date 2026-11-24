@@ -6,8 +6,10 @@ group: "Formatting content"
 nav_order: 3
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-15"
+updated_on: "2026-11-24"
 updates:
+  - date: "2026-11-24"
+    description: "The power and energy example and the hourly readings example now show dashboard cards as a household sees them."
   - date: "2026-11-15"
     description: "Rewritten with plain rules and Before and After examples."
 ai_instructions: "Apply to numbers, units, dates, times and charts. Name the quantity, keep units with values, mark gaps and make ambiguous times explicit. Rules WG-070 to WG-078."
@@ -32,7 +34,7 @@ For how to write the numbers themselves, read [Write numbers, measurements, date
 
 <h2 id="wg-070">Name the measured quantity</h2>
 
-Say what is measured, not just the number. Power and energy are different.
+Say what is measured, not just the number. Power and energy are different. Power is the rate at one moment, in W or kW. Energy is the amount used over a period, in kWh.
 
 <%= example('wg-data-meaning') %>
 
@@ -88,14 +90,14 @@ Say “midnight” with the date, or use 11:59pm. Say which day a schedule means
 
 <h2 id="wg-076">Keep gaps and real zeros apart</h2>
 
-“No reading” is not 0. Do not add a total over a gap without saying so.
+“No reading” is not 0. If the charger used nothing in an hour, show 0.00. If no reading arrived, show No reading. Do not add a total over a gap without saying so.
 
 <%= example('wg-data-gaps') %>
 
 | Before | After |
 | --- | --- |
-| 10:00: 0.00kWh (no reading) | 10:00: No reading |
-| Total: 0.42kWh | Total: 0.42kWh from 2 of 3 hours. The 10:00 reading is missing. |
+| 03:00 to 04:00: 0.00kWh (no reading) | 03:00 to 04:00: No reading |
+| Total: 18.44kWh | Total: 18.44kWh from 5 of 6 hours. The 03:00 to 04:00 reading is missing. |
 
 <h2 id="wg-077">Give charts a text equivalent</h2>
 

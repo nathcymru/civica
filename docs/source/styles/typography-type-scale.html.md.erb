@@ -4,14 +4,14 @@ description: "Every Civica text size and line height on wide and narrow screens,
 group: "Typography"
 nav_order: 5
 no_contents: true
-last_reviewed_on: 2026-11-19
+last_reviewed_on: 2026-11-24
 review_in: 3 months
 published_on: "2026-11-19"
-updated_on: "2026-11-19"
+updated_on: "2026-11-24"
 updates:
   - date: "2026-11-19"
     description: "First published. The type scale table, specimen, comparison chart, native Home Assistant sizes and the card CSS example moved here from Typography."
-ai_instructions: "Apply when choosing a font size or line height for a Home Assistant card, panel or Civica documentation page. Take sizes from the type scale table: maintained Civica UI uses civica-font-size-body (19px), civica-font-size-small (16px) and civica-font-size-heading (24px); native dense controls keep ha-font-size-xs, s, m and l (12, 14, 16 and 19px). Every size is multiplied by --ha-font-size-scale, so never set a fixed px font size in a card: use var(--variable). A large sensor reading is sized to fit the card. Headings own heading levels; Web-app typography owns when to keep native screens dense. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-080."
+ai_instructions: "Apply when choosing a font size, line height or spacing for a Home Assistant card, panel or Civica documentation page. Take sizes from the type scale tables: narrow screens below 768px and wide screens from 768px up. Cards on a dashboard use the wide-screen sizes because a theme cannot change size with screen width: civica-font-size-body (19px), civica-font-size-small (16px) and civica-font-size-heading (22px); native dense controls keep ha-font-size-xs, s, m and l (12, 14, 16 and 19px). Every card size is multiplied by --ha-font-size-scale, so never set a fixed px font size in a card: use var(--variable). A large sensor reading is sized to fit the card. Headings own heading levels; Web-app typography owns when to keep native screens dense. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-080."
 ai_related:
   - path: "/styles/typography.html"
     title: "Typography"
@@ -31,77 +31,113 @@ ai_related:
 
 Take every text size from this scale. Do not make up a new size for one card.
 
-Each role has one size on wide screens and one on narrow screens, such as a phone. The Civica theme multiplies every size by Home Assistant's font size scale, `--ha-font-size-scale`, so all text grows together if the scale is raised. Browser and app zoom make it larger too.
+Each role has one size on narrow screens, such as a phone, and one on wide screens. The sizes change at 768px. The Civica theme multiplies every card size by Home Assistant's font size scale, `--ha-font-size-scale`, so all text grows together if the scale is raised. Browser and app zoom make it larger too.
 
 ## Sizes for each role
 
-| Role | Wide screens | Narrow screens | Line height | Weight | Civica or Home Assistant variable |
-| --- | --- | --- | --- | --- | --- |
-| Page heading | 48px | 36px | 1.1 | Bold | None. Used on documentation pages and custom panels only |
-| Section heading | 30px | 24px | 1.2 | Bold | None. Used on documentation pages and custom panels only |
-| Card heading | 24px | 20px to 24px | 1.25 | Bold | `civica-font-size-heading` |
-| Main reading | 32px to 48px | Large enough to fit the value and unit | 1.25, from `ha-line-height-condensed` | Regular or bold | None. Size it to fit the card |
-| Body text and main controls | 19px | 18px to 19px | 1.5 | Regular | `civica-font-size-body` |
-| Supporting text | 16px | 16px | 1.5 | Regular | `civica-font-size-small` |
+Narrow screens, below 768px:
 
-These sizes are for maintained Civica cards and panels. On a phone, the narrow sizes stop a heading from taking the whole screen.
+| Role | Size | Line height | Weight |
+| --- | --- | --- | --- |
+| Heading level 1 | 30px | 40px | Bold, 700 |
+| Heading level 2 | 22px | 32px | Bold, 700 |
+| Heading level 3 | 19px | 24px | Bold, 700 |
+| Heading level 4 | 16px | 24px | Bold, 700 |
+| Heading level 5 | 14px | 24px | Bold, 700 |
+| Lead paragraph | 19px | 32px | Light, 300 |
+| Body text | 16px | 24px | Regular, 400 |
+| Small text | 14px | 24px | Regular, 400 |
+
+Wide screens, from 768px:
+
+| Role | Size | Line height | Weight |
+| --- | --- | --- | --- |
+| Heading level 1 | 44px | 56px | Bold, 700 |
+| Heading level 2 | 30px | 40px | Bold, 700 |
+| Heading level 3 | 22px | 32px | Bold, 700 |
+| Heading level 4 | 19px | 32px | Bold, 700 |
+| Heading level 5 | 16px | 24px | Bold, 700 |
+| Lead paragraph | 24px | 40px | Light, 300 |
+| Body text | 19px | 32px | Regular, 400 |
+| Small text | 16px | 24px | Regular, 400 |
+
+Documentation pages and custom panels follow both tables. A Home Assistant theme cannot change a size with the width of the screen, so cards on a dashboard take their sizes from the wide-screen table:
+
+| Role in a card | Size | Civica or Home Assistant variable |
+| --- | --- | --- |
+| Card heading | 22px | `civica-font-size-heading` |
+| Main reading | Sized to fit the value and unit, about 32px to 48px | None. Size it to fit the card |
+| Body text and main controls | 19px | `civica-font-size-body` |
+| Supporting text | 16px | `civica-font-size-small` |
+
+Card line heights follow the same table: 32px for body text, 24px for supporting text, and 32px for a card heading.
+
+## Spacing
+
+Keep the space around text on this scale too:
+
+| Element | Space above | Space below |
+| --- | --- | --- |
+| Paragraph | None | 16px |
+| Heading level 2 | 32px on narrow screens, 40px on wide screens | 16px |
+| Heading levels 3, 4 and 5 | 24px | 16px |
+| Lead paragraph | None | 32px on narrow screens, 40px on wide screens |
+| Bulleted or numbered list | None | 16px, with 8px between items |
 
 ## Specimen
 
-This specimen sets each role at its wide-screen size, with text from an invented household's dashboard. On a phone, the page and section headings use their narrow sizes instead.
+This specimen sets each role at its wide-screen size, with text from an invented household's dashboard. On a phone, every role uses its narrow size instead.
 
 <%=
   samples = [
-    ['Hughes home', 'Page heading', 48, 700, 1.1],
-    ['Downstairs', 'Section heading', 30, 700, 1.2],
-    ['Living room', 'Card heading', 24, 700, 1.25],
-    ['21.4°C', 'Main reading, shown here at 40px', 40, 400, 1.25],
-    ['The heating is on until 22:00.', 'Body text and main controls', 19, 400, 1.5],
-    ['Updated 14:05', 'Supporting text', 16, 400, 1.5]
+    ['Hughes home', 'Heading level 1', 44, 700, 56],
+    ['Downstairs', 'Heading level 2', 30, 700, 40],
+    ['Living room', 'Heading level 3 and card heading', 22, 700, 32],
+    ['Heating schedule', 'Heading level 4', 19, 700, 32],
+    ['Rooms in this home', 'Heading level 5', 16, 700, 24],
+    ['Every room has its own schedule.', 'Lead paragraph', 24, 300, 40],
+    ['The heating is on until 22:00.', 'Body text and main controls', 19, 400, 32],
+    ['Updated 14:05', 'Small text and supporting text', 16, 400, 24]
   ]
   items = samples.map do |text, role, size, weight, line|
-    detail = role.include?('40px') ? "#{role}, #{weight == 700 ? 'bold' : 'regular'}, line height #{line}" : "#{role}, #{size}px #{weight == 700 ? 'bold' : 'regular'}, line height #{line}"
-    %(<div style="margin:0 0 20px"><p style="font-family:Arial,Helvetica,sans-serif;font-size:#{size}px;font-weight:#{weight};line-height:#{line};margin:0;overflow-wrap:anywhere">#{text}</p><p style="font-size:16px;line-height:1.5;margin:5px 0 0">#{detail}</p></div>)
+    name = { 300 => 'light', 400 => 'regular', 700 => 'bold' }[weight]
+    %(<div style="margin:0 0 16px"><p style="font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:#{size}px;font-weight:#{weight};line-height:#{line}px;margin:0;overflow-wrap:anywhere">#{text}</p><p style="font-size:16px;line-height:24px;margin:0">#{role}, #{size}px #{name}, line height #{line}px</p></div>)
   end
-  %(<figure style="margin:0 0 30px">#{items.join}<figcaption>Each role at its wide-screen size. The large text is a sample, not a heading, so it is not marked up as one.</figcaption></figure>)
+  %(<figure style="margin:0 0 32px">#{items.join}<figcaption>Each role at its wide-screen size. The text is a sample, so it is not marked up as a heading.</figcaption></figure>)
 %>
 
-## Wide and narrow screens compared
+## Narrow and wide screens compared
 
-This comparison shows how much each size changes between wide and narrow screens. Headings change most. Body and supporting text barely change, so they stay easy to read on a phone.
+This comparison shows how much each size changes between narrow and wide screens. Headings change most. Body and small text change by 3px or less, so they stay easy to read on a phone.
 
 <%=
   hex = ->(id) { govuk_colour(id).fetch('hex') }
   ink, grid, wide_c, narrow_c = hex.('black'), hex.('black-tint-80'), hex.('blue'), hex.('magenta')
   roles = [
-    ['Page heading', [48, 48], [36, 36]],
-    ['Section heading', [30, 30], [24, 24]],
-    ['Card heading', [24, 24], [20, 24]],
-    ['Main reading', [32, 48], nil],
-    ['Body text and main controls', [19, 19], [18, 19]],
-    ['Supporting text', [16, 16], [16, 16]]
+    ['Heading level 1', 44, 30],
+    ['Heading level 2', 30, 22],
+    ['Heading level 3', 22, 19],
+    ['Heading level 4', 19, 16],
+    ['Heading level 5', 16, 14],
+    ['Lead paragraph', 24, 19],
+    ['Body text', 19, 16],
+    ['Small text', 16, 14]
   ]
   x_of = ->(px) { 60 + px * 4 }
-  label = ->(r) { r[0] == r[1] ? "#{r[0]}px" : "#{r[0]} to #{r[1]}px" }
-  bar = lambda do |range, y, colour|
-    out = %(<rect x="60" y="#{y}" width="#{range[0] * 4}" height="12" fill="#{colour}"/>)
-    out += %(<rect x="#{x_of.(range[0])}" y="#{y + 1}" width="#{(range[1] - range[0]) * 4}" height="10" fill="none" stroke="#{colour}" stroke-width="2" stroke-dasharray="4 2"/>) if range[1] > range[0]
-    out + %(<text x="#{x_of.(range[1]) + 5}" y="#{y + 10}" font-size="10" fill="#{ink}">#{label.(range)}</text>)
-  end
   svg = []
-  [0, 12, 24, 36, 48].each { |v| svg << %(<line x1="#{x_of.(v)}" y1="8" x2="#{x_of.(v)}" y2="272" stroke="#{grid}" stroke-width="1"/><text x="#{x_of.(v)}" y="286" font-size="10" text-anchor="middle" fill="#{ink}">#{v}</text>) }
-  svg << %(<text x="#{x_of.(48)}" y="299" font-size="10" text-anchor="middle" fill="#{ink}">Size (px)</text>)
+  [0, 10, 20, 30, 40, 50].each { |v| svg << %(<line x1="#{x_of.(v)}" y1="8" x2="#{x_of.(v)}" y2="#{roles.size * 44 - 4}" stroke="#{grid}" stroke-width="1"/><text x="#{x_of.(v)}" y="#{roles.size * 44 + 8}" font-size="10" text-anchor="middle" fill="#{ink}">#{v}</text>) }
+  svg << %(<text x="#{x_of.(25)}" y="#{roles.size * 44 + 21}" font-size="10" text-anchor="middle" fill="#{ink}">Size (px)</text>)
   roles.each_with_index do |(role, wide, narrow), i|
     y = 18 + i * 44
     svg << %(<text x="0" y="#{y}" font-size="11" font-weight="700" fill="#{ink}">#{role}</text>)
-    svg << %(<text x="0" y="#{y + 14}" font-size="10" fill="#{ink}">Wide</text>) << bar.(wide, y + 4, wide_c)
-    svg << %(<text x="0" y="#{y + 29}" font-size="10" fill="#{ink}">Narrow</text>)
-    svg << (narrow ? bar.(narrow, y + 19, narrow_c) : %(<text x="62" y="#{y + 29}" font-size="10" fill="#{ink}">Not fixed: large enough to fit the value and unit</text>))
+    svg << %(<text x="0" y="#{y + 14}" font-size="10" fill="#{ink}">Wide</text><rect x="60" y="#{y + 4}" width="#{wide * 4}" height="12" fill="#{wide_c}"/><text x="#{x_of.(wide) + 5}" y="#{y + 14}" font-size="10" fill="#{ink}">#{wide}px</text>)
+    svg << %(<text x="0" y="#{y + 29}" font-size="10" fill="#{ink}">Narrow</text><rect x="60" y="#{y + 19}" width="#{narrow * 4}" height="12" fill="#{narrow_c}"/><text x="#{x_of.(narrow) + 5}" y="#{y + 29}" font-size="10" fill="#{ink}">#{narrow}px</text>)
   end
-  rows = roles.map { |role, wide, narrow| %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">#{role}</th><td class="govuk-table__cell">#{label.(wide)}</td><td class="govuk-table__cell">#{narrow ? label.(narrow) : 'Not fixed. Large enough to fit the value and unit.'}</td></tr>) }
+  rows = roles.map { |role, wide, narrow| %(<tr class="govuk-table__row"><th scope="row" class="govuk-table__header">#{role}</th><td class="govuk-table__cell">#{wide}px</td><td class="govuk-table__cell">#{narrow}px</td></tr>) }
+  height = roles.size * 44 + 28
   %(<div class="c-colour-example"><figure style="margin:0 0 20px">) +
-    %(<svg role="img" aria-labelledby="scale-compared-title scale-compared-desc" viewBox="0 0 320 304" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif"><title id="scale-compared-title">Bar chart comparing each type size on wide and narrow screens</title><desc id="scale-compared-desc">Each role has a wide-screen bar and a narrow-screen bar, labelled Wide and Narrow, with the size in pixels at the end of each bar. A solid bar shows a fixed size, and a dashed outline after it shows a range. The page heading drops from 48px to 36px and the section heading from 30px to 24px. The card heading is 24px wide and 20 to 24px narrow. The main reading is 32 to 48px wide and not fixed on narrow screens, so it has no narrow bar. Body text is 19px wide and 18 to 19px narrow. Supporting text is 16px on both. The table after the chart gives every size.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
-    %(<figcaption>Type sizes in px on wide and narrow screens, before the font size scale. A dashed outline shows a range of sizes. A role with no narrow bar has no fixed narrow size: it is not 0.</figcaption></figure>) +
+    %(<svg role="img" aria-labelledby="scale-compared-title scale-compared-desc" viewBox="0 0 320 #{height}" style="display:block;width:100%;max-width:480px;height:auto;font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif"><title id="scale-compared-title">Bar chart comparing each type size on wide and narrow screens</title><desc id="scale-compared-desc">Each role has a wide-screen bar and a narrow-screen bar, with the size in pixels at the end of each bar. Heading level 1 drops from 44px to 30px, level 2 from 30px to 22px, level 3 from 22px to 19px, level 4 from 19px to 16px and level 5 from 16px to 14px. The lead paragraph drops from 24px to 19px, body text from 19px to 16px and small text from 16px to 14px. The table after the chart gives every size.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
+    %(<figcaption>Type sizes in px on wide and narrow screens, before the font size scale.</figcaption></figure>) +
     %(<details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Show the data: type sizes on wide and narrow screens</span></summary><div class="govuk-details__text"><div class="civica-table-scroll" role="region" tabindex="0" aria-label="Type sizes on wide and narrow screens"><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">Type sizes on wide and narrow screens</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Role</th><th scope="col" class="govuk-table__header">Wide screens</th><th scope="col" class="govuk-table__header">Narrow screens</th></tr></thead><tbody class="govuk-table__body">#{rows.join}</tbody></table></div></div></details></div>)
 %>
 

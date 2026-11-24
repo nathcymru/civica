@@ -17,7 +17,7 @@
 .civica-data-dashboard__plot:focus-visible { outline:3px solid #ffdd00; box-shadow:0 0 0 6px #0b0c0c; }
 // A minimum SVG width preserves 14px labels; the region, not the page, scrolls.
 .civica-data-dashboard__chart { display:block; width:100%; min-width:600px; height:auto; }
-.civica-data-dashboard__labels { font-family:Arial,Helvetica,sans-serif; font-size:.875rem; fill:#414042; }
+.civica-data-dashboard__labels { font-family:Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:.875rem; fill:#414042; }
 .civica-data-dashboard__grid line { stroke:#d9d9d9; stroke-width:1; vector-effect:non-scaling-stroke; }
 .civica-data-dashboard__zero { stroke:#b3b3b3; stroke-width:1.5; vector-effect:non-scaling-stroke; }
 .civica-data-dashboard__room-list .govuk-summary-list__value > :last-child { margin-bottom:0; }

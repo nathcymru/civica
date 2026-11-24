@@ -12,7 +12,7 @@ examples:
       <div style="max-width:720px">
       <figure style="margin:0 0 30px" aria-labelledby="web-dashboard-c">
       <div role="region" aria-label="Dashboard drawing, which scrolls sideways on a narrow screen" tabindex="0" style="overflow-x:auto">
-      <svg viewBox="0 0 800 540" role="img" aria-labelledby="web-dashboard-t web-dashboard-d" style="display:block;width:100%;height:auto;min-width:600px;font-family:Arial,Helvetica,sans-serif">
+      <svg viewBox="0 0 800 540" role="img" aria-labelledby="web-dashboard-t web-dashboard-d" style="display:block;width:100%;height:auto;min-width:600px;font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif">
       <title id="web-dashboard-t">Web palette example: a Home Assistant dashboard in a desktop browser</title>
       <desc id="web-dashboard-d">A desktop browser shows a Home Assistant dashboard with the Civica theme and companion on a White background. On the left is Home Assistant’s sidebar: a Primary blue row with the menu icon and the Civica logo in White, which the Civica companion adds, then Overview, which is selected, on a Black tint 95% row with its icon and name in Blue shade 25%, Energy, Map, Logbook and History, and at the bottom Settings, Notifications and the user Alex Morgan. The Primary blue toolbar has the view tabs Home, Upstairs and Garden in White, with Home underlined, and Search, Assist and menu icons. The Home view has 2 badges, 9.5 °C and 1.2 kW, and 2 sections. Living room has an entities card where Main light is on, with a Primary blue switch, and Lamp is off, and a thermostat card heating to 21 °C with a current temperature of 19.5 °C on a Primary orange dial. Kitchen has tiles for Temperature 20.5 °C, Humidity 48 % and Window Closed, and a card that says bins go out on Thursday with a link to the bin calendar in Blue shade 10%. Cards are White with Black tint 80% borders, text is Black and secondary text Black tint 25%.</desc>
       <rect width="800" height="540" fill="#FFFFFF"/>
@@ -37,7 +37,7 @@ examples:
       <circle cx="128" cy="180" r="15" fill="#FFFFFF"/>
       <circle cx="168" cy="180" r="15" fill="#FFFFFF"/>
       </g>
-      <text x="290" y="186" font-family="Arial, Helvetica, Liberation Sans, Arimo, sans-serif" font-weight="700" font-size="178" fill="#FFFFFF">Civica</text>
+      <text x="290" y="186" font-family="Roboto, Helvetica Neue, Helvetica, Arial, Liberation Sans, Arimo, sans-serif" font-weight="700" font-size="178" fill="#FFFFFF">Civica</text>
       </g>
       <rect x="6" y="108" width="188" height="40" rx="4" fill="#F3F3F3"/>
       <g transform="translate(17 117) scale(0.916667)">
@@ -211,7 +211,7 @@ examples:
       <div style="max-width:720px">
       <figure style="margin:0 0 30px" aria-labelledby="mobile-web-c">
       <div style="max-width:340px;margin:0 auto">
-      <svg viewBox="0 0 380 760" role="img" aria-labelledby="mobile-web-t mobile-web-d" style="display:block;width:100%;height:auto;font-family:Arial,Helvetica,sans-serif">
+      <svg viewBox="0 0 380 760" role="img" aria-labelledby="mobile-web-t mobile-web-d" style="display:block;width:100%;height:auto;font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif">
       <title id="mobile-web-t">Mobile web header: a Home Assistant dashboard in a phone browser</title>
       <desc id="mobile-web-d">A phone browser at home.morgan.example shows the same Home Assistant dashboard. The Primary blue toolbar has the menu icon, the view tabs Home, Upstairs and Garden in White with Home underlined, and Search and menu icons. Below it on a White background are the badges 9.5 °C and 1.2 kW, a Living room card with Main light on, with a Primary blue switch, and Lamp off, and Kitchen tiles for Temperature 20.5 °C, Humidity 48 % and Window Closed, and a card about bin day with a link.</desc>
       <rect width="380" height="760" fill="#FFFFFF"/>
@@ -346,7 +346,7 @@ examples:
       <figure style="margin:0 0 30px" aria-labelledby="app-header-1-c">
       <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center">
       <div style="flex:1 1 250px;max-width:340px">
-      <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-header-1-t app-header-1-d" style="display:block;width:100%;height:auto;font-family:Arial,Helvetica,sans-serif">
+      <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-header-1-t app-header-1-d" style="display:block;width:100%;height:auto;font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif">
       <title id="app-header-1-t">App header: Home view</title>
       <desc id="app-header-1-d">The Companion app shows the Home view of the dashboard. Under a Primary blue status bar, the Primary blue toolbar has the menu icon, the view tabs Home, Upstairs and Garden in White with Home underlined, and Search and menu icons. Below are the badges 9.5 °C and 1.2 kW, a Living room card with Main light on and Lamp off, Kitchen tiles for Temperature, Humidity and Window, and a card about bin day.</desc>
       <rect width="380" height="760" fill="#FFFFFF"/>
@@ -448,7 +448,7 @@ examples:
       </svg>
       </div>
       <div style="flex:1 1 250px;max-width:340px">
-      <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-header-1b-t app-header-1b-d" style="display:block;width:100%;height:auto;font-family:Arial,Helvetica,sans-serif">
+      <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-header-1b-t app-header-1b-d" style="display:block;width:100%;height:auto;font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif">
       <title id="app-header-1b-t">App header: Logbook</title>
       <desc id="app-header-1b-d">The Companion app shows Logbook. The Primary blue toolbar has the menu icon and the title Logbook in White. Below are a Period field set to Today and the events for Wednesday 18 November, from Kitchen light turned on at 18:42 to Kitchen window was closed at 17:31.</desc>
       <rect width="380" height="760" fill="#FFFFFF"/>
@@ -542,7 +542,7 @@ examples:
       <figure style="margin:0 0 30px" aria-labelledby="app-header-2-c">
       <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center">
       <div style="flex:1 1 250px;max-width:340px">
-      <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-header-2-t app-header-2-d" style="display:block;width:100%;height:auto;font-family:Arial,Helvetica,sans-serif">
+      <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-header-2-t app-header-2-d" style="display:block;width:100%;height:auto;font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif">
       <title id="app-header-2-t">App header: Settings</title>
       <desc id="app-header-2-d">The Companion app shows Settings. The Primary blue toolbar has the menu icon, the title Settings in White, and Search and menu icons. Below is a card listing Devices &amp; services, Automations &amp; scenes, Areas, labels &amp; zones, Dashboards, People, System and About, each with a coloured icon and a short description.</desc>
       <rect width="380" height="760" fill="#FFFFFF"/>
@@ -663,7 +663,7 @@ examples:
       </svg>
       </div>
       <div style="flex:1 1 250px;max-width:340px">
-      <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-header-2b-t app-header-2b-d" style="display:block;width:100%;height:auto;font-family:Arial,Helvetica,sans-serif">
+      <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-header-2b-t app-header-2b-d" style="display:block;width:100%;height:auto;font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif">
       <title id="app-header-2b-t">App header: Shopping list</title>
       <desc id="app-header-2b-d">The Companion app shows a to-do list. The Primary blue toolbar has the menu icon and the title Shopping list in White. Below are an Add item field, 4 items to buy with empty checkboxes, and 2 completed items, Washing-up liquid and Bin bags, with Primary blue ticked checkboxes.</desc>
       <rect width="380" height="760" fill="#FFFFFF"/>
@@ -753,7 +753,7 @@ examples:
       <figure style="margin:0 0 30px" aria-labelledby="app-examples-c">
       <div style="display:flex;flex-wrap:wrap;gap:20px;justify-content:center">
       <div style="flex:1 1 250px;max-width:340px">
-      <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-examples-t app-examples-d" style="display:block;width:100%;height:auto;font-family:Arial,Helvetica,sans-serif">
+      <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-examples-t app-examples-d" style="display:block;width:100%;height:auto;font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif">
       <title id="app-examples-t">App examples: tiles with tinted icons</title>
       <desc id="app-examples-d">The Companion app shows the Upstairs view under the Primary blue toolbar. A guide annotation, which is not part of the app, points at the menu icon: an Accent yellow label with a Black border that says Tap to open the menu in Black. Each tile has its icon in a tinted circle: Bedside lamp and Desk lamp are on, with yellow icons on Yellow tint 80%; Heating is heating, with an orange icon on Orange tint 80%; Ceiling light, Spotlights and the sensors have Black tint 25% icons on Black tint 80%. The tiles themselves stay White with Black tint 80% borders.</desc>
       <rect width="380" height="760" fill="#FFFFFF"/>
@@ -868,7 +868,7 @@ examples:
       </svg>
       </div>
       <div style="flex:1 1 250px;max-width:340px">
-      <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-examples-b-t app-examples-b-d" style="display:block;width:100%;height:auto;font-family:Arial,Helvetica,sans-serif">
+      <svg viewBox="0 0 380 760" role="img" aria-labelledby="app-examples-b-t app-examples-b-d" style="display:block;width:100%;height:auto;font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif">
       <title id="app-examples-b-t">App examples: the sidebar with a tinted row</title>
       <desc id="app-examples-b-d">The Companion app shows Home Assistant’s sidebar, opened from the menu icon, over the dimmed dashboard. It starts with a Primary blue row with the menu icon and the Civica logo in White, which appears when the Civica companion is installed. Overview, the open dashboard, is on a Black tint 95% row with its icon and name in Blue shade 25%. Below are Energy, Map, Logbook, History and To-do lists, then Settings, Notifications and the user Alex Morgan.</desc>
       <rect width="380" height="760" fill="#FFFFFF"/>
@@ -906,7 +906,7 @@ examples:
       <circle cx="128" cy="180" r="15" fill="#FFFFFF"/>
       <circle cx="168" cy="180" r="15" fill="#FFFFFF"/>
       </g>
-      <text x="290" y="186" font-family="Arial, Helvetica, Liberation Sans, Arimo, sans-serif" font-weight="700" font-size="178" fill="#FFFFFF">Civica</text>
+      <text x="290" y="186" font-family="Roboto, Helvetica Neue, Helvetica, Arial, Liberation Sans, Arimo, sans-serif" font-weight="700" font-size="178" fill="#FFFFFF">Civica</text>
       </g>
       <rect x="16" y="118" width="252" height="40" rx="4" fill="#F3F3F3"/>
       <g transform="translate(27 127) scale(0.916667)">

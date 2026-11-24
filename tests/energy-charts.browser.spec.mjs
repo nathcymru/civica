@@ -57,7 +57,7 @@ test('real ECharts receives the GOV.UK chart presentation while data, native leg
       nativeGap: option.series[0].connectNulls,
     };
   });
-  expect(state).toEqual({ family: 'Arial, Helvetica, sans-serif', axisFont: 14, gridWidth: 1, zeroWidth: 1.5, sameData: true, sameOptions: true, sameTooltip: true, nativeGap: false });
+  expect(state).toEqual({ family: 'Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif', axisFont: 14, gridWidth: 1, zeroWidth: 1.5, sameData: true, sameOptions: true, sameTooltip: true, nativeGap: false });
   await page.locator('hui-power-sources-graph-card .legend-toggle[data-id=grid]').click();
   expect(await page.evaluate(() => window.energyFixture.nativeClicks)).toContain('grid');
   expect(await page.evaluate(() => window.energyFixture.hosts.power.chart.getOption().series.filter(series => ['grid', 'grid-negative'].includes(series.id)).every(series => !series.data?.length))).toBe(true);

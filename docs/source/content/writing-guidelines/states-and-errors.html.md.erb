@@ -6,8 +6,10 @@ group: "Writing guidelines"
 nav_order: 9
 status: "reference"
 published_on: "2026-11-15"
-updated_on: "2026-11-23"
+updated_on: "2026-11-24"
 updates:
+  - date: "2026-11-24"
+    description: "The examples for state and action, automation status and reminders now show dashboard cards."
   - date: "2026-11-23"
     description: "Grouped the rules under states, requests and problems. Added a table of missing states and cut repeated examples."
   - date: "2026-11-22"
@@ -81,7 +83,7 @@ Instead: The garage door has not reported a new state. It may still be moving. C
 
 <h3 id="wg-035">Keep saved, enabled and running apart</h3>
 
-An automation can be saved, turned on so it starts by itself, and running now. Say which of these changed.
+An automation can be saved, turned on so it starts by itself, and running now. Say which of these changed. Saving a change does not start the automation, and turning it off does not change what was saved.
 
 <%= example('wg-automation-status') %>
 
@@ -119,7 +121,7 @@ Instead: Enter a temperature between 5°C and 30°C.
 
 <h3 id="wg-042">Choose urgency from evidence</h3>
 
-Base urgency on what a sensor or record shows, and [keep alarm wording for real alarms](right-tone.html#wg-046). A date in a record that needs checking is a reminder, not an emergency.
+Base urgency on what a sensor or record shows, and [keep alarm wording for real alarms](right-tone.html#wg-046). A date in a record that needs checking is a reminder, not an emergency. Say why the reminder appears and what to do next.
 
 <%= example('wg-warning-context') %>
 

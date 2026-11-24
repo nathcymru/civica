@@ -1,92 +1,32 @@
 # Original Civica writing examples. All household data is synthetic.
 examples:
-  wg-household-terms:
-    title: "Use the same word for the same action"
-    description: "The card button, the automation action and the notification button all call the action “Turn off”."
-    height: 500
-    html: |
-      <h1 class="govuk-heading-l">Living room lamp</h1><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--m">Where the action appears</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th class="govuk-table__header" scope="col">Place</th><th class="govuk-table__header" scope="col">Wording</th></tr></thead><tbody class="govuk-table__body"><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">Card button</th><td class="govuk-table__cell">Turn off</td></tr><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">Automation action</th><td class="govuk-table__cell">Turn off Living room lamp</td></tr><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">Notification</th><td class="govuk-table__cell">The living room lamp is still on. [Turn off]</td></tr></tbody></table><p class="govuk-body">The same action is called “Turn off” in every place. It is never “Switch off” in one place and “Deactivate” in another.</p>
   wg-state-action:
-    title: "Separate the reported state from the action"
-    description: "The state shows what the lamp last reported. The button says what will be requested."
+    title: "Reading lamp card"
+    description: "A dashboard card for the reading lamp. It shows Off, reported at 18:42, with a Turn on button."
     height: 500
     html: |
-      <h1 class="govuk-heading-l">Reading lamp</h1><p class="govuk-body">Reported state: Off</p><p class="govuk-body">Last reported: 11 November 2026 at 18:42</p><button type="button" class="govuk-button" data-demo-message="Request sent. Waiting for the lamp to report its state.">Turn on reading lamp</button><p class="govuk-body" data-demo-status role="status" aria-live="polite"></p><p class="govuk-body">The action says what will be requested. The state says what the device last reported.</p>
-  wg-command-progress:
-    title: "Show the stages of a device request"
-    description: "A request can end in more than one way."
-    height: 500
-    html: |
-      <h1 class="govuk-heading-l">A request has more than one outcome</h1><ol class="govuk-list govuk-list--number"><li><strong>Sending request:</strong> Turning on the reading lamp…</li><li><strong>Request accepted:</strong> Request sent. Waiting for the lamp to report its state.</li><li><strong>Reported result:</strong> Reading lamp reports On.</li><li><strong>Confirmation did not arrive:</strong> The lamp has not reported a new state. The request may still complete.</li></ol><p class="govuk-body">Use the stage supported by the integration. An accepted request alone does not prove that the light changed.</p>
+      <article class="civica-card-demo" aria-labelledby="wg-state-action-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="wg-state-action-title">Reading lamp</h2><p class="govuk-body"><strong>Off</strong></p><p class="govuk-body">Reported at <time datetime="2026-11-11T18:42:00+00:00">18:42</time></p><div class="civica-card-demo__actions"><button type="button" class="govuk-button" data-demo-message="Request sent. Waiting for the reading lamp to report its state.">Turn on</button></div><p class="govuk-body" data-demo-status role="status" aria-live="polite"></p></div></article>
   wg-automation-status:
-    title: "Keep saved, enabled and running separate"
-    description: "Saved changes, automatic starts and the current run are three separate facts."
+    title: "Hall lights automation card"
+    description: "A dashboard card for the Hall lights after sunset automation. It is on, so it starts by itself. It is not running now. It last triggered today at 16:22. Changes were saved today at 18:30."
     height: 500
     html: |
-      <h1 class="govuk-heading-l">Hall lights after sunset</h1><dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Saved changes</dt><dd class="govuk-summary-list__value">Saved at 18:30</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Automatic starts</dt><dd class="govuk-summary-list__value">On</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Current run</dt><dd class="govuk-summary-list__value">No run in progress</dd></div></dl><p class="govuk-body">Saving a change does not start the automation. Turning off automatic starts does not change the saved automation.</p>
-  wg-availability:
-    title: "Give different missing states different meanings"
-    description: "Unknown, unavailable and an old reading each mean something different."
-    height: 620
-    html: |
-      <h1 class="govuk-heading-l">Understand a missing reading</h1><dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">No state supplied</dt><dd class="govuk-summary-list__value">Temperature unknown. The integration has not supplied a temperature.</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Entity unavailable</dt><dd class="govuk-summary-list__value">Temperature unavailable. Home Assistant cannot currently obtain this entity’s state.</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Old reading retained</dt><dd class="govuk-summary-list__value">Last reported temperature: 19.4°C at 09:15. No newer reading has been received.</dd></div></dl><p class="govuk-body">None of these states means 0°C or confirms that the device is offline.</p>
-  wg-permission:
-    title: "Explain a control that is not available"
-    description: "A control that cannot be used says why."
-    height: 500
-    html: |
-      <h1 class="govuk-heading-l">Washing machine</h1><h2 class="govuk-heading-m">Remote control is off</h2><p class="govuk-body" id="wg-permission-help">This example integration supports starting a cycle, but the appliance has not granted remote control. No start request can be sent here.</p><button type="button" class="govuk-button" disabled aria-describedby="wg-permission-help">Start cycle</button><p class="govuk-body">Follow the appliance instructions if you want to enable remote control. Home Assistant cannot grant that permission for you.</p>
+      <article class="civica-card-demo" aria-labelledby="wg-automation-status-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="wg-automation-status-title">Hall lights after sunset</h2><p class="govuk-body"><strong>On</strong></p><dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Running now</dt><dd class="govuk-summary-list__value">No</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Last triggered</dt><dd class="govuk-summary-list__value"><time datetime="2026-11-11T16:22:00+00:00">Today at 16:22</time></dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Changes saved</dt><dd class="govuk-summary-list__value"><time datetime="2026-11-11T18:30:00+00:00">Today at 18:30</time></dd></div></dl></div></article>
   wg-warning-context:
-    title: "Distinguish a maintenance record from an alarm"
-    description: "A maintenance reminder gives the reason and the next step."
+    title: "Boiler service reminder card"
+    description: "A dashboard card reminds the household that the boiler is due its yearly service, and gives the date of the last one."
     height: 500
     html: |
-      <h1 class="govuk-heading-l">Boiler service record</h1><p class="govuk-body"><strong>Service date needs checking</strong></p><p class="govuk-body">The saved service date is 2 November 2025. This reminder uses the date entered in the household record.</p><p class="govuk-body">It does not measure the boiler’s condition or confirm that a service has been completed.</p><h2 class="govuk-heading-m">Next step</h2><p class="govuk-body">Check the service record and update the saved date if needed.</p>
-  wg-instructions:
-    title: "Write steps someone can follow"
-    description: "Numbered steps follow the order of the task."
-    height: 500
-    html: |
-      <h1 class="govuk-heading-l">Change a room display name</h1><p class="govuk-body">You need permission to edit this dashboard. Changing the display name does not rename the underlying entities.</p><ol class="govuk-list govuk-list--number"><li>Open the room’s <strong>Edit display name</strong> control.</li><li>Enter the name you want people in your household to see.</li><li>Select <strong>Save name</strong>.</li><li>Check that the new name appears in the room heading.</li></ol><p class="govuk-body">If you cannot edit this dashboard, ask its administrator. Do not change your account permissions to follow these steps.</p>
-  wg-form-purpose:
-    title: "Explain why a question is needed"
-    description: "A question gives the format of the answer and an example."
-    height: 500
-    html: |
-      <h1 class="govuk-heading-l">When should the porch light turn off?</h1><form data-demo-form data-demo-success="Time accepted."><div class="govuk-form-group"><label class="govuk-label" for="wg-off-time">Turn-off time</label><p class="govuk-hint" id="wg-off-time-hint">This example uses the household time zone, Europe/London. Enter a time such as 23:00.</p><input class="govuk-input govuk-input--width-5" id="wg-off-time" name="off-time" type="time" aria-describedby="wg-off-time-hint" required></div><button type="submit" class="govuk-button">Continue</button><p class="govuk-body" data-demo-status role="status" aria-live="polite"></p></form>
-  wg-presence:
-    title: "Describe presence without claiming certainty"
-    description: "A presence display says what it knows and what it does not."
-    height: 500
-    html: |
-      <h1 class="govuk-heading-l">Presence status</h1><p class="govuk-body">Alex’s tracker last reported Home at 17:40.</p><p class="govuk-body">This is a device-based presence estimate. It does not confirm that Alex is available or that the home is occupied.</p><details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Shared-screen wording</span></summary><div class="govuk-details__text">A shared display can show “Presence details hidden” when that privacy setting actually prevents the details from being shown.</div></details>
-  wg-bsl-status:
-    title: "Be honest about available formats"
-    description: "A text-only help section says plainly what is and is not available."
-    height: 500
-    html: |
-      <h1 class="govuk-heading-l">Help with room controls</h1><p class="govuk-body">Written instructions are available in this example. A British Sign Language version has not been produced.</p><p class="govuk-body">A transcript is text; it is not a signed translation. Do not display a video play button until a reviewed video is available.</p><h2 class="govuk-heading-m">Preparing a signed version</h2><ul class="govuk-list govuk-list--bullet"><li>Agree the intended audience and content version.</li><li>Use qualified BSL translation and an independent check.</li><li>Test the complete presentation with Deaf BSL users.</li></ul>
+      <article class="civica-card-demo" aria-labelledby="wg-warning-context-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="wg-warning-context-title">Boiler service</h2><p class="govuk-body"><strong>Service due</strong></p><p class="govuk-body">Last service: <time datetime="2025-11-02">2 November 2025</time>. Services are due once a year.</p><p class="govuk-body">Book a service. If the boiler has been serviced since then, update the date.</p></div></article>
   wg-data-meaning:
-    title: "Keep power and energy distinct"
-    description: "Units and periods are written next to every number."
+    title: "Power and energy cards"
+    description: "Two dashboard cards for the home's electricity. Power now is 420W at 18:42. Energy used today is 4.62kWh, from midnight to 18:42."
     height: 500
     html: |
-      <h1 class="govuk-heading-l">Electricity readings</h1><dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Power at 18:42</dt><dd class="govuk-summary-list__value">420W</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Energy from 00:00 to 18:42</dt><dd class="govuk-summary-list__value">4.62kWh</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Date and time zone</dt><dd class="govuk-summary-list__value">11 November 2026, Europe/London</dd></div></dl><p class="govuk-body">Power is a rate at a time. Energy covers an interval. Keep the unit beside the value.</p>
+      <ul class="civica-card-demo-grid"><li><article class="civica-card-demo" aria-labelledby="wg-data-meaning-power-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="wg-data-meaning-power-title">Power now</h2><p class="govuk-body"><strong class="civica-card-demo__metric">420W</strong></p><p class="govuk-body">At <time datetime="2026-11-11T18:42:00+00:00">18:42</time></p></div></article></li><li><article class="civica-card-demo" aria-labelledby="wg-data-meaning-energy-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="wg-data-meaning-energy-title">Energy used today</h2><p class="govuk-body"><strong class="civica-card-demo__metric">4.62kWh</strong></p><p class="govuk-body">From <time datetime="2026-11-11T00:00:00+00:00">00:00</time> to <time datetime="2026-11-11T18:42:00+00:00">18:42</time></p></div></article></li></ul>
   wg-data-gaps:
-    title: "Distinguish zero from no reading"
-    description: "A reading of zero and a missing reading are shown differently."
-    height: 500
+    title: "Car charger hourly use card"
+    description: "A dashboard card with a table of the car charger's electricity use each hour overnight. From 03:00 to 04:00 there is no reading. In each hour from 05:00 to 07:00 it used 0.00kWh."
+    height: 600
     html: |
-      <h1 class="govuk-heading-l">Hourly electricity use</h1><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--m">11 November 2026, Europe/London; interval start shown</caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th class="govuk-table__header" scope="col">Interval start</th><th class="govuk-table__header" scope="col">Energy (kWh)</th></tr></thead><tbody class="govuk-table__body"><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">09:00</th><td class="govuk-table__cell">0.00</td></tr><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">10:00</th><td class="govuk-table__cell">No reading</td></tr><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">11:00</th><td class="govuk-table__cell">0.42</td></tr></tbody></table><p class="govuk-body">The 10:00 reading is missing. A total for these rows would be incomplete.</p>
-  wg-accessible-structure:
-    title: "Use structure that communicates meaning"
-    description: "A help section with headings, a list and a plain text state."
-    height: 500
-    html: |
-      <h1 class="govuk-heading-l">Bedroom light help</h1><h2 class="govuk-heading-m">Before changing the light</h2><ul class="govuk-list govuk-list--bullet"><li>Check that you chose the right room.</li><li>Check the device’s reported state.</li></ul><h2 class="govuk-heading-m">If the light is unavailable</h2><p class="govuk-body"><strong>Unavailable:</strong> Home Assistant cannot currently obtain this light’s state.</p><p class="govuk-body">The text carries the meaning even without a coloured status marker.</p>
-  wg-review-record:
-    title: "Record what was reviewed"
-    description: "A record of what was checked and what was not."
-    height: 500
-    html: |
-      <h1 class="govuk-heading-l">Room controls content review</h1><dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Reviewed</dt><dd class="govuk-summary-list__value">11 November 2026</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Scope</dt><dd class="govuk-summary-list__value">Authored English labels, pending states and unavailable-device help</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Evidence</dt><dd class="govuk-summary-list__value">Source review and local prototype tests; no live appliance action</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Next review trigger</dt><dd class="govuk-summary-list__value">A change to supported device actions or state reporting</dd></div></dl>
+      <article class="civica-card-demo" aria-labelledby="wg-data-gaps-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="wg-data-gaps-title">Car charger</h2><table class="govuk-table"><caption class="govuk-table__caption govuk-table__caption--s">Energy used each hour, <time datetime="2026-11-11">11 November 2026</time></caption><thead class="govuk-table__head"><tr class="govuk-table__row"><th class="govuk-table__header" scope="col">Hour</th><th class="govuk-table__header govuk-table__header--numeric" scope="col">Energy used (kWh)</th></tr></thead><tbody class="govuk-table__body"><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">01:00 to 02:00</th><td class="govuk-table__cell govuk-table__cell--numeric">7.20</td></tr><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">02:00 to 03:00</th><td class="govuk-table__cell govuk-table__cell--numeric">7.18</td></tr><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">03:00 to 04:00</th><td class="govuk-table__cell govuk-table__cell--numeric">No reading</td></tr><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">04:00 to 05:00</th><td class="govuk-table__cell govuk-table__cell--numeric">4.06</td></tr><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">05:00 to 06:00</th><td class="govuk-table__cell govuk-table__cell--numeric">0.00</td></tr><tr class="govuk-table__row"><th class="govuk-table__header" scope="row">06:00 to 07:00</th><td class="govuk-table__cell govuk-table__cell--numeric">0.00</td></tr></tbody></table></div></article>

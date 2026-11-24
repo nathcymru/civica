@@ -20,10 +20,10 @@ export function selectedVariant(hass?: ThemeHass) {
 }
 
 const CSS = `
-:host { display:block; font-family:var(--ha-font-family-body, Arial, sans-serif); font-size:var(--civica-font-size-body, 19px); line-height:1.5; color:var(--primary-text-color, #0b0c0c); }
+:host { display:block; font-family:var(--ha-font-family-body, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif); font-size:var(--civica-font-size-body, 19px); line-height:1.5; color:var(--primary-text-color, #0b0c0c); }
 * { box-sizing:border-box; }
 section { margin:20px 0; padding:20px 0 0; border-top:1px solid var(--civica-border-quiet, #cecece); background:var(--card-background-color, white); }
-h2 { margin:0 0 16px; font-size:var(--civica-font-size-heading, 24px); line-height:1.25; }
+h2 { margin:0 0 16px; font-size:var(--civica-font-size-heading, 22px); line-height:1.45; }
 p { max-width:65ch; line-height:1.5; margin:12px 0; }
 label { display:block; font-weight:700; margin-bottom:8px; }
 select { font:inherit; color:inherit; background:var(--input-fill-color, white); border:2px solid var(--primary-text-color, #0b0c0c); border-radius:0; min-height:44px; width:100%; max-width:28rem; padding:6px; }

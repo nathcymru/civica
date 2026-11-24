@@ -10,7 +10,7 @@ Civica is free software and free documentation. You may use, share and change it
 
 Civica is not affiliated with, endorsed by or connected to GOV.UK, the Government Digital Service (GDS), HM Government or the UK Government. It is also independent of Home Assistant and the other organisations whose guidance it references.
 
-Restricted Crown copyright identity assets are excluded from the published site and installable package. These include the Tudor crown, the GOV.UK wordmark and the GDS Transport font. GOV.UK Frontend build dependencies may contain upstream assets; the build excludes them from deployment. The documentation uses Civica's supplied identity and system fonts instead.
+Restricted Crown copyright identity assets are excluded from the published site and installable package. These include the Tudor crown, the GOV.UK wordmark and the GDS Transport font. GOV.UK Frontend build dependencies may contain upstream assets; the build excludes them from deployment. The documentation uses Civica's supplied identity and the Roboto typeface instead.
 
 Crown copyright notices below identify the owners of reused work. They do not describe Civica as an official service or grant permission to use government branding.
 
@@ -60,6 +60,7 @@ The [dependency inventory (JSON)](licences/dependencies.json) records the resolv
 | Apache ECharts | Apache-2.0 | Standalone documentation chart examples |
 | zrender | BSD-3-Clause | Chart drawing dependency |
 | tslib | 0BSD | Helpers bundled with chart examples |
+| Roboto typeface (via the @fontsource/roboto package) | SIL Open Font Licence 1.1; the licence text is published with the font files | Documentation text and example frames |
 | MapLibre GL JS | BSD-3-Clause; bundled code also has MIT and ISC notices | Standalone documentation map examples |
 | VersaTiles Style | MIT | Map styling code |
 | Other Node.js packages | MIT, ISC, BSD-2-Clause, BSD-3-Clause, Apache-2.0, 0BSD or the recorded dual licence | Build, test or transitive example dependencies, as recorded |

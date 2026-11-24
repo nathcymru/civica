@@ -24,7 +24,7 @@ function readConfig(value: unknown): ActionLinksConfig {
 }
 
 const CSS = `
-:host { display:block; font:700 var(--civica-font-size-body,19px)/1.3 var(--ha-font-family-body,Arial,sans-serif); }
+:host { display:block; font:700 var(--civica-font-size-body,19px)/1.3 var(--ha-font-family-body,Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif); }
 * { box-sizing:border-box; }
 ul { display:flex; flex-wrap:wrap; gap:12px 32px; list-style:none; padding:0; margin:0; }
 li { min-width:0; max-width:100%; }
