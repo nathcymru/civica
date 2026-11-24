@@ -1,0 +1,134 @@
+---
+title: "Avoid images that contain text"
+description: "Keep words, readings and instructions out of images on a Home Assistant dashboard, what to do when text in an image is essential, and how to give floor plans, diagrams and household crests a text alternative."
+section: "styles"
+group: "Icons and images"
+nav_order: 4
+status: "reference"
+published_on: "2026-11-24"
+updated_on: "2026-11-24"
+last_reviewed_on: "2026-11-24"
+review_in: "3 months"
+updates:
+  - date: "2026-11-24"
+    description: "First published. Keeping text out of images, floor plans and diagrams, and household identity images moved here from Icons and images, with the floor plan example. Added when text in an image is not the focus, when it is essential, alternatives such as text over an image and SVG, and charts and complex images."
+ai_instructions: "Apply to any image on a Home Assistant dashboard or Civica page that contains words or numbers. Put words, readings and instructions in text, not in an image: no screenshot of an automation, no picture of a reading such as Front door: locked. Text that is not the focus of an image can stay; describe the meaning in alt text. Essential text, such as an error code on a boiler display or a household crest, may stay in an image with alt text. Alternatives: real text over an image, such as a Picture elements state label, or an SVG file. Text over an image needs the contrast set by /accessibility/index.html against every part of the image it covers. Give every floor plan and diagram a visible text description; the Picture elements card has no alt text option, so add a Markdown card listing rooms and devices. Charts are owned by /styles/brand-data-charts.html; household identity by /get-started/personalisation.html. Do not show rule IDs or name outside sources in page text. Rules WG-081, WG-082."
+ai_related:
+  - path: "/styles/images.html"
+    title: "Icons and images"
+    relationship: "Overview. Owns when to use an image at all."
+  - path: "/styles/images-alt-text.html"
+    title: "Alt text"
+    relationship: "Owns when an image needs alt text and how to write it."
+  - path: "/home-assistant/pictures-and-embedded-content.html"
+    title: "Pictures, rich content and embedded pages"
+    relationship: "Owns the Picture card families, overlay elements and Markdown content."
+  - path: "/styles/brand-data-charts.html"
+    title: "Charts"
+    relationship: "Owns how to give a chart a text alternative."
+  - path: "/get-started/personalisation.html"
+    title: "Personalise your home"
+    relationship: "Owns household names, crests and logos."
+---
+
+# Avoid images that contain text
+
+Avoid images that contain text. Write the words as text on the dashboard, or use one of the [alternatives on this page](#possible-alternatives).
+
+Text inside an image is hard to read for people who:
+
+- use a screen reader
+- copy and paste text, for example into a translation app
+- highlight text to keep their place
+- make text bigger
+- change text colours, for example with a high contrast setting
+
+A picture of a reading is also out of date as soon as the reading changes. Do not use an image of text as decoration either.
+
+## Show text as written content, not as images
+
+You rarely need an image just to show some words. Do not use an image to show:
+
+- a reading or a state, such as “Front door: locked”
+- the steps of an automation, as a screenshot of the automation editor
+- a notification from the Companion app, as a screenshot
+- the bin collection days, as a photograph of the council leaflet
+
+If you use an image like this anyway, put text next to it that gives the same meaning. For the bins, a Markdown card can list the next collection day for each bin.
+
+## If text is not the focus of an image
+
+If text in an image is not the point of the image, it can stay. For example:
+
+- a photograph of the boiler, where the maker’s name is on the front
+- a photograph of the hall cupboard, with labels on the storage boxes behind the hub
+- an illustration of a kitchen, with a recipe book on the shelf
+
+Write alt text that gives the meaning of the image, not the words that happen to be in it. If people need the image to do the task, also put the same meaning in text next to it.
+
+Make sure the image helps people and is not just decoration.
+
+## Essential text in images
+
+In a few cases, an image may contain text. The text is essential when:
+
+- the text is there on purpose and gives the image its meaning
+- the image would lose that meaning without the text
+
+This means you cannot give the same information as text alone.
+
+The text must be part of what people need to know. For example:
+
+- what an error code looks like on the boiler’s display, so people can match it to what they see
+- how the setup code is printed on the label of a new device, so people can find it
+
+Text can also be essential when it shows an identity in a particular way. For example:
+
+- a household crest with the family name drawn into it
+- a hand-lettered house name on a sign
+
+### What to do with essential text in images
+
+Decide whether you need the image, and whether its text is essential. Look at the [alternatives](#possible-alternatives) first.
+
+If you use an image with essential text, give it alt text that gives the meaning of the image and its text. For the boiler, the alt text might be “Boiler display showing the error code F28”. Write the error code and what to do in text as well. [Alt text](images-alt-text.html) explains how to write it.
+
+## Possible alternatives
+
+If you cannot replace an image of text with written content, use one of these instead. Use them even when the text is essential, because they work better for people who change how pages look.
+
+Text over an image needs the same contrast as any other text, against every part of the image it covers. [Accessibility](../accessibility/index.html) sets the contrast target.
+
+### Show real text over an image
+
+Put real text on top of the image. In Home Assistant, a Picture elements card can place a state label, such as the hall temperature, on a floor plan as text.
+
+Check the contrast on a phone, a tablet and a wall panel, and when zoomed in.
+
+### Use a vector graphic
+
+Draw the image and its text as an SVG file. Text in an SVG stays sharp when people zoom in. Text in a PNG or JPEG goes blurred and can become unreadable.
+
+Check the contrast in the SVG too.
+
+## Text in charts, diagrams and complex images
+
+Making a chart, diagram or complex image accessible takes work. First ask whether a table or a few sentences would do.
+
+Give the image short alt text that says what it shows and why. Then give the detail in a longer description. Show the description, or a button that opens it, to everyone, not only to screen reader users.
+
+A chart drawn with real HTML or SVG can be accessible, but only if its data is also there as text. [Charts](brand-data-charts.html#bg-dat-07) explains how to give a chart a text alternative.
+
+### Floor plans and diagrams
+
+Give every floor plan and diagram a short visible text description. Where it holds data, give the same facts in text.
+
+The Picture elements card has no alt text option. Next to the floor plan, add a Markdown card that lists the rooms and devices that matter.
+
+In this floor plan, each kind of sensor has its own shape as well as colour. The list under the plan gives the same facts in text.
+
+<%= colour_example('images-floor-plan', callout: false) %>
+
+## Household identity images
+
+A household name works on its own, with no image. If a household adds a crest or logo, keep its proportions and colours. Keep the name readable without it. [Personalise your home](../get-started/personalisation.html) explains how.

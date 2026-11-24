@@ -1,11 +1,14 @@
 ---
 title: Icons and images
+description: "When to use an image on a Home Assistant dashboard or Civica page, and where to find the guidance on photographs, illustrations, icons, text in images and alt text."
+section: "styles"
 group: "Icons and images"
-description: "Choose icons, photographs, camera images and floor plans for a Home Assistant dashboard, keep text out of images and give every meaningful image alt text."
-last_reviewed_on: 2026-11-19
-review_in: 3 months
-published_on: 2026-11-11
-updated_on: "2026-11-19"
+nav_order: 0
+status: "reference"
+last_reviewed_on: "2026-11-24"
+review_in: "3 months"
+published_on: "2026-11-11"
+updated_on: "2026-11-24"
 updates:
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
@@ -29,127 +32,61 @@ updates:
     description: "Shortened to one focused page. Kept the icon do and do-not pairs and the floor plan with its sensors in text. Removed the 6 Tile cards drawing, the action link example and the informative illustration example, and text that other pages own."
   - date: "2026-11-19"
     description: "Shortened the page for easier reading: shorter sentences and no repeated text. All examples and links are unchanged."
-ai_instructions: "Apply to every icon, photograph, camera image, floor plan and diagram on a Home Assistant dashboard or Civica page. Use an image only when it helps someone identify, find or check something. Keep Home Assistant's native mdi: icons and their state variants, and always show an icon with a visible name and state. Keep text, readings and instructions out of images. The Picture card has an alt_text option; the Picture elements card has none, so describe a floor plan in text next to it. Give an informative image alt text and a decorative one alt=\"\". Alt text wording is owned by the writing guide Images page; illustration style by Illustration; chart text alternatives by Charts. Do not show rule IDs or name outside sources in page text. Rules WG-030, WG-056, WG-081, WG-082."
+  - date: "2026-11-24"
+    description: "Split into this overview and 5 pages: Photography, Illustrations, Icons, Avoid images that contain text, and Alt text. This page keeps when to use an image at all. The icon pairs, the Tile card YAML and the lighting scene icons moved to Icons. The floor plan and household identity images moved to Avoid images that contain text. The Picture card YAML and the alt text table moved to Alt text."
+ai_instructions: "Overview of image guidance. Apply before adding any icon, photograph, camera image, illustration, floor plan or diagram to a Home Assistant dashboard or Civica page. Do not use an image for decoration. Write clear names and states first; an image is only a visual aid and the text must hold all the information. Send detail to the sub-pages: photographs and camera images to /styles/images-photography.html, explanatory drawings to /styles/images-illustrations.html, icons to /styles/images-icons.html, text inside images, floor plans and household identity images to /styles/images-text.html, and alt text to /styles/images-alt-text.html. Keep the anchors icons and images. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-081, WG-082."
 ai_related:
+  - path: "/styles/images-photography.html"
+    title: "Photography"
+    relationship: "Owns when to use a photograph or camera image and how to show one on a dashboard."
+  - path: "/styles/images-illustrations.html"
+    title: "Illustrations"
+    relationship: "Owns when an illustration explains a task better than a photograph."
+  - path: "/styles/images-icons.html"
+    title: "Icons"
+    relationship: "Owns when to use an icon, the icons Civica draws, and native mdi: icons."
+  - path: "/styles/images-text.html"
+    title: "Avoid images that contain text"
+    relationship: "Owns text inside images, floor plans, diagrams and household identity images."
+  - path: "/styles/images-alt-text.html"
+    title: "Alt text"
+    relationship: "Owns when an image needs alt text and how Home Assistant cards handle it."
   - path: "/content/formatting-content/images.html"
     title: "Images"
     relationship: "Owns how to word alt text."
-  - path: "/styles/illustration.html"
-    title: "Illustration"
-    relationship: "Owns the style of authored explanatory artwork and section headers."
-  - path: "/home-assistant/cameras.html"
-    title: "Cameras, streams and snapshots"
-    relationship: "Owns camera states, snapshots and privacy."
-  - path: "/styles/brand-data-charts.html"
-    title: "Charts"
-    relationship: "Owns how to give a chart a text alternative."
 ---
 
 # Icons and images
 
-Use an icon or image only when it helps someone identify, find or check something faster than words. Put the information in text as well.
+Do not use images to decorate a dashboard. Add an image only when the household has a real need for it, such as finding the reset button on the boiler.
 
-Write clear names and states first. Add an image only where it answers a real question, such as who is at the front door.
+Make sure someone who cannot see an image still gets all of its information. Think about people with low vision too, and the tools they use, such as a screen reader, a screen magnifier or a high contrast setting.
+
+This guidance is for people who build Home Assistant dashboards and Civica pages. To word the alt text itself, see [Images](../content/formatting-content/images.html) in the writing guide.
+
+## Using images to give information
+
+Dashboards usually work best without relying on images. Write clear names and states first, such as “Front door” and “Locked”.
+
+An image can sometimes help people follow an instruction, such as where the pairing button is on a new sensor. But an image is only a visual aid. The text on the dashboard must hold everything people need to check or control their home.
+
+If you add an image, decide whether it needs alt text. [Alt text](images-alt-text.html) explains how to decide.
 
 ## Choose the right kind of image
 
-| Kind | Use it to | Owned by |
+| Kind | Use it to | Guidance |
 | --- | --- | --- |
-| Icon | Help people recognise a device, room or action they already know by name | This page |
-| Photograph | Show what a real thing looks like, such as a device to find in a cupboard | This page |
+| Photograph | Show what a real thing looks like, such as the stopcock under the sink | [Photography](images-photography.html) |
 | Camera image | Show what is happening at a place now, such as the front door | [Cameras, streams and snapshots](../home-assistant/cameras.html) |
-| Floor plan | Show where rooms and devices are in the home | This page and [Pictures, rich content and embedded pages](../home-assistant/pictures-and-embedded-content.html) |
-| Illustration | Explain something complex in a simple way, such as where to put a motion sensor | [Illustration](illustration.html) |
+| Illustration | Explain something complex in a simple way, such as how to pair a sensor | [Illustrations](images-illustrations.html) |
+| Icon | Help people recognise a device, room or action they already know by name | [Icons](images-icons.html) |
+| Floor plan or diagram | Show where rooms and devices are in the home | [Avoid images that contain text](images-text.html#floor-plans-and-diagrams) |
 | Chart | Show how a reading changes over time | [Data visualisation](brand-data.html) |
 
-## Icons
+## Icons and images pages
 
-Use Home Assistant’s own icons, written with an `mdi:` prefix. Keep an icon’s meaning the same on every dashboard.
-
-Always show an icon with a visible name and state. A yellow bulb alone does not say which light it is, or whether it is on. This Tile card has a name, an icon and a state in words.
-
-```yaml
-type: tile
-entity: light.hallway_lamp
-name: Hallway lamp
-icon: mdi:floor-lamp
-```
-
-| Do | Do not |
-| --- | --- |
-| Keep a device’s native icon and its state icons, such as an open and a closed door | Replace every device icon with one shape to make the dashboard look neat |
-| Use one icon for one meaning, such as `mdi:magnify` only for search | Use the same icon for 2 different actions |
-| Add a visible label to an action people may not recognise | Rely on a tooltip to explain an icon-only button |
-| Use one set of icons for a set of controls | Mix emoji, font symbols and hand-drawn icons in one row |
-| Keep warning, error and manufacturer colours that carry meaning | Recolour every icon to the theme colour |
-
-These pairs show 4 of these choices. The first shows a light icon alone, then with its name and state.
-
-<%= colour_example('images-icon-do-dont', callout: false) %>
-
-Give an icon-only control an accessible name and a touch target of at least 44px. A 24px icon can sit in a 44px button.
-
-The Civica lighting scene controls use 24px native icons: `mdi:string-lights`, `mdi:soccer`, `mdi:rugby`, `mdi:halloween` and `mdi:alarm-light-outline`. The scene name beside each icon carries the meaning.
-
-### Make a new icon
-
-Use an existing Home Assistant icon if there is one. If you must draw one for a Civica card:
-
-- draw it as an SVG with `currentColor`, so it follows light and dark mode
-- keep its viewBox and proportions, and line it up with the icons next to it
-- hide it from screen readers with `aria-hidden="true"` when the control already has a name
-- record its source, licence and purpose
-- check it at its real size in light mode, dark mode and high contrast
-
-Do not recolour manufacturer artwork or Civica marks to match.
-
-<span id="images"></span>
-
-## Photographs and camera images
-
-Use a photograph when it matters what a real thing looks like, such as the boiler’s reset button. Do not use stock photographs or mood pictures.
-
-Show a camera image only where someone needs to check a place. Say which camera it is and when the picture was taken. A snapshot from 9 minutes ago is not live. [Cameras, streams and snapshots](../home-assistant/cameras.html) owns the rest.
-
-## Keep text out of images
-
-Put words in text, not inside a picture. Text in an image cannot be resized, copied or translated. Not every screen reader can read it, and it blurs when zoomed. Do not use a picture for a reading such as “Front door: locked”, for instructions or for a screenshot of an automation.
-
-Text may stay in an image when it is not the point, such as a label on a boiler, or part of a household’s crest. Put anything people need, such as a model number, in text nearby. If text must sit on an image, use real HTML text or an SVG. Check its contrast against every part of the image.
-
-## Floor plans and diagrams
-
-Give every floor plan and diagram a short visible text description. Where it holds data, give the same facts in text.
-
-The Picture card has an `alt_text` option. Use it for a photograph or a plan with one meaning.
-
-```yaml
-type: picture
-image: /local/garden-plan.png
-alt_text: Back garden. The shed is at the far end, with the water butt on its left.
-```
-
-The Picture elements card has no alt text option. Next to the floor plan, add a Markdown card that lists the rooms and devices that matter.
-
-In this floor plan, each kind of sensor has its own shape as well as colour. The list under the plan gives the same facts in text.
-
-<%= colour_example('images-floor-plan', callout: false) %>
-
-[Charts](brand-data-charts.html#bg-dat-07) explains how to give a chart a text alternative.
-
-## Alt text
-
-Give every image an `alt` attribute. Write alt text for an image that carries information. Leave it empty, `alt=""`, when the text around it already says the same.
-
-| Image | Alt text |
-| --- | --- |
-| A floor plan or photograph that gives information | Describe what it shows that people need |
-| A decorative picture | `alt=""` |
-| An icon beside a visible label | `alt=""`, because the label already says it |
-| An image inside a link, where the link text names the destination | `alt=""` |
-
-[Images](../content/formatting-content/images.html) in the writing guide explains how to word alt text.
-
-## Household identity images
-
-A household name works on its own, with no image. If a household adds a crest or logo, keep its proportions and colours. Keep the name readable without it. [Personalise your home](../get-started/personalisation.html) explains how.
+- <span id="images"></span>[Photography](images-photography.html): when to use a photograph or a camera image, and which card shows it.
+- [Illustrations](images-illustrations.html): when a drawing explains a task better, and how to create one.
+- <span id="icons"></span>[Icons](images-icons.html): when an icon helps, the icons Civica draws, and Home Assistant’s own icons.
+- [Avoid images that contain text](images-text.html): what to do with words, floor plans and household crests in images.
+- [Alt text](images-alt-text.html): when an image needs alt text, how to write it, and what each card allows.

@@ -1,0 +1,140 @@
+---
+title: "Icons"
+description: "When an icon helps on a Home Assistant dashboard, the icons Civica draws, how to use Home Assistant’s own mdi: icons, and how to keep icons clear, readable and easy to tap."
+section: "styles"
+group: "Icons and images"
+nav_order: 3
+status: "reference"
+published_on: "2026-11-24"
+updated_on: "2026-11-24"
+last_reviewed_on: "2026-11-24"
+review_in: "3 months"
+updates:
+  - date: "2026-11-24"
+    description: "First published. Icon guidance moved here from Icons and images, with the do and do-not pairs, the Tile card YAML and the lighting scene icons. Added when icons help, the icons Civica draws and the components that own them, what happens to state icons when you set your own, colour, size and checking icons on the whole dashboard."
+ai_instructions: "Apply when choosing, drawing or reviewing an icon on a Home Assistant dashboard or Civica page. Avoid icons in most cases; use them where people return often, such as an everyday dashboard, and still show a visible name and state. One icon has one meaning: mdi:magnify only for search. Use Home Assistant's native mdi: icons. Setting icon: on a card or entity replaces Home Assistant's state icons with one fixed icon. Home Assistant hides its icons from screen readers, so the name must come from the card or entity name. Civica draws the tick and cross (do and do not lists), the arrow in a circle (action links), the card chevron (not in a circle), the search magnifying glass on its guidance pages and the settings cog on the lighting card; it has no pagination arrows, user, plus or minus, or sign language icons. Icons need 3:1 contrast in every state, owned by /accessibility/index.html. Controls need a 44px target. Do not invent research results. Do not show rule IDs or name outside sources in page text. Rules WG-030, WG-081."
+ai_related:
+  - path: "/styles/images.html"
+    title: "Icons and images"
+    relationship: "Overview. Owns when to use an image at all."
+  - path: "/accessibility/index.html"
+    title: "Accessibility"
+    relationship: "Owns the contrast target for text and meaningful graphics."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the icon and target size checks."
+  - path: "/components/do-and-dont-lists.html"
+    title: "Do and do not lists"
+    relationship: "Owns the tick and cross icons."
+  - path: "/components/action-links.html"
+    title: "Action links"
+    relationship: "Owns the arrow in a circle."
+  - path: "/components/cards.html"
+    title: "Cards"
+    relationship: "Owns the card chevron."
+---
+
+# Icons
+
+Avoid icons in most cases. People can read the same icon in different ways, so an icon on its own can confuse.
+
+## When icons help
+
+Icons are more useful where people come back often and know the layout, such as a dashboard the household uses every day. There, an icon helps people scan for the right card faster. Still show a visible name and state next to each icon.
+
+Do not use one icon for more than one thing.
+
+| Do | Do not |
+| --- | --- |
+| Keep a device’s native icon and its state icons, such as an open and a closed door | Replace every device icon with one shape to make the dashboard look neat |
+| Use one icon for one meaning, such as `mdi:magnify` only for search | Use the same icon for 2 different actions |
+| Add a visible label to an action people may not recognise | Rely on a tooltip to explain an icon-only button |
+| Use one set of icons for a set of controls | Mix emoji, font symbols and hand-drawn icons in one row |
+| Keep warning, error and manufacturer colours that carry meaning | Recolour every icon to the theme colour |
+
+These pairs show 4 of these choices. The first shows a light icon alone, then with its name and state.
+
+<%= colour_example('images-icon-do-dont', callout: false) %>
+
+## Icons you can use
+
+Use these icons to mark the important parts of a dashboard or page and the things people can do. Each component page explains how to use its icon, including its colour.
+
+### Home Assistant icons
+
+Use Home Assistant’s own icons, written with the `mdi:` prefix, such as `mdi:door-open`. Choose them with the icon picker in Home Assistant. A newer icon may not be in your version of Home Assistant yet. [Icons in the Home Assistant documentation](https://www.home-assistant.io/docs/frontend/icons/) explains how to find them.
+
+Home Assistant picks an icon for each entity and changes it with the state, such as an open and a closed door. If you set `icon:` on a card or an entity, that one icon replaces the state icons. Set your own icon only when the native one is wrong for the device.
+
+This Tile card shows a floor lamp, so it sets a floor lamp icon. The icon no longer changes between on and off, so the tile’s state in words carries the meaning.
+
+```yaml
+type: tile
+entity: light.hallway_lamp
+name: Hallway lamp
+icon: mdi:floor-lamp
+```
+
+The Civica lighting scene controls use 24px native icons: `mdi:string-lights`, `mdi:soccer`, `mdi:rugby`, `mdi:halloween` and `mdi:alarm-light-outline`. The scene name beside each icon carries the meaning.
+
+### Icons Civica draws
+
+Civica draws a few icons of its own, each for one job.
+
+| Icon | What it means | Where it is used |
+| --- | --- | --- |
+| Tick and cross | Do and do not | Beside each item under the “Do” and “Do not” headings in [do and do not lists](../components/do-and-dont-lists.html) |
+| Right arrow in a circle | This link takes you to a useful page or view | [Action links](../components/action-links.html) |
+| Right chevron | This card takes you to a group of pages | [Primary card with a chevron](../components/cards.html#primary-card-with-a-chevron). It is not in a circle. |
+| Magnifying glass | Search | The search button at the top of Civica guidance pages |
+| Cog | Settings | The settings button on the Civica lighting card. It has no visible label, so its accessible name is “Settings for” and the room name. |
+
+The search button has the accessible name “Search”. Give any icon-only button a name like this.
+
+Other components, such as pagination, use words instead of icons.
+
+## How to use these icons
+
+Use icons sparingly. Never use one for decoration.
+
+### Use SVG
+
+Draw icons as SVG, not as PNG or another bitmap. SVG stays sharp at any size, loads quickly and can take its colour from the page.
+
+In a Markdown card, Home Assistant removes inline SVG. Use a native icon instead, such as `<ha-icon icon="mdi:alert-octagon"></ha-icon>`.
+
+### Make a new icon
+
+Use an existing Home Assistant icon if there is one. If you must draw one for a Civica card:
+
+- draw it as an SVG with `currentColor`, so it follows light and dark mode
+- keep its viewBox and proportions, and line it up with the icons next to it
+- hide it from screen readers with `aria-hidden="true"` when the control already has a name
+- record its source, licence and purpose
+- check it at its real size in light mode, dark mode and high contrast
+
+Do not recolour manufacturer artwork or Civica marks to match.
+
+### Use colour with icons
+
+An icon often changes colour with its state, such as a light that is on, and when people point at it or move focus to it. Give a meaningful icon at least 3:1 contrast with the background in every one of those states, in light and dark mode. [Accessibility](../accessibility/index.html) sets the contrast target, and [Colour](colour.html#bg-col-03) explains how to test combinations.
+
+Pale colours, such as yellow, can be hard to see on a white card. Never rely on colour alone: show the state in words too.
+
+### Change the size of an icon
+
+Keep icons at the size Home Assistant draws them, which is 24px in most cards. Make the control bigger, not the icon.
+
+Give an icon-only control an accessible name and a touch target of at least 44px. A 24px icon can sit in a 44px button. Some native targets are smaller, such as the 36px icon on a Tile card. Make sure people can do the same thing another way, such as from the tile’s more-info dialog.
+
+### Accessibility
+
+Home Assistant hides its icons from screen readers. The name people hear comes from the card or entity name, so give every entity a clear name.
+
+[Test the interface](../accessibility/testing.html#borders-icons-and-attention-counts) lists the icon checks: a meaningful label, one purpose, the right proportions, enough contrast and a target people can use.
+
+## Check icons with your household
+
+Do not judge an icon on its own. Check it in place, on the whole dashboard, at the size people will see it on a phone and on a wall panel.
+
+Ask the people who use the dashboard what each icon means before you tell them. If anyone reads it differently, add or change the label, or use a different icon.
