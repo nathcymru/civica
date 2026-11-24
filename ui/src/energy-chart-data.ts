@@ -74,7 +74,7 @@ function readModel(host: EnergyChartDataHost, suppliedSeries: unknown = host.dat
 }
 
 const CSS = `
-:host { display: block; min-width: 0; margin-top: 20px; color: var(--primary-text-color); font: var(--civica-font-size-small, 16px)/1.5 var(--ha-font-family-body, Arial, sans-serif); }
+:host { display: block; min-width: 0; margin-top: 20px; color: var(--primary-text-color); font: var(--civica-font-size-small, 16px)/1.5 var(--ha-font-family-body, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif); }
 * { box-sizing: border-box; }
 summary { width: fit-content; max-width: 100%; min-height: 44px; padding-block: 10px; color: var(--link-color); cursor: pointer; list-style: none; text-decoration: underline; text-underline-offset: .16em; }
 summary::-webkit-details-marker { display: none; }

@@ -18,7 +18,7 @@ import yaml
 DATA = json.load(open('docs/data/govuk-brand-colours.json'))
 C = DATA['colours']
 PALETTES = {page: {i for group in DATA['pages'][page]['palette'] for i in group['colours']} for page in ('web', 'app')}
-FONT = 'Arial,Helvetica,sans-serif'
+FONT = 'Roboto,Helvetica Neue,Helvetica,Arial,sans-serif'
 
 
 def luminance(hex_value):
@@ -147,7 +147,7 @@ def lockup(p, x, y, width):
     return (f'<g transform="translate({x} {y}) scale({k:.5f})"><g transform="translate(10,2)">'
             f'<path d="M52 120 L128 56 L166 88 V58 Q166 46 178 46 H188 Q200 46 200 58 V116 L208 122 Q218 130 218 144 V198 Q218 218 198 218 H58 Q38 218 38 198 V144 Q38 130 52 120 Z" fill="none" stroke="{ink}" stroke-width="22" stroke-linejoin="round" stroke-linecap="round"/>'
             + ''.join(f'<circle cx="{cx}" cy="{cy}" r="15" fill="{ink}"/>' for cy in (136, 180) for cx in (88, 128, 168))
-            + f'</g><text x="290" y="186" font-family="Arial, Helvetica, Liberation Sans, Arimo, sans-serif" font-weight="700" font-size="178" fill="{ink}">Civica</text></g>')
+            + f'</g><text x="290" y="186" font-family="Roboto, Helvetica Neue, Helvetica, Arial, Liberation Sans, Arimo, sans-serif" font-weight="700" font-size="178" fill="{ink}">Civica</text></g>')
 
 
 # Home Assistant parts, in the colours the Civica theme sets in light mode:

@@ -747,10 +747,10 @@ var rooms_default = {
 var STYLES = `
 :host { display: block; min-width: 0; }
 *, *::before, *::after { box-sizing: border-box; }
-ha-card { display: block; font-family: var(--ha-font-family-body, Arial, sans-serif); font-size: var(--civica-font-size-body, 19px); line-height: 1.5; color: var(--primary-text-color); background: var(--card-background-color); border: 1px solid var(--divider-color); border-radius: 0; box-shadow: none; }
+ha-card { display: block; font-family: var(--ha-font-family-body, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif); font-size: var(--civica-font-size-body, 19px); line-height: 1.5; color: var(--primary-text-color); background: var(--card-background-color); border: 1px solid var(--divider-color); border-radius: 0; box-shadow: none; }
 .body { padding: 15px; }
 .head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 15px; margin-bottom: 15px; }
-.title { margin: 0; font-size: var(--ha-card-header-font-size, 24px); font-weight: var(--ha-font-weight-heading, 700); }
+.title { margin: 0; font-size: var(--ha-card-header-font-size, 22px); font-weight: var(--ha-font-weight-heading, 700); }
 .status { margin: 0 0 20px; font-size: var(--civica-font-size-small, 16px); color: var(--secondary-text-color); }
 .actions { display: flex; flex-wrap: wrap; gap: 15px; }
 /* GOV.UK button: theme body size (19px), weight 400, 2px border, padding 8px 10px 7px = 38px + 2px shadow, matching --ha-button-height. */
@@ -791,12 +791,12 @@ ha-card { display: block; font-family: var(--ha-font-family-body, Arial, sans-se
 .hit:focus-visible { outline: none; stroke: var(--ha-color-focus); stroke-width: 8px; fill: var(--ha-color-focus); fill-opacity: 0.18; }
 .dlg { width: min(640px, 92vw); box-sizing: border-box; flex-direction: column; max-width: calc(100vw - 32px); max-height: calc(100dvh - 32px); overflow-y: auto; border: var(--ha-border-width-lg, 4px) solid var(--primary-text-color); border-radius: 0; padding: 24px; background: var(--card-background-color); color: var(--primary-text-color); font-family: var(--ha-font-family-body); }
 .dlg[open] { display: flex; }
-.dlg-title { margin: 0 0 16px; font-size: var(--civica-font-size-heading, 24px); }
+.dlg-title { margin: 0 0 16px; font-size: var(--civica-font-size-heading, 22px); }
 .dlg::backdrop { background: var(--primary-text-color); opacity: 0.6; }
 .error-summary { padding: 15px; margin-bottom: 30px; border: 5px solid var(--error-color); color: var(--primary-text-color); }
 .error-summary:focus { outline: 3px solid var(--ha-color-focus); outline-offset: 2px; }
 .form-group--error:focus { outline: 3px solid var(--ha-color-focus); outline-offset: 2px; }
-.error-summary__title { margin: 0 0 15px; font-size: var(--civica-font-size-heading, 24px); line-height: 1.25; font-weight: 700; }
+.error-summary__title { margin: 0 0 15px; font-size: var(--civica-font-size-heading, 22px); line-height: 1.45; font-weight: 700; }
 .error-summary__list { margin: 0; padding: 0; list-style: none; font-weight: 700; }
 .error-summary__list li { margin: 0; }
 .error-summary__list .link { color: var(--error-color); }
@@ -828,7 +828,7 @@ ha-card { display: block; font-family: var(--ha-font-family-body, Arial, sans-se
 
 // card/src/dialog.ts
 var SCENES_CSS = `
-.civica-scenes { margin-block: 30px 20px; color: var(--primary-text-color); font: var(--civica-font-size-body, 19px)/1.5 var(--ha-font-family-body, Arial, sans-serif); }
+.civica-scenes { margin-block: 30px 20px; color: var(--primary-text-color); font: var(--civica-font-size-body, 19px)/1.5 var(--ha-font-family-body, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif); }
 .civica-scenes h3 { margin: 0 0 15px; font: inherit; font-weight: 700; }
 .civica-scenes ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 15px; }
 .civica-scenes li { min-width: 0; max-width: 100%; }

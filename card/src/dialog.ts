@@ -5,7 +5,7 @@ export interface DialogScene { id: string; label: string; icon: string; fill: (s
 export interface DialogSpec { entityId: string; title: string; scenes: DialogScene[]; onPick: (id: string) => Promise<boolean> }
 
 const SCENES_CSS = `
-.civica-scenes { margin-block: 30px 20px; color: var(--primary-text-color); font: var(--civica-font-size-body, 19px)/1.5 var(--ha-font-family-body, Arial, sans-serif); }
+.civica-scenes { margin-block: 30px 20px; color: var(--primary-text-color); font: var(--civica-font-size-body, 19px)/1.5 var(--ha-font-family-body, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif); }
 .civica-scenes h3 { margin: 0 0 15px; font: inherit; font-weight: 700; }
 .civica-scenes ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 15px; }
 .civica-scenes li { min-width: 0; max-width: 100%; }

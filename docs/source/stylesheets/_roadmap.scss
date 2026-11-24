@@ -16,7 +16,7 @@
 .c-roadmap__categories { display:flex; flex-wrap:wrap; align-items:flex-start; gap:8px; }
 .c-roadmap__category {
   display:inline-block; max-width:100%; border-radius:20px; padding:5px 13px;
-  background:#f3f6f9; color:#103e65; font:700 16px/1.4 Arial,Helvetica,sans-serif;
+  background:#f3f6f9; color:#103e65; font:700 16px/1.4 Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
   text-transform:none; letter-spacing:normal; white-space:normal; overflow-wrap:anywhere;
 }
 .c-roadmap__empty { padding:25px 0 30px; margin:0; border-bottom:1px solid var(--c-border,#cecece); }
