@@ -89,7 +89,7 @@ Unused legacy scene images, including sports-club marks, have been removed from 
 
 Existing original documentation illustrations and card specimens retain their recorded MIT licences. The [previous project notice](licences/history/LICENSE-v1.4.1.txt) preserves that permission. They are conceptual illustrations, not screenshots or evidence of a household's device state.
 
-NHS, Home Office and GOV.UK writing guidance informs original Civica writing rules. Source links on each guide identify the material reviewed. NHS identity assets, clinical authority claims and institutional approval are not imported.
+NHS, Home Office and GOV.UK writing guidance informs original Civica writing rules. Source links on each guide identify the material reviewed. NHS identity assets, clinical authority claims and institutional approval are not imported. The Civica pages on numbers, measurements, dates and time, and on inclusive content, reuse wording from the NHS content guide, © NHS England, under the Open Government Licence v3.0.
 
 Plain English Campaign retains copyright in its guides. The project links to them as an influence; it does not bundle their PDFs, proprietary word lists or worked examples. SCULPT was developed by Helen Wilson at Worcestershire County Council. Its source framework is published under Creative Commons Attribution–NonCommercial–ShareAlike 4.0. Civica credits and links to SCULPT; its poster and logo are not bundled or relicensed under MIT.
 
