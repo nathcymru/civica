@@ -4,9 +4,9 @@ description: "How Civica sets text on Home Assistant dashboards, in the Companio
 group: "Typography"
 nav_order: 0
 no_contents: true
-last_reviewed_on: 2026-11-19
+last_reviewed_on: 2026-11-24
 review_in: 3 months
-updated_on: "2026-11-19"
+updated_on: "2026-11-24"
 published_on: "2026-11-11"
 updates:
   - date: "2026-11-13"
@@ -29,7 +29,9 @@ updates:
     description: "Added a Glyphs section with a character set specimen for letters, numerals, punctuation and the symbols Home Assistant needs, and a rule for missing glyphs and fallbacks."
   - date: "2026-11-19"
     description: "Split into an overview and sub-pages, one for each topic. The typeface, glyphs, type scale, headings, paragraphs, links, lists and text style overrides now each have their own page, with Web-app, Social and Print typography. Typography in context is retired and its rules are on those pages. This page keeps the text in each context table and chart."
-ai_instructions: "Start here for any typography question. Civica sets text in Arial, Helvetica, sans-serif at weights 400 and 700, with sizes from the type scale, which grow with --ha-font-size-scale. This overview owns the text in each context table and chart. Each sub-page owns one topic: Typeface (font stack, weights, glyphs), Type scale (sizes, line heights, font variables), Headings, Paragraphs, Links, Lists, Text style overrides, and Web-app, Social and Print typography. Link to the sub-page; do not repeat its rules. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-002, WG-080."
+  - date: "2026-11-24"
+    description: "Civica text is now set in Roboto."
+ai_instructions: "Start here for any typography question. Civica sets text in Roboto, Helvetica Neue, Helvetica, Arial, sans-serif at weights 400 and 700 (300 for a lead paragraph on a documentation page), with sizes from the type scale, which grow with --ha-font-size-scale. This overview owns the text in each context table and chart. Each sub-page owns one topic: Typeface (font stack, weights, glyphs), Type scale (sizes, line heights, font variables), Headings, Paragraphs, Links, Lists, Text style overrides, and Web-app, Social and Print typography. Link to the sub-page; do not repeat its rules. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-002, WG-080."
 ai_related:
   - path: "/styles/typography-typeface.html"
     title: "Typeface"
@@ -47,9 +49,9 @@ ai_related:
 
 # Typography
 
-Set all Civica text in Arial, at 2 weights: regular and bold. Take every size from the type scale. Then a room name, a reading and a heading look the same on every dashboard.
+Set all Civica text in Roboto, at 2 weights: regular and bold. Take every size from the type scale. Then a room name, a reading and a heading look the same on every dashboard.
 
-Arial is already on most computers, phones and tablets, so Home Assistant never has to download a font before it shows a dashboard.
+Roboto is the typeface Home Assistant already uses on its own screens, so a dashboard never has to download a font.
 
 ## Text in each context
 
@@ -57,12 +59,12 @@ This table shows the typeface and the smallest text to use in each place Civica 
 
 | Context | Typeface | Smallest text | Who controls it |
 | --- | --- | --- | --- |
-| Civica card or panel on a dashboard | Arial | 16px supporting text | The Civica theme |
-| Native Home Assistant screen | Arial | 12px compact extra text | Home Assistant, with Civica sizes |
-| Chart label or legend | Arial | 14px | The Civica chart cards |
+| Civica card or panel on a dashboard | Roboto | 16px supporting text | The Civica theme |
+| Native Home Assistant screen | Roboto | 12px compact extra text | Home Assistant, with Civica sizes |
+| Chart label or legend | Roboto | 14px | The Civica chart cards |
 | Companion app settings, keyboard and share sheet | The phone's own font | Set by the phone | The phone's operating system |
-| Printed household handover | Arial | 12pt body text | The person printing it |
-| Social image or release picture | Arial | Large enough to read on a phone | The person making it |
+| Printed household handover | Roboto | 12pt body text | The person printing it |
+| Social image or release picture | Roboto | Large enough to read on a phone | The person making it |
 
 Every screen size in this table grows with Home Assistant's font size scale and with browser or app zoom.
 
@@ -88,9 +90,9 @@ This chart compares the smallest screen text in each context. 3 contexts have no
     svg << %(<text x="4" y="#{y}" font-size="11" font-weight="700" fill="#{ink}">#{name}</text>)
     svg << (px ? %(<rect x="4" y="#{y + 5}" width="#{px * 12}" height="12" fill="#{blue}"/><text x="#{x_of.(px) + 5}" y="#{y + 15}" font-size="10" fill="#{ink}">#{px}px</text>) : %(<text x="6" y="#{y + 15}" font-size="10" fill="#{ink}">No bar. #{note}</text>))
   end
-  specimen = contexts.select { |c| c[1] }.map { |name, px, _| %(<p style="font-family:Arial,Helvetica,sans-serif;font-size:#{px}px;line-height:1.5;margin:0 0 5px">Living room 21.4°C, updated 14:05 <span style="font-size:16px">(#{name}, #{px}px)</span></p>) }.join
+  specimen = contexts.select { |c| c[1] }.map { |name, px, _| %(<p style="font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:#{px}px;line-height:1.5;margin:0 0 5px">Living room 21.4°C, updated 14:05 <span style="font-size:16px">(#{name}, #{px}px)</span></p>) }.join
   %(<div class="c-colour-example"><figure style="margin:0 0 20px">) +
-    %(<svg role="img" aria-labelledby="context-sizes-title context-sizes-desc" viewBox="0 0 320 240" style="display:block;width:100%;max-width:480px;height:auto;font-family:Arial,Helvetica,sans-serif"><title id="context-sizes-title">Bar chart of the smallest screen text in each context</title><desc id="context-sizes-desc">A civica card or panel has the largest smallest text, 16px. A chart label or legend is 14px, and a native Home Assistant screen 12px. The Companion app settings have no bar because the phone sets the size. The printed handover has no bar because it is measured in points on paper: 12pt. A social image has no bar because its size is not fixed. The table above gives the same facts.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
+    %(<svg role="img" aria-labelledby="context-sizes-title context-sizes-desc" viewBox="0 0 320 240" style="display:block;width:100%;max-width:480px;height:auto;font-family:Roboto,Helvetica Neue,Helvetica,Arial,sans-serif"><title id="context-sizes-title">Bar chart of the smallest screen text in each context</title><desc id="context-sizes-desc">A civica card or panel has the largest smallest text, 16px. A chart label or legend is 14px, and a native Home Assistant screen 12px. The Companion app settings have no bar because the phone sets the size. The printed handover has no bar because it is measured in points on paper: 12pt. A social image has no bar because its size is not fixed. The table above gives the same facts.</desc><g aria-hidden="true">#{svg.join}</g></svg>) +
     %(<p style="margin:20px 0 10px">The same reading at each fixed screen size:</p>#{specimen}) +
     %(<figcaption>Smallest text in each context, before the font size scale and zoom. The table above gives the same facts.</figcaption></figure></div>)
 %>
@@ -100,7 +102,7 @@ This chart compares the smallest screen text in each context. 3 contexts have no
 - [Web-app typography](typography-web-app.html): readings and units on dashboards, native screens and the Companion app, and checks at larger text sizes.
 - [Social typography](typography-social.html): headlines, body text and labels in social images and release pictures.
 - [Print typography](typography-print.html): text sizes for a printed household handover.
-- [Typeface](typography-typeface.html): the Arial font stack, the 2 weights and the characters a dashboard needs.
+- [Typeface](typography-typeface.html): the Roboto font stack, the weights and the characters a dashboard needs.
 - [Type scale](typography-type-scale.html): every size and line height, on wide and narrow screens, with its font variable.
 - [Headings](typography-headings.html): heading levels, heading cards and why a reading is not a heading.
 - [Paragraphs](typography-paragraphs.html): body text, supporting text and how to lay out text for reading.

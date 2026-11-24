@@ -12,7 +12,7 @@ C = json.load(open('docs/data/govuk-brand-colours.json'))['colours']
 hexof = lambda i: C[i]['hex']
 name = lambda i: C[i]['name']
 an = lambda i: ('an ' if name(i)[0] in 'AEIOU' else 'a ') + name(i)
-FONT = 'Arial,Helvetica,sans-serif'
+FONT = 'Roboto,Helvetica Neue,Helvetica,Arial,sans-serif'
 
 
 def lines(text_lines, x, y, size, fill, anchor='middle', weight=700, gap=1.2):

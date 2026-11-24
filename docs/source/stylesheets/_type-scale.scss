@@ -1,21 +1,24 @@
 // Type scale, spacing and page frame for every documentation page.
 //
-// The values were measured from the reference design system's rendered pages
-// (computed font size, line height, margins and padding at 1440, 768 and 375 px
-// wide) and are written down once here. Arial replaces the reference typeface,
-// which is licensed for its own domains only, so sizes and spacing match but
-// letter shapes differ slightly.
+// The sizes, line heights, weights and spacing were measured from the reference
+// design system's rendered typography page (computed styles at 1280 px and
+// 320 px wide, and at the width where the scale changes). They are written down
+// once here. The scale changes at 768 px: below it the small-screen sizes apply,
+// from 768 px up the large-screen sizes apply. Roboto is served from
+// docs/source/typefaces (SIL Open Font Licence, see LICENSE-Roboto-OFL.txt).
 //
-// Breakpoints follow the reference: phone below 641 px, tablet from 641 px,
-// desktop from 769 px. Tables stay small until desktop, as in the reference.
+// Layout breakpoints for the page frame are separate: phone below 641 px,
+// tablet from 641 px, desktop from 769 px.
 
 $type-colour: #0b0c0c;
 $type-secondary: #505a5f;
 $type-border: #b1b4b6;
 $type-inline-code-bg: #f3f3f3;
 $type-inline-code-colour: #d13118;
+$type-mono: "Courier New", monospace;
 
 $bp-tablet: 641px;
+$bp-type: 768px;
 $bp-desktop: 769px;
 
 // Page frame (desktop, tablet and phone).
@@ -33,20 +36,27 @@ $frame-text-width: 720px;
   letter-spacing: normal;
 }
 
+// One role of the scale: small-screen size and line height first, then the
+// large-screen pair from $bp-type up. Weight is set by the caller.
+@mixin role($small-size, $small-line, $large-size, $large-line) {
+  @include type($small-size, $small-line);
+  @media (min-width: $bp-type) { @include type($large-size, $large-line); }
+}
+
 :root {
   --type-text: #{$type-colour};
   --frame-gutter: #{$frame-gutter};
 }
 
-// Page base: 19/25 everywhere, so header, notice, cards and footer text sit on
-// the same line grid as the content (the reference sets 19/25 on phone too).
-body { font-size: 19px; line-height: 25px; letter-spacing: normal; }
+// Page base: body text of the scale (16/24 small screens, 19/32 from 768 px), so
+// header, notice, cards and footer text sit on the same line grid as the content.
+body { @include role(16px, 24px, 19px, 32px); font-weight: 400; }
 
 // Header and main navigation (reference: 61 px bar, 59 px navigation, 40 px search).
 .c-header__inner { padding-top: 8px; padding-bottom: 8px; }
 .c-search { width: 370px; height: 40px; }
-.c-search input { height: 100%; padding: 0 10px; line-height: 25px; }
-.c-navigation a { line-height: 29px; padding: 15px 0 11px; }
+.c-search input { height: 100%; padding: 0 10px; line-height: 24px; }
+.c-navigation a { line-height: 24px; padding: 17px 0 13px; }
 @media (max-width: $bp-desktop - 1px) { .c-search { width: 280px; } }
 @media (max-width: $bp-tablet - 1px) { .c-search { width: 100%; } .c-navigation a { padding: 12px 0 8px; } }
 
@@ -76,13 +86,13 @@ body { font-size: 19px; line-height: 25px; letter-spacing: normal; }
 
 // Body copy -----------------------------------------------------------------
 
-.technical-documentation { @include type(19px, 25px); color: $type-colour; }
+.technical-documentation { @include role(16px, 24px, 19px, 32px); color: $type-colour; font-weight: 400; }
 .technical-documentation p,
 .technical-documentation li,
 .technical-documentation dd,
 .technical-documentation dt,
-.technical-documentation figcaption { @include type(19px, 25px); }
-.technical-documentation p { margin: 0 0 20px; }
+.technical-documentation figcaption { @include role(16px, 24px, 19px, 32px); }
+.technical-documentation p { margin: 0 0 16px; }
 .technical-documentation p,
 .technical-documentation ul,
 .technical-documentation ol,
@@ -91,129 +101,112 @@ body { font-size: 19px; line-height: 25px; letter-spacing: normal; }
 .technical-documentation h3,
 .technical-documentation h4 { max-width: $frame-text-width; }
 
-.c-lead { @include type(24px, 30px); }
-.technical-documentation .c-lead { margin-bottom: 30px; }
+// Small text.
+.technical-documentation small,
+.c-small { @include role(14px, 24px, 16px, 24px); }
+
+// Lead paragraph: light weight, one step above body.
+.c-lead { @include role(19px, 32px, 24px, 40px); font-weight: 300; }
+.technical-documentation .c-lead { margin-bottom: 32px; }
+@media (min-width: $bp-type) { .technical-documentation .c-lead { margin-bottom: 40px; } }
 
 // Headings ------------------------------------------------------------------
 
-.technical-documentation h1 { @include type(48px, 50px); margin: 0 0 50px; }
+.technical-documentation h1 { @include role(30px, 40px, 44px, 56px); font-weight: 700; margin: 0 0 40px; }
 .technical-documentation > h1:first-of-type { padding-top: 0; }
-.c-content > h1 { margin-bottom: 50px; }
-.technical-documentation h2 { @include type(36px, 40px); margin: 0 0 30px; padding-top: 20px; }
-.technical-documentation h3 { @include type(24px, 30px); margin: 0 0 20px; }
-.technical-documentation h4 { @include type(19px, 25px); margin: 0 0 20px; }
+.c-content > h1 { margin-bottom: 40px; }
+.technical-documentation h2 { @include role(22px, 32px, 30px, 40px); font-weight: 700; margin: 32px 0 16px; }
+.technical-documentation h3 { @include role(19px, 24px, 22px, 32px); font-weight: 700; margin: 24px 0 16px; }
+.technical-documentation h4 { @include role(16px, 24px, 19px, 32px); font-weight: 700; margin: 24px 0 16px; }
 .technical-documentation h5,
-.technical-documentation h6 { @include type(19px, 25px); margin: 0 0 20px; }
+.technical-documentation h6 { @include role(14px, 24px, 16px, 24px); font-weight: 700; margin: 24px 0 16px; }
+@media (min-width: $bp-type) { .technical-documentation h2 { margin-top: 40px; } }
+.technical-documentation > h2:first-child,
+.technical-documentation > h3:first-child { margin-top: 0; }
 
 // Captions (section name above a sub-page title) ------------------------------
 
-// Section name above a sub-page title: 27/30 grey, 5 px above the title and 50 px
-// below the breadcrumbs (10 px breadcrumb margin plus 40 px page padding).
-.technical-documentation .c-caption { @include type(27px, 30px); margin: 50px 0 5px; color: #484949; font-weight: 400; max-width: none; }
+// Section name above a sub-page title: one step above the page heading's role
+// size on large screens is not part of the scale, so it uses the lead role.
+.technical-documentation .c-caption { @include role(19px, 32px, 24px, 40px); margin: 50px 0 0; color: #484949; font-weight: 400; max-width: none; }
 
 // Lists ---------------------------------------------------------------------
 // Only plain lists take the reference spacing; lists with a class (breadcrumbs,
 // catalogues, colour keys, history) keep their own layout rules.
 
 .technical-documentation ul:not([class]),
-.technical-documentation ol:not([class]) { margin: 0 0 20px; padding-left: 20px; }
+.technical-documentation ol:not([class]) { margin: 0 0 16px; padding-left: 20px; }
 .technical-documentation ul:not([class]) { list-style-type: disc; }
 .technical-documentation ol:not([class]) { list-style-type: decimal; }
 .technical-documentation ul:not([class]) > li,
-.technical-documentation ol:not([class]) > li { margin: 0 0 5px; }
+.technical-documentation ol:not([class]) > li { margin: 0 0 8px; }
 .technical-documentation li > ul:not([class]),
-.technical-documentation li > ol:not([class]) { margin: 5px 0 0; }
+.technical-documentation li > ol:not([class]) { margin: 8px 0 0; }
 .technical-documentation .c-breadcrumbs ol { list-style: none; padding-left: 0; }
 .technical-documentation .c-history ol { list-style: none; }
 
 // Inset text, notes and code --------------------------------------------------
 
-.c-note { @include type(19px, 25px); margin: 30px 0; padding: 15px; border-left-width: 10px; }
+.c-note { @include role(16px, 24px, 19px, 32px); margin: 32px 0; padding: 16px; border-left-width: 10px; }
 .c-note > :last-child { margin-bottom: 0; }
 
-.technical-documentation code { @include type(16px, 20px); padding: 2px 4px; }
+.technical-documentation code { @include role(14px, 24px, 16px, 24px); padding: 2px 4px; font-family: $type-mono; }
 .technical-documentation :not(pre) > code { background: $type-inline-code-bg; color: $type-inline-code-colour; }
-.technical-documentation pre { @include type(16px, 20px); margin: 0 0 20px; }
+.technical-documentation pre { @include role(14px, 24px, 16px, 24px); margin: 0 0 16px; }
 .technical-documentation pre code { padding: 0; background: none; color: inherit; }
 
 // Tables --------------------------------------------------------------------
 
-.c-table-region { margin: 0 0 30px; }
-.technical-documentation table { @include type(16px, 20px); margin: 0; border-collapse: collapse; }
+.c-table-region { margin: 0 0 32px; }
+.technical-documentation table { @include role(16px, 24px, 19px, 32px); margin: 0; border-collapse: collapse; }
 .technical-documentation th,
-.technical-documentation td { padding: 10px 20px 10px 0; border-bottom: 1px solid $type-border; text-align: left; }
+.technical-documentation td { padding: 8px 16px 7px 0; border-bottom: 1px solid $type-border; text-align: left; }
 .technical-documentation th,
 .technical-documentation td { font-size: inherit; line-height: inherit; }
 .technical-documentation th { font-weight: 700; }
 
-@media (min-width: $bp-desktop) {
-  .technical-documentation table { @include type(19px, 25px); }
-}
+// Example panels --------------------------------------------------------------
 
-// Example panels keep their compact heading but follow the 5 px line grid.
-.technical-documentation .c-code-panel h3 { line-height: 25px; }
+.technical-documentation .c-code-panel h3 { line-height: 24px; }
 
 // Section navigation ----------------------------------------------------------
 
-.app-subnav { @include type(16px, 20px); padding-right: 15px; }
+.app-subnav { @include role(14px, 24px, 16px, 24px); padding-right: 15px; }
 .app-subnav__link { padding: 2px 0; }
-.app-subnav__tree .app-subnav__section-item { @include type(19px, 25px); padding-top: 7px; padding-bottom: 7px; }
-.app-subnav__child { @include type(16px, 20px); padding-top: 5px; padding-bottom: 5px; }
-.app-subnav__theme { @include type(19px, 25px); }
-.c-breadcrumbs { @include type(16px, 20px); margin: 5px 0 10px; padding-bottom: 5px; }
-.technical-documentation .c-breadcrumbs ol { @include type(16px, 20px); margin: 0; padding: 0; }
+.app-subnav__tree .app-subnav__section-item { @include role(16px, 24px, 19px, 32px); padding-top: 4px; padding-bottom: 4px; }
+.app-subnav__child { @include role(14px, 24px, 16px, 24px); padding-top: 4px; padding-bottom: 4px; }
+.app-subnav__theme { @include role(16px, 24px, 19px, 32px); }
+.c-breadcrumbs { @include role(14px, 24px, 16px, 24px); margin: 5px 0 10px; padding-bottom: 5px; }
+.technical-documentation .c-breadcrumbs ol { @include role(14px, 24px, 16px, 24px); margin: 0; padding: 0; }
 .technical-documentation .c-breadcrumbs ol > li { font-size: inherit; line-height: inherit; margin: 0; }
 
-// Example panels: small text is 16/20 as in the reference.
+// Example panels: small text role.
 .c-example__top,
 .c-example__code > summary,
 .technical-documentation .c-example__description,
 .c-code-panel,
-.c-code-tabs__list a { @include type(16px, 20px); }
+.c-code-tabs__list a { @include role(14px, 24px, 16px, 24px); }
 
 // Hero text -----------------------------------------------------------------
 
-.technical-documentation .c-illustrated-header h1 { @include type(48px, 50px); margin-bottom: 40px; }
-.technical-documentation .c-illustrated-header__summary { @include type(24px, 30px); }
+.technical-documentation .c-illustrated-header h1 { @include role(30px, 40px, 44px, 56px); margin-bottom: 24px; }
+.technical-documentation .c-illustrated-header__summary { @include role(19px, 32px, 24px, 40px); font-weight: 300; }
 
-// A narrow hero text column cannot hold 48 px words: use the level 2 size.
-@media (min-width: $bp-tablet) and (max-width: 1100px) {
-  .technical-documentation .c-illustrated-header h1 { @include type(36px, 40px); margin-bottom: 30px; }
-  .technical-documentation .c-illustrated-header__summary { @include type(21px, 25px); }
+// A narrow hero text column cannot hold the large heading: use the next role down.
+@media (min-width: $bp-type) and (max-width: 1100px) {
+  .technical-documentation .c-illustrated-header h1 { @include type(30px, 40px); }
+  .technical-documentation .c-illustrated-header__summary { @include type(19px, 32px); }
 }
 
-@media (min-width: $bp-tablet) and (max-width: 900px) {
-  .technical-documentation .c-illustrated-header h1 { @include type(32px, 35px); }
-}
-
-// Tablet and phone ------------------------------------------------------------
+// Phone ---------------------------------------------------------------------
 
 @media (max-width: $bp-tablet - 1px) {
   .c-reading-content { padding: 40px $frame-gutter-phone 0; }
-  .technical-documentation p,
-  .technical-documentation ul:not([class]),
-  .technical-documentation ol:not([class]) { margin-bottom: 15px; }
-  .technical-documentation ul:not([class]) > li,
-  .technical-documentation ol:not([class]) > li { margin-bottom: 0; }
-  .technical-documentation li > ul:not([class]),
-  .technical-documentation li > ol:not([class]) { margin-top: 5px; }
-  .technical-documentation h1 { @include type(32px, 35px); margin-bottom: 30px; }
-  .c-content > h1 { margin-bottom: 30px; }
-  .technical-documentation h2 { @include type(27px, 30px); margin-bottom: 20px; padding-top: 15px; }
-  .technical-documentation h3 { @include type(21px, 25px); margin-bottom: 15px; }
-  .technical-documentation h4,
-  .technical-documentation h5,
-  .technical-documentation h6 { margin-bottom: 15px; }
-  .technical-documentation .c-caption { @include type(21px, 25px); margin-top: 30px; }
-  .c-lead { @include type(21px, 25px); }
-  .technical-documentation .c-lead { margin-bottom: 20px; }
-  .c-note { margin: 20px 0; }
-  .technical-documentation pre { margin-bottom: 15px; }
-  .c-table-region { margin-bottom: 20px; }
-  .technical-documentation .c-illustrated-header h1 { @include type(32px, 35px); margin-bottom: 25px; }
-  .technical-documentation .c-illustrated-header__summary { @include type(21px, 25px); }
+  .technical-documentation .c-caption { margin-top: 30px; }
+  .c-note { margin: 24px 0; }
+  .c-table-region { margin-bottom: 24px; }
 }
 
 @media print {
-  .technical-documentation h1 { font-size: 32px; line-height: 35px; }
+  .technical-documentation h1 { font-size: 30px; line-height: 40px; }
 }

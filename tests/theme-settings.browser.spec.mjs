@@ -25,7 +25,7 @@ test('keyboard selection, accessible names and 320px reflow', async ({ page }) =
   const select = page.getByLabel('Theme colour'); await select.focus();
   expect(await page.evaluate(() => getComputedStyle(document.documentElement).fontSize)).toBe('14px');
   expect(await select.evaluate(el => getComputedStyle(el).fontSize)).toBe('19px');
-  expect(await page.locator('civica-theme-settings h2').evaluate(el => getComputedStyle(el).fontSize)).toBe('24px');
+  expect(await page.locator('civica-theme-settings h2').evaluate(el => getComputedStyle(el).fontSize)).toBe('22px');
   await page.keyboard.press('ArrowDown');
   await expect.poll(() => page.evaluate(() => window.fixture.app.hass.selectedTheme.theme)).toBe('Civica Green');
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);

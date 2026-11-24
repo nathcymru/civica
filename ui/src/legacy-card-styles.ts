@@ -2,10 +2,10 @@
 // The companion owns attaching/removing the stylesheet when civica is active.
 // No selectors cross their shadow roots, and no device or record logic changes.
 const base = `
-:host { display: block; min-width: 0; color: var(--primary-text-color); font-family: var(--ha-font-family-body, Arial, sans-serif); font-size: var(--civica-font-size-body, 19px); line-height: 1.5; }
+:host { display: block; min-width: 0; color: var(--primary-text-color); font-family: var(--ha-font-family-body, Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif); font-size: var(--civica-font-size-body, 19px); line-height: 1.5; }
 :host *, :host *::before, :host *::after { box-sizing: border-box; }
 :host ha-card { border: 1px solid var(--divider-color); border-radius: 0; background: var(--card-background-color); color: var(--primary-text-color); box-shadow: none; }
-:host h2 { font-size: var(--civica-font-size-heading, 24px); line-height: 1.25; font-weight: 700; letter-spacing: normal; }
+:host h2 { font-size: var(--civica-font-size-heading, 22px); line-height: 1.45; font-weight: 700; letter-spacing: normal; }
 :host h3 { font-size: var(--civica-font-size-body, 19px); line-height: 1.3; font-weight: 700; letter-spacing: normal; }
 :host ha-icon { --mdc-icon-size: 24px; }
 :host a { color: var(--link-color); text-decoration: underline; text-underline-offset: .16em; }
@@ -36,7 +36,7 @@ ${controls(':host button', ':host summary')}
 :host .room { max-width: none; text-align: start; }
 :host .hero, :host .dialog-body .hero { grid-template-columns: minmax(80px, 30%) minmax(0, 1fr); gap: 15px; margin-top: 20px; padding: 0; border: 0; border-radius: 0; background: transparent; }
 :host .portrait { color: var(--primary-text-color); }
-:host .status, :host .unavailable .status, :host .dialog-body .status { font-size: var(--civica-font-size-heading, 24px); line-height: 1.25; font-weight: 700; letter-spacing: normal; }
+:host .status, :host .unavailable .status, :host .dialog-body .status { font-size: var(--civica-font-size-heading, 22px); line-height: 1.45; font-weight: 700; letter-spacing: normal; }
 :host .battery-label strong { font-size: var(--civica-font-size-small, 16px); font-weight: 700; }
 :host .battery-track { border-radius: 0; }
 :host .remaining { font-size: var(--civica-font-size-body, 19px); line-height: 1.3; }
@@ -56,7 +56,7 @@ ${controls(':host button', ':host summary')}
 :host .appliance-dialog { border: 1px solid var(--divider-color); border-radius: 0; background: var(--card-background-color); box-shadow: none; overflow-y: auto; }
 :host .appliance-dialog::backdrop { background: color-mix(in srgb, var(--black-color) 60%, transparent); }
 :host .dialog-header { padding: 20px; border-bottom-color: var(--divider-color); background: var(--card-background-color); flex-wrap: wrap; }
-:host .dialog-header h2 { font-size: var(--civica-font-size-heading, 24px); }
+:host .dialog-header h2 { font-size: var(--civica-font-size-heading, 22px); }
 :host .dialog-body { padding: 20px; }
 :host .dialog-body .hero { margin-top: 0; }
 :host .dialog-body h3 { margin-top: 30px; font-size: var(--civica-font-size-body, 19px); font-weight: 700; }
@@ -89,12 +89,12 @@ ${controls(':host .gs-button', ':host .gs-details summary')}
 :host ha-card.gs-card { border-radius: 0; }
 :host .gs-face { padding: 20px; border-top: 0; background: var(--card-background-color); color: var(--primary-text-color); }
 :host .gs-header { flex-wrap: wrap; gap: 10px 15px; }
-:host .gs-heading { font-size: var(--civica-font-size-heading, 24px); font-weight: 700; line-height: 1.25; letter-spacing: normal; }
+:host .gs-heading { font-size: var(--civica-font-size-heading, 22px); font-weight: 700; line-height: 1.45; letter-spacing: normal; }
 :host .gs-tag { padding: 2px 8px; border: 0; border-radius: 0; background: var(--secondary-background-color); color: var(--primary-text-color); font-size: var(--civica-font-size-small, 16px); line-height: 1.5; letter-spacing: normal; text-transform: none; white-space: normal; }
 :host .gs-date-area { grid-template-columns: minmax(0, 1fr) 48px; gap: 15px; margin-block: 20px; }
 :host .gs-kicker, :host .gs-weekday, :host .gs-count-label, :host .gs-recorded, :host .gs-empty-copy, :host .gs-details p, :host .gs-details dl { font-size: var(--civica-font-size-small, 16px); line-height: 1.5; color: var(--secondary-text-color); letter-spacing: normal; text-transform: none; }
 :host .gs-kicker { font-weight: 700; }
-:host .gs-date, :host .gs-empty, :host .gs-count-number, :host .gs-card[data-state="today"] .gs-count-number { color: var(--primary-text-color); font-size: var(--civica-font-size-heading, 24px); font-weight: 700; line-height: 1.25; letter-spacing: normal; overflow-wrap: anywhere; }
+:host .gs-date, :host .gs-empty, :host .gs-count-number, :host .gs-card[data-state="today"] .gs-count-number { color: var(--primary-text-color); font-size: var(--civica-font-size-heading, 22px); font-weight: 700; line-height: 1.45; letter-spacing: normal; overflow-wrap: anywhere; }
 :host .gs-countdown { flex-wrap: wrap; gap: 10px 15px; padding-top: 15px; border-top: 1px solid var(--divider-color); }
 :host .gs-recorded { display: flex; flex-wrap: wrap; margin-left: 0; }
 :host .gs-recorded svg { width: 20px; height: 20px; }

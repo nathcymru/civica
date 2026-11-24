@@ -4,13 +4,15 @@ description: "Set body and supporting text on Civica cards so it is easy to read
 group: "Typography"
 nav_order: 7
 no_contents: true
-last_reviewed_on: 2026-11-19
+last_reviewed_on: 2026-11-24
 review_in: 3 months
 published_on: "2026-11-19"
-updated_on: "2026-11-19"
+updated_on: "2026-11-24"
 updates:
   - date: "2026-11-19"
     description: "First published. Body and supporting text and the readable text rules moved here from Typography, and the rule on laying out text for reading moved here from Typography in context."
+  - date: "2026-11-24"
+    description: "Added the lead paragraph, and updated the body text to the new sizes, line heights and spacing."
 ai_instructions: "Apply when setting body text, help text or supporting text in a Home Assistant card, a Markdown card or a Civica documentation page. Body text is civica-font-size-body (19px), supporting text is civica-font-size-small (16px), both regular with line height 1.5. Left-align instructions, labels and help text in English and in Welsh; centre only a short deliberate line such as a reading in a gauge. Let long device names and error messages wrap rather than cutting them off. Bold for a few words only, no italics for instructions, no pale grey text. The rule anchored bg-typ-02 is on this page; do not show its ID as text or name outside sources. Rules WG-001, WG-080, WG-081."
 ai_related:
   - path: "/styles/typography.html"
@@ -29,11 +31,17 @@ ai_related:
 
 # Paragraphs
 
-Set paragraphs in body text: Arial regular, 19px, with a line height of 1.5. Use the variable `civica-font-size-body`, so the text grows with the font size scale.
+Set paragraphs in body text: Roboto regular, 19px, with a line height of 32px on wide screens and 16px with a line height of 24px on narrow screens. Leave 16px of space below each paragraph. In a card, use the variable `civica-font-size-body`, so the text grows with the font size scale.
+
+## Lead paragraph
+
+Use a lead paragraph for the one sentence that sums up a documentation page or a custom panel. Put it directly under the heading, and use only one on a page. It is 24px with a 40px line height on wide screens and 19px with a 32px line height on narrow screens, in the light weight, with 40px of space below it.
+
+Do not use a lead paragraph in a card on a dashboard.
 
 ## Supporting text
 
-Use supporting text, 16px, for a short detail under a reading or a control, such as “Updated 14:05”. Use the variable `civica-font-size-small`. Use it sparingly. Most text on a card should be body text.
+Use supporting text, 16px with a 24px line height (14px on narrow documentation pages), for a short detail under a reading or a control, such as “Updated 14:05”. Use the variable `civica-font-size-small`. Use it sparingly. Most text on a card should be body text.
 
 Do not go smaller than supporting text on a Civica card. [Type scale](typography-type-scale.html#native-home-assistant-sizes) gives the smaller sizes that native Home Assistant screens keep.
 

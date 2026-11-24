@@ -81,9 +81,9 @@ test('native dashboard section titles share the scaled bold card heading hierarc
     const label = `${name} ${mode}`;
     assert.equal(v['ha-heading-card-title-font-size'], v['ha-card-header-font-size'], `${label} section headings must not fall below card titles`);
     assert.equal(v['ha-heading-card-title-font-size'], 'var(--civica-font-size-heading)');
-    assert.equal(v['civica-font-size-heading'], 'calc(24px * var(--ha-font-size-scale, 1))', `${label} native user text scaling must remain effective`);
+    assert.equal(v['civica-font-size-heading'], 'calc(22px * var(--ha-font-size-scale, 1))', `${label} native user text scaling must remain effective`);
     assert.equal(v['ha-heading-card-title-font-weight'], '700', `${label} H2 must not inherit the normal-weight fallback`);
-    assert.equal(v['ha-heading-card-title-line-height'], '1.25');
+    assert.equal(v['ha-heading-card-title-line-height'], '1.45');
     for (const suffix of ['font-size', 'font-weight', 'line-height']) {
       assert.equal(v[`ha-heading-card-subtitle-${suffix}`], undefined, `${label} captions retain their native supporting hierarchy`);
     }
