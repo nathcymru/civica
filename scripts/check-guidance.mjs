@@ -117,8 +117,18 @@ assert.equal(componentPages.filter(page => page.baselineMember !== false).length
 assert.equal(componentPages.filter(page => page.baselineMember !== false).length, components.baseline.totalComponentPages, 'Declared baseline component count');
 assert.equal(componentPages.length, components.current.componentPages, 'Current component count includes additions');
 assert.equal(new Set(componentPages.map(page => page.canonicalOwner)).size, components.current.componentCanonicalOwners, 'Current canonical owner count');
-same(componentPages.map(page => page.url), [...currentRoutes.keys()].filter(isComponent), 'Every existing component route maps exactly once');
-for (const page of pageRecords) {
+// A baseline route that Nathan approved for retirement stays in the record as history, marked `retired` with its owner, and must no longer exist.
+// A component route with no record is allowed only when the locked component inventory owns it: check-components covers those pages.
+const inventoryRoutes = new Set(json('component-inventory').parents.map(parent => parent.route));
+for (const page of pageRecords.filter(page => page.retired)) {
+  assert.ok(page.retiredInto && pagesByRoute.has(page.retiredInto) && !pagesByRoute.get(page.retiredInto).retired, `${page.url}: retired page names a live owner`);
+  assert.ok(!currentRoutes.has(page.url), `${page.url}: a retired page must be deleted`);
+}
+const liveRecords = pageRecords.filter(page => !page.retired);
+const unrecorded = [...currentRoutes.keys()].filter(route => isComponent(route) && !pagesByRoute.has(route));
+for (const route of unrecorded) assert.ok(inventoryRoutes.has(route) || route.startsWith('/publishing/'), `${route}: component page needs an ownership record or a place in the component inventory`);
+same(liveRecords.filter(page => page.kind === 'component').map(page => page.url), [...currentRoutes.keys()].filter(route => isComponent(route) && pagesByRoute.has(route)), 'Every recorded component route that is not retired still exists exactly once');
+for (const page of liveRecords) {
   assert.equal(currentRoutes.get(page.url), page.sourceFile, `${page.url}: existing source route`);
   assert.ok(pagesByRoute.has(page.canonicalOwner), `${page.url}: missing canonical owner`);
   assert.equal(pagesByRoute.get(page.canonicalOwner).canonicalOwner, page.canonicalOwner, `${page.url}: owner must resolve directly, without a cycle`);
@@ -193,13 +203,16 @@ assert.equal(components.findings.length, 14, 'Fourteen component organisation pr
 assert.equal(gaps.findings.length, 30, 'Thirty Home Assistant specification gaps');
 const proposalIds = new Set(proposals.map(proposal => proposal.id));
 const rulesById = new Map(rules.map(rule => [rule.id, rule]));
+// Evidence recorded against a page that was retired with approval is history: the record keeps the original revision, and the file is gone on purpose.
+const retiredFiles = new Set(pageRecords.filter(page => page.retired).map(page => page.sourceFile));
 const checkEvidence = (evidence, label) => {
+  if (retiredFiles.has(evidence.file)) return;
   assert.ok(existsSync(evidence.file), `${label}: missing evidence file ${evidence.file}`);
   const lines = read(evidence.file).split('\n');
   assert.ok(Number.isInteger(evidence.line) && evidence.line >= 1 && evidence.line <= lines.length, `${label}: invalid evidence line`);
   if (evidence.excerpt) assert.equal(lines[evidence.line - 1].trim(), evidence.excerpt, `${label}: evidence excerpt changed`);
 };
-for (const page of pageRecords) checkEvidence(page.evidence, page.url);
+for (const page of liveRecords) checkEvidence(page.evidence, page.url);
 unique(gaps.sources.map(source => source.id), 'HA source IDs');
 const haSourceIds = new Set(gaps.sources.map(source => source.id));
 for (const proposal of proposals) {
@@ -272,7 +285,7 @@ for (const loop of componentChecklist.loops) {
     if (check.families) for (const gapIds of Object.values(check.families)) for (const id of gapIds) assert.ok(proposalIds.has(id), `${check.id}: unknown requirement ${id}`);
   }
 }
-for (const name of ['illustration-assets', 'card-artwork-provenance', 'project-artwork-provenance', 'section-artwork-provenance']) {
+for (const name of ['illustration-assets', 'card-artwork-provenance', 'project-artwork-provenance', 'section-artwork-provenance', 'component-artwork-provenance']) {
   const manifest = json(name);
   for (const asset of manifest.assets) {
     assert.equal(hash(asset.path), asset.sha256, `${asset.path}: artwork changed after provenance review`);

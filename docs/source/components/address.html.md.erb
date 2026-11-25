@@ -1,0 +1,109 @@
+---
+title: "Address"
+description: "Mark up contact details for a page or section, and write a home address as plain lines."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Address specification: what the address element means, when it is the wrong choice and how to show an address clearly."
+ai_instructions: "Apply when a dashboard, help page or card shows contact details or an address. Use the address element only for contact information for the page or its author. For a home or delivery address, use a paragraph with line breaks. Put one line of the address on each line, with no italics and no abbreviations. Do not invent an address field in Home Assistant."
+ai_related:
+  - path: "/content/style-guides/a-to-z.html"
+    title: "A to Z General"
+    relationship: "Owns the wording and abbreviation rules for address lines."
+  - path: "/components/abbreviation.html"
+    title: "Abbreviation"
+    relationship: "Expand abbreviations before they appear in an address."
+  - path: "/components/summary-list.html"
+    title: "Summary list"
+    relationship: "Show an address as a labelled row among other details."
+component:
+  parent: "Address"
+  letter: "A"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<address>"
+      origin: "HTML5"
+      anchor: "child-address"
+  tags:
+    - "address"
+---
+
+# Address
+
+<h2 id="purpose">Purpose</h2>
+
+The HTML `address` element holds contact information for the page, or for the article it sits in. It does not mean “any postal address”. Use it for who to contact about this page or dashboard. Show a home address, a delivery address or a business address as ordinary text.
+
+This page owns the `address` element. Home Assistant has no address component. A household’s location is set as a name and coordinates, not as a postal block, so there is no address field to document.
+
+This page covers:
+
+- Address
+  - `<address>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+`address` is a block element that holds flow content. It cannot contain headings, sections, a header, a footer or another `address`. Browsers show it in italics by default.
+
+It has no theme variables of its own. It uses `primary-text-color` and the surrounding font settings.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-address"><code>&lt;address&gt;</code></h3>
+
+Use it with a name and a way to get in touch:
+
+```html
+<address>
+  Household help desk<br>
+  help@example.com
+</address>
+```
+
+To show a postal address that is not contact information for the page, use a paragraph with line breaks instead:
+
+```html
+<p>
+  Flat 2<br>
+  14 Mill Lane<br>
+  Exampletown<br>
+  EX1 2MP
+</p>
+```
+
+Remove the default italics in your own styles for blocks of more than a line or two. Long italic text is harder to read.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It tells software that the lines are contact details.
+- It needs no integration.
+- Its meaning is narrow, so it is often the wrong choice for a postal address.
+- Do not rely on it surviving in a Home Assistant markdown card.
+- Browsers add no useful role for it, so screen reader users get little extra from it.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Put one part of the address on each line, in the order a person would write it. Do not use italics for the body of an address. Spell out words rather than abbreviating them; if you must abbreviate, see [Abbreviation](abbreviation.html).
+
+For an address that is one of several facts about a device or service, show it as a labelled row in a [summary list](summary-list.html) so people see what it is.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: the lines belong together as one block.
+- 1.4.4 Resize Text: the lines still read when text is larger.
+- 1.4.8 Visual Presentation (AAA): avoid long italic text.
+- 3.3.2 Labels or Instructions: label the address when it is not obvious what it is for.
+- 1.3.5 Identify Input Purpose applies to address form fields, not to text that is only displayed.
+
+One line per line of the address, with no clever formatting, keeps the effort low.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-address-contact') %>

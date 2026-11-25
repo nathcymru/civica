@@ -68,7 +68,7 @@ The findings below are generated from the organisation record. Each proposal has
 <h3 id="<%= escape(finding['id'].downcase) %>"><%= escape(finding['id']) %>: <%= escape(finding['title']) %></h3>
 <p><strong><%= escape(finding['priority']) %> · <%= escape(finding['status'].tr('-', ' ')) %>.</strong> <%= escape(finding['proposal']) %></p>
 <% if finding['resolution'] %><p><strong>Resolution:</strong> <%= escape(finding['resolution']['summary']) %></p><% end %>
-<p>Affected guides: <% finding['surfaces'].each_with_index do |url, index| %><%= ', ' unless index.zero? %><a href="<%= docs_path(url) %>"><%= escape(pages_by_url.fetch(url)['title']) %></a><% end %>.</p>
+<p>Affected guides: <% finding['surfaces'].each_with_index do |url, index| %><%= ', ' unless index.zero? %><% record = pages_by_url.fetch(url) %><% if record['retired'] %><%= escape(record['title']) %> (now part of <a href="<%= docs_path(record['retiredInto']) %>"><%= escape(pages_by_url.fetch(record['retiredInto'])['title']) %></a>)<% else %><a href="<%= docs_path(url) %>"><%= escape(record['title']) %></a><% end %><% end %>.</p>
 <ul><% finding['acceptanceCriteria'].each do |check| %><li><%= escape(check) %></li><% end %></ul>
 <p>Rule dependencies: <% finding['ruleDependencies'].each_with_index do |rule, index| %><%= ', ' unless index.zero? %><a href="<%= docs_path(rule['localPath']) %>"><%= escape(rule['id']) %></a><% end %>.</p>
 <% end %>
@@ -81,7 +81,7 @@ Every existing component URL appears once below. “Main guide” identifies the
 <caption>Component ownership, including additions to the preserved baseline</caption>
 <thead><tr><th scope="col">Existing component page</th><th scope="col">Main guide</th><th scope="col">Relationship</th></tr></thead>
 <tbody>
-<% audit['pageInventory'].select { |page| page['kind'] == 'component' }.sort_by { |page| page['url'] }.each do |page| %>
+<% audit['pageInventory'].select { |page| page['kind'] == 'component' && !page['retired'] }.sort_by { |page| page['url'] }.each do |page| %>
 <tr><th scope="row"><a href="<%= docs_path(page['url']) %>"><%= escape(page['title']) %><%= ' — publishing' if page['url'].start_with?('/publishing/') %></a></th><td><a href="<%= docs_path(page['canonicalOwner']) %>"><%= escape(pages_by_url.fetch(page['canonicalOwner'])['title']) %></a></td><td><%= escape(page['relationship'].tr('-', ' ')) %></td></tr>
 <% end %>
 </tbody>

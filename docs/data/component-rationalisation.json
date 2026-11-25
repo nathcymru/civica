@@ -1653,7 +1653,7 @@
       "title": "Accordion",
       "section": "components",
       "group": "Content presentation",
-      "sha256": "9e05903776410309aded5aa041db5de0cf9159a717f0aca6583f84544a192292",
+      "sha256": "c9c5257aacb0db2f042e4031691f1c021d7c806214efd7c1239bbe1b5e791067",
       "examples": [
         "core-accordion-troubleshooting",
         "core-accordion-measures"
@@ -1673,7 +1673,7 @@
       "evidence": {
         "file": "docs/source/components/accordion.html.md.erb",
         "line": 2,
-        "excerpt": "title: Accordion"
+        "excerpt": "title: \"Accordion\""
       },
       "original_evidence": {
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
@@ -2177,7 +2177,9 @@
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
         "file": "docs/source/components/details.html.md.erb",
         "line": 17
-      }
+      },
+      "retired": true,
+      "retiredInto": "/components/accordion.html"
     },
     {
       "sourceFile": "docs/source/components/devices.html.md.erb",
@@ -2455,7 +2457,9 @@
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
         "file": "docs/source/components/expander.html.md.erb",
         "line": 17
-      }
+      },
+      "retired": true,
+      "retiredInto": "/components/accordion.html"
     },
     {
       "sourceFile": "docs/source/components/feedback.html.md.erb",
@@ -6328,9 +6332,9 @@
       "catalogueFile": "docs/data/govuk-components-inventory.json",
       "sourceId": "details",
       "sourceUrl": "https://design-system.service.gov.uk/components/details/",
-      "localPage": "/components/details.html",
-      "canonicalOwner": "/components/details.html",
-      "familyId": "FAMILY-components-details",
+      "localPage": "/components/accordion.html",
+      "canonicalOwner": "/components/accordion.html",
+      "familyId": "FAMILY-components-accordion",
       "relationship": "source-maps-to-shared-local-route"
     },
     {
@@ -6733,9 +6737,9 @@
       "catalogueFile": "docs/data/nhs-components-inventory.json",
       "sourceId": "details",
       "sourceUrl": "https://service-manual.nhs.uk/design-system/components/details",
-      "localPage": "/components/details.html",
-      "canonicalOwner": "/components/details.html",
-      "familyId": "FAMILY-components-details",
+      "localPage": "/components/accordion.html",
+      "canonicalOwner": "/components/accordion.html",
+      "familyId": "FAMILY-components-accordion",
       "relationship": "source-maps-to-shared-local-route"
     },
     {
@@ -6751,9 +6755,9 @@
       "catalogueFile": "docs/data/nhs-components-inventory.json",
       "sourceId": "expander",
       "sourceUrl": "https://service-manual.nhs.uk/design-system/components/expander",
-      "localPage": "/components/expander.html",
-      "canonicalOwner": "/components/details.html",
-      "familyId": "FAMILY-components-details",
+      "localPage": "/components/accordion.html",
+      "canonicalOwner": "/components/accordion.html",
+      "familyId": "FAMILY-components-accordion",
       "relationship": "visual-variant"
     },
     {
@@ -11999,7 +12003,7 @@
         {
           "file": "docs/source/components/accordion.html.md.erb",
           "line": 2,
-          "excerpt": "title: Accordion",
+          "excerpt": "title: \"Accordion\"",
           "supports": "Details, expander and accordion share related guidance while preserving single versus grouped disclosure behaviours."
         }
       ],

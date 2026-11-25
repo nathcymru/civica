@@ -1,0 +1,189 @@
+---
+title: "Alert & Tip Callout"
+description: "Show a short message that stands out from the page: an alert, a tip, or a status card for one entity."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Alert & Tip Callout specification: the four alert types, the tip and the alert card, with their theme keys and limits."
+ai_instructions: "Apply when a message must stand out from the page. ha-alert has four types: info, warning, error and success, each with an icon and its own colour. ha-tip works only in Home Assistant settings screens and cannot be used on a dashboard. hui-alert-card (type alert) is a status card for an entity, not a message box. An ha-alert announces itself at once, so use it for errors, not tips. Colour alone never carries the meaning. Do not claim a contrast ratio for the tinted background without measuring it."
+ai_related:
+  - path: "/components/warning-callout.html"
+    title: "Warning callout"
+    relationship: "Owns the fixed yellow warning callout used on Civica pages."
+  - path: "/components/notification-banners.html"
+    title: "Notification banners"
+    relationship: "Owns messages that apply to the whole page."
+  - path: "/components/inset-text.html"
+    title: "Inset text"
+    relationship: "Use for a quoted or set-apart passage that is not an alert."
+  - path: "/components/status.html"
+    title: "Status"
+    relationship: "Owns urgency and state wording."
+  - path: "/patterns/household-urgency.html"
+    title: "Household urgency"
+    relationship: "Owns the three kinds of urgency."
+component:
+  parent: "Alert & Tip Callout"
+  letter: "A"
+  origins:
+    - "Home Assistant"
+    - "Lovelace"
+  children:
+    - name: "ha-alert"
+      origin: "Home Assistant"
+      anchor: "child-ha-alert"
+      grandchildren:
+        - name: 'alert-type="info"'
+          origin: "Home Assistant"
+          anchor: "child-ha-alert--alert-type-info"
+        - name: 'alert-type="warning"'
+          origin: "Home Assistant"
+          anchor: "child-ha-alert--alert-type-warning"
+        - name: 'alert-type="error"'
+          origin: "Home Assistant"
+          anchor: "child-ha-alert--alert-type-error"
+        - name: 'alert-type="success"'
+          origin: "Home Assistant"
+          anchor: "child-ha-alert--alert-type-success"
+    - name: "ha-tip"
+      origin: "Home Assistant"
+      anchor: "child-ha-tip"
+    - name: "hui-alert-card"
+      origin: "Lovelace"
+      anchor: "child-hui-alert-card"
+  tags:
+    - "ha-alert"
+    - "ha-tip"
+    - "hui-alert-card"
+---
+
+# Alert & Tip Callout
+
+<h2 id="purpose">Purpose</h2>
+
+A callout is a short message that stands out from the text around it. Home Assistant has two: the alert, which carries information, a warning, an error or a success, and the tip, a hint in settings screens. A third item, the alert card, is not a callout at all but a status card for one entity.
+
+This page owns these three. The fixed yellow warning callout used on Civica pages is a different thing, owned by [Warning callout](warning-callout.html).
+
+This page covers:
+
+- Alert & Tip Callout
+  - `ha-alert`
+    - `alert-type="info"`
+    - `alert-type="warning"`
+    - `alert-type="error"`
+    - `alert-type="success"`
+  - `ha-tip`
+  - `hui-alert-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+An `ha-alert` has an icon, an optional bold title, the message and, optionally, a dismiss button. The title is plain text, not a heading. The whole alert is announced by a screen reader as soon as it appears.
+
+An `ha-tip` is a lightbulb icon, the word “Tip!” and the message, centred, in the secondary text colour.
+
+A `hui-alert-card` is a one-line tile with an icon, the name and, below it, the state, the time since it changed and the area.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-alert"><code>ha-alert</code></h3>
+
+Attributes: `title`, `alert-type`, `dismissable` and `narrow`. Slots: the default slot for the message, `icon` and `action`. A dismissable alert shows a button labelled “Dismiss alert” and fires `alert-dismissed-clicked`.
+
+```html
+<ha-alert alert-type="warning" title="Heating is offline">
+  The thermostat has not reported for 2 hours.
+</ha-alert>
+```
+
+Padding and icon size can be changed with `--ha-alert-padding` and `--ha-alert-icon-size`, and the corners with `--ha-border-radius-sm`. The Civica theme sets none of these. The text uses `primary-text-color` and the title uses `ha-font-weight-bold`. The alert draws a tint of its type colour over the card background at 12 per cent.
+
+In Home Assistant markdown, a quote that starts with `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]` or `[!CAUTION]` is shown as an `ha-alert`: note and important give info, tip gives success, warning gives warning and caution gives error.
+
+<h3 id="child-ha-alert--alert-type-info"><code>alert-type=&quot;info&quot;</code></h3>
+
+The default. Uses `info-color` and an information icon. For neutral facts people may want to know.
+
+<h3 id="child-ha-alert--alert-type-warning"><code>alert-type=&quot;warning&quot;</code></h3>
+
+Uses `warning-color` and a triangle icon. For something that may cause a problem if ignored.
+
+<h3 id="child-ha-alert--alert-type-error"><code>alert-type=&quot;error&quot;</code></h3>
+
+Uses `error-color` and a circled exclamation mark. For something that has failed. Say what happened and what to do next.
+
+<h3 id="child-ha-alert--alert-type-success"><code>alert-type=&quot;success&quot;</code></h3>
+
+Uses `success-color` and a tick in a circle. For confirmation that something worked.
+
+The Civica theme sets the four colours for light and dark modes, so the alert follows the mode and the theme colour.
+
+<h3 id="child-ha-tip"><code>ha-tip</code></h3>
+
+No attributes. It reads `secondary-text-color`. Home Assistant uses it only in settings screens, such as the new automation dialog. You cannot add it to a dashboard card. Where you need a tip, write ordinary text with a visible “Tip” label, or use [Inset text](inset-text.html).
+
+<h3 id="child-hui-alert-card"><code>hui-alert-card</code></h3>
+
+A status card for one entity (`type: alert`). It is always drawn while the entity exists. When the entity is not active it uses `clear_color`, which is no colour by default.
+
+```yaml
+type: alert
+entity: lock.back_door
+name: Back door
+hide_state: false
+```
+
+- `entity` is required, in the `alarm_control_panel`, `binary_sensor`, `cover` or `lock` domain.
+- `name`, `icon`, `vertical` and `hide_state` change the look. Keep the state visible, because colour alone must not carry the meaning.
+- `alert_color` and `clear_color` set the colour when active and when clear. `pulse` makes it pulse when active.
+- `tap_action`, `hold_action` and `double_tap_action` set what the card does. The default opens More info.
+
+It is active when an alarm is triggered, a cover is open, a lock is jammed, unlocked or open, or a binary sensor is on. The pulse is switched off for people who prefer reduced motion.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Alerts are native, themed and available in both light and dark modes.
+- The type is shown by an icon and by colour, and the alert is announced at once.
+- An alert is announced assertively, which suits an error but interrupts for a tip or a note.
+- The alert title is not a heading, so it does not appear in a heading list.
+- `ha-tip` is unavailable on dashboards.
+- The alert card covers only four entity domains.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use an alert when people need to notice a message. Use an error alert only for something that has failed, and a warning only for a real risk. Keep it to one idea and one callout in a section. Start with a specific title.
+
+Do not use an alert for a tip or for inline form validation. For a page-wide message use a [notification banner](notification-banners.html); for a fixed Civica warning use a [warning callout](warning-callout.html). For urgency and wording, see [Status](status.html) and [Household urgency](../patterns/household-urgency.html).
+
+Avoid alarming wording for something that is not an emergency. “Alarm” is only for an alarm that has sounded.
+
+Success criteria that apply:
+
+- 1.4.1 Use of Colour: the type has an icon, and the message has words.
+- 1.4.3 and 1.4.11 Contrast: the text sits on a tint of the type colour. Measure it in your own theme before you claim a ratio.
+- 4.1.3 Status Messages: an `ha-alert` is announced at once.
+- 2.5.8 Target Size (Minimum): the dismiss button is 36 CSS pixels.
+- 3.3.1 Error Identification and 3.3.3 Error Suggestion: an error says what is wrong and how to fix it.
+- 1.4.10 Reflow: long words wrap.
+- 2.3.3 Animation from Interactions (AAA): the alert card’s pulse is reduced when people prefer it.
+
+One idea in plain words, with the next step, keeps the load low.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-alert-types') %>
+
+An error alert written in Home Assistant markdown:
+
+```markdown
+> [!CAUTION]
+> The thermostat has not reported for 2 hours. Check its batteries.
+```
+
+For the fixed yellow callout on Civica pages, see [Warning callout](warning-callout.html).

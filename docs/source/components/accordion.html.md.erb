@@ -1,58 +1,191 @@
 ---
-title: Accordion
-description: Let people inspect several related sections without losing the surrounding page.
-section: components
-group: Content presentation
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
+title: "Accordion"
+description: "Hide optional explanations behind a labelled control, from one small definition to a group of help sections."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
 updates:
+  - date: "2026-11-25"
+    description: "Rewritten as the full Accordion specification. It now covers a single disclosure, several independent disclosures, a grouped accordion and the Home Assistant expansion panel."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Separated grouped accordion behaviour from native Details and expander presentation.
-  - date: 2026-11-11
-    description: Added the Civica guidance, contextual examples and implementation boundaries.
+  - date: "2026-11-11"
+    description: "Added the Civica guidance, contextual examples and implementation boundaries."
+ai_instructions: "Apply when content is hidden behind an expand and collapse control. Choose ordinary headings first. Use a native details element for one optional explanation, several independent details for substantial help, and a grouped accordion only when people need to compare topics. Never hide a warning, a failed save, a required question or live device state. Do not nest disclosures. Say that the ha-expansion-panel focus ring and the exclusive-open behaviour need card-mod or custom code and are not set by Civica."
+ai_related:
+  - path: "/components/dialogs.html"
+    title: "Dialogs"
+    relationship: "Use a dialog when the task needs focus and a decision, not optional reading."
+  - path: "/components/warning-callout.html"
+    title: "Warning callout"
+    relationship: "Never hide a warning in a disclosure. Show it as a callout."
+  - path: "/components/status.html"
+    title: "Status"
+    relationship: "Owns state wording that must stay visible outside any disclosure."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test keyboard, screen reader, 320 px and 200% text."
+component:
+  parent: "Accordion"
+  letter: "A"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<details>"
+      origin: "HTML5"
+      anchor: "child-details"
+      grandchildren:
+        - name: "<summary>"
+          origin: "HTML5"
+          anchor: "child-details--summary"
+    - name: "ha-expansion-panel"
+      origin: "Home Assistant"
+      anchor: "child-ha-expansion-panel"
+  tags:
+    - "details"
+    - "summary"
+    - "ha-expansion-panel"
 ---
 
 # Accordion
 
-Let people inspect several related sections without losing the surrounding page.
+<h2 id="purpose">Purpose</h2>
 
-## Keep grouped behaviour distinct
+An accordion hides optional content behind a control that opens and closes it. Use it for an extra explanation that only some people need: an uncommon term, a longer help topic or a set of troubleshooting steps. This page owns every show-and-hide disclosure in Civica, from one small definition to a group of sections.
 
-The [disclosure decision guide](details.html#choose-an-optional-disclosure) covers when to use Details, expanders or an accordion. This page owns the grouped enhanced interaction: section buttons, expanded-state announcements and show-all behaviour. Its readable unenhanced content differs from a browser’s native `details` control.
+Choose in this order:
 
-Retain the upstream component’s one state owner. Do not add competing custom toggles or assume that a visual expander can replace the accordion script. Test both individual and show-all controls, and preserve all readable content when enhancement is unavailable.
+1. Ordinary visible headings and a short contents list.
+2. One native disclosure for an optional definition or short explanation.
+3. Several independent disclosures for substantial help that a broad audience may need.
+4. A grouped accordion with a show-all control, only when people need to compare independently opened topics.
 
-## When to use
+This page covers:
 
-Use an accordion for optional troubleshooting topics that a person can select independently, such as connection, power and reporting intervals. Test whether headings and a short contents list would work first. Hidden sections increase the effort needed to discover information.
+- Accordion
+  - `<details>`
+    - `<summary>`
+  - `ha-expansion-panel`
 
-Keep the current state and the next required action outside the accordion. Do not hide a warning, a failed save or a required question. Never put one accordion inside another.
+<h2 id="anatomy">Anatomy</h2>
 
-## Independent troubleshooting sections
+A disclosure has a label that is always visible and content that opens below it. The label is the only part that people can operate.
+
+- In HTML, `details` is the container and `summary` is its label. The browser adds the disclosure marker, keyboard behaviour and the expanded or collapsed state.
+- In Home Assistant, `ha-expansion-panel` has a header, an optional secondary line, a chevron and the content. Its content is drawn only while the panel is open.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-details"><code>&lt;details&gt;</code></h3>
+
+The container for one disclosure.
+
+- `open` shows the content when the page loads. Use it only when most people need the content.
+- `name` puts several `details` in one group, so opening one closes the others. Use the same `name` for sections that people compare, and leave it out when people may want several open.
+- The `toggle` event fires when the state changes.
+
+The Civica theme has no keys for the native disclosure. It follows the surrounding text colour and font.
+
+<h3 id="child-details--summary"><code>&lt;summary&gt;</code></h3>
+
+The visible label, and it must be the first child of `details`. Enter or Space opens and closes it. It can hold text and a heading, but must not hold a link, a button or another control. Write what is hidden: “Why is this reading missing?”, not “More”.
+
+<h3 id="child-ha-expansion-panel"><code>ha-expansion-panel</code></h3>
+
+The native Home Assistant disclosure, used in settings pages and some cards.
+
+- Attributes: `expanded` (open), `outlined` (draws a border), `left-chevron` (chevron before the header), `no-collapse` (cannot be closed), `header` and `secondary` (text).
+- Slots: the default slot for content, plus `header`, `secondary`, `leading-icon`, `event` and `icons`.
+- Events: `expanded-will-change` and `expanded-changed`.
+- It opens with Enter or Space, and its summary is exposed as a button with its expanded state. The summary is at least 48 pixels tall.
+
+Variables in the Civica theme that it reads: `outline-color`, `input-fill-color`, `primary-text-color`, `secondary-text-color`, `ha-card-border-radius` (square), `ha-font-size-s`, `ha-font-weight-medium` and `ha-color-fill-neutral-normal-active`.
+
+The padding variables `expansion-panel-summary-padding` and `expansion-panel-content-padding` exist in Home Assistant, but the Civica theme does not set them.
+
+Home Assistant removes the outline on the summary, so the default focus cue is a change of background and a circle behind the chevron. To draw the Civica focus outline you need the card-mod integration:
+
+```yaml
+card_mod:
+  style:
+    ha-expansion-panel$: |
+      #summary:focus-visible {
+        outline: 3px solid var(--civica-focus-text);
+        outline-offset: -3px;
+      }
+```
+
+Check the result in your own dashboard, in light and dark modes.
+
+Home Assistant does not provide an exclusive-open group or a show-all control for its panel, and the theme cannot add them. Use native `details` with a shared `name` when you need a group.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Native `details` works without scripts, exposes its state to assistive technology and needs no integration.
+- `ha-expansion-panel` matches the rest of the Home Assistant interface.
+- Hidden content is harder to find, and people may never open it.
+- The Home Assistant panel animates its height over 300 ms and has no reduced-motion rule.
+- If a card is rebuilt whenever a sensor value updates, an open section may close. Keep the disclosure out of the part that updates.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a disclosure for optional help. Keep the current state and the next required action outside it. Do not hide:
+
+- a warning (see [Warning callout](warning-callout.html)),
+- an error or a failed save,
+- a required instruction or question,
+- the current state of a device (see [Status](status.html)),
+- anything most people need.
+
+Do not place a disclosure around live device controls, and do not nest one disclosure inside another. Each native disclosure keeps its own open state. Do not copy a grouped accordion's state handling into one, and do not add a second script that tracks which sections are open. For a decision that needs focus, use a [dialog](dialogs.html).
+
+In Home Assistant, an Energy view can keep a definition near a measurement, but the value and unit stay visible. A device card can explain why an action needs permission, but the reason it is unavailable stays visible too.
+
+Opening or closing must not run a device command, reload data or discard a form people have started. Use the same labels in search results and related links.
+
+Success criteria that apply:
+
+- 4.1.2 Name, Role, Value and 2.1.1 Keyboard: the label is a control with an exposed state.
+- 2.4.7 Focus Visible, 2.4.11 Focus Not Obscured (Minimum) and 2.4.13 Focus Appearance (AAA): the focus cue must be visible. Measure it before you claim it.
+- 1.4.11 Non-text Contrast: the chevron and border need 3:1.
+- 2.5.8 Target Size (Minimum): the label area is at least 24 by 24 CSS pixels.
+- 1.4.10 Reflow: it works at 320 CSS pixels.
+- 3.2.2 On Input: opening does not change context.
+- 2.2.2 Pause, Stop, Hide and 2.3.3 Animation from Interactions (AAA): keep any motion short.
+
+Hidden content raises the effort of finding it. Short, specific labels and no nesting keep that effort low.
+
+<h2 id="examples">Examples</h2>
+
+### Several independent help topics
+
+A small group of troubleshooting topics, each opened on its own.
 
 <%= example('core-accordion-troubleshooting') %>
 
-## Optional measurement explanations
+### Optional measurement explanations
+
+Two related definitions, power and energy, that people may compare. They sit in a grouped accordion, and any reading stays outside it.
 
 <%= example('core-accordion-measures') %>
 
-## Behaviour and content
+### Explain an Energy term
 
-Each section has a short, meaningful heading. The enhanced GOV.UK component supplies its own expand and collapse buttons and a show-all control. Its unenhanced HTML leaves the content readable. Do not replace its button with a clickable heading or manage a second, competing open state.
+One definition beside a reading. The value and unit are not hidden.
 
-Opening a section must not trigger a device command, reload data or discard a pending form. Use the same labels in search results and related links so the topic is easy to find. Keep explanations short enough to compare across sections.
+<%= example('nhs-details-energy') %>
 
-## Accessibility and testing
+### Several related help sections
 
-Tab to each control, toggle it with Enter and Space, then inspect its expanded state with a screen reader. Confirm that focus stays on the triggering button. Test all-open content at 320px and 200% text size. With JavaScript disabled, verify every section remains present and in a logical heading order.
+Independent sections can stay open together.
 
-## Home Assistant boundary
+<%= example('nhs-expander-guide') %>
 
-This is a reference for custom help content. It does not convert native Home Assistant expansion panels or persist their state. Reuse native panels where they already meet the task, and test their actual labels and focus separately.
+A single optional definition, as in the Energy example, is a native disclosure and does not need a grouped accordion.
 
-## Source
-
-Adapted from the [GOV.UK Accordion component](https://design-system.service.gov.uk/components/accordion/), reviewed 11 November 2026. The examples use GOV.UK Frontend 6.6.0 behaviour with Civica typography and original household content.
+Test each with a keyboard, with a screen reader, at 320 CSS pixels and at 200% text. Follow the [Civica accessibility checks](../accessibility/testing.html). Also check long summaries and printing. With scripts off, every section must still be present in a sensible order.
