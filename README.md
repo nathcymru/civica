@@ -133,3 +133,9 @@ Automated tests cover generated values, colour contrast, component behaviour, ke
 [![GNU General Public Licence version 3 or later](docs/source/images/license-gnu-gpl-v3.svg)](https://www.gnu.org/licenses/gpl-3.0.html) [![Creative Commons Attribution-ShareAlike 4.0 licence](docs/source/images/license-cc-by-sa-4.0.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 Original code is licensed under the [GNU General Public Licence, version 3 or later](LICENSE). Original documentation and guidance are licensed under [Creative Commons Attribution-ShareAlike 4.0](LICENSE-DOCS.txt). Earlier releases keep the permissions they were published with, and separately licensed materials keep their own terms. Read the [complete terms and attribution](LICENSE.md). Upstream design guidance retains its stated attribution. Supplied and pre-existing artwork has separate [provenance and reuse terms](ARTWORK.md). No official GOV.UK brand assets or GDS Transport fonts are distributed in the deployable output.
+
+## Guidance MCP server
+
+`scripts/guidance-mcp.mjs` serves the guidance pages and their examples to an MCP client over stdio. It reads `docs/source` and `docs/data` directly, so there is no generated copy to keep in step. The repository's `.mcp.json` registers it as `civica-guidance`.
+
+Tools: `list_pages`, `get_page`, `search_guidance`, `get_example`, `lookup_term` and `check_readiness`. Run `node scripts/guidance-export.mjs --gaps` to list pages whose source is not fully readable.
