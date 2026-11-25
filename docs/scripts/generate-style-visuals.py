@@ -25,7 +25,7 @@ PALETTES = {
     'app': GROUP('app'),
     'social': GROUP('social'),
 }
-FONT = 'Arial,Helvetica,sans-serif'
+FONT = 'Roboto,Helvetica Neue,Helvetica,Arial,sans-serif'
 
 
 def luminance(hex_value):

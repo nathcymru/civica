@@ -29,7 +29,7 @@ for (const mode of ['light', 'dark']) test(`legacy cards retain content and cont
   for (const tag of Object.keys(fixtures)) {
     const card = page.locator(tag);
     expect(await card.locator('ha-card').evaluate(el => getComputedStyle(el).borderRadius)).toBe('0px');
-    expect(await card.locator('h2').evaluate(el => getComputedStyle(el).fontSize)).toBe('24px');
+    expect(await card.locator('h2').evaluate(el => getComputedStyle(el).fontSize)).toBe('22px');
   }
   const appliance = page.locator('pa-appliance-card');
   await expect(appliance.locator('.warning')).toBeHidden();

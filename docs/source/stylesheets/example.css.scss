@@ -1,5 +1,6 @@
 @import 'civica-tokens';
-$govuk-font-family: (Arial, Helvetica, sans-serif);
+@import 'typefaces';
+$govuk-font-family: $civica-font-stack;
 $govuk-include-default-font-face: false;
 $govuk-new-link-styles: true;
 @import 'govuk/base';
@@ -9,7 +10,7 @@ $govuk-new-link-styles: true;
 @import 'govuk/utilities';
 :root { --c-border:#{$civica-border}; --c-success:#{$civica-success}; --c-error:#{$civica-error}; --c-body-size:1.1875rem; }
 * { box-sizing:border-box; }
-body { margin:0; background:#fff; color:#0b0c0c; font:var(--c-body-size)/1.5 Arial,Helvetica,sans-serif; }
+body { margin:0; background:#fff; color:#0b0c0c; font:var(--c-body-size)/1.5 Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif; }
 .c-example-canvas { padding:25px; overflow-wrap:anywhere; }
 .c-example-canvas > :last-child { margin-bottom:0; }
 .c-example-notice { font-size:14px; line-height:1.5; color:#505a5f; margin:0; padding:12px 25px; border-top:1px solid var(--c-border); }
@@ -34,7 +35,7 @@ dialog::backdrop { background:rgb(11 12 12 / 50%); }
 .civica-demo-header a { color:#fff; }.civica-demo-header a:focus{color:#0b0c0c;}
 .civica-project-lockup { display:block; width:295px; max-width:100%; height:auto; }
 .civica-chart { width:100%; height:auto; }
-.civica-chart text { fill:#414042; font-family:Arial,sans-serif; font-size:14px; }
+.civica-chart text { fill:#414042; font-family:Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:14px; }
 .civica-chart line { stroke:#d9d9d9; stroke-width:1; }
 .civica-chart polyline { fill:none; stroke-width:1.5; vector-effect:non-scaling-stroke; }
 .civica-table-scroll { overflow:auto; max-width:100%; }

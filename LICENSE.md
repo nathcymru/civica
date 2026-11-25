@@ -10,7 +10,7 @@ Civica is free software and free documentation. You may use, share and change it
 
 Civica is not affiliated with, endorsed by or connected to GOV.UK, the Government Digital Service (GDS), HM Government or the UK Government. It is also independent of Home Assistant and the other organisations whose guidance it references.
 
-Restricted Crown copyright identity assets are excluded from the published site and installable package. These include the Tudor crown, the GOV.UK wordmark and the GDS Transport font. GOV.UK Frontend build dependencies may contain upstream assets; the build excludes them from deployment. The documentation uses Civica's supplied identity and system fonts instead.
+Restricted Crown copyright identity assets are excluded from the published site and installable package. These include the Tudor crown, the GOV.UK wordmark and the GDS Transport font. GOV.UK Frontend build dependencies may contain upstream assets; the build excludes them from deployment. The documentation uses Civica's supplied identity and the Roboto typeface instead.
 
 Crown copyright notices below identify the owners of reused work. They do not describe Civica as an official service or grant permission to use government branding.
 
@@ -60,6 +60,7 @@ The [dependency inventory (JSON)](licences/dependencies.json) records the resolv
 | Apache ECharts | Apache-2.0 | Standalone documentation chart examples |
 | zrender | BSD-3-Clause | Chart drawing dependency |
 | tslib | 0BSD | Helpers bundled with chart examples |
+| Roboto typeface (via the @fontsource/roboto package) | SIL Open Font Licence 1.1; the licence text is published with the font files | Documentation text and example frames |
 | MapLibre GL JS | BSD-3-Clause; bundled code also has MIT and ISC notices | Standalone documentation map examples |
 | VersaTiles Style | MIT | Map styling code |
 | Other Node.js packages | MIT, ISC, BSD-2-Clause, BSD-3-Clause, Apache-2.0, 0BSD or the recorded dual licence | Build, test or transitive example dependencies, as recorded |
@@ -88,7 +89,7 @@ Unused legacy scene images, including sports-club marks, have been removed from 
 
 Existing original documentation illustrations and card specimens retain their recorded MIT licences. The [previous project notice](licences/history/LICENSE-v1.4.1.txt) preserves that permission. They are conceptual illustrations, not screenshots or evidence of a household's device state.
 
-NHS, Home Office and GOV.UK writing guidance informs original Civica writing rules. Source links on each guide identify the material reviewed. NHS identity assets, clinical authority claims and institutional approval are not imported.
+NHS, Home Office and GOV.UK writing guidance informs original Civica writing rules. Source links on each guide identify the material reviewed. NHS identity assets, clinical authority claims and institutional approval are not imported. The Civica pages on numbers, measurements, dates and time, and on inclusive content, reuse wording from the NHS content guide, © NHS England, under the Open Government Licence v3.0.
 
 Plain English Campaign retains copyright in its guides. The project links to them as an influence; it does not bundle their PDFs, proprietary word lists or worked examples. SCULPT was developed by Helen Wilson at Worcestershire County Council. Its source framework is published under Creative Commons Attribution–NonCommercial–ShareAlike 4.0. Civica credits and links to SCULPT; its poster and logo are not bundled or relicensed under MIT.
 

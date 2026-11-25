@@ -11,7 +11,7 @@ import { projectPowerSeries } from './energy-power-series';
 export const ENERGY_CHART_SPEC = Object.freeze({
   source: 'https://brand.design-system.service.gov.uk/colour/charts/',
   frontend: '20261028.5',
-  fontFamily: 'Arial, Helvetica, sans-serif', // civica's documented typeface
+  fontFamily: 'Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif', // civica's documented typeface
   minimumFontSize: 14,
   lineWidth: 1.5, // Dense native Energy charts use a thinner line than standalone charts.
   gridWidth: 1,
@@ -84,10 +84,10 @@ let chartSheet: CSSStyleSheet | undefined;
 let cardSheet: CSSStyleSheet | undefined;
 
 const CHART_CSS = `
-:host { --chart-max-height:none; font-family:Arial,Helvetica,sans-serif; }
+:host { --chart-max-height:none; font-family:Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif; }
 .container.has-height { max-height:none; min-height:280px; height:auto!important; }
 .chart-container { min-height:max(280px,var(--civica-energy-native-height,0px)); max-height:none; }
-.chart-legend { order:-1; padding:0 0 12px; font-family:Arial,Helvetica,sans-serif; font-size:max(14px,calc(14px * var(--ha-font-size-scale,1))); line-height:1.2; }
+.chart-legend { order:-1; padding:0 0 12px; font-family:Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size:max(14px,calc(14px * var(--ha-font-size-scale,1))); line-height:1.2; }
 .chart-legend ul { justify-content:flex-start; gap:4px 12px; }
 .chart-legend li { height:auto; min-height:44px; overflow:visible; }
 .chart-legend .legend-toggle { width:44px; min-height:44px; padding:10px; margin:0; flex:none; }
@@ -102,7 +102,7 @@ const CHART_CSS = `
 @media(forced-colors:active) { .chart:focus-visible,.chart-legend .legend-toggle:focus-visible,.chart-legend .label:focus-visible { outline-color:Highlight; box-shadow:none; } }
 `;
 const CARD_CSS = `
-.card-header,:host ::slotted(.card-header) { font-family:Arial,Helvetica,sans-serif; font-size:var(--civica-font-size-heading,24px); font-weight:700; line-height:1.25; letter-spacing:normal; }
+.card-header,:host ::slotted(.card-header) { font-family:Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size:var(--civica-font-size-heading,22px); font-weight:700; line-height:1.45; letter-spacing:normal; }
 `;
 
 const array = (value: any): any[] => value === undefined || value === null ? [] : Array.isArray(value) ? value : [value];
