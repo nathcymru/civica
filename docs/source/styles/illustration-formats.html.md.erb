@@ -6,17 +6,19 @@ group: "Illustration"
 nav_order: 10
 status: "reference"
 published_on: "2026-11-19"
-updated_on: "2026-11-19"
+updated_on: "2026-11-25"
 last_reviewed_on: "2026-11-19"
 review_in: "3 months"
 updates:
   - date: "2026-11-19"
     description: "First published. File formats, the Home Assistant www folder, the asset record and the export checks moved here from Illustration."
+  - date: "2026-11-25"
+    description: "Linked to the new Photography page, which now owns photographs."
 ai_instructions: "Apply when exporting or delivering a Civica illustration. SVG for guidance pages and dashboards, with a viewBox and no hidden layers or editor data; PNG at twice the pixel density for social posts; photographs are not illustrations. Keep the editable source with the asset, but never ask people to open it. In Home Assistant, files in the www folder of the configuration folder are served from /local/. Record each new asset in docs/data/illustration-assets.json; section headers are in the documentation artwork register. Check the exported file at small and large sizes, on light and dark backgrounds, with images off and with a colour blindness simulator, and record results in docs/data/brand-guidance-checklist.json. This page owns anchor bg-ill-10. Do not show rule IDs or name outside sources in page text. Rules WG-056."
 ai_related:
-  - path: "/styles/images.html"
-    title: "Icons and images"
-    relationship: "Owns photograph formats and camera images."
+  - path: "/styles/images-photography.html"
+    title: "Photography"
+    relationship: "Owns when to use a photograph or camera image."
   - path: "/styles/illustration-accessibility.html"
     title: "Illustration accessibility"
     relationship: "Owns alternative text and the accessibility rules the checks test."
@@ -35,7 +37,7 @@ Deliver each illustration in a format people can open, and keep the files you ne
 | --- | --- | --- |
 | Guidance pages and dashboards | SVG | Keep it small. Remove hidden layers and editor data. Set a `viewBox` so it scales. |
 | Social media posts | PNG | Export at the size the platform asks for, at twice the pixel density for sharp screens. |
-| Photographs | JPEG or WebP | Photographs are not illustrations. See [Icons and images](images.html#images). |
+| Photographs | JPEG or WebP | Photographs are not illustrations. See [Photography](images-photography.html). |
 | Editable source | The design tool’s own file | Keep it with the asset. Do not ask people to open it to see the illustration. |
 
 ## Put the file in Home Assistant
