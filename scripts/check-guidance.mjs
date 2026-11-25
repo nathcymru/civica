@@ -285,7 +285,7 @@ for (const loop of componentChecklist.loops) {
     if (check.families) for (const gapIds of Object.values(check.families)) for (const id of gapIds) assert.ok(proposalIds.has(id), `${check.id}: unknown requirement ${id}`);
   }
 }
-for (const name of ['illustration-assets', 'card-artwork-provenance', 'project-artwork-provenance', 'section-artwork-provenance']) {
+for (const name of ['illustration-assets', 'card-artwork-provenance', 'project-artwork-provenance', 'section-artwork-provenance', 'component-artwork-provenance']) {
   const manifest = json(name);
   for (const asset of manifest.assets) {
     assert.equal(hash(asset.path), asset.sha256, `${asset.path}: artwork changed after provenance review`);
