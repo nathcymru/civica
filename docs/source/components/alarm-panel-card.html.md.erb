@@ -1,0 +1,130 @@
+---
+title: "Alarm Panel Card"
+description: "Show the state of an alarm control panel and let people arm or disarm it."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Alarm Panel Card specification: configuration, theme keys, keypad and the limits of the card."
+ai_instructions: "Apply to the Home Assistant alarm-panel card (type alarm-panel). The entity must be in the alarm_control_panel domain. Show the state as text, never by colour or the pulse alone. Do not change the code entry flow or add a confirm step in a theme. The keypad shape needs card-mod. Use the word alarm only for a real alarm that has sounded. A calm state does not mean the house is safe."
+ai_related:
+  - path: "/components/devices.html"
+    title: "Devices"
+    relationship: "Owns the rules for locks, alarms and covers."
+  - path: "/components/dialogs.html"
+    title: "Dialogs"
+    relationship: "Home Assistant confirmations for alarms stay in place."
+  - path: "/components/status.html"
+    title: "Status"
+    relationship: "Owns how to word and show a state."
+  - path: "/patterns/household-urgency.html"
+    title: "Household urgency"
+    relationship: "Owns alarm wording and the three kinds of urgency."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "A quiet smoke alarm does not mean the house is safe."
+component:
+  parent: "Alarm Panel Card"
+  letter: "A"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-alarm-panel-card"
+      origin: "Lovelace"
+      anchor: "child-hui-alarm-panel-card"
+  tags:
+    - "hui-alarm-panel-card"
+---
+
+# Alarm Panel Card
+
+<h2 id="purpose">Purpose</h2>
+
+The Alarm Panel Card shows the state of one alarm control panel and gives people the buttons to arm or disarm it, with a keypad when a numeric code is needed. In YAML it is `type: alarm-panel`.
+
+It is for the household’s own alarm system. Rules for locks, alarms and covers in general are in [Devices](devices.html#locks-alarms-and-covers). This page owns the card.
+
+This page covers:
+
+- Alarm Panel Card
+  - `hui-alarm-panel-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+Inside one card:
+
+1. A heading with the entity name, and a chip beside it that shows the state in words. Selecting the chip opens More info.
+2. The arm buttons, shown while the alarm is disarmed. Otherwise only Disarm is shown.
+3. A Code field, unless the entity has a default code.
+4. A keypad, when the entity needs a numeric code: digits 1 to 9, Clear and 0.
+
+If the entity cannot be found, the card shows a warning instead.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-alarm-panel-card"><code>hui-alarm-panel-card</code></h3>
+
+```yaml
+type: alarm-panel
+entity: alarm_control_panel.house
+name: House alarm
+states:
+  - arm_home
+  - arm_away
+```
+
+Keys:
+
+- `entity` is required and must be in the `alarm_control_panel` domain.
+- `name` replaces the heading.
+- `states` lists the arm buttons: `arm_away`, `arm_home`, `arm_night`, `arm_vacation` or `arm_custom_bypass`. The default is `arm_home` and `arm_away`, limited to what the entity supports.
+- `theme` applies a theme to this card.
+
+Theme keys that reach it: `ha-card-border-radius` (square), `ha-card-background`, `ha-card-border-color`, `ha-card-header-*`, `ha-button-border-radius` (square), `state-inactive-color`, `state-active-color`, `red-color`, `error-color`, `input-fill-color`, `primary-text-color`, `ha-color-focus` and the `ha-font-size-*` keys. The state chip takes its colour from the alarm’s state.
+
+The keypad keys stay round, because the Civica theme does not set `ha-border-radius-4xl`. With the card-mod integration you can make them square:
+
+```yaml
+type: alarm-panel
+entity: alarm_control_panel.house
+card_mod:
+  style: |
+    ha-control-button { --control-button-border-radius: 0; }
+```
+
+You cannot change the code entry flow or add a confirmation step with a theme or YAML.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It is the native card, so it supports every alarm integration that Home Assistant does.
+- The state is written in the chip, not shown by colour alone.
+- The code field is a password field that accepts autofill and pasting, so people are not forced to type from memory.
+- While the state is triggered, arming or pending, the chip pulses once a second. The card has no setting for reduced motion, so the words, not the pulse, must carry the meaning.
+- The card does not announce a change of state to a screen reader. Check this in your own setup.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use the card for the household’s alarm system. Keep the entity name in the heading and the state in words. Say “Armed away”, not just a colour. Avoid the word “alarm” for anything that has not sounded. A quiet or disarmed panel does not mean the house is safe, so do not word it as if it does. See [Household urgency](../patterns/household-urgency.html) and [States, requests and errors](../content/writing-guidelines/states-and-errors.html).
+
+Do not put a whole-card tap over separate arm and disarm buttons. Leave Home Assistant’s own confirmations in place; see [Dialogs](dialogs.html). Use a default code on the entity where the household agrees, so the keypad is not needed.
+
+Success criteria that apply:
+
+- 1.4.1 Use of Colour: the chip has text.
+- 1.4.3 and 1.4.11 Contrast: measure the chip and the buttons in your own theme.
+- 2.3.1 Three Flashes: the pulse is once a second, within the limit. 2.2.2 Pause, Stop, Hide applies if it keeps pulsing for more than five seconds, and the card gives no way to stop it.
+- 2.5.8 Target Size (Minimum): the keys are 56 by 56 CSS pixels. Measure the small buttons.
+- 3.3.8 Accessible Authentication (Minimum): the code field allows paste and autofill.
+- 3.3.7 Redundant Entry and 3.3.2 Labels or Instructions.
+- 4.1.3 Status Messages: not provided by the card.
+
+Label each action by its outcome, such as “Arm home” or “Disarm”. Add no time pressure.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-alarm-panel-disarmed') %>

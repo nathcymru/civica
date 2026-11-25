@@ -21,7 +21,7 @@ const ORIGINS = ['HTML5', 'Home Assistant', 'Lovelace', 'Civica'];
 const BUILD = 'docs/build';
 // Pages in /components/ that are not inventory parents. They stay in the sidebar
 // until Branch 2 retires or moves them. This list may shrink; it must never grow.
-const LEGACY_PAGES = ['chart-examples', 'controls', 'details', 'devices', 'error-summary', 'example', 'expander',
+const LEGACY_PAGES = ['chart-examples', 'controls', 'devices', 'error-summary', 'example',
   'generic-header', 'password-input', 'review-date', 'status', 'warning-callout'].map(name => `/components/${name}.html`);
 
 const raw = readFileSync(INVENTORY_PATH);

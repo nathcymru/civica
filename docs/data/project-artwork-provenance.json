@@ -207,6 +207,53 @@
           "Final About-page layout and screen-reader reading order need integration review after the figures are inserted."
         ]
       }
+    },
+    {
+      "id": "component-bottom-sheet-anatomy",
+      "path": "docs/source/images/component-bottom-sheet-anatomy.svg",
+      "sha256": "27f2710fb0682f9ea062071929966b519517c33998bd6e7dcd9a0404d664ce19",
+      "width": 960,
+      "height": 560,
+      "view_box": "0 0 960 560",
+      "creator": "Civica project contributors; Claude-assisted original SVG markup",
+      "created_on": "2026-11-25",
+      "licence": "MIT, original repository documentation artwork under LICENSE",
+      "provenance": "Original flat vector geometry authored in this repository. No external artwork, stock photograph, screenshot, government identity path, supplied civica logo geometry or font file copied. Editable source is the SVG file itself.",
+      "purpose": "Show the order of the handle, header, body, footer and scrim in a bottom sheet.",
+      "classification": "Anatomy schematic, not a Home Assistant screenshot or evidence of deployed behaviour",
+      "palette": [
+        "#0B0C0C",
+        "#103E65",
+        "#1D70B8",
+        "#BFD9ED",
+        "#F3F6F9",
+        "#FFFFFF"
+      ],
+      "background": "Opaque #F3F6F9 light canvas inside the SVG; suitable on a light or dark surrounding page without changing the asset. Fixed blue illustration colours do not encode device state or change with the theme colour.",
+      "caption": "The parts of a bottom sheet, numbered from the top: 1 the handle, 2 the header, 3 the body, 4 the footer with Close first and the main action last, and 5 the scrim that dims the page behind. The drawing is not interactive.",
+      "alternative_text_decision": {
+        "recommended_img_alt": "",
+        "reason": "The adjacent figcaption and the numbered Anatomy list state the full meaning, so the embedded image is redundant. Keep the figcaption whenever using empty alt.",
+        "standalone_informative_alt": "A bottom sheet over a dimmed page, with numbered parts from the top: handle, header, body, footer with two buttons, and the scrim.",
+        "standalone_svg_accessibility": "SVG role=img references its title and description. All internal shapes are non-interactive.",
+        "text_alternative": "The parts of a bottom sheet, numbered from the top: 1 the handle, 2 the header, 3 the body, 4 the footer with Close first and the main action last, and 5 the scrim that dims the page behind. The drawing is not interactive."
+      },
+      "source_background": [
+        "docs/source/styles/illustration.html.md.erb",
+        "docs/source/styles/images.html.md.erb"
+      ],
+      "local_decisions": [
+        "HTML carries the full explanation; the artwork uses numerals only, no small labels.",
+        "Functional control boundaries use ink strokes; other flat objects have no outlines, texture, gradients or 3D effects.",
+        "Square sheet corners match the theme's square dialog radius."
+      ],
+      "verification": {
+        "source_checks": "Six flat colours, explicit dimensions and viewBox, no scripts, raster, external dependencies, animation, filters or gradients.",
+        "render_checks": "Not yet rendered; the build checks run by the lead cover desktop and 320px.",
+        "limitations": [
+          "Local artwork only; no live Home Assistant or assistive-technology test is claimed."
+        ]
+      }
     }
   ],
   "project_identity": {

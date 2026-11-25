@@ -1,0 +1,32 @@
+# Component specification examples; synthetic data and no live actions.
+examples:
+  spec-abbreviation-help:
+    title: A help card that expands an abbreviation on first use
+    description: The full term comes first with the abbreviation in brackets, so no one needs to hover. Later uses show the short form, marked up with abbr.
+    height: 420
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-abbr-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-abbr-title">Charging at home</h2><p class="govuk-body">Your electric vehicle (<abbr title="electric vehicle">EV</abbr>) charger is on the driveway wall.</p><p class="govuk-body">The <abbr title="electric vehicle">EV</abbr> charger starts when electricity is cheapest. Change the time on the Energy dashboard.</p></div></article>
+  spec-address-contact:
+    title: A help card with a contact block
+    description: The address element holds the contact details for this help page, one line for each part. The household's own address is written as ordinary lines, not as an address element.
+    height: 520
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-address-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-address-title">Need help with this dashboard?</h2><p class="govuk-body">Ask the person who looks after it.</p><address class="govuk-body">Sam Okafor<br>Household dashboard<br>sam@example.com</address><h3 class="govuk-heading-s">Home address for deliveries</h3><p class="govuk-body">14 Mill Lane<br>Exampletown<br>EX1 2MP</p></div></article>
+  spec-alarm-panel-disarmed:
+    title: An alarm panel card, disarmed
+    description: The heading names the alarm and the state is written in words beside it. The arm buttons, the Code field and the keypad follow. The buttons do nothing in this simulated card.
+    height: 760
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-alarm-title"><div class="civica-card-demo__body"><div class="civica-card-demo__heading-row"><h2 class="govuk-heading-m" id="spec-alarm-title">House alarm</h2><strong class="govuk-tag govuk-tag--grey">Disarmed</strong></div><p class="civica-card-demo__actions"><button type="button" class="govuk-button govuk-button--secondary">Arm home</button><button type="button" class="govuk-button govuk-button--secondary">Arm away</button></p><div class="govuk-form-group"><label class="govuk-label" for="spec-alarm-code">Code</label><input class="govuk-input govuk-input--width-5" id="spec-alarm-code" type="password" inputmode="numeric" autocomplete="one-time-code"></div><p class="civica-card-demo__actions"><button type="button" class="govuk-button govuk-button--secondary">1</button><button type="button" class="govuk-button govuk-button--secondary">2</button><button type="button" class="govuk-button govuk-button--secondary">3</button></p><p class="civica-card-demo__actions"><button type="button" class="govuk-button govuk-button--secondary">4</button><button type="button" class="govuk-button govuk-button--secondary">5</button><button type="button" class="govuk-button govuk-button--secondary">6</button></p><p class="civica-card-demo__actions"><button type="button" class="govuk-button govuk-button--secondary">7</button><button type="button" class="govuk-button govuk-button--secondary">8</button><button type="button" class="govuk-button govuk-button--secondary">9</button></p><p class="civica-card-demo__actions"><button type="button" class="govuk-button govuk-button--secondary">Clear</button><button type="button" class="govuk-button govuk-button--secondary">0</button></p></div></article>
+  spec-alert-types:
+    title: The four alert types and a tip on one card
+    description: A Civica rendering of the four alert types. Each alert has a word label and a message, so colour never carries the meaning alone. The tip is ordinary text with a visible label.
+    height: 1050
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-alert-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-alert-title">Heating and hot water</h2><div class="govuk-notification-banner" role="region" aria-labelledby="spec-alert-info"><div class="govuk-notification-banner__header"><h3 class="govuk-notification-banner__title" id="spec-alert-info">Information</h3></div><div class="govuk-notification-banner__content"><p class="govuk-notification-banner__heading">Hot water runs from 6am to 8am.</p></div></div><div class="civica-warning-callout"><h3 class="govuk-heading-s civica-warning-callout__heading">Warning</h3><p class="govuk-body">The thermostat has not reported for 2 hours.</p></div><div class="govuk-error-summary" data-module="" role="group" aria-labelledby="spec-alert-error"><h3 class="govuk-error-summary__title" id="spec-alert-error">Error</h3><div class="govuk-error-summary__body"><p class="govuk-body">The boiler did not accept the new schedule. Check that it is switched on, then try again.</p></div></div><div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="spec-alert-success"><div class="govuk-notification-banner__header"><h3 class="govuk-notification-banner__title" id="spec-alert-success">Success</h3></div><div class="govuk-notification-banner__content"><p class="govuk-notification-banner__heading">The new schedule is saved.</p></div></div><div class="govuk-inset-text"><strong>Tip:</strong> Set the schedule one hour before you need hot water.</div></div></article>
+  spec-bottom-sheet-date-range:
+    title: A date range sheet, simulated
+    description: The title says what to choose, the body says what it changes, and the footer puts Close first and Apply last. The buttons do nothing in this simulated sheet.
+    height: 420
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-sheet-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-sheet-title">Choose a date range</h2><p class="govuk-body">Pick the days you want the chart to show.</p><p class="civica-card-demo__actions"><button type="button" class="govuk-button govuk-button--secondary">Close</button><button type="button" class="govuk-button">Apply</button></p></div></article>

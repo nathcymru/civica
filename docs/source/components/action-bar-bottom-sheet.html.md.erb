@@ -1,0 +1,125 @@
+---
+title: "Action Bar / Bottom Sheet"
+description: "Show a short task in a panel that rises from the bottom of a narrow screen, with its actions at the foot."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Action Bar / Bottom Sheet specification: the Home Assistant bottom sheet, how it closes and which theme keys apply."
+ai_instructions: "Apply when a short task opens as a panel from the bottom of the screen. The bottom sheet is ha-bottom-sheet. There is no separate action bar element: actions go in the footer slot. Always provide a visible Close button, because swipe down is pointer only. Keep one task per sheet. Use a dialog for confirmations. Do not claim card-mod reaches the sheet. The Civica theme sets no ha-bottom-sheet keys."
+ai_related:
+  - path: "/components/dialogs.html"
+    title: "Dialogs"
+    relationship: "Owns confirmations, including for locks and alarms."
+  - path: "/components/buttons.html"
+    title: "Buttons"
+    relationship: "Owns the wording and style of the actions in the footer."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test keyboard close, focus order and 320 px."
+component:
+  parent: "Action Bar / Bottom Sheet"
+  letter: "A"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-bottom-sheet"
+      origin: "Home Assistant"
+      anchor: "child-ha-bottom-sheet"
+  tags:
+    - "ha-bottom-sheet"
+---
+
+# Action Bar / Bottom Sheet
+
+<h2 id="purpose">Purpose</h2>
+
+A bottom sheet is a panel that rises from the bottom edge of the screen over the dashboard. It holds one short task, such as choosing a filter or a date range, and a row of actions at its foot. Home Assistant uses it on narrow screens, where a centred dialog would crowd the page.
+
+Home Assistant has no separate action bar element. The row of actions is the sheet’s `footer` slot, so this page owns both. A confirmation of a consequential action belongs in a [dialog](dialogs.html).
+
+This page covers:
+
+- Action Bar / Bottom Sheet
+  - `ha-bottom-sheet`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+1. A handle, drawn for people who swipe. It is hidden from assistive technology.
+2. The `header` slot, if you use it.
+3. The body, in the default slot, which scrolls if it is long.
+4. The `footer` slot for the actions, aligned to the end of the row.
+
+Behind the sheet, a scrim dims the page.
+
+<figure class="c-project-figure">
+  <img src="<%= docs_path('/images/component-bottom-sheet-anatomy.svg') %>" width="960" height="560" alt="" loading="lazy" decoding="async">
+  <figcaption>The parts of a bottom sheet, numbered from the top: 1 the handle, 2 the header, 3 the body, 4 the footer with Close first and the main action last, and 5 the scrim that dims the page behind. The drawing is not interactive.</figcaption>
+</figure>
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-bottom-sheet"><code>ha-bottom-sheet</code></h3>
+
+Attributes:
+
+- `open` shows the sheet.
+- `aria-labelledby` and `aria-describedby` name and describe it. Always set the first.
+- `flexcontent` lets the body fill the height.
+- `prevent-scrim-close` stops Escape and a tap on the scrim from closing the sheet, and hides the handle.
+
+Events: `opened`, `after-show` and `closed`.
+
+Ways it closes: Escape, a tap on the scrim, any element marked `data-drawer="close"` or `data-dialog="close"`, and a swipe down. The first element marked `autofocus` takes focus when it opens.
+
+Theme variables from Home Assistant: `--ha-bottom-sheet-height`, `--ha-bottom-sheet-max-height`, `--ha-bottom-sheet-max-width`, `--ha-bottom-sheet-border-radius`, `--ha-bottom-sheet-surface-background`, `--ha-bottom-sheet-scrim-color` and `--ha-bottom-sheet-handle-color`. The Civica theme sets none of these. It sets the dialog values the sheet falls back to:
+
+- `ha-dialog-border-radius` is square (0px), so the sheet has square top corners.
+- `ha-dialog-surface-background` is white in light mode and a dark grey in dark mode.
+- `divider-color` sets the handle colour when no handle key is set.
+
+The scrim colour is Home Assistant’s default, because the Civica theme sets no scrim colour.
+
+The card-mod integration works on cards, not on this layer, so do not rely on it to style the sheet.
+
+You cannot change the swipe behaviour or add a permanent action bar with a theme. A related variant, `ha-snap-bottom-sheet`, rests at set heights, and `ha-adaptive-dialog` chooses a sheet on narrow screens.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It keeps the dashboard in view behind the scrim.
+- Home Assistant honours reduced motion: it shortens the animation to 1 ms.
+- A swipe or a tap on the scrim is the easy way to close, and neither works for everyone.
+- The sheet closes on Escape, so unsaved input is lost unless you set `prevent-scrim-close`.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a sheet for one short, optional task on a narrow screen. Do not use it for a confirmation, an alarm or lock command, or any consequential action; use a [dialog](dialogs.html), which keeps the explicit buttons people expect. The footer is aligned to the end of the row, so put Close first and the main action last, and name each by its outcome, as in [Buttons](buttons.html).
+
+Always add a visible Close button in the footer with `data-drawer="close"`. Never rely on the handle or the scrim alone. Say how to close it, keep one task in each sheet and set no time limit.
+
+Success criteria that apply:
+
+- 2.1.1 Keyboard: Escape closes, and every action can be reached with Tab.
+- 2.5.1 Pointer Gestures and 2.5.7 Dragging Movements: a swipe has a single-pointer alternative, the Close button.
+- 2.4.3 Focus Order and 2.4.11 Focus Not Obscured (Minimum): focus moves into the sheet and is not hidden by it.
+- 4.1.2 Name, Role, Value and 1.3.1: the sheet has a name, set with `aria-labelledby`.
+- 1.4.10 Reflow and 1.4.12 Text Spacing: the body scrolls.
+- 2.3.3 Animation from Interactions (AAA): reduced motion is honoured.
+- 3.2.2 On Input and 2.5.8 Target Size (Minimum).
+
+One task, one way out and no time pressure keep the load low.
+
+<h2 id="examples">Examples</h2>
+
+Home Assistant opens the sheet itself, when a screen such as a date range picker or a filter pane needs one. A dashboard author cannot add a bottom sheet to a card or open one from YAML. What you can control is the theme: the dialog radius, surface and handle colour described above.
+
+This simulated date range sheet shows the order of the parts: title, body, then the footer actions with Close first and Apply last.
+
+<%= example('spec-bottom-sheet-date-range') %>

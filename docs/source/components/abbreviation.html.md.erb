@@ -1,0 +1,91 @@
+---
+title: "Abbreviation"
+description: "Expand an abbreviation the first time people meet it, so they never have to guess or hover."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Abbreviation specification: what the abbr element does, where it falls short and what to write instead."
+ai_instructions: "Apply when an abbreviation, acronym or initialism appears in a dashboard, card or help text. Write the full term first with the abbreviation in brackets. Do not rely on the abbr title tooltip, which touch and keyboard users cannot reach. Do not claim Home Assistant markdown keeps the abbr element."
+ai_related:
+  - path: "/content/style-guides/a-to-z.html"
+    title: "A to Z General"
+    relationship: "Owns the wording rule for abbreviations, acronyms and initialisms."
+  - path: "/content/writing-guidelines/clear-titles.html"
+    title: "Write clear titles"
+    relationship: "Keep titles and labels free of unexplained abbreviations."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test the expansion with a keyboard, a screen reader and touch."
+component:
+  parent: "Abbreviation"
+  letter: "A"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<abbr>"
+      origin: "HTML5"
+      anchor: "child-abbr"
+  tags:
+    - "abbr"
+---
+
+# Abbreviation
+
+<h2 id="purpose">Purpose</h2>
+
+An abbreviation is a short form of a longer term, such as “EV” for “electric vehicle”. The HTML `abbr` element marks it and can carry the full term in its `title` attribute.
+
+Civica’s rule is to write the full term first, with the abbreviation in brackets, then use the short form. People should never need to hover to understand a card. This page owns the `abbr` element. The [A to Z](../content/style-guides/a-to-z.html#abbreviations-acronyms-and-initialisms) owns the wording rule.
+
+This page covers:
+
+- Abbreviation
+  - `<abbr>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+`abbr` is an inline element that holds the short form as its text. Its only special attribute is `title`, which should hold the full expansion. Browsers usually draw a dotted underline under `abbr[title]`.
+
+`abbr` is not a Home Assistant element and has no theme variables of its own. It inherits the text colour from `primary-text-color` and the size from the surrounding text.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-abbr"><code>&lt;abbr&gt;</code></h3>
+
+- With `title`: the short form is underlined with dots and shows the expansion as a tooltip on hover.
+- Without `title`: the element has no visible or spoken effect. Do not use it as decoration.
+
+A tooltip does not reach everyone. Touch users have no hover, keyboard users cannot focus the tooltip, and screen readers do not reliably read it. So use `abbr` as an extra, never as the only place the expansion appears.
+
+Do not depend on the element in a Home Assistant markdown card. Write the expansion into the text instead.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It marks the short form in a way that assistive technology can use.
+- It costs nothing and needs no integration.
+- The expansion in `title` is invisible on touch screens and to keyboard users.
+- The tooltip disappears when the pointer moves, so people cannot read it at their own pace.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use the full term first, then the abbreviation in brackets: “Electric vehicle (EV) charger”. After that, use “EV” alone on the same page. Do not explain common abbreviations such as USB, LED or TV.
+
+Do not use an abbreviation in a title, button label or state if a short plain word would do. For a term used across many cards, link the first use to a glossary entry instead.
+
+Success criteria that apply:
+
+- 3.1.4 Abbreviations (AAA): give a way to find the expansion.
+- 2.1.1 Keyboard and 1.4.13 Content on Hover or Focus: a `title` tooltip fails both if it is the only route.
+- 3.1.3 Unusual Words (AAA): explain terms people may not know.
+
+Undefined abbreviations raise the effort of reading, especially for people with memory or language difficulties. Expanding on first use removes that effort.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-abbreviation-help') %>

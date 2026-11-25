@@ -218,7 +218,7 @@
     },
     {
       "path": "docs/source/community/component-audit.html.md.erb",
-      "sha256": "9aff5579cb99477b8245409c9da56824d249484d6091d7786335b8668d7034e6",
+      "sha256": "7c2ad4505486bae3130b4504cea6b1225399c646d282c0f02f18ee7cacf9ceda",
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -241,8 +241,8 @@
       "url": "/community/component-audit.html",
       "title": "Component organisation review",
       "example_ids": [
-        "local-community-issue",
-        "local-community-decision"
+        "local-community-decision",
+        "local-community-issue"
       ],
       "resolved_finding_ids": [],
       "current_review_on": "2026-11-12",
@@ -665,7 +665,7 @@
     },
     {
       "path": "docs/source/components/accordion.html.md.erb",
-      "sha256": "b4e093c8e3b2d4416487793262525def8cef74c120143b56415b0117c138e1bd",
+      "sha256": "c9c5257aacb0db2f042e4031691f1c021d7c806214efd7c1239bbe1b5e791067",
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -686,8 +686,10 @@
       "finding_ids": [],
       "recommendation_ids": [],
       "example_ids": [
+        "core-accordion-measures",
         "core-accordion-troubleshooting",
-        "core-accordion-measures"
+        "nhs-details-energy",
+        "nhs-expander-guide"
       ],
       "note": "Optional troubleshooting stays distinct from current state and required action; progressive enhancement and native-panel boundaries are explicit. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
       "url": "/components/accordion.html",
@@ -1140,40 +1142,6 @@
       ]
     },
     {
-      "path": "docs/source/components/details.html.md.erb",
-      "sha256": "3973a18fbc348997c9c8b6d82f560d38c5b24df965516cf1a96064c181f773ef",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "recommendation_ids": [],
-      "example_ids": [
-        "nhs-details-energy",
-        "nhs-details-unavailable"
-      ],
-      "note": "Essential state stays outside optional explanation; the fixed daily reading needs a complete period and prose spacing. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "url": "/components/details.html",
-      "title": "Details",
-      "resolved_finding_ids": [
-        "AUD-COMP-001",
-        "AUD-COMP-004"
-      ]
-    },
-    {
       "path": "docs/source/components/devices.html.md.erb",
       "sha256": "cc17fa78896609a5c1c15527027f05ae1ce7cf2d152f8026ab4a1239b3eebcb1",
       "reviewed_rule_families": [
@@ -1394,37 +1362,6 @@
       "note": "The local preview explicitly does not provide production safety, history clearing or an emergency-stop capability; reviewed deployment remains separate. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
       "url": "/components/exit-this-page.html",
       "title": "Exit this page",
-      "resolved_finding_ids": []
-    },
-    {
-      "path": "docs/source/components/expander.html.md.erb",
-      "sha256": "fb08e32f9a613e0a70603a0f3bdbe30ccea9fca8301ee076a24f733ab8d76a40",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "recommendation_ids": [],
-      "example_ids": [
-        "nhs-expander-energy",
-        "nhs-expander-guide"
-      ],
-      "note": "Optional reference explanations do not conceal live state or required action; missing and delayed values remain separate. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "url": "/components/expander.html",
-      "title": "Expander",
       "resolved_finding_ids": []
     },
     {
@@ -3815,11 +3752,11 @@
       "url": "/home-assistant/system-and-developer-tools.html",
       "title": "System settings and tools",
       "example_ids": [
-        "system-state-tool",
         "system-privacy-choice",
+        "system-state-tool",
         "system-storage-status"
       ],
-      "sha256": "3694c3dab9108bfd1bbad5e1b8d9dd3782985d5df96f0c90a092247146157bba",
+      "sha256": "36eda461d4103c67e567a1f1d28afa967227f725b1d0f33e20c32b181df1f724",
       "note": "Read complete guide. State overrides versus physical commands and possible automation effects are explicit. Template results, instance/account/browser scope, data destinations, binary units and diagnostic limits remain separate. Title is a task description rather than a stale route instruction. 12 November 2026 source review: Linked the shared design styles without requiring the project identity inside a household interface. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
       "current_review_on": "2026-11-12",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
@@ -8320,6 +8257,156 @@
       "resolved_finding_ids": [],
       "current_review_on": "2026-11-24",
       "current_review_scope": "Current source read and source-integrity reconciliation; rendered evidence is separately recorded in ha-coverage-verification.json."
+    },
+    {
+      "path": "docs/source/components/abbreviation.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "recommendation_ids": [],
+      "example_ids": [
+        "spec-abbreviation-help"
+      ],
+      "note": "Component specification written on 25 November 2026 from the pinned Home Assistant frontend source and checked by an independent editor pass. It does not claim a native Home Assistant acceptance run.",
+      "sha256": "cf8c47e8abab2409bde721c7ace86e30b271f5826c5a022347e86ceab3eec456",
+      "url": "/components/abbreviation.html",
+      "title": "Abbreviation",
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/components/action-bar-bottom-sheet.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "recommendation_ids": [],
+      "example_ids": [
+        "spec-bottom-sheet-date-range"
+      ],
+      "note": "Component specification written on 25 November 2026 from the pinned Home Assistant frontend source and checked by an independent editor pass. It does not claim a native Home Assistant acceptance run.",
+      "sha256": "abe37162f8dd0d54ed08388b21efa8a04c4b9ebd8e9f0434f5274b750045e701",
+      "url": "/components/action-bar-bottom-sheet.html",
+      "title": "Action Bar / Bottom Sheet",
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/components/address.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "recommendation_ids": [],
+      "example_ids": [
+        "spec-address-contact"
+      ],
+      "note": "Component specification written on 25 November 2026 from the pinned Home Assistant frontend source and checked by an independent editor pass. It does not claim a native Home Assistant acceptance run.",
+      "sha256": "1519cc5e17caece8050491ac21769c01301339812d78bb34fdf693f352ff99a3",
+      "url": "/components/address.html",
+      "title": "Address",
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/components/alarm-panel-card.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "recommendation_ids": [],
+      "example_ids": [
+        "spec-alarm-panel-disarmed"
+      ],
+      "note": "Component specification written on 25 November 2026 from the pinned Home Assistant frontend source and checked by an independent editor pass. It does not claim a native Home Assistant acceptance run.",
+      "sha256": "ff948c98fcdcd32306160c1771a16ba358cf256ff59688d267696312e8e3be3d",
+      "url": "/components/alarm-panel-card.html",
+      "title": "Alarm Panel Card",
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/components/alert-and-tip-callout.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "recommendation_ids": [],
+      "example_ids": [
+        "spec-alert-types"
+      ],
+      "note": "Component specification written on 25 November 2026 from the pinned Home Assistant frontend source and checked by an independent editor pass. It does not claim a native Home Assistant acceptance run.",
+      "sha256": "1b1971220d8248ddee0509499e594f4c35f7940d286c4770081392a9895d4eba",
+      "url": "/components/alert-and-tip-callout.html",
+      "title": "Alert & Tip Callout",
+      "resolved_finding_ids": []
     }
   ],
   "examples": [
@@ -17704,6 +17791,101 @@
       "owners": [
         "/styles/structure-spacing.html"
       ]
+    },
+    {
+      "id": "spec-abbreviation-help",
+      "title": "A help card that expands an abbreviation on first use",
+      "source_file": "docs/data/component-spec-examples.yml",
+      "owners": [
+        "/components/abbreviation.html"
+      ],
+      "review_note": "Read the A help card that expands an abbreviation on first use specimen with its owning guide: structure, state meaning and native integration boundaries checked. Rendered acceptance is recorded separately.",
+      "sha256": "085f8e0692678fd6faeb9312c03f66849b07e1f69eadf0f128957166e677513d",
+      "path": "docs/data/component-spec-examples.yml",
+      "authored_html_sha256": "77c81bde37a3931168a7b4bb3e3222f7715b1534233b63be951d7e7f2a35cac0",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "WG"
+      ],
+      "finding_ids": []
+    },
+    {
+      "id": "spec-address-contact",
+      "title": "A help card with a contact block",
+      "source_file": "docs/data/component-spec-examples.yml",
+      "owners": [
+        "/components/address.html"
+      ],
+      "review_note": "Read the A help card with a contact block specimen with its owning guide: structure, state meaning and native integration boundaries checked. Rendered acceptance is recorded separately.",
+      "sha256": "085f8e0692678fd6faeb9312c03f66849b07e1f69eadf0f128957166e677513d",
+      "path": "docs/data/component-spec-examples.yml",
+      "authored_html_sha256": "2304f5bfb56b170052c472aecc148cccdd39b8c934b914d2d422bd796ef7ffb8",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "WG"
+      ],
+      "finding_ids": []
+    },
+    {
+      "id": "spec-alarm-panel-disarmed",
+      "title": "An alarm panel card, disarmed",
+      "source_file": "docs/data/component-spec-examples.yml",
+      "owners": [
+        "/components/alarm-panel-card.html"
+      ],
+      "review_note": "Read the An alarm panel card, disarmed specimen with its owning guide: structure, state meaning and native integration boundaries checked. Rendered acceptance is recorded separately.",
+      "sha256": "085f8e0692678fd6faeb9312c03f66849b07e1f69eadf0f128957166e677513d",
+      "path": "docs/data/component-spec-examples.yml",
+      "authored_html_sha256": "811f5b113405f6e0f339c3baf782b67f2a3a43088f981a704de5a471fc46efc7",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "WG"
+      ],
+      "finding_ids": []
+    },
+    {
+      "id": "spec-alert-types",
+      "title": "The four alert types and a tip on one card",
+      "source_file": "docs/data/component-spec-examples.yml",
+      "owners": [
+        "/components/alert-and-tip-callout.html"
+      ],
+      "review_note": "Read the The four alert types and a tip on one card specimen with its owning guide: structure, state meaning and native integration boundaries checked. Rendered acceptance is recorded separately.",
+      "sha256": "085f8e0692678fd6faeb9312c03f66849b07e1f69eadf0f128957166e677513d",
+      "path": "docs/data/component-spec-examples.yml",
+      "authored_html_sha256": "9cc53eb18e78dc2b478e9f7f9aeba60d55925b89f010b0b8e4cda521561f464d",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "WG"
+      ],
+      "finding_ids": []
+    },
+    {
+      "id": "spec-bottom-sheet-date-range",
+      "title": "A date range sheet, simulated",
+      "source_file": "docs/data/component-spec-examples.yml",
+      "owners": [
+        "/components/action-bar-bottom-sheet.html"
+      ],
+      "review_note": "Read the A date range sheet, simulated specimen with its owning guide: structure, state meaning and native integration boundaries checked. Rendered acceptance is recorded separately.",
+      "sha256": "085f8e0692678fd6faeb9312c03f66849b07e1f69eadf0f128957166e677513d",
+      "path": "docs/data/component-spec-examples.yml",
+      "authored_html_sha256": "7a87b6e1d048c97f3334d6574424e105d3a51d7cdd507e6bb55a5a8b834ff037",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "WG"
+      ],
+      "finding_ids": []
     }
   ],
   "findings": [
@@ -19514,7 +19696,7 @@
     {
       "path": "docs/data/ha-interface-coverage.json",
       "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate.",
-      "sha256": "fa543daa22dc2fa9f126816f3564d89d1e4a1ab38214254fba224f64355dff1f"
+      "sha256": "c8347c16e007d7b3609e1b0beaf4d763f6801abec73682566df55fb77f530db4"
     },
     {
       "path": "docs/data/ha-terminology.json",
@@ -19524,7 +19706,7 @@
     {
       "path": "docs/data/uk-design-system-crosswalk.json",
       "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "69a0c6be11065a33ea68ae212edad4b66f464c8b086dcfd83c25bd1289750043"
+      "sha256": "d150b627d2c4d78f4149dfd8a1493871221f159ecfae84a1a9a1b7706e527d3e"
     },
     {
       "path": "docs/data/ha-administration-examples.yml",
@@ -19573,7 +19755,7 @@
     },
     {
       "path": "docs/data/project-artwork-provenance.json",
-      "sha256": "5ef60902c95af8e59d91dce1e93a825c9fe652a74c5b398fe8bb1094d038e8ab",
+      "sha256": "4b93e4155b53897ac5d1c7b8bbe5a9bb76bc7103c84771e58e8eaf17575f0bda",
       "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
