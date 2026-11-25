@@ -1,0 +1,122 @@
+---
+title: "Alt text"
+description: "What alt text is, when an image on a Home Assistant dashboard needs it, how to write it, and which cards let you set it."
+section: "styles"
+group: "Icons and images"
+nav_order: 5
+status: "reference"
+published_on: "2026-11-24"
+updated_on: "2026-11-24"
+last_reviewed_on: "2026-11-24"
+review_in: "3 months"
+updates:
+  - date: "2026-11-24"
+    description: "First published. The Picture card YAML moved here from Icons and images. Added what alt text is, which Home Assistant cards let you set it, how to write good alt text and an example for a photograph of a stopcock."
+  - date: "2026-11-24"
+    description: "Added an example of alt text for an illustration of pairing a door sensor."
+ai_instructions: "Apply when an image on a Home Assistant dashboard or Civica page may need alternative text. Every HTML image needs an alt attribute; leave it empty for a decorative image, an icon beside a visible label, or an image in a link that is named by its text. Write alt text only for visual details the text cannot practically give. Good alt text says what information the image gives, is specific and concise, uses normal punctuation and is no more than 2 sentences; it does not name the photographer, start with Image of, repeat the page or add details not in the image. Of the picture cards, only the Picture card has alt_text; a Markdown card can hold an img tag with its own alt. alt_text with an empty string does not give an empty alt: Home Assistant uses the entity name or leaves the attribute out. The Picture entity card uses the entity ID, and Picture glance and Picture elements cards use it when they have an entity; area pictures and Tile entity pictures are treated as decorative. Where a card has no option, describe the image in text next to it. Wording is owned by /content/formatting-content/images.html. Do not show rule IDs or name outside sources in page text. Rules WG-082."
+ai_related:
+  - path: "/content/formatting-content/images.html"
+    title: "Images"
+    relationship: "Owns how to word alt text, with before and after examples."
+  - path: "/styles/images.html"
+    title: "Icons and images"
+    relationship: "Overview. Owns when to use an image at all."
+  - path: "/styles/images-text.html"
+    title: "Avoid images that contain text"
+    relationship: "Owns text inside images, floor plans and diagrams."
+  - path: "/home-assistant/pictures-and-embedded-content.html"
+    title: "Pictures, rich content and embedded pages"
+    relationship: "Owns the Picture card families and what each needs instead of an image."
+---
+
+# Alt text
+
+Alternative text, or alt text, describes an image in words. Screen readers read it out. Browsers show it when the image does not load, such as on a wall panel with a weak Wi-Fi signal, or when someone has turned images off.
+
+## Every image needs an alt attribute
+
+Give every image an `alt` attribute, even if you leave it empty, `alt=""`. An empty alt tells a screen reader to skip the image.
+
+Of the picture cards, only the Picture card lets you set alt text, with the `alt_text` option. In a Markdown card, you can write an `<img>` tag with its own `alt`.
+
+```yaml
+type: picture
+image: /local/garden-plan.png
+alt_text: Back garden. The shed is at the far end, with the water butt on its left.
+```
+
+Writing `alt_text: ""` does not give the image an empty alt. If the card shows an entity’s image, Home Assistant uses the entity name instead. If not, it leaves out the `alt` attribute altogether. If a picture is only decoration, take it off the dashboard.
+
+Other cards do not let you set alt text:
+
+| Card | What Home Assistant uses as alt text |
+| --- | --- |
+| Picture entity | The entity ID, such as `camera.front_door` |
+| Picture glance and Picture elements | The entity ID if the card has an entity, otherwise an empty alt |
+| Area card picture | An empty alt, so screen readers skip it |
+| Tile card with an entity picture | An empty alt, so screen readers skip it |
+
+On these cards, describe the image in text next to it, such as in the card name or a Markdown card under it.
+
+## When to use alt text
+
+Add alt text only to describe what the image shows that you cannot practically say in the text around it.
+
+Leave the alt empty, `alt=""`, when:
+
+- the image is decorative and holds nothing people need
+- the image is an icon with a visible label, so alt text would repeat the label
+- the image is inside a link, and the link text already says where it goes
+
+Write alt text for a floor plan or photograph that gives information. Describe what it shows that people need.
+
+## Writing good alt text
+
+Good alt text:
+
+- tells people what information the image gives them
+- describes what is in the image and what it is for
+- is specific, meaningful and short
+
+Use normal punctuation, such as commas and full stops, so it is easy to read and to hear. Aim for no more than 2 sentences.
+
+Do not write alt text that:
+
+- names the person who took the photograph or made the image
+- starts with “Image of”, “Photo of” or anything else that would be the same for every image
+- repeats what the card or page already says
+- adds information that is not in the image
+
+[Images](../content/formatting-content/images.html) in the writing guide explains how to word alt text, with before and after examples.
+
+### Example: a photograph of the stopcock
+
+A household puts a photograph of their stopcock beside the leak sensor card, so anyone at home can turn off the water quickly. The card under it already says “Kitchen leak sensor”.
+
+```yaml
+type: picture
+image: /local/stopcock.jpg
+alt_text: The stopcock is at the back of the cupboard under the kitchen sink, to the left of the waste pipe. It has a red handle.
+```
+
+This alt text says where the stopcock is and how to recognise it, in 2 sentences. These would be worse:
+
+| Alt text | Problem |
+| --- | --- |
+| Image of stopcock | Starts with “Image of”, and does not say where it is |
+| Photo by Sam, March 2026 | Names who took it, and says nothing about what it shows |
+| Kitchen leak sensor | Repeats the card name |
+| Stopcock under the sink. Turn it off if the leak sensor detects water. | Adds an instruction that is not in the photograph. Put it in text on the dashboard. |
+
+### Example: an illustration of pairing a door sensor
+
+On a dashboard, a Markdown card beside this illustration lists the 3 steps, as the text under it does here. The alt text does not repeat the steps. It says what only the picture shows: what the button looks like and where the light is.
+
+<%= colour_example('images-pairing-steps-alt', callout: false) %>
+
+```yaml
+type: picture
+image: /local/door-sensor-pairing.svg
+alt_text: The pairing button is the round white button on the front of the door sensor, with a small light above it.
+```

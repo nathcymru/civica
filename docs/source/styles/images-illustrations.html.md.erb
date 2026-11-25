@@ -1,0 +1,82 @@
+---
+title: "Illustrations"
+description: "When to use an illustration to explain a physical task or help people find something on a device, and how to create one for a Home Assistant dashboard."
+section: "styles"
+group: "Icons and images"
+nav_order: 2
+status: "reference"
+published_on: "2026-11-24"
+updated_on: "2026-11-24"
+last_reviewed_on: "2026-11-24"
+review_in: "3 months"
+updates:
+  - date: "2026-11-24"
+    description: "First published. Explains when an illustration helps a household more than a photograph, and how to create one, with links to the Illustration pages for style, colour and people."
+  - date: "2026-11-24"
+    description: "Added an example illustration of pairing a door sensor in 3 steps."
+ai_instructions: "Apply when deciding whether a dashboard or Civica page needs an illustration rather than a photograph, and when creating one. Use an illustration to simplify something complex: a physical action, such as pressing and holding a pairing button, or finding something on a device, such as the model number on a label. Use as few elements as possible, flat colour, the illustration palette and consistent colours, line widths and corners across a set. Show a person only when the task needs one, and vary who you show. Style is owned by /styles/illustration.html and its sub-pages, palette by /styles/colour-illustrations.html, people by /styles/illustration-characters.html. Do not repeat their rules; link them. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-056, WG-060."
+ai_related:
+  - path: "/styles/images.html"
+    title: "Icons and images"
+    relationship: "Overview. Owns when to use an image at all."
+  - path: "/styles/illustration.html"
+    title: "Illustration"
+    relationship: "Owns the Civica illustration style and links to every illustration page."
+  - path: "/styles/colour-illustrations.html"
+    title: "Illustration colours"
+    relationship: "Owns the illustration palette, how many colours to use and how to pair them."
+  - path: "/styles/illustration-characters.html"
+    title: "Characters"
+    relationship: "Owns how to draw people who include everyone."
+---
+
+# Illustrations
+
+Use an illustration to show a simple picture of something complex. A drawing can leave out everything except the part people need, which a photograph cannot do.
+
+## When to use an illustration
+
+Use an illustration:
+
+- to show a physical action, such as pressing and holding the pairing button on a door sensor until its light flashes
+- to help people find something on a device, such as where the model number is on the label under a smart plug
+
+These help when a household adds a new device or reports a fault. The steps still go in text, next to the illustration.
+
+If people need to see the real thing in their own home, use a [photograph](images-photography.html) instead. [Illustration](illustration.html) explains how an illustration differs from an icon or a photograph.
+
+## Creating illustrations
+
+Use as few shapes and colours as you can to get the message across. For the pairing button, you might draw only the sensor, the button, a fingertip and the light. Leave out the door, the room and the hub.
+
+[Creating illustrations](illustration-creating.html) takes you through each step, from deciding the message to reviewing the drawing.
+
+Save the illustration as an SVG and show it on a Picture card next to the card it explains, such as under the instructions for adding a door sensor. [File formats and exporting](illustration-formats.html) explains where to put the file. [Illustration accessibility](illustration-accessibility.html) explains when the illustration needs alternative text and how to keep its labels in text.
+
+### Colour
+
+Take colours from the illustration palette. [Illustration colours](colour-illustrations.html) owns the palette, the base colour and how many colours to use.
+
+If you need more colours, use a lighter or darker shade of a palette colour, not a new colour. [Colour pairing](colour-illustrations.html#colour-pairing) explains how to use shades to separate the front of a drawing from the back.
+
+### Flat colour
+
+Use flat blocks of colour, with no shadows or gradients. [Illustration principles](illustration-principles.html) explains the flat style and how to show depth by overlapping shapes.
+
+To show a feature that is set into a device, such as the reset hole on a hub, overlap shapes or use a darker shade of the case colour. Do not add a shadow.
+
+### A set of illustrations
+
+If you draw several illustrations for one dashboard or guide, use the same colours, line widths and corner shapes in all of them. A set of 3 pairing steps should look like 3 pictures of the same device, not 3 different devices.
+
+### People
+
+Leave people out unless the task needs them. Most tasks need no more than a hand, such as a fingertip on the pairing button. [Hands and gestures](illustration-hands.html) explains how to draw one.
+
+If you need to show people, think about everyone who lives in or visits a home. Do not show only one kind of person. Showing only one age, gender or ethnicity can leave people out and repeat harmful stereotypes. [Characters](illustration-characters.html) explains how to show a range of people.
+
+## Example
+
+This illustration shows how to pair a door sensor in 3 steps. It draws only the sensor, the button, a fingertip and the light. The steps are in text under it.
+
+<%= colour_example('images-pairing-steps', callout: false) %>

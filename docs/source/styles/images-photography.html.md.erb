@@ -1,0 +1,67 @@
+---
+title: "Photography"
+description: "When to use a photograph or a camera image on a Home Assistant dashboard, when not to, and which card to show it with."
+section: "styles"
+group: "Icons and images"
+nav_order: 1
+status: "reference"
+published_on: "2026-11-24"
+updated_on: "2026-11-24"
+last_reviewed_on: "2026-11-24"
+review_in: "3 months"
+updates:
+  - date: "2026-11-24"
+    description: "First published. Guidance on photographs and camera images moved here from Icons and images, which is now a short overview."
+ai_instructions: "Apply when adding a photograph or a camera image to a Home Assistant dashboard or Civica page. Use a photograph only when it matters what a real thing looks like, such as a boiler reset button or a stopcock. Never use a photograph for an idea or a feeling, and never use stock photographs. Show a camera image only when someone needs to check a place, with the camera name and the capture time in text. Camera detail is owned by /home-assistant/cameras.html, file formats by /styles/illustration-formats.html and alt text by /styles/images-alt-text.html. Do not show rule IDs or name outside sources in page text. Rules WG-001, WG-082."
+ai_related:
+  - path: "/styles/images.html"
+    title: "Icons and images"
+    relationship: "Overview. Owns when to use an image at all."
+  - path: "/home-assistant/cameras.html"
+    title: "Cameras, streams and snapshots"
+    relationship: "Owns camera states, snapshots, capture time and privacy."
+  - path: "/styles/illustration-formats.html"
+    title: "File formats and exporting"
+    relationship: "Owns which file format to use and where to put the file in Home Assistant."
+  - path: "/styles/images-alt-text.html"
+    title: "Alt text"
+    relationship: "Owns when a photograph needs alt text and how to set it on a Picture card."
+---
+
+# Photography
+
+Use a photograph when it matters what a real thing looks like. A photograph shows the actual object in the actual home, so people can recognise it when they go to find it.
+
+## When to use a photograph
+
+Use a photograph to show something as it really is. For example:
+
+- the stopcock under the kitchen sink, beside the leak sensor card, so anyone at home can find it quickly
+- the reset button on the boiler, beside the heating card, so a guest can restart it
+- which of 2 similar white plugs in the loft is the smart plug for the dehumidifier
+
+Take the photograph yourself, in your own home. Crop it to the part that matters and keep the file small, so it loads quickly on a wall panel and on a phone. [File formats and exporting](illustration-formats.html) explains which format to use for a photograph and where to put the file so Home Assistant can show it.
+
+Choose the card by what the photograph is for. [Alt text](images-alt-text.html) explains what each card lets you do with alt text.
+
+| Card | Use it for |
+| --- | --- |
+| Picture | One photograph, from a file with `image` or from an image or person entity with `image_entity` |
+| Picture entity | A photograph or camera view tied to one entity, with its name and state underneath |
+| Tile, with `show_entity_picture: true` | An entity picture, such as a person’s photo, in place of the icon |
+
+If the card cannot carry alt text, write what the photograph shows in text on the card or next to it. For example, under a photograph of the stopcock, write “Stopcock: at the back of the cupboard under the kitchen sink, to the left of the waste pipe”.
+
+Do not add words to a photograph. Put them in text next to it. [Avoid images that contain text](images-text.html) explains why.
+
+## When not to use a photograph
+
+Do not use a photograph to show an idea or a feeling. A sunset does not explain an “Evening” scene, and a cosy sofa does not explain the heating schedule. Use a clear name, such as “Evening lights”, instead.
+
+Do not use stock photographs. A picture of someone else’s thermostat shows the wrong buttons and the wrong display, which can send people to the wrong control.
+
+## Camera images
+
+Show a camera image only where someone needs to check a place, such as the front door when the doorbell rings. Put the camera name and the time of the picture in text next to it.
+
+A camera image is not a photograph you chose. It shows whatever is in front of the camera, including people who did not agree to be on a shared screen. [Cameras, streams and snapshots](../home-assistant/cameras.html) owns camera states, snapshots, capture times and privacy.

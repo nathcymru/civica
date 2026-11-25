@@ -67,6 +67,23 @@
       "background": "Fixed blue illustration colours (#103E65, #1D70B8, #8EB8DC) with no canvas, for the hero; #F3F6F9 within category assets.",
       "alt_decision": "Empty alt on homepage: adjacent headings and prose carry the meaning.",
       "status": "Decorative/reference artwork, not a screenshot or evidence of a live device state."
+    },
+    {
+      "path": "docs/source/images/illustration-door-sensor-pairing.svg",
+      "sha256": "53b76c74145215de5c0999bb7c389cac6d8aa9224dece33d6af9bff5ee4fbe2b",
+      "source": "Original vector artwork authored for this repository. Editable source: docs/scripts/generate-style-visuals.py (pairing_body), which also writes the inline copy in docs/data/style-visual-examples.yml (examples images-pairing-steps and images-pairing-steps-alt). Run python3 docs/scripts/generate-style-visuals.py to change it; do not edit the SVG by hand.",
+      "status": "Instructional artwork, not a screenshot or evidence of a live device state. The device is a generic door sensor, not a real product.",
+      "palette": [
+        "#FFFFFF",
+        "#D2E2F1",
+        "#1D70B8",
+        "#99704A",
+        "#00FFE0"
+      ],
+      "background": "Fixed illustration colours: White behind 3 Blue tint 80% panels. Does not change with the household theme colour.",
+      "purpose": "Show a physical task, pressing and holding a door sensor's pairing button until its light flashes, as 3 pictures of the same device. Shown on /styles/images-illustrations.html and, with its alt text, on /styles/images-alt-text.html, where its caption gives only the steps.",
+      "alt_decision": "Informative. Alt text, as the SVG title only, in one sentence: 'The pairing button is the round white button on the front of the door sensor, with a small light above it.' The steps, including when the light flashes, are in the visible caption, so the alt text does not repeat them.",
+      "added_on": "2026-11-24"
     }
   ],
   "project_identity": {

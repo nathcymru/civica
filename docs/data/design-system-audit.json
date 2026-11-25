@@ -6263,13 +6263,153 @@
       ],
       "result": "no_confirmed_finding",
       "finding_ids": [],
-      "note": "Functional HA symbols, purpose-specific publishing arrows, operational imagery and supplied identity are correctly separated from new illustration guidance. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. 12 November 2026 source review: Separated project artwork from optional household identity and retained meaningful image alternatives. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "sha256": "a1642c6e9c1ad6dd427d434d67f53cb70c9831c0307d63a70c946e9c8fc84f2c",
+      "note": "Functional HA symbols, purpose-specific publishing arrows, operational imagery and supplied identity are correctly separated from new illustration guidance. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. 12 November 2026 source review: Separated project artwork from optional household identity and retained meaningful image alternatives. Integrated validation is recorded separately in the data-design review. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run. 24 November 2026: split into this overview and separate pages for photography, illustrations, icons, text in images and alt text. Examples moved to the pages that now own them. Awaiting the final editorial gate.",
+      "sha256": "f3f989b0035bd4ea1337b0f908b1b742b22f98ca718c443612a744274fb4d52b",
       "url": "/styles/images.html",
       "title": "Icons and images",
+      "example_ids": [],
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/styles/images-photography.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "note": "24 November 2026: page written when Icons and images was split into an overview and separate pages. Awaiting the final editorial gate.",
+      "sha256": "2e10d96f17c80405a85ea318dd1111fea998a8d8e659da0501be74e54caadc12",
+      "url": "/styles/images-photography.html",
+      "title": "Photography",
+      "example_ids": [],
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/styles/images-illustrations.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "note": "24 November 2026: page written when Icons and images was split into an overview and separate pages. Awaiting the final editorial gate. Illustrator pass, 24 November 2026: added the door sensor pairing illustration (images-pairing-steps). Awaiting the final editorial gate.",
+      "sha256": "e6debc0205899e35461b1ff72a8d14e053ebb389181091bbe2320acd00683a95",
+      "url": "/styles/images-illustrations.html",
+      "title": "Illustrations",
       "example_ids": [
-        "local-icon-label",
-        "local-image-purpose"
+        "images-pairing-steps"
+      ],
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/styles/images-icons.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "note": "24 November 2026: page written when Icons and images was split into an overview and separate pages. Awaiting the final editorial gate.",
+      "sha256": "ce7cc4dbd4c916d557d752b1df54b7f7a4ca2ced997bae18633304e4169bec3c",
+      "url": "/styles/images-icons.html",
+      "title": "Icons",
+      "example_ids": [
+        "images-icon-do-dont"
+      ],
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/styles/images-text.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "note": "24 November 2026: page written when Icons and images was split into an overview and separate pages. Awaiting the final editorial gate.",
+      "sha256": "776a0740f894fc41c4460036f511e0d4786d18bb83dd3805e421d51eeb46933d",
+      "url": "/styles/images-text.html",
+      "title": "Avoid images that contain text",
+      "example_ids": [
+        "images-floor-plan"
+      ],
+      "resolved_finding_ids": []
+    },
+    {
+      "path": "docs/source/styles/images-alt-text.html.md.erb",
+      "reviewed_rule_families": [
+        "BG-COL",
+        "BG-TYP",
+        "BG-DAT",
+        "BG-ILL",
+        "WG-00",
+        "WG-01",
+        "WG-02",
+        "WG-03",
+        "WG-04",
+        "WG-05",
+        "WG-06",
+        "WG-07",
+        "WG-08",
+        "WG-09"
+      ],
+      "result": "no_confirmed_finding",
+      "finding_ids": [],
+      "note": "24 November 2026: page written when Icons and images was split into an overview and separate pages. Awaiting the final editorial gate. Illustrator pass, 24 November 2026: added the door sensor pairing illustration (images-pairing-steps-alt, a caption with the steps only). Awaiting the final editorial gate.",
+      "sha256": "538ece626d5e4d5f2b63dce5a63f6a8c0c4d168e007d336ab582ead575c702fa",
+      "url": "/styles/images-alt-text.html",
+      "title": "Alt text",
+      "example_ids": [
+        "images-pairing-steps-alt"
       ],
       "resolved_finding_ids": []
     },
@@ -17587,6 +17727,40 @@
       ]
     },
     {
+      "id": "images-pairing-steps",
+      "title": "Pairing a door sensor",
+      "path": "docs/data/style-visual-examples.yml",
+      "source_file": "docs/data/style-visual-examples.yml",
+      "reviewed_rule_families": [
+        "BG-ILL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "An original illustration in 3 steps: a fingertip presses and holds the pairing button on a door sensor until its light flashes. Original drawing generated by docs/scripts/generate-style-visuals.py, which stops on any colour outside the palette for the channel or any text below 4.5:1; 5 illustration colours, flat, no faces. The unlit light is an unfilled Blue tint 80% ring on the Primary blue body. One SVG whose title is its one-sentence alt text; the caption gives the steps. Standalone copy registered in docs/data/illustration-assets.json. Rendered without page overflow at 1280px and 320px. The caption also lists its colours.",
+      "sha256": "90a65755298883ee3be6386a38e28f1171a14c76b388af04a876a3b1e369283b",
+      "authored_html_sha256": "67a4f42c0f8e784a9a3c1e7db81b10461d4f1bc12a35a4396fe61e332dc642d9",
+      "owners": [
+        "/styles/images-illustrations.html"
+      ]
+    },
+    {
+      "id": "images-pairing-steps-alt",
+      "title": "Pairing a door sensor, with its steps",
+      "path": "docs/data/style-visual-examples.yml",
+      "source_file": "docs/data/style-visual-examples.yml",
+      "reviewed_rule_families": [
+        "BG-ILL",
+        "WG"
+      ],
+      "finding_ids": [],
+      "review_note": "The door sensor pairing illustration with only its 3 steps under it, as a dashboard would show them beside the picture. Original drawing generated by docs/scripts/generate-style-visuals.py, which stops on any colour outside the palette for the channel or any text below 4.5:1; 5 illustration colours, flat, no faces. The unlit light is an unfilled Blue tint 80% ring on the Primary blue body. One SVG whose title is its one-sentence alt text; the caption gives the steps. Standalone copy registered in docs/data/illustration-assets.json. Rendered without page overflow at 1280px and 320px. The caption gives only the steps, so the page can show that the alt text does not repeat them.",
+      "sha256": "90a65755298883ee3be6386a38e28f1171a14c76b388af04a876a3b1e369283b",
+      "authored_html_sha256": "2ef6c1e933683d8392515d95279d28a93c601b40003c4330c2ad5c6953a7670f",
+      "owners": [
+        "/styles/images-alt-text.html"
+      ]
+    },
+    {
       "id": "illustration-do-dont",
       "title": "Things to avoid in an illustration",
       "path": "docs/data/style-visual-examples.yml",
@@ -17634,7 +17808,7 @@
       "sha256": "1723538b48c69ecc976824e2a70cc5b95fd1bc032d7d9e7eb0b82c3458d9a83a",
       "authored_html_sha256": "30c70bfce735d904bd58b4e796c7717a9a4b577a6dafd2aed9b45202086bb017",
       "owners": [
-        "/styles/images.html"
+        "/styles/images-icons.html"
       ]
     },
     {
@@ -17651,7 +17825,7 @@
       "sha256": "1723538b48c69ecc976824e2a70cc5b95fd1bc032d7d9e7eb0b82c3458d9a83a",
       "authored_html_sha256": "8fabdef248a2282f9f190e2ca9fed68c901392672527208f7dca380ba4859aad",
       "owners": [
-        "/styles/images.html"
+        "/styles/images-text.html"
       ]
     },
     {
@@ -19439,7 +19613,7 @@
     {
       "path": "docs/data/illustration-assets.json",
       "scope": "Current remediation source, example, original artwork or shared ownership review. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "8d6611e467c3fd1b3b39cc1745f924cc8c0332c2bada170b7b39fdb6553ea9a5"
+      "sha256": "fefb3989a562523f46f6edb57652b0b2eecab9cb5f177d8da846ca830f31f0ec"
     },
     {
       "path": "docs/data/card-artwork-provenance.json",
@@ -19568,7 +19742,7 @@
     },
     {
       "path": "docs/source/llms.txt",
-      "sha256": "1d96ef5e0f4cf9add26acbeacbfaed2dd7d17760b8326c1bd1930072b052646a",
+      "sha256": "ac6db8a6acd5558f5e27fdabff6a8a8525c87698368570f9afea7e9513de5c2e",
       "scope": "Project-story and Writing guide navigation review; original assets and complete alternatives. Roadmap-related changes reviewed within docs/data/roadmap-review.json scope. Accepted-stage changes reviewed in docs/data/roadmap-accepted-review.json. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json."
     },
     {
