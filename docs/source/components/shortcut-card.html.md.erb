@@ -1,0 +1,129 @@
+---
+title: "Shortcut Card"
+description: "Give a one-tap shortcut to a page, an address or an action that is not tied to one entity."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Shortcut Card specification: its options, the default labels, what Civica changes and how the card is announced."
+ai_instructions: "Apply when a dashboard needs a shortcut that is not an entity (type: shortcut). It has a label, a description, an icon, a colour, an optional vertical layout and tap, hold and double-tap actions. The default tap action is none, so a card with no action does nothing and is not focusable. When it has an action, it is exposed as a button even if it navigates, never as a link. Write a label that names the destination or action and a description that says what happens. Hold and double-tap must never be the only route. Civica's focus ring is not applied to this card without card-mod. Do not claim link behaviour, a contrast ratio for a chosen colour or a screen reader wording."
+ai_related:
+  - path: "/components/button-card.html"
+    title: "Button Card"
+    relationship: "Use for a tile that controls one entity."
+  - path: "/components/card-features.html"
+    title: "Card Features (Tile & Area Inline Controls)"
+    relationship: "Owns the controls that sit inside tile cards."
+  - path: "/components/drawer-navigation-sidebar.html"
+    title: "Drawer / Navigation Sidebar"
+    relationship: "Owns the sidebar, which already links to every panel."
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Use for a list of real links."
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns how cards are grouped into views."
+  - path: "/patterns/hub.html"
+    title: "Organise household help with hub pages"
+    relationship: "Owns how many shortcuts a start page should hold."
+component:
+  parent: "Shortcut Card"
+  letter: "S"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-shortcut-card"
+      origin: "Lovelace"
+      anchor: "child-hui-shortcut-card"
+  tags:
+    - "hui-shortcut-card"
+---
+
+# Shortcut Card
+
+<h2 id="purpose">Purpose</h2>
+
+A shortcut card is a tile that takes people to a page, opens an address or runs an action, without being tied to one entity. “Heating schedule”, “Lock up” and “Ask Assist” are typical. Use it to put a few common jobs at the top of a dashboard.
+
+This page owns the shortcut card (`type: shortcut`). For a tile that controls one entity, see [Button Card](button-card.html). For grouping cards in a view, see [Dashboard composition](../home-assistant/dashboard-composition.html).
+
+This page covers:
+
+- Shortcut Card
+  - `hui-shortcut-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A card with a round icon, a label and, if you set one, a description under it. The tile is one row high by default, or two rows high in the vertical layout, with the icon above the text.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-shortcut-card"><code>hui-shortcut-card</code></h3>
+
+A Lovelace card. It has no entity.
+
+```yaml
+type: shortcut
+label: Heating schedule
+description: Open the weekly schedule
+icon: mdi:clock-outline
+tap_action:
+  action: navigate
+  navigation_path: /lovelace/heating
+```
+
+| Key | Meaning |
+| --- | --- |
+| `label` | The main text |
+| `description` | A second line under the label |
+| `icon` | The icon |
+| `color` | The icon colour; the default is the theme’s primary colour |
+| `vertical` | Stacks the icon above the text; the default is one row |
+| `tap_action`, `hold_action`, `double_tap_action` | What each gesture does |
+
+**The default tap action is none.** With no action, the card does nothing, takes no keyboard focus and has no button role. Set an action to make it work.
+
+**Default text.** If you leave out the label or icon, the card fills them in from the action. A navigate action uses the page’s title and icon. The Assist action uses “Assist” and a microphone. A service action uses the service name. An address uses its path and an open-in-new icon. Any other action gives a link icon and no label. Always set a label of your own, because the defaults can be technical.
+
+**What the Civica theme sets.** The card has square corners, a 1 pixel border and no shadow. Text uses `primary-text-color` and the description uses the secondary text colour. The icon uses the theme’s primary colour unless you set `color`, which differs between the eight Civica themes.
+
+**What stays as Home Assistant draws it.** The theme sets none of the tile variables, such as `--ha-tile-info-primary-font-size` and `--ha-tile-icon-border-radius`, so the icon stays round and the text sizes are Home Assistant’s. The focus mark is Home Assistant’s thin tile border, not Civica’s focus ring.
+
+**What needs card-mod.** A thicker Civica focus ring needs the card-mod integration.
+
+**How it is announced.** With an action, the card is exposed as a button, named from its label and description. It is a button even when it navigates, so it is not announced as a link. Enter and Space run the action.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A tile is large and easy to tap.
+- It has a clear label and description, and works for pages, addresses and actions alike.
+- It is not a link. If someone needs a real link, use a Markdown card list of links.
+- A long label or description may be cut off, because the info area has a fixed height.
+- Hold and double-tap are hidden gestures. People may never find them.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Write the label as the destination or the action: “Heating schedule”, “Lock up”. Use the description to say what will happen. Do not rely on the icon. Keep the number of shortcuts small, in the same order each time, and do not repeat what the sidebar already offers. Never put a hold or double-tap action on a card unless a simple tap gives the same result or the same job can be done another way.
+
+Success criteria that apply:
+
+- 2.4.4 Link Purpose (In Context) and 2.5.3 Label in Name: the label says what the card does.
+- 4.1.2 Name, Role, Value: the card is exposed as a button, even when it navigates.
+- 2.1.1 Keyboard: with an action set, Enter and Space run it.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): check the focus mark on your dashboard.
+- 2.5.8 Target Size (Minimum): the default one-row tile is 56 pixels high.
+- 1.4.1 Use of Colour and 1.4.3 Contrast (Minimum): a colour you choose for the icon is yours to check.
+- 1.4.4 Resize Text and 1.4.10 Reflow: labels can be cut off, so check long ones.
+- 3.2.4 Consistent Identification: use the same label for the same job everywhere.
+- 2.5.1 Pointer Gestures and 2.5.2 Pointer Cancellation: a hold or double-tap needs a simpler alternative.
+
+<h2 id="examples">Examples</h2>
+
+### A row card and a vertical card
+
+<%= example('spec-shortcut-cards') %>

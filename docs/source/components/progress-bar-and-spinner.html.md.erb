@@ -1,0 +1,187 @@
+---
+title: "Progress Bar & Spinner"
+description: "Show that something is loading or in progress, with a bar, a spinner or a progress button, and always say it in words too."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Progress Bar & Spinner specification: the native progress element and the Home Assistant spinner, ring, bar, progress button and fade-in, with their theme colours and limits."
+ai_instructions: "Apply when a screen shows loading or progress. The progress element is native HTML and is not allowed in a Markdown card. ha-spinner, ha-progress-ring, ha-progress-bar, ha-progress-button and ha-fade-in are Home Assistant elements that a dashboard author cannot add. This Home Assistant version has no ha-circular-progress or ha-linear-progress: the ring is ha-progress-ring and the straight bar is ha-progress-bar. A spinner is silent, so always put words beside it. Give a progress value as text too. The empty part of the bar is faint, so never rely on it. Do not fake a percentage. The result flash on ha-progress-button lasts two seconds, so show the result as text that stays. Do not say any of these is announced, or that they stop under reduced motion."
+ai_related:
+  - path: "/components/empty-state-and-startup-views.html"
+    title: "Empty State & Startup Views"
+    relationship: "Owns the loading screen, where a spinner fades in after half a second."
+  - path: "/components/buttons.html"
+    title: "Button"
+    relationship: "Owns the button and its loading state."
+  - path: "/components/file-upload.html"
+    title: "File Upload / Dropzone"
+    relationship: "Owns the upload that shows a progress bar."
+  - path: "/components/gauge.html"
+    title: "Gauge"
+    relationship: "Use for a measured value on a dashboard."
+  - path: "/home-assistant/appliances-and-cleaning.html"
+    title: "Appliances, vacuums and outdoor devices"
+    relationship: "Owns how to word the progress of an appliance cycle."
+component:
+  parent: "Progress Bar & Spinner"
+  letter: "P"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<progress>"
+      origin: "HTML5"
+      anchor: "child-progress"
+    - name: "ha-spinner"
+      origin: "Home Assistant"
+      anchor: "child-ha-spinner"
+    - name: "ha-circular-progress"
+      origin: "Home Assistant"
+      anchor: "child-ha-circular-progress"
+    - name: "ha-progress-button"
+      origin: "Home Assistant"
+      anchor: "child-ha-progress-button"
+    - name: "ha-linear-progress"
+      origin: "Home Assistant"
+      anchor: "child-ha-linear-progress"
+    - name: "ha-fade-in"
+      origin: "Home Assistant"
+      anchor: "child-ha-fade-in"
+  tags:
+    - "progress"
+    - "ha-spinner"
+    - "ha-progress-ring"
+    - "ha-progress-bar"
+    - "ha-progress-button"
+    - "ha-fade-in"
+---
+
+# Progress Bar & Spinner
+
+<h2 id="purpose">Purpose</h2>
+
+A progress indicator tells people that something is happening and, where it is known, how far it has got. A spinner says “working, no end in sight”. A bar or ring says “this much is done”.
+
+HTML has one native element for this, `progress`. Home Assistant draws its own spinner, ring, bar and progress button inside its screens and dialogs. A dashboard author cannot add any of them to a card. This page explains how each behaves, so that the words you write beside them are right.
+
+This page covers:
+
+- Progress Bar & Spinner
+  - `<progress>`
+  - `ha-spinner`
+  - `ha-circular-progress`
+  - `ha-progress-button`
+  - `ha-linear-progress`
+  - `ha-fade-in`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A bar has a track, which is the whole length, and a fill, which is the part done. A ring has the same two parts bent into a circle. A spinner has a faint track and a moving arc. A progress button is a button that swaps its label for a spinner while it works.
+
+Every one of them needs words beside it that say what is happening. The picture alone says only that something moves.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-progress"><code>&lt;progress&gt;</code></h3>
+
+The native element. `value` is the amount done and `max` is the total, which defaults to 1. Leave `value` out and the bar is indeterminate, which means no known end. Its implicit role is `progressbar`. Browsers expose the value and the range, but an indeterminate bar exposes no value.
+
+Name it with a `label` or `aria-label`. It is not a live region, so a change in value is not announced. Put the value in text beside it, such as “Step 3 of 5”.
+
+```html
+<label for="update">Installing the update</label>
+<progress id="update" value="3" max="5">Step 3 of 5</progress>
+```
+
+The browser draws the default look, and it differs between browsers. For a measured value that is not progress, such as a battery level, use `meter` instead.
+
+Home Assistant does not use this element, and the [Markdown Card](markdown-card.html) shows it as plain text. On a dashboard, write the progress in words (“Installing: step 3 of 5”) or use a [Gauge](gauge.html) for a measured value. On a static Civica page, use `progress` with a label.
+
+<h3 id="child-ha-spinner"><code>ha-spinner</code></h3>
+
+A turning arc for work with no known end. It takes `size`: `tiny`, `small`, `medium` or `large`, which are 16, 28, 48 and 68 CSS pixels. With no size it is 48 pixels.
+
+It sets three CSS variables. `--ha-spinner-size` is the size. `--ha-spinner-indicator-color` is the arc and defaults to `primary-color`. `--ha-spinner-divider-color` is the track and defaults to `divider-color`. The track is 4 pixels wide and one turn takes 3.5 seconds.
+
+The Civica theme sets `primary-color` and `divider-color`, so the spinner takes its colour from the theme’s primary colour. The theme does not set the `--ha-spinner-` names, so size and speed stay Home Assistant’s. The arc is #1D70B8 on a white card (5.17:1, calculated from theme colours). The track is faint (1.57:1), so the arc carries the meaning.
+
+Home Assistant uses the spinner for its loading screen, the card picker and many dialogs. It sets no accessible name on the spinner itself, so put the words beside it. The loading screen shows the spinner above a short message. See [Empty State & Startup Views](empty-state-and-startup-views.html).
+
+A dashboard author cannot add a spinner. The spinner turns continuously and has no pause control. Its own styles contain no reduced-motion rule.
+
+<h3 id="child-ha-circular-progress"><code>ha-circular-progress</code></h3>
+
+This Home Assistant version has no element called `ha-circular-progress`. A ring that shows a share of a task is `ha-progress-ring`. A ring with no known end is `ha-spinner`.
+
+`ha-progress-ring` takes the same `size` values as the spinner (16, 28, 48 and 68 pixels, 48 by default). Its variables are `--ha-progress-ring-size`, `--ha-progress-ring-indicator-color` (defaulting to `primary-color`) and `--ha-progress-ring-divider-color` (defaulting to `divider-color`). The theme sets none of the `--ha-progress-ring-` names, so the ring follows the theme’s primary colour and divider colour. Home Assistant uses it in a few places, such as the backup overview. No card offers it.
+
+A ring that shows a percentage must also give the number as text.
+
+<h3 id="child-ha-progress-button"><code>ha-progress-button</code></h3>
+
+A button that shows work in progress. It takes `label`, `disabled`, `progress`, `appearance` (default `accent`), `size` (`xs` to `xl`, default `m`) and `variant` (`brand`, `danger`, `neutral`, `warning` or `success`, default `brand`).
+
+While `progress` is on, the label is replaced by a spinner and the button ignores presses. When the work ends, Home Assistant shows a tick or an alert icon over a green or red button for two seconds, and then the button returns to normal.
+
+Home Assistant uses it inside its own dialogs and for the call-service button. A dashboard author cannot add it. The [Button](buttons.html) page owns the button and its `loading` state. This page owns the progress and result behaviour only.
+
+It takes its colours from the button keys in the Civica theme: the button radius is 0 pixels, the height 44 pixels, the fill #1D70B8 in light mode and #C0D7EB in dark mode, with white or near-black text. The success fill is #0F7A52 and the danger fill #CA3535 in light mode.
+
+A two-second icon is easy to miss and cannot be extended. Show the result as text that stays on the screen, such as “Update saved”, and do not use green or red alone.
+
+<h3 id="child-ha-linear-progress"><code>ha-linear-progress</code></h3>
+
+This Home Assistant version has no element called `ha-linear-progress`. The straight bar is `ha-progress-bar`.
+
+`ha-progress-bar` can be indeterminate, and it has a `loading` attribute that adds a sliding highlight over a bar that is not indeterminate. Its variables include `--ha-progress-bar-indicator-color`, `--ha-progress-bar-track-color`, `--ha-progress-bar-track-height` (12 pixels) and `--ha-progress-bar-border-radius` (a pill shape). The default highlight takes 2.5 seconds.
+
+The defaults resolve to Civica theme colours. The fill uses `ha-color-on-primary-normal`, which is #19578D in light mode and #C0D7EB in dark mode. The track uses `ha-color-fill-neutral-normal-hover`, which is #DEDEDE in light mode and #2B2C2C in dark mode. These ratios are calculated from theme colours. The fill against the track is 5.6:1 in light mode and 9.44:1 in dark mode. The empty track against the card is only 1.35:1 in light mode and 1.06:1 in dark mode, so in dark mode the unfilled part is almost invisible. Always write the value as text.
+
+Home Assistant uses the bar in file upload, firmware updates and a few other screens. No dashboard card uses it, so a dashboard author cannot add one. [File Upload / Dropzone](file-upload.html) owns the upload. For a measured value on a dashboard, use a [Gauge](gauge.html) or write the value.
+
+<h3 id="child-ha-fade-in"><code>ha-fade-in</code></h3>
+
+A wrapper that fades its content in once. It has no look of its own and no theme variable. The caller sets a delay and a duration in milliseconds.
+
+Home Assistant uses it to hold back the loading spinner for half a second, so a quick load does not flash a spinner. The same wrapper fades in other content, such as the sidebar. A dashboard author cannot add it. The wrapper has no reduced-motion rule of its own.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- `progress` is native, labelled and exposes its value, but the browser draws it.
+- Home Assistant’s bar, ring and spinner follow the theme’s primary colour.
+- A spinner is silent: it carries no words and no announcement.
+- The empty track of a bar is faint in both modes.
+- The progress button’s result lasts two seconds.
+- A dashboard author cannot add any of the Home Assistant elements.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+- Say what is happening and, if you know it, what is left: “Step 3 of 5”.
+- Use a spinner or an indeterminate bar when no percentage is supplied. Do not invent one.
+- Say “this is taking longer than usual” in words, with what to do next.
+- Report completion or failure once, as text, not on every tick. Do not announce every percentage point.
+- Fade in a spinner after a short delay so quick loads do not flash.
+- Do not rely on colour for success or failure. Add words.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 4.1.2 Name, Role, Value: name the bar and give its value.
+- 1.4.1 Use of Colour: give the value and the outcome in words.
+- 1.4.11 Non-text Contrast: the fill is clear against the track, but the empty track is faint.
+- 2.2.2 Pause, Stop, Hide: a spinner or bar that moves for more than 5 seconds needs a way to pause, stop or hide it. Check each one in your own dashboard.
+- 2.2.1 Timing Adjustable: a two-second result cannot be extended, so repeat it as text.
+- 3.3.1 Error Identification: a failed task needs a message, not only a red bar.
+- 4.1.3 Status Messages: send completion or failure as a status message.
+- 2.5.8 Target Size (Minimum): the progress button is 44 CSS pixels high in the Civica theme.
+
+<h2 id="examples">Examples</h2>
+
+### A progress bar with the same progress in words
+
+<%= example('spec-progress-update-card') %>

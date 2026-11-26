@@ -1,0 +1,227 @@
+---
+title: "Section & View Layout"
+description: "Choose how a dashboard view arranges its cards: sections in a grid, masonry columns, one full-width card, or a main column with a sidebar."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Section & View Layout specification: the section element and the four Home Assistant view types, with their options, reading order and limits."
+ai_instructions: "Apply when choosing or describing how a dashboard view lays out its cards. A Home Assistant view has a type: sections, masonry, panel or sidebar. A section in a Sections view is a div, not a section element, and has no title or region role of its own: open it with a Heading card. A section element in a Markdown card cannot be named, so it never becomes a landmark. Masonry places cards one at a time into the shortest column, so the keyboard order runs down column one, then column two: never write the card on the left. A panel view shows only the first card, and its card has no border. The Sidebar view merges its sidebar cards into the main column below 760 pixels, so the reading order changes with width. The sidebar option of a Sections view is a different thing. Do not claim a measured reading order on a real device."
+ai_related:
+  - path: "/styles/structure-grid.html"
+    title: "Using the grid system"
+    relationship: "Owns the section widths, gaps and the 12-column grid."
+  - path: "/styles/structure-width-overrides.html"
+    title: "Width overrides"
+    relationship: "Owns column_span and grid_options."
+  - path: "/styles/structure-common-layouts.html"
+    title: "Common layouts"
+    relationship: "Owns the layouts for common tasks, including the panel view."
+  - path: "/styles/structure-screen-size.html"
+    title: "Screen size"
+    relationship: "Owns how a view changes with the screen."
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns the choice between the four view layouts."
+  - path: "/components/card-and-section-header.html"
+    title: "Card & Section Header"
+    relationship: "Owns the Heading card that names a section."
+  - path: "/components/grid-and-stack-layout-cards.html"
+    title: "Grid & Stack Layout Cards"
+    relationship: "Owns layout cards that group other cards."
+component:
+  parent: "Section & View Layout"
+  letter: "S"
+  origins:
+    - "HTML5"
+    - "Lovelace"
+  children:
+    - name: "<section>"
+      origin: "HTML5"
+      anchor: "child-section"
+    - name: "hui-sections-view"
+      origin: "Lovelace"
+      anchor: "child-hui-sections-view"
+    - name: "hui-section"
+      origin: "Lovelace"
+      anchor: "child-hui-section"
+    - name: "hui-masonry-view"
+      origin: "Lovelace"
+      anchor: "child-hui-masonry-view"
+    - name: "hui-panel-view"
+      origin: "Lovelace"
+      anchor: "child-hui-panel-view"
+    - name: "hui-sidebar-view"
+      origin: "Lovelace"
+      anchor: "child-hui-sidebar-view"
+  tags:
+    - "section"
+    - "hui-sections-view"
+    - "hui-section"
+    - "hui-masonry-view"
+    - "hui-panel-view"
+    - "hui-sidebar-view"
+---
+
+# Section & View Layout
+
+<h2 id="purpose">Purpose</h2>
+
+A dashboard view arranges its cards in one of four ways. The view type decides the layout, and a section groups related cards inside a Sections view. A good layout puts the household’s main questions first, keeps the same card in the same place on every device, and stays usable on a narrow screen.
+
+[Dashboard composition and card features](../home-assistant/dashboard-composition.html) helps you choose between the four. This page owns each layout as an element: its options, its reading order and its limits.
+
+This page covers:
+
+- Section & View Layout
+  - `<section>`
+  - `hui-sections-view`
+  - `hui-section`
+  - `hui-masonry-view`
+  - `hui-panel-view`
+  - `hui-sidebar-view`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A view has a header area for badges, then its layout. In a Sections view the layout is a row of sections, and each section is a column of cards on a grid. Masonry and Sidebar views have columns of cards. A panel view has one card.
+
+A section has no title of its own. Open it with a [Heading card](card-and-section-header.html), which gives the section a visible name.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-section"><code>&lt;section&gt;</code></h3>
+
+The native element for a thematic group of content, normally with a heading. It has the role `region`, a landmark, only when it has a name through `aria-labelledby` or `aria-label`. Without a name it is a generic container, no better than a `div`. Use a `div` when you want only styling.
+
+Do not name every section: too many landmarks become noise.
+
+```html
+<section aria-labelledby="heating-heading">
+  <h2 id="heating-heading">Heating</h2>
+  <p>Heating to 21 °C.</p>
+</section>
+```
+
+The [Markdown Card](markdown-card.html) keeps `section` but removes `id`, `class` and `aria-*`, so a section there cannot be named and never becomes a landmark. Its heading and text are the only structure. Home Assistant’s own sections are `div` elements, not `section`, so a dashboard section exposes no region landmark. The visible, supported name for a section is the Heading card.
+
+<h3 id="child-hui-sections-view"><code>hui-sections-view</code></h3>
+
+The Sections view, `type: sections`. Home Assistant also picks it when a view has `sections` and no `type`, and when a view has neither `sections` nor `cards`.
+
+Options on the view:
+
+- `max_columns`: the most sections side by side. The default is 4.
+- `dense_section_placement`: lets a later, smaller section fill a gap above an earlier one.
+- `top_margin`: adds space above the first row.
+- `header`: a header with badges and a heading. `badges_position` is `top` or `bottom`, and `badges_wrap` is `wrap` or `scroll`.
+- `footer`: a card below the sections.
+- `sidebar`: a side panel inside the Sections view. This is a different thing from the Sidebar view below.
+- `sections`: the sections themselves.
+
+```yaml
+type: sections
+max_columns: 3
+sections:
+  - cards:
+      - type: heading
+        heading: Heating
+```
+
+The number of columns is as many as fit, from 1 up to `max_columns`. Each column is 320 to 500 CSS pixels wide, with 32 pixels between columns and 24 between rows (8 pixels between columns on a screen 600 pixels wide or less). On one column every section is full width. [Using the grid system](../styles/structure-grid.html) owns these figures. The theme names for them, such as `--ha-view-sections-column-gap`, are not set by Civica, so they stay Home Assistant’s defaults.
+
+The sections stay in the order of the configuration for the keyboard and for screen readers. With `dense_section_placement` the picture can differ from that order, so check the real keyboard and reading order.
+
+When `sidebar` is set, the layout gains a column. In one column the sidebar stacks below the content. When you set both `content_label` and `sidebar_label`, a two-tab switch at the bottom of the view toggles between content and sidebar instead.
+
+The view uses the theme’s `lovelace-background` and `primary-background-color`. Sections need no card-mod.
+
+<h3 id="child-hui-section"><code>hui-section</code></h3>
+
+One section inside a Sections view. It draws a grid of cards. Options on a section:
+
+- `cards`: the cards in the section.
+- `column_span` and `row_span`: how many columns and rows it spans. Both default to 1. [Width overrides](../styles/structure-width-overrides.html) owns `column_span`.
+- `background`: `true` or an object with a `color` and an `opacity`. The opacity defaults to 50 per cent.
+- `visibility`: conditions. A hidden section collapses and the view recounts its columns. Hiding a section also hides its controls, so give another route to them. It is not a security setting.
+- `theme`: a different theme for this section.
+- `title`: deprecated. Use a Heading card instead.
+
+The grid inside a section has 12 base columns for each column the section spans, with 8 pixels between cells and rows 56 pixels high. [Using the grid system](../styles/structure-grid.html) owns the cell sizes, and the cards use `grid_options`.
+
+The section background is a tint of a colour, drawn at 50 per cent opacity by default. It uses `--section-background-color` from the `color`, else the theme’s `secondary-background-color` (#F3F2F1 in light mode and #30363A in dark mode). Home Assistant gives it its own rounded corners, and the Civica theme does not change them. Because the tint is translucent, check your text against it in your own theme, and never use the tint as the only way to group cards.
+
+<h3 id="child-hui-masonry-view"><code>hui-masonry-view</code></h3>
+
+The Masonry view, `type: masonry`. It is also the layout for a view that has `cards` and no `type`. It takes `cards` and `badges`, and has no sections.
+
+The number of columns, from 1 to 4, depends on the screen width at 300, 600, 900 and 1200 CSS pixels. Each column holds cards up to 500 pixels wide. Cards go one at a time into the shortest column, so their order on the screen is not the order in the configuration.
+
+The cards are in the page column by column, so the keyboard and reading order go down the first column and then down the second. Write each card so it makes sense alone, and never tell people to use “the card on the left”: cards can move to another column when the screen is resized or zoomed. `column_span` and `grid_options` do not apply here. The card margin is `--masonry-view-card-margin`, which the Civica theme does not set.
+
+<h3 id="child-hui-panel-view"><code>hui-panel-view</code></h3>
+
+The Panel view, `type: panel` or `panel: true`. It shows exactly one card, the first, across the whole view. If the view has more than one card, it shows a warning and still shows only the first.
+
+The card has no border, corner radius or shadow, and no margin around it. The Civica theme’s 1 pixel card border does not show here.
+
+Use a panel view for one task: a map, a floor plan or a calendar. The card must reflow itself at every screen size, and a map must not trap the keyboard. Give another view for everything else. See [Common layouts](../styles/structure-common-layouts.html) and [Map Card](map-card.html).
+
+<h3 id="child-hui-sidebar-view"><code>hui-sidebar-view</code></h3>
+
+The Sidebar view, `type: sidebar`. It has a main column and a narrower sidebar column. A card goes to the sidebar when its own configuration has `view_layout: { position: sidebar }`, and to the main column otherwise.
+
+```yaml
+type: sidebar
+cards:
+  - type: markdown
+    content: Welcome home
+  - type: entities
+    entities:
+      - sensor.hallway_temperature
+    view_layout:
+      position: sidebar
+```
+
+At 760 CSS pixels or wider there are two columns. The main column is at most 1620 pixels wide and the sidebar at most 380. Below 760 pixels, the sidebar does not exist and every card goes in the main column, in configuration order. So the reading order changes with the screen width. Put the main task first and related context second, and make the sidebar cards make sense when they land among the main cards. Never put the only route to a control in the sidebar.
+
+The card margin is `--masonry-view-card-margin`, which the Civica theme does not set.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A Sections view gives a predictable grid with a name for each group.
+- A section has no title or landmark of its own.
+- Masonry fits uneven cards, but its reading order follows the columns, not the picture.
+- A panel view shows only the first card.
+- The Sidebar view changes its order below 760 pixels.
+- Only the Sections view supports `column_span` and `grid_options`.
+- A dashboard author cannot write a native `section` that is named.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+- Use a few sections, each answering one household question, with the urgent one first.
+- Open every section with a Heading card.
+- Keep the same card in the same place on every device.
+- Avoid more than four columns.
+- Keep the one place for essential controls, and do not hide it behind a condition.
+- Do not describe a card by its position.
+- Check the real keyboard and reading order at each width.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 2.4.6 Headings and Labels: each section has a visible heading.
+- 1.3.2 Meaningful Sequence and 2.4.3 Focus Order: the order in the page matches the order that makes sense.
+- 1.4.10 Reflow: one column at 320 CSS pixels. Check at 320 and at 400% zoom.
+- 1.4.4 Resize Text and 1.4.12 Text Spacing: cards stay readable when text grows.
+- 2.4.1 Bypass Blocks: a named landmark is a shortcut. A Markdown card cannot add one.
+- 2.1.2 No Keyboard Trap: a map in a panel view must let the keyboard out.
+
+<h2 id="examples">Examples</h2>
+
+### A view with two sections, each opened by a heading
+
+<%= example('spec-section-two-sections') %>

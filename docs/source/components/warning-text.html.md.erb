@@ -1,19 +1,19 @@
 ---
-title: "Warning text"
-description: "Explain a significant consequence before the person commits to an action."
-section: components
-group: Content presentation
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-18"
+title: "Warning Text"
+description: "Explain a significant consequence before someone commits to an action, in a short warning or a yellow callout."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
-  - date: 2026-11-11
-    description: "Added the Civica guidance, contextual examples and implementation boundaries."
-  - date: 2026-11-17
-    description: "Rewritten to lead with the rule and move source credit to the components index."
-  - date: "2026-11-18"
-    description: "The destructive action guidance now says theme colour Green or Red, instead of palette."
-ai_instructions: "Apply when an action can cause a loss or change that is easy to overlook. Place the warning before the action and name the consequence and the object. Do not use it for routine information. A warning is not a device safety interlock. Rules WG-030, WG-042, WG-056."
+  - date: "2026-11-11"
+    description: "Added guidance on when to use a warning, and two examples."
+  - date: "2026-11-26"
+    description: "Added the yellow callout form, the Home Assistant alternatives, the theme colours and two more examples."
+ai_instructions: "Apply when an action can cause a loss or change that is easy to overlook, or when reference content must correct a likely mistake. Place the warning before the action and name the consequence and the object. Do not use it for routine information, a success or every unavailable sensor. A warning is not a device safety interlock and does not replace a confirmation. The word Warning or Important must be real text, not just an icon or colour. Home Assistant has no warning text element: the nearest native one is ha-alert with alert-type warning, which announces itself at once. The Civica yellow surface on a dashboard needs the card-mod integration. Quote contrast only as calculated from theme colours."
 ai_related:
   - path: "/patterns/interruption.html"
     title: "Pause before an exceptional consequence"
@@ -24,36 +24,117 @@ ai_related:
   - path: "/components/buttons.html"
     title: "Button"
     relationship: "Owns the destructive and cancel actions that follow a warning."
+  - path: "/components/alert-and-tip-callout.html"
+    title: "Alert & Tip Callout"
+    relationship: "Owns ha-alert, the native warning message on a dashboard."
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns the Markdown a warning message is written in."
+  - path: "/patterns/household-urgency.html"
+    title: "Show household urgency clearly"
+    relationship: "Owns the three kinds of urgency."
+  - path: "/publishing/components/emergency-banner.html"
+    title: "Emergency banner"
+    relationship: "Owns the Civica banner for urgent household messages."
+component:
+  parent: "Warning Text"
+  letter: "W"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Warning Text Pattern"
+      origin: "Civica"
+      anchor: "child-civica-warning-text-pattern"
+      note: "absorbs warning-callout"
+  tags:
+    - "warning text"
+    - "warning callout"
 ---
 
-# Warning text
+# Warning Text
+
+<h2 id="purpose">Purpose</h2>
 
 Place a short warning before an action that can cause a loss or change that is easy to miss. Name the consequence and the thing it affects, in plain words.
 
-## When to use it
+A warning has two forms. Warning text is one bold sentence with an exclamation mark, placed just above the action. A warning callout is a yellow box with a heading and a few sentences, used in reference content to correct a likely mistake.
 
-Use a warning for a meaningful change, such as removing a dashboard or replacing a configuration. Do not use it for routine information, a successful action or every unavailable sensor. Repeated warnings stop being read.
+Home Assistant has no warning text element, so this is a Civica pattern. On a dashboard, its nearest native piece is the warning alert described under Variants. This page owns both forms.
 
-A warning does not make anything safe. A device interlock stays the job of the device and its integration.
+This page covers:
 
-## Examples
+- Warning Text
+  - Civica Warning Text Pattern
 
-### Removing a dashboard
+<h2 id="anatomy">Anatomy</h2>
 
-<%= example('core-warning-delete') %>
+Warning text has an exclamation mark in a dark circle and a bold sentence. The exclamation mark is only decoration. A hidden word, “Warning”, comes first in the text, so screen readers say it and people who cannot see the mark still get the meaning.
 
-### Replacing configuration
+A warning callout has a pale yellow box with a thin border, a heading and a paragraph. A hidden word, “Important:”, comes first in the heading when it adds meaning.
 
-<%= example('core-warning-replace') %>
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-The consequences in these examples are made-up content. They do not describe a real home.
+<h3 id="child-civica-warning-text-pattern">Civica Warning Text Pattern</h3>
 
-## Write the message
+**Warning text** goes directly before the action it concerns, in reading order as well as on screen. One warning goes with one decision.
 
-Name the actual consequence: “Removing this dashboard deletes its saved layout. It does not remove devices from Home Assistant.” Avoid capitals and vague questions such as “Are you sure?”. The exclamation mark is decorative. Assistive technology reads the word “Warning” as part of the message.
+**A warning callout** needs a specific heading and a self-contained explanation. Use it sparingly, when missing the information could lead to a significant mistake. Do not make every helpful note yellow, and do not use it instead of inline form validation. For a Home Assistant home, it suits two cases: making clear that an unavailable reading is not a confirmed physical state, and saying that an import may replace existing settings. Do not invent alarm advice or device operating instructions. Link to the verified guidance that owns the topic.
 
-When the decision needs more explanation, use the [interruption pattern](../patterns/interruption.html). Keep the cancel route clear. Do not style a destructive action like the ordinary primary action just because the theme colour is Green or Red.
+**Colours.** The callout uses a fixed pale yellow fill with near-black text, so it does not change with the theme’s primary colour or with dark mode. On a dashboard, the Civica theme has two warning colours for a solid yellow surface: `civica-warning-fill` (#FFDD00) and `civica-on-warning` (#0B0C0C), the same in light and dark mode. Calculated from those two colours, the text is about 14.6 to 1 on the fill. The theme’s other warning colours, `warning-color` and `ha-color-on-warning-normal`, change with the mode.
 
-## Check the implementation
+**Home Assistant alternatives.**
 
-Check that the warning comes before the action in visual and reading order. Test high zoom, screen-reader output and forced colours. Test permissions, confirmation and failure handling on the real action separately. The component supplies only the presentation, and the theme keeps the existing Home Assistant confirmations. Use the [Civica accessibility checks](../accessibility/testing.html).
+- The nearest native piece is `ha-alert` with `alert-type="warning"`. In a Markdown card, write a quote that starts with `[!WARNING]`. See [Alert & Tip Callout](alert-and-tip-callout.html). A native alert announces itself at once, so use it for a message that appears after an action, not for a static warning that was there from the start.
+- A Civica Markdown card with the yellow surface is the [Emergency banner](../publishing/components/emergency-banner.html). It needs the card-mod integration.
+
+Neither stops a harmful action. A warning does not make anything safe, and a device’s own limits stay the job of the device and its integration.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The word “Warning” or “Important:” is text, so meaning does not depend on the icon or the colour.
+- A warning before an action is read before the action, in the right order.
+- A warning is not a confirmation. Home Assistant’s own confirmations stay, and the real action needs its own permission and failure handling.
+- The callout colours are fixed, so on a dashboard they do not follow the theme.
+- Too many warnings stop being read.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a warning for a meaningful change, such as removing a dashboard or replacing a configuration. Do not use it for routine information, a successful action or every unavailable sensor.
+
+Name the actual consequence: “Removing this dashboard deletes its saved layout. It does not remove devices from Home Assistant.” Avoid capital letters and vague questions such as “Are you sure?”. Use plain verbs. Keep the cancel route clear. Do not style a destructive action like the ordinary primary action just because the theme colour is Green or Red.
+
+When the decision needs more explanation, use the [interruption pattern](../patterns/interruption.html). For wording, see [States, requests and errors](../content/writing-guidelines/states-and-errors.html). For the actions that follow a warning, see [Button](buttons.html).
+
+Before you publish one, check that the warning comes before the action in visual and reading order. Test it at 400 per cent zoom, with a screen reader and in forced colours. Use the [Civica accessibility checks](../accessibility/testing.html).
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: the warning is real text before the action.
+- 1.4.1 Use of Colour: the word carries the meaning, not the icon or the yellow.
+- 1.4.3 and 1.4.11 Contrast: calculated ratios are in the Colours paragraph. Check your own theme.
+- 1.4.10 Reflow and 1.4.12 Text Spacing: the text wraps and the box grows.
+- 2.4.6 Headings and Labels: a callout heading says what the callout is about.
+- 3.3.4 Error Prevention: a warning before a change does not replace a confirmation.
+- 4.1.3 Status Messages: a warning that appears after an action needs to be announced. A static warning does not.
+
+One consequence, one decision and one clear way back keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### A warning before removing a dashboard
+
+A simulated confirmation screen with warning text above the buttons.
+
+<%= example('spec-warning-text-remove-dashboard') %>
+
+### A callout about an unavailable reading
+
+A yellow callout in help content that corrects a wrong guess.
+
+<%= example('spec-warning-callout-unavailable-reading') %>
+
+### A callout about an import
+
+A yellow callout in help content, written before an import screen.
+
+<%= example('spec-warning-callout-import') %>

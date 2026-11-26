@@ -1,65 +1,114 @@
 ---
 title: "Skip link"
-description: "Let keyboard users bypass repeated navigation and reach the main content."
+description: "Let keyboard users pass repeated navigation and land in the main content."
 section: "components"
-group: "Navigation"
-source_url: "https://service-manual.nhs.uk/design-system/components/skip-link"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added NHS-informed skip link guidance and 2 Home Assistant reference examples."
+  - date: "2026-11-26"
+    description: "Rewrote the page as a full specification, with what a skip link needs, what Home Assistant cannot do with one and how to test it."
+  - date: "2026-11-11"
+    description: "First published, with two examples."
+ai_instructions: "Apply when a standalone Civica page has repeated header or navigation controls before its main content. A skip link is the first focusable element, reads \"Skip to main content\", is hidden until it has focus and points with a fragment to a main element that has tabindex=\"-1\". Home Assistant has no skip link, and a Markdown card cannot hold one because it removes id and tabindex. A fragment link cannot target an element inside another shadow tree. Do not add one per card. Do not claim Home Assistant has or announces a skip link, and do not state contrast or size for the revealed link without measuring it."
+ai_related:
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns the navigation a skip link bypasses."
+  - path: "/components/main.html"
+    title: "Main"
+    relationship: "Owns the main landmark a skip link points to."
+  - path: "/components/back-link.html"
+    title: "Back Link"
+    relationship: "Owns the back link, which a skip link should come before."
+  - path: "/components/service-navigation.html"
+    title: "Service navigation"
+    relationship: "Owns the list of main destinations a skip link passes."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the keyboard and screen reader checks."
+component:
+  parent: "Skip Link"
+  letter: "S"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Skip Link Pattern"
+      origin: "Civica"
+      anchor: "child-civica-skip-link-pattern"
+  tags:
+    - "Civica Skip Link Pattern"
 ---
 
 # Skip link
 
-Let keyboard users bypass repeated navigation and reach the main content.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A skip link is the first link on a page. It stays out of sight until a keyboard user reaches it, then appears. Pressing it moves keyboard focus to the main content, so people do not have to tab through the header and navigation on every page.
 
-## When to use it
+It is a Civica pattern for standalone pages. Home Assistant has no skip link and no main landmark of its own.
 
-Use a skip link at the start of a standalone page with repeated header or navigation controls. Its destination is the main content, not the first decorative heading.
+This page covers:
 
-## When not to use it
+- Skip Link
+  - Civica Skip Link Pattern
 
-Do not add duplicate skip links inside every card or point to an absent fragment. A link that scrolls without moving focus may leave the keyboard user at the start of navigation.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+- A link with the words “Skip to main content”, placed before everything else that can take focus.
+- A fragment address, such as `#main-content`, that matches an element on the same page.
+- A target, normally the `<main>` element, with an `id` and `tabindex="-1"`. The `tabindex` lets the page move focus to it without adding a stop for the Tab key.
 
-The Civica documentation shell supplies page-level navigation. In Home Assistant, routing and shadow roots require integration with the native focus target; a fragment in one shadow tree cannot automatically focus another. Do not claim a global skip enhancement from an isolated HTML example.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Accessibility and behaviour
+<h3 id="child-civica-skip-link-pattern"><code>Civica Skip Link Pattern</code></h3>
 
-Keep the link visually hidden until focused, then reveal it with strong contrast. Use a real anchor and a focusable main target, commonly tabindex="-1". Its position should let it skip the back link and other repeated controls as well.
+The link is hidden until it has focus. When it has focus it shows as a block of dark text on a yellow background, with a thick yellow outline, in 16 pixel type. When pressed, a script moves focus to the target, and the target shows no outline of its own while it holds that focus. If the fragment is missing or the target is absent, the script reports an error, so check both.
 
-## Examples
+Put the link before the back link and any other repeated controls. Aim it at the main content, not at the first decorative heading.
+
+**When not to use it.** Do not add a skip link to every card, and do not point one at a fragment that does not exist. A link that only scrolls the page can leave keyboard focus at the start of the navigation.
+
+**In Home Assistant.** A fragment link cannot reach an element inside another shadow tree, and Home Assistant draws its pages inside shadow trees. It exposes no stable main target. A Markdown card removes `id` and `tabindex`, so it cannot hold a skip link or a target. Do not claim a skip link for a dashboard. See [Markdown Card](markdown-card.html).
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One link removes repeated tabbing on pages with long headers.
+- It works without a mouse and costs nothing for people who do not need it.
+- It needs a real target on the same page, so it suits standalone pages and not dashboards.
+- On a dashboard, the nearest alternatives are a short view with real headings in order, which is also a way to bypass blocks, and the navigation described in [Navigation](navigation.html).
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use one skip link, first on the page, in plain words: “Skip to main content”. It should appear when it takes focus and be clear against the page. Sticky headers must not cover the link when it appears.
+
+Success criteria that apply:
+
+- 2.4.1 Bypass Blocks: this is the control the criterion asks for on a page with repeated blocks.
+- 2.4.3 Focus Order: the next Tab after pressing the link goes to the first control in the main content.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): the revealed link must be seen and not covered.
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: check the revealed link in your own theme.
+- 2.4.4 Link Purpose (In Context): “Skip to main content” says where it goes.
+
+Short, predictable wording and one link keep the effort low.
+
+<h2 id="examples">Examples</h2>
 
 ### Skip a repeated header
 
-Press Tab inside the example or open it separately to reveal the link.
+A simulated page with a two-link navigation bar above the main content. Press Tab inside the example to reveal the link, then press Enter.
 
-<%= example('nhs-skip-main') %>
+<%= example('spec-skip-link-repeated-header') %>
 
 ### Reach the task directly
 
-The main target comes after the repeated navigation and back link.
+A simulated setup page with a header line and a Back to review link above a form. The skip link comes before both and lands in the main content.
 
-<%= example('nhs-skip-form') %>
+<%= example('spec-skip-link-task-form') %>
 
-## Check the implementation
+## Test the link
 
-Open the standalone example, press Tab and activate the skip link. Verify the next keyboard action begins in main content. Repeat after route changes, with zoom and with a screen reader.
-
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS skip link](https://service-manual.nhs.uk/design-system/components/skip-link) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
-
-See also [navigation](navigation.html).
+Press Tab once on the page. The skip link should appear. Activate it, then press Tab again: focus should land on the first control in the main content. Repeat after a change of page, at 200 per cent zoom, at 320 pixels wide, in light and dark modes, with two theme colours and with a screen reader. See [Test the interface](../accessibility/testing.html).

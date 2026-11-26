@@ -1,0 +1,161 @@
+---
+title: "Switch / Toggle"
+description: "Turn one setting on or off at once, with a visible label and a state that people can read in words."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Switch / Toggle specification: the native switch, the Home Assistant switch in settings and entity rows, and the swipe switch in tile controls."
+ai_instructions: "Apply when a control turns one setting or device on or off at once. A switch acts immediately; use a checkbox when the choice is confirmed by a button. Every switch needs a visible label that says what it controls and, where it helps, the state in words. In Home Assistant the settings and entity-row switch is ha-switch, built on the Web Awesome switch. This Home Assistant version has no ha-md-switch. ha-control-switch is the swipe switch inside tile controls and the more-info dialog and cannot be placed alone. A Markdown card cannot hold a switch, because role switch is removed. In entity rows the switch is expected to be drawn smaller than the theme size, so tell people to check its size in their own dashboard. Never claim a measured focus appearance or contrast. The old switch-checked keys do not control ha-switch."
+ai_related:
+  - path: "/components/checkboxes.html"
+    title: "Checkbox"
+    relationship: "Use a checkbox when the choice is confirmed later by a button."
+  - path: "/components/entities-card-and-entity-rows.html"
+    title: "Entities Card & Entity Rows"
+    relationship: "Owns the toggle row that holds a switch."
+  - path: "/components/card-features.html"
+    title: "Card Features (Tile & Area Inline Controls)"
+    relationship: "Owns the toggle feature on a tile that uses the swipe switch."
+  - path: "/components/more-info-dialog-and-domain-state-controls.html"
+    title: "More-Info Dialog & Domain State Controls"
+    relationship: "Owns the state controls in the dialog that use the swipe switch."
+  - path: "/components/button-group-segmented-control.html"
+    title: "Button Group / Segmented Control"
+    relationship: "Use a button group when there are more than two choices."
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns what a Markdown card keeps and strips."
+component:
+  parent: "Switch / Toggle"
+  letter: "S"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<input type=\"checkbox\" role=\"switch\">"
+      origin: "HTML5"
+      anchor: "child-input-type-checkbox-role-switch"
+    - name: "ha-switch"
+      origin: "Home Assistant"
+      anchor: "child-ha-switch"
+    - name: "ha-md-switch"
+      origin: "Home Assistant"
+      anchor: "child-ha-md-switch"
+    - name: "ha-control-switch"
+      origin: "Home Assistant"
+      anchor: "child-ha-control-switch"
+  tags:
+    - "switch"
+    - "toggle"
+    - "ha-switch"
+    - "ha-control-switch"
+---
+
+# Switch / Toggle
+
+<h2 id="purpose">Purpose</h2>
+
+A switch turns one thing on or off, and the change happens as soon as people use it. Use it for a setting or a device with two states, such as a porch light or a notification setting. If a choice is confirmed later by a button, use a [Checkbox](checkboxes.html). If there are more than two choices, use a [Button Group / Segmented Control](button-group-segmented-control.html).
+
+This page owns the switch in all its forms. People meet Home Assistant’s switches in settings forms, in Entities card rows, in tile controls and in the more-info dialog.
+
+This page covers:
+
+- Switch / Toggle
+  - `<input type="checkbox" role="switch">`
+  - `ha-switch`
+  - `ha-md-switch`
+  - `ha-control-switch`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A switch has a track, a thumb that sits at one end of it, and a label. The thumb’s position shows the state: at one end for on, at the other for off. The label says what the switch controls.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-input-type-checkbox-role-switch"><code>&lt;input type="checkbox" role="switch"&gt;</code></h3>
+
+The native switch: a checkbox that tells assistive technology it is a switch.
+
+- Its state comes from `checked`. Do not also set `aria-checked`.
+- `disabled`, `required`, `name` and `value` work as they do on a checkbox. The `value` is “on” unless you set one.
+- It needs a label that people can see, written for the thing it controls, such as “Porch light”, not just “On” or “Off”.
+- Space toggles it. Enter does not.
+- A browser draws it as an ordinary checkbox unless you style it, for example with `appearance: none`.
+
+A standard Home Assistant Markdown card cannot carry one. It keeps only a checkbox, and removes `role`. To put a switch on a dashboard, use a Tile card or an Entities card toggle row, which draw Home Assistant’s own switch.
+
+<h3 id="child-ha-switch"><code>ha-switch</code></h3>
+
+Home Assistant’s switch for settings forms and entity rows, built on the Web Awesome switch. It represents two states, on and off. Many places in the interface use it, including the toggle in an Entities card row.
+
+- **What it takes:** `checked`, `disabled`, `required`, `name` and `value`, a `size`, a `hint`, a visible label, and an `accessible-label` that assistive technology announces but does not show. It also has a `haptic` setting that gives a small vibration on change, for a switch whose change applies at once.
+- **What it does:** it fires `change` and `input` events, and its inner control is a native input with `role="switch"`.
+- **Entity rows:** the toggle in an Entities card row is named after the entity. If the state cannot be toggled, the row shows two buttons, one to turn on and one to turn off. It is disabled when the state is unavailable.
+- **From YAML:** a dashboard author cannot place `ha-switch` on its own. It comes with the Entities card’s toggle rows (`type: toggle-entity`) and the card header toggle. You cannot change the label text beside the switch inside those rows, print “On” or “Off” inside the track, or set the haptic option.
+
+**What the Civica theme sets.** The theme sets the track, thumb, border and hover colours for on and off, in light and dark modes, and the size, thumb size, width and minimum touch size. In each of the eight themes the checked track takes that theme’s primary colour. In light mode it is blue in Civica and Civica Blue, and green, teal, purple, magenta, red or black in the others. The unchecked border and thumb are near-black in light mode and white in dark mode. The unchecked track is white in light mode and dark grey in dark mode.
+
+**Where the size differs.** In Entities card rows, the switch is 38 pixels wide, with a 20-pixel track and a 14-pixel thumb. Home Assistant reads those sizes from its own `--ha-entity-toggle-switch-width`, `--ha-entity-toggle-switch-size` and `--ha-entity-toggle-switch-thumb-size` variables, which the theme does not set. A row switch is therefore smaller than the theme size.
+
+**Focus.** The focus ring uses the theme’s focus settings: a 3-pixel solid ring, set 2 pixels away from the switch. The ring is near-black in light mode and yellow in dark mode.
+
+**Disabled.** A disabled switch is dimmed, its label uses the disabled text colour, and the pointer shows that it is not allowed.
+
+**Older keys.** The theme also sets older `switch-checked-*` and `switch-unchecked-*` keys. `ha-switch` does not read them.
+
+The row switch takes its colours from the same `ha-switch` keys as any other switch, so the theme colours apply to it. Changing its size from a dashboard needs the card-mod integration to set the three row variables above.
+
+<h3 id="child-ha-md-switch"><code>ha-md-switch</code></h3>
+
+This Home Assistant version does not use the name `ha-md-switch`. The settings switch is `ha-switch`, built on the Web Awesome switch, and is documented above.
+
+<h3 id="child-ha-control-switch"><code>ha-control-switch</code></h3>
+
+A larger two-state switch that people can press, swipe or move with the keyboard. It appears in the Tile card’s toggle feature, in the more-info dialog’s state controls and in the valve open and close feature. A dashboard author cannot place it on its own.
+
+- It is a single control with `role="switch"` and a label that comes from the card, such as “Toggle”. It leaves the tab order when disabled.
+- Enter and Space toggle it. The arrow keys set the state: right or down for on, and left or up for off in the default layout. Swiping and tapping also work, so nobody needs a path-based gesture.
+- It fires a `change` event.
+- Its on colour is the theme’s primary colour. State controls set their own on and off colours from the entity’s state, so the theme cannot change them. The off colour is Home Assistant’s default, because the theme does not set it.
+- Its thickness, corner radius and padding come from `--control-switch-thickness`, `--control-switch-border-radius` and `--control-switch-padding`, which default to 40 pixels, the large corner radius and 4 pixels. The theme does not set them.
+- Its focus cue is a ring in the control’s own colour, not the theme’s focus ring.
+
+For a toggle that must not be swipe-only, use a labelled button group or an Entities row switch with the state in words.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A switch shows the state by position and applies a change at once, so people do not need a Save button.
+- `ha-switch` follows the theme’s colours, in all eight themes and in both modes.
+- A switch tells people the state but not what it will change. It needs a good label.
+- A switch can be pressed by accident, particularly the swipe switch. Do not use it for an action that is hard to undo.
+- Many Home Assistant switches have no visible state word. Say the state in text where it matters.
+- A dashboard cannot style, relabel or place these switches on its own.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a switch only for a setting that applies at once. Give every switch a visible label that says what it changes, and where the state matters, put it in words too, such as “On” or “Unavailable”. Do not make a switch change something the person did not expect. Keep the layout the same each time.
+
+Success criteria that apply:
+
+- 4.1.2 Name, Role, Value: the switch is named, has the switch role and exposes its state.
+- 1.3.1 Info and Relationships and 3.3.2 Labels or Instructions: the label is visible and tied to the control.
+- 2.1.1 Keyboard, 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): test the focus ring on each switch in your own setup. The swipe switch does not use the theme’s focus ring.
+- 1.4.1 Use of Color and 1.4.11 Non-text Contrast: do not rely on the colour of the track alone, and test the track edge and thumb in light and dark modes.
+- 2.5.8 Target Size (Minimum): each switch is at least 24 by 24 CSS pixels. Test the real size by touch.
+- 2.5.1 Pointer Gestures and 2.5.2 Pointer Cancellation: the swipe switch can also be tapped.
+- 3.2.2 On Input: a switch acts at once, so the label should make that clear.
+
+A clear label and a state in words keep the effort low. Follow the [Civica accessibility checks](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
+
+### Toggle rows in an Entities card
+
+<%= example('spec-switch-toggle-rows') %>

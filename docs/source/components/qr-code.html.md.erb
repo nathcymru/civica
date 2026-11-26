@@ -1,0 +1,116 @@
+---
+title: "QR Code"
+description: "Show a QR code that a phone can scan, and always give the same information as text."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the QR Code specification: the ha-qr-code element, where you can use it, its colours in light and dark mode, and the text to write beside it."
+ai_instructions: "Apply when a dashboard shows a QR code. ha-qr-code is a Home Assistant element that draws to a canvas. A dashboard author can use it in a Markdown card, with the attributes data, scale, width, margin, error-correction-level and center-image, and in a form with the qr_code selector. The canvas has no text alternative and a Markdown card removes aria attributes, so always write what the code contains and what scanning does as text beside it. Never put a secret in a code left on a wall display. The code is drawn in the theme's text colour on the card colour, and in dark mode that gives light squares on a dark card, an inverted code. Do not claim that it scans or fails to scan. Do not give a maximum data size or a pixel size."
+ai_related:
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns the tags and attributes the card keeps, including ha-qr-code."
+  - path: "/home-assistant/schema-selectors.html"
+    title: "Schema selectors and configuration forms"
+    relationship: "Owns the form selectors, including the QR code selector."
+  - path: "/components/copy-to-clipboard.html"
+    title: "Copy-to-Clipboard"
+    relationship: "Use to copy the text equivalent of a code."
+component:
+  parent: "QR Code"
+  letter: "Q"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-qr-code"
+      origin: "Home Assistant"
+      anchor: "child-ha-qr-code"
+  tags:
+    - "ha-qr-code"
+---
+
+# QR Code
+
+<h2 id="purpose">Purpose</h2>
+
+A QR code lets someone point a phone camera at a screen to pass on a link, a Wi-Fi network or a pairing code, instead of typing it. It helps people who find typing hard. It is no help to people who cannot see the screen, or who have no camera to hand.
+
+Home Assistant draws QR codes with its `ha-qr-code` element. This page covers how to use it and what to write beside it.
+
+This page covers:
+
+- QR Code
+  - `ha-qr-code`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A QR code is a square picture of dark and light squares, called modules, with a plain margin around it, called the quiet area. Home Assistant draws it on a canvas. The canvas has no text alternative, so a screen reader meets a picture it cannot describe.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-qr-code"><code>ha-qr-code</code></h3>
+
+Attributes:
+
+- `data` is the text to encode. Nothing is drawn when it is empty.
+- `error-correction-level` is `low`, `medium`, `quartile` or `high`. The default is `medium`. A higher level lets the code survive more damage but makes it denser.
+- `scale` and `width` set the size. Both default to 4.
+- `margin` sets the quiet area in modules. The default is 4.
+- `center-image` is a web address for a small image drawn over the middle, which hides some of the code. Raise the error-correction level when you use it.
+
+If drawing fails, for example because there is too much data, the element shows an error alert with the reason instead of a code.
+
+**Where you can use it.**
+
+- In a [Markdown Card](markdown-card.html), where `ha-qr-code` is one of the few custom elements the card keeps:
+
+  ```html
+  <ha-qr-code data="WIFI:T:WPA;S:Guest network;P:sunflower-42;;" scale="6" error-correction-level="quartile"></ha-qr-code>
+  ```
+
+  The card removes `id` and `aria-label` from it, so you cannot name the code there. Put the text equivalent in the Markdown around it.
+- In a form, with the `qr_code` selector, which takes `data`, `scale`, `error_correction_level` and `center_image`. See [Schema selectors and configuration forms](../home-assistant/schema-selectors.html).
+- In Home Assistant’s own dialogs. The pairing dialog for Matter devices shows a code with the manual pairing code printed beside it.
+
+**Colour.** The code uses the theme’s text colour for the modules and the card colour for the quiet area. If those two colours are less than 3:1 apart, Home Assistant swaps the module colour for black or white. In the Civica theme this gives:
+
+- Light mode: near-black squares (#0B0C0C) on white, 19.59:1 calculated from theme colours.
+- Dark mode: white squares (#FFFFFF) on the dark card (#24282B), 14.86:1 calculated from theme colours. This is an inverted code, with light squares on a dark background. Some scanners read inverted codes and some do not. If scanning from the screen fails in dark mode, switch the dashboard to light mode, or give the text or a link.
+
+The theme sets nothing else for the code. Size and margin come from the attributes.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A scan replaces typing a long address or password.
+- The canvas has no text alternative, and a Markdown card cannot add one.
+- Dark mode draws an inverted code.
+- A code with a fixed `scale` can be wider than a 320-pixel screen.
+- A code is only as private as the screen it is on.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+- Write the same information as text beside the code: the network name and password, the pairing code or the link.
+- Say what scanning does: “Opens the Wi-Fi settings on your phone.”
+- Say who the code is for.
+- Never put a secret in a code left on a wall display.
+- Do not tell people to “scan the black squares”. Describe the code by its purpose.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: the text beside the code gives the same information. A code that holds a web address means nothing to a screen reader.
+- 1.3.3 Sensory Characteristics: do not describe the code by its colour or shape.
+- 1.4.11 Non-text Contrast: Home Assistant keeps the modules at least 3:1 against the quiet area.
+- 1.4.10 Reflow: check at 320 CSS pixels that the code and the text still fit.
+- 3.2.2 On Input and 3.3.2 Labels or Instructions: say where scanning leads before people scan.
+
+<h2 id="examples">Examples</h2>
+
+### A guest Wi-Fi card with a QR code and the same details as text
+
+<%= example('spec-qr-guest-wifi') %>

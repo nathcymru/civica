@@ -1,0 +1,165 @@
+---
+title: "Relative Time & Timestamp"
+description: "Show when something happened, as a relative phrase such as “5 minutes ago” or as an exact date and time, and choose which to lead with."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Relative Time & Timestamp specification: the time element, Home Assistant’s relative time, and the time_format option that shows an exact date and time."
+ai_instructions: "Apply when a card or page says when something happened. Lead with the exact date and time where the time matters, and add the relative phrase as help, never alone. The time element is native HTML and is not allowed in a Markdown card. ha-relative-time draws plain text such as 5 minutes ago, updates itself, and carries no exact time. This Home Assistant version has no ha-timestamp element: dates and times in rows and cards are drawn by hui-timestamp-display, which the time_format option chooses. A tooltip on it shows the full time, but do not rely on it: show the exact time as text with time_format datetime. Do not say the text is announced, or that the tooltip works from the keyboard or by touch. Say whether a time is when a reading changed or when a page was reviewed."
+ai_related:
+  - path: "/components/page-history.html"
+    title: "Page History"
+    relationship: "Owns the difference between a reading’s time and a page’s review date."
+  - path: "/components/entities-card-and-entity-rows.html"
+    title: "Entities Card & Entity Rows"
+    relationship: "Owns the row options, including time_format on an attribute row."
+  - path: "/components/glance-card.html"
+    title: "Glance Card"
+    relationship: "Owns show_last_changed."
+  - path: "/components/clock-card.html"
+    title: "Clock Card"
+    relationship: "Owns the clock and its 12 or 24 hour display."
+  - path: "/home-assistant/locale-units-and-time.html"
+    title: "Locale, units and time"
+    relationship: "Owns date, time and time zone wording."
+  - path: "/components/article.html"
+    title: "Article"
+    relationship: "Shows a time element in an article."
+component:
+  parent: "Relative Time & Timestamp"
+  letter: "R"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<time>"
+      origin: "HTML5"
+      anchor: "child-time"
+    - name: "ha-relative-time"
+      origin: "Home Assistant"
+      anchor: "child-ha-relative-time"
+    - name: "ha-timestamp"
+      origin: "Home Assistant"
+      anchor: "child-ha-timestamp"
+  tags:
+    - "time"
+    - "ha-relative-time"
+    - "hui-timestamp-display"
+    - "time_format"
+---
+
+# Relative Time & Timestamp
+
+<h2 id="purpose">Purpose</h2>
+
+A time on a card answers “is this still current?” or “when did this change?”. A relative time says “5 minutes ago”. A timestamp gives the exact date and time. Each helps in a different way, and people who must work out the actual hour from “5 minutes ago” find the relative form hard.
+
+Use visible text with a full, unambiguous date. Add the relative phrase as help, and never as the only information. Say what the time is about: when a reading changed, or when a page was last reviewed. [Page History](page-history.html) owns that difference.
+
+This page covers:
+
+- Relative Time & Timestamp
+  - `<time>`
+  - `ha-relative-time`
+  - `ha-timestamp`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A time has the words people read and, sometimes, a machine-readable value behind them. The words can be relative (“5 minutes ago”, “yesterday”) or exact (“14:05 on 11 November 2026”). In Home Assistant the card or row draws the words, and you choose the form with an option.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-time"><code>&lt;time&gt;</code></h3>
+
+The native element. Its one attribute is `datetime`, which holds a machine-readable value such as `2026-11-11T14:05:00Z` for a date and time, `2026-11-11` for a date, or `PT12M` for a duration. Without `datetime`, the text itself must be a valid value. A time zone is only an offset, such as `+01:00`, not a name.
+
+```html
+Observed at <time datetime="2026-11-11T14:05:00Z">14:05 GMT on 11 November 2026</time>
+```
+
+The element has no look of its own. Screen readers generally read the visible words and not the `datetime` value, which is there for search tools and scripts. It does not make the text relative or translate it, so write the visible text in the household’s language.
+
+The [Markdown Card](markdown-card.html) does not allow `time`. It shows the tag as text. On a dashboard, write the full date and time in words, such as “11 November 2026 at 14:05 GMT”. On a static Civica page, use `time` with `datetime`. See [Article](article.html).
+
+<h3 id="child-ha-relative-time"><code>ha-relative-time</code></h3>
+
+Draws text such as “5 minutes ago”, “yesterday” or “in 2 hours”, in the household’s language. It takes a `datetime`, a `format` (`long` by default, `short` or `narrow`) and `capitalize`. With no time, it writes “Never”.
+
+It updates itself every second during the first minute and every minute after that. It writes plain text. It is not a `time` element and has no `datetime`, no live-region setting and no tooltip, so the exact time is not available from it.
+
+Home Assistant uses it where a card shows when something changed, for example:
+
+- the Glance card with `show_last_changed: true`, owned by [Glance Card](glance-card.html)
+- the alert card, in its short format
+- the to-do list card
+- the Map card overview
+
+A dashboard author can turn it on only through the options that use it, such as `show_last_changed`. You cannot set its format or capitalisation in YAML. It takes its text colour and font from the card around it, so the theme sets nothing for it. To add an exact time, use a row with `time_format`, described next, or write the full date in a [Markdown Card](markdown-card.html).
+
+Text that rewrites itself every second can be a problem for some readers, because the updating information starts on its own. It is plain text with no live region, so assistive technology does not announce each change.
+
+<h3 id="child-ha-timestamp"><code>ha-timestamp</code></h3>
+
+This Home Assistant version does not use an element called `ha-timestamp`. Dates and times in rows and cards are drawn by `hui-timestamp-display`, which you choose with the `time_format` option.
+
+`time_format` works on any row of an Entities card, including sensor and attribute rows, and on the Glance card. Its values are:
+
+- `relative`: “5 minutes ago”. This is the default, and it updates every second.
+- `total`: a length of time without “ago”, such as “5 minutes”. Uptime sensors use it by default.
+- `date`: the date only.
+- `time`: the time only.
+- `datetime`: the date and the time.
+
+A value can also be an object with a `type` and a `style` of `short` or `long`. A short date is numeric, and a long time adds seconds. The date and time formats use the household’s formats and time zone from the Home Assistant settings.
+
+```yaml
+type: entities
+entities:
+  - entity: sensor.hallway_thermostat_last_seen
+    name: Last seen
+    time_format: datetime
+```
+
+[Entities Card & Entity Rows](entities-card-and-entity-rows.html) owns the row types.
+
+Home Assistant can also give the text a tooltip showing the full date and time with seconds. The tooltip appears on pointer hover, and you should not rely on it for keyboard or touch access. Choose `datetime` so the exact time is visible as text, not hidden in a tooltip.
+
+The look comes from the text around it: the theme sets no variable for it. The tooltip takes its background from the card colour (white in light mode and #24282B in dark mode) and its text from the primary text colour, through the theme’s own keys.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A relative time is quick to read and always current.
+- A relative time hides the exact hour and depends on the viewer’s language and time zone, as “yesterday” does.
+- `time` gives search tools a machine-readable value, but it works only on pages you write yourself.
+- `hui-timestamp-display` gives an exact date and time without writing any HTML.
+- A tooltip is easy to miss and is not a safe place for the exact time.
+- Text that updates every second is a distraction for some readers.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+- Show the exact date and time as the main text where a reading’s time matters. Put the relative phrase beside it.
+- Write the day and the month in words, and add the time zone for readings that cross zones.
+- Say what the time is about: “Last changed”, “Reviewed”.
+- Keep one format across the dashboard.
+- Do not hide the exact time in a tooltip.
+- Check that “yesterday” makes sense for the household’s time zone.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: say in words what the time is about.
+- 3.1.1 Language of Page: write dates in the language of the page.
+- 2.2.2 Pause, Stop, Hide: text that updates on its own for more than 5 seconds needs checking. Prefer an exact time that does not tick.
+- 1.4.13 Content on Hover or Focus: a tooltip must be dismissible, hoverable and persistent, so do not depend on it.
+- 1.4.4 Resize Text: times wrap at 200% text size.
+
+<h2 id="examples">Examples</h2>
+
+### A reading with its exact time and the relative wording
+
+<%= example('spec-time-reading-card') %>

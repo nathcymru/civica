@@ -1,0 +1,99 @@
+# Synthetic data and no live actions.
+examples:
+  spec-task-list-household-setup:
+    title: A household notifications setup with three tasks
+    description: "A simulated setup card with three tasks. One is completed, one has a problem that is explained in words, and one cannot start yet and says why. Each status is written as text beside the task name. Home Assistant has no task list of its own, so this is a Civica pattern drawn with ordinary text. Selecting a task name moves to a note lower in the card and saves nothing."
+    height: 640
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-tl-title"><div class="civica-card-demo__body">
+      <h2 id="spec-tl-title" style="margin:0 0 8px;font-size:22px;line-height:1.25">Set up household notifications</h2>
+      <p style="margin:0 0 15px">1 of 3 tasks completed. You can come back later.</p>
+      <ul style="list-style:none;margin:0;padding:0;border-top:1px solid #CECECE">
+      <li style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;padding:12px 0;border-bottom:1px solid #CECECE">
+      <div style="flex:1 1 12rem"><a href="#spec-tl-recipients" aria-describedby="spec-tl-status-1" style="color:#1A65A6">Choose who receives notifications</a></div>
+      <div id="spec-tl-status-1">Completed</div>
+      </li>
+      <li style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;padding:12px 0;border-bottom:1px solid #CECECE">
+      <div style="flex:1 1 12rem"><a href="#spec-tl-meter" aria-describedby="spec-tl-status-2 spec-tl-hint-2" style="color:#1A65A6">Select electricity meter</a><p id="spec-tl-hint-2" style="margin:4px 0 0;font-size:16px;color:#484949">The saved meter was removed. Choose a replacement.</p></div>
+      <div id="spec-tl-status-2"><strong style="display:inline-block;border:2px solid #9A2B2B;color:#9A2B2B;padding:2px 8px;font-size:16px">There is a problem</strong></div>
+      </li>
+      <li style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;padding:12px 0;border-bottom:1px solid #CECECE">
+      <div style="flex:1 1 12rem">Review and turn on notifications<p style="margin:4px 0 0;font-size:16px;color:#484949">Finish the other tasks first.</p></div>
+      <div>Cannot start yet</div>
+      </li>
+      </ul>
+      <h3 style="margin:20px 0 8px;font-size:19px">Task notes</h3>
+      <p id="spec-tl-recipients" tabindex="-1" style="margin:0 0 8px">Recipients: the household dashboard.</p>
+      <p id="spec-tl-meter" tabindex="-1" style="margin:0">Electricity meter: no replacement chosen yet.</p>
+      </div></article>
+  spec-text-input-room-settings:
+    title: A room settings form with two text fields
+    description: "A simulated settings form with two single-line fields. The first has a label, a hint and a typed name. The second asks for a temperature with the unit in its label and a unit shown beside the box. Home Assistant draws its own fields, so the look differs. Nothing is saved."
+    height: 520
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-ti-title"><div class="civica-card-demo__body">
+      <h2 id="spec-ti-title" style="margin:0 0 15px;font-size:22px;line-height:1.25">Room settings</h2>
+      <div style="margin:0 0 24px">
+      <label for="spec-ti-room" style="display:block;font-weight:700;margin:0 0 4px">Room name</label>
+      <p id="spec-ti-room-hint" style="font-size:16px;line-height:1.5;color:#484949;margin:0 0 8px">Use the name people in your household use</p>
+      <input id="spec-ti-room" name="spec-ti-room" type="text" value="Living room" aria-describedby="spec-ti-room-hint" autocomplete="off" style="width:100%;max-width:20rem;min-height:44px;padding:8px;border:2px solid #0B0C0C;font:inherit;border-radius:0">
+      </div>
+      <div style="margin:0">
+      <label for="spec-ti-temp" style="display:block;font-weight:700;margin:0 0 8px">Target temperature, in degrees Celsius</label>
+      <div style="display:flex;align-items:center;gap:8px">
+      <input id="spec-ti-temp" name="spec-ti-temp" type="text" inputmode="decimal" value="20.5" autocomplete="off" style="width:6rem;min-height:44px;padding:8px;border:2px solid #0B0C0C;font:inherit;border-radius:0">
+      <span aria-hidden="true">°C</span>
+      </div>
+      </div>
+      </div></article>
+  spec-text-semantics-weekend-notes:
+    title: A Markdown card with a changed time, a squared unit and small print
+    description: "A stand-in for a Markdown card that uses the inline elements it keeps. A bold phrase marks the one important change, the old time is struck through with the new time beside it and both are introduced in words, a superscript writes a squared unit and a line of small print gives a note. Home Assistant draws its own Markdown card, so the look differs. Nothing here is interactive."
+    height: 460
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-ts-title"><div class="civica-card-demo__body">
+      <h2 id="spec-ts-title" style="margin:0 0 15px;font-size:22px;line-height:1.25">Notes for the weekend</h2>
+      <p style="margin:0 0 12px"><strong>The boiler service has moved.</strong> Removed: <del>Saturday at 10:00</del>. Added: <ins>Friday at 14:00</ins>.</p>
+      <p style="margin:0 0 12px">The extension is 20 m<sup>2</sup>, so the heating may take longer to warm it.</p>
+      <p style="margin:0;font-size:16px;color:#484949"><small>Times are local time. Ask Sam if you need to change the visit.</small></p>
+      </div></article>
+  spec-textarea-dashboard-description:
+    title: A multi-line description box with its hint
+    description: "A simulated form with a label, a hint that says who can read the text and a box that holds several lines. The box can be resized vertically. Home Assistant draws its own multi-line field, so the look differs. Nothing is saved."
+    height: 520
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-ta-title"><div class="civica-card-demo__body">
+      <h2 id="spec-ta-title" style="margin:0 0 15px;font-size:22px;line-height:1.25">Dashboard details</h2>
+      <div style="margin:0">
+      <label for="spec-ta-field" style="display:block;font-weight:700;margin:0 0 4px">Dashboard description</label>
+      <p id="spec-ta-hint" style="font-size:16px;line-height:1.5;color:#484949;margin:0 0 8px">Shown to everyone who can open this dashboard</p>
+      <textarea id="spec-ta-field" name="spec-ta-field" rows="4" aria-describedby="spec-ta-hint" style="width:100%;max-width:30rem;padding:8px;border:2px solid #0B0C0C;font:inherit;border-radius:0;resize:vertical">Lights, heating and household tasks for shared areas.</textarea>
+      </div>
+      </div></article>
+  spec-thermostat-card-bedroom:
+    title: A thermostat card for the bedroom
+    description: "A simulated thermostat card in the light theme. The name sits at the top with a round button for more information at its right. A dial shows the target, and minus and plus buttons sit under it. The target, the current temperature and the word Heating are written as text. The orange arc is the colour Home Assistant uses for heating, which the Civica theme does not change. Home Assistant draws its own dial, which can be dragged or moved with the keyboard; this picture cannot. Nothing here is interactive."
+    height: 600
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-thermo-title" style="max-width:22rem"><div class="civica-card-demo__body" style="position:relative">
+      <button type="button" aria-label="Show more info" style="position:absolute;top:8px;right:8px;width:44px;height:44px;border:1px solid #CECECE;border-radius:50%;background:#fff;color:#0B0C0C;font:inherit;font-weight:700">i</button>
+      <p id="spec-thermo-title" style="margin:0 44px 8px;text-align:center;font-size:19px">Bedroom thermostat</p>
+      <div style="text-align:center"><svg role="img" aria-label="Dial showing a target of 20.5 degrees Celsius, about two thirds of the way round" width="220" height="220" viewBox="0 0 220 220"><path d="M 47 173 A 90 90 0 1 1 173 173" fill="none" stroke="#6F777B" stroke-opacity="0.3" stroke-width="24" stroke-linecap="round"></path><path d="M 47 173 A 90 90 0 1 1 168 38" fill="none" stroke="#FF6F22" stroke-width="24" stroke-linecap="round"></path><circle cx="168" cy="38" r="9" fill="#fff" stroke="#FF6F22"></circle></svg></div>
+      <p style="margin:0 0 12px;text-align:center">Heating<br><strong style="font-size:1.75rem">Target 20.5 °C</strong><br>Now 19.0 °C</p>
+      <div style="display:flex;justify-content:center;gap:16px"><button type="button" aria-label="Decrease target temperature" style="width:48px;height:48px;border:1px solid #CECECE;border-radius:50%;background:#fff;color:#0B0C0C;font:inherit;font-size:24px">&minus;</button><button type="button" aria-label="Increase target temperature" style="width:48px;height:48px;border:1px solid #CECECE;border-radius:50%;background:#fff;color:#0B0C0C;font:inherit;font-size:24px">+</button></div>
+      </div></article>
+  spec-tile-card-lamp:
+    title: Two tile cards, a lamp that is on and a sensor that is unavailable
+    description: "Two simulated tile cards in the light theme. The first shows a round icon in the theme colour, the name and the state On. The second shows a grey icon with a small orange warning mark at its corner, and the state Unavailable is written in words. The icons are plain shapes standing in for Home Assistant icons. Home Assistant draws its own tiles, which open More info when selected; these do nothing."
+    height: 380
+    html: |
+      <div style="display:grid;gap:12px;max-width:22rem">
+      <article class="civica-card-demo" aria-labelledby="spec-tile-1" style="margin:0"><div class="civica-card-demo__body" style="display:flex;align-items:center;gap:12px">
+      <span aria-hidden="true" style="flex:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#D2E2F1;color:#1D70B8"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="10" r="6" fill="none" stroke="#1D70B8" stroke-width="2"></circle><line x1="9" y1="20" x2="15" y2="20" stroke="#1D70B8" stroke-width="2"></line></svg></span>
+      <div style="min-width:0"><p id="spec-tile-1" style="margin:0;font-size:16px;line-height:1.5">Living room lamp</p><p style="margin:0;font-size:14px;line-height:1.25">On</p></div>
+      </div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-tile-2" style="margin:0"><div class="civica-card-demo__body" style="display:flex;align-items:center;gap:12px">
+      <span aria-hidden="true" style="position:relative;flex:none;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#E3E4E4;color:#484949"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false"><rect x="5" y="7" width="14" height="10" fill="none" stroke="#484949" stroke-width="2"></rect></svg><span style="position:absolute;top:-3px;right:-3px;width:16px;height:16px;border-radius:4px;background:#8A6100;color:#fff;font-size:12px;line-height:16px;text-align:center;font-weight:700">!</span></span>
+      <div style="min-width:0"><p id="spec-tile-2" style="margin:0;font-size:16px;line-height:1.5">Hall motion sensor</p><p style="margin:0;font-size:14px;line-height:1.25">Unavailable</p></div>
+      </div></article>
+      </div>

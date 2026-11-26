@@ -1,71 +1,165 @@
 ---
-title: Radios
-description: Use radios when exactly one answer can be selected from a short list.
-section: components
-group: Form elements
-source_url: https://service-manual.nhs.uk/design-system/components/radios
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Radio Button"
+description: "Use radio buttons when exactly one answer can be chosen from a short list."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewritten as the full Radio Button specification: the native radio, how Home Assistant draws a group of radios, their theme colours and the rules for one-answer questions."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Linked this retained variant to its shared behaviour owner and clarified its specific implementation boundary.
-  - date: 2026-11-11
-    description: Added NHS-informed radios guidance and 2 Home Assistant reference examples.
+ai_instructions: "Apply when people choose exactly one answer from a short list. Use one fieldset and legend, one shared name, distinct values and a label for each radio. Do not preselect an answer to a new question. Do not use radios for several answers or for an immediate on or off control. A raw radio cannot be written in a Markdown card, because the card removes the type attribute. This Home Assistant version has no ha-radio element: it draws a group with ha-radio-group and one ha-radio-option for each choice. On a dashboard or in a form, use the select selector with mode list or box. The radio border in the Civica theme is the neutral border colour, not the near-black of the text fields. Do not quote a contrast for the disabled state, and do not claim arrow-key behaviour or focus appearance for ha-radio-group."
+ai_related:
+  - path: "/components/fieldset.html"
+    title: "Fieldset & Legend"
+    relationship: "Owns the group and its question."
+  - path: "/components/checkboxes.html"
+    title: "Checkbox"
+    relationship: "Use for several answers."
+  - path: "/components/select.html"
+    title: "Dropdown Menu & Overflow Menu"
+    relationship: "Use for a longer list."
+  - path: "/components/button-group-segmented-control.html"
+    title: "Button Group / Segmented Control"
+    relationship: "Use for a few visible choices that act at once."
+  - path: "/components/hint-text.html"
+    title: "Help / Hint Text"
+    relationship: "Owns the hint under a question."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the keyboard, 320 pixel and zoom checks."
+component:
+  parent: "Radio Button"
+  letter: "R"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: '<input type="radio">'
+      origin: "HTML5"
+      anchor: "child-input-type-radio"
+    - name: "ha-radio"
+      origin: "Home Assistant"
+      anchor: "child-ha-radio"
+  tags:
+    - "input type radio"
+    - "ha-radio-group"
+    - "ha-radio-option"
 ---
 
-# Radios
+# Radio Button
 
-Use radios when exactly one answer can be selected from a short list.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+Use radio buttons when exactly one answer can be chosen from a short list. A new unit choice, a display mode and a small set of exclusive options all fit.
 
-## Choose one answer, not a device command
+Use [Checkbox](checkboxes.html) for several answers and [Dropdown Menu & Overflow Menu](select.html) for a long list. Do not use radios for an immediate on or off control. A switch and a question have different expectations.
 
-The [forms decision guide](controls.html#choose-the-control-by-its-meaning) explains which primitive fits the intent. This page owns one-answer selection and native radio-group interaction. Keep live device on/off controls and action requests under their native capability and state contract.
+This page covers:
 
-## When to use it
+- Radio Button
+  - `<input type="radio">`
+  - `ha-radio`
 
-Use them for a new unit choice, a display mode, or a small set of mutually exclusive options. Keep the choices visible when comparing them is useful.
+<h2 id="anatomy">Anatomy</h2>
 
-## When not to use it
+A group of radios has a question, which is the legend, and two or more choices. Each choice is a small circle and a label. Exactly one choice is selected at a time, and a person cannot clear it, only change it.
 
-Do not use radios for selecting several rooms or for an immediate physical on/off control. A switch and a question with two answers have different interaction expectations.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Home Assistant adaptation
+<h3 id="child-input-type-radio"><code>&lt;input type="radio"&gt;</code></h3>
 
-Show a saved setting when editing an existing preference. For a new unanswered question, avoid silently choosing an answer. Include a genuine “Use system setting” or “Not sure” option when it is valid, rather than forcing a false binary answer.
+The native radio. Radios that share a `name` form a group, and an unnamed radio is a group of one. `value` is the answer sent, `checked` selects it, `disabled` switches it off and `required` means the group must have one choice selected. Its implicit role is `radio`.
 
-## Accessibility and behaviour
+Put the group in one `fieldset` with a `legend` that asks the question. Give every radio a `label`, wrapped or linked with `for`. The label is the accessible name and also makes the click target larger.
 
-Use one fieldset and legend, one shared name, distinct values and a label for each control. Arrow keys move through a native radio group. Keep follow-up questions simple and do not hide essential explanation behind an option.
+```html
+<fieldset>
+  <legend>Which temperature unit should be used?</legend>
+  <input id="unit-c" name="unit" type="radio" value="c">
+  <label for="unit-c">Degrees Celsius</label>
+  <input id="unit-f" name="unit" type="radio" value="f">
+  <label for="unit-f">Degrees Fahrenheit</label>
+</fieldset>
+```
 
-## Examples
+In a native group, Tab moves onto the selected radio, or the first one if none is selected. The arrow keys move to the next or previous radio and select it, and Space selects the focused one. The browser draws the circle, and `accent-color` colours it.
+
+You cannot write a radio in a [Markdown Card](markdown-card.html). The card removes the `type` attribute from `input` unless it is a checkbox. In a form or on a dashboard, use the `select` selector instead: `mode: list` with one choice draws a group of radios, and `mode: box` draws a grid of large options that work the same way.
+
+```yaml
+select:
+  options:
+    - Degrees Celsius
+    - Degrees Fahrenheit
+  mode: list
+```
+
+<h3 id="child-ha-radio"><code>ha-radio</code></h3>
+
+This Home Assistant version does not use an element called `ha-radio`. It draws a group with `ha-radio-group` and one `ha-radio-option` for each choice. A few older dialogs still use a Material radio list item.
+
+`ha-radio-group` takes `label` and `hint`, which are the question and its hint, plus `name`, `orientation` (`horizontal` or `vertical`), `disabled` and `required`. Home Assistant asks for the label, because the group needs a name. `ha-radio-option` takes `appearance` (`default` or `button`), `size`, `checked` and `disabled`. The `button` appearance gives a larger target, 40 CSS pixels high by default.
+
+You cannot set these in YAML. The `select` selector chooses them for you.
+
+**Theme colours.** The Civica theme colours a radio through its form-control keys. In light and dark mode:
+
+| Part | Theme key | Light | Dark |
+| --- | --- | --- | --- |
+| Ring, unselected | `ha-color-border-neutral-normal` | #6F777B | #9BA4AA |
+| Ring on hover | `ha-color-border-neutral-loud` | #0B0C0C | #FFFFFF |
+| Ring and dot, selected | `ha-color-fill-primary-loud-resting` | The theme’s primary colour | The theme’s primary colour |
+| Fill, selected | `ha-color-fill-primary-normal-resting` | #E8F1F8 | #12324D |
+| Fill on hover | `ha-color-fill-neutral-quiet-hover` | #EDEDED | #222323 |
+
+The ring is 2 pixels wide (`ha-border-width-md`). The unselected ring against the card is 4.56:1 in light mode and 5.86:1 in dark mode, calculated from theme colours. The radio border is the neutral grey, not the near-black of the text fields. The theme also sets older Material radio keys, which affect only the older list item. It does not set the `--ha-radio-option-` names, so size, ring width and the checked-dot scale stay Home Assistant’s defaults.
+
+The selected state is a dot as well as a colour. A disabled radio follows the theme’s disabled colours.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A native group gives you the keyboard behaviour and the role without script.
+- Every choice is visible, so people can compare.
+- A native radio cannot be written in a Markdown card.
+- A dashboard author cannot set the size, orientation or button appearance of Home Assistant’s radios.
+- A long list becomes tiring: use a dropdown instead.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+- Use one fieldset and legend, one shared name, distinct values and a label for each radio. See [Fieldset & Legend](fieldset.html).
+- Keep the list short and the choices visible when comparing them helps.
+- Show the saved choice when editing an existing setting.
+- For a new, unanswered question, do not select an answer for the person.
+- Include a genuine “Use device setting” or “Not sure” choice when it is valid, rather than forcing a false either-or.
+- Keep the order the same everywhere, and avoid “Other” without a text field.
+- Put follow-up questions after the choice, and do not hide essential explanation behind an option. Put a hint under the legend: see [Help / Hint Text](hint-text.html).
+- On a small screen, stack the choices rather than squeezing several into a row.
+- If a choice has an immediate effect, use a switch or a [Button Group / Segmented Control](button-group-segmented-control.html) instead.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: the legend and the label tie each choice to its question.
+- 3.3.2 Labels or Instructions and 2.4.6 Headings and Labels: the question and each choice say what they are.
+- 4.1.2 Name, Role, Value and 2.5.3 Label in Name: the label is the name.
+- 2.1.1 Keyboard: a native group works from the keyboard. Test Home Assistant’s group with the keyboard on your own dashboard.
+- 1.4.11 Non-text Contrast: the unselected ring is above 3:1 in both modes, calculated from theme colours.
+- 1.4.1 Use of Colour: the selected radio shows a dot as well as colour.
+- 3.3.7 Redundant Entry and 3.3.1 Error Identification: keep the chosen answer after an error, and tie the error message to the group.
+
+Test with no initial answer, a changed selection, the answer after an error, the arrow keys and long labels. Compare light and dark modes, at least two theme colours and 320 CSS pixels. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
 
 ### Choose one unit
 
-Both options are visible and neither is assumed for a new answer.
+<%= example('spec-radio-units') %>
 
-<%= example('nhs-radio-units') %>
+### Edit a saved colour mode
 
-### Edit a saved mode
-
-The existing system-controlled mode is accurately preselected.
-
-<%= example('nhs-radio-theme-mode') %>
-
-## Check the implementation
-
-Test no initial answer, changed selection, persistence after an error, arrow keys and long labels. On small screens stack choices rather than squeezing several targets into one row.
-
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS radios](https://service-manual.nhs.uk/design-system/components/radios) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
-
-See also [buttons and forms](controls.html).
+<%= example('spec-radio-colour-mode') %>

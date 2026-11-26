@@ -1,50 +1,128 @@
 ---
-title: Service navigation
-description: Provide stable, named routes between the main areas of a service.
-section: components
-group: Navigation
-status: reference
-published_on: 2026-11-11
-updated_on: 2026-11-11
+title: "Service navigation"
+description: "Give people a short, stable list of the main areas of a household service, with the current area marked."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
-  - date: 2026-11-11
-    description: Linked this retained variant to its shared behaviour owner and clarified its specific implementation boundary.
-  - date: 2026-11-11
-    description: Added the Civica guidance, contextual examples and implementation boundaries.
+  - date: "2026-11-26"
+    description: "Rewrote the page as a full specification: what the pattern is made of, how the menu behaves, what Home Assistant does instead and what a dashboard can and cannot build."
+  - date: "2026-11-11"
+    description: "First published, with two examples."
+ai_instructions: "Apply when a standalone Civica page needs a short list of main destinations. Service navigation is a Civica pattern, not a Home Assistant element: Home Assistant uses its sidebar instead. Use real links, mark the current link with aria-current=\"page\", name the nav landmark when there is more than one, and keep the list short and in the same order on every page. Below 641 pixels a Menu button hides and shows the list; without JavaScript the list stays visible. A Markdown card cannot name a nav or set aria-current, so write the current page in words there. Do not claim Home Assistant announces the current sidebar item."
+ai_related:
+  - path: "/components/header.html"
+    title: "Header / Top App Bar"
+    relationship: "Owns identity and the home link, which stay separate from the route list."
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns the wider navigation family and how its parts fit together."
+  - path: "/components/tabs.html"
+    title: "Tabs"
+    relationship: "Use for views inside one task."
+  - path: "/components/breadcrumbs.html"
+    title: "Breadcrumb"
+    relationship: "Use to show where a page sits in a hierarchy."
+  - path: "/components/drawer-navigation-sidebar.html"
+    title: "Drawer / Navigation Sidebar"
+    relationship: "Owns the Home Assistant sidebar that does this job in the product."
+  - path: "/components/skip-link.html"
+    title: "Skip link"
+    relationship: "Owns the link that lets keyboard users pass repeated navigation."
+component:
+  parent: "Service Navigation"
+  letter: "S"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Service Navigation Pattern"
+      origin: "Civica"
+      anchor: "child-civica-service-navigation-pattern"
+  tags:
+    - "Civica Service Navigation Pattern"
 ---
 
 # Service navigation
 
-Provide stable, named routes between the main areas of a service.
+<h2 id="purpose">Purpose</h2>
 
-## Keep route selection separate from identity
+Service navigation is a short row of links to the main areas of a service, such as Overview, Energy and Settings, with the current area marked. It helps people see where they are and move between areas without going back to a start page.
 
-The [header family](header.html#identity-and-navigation-have-separate-responsibilities) owns identity and home-link behaviour. This component owns the destination list, current-route marker and responsive menu. The focused [generic header](generic-header.html) does not need a navigation bar merely to share that identity contract.
+It is a Civica pattern for standalone pages and guidance. Home Assistant has no element of this name: its own sidebar does the same job inside the product. See [Drawer / Navigation Sidebar](drawer-navigation-sidebar.html).
 
-## When to use
+The [header](header.html#identity-and-navigation-have-separate-responsibilities) owns identity and the home link. This page owns the list of destinations, the current-item marker and the narrow-screen menu.
 
-Use service navigation for a small set of destinations that remain useful across the service. It helps people understand where they are. In Home Assistant, the native sidebar already fulfils this role; do not duplicate every sidebar destination in another bar.
+This page covers:
 
-Use [tabs](tabs.html) for closely related views within one task and [breadcrumbs](breadcrumbs.html) for hierarchy. Keep labels short, distinct and ordered around household needs rather than internal integration names.
+- Service Navigation
+  - Civica Service Navigation Pattern
 
-## Main household sections
+<h2 id="anatomy">Anatomy</h2>
+
+- A navigation landmark (`<nav>`) with a name, such as “Household”.
+- A list of links, one item for each destination.
+- A current-item marker on the link for the page being read: a bar beside the link on narrow screens and a bar under it on wider screens, together with `aria-current="page"` on the link.
+- On narrow screens, a button labelled “Menu” that shows and hides the list.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-civica-service-navigation-pattern"><code>Civica Service Navigation Pattern</code></h3>
+
+The pattern has one form with two behaviours.
+
+- **From 641 pixels wide**, the list is always visible and the Menu button is hidden.
+- **Below 641 pixels**, a script shows the Menu button, sets `aria-expanded` on it and hides the list until the button is pressed. Opening the menu does not move focus.
+- **Without JavaScript**, the Menu button stays hidden and the list is always visible.
+
+The current item uses a 4 pixel bar in the link colour, so it does not rely on colour alone, and it is also marked with `aria-current="page"`. The links have no underline and no visited colour.
+
+Colours and type come from the page theme: `primary-text-color`, `link-color`, `divider-color` and the `ha-font-*` sizes. In Home Assistant itself none of this is applied, because Home Assistant does not draw this pattern.
+
+**What a dashboard can do.** A Markdown card can hold a list of links in a `<nav>`, but it removes `aria-label` and `aria-current`. Write the current page in words, for example in bold with “current page”, and keep to Home Assistant’s own navigation, tabs or Navigate actions for anything that needs a Menu button. See [Markdown Card](markdown-card.html).
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Real links work without JavaScript and in any order of use.
+- A fixed list in a fixed order helps people learn where things are.
+- The pattern suits a small number of destinations. A long list, or a list that changes from page to page, loses that benefit.
+- The narrow-screen menu hides the list, so people must open it before they can choose.
+- Home Assistant’s sidebar shows the current panel with a highlight. Do not assume it is also announced as the current item.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use service navigation for a small set of destinations that stay useful across the service. Do not repeat every sidebar destination in another bar. Use [Tabs](tabs.html) for related views inside one task and [Breadcrumb](breadcrumbs.html) for a hierarchy.
+
+Name each link for the household need, such as “Energy”, not for an integration. Keep the same labels in the same order on every page. Do not hide main routes behind a menu on wide screens, and do not add an unrelated action to the list because there is room.
+
+Name the navigation landmark when a page has more than one. See [Navigation](navigation.html) for how the landmarks fit together.
+
+Success criteria that apply:
+
+- 2.4.1 Bypass Blocks: a named landmark helps people jump past the list.
+- 1.3.1 Info and Relationships: the list is a real list of real links.
+- 2.4.4 Link Purpose (In Context) and 2.4.6 Headings and Labels: each link says where it goes.
+- 3.2.3 Consistent Navigation and 3.2.4 Consistent Identification: the same order and the same names on every page.
+- 4.1.2 Name, Role, Value: the Menu button reports whether the list is open.
+- 1.4.1 Use of Colour: the current item is marked by shape and by `aria-current`, not colour alone.
+- 1.4.10 Reflow and 1.4.4 Resize Text: check long room names at 320 pixels and at 200 per cent text size.
+- 2.5.8 Target Size (Minimum): check the Menu button and each link at your own sizes.
+
+Test with long room names, keyboard only, JavaScript off and 200 per cent text zoom. After opening the menu and after changing page, check where keyboard focus is. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
+
+<h3>Main household sections</h3>
+
+A simulated navigation bar with three links, Overview, Energy and Settings, and Overview marked as the current page. Below it are three sample sections the links lead to. Narrow the window below 641 pixels to see the Menu button.
 
 <%= example('core-service-navigation') %>
 
-## A smaller service
+<h3>A smaller service</h3>
+
+A simulated navigation bar with two links, Guide and Troubleshooting, and Guide marked as the current page, followed by two sample sections.
 
 <%= example('core-service-navigation-compact') %>
-
-## Behaviour and content
-
-The current item has both visual emphasis and a programmatic current state. Links remain real destinations. On narrow screens the upstream component supplies a keyboard-operable menu toggle; without JavaScript the links remain available. Do not add an unrelated action to the list merely because there is space.
-
-These standalone examples use real local section targets to make navigation inspectable without a Home Assistant connection. A production service should connect equivalent real routes and update the current marker after route changes.
-
-## Accessibility and testing
-
-Name the navigation landmark when a page has multiple navigation regions. Check focus after opening the mobile menu and after a route change. Test with long room names, keyboard-only use, JavaScript disabled and 200% text zoom. The current state must remain recognisable without colour.
-
-## Source and Home Assistant boundary
-
-[GOV.UK Service navigation](https://design-system.service.gov.uk/components/service-navigation/), reviewed 11 November 2026. The installed companion preserves native HA routing; this reference is for standalone guidance or intentionally authored custom pages.

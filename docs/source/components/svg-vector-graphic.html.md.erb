@@ -1,0 +1,274 @@
+---
+title: "SVG Vector Graphic"
+description: "Draw a diagram or icon as shapes and text that scale cleanly, with a name for assistive technology and a plain-text summary beside it."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the SVG Vector Graphic specification: the svg element, the shapes, text, reusable parts and gradients, and how to name and describe a graphic."
+ai_instructions: "Apply when a graphic is drawn as SVG. Give an informative graphic role img with a title and a desc, and write the same facts in text beside it. Hide a decorative graphic with aria-hidden. Set a viewBox so it scales. A standard Home Assistant Markdown card strips svg, so it cannot hold one; use an image file, the Picture card, an icon or a custom card. Text inside SVG does not follow text-spacing settings or browser text size, so keep important facts in HTML. Do not rely on the title tooltip, since touch and keyboard users do not get it. Do not claim that every screen reader reads desc. The svg title is owned by the Document Root page. Never quote a measured contrast."
+ai_related:
+  - path: "/components/document-root-metadata-and-shadow-dom-primitives.html"
+    title: "Document Root, Metadata & Shadow DOM Primitives"
+    relationship: "Owns the title element; this page covers how the title names an SVG."
+  - path: "/components/icon-and-state-icon.html"
+    title: "Icon & State Icon"
+    relationship: "Owns Home Assistant’s ha-svg-icon, which draws one icon from path data."
+  - path: "/components/figure-and-caption.html"
+    title: "Figure & Caption"
+    relationship: "Owns the caption that goes with a graphic."
+  - path: "/components/images.html"
+    title: "Image & Picture Cards"
+    relationship: "Owns showing an SVG file through an image or Picture card."
+  - path: "/styles/illustration-accessibility.html"
+    title: "Illustration accessibility"
+    relationship: "Owns how to describe and test an illustration."
+  - path: "/styles/images-alt-text.html"
+    title: "Alt text"
+    relationship: "Owns the wording of alternative text."
+component:
+  parent: "SVG Vector Graphic"
+  letter: "S"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<svg>"
+      origin: "HTML5"
+      anchor: "child-svg"
+      grandchildren:
+        - name: "<g>"
+          origin: "HTML5"
+          anchor: "child-svg--g"
+        - name: "<path>"
+          origin: "HTML5"
+          anchor: "child-svg--path"
+        - name: "<rect>"
+          origin: "HTML5"
+          anchor: "child-svg--rect"
+        - name: "<circle>"
+          origin: "HTML5"
+          anchor: "child-svg--circle"
+        - name: "<ellipse>"
+          origin: "HTML5"
+          anchor: "child-svg--ellipse"
+        - name: "<line>"
+          origin: "HTML5"
+          anchor: "child-svg--line"
+        - name: "<polyline>"
+          origin: "HTML5"
+          anchor: "child-svg--polyline"
+        - name: "<polygon>"
+          origin: "HTML5"
+          anchor: "child-svg--polygon"
+        - name: "<text>"
+          origin: "HTML5"
+          anchor: "child-svg--text"
+        - name: "<tspan>"
+          origin: "HTML5"
+          anchor: "child-svg--tspan"
+        - name: "<defs>"
+          origin: "HTML5"
+          anchor: "child-svg--defs"
+        - name: "<use>"
+          origin: "HTML5"
+          anchor: "child-svg--use"
+        - name: "<symbol>"
+          origin: "HTML5"
+          anchor: "child-svg--symbol"
+        - name: "<clipPath>"
+          origin: "HTML5"
+          anchor: "child-svg--clippath"
+        - name: "<linearGradient>"
+          origin: "HTML5"
+          anchor: "child-svg--lineargradient"
+        - name: "<radialGradient>"
+          origin: "HTML5"
+          anchor: "child-svg--radialgradient"
+        - name: "<stop>"
+          origin: "HTML5"
+          anchor: "child-svg--stop"
+        - name: "<title>"
+          origin: "HTML5"
+          anchor: "xref-svg--title"
+          cross_reference:
+            parent: "Document Root, Metadata & Shadow DOM Primitives"
+            route: "/components/document-root-metadata-and-shadow-dom-primitives.html"
+            anchor: "child-head--title"
+          note: "In SVG, <title> gives the graphic or shape an accessible name; the HTML <title> owned by Document Root names the document."
+        - name: "<desc>"
+          origin: "HTML5"
+          anchor: "child-svg--desc"
+  tags:
+    - "svg"
+    - "path"
+    - "title"
+    - "desc"
+    - "viewBox"
+---
+
+# SVG Vector Graphic
+
+<h2 id="purpose">Purpose</h2>
+
+SVG draws a picture as shapes and text instead of pixels. It stays sharp at any size and can take colours from the surrounding page. Use it for a diagram, a floor plan or an icon.
+
+On a dashboard, a standard Home Assistant Markdown card cannot hold an `<svg>`: the card strips it. To show a graphic there, use an image file (see [Image & Picture Cards](images.html)), an icon (see [Icon & State Icon](icon-and-state-icon.html)) or a custom card. On this site, and in any page you write yourself, you can place SVG inline.
+
+This page covers:
+
+- SVG Vector Graphic
+  - `<svg>`
+    - `<g>`
+    - `<path>`
+    - `<rect>`
+    - `<circle>`
+    - `<ellipse>`
+    - `<line>`
+    - `<polyline>`
+    - `<polygon>`
+    - `<text>`
+    - `<tspan>`
+    - `<defs>`
+    - `<use>`
+    - `<symbol>`
+    - `<clipPath>`
+    - `<linearGradient>`
+    - `<radialGradient>`
+    - `<stop>`
+    - `<title>` (owned by [Document Root, Metadata & Shadow DOM Primitives](document-root-metadata-and-shadow-dom-primitives.html#child-head--title))
+    - `<desc>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+An SVG graphic is a root `<svg>` element that holds shapes, text and reusable parts. Shapes are drawn in the order they appear, so later shapes sit on top of earlier ones. A name and a description make the graphic readable by assistive technology. The same facts should also appear in text beside it.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+An SVG can be informative or decorative. Give an informative graphic `role="img"`, a `<title>` and a `<desc>`, and point to them with `aria-labelledby`. Hide a decorative graphic with `aria-hidden="true"`. Where a graphic carries facts, write them in text too.
+
+The Civica theme sets no keys for SVG. Inside an inline SVG you can use `currentColor` and the theme’s colour variables, such as `var(--primary-color)`. Take colours for a chart from the [Chart colours](../styles/chart-colour.html) page.
+
+**Naming a graphic with `<title>`.** `<title>` is the first way to name a graphic. As the first child of `<svg>` or of a shape, it gives that graphic or shape its accessible name. Some browsers also show it as a tooltip on hover, but not for keyboard or touch users, so never let it be the only description. The HTML `<title>` that names a whole page is a different element. [Document Root, Metadata & Shadow DOM Primitives](document-root-metadata-and-shadow-dom-primitives.html#child-head--title) owns it.
+
+<h3 id="child-svg"><code>&lt;svg&gt;</code></h3>
+
+The root of an inline graphic.
+
+- `viewBox` gives the drawing its own coordinates (`min-x min-y width height`) so that it scales. Always set it.
+- `width` and `height` set the size in CSS pixels. Without them, a graphic with no `viewBox` is 300 by 150. Setting `width="100%"` and a `max-width` in CSS lets it shrink to fit a narrow screen.
+- `preserveAspectRatio` controls how the drawing fits its box. The default keeps the whole drawing visible and centred.
+- `xmlns` is not needed inline in HTML. It is needed in a stand-alone `.svg` file.
+- `role`, `aria-labelledby`, `aria-label` and `aria-hidden` set how it is exposed to assistive technology.
+
+<h3 id="child-svg--g"><code>&lt;g&gt;</code></h3>
+
+Groups shapes. Presentation settings such as `fill`, `stroke` and `transform` pass down to everything inside. A group draws nothing itself. Use one to move or colour a set of shapes together.
+
+<h3 id="child-svg--path"><code>&lt;path&gt;</code></h3>
+
+Draws any outline from the commands in its `d` attribute: `M` move, `L` line, `H` and `V` horizontal and vertical lines, `C`, `S`, `Q` and `T` curves, `A` arc and `Z` close. Capital letters use absolute positions and small letters relative ones. A path is filled black by default, even if it is open, so set `fill="none"` for a line.
+
+<h3 id="child-svg--rect"><code>&lt;rect&gt;</code></h3>
+
+A rectangle, set by `x`, `y`, `width` and `height`. `rx` and `ry` round the corners.
+
+<h3 id="child-svg--circle"><code>&lt;circle&gt;</code></h3>
+
+A circle, set by its centre (`cx`, `cy`) and radius `r`.
+
+<h3 id="child-svg--ellipse"><code>&lt;ellipse&gt;</code></h3>
+
+An ellipse, set by its centre (`cx`, `cy`) and two radii (`rx`, `ry`).
+
+<h3 id="child-svg--line"><code>&lt;line&gt;</code></h3>
+
+A straight line from (`x1`, `y1`) to (`x2`, `y2`). It is invisible unless it has a `stroke`, because a line has no area to fill.
+
+<h3 id="child-svg--polyline"><code>&lt;polyline&gt;</code></h3>
+
+Joined straight lines through the pairs in `points`. The default fill is black, so set `fill="none"` for an open line.
+
+<h3 id="child-svg--polygon"><code>&lt;polygon&gt;</code></h3>
+
+A closed shape through the pairs in `points`. The last point joins back to the first automatically.
+
+<h3 id="child-svg--text"><code>&lt;text&gt;</code></h3>
+
+Real text inside the drawing, positioned by `x` and `y`, where `y` is the baseline. `text-anchor` sets whether `x` is the start, middle or end. Text stays selectable and is read by assistive technology when the graphic is not hidden. It does not wrap by itself, and it does not follow browser text-size or text-spacing settings in the way that HTML text does. Keep important facts in HTML beside the graphic.
+
+<h3 id="child-svg--tspan"><code>&lt;tspan&gt;</code></h3>
+
+A run of text inside `<text>`. Use `x` with `dy` to start a new line, and use `font-weight` or `fill` to style part of a line.
+
+<h3 id="child-svg--defs"><code>&lt;defs&gt;</code></h3>
+
+A store for things that are drawn later, such as gradients, clip paths and symbols. Nothing inside `<defs>` is drawn until another element refers to it.
+
+<h3 id="child-svg--use"><code>&lt;use&gt;</code></h3>
+
+Draws a copy of another element, named by `href`. Give `x` and `y` to place it, and `width` and `height` to size a `<symbol>`. The older `xlink:href` still works. A copy takes its colours from where it is used, so use `currentColor` or a colour variable inside the original to recolour each copy. A `<use>` that points at a file on another origin does not load.
+
+<h3 id="child-svg--symbol"><code>&lt;symbol&gt;</code></h3>
+
+A reusable graphic with its own `viewBox`. It is not drawn until a `<use>` refers to it, so one drawing can appear many times at different sizes.
+
+<h3 id="child-svg--clippath"><code>&lt;clipPath&gt;</code></h3>
+
+A shape that cuts another one to its outline, with a hard edge. Refer to it with `clip-path="url(#id)"`. The shapes inside it only define the region and are not drawn themselves.
+
+<h3 id="child-svg--lineargradient"><code>&lt;linearGradient&gt;</code></h3>
+
+A fill that blends along a line from (`x1`, `y1`) to (`x2`, `y2`). Its children are `<stop>` elements. Use it with `fill="url(#id)"`. Where a gradient carries information, the colours must stay distinct all the way along it.
+
+<h3 id="child-svg--radialgradient"><code>&lt;radialGradient&gt;</code></h3>
+
+A fill that blends outwards from a centre (`cx`, `cy`) to a radius `r`. Its children are `<stop>` elements. `fx` and `fy` move the focal point.
+
+<h3 id="child-svg--stop"><code>&lt;stop&gt;</code></h3>
+
+One colour in a gradient. `offset` gives its place, from 0 to 1 or as a percentage. `stop-color` and `stop-opacity` set the colour and how solid it is.
+
+<h3 id="xref-svg--title"><code>&lt;title&gt;</code></h3>
+
+The `<title>` element inside `<svg>` is owned by the [Document Root, Metadata & Shadow DOM Primitives](document-root-metadata-and-shadow-dom-primitives.html) page. In a graphic, it gives the drawing or one shape a short name. Link it with `aria-labelledby` from the `<svg>`, and keep it short.
+
+<h3 id="child-svg--desc"><code>&lt;desc&gt;</code></h3>
+
+A longer description of the graphic or a shape. Link it with `aria-labelledby` or `aria-describedby`, because support for a `<desc>` on its own is uneven. Do not assume that every screen reader reads it. Say the same facts in the text beside the graphic.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- SVG scales without losing sharpness, and a single drawing can serve every theme.
+- Shapes and text are real parts, so assistive technology can be given a name and a description.
+- A standard Home Assistant Markdown card strips `<svg>`. A dashboard needs an image file, an icon or a custom card.
+- An SVG shown as an image file does not take theme colours. Its `currentColor` becomes black.
+- Text inside SVG does not respond to text-spacing settings, and long text does not wrap.
+- A graphic without a text equivalent leaves some people out.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Draw a graphic as SVG when it needs to stay sharp or take theme colours. Name every informative graphic and write the facts in text beside it. Hide a purely decorative graphic. Do not put text in a graphic when HTML text will do. Avoid animation, and if something moves for more than five seconds, give people a way to stop it.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: an informative graphic has a name and a text equivalent, and a decorative one is hidden.
+- 1.3.1 Info and Relationships and 4.1.2 Name, Role, Value: use `role="img"` and a name, and expose nothing that cannot be used.
+- 1.4.1 Use of Color: do not show meaning by colour alone. Label each part.
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: text and shapes that carry meaning need enough contrast, including along a gradient. Test in your own setup, in light and dark modes.
+- 1.4.4 Resize Text, 1.4.5 Images of Text and 1.4.12 Text Spacing: keep the facts in HTML text.
+- 1.4.10 Reflow: set a `viewBox` and test at 320 CSS pixels.
+- 2.1.1 Keyboard: nothing in a graphic is focusable unless it is interactive. If it is, each target is at least 24 by 24 CSS pixels (2.5.8).
+- 2.2.2 Pause, Stop, Hide: any movement lasting over five seconds can be stopped.
+
+A short name, a plain description and the same facts in text keep the effort low. Follow the [Civica accessibility checks](../accessibility/testing.html) and the [Illustration accessibility](../styles/illustration-accessibility.html) page.
+
+<h2 id="examples">Examples</h2>
+
+### A diagram of two sensors
+
+<%= example('spec-svg-sensor-diagram') %>
