@@ -316,7 +316,7 @@
                 "UK-HA-021",
                 "UK-HA-037"
               ],
-              "existing_local_route": "/components/password-input.html",
+              "existing_local_route": "/components/text-input.html",
               "decision": "mapped-reference",
               "reason": "An existing local guide owns the adaptation; its runtime boundary still applies."
             },
@@ -1875,7 +1875,7 @@
               "catalogue_status": "listed",
               "review_depth": "catalogue-entry; detailed adoption is recorded separately",
               "ha_mapping_ids": [],
-              "existing_local_route": "/components/password-input.html",
+              "existing_local_route": "/components/text-input.html",
               "decision": "mapped-reference",
               "reason": "An existing local guide owns the adaptation; its runtime boundary still applies."
             },
@@ -2005,7 +2005,7 @@
               "catalogue_status": "listed",
               "review_depth": "catalogue-entry; detailed adoption is recorded separately",
               "ha_mapping_ids": [],
-              "existing_local_route": "/components/warning-callout.html",
+              "existing_local_route": "/components/warning-text.html",
               "decision": "mapped-reference",
               "reason": "An existing local guide owns the adaptation; its runtime boundary still applies."
             }
@@ -4913,7 +4913,7 @@
       ],
       "local_routes": [
         "/home-assistant/accounts-and-permissions.html",
-        "/components/password-input.html"
+        "/components/text-input.html"
       ],
       "adaptation": "Apply clear sign-in and choice presentation. HA authorisation, shared screens and per-user settings must remain backend-enforced; hidden controls do not grant or remove permissions.",
       "implementation_scope": "Reference contract; native authentication and permissions retained.",
@@ -5093,7 +5093,7 @@
       ],
       "local_routes": [
         "/home-assistant/onboarding-and-sign-in.html",
-        "/components/password-input.html",
+        "/components/text-input.html",
         "/components/error-summary.html"
       ],
       "adaptation": "Use clear credential labels, pasted input and useful errors. Native account setup, OAuth/reauthentication and integration discovery remain separate authorities.",
@@ -5488,7 +5488,7 @@
       "local_routes": [
         "/home-assistant/integration-and-app-settings.html",
         "/components/fieldset.html",
-        "/components/password-input.html",
+        "/components/text-input.html",
         "/components/error-summary.html"
       ],
       "adaptation": "Group setup inputs and explain credential/connection errors. Native discovery, OAuth, protocol diagnostics, configuration entries and app lifecycle are distinct management contracts. Optional details must not conceal a required permission or critical recovery step.",

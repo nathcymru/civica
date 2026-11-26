@@ -1653,7 +1653,7 @@
       "title": "Accordion",
       "section": "components",
       "group": "Content presentation",
-      "sha256": "8a2d4828fa18bd20ebda6b54ab0229229ae45f2dd6f4e2772e5584f2745a86e5",
+      "sha256": "edb621b59356d5283d64ed57391c623873d77615015c72456ce6deb9038607e5",
       "examples": [
         "core-accordion-troubleshooting",
         "core-accordion-measures"
@@ -3017,7 +3017,7 @@
       "title": "Panel",
       "section": "components",
       "group": "Content presentation",
-      "sha256": "dd52a78e134fab6961156636dbc2f64df2b500a311bc43fbb55c8af972a1ab43",
+      "sha256": "22e3c6be6b2f798f8a007e1d9adf260a857bfc742a3ac808947127ece5a01caf",
       "examples": [
         "nhs-panel-complete",
         "nhs-panel-interruption"
@@ -3079,7 +3079,9 @@
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
         "file": "docs/source/components/password-input.html.md.erb",
         "line": 17
-      }
+      },
+      "retired": true,
+      "retiredInto": "/components/text-input.html"
     },
     {
       "sourceFile": "docs/source/components/phase-banner.html.md.erb",
@@ -3087,7 +3089,7 @@
       "title": "Phase banner",
       "section": "components",
       "group": "Content presentation",
-      "sha256": "42268ebfe98c36dae23389a88927b096dafcbd87a1510c86a14e058d151b9996",
+      "sha256": "8daecb1072f7ac91e46cbabdb244f51a7b8c331a0be72f20711c09bbdad7d17b",
       "examples": [
         "core-phase-demo",
         "core-phase-trial"
@@ -3635,7 +3637,9 @@
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
         "file": "docs/source/components/warning-callout.html.md.erb",
         "line": 17
-      }
+      },
+      "retired": true,
+      "retiredInto": "/components/warning-text.html"
     },
     {
       "sourceFile": "docs/source/components/warning-text.html.md.erb",
@@ -4049,7 +4053,7 @@
       "title": "Show household urgency clearly",
       "section": "patterns",
       "group": "Task patterns",
-      "sha256": "2b3d0678e0f8de1ac3b75817b3e1efcf402b01e0151cbdfb7df09b86d1af5fa7",
+      "sha256": "12cb43d13a84da7613576960159c38560073e11f3554383396da42ff200f8e36",
       "examples": [
         "nhs-household-routine",
         "nhs-household-action",
@@ -6467,9 +6471,9 @@
       "catalogueFile": "docs/data/govuk-components-inventory.json",
       "sourceId": "password-input",
       "sourceUrl": "https://design-system.service.gov.uk/components/password-input/",
-      "localPage": "/components/password-input.html",
-      "canonicalOwner": "/components/password-input.html",
-      "familyId": "FAMILY-components-password-input",
+      "localPage": "/components/text-input.html",
+      "canonicalOwner": "/components/text-input.html",
+      "familyId": "FAMILY-components-text-input",
       "relationship": "source-maps-to-shared-local-route"
     },
     {
@@ -6674,9 +6678,9 @@
       "catalogueFile": "docs/data/nhs-components-inventory.json",
       "sourceId": "password-input",
       "sourceUrl": "https://service-manual.nhs.uk/design-system/components/password-input",
-      "localPage": "/components/password-input.html",
-      "canonicalOwner": "/components/password-input.html",
-      "familyId": "FAMILY-components-password-input",
+      "localPage": "/components/text-input.html",
+      "canonicalOwner": "/components/text-input.html",
+      "familyId": "FAMILY-components-text-input",
       "relationship": "source-maps-to-shared-local-route"
     },
     {
@@ -6854,9 +6858,9 @@
       "catalogueFile": "docs/data/nhs-components-inventory.json",
       "sourceId": "warning-callout",
       "sourceUrl": "https://service-manual.nhs.uk/design-system/components/warning-callout",
-      "localPage": "/components/warning-callout.html",
-      "canonicalOwner": "/components/warning-callout.html",
-      "familyId": "FAMILY-components-warning-callout",
+      "localPage": "/components/warning-text.html",
+      "canonicalOwner": "/components/warning-text.html",
+      "familyId": "FAMILY-components-warning-text",
       "relationship": "source-maps-to-shared-local-route"
     },
     {

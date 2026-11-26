@@ -13,7 +13,7 @@ const sourceFor = route => ['.html.md.erb', '.html.erb', '.html.md'].map(suffix 
 const available = parents.filter(parent => sourceFor(parent.route));
 // Pages outside the inventory stay in the sidebar until Branch 2 retires them (pinned in scripts/check-components.mjs).
 const legacy = ['chart-examples', 'controls', 'details', 'devices', 'error-summary', 'example', 'expander',
-  'generic-header', 'password-input', 'review-date', 'status', 'warning-callout']
+  'generic-header', 'review-date', 'status']
   .map(name => `/components/${name}.html`).filter(sourceFor)
   .map(route => ({ route, title: YAML.parse(readFileSync(sourceFor(route), 'utf8').split(/^---$/m)[1]).title }));
 // A page links to an element's anchor only once it declares the component schema.

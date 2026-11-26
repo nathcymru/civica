@@ -13,9 +13,9 @@ updates:
     description: "Added the Alert & Tip Callout specification: the four alert types, the tip and the alert card, with their theme keys and limits."
 ai_instructions: "Apply when a message must stand out from the page. ha-alert has four types: info, warning, error and success, each with an icon and its own colour. ha-tip works only in Home Assistant settings screens and cannot be used on a dashboard. hui-alert-card (type alert) is a status card for an entity, not a message box. An ha-alert announces itself at once, so use it for errors, not tips. Colour alone never carries the meaning. Do not claim a contrast ratio for the tinted background without measuring it."
 ai_related:
-  - path: "/components/warning-callout.html"
-    title: "Warning callout"
-    relationship: "Owns the fixed yellow warning callout used on Civica pages."
+  - path: "/components/warning-text.html"
+    title: "Warning Text"
+    relationship: "Owns the warning text treatment used on Civica pages."
   - path: "/components/notification-banners.html"
     title: "Notification Banner & Toast"
     relationship: "Owns messages that apply to the whole page."
@@ -69,7 +69,7 @@ component:
 
 A callout is a short message that stands out from the text around it. Home Assistant has two: the alert, which carries information, a warning, an error or a success, and the tip, a hint in settings screens. A third item, the alert card, is not a callout at all but a status card for one entity.
 
-This page owns these three. The fixed yellow warning callout used on Civica pages is a different thing, owned by [Warning callout](warning-callout.html).
+This page owns these three. Warning text used on Civica pages is a different thing, owned by [Warning Text](warning-text.html).
 
 This page covers:
 
@@ -159,7 +159,7 @@ It is active when an alarm is triggered, a cover is open, a lock is jammed, unlo
 
 Use an alert when people need to notice a message. Use an error alert only for something that has failed, and a warning only for a real risk. Keep it to one idea and one callout in a section. Start with a specific title.
 
-Do not use an alert for a tip or for inline form validation. For a page-wide message use a [notification banner](notification-banners.html); for a fixed Civica warning use a [warning callout](warning-callout.html). For urgency and wording, see [Status](status.html) and [Household urgency](../patterns/household-urgency.html).
+Do not use an alert for a tip or for inline form validation. For a page-wide message use a [notification banner](notification-banners.html); for a fixed Civica warning use [Warning Text](warning-text.html). For urgency and wording, see [Status](status.html) and [Household urgency](../patterns/household-urgency.html).
 
 Avoid alarming wording for something that is not an emergency. “Alarm” is only for an alarm that has sounded.
 
@@ -186,4 +186,4 @@ An error alert written in Home Assistant markdown:
 > The thermostat has not reported for 2 hours. Check its batteries.
 ```
 
-For the fixed yellow callout on Civica pages, see [Warning callout](warning-callout.html).
+For warning text on Civica pages, see [Warning Text](warning-text.html).
