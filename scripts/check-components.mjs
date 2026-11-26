@@ -22,7 +22,7 @@ const BUILD = 'docs/build';
 // Pages in /components/ that are not inventory parents. They stay in the sidebar
 // until Branch 2 retires or moves them. This list may shrink; it must never grow.
 const LEGACY_PAGES = ['chart-examples', 'controls', 'devices', 'error-summary', 'example',
-  'generic-header', 'password-input', 'review-date', 'status', 'warning-callout'].map(name => `/components/${name}.html`);
+  'generic-header', 'review-date', 'status'].map(name => `/components/${name}.html`);
 
 const raw = readFileSync(INVENTORY_PATH);
 assert.equal(createHash('sha256').update(raw).digest('hex'), INVENTORY_SHA256,

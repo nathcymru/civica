@@ -665,7 +665,7 @@
     },
     {
       "path": "docs/source/components/accordion.html.md.erb",
-      "sha256": "8a2d4828fa18bd20ebda6b54ab0229229ae45f2dd6f4e2772e5584f2745a86e5",
+      "sha256": "edb621b59356d5283d64ed57391c623873d77615015c72456ce6deb9038607e5",
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -1875,7 +1875,7 @@
     },
     {
       "path": "docs/source/components/panel.html.md.erb",
-      "sha256": "dd52a78e134fab6961156636dbc2f64df2b500a311bc43fbb55c8af972a1ab43",
+      "sha256": "22e3c6be6b2f798f8a007e1d9adf260a857bfc742a3ac808947127ece5a01caf",
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -1905,39 +1905,8 @@
       "resolved_finding_ids": []
     },
     {
-      "path": "docs/source/components/password-input.html.md.erb",
-      "sha256": "4d4925d08a3b8bf557f165919f699a6763c56dcf82da3f7d9fae7f7493eeae0c",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "recommendation_ids": [],
-      "example_ids": [
-        "nhs-password-current",
-        "nhs-password-new"
-      ],
-      "note": "Native credential handling, show/hide semantics and genuine password purpose remain explicit; no second authentication service is claimed. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "url": "/components/password-input.html",
-      "title": "Password input",
-      "resolved_finding_ids": []
-    },
-    {
       "path": "docs/source/components/phase-banner.html.md.erb",
-      "sha256": "42268ebfe98c36dae23389a88927b096dafcbd87a1510c86a14e058d151b9996",
+      "sha256": "8daecb1072f7ac91e46cbabdb244f51a7b8c331a0be72f20711c09bbdad7d17b",
       "reviewed_rule_families": [
         "BG-COL",
         "BG-TYP",
@@ -2434,37 +2403,6 @@
       "note": "Audience/privacy and non-secret draft preservation are explicit; the empty error specimen would be clearer as a required-answer example. Remediation review: Reviewed the corrected content and complete examples; canonical ownership and source variants retain their distinct task and implementation boundaries. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
       "url": "/components/textarea.html",
       "title": "Textarea",
-      "resolved_finding_ids": []
-    },
-    {
-      "path": "docs/source/components/warning-callout.html.md.erb",
-      "sha256": "ae7044bb54caeb3c2bb123ef2e3b01fe67d04f17b2cb42f30357ccc3aae603b1",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG-00",
-        "WG-01",
-        "WG-02",
-        "WG-03",
-        "WG-04",
-        "WG-05",
-        "WG-06",
-        "WG-07",
-        "WG-08",
-        "WG-09"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "recommendation_ids": [],
-      "example_ids": [
-        "nhs-warning-unavailable",
-        "nhs-warning-import"
-      ],
-      "note": "Unavailable data is not described as safe/off, and verified native import consequences remain separate from physical-device operating advice. 13 November 2026 naming review: current project wording, supplied-artwork references and repository destinations reconciled with the authorised civica rename; prior publication history retained. This source update does not claim a fresh native Home Assistant acceptance run.",
-      "url": "/components/warning-callout.html",
-      "title": "Warning callout",
       "resolved_finding_ids": []
     },
     {
@@ -4173,12 +4111,12 @@
       "result": "documented_deviation",
       "finding_ids": [],
       "example_ids": [
-        "nhs-household-routine",
         "nhs-household-action",
+        "nhs-household-routine",
         "nhs-household-unknown"
       ],
       "note": "Read routine, configured-event and unknown specimens. Care-card medical categories are explicitly excluded; observation time, no food-condition inference and no physical safety assurance are preserved.",
-      "sha256": "984963fbdab0e0cfce515e9316783995b4799b823b6265bf7aab2afb157bd813",
+      "sha256": "12cb43d13a84da7613576960159c38560073e11f3554383396da42ff200f8e36",
       "url": "/patterns/household-urgency.html",
       "title": "Show household urgency clearly",
       "resolved_finding_ids": []
@@ -8580,7 +8518,7 @@
         "spec-alert-types"
       ],
       "note": "Component specification written on 25 November 2026 from the pinned Home Assistant frontend source and checked by an independent editor pass. It does not claim a native Home Assistant acceptance run.",
-      "sha256": "793843c8d5ebba44f14a3731fd2fdaf5c642ecea3f995d8c951218511f0cfd0b",
+      "sha256": "0efbaaf592db77fa7c61faf0023a537a6a7fc46e71beecdee172fc3dfed374ab",
       "url": "/components/alert-and-tip-callout.html",
       "title": "Alert & Tip Callout",
       "resolved_finding_ids": []
@@ -8700,7 +8638,7 @@
         "spec-aside-schedule"
       ],
       "note": "Component specification written on 25 November 2026 from the pinned Home Assistant frontend source and checked by an independent editor pass. It does not claim a native Home Assistant acceptance run.",
-      "sha256": "34f1317b9dfe9daa1e76b8c9705fd1a14da31f9325d9bb8f6c38da229db7df1e",
+      "sha256": "28297a820612ac9610337533666046164813f1ef08ff0f0f4ebd1386469cd64f",
       "url": "/components/aside.html",
       "title": "Aside",
       "resolved_finding_ids": []
@@ -26495,7 +26433,7 @@
     {
       "path": "docs/data/uk-design-system-crosswalk.json",
       "scope": "Versioned coverage source, authored reference specimen or independent source-review evidence; runtime acceptance remains separate. Current naming and supplied-artwork replacement reviewed in docs/data/rebrand-review.json.",
-      "sha256": "d150b627d2c4d78f4149dfd8a1493871221f159ecfae84a1a9a1b7706e527d3e"
+      "sha256": "1333a394e0f9be47764f860b8854c46f7bae95e8d6422753d185e9e7398bc533"
     },
     {
       "path": "docs/data/ha-administration-examples.yml",
@@ -26939,7 +26877,7 @@
     },
     {
       "path": "docs/source/stylesheets/_civica-components.scss",
-      "sha256": "03a3571a9d83948debca2e31566c41d0a872e60e634e2ed29d84792723ab2209",
+      "sha256": "34dc1f5cd8f6b6f32f4c2b68adeff3cf9bc2191d5a29ee8c61201d33e20e4f13",
       "scope": "Current licensing, documentation storage and first-visit notice source review; source checks and targeted acceptance are recorded in docs/data/licensing-notice-review.json. Full validation and publication remain separate."
     },
     {
