@@ -72,13 +72,17 @@ examples:
       </section>
   ha-coverage-picture-alternative:
     title: "A room diagram with an equivalent reading list"
-    description: "Existing original artwork adds spatial context without making coordinates the only interface."
+    description: "A room layout with one sensor marker, and the lamp, light and window readings in a list below it."
     height: 980
     html: |
       <section aria-labelledby="example-heading">
-      <h1 class="govuk-heading-l" id="example-heading">A room diagram with an equivalent reading list</h1>
-      <p class="govuk-body">Synthetic example. Names, readings and dates are invented. This page is not connected to Home Assistant.</p>
-      <figure class="govuk-!-margin-0"><img class="civica-card-demo__media" src="../images/card-room-schematic.svg" width="640" height="360" alt="Schematic three-room layout: two smaller rooms on the left and one larger room on the right, with a sensor marker in the larger room."><figcaption class="govuk-body">Illustration only. This is not a live image or measured floor plan.</figcaption></figure><h2 class="govuk-heading-m">Room readings</h2><dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Reading lamp</dt><dd class="govuk-summary-list__value">On</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Ceiling light</dt><dd class="govuk-summary-list__value">Off</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Window contact</dt><dd class="govuk-summary-list__value">Closed</dd></div></dl><a class="govuk-link" href="../examples/card-image-device.html">Open the reading lamp details example</a><p class="govuk-body">Every named item remains available in this list even if an image overlay cannot be read or reached.</p>
+      <h1 id="example-heading" style="font-size:1.75rem;margin:0 0 16px">Guest room</h1>
+      <article class="civica-card-demo"><div class="civica-card-demo__body">
+      <figure style="margin:0 0 16px"><img class="civica-card-demo__media" src="../images/card-room-schematic.svg" width="640" height="360" alt="Schematic three-room layout: two smaller rooms on the left and one larger room on the right, with a sensor marker in the larger room."><figcaption style="margin-top:8px">Room layout with one sensor marker. The lamp, light and window are not drawn on it.</figcaption></figure>
+      <h2 style="font-size:1.375rem;margin:0 0 8px">Room readings</h2>
+      <dl style="margin:0 0 12px"><div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;border-bottom:1px solid #cecece;padding:8px 0"><dt style="font-weight:700">Reading lamp</dt><dd style="margin:0">On</dd></div><div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;border-bottom:1px solid #cecece;padding:8px 0"><dt style="font-weight:700">Ceiling light</dt><dd style="margin:0">Off</dd></div><div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;border-bottom:1px solid #cecece;padding:8px 0"><dt style="font-weight:700">Window contact</dt><dd style="margin:0">Closed</dd></div></dl>
+      <p style="margin:0"><a href="../examples/card-image-device.html" style="color:#1d70b8">Open the reading lamp details example</a></p>
+      </div></article>
       </section>
     artwork:
       source: docs/data/card-artwork-provenance.json
@@ -182,9 +186,13 @@ examples:
     height: 750
     html: |
       <section aria-labelledby="example-heading">
-      <h1 class="govuk-heading-l" id="example-heading">One plant reading outside its configured range</h1>
-      <p class="govuk-body">Synthetic example. Names, readings and dates are invented. This page is not connected to Home Assistant.</p>
-      <dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Plant</dt><dd class="govuk-summary-list__value">Study fern</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Moisture</dt><dd class="govuk-summary-list__value">18% — below the configured lower threshold of 20%</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Light</dt><dd class="govuk-summary-list__value">No current reading</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Temperature</dt><dd class="govuk-summary-list__value">19.8 °C</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Reported</dt><dd class="govuk-summary-list__value"><time datetime="2026-11-12T09:30:00+00:00">12 November 2026 at 09:30 GMT</time> (Europe/London)</dd></div></dl><p class="govuk-body">The 20% threshold is an invented household setting in this example. It is not a recommendation for this or any real plant.</p><p class="govuk-body">The card reports the specific exception. It does not diagnose the plant or assume that the missing light reading is zero.</p>
+      <h1 id="example-heading" style="font-size:1.75rem;margin:0 0 16px">One plant reading outside its configured range</h1>
+      <article class="civica-card-demo"><div class="civica-card-demo__body">
+      <h2 style="font-size:1.375rem;margin:0 0 8px">Study fern</h2>
+      <dl style="margin:0 0 12px"><div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;border-bottom:1px solid #cecece;padding:8px 0"><dt style="font-weight:700">Moisture</dt><dd style="margin:0">18% — below the configured lower threshold of 20%</dd></div><div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;border-bottom:1px solid #cecece;padding:8px 0"><dt style="font-weight:700">Light</dt><dd style="margin:0">No current reading</dd></div><div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;border-bottom:1px solid #cecece;padding:8px 0"><dt style="font-weight:700">Temperature</dt><dd style="margin:0">19.8 °C</dd></div><div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;border-bottom:1px solid #cecece;padding:8px 0"><dt style="font-weight:700">Battery</dt><dd style="margin:0">82%</dd></div><div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;border-bottom:1px solid #cecece;padding:8px 0"><dt style="font-weight:700">Reported</dt><dd style="margin:0"><time datetime="2026-11-12T09:30:00+00:00">12 November 2026 at 09:30 GMT</time> (Europe/London)</dd></div></dl>
+      <p style="margin:0">The card reports the specific exception. It does not diagnose the plant or assume that the missing light reading is zero.</p>
+      </div></article>
+      <p>The 20% limit is an invented household setting. It is not a recommendation for this or any real plant.</p>
       </section>
   ha-coverage-specialist-environment:
     title: "An environmental reading without an invented verdict"

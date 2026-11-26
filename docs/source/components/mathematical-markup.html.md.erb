@@ -1,0 +1,101 @@
+---
+title: "Mathematical Markup"
+description: "Write a formula or sum so people can read it, with the meaning always given in words and units."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Mathematical Markup specification: the math element, what a dashboard can show instead and how to explain a formula."
+ai_instructions: "Apply when a page or card shows a formula or a worked sum. Always write the sum in words first, with units, and give the result in words. On a standalone page the math element (MathML) can draw the formula, but assistive technology support varies, so never rely on it alone, and do not use an image of a formula. A Home Assistant Markdown card does not draw math: it shows the tags as text, and Home Assistant does not draw LaTeX. In a dashboard write the formula as words and units, such as kWh = kW x hours, and use sub and sup for powers and subscripts. Define each symbol and keep one operation per line."
+ai_related:
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns what a Markdown card keeps and removes."
+  - path: "/content/writing-guidelines/numbers-measurements-dates-time.html"
+    title: "Write numbers, measurements, dates and time"
+    relationship: "Owns how to write numbers and units."
+  - path: "/content/writing-guidelines/clear-language.html"
+    title: "Use clear language"
+    relationship: "Owns plain wording for explanations."
+  - path: "/components/code-and-preformatted-text.html"
+    title: "Code & Preformatted Text"
+    relationship: "Owns code and preformatted text."
+component:
+  parent: "Mathematical Markup"
+  letter: "M"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<math>"
+      origin: "HTML5"
+      anchor: "child-math"
+      note: "MathML"
+  tags:
+    - "math"
+    - "MathML"
+---
+
+# Mathematical Markup
+
+<h2 id="purpose">Purpose</h2>
+
+The `math` element holds a formula written in MathML, the web’s markup for maths. In a household dashboard you will rarely need one. When you explain a sum, such as how much energy a heater uses, the words and the units matter more than the formula.
+
+This page owns the `math` element and the rules for explaining a sum. Home Assistant has no maths component, so dashboards use plain words and units instead.
+
+This page covers:
+
+- Mathematical Markup
+  - `<math>` (MathML)
+
+<h2 id="anatomy">Anatomy</h2>
+
+A worked sum has, in this order:
+
+1. A sentence that says the rule in words, with units.
+2. The formula, if you show one.
+3. The sum with real figures.
+4. The result in words.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-math"><code>&lt;math&gt;</code></h3>
+
+The top-level MathML element. It holds MathML elements such as `mi` for a name, `mn` for a number, `mo` for an operator and `mfrac` for a fraction. Set `display="block"` to put the formula on its own line. The default is inline.
+
+On a web page, current browsers draw MathML, but the maths font and the spacing vary between them. Screen readers read it unevenly, and some read nothing. Write the meaning in words next to every formula. Do not use a picture of a formula.
+
+**In a Home Assistant dashboard.** A Markdown card shows math as text: it does not keep the `math` tag. Home Assistant does not draw LaTeX either, and a template cannot produce MathML for the card. Write the sum as words and units, such as “kWh = kW × hours”, and use `<sub>` and `<sup>` for subscripts and powers, which a Markdown card keeps. See [Markdown Card](markdown-card.html).
+
+**What the Civica theme sets.** Nothing. A formula takes its text colour from the page. There is no theme setting for a maths font.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- MathML keeps a formula as text, so it resizes and can be read by some assistive technology.
+- Support varies, so a formula alone is never enough.
+- It cannot be used where most dashboard text lives, so keep the words as the main explanation.
+- A wide formula can run past the edge of a small screen. Split it into steps instead.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Say the sum in words first, give each symbol a name and each figure a unit, and finish with the result in words. Show one operation on each line. Write “6 kWh”, not “6”. Offer a worked example with real figures. For how to write numbers and units, see [Write numbers, measurements, dates and time](../content/writing-guidelines/numbers-measurements-dates-time.html).
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content and 1.4.5 Images of Text: give the meaning in words and do not use a picture of a formula.
+- 1.3.1 Info and Relationships: keep the formula as text.
+- 1.4.4 Resize Text and 1.4.10 Reflow: break a long formula into steps.
+- 4.1.2 Name, Role, Value: the words next to a formula are what everyone can rely on.
+
+<h2 id="examples">Examples</h2>
+
+### A help card with a worked energy sum
+
+A simulated help card on a standalone page. The sum is in words first, then as a formula, then with real figures and a result in words.
+
+<%= example('spec-math-energy-sum') %>

@@ -1,58 +1,127 @@
 ---
-title: Page metadata and history
-description: Show when guidance was published, what changed and when it last changed.
-section: components
-group: Content presentation
-status: reference
-published_on: 2026-11-11
-updated_on: 2026-11-11
+title: "Page History"
+description: "Show when a guidance page was published, what changed and when it last changed."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
-  - date: 2026-11-11
-    description: Made page metadata and history the maintained editorial-date owner and retained the withdrawn source as provenance.
-  - date: 2026-11-11
-    description: Added the Civica guidance, contextual examples and implementation boundaries.
+  - date: "2026-11-26"
+    description: "Rewrote the page as a Page History specification. It now also covers review dates, and the publishing-tool notes are gone."
+  - date: "2026-11-11"
+    description: "Added guidance, examples and notes on what the history can and cannot show."
+ai_instructions: "Apply when a guidance page shows when it was published, what changed and when it was last updated. This is a Civica documentation pattern, not a Home Assistant element: Home Assistant has no equivalent, and its History panel and Logbook record device events, which are a different thing. Keep publication, update, review and next review as separate dates. Keep a sensor observation time separate from any editorial date. Never refresh dates on a build, and keep an overdue review date until a review happens. Show dates as a readable British date in the text and the ISO date in the time element. Do not signal an overdue review by colour alone."
+ai_related:
+  - path: "/patterns/review-dates.html"
+    title: "Show when guidance was reviewed"
+    relationship: "Owns the review workflow: what a review checks and when the next one is due."
+  - path: "/content/formatting-content/charts-and-data.html"
+    title: "Charts and data"
+    relationship: "Owns how a reading and its observation time are written."
+  - path: "/components/status.html"
+    title: "Status and notifications"
+    relationship: "Owns how a stale or unavailable state is shown."
+  - path: "/components/tag.html"
+    title: "Tag"
+    relationship: "Owns the short label sometimes used beside a date."
+component:
+  parent: "Page History"
+  letter: "P"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Page History Pattern"
+      origin: "Civica"
+      anchor: "child-civica-page-history-pattern"
+  tags:
+    - "Civica Page History Pattern"
 ---
 
-# Page metadata and history
+# Page History
 
-Show when guidance was published, what changed and when it last changed.
+<h2 id="purpose">Purpose</h2>
 
-## Own editorial dates without inventing freshness
+Page History tells readers when a guidance page was first published, what changed and when it last changed. It also holds the review dates for a page, so a reader can judge whether the advice is still looked after.
 
-This page owns publication and update-history presentation. The [review workflow](../patterns/review-dates.html) owns what an actual review checks and when another is due. The [withdrawn NHS review-date source page](review-date.html) stays available for provenance; it is not a separate component to reinstate.
+It is a Civica pattern for guidance pages. Home Assistant has no equivalent. Its History panel and its Logbook record what devices did, which is a different thing. A guidance page can still show a device reading, but that reading keeps its own time.
 
-Keep first publication, substantive update, complete editorial review and planned review as separately named facts. Preserve an overdue review date until review occurs. Device observation times belong to [data guidance](../content/formatting-content/charts-and-data.html), not editorial history. Neither a successful build nor a page render may silently replace any of these dates.
+This page covers:
 
-## When to use
+- Page History
+  - Civica Page History Pattern
 
-Every editorial guidance page in this design system has publication metadata and an expandable update history. The homepage is excluded. Standalone example canvases are linked demonstrations; their owning guidance page records their changes.
+<h2 id="anatomy">Anatomy</h2>
 
-Do not confuse publication dates with a sensor timestamp, a household event log or a review deadline. Use the [review-dates pattern](../patterns/review-dates.html) for planned content review and native HA history for device events.
+The pattern has three parts, in this order:
 
-## A material update
+1. A heading for the page.
+2. The publication line: the date first published and the date last updated, each written in full.
+3. A disclosure called “See all updates”. It holds a list of changes, newest first. Each item has a date and a short note saying what changed and what that means for the reader.
+
+A page that has been reviewed also shows the date of its last review and the date its next review is due.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-civica-page-history-pattern"><code>Civica Page History Pattern</code></h3>
+
+The pattern is made from plain HTML: a labelled section, a paragraph with `time` elements, and a native `details` element whose summary is “See all updates”. The list inside is an ordered list, so its order and length are available to assistive technology. Write each date twice: a readable British date as the visible text, and the ISO date in the `datetime` attribute of the `time` element.
+
+The pattern has no theme variables of its own. The Civica theme only affects the surrounding text and lines, through `primary-text-color`, `secondary-text-color` and `divider-color`.
+
+Four kinds of date stay separate:
+
+- **First published.** It never changes.
+- **Last updated.** It changes when the content changes in a way that matters to a reader.
+- **Last reviewed.** It changes when a person has checked the whole page, even if nothing needed changing.
+- **Next review due.** It stays as it is until the review happens. An overdue date is kept and shown, not hidden or moved.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A history list lets readers see why a page changed, not only that it did.
+- The native disclosure works without JavaScript, opens with Enter or Space.
+- A closed disclosure hides its list from assistive technology, so keep the latest change in the visible line as well.
+- A date does not prove a review. It only records that someone says a review took place.
+- The pattern is for guidance pages. It is not a dashboard card, and no theme setting adds it to one.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Show page history on every guidance page. Leave it off the home page and off standalone example pages; the guidance page that owns an example records its changes.
+
+Keep the first publication date fixed. Add the newest change at the top and say what it means: “Corrected the unit in the example from W to kW” helps; “Updated” does not. Do not change every date when the site is rebuilt, and do not imply that unchanged content has been reviewed. Do not change a page’s review date because one sentence changed. A build or release date is not a review.
+
+Keep one date format on every page. Do not show an overdue review by colour alone; say in words that the review is overdue.
+
+Put review dates after the content they cover. The [review workflow](../patterns/review-dates.html) owns what a review checks and when the next one is due.
+
+### Review dates and sensor times
+
+A sensor reading has an observation time: when the device reported it. That time says nothing about whether a person checked the page. Never label a reading “reviewed”, and never show a page date beside a reading as if it applied to the reading. A card that shows a reading needs the meaning of its timestamp, the time zone, and a stale or unavailable state where the integration reports one. Relative text such as “five minutes ago” can sit beside an absolute time but should not replace it. See [Charts and data](../content/formatting-content/charts-and-data.html) and [Status and notifications](status.html).
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: the list, the dates and the disclosure are real elements.
+- 2.1.1 Keyboard and 4.1.2 Name, Role, Value: the summary is focusable and opens with Enter or Space.
+- 1.4.1 Use of Colour: an overdue review is written, not only coloured.
+- 2.4.6 Headings and Labels: the section has a clear label.
+- 1.4.10 Reflow and 1.4.12 Text Spacing: notes wrap and stay readable at 320 CSS pixels.
+
+<h2 id="examples">Examples</h2>
+
+### A guide with an update
+
+The newest change comes first and the disclosure holds the full list.
 
 <%= example('system-history-expanded') %>
 
-## A correction explained in plain language
+### A correction explained in plain language
+
+The note says what was wrong, not only “Updated”.
 
 <%= example('system-history-correction') %>
 
-## Record real changes
+### A page date and a reading time side by side
 
-Keep the first publication date stable. Add the newest substantive update first and explain its practical effect. Use ISO dates in `<time datetime>` and a readable British date in visible text. Do not replace all dates on each build or imply that unchanged content has been reviewed.
-
-For existing pages, this rebuild retains the first publication date found in repository history and records the actual documentation-shell change. New pages declare their dates and notes in frontmatter. The layout refuses to build a guide without a history record. Future editors must append an accurate entry when guidance or its examples materially change.
-
-## Expandable history behaviour
-
-Use a native `details` element with “See all updates” as its summary. The ordered list is newest first. Enter and Space toggle the disclosure; its state is available without custom JavaScript. Keep the metadata visible and make the history readable when printed.
-
-## Publishing-component provenance
-
-The GOV.UK publishing library merged Published dates into Metadata in [PR #5572](https://github.com/alphagov/govuk_publishing_components/pull/5572), released in 66.9.0. The current full-history parameter is `page_history`, with `first_published` and `last_updated`; `see_updates_link` supports the upper-page link. The old standalone component was subsequently removed. The simple `history` field is not the full update array, and `show_history` is not the option used by the current source.
-
-This Middleman site implements the same editorial pattern with semantic HTML. It does not install the Rails publishing gem. Its own frontmatter names are `published_on`, `updated_on` and `updates`, mapped by the shared layout.
-
-## Testing and content ownership
-
-Check a new page, a page with several changes, long notes, keyboard operation and no JavaScript. The displayed dates must match the authored record. A build date, dependency release or Git commit time alone does not establish a content review. Keep ownership and source links near the guidance, and use the repository issue route to report inaccuracies.
+<%= example('spec-history-editorial-and-reading') %>

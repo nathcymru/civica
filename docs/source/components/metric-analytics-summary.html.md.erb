@@ -1,0 +1,145 @@
+---
+title: "Metric / Analytics Summary"
+description: "Show a percentage reading with a bar, and a set of switches for sharing settings, in the Home Assistant screens that use them."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Metric / Analytics Summary specification: the percentage bar and the analytics switches, with the thresholds, the colours the theme sets and what stays Home Assistant’s."
+ai_instructions: "Apply when describing the percentage rows in Home Assistant’s system information dialog or the analytics switches in its settings. ha-metric is a heading, a percentage written as text and an ha-bar; it turns the warning colour above 50 per cent and the error colour above 85 per cent, and those thresholds cannot be changed. It appears only in the system information dialog, never on a dashboard, so no dashboard card can use it. ha-analytics is four rows with switches (base, usage, statistics, diagnostics) in the analytics settings; switching usage or statistics on switches base on, and switching base off switches usage and statistics off. The Civica theme sets the switch size and colours but sets no metric or bar variable. Do not paraphrase what each analytics option shares: use Home Assistant’s own wording. Do not claim the bar is announced by a screen reader or give a measured contrast ratio."
+ai_related:
+  - path: "/components/bar-meter.html"
+    title: "Bar / Meter"
+    relationship: "Owns ha-bar, the picture the metric row draws."
+  - path: "/home-assistant/native-task-accessibility.html"
+    title: "Native task accessibility and evidence"
+    relationship: "Owns how to check native settings screens."
+component:
+  parent: "Metric / Analytics Summary"
+  letter: "M"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-metric"
+      origin: "Home Assistant"
+      anchor: "child-ha-metric"
+    - name: "ha-analytics"
+      origin: "Home Assistant"
+      anchor: "child-ha-analytics"
+  tags:
+    - "ha-metric"
+    - "ha-analytics"
+---
+
+# Metric / Analytics Summary
+
+<h2 id="purpose">Purpose</h2>
+
+This page describes two small pieces of Home Assistant’s settings screens: the metric row, which writes a percentage and draws a bar beside it, and the analytics rows, which are switches for what a home shares. Neither is a dashboard card. A dashboard author cannot add them, so this page helps you understand and theme the screens that use them.
+
+For the bar itself, see [Bar / Meter](bar-meter.html).
+
+This page covers:
+
+- Metric / Analytics Summary
+  - `ha-metric`
+  - `ha-analytics`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A metric row has a heading on the left, the percentage as text on the right, and a 12 pixel bar below the text.
+
+The analytics block is a list of four rows. Each has a visible headline, a line of supporting text and a switch on the right.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-metric"><code>ha-metric</code></h3>
+
+A heading, a percentage and a bar. Its properties are `heading`, `value` (a number between 0 and 100) and an optional `tooltip`, which is the row’s hover text. The value is rounded to one decimal place and always printed as text, such as “62 %”. The bar underneath is a picture with no role, so the number is the reading.
+
+Home Assistant uses it only in the system information dialog under Settings, to show processor and memory use for the core and for the supervisor. It never appears on a dashboard, so there is no dashboard card for card-mod to style.
+
+The bar fill changes with the value:
+
+- 50 per cent or less: the success colour.
+- Above 50 per cent: the warning colour.
+- Above 85 per cent: the error colour.
+
+These two thresholds are fixed. The fill variables are `--metric-bar-ok-color`, `--metric-bar-warning-color` and `--metric-bar-critical-color`, which default to the theme’s success, warning and error colours. The track is `--ha-bar-background-color` (the secondary background colour by default) and its corners are `--ha-bar-border-radius`.
+
+The Civica theme sets none of those five variables. The fill follows the success, warning and error colours, which the theme does set:
+
+| Colour | Civica theme, light | Civica theme, dark |
+|---|---|---|
+| `success-color` | `#0F7A52` | `#BCDACF` |
+| `warning-color` | `#8A6100` | `#DED3B8` |
+| `error-color` | `#CA3535` | `#F0C6C6` |
+| `secondary-background-color` (the track) | `#F3F2F1` | `#30363A` |
+
+Calculated from these colours, the success, warning and error fills against the track come to between 4.6 and 5.0 to 1 in light mode and between 7.9 and 8.3 to 1 in dark mode. The pale track against a white page is only 1.12 to 1, so the bar’s edge is faint. The percentage in text is the reading.
+
+<h3 id="child-ha-analytics"><code>ha-analytics</code></h3>
+
+The switches for what a home shares with the Home Assistant project, shown in Settings and during first set-up. It has four rows with switches, in this order: base, usage, statistics and diagnostics. The row text is Home Assistant’s own translated wording. Read it on screen before you describe any option, because this page does not describe what each one shares.
+
+How the switches depend on each other:
+
+- Switching usage or statistics on switches base on.
+- Switching base off switches usage and statistics off.
+- While the settings are loading, the base and diagnostics switches are disabled.
+- When base is off, the usage and statistics switches show a tooltip that says the base setting is needed.
+
+The component only reports the change. The settings screen saves it.
+
+Each switch has a label that is hidden from sight but available to assistive technology, so the visible headline is not read twice.
+
+The Civica theme sets the switch size and colours:
+
+| Variable | Civica theme, light | Civica theme, dark |
+|---|---|---|
+| `ha-switch-width` | 48px | 48px |
+| `ha-switch-size` | 28px | 28px |
+| `ha-switch-thumb-size` | 20px | 20px |
+| `ha-switch-min-touch-size` | 44px | 44px |
+| `ha-switch-background-color` | `#FFFFFF` | `#24282B` |
+| `ha-switch-border-color` | `#0B0C0C` | `#FFFFFF` |
+| `ha-switch-checked-background-color` (default theme) | `#1D70B8` | `#C0D7EB` |
+| `ha-switch-checked-thumb-background-color` | `#FFFFFF` | `#0B0C0C` |
+| `ha-switch-thumb-background-color` | `#0B0C0C` | `#FFFFFF` |
+
+The other Civica themes use their own checked colour. Row text uses `primary-text-color`, supporting text uses `secondary-text-color` (`#484949` in light mode, `#CBD0D3` in dark mode), and a disabled row uses `disabled-text-color`. The row layout, the headline and the tooltips cannot be changed.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The percentage is always written, so the bar never carries the reading alone.
+- The warning and error colours follow the theme in light and dark modes.
+- The 50 and 85 per cent thresholds cannot be changed.
+- The colour change is not announced, and the bar has no role.
+- Neither element can be placed on a dashboard.
+- The analytics layout, wording and tooltips are Home Assistant’s.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+On a dashboard, show a percentage in words, such as “Memory 62 %”, and say what a high value means. Use an entity row with a toggle plus a plain sentence about what it controls, where you need a setting like the analytics switches.
+
+Do not describe what analytics shares in your own words. Point people to Home Assistant’s text, and say that usage and statistics need the base setting. Do not pressure anyone to switch an option on, and show the saved state as words.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content and 1.4.1 Use of Colour: the bar is a picture, so the percentage is the reading, and the colour change is not enough.
+- 1.3.1 Info and Relationships: the heading and its value belong together in each row.
+- 1.4.11 Non-text Contrast: the bar and the track are pale on a white page.
+- 2.5.8 Target Size (Minimum): the theme sets a 44 pixel touch size for the switch.
+- 3.3.2 Labels or Instructions: switches have a hidden label as well as a visible headline.
+- 1.4.13 Content on Hover or Focus: the tooltip appears on hover and focus.
+
+<h2 id="examples">Examples</h2>
+
+### Processor and memory rows
+
+<%= example('spec-metric-system-rows') %>

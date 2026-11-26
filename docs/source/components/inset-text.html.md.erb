@@ -1,65 +1,129 @@
 ---
-title: "Inset text"
-description: "Separate a useful piece of supporting information from the surrounding prose."
+title: "Inset Text"
+description: "Set one piece of supporting information apart from the text around it, with a bar down its left edge."
 section: "components"
-group: "Content presentation"
-source_url: "https://service-manual.nhs.uk/design-system/components/inset-text"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewrote the page as a full specification: the Markdown card recipe, its card-mod settings, what the bar can and cannot do, and two simulated examples."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added NHS-informed inset text guidance and 2 Home Assistant reference examples."
+  - date: "2026-11-11"
+    description: "Added inset text guidance and 2 Home Assistant reference examples."
+ai_instructions: "Apply when a dashboard or help page needs one piece of supporting information set apart from the text around it. In Home Assistant this is a Markdown card (type: markdown) with the Civica card-mod style, so it needs the card-mod integration. Start the text with a visible word such as Note, and never use an inset as the only warning of an urgent condition. The left bar uses the theme's divider colour, which is only about 1.6 to 1 on white as calculated from the theme colours, so the text must make sense without the bar. Do not stack insets. Never claim a screen reader reading."
+ai_related:
+  - path: "/components/alert-and-tip-callout.html"
+    title: "Alert & Tip Callout"
+    relationship: "Owns callouts for tips and alerts."
+  - path: "/components/aside.html"
+    title: "Aside"
+    relationship: "Owns background notes that sit beside the main text."
+  - path: "/components/status.html"
+    title: "Status and notifications"
+    relationship: "Owns how a household is told something needs attention."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface the inset recipe changes."
+component:
+  parent: "Inset Text"
+  letter: "I"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Inset Text Pattern"
+      origin: "Civica"
+      anchor: "child-civica-inset-text-pattern"
+  tags:
+    - "inset"
+    - "markdown"
+    - "card-mod"
 ---
 
-# Inset text
+# Inset Text
 
-Separate a useful piece of supporting information from the surrounding prose.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+Inset text sets one piece of supporting information apart from the text around it, such as what an estimate means or what a setting does and does not change. Use it sparingly, on help pages and reference dashboards.
 
-## When to use it
+For urgent conditions use [Status and notifications](status.html). For tips and alerts see [Alert & Tip Callout](alert-and-tip-callout.html). For background that can be skipped, see [Aside](aside.html).
 
-Use it for an explanation that deserves attention on a reference page, such as the meaning of an estimate or the scope of a display setting. Use it sparingly.
+This page covers:
 
-## When not to use it
+- Inset Text
+  - Civica Inset Text Pattern
 
-Do not use an inset as the only warning about an urgent condition. NHS research for this pattern is on content pages, not transactional forms; treat use inside a settings form as a separate design decision.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+An inset has two parts:
 
-An Energy help page can distinguish an estimated cost from a supplier bill. A dashboard guide can explain that renaming a view changes its label only. Neither should be represented as a live alert or as successful completion of an action.
+- A bar down the left edge of the card, 10 pixels wide.
+- The text, with space around it, in the normal reading order.
 
-## Accessibility and behaviour
+The bar is decoration. It is not a button and does nothing when pressed.
 
-Keep the text in the normal reading order. Add a concise hidden “Information:” prefix when the distinction matters to people who cannot see the inset rule. The boundary is a structural marker, not a clickable control.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Examples
+<h3 id="child-civica-inset-text-pattern"><code>Civica Inset Text Pattern</code></h3>
+
+Home Assistant has no inset card. Civica builds the pattern from a Markdown card (`type: markdown`) and a card-mod style, so it **needs the card-mod integration**. Without card-mod the card is an ordinary Markdown card.
+
+```yaml
+type: markdown
+content: >
+  Note: It can take up to 10 minutes for the thermostat to report its new state.
+card_mod:
+  style: |
+    ha-card {
+      background: transparent;
+      border: none;
+      border-left: 10px solid var(--divider-color);
+      border-radius: 0;
+      padding: 15px;
+      box-shadow: none;
+    }
+```
+
+The ready-made file is `cards/inset-text.yaml`. Edit the text and keep the style.
+
+**What the Civica theme sets.** The bar takes `--divider-color`, which is #CECECE in light mode and #50565A in dark mode. The text takes `primary-text-color`.
+
+**What the bar can and cannot do.** Calculated from the theme colours, the bar is about 1.6 to 1 against a white card, and about 2 to 1 against the dark card surface. That is below the 3 to 1 that a line needs to stand out on its own. So treat the bar as decoration. Write the text so that it makes sense without it.
+
+**Start with a visible word.** Begin with a word such as “Note:” so that the sentence announces itself. A Markdown card cannot add a visually hidden word without raw HTML, so do not plan on one.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It uses a native Markdown card, so the text stays editable in the dashboard editor.
+- It needs card-mod. If card-mod is not installed, the bar and the transparent background are missing.
+- The bar is faint, so it cannot carry meaning on its own.
+- It is static text, not a live message. It is never the place for a change that people must notice.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use one idea in each inset, in plain words, next to the thing it explains. Never use an inset as the only warning of an urgent condition. Do not stack insets. When several compete with the headings, turn some into ordinary text. Test the dashboard with the bar hidden, and check the text in light and dark modes.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: the visible word says what kind of information it is, not only the bar.
+- 1.4.1 Use of Colour: the bar is never the only signal.
+- 1.4.3 Contrast (Minimum): check the text on your own dashboard.
+- 1.4.4 Resize Text and 1.4.10 Reflow: the text must wrap.
+- 2.4.6 Headings and Labels: put the inset under the heading it explains.
+- 3.1.5 Reading Level: use plain words.
+
+One idea, in plain words, keeps the effort low.
+
+<h2 id="examples">Examples</h2>
 
 ### Explain an estimated cost
 
-Supporting context stays near the relevant explanation.
-
-<%= example('nhs-inset-estimate') %>
+<%= example('spec-inset-estimate') %>
 
 ### Clarify a display-only change
 
-The note explains the scope without presenting a warning.
-
-<%= example('nhs-inset-display') %>
-
-## Check the implementation
-
-Test the page without the border or colour and check that the information still makes sense. Avoid stacking many inset blocks until they compete with headings.
-
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS inset text](https://service-manual.nhs.uk/design-system/components/inset-text) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
-
-See also [status and notifications](status.html).
+<%= example('spec-inset-display') %>

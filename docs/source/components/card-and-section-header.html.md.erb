@@ -10,12 +10,15 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Card & Section Header specification: the Heading card, the section row and what the Civica theme sets."
-ai_instructions: "Apply when a dashboard section needs a heading. Use the Heading card (type heading) first in the section, or a section row inside an Entities card. Home Assistant has no element named hui-section-header; say so plainly. A section row is a divider with a label, not a heading. Long headings are cut off with an ellipsis, so keep them short. Do not claim a measured contrast or that the subtitle is bold under Civica."
+    description: "Added the Card & Section Header specification: the section row, and a pointer to the Heading card page."
+ai_instructions: "Apply when a dashboard section needs a heading. Use the Heading card (type heading) first in the section, as described on the Heading page, or a section row inside an Entities card. Home Assistant has no card named hui-section-header; say so plainly. A section row is a divider with a label, not a heading. Do not copy the Heading card keys or theme settings here: link to the Heading page."
 ai_related:
   - path: "/home-assistant/dashboard-composition.html"
     title: "Dashboard composition and card features"
     relationship: "Owns the advice to group tasks under descriptive headings."
+  - path: "/components/heading.html"
+    title: "Heading"
+    relationship: "Owns the Heading card, its keys, styles, levels and theme settings."
   - path: "/components/cards.html"
     title: "Card (Base Surface)"
     relationship: "Owns the card surface, the card header and heading levels."
@@ -44,51 +47,27 @@ component:
 
 A heading names a card or a group of cards so people know what they are about to read or use. In Home Assistant the card made for this is the Heading card.
 
-This page owns the Heading card and the section row. The page header of this site is a different component: see [Header](header.html). For card headings and heading levels see [Card (Base Surface)](cards.html).
+This page owns the section row, and points to [Heading](heading.html) for the Heading card. The page header of this site is a different component: see [Header](header.html). For card headings and heading levels see [Card (Base Surface)](cards.html).
 
 This page covers:
 
 - Card & Section Header
-  - `hui-section-header`, which this Home Assistant version does not use; see below for what it draws instead
+  - `hui-section-header`, which Home Assistant does not have; see below for what it draws instead
 
 <h2 id="anatomy">Anatomy</h2>
 
-A Heading card has no border, background or shadow. From left to right it shows:
-
-1. An optional icon.
-2. The heading text, as a level 2 heading, or a level 3 heading when you choose the subtitle style.
-3. A chevron, when you give the card a tap action.
-4. Optional badges, in a row that scrolls when it is too wide.
+A section row is a divider with an optional label, inside an Entities card. For the parts, keys, styles, levels and theme settings of the Heading card, see [Heading](heading.html).
 
 <h2 id="variants">Variants, variables and extensibility</h2>
 
 <h3 id="child-hui-section-header"><code>hui-section-header</code></h3>
 
-This Home Assistant version has no element called `hui-section-header`. A section heading is drawn by one of these instead:
+There is no `hui-section-header` card in Home Assistant; use one of these instead:
 
-- The Heading card (`hui-heading-card`, YAML `type: heading`), placed first in a section of a Sections view. This is the native card and heading.
+- The Heading card (`hui-heading-card`, YAML `type: heading`), placed first in a section of a Sections view. See [Heading](heading.html) for its keys, styles and limits.
 - The section row (`hui-section-row`, YAML `type: section`), a divider with a label inside an Entities card.
 
 The sections of a Sections view (`hui-section`, `hui-grid-section`) are layout containers and have no header of their own.
-
-**Heading card**
-
-```yaml
-type: heading
-heading: Kitchen
-heading_style: title
-icon: mdi:fridge
-```
-
-Keys:
-
-- `heading` is the text.
-- `heading_style` is `title` (the default) or `subtitle`.
-- `icon` is an optional icon.
-- `tap_action` makes the heading act as a button; the default is none.
-- `badges` is a list of small entity or button badges shown on the right. The older `entities` key still works and is moved into badges.
-
-The card is as wide as the section. Heading text stays on one line and is cut off with an ellipsis when it does not fit. Keep headings short, or put the full wording in a Markdown card with a real heading.
 
 **Section row**
 
@@ -102,19 +81,13 @@ entities:
 
 A section row is a divider and an optional label. It is a plain block, not a heading, so it does not appear in a heading list for assistive technology.
 
-**What the Civica theme sets.** The heading title uses `ha-heading-card-title-font-size` (22 pixels, scaled), weight 700 and line height 1.45. Text colours come from `primary-text-color` and `secondary-text-color`. The card header of a normal card uses the `ha-card-header-*` keys, covered in [Card (Base Surface)](cards.html).
-
-**What stays as Home Assistant draws it.** The theme sets nothing for the subtitle, so a subtitle uses the secondary text colour at the default size and weight. Because the Civica theme sets the medium font weight to 400, a subtitle looks like normal text. It sets nothing for the section row colours, the badge shape, the ellipsis or the heading levels. Those need card-mod, if they can be changed at all.
+The theme sets nothing for the section row colours. Changing them needs card-mod, if they can be changed at all. Theme settings for the Heading card are on [Heading](heading.html).
 
 <h2 id="limits">Advantages and limitations</h2>
 
-- The Heading card is native, so it works with every Sections view.
-- The title is a real heading, so people who navigate by headings can find the section.
+- The Heading card is native, so it works with every Sections view. Its limits are on [Heading](heading.html).
 - The section row is only a divider and label, so use it for visual grouping, not for navigation.
-- Long headings are cut off. At large text sizes this can hide part of a name.
-- The heading level is fixed by the style you choose. You cannot set it.
-- An actionable heading is a button with a chevron; its name is its text.
-- The badge row scrolls sideways. Check that every badge can be reached on your own dashboard.
+- A section row is not a heading, so people who navigate by headings will not find it.
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>
 
@@ -122,16 +95,12 @@ Start each section with a heading that says what the cards below do, such as “
 
 Success criteria that apply:
 
-- 1.3.1 Info and Relationships: the title and subtitle styles are headings, the section row is not.
+- 1.3.1 Info and Relationships: the section row is not a heading.
 - 2.4.6 Headings and Labels and 2.4.10 Section Headings: each section has a heading that describes it.
-- 1.4.4 Resize Text and 1.4.10 Reflow: long headings are cut off, so test large text.
-- 1.4.3 Contrast (Minimum): check the subtitle colour on your own dashboard.
-- 2.5.8 Target Size (Minimum) and 4.1.2 Name, Role, Value: an actionable heading is a button named by its text.
+- 1.4.3 Contrast (Minimum): check the section row label colour on your own dashboard.
 
 <h2 id="examples">Examples</h2>
 
-### A section heading with a subtitle
-
-A simulated Heading card above one card. It has no border, and nothing here is interactive.
+### An Entities card with section rows
 
 <%= example('spec-card-heading-kitchen') %>

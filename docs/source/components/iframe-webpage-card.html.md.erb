@@ -1,0 +1,148 @@
+---
+title: "Iframe / Webpage Card"
+description: "Show another web page inside a dashboard with the Webpage card, name the frame, and give people an ordinary link when the page cannot be shown."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Iframe / Webpage Card specification: the frame, the Webpage card and its keys, what the Civica theme sets and how to name the frame and offer a link."
+ai_instructions: "Apply when a dashboard shows another page inside a card (type: iframe, called the Webpage card in Home Assistant). Always set title, because it is the only way to name the frame, and it also draws a level-one heading. Say in words what the frame shows and give an ordinary link that names the destination, because the page may be blocked or may not suit a small screen. The theme cannot style the framed page. Keep the default sandbox. Do not use disable_sandbox or allow_open_top_navigation to make a frame load. A page served over HTTP cannot be shown when Home Assistant is opened over HTTPS. Never claim that a framed page loads, is keyboard accessible or meets any contrast."
+ai_related:
+  - path: "/home-assistant/pictures-and-embedded-content.html"
+    title: "Pictures, rich content and embedded pages"
+    relationship: "Owns blocked frames, security options and fallbacks for external pages."
+  - path: "/components/embedded-external-object.html"
+    title: "Embedded External Object"
+    relationship: "Owns why a dashboard uses the Webpage card and not other embedding elements."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface and the card header."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the keyboard trap and reflow checks."
+component:
+  parent: "Iframe / Webpage Card"
+  letter: "I"
+  origins:
+    - "HTML5"
+    - "Lovelace"
+  children:
+    - name: "<iframe>"
+      origin: "HTML5"
+      anchor: "child-iframe"
+    - name: "hui-iframe-card"
+      origin: "Lovelace"
+      anchor: "child-hui-iframe-card"
+  tags:
+    - "iframe"
+    - "hui-iframe-card"
+    - "webpage card"
+---
+
+# Iframe / Webpage Card
+
+<h2 id="purpose">Purpose</h2>
+
+A Webpage card shows another web page inside a dashboard card, for example a weather radar or a camera viewer. Use it when a page you trust has something people need next to their other cards. The page inside the frame belongs to its owner. The Civica theme cannot change its text, colours or accessibility.
+
+This page owns the `<iframe>` element and the Home Assistant Webpage card. For blocked pages, security options and fallbacks, see [Pictures, rich content and embedded pages](../home-assistant/pictures-and-embedded-content.html). For the other embedding elements, see [Embedded External Object](embedded-external-object.html).
+
+This page covers:
+
+- `<iframe>`
+- `hui-iframe-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+1. An optional card title, which is a level-one heading.
+2. The frame, which fills the card and has no border of its own.
+3. Separately, a short sentence that says what the frame shows, and an ordinary link to open the page in full. Write these in a Markdown card below the Webpage card.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-iframe"><code>&lt;iframe&gt;</code></h3>
+
+An `<iframe>` is an HTML element that shows one web page inside another. A dashboard author cannot write one. Home Assistant draws it for the Webpage card, so what you control is the card’s settings below.
+
+What matters to the people who use the page:
+
+- A frame needs a short, unique name. Screen readers announce the name when they reach the frame. Without it, the frame has no name.
+- The framed page controls its own layout, text size and focus, so it may not reflow on a small screen.
+- Browsers refuse to show a page whose server forbids being framed. Home Assistant cannot override that.
+- A frame can trap keyboard focus if the page inside it does. Civica cannot fix that.
+
+The frame sits in a sandbox, which limits what the page inside it may do. Home Assistant’s default sandbox allows forms, pop-ups, pointer lock, scripts, modal dialogs, downloads and access as the same site. Because scripts and same-site access are both allowed, a page served from the same address as Home Assistant can undo its own sandbox. Only frame a page you trust.
+
+<h3 id="child-hui-iframe-card"><code>hui-iframe-card</code></h3>
+
+A Lovelace card, set with `type: iframe`. Home Assistant calls it the Webpage card. You must give a `url`.
+
+```yaml
+type: iframe
+title: Rain radar
+url: https://example.com/radar
+aspect_ratio: 50%
+```
+
+| Key | Meaning |
+| --- | --- |
+| `url` | The page to show. Required |
+| `title` | The card title and the name of the frame |
+| `aspect_ratio` | The shape of the frame, such as `50%` or `16:9`. The default is 50%, which is half as tall as it is wide. It is ignored when the card sits in a panel or a grid layout |
+| `allow` | The permissions the frame has. The default is `fullscreen` |
+| `hide_background` | Removes the card’s background, border and shadow |
+| `allow_open_top_navigation` | Lets the framed page move the whole dashboard to another address, but only after the person acts in the frame. Makes the frame less secure |
+| `disable_sandbox` | Removes the sandbox. Makes the frame less secure |
+
+Do not use the last two keys to make a frame load.
+
+Home Assistant shows an error instead of the frame when:
+
+- the `url` is missing, which shows “URL required”
+- the `url` is not safe, which shows “Invalid URL”
+- Home Assistant is opened over HTTPS and the page is not, which shows an error message in place of the frame
+
+**What the Civica theme sets.** Only the card surface and the title are themed: square corners, a 1 pixel border in `#CECECE` in light mode and `#50565A` in dark mode, no shadow, and a white or dark background. The title is 22 pixels, scaled, in the primary text colour. The framed page is not themed.
+
+**What stays as Home Assistant draws it.**
+
+- The title is a level-one heading and its level cannot change.
+- The frame has a name only when you set `title`. Without it the frame has no name, so always set one.
+- The frame’s focus ring, dark mode and text size belong to the framed page.
+- The aspect ratio does not suit every phone. Check the frame on a narrow screen.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One native card shows another page without extra software.
+- The page may be blocked by the site that owns it, or by the browser.
+- A page that is not HTTPS cannot be shown when Home Assistant is opened over HTTPS.
+- The framed page can have its own scrolling, focus and layout problems.
+- The card gives no way to give the frame a name separately from the title.
+- Several frames on one view are slow to read and hard to move through.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Say what the frame shows before it, in words, and always set the card `title`. Give people an ordinary link that names the destination, such as “Open the rain radar in full”, so the link still works if the frame is blocked or unsuitable. Do not put key information only in a frame. Keep to one frame on a view where you can.
+
+Success criteria that apply:
+
+- 4.1.2 Name, Role, Value and 2.4.1 Bypass Blocks: the frame needs a title.
+- 1.1.1 Non-text Content: say in words what a frame that shows an image or a live view contains.
+- 1.4.4 Resize Text and 1.4.10 Reflow: the framed page controls its own layout, so check it at large text sizes and on a narrow screen.
+- 2.1.2 No Keyboard Trap: check that you can leave the frame with the keyboard.
+- 2.2.2 Pause, Stop, Hide: a framed page may update by itself.
+- 3.2.1 On Focus and 3.2.2 On Input: nothing in the frame should move people without their action.
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: these depend on the framed page.
+
+<h2 id="examples">Examples</h2>
+
+### A Webpage card with a title and a link
+
+<%= example('spec-webpage-card-rain-radar') %>

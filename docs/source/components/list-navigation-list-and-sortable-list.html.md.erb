@@ -1,0 +1,231 @@
+---
+title: "List, Navigation List & Sortable List"
+description: "Use real lists for items that belong together, a list of links for navigation, and a button alternative wherever people can change the order."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the List, Navigation List and Sortable List specification: the list elements, Home Assistant’s list and navigation list, and how reordering works."
+ai_instructions: "Apply when a dashboard, help card or page shows a group of related items. Use a real list (ul for items, ol for steps) and keep list markup; never fake a list with line breaks. Use a list of links inside a nav landmark for navigation, with aria-current on the current page. Do not use menu for site or dashboard navigation. A Markdown card keeps ul, ol and li but removes every attribute on them, and it shows menu as plain text. Home Assistant has no element named ha-navigation-list, ha-md-list or ha-md-list-item in this version; its navigation list is ha-list-nav and its newer list is the ha-list-base family. ha-list, ha-list-nav, ha-sortable and ha-items-display-editor cannot be added to a dashboard. ha-sortable only drags with a pointer, so always offer buttons or another way to change the order."
+ai_related:
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns navigation patterns and the room destinations example."
+  - path: "/components/drawer-navigation-sidebar.html"
+    title: "Drawer / Navigation Sidebar"
+    relationship: "Owns the sidebar, which uses Home Assistant’s navigation list."
+  - path: "/components/summary-list.html"
+    title: "Summary list"
+    relationship: "Owns lists of names and values."
+  - path: "/components/task-list.html"
+    title: "Task list"
+    relationship: "Owns lists of tasks with a status."
+  - path: "/components/contents-list.html"
+    title: "Contents List"
+    relationship: "Owns lists of links to sections of a page."
+  - path: "/components/do-and-dont-lists.html"
+    title: "Do and Don't Lists"
+    relationship: "Owns paired lists of advice."
+  - path: "/home-assistant/entity-lists-and-rows.html"
+    title: "Entity lists, readings and row actions"
+    relationship: "Owns lists of entities with readings and actions."
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns what a Markdown card keeps and removes."
+component:
+  parent: "List, Navigation List & Sortable List"
+  letter: "L"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<ul>"
+      origin: "HTML5"
+      anchor: "child-ul"
+    - name: "<ol>"
+      origin: "HTML5"
+      anchor: "child-ol"
+    - name: "<li>"
+      origin: "HTML5"
+      anchor: "child-li"
+    - name: "<menu>"
+      origin: "HTML5"
+      anchor: "child-menu"
+    - name: "ha-list"
+      origin: "Home Assistant"
+      anchor: "child-ha-list"
+    - name: "ha-list-item"
+      origin: "Home Assistant"
+      anchor: "child-ha-list-item"
+    - name: "ha-navigation-list"
+      origin: "Home Assistant"
+      anchor: "child-ha-navigation-list"
+    - name: "ha-md-list"
+      origin: "Home Assistant"
+      anchor: "child-ha-md-list"
+      grandchildren:
+        - name: "ha-md-list-item"
+          origin: "Home Assistant"
+          anchor: "child-ha-md-list--ha-md-list-item"
+    - name: "ha-sortable"
+      origin: "Home Assistant"
+      anchor: "child-ha-sortable"
+    - name: "ha-items-display-editor"
+      origin: "Home Assistant"
+      anchor: "child-ha-items-display-editor"
+  tags:
+    - "ul"
+    - "ol"
+    - "li"
+    - "menu"
+    - "ha-list"
+    - "ha-list-item"
+    - "ha-list-nav"
+    - "ha-list-base"
+    - "ha-sortable"
+    - "ha-items-display-editor"
+---
+
+# List, Navigation List & Sortable List
+
+<h2 id="purpose">Purpose</h2>
+
+A list groups items that belong together, so people can see how many there are and read them one by one. Use a bullet list when the order does not matter, a numbered list for steps, and a list of links for navigation. If people can change the order, give them a way that does not need dragging.
+
+This page owns the list elements and the Home Assistant list components. Lists of names and values, tasks, section links and entities have their own pages: [Summary list](summary-list.html), [Task list](task-list.html), [Contents List](contents-list.html) and [Entity lists, readings and row actions](../home-assistant/entity-lists-and-rows.html).
+
+This page covers:
+
+- List, Navigation List & Sortable List
+  - `<ul>`
+  - `<ol>`
+  - `<li>`
+  - `<menu>`
+  - `ha-list`
+  - `ha-list-item`
+  - `ha-navigation-list`, which this Home Assistant version does not use; see below for what it draws instead
+  - `ha-md-list`, which this Home Assistant version does not use
+    - `ha-md-list-item`, which this Home Assistant version does not use
+  - `ha-sortable`
+  - `ha-items-display-editor`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A list has a container and one item for each entry. In a navigation list, the container sits inside a navigation landmark and each item is a link.
+
+1. The container: a bullet list, a numbered list or Home Assistant’s own list.
+2. The items. Each item is one entry and can hold text, a link or both.
+3. For a navigation list, a landmark with a name, such as “Rooms”, around the container.
+4. For a list people can reorder, a control on each row, such as Move up and Move down.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ul"><code>&lt;ul&gt;</code></h3>
+
+An unordered list: use it when the order does not matter, such as the rooms with a heater. Browsers draw bullets and keep the list meaning for people who use a screen reader.
+
+In a Markdown card, `ul` keeps working but loses every attribute, so you cannot add a class, a name or a role. Do not strip the bullets from a list of links without testing it: some browser and screen reader pairs stop announcing it as a list.
+
+<h3 id="child-ol"><code>&lt;ol&gt;</code></h3>
+
+An ordered list: use it when the order matters, such as steps to reset a sensor. Browsers number the items.
+
+On a web page, `start`, `reversed` and `type` change the numbering. A Markdown card removes them, so a numbered list that starts at 3 draws from 1. Write the step number in the text if the numbering must start elsewhere.
+
+<h3 id="child-li"><code>&lt;li&gt;</code></h3>
+
+One entry in a list. It can only sit inside a `ul`, `ol` or `menu`. Keep each entry to one idea and start with the word people look for.
+
+A Markdown task list (`- [ ] item`) draws a disabled checkbox in the item. The checkbox cannot be changed from the card.
+
+<h3 id="child-menu"><code>&lt;menu&gt;</code></h3>
+
+A list of commands, meant for a toolbar. Browsers draw it as a plain list and add no menu behaviour or keyboard keys. Do not use it for site or dashboard navigation: use a list of links inside a navigation landmark.
+
+A Markdown card does not keep `menu`. It shows the tags as visible text.
+
+<h3 id="child-ha-list"><code>ha-list</code></h3>
+
+Home Assistant’s older list, used on many settings screens. Home Assistant builds it on a list library that is not part of this documentation, so check the library’s own documentation for its options before relying on them.
+
+A dashboard author cannot add `ha-list` to a view. For a list on a dashboard, write a real list in a [Markdown card](markdown-card.html).
+
+<h3 id="child-ha-list-item"><code>ha-list-item</code></h3>
+
+A row in `ha-list`. Home Assistant sets its side padding to 20 pixels unless a theme sets `--mdc-list-side-padding`, and its height to 48 pixels when it has an icon or avatar and a single line. A disabled row uses `--disabled-text-color`.
+
+The Civica theme sets none of the `--mdc-list-*` variables, so rows keep Home Assistant’s sizes. The Civica theme does set `disabled-text-color`.
+
+<h3 id="child-ha-navigation-list"><code>ha-navigation-list</code></h3>
+
+This Home Assistant version has no element called `ha-navigation-list`. Its navigation list is `ha-list-nav`. It puts a list inside a `nav` landmark and takes a name, which becomes the landmark’s label. Its rows are `ha-list-item-button` rows, which draw a link when they have an address. The sidebar uses it, and so does the settings page `ha-config-navigation-list`.
+
+A dashboard author cannot add `ha-list-nav` to a view. For navigation on a dashboard, use the navigation described in [Navigation](navigation.html). The sidebar is described in [Drawer / Navigation Sidebar](drawer-navigation-sidebar.html).
+
+Keyboard behaviour and focus colours come from Home Assistant’s list family, described under `ha-md-list` below. Rows show a background and a focus ring. The Civica theme sets `ha-color-focus` for the ring and `ha-color-fill-neutral-quiet-hover` for the focused row background.
+
+<h3 id="child-ha-md-list"><code>ha-md-list</code></h3>
+
+This Home Assistant version has no Material 3 list element of that name. Its newer list is the `ha-list-base` family, which `ha-list-nav` and the editors use. `ha-list-base` has a `list` role by default and follows these keys: Up and Down arrows, Home, End, Page Up and Page Down move between rows, and Enter or Space activates a row. A row that is a link or button is one tab stop.
+
+Spacing comes from `--ha-list-gap` and `--ha-list-padding` (both 0 by default) and from row variables such as `--ha-row-item-padding-block` and `--ha-row-item-min-height` (48 pixels). The Civica theme sets none of them. A dashboard author cannot add these lists to a view.
+
+<h3 id="child-ha-md-list--ha-md-list-item"><code>ha-md-list-item</code></h3>
+
+This Home Assistant version has no element called `ha-md-list-item`. Its newer rows are `ha-list-item-base` and `ha-list-item-button`. A row is a whole-row hit target with a start area, a headline, supporting text and an end area. The Civica theme sets the text colours (`primary-text-color`, `secondary-text-color`), so row text follows the theme. Row padding and the focus ring shape are Home Assistant’s defaults.
+
+<h3 id="child-ha-sortable"><code>ha-sortable</code></h3>
+
+Home Assistant’s drag-to-reorder helper. It wraps the first element inside it and lets people drag that element’s children into a new order. It appears only in editors, for example when you reorder badges or favourite cards.
+
+It works with a pointer only. It has no keyboard reordering of its own, so people who cannot drag have no way to use it unless the screen around it adds one. While someone drags, the place where the item will land has a primary colour outline.
+
+A dashboard author cannot add `ha-sortable` to a view. Wherever you let people change an order, offer a button alternative, as in the example below.
+
+<h3 id="child-ha-items-display-editor"><code>ha-items-display-editor</code></h3>
+
+The editor that lets someone reorder and hide items, for example areas, entities or the sidebar entries. Each row has a drag handle and an eye button labelled “Hide” or “Show” followed by the item name. It is built from `ha-sortable`, `ha-list-base` and `ha-list-item-button`.
+
+Unlike `ha-sortable`, it can also be used from the keyboard. Press Enter or Space on a row to pick it up, then use the Up and Down arrows to move it. Press Escape to cancel. Alt with an arrow key moves it directly. Hidden rows drop to the end and cannot be moved. Where the editor shows a button to open the item, only Space picks the row up.
+
+A dashboard author cannot add this editor to a view, and the Civica theme sets no variable for it beyond the text, divider and accent colours.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Real list markup gives people a count and a way to jump between items. Keep it for every list.
+- A Markdown card keeps `ul`, `ol` and `li` but removes their attributes, and it removes `menu` altogether.
+- Home Assistant’s own lists cannot be placed in a dashboard view. A list on a dashboard comes from a Markdown card or from a card that draws its own rows.
+- Dragging needs a pointer and fine movement. `ha-sortable` alone gives no other way to change an order.
+- The Civica theme sets the text, divider and focus colours that lists use. It does not set list spacing, row padding or row height, so they stay as Home Assistant draws them. Check row contrast and target size in your own dashboard.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a list whenever you have two or more related items. Keep a list short, put the most important item first and order it by what people want to do. Use a numbered list only when the order matters. Use a list of links in a named navigation landmark for navigation, and mark the current page. Never use `menu` for navigation.
+
+If order can change, say what a change does, for example “Rooms appear on the overview in this order.” Offer Move up and Move down buttons beside any drag handle, and say when an item is hidden.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: keep real list markup.
+- 1.3.2 Meaningful Sequence: the order in the markup is the order people read.
+- 2.4.1 Bypass Blocks and 2.4.4 Link Purpose (In Context): a navigation list has a name, and each link says where it goes.
+- 2.4.7 Focus Visible: the focused row must stand out.
+- 2.5.7 Dragging Movements: offer a way to reorder that does not need dragging.
+- 2.5.8 Target Size (Minimum): measure the rows and buttons in your own setup.
+- 3.2.3 Consistent Navigation and 3.2.4 Consistent Identification: keep navigation lists in the same order and wording.
+- 4.1.2 Name, Role, Value: name the navigation landmark and mark the current page.
+
+<h2 id="examples">Examples</h2>
+
+### A room order list with buttons instead of dragging
+
+A simulated list of rooms where each row has Move up, Move down and Hide buttons. The buttons do nothing here. Home Assistant’s own editor draws a drag handle instead and adds keyboard keys.
+
+<%= example('spec-list-room-order') %>
+
+For a working navigation list, see the room destinations example on [Navigation](navigation.html).

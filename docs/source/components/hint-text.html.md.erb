@@ -1,68 +1,134 @@
 ---
-title: "Hint text"
-description: "Place a short piece of help where it supports the answer."
+title: "Help / Hint Text"
+description: "Put one short fact under a label or legend when most people need it before they answer, and know what Home Assistant draws for helper text."
 section: "components"
-group: "Form elements"
-source_url: "https://service-manual.nhs.uk/design-system/components/hint-text"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-17"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added NHS-informed hint text guidance and 2 Home Assistant reference examples."
-  - date: "2026-11-17"
-    description: "Rewritten to lead with the rule, use Home Assistant wording and move source credit to the components index."
-ai_instructions: "Apply to the help line under a label or legend. Give one fact the person needs before they answer, keep it short and connect it with aria-describedby. Do not put links, long explanations or safety instructions in a hint. Rules WG-053, WG-056."
+  - date: "2026-11-26"
+    description: "Rewritten as the full Help / Hint Text specification. It now covers the Home Assistant helper line, the Civica pattern, what the theme sets and two new examples."
+ai_instructions: "Apply to the help line under a label or legend. Give one fact the person needs before they answer and keep it short. Where you control the markup, give the hint an id and connect it to the field with aria-describedby, keeping any error id in the same attribute. In Home Assistant forms the helper line is not connected to its field, so put anything essential in the label or a paragraph above the field. Do not put links, long explanations or safety instructions in a hint. Never quote a contrast ratio that was not calculated from the theme colours."
 ai_related:
   - path: "/content/writing-guidelines/summaries.html"
     title: "Write clear summaries"
     relationship: "Owns the wording rules for hints and helper text."
-  - path: "/components/controls.html"
-    title: "Buttons and forms"
-    relationship: "Choose the control the hint belongs to."
+  - path: "/components/form-and-schema-form.html"
+    title: "Form & Schema Form"
+    relationship: "Owns the Home Assistant forms that draw helper lines."
+  - path: "/components/fieldset.html"
+    title: "Fieldset & Legend"
+    relationship: "Owns the legend that a hint can sit under."
   - path: "/accessibility/testing.html"
     title: "Test the interface"
     relationship: "Test the label, hint and error announced together."
+component:
+  parent: "Help / Hint Text"
+  letter: "H"
+  origins:
+    - "Home Assistant"
+    - "Civica"
+  children:
+    - name: "ha-input-helper-text"
+      origin: "Home Assistant"
+      anchor: "child-ha-input-helper-text"
+    - name: "Civica Hint Text Pattern"
+      origin: "Civica"
+      anchor: "child-civica-hint-text-pattern"
+  tags:
+    - "ha-input-helper-text"
+    - "hint"
+    - "helper text"
 ---
 
-# Hint text
+# Help / Hint Text
+
+<h2 id="purpose">Purpose</h2>
 
 Put one short fact under a label or legend when most people need it before they answer. Say what the value is for, what format it takes or what it will change.
 
-## When to use it
+This page owns the helper line that Home Assistant draws in its forms and the Civica pattern for a hint under a label. For the forms themselves, see [Form & Schema Form](form-and-schema-form.html). For the wording, see [Write clear summaries](../content/writing-guidelines/summaries.html).
 
-Use a hint for a unit, a format or a consequence. For example, “How long the light stays on after movement” under a duration field. An option can have its own hint when its label is not enough.
+This page covers:
+
+- `ha-input-helper-text`
+- Civica Hint Text Pattern
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom, a field with a hint has:
+
+1. The label or legend.
+2. The hint, one short line of text.
+3. The field or the group of options.
+4. An error message, when validation fails.
+
+In Home Assistant forms the helper line sits under the field, and an error message sits above it. In the Civica pattern the hint sits above the field and the error message comes after the hint.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-input-helper-text"><code>ha-input-helper-text</code></h3>
+
+The element Home Assistant uses for the small line of help under a field. It holds plain text from the field that uses it. Dropdowns, time fields, labelled sliders, the media picker, the entity type picker, several of the selectors in a form and the generic picker all draw their helper line with it.
+
+A dashboard author does not write this element. Integration and card developers supply the text, as the `helper` of a form field.
+
+It adds no link to its field. It has no role and no id, and the generic picker, which draws its helper line with it, does not connect its field to the line with `aria-describedby`. Do not rely on a screen reader reading the helper line with the field. Put anything people must know in the label, or in a paragraph above the field, and treat the helper line as extra help only.
+
+**What the Civica theme sets.** The helper line takes the label ink colour, which is `#0B0C0C` in light mode and `#FFFFFF` in dark mode. Its text size is Home Assistant’s small text size, 14 pixels scaled in the Civica theme. In the generic picker the helper text uses the secondary text colour, `#484949` in light mode and `#CBD0D3` in dark mode, and the error text uses the theme’s error colour, `#CA3535` in light mode and `#F0C6C6` in dark mode.
+
+**What stays as Home Assistant draws it.** The element has no variable for its own size, so the small text size changes every small text in Home Assistant, not only this line. The padding of 16 pixels at the start of the line stays as it is.
+
+<h3 id="child-civica-hint-text-pattern">Civica Hint Text Pattern</h3>
+
+The pattern for a hint under a label, used in Civica’s own theme settings and in the examples below. It has these parts:
+
+- One short paragraph directly after the label, and before the field.
+- An `id` on the paragraph.
+- `aria-describedby` on the field, naming the hint id. When an error shows, add the error id after it in the same attribute.
+- On a group of options, put `aria-describedby` on the fieldset.
+- The text is 16 pixels scaled, in the secondary text colour: `#484949` in light mode and `#CBD0D3` in dark mode.
+- No link inside the hint.
+
+This connection is what lets a screen reader read the label, the hint and any error together. A short hint keeps that reading short.
+
+**What needs more than the theme.** Home Assistant’s own forms draw their helper line with `ha-input-helper-text`, which the card-mod integration cannot connect to a field. Use the pattern where you control the markup, and use the label for anything essential in Home Assistant forms.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A hint puts the answer to “what do I type?” where people are looking.
+- In the Civica pattern the hint is connected to the field, so it is not only visual.
+- The Home Assistant helper line is not connected to its field, and its size is fixed to the small text size.
+- A hint cannot carry a link, a manual or a safety instruction.
+- A long hint is read out every time the field is reached.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+**When to use a hint.** Use a hint for a unit, a format or a consequence. For example, “How long the light stays on after movement” under a duration field. An option can have its own hint when its label is not enough.
 
 Write about what the person wants to do, not about the system. Use “Bedside lamp” rather than `light.bedside_lamp`. Name the entity ID only when the task is advanced configuration. If a value changes only what is displayed, say so. If it changes an automation, say that instead.
 
-## When not to use it
+**When not to use a hint.** Do not put a manual, a link, a details control or a safety instruction in a hint. Move long help into the page, outside the described-by text. A placeholder is not a hint, because it disappears when the person starts typing.
 
-Do not put a manual, a link, a details control or a safety instruction in a hint. Move long help into the page, outside the described-by text. A placeholder is not a hint because it disappears when the person starts typing.
+Success criteria that apply:
 
-## How it behaves
+- 1.3.1 Info and Relationships and 4.1.2 Name, Role, Value: the hint is connected to its field by `aria-describedby`.
+- 3.3.2 Labels or Instructions: the hint gives the format or unit before the person answers.
+- 3.3.1 Error Identification and 3.3.3 Error Suggestion: keep the error id in the same attribute as the hint id.
+- 1.4.3 Contrast (Minimum): check the hint colour on your own dashboard.
+- 1.4.4 Resize Text, 1.4.10 Reflow and 1.4.12 Text Spacing: the hint must stay visible at larger text sizes and at 320 CSS pixels.
 
-Place the hint after the label or legend and before the field. Link it to the field with `aria-describedby`. Keep any error ID in the same attribute when validation fails, so a screen reader reads the label, hint and error together. A short hint keeps that output short.
+Do not rely on colour or position alone. Test the label, hint and error announced together, in light and dark modes and with at least two theme colours. Use [Test the interface](../accessibility/testing.html).
 
-## Examples
+<h2 id="examples">Examples</h2>
 
-### Explain a recognisable display name
+### A text field with a hint
 
-The hint helps people choose a label without exposing implementation details.
+<%= example('spec-hint-display-name') %>
 
-<%= example('nhs-hint-name') %>
+### A group of options with a hint
 
-### Clarify what a setting affects
-
-The saved display preference is distinct from the recorded measurement.
-
-<%= example('nhs-hint-scope') %>
-
-## Check the implementation
-
-Test the label, hint and error announced together. Check that the hint stays visible at increased text size and does not rely on colour or position. Use the [Civica accessibility checks](../accessibility/testing.html), then compare light and dark modes, at least two theme colours, and 320 CSS pixels.
-
-For the wording, see [Write clear summaries](../content/writing-guidelines/summaries.html). To choose the control, see [buttons and forms](controls.html).
+<%= example('spec-hint-temperature-unit') %>

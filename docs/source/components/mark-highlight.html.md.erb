@@ -1,0 +1,98 @@
+---
+title: "Mark / Highlight"
+description: "Highlight one part of a sentence that matters in this context, and always say why in words."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Mark / Highlight specification: the mark element, how a Markdown card draws it and when to use words instead."
+ai_instructions: "Apply when one short part of a sentence needs attention, such as the part that changed or a search term. Use the mark element for relevance, not for emphasis (use strong or em) and not for decoration. Never let the highlight be the only signal: say in words what it means. Highlight one thing in a block, never a whole paragraph. A Markdown card keeps mark but removes class, style, id and aria attributes, so the colour cannot be changed there and stays the browser’s default, in dark mode too. Do not claim screen readers announce a highlight. Do not quote a contrast ratio for a custom colour unless it has been measured."
+ai_related:
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns what a Markdown card keeps and removes."
+  - path: "/components/article.html"
+    title: "Article"
+    relationship: "Owns self-contained help notes."
+  - path: "/components/code-and-preformatted-text.html"
+    title: "Code & Preformatted Text"
+    relationship: "Owns text that is code, not highlight."
+  - path: "/content/writing-guidelines/clear-language.html"
+    title: "Use clear language"
+    relationship: "Owns how to say why something is highlighted."
+component:
+  parent: "Mark / Highlight"
+  letter: "M"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<mark>"
+      origin: "HTML5"
+      anchor: "child-mark"
+  tags:
+    - "mark"
+---
+
+# Mark / Highlight
+
+<h2 id="purpose">Purpose</h2>
+
+The `mark` element highlights a short piece of text that matters in the context a person is reading, such as the part that changed or the search word in a result. It is not for emphasis, and not for decoration.
+
+This page owns the `mark` element. Home Assistant has no highlight component of its own. A dashboard author can use `mark` in a [Markdown card](markdown-card.html).
+
+This page covers:
+
+- Mark / Highlight
+  - `<mark>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A highlight is one short run of text inside a sentence, with a sentence nearby that says why it is highlighted.
+
+1. The marked text, usually a number, a time or a word.
+2. The words that explain it, such as “The highlighted time is the part that changed.”
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-mark"><code>&lt;mark&gt;</code></h3>
+
+The element has no attributes of its own. Browsers draw it with a yellow background and black text, and it is not interactive and not a link.
+
+**In a Markdown card.** `mark` is kept, but every attribute is removed, so you cannot add a class, a colour, an id or an `aria` attribute. Home Assistant adds no style for it, so the browser’s default applies in light and dark mode alike. If you need a different highlight, write the meaning in words and use bold text.
+
+**What the Civica theme sets.** Nothing. The theme has no variable for a highlight, so it stays as the browser draws it.
+
+**Support.** Browsers treat `mark` as a plain run of text. Screen readers may not announce it, and some announce it as “highlight” or “mark” depending on settings. Do not rely on the highlight being announced.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It marks the part that matters without adding a new box or change of layout.
+- For many readers the highlight is only a change of colour, so it cannot carry the meaning on its own.
+- Its colour cannot be changed in a Markdown card, and the yellow stays in dark mode.
+- A custom highlight colour needs its contrast checked against the text and the card. Do not assume it passes.
+- A highlight grows with the text, so it still works when people enlarge text.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Highlight one thing in a block, and never a whole paragraph. Say why in words next to it, for example “the part that changed”. Do not use it for emphasis (use bold), for code (use code formatting) or to show a status. Never highlight text only to show it is new or wrong.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: the meaning is in the text, not in the highlight.
+- 1.4.1 Use of Colour: do not use the highlight as the only signal.
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: measure any colour pair you set yourself.
+- 1.4.12 Text Spacing: the highlighted box must grow with the text.
+
+<h2 id="examples">Examples</h2>
+
+### A help card that highlights the part that changed
+
+A simulated help card with one highlighted time and a sentence that says what the highlight means. In a Markdown card the highlight keeps the browser’s yellow and black.
+
+<%= example('spec-mark-schedule-change') %>

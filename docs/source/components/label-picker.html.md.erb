@@ -1,0 +1,145 @@
+---
+title: "Label Picker"
+description: "Choose one label, or a list of labels, in a Home Assistant form."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Label Picker specification: the single and multiple pickers, what Civica changes and what stays as Home Assistant draws it."
+ai_instructions: "Apply when a Home Assistant form asks which labels apply to a device, entity, area or automation. Home Assistant draws ha-label-picker for one label and ha-labels-picker for a list, in forms and dialogs, never as a dashboard card. Ask the question in terms of the task, and say what a label is. Colour is decoration: the label name is always text. The field shows focus only as a bottom line growing from 1 pixel to 2 pixels, so do not claim a focus ring. The label selector never offers Add new label. Do not claim an announcement for empty results, chip keyboard use, or label contrast. This page owns the two pickers; the Chip page owns the chip, and the Label page owns the form field name."
+ai_related:
+  - path: "/home-assistant/target-pickers.html"
+    title: "Entity, device and area pickers"
+    relationship: "Owns what choosing a label means and the empty, saved and failed states."
+  - path: "/home-assistant/schema-selectors.html"
+    title: "Schema selectors and configuration forms"
+    relationship: "Owns how selectors appear in forms."
+  - path: "/components/chip.html"
+    title: "Chip"
+    relationship: "Owns the chip that shows each chosen label."
+  - path: "/components/area-picker.html"
+    title: "Area Picker"
+    relationship: "A sibling picker with the same field and list."
+  - path: "/components/label.html"
+    title: "Label"
+    relationship: "Owns the name of a form field, which is a different thing."
+component:
+  parent: "Label Picker"
+  letter: "L"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-label-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-label-picker"
+    - name: "ha-labels-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-labels-picker"
+  tags:
+    - "ha-label-picker"
+    - "ha-labels-picker"
+    - "labels"
+---
+
+# Label Picker
+
+<h2 id="purpose">Purpose</h2>
+
+A label picker lets someone choose Home Assistant labels, such as “Heating” or “Guest room”. Labels group devices, entities, areas and automations in ways that rooms and floors do not. You see the picker in settings forms and dialogs, never as a dashboard card.
+
+This page is about the Home Assistant labels. It is not about a form field’s name: for that, see [Label](label.html). For what choosing a label means and the empty, saved and failed states, see [Entity, device and area pickers](../home-assistant/target-pickers.html). For selectors in forms, see [Schema selectors and configuration forms](../home-assistant/schema-selectors.html).
+
+This page covers:
+
+- Label Picker
+  - `ha-label-picker`
+  - `ha-labels-picker`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+- A question or field name.
+- A helper line, if the form gives one.
+- A field. It is a button that opens a list.
+- The list, with a search box and one row for each label. Each row has an icon, the name and a small colour swatch. On a wide screen it is a popover. On a narrow screen it is a sheet from the bottom.
+- For the list picker only, a row of chosen labels under the field, with an Add label button.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-label-picker"><code>ha-label-picker</code></h3>
+
+Chooses one label. A form field author sets these options:
+
+| Option | Meaning |
+| --- | --- |
+| `label` | The field name. Default “Label” |
+| `value` | The chosen label |
+| `helper` | The helper line |
+| `placeholder` | Text shown when empty |
+| `no-add` | Hide the “Add new label” row |
+| `include-domains`, `exclude-domains`, `include-device-classes` | Limit the list to labels usable under those filters |
+| `exclude-label` | Labels to leave out |
+| `disabled`, `required` | As usual |
+
+Unless `no-add` is set, the list ends with an “Add new label…” row. Typing a name that does not exist offers to create it, which opens the label dialog. If creating fails, Home Assistant shows “Failed to create label.” An empty list says “No labels available”, and a search with no result says “No labels found for” the search.
+
+In YAML forms, the label selector (`selector: label:`) draws this picker, or the list picker with `multiple: true`. The selector always sets `no-add`, so it never offers to create a label. The Selector page owns the selector.
+
+**What the Civica theme sets.** The field background is `ha-color-form-background`: white in light mode and #24282B in dark mode. The bottom line is `ha-color-border-neutral-loud`: #0B0C0C in light mode and white in dark mode. An invalid field takes `mdc-theme-error`. The colour swatch border takes `outline-color`.
+
+**What stays as Home Assistant draws it.**
+
+- The field has no outline when it has focus. The only cue is the bottom line growing from 1 pixel to 2 pixels in `mdc-theme-primary`. Do not describe it as a focus ring.
+- The colour swatch has no text. Colour is decoration: the label name is always written in the row.
+- The list width is `--ha-generic-picker-width`, and Civica does not set it.
+- The clear button is 32 pixels square, below Civica’s 44 pixel target, and the theme cannot change it.
+- A card-mod style cannot reach the picker, because it sits in a form or dialog, not in a card.
+
+<h3 id="child-ha-labels-picker"><code>ha-labels-picker</code></h3>
+
+Chooses any number of labels. It has the same options as `ha-label-picker`, except that `value` is a list. It adds:
+
+- An optional name above the field, drawn as a plain label that is not tied to the field.
+- A row of chosen labels, sorted by name in the person’s language. Each is a chip (see [Chip](chip.html)). A label’s description, if it has one, shows as a tooltip.
+- A removal control on each chip.
+- Selecting a chip’s text opens the label dialog, so it edits the label’s name and colour for everything that uses it. Say so in the helper line.
+- An Add label button, which opens the same list. A label that is already chosen is not offered again.
+
+Chip colours come from each label’s own colour, and Home Assistant picks black or white text for it. Civica cannot promise that text is readable on a colour a household has chosen, so keep label names short and check your own colours. A label with no colour takes the theme’s `grey-color`, #484949 in light mode. The row sits on `mdc-text-field-fill-color` with a bottom line of `ha-color-border-neutral-normal` (#6F777B in light mode, 4.6 to 1 on white as calculated from the theme colours).
+
+Home Assistant uses the pickers in the settings for entities, devices, areas, automations and scenes, and on the labels page.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The same picker is used everywhere in Home Assistant forms, so people learn it once.
+- The list is searchable and can create a label on the spot, unless a selector blocks it.
+- The theme cannot add a text name to the colour swatch, change the width of the list or give the field a focus ring.
+- The words on the Add label button and in the list come from Home Assistant’s translations, and a dashboard author cannot rename them.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Ask the question in terms of the task: “Which labels apply to this device?” Say what a label is: “Labels group things you choose, such as Heating or Guest room.” Keep names short. Never let colour be the only difference between two labels. When a label’s name can be edited from a chip, say that the change applies everywhere.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 3.3.2 Labels or Instructions: a visible question and helper line.
+- 1.4.1 Use of Colour and 1.4.11 Non-text Contrast: the swatch and chip colour never carry meaning alone.
+- 1.4.3 Contrast (Minimum): chip text on a chosen colour needs checking on your own labels.
+- 2.1.1 Keyboard and 2.4.3 Focus Order: check that the list can be opened, searched, closed with Escape, and that focus returns to the field.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): the field shows focus by a line only. Check it on your own dashboard.
+- 2.5.8 Target Size (Minimum): the clear button and the small Add label button are small. Check them on a touch screen.
+- 4.1.2 Name, Role, Value: the field is a button, and the list opens as a dialog.
+
+A plain question and a few short names keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### Which labels apply to a device
+
+<%= example('spec-label-picker-device') %>

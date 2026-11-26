@@ -1,0 +1,249 @@
+---
+title: "Heading"
+description: "Name each part of a page or dashboard with a real heading, choose the right level, and know what the Home Assistant Heading card and its badges draw."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Heading specification: heading levels, the hgroup element, the Heading card and its two badge types, and what the Civica theme sets."
+ai_instructions: "Apply when a page, view or card needs a heading. Choose the level for the structure and never skip a level. Home Assistant gives a card title a level-one heading with no way to change it, so put a Heading card above a card instead of using a card title. The Heading card is a level-two heading, or level three in the subtitle style, and cuts long text off with an ellipsis, so keep headings short. An icon-only button badge needs a label. Do not rely on hold or double tap for a badge. Say that wrapping a long heading needs the card-mod integration. Never quote a measured contrast or target size for a badge."
+ai_related:
+  - path: "/components/card-and-section-header.html"
+    title: "Card & Section Header"
+    relationship: "Owns advice on starting each dashboard section with a heading."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface and the level-one heading a card header draws."
+  - path: "/components/button-card.html"
+    title: "Button Card"
+    relationship: "Use a Button Card when an action matters more than a small badge."
+  - path: "/content/writing-guidelines/clear-titles.html"
+    title: "Write clear titles"
+    relationship: "Owns the wording of headings."
+component:
+  parent: "Heading"
+  letter: "H"
+  origins:
+    - "HTML5"
+    - "Lovelace"
+  children:
+    - name: "<h1> to <h6>"
+      origin: "HTML5"
+      anchor: "child-h1-to-h6"
+      grandchildren:
+        - name: "<h1>"
+          origin: "HTML5"
+          anchor: "child-h1-to-h6--h1"
+        - name: "<h2>"
+          origin: "HTML5"
+          anchor: "child-h1-to-h6--h2"
+        - name: "<h3>"
+          origin: "HTML5"
+          anchor: "child-h1-to-h6--h3"
+        - name: "<h4>"
+          origin: "HTML5"
+          anchor: "child-h1-to-h6--h4"
+        - name: "<h5>"
+          origin: "HTML5"
+          anchor: "child-h1-to-h6--h5"
+        - name: "<h6>"
+          origin: "HTML5"
+          anchor: "child-h1-to-h6--h6"
+    - name: "<hgroup>"
+      origin: "HTML5"
+      anchor: "child-hgroup"
+    - name: "hui-heading-card"
+      origin: "Lovelace"
+      anchor: "child-hui-heading-card"
+      grandchildren:
+        - name: "hui-entity-heading-badge"
+          origin: "Lovelace"
+          anchor: "child-hui-heading-card--hui-entity-heading-badge"
+        - name: "hui-button-heading-badge"
+          origin: "Lovelace"
+          anchor: "child-hui-heading-card--hui-button-heading-badge"
+  tags:
+    - "h1"
+    - "h2"
+    - "h3"
+    - "h4"
+    - "h5"
+    - "h6"
+    - "hgroup"
+    - "hui-heading-card"
+    - "hui-entity-heading-badge"
+    - "hui-button-heading-badge"
+---
+
+# Heading
+
+<h2 id="purpose">Purpose</h2>
+
+A heading names the content that follows it. People who use a screen reader can list the headings on a page and jump to one, and everyone else scans them to find their place. This page owns the six heading levels, the `<hgroup>` element and the Home Assistant Heading card with its badges.
+
+For advice on opening each dashboard section with a heading, see [Card & Section Header](card-and-section-header.html). For the heading Home Assistant draws when a card has a `header` or `title`, see [Card (Base Surface)](cards.html). For the wording, see [Write clear titles](../content/writing-guidelines/clear-titles.html).
+
+This page covers:
+
+- `<h1>` to `<h6>`, one section for each level
+- `<hgroup>`
+- `hui-heading-card`, with its entity badge and button badge
+
+<h2 id="anatomy">Anatomy</h2>
+
+Headings reach a dashboard in three ways:
+
+| Where | What Home Assistant draws | Level | Can you change the level? |
+| --- | --- | --- | --- |
+| The `title` or `header` of a card | The card title | 1 | No |
+| A Heading card | The heading text, with an optional icon and badges | 2, or 3 in the subtitle style | Only by choosing the style |
+| A Markdown card | Headings written with `#` marks | 1 to 6, as many `#` marks as you write | Yes |
+
+A Heading card has no border, background or shadow. From left to right it holds an optional icon, the heading text, a chevron when you give the card a tap action, and an optional row of badges that scrolls sideways when it is too wide.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-h1-to-h6"><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code></h3>
+
+The number is the rank of the heading, not its size. A level-two heading sits under a level-one heading, a level-three heading under a level-two heading, and so on. Choose the level for the structure and the size for the look. A page that jumps from level two to level four tells people that a section is missing.
+
+Do not use a heading to make text bold, to caption a picture or to label a section with nothing under it. Use a heading only where a section follows.
+
+Home Assistant gives a card title or header a level-one heading, so a dashboard with several titled cards has several level-one headings and no way to change them. Leave the card title empty and put a Heading card above the card instead.
+
+<h3 id="child-h1-to-h6--h1"><code>&lt;h1&gt;</code></h3>
+
+The name of the whole page. Write one per page. In Home Assistant a card `title` or `header` draws one, which is why you should prefer a Heading card.
+
+<h3 id="child-h1-to-h6--h2"><code>&lt;h2&gt;</code></h3>
+
+A main section of the page. The Heading card in its default title style draws a level-two heading, so it suits the start of each dashboard section.
+
+<h3 id="child-h1-to-h6--h3"><code>&lt;h3&gt;</code></h3>
+
+A part of a section. The Heading card in the subtitle style draws a level-three heading, so use it for a group inside a section that a title-style Heading card opened.
+
+<h3 id="child-h1-to-h6--h4"><code>&lt;h4&gt;</code></h3>
+
+A part of a level-three section. The Heading card does not draw one. Write it in a Markdown card with four `#` marks, and only when the heading above it is a level three.
+
+<h3 id="child-h1-to-h6--h5"><code>&lt;h5&gt;</code></h3>
+
+A part of a level-four section. Most dashboards never need it. If you reach this level, consider whether the dashboard should be split into more than one view.
+
+<h3 id="child-h1-to-h6--h6"><code>&lt;h6&gt;</code></h3>
+
+The lowest level. The same advice applies as for level five. If a dashboard needs it, the content is probably too deep for one view.
+
+<h3 id="child-hgroup"><code>&lt;hgroup&gt;</code></h3>
+
+An `<hgroup>` wraps one heading with a strapline, such as a short line above or below it. The strapline is a paragraph, so it reads as ordinary text. The group does not change the level of the heading inside it.
+
+Use it only when a heading has a strapline. Do not use it to wrap two headings, and do not use it around a heading that stands alone. A dashboard gets the same effect from a subtitle-style Heading card, which draws a level-three heading, not a paragraph.
+
+<h3 id="child-hui-heading-card"><code>hui-heading-card</code></h3>
+
+A Lovelace card, set with `type: heading`.
+
+```yaml
+type: heading
+heading: Kitchen
+heading_style: title
+icon: mdi:fridge
+badges:
+  - type: entity
+    entity: sensor.kitchen_temperature
+  - type: button
+    icon: mdi:plus
+    label: Add a light
+    tap_action:
+      action: navigate
+      navigation_path: /dashboard-lights
+```
+
+| Key | Meaning |
+| --- | --- |
+| `heading` | The text. Nothing is drawn if it is empty |
+| `heading_style` | `title` (the default, level two) or `subtitle` (level three) |
+| `icon` | An optional icon, such as `mdi:fridge` |
+| `tap_action` | What a tap does. The default is nothing. With an action, the card gets a chevron and acts as a button |
+| `badges` | A list of entity or button badges. The older `entities` key still works and is moved into badges |
+
+The card has no key for the heading level. It takes the full width of its section, with a minimum of 3 columns. Heading text stays on one line and is cut off with an ellipsis when it does not fit. The card supports a tap only. Hold and double tap work on badges, not on the card.
+
+**What the Civica theme sets.** The title uses a 22 pixel size, scaled with Home Assistant’s font size setting, weight 700 and line height 1.45. This applies in light and dark modes.
+
+**What stays as Home Assistant draws it.** The title colour is the primary text colour. The subtitle uses the secondary text colour, 16 pixels scaled, line height 1.25 and the medium weight, which the Civica theme sets to 400, so a subtitle looks like ordinary text. The minimum width of the title is 150 pixels.
+
+**What needs card-mod.** Showing the whole of a long heading instead of cutting it off needs the card-mod integration. A shorter heading is the better fix. Another option is a short Heading card with a full sentence in a Markdown card below it.
+
+<h3 id="child-hui-heading-card--hui-entity-heading-badge"><code>hui-entity-heading-badge</code></h3>
+
+A small badge in a Heading card that shows an entity. It is the default badge, so `type: entity` can be left out.
+
+| Key | Meaning |
+| --- | --- |
+| `entity` | The entity to show. Required |
+| `name` | A replacement name. It is used as the badge’s title |
+| `state_content` | What to show as the state, as one item or a list |
+| `icon` | A replacement icon |
+| `show_state` | Shows the state in words. The default is true |
+| `show_icon` | Shows the icon. The default is true |
+| `color` | `none`, `state` or a colour. The colour only appears while the entity is active |
+| `tap_action`, `hold_action`, `double_tap_action` | What each gesture does. The default for each is nothing |
+| `visibility` | Conditions for showing the badge |
+
+Keep `show_state` on, so the state is written as text and the colour never carries the meaning alone. Give a badge a tap action only when people need it, and never rely on hold or double tap, because nothing tells people those gestures exist. A badge with an action is a button. If the entity cannot be found, the badge shows an alert icon and a dash.
+
+The badge text uses the secondary text colour at 14 pixels scaled, with an icon 16 pixels square. The Civica theme sets none of the badge keys.
+
+<h3 id="child-hui-heading-card--hui-button-heading-badge"><code>hui-button-heading-badge</code></h3>
+
+A small button in a Heading card, set with `type: button`.
+
+| Key | Meaning |
+| --- | --- |
+| `text` | The visible words |
+| `label` | The name read out for the button. It falls back to `text` |
+| `icon` | An optional icon |
+| `color` | An accent colour |
+| `tap_action`, `hold_action`, `double_tap_action` | What each gesture does. The default for each is nothing |
+| `visibility` | Conditions for showing the badge |
+
+A button with only an icon has no name unless you set `label`, so always set one. The button is 26 pixels tall and at least 26 pixels wide. The theme’s 44 pixel button height does not apply to it, so keep important actions for a Button Card, which people can hit more easily: see [Button Card](button-card.html).
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The Heading card is a real heading, so people who navigate by headings can find each section.
+- The card is native and needs no extra module.
+- You cannot set the heading level. Choose the style that gives the level you need.
+- A long heading is cut off, and larger text sizes make that more likely.
+- A card with a tap action wraps its heading in a button. Name it so that the words say where it goes.
+- The badge row scrolls sideways, so check on your own dashboard that every badge can be reached.
+- Badges are small. They suit a reading or a secondary shortcut, not a main action.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Give every section a heading that says what it holds, in the words people use at home. Use one idea for each heading. Never skip a level, and never choose a level for its size. Keep the title short enough to show in full. Say what a tap does in the heading words, or leave out the tap action. Show a badge’s state as words as well as colour.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: use real headings in the right order.
+- 2.4.6 Headings and Labels: each heading describes its topic.
+- 2.4.10 Section Headings: headings divide longer pages into sections.
+- 1.4.4 Resize Text, 1.4.10 Reflow and 1.4.12 Text Spacing: a Heading card cuts long text off, so test it at large text sizes.
+- 1.4.1 Use of Colour: a badge colour is never the only sign of a state.
+- 2.1.1 Keyboard, 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): an actionable Heading card is a button wrapper. Check its focus cue on your dashboard.
+- 2.5.1 Pointer Gestures and 2.5.2 Pointer Cancellation: hold and double tap on a badge are hidden gestures, so offer another way to do the same thing.
+- 2.5.8 Target Size (Minimum) and 4.1.2 Name, Role, Value: an icon-only badge needs a label.
+
+<h2 id="examples">Examples</h2>
+
+### A section opened by two Heading cards
+
+<%= example('spec-heading-card-kitchen-section') %>

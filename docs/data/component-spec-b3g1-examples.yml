@@ -1,0 +1,119 @@
+# Synthetic data and no live actions.
+examples:
+  spec-heading-card-kitchen-section:
+    title: A section opened by two Heading cards
+    description: "A simulated section in the light theme. A title-style Heading card with an icon and two badges sits above a subtitle-style Heading card, which sits above one card of lights. The two Heading cards have no border or background of their own. Home Assistant draws its own icons and badges, so the look differs. Nothing here is interactive."
+    height: 440
+    html: |
+      <div style="max-width:40rem">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 4px">
+      <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="1" fill="none" stroke="#0B0C0C" stroke-width="2"></rect><line x1="5" y1="10" x2="19" y2="10" stroke="#0B0C0C" stroke-width="2"></line></svg>
+      <h2 style="flex:1 1 8rem;margin:0;font-size:22px;font-weight:700;line-height:1.45;color:#0B0C0C">Kitchen</h2>
+      <span style="display:flex;gap:16px;font-size:14px;color:#484949"><span>Temperature 20.5 °C</span><span>Humidity 48%</span></span>
+      </div>
+      <h3 style="margin:16px 0 8px;font-size:16px;font-weight:400;line-height:1.25;color:#484949">Lights</h3>
+      <article class="civica-card-demo" aria-label="Kitchen lights"><div class="civica-card-demo__body"><p style="margin:0 0 8px"><strong>Ceiling light</strong>: On</p><p style="margin:0"><strong>Under-cupboard lights</strong>: Off</p></div></article>
+      </div>
+  spec-hint-display-name:
+    title: A text field with a hint
+    description: "A simulated form card with one text field. The hint sits between the label and the field and says what a good value looks like. The field is linked to the hint, so the two belong together. Nothing is saved."
+    height: 340
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-hint-name-title"><div class="civica-card-demo__body">
+      <h2 id="spec-hint-name-title" style="margin:0 0 15px;font-size:22px;line-height:1.25">Name this light</h2>
+      <div style="margin:0">
+      <label for="spec-hint-name-field" style="display:block;font-weight:700;margin:0 0 4px">Display name</label>
+      <p id="spec-hint-name-hint" style="font-size:16px;line-height:1.5;color:#484949;margin:0 0 8px">For example, Bedside lamp</p>
+      <input id="spec-hint-name-field" name="spec-hint-name-field" type="text" value="" aria-describedby="spec-hint-name-hint" style="width:100%;max-width:20rem;min-height:44px;padding:8px;border:2px solid #0B0C0C;font:inherit;border-radius:0">
+      </div>
+      </div></article>
+  spec-hint-temperature-unit:
+    title: A group of options with a hint
+    description: "A simulated form card with a group of two options. The hint says the choice changes the display only, and the group is linked to it. Nothing is saved."
+    height: 380
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-hint-unit-title"><div class="civica-card-demo__body">
+      <h2 id="spec-hint-unit-title" style="margin:0 0 15px;font-size:22px;line-height:1.25">Display settings</h2>
+      <fieldset aria-describedby="spec-hint-unit-hint" style="border:0;margin:0;padding:0">
+      <legend style="font-weight:700;font-size:1.25rem;padding:0;margin:0 0 4px">Temperature unit</legend>
+      <p id="spec-hint-unit-hint" style="font-size:16px;line-height:1.5;color:#484949;margin:0 0 8px">Changes the display only; recorded values stay unchanged</p>
+      <p style="margin:0 0 8px;display:flex;align-items:center;gap:12px;min-height:44px"><input id="spec-hint-unit-c" name="spec-hint-unit" type="radio" value="c" checked style="width:24px;height:24px;margin:0"><label for="spec-hint-unit-c">Degrees Celsius</label></p>
+      <p style="margin:0;display:flex;align-items:center;gap:12px;min-height:44px"><input id="spec-hint-unit-f" name="spec-hint-unit" type="radio" value="f" style="width:24px;height:24px;margin:0"><label for="spec-hint-unit-f">Degrees Fahrenheit</label></p>
+      </fieldset>
+      </div></article>
+  spec-history-graph-two-rooms:
+    title: A history graph card for two rooms
+    description: "A simulated history graph card in the light theme. It plots the temperature of two rooms over the last 24 hours as two solid lines in the first two Civica chart colours, with a legend that names each line and a short written summary below. Home Assistant draws its own chart with a tooltip and zoom, so the look differs. Nothing here is interactive."
+    height: 560
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-history-title"><div class="civica-card-demo__body">
+      <h1 id="spec-history-title" style="margin:0 0 12px;font-size:22px;font-weight:700;line-height:1.25">Temperature, last 24 hours</h1>
+      <svg role="img" aria-label="Line chart of room temperature over the last 24 hours. The living room rises from 19.5 degrees to a peak of 21.4 degrees about 8 hours ago and ends at 20.5 degrees. The bedroom stays between 17.2 and 19.4 degrees and ends at 18.5 degrees." viewBox="0 0 320 160" width="100%" style="max-width:34rem;display:block">
+      <g stroke="#CECECE" stroke-width="1"><line x1="40" y1="10" x2="310" y2="10"></line><line x1="40" y1="50" x2="310" y2="50"></line><line x1="40" y1="90" x2="310" y2="90"></line><line x1="40" y1="130" x2="310" y2="130"></line></g>
+      <g fill="#484949" font-size="12" font-family="Roboto, Arial, sans-serif"><text x="34" y="14" text-anchor="end">22</text><text x="34" y="54" text-anchor="end">20</text><text x="34" y="94" text-anchor="end">18</text><text x="34" y="134" text-anchor="end">16</text><text x="40" y="150">24 hours ago</text><text x="175" y="150" text-anchor="middle">12 hours ago</text><text x="310" y="150" text-anchor="end">Now</text></g>
+      <polyline fill="none" stroke="#1D70B8" stroke-width="2.5" points="40,60 85,72 130,58 175,34 220,22 265,30 310,40"></polyline>
+      <polyline fill="none" stroke="#CA357C" stroke-width="2.5" points="40,90 85,106 130,94 175,78 220,62 265,70 310,80"></polyline>
+      </svg>
+      <p style="margin:4px 0 12px;font-size:14px;color:#484949">Temperature in °C</p>
+      <ul style="list-style:none;margin:0 0 12px;padding:0;display:flex;gap:24px;flex-wrap:wrap">
+      <li style="display:flex;align-items:center;gap:8px"><span aria-hidden="true" style="display:inline-block;width:24px;height:4px;background:#1D70B8"></span>Living room</li>
+      <li style="display:flex;align-items:center;gap:8px"><span aria-hidden="true" style="display:inline-block;width:24px;height:4px;background:#CA357C"></span>Bedroom</li>
+      </ul>
+      <p style="margin:0">Living room: highest 21.4 °C about 8 hours ago, lowest 18.9 °C about 20 hours ago, now 20.5 °C.<br>Bedroom: highest 19.4 °C about 8 hours ago, lowest 17.2 °C about 20 hours ago, now 18.5 °C.</p>
+      </div></article>
+  spec-humidifier-card-bedroom:
+    title: A humidifier card for the bedroom
+    description: "A simulated humidifier card in the light theme. The name sits at the top, with a round button for more information at its right. A dial fills to the target of 45 on a scale of 0 to 100, and the target, the current reading and what the humidifier is doing are written below it. Home Assistant draws its own dial, which can be dragged or moved with the keyboard; this picture cannot. Nothing here is interactive."
+    height: 520
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-humid-title" style="max-width:22rem"><div class="civica-card-demo__body" style="position:relative">
+      <button type="button" aria-label="Show more info" style="position:absolute;top:8px;right:8px;width:44px;height:44px;border:1px solid #CECECE;border-radius:50%;background:#fff;color:#0B0C0C;font:inherit;font-weight:700">i</button>
+      <p id="spec-humid-title" style="margin:0 44px 8px;text-align:center;font-size:19px">Bedroom humidifier</p>
+      <div style="text-align:center"><svg role="img" aria-label="Dial filled to a target of 45 percent on a scale of 0 to 100" width="220" height="220" viewBox="0 0 220 220"><path d="M 47 173 A 90 90 0 1 1 173 173" fill="none" stroke="#6F777B" stroke-opacity="0.3" stroke-width="24" stroke-linecap="round"></path><path d="M 47 173 A 90 90 0 0 1 89 22.5" fill="none" stroke="#1D70B8" stroke-width="24" stroke-linecap="round"></path><circle cx="89" cy="22.5" r="9" fill="#fff" stroke="#1D70B8"></circle></svg></div>
+      <p style="margin:0;text-align:center"><strong style="font-size:1.75rem">Target 45%</strong><br>Now 41%, humidifying</p>
+      </div></article>
+  spec-icon-state-ground-floor:
+    title: Icons beside the state in words
+    description: "A simulated card listing three entities. Each row has an icon, a name and the state written in words, so the icon never carries the meaning alone. The icons are plain shapes standing in for Home Assistant’s own icons. Nothing here is interactive."
+    height: 380
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-icon-title"><div class="civica-card-demo__body">
+      <h2 id="spec-icon-title" style="margin:0 0 15px;font-size:22px;line-height:1.25">Ground floor</h2>
+      <ul style="list-style:none;margin:0;padding:0">
+      <li style="display:flex;align-items:center;gap:12px;min-height:44px"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" fill="none" stroke="#0B0C0C" stroke-width="2"></rect><circle cx="15" cy="12" r="1.5" fill="#0B0C0C"></circle></svg><span><strong>Front door</strong>: Open</span></li>
+      <li style="display:flex;align-items:center;gap:12px;min-height:44px"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="10" r="6" fill="none" stroke="#0B0C0C" stroke-width="2"></circle><line x1="9" y1="20" x2="15" y2="20" stroke="#0B0C0C" stroke-width="2"></line></svg><span><strong>Hall light</strong>: On</span></li>
+      <li style="display:flex;align-items:center;gap:12px;min-height:44px"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M3 20V9l9-5 9 5v11z" fill="none" stroke="#0B0C0C" stroke-width="2"></path></svg><span><strong>Garage door</strong>: Closed</span></li>
+      </ul>
+      </div></article>
+  spec-icon-picker-lamp:
+    title: An icon field with its matching list
+    description: "A simulated icon field with the word lamp typed in, and a short list of matching icons below it. Every row shows the icon and its full name as text. Home Assistant draws its own field and its own searchable list, so the look differs. The field and the list do nothing here."
+    height: 520
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-picker-title"><div class="civica-card-demo__body">
+      <h2 id="spec-picker-title" style="margin:0 0 15px;font-size:22px;line-height:1.25">Choose an icon</h2>
+      <span id="spec-picker-label" style="display:block;font-weight:700;margin:0 0 4px">Icon</span>
+      <div id="spec-picker-hint" style="font-size:16px;line-height:1.5;color:#484949;margin:0 0 8px">Search by name, for example lamp or door</div>
+      <div role="group" aria-labelledby="spec-picker-label" aria-describedby="spec-picker-hint" style="border-bottom:2px solid #0B0C0C;background:#fff;padding:8px 12px;display:flex;align-items:center;gap:12px;max-width:24rem">
+      <svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M6 20h12M12 20v-6M5 14l3-10h8l3 10z" fill="none" stroke="#0B0C0C" stroke-width="2"></path></svg>
+      <strong>lamp</strong>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0;max-width:24rem;border:1px solid #CECECE;border-top:0">
+      <li style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 12px"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M6 20h12M12 20v-6M5 14l3-10h8l3 10z" fill="none" stroke="#0B0C0C" stroke-width="2"></path></svg><span>mdi:lamp</span></li>
+      <li style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 12px;border-top:1px solid #CECECE"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22v-10M8 22h8M6 12l2-9h8l2 9z" fill="none" stroke="#0B0C0C" stroke-width="2"></path></svg><span>mdi:floor-lamp</span></li>
+      <li style="display:flex;align-items:center;gap:12px;min-height:44px;padding:0 12px;border-top:1px solid #CECECE"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M4 21h8M8 21v-6l8-9M13 3l7 5-4 5z" fill="none" stroke="#0B0C0C" stroke-width="2"></path></svg><span>mdi:desk-lamp</span></li>
+      </ul>
+      </div></article>
+  spec-webpage-card-rain-radar:
+    title: A Webpage card with a title and a link
+    description: "A simulated Webpage card in the light theme, with a title and a frame named by the card title, followed by a separate card with one sentence saying what the frame shows and an ordinary link to open the page in full. The page inside the frame is a stand-in written for this example. The link does nothing."
+    height: 560
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-webpage-title"><div class="civica-card-demo__body">
+      <h1 id="spec-webpage-title" style="margin:0 0 12px;font-size:22px;font-weight:700;line-height:1.25">Rain radar</h1>
+      <div id="open-radar" style="position:relative;padding-top:50%;border:1px solid #CECECE"><iframe title="Rain radar" sandbox="" srcdoc="<p style='margin:0;padding:16px;font:16px/1.5 Arial,sans-serif;color:#0B0C0C'>Dry until 15:00, then light rain from the west.</p>" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"></iframe></div>
+      </div></article>
+      <article class="civica-card-demo" aria-label="About the rain radar"><div class="civica-card-demo__body">
+      <p style="margin:0 0 8px">The radar shows rain expected over the next two hours.</p>
+      <p style="margin:0"><a href="#open-radar">Open the rain radar in full</a></p>
+      </div></article>

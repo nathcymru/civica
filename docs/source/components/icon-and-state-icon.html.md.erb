@@ -1,0 +1,169 @@
+---
+title: "Icon & State Icon"
+description: "Use Home Assistant’s icon elements so that every icon is backed by words, and know which icon Home Assistant picks for an entity, a domain, a service or an attribute."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Icon & State Icon specification: the six Home Assistant icon elements, how each one picks its icon and what the Civica theme leaves as Home Assistant draws it."
+ai_instructions: "Apply when a dashboard or card shows an icon. Every Home Assistant icon element is decorative: it is hidden from assistive technology, so an icon alone has no name. Always write the name or state as visible text beside it. Setting icon: on a card or entity replaces the state icons, so choose one that keeps its meaning. Use mdi: names. Icons stay 24 pixels unless a card sets a size, so they do not grow with text size. Do not say the Civica theme colours every icon, and do not claim a measured contrast."
+ai_related:
+  - path: "/styles/images-icons.html"
+    title: "Icons"
+    relationship: "Owns the rules for when to use an icon and how to choose one."
+  - path: "/components/icon-picker.html"
+    title: "Icon Picker"
+    relationship: "Owns the field that people use to choose an icon."
+  - path: "/components/buttons.html"
+    title: "Button"
+    relationship: "Owns controls that hold only an icon and need an accessible name."
+component:
+  parent: "Icon & State Icon"
+  letter: "I"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-icon"
+      origin: "Home Assistant"
+      anchor: "child-ha-icon"
+    - name: "ha-state-icon"
+      origin: "Home Assistant"
+      anchor: "child-ha-state-icon"
+    - name: "ha-svg-icon"
+      origin: "Home Assistant"
+      anchor: "child-ha-svg-icon"
+    - name: "ha-domain-icon"
+      origin: "Home Assistant"
+      anchor: "child-ha-domain-icon"
+    - name: "ha-service-icon"
+      origin: "Home Assistant"
+      anchor: "child-ha-service-icon"
+    - name: "ha-attribute-icon"
+      origin: "Home Assistant"
+      anchor: "child-ha-attribute-icon"
+  tags:
+    - "ha-icon"
+    - "ha-state-icon"
+    - "ha-svg-icon"
+    - "ha-domain-icon"
+    - "ha-service-icon"
+    - "ha-attribute-icon"
+---
+
+# Icon & State Icon
+
+<h2 id="purpose">Purpose</h2>
+
+An icon is a small picture that helps people recognise a thing or a state quickly. Home Assistant has six icon elements, each one choosing its picture from a different source. This page owns those elements. For when to use an icon and how to choose one, see [Icons](../styles/images-icons.html). For the field people use to pick an icon, see [Icon Picker](icon-picker.html).
+
+This page covers:
+
+- `ha-icon`
+- `ha-state-icon`
+- `ha-svg-icon`
+- `ha-domain-icon`
+- `ha-service-icon`
+- `ha-attribute-icon`
+
+<h2 id="anatomy">Anatomy</h2>
+
+An icon is one square drawing, 24 pixels wide by default, that takes its colour from the text around it. It sits beside a name or a state written in words.
+
+All six elements hide the drawing from assistive technology. An icon on its own has no name. The words beside it, or the label of the control that holds it, carry the meaning.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-icon"><code>ha-icon</code></h3>
+
+Draws one icon from a name such as `mdi:door-open`. You set it wherever Home Assistant accepts `icon:`, such as a Tile card, a Button card, an Entities card and the Heading card.
+
+```yaml
+type: tile
+entity: lock.front_door
+icon: mdi:door-open
+```
+
+A Markdown card also accepts the element itself, which is the way to put an icon in Markdown text, because the card removes inline SVG:
+
+```html
+<ha-icon icon="mdi:alert-octagon"></ha-icon>
+```
+
+Names starting `mdi:` use the built-in Material Design icons. Home Assistant also includes icons for `home-assistant`, `music-assistant`, `esphome`, `matter` and `mqtt`. Any other prefix needs code from an integration or a custom card to register it, and without it nothing is drawn. An empty or invalid name also draws nothing, so check the name.
+
+The icon takes its colour from the text colour around it and is 24 pixels by default. The Civica theme sets neither the size nor the colour of this element. The theme’s state icon colours are used by cards and rows that read them, such as the state badge and the tile, and not by the icon element itself. Do not assume that the Civica theme colours every icon.
+
+<h3 id="child-ha-state-icon"><code>ha-state-icon</code></h3>
+
+Draws the icon that suits an entity and its state. It picks the first of these that exists:
+
+1. The icon given for this card or row, such as `icon:` in the card’s settings.
+2. The icon set for the entity in its settings.
+3. The `icon` attribute of the entity.
+4. The icon that the integration gives to this state.
+5. An icon for the entity’s domain.
+6. A general default icon.
+
+So `icon:` on a card or entity replaces the state icons, and the icon then no longer changes with the state. Choose one that keeps its meaning, or leave it out. This element is decorative. It can set a tooltip with the formatted state, but a tooltip is not a name, so write the state as text.
+
+<h3 id="child-ha-svg-icon"><code>ha-svg-icon</code></h3>
+
+The element underneath the others. It draws an SVG from path data, in a 24 by 24 box unless a view box is given. A second path can be drawn at lower strength. You do not write this in YAML. A Markdown card accepts it with a `path` of your own.
+
+These variables control it:
+
+| Variable | Meaning | Default |
+| --- | --- | --- |
+| `--mdc-icon-size` | The size of the square | 24 pixels |
+| `--icon-primary-color` | The colour of the main path | The text colour |
+| `--icon-secondary-color` | The colour of the second path | The text colour |
+| `--icon-primary-opactity` | The strength of the main path | Full |
+| `--icon-secondary-opactity` | The strength of the second path | 0.5 |
+
+The two strength names are spelled this way in Home Assistant. Changing the size or colour of an icon needs the card-mod integration, unless the card has its own setting. The size does not grow with the text size.
+
+<h3 id="child-ha-domain-icon"><code>ha-domain-icon</code></h3>
+
+Draws the icon for a domain such as `light` or `climate`, using the integration’s own icon for that domain, its device class and its state. If there is none, it uses a built-in icon for the domain, and then a general default. When asked to, it draws the integration’s brand picture instead, which Home Assistant fetches from the internet. Do not rely on that picture when a dashboard might be used without a connection. The picture has no text alternative of its own, so write the integration’s name beside it.
+
+<h3 id="child-ha-service-icon"><code>ha-service-icon</code></h3>
+
+Draws the icon for an action, such as `light.turn_on`. It uses the icon the integration gives to that action, then the icon for its domain, then a general default. It appears in the automation and script editor and in action pickers. A dashboard author does not set it.
+
+<h3 id="child-ha-attribute-icon"><code>ha-attribute-icon</code></h3>
+
+Draws the icon for one attribute of an entity, on the attribute rows of the more information dialog. It uses the icon the integration gives to that attribute, and draws nothing if there is none. A dashboard author does not set it.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- An icon is quick to recognise and takes little space.
+- Home Assistant chooses a suitable icon for most entities, so you rarely need to set one.
+- An icon has no name of its own, so it needs words beside it.
+- Icons stay 24 pixels when the text size is raised, unless a card sets a size.
+- Setting `icon:` stops the icon changing with the state.
+- A colour on its own is not a state, so write the state in words.
+- Icons from an integration’s brand service need a connection.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use an icon only when it helps. Give one icon one meaning on a dashboard, and use familiar icons. Always write the name or the state as visible text. Do not use an icon, or its colour, as the only sign of a state. A control that holds only an icon needs a name; see [Button](buttons.html).
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: an icon beside text is decorative, and the text carries the meaning.
+- 1.4.1 Use of Colour: write the state in words, not only in the icon colour.
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: check informative icons on your own dashboard.
+- 1.4.4 Resize Text: icons keep their size when the text grows, so check that the words and the icon still line up.
+- 4.1.2 Name, Role, Value: a control with only an icon needs a label.
+- 2.5.8 Target Size (Minimum): a control made of only an icon needs room around it.
+
+<h2 id="examples">Examples</h2>
+
+### Icons beside the state in words
+
+<%= example('spec-icon-state-ground-floor') %>

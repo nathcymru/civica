@@ -1,0 +1,259 @@
+---
+title: "Picture Elements Card"
+description: "Place icons, labels, badges and buttons over a picture, such as a floor plan, and keep every reading available as text."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Picture Elements Card specification: its settings, each element type and the limits of placing items over a picture."
+ai_instructions: "Apply to the Home Assistant picture elements card (type picture-elements). The card needs an image source (image, image_entity, camera_image or state_image) and an elements list. Elements are positioned by percentage with a style map. The element types are state-badge, state-icon, state-label, service-button (action-button is the same element), icon, image and conditional, plus custom: elements. There is no state-switch element, no hui-action-button-element and no hui-custom-element in this Home Assistant version. Image elements have no alt text setting: the alt text is the entity id, or empty. Never make a picture the only place a reading or an action appears. Put every state and action in a text list as well. Do not claim contrast, focus visibility, accessible names or announcement order for overlays."
+ai_related:
+  - path: "/home-assistant/pictures-and-embedded-content.html"
+    title: "Pictures, rich content and embedded pages"
+    relationship: "Owns the rules for pictures and overlays on dashboards."
+  - path: "/components/images.html"
+    title: "Image & Picture Cards"
+    relationship: "Owns how to describe an image in text."
+  - path: "/components/conditional-card.html"
+    title: "Conditional Card"
+    relationship: "Owns the conditions that the conditional element also uses."
+  - path: "/components/button-card.html"
+    title: "Button Card"
+    relationship: "Use for a plain button outside a picture."
+  - path: "/components/summary-list.html"
+    title: "Summary list"
+    relationship: "Use for the text list that repeats the picture's readings."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface, border and header."
+component:
+  parent: "Picture Elements Card"
+  letter: "P"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-picture-elements-card"
+      origin: "Lovelace"
+      anchor: "child-hui-picture-elements-card"
+      grandchildren:
+        - name: "hui-state-badge-element"
+          origin: "Lovelace"
+          anchor: "child-hui-picture-elements-card--hui-state-badge-element"
+        - name: "hui-state-icon-element"
+          origin: "Lovelace"
+          anchor: "child-hui-picture-elements-card--hui-state-icon-element"
+        - name: "hui-state-label-element"
+          origin: "Lovelace"
+          anchor: "child-hui-picture-elements-card--hui-state-label-element"
+        - name: "hui-service-button-element"
+          origin: "Lovelace"
+          anchor: "child-hui-picture-elements-card--hui-service-button-element"
+        - name: "hui-action-button-element"
+          origin: "Lovelace"
+          anchor: "child-hui-picture-elements-card--hui-action-button-element"
+        - name: "hui-icon-element"
+          origin: "Lovelace"
+          anchor: "child-hui-picture-elements-card--hui-icon-element"
+        - name: "hui-image-element"
+          origin: "Lovelace"
+          anchor: "child-hui-picture-elements-card--hui-image-element"
+        - name: "hui-conditional-element"
+          origin: "Lovelace"
+          anchor: "child-hui-picture-elements-card--hui-conditional-element"
+        - name: "hui-state-switch-element"
+          origin: "Lovelace"
+          anchor: "child-hui-picture-elements-card--hui-state-switch-element"
+        - name: "hui-custom-element"
+          origin: "Lovelace"
+          anchor: "child-hui-picture-elements-card--hui-custom-element"
+  tags:
+    - "hui-picture-elements-card"
+    - "hui-state-badge-element"
+    - "hui-state-icon-element"
+    - "hui-state-label-element"
+    - "hui-service-button-element"
+    - "hui-action-button-element"
+    - "hui-icon-element"
+    - "hui-image-element"
+    - "hui-conditional-element"
+    - "hui-state-switch-element"
+    - "hui-custom-element"
+---
+
+# Picture Elements Card
+
+<h2 id="purpose">Purpose</h2>
+
+The picture elements card draws a picture, such as a floor plan or a photo, and places icons, labels, badges and buttons on top of it. It suits a plan where position helps: a light icon in the room it lights, or a temperature beside the room it measures.
+
+The picture is a visual aid. Anything people need to know or do must also be available as text, outside the picture, because the items sit on the picture by position and not in reading order. Use [Pictures, rich content and embedded pages](../home-assistant/pictures-and-embedded-content.html) for the wider rules.
+
+This page covers:
+
+- Picture Elements Card
+  - `hui-picture-elements-card`
+    - `hui-state-badge-element`
+    - `hui-state-icon-element`
+    - `hui-state-label-element`
+    - `hui-service-button-element`
+    - `hui-action-button-element`
+    - `hui-icon-element`
+    - `hui-image-element`
+    - `hui-conditional-element`
+    - `hui-state-switch-element`
+    - `hui-custom-element`
+
+<h2 id="anatomy">Anatomy</h2>
+
+The card is a Home Assistant card with an optional header (`title`), then one picture, then the elements. Each element is placed over the picture with a `style` map, for example `top: 32%` and `left: 40%`. The element is centred on that point.
+
+Each element is a separate item. Their order in the card is the order in the YAML, not the order they appear on the picture, so what a keyboard user reaches first may not be what a sighted user sees first.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-picture-elements-card"><code>hui-picture-elements-card</code></h3>
+
+The card is set with `type: picture-elements`. It needs a picture and an `elements` list. A card with neither shows an error.
+
+```yaml
+type: picture-elements
+title: Ground floor
+image: /local/ground-floor.png
+elements:
+  - type: state-label
+    entity: sensor.living_room_temperature
+    style:
+      top: 30%
+      left: 68%
+  - type: state-icon
+    entity: light.hall
+    style:
+      top: 35%
+      left: 25%
+  - type: service-button
+    title: Turn on hall light
+    action: light.turn_on
+    target:
+      entity_id: light.hall
+    style:
+      top: 75%
+      left: 25%
+```
+
+Settings:
+
+- `elements` is required. It is a list.
+- A picture source is required: `image`, `image_entity`, `camera_image` or `state_image`. `state_image` also needs `entity`.
+- `image_entity` can name an image entity or a person. For a person it uses their picture.
+- `camera_image` and `camera_view` show a camera instead of a still picture.
+- `state_image` and `state_filter` change the picture or its filter by entity state.
+- `dark_mode_image` and `dark_mode_filter` change the picture in dark mode.
+- `aspect_ratio`, `title`, `entity` and `theme` set the shape, the header, the entity for state images and a named theme for this card.
+
+Taps on a state icon, state badge, icon or state label are passed to the nearest item within 24 pixels, so people can miss slightly and still hit it. That helps people using a pointer only. Keyboard users get the same actions through the focusable item itself.
+
+The card takes its surface from the Civica theme: a square corner, a 1 pixel border, no shadow, `card-background-color` and `divider-color`. `ha-picture-border-radius` is 0. With card-mod you can restyle the card (`ha-card`) and the area holding the elements. This is not set by Civica. The picture elements also take their colours from the theme, as the sections below say.
+
+The percentages are measured against the picture, so items move with the picture and not with the text size. Large text or long labels can overlap or run off the picture. The text list under the picture is what keeps the card usable.
+
+Home Assistant shows a warning in place of any item whose entity cannot be found.
+
+<h3 id="child-hui-picture-elements-card--hui-state-badge-element"><code>hui-state-badge-element</code></h3>
+
+A small round badge for an entity, with its name beneath (`type: state-badge`). `entity` is required. `name` and `title` change the label and the hover text. `tap_action`, `hold_action` and `double_tap_action` set what it does. Tapping opens More info unless you set another action.
+
+The badge can be reached by keyboard unless you set the tap action to `none`. Its colours come from `label-badge-blue`, `label-badge-green`, `label-badge-grey`, `label-badge-red` and `label-badge-yellow`, and its border from `divider-color`. The label size comes from `ha-font-size-xs`, which the Civica theme sets to 12 pixels, so the label is small. Only card-mod makes it larger.
+
+<h3 id="child-hui-picture-elements-card--hui-state-icon-element"><code>hui-state-icon-element</code></h3>
+
+An icon that follows an entity’s state (`type: state-icon`). `entity` is required. `icon` replaces the default icon, and `state_color` (on by default) lets the icon take its colour from the state. The tap and hold actions open More info by default.
+
+The icon colour comes from `state-icon-color`, `state-active-color`, `state-inactive-color` and `state-unavailable-color`, all set by the Civica theme. When the icon has keyboard focus, Home Assistant fills it with `divider-color`. The Civica theme does not change that, and only card-mod can. An icon has no text, and the hover text from `title` does not replace it for touch or keyboard users. Say the state in the text list too.
+
+<h3 id="child-hui-picture-elements-card--hui-state-label-element"><code>hui-state-label-element</code></h3>
+
+A line of text showing an entity’s state (`type: state-label`). `entity` is required. Set `attribute` to show an attribute instead, and `prefix` and `suffix` to add words before and after. If the attribute is missing, a warning shows in its place.
+
+The label has 8 pixels of padding and does not wrap, so a long label or large text can run off the picture. Its colour is inherited from the card, which means it sits straight on the picture and how readable it is depends on the picture. Choose a plain area of the picture, or list the same readings outside it.
+
+<h3 id="child-hui-picture-elements-card--hui-service-button-element"><code>hui-service-button-element</code></h3>
+
+A text button that runs an action (`type: service-button`). `title` is the visible text and the name of the button. `action` is the action to run, for example `light.turn_on`, and `target` and `data` say what to run it on. The card shows an error if there is no action. `service` and `service_data` are older names for `action` and `data`.
+
+It is a real button, so a keyboard can reach it and its name is its text. The text colour is `primary-color`, and the button height and corners follow `ha-button-height` (44 pixels in the Civica theme) and `ha-button-border-radius` (0). The button does not support hold or double-tap actions. Give it a clear verb and object, such as “Turn on hall light”.
+
+<h3 id="child-hui-picture-elements-card--hui-action-button-element"><code>hui-action-button-element</code></h3>
+
+This Home Assistant version has no element called `hui-action-button-element`. You can still write `type: action-button` in YAML: it is another name for `service-button`, and `hui-service-button-element` draws it. Use [the service button element](#child-hui-picture-elements-card--hui-service-button-element) for everything about how it behaves.
+
+<h3 id="child-hui-picture-elements-card--hui-icon-element"><code>hui-icon-element</code></h3>
+
+A plain icon (`type: icon`). `icon` is required, for example `mdi:alert-circle`. `entity`, `name` and `title` are optional. It does not follow an entity’s state or colour.
+
+Its tap and hold actions open More info by default, which makes the icon a control that can take focus. For an icon that only decorates, set `tap_action` to `none` and `hold_action` to `none`. An icon with no entity shows no state, so do not use it to show one.
+
+<h3 id="child-hui-picture-elements-card--hui-image-element"><code>hui-image-element</code></h3>
+
+A picture placed over the main picture (`type: image`), for example a door shown open or closed. It takes the same picture settings as the card: `image`, `image_entity`, `camera_image`, `state_image`, `dark_mode_image`, `filter` and `aspect_ratio`.
+
+An image element has no alt text setting. Its alt text is the entity id when an entity is set, and empty otherwise, and `title` is only hover text. You cannot write a description for it. Describe what the image shows in text outside the picture. With the default tap action it also acts as a button.
+
+<h3 id="child-hui-picture-elements-card--hui-conditional-element"><code>hui-conditional-element</code></h3>
+
+Shows other elements only while conditions are true (`type: conditional`). It takes `conditions`, a list, and `elements`, the items to show. It accepts the conditions of the [Conditional Card](conditional-card.html).
+
+When the conditions are false, the items disappear without a message or a placeholder. Never keep the only copy of an important reading or action behind a condition that can fail without any sign.
+
+<h3 id="child-hui-picture-elements-card--hui-state-switch-element"><code>hui-state-switch-element</code></h3>
+
+This Home Assistant version has no state-switch picture element. To show something different for each state, use a `state-icon` element, a `conditional` element, or the `state_image` setting of the card or an image element.
+
+<h3 id="child-hui-picture-elements-card--hui-custom-element"><code>hui-custom-element</code></h3>
+
+This Home Assistant version has no element called `hui-custom-element`. To use an element from a custom integration, write `type: custom:` followed by its tag name, for example `type: custom:my-element`. Home Assistant loads the element if it is registered and passes it your settings. If it is not registered, the card shows an error. For a tag name with a hyphen, Home Assistant waits a short time for the element to register before it shows the error.
+
+What a custom element does, and whether it can be used with a keyboard, depends on its own code. Civica documents only how it is loaded.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Position helps when the picture is a plan, and the card keeps live states over it.
+- The items are placed over the picture, so their readability depends on the picture. Home Assistant cannot check that.
+- Items are not in reading order. Their order follows the YAML.
+- State icons, labels, badges and icons open More info by default, so each can take keyboard focus. Hold and double-tap are gestures and a keyboard cannot use them on their own, so never put the only way to do something behind one.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use few items. Use the card when position matters, such as a plan of rooms, and not as a replacement for an entities list. An entities card or a [summary list](summary-list.html) beside it does the job, with the same names as the picture.
+
+Put labels on a plain part of the picture. Keep the picture at a reasonable size and test at a large text size and at 320 CSS pixels. Do not hide a control inside a conditional element unless it appears elsewhere too.
+
+Check that items do not overlap, that each has a name in words, and that the list tells the same story as the picture.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: the text list outside the picture is the equivalent.
+- 1.3.2 Meaningful Sequence: items follow the YAML order, not the visual order.
+- 1.4.1 Use of Colour: show a state in words, not by an icon colour alone.
+- 1.4.3 and 1.4.11 Contrast: text and icons over a picture. Measure your own picture before you claim a ratio.
+- 1.4.4 Resize Text and 1.4.10 Reflow: labels do not wrap.
+- 2.1.1 Keyboard: state items can take focus. Hold and double-tap cannot be used with a keyboard alone.
+- 2.5.1 Pointer Gestures: offer every action as a simple tap or in the list.
+- 2.5.8 Target Size (Minimum): measure the icons in your own card.
+- 4.1.2 Name, Role, Value: the state items take focus but have no role, and an icon has no name apart from its hover text. Add the reading in the list.
+
+<h2 id="examples">Examples</h2>
+
+### A floor plan with a label, an icon and a button
+
+<%= example('spec-picture-elements-floor-plan') %>
+
+### A room diagram with an equivalent reading list
+
+A room layout with one sensor marker. The reading lamp, ceiling light and window contact are not drawn, and they are listed below it.
+
+<%= example('ha-coverage-picture-alternative') %>
