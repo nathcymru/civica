@@ -12,8 +12,8 @@ updates:
   - date: "2026-11-26"
     description: "Added the Energy Cards specification: the thirteen Energy cards, their settings, the Civica energy colours and what needs the Civica companion."
   - date: "2026-11-26"
-    description: "Added the power sources graph, compare, grid balance, Sankey and power Sankey cards."
-ai_instructions: "Apply when a dashboard shows Home Assistant Energy cards (types energy-distribution, energy-usage-graph, energy-solar-graph, energy-gas-graph, energy-water-graph, energy-devices-graph, energy-devices-detail-graph, energy-sources-table, the four energy gauges, energy-grid-balance, energy-sankey, power-sankey, power-sources-graph, energy-compare and energy-date-selection). The theme sets the energy colours in both modes. Chart geometry, 1.5px power lines and the values table come only from the optional Civica companion, which covers the usage, solar, gas, water, devices and devices detail graphs and the power sources graph; the distribution diagram, Sankey cards, gauges, grid balance card, sources table, compare notice and date selector stay as Home Assistant draws them. Always give the unit, the period and a text version of any value that is shown only on hover. Do not quote a contrast ratio for the energy colours, and do not infer savings."
+    description: "Added the power sources graph, compare, grid balance, Sankey, power Sankey, water Sankey and water flow Sankey cards."
+ai_instructions: "Apply when a dashboard shows Home Assistant Energy cards (types energy-distribution, energy-usage-graph, energy-solar-graph, energy-gas-graph, energy-water-graph, energy-devices-graph, energy-devices-detail-graph, energy-sources-table, the four energy gauges, energy-grid-balance, energy-sankey, power-sankey, water-sankey, water-flow-sankey, power-sources-graph, energy-compare and energy-date-selection). The theme sets the energy colours in both modes. Chart geometry, 1.5px power lines and the values table come only from the optional Civica companion, which covers the usage, solar, gas, water, devices and devices detail graphs and the power sources graph; the distribution diagram, Sankey cards, gauges, grid balance card, sources table, compare notice and date selector stay as Home Assistant draws them. Always give the unit, the period and a text version of any value that is shown only on hover. Do not quote a contrast ratio for the energy colours, and do not infer savings."
 ai_related:
   - path: "/components/charts.html"
     title: "Statistic & Statistics Graph Cards"
@@ -48,6 +48,12 @@ component:
     - name: "hui-power-sankey-card"
       origin: "Lovelace"
       anchor: "child-hui-power-sankey-card"
+    - name: "hui-water-sankey-card"
+      origin: "Lovelace"
+      anchor: "child-hui-water-sankey-card"
+    - name: "hui-water-flow-sankey-card"
+      origin: "Lovelace"
+      anchor: "child-hui-water-flow-sankey-card"
     - name: "hui-energy-usage-graph-card"
       origin: "Lovelace"
       anchor: "child-hui-energy-usage-graph-card"
@@ -97,6 +103,8 @@ component:
     - "hui-energy-distribution-card"
     - "hui-energy-sankey-card"
     - "hui-power-sankey-card"
+    - "hui-water-sankey-card"
+    - "hui-water-flow-sankey-card"
     - "hui-energy-usage-graph-card"
     - "hui-energy-solar-graph-card"
     - "hui-energy-gas-graph-card"
@@ -120,7 +128,7 @@ component:
 
 The Energy cards show how a home uses and makes energy: flow diagrams, graphs over a period, a table of sources, gauges, a grid balance, a date selector that sets the period for the others and a notice that says what is being compared. Each reads the Energy configuration of the home, so a dashboard author chooses which cards to show, not which sensors feed them.
 
-This page owns the eighteen cards. How to present consumption, power and history is in [Energy and history](../patterns/energy.html). The chart and table presentation, and the exact list of graph cards the Civica companion restyles, are in [Charts and tables](charts.html) and the [Compatibility register](../home-assistant/compatibility-register.html).
+This page owns the twenty cards. How to present consumption, power and history is in [Energy and history](../patterns/energy.html). The chart and table presentation, and the exact list of graph cards the Civica companion restyles, are in [Charts and tables](charts.html) and the [Compatibility register](../home-assistant/compatibility-register.html).
 
 This page covers:
 
@@ -128,6 +136,8 @@ This page covers:
   - `hui-energy-distribution-card`
   - `hui-energy-sankey-card`
   - `hui-power-sankey-card`
+  - `hui-water-sankey-card`
+  - `hui-water-flow-sankey-card`
   - `hui-energy-usage-graph-card`
   - `hui-energy-solar-graph-card`
   - `hui-energy-gas-graph-card`
@@ -182,6 +192,14 @@ The role colours are the same in light and dark modes. Two roles, water and non-
 <h3 id="child-hui-power-sankey-card"><code>hui-power-sankey-card</code></h3>
 
 `type: power-sankey`. The same kind of flow chart for power, drawn from the current readings of the power sensors in the Energy configuration, in watts or kilowatts, not from the chosen period. It takes the same extra settings as [`hui-energy-sankey-card`](#child-hui-energy-sankey-card). With no power readings it says there is no data. Say in the card title that the values are the present moment.
+
+<h3 id="child-hui-water-sankey-card"><code>hui-water-sankey-card</code></h3>
+
+`type: water-sankey`. A flow chart of the water used over the chosen period, in the home’s water unit. Water from the supply is split by device. Choosing a node opens that entity’s More info. It takes the same extra settings as [`hui-energy-sankey-card`](#child-hui-energy-sankey-card). With no data for the period it says so. The Civica companion does not restyle it and it has no values table, so give the main values in words.
+
+<h3 id="child-hui-water-flow-sankey-card"><code>hui-water-flow-sankey-card</code></h3>
+
+`type: water-flow-sankey`. The same kind of flow chart for water flow right now, drawn from the current readings of the water flow-rate sensors in the Energy configuration, not from the chosen period. It takes the same extra settings as [`hui-energy-sankey-card`](#child-hui-energy-sankey-card). With no readings it says there is no data. Say in the card title that the values are the present moment.
 
 <h3 id="child-hui-energy-usage-graph-card"><code>hui-energy-usage-graph-card</code></h3>
 
