@@ -1,77 +1,170 @@
 ---
-title: Notification banners
-description: A banner carries a service-wide notice or an outcome from the previous step.
-section: components
-group: Content presentation
-source_url: https://service-manual.nhs.uk/design-system/components/notification-banners
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-18"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Notification Banner & Toast"
+description: "Tell people about a notice, a confirmed outcome or a short-lived message, and know which part is Home Assistant’s toast and drawer and which is a Civica pattern."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewrote the page as the Notification Banner & Toast specification: Home Assistant’s toast and notification drawer, the Civica banner pattern and the colours the theme sets."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Connected ordinary banners to shared message selection and the bounded global and urgent variants.
-  - date: 2026-11-11
-    description: Dated the fictional maintenance window and stated its time zone and non-live scope.
-  - date: 2026-11-11
-    description: Added NHS-informed notification banners guidance and 2 Home Assistant reference examples.
-  - date: "2026-11-18"
-    description: "Testing now says notice and success roles stay stable with every theme colour."
+  - date: "2026-11-11"
+    description: "First published in the Civica design system."
+ai_instructions: "Apply when telling people about a notice, an outcome or a short-lived message. Home Assistant has two native pieces: ha-toast, a short message at the bottom of the screen that closes by itself after 4 seconds by default and has a polite live announcement, and the notification drawer for persistent notifications. The drawer’s real tag is notification-drawer (class HuiNotificationDrawer); there is no element called hui-notification-drawer. Neither can be created from card configuration, and card-mod does not reach them. The Civica notification banner is a documentation pattern with no Home Assistant element: it carries a notice that applies to the whole page or the outcome of the previous step, with a heading, and never carries field validation. The theme sets the toast text colour (ha-color-on-neutral-loud) but not its background (ha-color-neutral-10). Do not state whether the toast is legible in either mode, that a toast pauses on hover, or that it can be made to stay. Success wording must reflect a result Home Assistant has confirmed, not a button press. Never use a toast as the only record of an error."
+ai_related:
+  - path: "/home-assistant/notifications-and-delivery.html"
+    title: "Notifications, acknowledgement and alerts"
+    relationship: "Owns persistent notification actions and replacement."
+  - path: "/components/notification-badge.html"
+    title: "Badge"
+    relationship: "Owns the unread count on the sidebar."
+  - path: "/components/alert-and-tip-callout.html"
+    title: "Alert & Tip Callout"
+    relationship: "Owns the native alert, the nearest Home Assistant element to a banner."
+  - path: "/publishing/components/global-banner.html"
+    title: "Global banner"
+    relationship: "Adds the question of how long a service-wide banner stays."
+  - path: "/publishing/components/emergency-banner.html"
+    title: "Emergency banner"
+    relationship: "Owns urgent messages."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the checks to run on a finished screen."
+component:
+  parent: "Notification Banner & Toast"
+  letter: "N"
+  origins:
+    - "Home Assistant"
+    - "Civica"
+  children:
+    - name: "ha-toast"
+      origin: "Home Assistant"
+      anchor: "child-ha-toast"
+    - name: "hui-notification-drawer"
+      origin: "Home Assistant"
+      anchor: "child-hui-notification-drawer"
+    - name: "Civica Notification Banner Pattern"
+      origin: "Civica"
+      anchor: "child-civica-notification-banner-pattern"
+  tags:
+    - "ha-toast"
+    - "notification-drawer"
+    - "notification-banner"
 ---
 
-# Notification banners
+# Notification Banner & Toast
 
-A banner carries a service-wide notice or an outcome from the previous step.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A notice, an outcome and a short message are three different things. A banner carries a notice that applies to the whole page or the outcome of the previous step. A toast is a brief message at the bottom of the screen. The notification drawer keeps persistent notifications until someone dismisses them.
 
-## Scope the notice before choosing a variant
+Home Assistant provides the toast and the drawer. The banner is a Civica pattern. For persistent notification actions, see [Notifications, acknowledgement and alerts](../home-assistant/notifications-and-delivery.html). For the unread count on the sidebar, see [Badge](notification-badge.html). The nearest native message box is the alert, on [Alert & Tip Callout](alert-and-tip-callout.html).
 
-Use the [message decision guide](status.html#choose-the-right-message) to distinguish a notice from a state label or unread count. This page owns the ordinary notice and confirmed-outcome contract. The [global-banner source variant](../publishing/components/global-banner.html) adds service-wide scope and dismissal-lifecycle questions. The [urgent-message source variant](../publishing/components/emergency-banner.html) requires a verified urgency rule and fresh source context; it does not make a maintenance notice urgent.
+This page covers:
 
-A source variation changes context, not the evidence needed to claim success. Keep inline validation with its field and preserve the error summary when a form cannot be submitted.
+- Notification Banner & Toast
+  - `ha-toast`
+  - `hui-notification-drawer`
+  - Civica Notification Banner Pattern
 
-## When to use it
+<h2 id="anatomy">Anatomy</h2>
 
-Use an information banner for planned downtime affecting the dashboard, or a success banner after a completed settings save on the previous page. Prioritise one coherent notice.
+- A toast is one line of text, an optional action button and an optional close button, on a dark bar.
+- The drawer is a panel that slides in from the side, with a title, a close button, a list of notifications with the newest first, and a “Dismiss all” button.
+- A banner is a bordered block with a title bar, a short heading and a sentence of detail.
 
-## When not to use it
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Do not place field validation errors in a banner. Do not let a success message compete with an error summary. Put information directly relevant to the current task in the main content.
+<h3 id="child-ha-toast"><code>ha-toast</code></h3>
 
-## Home Assistant adaptation
+A short message that closes by itself. Home Assistant shows one for things like a saved setting or a copied link. Dashboard configuration cannot create one, and `card-mod` does not reach it, because it sits outside every card.
 
-State what is affected and when it applies. A temporary integration outage is not evidence that a physical device is off. Success wording must reflect the result confirmed by Home Assistant, not merely that a button was pressed. Remove stale success notices after navigation.
+- **Timing.** It closes after 4 seconds by default. A shorter time is raised to 4 seconds. A toast can carry a close button and one or two action buttons.
+- **Announcement.** The text is also placed in a hidden polite live region, so assistive technology can announce it without moving focus. The announcement can differ from the visible text.
+- **Size.** It is at least 48 pixels tall and up to 650 pixels wide. Below 450 pixels wide or 500 pixels tall it fills the width of the screen with square corners.
+- **Stacking.** Several toasts stack.
 
-## Accessibility and behaviour
+The text colour is `ha-color-on-neutral-loud` and the background is `ha-color-neutral-10`. The Civica theme sets the text colour: `#FFFFFF` in light mode and `#0B0C0C` in dark mode. It does not set the background, so that stays Home Assistant’s `#202020` in both modes. Calculated from those colours alone, the text and background make 16.29 to 1 in light mode and 1.20 to 1 in dark mode.
 
-Give a static banner a labelled region and a meaningful heading. For a dynamically inserted result, choose an appropriate one-time announcement and avoid repeated alerts from polling. Do not move focus for routine background status updates.
+A toast gives people about four seconds to read it, so it is easy to miss. Use a toast only for a result that is also visible somewhere else. Put anything people must act on in a persistent notification.
 
-## Examples
+<h3 id="child-hui-notification-drawer"><code>hui-notification-drawer</code></h3>
+
+This Home Assistant version does not use the tag `hui-notification-drawer`. The class is `HuiNotificationDrawer`, and the element it draws is called `notification-drawer`.
+
+It is a modal side panel that Home Assistant opens when someone asks for their notifications. It is not a card and cannot be set up in YAML.
+
+- It lists persistent notifications and configuration prompts, newest first.
+- “Dismiss all” appears only when there is more than one persistent notification.
+- With no notifications it shows an empty message.
+- Escape closes it, and so does a change of page. The close button is labelled.
+- It is up to 500 pixels wide, and the full width of a narrow screen.
+
+It uses the theme’s page background (`#FFFFFF` in light mode, `#17191B` in dark mode), primary text colour (`#0B0C0C`, `#FFFFFF`) and divider colour (`#CECECE`, `#50565A`). `card-mod` does not reach it.
+
+<h3 id="child-civica-notification-banner-pattern"><code>Civica Notification Banner Pattern</code></h3>
+
+A banner carries a notice that applies to the whole page, or the outcome of the previous step. Home Assistant has no banner element and the theme adds none; the banner is a Civica pattern for guide pages and your own markup. Persistent notifications go to the drawer and toasts vanish, so neither replaces it.
+
+The theme provides the colour pairs, which are the same in light and dark modes:
+
+| Kind | Fill | Text on it |
+|---|---|---|
+| Notice | `civica-notice-fill` `#0B0C0C` | `civica-on-notice` `#FFFFFF` |
+| Success | `civica-success-fill` `#0F7A52` | `civica-on-success` `#FFFFFF` |
+| Danger | `civica-danger-fill` `#CA3535` | `civica-on-danger` `#FFFFFF` |
+| Warning | `civica-warning-fill` `#FFDD00` | `civica-on-warning` `#0B0C0C` |
+
+Use a fill with its matching text colour, not white on `error-color`, which changes in dark mode. Calculated from the colours, white on the success fill is 5.35 to 1 and white on the danger fill is 5.16 to 1.
+
+Rules for the banner:
+
+- Carry a service-wide notice or an outcome, not field validation. Keep an error with its field, and do not let a success compete with an error summary.
+- Show one coherent notice at a time.
+- Say what is affected and when. A temporary integration outage is not evidence that a device is off.
+- Word success from the result Home Assistant has confirmed, not because a button was pressed.
+- Remove a stale success notice after navigation.
+
+For how long a service-wide banner stays, see [Global banner](../publishing/components/global-banner.html). For urgent messages, see [Emergency banner](../publishing/components/emergency-banner.html). A maintenance notice is not urgent just because it is a notice.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A toast confirms a result without taking over the screen.
+- A toast closes by itself, so people can miss it.
+- The toast text colour changes with the mode, while its background colour does not.
+- The drawer keeps notifications until they are dismissed.
+- Neither the toast nor the drawer can be created or restyled from a dashboard.
+- Home Assistant has no banner element, so a banner is your own markup.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Give a banner on a page a labelled region and a meaningful heading. For a result that appears after the page has loaded, use one announcement and do not repeat it for every refresh. Do not move focus for routine background updates. Do not use `role="alert"` for routine notices.
+
+Use the same wording for the same event. Never use a toast as the only record of an error.
+
+Test notices with errors, narrow screens, long translations and updates that arrive while someone is typing. Check them in light and dark modes, with two theme colours, at 320 CSS pixels, using [Test the interface](../accessibility/testing.html).
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: a banner is a region with a heading.
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: check text on the toast and banner fills in each mode.
+- 2.2.1 Timing Adjustable: a toast with an action closes after 4 seconds by default.
+- 4.1.3 Status Messages: a toast has a polite live announcement, and a static banner has none.
+- 2.1.1 Keyboard and 2.1.2 No Keyboard Trap: the drawer is modal and closes with Escape.
+- 2.4.11 Focus Not Obscured (Minimum): a toast at the bottom can cover content.
+- 3.3.1 Error Identification: errors stay with the field, not a banner.
+
+<h2 id="examples">Examples</h2>
 
 ### A planned interruption
 
-The notice specifies the affected feature and the time window.
-
-<%= example('nhs-banner-maintenance') %>
+<%= example('spec-banner-maintenance') %>
 
 ### A confirmed save from the previous step
 
-The message describes a completed preference save.
-
-<%= example('nhs-banner-success') %>
-
-## Check the implementation
-
-Test notices with errors, narrow screens, long translations and updates arriving while the user is typing. Fixed notice and success roles remain stable with every theme colour.
-
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS notification banners](https://service-manual.nhs.uk/design-system/components/notification-banners) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
-
-See also [status and notifications](status.html).
+<%= example('spec-banner-success') %>

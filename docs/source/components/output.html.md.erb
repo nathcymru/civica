@@ -1,0 +1,102 @@
+---
+title: "Output"
+description: "Write the result of a choice or a calculation next to the control that produced it, with its unit, using the browser’s output element."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Output specification: the browser output element, how it is announced, and how to pair it with a slider."
+ai_instructions: "Apply when a value that results from a choice or calculation, such as the number a slider is set to, must be written beside its inputs. Use the output element with a for attribute naming the inputs, write the unit, and keep it next to the control. It has the role status, which makes it a polite live region, so a screen reader may announce each change; support varies. When the value changes continuously, such as while a slider is dragged, set aria-live to off so every step is not announced. Do not use it as a general status line or to carry a value by colour alone. An output is not submitted with a form. Home Assistant provides no output element of its own, and a dashboard author can write one only in HTML they are allowed to write, such as a custom card. The theme has no output variable: text colours are inherited. Do not claim that every screen reader announces changes."
+ai_related:
+  - path: "/components/sliders.html"
+    title: "Control Slider"
+    relationship: "Owns the slider and the exact-value alternative that an output pairs with."
+  - path: "/home-assistant/continuous-controls.html"
+    title: "Continuous controls and alternatives"
+    relationship: "Owns the rules for draft values on dragged controls."
+  - path: "/components/control-number-box.html"
+    title: "Control Number Box"
+    relationship: "Owns the exact-value number field."
+component:
+  parent: "Output"
+  letter: "O"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<output>"
+      origin: "HTML5"
+      anchor: "child-output"
+  tags:
+    - "output"
+---
+
+# Output
+
+<h2 id="purpose">Purpose</h2>
+
+An output shows the result of a choice or a calculation, next to the controls that produced it. The usual case is the number a slider is set to. A slider on its own gives no written value, so an output beside it tells people what they have chosen.
+
+This page owns the `<output>` element. For slider behaviour and the exact-value alternative, see [Control Slider](sliders.html).
+
+This page covers:
+
+- Output
+  - `<output>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A label that names what the value is, the value and its unit. The output sits beside or just under the control, and keeps the same place as the value changes.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-output"><code>&lt;output&gt;</code></h3>
+
+The browser’s element for a calculated or chosen result. It holds text and inline content, and can be named with a `<label for>`.
+
+- `for` lists the ids of the controls that fed the result, separated by spaces.
+- `form` names the form it belongs to, and `name` names it within that form.
+- It has the role `status`, which is a polite live region. When its text changes, a screen reader may announce it without moving focus. Support varies between browsers and screen readers.
+- A form does not submit it. It is not a field.
+- Resetting the form restores its starting text.
+
+```html
+<label for="brightness">Brightness</label>
+<input id="brightness" type="range" min="0" max="100" value="40">
+<p>Chosen brightness: <output for="brightness" aria-live="off">40%</output></p>
+```
+
+When the value changes as someone drags, set `aria-live="off"`, as above, so that every step is not announced. For the exact value and what to do after a change, see [Continuous controls and alternatives](../home-assistant/continuous-controls.html).
+
+Home Assistant provides no output element, and a dashboard author can write one only in HTML they are allowed to write, such as a custom card. The Civica theme has no output variable. The text takes the colour of the text around it, so it follows `primary-text-color` and `secondary-text-color`. Write the unit every time.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It joins a value to the controls that produced it.
+- The value is written as text, so it is never only a picture or a colour.
+- Announcements depend on the screen reader and the browser.
+- It does not replace a status message or an exact-value field.
+- It has no border or background, so its text must be readable by itself.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Show the unit, keep the output in a steady place beside the control, and do not update it faster than people can read. Give a drag-only control an exact-value alternative. Do not use an output for a general status line, and do not carry a value by colour alone. Updating an output must never change the context, such as moving focus or submitting.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: `for` and a label link the value to its control.
+- 1.4.1 Use of Colour and 1.4.3 Contrast (Minimum): the value is text, and readable on its own.
+- 2.2.2 Pause, Stop, Hide: avoid a value that updates continuously where people must read it.
+- 3.2.2 On Input: changing the value does not change the page.
+- 3.3.2 Labels or Instructions: the label says what the value is.
+- 4.1.2 Name, Role, Value and 4.1.3 Status Messages: the role is status, and `aria-live="off"` stops announcements while dragging.
+
+<h2 id="examples">Examples</h2>
+
+### A slider with its value written beside it
+
+<%= example('spec-output-range-value') %>

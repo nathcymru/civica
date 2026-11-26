@@ -1,71 +1,253 @@
 ---
-title: Images
-description: An image should help identify, locate or understand something that text alone would not explain as well.
-section: components
-group: Content presentation
-source_url: https://service-manual.nhs.uk/design-system/components/images
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Image & Picture Cards"
+description: "Show a picture on a dashboard or page, with a text alternative and the key facts written as text."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewrote the page as a full specification: the HTML image elements, the three Home Assistant picture cards, what Civica changes and what stays as Home Assistant draws it."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Recorded provenance and clarified the limits of the invented room schematic.
-  - date: 2026-11-11
-    description: Added NHS-informed images guidance and 2 Home Assistant reference examples.
+  - date: "2026-11-11"
+    description: "Added images guidance and 2 Home Assistant reference examples."
+ai_instructions: "Apply when a page or dashboard shows a picture. Use the picture card (type: picture), picture entity card (type: picture-entity) or picture glance card (type: picture-glance) for pictures on a dashboard, and name both the YAML type and the element. Always write the name, state and any alert as text, never only on the picture. Say that the entity picture's footer text and the glance icons sit over an arbitrary picture, so no contrast can be promised. Say that hui-image gives the raw entity ID as the picture's alt text. For ha-camera-fetch-image, say that Home Assistant fetches a camera still through the picture image component and there is nothing to configure. This page owns img, picture, map and area and the three picture cards; source belongs to the Audio Player page. Quote a contrast ratio only as calculated from theme colours."
+ai_related:
+  - path: "/home-assistant/pictures-and-embedded-content.html"
+    title: "Pictures, rich content and embedded pages"
+    relationship: "Owns the picture card families, overlays and text equivalents."
+  - path: "/home-assistant/cameras.html"
+    title: "Cameras, streams and snapshots"
+    relationship: "Owns the wording for camera pictures, streams and snapshots."
+  - path: "/content/formatting-content/images.html"
+    title: "Images"
+    relationship: "Owns the rules for writing alt text."
+  - path: "/components/audio-player.html"
+    title: "Audio Player"
+    relationship: "Owns the source element."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns card structure and cards with images."
+component:
+  parent: "Image & Picture Cards"
+  letter: "I"
+  origins:
+    - "HTML5"
+    - "Lovelace"
+    - "Home Assistant"
+  children:
+    - name: "<img>"
+      origin: "HTML5"
+      anchor: "child-img"
+    - name: "<picture>"
+      origin: "HTML5"
+      anchor: "child-picture"
+      grandchildren:
+        - name: "<source>"
+          origin: "HTML5"
+          anchor: "xref-picture--source"
+    - name: "<map>"
+      origin: "HTML5"
+      anchor: "child-map"
+      grandchildren:
+        - name: "<area>"
+          origin: "HTML5"
+          anchor: "child-map--area"
+    - name: "hui-picture-card"
+      origin: "Lovelace"
+      anchor: "child-hui-picture-card"
+    - name: "hui-picture-entity-card"
+      origin: "Lovelace"
+      anchor: "child-hui-picture-entity-card"
+    - name: "hui-picture-glance-card"
+      origin: "Lovelace"
+      anchor: "child-hui-picture-glance-card"
+    - name: "ha-camera-fetch-image"
+      origin: "Home Assistant"
+      anchor: "child-ha-camera-fetch-image"
+  tags:
+    - "img"
+    - "picture"
+    - "map"
+    - "area"
+    - "hui-picture-card"
+    - "hui-picture-entity-card"
+    - "hui-picture-glance-card"
+    - "image"
 ---
 
-# Images
+# Image & Picture Cards
 
-An image should help identify, locate or understand something that text alone would not explain as well.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A picture should help someone recognise, find or understand something that words alone would explain less well, such as a room diagram or a photo of the front door. The name, the state and anything that needs attention stay as text beside or below the picture.
 
-## When to use it
+On a dashboard, Home Assistant has three plain picture cards: `type: picture`, `type: picture-entity` and `type: picture-glance`. In your own HTML or Markdown you use the HTML image elements. This page covers both. For where pictures belong in a dashboard, see [Pictures, rich content and embedded pages](../home-assistant/pictures-and-embedded-content.html). For how to write alt text, see [Images](../content/formatting-content/images.html). For camera wording, see [Cameras, streams and snapshots](../home-assistant/cameras.html).
 
-Use an informative room diagram or device photograph when it helps the household recognise the right item. Keep the name, current state and controls as readable text outside the image.
+This page covers:
 
-## When not to use it
+- Image & Picture Cards
+  - `<img>`
+  - `<picture>`
+    - `<source>`
+  - `<map>`
+    - `<area>`
+  - `hui-picture-card`
+  - `hui-picture-entity-card`
+  - `hui-picture-glance-card`
+  - `ha-camera-fetch-image`
 
-Do not decorate every settings page or put essential text only inside a picture. A photograph must not become the sole evidence that a device is connected or safe to use.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+Every picture on a page has a picture and a text alternative. A picture card adds a card around it:
 
-The example floor plan is an original schematic, not a picture of a real home. A real installation needs its own accurate room labels and text alternative. Retain an ordinary room list as an alternative to a spatial plan, and respect access permissions for cameras and private images.
+- The picture, which fills the width of the card.
+- For the picture entity and picture glance cards, a bar laid over the picture. The entity card puts a name and a state in it. The glance card puts a title and a row of small icon buttons in it.
+- A tap action. The picture card and the picture entity card open more information or do what you set. The glance card also lets each icon act on its own.
 
-## Accessibility and behaviour
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Give informative images an alt text that conveys their useful meaning. Use an empty alt for a genuinely decorative image next to equivalent text. Captions explain what to conclude, rather than repeating the alternative. Give complex diagrams an adjacent longer description.
+<h3 id="child-img"><code>&lt;img&gt;</code></h3>
 
-## Examples
+Shows one picture. It has no closing tag.
+
+- `src` is the file. `alt` is the text alternative.
+- `width` and `height` reserve space, so the page does not jump while the picture loads.
+- `srcset` and `sizes` offer files of different sizes. `loading="lazy"` waits until the picture is near the screen.
+- `usemap` connects the picture to a `<map>`.
+
+Write `alt` to say what the picture tells the reader. If the picture is decoration next to words that say the same thing, use `alt=""` so assistive technology skips it. Never leave `alt` out, because a screen reader may then read the file name. Give a complex diagram a longer description beside it. Make the picture fit its container with `max-width: 100%; height: auto`.
+
+```html
+<img src="/local/hall-plan.png" width="480" height="220"
+     alt="Hall plan: the thermostat is on the wall beside the front door.">
+```
+
+<h3 id="child-picture"><code>&lt;picture&gt;</code></h3>
+
+Wraps a list of `<source>` elements and one `<img>`. The browser uses the first source that matches, so you can offer a different crop on a narrow screen or a newer file type with a fallback. The `<img>` still carries the `alt`, because `<picture>` and `<source>` have no name of their own.
+
+<h3 id="xref-picture--source"><code>&lt;source&gt;</code></h3>
+
+The `<source>` element inside `<picture>` is owned by the [Audio Player](audio-player.html#child-audio--source) page. In a picture, give it `srcset` and `type`, and optionally `media` and `sizes`. Do not give it `src`.
+
+<h3 id="child-map"><code>&lt;map&gt;</code></h3>
+
+An image map makes areas of one picture act as separate links. Give the `<map>` a `name`, and point the picture at it with `usemap="#name"`. Home Assistant dashboards give you no way to write one, so this is for your own HTML pages only. To place buttons or state labels over a picture on a dashboard, use the picture elements card instead.
+
+The coordinates are in picture pixels and do not scale when the picture shrinks. Do not use an image map for a picture that resizes on a narrow screen.
+
+<h3 id="child-map--area"><code>&lt;area&gt;</code></h3>
+
+One clickable shape inside a `<map>`. It has `shape` (`rect`, `circle`, `poly` or `default`), `coords`, `href` and `alt`. The `alt` is required when there is an `href`, and it is the name of the link, so write it as link text: “Kitchen”, not “Click here”. Each `<area>` can be reached with the keyboard.
+
+<h3 id="child-hui-picture-card"><code>hui-picture-card</code></h3>
+
+The picture card, `type: picture`. It shows one picture and nothing else.
+
+| Key | Meaning |
+| --- | --- |
+| `image` | The picture address, or a picture chosen from the media browser |
+| `image_entity` | An image or person entity to show instead |
+| `alt_text` | The text alternative |
+| `tap_action`, `hold_action`, `double_tap_action` | What each gesture does. The tap default is more information when you set `image_entity`, and nothing otherwise |
+| `theme` | A theme for this card only |
+
+You must set `image` or `image_entity`, or the card shows an error that an image is required.
+
+Set `alt_text` every time. If you leave it out, the picture takes the entity’s name when there is an entity, and has no `alt` at all when there is not. The card has no caption, so say in a card beside it what the picture shows.
+
+**What the Civica theme sets.** The card border, square corners, no shadow and card background. The picture itself is not rounded.
+
+**What needs card-mod.** The Civica focus ring on a focusable card is set in the theme’s card-mod settings, so it needs the card-mod integration. Without it the card is focusable, but do not rely on a visible ring.
+
+<h3 id="child-hui-picture-entity-card"><code>hui-picture-entity-card</code></h3>
+
+The picture entity card, `type: picture-entity`. It shows a picture for an entity, with its name and state in a bar along the bottom.
+
+| Key | Meaning |
+| --- | --- |
+| `entity` | The entity. Required |
+| `image` | A picture to show. Not needed for a camera, image or person entity |
+| `camera_image`, `camera_view` | Show a camera. `auto` shows a still, `live` shows the stream |
+| `state_image` | A different picture for each state |
+| `show_name`, `show_state` | Both default to on |
+| `aspect_ratio`, `fit_mode` | The shape, and `cover`, `contain` or `fill` |
+| `tap_action`, `hold_action`, `double_tap_action` | The tap default is more information |
+
+The bar text is cut off with an ellipsis when it is too long, so a long name is lost. The bar colour is `--ha-picture-card-background-color` (default a 30% black) and the text colour is `--ha-picture-card-text-color` (default white). Civica does not set either, so Home Assistant’s defaults apply. White text over a photo has no contrast you can know in advance, because it depends on the photo. To be safe, write the name and state in a normal card beside or below the picture, and use the bar only as a second copy.
+
+When the card has a tap action, its picture area can be focused with the keyboard. Do not tell people it is a button.
+
+<h3 id="child-hui-picture-glance-card"><code>hui-picture-glance-card</code></h3>
+
+The picture glance card, `type: picture-glance`. It shows a picture with a bar over it: an optional `title` and a row of entity icons.
+
+| Key | Meaning |
+| --- | --- |
+| `entities` | The entities to show as icons. Required. Each can have `name`, `icon`, `show_state` and its own actions |
+| `title` | A title in the bar |
+| `image`, `image_entity`, `camera_image`, `camera_view` | The picture source. One is required |
+| `state_image`, `aspect_ratio`, `fit_mode` | As for the picture entity card |
+| `show_state` | Show each state as text under its icon |
+| `tap_action`, `hold_action`, `double_tap_action` | What the picture does |
+
+Entities such as lights and fans switch on a tap. Other entities open more information. A hold opens more information.
+
+Each icon is a button 40 pixels square. That is above the 24 pixel minimum of WCAG 2.5.8, but below Civica’s 44 pixel target, and the theme cannot change it. The icon button has only a `title` of the name and state, so do not rely on it as a name that a screen reader will say. The state text under the icon is shown only when `show_state` is on, and it is cut off when it is long. The icon colours are `--ha-picture-icon-button-color` (grey when off) and `--ha-picture-icon-button-on-color` (white when on). Civica sets neither, and the contrast of a grey or white icon on a photo cannot be known.
+
+For a sensible dashboard, give the room’s readings and controls in an ordinary card with text, and keep the glance card as a shortcut.
+
+**Picture entity and picture glance: the picture part.** Both cards draw their picture with the Home Assistant picture image component, `hui-image`. It sets the picture’s `alt` to the raw entity ID, for example `camera.porch`, which is not a description. If the picture fails to load, it shows a grey box with a small broken-picture symbol and no words. While a picture loads it shows a spinner. When the entity is off or unavailable and a fallback picture is used, it turns the picture grey.
+
+<h3 id="child-ha-camera-fetch-image"><code>ha-camera-fetch-image</code></h3>
+
+Home Assistant fetches a camera still through the picture image component; there is nothing to configure.
+
+In a picture entity or picture glance card, a camera still refreshes about every 10 seconds, and only while the card is on the screen. Nothing on a dashboard lets you change that rate. For a live view, see [Cameras, streams and snapshots](../home-assistant/cameras.html).
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The picture cards need no extra module and work with the keyboard.
+- The bar over the picture is drawn by Home Assistant. Its text and icon contrast depends on the picture, which Civica cannot control.
+- The picture entity and glance cards cut off long text in the bar.
+- A picture’s `alt` is the entity ID unless the card sets a text alternative, and the picture entity and glance cards offer no `alt_text` key.
+- Hold and double-tap actions are easy to miss. Never make them the only way to reach something.
+- Image maps do not resize with the picture, and a dashboard cannot write one.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a picture only when it helps. Say what it is: a drawing, a photo kept from earlier, or a live view. Keep names, states and alerts in text that does not sit on the picture. Test with pictures turned off, on a narrow screen and with enlarged text, and check that nothing important is cropped. See [Test the interface](../accessibility/testing.html).
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: every informative picture needs a text alternative, and a decorative one an empty `alt`.
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: text and icons over a picture. Check them on your own pictures.
+- 1.4.4 Resize Text, 1.4.10 Reflow and 1.4.12 Text Spacing: text in the bar is cut off, not wrapped.
+- 2.1.1 Keyboard, 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): check the focus cue on your dashboard.
+- 2.5.1 Pointer Gestures and 2.5.8 Target Size (Minimum): offer a tap route as well as hold and double-tap.
+- 4.1.2 Name, Role, Value: the glance icons have a `title` only, and the picture’s default `alt` can be an entity ID.
+
+Say what the picture is for, and keep one idea to a card.
+
+<h2 id="examples">Examples</h2>
+
+### A picture glance card
+
+<%= example('spec-image-glance-living-room') %>
 
 ### An informative room diagram
 
-The text alternative describes the highlighted location; the caption explains the task.
+<%= example('spec-image-room-diagram') %>
 
-<%= example('nhs-image-floorplan') %>
+### A picture card with a decorative picture
 
-### A decorative identity mark
+<%= example('spec-image-decorative-mark') %>
 
-The nearby text names the service, so the repeated mark has an empty alt.
+### A picture entity card for the front door
 
-<%= example('nhs-image-decorative') %>
-
-## Check the implementation
-
-Test images disabled, narrow screens, enlarged text and reading order. Supply dimensions to reduce layout movement and keep images responsive without cropping important details.
-
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS images](https://service-manual.nhs.uk/design-system/components/images) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
-
-See also [cards](cards.html).
-
-## Example artwork record
-
-The affected example records include creator, original source, rights, purpose, intended background and alternative-text decisions. Functional SVG strokes and schematic boundaries remain separate from the flat explanatory illustration style. No official identity artwork is copied.
+<%= example('spec-image-entity-front-door') %>

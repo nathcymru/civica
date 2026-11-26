@@ -1,0 +1,136 @@
+---
+title: "Media Control Card"
+description: "Show one media player on a dashboard with its title, state and playback buttons, and know what the card and the Civica theme control."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Media Control Card specification: what the card shows, how it changes on narrow screens, which colours the theme sets and which come from the artwork."
+ai_instructions: "Apply when a dashboard shows one media player with playback buttons. The card type is media-control and the entity must be in the media_player domain. It has name and theme options only: no tap actions and no features. The artwork is a decorative background with no text alternative, so title, artist and state must be readable as text. The card takes its text and background colours from the artwork, so a theme cannot set them; with no artwork it uses primary-color and text-primary-color. Below 350 pixels wide the progress bar is hidden and below 300 pixels the buttons are hidden unless the player is off, idle or on. A long title scrolls only when the mouse hovers over it. Seeking works only on players that support it. Do not claim a contrast ratio for text over artwork, that the progress bar is named or announced, or that card-mod selectors beyond ha-card have been tested. Never start playback on page load."
+ai_related:
+  - path: "/home-assistant/media-playback.html"
+    title: "Media playback and output selection"
+    relationship: "Owns the state wording and the playback flow, including never starting playback on load."
+  - path: "/components/more-info-dialog-and-domain-state-controls.html"
+    title: "More-Info Dialog & Domain State Controls"
+    relationship: "Owns the dialog the card opens from its three-dots button."
+  - path: "/components/sliders.html"
+    title: "Control Slider"
+    relationship: "Owns slider behaviour, including the progress bar’s drag interaction."
+  - path: "/components/audio-player.html"
+    title: "Audio Player"
+    relationship: "Owns the browser audio element, which is a different component."
+component:
+  parent: "Media Control Card"
+  letter: "M"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-media-control-card"
+      origin: "Lovelace"
+      anchor: "child-hui-media-control-card"
+  tags:
+    - "hui-media-control-card"
+    - "media-control"
+---
+
+# Media Control Card
+
+<h2 id="purpose">Purpose</h2>
+
+The media control card shows one media player: what is playing, whether it is playing, and buttons to play, pause or skip. Use it when people want to control a speaker or television from the dashboard without opening a dialog.
+
+The state words (Playing, Paused, Idle, Off, Unavailable) and the rule that playback never starts when a page loads are owned by [Media playback and output selection](../home-assistant/media-playback.html). The card’s three-dots button opens the full controls in the more-info dialog, which is described on [More-Info Dialog & Domain State Controls](more-info-dialog-and-domain-state-controls.html).
+
+This page covers:
+
+- Media Control Card
+  - `hui-media-control-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom, inside one card:
+
+- A background made from the artwork of the current item. With no artwork it is a solid block in the theme’s primary colour.
+- A top row with the state icon, the player name and a three-dots button that opens the more-info dialog.
+- The title and a second line of description, such as the artist.
+- A row of playback buttons on the left, and on the right a browse button and a button to join players. The join button shows how many players are grouped.
+- A progress bar.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-media-control-card"><code>hui-media-control-card</code></h3>
+
+The card for the `media-control` type. It has no tap, hold or double-tap action and no card features.
+
+```yaml
+type: media-control
+entity: media_player.kitchen_speaker
+name: Kitchen speaker
+```
+
+- `entity` is required and must be in the `media_player` domain. Any other domain shows an error when the card is set up. If the entity does not exist the card shows a warning that the entity was not found instead of a card.
+- `name` replaces the player’s name.
+- `theme` applies a different named theme to this one card.
+
+The card buttons depend on what the player supports. The browse button appears only if the player can browse media. The join button appears only if it can be grouped. The progress bar appears only when the player is playing or paused and reports both a duration and a position. People can drag it to seek only on players that support seeking. On other players it is drawn but does nothing.
+
+If the player is unavailable, or is off and cannot be turned on, the card hides the title, buttons and progress bar and turns the background grey. Write the state as text as well, because the grey alone does not say what is wrong.
+
+**Narrow cards.** Below 350 pixels wide the progress bar is hidden. Below 300 pixels wide the playback buttons are hidden as well, unless the player is off, idle or on. In a narrow column, check which controls remain, and rely on the three-dots button for the rest.
+
+**Artwork.** The artwork is a background picture with no text alternative, so it carries no meaning for a screen reader. The title, description and state icon carry it. The card picks its text and background colours from the artwork and aims for a contrast of 4.5 to 1 against the main colour of the picture. The colours are set directly on the card, so a theme cannot change them, and the result for any one picture can differ.
+
+**Motion.** A title too long for the card scrolls sideways while the mouse pointer is over it. Nothing scrolls it for a keyboard user, and the card has no reduced-motion setting. The background colour and filter changes take 0.8 seconds. If the full title matters, write it as text elsewhere, for example in a Markdown card beside the player.
+
+**What the theme sets.** The card reads these theme variables and uses Home Assistant’s default for any that is not set:
+
+| Variable | Used for | Civica theme, light | Civica theme, dark |
+|---|---|---|---|
+| `primary-color` | Background when there is no artwork | `#1D70B8` | `#C0D7EB` |
+| `text-primary-color` | Text on that background | `#FFFFFF` | `#0B0C0C` |
+| `accent-color` | Progress when the artwork gives no colour, and the group count badge | `#1D70B8` | `#C0D7EB` |
+| `text-accent-color` | Text on the group count badge | Not set, so it falls back to `text-primary-color` | Not set |
+
+Calculated from these colours, the text on the no-artwork background has a contrast of 5.17 to 1 in light mode and 13.21 to 1 in dark mode. These figures are for the default Civica theme and for the no-artwork card only. The other Civica themes use different primary colours.
+
+The card has no `--media-control-*` variables of its own. Its corners, border and focus colour come from the shared card settings: a 1 pixel border in `ha-card-border-color`, square corners and no shadow, and the Civica yellow focus colour. Button sizes (44 and 56 pixels, 40 and 50 pixels when narrow) and the progress track are set by the card itself.
+
+**Card-mod.** The outer frame is `ha-card`, which is the part the Civica theme already restyles through its card-mod setting. This needs the card-mod integration. Civica publishes no other selector for this card.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The card gives one-tap playback control and shows the current item without leaving the dashboard.
+- Buttons have text labels for assistive technology, in Home Assistant’s own wording.
+- A theme cannot set the colours drawn from the artwork, and cannot add alternative text to it.
+- The progress bar disappears below 350 pixels, and the buttons disappear below 300 pixels while a player is playing.
+- The progress bar’s handle is hidden, so there is nothing visible to focus on it.
+- The title scrolls on mouse hover only.
+- There is no live announcement when the track changes.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Say which speaker the card controls, with `name` if the player’s own name is unclear. Keep the card in a column wide enough for the buttons. Show the title, artist and state as text, and do not rely on the artwork, the grey background or colour to explain what is happening. When a command has been sent but the player has not yet reported a change, say the request is pending until the state confirms it.
+
+Put one media card in a section, and use the three-dots button for volume, source and everything else, so the card stays simple.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: the artwork is decorative, and the title carries the meaning.
+- 1.4.1 Use of Colour: a player that is off turns grey, so write the state as text.
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: the text over artwork depends on the picture. Check your own artwork.
+- 2.1.1 Keyboard: the buttons are reachable, but the title’s scrolling is not.
+- 2.2.2 Pause, Stop, Hide: the scrolling title repeats while the pointer stays over it.
+- 2.5.7 Dragging Movements: seeking is a drag on the progress bar, so offer another way to jump in a long track, such as the more-info dialog.
+- 4.1.3 Status Messages: a change of track is not announced.
+
+<h2 id="examples">Examples</h2>
+
+### A speaker playing a track
+
+<%= example('spec-media-control-playing') %>

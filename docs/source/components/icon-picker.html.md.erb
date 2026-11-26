@@ -1,0 +1,114 @@
+---
+title: "Icon Picker"
+description: "Let people choose an icon by searching its name, and show the chosen icon beside its name in words."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Icon Picker specification: the field and its list, how search works, the settings a form can give it and what the Civica theme sets."
+ai_instructions: "Apply when a form asks for an icon (the icon selector, or an icon field in a card editor or helper form). Tell people to search by a word such as lamp, because there are several thousand icons and the names are English words joined with hyphens. Always show the chosen icon beside its name as text, because the icon alone has no name. Give the field a label and a short hint. Do not claim it is a native select or a standard combobox. Do not claim the helper text is linked to the field. Do not quote a contrast ratio."
+ai_related:
+  - path: "/components/icon-and-state-icon.html"
+    title: "Icon & State Icon"
+    relationship: "Owns the icon elements that draw each icon in the field and the list."
+  - path: "/styles/images-icons.html"
+    title: "Icons"
+    relationship: "Owns the advice on when to use an icon and how to choose one."
+  - path: "/components/combobox-autocomplete.html"
+    title: "Combobox / Autocomplete"
+    relationship: "Owns the searchable picker that the Icon Picker is built on."
+  - path: "/components/hint-text.html"
+    title: "Help / Hint Text"
+    relationship: "Owns the helper line under the field."
+component:
+  parent: "Icon Picker"
+  letter: "I"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-icon-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-icon-picker"
+  tags:
+    - "ha-icon-picker"
+    - "icon selector"
+---
+
+# Icon Picker
+
+<h2 id="purpose">Purpose</h2>
+
+An Icon Picker lets people choose one icon, for example for a helper, a card or a button. People search by name and pick from the matches. This page owns the Home Assistant icon field. For the icons themselves, see [Icon & State Icon](icon-and-state-icon.html). For pickers in general, see [Combobox / Autocomplete](combobox-autocomplete.html). For choosing an icon in the first place, see [Icons](../styles/images-icons.html).
+
+This page covers:
+
+- `ha-icon-picker`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+1. The label.
+2. The field. It shows the chosen icon, or a preview icon when nothing is chosen, and the icon name.
+3. The helper line, with an error message above it when the value is not valid.
+
+When someone opens the field, Home Assistant shows a search box and a list of matches in a dialog or a sheet. Each row has the icon and the full name, such as `mdi:lamp`.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-icon-picker"><code>ha-icon-picker</code></h3>
+
+The icon field. A dashboard author meets it in two places. The card editor uses it for icon fields. Helper forms, such as a text helper or a button helper, use it as well. Developers can add it to a form with the `icon` selector, which accepts a `placeholder` and a `fallbackPath`.
+
+| Setting | Meaning |
+| --- | --- |
+| `value` | The chosen icon, such as `mdi:lamp` |
+| `label` | The label above the field |
+| `helper` | The helper line under the field |
+| `placeholder` | The icon shown as a preview when nothing is chosen |
+| `error-message` | The message shown above the helper line when the value is not valid |
+| `disabled`, `required`, `invalid` | The usual field states |
+
+The field accepts a name that is typed in, as well as one picked from the list. Search compares the words in the icon names and their keywords. A space typed in the search box is treated as a hyphen. A match on a whole word in the name ranks first, then a match on a keyword, then names that merely contain the words.
+
+When an entity is in context and no placeholder is set, the field shows that entity’s icon as the preview.
+
+**What the Civica theme sets.** The picker draws its helper text in the secondary text colour, `#484949` in light mode and `#CBD0D3` in dark mode, and the error text in the error colour, `#CA3535` in light mode and `#F0C6C6` in dark mode. The theme’s input colours, square corners, 2 pixel borders and yellow focus ring may also apply to the field. Check the field and its focus cue on your own dashboard.
+
+**What stays as Home Assistant draws it.** The layout of the list, the search and the way the list opens as a dialog or a sheet cannot be changed with the theme. The helper line is not connected to the field, so a screen reader may not read it with the field. The field has the label as its name, and each row in the list carries the icon name as text.
+
+**What a form author can do.** Give the field a plain label such as “Icon”. Add a short hint that tells people how to search, such as “Search by name, for example lamp or door”. Show the chosen icon next to its name as words, so the name is never only a picture.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Searching is quicker than scrolling the several thousand icons.
+- People can type a full name when they know it.
+- Every row shows the icon and its name as text.
+- The names are English words joined with hyphens, so people need a hint to search in a word like “lamp”.
+- The field is not a native select. It opens a searchable list in a dialog or a sheet.
+- The helper line is not connected to the field.
+- The layout of the list cannot be changed with the theme.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Ask for an icon only when it matters, and make the field optional when it does not. Tell people to search by a word, not to scroll. Show a preview of the chosen icon with its name beside it. Put anything essential in the label, because the helper line is not connected to the field.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 3.3.2 Labels or Instructions: the label and the hint say what to choose and how to search.
+- 3.3.1 Error Identification: an invalid value shows a message above the helper line.
+- 2.1.1 Keyboard and 4.1.2 Name, Role, Value: the field is named by its label. Check the list with a keyboard on your own dashboard.
+- 1.1.1 Non-text Content: the icons in the list are decorative, and the name carries the meaning.
+- 1.4.4 Resize Text and 1.4.10 Reflow: check the list at large text sizes and on a narrow screen.
+- 2.5.8 Target Size (Minimum): check the rows of the list on a touch screen.
+
+<h2 id="examples">Examples</h2>
+
+### An icon field with its matching list
+
+<%= example('spec-icon-picker-lamp') %>

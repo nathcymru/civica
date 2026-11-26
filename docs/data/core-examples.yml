@@ -62,12 +62,12 @@
     },
     "core-phase-demo": {
       "title": "Demonstration banner",
-      "html": "<div class=\"govuk-phase-banner\"><p class=\"govuk-phase-banner__content\"><strong class=\"govuk-tag govuk-phase-banner__content__tag\">Demo</strong><span class=\"govuk-phase-banner__text\">Values are examples. Controls do not connect to a home.</span></p></div><h2 class=\"govuk-heading-m\">Kitchen overview</h2><p class=\"govuk-body\">Temperature: 20 °C — example reading.</p>",
+      "html": "<article class=\"civica-card-demo\"><div class=\"civica-card-demo__body\"><p style=\"margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid #cecece\"><strong style=\"display:inline-block;margin-right:12px;padding:2px 8px;background:#d2e2f1;color:#0b0c0c;font-size:1rem;text-transform:uppercase;letter-spacing:1px\">Demo</strong><span>Values are examples. Controls do not connect to a home.</span></p><h2 style=\"font-size:1.375rem;margin:0 0 8px\">Kitchen overview</h2><p style=\"margin:0\">Temperature: 20 °C — example reading.</p></div></article>",
       "height": 300
     },
     "core-phase-trial": {
       "title": "Feature trial banner",
-      "html": "<div class=\"govuk-phase-banner\"><p class=\"govuk-phase-banner__content\"><strong class=\"govuk-tag govuk-phase-banner__content__tag\">Trial</strong><span class=\"govuk-phase-banner__text\">This example is being evaluated. Use the existing settings page to make changes.</span></p></div><h2 class=\"govuk-heading-m\">New settings layout</h2><p class=\"govuk-body\">The current settings route remains available during a real trial.</p>",
+      "html": "<article class=\"civica-card-demo\"><div class=\"civica-card-demo__body\"><p style=\"margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid #cecece\"><strong style=\"display:inline-block;margin-right:12px;padding:2px 8px;background:#d2e2f1;color:#0b0c0c;font-size:1rem;text-transform:uppercase;letter-spacing:1px\">Trial</strong><span>This layout is being tested. Use the current settings page to make changes.</span></p><h2 style=\"font-size:1.375rem;margin:0 0 8px\">New settings layout</h2><p style=\"margin:0\">The settings page you already use is unchanged.</p></div></article>",
       "height": 300
     },
     "core-service-navigation": {
@@ -103,13 +103,13 @@
     },
     "system-history-expanded": {
       "title": "A guide with an update",
-      "html": "<section aria-label=\"Example publication details\"><h2 class=\"govuk-heading-m\">Example heating guide</h2><p class=\"govuk-body\">Published <time datetime=\"2026-10-01\">1 October 2026</time><br>Last updated <time datetime=\"2026-11-01\">1 November 2026</time></p><details class=\"govuk-details\"><summary class=\"govuk-details__summary\"><span class=\"govuk-details__summary-text\">See all updates</span></summary><div class=\"govuk-details__text\"><ol class=\"govuk-list\"><li><time datetime=\"2026-11-01\">1 November 2026</time><p>Clarified how to identify the active schedule.</p></li><li><time datetime=\"2026-10-01\">1 October 2026</time><p>First published.</p></li></ol></div></details></section>",
+      "html": "<article class=\"civica-card-demo\" aria-label=\"Example publication details\"><div class=\"civica-card-demo__body\"><h2 style=\"font-size:1.375rem;margin:0 0 8px\">Example heating guide</h2><p style=\"margin:0 0 12px\">Published <time datetime=\"2026-10-01\">1 October 2026</time><br>Last updated <time datetime=\"2026-11-01\">1 November 2026</time></p><details><summary style=\"min-height:44px;padding-block:10px;color:#1d70b8;cursor:pointer\">See all updates</summary><ol style=\"margin:8px 0 0;padding-left:20px\"><li style=\"margin-bottom:8px\"><time datetime=\"2026-11-01\">1 November 2026</time><p style=\"margin:0\">Clarified how to identify the active schedule.</p></li><li><time datetime=\"2026-10-01\">1 October 2026</time><p style=\"margin:0\">First published.</p></li></ol></details></div></article>",
       "height": 300,
       "description": "Dates and notes in this example are fictional."
     },
     "system-history-correction": {
       "title": "A corrected guide",
-      "html": "<section aria-label=\"Example publication details\"><h2 class=\"govuk-heading-m\">Example meter guide</h2><p class=\"govuk-body\">Published <time datetime=\"2026-10-01\">1 October 2026</time><br>Last updated <time datetime=\"2026-11-01\">1 November 2026</time></p><details class=\"govuk-details\"><summary class=\"govuk-details__summary\"><span class=\"govuk-details__summary-text\">See all updates</span></summary><div class=\"govuk-details__text\"><ol class=\"govuk-list\"><li><time datetime=\"2026-11-01\">1 November 2026</time><p>Corrected the unit in the example from W to kW.</p></li><li><time datetime=\"2026-10-01\">1 October 2026</time><p>First published.</p></li></ol></div></details></section>",
+      "html": "<article class=\"civica-card-demo\" aria-label=\"Example publication details\"><div class=\"civica-card-demo__body\"><h2 style=\"font-size:1.375rem;margin:0 0 8px\">Example meter guide</h2><p style=\"margin:0 0 12px\">Published <time datetime=\"2026-10-01\">1 October 2026</time><br>Last updated <time datetime=\"2026-11-01\">1 November 2026</time></p><details><summary style=\"min-height:44px;padding-block:10px;color:#1d70b8;cursor:pointer\">See all updates</summary><ol style=\"margin:8px 0 0;padding-left:20px\"><li style=\"margin-bottom:8px\"><time datetime=\"2026-11-01\">1 November 2026</time><p style=\"margin:0\">Corrected the unit in the example from W to kW.</p></li><li><time datetime=\"2026-10-01\">1 October 2026</time><p style=\"margin:0\">First published.</p></li></ol></details></div></article>",
       "height": 300,
       "description": "An update note identifies the correction instead of saying only “Updated”."
     },

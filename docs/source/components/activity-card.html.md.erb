@@ -11,6 +11,8 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Activity Card specification: the Home Assistant card that shows the logbook, its options and its limits."
+  - date: "2026-11-26"
+    description: "Corrected the description of entries: the card draws no icon at the start of an entry."
 ai_instructions: "Apply when a dashboard shows recent activity. Home Assistant calls this card Activity in the interface and uses type logbook in YAML; there is no element named hui-activity-card. Always set a target. Say the period in the title or beside it. Do not imply the list updates live. Explain what an empty list means. The title is drawn as a level-one heading by Home Assistant."
 ai_related:
   - path: "/components/cards.html"
@@ -57,7 +59,7 @@ From top to bottom:
 
 1. An optional title, with a “Show more” arrow link to the full Activity page for the same period.
 2. A warning, if a chosen device cannot be found.
-3. A scrolling list of entries, each with an icon, a name, a description and a time.
+3. A scrolling list of entries, each with a name, a description and a time. The card draws no icon at the start of an entry.
 
 If the Logbook integration is not loaded, the card shows a warning instead. With nothing to show it says “No activity found.”
 
@@ -90,7 +92,7 @@ The card is 385 pixels tall unless the layout sets the height, and the list scro
 
 **What the Civica theme sets.** The card surface, the title (through the `ha-card-header-*` keys) and the text and divider colours. See [Card (Base Surface)](cards.html).
 
-**What stays as Home Assistant draws it.** The list items, their icons and times, and the scrolling list have no theme variable. Changing them would need the card-mod integration. Test any selector in your own dashboard.
+**What stays as Home Assistant draws it.** The list entries, their times and the scrolling list have no theme variable. Changing them would need the card-mod integration. Test any selector in your own dashboard.
 
 <h2 id="limits">Advantages and limitations</h2>
 
@@ -99,7 +101,7 @@ The card is 385 pixels tall unless the layout sets the height, and the list scro
 - The title is drawn as a level-one heading, so heading order on the page may need care.
 - The list scrolls in a fixed-height box. Check that keyboard users can reach every entry on your own dashboard.
 - The card does not say how recent the list is unless you do. Do not promise live updates.
-- Entry icons carry no meaning on their own.
+- Entries have no icon at the start, so each one must say in words what happened.
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>
 
@@ -107,8 +109,8 @@ Choose a small target, so the list answers one question, such as who used the fr
 
 Success criteria that apply:
 
-- 1.3.1 Info and Relationships: entries are a list and the title is a heading.
-- 1.3.3 Sensory Characteristics and 1.4.1 Use of Colour: do not rely on the icon or its colour.
+- 1.3.1 Info and Relationships: the title is a heading. Home Assistant does not draw the entries as a list, so give each one a clear name and time.
+- 1.3.3 Sensory Characteristics and 1.4.1 Use of Colour: do not rely on the colour of the timeline marker.
 - 1.4.10 Reflow: the fixed height scrolls; test at large text.
 - 2.1.1 Keyboard and 2.4.3 Focus Order: check that the scrolling list can be reached.
 - 2.4.4 Link Purpose: the “Show more” link has a text name.
@@ -118,6 +120,6 @@ Success criteria that apply:
 
 ### An Activity card for the front door
 
-A simulated card with the period, time-first entries and a link to the full list. Home Assistant draws its own list, and this one is only a stand-in.
+A simulated card with the period, time-first entries and a link to the full list. The layout is simplified: in Home Assistant the time is a trailing chip on each entry and the day headings are level four.
 
 <%= example('spec-card-activity-front-door') %>

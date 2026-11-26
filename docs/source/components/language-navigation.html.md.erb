@@ -1,44 +1,115 @@
 ---
-title: "Language navigation"
-description: "Link equivalent content in the languages the service genuinely supports."
-section: components
-group: Navigation
-status: reference
-published_on: 2026-11-11
-updated_on: 2026-11-11
+title: "Language Navigation"
+description: "Link equivalent content in the languages a household page genuinely supports."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
-  - date: 2026-11-11
-    description: "Added the Civica guidance, contextual examples and implementation boundaries."
+  - date: "2026-11-26"
+    description: "Rewrote the page as a full specification: what Home Assistant offers for language, how to build the links in your own pages, and one simulated example."
+  - date: "2026-11-11"
+    description: "Added the guidance, contextual examples and implementation boundaries."
+ai_instructions: "Apply when your own page or help site offers the same content in more than one language. Home Assistant has no language navigation element: each person chooses their interface language in their profile, with the language picker. The pattern is a nav with a Language label and a list of links, with the current language marked and every other link carrying lang and hreflang. Write each language name in that language and do not use flags. Keep the person on the same topic. Never claim a reviewed translation, and never claim any screen reader pronunciation."
+ai_related:
+  - path: "/patterns/british-sign-language.html"
+    title: "Help people find British Sign Language content"
+    relationship: "Owns finding signed content, which a language menu does not replace."
+  - path: "/components/link-anchor.html"
+    title: "Link / Anchor"
+    relationship: "Owns the link element used for each language."
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns navigation lists in general."
+component:
+  parent: "Language Navigation"
+  letter: "L"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Language Navigation Pattern"
+      origin: "Civica"
+      anchor: "child-civica-language-navigation-pattern"
+  tags:
+    - "language"
+    - "navigation"
 ---
 
-# Language navigation
+# Language Navigation
 
-Link equivalent content in the languages the service genuinely supports.
+<h2 id="purpose">Purpose</h2>
 
-## When to use
+Language navigation links to the same content in another language, such as a help page in English and Welsh. Use it on your own pages when a translated version of the current content exists.
 
-Offer language navigation when a translated version of the current content exists. Keep the person on the same topic and preserve only state that can safely carry between versions. Do not take a translation link to an unrelated home page or automatically infer language from a person’s name.
+Home Assistant has no language navigation element. Each person picks the interface language in the language setting of their Home Assistant profile. So the pattern is for your own HTML pages. To offer a dashboard in another language, link to the other dashboard with a plain link (see [Link / Anchor](link-anchor.html)).
 
-British Sign Language requires its own content and discovery approach; see the [BSL pattern](../patterns/british-sign-language.html). A language menu is not a substitute for an accessible signed version.
+This page covers:
 
-## English and Welsh examples
+- Language Navigation
+  - Civica Language Navigation Pattern
 
-The small examples below link to each other and demonstrate the navigation structure. Their two labels are illustrative; they do not claim the complete design system has a reviewed Welsh translation.
+<h2 id="anatomy">Anatomy</h2>
 
-<%= example('core-language-en') %>
+- A navigation area named “Language”.
+- A list of the languages, one item for each.
+- The current language, marked and not a link.
+- A link for each other language, with its language set.
 
-<%= example('core-language-cy') %>
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Behaviour and content
+<h3 id="child-civica-language-navigation-pattern"><code>Civica Language Navigation Pattern</code></h3>
 
-Write each language name in that language. Mark the current language programmatically, and use both `lang` and `hreflang` on alternative links. The full production document’s `lang` must match its principal content, while passages in another language need their own language attribute.
+This is markup for your own pages. Civica has no card or element for it.
 
-Only publish a translation after review by a suitably qualified speaker. Keep revisions in step and identify when an alternative version is unavailable or out of date. Do not silently substitute machine translation for a reviewed household instruction.
+```html
+<nav aria-label="Language">
+  <ul>
+    <li><span aria-current="true" lang="en">English</span></li>
+    <li><a href="/cy/heating.html" rel="alternate" lang="cy" hreflang="cy">Cymraeg</a></li>
+  </ul>
+</nav>
+```
 
-## Accessibility and testing
+- Write each language name in that language: “Cymraeg”, not “Welsh”.
+- Mark the current language with `aria-current="true"` and do not make it a link.
+- Put `lang` and `hreflang` on every link to another language.
+- Set `lang` on the page to match its main content. A passage in another language needs its own `lang`.
+- Put the navigation in the same place on every page.
 
-Check names and pronunciation with a screen reader. Test the actual equivalent destinations, page title, browser back, right-to-left layout where relevant, and long translated labels. Ensure a language change does not submit an unfinished control action.
+**What the Civica theme sets.** Nothing in the Home Assistant theme styles this, because Home Assistant has no language navigation. Links in a Markdown card take `--primary-color` (see [Link / Anchor](link-anchor.html)).
 
-## Home Assistant boundary and source
+Only publish a translation after a suitably qualified speaker has reviewed it. Say when a translation is missing or out of date. Do not replace a reviewed household instruction with machine translation.
 
-Keep native HA language preferences and translations. This reference does not change the account language or translate entity names. The [GOV.UK Language navigation component](https://design-system.service.gov.uk/components/language-navigation/) is currently in trial; record future changes before adopting them.
+British Sign Language needs its own content. A language menu is not a substitute: see [Help people find British Sign Language content](../patterns/british-sign-language.html).
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It keeps people on the same topic in their own language.
+- It needs a reviewed translation for every page you list.
+- It is plain links, so it works without script.
+- It does not change the Home Assistant interface language, entity names or translations.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Take the person to the same topic, not an unrelated home page. Never choose a language from a person’s name or from where they are. Do not use flags, because a flag stands for a country and not a language. Say clearly when no translation exists. Never change a language when someone is part-way through a form and would lose their work.
+
+Test the real destinations, the page title, the browser Back button, long translated names and right-to-left layouts where they apply. See [Test the interface](../accessibility/testing.html).
+
+Success criteria that apply:
+
+- 3.1.1 Language of Page and 3.1.2 Language of Parts: `lang` on the page and on every link and passage in another language.
+- 2.4.4 Link Purpose (In Context): each link names a language.
+- 1.3.1 Info and Relationships and 4.1.2 Name, Role, Value: the current language is marked.
+- 3.2.3 Consistent Navigation: the same place on every page.
+- 1.4.10 Reflow: long labels must wrap.
+
+One list, in the same place every time, keeps the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### A heating note in English and Welsh
+
+<%= example('spec-language-navigation-pair') %>

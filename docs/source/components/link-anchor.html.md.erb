@@ -1,0 +1,131 @@
+---
+title: "Link / Anchor"
+description: "Take someone to another page or place with a link that says where it goes."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Link / Anchor specification: the link element, where links appear in Home Assistant, what Civica changes and what stays as Home Assistant draws it."
+ai_instructions: "Apply when text or a card takes someone somewhere. A link goes somewhere and a button does something, so use the button page for actions. Write link text that names the destination, not Click here, and say so in the text when a link opens a new tab or downloads a file. In a Markdown card the link colour is primary-color, because Civica's link-color variable is read only by Civica's own cards. Never claim a visited colour, that a Markdown card underlines links, or a focus appearance for a link in a Markdown card. A card tap action such as navigate is not a link. Quote contrast only as calculated from theme colours."
+ai_related:
+  - path: "/components/action-links.html"
+    title: "Action Links"
+    relationship: "Owns Civica's own card of links to dashboard paths."
+  - path: "/components/buttons.html"
+    title: "Button"
+    relationship: "Owns actions: use a button when something happens on the page."
+  - path: "/components/skip-link.html"
+    title: "Skip link"
+    relationship: "Owns the link that jumps past repeated content."
+  - path: "/components/back-link.html"
+    title: "Back Link"
+    relationship: "Owns the link back to the previous page."
+  - path: "/components/breadcrumbs.html"
+    title: "Breadcrumb"
+    relationship: "Owns the trail of links to parent pages."
+  - path: "/components/language-navigation.html"
+    title: "Language Navigation"
+    relationship: "Owns links between language versions of a page."
+component:
+  parent: "Link / Anchor"
+  letter: "L"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<a>"
+      origin: "HTML5"
+      anchor: "child-a"
+  tags:
+    - "a"
+    - "link"
+    - "anchor"
+---
+
+# Link / Anchor
+
+<h2 id="purpose">Purpose</h2>
+
+A link takes someone to another page, another place on the same page or a file. A link goes somewhere. A button does something, such as turning on a lamp: for that, see [Button](buttons.html).
+
+This page covers:
+
+- Link / Anchor
+  - `<a>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+- The link text, which says where the link goes.
+- The destination, in `href`.
+- Optional notes in the text: that it opens a new tab, or that it is a file and how big.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-a"><code>&lt;a&gt;</code></h3>
+
+The `<a>` element is a link when it has an `href`. Without `href` it is only a placeholder and is not a link.
+
+- `href` is the address. `href="#heating"` jumps to the element with that `id` on the same page. Give that element `tabindex="-1"` so that focus can move to it.
+- `target="_blank"` opens a new tab. Add `rel="noopener"` for older browsers.
+- `download` saves the file.
+- `hreflang` and `lang` say which language the destination or the link text is in.
+- `rel="alternate"` marks a translation.
+- Do not put a button or another link inside a link.
+- Enter follows a link. Space does not.
+
+```html
+<p>To change when the heating comes on,
+<a href="/local/heating-schedule-guide.html">read the heating schedule guide</a>.</p>
+```
+
+Never use a link as a button, for example `href="#"` with a script. Use a [Button](buttons.html).
+
+**Link text.**
+
+- Name the destination: “Read the heating schedule guide”, not “Click here” or “More”.
+- Use the same text for the same destination, and different text for different destinations.
+- Say in the text when a link opens a new tab or saves a file, and give the type and size: “Boiler manual (PDF, 2 MB, opens in a new tab)”.
+- Do not use a long address as the link text.
+
+**Where links appear in Home Assistant.**
+
+- In a Markdown card, in dialogs and in help text you write. A link in a Markdown card takes `--primary-color`, or `--markdown-link-color` if a theme sets it. Each theme sets its own `primary-color`, so the link colour depends on the theme. In the Civica theme it is #1D70B8 in light mode and #C0D7EB in dark mode. For the Civica theme, calculated from those colours, that is about 5.2 to 1 on a white card and about 10 to 1 on the dark card surface. Check the other themes on your own dashboard.
+- Each theme also sets `link-color` and `ha-color-text-link`, but only Civica’s own cards read them. A Markdown card does not. The light mode value is #1A65A6 in every theme; the dark mode value differs by theme, and is #C0D7EB in the Civica theme.
+- Civica’s own [Action Links](action-links.html) card shows a list of links to dashboard paths, each at least 44 pixels high, with a Civica yellow focus background.
+- A card’s tap action, such as `navigate` or `url`, is not a link. It is not a link element, so say in the card’s text where it goes.
+
+**What stays as Home Assistant draws it.** The visited colour and the focus look of a link in a Markdown card are the browser’s and Home Assistant’s own. Check on your dashboard that links in a Markdown card are underlined, and add a cue other than colour if they are not.
+
+For other special links, see [Skip link](skip-link.html), [Back Link](back-link.html), [Breadcrumb](breadcrumbs.html) and [Language Navigation](language-navigation.html).
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A link works without script and keeps browser features such as opening in a new tab.
+- A link in a Markdown card follows `primary-color`, not Civica’s own link colour.
+- A link’s focus look in a Markdown card cannot be set with the theme.
+- Opening a new tab can surprise people, so say so in the text.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Write link text that makes sense out of context, and keep it the same as the heading of the page it opens. Do not rely on colour alone to show a link in a paragraph: use an underline. Keep stand-alone links at least 24 pixels high and apart, and 44 pixels in Civica’s own cards.
+
+Success criteria that apply:
+
+- 1.4.1 Use of Colour: a link in text needs a cue beyond colour.
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: check link text on your own cards.
+- 2.4.4 Link Purpose (In Context): the text says where it goes.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): check the focus cue on your own dashboard.
+- 2.5.3 Label in Name and 2.5.8 Target Size (Minimum): a link in a sentence is exempt, a stand-alone link needs 24 pixels.
+- 4.1.2 Name, Role, Value: a link has a name from its text.
+
+Specific text, one destination for each, and a note when a link leaves the page keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### Links and a button on a help card
+
+<%= example('spec-link-descriptive') %>

@@ -1,55 +1,137 @@
 ---
 title: "Navigation"
-description: "Navigation for the Civica Home Assistant design system."
-last_reviewed_on: 2026-11-12
-review_in: 3 months
+description: "Group the main links of a dashboard or guide so people can find rooms and pages, and keep Home Assistant’s own sidebar and tabs."
+section: "components"
+group: "Components"
+status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-18"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewrote the page as the Navigation specification: the navigation landmark, the A to Z pattern, what the Civica theme sets and how to keep Home Assistant’s own navigation."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: "2026-11-12"
-    description: "Updated the current native Tools destination while preserving Home Assistant navigation."
-  - date: "2026-11-11"
-    description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
   - date: "2026-11-11"
     description: "First published in the Civica design system."
-  - date: "2026-11-18"
-    description: "The tabs guidance now calls the selector a theme colour selector."
+ai_instructions: "Apply when grouping the main links of a dashboard, guide or page. Keep Home Assistant’s native sidebar, view tabs and profile access. The nav element is an HTML landmark: give each one its own name, mark the current link with aria-current=page and a visible cue that is not colour alone, and do not add role=navigation. A dashboard author can write a nav only in HTML such as a custom card or documentation; the theme cannot add one, and the nearest dashboard alternative is a navigation card or a Markdown card with real links. The Civica A to Z pattern is a documentation pattern with no Home Assistant element: only letters that have entries are links. The theme sets navigation icon colours and sidebar colours. Do not claim contrast for the sidebar icons, a particular screen reader announcement, or that Home Assistant’s sidebar uses a nav element."
+ai_related:
+  - path: "/patterns/a-to-z.html"
+    title: "Browse household guides from A to Z"
+    relationship: "Owns the full guidance and examples for the A to Z pattern."
+  - path: "/components/tabs.html"
+    title: "Tabs"
+    relationship: "Owns tabs for related views."
+  - path: "/components/drawer-navigation-sidebar.html"
+    title: "Drawer / Navigation Sidebar"
+    relationship: "Owns Home Assistant’s sidebar."
+  - path: "/components/skip-link.html"
+    title: "Skip link"
+    relationship: "Owns the link that bypasses repeated navigation."
+  - path: "/components/header.html"
+    title: "Header / Top App Bar"
+    relationship: "Owns the header and its brand placement."
+  - path: "/components/notification-badge.html"
+    title: "Badge"
+    relationship: "Owns the count on a navigation item."
+component:
+  parent: "Navigation"
+  letter: "N"
+  origins:
+    - "HTML5"
+    - "Civica"
+  children:
+    - name: "<nav>"
+      origin: "HTML5"
+      anchor: "child-nav"
+    - name: "Civica A-Z Jump Navigation Pattern"
+      origin: "Civica"
+      anchor: "child-civica-a-z-jump-navigation-pattern"
+  tags:
+    - "nav"
+    - "a-z"
 ---
 
 # Navigation
 
-Keep Home Assistant's native sidebar, dashboard navigation and profile access. Users need a reliable route to the same functions before and after applying Civica.
+<h2 id="purpose">Purpose</h2>
 
+Navigation helps people reach rooms, dashboards and pages. Keep Home Assistant’s native sidebar, dashboard tabs and profile access, so that people have a reliable route to the same functions before and after applying Civica.
 
-## Examples
+This page covers:
 
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+- Navigation
+  - `<nav>`
+  - Civica A-Z Jump Navigation Pattern
 
-<%= example('local-navigation-current') %>
+<h2 id="anatomy">Anatomy</h2>
 
-<%= example('local-navigation-rooms') %>
+A group of navigation links has:
 
+- a name that says what it is for, such as “Rooms”
+- a list of links, each with a text label and, where Home Assistant gives one, an icon
+- one link marked as the current place
+- a route back to the overview
 
-## Main navigation
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Use text labels with existing icons. Show the current destination with a persistent indicator and accessible current-state semantics. Do not rely only on a colour change.
+<h3 id="child-nav"><code>&lt;nav&gt;</code></h3>
 
-Keep sidebar collapse behaviour, keyboard activation and narrow-screen navigation working. Do not turn links into buttons if they navigate, or buttons into links if they perform an action.
+The browser’s element for a major block of navigation links, such as a site menu or a list of rooms. It holds flow content, takes only the global attributes, and is a landmark for assistive technology. Do not add `role="navigation"`. It has no styling of its own, so the links and list need styling.
 
-## Room and dashboard navigation
+- Use `<nav>` for the main blocks of links, not for every group of links.
+- Give each `<nav>` on a page its own name with `aria-label` or `aria-labelledby`, such as “Rooms”, without the word “navigation” in it.
+- Put the links in a list.
+- Mark the current link with `aria-current="page"` and a visible cue that is not only colour, such as bold text and a bar.
 
-Use clear room names and consistent ordering. Keep a visible route back to the dashboard overview. Avoid stacking multiple navigation bars that repeat the same destinations.
+A dashboard author can write a `<nav>` only in HTML that Home Assistant lets them write, such as a custom card, and in documentation. A theme cannot add one. In a dashboard, use a navigation card, or a Markdown card with real links.
 
-Tabs are appropriate for related views within one context. Preserve native tab keyboard behaviour. A theme colour selector is a form control, not another navigation tab.
+Home Assistant’s own sidebar and view tabs stay as they are. The Civica theme sets their colours: the navigation icon colour (`civica-navigation-icon-color`: `#484949` in light mode, `#CBD0D3` in dark mode), the active icon colour (`civica-navigation-icon-active-color`: `#19578D` in light mode, `#C0D7EB` in dark mode, in the default theme), the masthead icon colour (`#FFFFFF`) and the sidebar colours. The count on a sidebar item is described on [Badge](notification-badge.html).
 
-## Brand placement
+<h3 id="child-civica-a-z-jump-navigation-pattern"><code>Civica A-Z Jump Navigation Pattern</code></h3>
 
-The Civica mark occupies the theme's identity area, with enough space to remain legible. Do not cover a menu toggle or shrink the navigation targets to fit it. On a narrow screen, use the supplied compact emblem only where the adjacent text or accessible name still identifies the service.
+A row of letters that jumps to a long, single-subject list of guides, such as appliance guides. It is a Civica documentation pattern. Home Assistant has no A to Z control, and the theme adds none: it changes only the colour of the links. Build it from ordinary links in a Markdown card or a guide page.
 
-## Native panels
+[Browse household guides from A to Z](../patterns/a-to-z.html) owns the rules for letters, link size, headings, aliases and search.
 
-Energy, History, Map, Settings (including Tools) retain their native routes. Do not introduce duplicate “Energy” pages that appear authoritative while omitting native capabilities.
+<h2 id="limits">Advantages and limitations</h2>
 
-The layout draws from GOV.UK's [service navigation](https://design-system.service.gov.uk/components/service-navigation/) and MoJ's [side navigation](https://design-patterns.service.justice.gov.uk/components/side-navigation/), adapted to Home Assistant's persistent shell.
+- A `<nav>` landmark lets people who use assistive technology jump straight to the links.
+- Home Assistant’s sidebar and tabs are native, so keeping them keeps their built-in behaviour.
+- A theme cannot add a `<nav>` to a dashboard.
+- Several navigation bars that repeat the same destinations confuse people.
+- An A to Z suits a long list on one subject. A short list is easier to use under headings.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+**Main navigation.** Use text labels with the icons Home Assistant already shows. Show the current place with a persistent indicator and `aria-current`, not only a colour change. Keep sidebar collapse, keyboard activation and narrow-screen navigation working. Do not turn a link that navigates into a button, or a button that acts into a link.
+
+**Rooms and dashboards.** Use clear room names in a consistent order, and keep a visible route back to the overview. Do not stack navigation bars that repeat the same destinations. Use tabs for related views in one context, and keep the native tab keyboard behaviour. The theme colour selector is a form control, not a navigation tab.
+
+**Brand placement.** The Civica mark takes the theme’s identity area, with enough space to stay legible. Do not cover the menu toggle or shrink targets to fit it. On a narrow screen, use the compact emblem only where the nearby text still names the service.
+
+**Native panels.** Energy, History, Map and Settings, including Tools, keep their native routes. Do not add a duplicate Energy page that looks official but leaves out what the native panel offers.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: a landmark, with a list of links.
+- 1.4.1 Use of Colour: the current place is not shown by colour alone.
+- 1.4.10 Reflow: links wrap at 320 pixels.
+- 2.4.1 Bypass Blocks: offer a [skip link](skip-link.html) before repeated navigation.
+- 2.4.4 Link Purpose and 2.4.5 Multiple Ways: names say where each link goes, and search or an A to Z gives another route.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): a fixed bar must not cover a focused link.
+- 2.5.8 Target Size (Minimum): the A to Z letter links are 44 pixels square.
+- 3.2.3 Consistent Navigation and 3.2.4 Consistent Identification: the same order and names everywhere.
+
+A few destinations, with familiar names, in the same order every time, keep the load low.
+
+<h2 id="examples">Examples</h2>
+
+### Room links with the current room marked
+
+<%= example('spec-navigation-rooms') %>
+
+### An A to Z for appliance guides
+
+<%= example('spec-az-household-guides') %>

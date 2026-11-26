@@ -1,0 +1,188 @@
+---
+title: "Markdown Card"
+description: "Write text, lists, links and tables in a dashboard card, and know what the card keeps and what it removes."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Markdown Card specification: its options, the tags it keeps and removes, and how the theme changes its text."
+ai_instructions: "Apply when a dashboard card shows written content (type: markdown). Content is Markdown with HTML, filtered for safety. Headings, paragraphs, lists, links, images, tables, details, abbr, mark, kbd, sub, sup and blockquote alerts survive. Every id, class, style, aria, lang, tabindex and hidden attribute is removed, and main, menu, math, time, label, button, form, iframe, style, script and custom elements are shown as plain text. A Markdown table cannot have a caption or header cell scope, so name it in the line above. Links to another site open in a new window with no warning, so say so in the link text. The Civica theme sets no --markdown-* variable; links use primary-color. Content is a Jinja template; say live values only when the template reads an entity."
+ai_related:
+  - path: "/components/article.html"
+    title: "Article"
+    relationship: "Owns the article element and its attributes in a Markdown card."
+  - path: "/components/table.html"
+    title: "Data Table"
+    relationship: "Owns table rules, including tables in a Markdown card."
+  - path: "/components/do-and-dont-lists.html"
+    title: "Do and Don't Lists"
+    relationship: "Owns paired lists of advice."
+  - path: "/components/code-and-preformatted-text.html"
+    title: "Code & Preformatted Text"
+    relationship: "Owns code and preformatted text."
+  - path: "/components/contents-list.html"
+    title: "Contents List"
+    relationship: "Owns lists of links to sections."
+  - path: "/components/mark-highlight.html"
+    title: "Mark / Highlight"
+    relationship: "Owns the mark element."
+  - path: "/home-assistant/pictures-and-embedded-content.html"
+    title: "Pictures, rich content and embedded pages"
+    relationship: "Owns images and embedded content on dashboards."
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns how cards are grouped into views."
+component:
+  parent: "Markdown Card"
+  letter: "M"
+  origins:
+    - "Lovelace"
+    - "Home Assistant"
+  children:
+    - name: "hui-markdown-card"
+      origin: "Lovelace"
+      anchor: "child-hui-markdown-card"
+    - name: "ha-markdown"
+      origin: "Home Assistant"
+      anchor: "child-ha-markdown"
+      grandchildren:
+        - name: "ha-markdown-element"
+          origin: "Home Assistant"
+          anchor: "child-ha-markdown--ha-markdown-element"
+  tags:
+    - "hui-markdown-card"
+    - "ha-markdown"
+    - "ha-markdown-element"
+    - "markdown"
+---
+
+# Markdown Card
+
+<h2 id="purpose">Purpose</h2>
+
+The Markdown card shows written content: headings, paragraphs, lists, links, images and tables. In YAML it is `type: markdown`. It is how most help text, guides and small tables get onto a dashboard.
+
+Home Assistant filters what you write for safety. It keeps the content tags and removes most attributes and many elements. This page owns that list. Other pages that mention a Markdown card link back here: [Article](article.html), [Data Table](table.html), [Do and Don’t Lists](do-and-dont-lists.html), [Code & Preformatted Text](code-and-preformatted-text.html) and [Contents List](contents-list.html).
+
+This page covers:
+
+- Markdown Card
+  - `hui-markdown-card`
+  - `ha-markdown`
+    - `ha-markdown-element`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+1. An optional title in the card header.
+2. The content, drawn with 16 pixels of padding.
+
+If there is no content, the card shows the error “Content required”. If the content is a template that fails, Home Assistant shows the content as you wrote it.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-markdown-card"><code>hui-markdown-card</code></h3>
+
+```yaml
+type: markdown
+title: Before you go away
+content: |
+  ## Checks
+  - Set the heating to Away.
+  - Close the garage door.
+```
+
+| Key | Meaning |
+| --- | --- |
+| `content` | The text. Required. It is a Jinja template that Home Assistant renders, so it can read entities |
+| `title` | Text in the card header |
+| `text_only` | Draws no header, background, border or shadow, and uses 2 pixels of padding above and below and 4 at the sides |
+| `entity_ids` | Entities that trigger a new render |
+| `show_empty` | When `false`, hides the card if the result is empty. The card is shown by default |
+| `card_size` | The height the layout reserves |
+| `theme` | Applies a theme to this card |
+| `tap_action`, `hold_action`, `double_tap_action` | Make the whole card act as a button |
+
+A single new line in the text becomes a line break. If you set an action, the whole card becomes a button that can be focused, with the Civica focus ring, which needs the card-mod integration (see below). Do not put links in a card that has an action.
+
+**What the Civica theme sets.** The card surface, border, square corners, no shadow and the title (through the `ha-card-header-*` keys), plus the text colours, the divider colour, the font families and the base font sizes. Links use `primary-color`, not the `ha-color-text-link` key. In the main Civica theme that is a blue in light mode and a pale blue in dark mode.
+
+**What stays as Home Assistant draws it.** The Civica theme sets no `--markdown-*` variable, so these keep Home Assistant’s values: list indent, link colour, code background, table border and padding, and image radius. The theme sets no code background or heading size either.
+
+**What needs the card-mod integration.** The Civica focus ring around a card with an action comes from the theme’s card-mod settings. Test any card-mod selector into the Markdown content in your own dashboard.
+
+<h3 id="child-ha-markdown"><code>ha-markdown</code></h3>
+
+The element that draws the content and styles it. A dashboard author cannot place it alone.
+
+**What the card keeps.** Markdown headings, paragraphs, emphasis, lists, links, images, block quotes, code, horizontal rules, tables and task lists, plus these HTML tags: `a`, `abbr`, `address`, `area`, `article`, `aside`, `audio`, `b`, `bdi`, `bdo`, `big`, `blockquote`, `br`, `caption`, `center`, `cite`, `code`, `col`, `colgroup`, `dd`, `del`, `details`, `div`, `dl`, `dt`, `em`, `figcaption`, `figure`, `font`, `footer`, `h1` to `h6`, `header`, `hr`, `i`, `img`, `input` (only the checkbox of a task list), `ins`, `kbd`, `li`, `mark`, `nav`, `ol`, `p`, `picture`, `pre`, `s`, `section`, `small`, `source`, `span`, `strike`, `strong`, `sub`, `summary`, `sup`, `table`, `tbody`, `td`, `tfoot`, `th`, `thead`, `tr`, `tt`, `u`, `ul` and `video`. It also keeps four Home Assistant tags: `ha-icon`, `ha-svg-icon`, `ha-alert` and `ha-qr-code`.
+
+**What the card removes.** These tags show as visible text instead: `main`, `menu`, `math`, `time`, `label`, `button`, `form`, `select`, `textarea`, `iframe`, `style`, `script`, `link`, `svg`, `dialog`, `output`, `meter`, `progress`, `ruby`, `wbr` and any other custom element.
+
+**Attributes.** Almost all are removed:
+
+- Kept on links: `href`, `target` and `title`.
+- Kept on images: `src`, `alt`, `title`, `width`, `height` and `loading`.
+- Kept on tables: `width`, `border`, `align`, `valign` and `role` on `table`; `align`, `valign` and `span` on `col` and `colgroup` (with `width`); `width`, `rowspan`, `colspan`, `align` and `valign` on `td` and `th`; `rowspan`, `align` and `valign` on `tr`; `align` and `valign` on `thead`, `tbody` and `tfoot`.
+- Kept elsewhere: `title` on `abbr`; `open` on `details`; `cite` on `blockquote`; `datetime` on `ins` and `del`; `dir` on `bdi` and `bdo`; `color`, `size` and `face` on `font`; `shape`, `coords`, `href` and `alt` on `area`; `type`, `checked` and `disabled` on a task-list checkbox; `src`, `srcset`, `sizes`, `media` and `type` on `source`.
+- Kept on `audio` and `video`: `src`, `controls`, `autoplay`, `loop`, `muted`, `preload` and `crossorigin`. `video` also keeps `playsinline`, `poster`, `width` and `height`.
+- Kept on the Home Assistant tags: `icon` on `ha-icon`; `path` on `ha-svg-icon`; `alert-type` and `title` on `ha-alert`; `data`, `scale`, `width`, `margin`, `error-correction-level` and `center-image` on `ha-qr-code`.
+- Removed everywhere else, including `id`, `class`, `style`, `aria-*`, `lang`, `hidden` and `tabindex`. `dir` is kept only on `bdi` and `bdo`, and `role` only on `table`.
+
+That has three effects. You cannot name a region or a table, so name a table in the line above it. You cannot mark a foreign phrase with `lang`. And you cannot build a skip target.
+
+**Alerts.** A block quote that starts with `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]` or `[!CAUTION]` becomes an alert box with that meaning, instead of a quote.
+
+**Links and images.** A link to another site opens in a new window, with no warning. Say so in the link text. Images are drawn no wider than the card.
+
+**Tables.** Markdown has no caption and cannot set header scope, because `scope` and `headers` are removed. A table sits in a box that scrolls sideways when it is too wide. That box has no name and may not be reachable by keyboard in every browser, so keep tables narrow. Check this in your own browser.
+
+**Styles.** Links use `--markdown-link-color`, then `--primary-color`. The other variables are `--markdown-list-indent`, `--markdown-image-border-radius`, `--markdown-code-background-color`, `--markdown-code-text-color` and the `--markdown-table-*` set. They inherit into the content, so a theme or a card’s `card_mod` style on the card can set them. The Civica theme sets none of them.
+
+<h3 id="child-ha-markdown--ha-markdown-element"><code>ha-markdown-element</code></h3>
+
+The element inside `ha-markdown` that does the work. It turns the Markdown into HTML in the background, filters it, and draws it. It has no slots or parts, and a dashboard author cannot place it.
+
+It adds the behaviours described above: links to another site open in a new window, and the alert and icon elements load when they first appear.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It is the quickest way to put real headings, lists and tables on a dashboard.
+- Headings, lists and tables keep their meaning for people who use assistive technology.
+- Labels, regions, ids, languages and captions are removed, so some structure cannot be written.
+- A table cannot have a caption or header scope in Markdown. The line above it must name it.
+- A wide table scrolls inside the card. A keyboard user may not be able to scroll it.
+- The text colour and link colour come from the theme. Links may not be underlined; test your links.
+- It is a template, so a typing mistake can show the raw text.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Keep one idea in each card, with short lines and a heading every few paragraphs. Use headings in order and do not skip a level. Write link text that makes sense alone, and say when a link opens a new window, for example “Read the away guide (opens in a new window)”. Name each table in the line above it and put the unit in the column heading. Where you show a value from a template, say when it was last updated, and say “live” only if the template reads an entity.
+
+Where you need a label, a landmark or a language, use a card that draws its own structure, or do not add it to a Markdown card. See [Pictures, rich content and embedded pages](../home-assistant/pictures-and-embedded-content.html) for images and embedded pages.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: headings, lists and tables survive. Labels and landmarks do not.
+- 1.3.2 Meaningful Sequence: write the content in reading order.
+- 1.4.1 Use of Colour: do not tell links apart by colour alone. Test whether they are underlined.
+- 1.4.3 Contrast (Minimum): check the link colour on the card in your own dashboard.
+- 1.4.4 Resize Text and 1.4.10 Reflow: lines wrap, and tables scroll.
+- 2.4.4 Link Purpose (In Context) and 3.2.5 Change on Request: say where a link goes and that it opens a new window.
+- 2.4.6 Headings and Labels: describe the card’s topic.
+- 3.1.2 Language of Parts: you cannot set it in a Markdown card.
+- 4.1.2 Name, Role, Value: a card with an action is a button, so give it a clear title.
+
+<h2 id="examples">Examples</h2>
+
+### A Markdown card with a guide for going away
+
+A simulated card with a heading, a paragraph with a link, a list and a table named in the line above it. It uses only what the card keeps. The link goes nowhere here.
+
+<%= example('spec-markdown-card-away-guide') %>

@@ -1,0 +1,120 @@
+# Synthetic data: invented names, readings and dates. Nothing here is connected to a home, and the buttons do nothing.
+examples:
+  spec-history-editorial-and-reading:
+    title: A help page with its own dates, and a reading with a separate time
+    description: "A simulated help page for a thermostat card. The page shows when the guidance was published and last updated. The temperature reading has its own observation time. The review dates sit below the content they cover, and none of the dates stands in for another."
+    height: 460
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-history-title"><div class="civica-card-demo__body">
+      <h2 id="spec-history-title" style="font-size:1.375rem;margin:0 0 8px">Set the bedroom thermostat</h2>
+      <p style="margin:0">Published <time datetime="2026-10-01">1 October 2026</time><br>Last updated <time datetime="2026-11-01">1 November 2026</time></p>
+      <h3 style="font-size:1.1875rem;margin:20px 0 8px">Bedroom temperature</h3>
+      <p style="margin:0">19.5 °C, reported <time datetime="2026-11-26T09:30:00+00:00">26 November 2026 at 09:30 GMT</time></p>
+      <p style="margin:20px 0 0;padding-top:12px;border-top:1px solid #cecece">Last reviewed <time datetime="2026-11-01">1 November 2026</time><br>Next review due <time datetime="2027-02-01">1 February 2027</time></p>
+      </div></article>
+  spec-pagination-table:
+    title: An energy data table on its first page
+    description: "A simulated View data disclosure under an energy chart, open on its first page of 250 rows, 100 rows to a page. Only the first three rows are drawn here. Previous rows is disabled on the first page, the row count sits between the two buttons, and Next rows is available. The buttons do nothing in this example."
+    height: 520
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-pagetable-title"><div class="civica-card-demo__body">
+      <h2 id="spec-pagetable-title" style="font-size:1.375rem;margin:0 0 12px">Electricity use, hourly</h2>
+      <details open>
+      <summary style="min-height:44px;padding-block:10px;color:#1d70b8;cursor:pointer">View data</summary>
+      <table style="border-collapse:collapse;width:100%;margin:0 0 12px">
+      <caption style="text-align:left;font-weight:700;padding-bottom:8px">Electricity use, hourly — chart values</caption>
+      <thead><tr><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">Series</th><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">Period start</th><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">Value</th><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">Unit</th></tr></thead>
+      <tbody>
+      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Electricity used</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">1 November 2026, 00:00</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">0.42</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">kWh</td></tr>
+      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Electricity used</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">1 November 2026, 01:00</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">0.38</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">kWh</td></tr>
+      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Electricity used</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">1 November 2026, 02:00</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Not available</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">kWh</td></tr>
+      </tbody></table>
+      <p style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0"><button type="button" disabled style="min-height:44px;padding:0 20px;font:inherit;opacity:.5">Previous rows</button><span>Rows 1 to 100 of 250</span><button type="button" style="min-height:44px;padding:0 20px;font:inherit">Next rows</button></p>
+      </details>
+      </div></article>
+  spec-pagination-topics:
+    title: Move between help topics
+    description: "Previous and next links in a guide, each naming the topic it leads to. The two sample topics are on this page so the links work."
+    height: 380
+    html: |
+      <nav aria-label="Pagination" style="display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin:0 0 20px">
+      <div><a href="#previous-topic" rel="prev" style="display:block;color:#1d70b8"><span style="display:block;font-weight:700">Previous<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> topic</span></span><span style="display:block">Measurements</span></a></div>
+      <div style="text-align:right"><a href="#next-topic" rel="next" style="display:block;color:#1d70b8"><span style="display:block;font-weight:700">Next<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> topic</span></span><span style="display:block">Missing readings</span></a></div>
+      </nav>
+      <section id="previous-topic" tabindex="-1"><h2 style="font-size:1.1875rem;margin:0 0 12px">Measurements</h2></section>
+      <section id="next-topic" tabindex="-1"><h2 style="font-size:1.1875rem;margin:0">Missing readings</h2></section>
+  spec-pagination-records:
+    title: Numbered pages of records
+    description: "A numbered list of three pages of history entries, with page 2 marked as the current page. Each number links to the sample entries below it."
+    height: 380
+    html: |
+      <p style="margin:0 0 12px">Hall and heating history: page 2 of 3</p>
+      <nav aria-label="History pages">
+      <ul style="display:flex;gap:8px;list-style:none;margin:0 0 20px;padding:0">
+      <li><a href="#records-one" aria-label="Page 1" style="display:inline-block;min-width:44px;min-height:44px;line-height:44px;text-align:center;color:#1d70b8">1</a></li>
+      <li><a href="#records-two" aria-label="Page 2" aria-current="page" style="display:inline-block;min-width:44px;min-height:44px;line-height:44px;text-align:center;background:#1d70b8;color:#fff;font-weight:700">2</a></li>
+      <li><a href="#records-three" aria-label="Page 3" style="display:inline-block;min-width:44px;min-height:44px;line-height:44px;text-align:center;color:#1d70b8">3</a></li>
+      </ul></nav>
+      <section id="records-one" tabindex="-1"><h2 style="font-size:1.1875rem;margin:0 0 12px">Entries 1 to 10</h2><p style="margin:0 0 12px">Hall light turned on at 18:02 on 12 November 2026.</p></section>
+      <section id="records-two" tabindex="-1"><h2 style="font-size:1.1875rem;margin:0 0 12px">Entries 11 to 20</h2><p style="margin:0 0 12px">Thermostat target changed to 19.5 °C at 07:30 on 12 November 2026.</p></section>
+      <section id="records-three" tabindex="-1"><h2 style="font-size:1.1875rem;margin:0">Entries 21 to 28</h2><p style="margin:0">Front door contact closed at 21:15 on 11 November 2026.</p></section>
+  spec-panel-complete:
+    title: A completed dashboard setup
+    description: "A confirmation panel with the heading Dashboard ready and the words Shared rooms, followed by a line of ordinary text saying what the dashboard includes."
+    height: 340
+    html: |
+      <div style="padding:25px;background:#0f7a52;color:#fff;text-align:center">
+      <h2 style="font-size:2rem;margin:0 0 15px">Dashboard ready</h2>
+      <div style="font-size:1.5rem">Shared rooms</div>
+      </div>
+      <p style="margin:20px 0 0">The example dashboard includes the kitchen and living room.</p>
+  spec-panel-interruption:
+    title: Explain an import consequence
+    description: "An interruption panel with the heading Check the imported view and one sentence about what may need matching, followed by a line saying nothing has changed yet."
+    height: 350
+    html: |
+      <div style="padding:25px;background:#f3f6f9;border-top:4px solid #1d70b8;color:#0b0c0c">
+      <h2 style="font-size:1.75rem;margin:0 0 15px">Check the imported view</h2>
+      <div style="font-size:1.1875rem">Some device references may need to be matched to this home.</div>
+      </div>
+      <p style="margin:20px 0 0">The example has not changed any devices. Review the references before saving.</p>
+  spec-phase-banner-trial-view:
+    title: A trial banner above a new energy view
+    description: "A simulated dashboard card for a trial of a new energy view. A Trial label and one plain sentence sit at the top and say what to use instead. The link goes nowhere in this example."
+    height: 340
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-phase-title"><div class="civica-card-demo__body">
+      <p style="margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid #cecece"><strong style="display:inline-block;margin-right:12px;padding:2px 8px;background:#d2e2f1;color:#0b0c0c;font-size:1rem;text-transform:uppercase;letter-spacing:1px">Trial</strong><span>This view is being tested. For your usual figures, use the <a href="#current-energy" style="color:#1d70b8">current Energy dashboard</a>.</span></p>
+      <h2 id="spec-phase-title" style="font-size:1.375rem;margin:0 0 8px">Energy this week</h2>
+      <p id="current-energy" style="margin:0">Electricity used: 58 kWh</p>
+      </div></article>
+  spec-picture-elements-floor-plan:
+    title: A floor plan with a label, an icon and a button, and the same readings as a list
+    description: "A simulated picture elements card. A plain floor plan has a temperature label, a lamp icon and a Turn on hall light button placed over it by percentage. Below the picture, the same readings and the action are written as a list. Home Assistant draws its own icons and buttons, so the look differs. The button does nothing here."
+    height: 640
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-picture-title"><div class="civica-card-demo__body">
+      <h2 id="spec-picture-title" style="font-size:1.375rem;margin:0 0 12px">Ground floor</h2>
+      <div style="position:relative;height:200px;background:#f3f2f1;border:1px solid #cecece;margin:0 0 16px">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 400 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><rect x="10" y="10" width="170" height="180" fill="none" stroke="#484949" stroke-width="2"></rect><rect x="180" y="10" width="210" height="180" fill="none" stroke="#484949" stroke-width="2"></rect></svg>
+      <span style="position:absolute;left:68%;top:30%;transform:translate(-50%,-50%);padding:8px;white-space:nowrap;background:#fff">Living room 20.5 °C</span>
+      <svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32" style="position:absolute;left:25%;top:35%;transform:translate(-50%,-50%)"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#0b0c0c" stroke-width="2"></circle><circle cx="16" cy="14" r="6" fill="#0b0c0c"></circle><rect x="13" y="21" width="6" height="4" fill="#0b0c0c"></rect></svg>
+      <button type="button" style="position:absolute;left:25%;top:75%;transform:translate(-50%,-50%);min-height:44px;padding:0 16px;font:inherit;color:#1d70b8;white-space:nowrap">Turn on hall light</button>
+      </div>
+      <h3 style="font-size:1.1875rem;margin:0 0 8px">Readings and actions</h3>
+      <ul style="margin:0;padding-left:20px"><li>Living room temperature: 20.5 °C</li><li>Hall light: off</li><li>Action: Turn on hall light</li></ul>
+      </div></article>
+  spec-plant-status-study-fern:
+    title: A plant status card with one reading below its limit, and the sentence beneath it
+    description: "A simulated plant status card for a plant called Study fern, with four readings drawn as an icon, a value and a unit. The moisture value is in the error colour and bold. Beneath the card, a sentence says in words which reading is below its limit. Home Assistant draws its own icons, so the look differs. The limit of 20% is invented."
+    height: 480
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-plant-title">
+      <h2 id="spec-plant-title" style="font-size:1.375rem;margin:0;padding:16px 16px 8px">Study fern</h2>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding:8px 32px 24px">
+      <div style="text-align:center"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M12 3C12 3 5 11 5 15a7 7 0 0 0 14 0C19 11 12 3 12 3z" fill="#0b0c0c"></path></svg><div style="color:#ca3535;font-weight:700">18 <span style="font-weight:400;color:#484949">%</span></div></div>
+      <div style="text-align:center"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><rect x="10" y="3" width="4" height="12" fill="#0b0c0c"></rect><circle cx="12" cy="18" r="4" fill="#0b0c0c"></circle></svg><div>19.8 <span style="color:#484949">°C</span></div></div>
+      <div style="text-align:center"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="#0b0c0c"></circle><path d="M12 1v3M12 20v3M1 12h3M20 12h3" stroke="#0b0c0c" stroke-width="2"></path></svg><div>4,200 <span style="color:#484949">lx</span></div></div>
+      <div style="text-align:center"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="7" width="16" height="10" fill="none" stroke="#0b0c0c" stroke-width="2"></rect><rect x="19" y="10" width="2" height="4" fill="#0b0c0c"></rect></svg><div>82 <span style="color:#484949">%</span></div></div>
+      </div></article>
+      <p style="margin:0">Study fern: moisture is 18%, below the limit of 20%.</p>

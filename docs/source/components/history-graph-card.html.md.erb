@@ -1,0 +1,174 @@
+---
+title: "History Graph Card"
+description: "Show how one or more entities changed over a recent period as a line or timeline chart, and add the words that the chart cannot say."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the History Graph Card specification: the card, its line and timeline charts, what the Civica chart colours do to them and how to write a text alternative."
+ai_instructions: "Apply when a dashboard shows recent history (type: history-graph). Name every entity in plain words, keep to a few series, say the period in the title or in text and add a written summary or table beside the chart, because the chart has no data table, patterns or end labels. A card title is a level-one heading that also holds a link and cannot change level, so prefer a Heading card above the card. Series take the civica-chart colours by position; do not add other chart colours. In the Civica theme the off and unavailable states of a timeline share a colour, so say them in words. Quote contrast only as calculated from theme colours."
+ai_related:
+  - path: "/styles/chart-colour.html"
+    title: "Chart colours"
+    relationship: "Owns the Civica chart colours that each series takes."
+  - path: "/home-assistant/history-and-statistics.html"
+    title: "History, activity and statistics"
+    relationship: "Owns how history and statistics are explained and what missing readings mean."
+  - path: "/components/heading.html"
+    title: "Heading"
+    relationship: "Owns the Heading card to use instead of a card title."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface and the card header."
+component:
+  parent: "History Graph Card"
+  letter: "H"
+  origins:
+    - "Lovelace"
+    - "Home Assistant"
+  children:
+    - name: "hui-history-graph-card"
+      origin: "Lovelace"
+      anchor: "child-hui-history-graph-card"
+    - name: "state-history-charts"
+      origin: "Home Assistant"
+      anchor: "child-state-history-charts"
+      grandchildren:
+        - name: "state-history-chart-line"
+          origin: "Home Assistant"
+          anchor: "child-state-history-charts--state-history-chart-line"
+        - name: "state-history-chart-timeline"
+          origin: "Home Assistant"
+          anchor: "child-state-history-charts--state-history-chart-timeline"
+  tags:
+    - "hui-history-graph-card"
+    - "state-history-charts"
+    - "state-history-chart-line"
+    - "state-history-chart-timeline"
+---
+
+# History Graph Card
+
+<h2 id="purpose">Purpose</h2>
+
+A History graph card shows what one or more entities did over a recent period, such as the temperature of two rooms over the last day, or when a door was open. Numbers are drawn as lines. States such as on and off, or open and closed, are drawn as a timeline.
+
+This page owns the card and the two charts inside it. For how to explain history and what a missing reading means, see [History, activity and statistics](../home-assistant/history-and-statistics.html). For the colours, see [Chart colours](../styles/chart-colour.html).
+
+This page covers:
+
+- `hui-history-graph-card`
+- `state-history-charts`
+  - `state-history-chart-line`
+  - `state-history-chart-timeline`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+1. An optional card title. It is a level-one heading and holds a link to the History panel for the same entities.
+2. One chart for each group of entities. Timelines come first, then one line chart for each unit.
+3. A legend of buttons, one for each series.
+
+A tooltip shows the date, time and value when someone points at the chart. The chart redraws every 60 seconds.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-history-graph-card"><code>hui-history-graph-card</code></h3>
+
+A Lovelace card, set with `type: history-graph`. You must give at least one entity.
+
+```yaml
+type: history-graph
+title: Temperature, last 24 hours
+hours_to_show: 24
+entities:
+  - entity: sensor.living_room_temperature
+    name: Living room
+  - entity: sensor.bedroom_temperature
+    name: Bedroom
+```
+
+| Key | Meaning |
+| --- | --- |
+| `entities` | A list of entity IDs, or items with `entity`, `name` and `color`. Required |
+| `hours_to_show` | How far back to look. The default is 24 |
+| `title` | The card title. It draws a level-one heading |
+| `show_names` | Shows the names in the legend. The default is true |
+| `label_position` | `side` or `below`. `below` puts the labels inside the chart |
+| `logarithmic_scale` | Uses a logarithmic vertical axis |
+| `min_y_axis`, `max_y_axis` | Fix the ends of the vertical axis |
+| `fit_y_data` | Widens a fixed axis when the data goes outside it |
+| `split_device_classes` | Splits the history by device class |
+| `expand_legend` | Shows every legend entry instead of folding the extra ones away |
+
+Home Assistant shows a message in place of the chart when no entity is listed, when the history component is switched off, while the history loads and when no history is found.
+
+**What the Civica theme sets.** Each series takes a Civica chart colour by its position in the card, from the 1st to the 24th. The colours are the same in light and dark modes, except the 9th, which is near-black in light mode and white in dark mode. From the 25th series Home Assistant’s own colours are used, so keep to far fewer series than that. Text and axes use the primary and secondary text colours, and the grid and axis lines use the divider colour. Calculated from the theme colours, that line colour on a white card is about 1.6 to 1, so the lines are faint. Do not rely on the grid to read values.
+
+**What stays as Home Assistant draws it.**
+
+- Lines are solid. There are no patterns, no data labels at the end of a line and no data table.
+- The title is a level-one heading that also holds a link, and its level cannot change. Leave `title` empty and put a [Heading](heading.html) above the card.
+- Reordering the entities can change their colours.
+- The legend order is the series order.
+- A chart can show a description generated by the charting library, but it is not a written summary.
+
+**What needs more than the theme.** A written summary or a table needs a Markdown card beside the graph. A sentence with the highest, lowest and latest reading for each entity is often enough. Say the period in the title or the text, for example “Last 24 hours”.
+
+<h3 id="child-state-history-charts"><code>state-history-charts</code></h3>
+
+The Home Assistant element that lays out the charts. It is not a card and has no YAML. The History panel and the more information dialog use it too, so what is said here about colours and the legend applies there as well.
+
+It draws the timeline rows first, then one line chart for each unit. It takes the period, the names and the colours, whether to show names, and the axis settings that the card passes down. It has no theme setting of its own and takes its look from the two charts below.
+
+Each legend entry is a button that switches a series on or off. Home Assistant also offers a zoom slider and touch scrubbing. Animation is switched off when the person has asked their device for reduced motion.
+
+<h3 id="child-state-history-charts--state-history-chart-line"><code>state-history-chart-line</code></h3>
+
+Draws numbers over time, one chart for each unit: temperature, humidity, power and so on. Keep one unit in each chart so the axis reads clearly.
+
+Climate entities draw shaded areas for heating, cooling, drying and fan-only periods. The Civica theme does not set those colours, so Home Assistant’s own colours are used. Humidifier action areas use the theme’s blue, `#1D70B8` in light mode and `#C0D7EB` in dark mode.
+
+Do not turn a state such as open or closed into a smoothed line.
+
+<h3 id="child-state-history-charts--state-history-chart-timeline"><code>state-history-chart-timeline</code></h3>
+
+Draws changes of state as bars along a time axis, one row for each entity. Use it for on and off, open and closed, home and away, and other text states.
+
+Its colours come from the state colours. For a domain with no colour of its own, the active state takes the theme’s primary colour. In the Civica theme that is `#1D70B8` in light mode and `#C0D7EB` in dark mode. The inactive and unavailable states share one colour, `#484949` in light mode and `#CBD0D3` in dark mode. So the colour alone cannot tell off from unavailable. Say it in words, in the summary beside the chart.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One native card shows both numbers and states over a recent period.
+- The legend entries are buttons, so people can hide a series to read another.
+- There is no data table, no pattern and no label at the end of a line, so colour and the legend carry the identity of each series.
+- Some dark-mode series colours are hard to see. See [Chart colours](../styles/chart-colour.html) and check the legend.
+- A title is a level-one heading that cannot change level.
+- The chart redraws every minute.
+- Many series cannot be told apart, even though 24 colours are defined.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Show only the entities people compare. Give each one a plain name, such as “Living room” and not `sensor.living_room_temperature`. Keep one unit in each chart. Say the period in words, give the latest value as text and add a short summary beside the graph. Do not draw a line across a missing interval or treat a missing reading as zero.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: write a text alternative, such as a summary or a table, beside the chart.
+- 1.4.1 Use of Colour: tell series apart by name and legend, not colour alone.
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: check the lines, axes and text on your own dashboard.
+- 1.3.1 Info and Relationships and 2.4.6 Headings and Labels: a card title is a level-one heading that cannot change level.
+- 2.1.1 Keyboard: the legend entries are buttons. Check on your own dashboard that you can reach everything you need.
+- 1.4.10 Reflow and 1.4.13 Content on Hover or Focus: check the chart and its tooltip at large text sizes and on a narrow screen.
+- 2.3.3 Animation from Interactions: animation follows the device’s reduced motion setting.
+
+<h2 id="examples">Examples</h2>
+
+### A history graph card for two rooms
+
+<%= example('spec-history-graph-two-rooms') %>

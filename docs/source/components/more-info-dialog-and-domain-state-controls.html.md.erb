@@ -1,0 +1,282 @@
+---
+title: "More-Info Dialog & Domain State Controls"
+description: "The Home Assistant dialog that opens when you select an entity, and the controls inside it for lights, climate, covers, fans, locks and other devices."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the More-Info Dialog & Domain State Controls specification: the dialog, its views and header, and each device control inside it, with what the Civica theme sets and what stays Home Assistant’s."
+ai_instructions: "Apply when describing the dialog that opens when someone selects an entity (the more-info dialog) and the control inside it for each kind of device. The dialog opens on the hass-more-info event; a dashboard author cannot restyle it with card-mod, and a theme sets only its surface, corners, divider and text colours. Three inventory names are not Home Assistant elements: the humidifier control is ha-state-control-humidifier-humidity, the lock control is ha-state-control-lock-toggle and the water heater control is ha-state-control-water_heater-temperature. The vertical brightness, cover and valve controls are dragged and have no step buttons in the control. The slider focus ring is 2 pixels in the control’s own colour, not the Civica yellow focus. Civica sets no control-slider, control-switch or per-device state colour, so those stay Home Assistant’s. Civica’s mdc-dialog heading and content ink colours are not read by this version of the dialog; do not claim they style it. Settings and the three-dots menu are for administrators only. Do not claim contrast for device state colours, that sliders work by keyboard, or that card-mod reaches the dialog."
+ai_related:
+  - path: "/components/dialogs.html"
+    title: "Dialog / Modal"
+    relationship: "Owns dialog behaviour, anatomy and confirmation wording."
+  - path: "/components/action-bar-bottom-sheet.html"
+    title: "Action Bar / Bottom Sheet"
+    relationship: "Owns the bottom sheet the dialog becomes on a small screen."
+  - path: "/components/sliders.html"
+    title: "Control Slider"
+    relationship: "Owns slider guidance and the exact-value alternative."
+  - path: "/components/control-circular-slider.html"
+    title: "Control Circular Slider"
+    relationship: "Owns the dial used for temperature and humidity."
+  - path: "/components/control-select.html"
+    title: "Control Select"
+    relationship: "Owns the stepped selector used for fan speeds."
+  - path: "/home-assistant/continuous-controls.html"
+    title: "Continuous controls and alternatives"
+    relationship: "Owns the rules for dragging and exact-value alternatives."
+  - path: "/home-assistant/lighting.html"
+    title: "Lighting capabilities and colour"
+    relationship: "Owns light controls."
+  - path: "/home-assistant/climate-and-air.html"
+    title: "Climate, fan and water-heater controls"
+    relationship: "Owns climate, fan, humidifier and water-heater behaviour."
+  - path: "/home-assistant/access-and-movement.html"
+    title: "Locks, alarms, covers and valves"
+    relationship: "Owns the lock, cover and valve behaviour and confirmations."
+  - path: "/home-assistant/appliances-and-cleaning.html"
+    title: "Appliances, vacuums and outdoor devices"
+    relationship: "Owns vacuum behaviour."
+  - path: "/home-assistant/history-and-statistics.html"
+    title: "History, activity and statistics"
+    relationship: "Owns history and logbook guidance."
+component:
+  parent: "More-Info Dialog & Domain State Controls"
+  letter: "M"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-more-info-dialog"
+      origin: "Home Assistant"
+      anchor: "child-ha-more-info-dialog"
+      grandchildren:
+        - name: "ha-more-info-info"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-more-info-info"
+        - name: "ha-more-info-history"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-more-info-history"
+        - name: "ha-more-info-logbook"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-more-info-logbook"
+        - name: "ha-more-info-settings"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-more-info-settings"
+        - name: "ha-related-items"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-related-items"
+        - name: "ha-state-control-light-brightness"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-state-control-light-brightness"
+        - name: "ha-state-control-climate-temperature"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-state-control-climate-temperature"
+        - name: "ha-state-control-cover-position"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-state-control-cover-position"
+        - name: "ha-state-control-fan-speed"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-state-control-fan-speed"
+        - name: "ha-state-control-humidifier"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-state-control-humidifier"
+        - name: "ha-state-control-lock"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-state-control-lock"
+        - name: "ha-state-control-toggle"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-state-control-toggle"
+        - name: "ha-state-control-valve-position"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-state-control-valve-position"
+        - name: "ha-state-control-water_heater"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-state-control-water-heater"
+        - name: "ha-vacuum-state"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-vacuum-state"
+        - name: "ha-water_heater-state"
+          origin: "Home Assistant"
+          anchor: "child-ha-more-info-dialog--ha-water-heater-state"
+  tags:
+    - "ha-more-info-dialog"
+    - "ha-more-info-info"
+    - "ha-more-info-history"
+    - "ha-more-info-logbook"
+    - "ha-more-info-settings"
+    - "ha-related-items"
+    - "ha-state-control-light-brightness"
+    - "ha-state-control-climate-temperature"
+    - "ha-state-control-cover-position"
+    - "ha-state-control-fan-speed"
+    - "ha-state-control-humidifier"
+    - "ha-state-control-lock"
+    - "ha-state-control-toggle"
+    - "ha-state-control-valve-position"
+    - "ha-state-control-water_heater"
+    - "ha-vacuum-state"
+    - "ha-water_heater-state"
+---
+
+# More-Info Dialog & Domain State Controls
+
+<h2 id="purpose">Purpose</h2>
+
+When someone selects a light, a thermostat, a lock or most other entities, Home Assistant opens the more-info dialog. It shows the entity’s state, the control that suits its kind of device, and, for people allowed to see them, its history, settings and related items.
+
+A dashboard author cannot write this dialog or restyle it from a card. A theme can set its surface, corners, dividers and text colours. This page describes what the dialog contains so that you can write dashboards that open it, theme it and test it. The rules for dialogs in general, including confirmations, are owned by [Dialog / Modal](dialogs.html).
+
+This page covers:
+
+- More-Info Dialog & Domain State Controls
+  - `ha-more-info-dialog`
+    - `ha-more-info-info`
+    - `ha-more-info-history`
+    - `ha-more-info-logbook`
+    - `ha-more-info-settings`
+    - `ha-related-items`
+    - `ha-state-control-light-brightness`
+    - `ha-state-control-climate-temperature`
+    - `ha-state-control-cover-position`
+    - `ha-state-control-fan-speed`
+    - `ha-state-control-humidifier`
+    - `ha-state-control-lock`
+    - `ha-state-control-toggle`
+    - `ha-state-control-valve-position`
+    - `ha-state-control-water_heater`
+    - `ha-vacuum-state`
+    - `ha-water_heater-state`
+
+<h2 id="anatomy">Anatomy</h2>
+
+The dialog has a header and a scrolling content area.
+
+- The header has a close button, or a back button inside a sub-view, the entity name with its area and device above it, and buttons for history and settings. Administrators also get a three-dots menu.
+- The content area shows the view: the state and control first, then history and logbook for most kinds of device.
+- On a screen narrower than 870 pixels or shorter than 500 pixels the dialog opens as a bottom sheet instead, described on [Action Bar / Bottom Sheet](action-bar-bottom-sheet.html).
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-more-info-dialog"><code>ha-more-info-dialog</code></h3>
+
+The dialog opens when a card, a badge or a row asks for more information about an entity. A card’s default tap action is usually to open it. The Civica room card opens it the same way.
+
+**Views.** The first view is Info. Others are History, Settings and Related, plus Add to and Details from the three-dots menu. A sub-view has a back button labelled “Back to info”. Settings and the three-dots menu are for administrators only, so people without that role see a shorter dialog. This page does not list the menu items, because they depend on the entity and the user.
+
+**Closing.** The close button closes it, and so does Escape in most cases. Unsaved changes in the Settings view stop pressing outside the dialog from closing it.
+
+**What the theme sets.** The Civica theme sets the dialog surface (`ha-dialog-surface-background`: `#FFFFFF` in light mode, `#24282B` in dark mode), square corners (`ha-dialog-border-radius`), the divider under a scrolling header (`mdc-dialog-scroll-divider-color`: `#CECECE` in light mode, `#50565A` in dark mode) and the primary and secondary text colours. The title uses `primary-text-color` and the breadcrumb uses `secondary-text-color`.
+
+The theme also sets `mdc-dialog-heading-ink-color` and `mdc-dialog-content-ink-color`, but this version of the dialog does not read them, so do not expect them to change the title or content.
+
+The backdrop, shadow and open and close timing are Home Assistant’s, because the Civica theme sets no scrim or shadow variable. The `card-mod` integration does not reach this dialog, so nothing here can be restyled with it.
+
+**The controls inside.** The device controls described below share some behaviour:
+
+- Vertical sliders (brightness, cover position and valve position) are drag controls with no step buttons. If people need an exact value, add an exact-value field beside them, as described on [Control Slider](sliders.html). Dials have minus and plus buttons. Each control has a name, a role and a current value for assistive technology.
+- Their focus ring is a 2 pixel ring in the control’s own colour. It is not the Civica yellow focus colour, and a theme cannot change it. This applies to every control on this page.
+- Their colours default to the theme’s primary colour for the active part and a grey track. The Civica theme sets none of the `control-*` variables. It also sets no colour for a specific kind of device, so the amber for lights, green and red for locks, and the purple for covers stay Home Assistant’s. The Civica theme sets only the general active, inactive and unavailable state colours.
+- Civica’s `slider-color` and `paper-slider-*` colours are for older sliders. The more-info controls do not read them.
+
+Write the state as text beside every control, such as “On, 70 %”, because the colour of the control is not enough. The same applies to every control below.
+
+<h3 id="child-ha-more-info-dialog--ha-more-info-info"><code>ha-more-info-info</code></h3>
+
+The Info view. It can show an alert when an entity has been restored or is no longer provided. Below it are the state, the device control, and, for most kinds of device, the history and logbook sections. Cameras and configurators skip the state summary.
+
+<h3 id="child-ha-more-info-dialog--ha-more-info-history"><code>ha-more-info-history</code></h3>
+
+A section headed “History” with a “Show more” link to the full history page and a chart. If the history cannot be loaded, an error alert appears. It shows nothing if the history component is not loaded. For history guidance, see [History, activity and statistics](../home-assistant/history-and-statistics.html).
+
+<h3 id="child-ha-more-info-dialog--ha-more-info-logbook"><code>ha-more-info-logbook</code></h3>
+
+A section with a link to the full logbook and the recent entries, up to 250 pixels high, and shorter on a small screen. It shows nothing if the logbook component is not loaded. Links use the theme’s primary colour.
+
+<h3 id="child-ha-more-info-dialog--ha-more-info-settings"><code>ha-more-info-settings</code></h3>
+
+The Settings view, for administrators. If the entity has no unique ID, it shows a warning with a link to Home Assistant’s help; the link opens in a new tab. Otherwise it shows the entity settings form.
+
+<h3 id="child-ha-more-info-dialog--ha-related-items"><code>ha-related-items</code></h3>
+
+The Related view. It lists what the entity is connected to: its integrations, blueprints, areas, devices, entities, automations, scripts, scenes and groups. Selecting another entity opens its own more-info dialog.
+
+<h3 id="child-ha-more-info-dialog--ha-state-control-light-brightness"><code>ha-state-control-light-brightness</code></h3>
+
+A vertical slider for a light’s brightness, from 1 to 100 per cent, with the name “brightness”. The handle shows only when the light is on, and the control is disabled when the light is unavailable. It takes the light’s own colour, adjusted for contrast, or the state colour, so it varies from light to light. It is about 130 pixels wide and between 200 and 320 pixels tall.
+
+For colour and temperature, see [Lighting capabilities and colour](../home-assistant/lighting.html).
+
+<h3 id="child-ha-more-info-dialog--ha-state-control-climate-temperature"><code>ha-state-control-climate-temperature</code></h3>
+
+A dial for a thermostat’s target temperature, with the number in large type, and minus and plus buttons with their own labels. For a heat and cool range it has two handles with buttons to choose the low or high one. It is also used inside the thermostat card. For the dial, see [Control Circular Slider](control-circular-slider.html), and for behaviour, see [Climate, fan and water-heater controls](../home-assistant/climate-and-air.html).
+
+<h3 id="child-ha-more-info-dialog--ha-state-control-cover-position"><code>ha-state-control-cover-position</code></h3>
+
+A vertical slider for how open a cover is, named “position”. The active colour is the cover colour, which is purple by default. For covers, see [Locks, alarms, covers and valves](../home-assistant/access-and-movement.html).
+
+<h3 id="child-ha-more-info-dialog--ha-state-control-fan-speed"><code>ha-state-control-fan-speed</code></h3>
+
+Either a stepped selector, when the fan has set speeds, or a slider for a percentage. Both are named. The selector is described on [Control Select](control-select.html).
+
+<h3 id="child-ha-more-info-dialog--ha-state-control-humidifier"><code>ha-state-control-humidifier</code></h3>
+
+This Home Assistant version does not use the name `ha-state-control-humidifier`. The control it draws is called `ha-state-control-humidifier-humidity`. It is a dial for the target humidity, with the number in large type and minus and plus buttons. Changes are sent after a short pause of one second, so people can step several times first. The humidifier card uses it too.
+
+<h3 id="child-ha-more-info-dialog--ha-state-control-lock"><code>ha-state-control-lock</code></h3>
+
+This Home Assistant version does not use the name `ha-state-control-lock`. The control it draws is called `ha-state-control-lock-toggle`. It is a vertical switch labelled Lock or Unlock, with the lock icon pulsing while the lock moves. When the state is not known it shows two buttons, Lock and Unlock.
+
+Where a lock needs a code or a confirmation, Home Assistant asks for it, and the wording is Home Assistant’s. Keep that protected action. The switch’s colours are green for locked and red for unlocked, set by Home Assistant. Always write “Locked” or “Unlocked” too. For lock behaviour, see [Locks, alarms, covers and valves](../home-assistant/access-and-movement.html).
+
+<h3 id="child-ha-more-info-dialog--ha-state-control-toggle"><code>ha-state-control-toggle</code></h3>
+
+An on and off control for lights, fans, switches, sirens and input booleans. When the state is clearly on or off it is a vertical switch labelled “Toggle”. When it is not, it shows two buttons, Turn on and Turn off.
+
+<h3 id="child-ha-more-info-dialog--ha-state-control-valve-position"><code>ha-state-control-valve-position</code></h3>
+
+A vertical slider for how open a valve is, named “position”.
+
+<h3 id="child-ha-more-info-dialog--ha-state-control-water-heater"><code>ha-state-control-water_heater</code></h3>
+
+This Home Assistant version does not use the name `ha-state-control-water_heater`. The control it draws is called `ha-state-control-water_heater-temperature`. It is a dial for the target temperature of a water heater, labelled “target temperature”, with minus and plus buttons and the number in large type. It works only when the water heater supports a target temperature. Changes are sent after a pause of one second. The thermostat card uses it too.
+
+<h3 id="child-ha-more-info-dialog--ha-vacuum-state"><code>ha-vacuum-state</code></h3>
+
+A small plain button on a vacuum’s row. Its label is the action it will take, such as start, pause or return, or the current state when no action fits. It is disabled when the vacuum can do nothing from that state. It belongs to the state summary row, not to the vacuum’s more-info panel. For vacuums, see [Appliances, vacuums and outdoor devices](../home-assistant/appliances-and-cleaning.html).
+
+<h3 id="child-ha-more-info-dialog--ha-water-heater-state"><code>ha-water_heater-state</code></h3>
+
+Read-only text on a water heater’s row: the state in bold, then the target temperature with its unit, or a low to high range. It uses `primary-text-color` and `secondary-text-color`.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Every device has one familiar place for its controls, and the dialog fills a small screen.
+- Controls have names, roles and values for assistive technology.
+- The theme cannot change the dialog layout, the header or the menu.
+- Settings and the menu are for administrators only.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Keep one task in the dialog. Do not stack another dialog on top of it. Write the state next to each control, such as “Locked”, “On, 70 %” or “Unavailable”. Say what a toggle will change before it acts. Keep Home Assistant’s confirmations for locks.
+
+Success criteria that apply:
+
+- 2.1.2 No Keyboard Trap: the dialog has a close button.
+- 2.4.3 Focus Order and 2.4.7 Focus Visible: see the focus ring under “The controls inside”.
+- 2.5.7 Dragging Movements: dials have buttons, and the vertical sliders need the exact-value field described under “The controls inside”.
+- 2.5.8 Target Size (Minimum): the Civica theme sets `ha-switch-min-touch-size` to 44 pixels, but the vertical control switch in this dialog has its own 40 pixel minimum (`--control-switch-min-touch-size`), which the theme does not set.
+- 1.4.1 Use of Colour and 1.4.11 Non-text Contrast: device colours are Home Assistant’s, so write the state as described under “The controls inside”.
+- 1.3.1 Info and Relationships and 4.1.2 Name, Role, Value: the sliders, switches and buttons carry names and roles.
+- 3.3.4 Error Prevention: a lock’s confirmation is Home Assistant’s.
+
+<h2 id="examples">Examples</h2>
+
+### A light’s dialog with its brightness control
+
+<%= example('spec-more-info-light') %>

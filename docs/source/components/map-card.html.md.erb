@@ -1,0 +1,157 @@
+---
+title: "Map Card"
+description: "Show people, devices and zones on a map, and always list every location as text beside it."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Map Card specification: its options, the six map styles, what the theme changes and the text list every map needs."
+ai_instructions: "Apply when a dashboard shows locations on a map (type: map). Always list every location as text beside the map, with its name, state and time, because the map has no text description of its own. The six map styles are default, colorful, natural, muted, gray and toner; there is no Neon. The Civica theme does not recolour the native map: land, water and road colours stay as Home Assistant draws them unless the card sets map_style or a theme author sets the ha-color-map-* variables. Do not claim every marker is reachable by keyboard, and do not quote contrast for markers or tiles. Link to the Maps, zones and location records page for the pattern and to Map colours for the palette."
+ai_related:
+  - path: "/home-assistant/maps-and-zones.html"
+    title: "Maps, zones and location records"
+    relationship: "Owns the location record pattern and the working OpenStreetMap example."
+  - path: "/styles/colour-maps.html"
+    title: "Map colours"
+    relationship: "Owns the Civica map colours."
+  - path: "/home-assistant/presence-and-privacy.html"
+    title: "Presence, people and shared-screen privacy"
+    relationship: "Owns what to show about where people are."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface and its header."
+component:
+  parent: "Map Card"
+  letter: "M"
+  origins:
+    - "Lovelace"
+    - "Home Assistant"
+  children:
+    - name: "hui-map-card"
+      origin: "Lovelace"
+      anchor: "child-hui-map-card"
+    - name: "ha-map"
+      origin: "Home Assistant"
+      anchor: "child-ha-map"
+  tags:
+    - "hui-map-card"
+    - "ha-map"
+    - "map"
+---
+
+# Map Card
+
+<h2 id="purpose">Purpose</h2>
+
+The map card shows where people, devices and zones are on a map. In YAML it is `type: map`. Use it to give a rough sense of where things are, never as the only record. Every location also needs a line of text.
+
+This page owns the card and its limits. The pattern for location records is in [Maps, zones and location records](../home-assistant/maps-and-zones.html), which also has a working OpenStreetMap example. The Civica map colours are in [Map colours](../styles/colour-maps.html).
+
+This page covers:
+
+- Map Card
+  - `hui-map-card`
+  - `ha-map`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+1. An optional title.
+2. The map, with a zoom control, markers for entities and circles for zones.
+3. A “Reset focus” button, and a “Toggle grouping” button when there is more than one marker.
+4. In a panel view, an overview with tabs for People, Devices and Zones, and a “No recent activity” message when there is nothing to list.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-map-card"><code>hui-map-card</code></h3>
+
+```yaml
+type: map
+title: Household zones
+entities:
+  - person.sam
+  - zone.home
+  - zone.school
+default_zoom: 14
+theme_mode: auto
+```
+
+| Key | Meaning |
+| --- | --- |
+| `title` | Text above the map |
+| `entities` | Entities to plot; each can set `label_mode` (`name`, `state`, `attribute` or `icon`), `name`, `color` and `focus` |
+| `geo_location_sources` | Sources of geolocated events to plot |
+| `aspect_ratio` | The shape of the map, for example `16:9` |
+| `default_zoom` | Starting zoom; default 14 |
+| `auto_fit` and `fit_zones` | Fit the view to the markers or the zones |
+| `show_all` and `show_zone_radius` | Show every entity and zone circles |
+| `hours_to_show` | Draws paths for the period; default 0, so no paths |
+| `theme_mode` | `auto`, `light` or `dark` |
+| `map_style` | A preset or a custom style (see below) |
+| `cluster` | Group markers that are close together |
+| `scale_ruler` | Show a scale ruler |
+| `conditions` | Show the card only when conditions are met |
+
+`dark_mode` still works but is deprecated; use `theme_mode`.
+
+**Map styles.** `map_style` offers six presets: `default`, `colorful`, `natural`, `muted`, `gray` and `toner`. A custom style can set `base`, `colors` and `colors_dark`, among other options. The dark colours replace the light colours; they are not merged with them. The card’s own colours win over any theme.
+
+**What the Civica theme sets.** The card surface, the title, and the text and divider colours. The theme does not recolour the map: land, water and roads keep Home Assistant’s colours, because the Civica theme sets none of the `--ha-color-map-*` variables. The [Map colours](../styles/colour-maps.html) page describes the palette used in documentation examples, not a theme setting.
+
+**What stays as Home Assistant draws it.** The marker shapes, the zone circles, the controls and the tiles. Markers use black text on a light map and white on a dark one.
+
+**What needs the card-mod integration.** Test any card-mod selector in your own dashboard.
+
+<h3 id="child-ha-map"><code>ha-map</code></h3>
+
+The map element inside the card. A dashboard author cannot place it alone.
+
+What it does:
+
+- It draws a vector map with MapLibre. On a device that cannot show a vector map it falls back to a simpler Leaflet map, which cannot be edited.
+- Tiles come from the Map tiles integration. Without a connection the map sets up without tiles.
+- It is 300 pixels tall by default.
+- It names markers from their titles. A marker that can be focused is a button. A titled marker that cannot be focused is exposed as an image, and a marker with no title is hidden from assistive technology.
+- A zone circle on an interactive map opens its more info when you click it, or press Enter or Space on it.
+- In dark mode, Home Assistant applies a colour filter to the map. In light mode there is none.
+- The zoom control sits top left, or top right in a panel view.
+
+Some people may not be able to use the map at all, so give every location in text.
+
+A theme author can recolour the vector map with the `--ha-color-map-land`, `-water`, `-green`, `-area`, `-building`, `-road`, `-transit`, `-boundary` and `-label` variables, among others.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One native card shows people, devices and zones together, with the map style you choose.
+- The map has no text description. Without a list beside it, people who cannot use a map get nothing.
+- Pinch and drag are the main ways to move the map, and the zoom buttons are the single-pointer alternative.
+- The map needs a connection to the Map tiles integration to draw tiles.
+- Markers can reveal where people are. Choose who and what to plot with care.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Say what the map shows, when it was last updated, and how many items are plotted compared with how many are listed. Put a table or list beside the map with the name, state and time of every location, including ones with no coordinates. Keep the number of markers small. Check privacy first: see [Presence, people and shared-screen privacy](../home-assistant/presence-and-privacy.html). Do not use colour as the only way to tell zones or people apart.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: the map needs a text alternative, which is the list beside it.
+- 1.3.1 Info and Relationships: the list carries the same facts as the map.
+- 1.4.1 Use of Colour: label each marker or zone in words.
+- 1.4.10 Reflow: check the map and the panel overview at narrow widths.
+- 2.1.1 Keyboard and 2.1.2 No Keyboard Trap: test panning, zooming and focus in your own dashboard.
+- 2.5.1 Pointer Gestures and 2.5.7 Dragging Movements: use the zoom buttons as the single-pointer way.
+- 4.1.2 Name, Role, Value: marker names come from entity titles, so give them clear names.
+
+<h2 id="examples">Examples</h2>
+
+### A map card showing three household zones
+
+A simulated card with a drawn coastline in place of the map, three invented zones and a table of the same zones underneath. For a working map with OpenStreetMap, see [Maps, zones and location records](../home-assistant/maps-and-zones.html).
+
+<%= example('spec-map-zones-card') %>

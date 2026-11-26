@@ -1,65 +1,110 @@
 ---
 title: "Panel"
-description: "Use a panel for a significant completion or a deliberate interruption in a journey."
+description: "Show a significant completion or a deliberate interruption in a journey."
 section: "components"
-group: "Content presentation"
-source_url: "https://service-manual.nhs.uk/design-system/components/panel"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewrote the page as a Panel specification and made clear that Home Assistant has no panel element."
   - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added NHS-informed panel guidance and 2 Home Assistant reference examples."
+    description: "Updated the project name and links to Civica."
+  - date: "2026-11-11"
+    description: "Added panel guidance and two examples."
+ai_instructions: "Apply when a journey ends with a significant confirmation, or pauses to explain a consequence. This is a Civica pattern, not a Home Assistant element. The closest Home Assistant elements are the alert (a status message) and the dialog (a decision), and neither is a confirmation panel. Use one panel for one idea. Say what happened and what to do next. Do not say a task is complete until the owning system confirms it. Keep next actions outside the coloured area. Meaning must survive without the fill colour. Never show a secret, token or private path. Do not claim a contrast ratio or that a panel is announced to screen readers."
+ai_related:
+  - path: "/components/dialogs.html"
+    title: "Dialog / Modal"
+    relationship: "Use a dialog when the user must make a decision."
+  - path: "/components/status.html"
+    title: "Status and notifications"
+    relationship: "Owns state and message wording."
+  - path: "/components/warning-callout.html"
+    title: "Warning callout"
+    relationship: "Owns the fixed yellow warning callout."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the checks to run on the rendered result."
+component:
+  parent: "Panel"
+  letter: "P"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Panel Pattern"
+      origin: "Civica"
+      anchor: "child-civica-panel-pattern"
+  tags:
+    - "Civica Panel Pattern"
 ---
 
 # Panel
 
-Use a panel for a significant completion or a deliberate interruption in a journey.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A panel is a large block with a short heading. It marks a moment that matters: the end of a whole task, or a pause where people need to know something before they go on.
 
-## When to use it
+A panel is a Civica pattern. Home Assistant has no panel element. The nearest Home Assistant elements are the alert, which is a status message, and the dialog, which asks for a decision. Neither is a confirmation panel, so do not substitute one for the other. On a Home Assistant dashboard the nearest equivalent is a Markdown card with a heading and a sentence of text.
 
-Use a confirmation panel after a whole setup task completes, with the next step nearby. An interruption panel may pause a process when the user needs important context before continuing.
+This page covers:
 
-## When not to use it
+- Panel
+  - Civica Panel Pattern
 
-Do not use large panels as decoration inside ordinary help text, or show a success panel for every light switch. A recurring dashboard reading belongs in a card or summary.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+A panel has a heading and a short body, in a coloured block. Supporting text and the next action go below the block, not inside it.
 
-A dashboard import confirmation should state exactly what was imported and where to find it. Do not say “Backup restored” until the owning restore operation confirms completion. An interruption must explain its consequence without inventing authority or demanding an unnecessary approval.
+There are two kinds:
 
-## Accessibility and behaviour
+- **Confirmation.** A filled block that says a whole task is complete.
+- **Interruption.** A pale block with a coloured top edge that explains a consequence before people continue.
 
-Use a short heading and readable supporting text. Keep next actions outside the coloured area where that produces clearer focus and contrast. Ensure meaning survives without the fill colour and avoid large uppercase headings.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Examples
+<h3 id="child-civica-panel-pattern"><code>Civica Panel Pattern</code></h3>
+
+The panel is a block with a level 2 heading. It has no landmark or live-region role. If you add one after the page has loaded, move focus to its heading or give it a status role, and test that.
+
+The confirmation panel has a green fill. The interruption panel has a pale blue fill with a blue top edge. In a Markdown card that plays the same role, `success-color` and `info-color` carry the green and the blue in the Civica theme (`themes/civica.yaml`). The other variables that apply are `primary-text-color`, `card-background-color` and `secondary-background-color`.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A panel stands out, so it works for rare moments. Used often, it stops being noticed.
+- Meaning must not rely on the fill colour, because some people cannot tell the colours apart.
+- A panel is not a status message for a changing reading. A recurring reading belongs in a card or a summary.
+- Because a panel is not a dialog, it cannot hold up a task until someone answers. Use a [dialog](dialogs.html) when a decision is needed.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a confirmation panel after a whole setup task completes, with the next step close by. Use an interruption panel when people need important context before they continue. Do not use a large panel as decoration inside ordinary help text, and do not show a success panel for every light switch.
+
+Say exactly what happened and where to find it. For an import, name what was imported and where it now appears. Do not say “Backup restored” until the restore itself confirms it. An interruption explains its consequence in plain words. It does not invent authority or ask for approval that nobody needs to give.
+
+Use a short heading and readable supporting text, and avoid large uppercase headings. One idea to a panel. Keep the tone calm.
+
+Check long names, zoom, the route back to the task and a task that fails to complete. A panel must never show a secret, an access token or a private file path.
+
+Success criteria that apply:
+
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: measure the text and the panel edge in your own colours before you claim a ratio.
+- 1.4.1 Use of Colour: the words carry the meaning.
+- 1.3.1 Info and Relationships and 2.4.6 Headings and Labels: the heading is a real heading.
+- 4.1.3 Status Messages: needed if you add a panel after the page has loaded.
+- 1.4.4 Resize Text and 1.4.10 Reflow: check the panel at 200 per cent zoom and at 320 CSS pixels.
+
+<h2 id="examples">Examples</h2>
 
 ### A completed dashboard setup
 
-This static example illustrates the final result of a successful journey.
-
-<%= example('nhs-panel-complete') %>
+<%= example('spec-panel-complete') %>
 
 ### Explain an import consequence
 
-An interruption is part of a deliberate journey, not a general alert.
+An interruption belongs to a deliberate journey. It is not a general alert.
 
-<%= example('nhs-panel-interruption') %>
-
-## Check the implementation
-
-Test long names, zoom, the route back to the task and failed completion. A completion reference must not disclose a secret, access token or private file path.
-
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS panel](https://service-manual.nhs.uk/design-system/components/panel) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
-
-See also [dialogs](dialogs.html).
+<%= example('spec-panel-interruption') %>

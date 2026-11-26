@@ -1,0 +1,122 @@
+---
+title: "Plant Status Card"
+description: "Show the readings of a plant entity, and say in words which reading is outside its limit."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Plant Status Card specification: its settings, the readings it shows and why a problem needs words as well as colour."
+ai_instructions: "Apply to the Home Assistant plant status card (type plant-status). The entity must be in the plant domain. The card shows up to five readings as an icon, a value and a unit: moisture, temperature, brightness, conductivity and battery. A reading the plant integration lists as a problem is shown only in the error colour and bold, with no words. Always say in text which reading is outside its limit and what the limit is. The card shows the integration's problem attribute and gives no care advice, so never diagnose a plant or add thresholds. The plant picture is a background image and cannot have alt text. Keep a missing reading missing. Do not claim contrast, accessible names or the header size in pixels."
+ai_related:
+  - path: "/home-assistant/specialist-entities.html"
+    title: "Specialist entities and derived information"
+    relationship: "Owns how plant and environmental readings are described."
+  - path: "/components/summary-list.html"
+    title: "Summary list"
+    relationship: "Use for the text list that states each reading and its limit."
+  - path: "/components/status.html"
+    title: "Status and notifications"
+    relationship: "Owns state wording and how a problem is shown."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface, border and header."
+component:
+  parent: "Plant Status Card"
+  letter: "P"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-plant-status-card"
+      origin: "Lovelace"
+      anchor: "child-hui-plant-status-card"
+  tags:
+    - "hui-plant-status-card"
+---
+
+# Plant Status Card
+
+<h2 id="purpose">Purpose</h2>
+
+The plant status card shows the readings for one plant: moisture, temperature, brightness, conductivity and battery. Each reading is an icon, a value and a unit. The card exists to show which reading, if any, the plant integration reports as a problem.
+
+The card reports what the integration supplies. It does not tell anyone how to care for the plant. For how to write plant and other environmental readings, see [Specialist entities and derived information](../home-assistant/specialist-entities.html#environment).
+
+This page covers:
+
+- Plant Status Card
+  - `hui-plant-status-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+The card has a header with the plant’s name, and a row of readings below it. If the plant has a picture, the picture fills the header area and the name sits over it. Each reading is an icon, then the value, then its unit in a lighter colour.
+
+Only readings the plant entity has are shown: moisture, temperature, brightness, conductivity and battery. A reading that is not there is left out, not shown as empty. The value comes from the linked sensor, or from the plant’s own attribute if there is none. Tapping or pressing Enter on a reading opens More info for that sensor.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-plant-status-card"><code>hui-plant-status-card</code></h3>
+
+The card is set with `type: plant-status`.
+
+```yaml
+type: plant-status
+entity: plant.study_fern
+name: Study fern
+```
+
+- `entity` is required and must be in the `plant` domain. Any other entity shows an error that asks for an entity from the plant domain.
+- `name` changes the header text. The default is the entity’s name.
+- `theme` applies a named theme to this card.
+
+If the entity cannot be found, the card shows a warning.
+
+A reading that the plant lists as a problem is shown in `error-color` and in bold. The problem state adds no words and does not change the icon. The battery icon is separate: it shows the battery level, with its own colour, whether or not the battery is a problem. [Advantages and limitations](#limits) says what this means for readers. The units use `secondary-text-color`, the icons use `state-icon-color`, the card surface uses the Civica `ha-card-*` settings (square, a 1 pixel `divider-color` border and no shadow), and the bold weight uses `ha-font-weight-bold`. The Civica theme sets `error-color` and `state-icon-error-color` for light and dark modes, and does not set the header size for a card with no picture, so that stays Home Assistant’s own.
+
+When a reading has keyboard focus, Home Assistant fills it with `divider-color`. The Civica theme does not change that. With a picture, the header text is white on a darkened strip. Neither is a theme setting. Only card-mod can change them. The picture is a background image, so it cannot have alt text.
+
+The readings share the row with space between them and do not set wrapping, so test the card with all five readings at 320 CSS pixels.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The card shows several readings in a small space.
+- A problem is shown by colour and weight alone. Anyone who cannot see the difference gets no sign at all, so the colour cannot be the only cue.
+- The card does not say in words which reading is the problem, what its limit is, or what to do.
+- An icon stands for each reading and has no label of its own, so people have to know what the icon means.
+- A reading the plant does not report is not shown, so a missing reading looks the same as no sensor at all.
+- The picture has no text equivalent.
+- The limits come from the plant integration. This card never adds one.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Put a sentence next to the card that says which reading is outside its limit, what the limit is, and when it was last reported. For example: “Study fern: moisture is 18%, below the limit of 20%.” Use the words the integration reports and do not add advice, a diagnosis or a healthy badge.
+
+Write each reading with its unit. Say when a reading is missing instead of leaving a gap. A missing reading is not zero.
+
+Put the same readings in a text list too, such as a [summary list](summary-list.html), if the plant matters. Do not rely on icons alone.
+
+Success criteria that apply:
+
+- 1.4.1 Use of Colour: write the problem in words.
+- 1.4.3 and 1.4.11 Contrast: the error colour on the card, and white text over a picture. Measure your own colours and picture before you claim a ratio.
+- 1.1.1 Non-text Content: icons stand for readings and the picture has no alternative text; the sentence beside the card supplies one.
+- 2.1.1 Keyboard and 2.4.7 Focus Visible: each reading can take focus and opens More info. Check the focus fill against your card.
+- 4.1.2 Name, Role, Value: a reading has no role or label other than its visible text.
+- 1.4.10 Reflow and 1.4.12 Text Spacing: test five readings at 320 CSS pixels.
+- 2.5.8 Target Size (Minimum): measure the readings in your own card.
+
+<h2 id="examples">Examples</h2>
+
+### A plant card with one reading below its limit
+
+<%= example('spec-plant-status-study-fern') %>
+
+### One plant reading outside its configured range
+
+The same reading written out, with a missing light reading kept as “No current reading”.
+
+<%= example('ha-coverage-specialist-plant') %>

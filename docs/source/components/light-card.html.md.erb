@@ -1,0 +1,124 @@
+---
+title: "Light Card"
+description: "Show one light with a brightness dial, a lamp button to switch it, and a way to open more information."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Light Card specification: what the card shows, what Civica changes, what stays as Home Assistant draws it and what to use when you need the state as text."
+ai_instructions: "Apply when a dashboard shows one light as a light card (type: light). Say that at rest the card writes no state and no brightness: it shows the state by the lamp icon colour and shows the brightness number only while the dial is dragged. The dial and the lamp button have no accessible name from this card, and the card has no option to add one. The lit lamp colour is Home Assistant's default amber, which Civica does not set, and is about 1.6 to 1 on a white card as calculated, so never rely on it. The filled part of the dial and its track are almost the same colour, so give the value in text elsewhere. When the state must be readable as text, recommend a tile card or an entities card. Never claim a screen reader reading."
+ai_related:
+  - path: "/components/control-circular-slider.html"
+    title: "Control Circular Slider"
+    relationship: "Owns the dial inside the card, including its keyboard keys."
+  - path: "/components/button-card.html"
+    title: "Button Card"
+    relationship: "Another way to switch a light, with its name on the card."
+  - path: "/components/card-features.html"
+    title: "Card Features (Tile & Area Inline Controls)"
+    relationship: "Owns the brightness control that a tile card can carry."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface."
+component:
+  parent: "Light Card"
+  letter: "L"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-light-card"
+      origin: "Lovelace"
+      anchor: "child-hui-light-card"
+  tags:
+    - "hui-light-card"
+    - "light"
+---
+
+# Light Card
+
+<h2 id="purpose">Purpose</h2>
+
+A light card shows one light as a dial with a lamp button in the middle. Drag the dial to change the brightness, press the lamp to switch the light, and use the three dots to open more information. It suits a quick control, but it writes very little as text, so pair it with words where the state matters.
+
+This page covers:
+
+- Light Card
+  - `hui-light-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+- A three-dot button at the top right corner, which opens more information.
+- A circular dial around the lamp, for brightness. It is hidden when the light has no brightness control.
+- The lamp button in the middle, which switches the light.
+- The light’s name under the lamp. When the light is unavailable or unknown, the state is written there instead.
+
+At rest, the card does not write “on”, “off” or a brightness number. It shows the state by the lamp colour and by how bright the lamp looks. The brightness number, such as “60 %”, appears only while you are dragging the dial, and fades half a second after you stop.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-light-card"><code>hui-light-card</code></h3>
+
+The light card, `type: light`. Set `entity` to a light.
+
+| Key | Meaning |
+| --- | --- |
+| `entity` | The light. Required. It must be in the light domain |
+| `name` | Replaces the light’s name |
+| `icon` | Replaces the lamp icon |
+| `theme` | A theme for this card only |
+| `tap_action` | What the lamp button does. Default: switch the light |
+| `hold_action` | Default: open more information |
+| `double_tap_action` | Optional |
+
+Dragging the dial sets the brightness in whole percentages from 1 to 100. The card does not change the light until you let go. The dial also takes the arrow keys, which change it by one step, and Page Up, Page Down, Home and End. The [Control Circular Slider](control-circular-slider.html) page owns the dial.
+
+**What the Civica theme sets.**
+
+- The filled part of the dial takes `primary-color`, the theme’s primary colour. In the Civica theme that is #1D70B8 in light mode and #C0D7EB in dark mode; the other themes set their own.
+- The empty track takes `slider-track-color`: #6F777B in light mode, #9BA4AA in dark mode.
+- The lamp is `state-icon-color` when off: #0B0C0C in light mode and white in dark mode. An unavailable light takes `state-unavailable-color`.
+- The card surface: square corners, a border, no shadow.
+
+**What stays as Home Assistant draws it.**
+
+- A lit lamp takes the light’s own colour when the light reports one. Otherwise it takes `--state-light-active-color`, which Civica does not set, so Home Assistant’s amber (#FFC107) applies. Calculated from those colours, amber on a white card is about 1.6 to 1, and on the dark card about 9.1 to 1. So never rely on the lamp colour to tell on from off.
+- The filled part and the empty track of the dial are close in colour. Calculated from the Civica theme colours, they are about 1.1 to 1 in light mode and 1.7 to 1 in dark mode. The position of the dial alone is not enough, so say the value in text.
+- The dial and the lamp button have no name from this card, and the card has no option to give them one. The three-dot button is named “Show more information”.
+- The brightness number is hidden at rest. A card-mod style `.brightness { opacity: 1; }` may keep it on show. This needs the card-mod integration, and you should test it on your own dashboard first.
+- The name text sits over the lower part of the dial area, and its size is fixed by the card.
+
+**To get the state as text.** Use a tile card, which writes the state beside the name and can carry a brightness control, or an entities card. Put the name and state in text next to a light card if you keep the dial. See [Button Card](button-card.html) and [Card Features (Tile & Area Inline Controls)](card-features.html).
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One card gives a brightness dial and a switch for one light.
+- It needs no extra module.
+- It writes no state at rest and gives the dial and lamp no names, so it is a poor fit alone for people who rely on text.
+- A circular drag is hard with a shaky hand. The keyboard keys and the more-information view are other ways to set the brightness.
+- Lamp colour comes from the light, so you cannot set it with the theme.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Name the light the way people say it: “Lounge lamp”. Put the state and brightness in words next to the card. Do not make the dial the only way to change brightness: keep the more-information view and, for important lights, a button card or a tile card.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content and 4.1.2 Name, Role, Value: the dial and lamp have no name from the card.
+- 1.4.1 Use of Colour and 1.4.11 Non-text Contrast: lamp colour and dial colour are not enough alone.
+- 2.1.1 Keyboard and 2.4.7 Focus Visible: check the dial and the buttons on your own dashboard.
+- 2.5.1 Pointer Gestures and 2.5.7 Dragging Movements: offer a way that is not a drag.
+- 2.5.8 Target Size (Minimum): check the small three-dot button on a touch screen.
+- 4.1.3 Status Messages: a change of brightness is not written as text, so say it elsewhere.
+
+A name, a written state and a second way to change the brightness keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### A light card for the lounge lamp
+
+<%= example('spec-light-card-lounge') %>
