@@ -1,0 +1,135 @@
+---
+title: "Button Card"
+description: "Show one entity as a tile that toggles it or opens its details, with an icon, a name and the state."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Button Card specification: configuration, theme keys, the focus ring and the limits of the card."
+ai_instructions: "Apply to the Home Assistant button card (type button). Keep the name visible and show the state in words, because the state colour alone must not carry the meaning. Hold and double-tap actions are gestures, so never make them the only way to do something. The Civica focus ring on the card needs the card-mod integration. Do not describe the card as having primary or danger variants. Never claim measured contrast of the state colour or the touch target size."
+ai_related:
+  - path: "/components/buttons.html"
+    title: "Button"
+    relationship: "Owns buttons and their labels, including the Home Assistant button."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns card structure and headings."
+  - path: "/components/alarm-panel-card.html"
+    title: "Alarm Panel Card"
+    relationship: "A card with its own arm and disarm buttons."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns how to word a state and a request."
+component:
+  parent: "Button Card"
+  letter: "B"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-button-card"
+      origin: "Lovelace"
+      anchor: "child-hui-button-card"
+  tags:
+    - "hui-button-card"
+---
+
+# Button Card
+
+<h2 id="purpose">Purpose</h2>
+
+The Button Card shows one entity as a tile. Tapping it toggles the entity, or opens its More info dialog when the entity cannot be toggled. In YAML it is `type: button`.
+
+Use it for a single device or switch that people use often, such as a lamp or a door lock. For buttons you write yourself, see [Button](buttons.html).
+
+This page covers:
+
+- Button Card
+  - `hui-button-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+Inside one card:
+
+1. An icon for the entity, which can be shown at a larger size.
+2. The entity name.
+3. The state, written as text, when you turn it on.
+
+The whole card is the control. When it has a tap action, it behaves as a button and can be reached by keyboard.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-button-card"><code>hui-button-card</code></h3>
+
+```yaml
+type: button
+entity: light.reading_lamp
+name: Reading lamp
+show_state: true
+tap_action:
+  action: toggle
+```
+
+Keys:
+
+- `entity` is the entity to show.
+- `name` replaces the entity name, and `show_name` turns it on or off.
+- `icon` replaces the icon, `show_icon` turns it on or off and `icon_height` sets its size, for example `80px`.
+- `show_state` shows the state as text.
+- `color` sets the colour of the icon when on. `none` turns the colour off. `state_color` is the older key.
+- `tap_action`, `hold_action` and `double_tap_action` set what each gesture does.
+- `theme` applies a theme to this card.
+
+With no `tap_action`, the card toggles entities that can be toggled and opens More info for the rest.
+
+Theme keys that reach it: `ha-card-border-radius` (square), `ha-card-border-width`, `ha-card-border-color`, `ha-card-box-shadow`, `ha-card-background`, `state-icon-color`, `state-active-color`, `state-inactive-color`, `primary-text-color`, `secondary-text-color`, `ha-font-size-l` and `ha-color-focus`.
+
+By default Home Assistant shows keyboard focus on this card as a 1px coloured edge, and the icon grows slightly. Civica replaces that with a thicker dark outline and a gold ring, but only when the card-mod integration is installed. Without card-mod, the card keeps Home Assistant’s own focus look.
+
+With card-mod you can set the corners and shadow for just one card:
+
+```yaml
+type: button
+entity: light.reading_lamp
+card_mod:
+  style: |
+    ha-card { border-radius: 0; box-shadow: none; }
+```
+
+You cannot give this card primary or danger variants, add visible text beyond the name and state, or change the fact that it behaves as a button, with a theme or YAML.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One large target for a common action, which is easy to find on a phone.
+- The name and state are real text, so the card can be read out.
+- The colour of the icon shows the state, but the card does not check that this colour has enough contrast against the card. Measure it in your own theme.
+- Hold and double-tap are gestures. The card does not promise that they work from a keyboard, so check them.
+- The card needs at least two grid columns, so it cannot be squeezed smaller than that.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Show the name and the state in words. Do not rely on an icon or the icon colour alone, and do not turn the name off for an icon-only tile. Say “On” or “Locked”, not only a colour.
+
+Make the tap action predictable. A tile that toggles a lamp should toggle it every time. Use More info for things that should not change with one touch, such as a lock or an alarm, and read [Dialogs](dialogs.html) for how confirmations stay in place.
+
+Never make hold or double-tap the only way to do something. Put the same task on a visible control as well.
+
+Success criteria that apply:
+
+- 4.1.2 Name, Role, Value: the card has the role of a button and its name is the entity name.
+- 2.1.1 Keyboard, 2.5.1 Pointer Gestures and 2.5.2 Pointer Cancellation for hold and double-tap.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured.
+- 1.4.1 Use of Colour: the state is also in words.
+- 1.4.11 Non-text Contrast: measure the icon and the card edge.
+- 2.5.3 Label in Name, and 2.5.8 Target Size (Minimum): measure the tile on your own dashboard.
+- 1.4.4 and 1.4.10: check large text and a narrow screen.
+
+Use a clear, short name. Keep the same action for the same kind of tile across the dashboard.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-button-card-tiles') %>

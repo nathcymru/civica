@@ -1,44 +1,78 @@
 ---
-title: Action links
-description: Clear navigation to Home Assistant pages and existing dashboard pop-ups.
-last_reviewed_on: 2026-11-11
-review_in: 3 months
-published_on: 2026-11-11
-updated_on: "2026-11-18"
+title: "Action Links"
+description: "A short group of labelled links to Home Assistant pages and dashboard pop-ups that already exist."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
 updates:
+  - date: "2026-11-25"
+    description: "Rewritten as the full Action Links specification, with a clear split between what the card does and what stays with Home Assistant."
+  - date: "2026-11-18"
+    description: "The circle tint now follows the chosen theme colour. The Vivid and Muted choice was removed."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Aligned the second navigation example with actual display-colour help and recorded original icon provenance.
-  - date: 2026-11-11
-    description: Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild.
-  - date: 2026-11-11
-    description: First published in the Civica design system.
-  - date: "2026-11-18"
-    description: "The circle tint now follows the chosen GOV.UK theme colour; the Vivid and Muted choice was removed."
-  - date: "2026-11-18"
-    description: "Source and verification now says browser contrast tests cover the default theme and all 7 theme colours in both modes, instead of 20 palette variants."
+  - date: "2026-11-11"
+    description: "First published in the Civica design system."
+ai_instructions: "Apply when a dashboard needs a short group of links to local Home Assistant pages or to pop-ups the dashboard already provides. Use custom:civica-action-links with a links list of name and path. Paths must start with / or #. Never use it for external addresses, device commands or to create pop-ups. Use a button to operate something. Say that it needs the Civica companion module from version 1.1.0."
+ai_related:
+  - path: "/components/buttons.html"
+    title: "Button"
+    relationship: "Owns controls that operate something. A link only navigates."
+  - path: "/components/back-link.html"
+    title: "Back Link"
+    relationship: "Owns the single link that returns to the previous page."
+  - path: "/styles/typography-links.html"
+    title: "Links"
+    relationship: "Owns link wording, colour and underline rules."
+  - path: "/get-started/install.html"
+    title: "Install Civica"
+    relationship: "Owns how to add the companion module that provides this card."
+component:
+  parent: "Action Links"
+  letter: "A"
+  origins:
+    - "Civica"
+  children:
+    - name: "civica-action-links"
+      origin: "Civica"
+      anchor: "child-civica-action-links"
+  tags:
+    - "civica-action-links"
 ---
 
-# Action links
+# Action Links
 
-Use `custom:civica-action-links` for a short group of useful destinations on a dashboard. Each link has an underlined name and a decorative arrow in a soft circle. The group has no card box or built-in heading. Place it beneath the dashboard's own heading.
+<h2 id="purpose">Purpose</h2>
 
-Use a link for navigation. Use a [button](controls.html) to operate a device or submit a change. This component does not call services, change devices or create pop-ups.
+Use action links for a short group of useful destinations on a dashboard, such as “Housework” or “Heating and hot water”. Each link has an underlined name and a decorative arrow in a soft circle. The group has no card box and no heading of its own, so place it beneath the dashboard’s own heading.
 
+A link navigates. A [button](buttons.html) operates a device or submits a change. This card never calls a service, changes a device or opens a pop-up. For a single link back to the previous page, use a [back link](back-link.html).
 
-## Examples
+This page covers:
 
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+- Action Links
+  - `civica-action-links`
 
-<%= example('nhs-action-link-journey') %>
+<h2 id="anatomy">Anatomy</h2>
 
-<%= example('nhs-action-link-help') %>
+The card is a list of links. Each link has:
 
+- a name, shown in bold underlined text,
+- an arrow in a round tinted circle, which is decorative and hidden from assistive technology, so the name is what people hear.
 
-## Add links
+Links sit side by side and wrap onto further rows on narrow screens. The links are marked up as a list.
 
-Install the [Civica companion module](../get-started/install.html) from version 1.1.0. The action-link component is included in the same `civica-ui.js` file as the colour settings. Add a manual card:
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-civica-action-links"><code>civica-action-links</code></h3>
+
+A custom card from the Civica companion module. It needs the module from version 1.1.0 loaded as a dashboard resource, in the same `civica-ui.js` file as the colour settings. Without the module the card type does not exist. See [Install](../get-started/install.html).
+
+Add a manual card:
 
 ```yaml
 type: custom:civica-action-links
@@ -51,36 +85,68 @@ links:
     path: '#heating'
 ```
 
-Replace these examples with destinations that exist in your installation. A fragment such as `#lights` only opens a pop-up when your dashboard already provides that behaviour. Quote fragment values in YAML so the `#` is not treated as a comment.
-
 | Setting | Required | Meaning |
 | --- | --- | --- |
 | `links` | Yes | A non-empty list of destinations |
 | `links[].name` | Yes | Visible, meaningful text such as “Housework” |
-| `links[].path` | Yes | A local path beginning with `/`, or a non-empty current-page fragment beginning with `#` |
+| `links[].path` | Yes | A local path beginning with `/`, or a current-page fragment beginning with `#` and at least one more character |
 
-External URLs, protocol-relative addresses, backslashes, blank names and whitespace inside paths are rejected. Use an encoded path when a URL needs a space. Names are rendered as text, never HTML. An invalid replacement configuration leaves the existing valid links intact.
+Replace the examples with destinations that exist in your installation. Quote a fragment such as `'#lights'` so YAML does not treat the `#` as a comment. A fragment only opens a pop-up when your dashboard already provides one.
 
-## Behaviour and accessibility
+The card rejects external addresses, addresses that begin with `//`, backslashes, blank names and spaces inside paths. Use an encoded path when an address needs a space. Names are shown as text, never as HTML. If you replace a working configuration with an invalid one, the existing links stay. Configuration errors appear in Home Assistant’s card editor.
 
-These are real HTML links with `href` destinations. Enter activates the focused link; browser context menus, modifier keys and back history work normally. Ordinary navigation stays in the same tab and can reload Home Assistant. Current-page fragments use the browser's native hash navigation and `hashchange` event. The component does not reimplement Home Assistant's private navigation function.
+Home Assistant has no card of this kind. For navigation from another card, set `tap_action` to `navigate` with a `navigation_path`. For an external address, use a link in a Markdown card.
 
-Labels use 19px bold text and remain underlined at rest. Every target is at least 44px high. Links wrap onto further rows on narrow screens and long labels can wrap within the available width. The 24px original SVG arrow has a 2px stroke and sits inside a 40px circle. It is hidden from assistive technology so the visible link text provides the accessible name.
+**What the theme controls.** These Home Assistant theme values change how the card looks. The colours below are for the default Civica theme. They follow the theme colour you choose: the other theme colours use a different brand colour (`civica-brand-primary`) for the circle tint, and their own link and hover colours.
 
-Hover and touch-down states strengthen the underline. Keyboard focus uses yellow and ink, including while hovered. The circle mixes 20% of the theme colour with the card surface, giving it a clear, soft tint. The arrow uses the main text colour (ink in light mode, white in dark mode), while the label uses the accessible link colour. Light and dark modes are separate from the theme colour. Forced-colour mode uses system colours.
+| Setting | Light | Dark | Used for |
+| --- | --- | --- | --- |
+| `link-color` | #1A65A6 | #C0D7EB | The link name |
+| `civica-action-hover` | #195C96 | #D6E5F2 | Hover and pressed state |
+| `civica-brand-primary` | #1D70B8 | #1D70B8 | A 20% tint of the circle |
+| `primary-text-color` | #0B0C0C | #FFFFFF | The arrow |
+| `civica-focus-text` and `civica-focus-background` | #0B0C0C and #FFDD00 | Same | The keyboard focus cue |
+| `civica-font-size-body` | 19 px, scaled by Home Assistant’s font size setting | Same | The size of the link name |
 
-Visited and unvisited links have the same appearance because dashboard content changes frequently. There is no disabled, pending, success or error action state: every configured item is a navigation link. Configuration errors are reported through Home Assistant's card configuration flow.
+**What does not change.** The name is always bold and underlined. The circle is 40 pixels with a 24 pixel arrow, fixed by the card. Visited and unvisited links look the same, because dashboard content changes often.
 
-## Source and verification
+<h2 id="limits">Advantages and limitations</h2>
 
-The [GOV.UK publishing action-link pattern](https://components.publishing.service.gov.uk/component-guide/action_link) and [GOV.UK link guidance](https://design-system.service.gov.uk/styles/links/) inform the hierarchy and interaction. This is a local implementation with an original simple arrow, not copied GOV.UK artwork. It uses Civica typography and palette tokens.
+- Real links: Enter activates the focused link, and the context menu, modifier keys and back history work as in any browser.
+- Targets are at least 44 pixels high, larger than the 24 pixel minimum.
+- Navigation stays in the same tab and can reload Home Assistant. The card does not use Home Assistant’s own navigation function. A fragment link uses the browser’s own hash navigation, which is what dashboard pop-ups listen for.
+- Hovering or pressing a link thickens its underline and changes its colour.
+- It cannot link outside Home Assistant, run a service or create a pop-up.
+- There is no disabled, pending, success or error state. Every item is a working link.
+- It needs the companion module. Without it, the card type is not available.
 
-Browser tests cover accessible names, keyboard focus, native navigation and history, invalid destinations, safe text rendering, 320px reflow, forced colours, and link/arrow contrast for the default theme and all 7 theme colours in both modes. Check the actual destination and any existing pop-up in the live Home Assistant dashboard before release.
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-## NHS action-link adaptation
+Keep the group short, usually two to five links. Write a verb-led, specific name: “Open heating schedule”, not “Click here”. Use the same name for the same destination everywhere. Never link to an action that surprises people, such as turning something off.
 
-The [NHS action link](https://service-manual.nhs.uk/design-system/components/action-link) emphasises entry to a service journey. Civica also uses this treatment for a small number of frequently used dashboard destinations. That is a deliberate local extension: a link still navigates and never sends a device command. The examples distinguish a task entry from a help destination.
+Use a link to go somewhere and a button to do something. See [Links](../styles/typography-links.html) for the underline and colour rules.
 
-## Example artwork record
+Success criteria that apply:
 
-The affected example records include creator, original source, rights, purpose, intended background and alternative-text decisions. Functional SVG strokes and schematic boundaries remain separate from the flat explanatory illustration style. No official identity artwork is copied.
+- 2.4.4 Link Purpose (In Context) and 2.4.6 Headings and Labels: the name says where the link goes.
+- 1.4.1 Use of Colour: the underline marks the link, not colour alone.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): focus uses yellow and ink, also while hovered.
+- 2.5.8 Target Size (Minimum): 44 pixel targets.
+- 1.4.10 Reflow and 1.4.4 Resize Text: links wrap at 320 CSS pixels.
+- 1.3.1 Info and Relationships: the group is a list.
+- 4.1.2 Name, Role, Value: the arrow is hidden, so the name is announced once.
+- 3.2.4 Consistent Identification: the same name for the same destination.
+
+In forced-colours mode the card uses system colours. Check the real destination, and any pop-up, in your live dashboard before you rely on it.
+
+<h2 id="examples">Examples</h2>
+
+These examples are simulated. The links go to sections on the same example page and operate nothing.
+
+### Start a task
+
+<%= example('spec-action-links-start') %>
+
+### Open help
+
+<%= example('spec-action-links-help') %>

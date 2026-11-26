@@ -1,0 +1,131 @@
+---
+title: "Area Picker"
+description: "Choose one area, or a list of areas, in a Home Assistant form."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Area Picker specification: choosing one area or several, what Civica styles and what stays as Home Assistant draws it."
+ai_instructions: "Apply when a form asks people to choose an area. Use ha-area-picker for one area and ha-areas-picker for a list. Ask in terms of purpose, such as Which area is this for. Explain what choosing an area changes. Keep the native search and list behaviour. Do not claim that areas can be reordered by keyboard. Say that creating an area from the picker is native and can be hidden with no-add. Link to the target pickers page for meaning and states."
+ai_related:
+  - path: "/home-assistant/target-pickers.html"
+    title: "Entity, device and area pickers"
+    relationship: "Owns what area, floor and label selection means, and its states."
+  - path: "/home-assistant/schema-selectors.html"
+    title: "Schema selectors and configuration forms"
+    relationship: "Owns the area selector in automations and scripts."
+  - path: "/components/select.html"
+    title: "Select"
+    relationship: "Use a plain select for a short fixed list."
+  - path: "/components/action-bar-bottom-sheet.html"
+    title: "Action Bar / Bottom Sheet"
+    relationship: "Owns the sheet the picker opens on narrow screens."
+component:
+  parent: "Area Picker"
+  letter: "A"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-area-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-area-picker"
+    - name: "ha-areas-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-areas-picker"
+  tags:
+    - "ha-area-picker"
+    - "ha-areas-picker"
+---
+
+# Area Picker
+
+<h2 id="purpose">Purpose</h2>
+
+An area picker lets people choose where something belongs or what a setting affects, such as “Living room”. Home Assistant uses it in forms, in the area selector for automations and scripts, and in dialogs. Use `ha-area-picker` to choose one area and `ha-areas-picker` to choose several.
+
+This page owns the two pickers as components. For what choosing an area means, and for its empty, saved and failed states, see [Target pickers](../home-assistant/target-pickers.html). For the selector in automations, see [Schema selectors](../home-assistant/schema-selectors.html).
+
+This page covers:
+
+- Area Picker
+  - `ha-area-picker`
+  - `ha-areas-picker`
+
+<h2 id="anatomy">Anatomy</h2>
+
+- A field with a label, helper text and the chosen area. A clear button appears when a value is set and the field is not required.
+- A list of areas that opens below the field on a wide screen, or as a bottom sheet on a narrow screen. It has a search box. Each row shows the area name and its floor beneath it.
+- An option to create a new area, unless you turn it off.
+- For several areas: one field for each chosen area, plus one empty field to add the next.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-area-picker"><code>ha-area-picker</code></h3>
+
+Chooses one area.
+
+- Attributes include `label`, `value` (the area ID), `helper`, `placeholder`, `required`, `disabled` and `no-add`, which hides the create-area option.
+- Filters narrow the list to areas that have a given domain or device class, or leave out chosen areas.
+- It fires `value-changed` with the new value, or no value when cleared.
+- The default label is Home Assistant’s own “Area” text. Home Assistant also provides its own wording for no areas, no match and an unknown area. Keep these words, so they stay translated.
+
+In an automation or script, the same control is the `area` selector.
+
+<h3 id="child-ha-areas-picker"><code>ha-areas-picker</code></h3>
+
+Chooses several areas.
+
+- It shows one `ha-area-picker` for each chosen area, plus an empty one to add another. Clearing a field, or choosing a duplicate, removes it.
+- `reorder` shows a drag handle. Reordering is by dragging. Do not tell people they can reorder by keyboard.
+- It fires `value-changed` with the list of areas.
+
+**What the Civica theme sets.** Only the field background (the Civica form background: white in light mode, the dark surface in dark mode) and the line colour shown for an invalid value (the Civica error colour) follow Civica values.
+
+**What stays as Home Assistant draws it.**
+
+- The field has no border. It has a 1 pixel line along the bottom, which becomes a 2 pixel line in the theme’s primary colour when the field has focus.
+- The field removes the browser outline, so the Civica focus ring does not apply. The thicker bottom line is the only focus cue, so check it on your own dashboard.
+- The top corners are slightly rounded and only the lower corners are square.
+- The width of the list is Home Assistant’s default, and the theme does not set it.
+- The row colours inside the list are not covered by Civica settings.
+- Creating an area from the picker is Home Assistant behaviour. Hide it with `no-add`.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A searchable list handles homes with many areas.
+- The floor shows beside each area name, which tells apart rooms with the same name on different floors.
+- The field and list use the native combobox and listbox behaviour. Keep it.
+- A multiple picker grows with each choice. Check it on a narrow screen.
+- Reordering is by dragging only; do not promise keyboard reordering.
+- Do not rely on a screen reader announcing new search results. Show the number of matches in words.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Label the field with a purpose: “Which area is this for?” rather than “Area”. Say what choosing an area changes, for example that the setting will apply to every device in it. Keep the chosen area visible after the list closes.
+
+If you need a specific order of areas and people cannot drag, ask them to remove and add areas in that order, or write the order in a labelled text list. Do not hide the create-area option when people really need it, and do not show it when they should not add areas here.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships, 3.3.2 Labels or Instructions: the field has a visible label and, where needed, helper text.
+- 2.1.1 Keyboard and 2.4.3 Focus Order: the list opens and closes with the keyboard.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): check the focus cue on your own dashboard.
+- 2.5.7 Dragging Movements: reordering by drag needs a single-pointer alternative, so offer another way to set the order.
+- 2.5.8 Target Size (Minimum): rows and the clear button must be easy to tap.
+- 3.3.1 Error Identification and 3.3.7 Redundant Entry: say what is wrong and do not ask for the same area again.
+- 4.1.2 Name, Role, Value and 4.1.3 Status Messages.
+
+Ask in the language of the task, show the floor, and keep results short.
+
+<h2 id="examples">Examples</h2>
+
+### A form that asks which area a schedule is for
+
+A simulated closed picker. Home Assistant’s own field looks different.
+
+<%= example('spec-area-picker-schedule') %>

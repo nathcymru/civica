@@ -1,0 +1,432 @@
+---
+title: "Card Features (Tile & Area Inline Controls)"
+description: "Add small controls, such as a slider or a mode choice, to a Tile or Area card, and know which ones appear for which device."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Card Features specification: every feature type, when it appears, its options and what the Civica theme changes."
+ai_instructions: "Apply when a Tile, Area, Humidifier or Thermostat card carries card features (features: in YAML). A feature appears only if the entity supports it, so never promise one for every device. Always show the reported state in words beside a feature. Prefer the buttons style to a slider where the feature offers it. Never claim a feature changed a real device in an example. The Civica theme sets no feature shape, so feature controls stay rounded unless the reader sets a Home Assistant variable."
+ai_related:
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns how features sit within a view and the table of variants."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface that features sit inside."
+  - path: "/components/area-card.html"
+    title: "Area Card"
+    relationship: "Owns the area card that can carry features."
+  - path: "/components/sliders.html"
+    title: "Control Slider"
+    relationship: "Owns the advice on sliders and precise values."
+component:
+  parent: "Card Features (Tile & Area Inline Controls)"
+  letter: "C"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-card-features"
+      origin: "Lovelace"
+      anchor: "child-hui-card-features"
+      grandchildren:
+        - name: "hui-alarm-modes-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-alarm-modes-card-feature"
+        - name: "hui-area-controls-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-area-controls-card-feature"
+        - name: "hui-bar-gauge-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-bar-gauge-card-feature"
+        - name: "hui-button-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-button-card-feature"
+        - name: "hui-climate-fan-modes-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-climate-fan-modes-card-feature"
+        - name: "hui-climate-hvac-modes-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-climate-hvac-modes-card-feature"
+        - name: "hui-climate-preset-modes-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-climate-preset-modes-card-feature"
+        - name: "hui-climate-swing-modes-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-climate-swing-modes-card-feature"
+        - name: "hui-counter-actions-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-counter-actions-card-feature"
+        - name: "hui-cover-open-close-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-cover-open-close-card-feature"
+        - name: "hui-cover-position-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-cover-position-card-feature"
+        - name: "hui-cover-tilt-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-cover-tilt-card-feature"
+        - name: "hui-cover-tilt-position-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-cover-tilt-position-card-feature"
+        - name: "hui-date-set-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-date-set-card-feature"
+        - name: "hui-duration-schedule-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-duration-schedule-card-feature"
+        - name: "hui-fan-direction-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-fan-direction-card-feature"
+        - name: "hui-fan-oscillate-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-fan-oscillate-card-feature"
+        - name: "hui-fan-preset-modes-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-fan-preset-modes-card-feature"
+        - name: "hui-fan-speed-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-fan-speed-card-feature"
+        - name: "hui-humidifier-modes-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-humidifier-modes-card-feature"
+        - name: "hui-humidifier-toggle-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-humidifier-toggle-card-feature"
+        - name: "hui-lawn-mower-commands-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-lawn-mower-commands-card-feature"
+        - name: "hui-lawn-mower-dock-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-lawn-mower-dock-card-feature"
+        - name: "hui-light-brightness-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-light-brightness-card-feature"
+        - name: "hui-light-color-temp-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-light-color-temp-card-feature"
+        - name: "hui-lock-commands-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-lock-commands-card-feature"
+        - name: "hui-lock-open-door-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-lock-open-door-card-feature"
+        - name: "hui-media-player-playback-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-media-player-playback-card-feature"
+        - name: "hui-media-player-volume-buttons-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-media-player-volume-buttons-card-feature"
+        - name: "hui-media-player-volume-slider-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-media-player-volume-slider-card-feature"
+        - name: "hui-numeric-input-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-numeric-input-card-feature"
+        - name: "hui-select-options-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-select-options-card-feature"
+        - name: "hui-target-humidity-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-target-humidity-card-feature"
+        - name: "hui-target-temperature-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-target-temperature-card-feature"
+        - name: "hui-target-temperature-range-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-target-temperature-range-card-feature"
+        - name: "hui-time-set-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-time-set-card-feature"
+        - name: "hui-toggle-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-toggle-card-feature"
+        - name: "hui-trend-graph-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-trend-graph-card-feature"
+        - name: "hui-update-actions-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-update-actions-card-feature"
+        - name: "hui-vacuum-commands-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-vacuum-commands-card-feature"
+        - name: "hui-valve-open-close-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-valve-open-close-card-feature"
+        - name: "hui-valve-position-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-valve-position-card-feature"
+        - name: "hui-water-heater-operation-modes-card-feature"
+          origin: "Lovelace"
+          anchor: "child-hui-card-features--hui-water-heater-operation-modes-card-feature"
+  tags:
+    - "hui-card-features"
+    - "card feature"
+    - "tile card"
+    - "area card"
+
+---
+
+# Card Features (Tile & Area Inline Controls)
+
+<h2 id="purpose">Purpose</h2>
+
+A card feature is a small control or display added to a card, such as a brightness slider under a light tile or a set of heating modes under a thermostat. People can then act on a device without opening More info.
+
+This page owns the feature container and every feature type Civica documents. For where cards and features sit within a view, see [Dashboard composition and card features](../home-assistant/dashboard-composition.html). For the card surface itself, see [Card (Base Surface)](cards.html).
+
+This page covers:
+
+- Card Features (Tile & Area Inline Controls)
+  - `hui-card-features`
+  - the feature types listed under [Variants](#variants)
+
+<h2 id="anatomy">Anatomy</h2>
+
+A card that supports features shows them in one of two places, set by `features_position`:
+
+1. Below the card’s main content (`bottom`, the default).
+2. Beside the tile, on the same row (`inline`).
+
+The Tile, Area, Humidifier and Thermostat cards can carry features. Each feature is one control or read-only display, such as a slider, a row of buttons, a dropdown or a small graph. Features in the list are drawn in order.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-card-features"><code>hui-card-features</code></h3>
+
+The container draws each feature you list. You can list several, and each takes its own options.
+
+```yaml
+type: tile
+entity: light.living_room_lamp
+features:
+  - type: light-brightness
+features_position: bottom
+```
+
+Keys on the card:
+
+- `features` is the list of features. Each item has a `type` and its own options.
+- `features_position` is `bottom` or `inline`.
+- A feature can use your own custom element, written as `custom:` followed by its name.
+
+A feature appears only when the entity supports it. A light that cannot be dimmed shows no brightness slider, and you cannot force one. Do not promise a control on a card without checking that the entity offers it.
+
+The feature colour follows the tile colour, or the state colour when no colour is set. Set the corner shape for all features with `--ha-card-features-border-radius`. The spacing between features uses `--ha-card-feature-gap`, the gap between columns uses `--ha-card-feature-column-gap` and a divider between columns uses `--ha-card-feature-divider`.
+
+**What the Civica theme sets.** The theme sets `state-icon-color`, which is the default feature colour, along with `state-active-color`, `state-inactive-color`, `slider-color`, `slider-track-color` and the focus colour. It sets none of the variables above, so feature controls keep Home Assistant’s rounded corners and default spacing.
+
+**What stays as Home Assistant draws it.** The control height, the shape of sliders and buttons, and the inner focus ring. Changing these needs the card-mod integration.
+
+Home Assistant has more feature types: horizontal swing modes for climate, cover and valve favourite positions, light colour, colour favourites and effects, media player source and sound mode, timer actions and presets, vacuum fan speed, and precipitation and temperature forecasts. They follow the same rules as the features below.
+
+<h3 id="child-hui-card-features--hui-alarm-modes-card-feature"><code>hui-alarm-modes-card-feature</code></h3>
+
+YAML type `alarm-modes`. A row of choices for the arm mode. Appears for an alarm control panel. Options: `modes`: the arm modes to offer.
+
+<h3 id="child-hui-card-features--hui-area-controls-card-feature"><code>hui-area-controls-card-feature</code></h3>
+
+YAML type `area-controls`. Buttons for the kinds of device in the area, such as lights, fans and covers. Appears for an area card whose area exists in Home Assistant. Options: `controls`: a list of domains (`light`, `fan`, `switch` or a cover type such as `cover-shutter`) or `{entity_id}` items.
+
+<h3 id="child-hui-card-features--hui-bar-gauge-card-feature"><code>hui-bar-gauge-card-feature</code></h3>
+
+YAML type `bar-gauge`. A read-only bar. It shows a reading and cannot be used to change anything. Appears for a sensor with a number as its state. Options: `min`, `max`.
+
+<h3 id="child-hui-card-features--hui-button-card-feature"><code>hui-button-card-feature</code></h3>
+
+YAML type `button`. A button that runs the entity. Appears for a button, input button, scene or script. Options: `action_name`, `data`.
+
+<h3 id="child-hui-card-features--hui-climate-fan-modes-card-feature"><code>hui-climate-fan-modes-card-feature</code></h3>
+
+YAML type `climate-fan-modes`. A choice of fan mode. Appears for a climate entity that supports fan modes. Options: `style` (`dropdown` or `icons`), `fan_modes`.
+
+<h3 id="child-hui-card-features--hui-climate-hvac-modes-card-feature"><code>hui-climate-hvac-modes-card-feature</code></h3>
+
+YAML type `climate-hvac-modes`. A choice of heating or cooling mode. Appears for any climate entity. Options: `style`, `hvac_modes`.
+
+<h3 id="child-hui-card-features--hui-climate-preset-modes-card-feature"><code>hui-climate-preset-modes-card-feature</code></h3>
+
+YAML type `climate-preset-modes`. A choice of preset. Appears for a climate entity that supports preset modes. Options: `style`, `preset_modes`.
+
+<h3 id="child-hui-card-features--hui-climate-swing-modes-card-feature"><code>hui-climate-swing-modes-card-feature</code></h3>
+
+YAML type `climate-swing-modes`. A choice of swing mode. Appears for a climate entity that supports swing modes. Options: `style`, `swing_modes`.
+
+<h3 id="child-hui-card-features--hui-counter-actions-card-feature"><code>hui-counter-actions-card-feature</code></h3>
+
+YAML type `counter-actions`. Buttons that change the count. Appears for a counter. Options: `actions`: any of `decrement`, `reset`, `increment`.
+
+<h3 id="child-hui-card-features--hui-cover-open-close-card-feature"><code>hui-cover-open-close-card-feature</code></h3>
+
+YAML type `cover-open-close`. Open and close buttons. Appears for a cover that can open or close. Options: none.
+
+<h3 id="child-hui-card-features--hui-cover-position-card-feature"><code>hui-cover-position-card-feature</code></h3>
+
+YAML type `cover-position`. A slider for how far the cover is open. Appears for a cover that reports a position. Options: none.
+
+<h3 id="child-hui-card-features--hui-cover-tilt-card-feature"><code>hui-cover-tilt-card-feature</code></h3>
+
+YAML type `cover-tilt`. Tilt open and tilt close buttons. Appears for a cover that can tilt open or closed. Options: none.
+
+<h3 id="child-hui-card-features--hui-cover-tilt-position-card-feature"><code>hui-cover-tilt-position-card-feature</code></h3>
+
+YAML type `cover-tilt-position`. A slider for the tilt. Appears for a cover that reports a tilt position. Options: none.
+
+<h3 id="child-hui-card-features--hui-date-set-card-feature"><code>hui-date-set-card-feature</code></h3>
+
+YAML type `date-set`. Buttons that set the date. Appears for an input date and time with a date, or a date or date and time entity. Options: none.
+
+<h3 id="child-hui-card-features--hui-duration-schedule-card-feature"><code>hui-duration-schedule-card-feature</code></h3>
+
+YAML type: none. This Home Assistant version has no card feature with this name. For timers it draws two others, `timer-actions` (start, pause and cancel buttons) and `timer-presets` (preset durations). Neither is listed as its own section here.
+
+<h3 id="child-hui-card-features--hui-fan-direction-card-feature"><code>hui-fan-direction-card-feature</code></h3>
+
+YAML type `fan-direction`. A choice of direction. Appears for a fan that can change direction. Options: none.
+
+<h3 id="child-hui-card-features--hui-fan-oscillate-card-feature"><code>hui-fan-oscillate-card-feature</code></h3>
+
+YAML type `fan-oscillate`. An on and off choice for oscillation. Appears for a fan that can oscillate. Options: none.
+
+<h3 id="child-hui-card-features--hui-fan-preset-modes-card-feature"><code>hui-fan-preset-modes-card-feature</code></h3>
+
+YAML type `fan-preset-modes`. A choice of preset. Appears for a fan with preset modes. Options: `style`, `preset_modes`.
+
+<h3 id="child-hui-card-features--hui-fan-speed-card-feature"><code>hui-fan-speed-card-feature</code></h3>
+
+YAML type `fan-speed`. A slider, or a stepped choice for a fan with a few speeds. Appears for a fan whose speed can be set. Options: none.
+
+<h3 id="child-hui-card-features--hui-humidifier-modes-card-feature"><code>hui-humidifier-modes-card-feature</code></h3>
+
+YAML type `humidifier-modes`. A choice of mode. Appears for a humidifier with modes. Options: `style`, `modes`.
+
+<h3 id="child-hui-card-features--hui-humidifier-toggle-card-feature"><code>hui-humidifier-toggle-card-feature</code></h3>
+
+YAML type `humidifier-toggle`. An on and off choice. Appears for any humidifier. Options: none.
+
+<h3 id="child-hui-card-features--hui-lawn-mower-commands-card-feature"><code>hui-lawn-mower-commands-card-feature</code></h3>
+
+YAML type `lawn-mower-commands`. Command buttons. Docking is one of these commands. Appears for a lawn mower that supports start or pause, stop or dock. Options: `commands`: any of `start_pause`, `stop`, `dock`.
+
+<h3 id="child-hui-card-features--hui-lawn-mower-dock-card-feature"><code>hui-lawn-mower-dock-card-feature</code></h3>
+
+YAML type: none. This Home Assistant version has no separate dock feature. Docking is one of the commands in `lawn-mower-commands`: see that section.
+
+<h3 id="child-hui-card-features--hui-light-brightness-card-feature"><code>hui-light-brightness-card-feature</code></h3>
+
+YAML type `light-brightness`. A brightness slider. Appears for a light that can be dimmed. Options: none.
+
+<h3 id="child-hui-card-features--hui-light-color-temp-card-feature"><code>hui-light-color-temp-card-feature</code></h3>
+
+YAML type `light-color-temp`. A slider from warm to cool light. Appears for a light that supports colour temperature. Options: none.
+
+<h3 id="child-hui-card-features--hui-lock-commands-card-feature"><code>hui-lock-commands-card-feature</code></h3>
+
+YAML type `lock-commands`. Lock and unlock buttons. Appears for any lock. Options: none.
+
+<h3 id="child-hui-card-features--hui-lock-open-door-card-feature"><code>hui-lock-open-door-card-feature</code></h3>
+
+YAML type `lock-open-door`. A button that opens the latch. Appears for a lock that can open the door latch. Options: none.
+
+<h3 id="child-hui-card-features--hui-media-player-playback-card-feature"><code>hui-media-player-playback-card-feature</code></h3>
+
+YAML type `media-player-playback`. Playback buttons. Appears for any media player. Options: `controls`: any of `turn_on`, `turn_off`, `power`, `media_play`, `media_pause`, `media_play_pause`, `media_stop`, `media_previous_track`, `media_next_track`, `volume_down`, `volume_up`, `volume_mute`, `shuffle`, `repeat`; `hide_disabled_controls`.
+
+<h3 id="child-hui-card-features--hui-media-player-volume-buttons-card-feature"><code>hui-media-player-volume-buttons-card-feature</code></h3>
+
+YAML type `media-player-volume-buttons`. Minus and plus buttons for the volume. Appears for a media player whose volume can be set. Options: `step`, `show_mute_button`.
+
+<h3 id="child-hui-card-features--hui-media-player-volume-slider-card-feature"><code>hui-media-player-volume-slider-card-feature</code></h3>
+
+YAML type `media-player-volume-slider`. A volume slider. Appears for a media player whose volume can be set. Options: `show_mute_button`.
+
+<h3 id="child-hui-card-features--hui-numeric-input-card-feature"><code>hui-numeric-input-card-feature</code></h3>
+
+YAML type `numeric-input`. Buttons or a slider for the value. Appears for an input number or number entity. Options: `style` (`buttons` or `slider`).
+
+<h3 id="child-hui-card-features--hui-select-options-card-feature"><code>hui-select-options-card-feature</code></h3>
+
+YAML type `select-options`. A choice of option. Appears for a select or input select. Options: `options`, `style` (`dropdown` or `buttons`).
+
+<h3 id="child-hui-card-features--hui-target-humidity-card-feature"><code>hui-target-humidity-card-feature</code></h3>
+
+YAML type `target-humidity`. Buttons or a slider for the target humidity. Appears for a humidifier, or a climate entity with a target humidity. Options: `style` (`buttons` or `slider`).
+
+<h3 id="child-hui-card-features--hui-target-temperature-card-feature"><code>hui-target-temperature-card-feature</code></h3>
+
+YAML type `target-temperature`. Buttons or a slider for the target. For a range, it sets a low and a high value, and the sliders keep them from crossing. Appears for a climate entity with a target temperature or a temperature range, or a water heater with a target temperature. Options: `style` (`buttons` or `slider`).
+
+<h3 id="child-hui-card-features--hui-target-temperature-range-card-feature"><code>hui-target-temperature-range-card-feature</code></h3>
+
+YAML type: none. This Home Assistant version has no separate range feature. `target-temperature` handles a low and a high target itself when the climate entity supports a range: see that section.
+
+<h3 id="child-hui-card-features--hui-time-set-card-feature"><code>hui-time-set-card-feature</code></h3>
+
+YAML type: none. This Home Assistant version has no feature for setting a time on its own. `date-set` is the nearest: it covers an input date and time with a date, and date entities, but not a time alone.
+
+<h3 id="child-hui-card-features--hui-toggle-card-feature"><code>hui-toggle-card-feature</code></h3>
+
+YAML type `toggle`. An on and off switch. Appears for a switch, input boolean, light, fan, siren or automation. Options: none.
+
+<h3 id="child-hui-card-features--hui-trend-graph-card-feature"><code>hui-trend-graph-card-feature</code></h3>
+
+YAML type `trend-graph`. A small read-only graph of recent readings. It needs a written reading beside it. Appears for a sensor with a number as its state. Options: `hours_to_show` (default 24), `detail`.
+
+<h3 id="child-hui-card-features--hui-update-actions-card-feature"><code>hui-update-actions-card-feature</code></h3>
+
+YAML type `update-actions`. An install button. Appears for an update that can be installed. Options: `backup` (`yes`, `no` or `ask`).
+
+<h3 id="child-hui-card-features--hui-vacuum-commands-card-feature"><code>hui-vacuum-commands-card-feature</code></h3>
+
+YAML type `vacuum-commands`. Command buttons. Appears for a vacuum that supports start or pause, stop, clean spot, locate or return home. Options: `commands`.
+
+<h3 id="child-hui-card-features--hui-valve-open-close-card-feature"><code>hui-valve-open-close-card-feature</code></h3>
+
+YAML type `valve-open-close`. Open and close buttons. Appears for a valve that can open or close. Options: none.
+
+<h3 id="child-hui-card-features--hui-valve-position-card-feature"><code>hui-valve-position-card-feature</code></h3>
+
+YAML type `valve-position`. A slider for the position. Appears for a valve whose position can be set. Options: none.
+
+<h3 id="child-hui-card-features--hui-water-heater-operation-modes-card-feature"><code>hui-water-heater-operation-modes-card-feature</code></h3>
+
+YAML type `water-heater-operation-modes`. A choice of operation mode. Appears for any water heater. Options: `style`, `operation_modes`.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A control sits on the card, so a common action takes one step.
+- Home Assistant hides a feature when the entity does not support it, so the card does not offer a control the device lacks.
+- Sliders, number buttons and mode choices are native controls with names and roles that assistive technology can read.
+- The bar gauge and trend graph are read-only. They cannot be made to look like controls.
+- Sliders need dragging. Where a feature offers a buttons style, such as for target temperature, humidity and numeric input, use it.
+- Icon-only mode choices need a text name. Check the names on your own dashboard.
+- A feature shows the state the device has reported. A change you ask for can take a moment to appear.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Add a feature only when it saves a real trip to More info. Use one control for one job. Put the reported state in words next to the feature, so people can tell what is happening from what they asked for. Do not hide an essential control behind a feature, because it may not appear for every device. Use the same feature for the same job across cards. See [Dashboard composition and card features](../home-assistant/dashboard-composition.html) for how to arrange cards and [Control Slider](sliders.html) for slider guidance.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 3.3.2 Labels or Instructions: each control has a name.
+- 1.4.1 Use of Colour: a selected mode is not shown by colour alone.
+- 1.4.11 Non-text Contrast: check slider fill and track on your own dashboard.
+- 2.1.1 Keyboard: sliders and number controls respond to the keyboard.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): measure the focus cue before you claim it.
+- 2.5.7 Dragging Movements: use a buttons style where one exists.
+- 2.5.8 Target Size (Minimum): the default feature height is 42 CSS pixels. Check the size on your dashboard.
+- 3.2.4 Consistent Identification: the same job gets the same feature.
+- 4.1.2 Name, Role, Value: icon-only modes need a text name.
+
+<h2 id="examples">Examples</h2>
+
+### A light tile with a brightness feature
+
+A simulated tile with one feature below it and the reported state in words. The slider moves but changes nothing.
+
+<%= example('spec-card-features-tile') %>

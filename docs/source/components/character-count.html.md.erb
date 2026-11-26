@@ -1,67 +1,114 @@
 ---
-title: Character count
-description: Show a remaining count only when a real limit applies to an answer.
-section: components
-group: Form elements
-source_url: https://service-manual.nhs.uk/design-system/components/character-count
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Character Count"
+description: "Tell people the limit on a text answer before they type, and say plainly when they are over it."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
 updates:
+  - date: "2026-11-25"
+    description: "Rewritten as the Character Count specification. It now says what Home Assistant gives you, what it does not, and how to word a limit."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Corrected label punctuation in the over-limit example.
-  - date: 2026-11-11
-    description: Added NHS-informed character count guidance and 2 Home Assistant reference examples.
+ai_instructions: "Apply when a text answer has a real limit. State the limit in the hint before the field. Home Assistant gives only a hard maxlength on ha-textarea and ha-input, with no visible count; a live count is Civica example markup or custom card code. Do not invent limits, do not block paste, keep the text after an error and say how many characters are over in plain words. Never claim a screen reader announces the count."
+ai_related:
+  - path: "/components/textarea.html"
+    title: "Textarea"
+    relationship: "Owns the multi-line field this pattern sits on."
+  - path: "/components/hint-text.html"
+    title: "Hint text"
+    relationship: "Owns where the limit is written before the field."
+  - path: "/components/error-message.html"
+    title: "Error message"
+    relationship: "Owns the wording of the over-limit message."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the checks to run before you publish."
+component:
+  parent: "Character Count"
+  letter: "C"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Character Count Pattern"
+      origin: "Civica"
+      anchor: "child-civica-character-count-pattern"
+  tags:
+    - "Civica Character Count Pattern"
+    - "ha-textarea"
+    - "maxlength"
 ---
 
-# Character count
+# Character Count
 
-Show a remaining count only when a real limit applies to an answer.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+Character Count tells people how long a text answer may be and how much they have left. Use it for a bounded dashboard note or message field where the system that receives the text has a documented limit.
 
-## When to use it
+It is a Civica pattern built on Home Assistant’s text boxes. It is not a Home Assistant element. This page covers:
 
-Use it for a bounded dashboard note or message field whose receiving system has a documented limit. Include that limit before the field, not just in a changing counter.
+- Character Count
+  - Civica Character Count Pattern
 
-## When not to use it
+<h2 id="anatomy">Anatomy</h2>
 
-Do not invent limits to make cards fit. Increase an unnecessary storage restriction instead of asking people to shorten useful instructions. Do not prevent pasting a complete answer.
+1. A label that names the answer.
+2. A hint above the box that states the limit before anyone types.
+3. The text box.
+4. A message below the box that shows how many characters are left.
+5. When the text is too long, an error message in plain words, with the text kept in the box.
 
-## Home Assistant adaptation
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-The example uses the GOV.UK character-count enhancement. It allows editing beyond the limit and provides feedback; submission validation still belongs to the component that stores the note. A household note is not a monitored message to a support team. State its audience and purpose.
+<h3 id="child-civica-character-count-pattern">Civica Character Count Pattern</h3>
 
-## Accessibility and behaviour
+Home Assistant’s `ha-textarea` and `ha-input` accept a `maxlength` attribute. That is a hard stop. Typing and pasting are cut off at the limit. Neither shows a count of the characters left.
 
-Keep the visible counter below the textarea. Associate hints and count with the field, retain the static maximum when JavaScript is unavailable, and avoid announcing every keystroke. The enhanced component schedules screen-reader updates.
+The Civica pattern differs in two ways. It shows a message under the box, and it lets people keep editing past the limit so they can shorten their own words. A live count like this is example markup or custom card code. Home Assistant does not provide it.
 
-## Examples
+What the theme does set, on the text box itself:
 
-### A short dashboard note
+- Border, background, text and placeholder colours, through the `wa-form-control-*` keys. The border is 2px wide with square corners.
+- The focus ring: 3px wide, offset 2px. It is black in the light theme and yellow in the dark theme.
+- Hint text uses `secondary-text-color`, and the error message uses `error-color`.
 
-An example limit of 120 characters is explained before typing.
+The theme has no setting for a counter. If you need one, use the hint and the error message below to carry the limit in words.
 
-<%= example('nhs-count-note') %>
+<h2 id="limits">Advantages and limitations</h2>
 
-### An answer above the limit
+- Stating the limit first lets people plan their answer, instead of finding out as they type.
+- Keeping over-limit text editable means no one loses their own words.
+- Home Assistant’s `maxlength` is reliable but gives no feedback. People may not notice that their text was cut off.
+- The count is not native, so the hint and error message must carry the same information in words.
 
-The full answer remains available to edit; it is not silently cut off.
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-<%= example('nhs-count-over-limit') %>
+Use it only when a real limit applies. Do not invent a limit to make a card fit. If a storage restriction is unnecessary, raise it instead of asking people to shorten useful instructions.
 
-## Check the implementation
+- Write the limit in the hint before the field, such as “You can enter up to 120 characters”.
+- Do not block pasting. Let people paste the full answer and then shorten it.
+- Say how far over they are, in plain words: “You have 12 characters too many”.
+- Keep the text in the box after an error. Do not make people type it again.
+- Avoid a countdown that feels like pressure. A calm message under the box is enough.
+- Count the same units in the field and on the server, including emoji and pasted text.
 
-Test pasting, deleting, emoji and an over-limit save. The backend and frontend must count the same units. Keep entered text after an error.
+A household note is not a message to a support team. Say who will read it and why.
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+Success criteria that apply:
 
-## Source and related guidance
+- 1.3.1 Info and Relationships: link the hint and message to the field.
+- 3.3.1 Error Identification, 3.3.3 Error Suggestion and 3.3.7 Redundant Entry.
+- 3.3.2 Labels or Instructions: state the limit up front.
+- 4.1.3 Status Messages: announce the count as a status, not on every keystroke.
+- 1.4.10 Reflow: check the field at 320 CSS pixels.
 
-[NHS character count](https://service-manual.nhs.uk/design-system/components/character-count) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+Test pasting, deleting, emoji and an over-limit save. Use the [Test the interface](../accessibility/testing.html) checks, in light and dark modes. For the field itself, see [Textarea](textarea.html), and for the wording of the limit, [Hint text](hint-text.html) and [Error message](error-message.html).
 
-See also [buttons and forms](controls.html).
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-character-count-note') %>
+
+<%= example('spec-character-count-over-limit') %>

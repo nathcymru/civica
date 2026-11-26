@@ -1,0 +1,104 @@
+---
+title: "Avatar & User Badge"
+description: "Show a person’s picture or initials in Home Assistant, always beside their written name."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Avatar & User Badge specification: the user badge, the name ha-avatar that this version does not use, and what the Civica theme changes."
+ai_instructions: "Apply when a screen shows a person as a picture or initials. This Home Assistant version has no element named ha-avatar; it draws ha-user-badge (for a user, in the sidebar and user lists) and ha-person-badge (for a person, in settings). The badge shows the person’s entity picture, or their initials if there is none. It has no alternative text, so always show the name as visible text beside it. The Civica theme makes the badge square and sets the initials colours. Initials in dark mode calculate at about 1.28 to 1 from the theme colours, so do not rely on them. Do not claim the picture has alternative text. Photos are personal data."
+ai_related:
+  - path: "/home-assistant/presence-and-privacy.html"
+    title: "Presence, people and shared-screen privacy"
+    relationship: "Owns what personal detail a shared screen shows."
+  - path: "/home-assistant/pictures-and-embedded-content.html"
+    title: "Pictures, rich content and embedded pages"
+    relationship: "Owns pictures and avatars on a dashboard."
+component:
+  parent: "Avatar & User Badge"
+  letter: "A"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-avatar"
+      origin: "Home Assistant"
+      anchor: "child-ha-avatar"
+    - name: "ha-user-badge"
+      origin: "Home Assistant"
+      anchor: "child-ha-user-badge"
+  tags:
+    - "ha-avatar"
+    - "ha-user-badge"
+    - "ha-person-badge"
+---
+
+# Avatar & User Badge
+
+<h2 id="purpose">Purpose</h2>
+
+An avatar is a small picture that stands for a person. Home Assistant shows one in the sidebar for the signed-in user, in user lists and in the people settings. When a person has no picture, it shows their initials.
+
+This page owns how the badge looks and what the Civica theme changes. What a shared screen may reveal about a person, and how to treat photos, is owned by [Presence, people and shared-screen privacy](../home-assistant/presence-and-privacy.html).
+
+This page covers:
+
+- Avatar & User Badge
+  - `ha-avatar`
+  - `ha-user-badge`
+
+<h2 id="anatomy">Anatomy</h2>
+
+The badge is a 40 pixel tile. It holds either the person’s picture or their initials on a light background. It has no name, status dot or border of its own. In the sidebar it is drawn at 32 pixels, with the person’s name beside it.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-avatar"><code>ha-avatar</code></h3>
+
+This version of Home Assistant does not use the name `ha-avatar`, so there is no element, setting or YAML key with that name to document. What it draws instead is the user badge, described next, and a person badge (`ha-person-badge`), which looks the same and is used in the people settings. The person badge takes a person instead of a user, and two extra text size variables: `--person-badge-font-size` and `--ha-person-badge-font-size-long`.
+
+<h3 id="child-ha-user-badge"><code>ha-user-badge</code></h3>
+
+Shows a user. It finds the person whose account matches the user. If that person has a picture, the badge shows it, and follows the picture when it changes. If not, it shows the initials of the user’s name. If there is no user, it shows nothing.
+
+It has one property, `user`, which Home Assistant sets in its own code. A dashboard author cannot add it to a card, and card-mod cannot reach it, because it is not inside a card. The sidebar and the user picker are where you see it.
+
+What the theme controls:
+
+- `ha-picture-border-radius`: the corner radius. Home Assistant draws a round badge by default. The Civica theme sets it to 0, so the badge is square.
+- `light-primary-color`: the initials background. Civica sets #E8F1F8 in light mode and #D6E5F2 in dark mode.
+- `text-light-primary-color`: the initials colour. Civica sets #0B0C0C in light mode and #FFFFFF in dark mode.
+- `ha-font-size-s`: the text size for three or more initials.
+
+Calculated from these theme colours, the initials in light mode have a contrast ratio of about 17.1 to 1. In dark mode, white on the light blue calculates at about 1.28 to 1, which is too low to read comfortably. So do not rely on the initials alone, and keep the name visible.
+
+The picture is drawn as a background, so it has no alternative text and no name that a screen reader can read. The initials are plain text inside the badge. Because Home Assistant gives no way to add a name to the picture, always put the person’s name beside it as text, as the sidebar does.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The badge follows the person’s picture without extra setup.
+- The initials give a fallback when there is no picture.
+- The picture has no alternative text.
+- A dashboard author cannot place the badge, resize it or add a name to it.
+- The initials in dark mode are hard to read.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Show the person’s name as text beside every avatar. Never use the picture, the initials or a status dot alone to say who someone is or where they are. Say the state in words, such as "home" or "away". Keep the same place and size for avatars across a screen so people learn where to look.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: the picture is decorative because the name is beside it.
+- 1.4.1 Use of Colour: state is written, not shown by colour.
+- 1.4.3 Contrast (Minimum): see the calculated initials colours above.
+- 2.5.8 Target Size (Minimum): the badge is not interactive.
+
+Photos are personal data. Before you show one on a shared screen, read [Presence, people and shared-screen privacy](../home-assistant/presence-and-privacy.html). For pictures in general see [Pictures, rich content and embedded pages](../home-assistant/pictures-and-embedded-content.html).
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-avatar-people') %>

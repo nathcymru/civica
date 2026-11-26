@@ -1,0 +1,134 @@
+---
+title: "Chip"
+description: "Small rounded buttons for suggested actions, filters and chosen items, found in Home Assistant pickers and dialogs."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Chip specification: the three kinds of chip, their options and what the Civica theme does and does not set."
+ai_instructions: "Apply when explaining Home Assistant chips. There is no element named ha-chip; it is the shared base for ha-assist-chip, ha-filter-chip and ha-input-chip. Chips appear in pickers, editors and dialogs, not as a dashboard card, and card-mod has no reliable way to reach them. Civica sets no chip-specific key. Say selected state in words as well as colour for input chips. Do not claim square corners or contrast."
+ai_related:
+  - path: "/components/buttons.html"
+    title: "Button"
+    relationship: "Use a row of buttons when you need an action on a dashboard card."
+  - path: "/components/checkboxes.html"
+    title: "Checkbox"
+    relationship: "Use checkboxes for a list of options a person ticks."
+  - path: "/components/tag.html"
+    title: "Tag"
+    relationship: "Owns a read-only label; a chip is something you can press."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the checks to run before you publish."
+component:
+  parent: "Chip"
+  letter: "C"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-chip"
+      origin: "Home Assistant"
+      anchor: "child-ha-chip"
+    - name: "ha-input-chip"
+      origin: "Home Assistant"
+      anchor: "child-ha-input-chip"
+    - name: "ha-filter-chip"
+      origin: "Home Assistant"
+      anchor: "child-ha-filter-chip"
+    - name: "ha-assist-chip"
+      origin: "Home Assistant"
+      anchor: "child-ha-assist-chip"
+  tags:
+    - "ha-chip"
+    - "ha-input-chip"
+    - "ha-filter-chip"
+    - "ha-assist-chip"
+---
+
+# Chip
+
+<h2 id="purpose">Purpose</h2>
+
+A chip is a small rounded button. Home Assistant uses three kinds: one for a suggested action, one to switch a filter on and off, and one for an item someone has chosen and can remove. You see them in pickers, editors and dialogs. A dashboard author cannot add a chip to a card.
+
+This page covers:
+
+- Chip
+  - `ha-chip`
+  - `ha-input-chip`
+  - `ha-filter-chip`
+  - `ha-assist-chip`
+
+<h2 id="anatomy">Anatomy</h2>
+
+1. A pill with a short text label.
+2. An optional icon before the label.
+3. For a removable chip, a second button that removes it. Its name is “remove” plus the chip’s label.
+4. Chips of one kind sit together in a set. Tab moves into the set once, and the arrow keys, Home and End move between chips.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-chip"><code>ha-chip</code></h3>
+
+This Home Assistant version has no element named `ha-chip`. It is the shared base for the three kinds below, so you always place one of them. The base is a button, or a link when it has an address. It starts neutral, outlined and small.
+
+All three kinds share these options:
+
+- `label`, or the default content if no label is set.
+- `disabled`, and `soft-disabled`, which keeps the chip focusable so it can still be read.
+- `removable`, `remove-only` and `aria-label-remove`.
+- A `remove` event. If nothing cancels it, the chip removes itself and focus moves to the next chip.
+- Slots for a leading icon, a trailing icon and the remove icon.
+- Style keys: `--ha-chip-container-color`, `--ha-chip-outline-color`, `--ha-chip-outline-width` (1px), `--ha-chip-label-color` and the label size, weight and line height.
+
+What Civica sets: nothing chip-specific. Chips take the label colour from `primary-text-color` and the outline from `outline-color`. In the light and dark themes the outline is `#6F777B` and `#9BA4AA`. The corners stay rounded, because Civica does not set `ha-border-radius-md` or `ha-border-radius-pill`. The focus ring comes from the `wa-focus-ring-*` keys: 3px wide, offset 2px. Test the focus ring on a chip in your own dashboard.
+
+<h3 id="child-ha-input-chip"><code>ha-input-chip</code></h3>
+
+An item the person has chosen, shown so they can remove it. It is always removable. It has a `selected` state, an `avatar` image and a `remove` event. A selected chip is filled with 15 per cent of the text colour, with no outline. That change is colour only, so do not rely on it to show state. Home Assistant uses it for chosen entity types and device classes.
+
+Style keys: `--ha-input-chip-selected-container-color`, `--ha-input-chip-selected-outline-width` and `--ha-input-chip-icon-size` (18px). Civica sets none of them.
+
+<h3 id="child-ha-filter-chip"><code>ha-filter-chip</code></h3>
+
+A toggle that switches a filter on or off. It is a button that reports its pressed state, and a tick appears when it is selected, so the state is not shown by colour alone. A listener can cancel the change. Home Assistant uses it for date range presets and section filters in pickers.
+
+Style keys: `--ha-filter-chip-selected-container-color` and `--ha-filter-chip-selected-outline-width`. Civica sets neither. The label weight is `ha-font-weight-medium`, which Civica sets to 400, so it is regular weight.
+
+<h3 id="child-ha-assist-chip"><code>ha-assist-chip</code></h3>
+
+A suggested action. It behaves as an ordinary button, with no pressed state. It can be `filled`, `active` or `elevated`.
+
+Style keys: `--ha-assist-chip-container-color`, `--ha-assist-chip-container-shape` (16px), `--ha-assist-chip-label-text-color` and `--ha-assist-chip-outline-color`, among others. Civica sets none of them.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Chips are compact, and each kind has a clear job.
+- Chips live inside Home Assistant’s own dialogs and pickers. They are unsupported as a dashboard element, and the card-mod integration has no reliable way to reach them.
+- The theme cannot make them square or change their colours unless you add the chip keys above to the theme. Civica does not.
+- A removable chip’s remove button has its own name, which helps people who cannot see the icon.
+
+For an action on a dashboard card, use a row of [Buttons](buttons.html). For a list of options to tick, use [Checkbox](checkboxes.html).
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Keep chip labels short: one or two words. Do not rely on an icon alone, and do not hide a required choice behind a chip.
+
+Success criteria that apply:
+
+- 4.1.2 Name, Role, Value: a filter chip reports its pressed state, and the remove button has its own name.
+- 2.1.1 Keyboard: arrows move within a set. Tab leaves it.
+- 1.4.1 Use of Colour: a filter chip shows a tick as well as colour. An input chip does not.
+- 3.3.2 Labels or Instructions and 2.4.7 Focus Visible.
+- 2.5.8 Target Size (Minimum) and 1.4.11 Non-text Contrast: measure these in your own theme.
+
+Say what happened when something is removed. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-chip-filter-row') %>

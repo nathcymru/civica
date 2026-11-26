@@ -1,0 +1,129 @@
+---
+title: "Audio Player"
+description: "Play a sound clip with the browser’s own controls, a visible label and a written transcript."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Audio Player specification: the audio element, its source and track children, and what a dashboard author can and cannot control."
+ai_instructions: "Apply when a page or dialog plays a sound clip. The audio element needs the controls attribute, a visible label that names the clip, a transcript, and no autoplay. Home Assistant uses it in the media browser dialog. The browser draws the controls, so the Civica theme cannot restyle them. The source element lists the file and its type; the track element adds captions or subtitles for video, but do not claim a browser shows them for audio. This page owns source and track; the Video and Picture pages link here. A Markdown card can hold audio with a source element, but it removes the track element. Do not claim that autoplay works, or any size or contrast for the browser controls."
+ai_related:
+  - path: "/home-assistant/media-playback.html"
+    title: "Media playback and output selection"
+    relationship: "Owns the wording for the Home Assistant media player and its status."
+  - path: "/home-assistant/pictures-and-embedded-content.html"
+    title: "Pictures, rich content and embedded pages"
+    relationship: "Owns pictures and embedded content on a dashboard."
+component:
+  parent: "Audio Player"
+  letter: "A"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<audio>"
+      origin: "HTML5"
+      anchor: "child-audio"
+      grandchildren:
+        - name: "<source>"
+          origin: "HTML5"
+          anchor: "child-audio--source"
+        - name: "<track>"
+          origin: "HTML5"
+          anchor: "child-audio--track"
+  tags:
+    - "audio"
+    - "source"
+    - "track"
+---
+
+# Audio Player
+
+<h2 id="purpose">Purpose</h2>
+
+An audio player plays a sound clip, such as a voice message left at the front door. The browser draws the play button, the time bar and the volume control. Civica does not restyle them.
+
+This page owns the `<audio>` element and its two children, `<source>` and `<track>`. The Video & Camera Stream Player and Picture pages use `<source>` and `<track>` too, and link here for them. For the Home Assistant media player and its status wording, see [Media playback and output selection](../home-assistant/media-playback.html).
+
+This page covers:
+
+- Audio Player
+  - `<audio>`
+    - `<source>`
+    - `<track>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+An audio player has a play and pause button, a time bar, the time played and a volume control. The controls have no visible label of their own, so the clip needs a label written beside it. Below the player, a transcript gives the same words as text.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-audio"><code>&lt;audio&gt;</code></h3>
+
+The element that plays the clip. Its attributes are:
+
+- `src` names the file. Leave it out when you list files with `<source>`.
+- `controls` shows the player. Without it nothing is drawn, so always set it.
+- `autoplay` starts the clip at once. Do not use it: browsers often block it, and sudden sound is hard on people nearby.
+- `loop` repeats the clip and `muted` starts it silent.
+- `preload` is `none`, `metadata` or `auto`, and says how much to fetch before play.
+- `crossorigin` sets how the file is requested from another site.
+
+Text between the tags is shown only when the browser cannot play audio. Write a short sentence there that points to the transcript.
+
+Home Assistant uses the element in the media browser dialog, with `controls` and `autoplay`, one `<source>` and a translated sentence for browsers that cannot play it.
+
+The Civica theme has no variable for the player, because the browser draws it. Colours, size and shape are the browser’s. A card-mod style cannot reach inside it either. A Markdown card can hold an `<audio>` element with a `<source>` element, and Home Assistant keeps the `autoplay`, `controls`, `crossorigin`, `loop`, `muted`, `preload` and `src` attributes. It removes the `<track>` element, so a Markdown card cannot add captions. The Home Assistant media player card is a different element, owned by [Media playback and output selection](../home-assistant/media-playback.html).
+
+Give the player a name that people can hear. Point `aria-labelledby` at the visible label, as in the example.
+
+<h3 id="child-audio--source"><code>&lt;source&gt;</code></h3>
+
+Lists one file for an `<audio>`, `<video>` or `<picture>` element. It has no closing tag and no text of its own.
+
+- `src` is the file.
+- `type` is the file type, with its codecs if needed, such as `audio/mpeg`. The browser skips a file it cannot play and moves to the next one.
+- `media`, `srcset`, `sizes`, `width` and `height` are for pictures and video. Do not use them for audio.
+
+List the files in order of preference. A `<source>` has no meaning for a screen reader, so the label and transcript do the work.
+
+```html
+<audio controls preload="none" aria-labelledby="clip-label">
+  <source src="/local/doorbell.mp3" type="audio/mpeg">
+  This message cannot be played here. Read the transcript below.
+</audio>
+```
+
+<h3 id="child-audio--track"><code>&lt;track&gt;</code></h3>
+
+Adds a text track to an `<audio>` or `<video>` element, in WebVTT format. Its attributes are `kind` (`subtitles`, `captions`, `descriptions`, `chapters` or `metadata`), `src`, `srclang`, `label` and `default`.
+
+For video, a `captions` track gives people who cannot hear the sound the words and sounds. For audio, an audio element has no picture area, so do not rely on a track to show text. Write a transcript on the page instead. Home Assistant does not use `<track>` anywhere in its own screens.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The browser controls work with a keyboard and need no extra code.
+- The controls have no visible label, so you must write one.
+- You cannot change the colours, size or shape of the controls.
+- Autoplay is often blocked by the browser.
+- A text track does not replace a transcript for audio.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Show the controls, name the clip and say how long it lasts. Put the transcript on the same page, not behind a separate link. Do not start sound without a request, and do not play a clip for longer than three seconds without a way to pause it.
+
+Success criteria that apply:
+
+- 1.2.1 Audio-only: a transcript gives the same information as the clip.
+- 1.4.2 Audio Control: no sound starts by itself.
+- 2.1.1 Keyboard and 2.1.2 No Keyboard Trap: the browser controls are the way to operate it.
+- 4.1.2 Name, Role, Value: give the player a name with `aria-labelledby` or `aria-label`.
+
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-audio-player-message') %>

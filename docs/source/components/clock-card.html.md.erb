@@ -1,0 +1,117 @@
+---
+title: "Clock Card"
+description: "Show the time, and optionally the date, on a dashboard in a digital or analogue style."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Clock Card specification: options, sizes, theme keys and the limits of the analogue face."
+ai_instructions: "Apply to the Home Assistant clock card (type clock). Prefer the digital style. The analogue face has a fixed English label, Analog clock, and does not give the time to a screen reader. The digital time has no live region and does not announce changes. Keep seconds off. Show the date with words. Civica sets no clock-specific key. Do not claim contrast or announced time."
+ai_related:
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns how cards are laid out and named."
+  - path: "/components/abbreviation.html"
+    title: "Abbreviation"
+    relationship: "Owns how to write short forms such as am and pm."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the checks to run before you publish."
+component:
+  parent: "Clock Card"
+  letter: "C"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-clock-card"
+      origin: "Lovelace"
+      anchor: "child-hui-clock-card"
+  tags:
+    - "hui-clock-card"
+---
+
+# Clock Card
+
+<h2 id="purpose">Purpose</h2>
+
+The Clock Card shows the current time on a dashboard, with an optional title and date. In YAML it is `type: clock`. It suits a wall-mounted tablet. For anything where the exact time matters to someone using a screen reader, add the time as text as well.
+
+This page covers:
+
+- Clock Card
+  - `hui-clock-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+Inside one card:
+
+1. An optional title, on one line, centred.
+2. The time, as digits or as a clock face.
+3. An optional date in words.
+
+The card has no buttons and nothing to select.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-clock-card"><code>hui-clock-card</code></h3>
+
+```yaml
+type: clock
+title: Hallway
+clock_style: digital
+clock_size: medium
+date_format:
+  - weekday-long
+  - day-numeric
+  - month-long
+```
+
+Keys:
+
+- `clock_style` is `digital` (the default) or `analog`.
+- `clock_size` is `small` (the default), `medium` or `large`.
+- `show_seconds` shows seconds. `seconds_motion` is `continuous` or `tick` on the analogue face.
+- `time_format` chooses how the time is written, such as 12-hour or 24-hour.
+- `time_zone` is a time zone name such as `Europe/London`.
+- `no_background` removes the card background.
+- `date_format` is a list of parts, such as `weekday-long`, `day-numeric` and `month-long`, with separators.
+- On the analogue face only: `border`, `ticks` (`none`, `quarter`, `hour` or `minute`) and `face_style` (`markers`, `numbers_upright` or `roman`).
+
+The card needs at least 3 columns for a small digital clock, and more for the larger sizes. The analogue face needs 2 rows or more.
+
+Style keys: `--ha-clock-card-digital-font-size-small`, `-medium` and `-large`, and the analogue face keys `--ha-clock-card-analog-face-background`, `-border-radius` and `-padding`. Civica sets none of them. The time, hands and title use `primary-text-color`, which is `#0B0C0C` in the light theme and `#FFFFFF` in the dark theme. The analogue border uses `divider-color`.
+
+Civica gives every card a 1px border with square corners and no shadow through its `card-mod-card-yaml` setting. The clock inherits that.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It is the native card, so it follows Home Assistant’s language and time settings.
+- The analogue face has a fixed English label, “Analog clock”, and the label does not give the time. A screen reader does not read the time from it.
+- The digital time is drawn as separate pieces of text. It has no live region, so a screen reader does not announce each minute. Nothing announces the time on request either.
+- The card has no setting to stop the seconds moving. Leave `show_seconds` off.
+- Roman numerals suit few audiences. Avoid `roman` for a household dashboard.
+
+If a person needs the exact time, show the time with a template or an entity state beside the clock.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use the digital style by default. If you use the analogue face, put the time in words somewhere nearby. Pick 12-hour or 24-hour time once and use it everywhere on the dashboard. Show the date with the weekday in words.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: the analogue face needs a text alternative that you add.
+- 1.4.4 Resize Text and 1.4.10 Reflow: check the card at 320 CSS pixels.
+- 2.2.2 Pause, Stop, Hide: moving seconds are a risk, so keep them off.
+- 4.1.3 Status Messages: the card does not announce time changes.
+- 1.4.3 Contrast: measure the time against the card background in your own theme.
+
+See [Cards](cards.html) for layout and [Test the interface](../accessibility/testing.html) for the checks.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-clock-card-digital') %>

@@ -1,0 +1,108 @@
+---
+title: "Blockquote"
+description: "Set apart words that someone else wrote, with the speaker named and the source credited."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Blockquote specification: the blockquote, cite and inline quote elements, and how Home Assistant draws a quote in a Markdown card."
+ai_instructions: "Apply when a page quotes someone else’s words. Use blockquote only for a quotation, never to indent text. Name the speaker or source before or after the quote, in a figure with a figcaption. Use cite for the title of a work, not a person's name, and reset its italic style because the Civica text rules say not to use italics. Outside a Markdown card, use q for a short quote in a sentence and do not type quotation marks around it. In a Home Assistant Markdown card a quote gets a 4 pixel rule in the divider colour; a quote that starts with an alert marker such as [!NOTE] turns into an alert instead. A Markdown card allows figure, figcaption, cite and the cite attribute on blockquote, but it removes q and time."
+ai_related:
+  - path: "/content/formatting-content/text-formatting.html"
+    title: "Text formatting"
+    relationship: "Owns the rule to quote others at length only, and not to use italics."
+  - path: "/components/inset-text.html"
+    title: "Inset text"
+    relationship: "Use for a note that is not a quotation."
+component:
+  parent: "Blockquote"
+  letter: "B"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<blockquote>"
+      origin: "HTML5"
+      anchor: "child-blockquote"
+      grandchildren:
+        - name: "<cite>"
+          origin: "HTML5"
+          anchor: "child-blockquote--cite"
+    - name: "<q>"
+      origin: "HTML5"
+      anchor: "child-q"
+  tags:
+    - "blockquote"
+    - "cite"
+    - "q"
+---
+
+# Blockquote
+
+<h2 id="purpose">Purpose</h2>
+
+A blockquote sets apart words that someone else wrote or said, such as a line from an installer’s handover note. Use it for a real quotation, not to indent or highlight your own text. For a note that is not a quotation, use [Inset text](inset-text.html).
+
+[Text formatting](../content/formatting-content/text-formatting.html) owns the writing rule: quote someone else at length only, and do not use italics.
+
+This page covers:
+
+- Blockquote
+  - `<blockquote>`
+    - `<cite>`
+  - `<q>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A quotation has three parts: a line that says who is speaking, the quoted passage, and the source. Put the speaker before the quote or in a caption after it. A quote in a Home Assistant Markdown card has a vertical rule on its left, in the divider colour.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-blockquote"><code>&lt;blockquote&gt;</code></h3>
+
+A block of quoted text, which can hold paragraphs. Browsers indent it and add no quotation marks. The `cite` attribute can hold the address of the source, but most people never see it, so name the source in words.
+
+For a credited quote, wrap it in a `<figure>` and put the source in a `<figcaption>` after it, as in the example.
+
+In a Home Assistant Markdown card, write the quote with a `>` at the start of the line. Home Assistant draws it with a 4 pixel rule on the left, in the `divider-color` theme variable, with no left margin and a small gap of padding. The Civica theme sets `divider-color` to #CECECE in light mode and #50565A in dark mode. The rule width and padding are fixed. A dashboard author cannot change them with a theme variable.
+
+A Markdown quote whose first line is an alert marker, such as `[!NOTE]`, is drawn as an alert instead of a quote. See [Alert & Tip Callout](alert-and-tip-callout.html).
+
+Do not use a blockquote for a suggestion that Home Assistant has written for the person. It is not a quote.
+
+<h3 id="child-blockquote--cite"><code>&lt;cite&gt;</code></h3>
+
+Names the title of a work, such as a handover note or a manual. Do not use it for a person’s name. Browsers show it in italics, and the Civica text rules say not to use italics, so set `font-style: normal` on it, as the example does. It has no role of its own for a screen reader. It usually sits inside the `<figcaption>`.
+
+<h3 id="child-q"><code>&lt;q&gt;</code></h3>
+
+A short quote inside a sentence. The browser adds the quotation marks for the page language, so do not type your own. A few screen readers say "quote" before it. Use it only for words someone else said.
+
+If a quote is in another language, set the `lang` attribute on it so a screen reader says it correctly.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A blockquote is a real structure, so it is better than indented text.
+- Quotation marks and the left rule do not carry the meaning alone. The speaker is named in words.
+- A Markdown card keeps `<figure>`, `<figcaption>`, `<cite>` and the `cite` attribute on `<blockquote>`, but does not allow `<q>` or `<time>`; they show as plain text. Use `<blockquote>` for quotes there, and write a short quote in a sentence with ordinary quotation marks.
+- The rule width, padding and the italic style of `<cite>` are not set by the theme.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Say who is speaking before the quote. Keep the quote short and end it clearly. Do not use large decorative quotation marks. Do not use a blockquote for layout.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: use a blockquote for a quotation only.
+- 1.4.1 Use of Colour: the rule is not the only sign that this is a quote.
+- 1.4.3 Contrast (Minimum): quoted text uses the normal text colour.
+- 1.4.10 Reflow and 1.4.12 Text Spacing: the quote wraps and stays readable.
+- 3.1.2 Language of Parts: mark a quote in another language.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-blockquote-help') %>

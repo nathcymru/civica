@@ -15,7 +15,7 @@ import { join } from 'node:path';
 // Changing the inventory needs the project owner's approval. Update this hash in
 // the same commit as the approved inventory change, and say so in the pull request.
 const INVENTORY_PATH = 'docs/data/component-inventory.json';
-const INVENTORY_SHA256 = '383ec55ad1c85c1de8c88e7abb1e9c992b8a94dc58c48e5f5025e660d69d89f9';
+const INVENTORY_SHA256 = '93c8a24136dfd921a89244b0a6b673534ba9d64f1c00bd3f952fe1c58f53632c';
 const PARENT_COUNT = 144;
 const ORIGINS = ['HTML5', 'Home Assistant', 'Lovelace', 'Civica'];
 const BUILD = 'docs/build';

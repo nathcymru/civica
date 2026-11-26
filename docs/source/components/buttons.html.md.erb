@@ -1,26 +1,23 @@
 ---
-title: Buttons
-description: A button changes something or submits an answer. Its text names the outcome.
-section: components
-group: Form elements
-source_url: https://service-manual.nhs.uk/design-system/components/buttons
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-18"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Button"
+description: "Use a button to change something or submit an answer, from the plain HTML button to the Home Assistant button and icon button."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
 updates:
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Clarified shared GOV.UK/NHS button ownership and the distinction between component variants and installed behaviour.
-  - date: 2026-11-11
-    description: Added NHS-informed buttons guidance and 4 Home Assistant reference examples.
-  - date: "2026-11-17"
-    description: "Rewritten to lead with the rule and move source credit to the components index."
+  - date: "2026-11-25"
+    description: "Rewritten as the full Button specification. It now covers the HTML buttons, the Home Assistant button and icon buttons, and the floating add button."
   - date: "2026-11-18"
     description: "The destructive button guidance now says theme colour, instead of palette."
-ai_instructions: "Apply to every control that changes something or submits an answer. Name the outcome in the label. Use a link for navigation. A sent command is a request, not a confirmed state. Rules WG-030, WG-032."
+  - date: "2026-11-13"
+    description: "Updated the current project name and repository links to Civica."
+  - date: "2026-11-11"
+    description: "Added the Civica button guidance and four examples."
+ai_instructions: "Apply to every control that changes something or submits an answer. Name the outcome in the label. Use a link to go somewhere. A sent command is a request, not a confirmed state. Give a button that is not a submit button type button. The ha-button element takes variant brand, neutral, success, warning or danger and appearance accent, filled, outlined or plain, and never the strings primary, secondary or plain as a variant. Home Assistant has no ha-fab element: the floating add button is a large ha-button with an icon. Never claim measured contrast, focus appearance or screen reader behaviour. Do not say the 44 px height applies to ha-icon-button."
 ai_related:
   - path: "/content/writing-guidelines/clear-titles.html"
     title: "Write clear titles"
@@ -31,58 +28,251 @@ ai_related:
   - path: "/components/controls.html"
     title: "Buttons and forms"
     relationship: "Choose between a command, a selection and navigation."
+  - path: "/components/button-group-segmented-control.html"
+    title: "Button Group / Segmented Control"
+    relationship: "Owns groups of buttons that switch between options."
+  - path: "/components/calendar-card.html"
+    title: "Calendar Card"
+    relationship: "Uses the previous and next icon buttons and the floating add button."
+component:
+  parent: "Button"
+  letter: "B"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<button>"
+      origin: "HTML5"
+      anchor: "child-button"
+      grandchildren:
+        - name: "type=\"button\""
+          origin: "HTML5"
+          anchor: "child-button--type-button"
+        - name: "type=\"submit\""
+          origin: "HTML5"
+          anchor: "child-button--type-submit"
+        - name: "type=\"reset\""
+          origin: "HTML5"
+          anchor: "child-button--type-reset"
+    - name: "<input type=\"button\">"
+      origin: "HTML5"
+      anchor: "child-input-type-button"
+    - name: "<input type=\"submit\">"
+      origin: "HTML5"
+      anchor: "child-input-type-submit"
+    - name: "<input type=\"reset\">"
+      origin: "HTML5"
+      anchor: "child-input-type-reset"
+    - name: "<input type=\"image\">"
+      origin: "HTML5"
+      anchor: "child-input-type-image"
+    - name: "ha-button"
+      origin: "Home Assistant"
+      anchor: "child-ha-button"
+      grandchildren:
+        - name: "variant=\"primary\""
+          origin: "Home Assistant"
+          anchor: "child-ha-button--variant-primary"
+        - name: "variant=\"secondary\""
+          origin: "Home Assistant"
+          anchor: "child-ha-button--variant-secondary"
+        - name: "variant=\"danger\""
+          origin: "Home Assistant"
+          anchor: "child-ha-button--variant-danger"
+        - name: "variant=\"plain\""
+          origin: "Home Assistant"
+          anchor: "child-ha-button--variant-plain"
+    - name: "ha-icon-button"
+      origin: "Home Assistant"
+      anchor: "child-ha-icon-button"
+    - name: "ha-icon-button-prev"
+      origin: "Home Assistant"
+      anchor: "child-ha-icon-button-prev"
+    - name: "ha-icon-button-next"
+      origin: "Home Assistant"
+      anchor: "child-ha-icon-button-next"
+    - name: "ha-icon-button-toggle"
+      origin: "Home Assistant"
+      anchor: "child-ha-icon-button-toggle"
+    - name: "ha-fab"
+      origin: "Home Assistant"
+      anchor: "child-ha-fab"
+      note: "Floating Action Button"
+  tags:
+    - "button"
+    - "input"
+    - "ha-button"
+    - "ha-icon-button"
+    - "ha-fab"
 ---
 
-# Buttons
+# Button
 
-Use a button to change something or submit an answer, and name the outcome in its label: “Save schedule”, not “Submit”.
+<h2 id="purpose">Purpose</h2>
 
-## When to use it
+Use a button to change something or submit an answer. Name the outcome in its label: “Save schedule”, not “Submit”. Use a link, not a button, to go somewhere.
 
-Use one main action for each local task, with quieter secondary actions. A household dashboard can hold several independent device tasks, so it does not need one primary button for the whole home. This page owns the button contract for every Civica example. The [forms overview](controls.html#choose-the-control-by-its-meaning) helps choose between a command, a selection and navigation.
+This page covers the plain HTML buttons you can write in Markdown or custom cards, and the buttons Home Assistant draws itself.
 
-There are four variants: primary, secondary, destructive and unavailable. They share the same request wording and visible focus.
+This page covers:
 
-## When not to use it
+- Button
+  - `<button>`
+    - `type="button"`
+    - `type="submit"`
+    - `type="reset"`
+  - `<input type="button">`
+  - `<input type="submit">`
+  - `<input type="reset">`
+  - `<input type="image">`
+  - `ha-button`
+    - `variant="primary"`
+    - `variant="secondary"`
+    - `variant="danger"`
+    - `variant="plain"`
+  - `ha-icon-button`
+  - `ha-icon-button-prev`
+  - `ha-icon-button-next`
+  - `ha-icon-button-toggle`
+  - `ha-fab`
 
-Use a link to go somewhere. Do not make every room tile look like a submit button. Do not use a red button only because the theme colour is Red. Destructive confirmation uses explicit wording and the fixed danger role, not the theme colour.
+<h2 id="anatomy">Anatomy</h2>
 
-## Say what was sent, not what happened
+A button has a visible label, a shape that looks pressable and a visible focus ring. Home Assistant’s `ha-button` also has an optional icon before the label (`start`), an optional icon after it (`end`) and a loading spinner. An icon button has an icon and a hidden label that names it.
 
-After a command, say that a request was sent until the integration reports the result. “Turning on reading lamp” is a request. “Reading lamp is on” is a state. Keep the native Home Assistant service permissions and pending states. The examples below only change their own text.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## How it behaves
+<h3 id="child-button"><code>&lt;button&gt;</code></h3>
 
-Use a real button element. Give a non-submit control `type="button"`. Keep a visible focus indicator and make repeated actions at least 44px high. Explain an unavailable action beside the control, not through a faded appearance. Keep focus in place while a request completes.
+The HTML button is the right element for a command. People activate it with Enter or Space. A disabled button cannot be focused and drops out of the tab order. Its label can hold text and markup, but not another link or button.
 
-## Examples
+Its `type` decides what it does.
 
-### Save dashboard preferences
+<h3 id="child-button--type-button"><code>type="button"</code></h3>
 
-The primary action names what is saved; the example does not change Home Assistant.
+Does nothing on its own. Use it for any button that is not part of a form submission. Give a non-submit button this type, because without it a button inside a form submits that form.
 
-<%= example('nhs-button-primary') %>
+<h3 id="child-button--type-submit"><code>type="submit"</code></h3>
 
-### Primary and secondary actions
+Sends the form that contains it. This is the default type when none is written, which is how forms get submitted by accident. Say what is being sent in the label, and never submit when a person only changes a field.
 
-A separate secondary action changes only the local example message.
+<h3 id="child-button--type-reset"><code>type="reset"</code></h3>
 
-<%= example('nhs-button-secondary') %>
+Puts every field in the form back to its starting value. It throws away what the person typed, so it is rarely the right choice. If you do need one, say clearly what it clears.
 
-### Confirm removing a saved view
+<h3 id="child-input-type-button"><code>&lt;input type="button"&gt;</code></h3>
 
-This is an explicit final confirmation example, not a live deletion.
+A button written as an input. Its label comes from the `value` attribute, so it cannot hold markup. Use `<button type="button">` instead, which can.
 
-<%= example('nhs-button-warning') %>
+<h3 id="child-input-type-submit"><code>&lt;input type="submit"&gt;</code></h3>
 
-### Explain why an action is unavailable
+A submit button written as an input, with the same label limit. Prefer `<button type="submit">`.
 
-The reason remains readable even when the control cannot be used.
+<h3 id="child-input-type-reset"><code>&lt;input type="reset"&gt;</code></h3>
 
-<%= example('nhs-button-unavailable') %>
+A reset button written as an input. The cautions for `type="reset"` apply.
 
-## Check the implementation
+<h3 id="child-input-type-image"><code>&lt;input type="image"&gt;</code></h3>
 
-Check keyboard activation, repeated clicks, delayed results, failure and wrapping at narrow widths. Do not mix compact and standard heights in one action group. Use the [Civica accessibility checks](../accessibility/testing.html), then compare light and dark modes, at least two theme colours, and 320 CSS pixels.
+A picture that submits a form and sends the point that was clicked. It needs an `alt` that names the outcome, as a button label would. People who use a keyboard cannot choose a point, so do not use it for anything that depends on where the click lands. Prefer a text button.
 
-For the label wording, see [Write clear titles](../content/writing-guidelines/clear-titles.html).
+<h3 id="child-ha-button"><code>ha-button</code></h3>
+
+The button Home Assistant draws in dialogs, forms and cards. It has a label, an optional icon before or after it and these attributes:
+
+- `variant` sets the role: `brand` (the default), `neutral`, `success`, `warning` or `danger`.
+- `appearance` sets the weight: `accent`, `filled`, `outlined` or `plain`.
+- `size` is `xs`, `s`, `m`, `l` or `xl`.
+- `loading` shows a spinner and `disabled` makes it unavailable.
+
+The four child entries below name the familiar roles. The words `primary`, `secondary` and `plain` are not valid values for `variant`, and writing `variant="primary"` does not work. Use the values above.
+
+Theme keys that reach it: `ha-button-border-radius` (square in Civica), `ha-button-height` (44px in Civica), the font keys `ha-font-size-m`, `ha-font-size-l` and `ha-font-weight-action`, the focus keys `ha-color-focus` and `wa-focus-ring-*`, and the role fill colours. Civica’s main button fill is #1D70B8 in light mode and #C0D7EB in dark mode, with white or near-black text respectively. In dark mode the danger fill is a light pink, not red, so do not describe it as red there.
+
+Where you write the button yourself, with card-mod you can change one card:
+
+```yaml
+card_mod:
+  style: |
+    ha-button { --ha-button-border-radius: 0; }
+```
+
+You cannot change the appearance or role of a button inside a built-in dialog with a theme or YAML. You cannot add a confirmation step.
+
+<h3 id="child-ha-button--variant-primary"><code>variant="primary"</code></h3>
+
+The main action. In Home Assistant this is `appearance="accent"` with `variant="brand"`, which is the default look. Dialog footers use it for the primary action. Use one main action for each local task.
+
+<h3 id="child-ha-button--variant-secondary"><code>variant="secondary"</code></h3>
+
+A quieter action beside the main one. In Home Assistant this is `appearance="filled"` or `appearance="outlined"`, with `variant="neutral"` or `variant="brand"`.
+
+<h3 id="child-ha-button--variant-danger"><code>variant="danger"</code></h3>
+
+An action that removes or cannot be undone. This one is a real value: `variant="danger"`. Use it only for destructive actions, with explicit wording such as “Remove saved view”. Civica fixes the danger colour, so it does not change with the theme colour. Do not use red because the theme colour happens to be red.
+
+<h3 id="child-ha-button--variant-plain"><code>variant="plain"</code></h3>
+
+A button with no fill, drawn as `appearance="plain"`. It is the look of the icon button. It is easy to miss, so keep it for low-importance actions that have a visible label.
+
+<h3 id="child-ha-icon-button"><code>ha-icon-button</code></h3>
+
+A round button with only an icon. Give it a `label`, which names it for assistive technology and shows as a tooltip on hover. It is 48px by default, set by `--ha-icon-button-size`. The Civica theme does not set that size, and the 44px `ha-button-height` does not apply to it.
+
+An icon on its own can be unclear. Where there is room, use a button with a visible label instead.
+
+<h3 id="child-ha-icon-button-prev"><code>ha-icon-button-prev</code></h3>
+
+An icon button with a back arrow. Its label defaults to “Back”, and the arrow flips for right-to-left languages. The Calendar Card header uses it with the label “Previous”.
+
+<h3 id="child-ha-icon-button-next"><code>ha-icon-button-next</code></h3>
+
+An icon button with a forward arrow. Its label defaults to “Next”. The Calendar Card header uses it too. See [Calendar Card](calendar-card.html).
+
+<h3 id="child-ha-icon-button-toggle"><code>ha-icon-button-toggle</code></h3>
+
+An icon button that can be on or off. When it is selected, it draws a filled disc behind the icon, or an outline with the `border-only` attribute. The selected look is a change of fill only, so say what is selected in nearby text too.
+
+<h3 id="child-ha-fab"><code>ha-fab</code></h3>
+
+This version of Home Assistant has no `ha-fab` element. What looks like a floating action button is an `ha-button` with `size="l"` and an icon before a visible label, such as “Add item” on the To-do page and the add-event button on the calendar. It floats at the bottom of the page in a corner, with a shadow. Because it keeps its text, it is clearer than an icon on its own. The theme does not change its position.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The HTML button works from the keyboard without extra code.
+- `ha-button` follows the Civica theme: square corners, 44px height, gold focus ring and role colours.
+- Theme keys do not change built-in dialog buttons beyond colour, shape and height.
+- Icon buttons are small targets for people who cannot see their meaning, so they need a label.
+- The theme cannot add a loading or confirmation step. Use Home Assistant’s own.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use one main action for each local task and keep other actions quieter. A household dashboard can hold several independent device tasks, so it does not need one main button for the whole home.
+
+After a command, say that a request was sent until the integration reports the result. “Turning on reading lamp” is a request. “Reading lamp is on” is a state. Keep the native Home Assistant pending states. See [States, requests and errors](../content/writing-guidelines/states-and-errors.html) and [Write clear titles](../content/writing-guidelines/clear-titles.html).
+
+Explain an unavailable action beside the control, not only by fading it. Keep focus where it is while a request finishes. Do not submit on change, and do not mix compact and standard heights in one group of actions. To choose between a command, a selection and navigation, see [Buttons and forms](controls.html#choose-the-control-by-its-meaning). For several buttons that switch between options, see [Button Group / Segmented Control](button-group-segmented-control.html).
+
+Success criteria that apply:
+
+- 4.1.2 Name, Role, Value: use a real button with a name.
+- 2.1.1 Keyboard and 2.4.7 Focus Visible.
+- 2.4.11 Focus Not Obscured and 2.4.13 Focus Appearance (AAA).
+- 2.5.8 Target Size (Minimum): the theme height of 44px is above the 24px minimum. Check the small `xs` size and any icon button you resize.
+- 2.5.3 Label in Name: the visible label starts the accessible name.
+- 1.4.3 and 1.4.11 Contrast: measure your own buttons.
+- 1.4.1 Use of Colour: do not show danger by colour alone.
+- 3.2.2 On Input, 3.3.2 Labels or Instructions and 3.3.4 Error Prevention: confirm destructive actions.
+- 1.1.1 Non-text Content: an image button needs `alt`.
+
+Check contrast, focus appearance and screen reader behaviour in your own setup.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-button-save') %>
+
+<%= example('spec-button-pair') %>
+
+<%= example('spec-button-remove') %>
+
+<%= example('spec-button-unavailable') %>

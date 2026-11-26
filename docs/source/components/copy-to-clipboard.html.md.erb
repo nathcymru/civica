@@ -1,0 +1,111 @@
+---
+title: "Copy-to-Clipboard"
+description: "Let people copy a value, such as an address or a token, with one button."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Copy-to-Clipboard specification: the read-only field with a Copy button, hidden values, the confirmation message and what this Home Assistant version uses."
+ai_instructions: "Apply when a person needs to copy a value such as an address, key or token. This Home Assistant version has no element named ha-copy-textfield; the real element is ha-input-copy, with copy buttons elsewhere that use the copyToClipboard helper. Say so and never document ha-copy-textfield as real. Copy copies the real value even when it is masked. Confirmation is a short toast message only; do not claim it is announced to a screen reader or that copying works on every connection, because failure is not reported. Always say what will be copied, and never hide a value without a Show control. Theme keys for form fields and buttons apply."
+ai_related:
+  - path: "/components/text-input.html"
+    title: "Text input"
+    relationship: "Owns labels, hints and errors for fields."
+  - path: "/components/buttons.html"
+    title: "Button"
+    relationship: "Owns button wording and states."
+  - path: "/home-assistant/onboarding-and-sign-in.html"
+    title: "Onboarding, integration setup and sign-in"
+    relationship: "Owns setup and sign-in tasks where tokens and addresses are copied."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test keyboard and screen reader behaviour."
+component:
+  parent: "Copy-to-Clipboard"
+  letter: "C"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-copy-textfield"
+      origin: "Home Assistant"
+      anchor: "child-ha-copy-textfield"
+  tags:
+    - "ha-copy-textfield"
+    - "ha-input-copy"
+---
+
+# Copy-to-Clipboard
+
+<h2 id="purpose">Purpose</h2>
+
+Copy-to-Clipboard saves people retyping a long value, such as a remote address, a webhook address, a key or a token. A button next to the value copies it for them.
+
+This page covers:
+
+- Copy-to-Clipboard
+  - `ha-copy-textfield`
+
+<h2 id="anatomy">Anatomy</h2>
+
+- A visible label for the value.
+- A read-only field that shows the value.
+- A Copy button beside it.
+- Optionally, a Show or Hide button when the value is hidden.
+- A short message after copying.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-copy-textfield"><code>ha-copy-textfield</code></h3>
+
+This Home Assistant version does not use an element called `ha-copy-textfield`. What it draws instead is `ha-input-copy`: a read-only input with a Copy button. You see it on the network settings page for the internal and external addresses, and in the cloud pages for remote access and webhooks. Other places, such as code editors, log details, backup keys and long-lived token dialogs, put a plain copy icon button next to the value instead. You cannot add `ha-input-copy` to a dashboard card.
+
+What `ha-input-copy` does:
+
+- It shows a value, which can be an address, text or another input type.
+- The Copy button copies the real value, even when the field shows it hidden.
+- A value can be hidden, with a Show or Hide button. The button text is “Show” or “Hide”.
+- After copying, Home Assistant shows a short message, “Copied to clipboard”. It is a brief message, not text next to the button. Test whether a screen reader announces it.
+- If the browser blocks copying, Home Assistant tries another way. It does not tell the person when both fail, so people may think it worked.
+- Selecting a read-only field selects its text, so people can copy by hand.
+
+The field’s own name is not set by this element. The heading or label of the form around it gives people context, so give every copy field a visible label.
+
+Variables in the Civica theme that reach it: the `wa-form-control-*` keys for the field (border, background, text and placeholder), the button keys such as `ha-button-border-radius` (square), and the `wa-focus-ring` keys for focus. The Show and Hide icon uses `secondary-text-color`.
+
+A message that stays next to the button is not something the theme can add.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It saves retyping and avoids typing mistakes.
+- Copying may not work over an unsecure connection, and a failure is not reported.
+- A copied secret stays on the clipboard until something replaces it.
+- The confirmation is brief and may be missed.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+- Say what will be copied, in the label: “Your remote address”.
+- Say what happened, in words, after copying.
+- Never hide a value that people need to check without a Show button.
+- For a secret such as a token, warn that anyone who holds it can use it, and where it can be revoked.
+- Keep the value readable and selectable as well as copyable.
+
+Success criteria that apply:
+
+- 3.3.2 Labels or Instructions: the field has a visible label.
+- 4.1.3 Status Messages: test the “Copied” message with a screen reader.
+- 2.1.1 Keyboard and 2.5.8 Target Size (Minimum): the Copy button is reachable and large enough. Check it in your layout.
+- 3.3.7 Redundant Entry: copying removes retyping.
+- 3.3.8 Accessible Authentication (Minimum): copying a secret avoids asking people to remember or retype it.
+
+<h2 id="examples">Examples</h2>
+
+### A read-only address with a Copy button
+
+A stand-in picture of the field. Nothing is copied.
+
+<%= example('spec-copy-field-url') %>

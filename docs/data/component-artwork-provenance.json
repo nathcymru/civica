@@ -55,6 +55,100 @@
           "Local artwork only; no live Home Assistant or assistive-technology test is claimed."
         ]
       }
+    },
+    {
+      "id": "component-area-card-anatomy",
+      "path": "docs/source/images/component-area-card-anatomy.svg",
+      "sha256": "949315da7092b16650dce6ce2fb7f164d5360099f9a4d3711401e76e92479038",
+      "width": 960,
+      "height": 560,
+      "view_box": "0 0 960 560",
+      "creator": "Civica project contributors; Claude-assisted original SVG markup",
+      "created_on": "2026-11-25",
+      "licence": "MIT, original repository documentation artwork under LICENSE",
+      "provenance": "Original flat vector geometry authored in this repository. No external artwork, stock photograph, screenshot, government identity path, supplied civica logo geometry or font file copied. Editable source is the SVG file itself.",
+      "purpose": "Show the picture, alert icons, tile and features of an area card, and the alert badge of the compact type.",
+      "classification": "Anatomy schematic, not a Home Assistant screenshot or evidence of deployed behaviour",
+      "palette": [
+        "#0B0C0C",
+        "#103E65",
+        "#1D70B8",
+        "#BFD9ED",
+        "#F3F6F9",
+        "#FFFFFF"
+      ],
+      "background": "Opaque #F3F6F9 light canvas inside the SVG; suitable on a light or dark surrounding page without changing the asset. Fixed blue illustration colours do not encode device state or change with the theme colour.",
+      "caption": "The parts of an area card, numbered from the top: 1 the picture, 2 the alert icons on the picture, 3 the tile with a round icon, the name and the readings, and 4 the card features. The compact card on the right has no picture, and 5 marks its single alert badge. The drawing is not interactive.",
+      "alternative_text_decision": {
+        "recommended_img_alt": "",
+        "reason": "The adjacent figcaption and the Anatomy section state the full meaning, so the embedded image is redundant. Keep the figcaption whenever using empty alt.",
+        "standalone_informative_alt": "Two area cards with numbered parts: picture, alert icons, tile, features, and the alert badge on the compact card.",
+        "standalone_svg_accessibility": "SVG role=img references its title and description. All internal shapes are non-interactive.",
+        "text_alternative": "The parts of an area card, numbered from the top: 1 the picture, 2 the alert icons on the picture, 3 the tile with a round icon, the name and the readings, and 4 the card features. The compact card on the right has no picture, and 5 marks its single alert badge. The drawing is not interactive."
+      },
+      "source_background": [
+        "docs/source/styles/illustration.html.md.erb",
+        "docs/source/styles/images.html.md.erb"
+      ],
+      "local_decisions": [
+        "HTML carries the full explanation; the artwork uses numerals only, no small labels.",
+        "Functional control boundaries use ink strokes; other flat objects have no outlines, texture, gradients or 3D effects.",
+        "Square corners throughout, except the round tile icon, which is round in the component itself."
+      ],
+      "verification": {
+        "source_checks": "Six flat colours, explicit dimensions and viewBox, no scripts, raster, external dependencies, animation, filters or gradients.",
+        "render_checks": "Not yet rendered; the build checks run by the lead cover desktop and 320px.",
+        "limitations": [
+          "Local artwork only; no live Home Assistant or assistive-technology test is claimed."
+        ]
+      }
+    },
+    {
+      "id": "component-assist-dialog-anatomy",
+      "path": "docs/source/images/component-assist-dialog-anatomy.svg",
+      "sha256": "bb03c215a4cce71191a6d51a4ecd3bc37c269f15ffacb33f2dcc069c627f0a83",
+      "width": 960,
+      "height": 560,
+      "view_box": "0 0 960 560",
+      "creator": "Civica project contributors; Claude-assisted original SVG markup",
+      "created_on": "2026-11-25",
+      "licence": "MIT, original repository documentation artwork under LICENSE",
+      "provenance": "Original flat vector geometry authored in this repository. No external artwork, stock photograph, screenshot, government identity path, supplied civica logo geometry or font file copied. Editable source is the SVG file itself.",
+      "purpose": "Show the order of the header, messages, text field and send button in the Assist dialog.",
+      "classification": "Anatomy schematic, not a Home Assistant screenshot or evidence of deployed behaviour",
+      "palette": [
+        "#0B0C0C",
+        "#103E65",
+        "#1D70B8",
+        "#BFD9ED",
+        "#F3F6F9",
+        "#FFFFFF"
+      ],
+      "background": "Opaque #F3F6F9 light canvas inside the SVG; suitable on a light or dark surrounding page without changing the asset. Fixed blue illustration colours do not encode device state or change with the theme colour.",
+      "caption": "The parts of the Assist dialog, numbered from the top: 1 the header with the close button, title and menu, 2 a message from the person, 3 a reply from Assist, 4 the text field and 5 the send button. The drawing is not interactive.",
+      "alternative_text_decision": {
+        "recommended_img_alt": "",
+        "reason": "The adjacent figcaption and the Anatomy section state the full meaning, so the embedded image is redundant. Keep the figcaption whenever using empty alt.",
+        "standalone_informative_alt": "The Assist dialog with numbered parts: header, a message, a reply, the text field and the send button.",
+        "standalone_svg_accessibility": "SVG role=img references its title and description. All internal shapes are non-interactive.",
+        "text_alternative": "The parts of the Assist dialog, numbered from the top: 1 the header with the close button, title and menu, 2 a message from the person, 3 a reply from Assist, 4 the text field and 5 the send button. The drawing is not interactive."
+      },
+      "source_background": [
+        "docs/source/styles/illustration.html.md.erb",
+        "docs/source/styles/images.html.md.erb"
+      ],
+      "local_decisions": [
+        "HTML carries the full explanation; the artwork uses numerals only, no small labels.",
+        "Functional control boundaries use ink strokes; other flat objects have no outlines, texture, gradients or 3D effects.",
+        "Square corners throughout, except the round tile icon, which is round in the component itself."
+      ],
+      "verification": {
+        "source_checks": "Six flat colours, explicit dimensions and viewBox, no scripts, raster, external dependencies, animation, filters or gradients.",
+        "render_checks": "Not yet rendered; the build checks run by the lead cover desktop and 320px.",
+        "limitations": [
+          "Local artwork only; no live Home Assistant or assistive-technology test is claimed."
+        ]
+      }
     }
   ]
 }

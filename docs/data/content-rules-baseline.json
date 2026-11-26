@@ -49,61 +49,17 @@
     "community/visual-audit": [
       "names GOV.UK"
     ],
-    "components/action-links": [
-      "names GOV.UK, NHS",
-      "repeats \"The affected example records include creator, original sourc…\"",
-      "repeats \"These isolated examples illustrate the decisions on this pag…\""
-    ],
-    "components/back-link": [
-      "names GOV.UK, NHS",
-      "repeats \"These are Civica reference implementations for component aut…\"",
-      "repeats \"Use the Civica accessibility checks and compare the rendered…\""
-    ],
-    "components/breadcrumbs": [
-      "names GOV.UK, NHS",
-      "repeats \"Breadcrumbs owns the shared rules for this family. Each rela…\"",
-      "repeats \"These are Civica reference implementations for component aut…\"",
-      "repeats \"Use the Civica accessibility checks and compare the rendered…\""
-    ],
-    "components/buttons": [
-      "names GOV.UK, NHS"
-    ],
-    "components/cards": [
-      "names GOV.UK, NHS",
-      "repeats \"Two configured example lights reported Off. The button produ…\""
-    ],
-    "components/character-count": [
-      "names GOV.UK, NHS",
-      "repeats \"These are Civica reference implementations for component aut…\"",
-      "repeats \"Use the Civica accessibility checks and compare the rendered…\""
-    ],
     "components/chart-examples": [
-      "names GOV.UK, ONS",
-      "repeats \"Charts and tables owns the shared rules for this family. Eac…\""
+      "names GOV.UK, ONS"
     ],
     "components/charts": [
       "names GOV.UK, ONS",
-      "repeats \"Charts and tables owns the shared rules for this family. Eac…\"",
       "repeats \"These isolated examples illustrate the decisions on this pag…\"",
       "shows rule IDs"
-    ],
-    "components/checkboxes": [
-      "names GOV.UK, NHS",
-      "repeats \"These are Civica reference implementations for component aut…\"",
-      "repeats \"Use the Civica accessibility checks and compare the rendered…\""
-    ],
-    "components/contents-list": [
-      "names GOV.UK, NHS",
-      "repeats \"Contents list owns the shared rules for this family. Each re…\"",
-      "repeats \"These are Civica reference implementations for component aut…\"",
-      "repeats \"Use the Civica accessibility checks and compare the rendered…\""
     ],
     "components/controls": [
       "names GOV.UK",
       "repeats \"These isolated examples illustrate the decisions on this pag…\""
-    ],
-    "components/cookie-banner": [
-      "names GOV.UK"
     ],
     "components/date-input": [
       "names GOV.UK, NHS",
@@ -185,22 +141,16 @@
       "names GOV.UK",
       "repeats \"These isolated examples illustrate the decisions on this pag…\""
     ],
-    "components/notification-badge": [
-      "repeats \"These isolated examples illustrate the decisions on this pag…\""
-    ],
     "components/notification-banners": [
       "names GOV.UK, NHS",
-      "repeats \"Notification banners owns the shared rules for this family. …\"",
       "repeats \"These are Civica reference implementations for component aut…\"",
       "repeats \"Use the Civica accessibility checks and compare the rendered…\""
     ],
     "components/page-history": [
-      "names GOV.UK, NHS",
-      "repeats \"Page metadata and history owns the shared rules for this fam…\""
+      "names GOV.UK, NHS"
     ],
     "components/pagination": [
       "names GOV.UK, NHS",
-      "repeats \"Pagination owns the shared rules for this family. Each relat…\"",
       "repeats \"These are Civica reference implementations for component aut…\"",
       "repeats \"Use the Civica accessibility checks and compare the rendered…\""
     ],
@@ -230,7 +180,6 @@
     ],
     "components/search-input": [
       "names GOV.UK, NHS",
-      "repeats \"Search input owns the shared rules for this family. Each rel…\"",
       "repeats \"These are Civica reference implementations for component aut…\"",
       "repeats \"Use the Civica accessibility checks and compare the rendered…\""
     ],
@@ -246,9 +195,6 @@
       "names GOV.UK, NHS",
       "repeats \"These are Civica reference implementations for component aut…\"",
       "repeats \"Use the Civica accessibility checks and compare the rendered…\""
-    ],
-    "components/sliders": [
-      "names GOV.UK"
     ],
     "components/status": [
       "names GOV.UK",
@@ -424,12 +370,10 @@
       "names NHS"
     ],
     "patterns/complete-multiple-tasks": [
-      "names NHS",
-      "repeats \"Complete multiple household tasks owns the shared rules for …\""
+      "names NHS"
     ],
     "patterns/confirmation": [
-      "names NHS",
-      "repeats \"Confirm completed household tasks owns the shared rules for …\""
+      "names NHS"
     ],
     "patterns/energy": [
       "names GOV.UK",
@@ -438,17 +382,14 @@
     ],
     "patterns/home": [
       "repeats \"These examples are simulated. The values are invented and no…\"",
-      "repeats \"Two configured example lights reported Off. The button produ…\"",
       "shows rule IDs"
     ],
     "patterns/household-urgency": [
       "names NHS",
-      "repeats \"Show household urgency clearly owns the shared rules for thi…\"",
       "shows rule IDs"
     ],
     "patterns/hub": [
       "names NHS",
-      "repeats \"Organise household help with hub pages owns the shared rules…\"",
       "shows rule IDs"
     ],
     "patterns/interruption": [
@@ -461,8 +402,7 @@
       "shows rule IDs"
     ],
     "patterns/question-pages": [
-      "names NHS",
-      "repeats \"Ask clear questions on pages and in dialogs owns the shared …\""
+      "names NHS"
     ],
     "patterns/recovery": [
       "repeats \"These examples are local previews with invented household va…\""
@@ -475,14 +415,12 @@
       "names NHS"
     ],
     "patterns/start-page": [
-      "names NHS",
-      "repeats \"Help people start a household task owns the shared rules for…\""
+      "names NHS"
     ],
     "publishing/components/attachment": [
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/breadcrumbs": [
-      "repeats \"Breadcrumbs owns the shared rules for this family. Each rela…\"",
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/content-list": [
@@ -490,18 +428,15 @@
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/emergency-banner": [
-      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Show household urgency clearly owns the shared rules for thi…\""
+      "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/feedback": [
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/global-banner": [
-      "repeats \"Notification banners owns the shared rules for this family. …\"",
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/previous-and-next-navigation": [
-      "repeats \"Pagination owns the shared rules for this family. Each relat…\"",
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/print-link": [
@@ -511,8 +446,7 @@
       "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/search-autocomplete": [
-      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Search input owns the shared rules for this family. Each rel…\""
+      "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/components/single-page-notification-button": [
       "names GOV.UK",
@@ -526,11 +460,9 @@
       "shows rule IDs"
     ],
     "publishing/frontend-templates/completed-transaction": [
-      "repeats \"Confirm completed household tasks owns the shared rules for …\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/detailed-guide": [
-      "repeats \"Detailed guide owns the shared rules for this family. Each r…\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/document-collections": [
@@ -632,7 +564,6 @@
       "shows rule IDs"
     ],
     "publishing/frontend-templates/step-by-step-nav": [
-      "repeats \"Complete multiple household tasks owns the shared rules for …\"",
       "shows rule IDs"
     ],
     "publishing/frontend-templates/topical-events": [
@@ -642,15 +573,13 @@
       "repeats \"Detailed guide owns the shared rules for this family. Each r…\""
     ],
     "publishing/frontend-templates/transaction": [
-      "repeats \"Help people start a household task owns the shared rules for…\"",
       "shows rule IDs"
     ],
     "publishing/index": [
       "names GOV.UK"
     ],
     "publishing/patterns/search-filter": [
-      "repeats \"Reference pattern. The examples document a local adaptation.…\"",
-      "repeats \"Search filter owns the shared rules for this family. Each re…\""
+      "repeats \"Reference pattern. The examples document a local adaptation.…\""
     ],
     "publishing/source-history": [
       "names GOV.UK"

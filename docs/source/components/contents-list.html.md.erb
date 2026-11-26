@@ -1,30 +1,75 @@
 ---
-title: Contents list
-description: A contents list provides a small, predictable map of a related guide.
-section: components
-group: Navigation
-source_url: https://service-manual.nhs.uk/design-system/components/contents-list
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Contents List"
+description: "Give a related set of help pages a short, predictable map with the current topic marked."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
 updates:
+  - date: "2026-11-25"
+    description: "Rewritten as the full Contents List specification. It keeps the guidance on choosing the scope and adds anatomy, variants, limits and accessibility."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Added the shared contents-navigation decision guide and links to in-page, mini-hub and task variants.
-  - date: 2026-11-11
-    description: Added NHS-informed contents list guidance and 2 Home Assistant reference examples.
+  - date: "2026-11-11"
+    description: "Added the shared contents-navigation decision guide and links to in-page, mini-hub and task variants."
+ai_instructions: "Apply when a help guide or article needs a list of its sections or pages. Choose the scope first: sections on this page, pages in this guide, or independent tasks. Wrap the list in a labelled nav. Mark the current page with aria-current=page only when it is the current route, never for in-page fragments. Keep the current topic distinguishable without colour. Keep the order the same on every page and pair a multi-page guide with previous and next links. A contents list is a Civica documentation pattern. Home Assistant has no contents list element and the pattern is not a dashboard card. Do not use it as the main menu or for a multi-page form."
+ai_related:
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns the main menu and the other navigation components."
+  - path: "/components/pagination.html"
+    title: "Pagination"
+    relationship: "Owns the previous and next links that end a multi-page guide."
+  - path: "/patterns/mini-hub.html"
+    title: "Explain one topic across a mini-hub"
+    relationship: "Owns how a small group of related pages is composed."
+  - path: "/patterns/complete-multiple-tasks.html"
+    title: "Complete multiple household tasks"
+    relationship: "Owns lists of independent tasks with saved progress."
+  - path: "/publishing/components/content-list.html"
+    title: "Contents list"
+    relationship: "Owns the in-page contents variant for long articles."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test keyboard, 320 px and light and dark modes."
+component:
+  parent: "Contents List"
+  letter: "C"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Contents List Pattern"
+      origin: "Civica"
+      anchor: "child-civica-contents-list-pattern"
+  tags:
+    - "contents list"
+    - "navigation"
 ---
 
-# Contents list
+# Contents List
 
-A contents list provides a small, predictable map of a related guide.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A contents list gives a small, predictable map of a related guide, so people can see where they are and where else they can go. It suits a short group of related help pages, with previous and next links at the end. Keep it to a handful of pages; a long list stops being a map.
 
-## Choose the navigation scope
+The contents list is a Civica documentation pattern. Home Assistant has no contents list and it is not a dashboard card.
+
+This page covers:
+
+- Contents List
+  - Civica Contents List Pattern
+
+<h2 id="anatomy">Anatomy</h2>
+
+- A labelled `nav` landmark, so the list can be found and named.
+- A short heading that names the scope: “On this page” or “In this guide”.
+- A list of links. The current topic is plain text marked `aria-current="page"`.
+- A thin rule down the left edge that separates the list from the page.
+
+<h2 id="choose-the-navigation-scope">Choose the navigation scope</h2>
 
 This page owns contents-navigation semantics. Choose the scope before writing links:
 
@@ -34,46 +79,56 @@ This page owns contents-navigation semantics. Choose the scope before writing li
 | Chapters of one short guide | “In this guide”; real page routes, with the current chapter identified | [Mini-hub composition](../patterns/mini-hub.html) |
 | Independent tasks with saved progress | Task names and actual task status | [Complete multiple tasks](../patterns/complete-multiple-tasks.html) |
 
-Do not mark every visible in-page fragment as the current page. For a multi-page guide, keep the contents order consistent and pair it with [previous and next links](pagination.html) naming their destinations. A retained publishing route is a source variant of this contract, not a second contents implementation.
+Do not mark every visible in-page fragment as the current page. For a multi-page guide, keep the contents order the same everywhere and pair it with [previous and next links](pagination.html) that name their destinations.
 
-## When to use it
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Use it for a short group of related help pages, with matching previous and next navigation at the end. NHS guidance limits this mini-hub pattern to about eight pages.
+<h3 id="child-civica-contents-list-pattern"><code>Civica Contents List Pattern</code></h3>
 
-## When not to use it
+Civica’s own markup: a `nav` with an `aria-label`, a heading and a list of links. It has a left rule and no other decoration, and it takes its text colour from the page.
 
-Do not use it as a substitute for the main application menu or for a multi-page form. A form needs task progression and saved answers, not a reference guide’s page list.
+- **In this guide.** Real page routes. The current page is text, not a link, and carries `aria-current="page"`.
+- **On this page.** Links to headings on the same page. No item is marked current.
 
-## Home Assistant adaptation
+There are no Home Assistant theme variables for it, because it is not a Home Assistant element. In a dashboard, the nearest equivalent is a Markdown card with a short list of links to other views.
 
-An Energy help guide can separate measurements, comparisons and missing data. Keep the page title and topic labels consistent with the contents. An in-page list is a local variant for one long article; use section fragments and label it “On this page” so the scope is clear.
+<h2 id="limits">Advantages and limitations</h2>
 
-## Accessibility and behaviour
+- It works without scripts and needs no integration.
+- A short list is quick to read and keeps the order of the guide.
+- It is not a main menu, and it is not for a multi-page form. A form needs task progress and saved answers, not a list of pages.
+- Links in a guide must go to real pages. A link that only moves within the example does not prove the destination exists.
 
-Wrap the list in a labelled nav. Mark the current page when it really represents the current route. Use short descriptive links and keep the current topic distinguishable without colour.
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-## Examples
+- Keep topic names short and the same as the page titles.
+- Use the same order on every page of the guide.
+- Name the scope in the heading so people know whether the links stay on this page.
+- Keep the current topic distinguishable without colour. The current topic is plain text, not a link.
+- Use `aria-current="page"` only when the item is the current route.
+- In a Home Assistant help guide, keep topics like measurements, comparisons and missing readings in the same order, so people find them in the same place.
+
+Success criteria that apply:
+
+- 2.4.1 Bypass Blocks and 1.3.1 Info and Relationships: a labelled `nav` and a real list.
+- 2.4.4 Link Purpose, 2.4.5 Multiple Ways and 2.4.6 Headings and Labels: short, specific link text and a named scope.
+- 1.4.1 Use of Colour: the current topic is not shown by colour alone.
+- 3.2.3 Consistent Navigation and 3.2.4 Consistent Identification: the same order and names on every page.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): links keep a visible focus.
+- 1.4.10 Reflow: the list works at 320 CSS pixels.
+
+Test every destination, the browser’s Back button, long labels and keyboard use. Check it in light and dark modes, at 320 CSS pixels, and follow the [Civica accessibility checks](../accessibility/testing.html). See also [Navigation](navigation.html).
+
+<h2 id="examples">Examples</h2>
 
 ### A small Energy guide
 
-The current topic and related destinations are visible.
+The current topic is plain text. Each other topic is a link.
 
-<%= example('nhs-contents-guide') %>
+<%= example('spec-contents-list-guide') %>
 
 ### Sections within one article
 
-This local variant names its in-page scope explicitly.
+This version names its in-page scope.
 
-<%= example('nhs-contents-in-page') %>
-
-## Check the implementation
-
-Test every destination, the browser’s return behaviour, long labels and keyboard traversal. The example links stay inside their reference frame; production multi-page links must request actual pages.
-
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS contents list](https://service-manual.nhs.uk/design-system/components/contents-list) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
-
-See also [navigation](navigation.html).
+<%= example('spec-contents-list-in-page') %>

@@ -1,0 +1,78 @@
+# Synthetic data and no live actions.
+examples:
+  spec-audio-player-message:
+    title: A voice message card with a transcript
+    description: "A stand-in for a voice message: a visible label says what the clip is and how long it lasts, the player has no autoplay, and the words are written out underneath. No audio file is attached, so nothing plays."
+    height: 460
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-audio-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-audio-title">Doorbell message</h2><p class="govuk-body" id="spec-audio-label">Message left at the front door, 12 seconds</p><audio controls preload="none" aria-labelledby="spec-audio-label">This message cannot be played here. Read the transcript below.</audio><details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Read the transcript</span></summary><div class="govuk-details__text">Hello, it is Sam from next door. I have left your parcel in the porch.</div></details></div></article>
+  spec-avatar-people:
+    title: Household members with initials beside their names
+    description: "A stand-in for the person badge: a square tile with initials in the theme's light blue, always next to the person's written name and state. The tiles are hidden from screen readers because the name carries the meaning. Nothing here is a real person."
+    height: 380
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-avatar-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-avatar-title">Who is home</h2><ul class="govuk-list"><li style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span aria-hidden="true" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:#E8F1F8;color:#0B0C0C;font-weight:400">SO</span><span>Sam Okafor, home</span></li><li style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span aria-hidden="true" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:#E8F1F8;color:#0B0C0C;font-weight:400">AM</span><span>Amira Mensah, away</span></li></ul></div></article>
+  spec-back-step:
+    title: Return to a previous setup step
+    description: "A simulated setup step. The link names its destination, and the answer typed on this step stays as it is. The link moves to a section on this page and changes nothing in a home."
+    height: 440
+    html: |
+      <a class="govuk-back-link" href="#previous-rooms">Back to room selection</a>
+      <h2 class="govuk-heading-m">Name this view</h2>
+      <form data-demo-form>
+      <div class="govuk-form-group">
+      <label class="govuk-label" for="view-name">View name</label>
+      <input class="govuk-input " id="view-name" name="view-name" type="text" value="Shared rooms" >
+      </div>
+      </form>
+      <section id="previous-rooms" tabindex="-1">
+      <h2 class="govuk-heading-m">Room selection</h2>
+      <p class="govuk-body">Kitchen and living room are still selected.</p>
+      </section>
+  spec-back-review:
+    title: Return to the settings review
+    description: "A specific destination is clearer than guessing from browser history. The link moves to a section on this page and changes nothing in a home."
+    height: 340
+    html: |
+      <a class="govuk-back-link" href="#settings-review">Back to settings review</a>
+      <p class="govuk-body">Edit the display preference in the form.</p>
+      <section id="settings-review" tabindex="-1">
+      <h2 class="govuk-heading-m">Settings review</h2>
+      <p class="govuk-body">Your saved answers would be shown here.</p>
+      </section>
+  spec-badge-entity:
+    title: A row of entity badges
+    description: "A stand-in for the dashboard badges at the top of a view: each is a rounded pill with a name and a state in words. Home Assistant draws its own badges, so the look differs. The pills do nothing when selected."
+    height: 260
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-badge-entity-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-badge-entity-title">Home overview</h2><ul class="govuk-list" style="display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0"><li style="border:1px solid #CECECE;border-radius:18px;min-height:36px;padding:0 12px;display:flex;align-items:center;gap:6px"><span>Kitchen</span><strong>20.5 °C</strong></li><li style="border:1px solid #CECECE;border-radius:18px;min-height:36px;padding:0 12px;display:flex;align-items:center;gap:6px"><span>Front door</span><strong>Locked</strong></li><li style="border:1px solid #CECECE;border-radius:18px;min-height:36px;padding:0 12px;display:flex;align-items:center;gap:6px"><span>Hall light</span><strong>Off</strong></li></ul></div></article>
+  spec-badge-count:
+    title: An unread count on its destination
+    description: "A simulated sidebar link with the Civica count badge: a red pill with a white number. The number is hidden from screen readers and the link's hidden text says the same thing in words. The link moves to a section on this page."
+    height: 300
+    html: |
+      <a class="govuk-link" href="#example-notifications">Notifications <span class="civica-badge" aria-hidden="true">3</span><span class="govuk-visually-hidden">, 3 unread notifications</span></a><section id="example-notifications"><h2 class="govuk-heading-m">Example notifications</h2><ul class="govuk-list govuk-list--bullet"><li>One device is unavailable.</li><li>A backup completed.</li><li>An update is available.</li></ul></section>
+  spec-badge-overflow:
+    title: A large attention count
+    description: "The visible count stops at 99+ while the hidden text says 99 or more. The destination still explains the items. The link moves to a section on this page."
+    height: 300
+    html: |
+      <a class="govuk-link" href="#example-updates">Updates <span class="civica-badge" aria-hidden="true">99+</span><span class="govuk-visually-hidden">, 99 or more available</span></a><section id="example-updates"><h2 class="govuk-heading-m">Example updates</h2><p class="govuk-body">The visible count is capped, while the destination still explains the items and their status.</p></section>
+  spec-bar-storage:
+    title: A storage bar with its value in words
+    description: "A stand-in for the bar Home Assistant draws in storage settings: a flat track with a fill, 12 pixels high, always followed by the value as text. The bar itself is a picture, so the text carries the meaning."
+    height: 300
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-bar-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-bar-title">Storage</h2><p class="govuk-body" id="spec-bar-label">Disk used: 62 % of 64 GB</p><div aria-hidden="true" style="height:12px;width:100%;background:#F3F2F1"><div style="height:12px;width:62%;background:#1D70B8"></div></div></div></article>
+  spec-meter-battery:
+    title: A meter with a named scale
+    description: "The browser's own meter element with a visible label and the reading written out. The browser draws the meter, so its colours differ between browsers and are not set by the Civica theme. Nothing here is connected to a battery."
+    height: 360
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-meter-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-meter-title">Backup battery</h2><label class="govuk-label" for="spec-battery-meter">Backup battery charge</label><meter id="spec-battery-meter" min="0" max="100" value="45">45%</meter><p class="govuk-body">Reported charge: 45% on a scale from 0% to 100%. Seen at 14:30.</p></div></article>
+  spec-blockquote-help:
+    title: A quoted passage and an inline quote
+    description: "A help card that quotes someone else: the speaker is named first, the passage sits in a blockquote with a left rule, and the source is in a caption. The inline quote shows the browser adding the quotation marks. The names and words are invented."
+    height: 460
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-quote-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-quote-title">Advice from the installer</h2><p class="govuk-body">The installer's handover note said:</p><figure style="margin:0 0 20px"><blockquote style="margin:0;padding:0 0 0 16px;border-left:4px solid #CECECE"><p class="govuk-body">Leave the boiler on its winter setting until April. Only change the schedule from the Heating dashboard.</p></blockquote><figcaption class="govuk-body" style="margin-top:8px">From <cite style="font-style:normal">Heating handover note</cite>, 3 October 2026</figcaption></figure><p class="govuk-body">The note also says to <q>check the pressure gauge once a month</q>.</p></div></article>

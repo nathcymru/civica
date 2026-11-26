@@ -1,71 +1,134 @@
 ---
-title: Checkboxes
-description: Use checkboxes for independent selections or a single on/off preference.
-section: components
-group: Form elements
-source_url: https://service-manual.nhs.uk/design-system/components/checkboxes
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Checkbox"
+description: "Use checkboxes for independent choices or a single on or off preference that is saved with a form."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
 updates:
+  - date: "2026-11-25"
+    description: "Rewritten as the Checkbox specification, covering the browser checkbox and the Home Assistant checkbox, with the theme keys that colour it."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Linked this retained variant to its shared behaviour owner and clarified its specific implementation boundary.
-  - date: 2026-11-11
-    description: Added NHS-informed checkboxes guidance and 2 Home Assistant reference examples.
+ai_instructions: "Apply when people choose none, one or several options, or set a saved preference. A checkbox is an answer, not a device command; use a switch for an immediate on or off. Group related checkboxes in a fieldset with a legend. Put the label inside ha-checkbox; this Home Assistant version has no ha-formfield. Do not state the tick colour or any contrast ratio: the theme does not set the tick. Square corners need --ha-checkbox-border-radius, which Civica does not set."
+ai_related:
+  - path: "/components/fieldset.html"
+    title: "Fieldset"
+    relationship: "Owns grouping related checkboxes under a legend."
+  - path: "/components/radios.html"
+    title: "Radios"
+    relationship: "Use radios when only one choice is allowed."
+  - path: "/components/hint-text.html"
+    title: "Hint text"
+    relationship: "Owns the hint under a legend or label."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the checks to run before you publish."
+component:
+  parent: "Checkbox"
+  letter: "C"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: '<input type="checkbox">'
+      origin: "HTML5"
+      anchor: "child-input-type-checkbox"
+    - name: "ha-checkbox"
+      origin: "Home Assistant"
+      anchor: "child-ha-checkbox"
+    - name: "ha-formfield"
+      origin: "Home Assistant"
+      anchor: "child-ha-formfield"
+  tags:
+    - "input type checkbox"
+    - "ha-checkbox"
+    - "ha-formfield"
 ---
 
-# Checkboxes
+# Checkbox
 
-Use checkboxes for independent selections or a single on/off preference.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A checkbox lets people choose none, one or several options, or set a single preference that is saved with a form. It records an answer. It does not send a command to a device.
 
-## Choose selection before control
+This page covers:
 
-The [forms decision guide](controls.html#choose-the-control-by-its-meaning) distinguishes independent selections, mutually exclusive answers and physical commands. This page owns independent checkbox selection. A checked item in a form is an answer; any immediate-save preference must clearly state its persistence behaviour and must not silently issue a device command.
+- Checkbox
+  - `<input type="checkbox">`
+  - `ha-checkbox`
+  - `ha-formfield`
 
-## When to use it
+<h2 id="anatomy">Anatomy</h2>
 
-Use a group when several rooms can be included in a view. A single checkbox can express a reversible preference, such as showing hidden rooms. Explain whether several choices are allowed.
+1. A small box that is empty, ticked or, in a long list, partly ticked.
+2. A label next to it. The whole label is part of the click target.
+3. An optional hint under the label.
+4. For a group, a legend that asks the question, with a hint if it helps.
 
-## When not to use it
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Do not use a checkbox group for a single choice such as temperature units. Avoid a bulk-selection control when there are only two clear options.
+<h3 id="child-input-type-checkbox"><code>&lt;input type="checkbox"&gt;</code></h3>
 
-## Home Assistant adaptation
+The browser’s own checkbox. It has `checked`, `disabled`, `required`, `name` and `value`, which is “on” unless you set it. Pressing Space toggles it. Enter does not. A value is sent only when the box is ticked. A partly ticked state exists only as a visual mark and is never sent.
 
-When editing an existing Home Assistant preference, show its saved checked state. This differs from preselecting answers to a new question, which can conceal a missed decision. Keep presentation preferences separate from physical commands. Checking a room in a filter must not switch its devices on.
+Give it a visible label, either wrapped round it or joined to it. Put related boxes in a fieldset with a legend.
 
-## Accessibility and behaviour
+<h3 id="child-ha-checkbox"><code>ha-checkbox</code></h3>
 
-Use a fieldset and legend for related options, visible associated labels, and a predictable focus order. Make the whole label a generous target. If an exclusive “no rooms” option is introduced, enforce that rule on submission as well as in JavaScript.
+The Home Assistant checkbox, which appears in editors, lists and dialogs rather than as a dashboard card. The label is the default content and the hint goes in the `hint` slot.
 
-## Examples
+It has these attributes: `checked`, `disabled`, `indeterminate`, `required` and `variant`. The variants are `brand` (the default), `neutral`, `success`, `warning` and `danger`. The box is 20px, with a minimum touch size of 40px.
 
-### Choose several rooms
+What Civica sets, in the light and dark themes:
 
-Room selection changes the example scope, not device state.
+- Border: `ha-color-border-neutral-normal`, `#6F777B` and `#9BA4AA`. The border is 2px wide (`ha-border-width-md`). On hover it uses `ha-color-border-neutral-loud`.
+- Unticked background: `wa-form-control-background-color`, `#FFFFFF` and `#24282B`. On hover it uses `ha-color-form-background-hover`.
+- Ticked background: `ha-color-fill-primary-loud-resting`, `#1D70B8` and `#C0D7EB`, and `#195C96` and `#D6E5F2` on hover.
+- Variant fills: `ha-color-fill-success-loud-resting`, `ha-color-fill-warning-loud-resting` and `ha-color-fill-danger-loud-resting`, each with a light and a dark value.
+- Focus ring: 3px wide, offset 2px, black in the light theme and yellow in the dark theme.
 
-<%= example('nhs-checkbox-rooms') %>
+What Civica leaves as Home Assistant’s default: the size, the corner radius and the colour of the tick. The corners stay slightly rounded. You can make them square by adding `--ha-checkbox-border-radius: 0` to the theme, but Civica does not set it. The theme’s older `mdc-checkbox-*` keys apply only to older checkboxes, not to this one. Test the focus ring on this checkbox in your own dashboard.
 
-### Edit a saved display preference
+<h3 id="child-ha-formfield"><code>ha-formfield</code></h3>
 
-An existing saved preference can be checked initially.
+This Home Assistant version does not use the name `ha-formfield`. There is no separate wrapper for a label and a field. The label and the hint belong inside `ha-checkbox`, as its default content and its `hint` slot.
 
-<%= example('nhs-checkbox-preference') %>
+For an immediate on or off, such as a lamp, use a switch instead. A checkbox is for an answer that is saved or submitted later.
 
-## Check the implementation
+<h2 id="limits">Advantages and limitations</h2>
 
-Test spacebar activation, saved values, no selections, long room names and touch targets. Keep related follow-up questions simple and visible when enhancement is unavailable.
+- A checkbox group is clear for several independent choices.
+- The browser checkbox works without the Home Assistant frontend and needs no extra code.
+- A dashboard author cannot place `ha-checkbox` as a card. It appears in Home Assistant’s own forms and lists.
+- The tick colour, size and corner radius are not set by the theme, so they stay as Home Assistant draws them.
+- Test the colour and contrast of the box against its background in your own dashboard.
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-## Source and related guidance
+Use a group when several rooms can be included in a view. Use one checkbox for a reversible preference, such as showing hidden rooms. Do not use a group for a single choice such as temperature units; use [Radios](radios.html). Do not use a checkbox to run a device. Ticking a room in a filter must not switch its devices on.
 
-[NHS checkboxes](https://service-manual.nhs.uk/design-system/components/checkboxes) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+- Group related boxes in a [Fieldset](fieldset.html) with a legend.
+- Show a saved preference as it was saved. For a new question, do not tick an answer for the person.
+- Say whether several choices are allowed.
+- If you add a “none of these” option, enforce it when the form is submitted as well as on the page.
+- Keep labels short and make the whole label a generous target.
 
-See also [buttons and forms](controls.html).
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: the label is joined to the box.
+- 2.1.1 Keyboard: Space toggles it.
+- 2.5.8 Target Size (Minimum): `ha-checkbox` declares a 40px minimum touch size.
+- 3.2.2 On Input: ticking a box must not change the page unexpectedly.
+- 3.3.2 Labels or Instructions and 4.1.2 Name, Role, Value.
+
+Test Space, saved values, no selection, long room names and touch targets, in light and dark modes and at 320 CSS pixels. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-checkbox-rooms') %>
+
+<%= example('spec-checkbox-preference') %>

@@ -1,0 +1,115 @@
+---
+title: "Control Circular Slider"
+description: "Set a value by moving a handle round a dial, as in the thermostat and light dialogs."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Control Circular Slider specification: what the dial does, keyboard keys, the theme keys that reach it and what stays as Home Assistant draws it."
+ai_instructions: "Apply to the Home Assistant circular dial (ha-control-circular-slider) used inside the light card and the climate, humidifier and water heater dialogs. It is not a card type and cannot be written in YAML. Always show the value as text next to the dial. The dial colour follows primary-color. The focus cue is a thicker arc, not the Civica focus ring, and the white target dot is fixed by Home Assistant; changing either needs card-mod or custom code. The track colour uses Home Assistant's default and has not been measured. Never say the dial is a native range input."
+ai_related:
+  - path: "/components/sliders.html"
+    title: "Control Slider"
+    relationship: "Owns the straight sliders and the exact-entry alternative."
+  - path: "/components/control-number-box.html"
+    title: "Control Number Box"
+    relationship: "Owns plus and minus buttons, the usual alternative to dragging."
+  - path: "/home-assistant/climate-and-air.html"
+    title: "Climate, fan and water-heater controls"
+    relationship: "Owns the thermostat and humidifier tasks that use the dial."
+  - path: "/home-assistant/continuous-controls.html"
+    title: "Continuous controls and alternatives"
+    relationship: "Owns live updates, permissions and reconciliation."
+component:
+  parent: "Control Circular Slider"
+  letter: "C"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-control-circular-slider"
+      origin: "Home Assistant"
+      anchor: "child-ha-control-circular-slider"
+  tags:
+    - "ha-control-circular-slider"
+---
+
+# Control Circular Slider
+
+<h2 id="purpose">Purpose</h2>
+
+The circular slider sets one value, or a low and high pair, by moving a handle round a dial. Home Assistant uses it for the target temperature of a thermostat, the target humidity of a humidifier or water heater, and the brightness of a light. People meet it in the Home Assistant dialogs and in the light card. It is not a card type, so you cannot write it in dashboard YAML.
+
+This page covers:
+
+- Control Circular Slider
+  - `ha-control-circular-slider`
+
+<h2 id="anatomy">Anatomy</h2>
+
+- A 270 degree arc, open at the bottom, with a track behind it.
+- A coloured arc from the start to the handle.
+- A white round handle, the target.
+- In some dialogs, a small marker for the current reading.
+- A label and the value as text. Home Assistant places these beside or inside the dial, not as part of it.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-control-circular-slider"><code>ha-control-circular-slider</code></h3>
+
+- One value, or two for a low and high target (`dual`).
+- Settings include a minimum (0 by default), a maximum (100), a step (1), `disabled` and `readonly`.
+- A mode of `start`, `end` or `full` sets which side of the handle is coloured.
+- The value is spoken and shown through a formatting function, so a unit can be added.
+
+Keyboard: the arrow keys move by one step, Page Up and Page Down by a tenth of the range, and Home and End go to the ends. A tap on the arc also sets a value, so dragging is not the only way. The handle is exposed as a slider with a name, a minimum, a maximum and a value in words.
+
+Variables in the Civica theme that it reads:
+
+- `primary-color` for the coloured arc.
+- `primary-text-color` for the current-reading marker.
+- `clear-background-color` for the cleared part of the arc.
+
+Things that stay as Home Assistant draws them:
+
+- The track uses Home Assistant’s default disabled colour at low opacity. The Civica theme does not set `disabled-color`.
+- The handle is white.
+- The focus cue is the arc growing thicker. The Civica focus ring does not apply to it.
+
+Changing the arc thickness, the track or the handle needs the card-mod integration or custom code, so test the exact selector in your own dashboard.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A dial is quick to set approximately on a touch screen.
+- It is hard to set an exact value, and a pointer or finger that slips changes it.
+- The arc alone does not say what the value is. Always show the number.
+- You cannot use it outside the dialogs and card that Home Assistant builds it into.
+- It does not take a typed value.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+- Show the target as text beside the dial, with its unit.
+- Offer an exact alternative next to it: plus and minus buttons or a typed value. See [Control Number Box](control-number-box.html) and [Control Slider](sliders.html).
+- Do not rely on colour to show how far the value is from normal.
+- Give the dial a label that says what it sets: “Target temperature”.
+- Do not run a device command on every small movement. The dialogs apply the value when the handle is released.
+
+Success criteria that apply:
+
+- 4.1.2 Name, Role, Value and 2.1.1 Keyboard: the handle is a slider with a name and value, and the arrow keys work.
+- 2.5.1 Pointer Gestures and 2.5.7 Dragging Movements: a tap on the arc and the keyboard are alternatives to dragging.
+- 1.4.11 Non-text Contrast: the track and the arc need 3:1. Check the track in your own dashboard.
+- 2.4.7 Focus Visible and 2.4.13 Focus Appearance (AAA): the thicker arc is the only cue. Check it in your own dashboard.
+- 1.4.1 Use of Colour: show the value in text.
+
+<h2 id="examples">Examples</h2>
+
+### A thermostat dial with its value in text
+
+A stand-in picture of the dial. The target is also written as text.
+
+<%= example('spec-circular-slider-thermostat') %>
