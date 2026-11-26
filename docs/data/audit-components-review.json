@@ -923,25 +923,6 @@
       "note": "Whole-task completion, interruption and normal readings are separated; examples do not imply a live backup restore or physical action."
     },
     {
-      "path": "docs/source/components/password-input.html.md.erb",
-      "sha256": "7b69bb22846644efc412c25b2e75ff610cabaa0fb5e33e195aec2321aa5f9e5f",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "recommendation_ids": [],
-      "example_ids": [
-        "nhs-password-current",
-        "nhs-password-new"
-      ],
-      "note": "Native credential handling, show/hide semantics and genuine password purpose remain explicit; no second authentication service is claimed."
-    },
-    {
       "path": "docs/source/components/phase-banner.html.md.erb",
       "sha256": "72e92ee58a26319409d55199019031ff78ded401e28aa449f11da8da8733a609",
       "reviewed_rule_families": [
@@ -1235,25 +1216,6 @@
         "nhs-textarea-error"
       ],
       "note": "Audience/privacy and non-secret draft preservation are explicit; the empty error specimen would be clearer as a required-answer example."
-    },
-    {
-      "path": "docs/source/components/warning-callout.html.md.erb",
-      "sha256": "34ffef5bd10d46861da61945c09a0a37881f0401af128a1353e967c3b2d27b25",
-      "reviewed_rule_families": [
-        "BG-COL",
-        "BG-TYP",
-        "BG-DAT",
-        "BG-ILL",
-        "WG"
-      ],
-      "result": "no_confirmed_finding",
-      "finding_ids": [],
-      "recommendation_ids": [],
-      "example_ids": [
-        "nhs-warning-unavailable",
-        "nhs-warning-import"
-      ],
-      "note": "Unavailable data is not described as safe/off, and verified native import consequences remain separate from physical-device operating advice."
     },
     {
       "path": "docs/source/components/warning-text.html.md.erb",
@@ -1759,12 +1721,12 @@
     }
   ],
   "summary": {
-    "pages_reviewed": 58,
+    "pages_reviewed": 56,
     "examples_reviewed": 121,
     "confirmed_findings": 4,
     "recommendations": 3,
     "page_results": {
-      "no_confirmed_finding": 44,
+      "no_confirmed_finding": 42,
       "finding": 11,
       "documented_deviation": 3
     },
