@@ -146,7 +146,9 @@ export function modeTokens(palette, dark) {
     'light-primary-color': dark ? mix(primary, WHITE, 0.82) : mix(primary, WHITE, 0.90),
     'accent-color': active, 'link-color': dark ? active : LINK,
     'primary-text-color': text, 'secondary-text-color': secondary,
-    'text-primary-color': onActive, 'text-light-primary-color': text, 'disabled-text-color': secondary,
+    'text-primary-color': onActive,
+    // Initials sit on the light tint of the theme colour, so the text is ink in dark mode.
+    'text-light-primary-color': dark ? INK : text, 'disabled-text-color': secondary,
     'ha-color-text-primary': text, 'ha-color-text-secondary': secondary,
     'ha-color-text-disabled': secondary, 'ha-color-text-link': dark ? active : LINK,
     'ha-color-text-primary-inverted': dark ? INK : WHITE,
@@ -222,6 +224,10 @@ export function modeTokens(palette, dark) {
     'label-badge-blue': colours.info, 'label-badge-yellow': colours.warning, 'label-badge-grey': secondary,
     ...roleTokens('primary', primary, dark),
     ...roleTokens('neutral', '#484949', dark),
+    // The toast bar takes this core neutral. Dark mode uses the loud neutral fill so its ink text keeps 4.5:1.
+    ...(dark ? { 'ha-color-neutral-10': '#CCCCCC' } : {}),
+    // Gauge track: reaches 3:1 against the card surface in both modes (applied by card-mod below).
+    'civica-gauge-track': dark ? '#6F777B' : '#8F9498',
     ...roleTokens('danger', SEMANTIC.danger, dark),
     ...roleTokens('warning', SEMANTIC.warning, dark),
     ...roleTokens('success', SEMANTIC.success, dark),
@@ -267,7 +273,7 @@ export function buildTheme(palette, name = themeName(palette)) {
   return {
     ...common, ...paletteScale(palette.primary.hex),
     'card-mod-theme': name,
-    'card-mod-card-yaml': '.: |\n  ha-card { border: 1px solid var(--ha-card-border-color); border-radius: 0; box-shadow: none; }\n  ha-card:focus-visible { outline: 3px solid var(--civica-focus-text); outline-offset: 3px; box-shadow: 0 0 0 3px var(--ha-color-focus); }\n',
+    'card-mod-card-yaml': '.: |\n  ha-card { border: 1px solid var(--ha-card-border-color); border-radius: 0; box-shadow: none; }\n  ha-card:focus-visible { outline: 3px solid var(--civica-focus-text); outline-offset: 3px; box-shadow: 0 0 0 3px var(--ha-color-focus); }\n  ha-gauge { --primary-background-color: var(--civica-gauge-track); }\n',
     modes: { light: modeTokens(palette, false), dark: modeTokens(palette, true) },
   };
 }

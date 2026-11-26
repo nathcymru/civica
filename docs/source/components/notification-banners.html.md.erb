@@ -15,7 +15,7 @@ updates:
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
     description: "First published in the Civica design system."
-ai_instructions: "Apply when telling people about a notice, an outcome or a short-lived message. Home Assistant has two native pieces: ha-toast, a short message at the bottom of the screen that closes by itself after 4 seconds by default and has a polite live announcement, and the notification drawer for persistent notifications. The drawer’s real tag is notification-drawer (class HuiNotificationDrawer); there is no element called hui-notification-drawer. Neither can be created from card configuration, and card-mod does not reach them. The Civica notification banner is a documentation pattern with no Home Assistant element: it carries a notice that applies to the whole page or the outcome of the previous step, with a heading, and never carries field validation. The theme sets the toast text colour (ha-color-on-neutral-loud) but not its background (ha-color-neutral-10). Do not state whether the toast is legible in either mode, that a toast pauses on hover, or that it can be made to stay. Success wording must reflect a result Home Assistant has confirmed, not a button press. Never use a toast as the only record of an error."
+ai_instructions: "Apply when telling people about a notice, an outcome or a short-lived message. Home Assistant has two native pieces: ha-toast, a short message at the bottom of the screen that closes by itself after 4 seconds by default and has a polite live announcement, and the notification drawer for persistent notifications. The drawer’s real tag is notification-drawer (class HuiNotificationDrawer); there is no element called hui-notification-drawer. Neither can be created from card configuration, and card-mod does not reach them. The Civica notification banner is a documentation pattern with no Home Assistant element: it carries a notice that applies to the whole page or the outcome of the previous step, with a heading, and never carries field validation. The theme sets the toast text colour (ha-color-on-neutral-loud) in both modes and its background (ha-color-neutral-10) in dark mode. Do not state whether the toast is legible in either mode, that a toast pauses on hover, or that it can be made to stay. Success wording must reflect a result Home Assistant has confirmed, not a button press. Never use a toast as the only record of an error."
 ai_related:
   - path: "/home-assistant/notifications-and-delivery.html"
     title: "Notifications, acknowledgement and alerts"
@@ -74,7 +74,7 @@ This page covers:
 
 <h2 id="anatomy">Anatomy</h2>
 
-- A toast is one line of text, an optional action button and an optional close button, on a dark bar.
+- A toast is one line of text, an optional action button and an optional close button, on a bar that is dark in light mode and light in dark mode.
 - The drawer is a panel that slides in from the side, with a title, a close button, a list of notifications with the newest first, and a “Dismiss all” button.
 - A banner is a bordered block with a title bar, a short heading and a sentence of detail.
 
@@ -89,7 +89,7 @@ A short message that closes by itself. Home Assistant shows one for things like 
 - **Size.** It is at least 48 pixels tall and up to 650 pixels wide. Below 450 pixels wide or 500 pixels tall it fills the width of the screen with square corners.
 - **Stacking.** Several toasts stack.
 
-The text colour is `ha-color-on-neutral-loud` and the background is `ha-color-neutral-10`. The Civica theme sets the text colour: `#FFFFFF` in light mode and `#0B0C0C` in dark mode. It does not set the background, so that stays Home Assistant’s `#202020` in both modes. Calculated from those colours alone, the text and background make 16.29 to 1 in light mode and 1.20 to 1 in dark mode.
+The text colour is `ha-color-on-neutral-loud` and the background is `ha-color-neutral-10`. The Civica theme sets the text colour to `#FFFFFF` in light mode and `#0B0C0C` in dark mode. It leaves the background at Home Assistant’s `#202020` in light mode and sets it to `#CCCCCC` in dark mode, so the bar is light with dark text. Calculated from those colours, the text and background make 16.29 to 1 in light mode and 12.20 to 1 in dark mode, in every Civica theme.
 
 A toast gives people about four seconds to read it, so it is easy to miss. Use a toast only for a result that is also visible somewhere else. Put anything people must act on in a persistent notification.
 
@@ -136,7 +136,7 @@ For how long a service-wide banner stays, see [Global banner](../publishing/comp
 
 - A toast confirms a result without taking over the screen.
 - A toast closes by itself, so people can miss it.
-- The toast text colour changes with the mode, while its background colour does not.
+- The toast text colour and its background both change with the mode.
 - The drawer keeps notifications until they are dismissed.
 - Neither the toast nor the drawer can be created or restyled from a dashboard.
 - Home Assistant has no banner element, so a banner is your own markup.
