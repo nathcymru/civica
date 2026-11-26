@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the List, Navigation List and Sortable List specification: the list elements, Home Assistant’s list and navigation list, and how reordering works."
-ai_instructions: "Apply when a dashboard, help card or page shows a group of related items. Use a real list (ul for items, ol for steps) and keep list markup; never fake a list with line breaks. Use a list of links inside a nav landmark for navigation, with aria-current on the current page. Do not use menu for site or dashboard navigation. A Markdown card keeps ul, ol and li but removes every attribute on them, and it shows menu as plain text. Home Assistant has no element named ha-navigation-list, ha-md-list or ha-md-list-item in this version; its navigation list is ha-list-nav and its newer list is the ha-list-base family. ha-list, ha-list-nav, ha-sortable and ha-items-display-editor cannot be added to a dashboard. ha-sortable only drags with a pointer, so always offer buttons or another way to change the order."
+  - date: "2026-11-26"
+    description: "Named the navigation list and the newer list and row by the elements Home Assistant uses."
+ai_instructions: "Apply when a dashboard, help card or page shows a group of related items. Use a real list (ul for items, ol for steps) and keep list markup; never fake a list with line breaks. Use a list of links inside a nav landmark for navigation, with aria-current on the current page. Do not use menu for site or dashboard navigation. A Markdown card keeps ul, ol and li but removes every attribute on them, and it shows menu as plain text. In Home Assistant the navigation list is ha-list-nav and the newer list is the ha-list-base family. ha-list, ha-list-nav, ha-sortable and ha-items-display-editor cannot be added to a dashboard. ha-sortable only drags with a pointer, so always offer buttons or another way to change the order."
 ai_related:
   - path: "/components/navigation.html"
     title: "Navigation"
@@ -62,16 +64,16 @@ component:
     - name: "ha-list-item"
       origin: "Home Assistant"
       anchor: "child-ha-list-item"
-    - name: "ha-navigation-list"
+    - name: "ha-list-nav"
       origin: "Home Assistant"
-      anchor: "child-ha-navigation-list"
-    - name: "ha-md-list"
+      anchor: "child-ha-list-nav"
+    - name: "ha-list-base"
       origin: "Home Assistant"
-      anchor: "child-ha-md-list"
+      anchor: "child-ha-list-base"
       grandchildren:
-        - name: "ha-md-list-item"
+        - name: "ha-list-item-base"
           origin: "Home Assistant"
-          anchor: "child-ha-md-list--ha-md-list-item"
+          anchor: "child-ha-list-base--ha-list-item-base"
     - name: "ha-sortable"
       origin: "Home Assistant"
       anchor: "child-ha-sortable"
@@ -108,9 +110,9 @@ This page covers:
   - `<menu>`
   - `ha-list`
   - `ha-list-item`
-  - `ha-navigation-list`, which this Home Assistant version does not use; see below for what it draws instead
-  - `ha-md-list`, which this Home Assistant version does not use
-    - `ha-md-list-item`, which this Home Assistant version does not use
+  - `ha-list-nav`
+  - `ha-list-base`
+    - `ha-list-item-base`
   - `ha-sortable`
   - `ha-items-display-editor`
 
@@ -161,23 +163,23 @@ A row in `ha-list`. Home Assistant sets its side padding to 20 pixels unless a t
 
 The Civica theme sets none of the `--mdc-list-*` variables, so rows keep Home Assistant’s sizes. The Civica theme does set `disabled-text-color`.
 
-<h3 id="child-ha-navigation-list"><code>ha-navigation-list</code></h3>
+<h3 id="child-ha-list-nav"><code>ha-list-nav</code></h3>
 
-This Home Assistant version has no element called `ha-navigation-list`. Its navigation list is `ha-list-nav`. It puts a list inside a `nav` landmark and takes a name, which becomes the landmark’s label. Its rows are `ha-list-item-button` rows, which draw a link when they have an address. The sidebar uses it, and so does the settings page `ha-config-navigation-list`.
+The navigation list puts a list inside a `nav` landmark and takes a name, which becomes the landmark’s label. Its rows are `ha-list-item-button` rows, which draw a link when they have an address. The sidebar uses it, and so does the settings page `ha-config-navigation-list`.
 
 A dashboard author cannot add `ha-list-nav` to a view. For navigation on a dashboard, use the navigation described in [Navigation](navigation.html). The sidebar is described in [Drawer / Navigation Sidebar](drawer-navigation-sidebar.html).
 
-Keyboard behaviour and focus colours come from Home Assistant’s list family, described under `ha-md-list` below. Rows show a background and a focus ring. The Civica theme sets `ha-color-focus` for the ring and `ha-color-fill-neutral-quiet-hover` for the focused row background.
+Keyboard behaviour and focus colours come from Home Assistant’s list family, described under `ha-list-base` below. Rows show a background and a focus ring. The Civica theme sets `ha-color-focus` for the ring and `ha-color-fill-neutral-quiet-hover` for the focused row background.
 
-<h3 id="child-ha-md-list"><code>ha-md-list</code></h3>
+<h3 id="child-ha-list-base"><code>ha-list-base</code></h3>
 
-This Home Assistant version has no Material 3 list element of that name. Its newer list is the `ha-list-base` family, which `ha-list-nav` and the editors use. `ha-list-base` has a `list` role by default and follows these keys: Up and Down arrows, Home, End, Page Up and Page Down move between rows, and Enter or Space activates a row. A row that is a link or button is one tab stop.
+The newer list is the `ha-list-base` family, which `ha-list-nav` and the editors use. `ha-list-base` has a `list` role by default and follows these keys: Up and Down arrows, Home, End, Page Up and Page Down move between rows, and Enter or Space activates a row. A row that is a link or button is one tab stop.
 
 Spacing comes from `--ha-list-gap` and `--ha-list-padding` (both 0 by default) and from row variables such as `--ha-row-item-padding-block` and `--ha-row-item-min-height` (48 pixels). The Civica theme sets none of them. A dashboard author cannot add these lists to a view.
 
-<h3 id="child-ha-md-list--ha-md-list-item"><code>ha-md-list-item</code></h3>
+<h3 id="child-ha-list-base--ha-list-item-base"><code>ha-list-item-base</code></h3>
 
-This Home Assistant version has no element called `ha-md-list-item`. Its newer rows are `ha-list-item-base` and `ha-list-item-button`. A row is a whole-row hit target with a start area, a headline, supporting text and an end area. The Civica theme sets the text colours (`primary-text-color`, `secondary-text-color`), so row text follows the theme. Row padding and the focus ring shape are Home Assistant’s defaults.
+The newer rows are `ha-list-item-base` and `ha-list-item-button`. A row is a whole-row hit target with a start area, a headline, supporting text and an end area. The Civica theme sets the text colours (`primary-text-color`, `secondary-text-color`), so row text follows the theme. Row padding and the focus ring shape are Home Assistant’s defaults.
 
 <h3 id="child-ha-sortable"><code>ha-sortable</code></h3>
 

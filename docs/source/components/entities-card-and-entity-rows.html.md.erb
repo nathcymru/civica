@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Entities Card and Entity Rows specification: the card, the 25 entity rows, the eight special rows, the theme keys that reach them and what Home Assistant draws itself."
-ai_instructions: "Apply when a dashboard lists entities in an entities card (type entities). Home Assistant picks the row from the entity domain: a light, switch or vacuum gets a switch row, a water heater gets the climate row, and a domain with no row of its own gets the simple row. There is no separate vacuum row or water heater row in this Home Assistant version. Row names must match entity names, state must be written in words as well as colour, and a card should hold a short list. Row spacing uses a Home Assistant variable the Civica theme does not set, so changing it needs card-mod. Do not claim contrast, focus appearance or screen-reader behaviour for a row."
+  - date: "2026-11-26"
+    description: "Removed two entries for rows that Home Assistant does not draw."
+ai_instructions: "Apply when a dashboard lists entities in an entities card (type entities). Home Assistant picks the row from the entity domain: a light, switch or vacuum gets a switch row, a water heater gets the climate row, and a domain with no row of its own gets the simple row. Row names must match entity names, state must be written in words as well as colour, and a card should hold a short list. Row spacing uses a Home Assistant variable the Civica theme does not set, so changing it needs card-mod. Do not claim contrast, focus appearance or screen-reader behaviour for a row."
 ai_related:
   - path: "/home-assistant/entity-lists-and-rows.html"
     title: "Entity lists, readings and row actions"
@@ -89,15 +91,9 @@ component:
         - name: "hui-update-entity-row"
           origin: "Lovelace"
           anchor: "child-hui-entities-card--hui-update-entity-row"
-        - name: "hui-vacuum-entity-row"
-          origin: "Lovelace"
-          anchor: "child-hui-entities-card--hui-vacuum-entity-row"
         - name: "hui-valve-entity-row"
           origin: "Lovelace"
           anchor: "child-hui-entities-card--hui-valve-entity-row"
-        - name: "hui-water-heater-entity-row"
-          origin: "Lovelace"
-          anchor: "child-hui-entities-card--hui-water-heater-entity-row"
         - name: "hui-weather-entity-row"
           origin: "Lovelace"
           anchor: "child-hui-entities-card--hui-weather-entity-row"
@@ -121,7 +117,7 @@ component:
           anchor: "child-hui-entities-card--hui-divider-row"
         - name: "hui-section-row"
           origin: "Lovelace"
-          anchor: "child-hui-entities-card--hui-section-row"
+          anchor: "xref-hui-entities-card--hui-section-row"
         - name: "hui-weblink-row"
           origin: "Lovelace"
           anchor: "child-hui-entities-card--hui-weblink-row"
@@ -158,9 +154,7 @@ component:
     - "hui-script-entity-row"
     - "hui-timer-entity-row"
     - "hui-update-entity-row"
-    - "hui-vacuum-entity-row"
     - "hui-valve-entity-row"
-    - "hui-water-heater-entity-row"
     - "hui-weather-entity-row"
     - "hui-text-entity-row"
     - "hui-simple-entity-row"
@@ -205,9 +199,7 @@ This page covers:
     - `hui-script-entity-row`
     - `hui-timer-entity-row`
     - `hui-update-entity-row`
-    - `hui-vacuum-entity-row`
     - `hui-valve-entity-row`
-    - `hui-water-heater-entity-row`
     - `hui-weather-entity-row`
     - `hui-text-entity-row`
     - `hui-simple-entity-row`
@@ -327,17 +319,9 @@ Home Assistant draws the card title as a first-level heading, so give each entit
 
 `type: update-entity`. Shows the update state in words, for example whether an update is available. Software and device updates.
 
-<h3 id="child-hui-entities-card--hui-vacuum-entity-row"><code>hui-vacuum-entity-row</code></h3>
-
-This Home Assistant version has no vacuum row. A vacuum entity is drawn by the switch row ([`hui-toggle-entity-row`](#child-hui-entities-card--hui-toggle-entity-row)), which shows a switch for the vacuum. Name the row for what the switch does, and show the vacuum’s state in words elsewhere, such as in a secondary line.
-
 <h3 id="child-hui-entities-card--hui-valve-entity-row"><code>hui-valve-entity-row</code></h3>
 
 `type: valve-entity`. Shows a switch to open or close a valve. Valves. Keep the state in words in the row.
-
-<h3 id="child-hui-entities-card--hui-water-heater-entity-row"><code>hui-water-heater-entity-row</code></h3>
-
-This Home Assistant version has no water heater row. A water heater entity is drawn by the climate row ([`hui-climate-entity-row`](#child-hui-entities-card--hui-climate-entity-row)). Use the climate row’s guidance for it.
 
 <h3 id="child-hui-entities-card--hui-weather-entity-row"><code>hui-weather-entity-row</code></h3>
 
@@ -367,9 +351,9 @@ This Home Assistant version has no water heater row. A water heater entity is dr
 
 `type: divider`. Draws a thin line between rows. Its `style` key can set the line’s style. The line uses `divider-color`, or `entities-divider-color` if you set it. Use it to separate groups. It has no name, so it is only a visual break; use a section row when the group needs a name.
 
-<h3 id="child-hui-entities-card--hui-section-row"><code>hui-section-row</code></h3>
+<h3 id="xref-hui-entities-card--hui-section-row"><code>hui-section-row</code></h3>
 
-`type: section`. Draws a line with a label under it. `label` is the section name. The label uses `primary-text-color`, or `section-header-text-color` if you set it. Use it to name a group of rows. Keep the label short.
+`type: section`. Draws a line with a label under it. `label` is the section name. The label uses `primary-text-color`, or `section-header-text-color` if you set it. Use it to name a group of rows. Keep the label short. The row is described in full on [Card & Section Header](card-and-section-header.html#child-hui-section-row).
 
 <h3 id="child-hui-entities-card--hui-weblink-row"><code>hui-weblink-row</code></h3>
 

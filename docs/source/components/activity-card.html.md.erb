@@ -13,7 +13,9 @@ updates:
     description: "Added the Activity Card specification: the Home Assistant card that shows the logbook, its options and its limits."
   - date: "2026-11-26"
     description: "Corrected the description of entries: the card draws no icon at the start of an entry."
-ai_instructions: "Apply when a dashboard shows recent activity. Home Assistant calls this card Activity in the interface and uses type logbook in YAML; there is no element named hui-activity-card. Always set a target. Say the period in the title or beside it. Do not imply the list updates live. Explain what an empty list means. The title is drawn as a level-one heading by Home Assistant."
+  - date: "2026-11-26"
+    description: "Named the card by its element, hui-logbook-card."
+ai_instructions: "Apply when a dashboard shows recent activity. Home Assistant calls this card Activity in the interface and uses type logbook in YAML; the card element is hui-logbook-card. Always set a target. Say the period in the title or beside it. Do not imply the list updates live. Explain what an empty list means. The title is drawn as a level-one heading by Home Assistant."
 ai_related:
   - path: "/components/cards.html"
     title: "Card (Base Surface)"
@@ -30,11 +32,11 @@ component:
   origins:
     - "Lovelace"
   children:
-    - name: "hui-activity-card"
+    - name: "hui-logbook-card"
       origin: "Lovelace"
-      anchor: "child-hui-activity-card"
+      anchor: "child-hui-logbook-card"
   tags:
-    - "hui-activity-card"
+    - "hui-logbook-card"
     - "hui-logbook-card"
     - "logbook"
 
@@ -51,7 +53,7 @@ This page owns the card that Home Assistant calls Activity. For the card surface
 This page covers:
 
 - Activity Card
-  - `hui-activity-card`, which this Home Assistant version does not use; see below for the card it draws instead
+  - `hui-logbook-card`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -65,9 +67,9 @@ If the Logbook integration is not loaded, the card shows a warning instead. With
 
 <h2 id="variants">Variants, variables and extensibility</h2>
 
-<h3 id="child-hui-activity-card"><code>hui-activity-card</code></h3>
+<h3 id="child-hui-logbook-card"><code>hui-logbook-card</code></h3>
 
-This Home Assistant version has no element called `hui-activity-card`. “Activity” is the name shown in the interface for the Logbook, and the card is `hui-logbook-card`, written `type: logbook` in YAML. The legacy key stays as it is.
+The card that Home Assistant shows as “Activity” is `hui-logbook-card`. Its YAML type keeps the older name, `logbook`.
 
 ```yaml
 type: logbook

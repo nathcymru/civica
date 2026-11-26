@@ -5,13 +5,15 @@ section: "components"
 group: "Components"
 status: "reference"
 published_on: "2026-11-25"
-updated_on: "2026-11-25"
+updated_on: "2026-11-26"
 last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
     description: "Added the Color Picker specification, covering named colours, the colour wheel, RGB entry and colour temperature."
-ai_instructions: "Apply when a person chooses a colour. Offer named colours or a hex code and write the choice in words. The hue and saturation wheel (ha-hs-color-picker) has no keyboard or screen-reader support in this Home Assistant version; never offer it as the only way. ha-rgb-color-picker and ha-color-temp-picker are not names this version uses. Use the color_rgb selector for RGB and the color_temp selector or light-color-temp card feature for temperature. ui_color uses ha-color-picker. Do not claim named colours match Civica hex values, or any contrast."
+  - date: "2026-11-26"
+    description: "Described choosing an RGB colour and a colour temperature under their own headings."
+ai_instructions: "Apply when a person chooses a colour. Offer named colours or a hex code and write the choice in words. The hue and saturation wheel (ha-hs-color-picker) has no keyboard or screen-reader support in this Home Assistant version; never offer it as the only way. Use the color_rgb selector for RGB and the color_temp selector or light-color-temp card feature for temperature. ui_color uses ha-color-picker. Do not claim named colours match Civica hex values, or any contrast."
 ai_related:
   - path: "/components/sliders.html"
     title: "Control Slider"
@@ -41,18 +43,10 @@ component:
     - name: "ha-hs-color-picker"
       origin: "Home Assistant"
       anchor: "child-ha-hs-color-picker"
-    - name: "ha-rgb-color-picker"
-      origin: "Home Assistant"
-      anchor: "child-ha-rgb-color-picker"
-    - name: "ha-color-temp-picker"
-      origin: "Home Assistant"
-      anchor: "child-ha-color-temp-picker"
   tags:
     - "input type color"
     - "ha-color-picker"
     - "ha-hs-color-picker"
-    - "ha-rgb-color-picker"
-    - "ha-color-temp-picker"
 ---
 
 # Color Picker
@@ -67,8 +61,6 @@ This page covers:
   - `<input type="color">`
   - `ha-color-picker`
   - `ha-hs-color-picker`
-  - `ha-rgb-color-picker`
-  - `ha-color-temp-picker`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -105,13 +97,13 @@ A round hue and saturation wheel, drawn on a canvas. It is used in the light dia
 
 Never offer it as the only way. Offer named colours, a colour temperature slider, a brightness slider or a hex box as well.
 
-<h3 id="child-ha-rgb-color-picker"><code>ha-rgb-color-picker</code></h3>
+<h3 id="choosing-rgb-colour">Choosing an RGB colour</h3>
 
-This Home Assistant version does not use the name `ha-rgb-color-picker`. RGB colour is chosen in two places instead. In the light dialog, the wheel above sits with sliders for white, cold white and warm white. In a form, the `color_rgb` selector shows the browser’s colour input.
+RGB colour is chosen in two places. In the light dialog, the wheel above sits with sliders for white, cold white and warm white. In a form, the `color_rgb` selector shows the browser’s colour input.
 
-<h3 id="child-ha-color-temp-picker"><code>ha-color-temp-picker</code></h3>
+<h3 id="choosing-colour-temperature">Choosing a colour temperature</h3>
 
-This Home Assistant version does not use the name `ha-color-temp-picker`. Colour temperature is a slider from warm to cool, in three places:
+Colour temperature is a slider from warm to cool, in three places:
 
 - The light dialog has a slider.
 - The `color_temp` selector shows a labelled slider with a warm-to-cool gradient. It takes `unit` (`kelvin` or `mired`, mired by default), `min` and `max`. The default range is 153 to 500 mired.

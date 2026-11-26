@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the More-Info Dialog & Domain State Controls specification: the dialog, its views and header, and each device control inside it, with what the Civica theme sets and what stays Home Assistant’s."
-ai_instructions: "Apply when describing the dialog that opens when someone selects an entity (the more-info dialog) and the control inside it for each kind of device. The dialog opens on the hass-more-info event; a dashboard author cannot restyle it with card-mod, and a theme sets only its surface, corners, divider and text colours. Three inventory names are not Home Assistant elements: the humidifier control is ha-state-control-humidifier-humidity, the lock control is ha-state-control-lock-toggle and the water heater control is ha-state-control-water_heater-temperature. The vertical brightness, cover and valve controls are dragged and have no step buttons in the control. The slider focus ring is 2 pixels in the control’s own colour, not the Civica yellow focus. Civica sets no control-slider, control-switch or per-device state colour, so those stay Home Assistant’s. Civica’s mdc-dialog heading and content ink colours are not read by this version of the dialog; do not claim they style it. Settings and the three-dots menu are for administrators only. Do not claim contrast for device state colours, that sliders work by keyboard, or that card-mod reaches the dialog."
+  - date: "2026-11-26"
+    description: "Named the humidifier, lock and water heater controls by the elements Home Assistant draws."
+ai_instructions: "Apply when describing the dialog that opens when someone selects an entity (the more-info dialog) and the control inside it for each kind of device. The dialog opens on the hass-more-info event; a dashboard author cannot restyle it with card-mod, and a theme sets only its surface, corners, divider and text colours. The humidifier control is ha-state-control-humidifier-humidity, the lock control is ha-state-control-lock-toggle and the water heater control is ha-state-control-water_heater-temperature. The vertical brightness, cover and valve controls are dragged and have no step buttons in the control. The slider focus ring is 2 pixels in the control’s own colour, not the Civica yellow focus. Civica sets no control-slider, control-switch or per-device state colour, so those stay Home Assistant’s. Civica’s mdc-dialog heading and content ink colours are not read by this version of the dialog; do not claim they style it. Settings and the three-dots menu are for administrators only. Do not claim contrast for device state colours, that sliders work by keyboard, or that card-mod reaches the dialog."
 ai_related:
   - path: "/components/dialogs.html"
     title: "Dialog / Modal"
@@ -83,21 +85,21 @@ component:
         - name: "ha-state-control-fan-speed"
           origin: "Home Assistant"
           anchor: "child-ha-more-info-dialog--ha-state-control-fan-speed"
-        - name: "ha-state-control-humidifier"
+        - name: "ha-state-control-humidifier-humidity"
           origin: "Home Assistant"
-          anchor: "child-ha-more-info-dialog--ha-state-control-humidifier"
-        - name: "ha-state-control-lock"
+          anchor: "child-ha-more-info-dialog--ha-state-control-humidifier-humidity"
+        - name: "ha-state-control-lock-toggle"
           origin: "Home Assistant"
-          anchor: "child-ha-more-info-dialog--ha-state-control-lock"
+          anchor: "child-ha-more-info-dialog--ha-state-control-lock-toggle"
         - name: "ha-state-control-toggle"
           origin: "Home Assistant"
           anchor: "child-ha-more-info-dialog--ha-state-control-toggle"
         - name: "ha-state-control-valve-position"
           origin: "Home Assistant"
           anchor: "child-ha-more-info-dialog--ha-state-control-valve-position"
-        - name: "ha-state-control-water_heater"
+        - name: "ha-state-control-water_heater-temperature"
           origin: "Home Assistant"
-          anchor: "child-ha-more-info-dialog--ha-state-control-water-heater"
+          anchor: "child-ha-more-info-dialog--ha-state-control-water-heater-temperature"
         - name: "ha-vacuum-state"
           origin: "Home Assistant"
           anchor: "child-ha-more-info-dialog--ha-vacuum-state"
@@ -115,11 +117,11 @@ component:
     - "ha-state-control-climate-temperature"
     - "ha-state-control-cover-position"
     - "ha-state-control-fan-speed"
-    - "ha-state-control-humidifier"
-    - "ha-state-control-lock"
+    - "ha-state-control-humidifier-humidity"
+    - "ha-state-control-lock-toggle"
     - "ha-state-control-toggle"
     - "ha-state-control-valve-position"
-    - "ha-state-control-water_heater"
+    - "ha-state-control-water_heater-temperature"
     - "ha-vacuum-state"
     - "ha-water_heater-state"
 ---
@@ -145,11 +147,11 @@ This page covers:
     - `ha-state-control-climate-temperature`
     - `ha-state-control-cover-position`
     - `ha-state-control-fan-speed`
-    - `ha-state-control-humidifier`
-    - `ha-state-control-lock`
+    - `ha-state-control-humidifier-humidity`
+    - `ha-state-control-lock-toggle`
     - `ha-state-control-toggle`
     - `ha-state-control-valve-position`
-    - `ha-state-control-water_heater`
+    - `ha-state-control-water_heater-temperature`
     - `ha-vacuum-state`
     - `ha-water_heater-state`
 
@@ -224,13 +226,13 @@ A vertical slider for how open a cover is, named “position”. The active colo
 
 Either a stepped selector, when the fan has set speeds, or a slider for a percentage. Both are named. The selector is described on [Control Select](control-select.html).
 
-<h3 id="child-ha-more-info-dialog--ha-state-control-humidifier"><code>ha-state-control-humidifier</code></h3>
+<h3 id="child-ha-more-info-dialog--ha-state-control-humidifier-humidity"><code>ha-state-control-humidifier-humidity</code></h3>
 
-This Home Assistant version does not use the name `ha-state-control-humidifier`. The control it draws is called `ha-state-control-humidifier-humidity`. It is a dial for the target humidity, with the number in large type and minus and plus buttons. Changes are sent after a short pause of one second, so people can step several times first. The humidifier card uses it too.
+It is a dial for the target humidity, with the number in large type and minus and plus buttons. Changes are sent after a short pause of one second, so people can step several times first. The humidifier card uses it too.
 
-<h3 id="child-ha-more-info-dialog--ha-state-control-lock"><code>ha-state-control-lock</code></h3>
+<h3 id="child-ha-more-info-dialog--ha-state-control-lock-toggle"><code>ha-state-control-lock-toggle</code></h3>
 
-This Home Assistant version does not use the name `ha-state-control-lock`. The control it draws is called `ha-state-control-lock-toggle`. It is a vertical switch labelled Lock or Unlock, with the lock icon pulsing while the lock moves. When the state is not known it shows two buttons, Lock and Unlock.
+It is a vertical switch labelled Lock or Unlock, with the lock icon pulsing while the lock moves. When the state is not known it shows two buttons, Lock and Unlock.
 
 Where a lock needs a code or a confirmation, Home Assistant asks for it, and the wording is Home Assistant’s. Keep that protected action. The switch’s colours are green for locked and red for unlocked, set by Home Assistant. Always write “Locked” or “Unlocked” too. For lock behaviour, see [Locks, alarms, covers and valves](../home-assistant/access-and-movement.html).
 
@@ -242,9 +244,9 @@ An on and off control for lights, fans, switches, sirens and input booleans. Whe
 
 A vertical slider for how open a valve is, named “position”.
 
-<h3 id="child-ha-more-info-dialog--ha-state-control-water-heater"><code>ha-state-control-water_heater</code></h3>
+<h3 id="child-ha-more-info-dialog--ha-state-control-water-heater-temperature"><code>ha-state-control-water_heater-temperature</code></h3>
 
-This Home Assistant version does not use the name `ha-state-control-water_heater`. The control it draws is called `ha-state-control-water_heater-temperature`. It is a dial for the target temperature of a water heater, labelled “target temperature”, with minus and plus buttons and the number in large type. It works only when the water heater supports a target temperature. Changes are sent after a pause of one second. The thermostat card uses it too.
+It is a dial for the target temperature of a water heater, labelled “target temperature”, with minus and plus buttons and the number in large type. It works only when the water heater supports a target temperature. Changes are sent after a pause of one second. The thermostat card uses it too.
 
 <h3 id="child-ha-more-info-dialog--ha-vacuum-state"><code>ha-vacuum-state</code></h3>
 

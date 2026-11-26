@@ -5,7 +5,7 @@ section: "components"
 group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-25"
+updated_on: "2026-11-26"
 last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
@@ -13,7 +13,9 @@ updates:
     description: "Rewritten as the Checkbox specification, covering the browser checkbox and the Home Assistant checkbox, with the theme keys that colour it."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-ai_instructions: "Apply when people choose none, one or several options, or set a saved preference. A checkbox is an answer, not a device command; use a switch for an immediate on or off. Group related checkboxes in a fieldset with a legend. Put the label inside ha-checkbox; this Home Assistant version has no ha-formfield. Do not state the tick colour or any contrast ratio: the theme does not set the tick. Square corners need --ha-checkbox-border-radius, which Civica does not set."
+  - date: "2026-11-26"
+    description: "Described where the label and hint go."
+ai_instructions: "Apply when people choose none, one or several options, or set a saved preference. A checkbox is an answer, not a device command; use a switch for an immediate on or off. Group related checkboxes in a fieldset with a legend. Put the label inside ha-checkbox, with the hint in its hint slot. Do not state the tick colour or any contrast ratio: the theme does not set the tick. Square corners need --ha-checkbox-border-radius, which Civica does not set."
 ai_related:
   - path: "/components/fieldset.html"
     title: "Fieldset & Legend"
@@ -40,13 +42,9 @@ component:
     - name: "ha-checkbox"
       origin: "Home Assistant"
       anchor: "child-ha-checkbox"
-    - name: "ha-formfield"
-      origin: "Home Assistant"
-      anchor: "child-ha-formfield"
   tags:
     - "input type checkbox"
     - "ha-checkbox"
-    - "ha-formfield"
 ---
 
 # Checkbox
@@ -60,7 +58,6 @@ This page covers:
 - Checkbox
   - `<input type="checkbox">`
   - `ha-checkbox`
-  - `ha-formfield`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -93,9 +90,9 @@ What Civica sets, in the light and dark themes:
 
 What Civica leaves as Home Assistant’s default: the size, the corner radius and the colour of the tick. The corners stay slightly rounded. You can make them square by adding `--ha-checkbox-border-radius: 0` to the theme, but Civica does not set it. The theme’s older `mdc-checkbox-*` keys apply only to older checkboxes, not to this one. Test the focus ring on this checkbox in your own dashboard.
 
-<h3 id="child-ha-formfield"><code>ha-formfield</code></h3>
+<h3 id="label-and-hint">Label and hint</h3>
 
-This Home Assistant version does not use the name `ha-formfield`. There is no separate wrapper for a label and a field. The label and the hint belong inside `ha-checkbox`, as its default content and its `hint` slot.
+The label and the hint belong inside `ha-checkbox`, as its default content and its `hint` slot.
 
 For an immediate on or off, such as a lamp, use a switch instead. A checkbox is for an answer that is saved or submitted later.
 

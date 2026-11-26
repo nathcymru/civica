@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Category Picker specification: the single-category picker, what it does with a new category and why there is no multiple-category picker."
-ai_instructions: "Apply when a form asks which category an item belongs to. Home Assistant offers a single-category picker only (ha-category-picker); there is no ha-categories-picker. An item has one category in each list. For several tags on one item, use labels. A category is not a label, an area or a permission. Say what Add new category does. Do not claim keyboard roles beyond those listed on this page."
+  - date: "2026-11-26"
+    description: "Explained how to give one item several tags."
+ai_instructions: "Apply when a form asks which category an item belongs to. Home Assistant offers a single-category picker only (ha-category-picker); An item has one category in each list. For several tags on one item, use labels. A category is not a label, an area or a permission. Say what Add new category does. Do not claim keyboard roles beyond those listed on this page."
 ai_related:
   - path: "/components/area-picker.html"
     title: "Area Picker"
@@ -31,12 +33,8 @@ component:
     - name: "ha-category-picker"
       origin: "Home Assistant"
       anchor: "child-ha-category-picker"
-    - name: "ha-categories-picker"
-      origin: "Home Assistant"
-      anchor: "child-ha-categories-picker"
   tags:
     - "ha-category-picker"
-    - "ha-categories-picker"
     - "category"
 
 ---
@@ -53,7 +51,6 @@ This page covers:
 
 - Category Picker
   - `ha-category-picker`
-  - `ha-categories-picker`, which this Home Assistant version does not use; see below
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -84,9 +81,9 @@ Choosing a category sends a change with the new value, or nothing when it is cle
 
 **What stays as Home Assistant draws it.** The layout of the open list, the tag icon and the add row have no theme setting. Keep Home Assistant’s own labels for them.
 
-<h3 id="child-ha-categories-picker"><code>ha-categories-picker</code></h3>
+<h3 id="several-categories">Several categories on one item</h3>
 
-This Home Assistant version has no element called `ha-categories-picker`, and nothing that picks several categories. The nearest real behaviour is that each item has exactly one category in each list.
+Each item has exactly one category in each list.
 
 To attach several organising tags to one item, use labels. Home Assistant has a multiple-label picker for that, which takes a list of labels. A category is not a label, an area or a permission.
 

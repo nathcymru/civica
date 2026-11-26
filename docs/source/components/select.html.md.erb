@@ -13,7 +13,9 @@ updates:
     description: "Rewrote the page as the Dropdown Menu & Overflow Menu specification. It now covers Home Assistant’s select, dropdown, overflow menu and list rows as well as the native select, and says which older names Home Assistant no longer uses."
   - date: "2026-11-18"
     description: "When to use, the preselection guidance and the example heading “Choose a saved theme colour” now refer to the 7 theme colours; the 10 palettes were retired."
-ai_instructions: "Apply when someone chooses one item from a list, or opens a menu of actions. The native select is the default for a long, familiar list; use radios for a few choices. ha-select and ha-dropdown are Home Assistant’s own; ha-icon-overflow-menu shows one three-dot button on narrow screens and visible icon buttons on wide ones. ha-button-menu and ha-clickable-list-item are not used in this release: menus are built with ha-dropdown and its items, and a clickable row is ha-list-item-button. Name the three-dot button for what it opens, put risky items last and say delete in words. Never put the main action in an overflow menu. A select must not issue a device command. Do not claim the popup colours follow the theme, and do not give a ready-made card-mod selector."
+  - date: "2026-11-26"
+    description: "Named the selectable row by its element, ha-list-item-button."
+ai_instructions: "Apply when someone chooses one item from a list, or opens a menu of actions. The native select is the default for a long, familiar list; use radios for a few choices. ha-select and ha-dropdown are Home Assistant’s own; ha-icon-overflow-menu shows one three-dot button on narrow screens and visible icon buttons on wide ones. Menus are built with ha-dropdown and its items, and a clickable row is ha-list-item-button. Name the three-dot button for what it opens, put risky items last and say delete in words. Never put the main action in an overflow menu. A select must not issue a device command. Do not claim the popup colours follow the theme, and do not give a ready-made card-mod selector."
 ai_related:
   - path: "/components/radios.html"
     title: "Radio Button"
@@ -59,28 +61,24 @@ component:
     - name: "ha-dropdown"
       origin: "Home Assistant"
       anchor: "child-ha-dropdown"
-    - name: "ha-button-menu"
-      origin: "Home Assistant"
-      anchor: "child-ha-button-menu"
     - name: "ha-icon-overflow-menu"
       origin: "Home Assistant"
       anchor: "child-ha-icon-overflow-menu"
     - name: "ha-check-list-item"
       origin: "Home Assistant"
       anchor: "child-ha-check-list-item"
-    - name: "ha-clickable-list-item"
+    - name: "ha-list-item-button"
       origin: "Home Assistant"
-      anchor: "child-ha-clickable-list-item"
+      anchor: "child-ha-list-item-button"
   tags:
     - "select"
     - "optgroup"
     - "option"
     - "ha-select"
     - "ha-dropdown"
-    - "ha-button-menu"
     - "ha-icon-overflow-menu"
     - "ha-check-list-item"
-    - "ha-clickable-list-item"
+    - "ha-list-item-button"
 ---
 
 # Dropdown Menu & Overflow Menu
@@ -99,10 +97,9 @@ This page covers:
     - `<option>`
   - `ha-select`
   - `ha-dropdown`
-  - `ha-button-menu`
   - `ha-icon-overflow-menu`
   - `ha-check-list-item`
-  - `ha-clickable-list-item`
+  - `ha-list-item-button`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -132,11 +129,7 @@ Home Assistant’s own select. A dashboard author does not write one; you meet i
 
 <h3 id="child-ha-dropdown"><code>ha-dropdown</code></h3>
 
-Home Assistant’s popup menu. Any element in its trigger slot, often an icon button, opens it, and it holds dropdown items. Items can be plain, show a tick for a checked state, have an icon, be disabled or be marked as dangerous. The menu surface takes `card-background-color`. Menu rows have a minimum height set by Home Assistant. Keyboard use follows the underlying component.
-
-<h3 id="child-ha-button-menu"><code>ha-button-menu</code></h3>
-
-This Home Assistant version does not use the name `ha-button-menu`. Menus are built with the dropdown described above and its items, with any element as the trigger, such as an icon button. Use the dropdown above. Do not confuse it with the menu button in the header, which opens and closes the sidebar and is not a dropdown.
+Home Assistant’s popup menu. Any element in its trigger slot, often an icon button, opens it, and it holds dropdown items. Items can be plain, show a tick for a checked state, have an icon, be disabled or be marked as dangerous. The menu surface takes `card-background-color`. Menu rows have a minimum height set by Home Assistant. Keyboard use follows the underlying component. Do not confuse it with the menu button in the header, which opens and closes the sidebar and is not a dropdown.
 
 <h3 id="child-ha-icon-overflow-menu"><code>ha-icon-overflow-menu</code></h3>
 
@@ -148,9 +141,9 @@ The three-dot button takes its accessible name from a label, “Overflow menu”
 
 A row with text and a checkbox, used in lists where several items can be chosen. It is not a dropdown. It can show a mixed state, and it can be set so that only the checkbox itself responds. The checkbox takes `primary-color`. Use it for choices such as which entities to include; for a single choice use a select or [radios](radios.html).
 
-<h3 id="child-ha-clickable-list-item"><code>ha-clickable-list-item</code></h3>
+<h3 id="child-ha-list-item-button"><code>ha-list-item-button</code></h3>
 
-This Home Assistant version does not use the name `ha-clickable-list-item`. A row you can select is the list item button, `ha-list-item-button`. It has a start area for an icon, a headline and an end area, and it can be a link. Home Assistant uses it for the sidebar rows. Give every such row a text label.
+A row you can select is the list item button. It has a start area for an icon, a headline and an end area, and it can be a link. Home Assistant uses it for the sidebar rows. Give every such row a text label.
 
 <h2 id="limits">Advantages and limitations</h2>
 
@@ -158,7 +151,6 @@ This Home Assistant version does not use the name `ha-clickable-list-item`. A ro
 - The native select’s open list cannot be themed, and Home Assistant’s dropdown colours come from the card colours, not from a setting of its own.
 - The three-dot button hides actions, so people may not find them.
 - Home Assistant’s dropdowns and overflow menus are drawn by the app. A dashboard author cannot add them.
-- The old names `ha-button-menu` and `ha-clickable-list-item` are not used in this release.
 - You cannot change the popup’s position, animation or hover colour.
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>

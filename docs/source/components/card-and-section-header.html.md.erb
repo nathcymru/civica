@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Card & Section Header specification: the section row, and a pointer to the Heading card page."
-ai_instructions: "Apply when a dashboard section needs a heading. Use the Heading card (type heading) first in the section, as described on the Heading page, or a section row inside an Entities card. Home Assistant has no card named hui-section-header; say so plainly. A section row is a divider with a label, not a heading. Do not copy the Heading card keys or theme settings here: link to the Heading page."
+  - date: "2026-11-26"
+    description: "Named the section row as the entry on this page."
+ai_instructions: "Apply when a dashboard section needs a heading. Use the Heading card (type heading) first in the section, as described on the Heading page, or a section row inside an Entities card. This page owns hui-section-row. A section row is a divider with a label, not a heading. Do not copy the Heading card keys or theme settings here: link to the Heading page."
 ai_related:
   - path: "/home-assistant/dashboard-composition.html"
     title: "Dashboard composition and card features"
@@ -31,11 +33,11 @@ component:
   origins:
     - "Lovelace"
   children:
-    - name: "hui-section-header"
+    - name: "hui-section-row"
       origin: "Lovelace"
-      anchor: "child-hui-section-header"
+      anchor: "child-hui-section-row"
   tags:
-    - "hui-section-header"
+    - "hui-section-row"
     - "hui-heading-card"
     - "hui-section-row"
 
@@ -52,7 +54,7 @@ This page owns the section row, and points to [Heading](heading.html) for the He
 This page covers:
 
 - Card & Section Header
-  - `hui-section-header`, which Home Assistant does not have; see below for what it draws instead
+  - `hui-section-row`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -60,16 +62,11 @@ A section row is a divider with an optional label, inside an Entities card. For 
 
 <h2 id="variants">Variants, variables and extensibility</h2>
 
-<h3 id="child-hui-section-header"><code>hui-section-header</code></h3>
+<h3 id="child-hui-section-row"><code>hui-section-row</code></h3>
 
-There is no `hui-section-header` card in Home Assistant; use one of these instead:
-
-- The Heading card (`hui-heading-card`, YAML `type: heading`), placed first in a section of a Sections view. See [Heading](heading.html) for its keys, styles and limits.
-- The section row (`hui-section-row`, YAML `type: section`), a divider with a label inside an Entities card.
+The section row (YAML `type: section`) is a divider with a label inside an Entities card. For a heading at the top of a section of a Sections view, use the Heading card (`hui-heading-card`, YAML `type: heading`). See [Heading](heading.html) for its keys, styles and limits.
 
 The sections of a Sections view (`hui-section`, `hui-grid-section`) are layout containers and have no header of their own.
-
-**Section row**
 
 ```yaml
 type: entities

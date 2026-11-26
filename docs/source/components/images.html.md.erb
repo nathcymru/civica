@@ -15,7 +15,9 @@ updates:
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
     description: "Added images guidance and 2 Home Assistant reference examples."
-ai_instructions: "Apply when a page or dashboard shows a picture. Use the picture card (type: picture), picture entity card (type: picture-entity) or picture glance card (type: picture-glance) for pictures on a dashboard, and name both the YAML type and the element. Always write the name, state and any alert as text, never only on the picture. Say that the entity picture's footer text and the glance icons sit over an arbitrary picture, so no contrast can be promised. Say that hui-image gives the raw entity ID as the picture's alt text. For ha-camera-fetch-image, say that Home Assistant fetches a camera still through the picture image component and there is nothing to configure. This page owns img, picture, map and area and the three picture cards; source belongs to the Audio Player page. Quote a contrast ratio only as calculated from theme colours."
+  - date: "2026-11-26"
+    description: "Named the picture component by its element, hui-image."
+ai_instructions: "Apply when a page or dashboard shows a picture. Use the picture card (type: picture), picture entity card (type: picture-entity) or picture glance card (type: picture-glance) for pictures on a dashboard, and name both the YAML type and the element. Always write the name, state and any alert as text, never only on the picture. Say that the entity picture's footer text and the glance icons sit over an arbitrary picture, so no contrast can be promised. Say that hui-image gives the raw entity ID as the picture's alt text. For camera stills, say that hui-image fetches them and there is nothing to configure. This page owns img, picture, map and area and the three picture cards; source belongs to the Audio Player page. Quote a contrast ratio only as calculated from theme colours."
 ai_related:
   - path: "/home-assistant/pictures-and-embedded-content.html"
     title: "Pictures, rich content and embedded pages"
@@ -66,9 +68,9 @@ component:
     - name: "hui-picture-glance-card"
       origin: "Lovelace"
       anchor: "child-hui-picture-glance-card"
-    - name: "ha-camera-fetch-image"
+    - name: "hui-image"
       origin: "Home Assistant"
-      anchor: "child-ha-camera-fetch-image"
+      anchor: "child-hui-image"
   tags:
     - "img"
     - "picture"
@@ -99,7 +101,7 @@ This page covers:
   - `hui-picture-card`
   - `hui-picture-entity-card`
   - `hui-picture-glance-card`
-  - `ha-camera-fetch-image`
+  - `hui-image`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -202,11 +204,11 @@ Each icon is a button 40 pixels square. That is above the 24 pixel minimum of WC
 
 For a sensible dashboard, give the room’s readings and controls in an ordinary card with text, and keep the glance card as a shortcut.
 
-**Picture entity and picture glance: the picture part.** Both cards draw their picture with the Home Assistant picture image component, `hui-image`. It sets the picture’s `alt` to the raw entity ID, for example `camera.porch`, which is not a description. If the picture fails to load, it shows a grey box with a small broken-picture symbol and no words. While a picture loads it shows a spinner. When the entity is off or unavailable and a fallback picture is used, it turns the picture grey.
+<h3 id="child-hui-image"><code>hui-image</code></h3>
 
-<h3 id="child-ha-camera-fetch-image"><code>ha-camera-fetch-image</code></h3>
+The picture entity and picture glance cards both draw their picture with the Home Assistant picture image component, `hui-image`. It sets the picture’s `alt` to the raw entity ID, for example `camera.porch`, which is not a description. If the picture fails to load, it shows a grey box with a small broken-picture symbol and no words. While a picture loads it shows a spinner. When the entity is off or unavailable and a fallback picture is used, it turns the picture grey.
 
-Home Assistant fetches a camera still through the picture image component; there is nothing to configure.
+Home Assistant fetches a camera still through the same component; there is nothing to configure.
 
 In a picture entity or picture glance card, a camera still refreshes about every 10 seconds, and only while the card is on the screen. Nothing on a dashboard lets you change that rate. For a live view, see [Cameras, streams and snapshots](../home-assistant/cameras.html).
 

@@ -15,7 +15,9 @@ updates:
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
     description: "Added text input guidance and 2 Home Assistant examples."
-ai_instructions: "Apply when a person types a short answer on one line. Always give the field a visible label and put the hint and any error in text linked to it. Never use a placeholder as the label. Pick the type that matches the answer: text, email, url, tel, number or password. Use type text with a numeric input mode for codes, identifiers and anything with leading zeros. Allow paste and password managers. Dashboard authors cannot place a text field in a card, so fields appear in dialogs and forms, including the text selector. This Home Assistant version has no ha-textfield, ha-md-textfield or ha-password-field: its single-line field is ha-input. The Markdown card strips input fields. Say that the Civica theme sets no key for ha-input, so its look is Home Assistant's own apart from the primary colour and the neutral border colours. Do not claim a measured focus ring, and never advise building a password field in a Markdown card."
+  - date: "2026-11-26"
+    description: "Named the single-line field by its element, ha-input, and gathered the outlined and password looks under it."
+ai_instructions: "Apply when a person types a short answer on one line. Always give the field a visible label and put the hint and any error in text linked to it. Never use a placeholder as the label. Pick the type that matches the answer: text, email, url, tel, number or password. Use type text with a numeric input mode for codes, identifiers and anything with leading zeros. Allow paste and password managers. Dashboard authors cannot place a text field in a card, so fields appear in dialogs and forms, including the text selector. Its single-line field is ha-input. The Markdown card strips input fields. Say that the Civica theme sets no key for ha-input, so its look is Home Assistant's own apart from the primary colour and the neutral border colours. Do not claim a measured focus ring, and never advise building a password field in a Markdown card."
 ai_related:
   - path: "/components/textarea.html"
     title: "Textarea"
@@ -72,15 +74,9 @@ component:
     - name: "<input type=\"hidden\">"
       origin: "HTML5"
       anchor: "child-input-type-hidden"
-    - name: "ha-textfield"
+    - name: "ha-input"
       origin: "Home Assistant"
-      anchor: "child-ha-textfield"
-    - name: "ha-md-textfield"
-      origin: "Home Assistant"
-      anchor: "child-ha-md-textfield"
-    - name: "ha-password-field"
-      origin: "Home Assistant"
-      anchor: "child-ha-password-field"
+      anchor: "child-ha-input"
   tags:
     - "input"
     - "text"
@@ -90,9 +86,7 @@ component:
     - "url"
     - "tel"
     - "hidden"
-    - "ha-textfield"
-    - "ha-md-textfield"
-    - "ha-password-field"
+    - "ha-input"
 ---
 
 # Text Input
@@ -112,9 +106,7 @@ This page covers:
 - `<input type="url">`
 - `<input type="tel">`
 - `<input type="hidden">`
-- `ha-textfield`
-- `ha-md-textfield`
-- `ha-password-field`
+- `ha-input`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -238,19 +230,15 @@ A value that travels with a form but is never shown. It has no label, cannot be 
 
 Home Assistant has no hidden field. `ha-input` has no hidden type, and a dashboard cannot add one: a Markdown card removes it.
 
-<h3 id="child-ha-textfield"><code>ha-textfield</code></h3>
+<h3 id="child-ha-input"><code>ha-input</code></h3>
 
-This version of Home Assistant does not use the name `ha-textfield`. Its single-line field is `ha-input`, and the earlier sections of this page describe it. Use the `text` selector in forms; it is not a dashboard card and has no `type:` key.
+`ha-input` is the single-line field Home Assistant draws, and the earlier sections of this page describe it. Use the `text` selector in forms; it is not a dashboard card and has no `type:` key.
 
-<h3 id="child-ha-md-textfield"><code>ha-md-textfield</code></h3>
-
-This version of Home Assistant does not use the name `ha-md-textfield`, and there is no separate element for it. The outlined look is `ha-input` with `appearance="outlined"`. The other look, `material`, is the default.
+**Outlined look.** The outlined look is `ha-input` with `appearance="outlined"`. The other look, `material`, is the default.
 
 The outlined field has a 1 pixel border. In the Civica theme that border is `#CECECE` in light mode and `#50565A` in dark mode, which is light. `#CECECE` on a `#FFFFFF` card is 1.57:1, calculated from the theme colours. Hovering draws a stronger border and focus uses the theme’s primary colour. Because the border at rest is light, never rely on it alone to show where the field is: keep the label above it.
 
-<h3 id="child-ha-password-field"><code>ha-password-field</code></h3>
-
-This version of Home Assistant does not use the name `ha-password-field`. Password entry is `ha-input` with `type="password"` and a show-or-hide button (`password-toggle`). The sign-in page uses `ha-auth-textfield` instead. Forms that Home Assistant builds from a schema treat a field named password, secret or token as a password field. See [`<input type="password">`](#child-input-type-password) for the rules.
+**Password entry.** Password entry is `ha-input` with `type="password"` and a show-or-hide button (`password-toggle`). The sign-in page uses `ha-auth-textfield` instead. Forms that Home Assistant builds from a schema treat a field named password, secret or token as a password field. See [`<input type="password">`](#child-input-type-password) for the rules.
 
 <h2 id="limits">Advantages and limitations</h2>
 

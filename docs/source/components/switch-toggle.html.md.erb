@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Switch / Toggle specification: the native switch, the Home Assistant switch in settings and entity rows, and the swipe switch in tile controls."
-ai_instructions: "Apply when a control turns one setting or device on or off at once. A switch acts immediately; use a checkbox when the choice is confirmed by a button. Every switch needs a visible label that says what it controls and, where it helps, the state in words. In Home Assistant the settings and entity-row switch is ha-switch, built on the Web Awesome switch. This Home Assistant version has no ha-md-switch. ha-control-switch is the swipe switch inside tile controls and the more-info dialog and cannot be placed alone. A Markdown card cannot hold a switch, because role switch is removed. In entity rows the switch is expected to be drawn smaller than the theme size, so tell people to check its size in their own dashboard. Never claim a measured focus appearance or contrast. The old switch-checked keys do not control ha-switch."
+  - date: "2026-11-26"
+    description: "Removed an entry for a switch that Home Assistant does not draw."
+ai_instructions: "Apply when a control turns one setting or device on or off at once. A switch acts immediately; use a checkbox when the choice is confirmed by a button. Every switch needs a visible label that says what it controls and, where it helps, the state in words. In Home Assistant the settings and entity-row switch is ha-switch, built on the Web Awesome switch. ha-control-switch is the swipe switch inside tile controls and the more-info dialog and cannot be placed alone. A Markdown card cannot hold a switch, because role switch is removed. In entity rows the switch is expected to be drawn smaller than the theme size, so tell people to check its size in their own dashboard. Never claim a measured focus appearance or contrast. The old switch-checked keys do not control ha-switch."
 ai_related:
   - path: "/components/checkboxes.html"
     title: "Checkbox"
@@ -44,9 +46,6 @@ component:
     - name: "ha-switch"
       origin: "Home Assistant"
       anchor: "child-ha-switch"
-    - name: "ha-md-switch"
-      origin: "Home Assistant"
-      anchor: "child-ha-md-switch"
     - name: "ha-control-switch"
       origin: "Home Assistant"
       anchor: "child-ha-control-switch"
@@ -70,7 +69,6 @@ This page covers:
 - Switch / Toggle
   - `<input type="checkbox" role="switch">`
   - `ha-switch`
-  - `ha-md-switch`
   - `ha-control-switch`
 
 <h2 id="anatomy">Anatomy</h2>
@@ -111,10 +109,6 @@ Home Assistant’s switch for settings forms and entity rows, built on the Web A
 **Older keys.** The theme also sets older `switch-checked-*` and `switch-unchecked-*` keys. `ha-switch` does not read them.
 
 The row switch takes its colours from the same `ha-switch` keys as any other switch, so the theme colours apply to it. Changing its size from a dashboard needs the card-mod integration to set the three row variables above.
-
-<h3 id="child-ha-md-switch"><code>ha-md-switch</code></h3>
-
-This Home Assistant version does not use the name `ha-md-switch`. The settings switch is `ha-switch`, built on the Web Awesome switch, and is documented above.
 
 <h3 id="child-ha-control-switch"><code>ha-control-switch</code></h3>
 

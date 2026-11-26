@@ -11,6 +11,8 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Logbook Card specification: the card and its list, what the theme changes, and the limits of a scrolling history."
+  - date: "2026-11-26"
+    description: "Pointed the card entry to the Activity Card page, which owns it."
 ai_instructions: "Apply to the Home Assistant card of type logbook, which the interface calls Activity, and to the list it draws (ha-logbook). The Activity Card page owns the card’s keys, so link to it rather than copying them. The card draws no icon at the start of an entry, and its entries are not a list element. Entries beyond the visible window are not in the page until you scroll, so give people the Show more link and state the period. Day headings are level four headings inside a card whose title is a level one heading. A dashboard author cannot place ha-logbook alone. Do not promise live updates or claim every entry is reachable by keyboard."
 ai_related:
   - path: "/components/activity-card.html"
@@ -29,12 +31,11 @@ component:
   parent: "Logbook Card"
   letter: "L"
   origins:
-    - "Lovelace"
     - "Home Assistant"
   children:
     - name: "hui-logbook-card"
       origin: "Lovelace"
-      anchor: "child-hui-logbook-card"
+      anchor: "xref-hui-logbook-card"
     - name: "ha-logbook"
       origin: "Home Assistant"
       anchor: "child-ha-logbook"
@@ -69,9 +70,9 @@ From top to bottom:
 
 <h2 id="variants">Variants, variables and extensibility</h2>
 
-<h3 id="child-hui-logbook-card"><code>hui-logbook-card</code></h3>
+<h3 id="xref-hui-logbook-card"><code>hui-logbook-card</code></h3>
 
-The card has one required key, `target`, which can hold entities, devices, areas, floors and labels. The other keys are `title`, `hours_to_show`, `state_filter`, `name_detail` and `theme`. See [Activity Card](activity-card.html) for what each key does.
+The card has one required key, `target`, which can hold entities, devices, areas, floors and labels. The other keys are `title`, `hours_to_show`, `state_filter`, `name_detail` and `theme`. The card is owned by [Activity Card](activity-card.html#child-hui-logbook-card), which says what each key does.
 
 What else the card does:
 

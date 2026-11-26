@@ -5,12 +5,14 @@ section: "components"
 group: "Components"
 status: "reference"
 published_on: "2026-11-25"
-updated_on: "2026-11-25"
+updated_on: "2026-11-26"
 last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
     description: "Added the Card Features specification: every feature type, when it appears, its options and what the Civica theme changes."
+  - date: "2026-11-26"
+    description: "Removed four entries that are not card features."
 ai_instructions: "Apply when a Tile, Area, Humidifier or Thermostat card carries card features (features: in YAML). A feature appears only if the entity supports it, so never promise one for every device. Always show the reported state in words beside a feature. Prefer the buttons style to a slider where the feature offers it. Never claim a feature changed a real device in an example. The Civica theme sets no feature shape, so feature controls stay rounded unless the reader sets a Home Assistant variable."
 ai_related:
   - path: "/home-assistant/dashboard-composition.html"
@@ -77,9 +79,6 @@ component:
         - name: "hui-date-set-card-feature"
           origin: "Lovelace"
           anchor: "child-hui-card-features--hui-date-set-card-feature"
-        - name: "hui-duration-schedule-card-feature"
-          origin: "Lovelace"
-          anchor: "child-hui-card-features--hui-duration-schedule-card-feature"
         - name: "hui-fan-direction-card-feature"
           origin: "Lovelace"
           anchor: "child-hui-card-features--hui-fan-direction-card-feature"
@@ -101,9 +100,6 @@ component:
         - name: "hui-lawn-mower-commands-card-feature"
           origin: "Lovelace"
           anchor: "child-hui-card-features--hui-lawn-mower-commands-card-feature"
-        - name: "hui-lawn-mower-dock-card-feature"
-          origin: "Lovelace"
-          anchor: "child-hui-card-features--hui-lawn-mower-dock-card-feature"
         - name: "hui-light-brightness-card-feature"
           origin: "Lovelace"
           anchor: "child-hui-card-features--hui-light-brightness-card-feature"
@@ -137,12 +133,6 @@ component:
         - name: "hui-target-temperature-card-feature"
           origin: "Lovelace"
           anchor: "child-hui-card-features--hui-target-temperature-card-feature"
-        - name: "hui-target-temperature-range-card-feature"
-          origin: "Lovelace"
-          anchor: "child-hui-card-features--hui-target-temperature-range-card-feature"
-        - name: "hui-time-set-card-feature"
-          origin: "Lovelace"
-          anchor: "child-hui-card-features--hui-time-set-card-feature"
         - name: "hui-toggle-card-feature"
           origin: "Lovelace"
           anchor: "child-hui-card-features--hui-toggle-card-feature"
@@ -281,10 +271,6 @@ YAML type `cover-tilt-position`. A slider for the tilt. Appears for a cover that
 
 YAML type `date-set`. Buttons that set the date. Appears for an input date and time with a date, or a date or date and time entity. Options: none.
 
-<h3 id="child-hui-card-features--hui-duration-schedule-card-feature"><code>hui-duration-schedule-card-feature</code></h3>
-
-YAML type: none. This Home Assistant version has no card feature with this name. For timers it draws two others, `timer-actions` (start, pause and cancel buttons) and `timer-presets` (preset durations). Neither is listed as its own section here.
-
 <h3 id="child-hui-card-features--hui-fan-direction-card-feature"><code>hui-fan-direction-card-feature</code></h3>
 
 YAML type `fan-direction`. A choice of direction. Appears for a fan that can change direction. Options: none.
@@ -312,10 +298,6 @@ YAML type `humidifier-toggle`. An on and off choice. Appears for any humidifier.
 <h3 id="child-hui-card-features--hui-lawn-mower-commands-card-feature"><code>hui-lawn-mower-commands-card-feature</code></h3>
 
 YAML type `lawn-mower-commands`. Command buttons. Docking is one of these commands. Appears for a lawn mower that supports start or pause, stop or dock. Options: `commands`: any of `start_pause`, `stop`, `dock`.
-
-<h3 id="child-hui-card-features--hui-lawn-mower-dock-card-feature"><code>hui-lawn-mower-dock-card-feature</code></h3>
-
-YAML type: none. This Home Assistant version has no separate dock feature. Docking is one of the commands in `lawn-mower-commands`: see that section.
 
 <h3 id="child-hui-card-features--hui-light-brightness-card-feature"><code>hui-light-brightness-card-feature</code></h3>
 
@@ -360,14 +342,6 @@ YAML type `target-humidity`. Buttons or a slider for the target humidity. Appear
 <h3 id="child-hui-card-features--hui-target-temperature-card-feature"><code>hui-target-temperature-card-feature</code></h3>
 
 YAML type `target-temperature`. Buttons or a slider for the target. For a range, it sets a low and a high value, and the sliders keep them from crossing. Appears for a climate entity with a target temperature or a temperature range, or a water heater with a target temperature. Options: `style` (`buttons` or `slider`).
-
-<h3 id="child-hui-card-features--hui-target-temperature-range-card-feature"><code>hui-target-temperature-range-card-feature</code></h3>
-
-YAML type: none. This Home Assistant version has no separate range feature. `target-temperature` handles a low and a high target itself when the climate entity supports a range: see that section.
-
-<h3 id="child-hui-card-features--hui-time-set-card-feature"><code>hui-time-set-card-feature</code></h3>
-
-YAML type: none. This Home Assistant version has no feature for setting a time on its own. `date-set` is the nearest: it covers an input date and time with a date, and date entities, but not a time alone.
 
 <h3 id="child-hui-card-features--hui-toggle-card-feature"><code>hui-toggle-card-feature</code></h3>
 
