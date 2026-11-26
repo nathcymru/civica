@@ -1,0 +1,118 @@
+---
+title: "Device Picker"
+description: "Choose one device, or a list of devices, in a Home Assistant form."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Device Picker specification: choosing one device or several, what Civica styles and what stays as Home Assistant draws it."
+ai_instructions: "Apply when a form asks people to choose a device. Use ha-device-picker for one device and ha-devices-picker for a list. Ask in terms of purpose, such as Which device should this use. Keep the device name with its area beneath it, and keep Home Assistant’s own wording for no devices, no match and an unknown device. A picker cannot be added to a dashboard card; it appears in automation, script and helper editors through the device selector. Do not claim keyboard behaviours of the list or its ARIA roles. Link to the target pickers page for meaning and states."
+ai_related:
+  - path: "/home-assistant/target-pickers.html"
+    title: "Entity, device and area pickers"
+    relationship: "Owns what device, area and entity selection means, and its states."
+  - path: "/home-assistant/schema-selectors.html"
+    title: "Schema selectors and configuration forms"
+    relationship: "Owns the device selector in automations and scripts."
+  - path: "/components/area-picker.html"
+    title: "Area Picker"
+    relationship: "The sibling picker for choosing an area."
+  - path: "/components/combobox-autocomplete.html"
+    title: "Combobox / Autocomplete"
+    relationship: "Owns the searchable list pattern."
+component:
+  parent: "Device Picker"
+  letter: "D"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-device-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-device-picker"
+    - name: "ha-devices-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-devices-picker"
+  tags:
+    - "ha-device-picker"
+    - "ha-devices-picker"
+---
+
+# Device Picker
+
+<h2 id="purpose">Purpose</h2>
+
+A device picker lets people choose which device a setting, automation or script uses, such as “Kitchen light”. Home Assistant uses it in forms and, through the `device` selector, in automations and scripts. Use `ha-device-picker` to choose one device and `ha-devices-picker` to choose several.
+
+This page owns the two pickers as components. For what choosing a device means, and for its empty, saved and failed states, see [Entity, device and area pickers](../home-assistant/target-pickers.html). For the selector in automations, see [Schema selectors and configuration forms](../home-assistant/schema-selectors.html).
+
+This page covers:
+
+- Device Picker
+  - `ha-device-picker`
+  - `ha-devices-picker`
+
+<h2 id="anatomy">Anatomy</h2>
+
+- A field with a label, helper text and the chosen device. A clear button shows when a value is set, unless it is hidden.
+- A searchable list of devices. Each row shows the device name with its area beneath it. A device with no area shows “No area”.
+- A warning alert beneath the field when the chosen device has been replaced by another, with a button to update the choice.
+- For several devices: one field for each chosen device, plus one empty field to add the next.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+**What the Civica theme sets.** The field follows Home Assistant’s form field values: a 2 pixel border and square corners, with the white form background in light mode or the dark surface in dark mode. The focus colour is the Civica yellow. The warning alert uses the warning colour: `#8A6100` in light mode and `#DED3B8` in dark mode.
+
+**What stays as Home Assistant draws it.**
+
+- The list and its rows. The theme sets no colours for the rows, and you cannot restyle them from a dashboard.
+- The wording for empty, no match and unknown, and the layout of the area beneath each name.
+- Where it appears. A picker cannot be placed on a dashboard card. It appears in editors only.
+
+<h3 id="child-ha-device-picker"><code>ha-device-picker</code></h3>
+
+Chooses one device.
+
+- Attributes include `label`, `value` (the device ID), `helper`, `placeholder`, `search-label`, `required`, `disabled` and `hide-clear-icon`.
+- Filters narrow the list to devices from certain integrations or with certain device classes, or leave some devices out. In an automation these come from the selector settings: `integration`, `manufacturer`, `model`, `entity` and `filter`.
+- It tells the page the new value when it changes.
+- Home Assistant supplies the wording for an empty list (“No devices available”), no match (“No devices found for” the search), the placeholder (“Select a device”) and an unknown device (“Unknown device selected”). Keep these words, so they stay translated.
+- A device that was replaced, for example when an integration splits it into several, shows “Replaced device”. The alert beneath names the replacement and offers to update the choice.
+
+In an automation or script, the same control is the `device` selector.
+
+<h3 id="child-ha-devices-picker"><code>ha-devices-picker</code></h3>
+
+Chooses several devices. It shows one `ha-device-picker` for each chosen device, plus an empty one to add another. It takes the same filters and tells the page the list of devices when it changes. It has labels for a chosen device and for the empty field to add one. In an automation, it is the `device` selector with `multiple: true`.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A searchable list handles homes with many devices.
+- The area beneath each name tells apart devices that share a name.
+- Several devices of the same name stay hard to tell apart if they have no area. Give devices clear names in Home Assistant.
+- A multiple picker grows with each choice. Check it on a narrow screen.
+- Keyboard use of the list is Home Assistant’s own.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Label the field with a purpose: “Which device should switch on the lights?” rather than “Device”. Say what choosing a device changes. Keep the chosen device visible after the list closes. If the list may be empty, say what to do next, such as adding the device in Settings first.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 3.3.2 Labels or Instructions: a visible label and, where needed, helper text.
+- 2.1.1 Keyboard and 2.4.3 Focus Order: the list opens, searches and closes with the keyboard.
+- 2.4.7 Focus Visible and 1.4.11 Non-text Contrast: check the field has a 2 pixel border and a Civica yellow focus colour.
+- 2.5.8 Target Size (Minimum): rows and the clear button are easy to press.
+- 4.1.2 Name, Role, Value: the field has a name and a value.
+
+Show the area with the name, ask in the language of the task and keep the list short.
+
+<h2 id="examples">Examples</h2>
+
+### A form that asks which device an automation uses
+
+<%= example('spec-device-picker-automation') %>

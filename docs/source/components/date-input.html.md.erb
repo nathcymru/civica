@@ -1,67 +1,196 @@
 ---
-title: Date input
-description: Use separate day, month and year fields for a date the user already knows.
-section: components
-group: Form elements
-source_url: https://service-manual.nhs.uk/design-system/components/date-input
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Date & Time Picker"
+description: "Choose a date or a time in Home Assistant, or ask for a known date with separate day, month and year fields."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewrote the page as Date & Time Picker: the five browser date and time fields, Home Assistant’s date, time and date-range pickers, and the three-field date pattern."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Corrected punctuation in the invalid-date check.
-  - date: 2026-11-11
-    description: Added NHS-informed date input guidance and 2 Home Assistant reference examples.
+  - date: "2026-11-11"
+    description: "Corrected punctuation in the invalid-date check."
+ai_instructions: "Apply when someone must give a date or time. Home Assistant’s date field (ha-date-input) is read-only and opens a calendar, so it does not accept typing. For a date the person already knows, such as an installation date, use three labelled fields for day, month and year. Validate the whole date, keep the correct parts after an error and never shift a date-only record when the time zone changes. Native date and time inputs are drawn by the browser and look different in each. Do not claim the calendar’s selected-day colour is a Civica setting. Keep Home Assistant’s own date-range controls for Energy and History."
+ai_related:
+  - path: "/components/controls.html"
+    title: "Buttons and forms"
+    relationship: "Owns buttons and form behaviour."
+  - path: "/components/text-input.html"
+    title: "Text input"
+    relationship: "Owns the text fields used for day, month and year."
+  - path: "/components/fieldset.html"
+    title: "Fieldset & Legend"
+    relationship: "Owns grouping the three fields as one question."
+  - path: "/components/hint-text.html"
+    title: "Hint text"
+    relationship: "Owns the format hint shown under the question."
+  - path: "/components/error-message.html"
+    title: "Error Message & Error Summary"
+    relationship: "Owns the wording of a message for a wrong date."
+  - path: "/components/action-bar-bottom-sheet.html"
+    title: "Action Bar / Bottom Sheet"
+    relationship: "Owns the sheet a date range opens on small screens."
+component:
+  parent: "Date & Time Picker"
+  letter: "D"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<input type=\"date\">"
+      origin: "HTML5"
+      anchor: "child-input-type-date"
+    - name: "<input type=\"time\">"
+      origin: "HTML5"
+      anchor: "child-input-type-time"
+    - name: "<input type=\"datetime-local\">"
+      origin: "HTML5"
+      anchor: "child-input-type-datetime-local"
+    - name: "<input type=\"month\">"
+      origin: "HTML5"
+      anchor: "child-input-type-month"
+    - name: "<input type=\"week\">"
+      origin: "HTML5"
+      anchor: "child-input-type-week"
+    - name: "ha-date-input"
+      origin: "Home Assistant"
+      anchor: "child-ha-date-input"
+    - name: "ha-time-input"
+      origin: "Home Assistant"
+      anchor: "child-ha-time-input"
+    - name: "ha-date-range-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-date-range-picker"
+    - name: "ha-dialog-date-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-dialog-date-picker"
+  tags:
+    - "input"
+    - "ha-date-input"
+    - "ha-time-input"
+    - "ha-date-range-picker"
+    - "ha-dialog-date-picker"
 ---
 
-# Date input
+# Date & Time Picker
 
-Use separate day, month and year fields for a date the user already knows.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A date or time picker lets people give a day, a time, or a range of days. There are two families. The browser draws its own field for `<input type="date">` and its relatives. Home Assistant draws its own date, time and date-range pickers, which you meet in automations, helpers, History and Energy. A dashboard author cannot add either family to a card, but can ask for a known date with three plain fields in a custom panel or form.
 
-## When to use it
+This page owns the picker elements and the three-field date pattern. For buttons and form behaviour, see [Buttons and forms](controls.html).
 
-Use it to record a known filter replacement date or the date an installation was completed. Keep the units visible and accept leading zeros without making people retype them.
+This page covers:
 
-## When not to use it
+- Date & Time Picker
+  - `<input type="date">`
+  - `<input type="time">`
+  - `<input type="datetime-local">`
+  - `<input type="month">`
+  - `<input type="week">`
+  - `ha-date-input`
+  - `ha-time-input`
+  - `ha-date-range-picker`
+  - `ha-dialog-date-picker`
 
-Do not use these three fields to choose an Energy reporting range or find an available date. Preserve Home Assistant’s native date-range controls for exploration.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+- **Browser fields:** one field with parts for the day, month and year, or hours and minutes, and often a calendar or clock button. The browser decides the look.
+- **Home Assistant date field:** a read-only field with a calendar icon at the end. Pressing it opens a calendar.
+- **Home Assistant time field:** boxes for hours and minutes, and seconds when asked, with an am and pm choice on a 12-hour clock.
+- **Date range picker:** a field that opens a calendar with ready-made ranges. On a small screen it opens as a sheet.
+- **Three-field date:** a question, a format hint and three labelled boxes for day, month and year.
 
-Group the fields as one question and validate the whole calendar date, including leap years. A date-only maintenance record is not a timestamp: do not silently shift it when the account timezone changes. Do not use birthday autocomplete attributes for appliance dates.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Accessibility and behaviour
+All five browser fields share the attributes `min`, `max`, `step`, `required`, `readonly` and `disabled`. Give each a visible label. A placeholder is not a label. The look, the keyboard use and the language of the picker differ between browsers, and support for the month and week fields is not the same everywhere. Test them in the browsers your household uses.
 
-Give every part its own label and numeric input mode, then associate the group hint and error. Link an error summary to the first incorrect part. Keep correct parts intact after a failed submission.
+What the Civica theme sets for Home Assistant’s own form fields, which include the date and time fields: a 2 pixel border in the text colour, square corners and a white field in light mode or the dark surface in dark mode. The focus colour is the Civica yellow. The calendar’s selected-day colour and layout are Home Assistant’s own.
 
-## Examples
+<h3 id="child-input-type-date"><code>&lt;input type=&quot;date&quot;&gt;</code></h3>
+
+Chooses a day. Its value is written `YYYY-MM-DD`. It carries no time zone.
+
+<h3 id="child-input-type-time"><code>&lt;input type=&quot;time&quot;&gt;</code></h3>
+
+Chooses a time of day. Its value is written `HH:MM`, or `HH:MM:SS` when seconds are used.
+
+<h3 id="child-input-type-datetime-local"><code>&lt;input type=&quot;datetime-local&quot;&gt;</code></h3>
+
+Chooses a day and a time together. Its value is written `YYYY-MM-DDTHH:MM` and has no time zone, so say which time zone you mean next to the field.
+
+<h3 id="child-input-type-month"><code>&lt;input type=&quot;month&quot;&gt;</code></h3>
+
+Chooses a month and year. Its value is written `YYYY-MM`.
+
+<h3 id="child-input-type-week"><code>&lt;input type=&quot;week&quot;&gt;</code></h3>
+
+Chooses a week of a year. Its value is written `YYYY-Www`. Most households do not think in week numbers, so prefer a date range.
+
+<h3 id="child-ha-date-input"><code>ha-date-input</code></h3>
+
+Home Assistant’s date field. It shows the chosen date in the person’s own date format, with a calendar icon.
+
+- It is read-only. People cannot type a date into it; pressing it, or pressing Space or Enter, opens the calendar. Where the field can be cleared, Backspace or Delete clears it.
+- It has a label, an accessible label, helper text, `min`, `max`, `disabled` and `required`. The earliest date it allows by default is 1 January 1970.
+- It holds a date only, with no time. It tells the page when the value changes.
+- In an automation or helper, the `date` selector uses it, and the `datetime` selector uses it beside the time field.
+
+<h3 id="child-ha-time-input"><code>ha-time-input</code></h3>
+
+Home Assistant’s time field. It shows boxes for hours and minutes, and for seconds when `enable-second` is on. The clock is 12-hour or 24-hour to suit the person’s language and region. It has a label, helper text, `disabled` and `required`, and tells the page when the value changes. The `time` selector uses it.
+
+<h3 id="child-ha-date-range-picker"><code>ha-date-range-picker</code></h3>
+
+Chooses a start and an end date, with ready-made ranges and an optional time. On a wide screen it opens as a popover. On a small screen it opens as a bottom sheet (see [Action Bar / Bottom Sheet](action-bar-bottom-sheet.html)). It has previous and next buttons to move between months. Home Assistant uses it for the History and Energy date ranges. Keep these native controls for exploring dates. Do not replace them with three fields.
+
+<h3 id="child-ha-dialog-date-picker"><code>ha-dialog-date-picker</code></h3>
+
+The calendar that `ha-date-input` opens. It shows a month, with previous and next month buttons, a Cancel and a Set button, and can limit the choice between a minimum and a maximum date. It also offers a clear button where the field allows clearing. A dashboard author cannot open it directly.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A calendar suits finding a day in the near future or past and checking the weekday.
+- A calendar is slow for a date the person already knows, such as an installation date years ago. Three fields are quicker and easier to check.
+- `ha-date-input` does not accept typing, so a person who cannot use a calendar easily has no other route in that field.
+- Browser date fields differ in look and behaviour, and the calendar cannot be restyled from a theme.
+- A date and time with no time zone can be read in the wrong zone. State the zone.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use Home Assistant’s own pickers where Home Assistant shows them. Do not rebuild them. For a date that people know, use three fields. For a date range on a chart, keep Home Assistant’s range picker, which opens as the sheet described on [Action Bar / Bottom Sheet](action-bar-bottom-sheet.html).
+
+### Ask for a known date with three fields
+
+Use day, month and year fields for something like the date a filter was replaced or a device was installed. Keep the units visible and accept a leading zero without making people retype.
+
+- Ask one question and group the fields in a fieldset, with the question as its legend. Give each part its own label and a numeric keyboard on a phone. Show the expected format, such as “For example, 11 11 2026”, as a hint and link it to the group.
+- Validate the whole date, including 31 February and leap years. Say which part is wrong, for example “Month must be between 1 and 12”, and keep the parts that are correct. Link an error summary to the first wrong part.
+- A date-only record is not a timestamp. Do not shift it when the time zone changes.
+- Do not use birthday autofill hints for appliance dates.
+- Explain a limit in plain words, for example “The date cannot be in the future”, rather than calling a date “invalid”.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 3.3.2 Labels or Instructions: a visible label and a format hint.
+- 3.3.1 Error Identification and 3.3.3 Error Suggestion: name the wrong part and say how to fix it.
+- 3.3.7 Redundant Entry: keep the valid parts after an error.
+- 2.1.1 Keyboard and 2.5.8 Target Size (Minimum): the calendar and its buttons work by keyboard and are easy to press.
+- 4.1.2 Name, Role, Value: every part has a name.
+
+Test missing parts, 31 February, an unexpected future date and a phone number keyboard. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
 
 ### Record a known maintenance date
 
-The date is supplied by the user, not inferred from a sensor.
-
-<%= example('nhs-date-maintenance') %>
+<%= example('spec-date-maintenance') %>
 
 ### Correct one part of a date
 
-The month is identified and the other answers remain intact.
-
-<%= example('nhs-date-error') %>
-
-## Check the implementation
-
-Test missing parts, 31 February, an unexpected future date and mobile number keyboards. Explain any domain-specific date restriction in plain language rather than rejecting it as “invalid”.
-
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS date input](https://service-manual.nhs.uk/design-system/components/date-input) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
-
-See also [buttons and forms](controls.html).
+<%= example('spec-date-error') %>

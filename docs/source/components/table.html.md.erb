@@ -1,81 +1,260 @@
 ---
-title: Table
-description: Use a table when shared columns help people compare values and understand relationships.
-section: components
-group: Content presentation
-source_url: https://service-manual.nhs.uk/design-system/components/table
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Data Table"
+description: "Use a table when shared columns help people compare values, and know what Home Assistant’s own data table does and does not offer."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewrote the Data Table page: the HTML table parts, Home Assistant’s own data table and its filters, the theme settings that apply, and three table examples."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Separated shared table semantics from the chart adapter and its native data and compatibility contract.
-  - date: 2026-11-11
-    description: Added observation dates, interval context and calendar dates to all three measurement tables.
-  - date: 2026-11-11
-    description: Added NHS-informed table guidance and 3 Home Assistant reference examples.
+  - date: "2026-11-11"
+    description: "Separated shared table semantics from the chart adapter and its native data and compatibility contract."
+  - date: "2026-11-11"
+    description: "Added observation dates, interval context and calendar dates to all three measurement tables."
+ai_instructions: "Apply when values need shared columns. A dashboard author can show a real table with a caption and header cells in a Markdown card. ha-data-table is Home Assistant’s own grid for settings screens and cannot be added to a dashboard. Give every table a caption, put the unit in the heading, right-align numbers and keep a missing value distinct from zero. The area filter in the filter pane is ha-filter-floor-areas, not ha-filter-areas. Do not claim a contrast ratio for the divider lines or that the table is keyboard-complete. Link to the Charts and tables page for a chart’s data alternative."
+ai_related:
+  - path: "/components/charts.html"
+    title: "Charts and tables"
+    relationship: "Owns plotted geometry, legends and a chart’s data alternative."
+  - path: "/components/summary-list.html"
+    title: "Summary list"
+    relationship: "Use for the properties of one device instead of a table."
+  - path: "/components/description-list.html"
+    title: "Description List"
+    relationship: "Owns the term and description markup behind a summary list."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the checks to run on a table at 320 pixels and in both modes."
+component:
+  parent: "Data Table"
+  letter: "D"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<table>"
+      origin: "HTML5"
+      anchor: "child-table"
+      grandchildren:
+        - name: "<caption>"
+          origin: "HTML5"
+          anchor: "child-table--caption"
+        - name: "<colgroup>"
+          origin: "HTML5"
+          anchor: "child-table--colgroup"
+        - name: "<col>"
+          origin: "HTML5"
+          anchor: "child-table--col"
+        - name: "<thead>"
+          origin: "HTML5"
+          anchor: "child-table--thead"
+        - name: "<tbody>"
+          origin: "HTML5"
+          anchor: "child-table--tbody"
+        - name: "<tfoot>"
+          origin: "HTML5"
+          anchor: "child-table--tfoot"
+        - name: "<tr>"
+          origin: "HTML5"
+          anchor: "child-table--tr"
+        - name: "<th>"
+          origin: "HTML5"
+          anchor: "child-table--th"
+        - name: "<td>"
+          origin: "HTML5"
+          anchor: "child-table--td"
+    - name: "ha-data-table"
+      origin: "Home Assistant"
+      anchor: "child-ha-data-table"
+      grandchildren:
+        - name: "ha-filter-states"
+          origin: "Home Assistant"
+          anchor: "child-ha-data-table--ha-filter-states"
+        - name: "ha-filter-domains"
+          origin: "Home Assistant"
+          anchor: "child-ha-data-table--ha-filter-domains"
+        - name: "ha-filter-areas"
+          origin: "Home Assistant"
+          anchor: "child-ha-data-table--ha-filter-areas"
+        - name: "ha-filter-devices"
+          origin: "Home Assistant"
+          anchor: "child-ha-data-table--ha-filter-devices"
+        - name: "ha-filter-labels"
+          origin: "Home Assistant"
+          anchor: "child-ha-data-table--ha-filter-labels"
+  tags:
+    - "table"
+    - "ha-data-table"
 ---
 
-# Table
+# Data Table
 
-Use a table when shared columns help people compare values and understand relationships.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A data table lays out values in rows and columns so people can compare them, such as the temperature in each room. There are two kinds. A real table is plain HTML that you can show in a Markdown card. `ha-data-table` is Home Assistant’s own table in settings screens, such as lists of devices and entities. A dashboard author cannot add it to a card.
 
-## Table semantics and chart composition
+This page owns table structure: captions, header cells, number alignment and sideways scrolling. The [Charts and tables](charts.html) page owns plotted geometry, legends and the data alternative for a chart. For the properties of one device, a [summary list](summary-list.html) reads better than a table.
 
-This page owns captions, header associations, numeric columns and accessible overflow. Use it for original tabular content and for a chart’s data alternative. The [chart component](charts.html) separately owns plotted geometry, legend behaviour, data projection and native Energy compatibility; the [working chart examples](chart-examples.html) use its production adapter.
+This page covers:
 
-A static measurement table does not connect to History or Energy. A live chart table must use the same supported values and period as its plot, keep missing values distinct from zero and state whether hidden series are included. Reuse these table semantics without copying synthetic rows into a connected view.
+- Data Table
+  - `<table>`
+    - `<caption>`
+    - `<colgroup>`
+    - `<col>`
+    - `<thead>`
+    - `<tbody>`
+    - `<tfoot>`
+    - `<tr>`
+    - `<th>`
+    - `<td>`
+  - `ha-data-table`
+    - `ha-filter-states`
+    - `ha-filter-domains`
+    - `ha-filter-areas`
+    - `ha-filter-devices`
+    - `ha-filter-labels`
 
-## When to use it
+<h2 id="anatomy">Anatomy</h2>
 
-Use it for readings from several rooms or the values behind a chart. Give the table a caption and show units in the headings or cells. Right-align comparable numbers.
+- **A real table:** a caption that says what the table shows, a header row of column headings, body rows that each start with a row heading, and sometimes a footer row for totals.
+- **Home Assistant’s data table:** a header row where a column heading can be pressed to sort, rows that can be selected or pressed, an optional search box and filter pane beside it, and a message when there is nothing to show. A progress bar shows while data loads.
 
-## When not to use it
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Do not use a table for page layout or force a large data set into a tiny card. A summary list is clearer for the properties of one device; a short explanation may be clearer than a table.
+<h3 id="child-table"><code>&lt;table&gt;</code></h3>
 
-## Home Assistant adaptation
+A real table has an optional caption first, then optional column groups, a header section, one or more body sections and an optional footer section. The browser treats it as a table, so a screen reader can read each cell with its headings.
 
-Keep recorded zeros distinct from missing values. The Energy companion’s View data table is an implemented example with pagination and native period semantics; these broader table variants are reference patterns. Preserve the selected date, unit and timezone when presenting chart values.
+HTML5 has no `border` or `summary` attribute. Say what the table shows in its caption. Do not use a table to lay out a page.
 
-## Accessibility and behaviour
+A Markdown card draws a table written in Markdown. Markdown has no caption, so name the table in the line above it and put the unit in each column heading. The Civica theme sets no table-specific variables, so borders and spacing in a Markdown table stay as Home Assistant draws them.
 
-Use proper row and column headers. A wide table may scroll inside a labelled, keyboard-focusable region while the rest of the page reflows. Preserve table semantics if you develop a stacked layout. Sorting needs real buttons, aria-sort and feedback, not a decorative arrow.
+<h3 id="child-table--caption"><code>&lt;caption&gt;</code></h3>
 
-## Examples
+The first child of a table. It names the table and sets its accessible name. Write what, where and when: “Room temperatures at 09:00 on 11 November 2026”.
+
+<h3 id="child-table--colgroup"><code>&lt;colgroup&gt;</code></h3>
+
+Groups columns so they can share a width or background. It adds no meaning for a screen reader, so use headers for meaning.
+
+<h3 id="child-table--col"><code>&lt;col&gt;</code></h3>
+
+Sits inside `<colgroup>` and styles one column, or several with `span`. It is for presentation only.
+
+<h3 id="child-table--thead"><code>&lt;thead&gt;</code></h3>
+
+Holds the header row. Keep one header row where you can.
+
+<h3 id="child-table--tbody"><code>&lt;tbody&gt;</code></h3>
+
+Holds the data rows. A table can have more than one body section to group rows.
+
+<h3 id="child-table--tfoot"><code>&lt;tfoot&gt;</code></h3>
+
+Holds a summary row, such as a total. Say in the row heading what the total covers.
+
+<h3 id="child-table--tr"><code>&lt;tr&gt;</code></h3>
+
+One row of cells.
+
+<h3 id="child-table--th"><code>&lt;th&gt;</code></h3>
+
+A header cell. Use `scope="col"` for a column heading and `scope="row"` for a row heading. In a complex table, the `headers` attribute links a cell to several headings. Use `colspan` and `rowspan` rarely, because merged cells are hard to follow.
+
+<h3 id="child-table--td"><code>&lt;td&gt;</code></h3>
+
+A data cell. Right-align numbers that people compare, and keep decimal places consistent in a column. Write “Not available” for a missing reading. Do not write zero.
+
+<h3 id="child-ha-data-table"><code>ha-data-table</code></h3>
+
+Home Assistant’s own table. It is not an HTML table: it builds a grid and marks it up for assistive technology as a table with rows, column headings and cells, and sets the sort direction on a sorted column heading. Its main column is the row heading.
+
+Columns can be sortable, filterable, groupable, hidden, reordered or shown only on wide screens. Rows can be selected and pressed. It tells the page when sorting, grouping, selection or a row press changes, and a failed load can be retried.
+
+You cannot put `ha-data-table` in a dashboard card, and it has no YAML. It is used in settings screens such as the list of devices, so a dashboard author sees it only there.
+
+What the Civica theme sets:
+
+- `ha-data-table-background`: white in light mode and the dark surface (`#24282B`) in dark mode.
+- `divider-color`: the lines between rows.
+- `primary-text-color` and `secondary-text-color`: the text.
+
+What stays as Home Assistant draws it:
+
+- Row height. It defaults to 52 pixels and the theme does not set it.
+- The focus outline uses the theme’s primary colour, not the Civica yellow focus colour.
+- Deeper changes, such as the weight of the header or the hover fill, are not available from a theme.
+
+<h3 id="child-ha-data-table--ha-filter-states"><code>ha-filter-states</code></h3>
+
+A filter in the filter pane beside a table. It lets people pick which states to show. Choosing a value tells the table to filter. It has a label and a list of states to choose from.
+
+<h3 id="child-ha-data-table--ha-filter-domains"><code>ha-filter-domains</code></h3>
+
+A filter by integration domain. Its value is a list of domains. Domain names are Home Assistant’s own, so keep them as they are.
+
+<h3 id="child-ha-data-table--ha-filter-areas"><code>ha-filter-areas</code></h3>
+
+This Home Assistant version does not use the name `ha-filter-areas`. The area filter in the filter pane is the floor-and-area filter, `ha-filter-floor-areas`. Its value holds a list of floors and a list of areas, and it can include disabled entities.
+
+<h3 id="child-ha-data-table--ha-filter-devices"><code>ha-filter-devices</code></h3>
+
+A filter by device. Its value is a list of devices, and it can include disabled entities.
+
+<h3 id="child-ha-data-table--ha-filter-labels"><code>ha-filter-labels</code></h3>
+
+A filter by label. Its value is a list of labels.
+
+All five filters sit in the filter pane. A dashboard author cannot place or restyle them, and the Civica theme does not set colours for them.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A real table keeps its meaning for assistive technology when it has a caption and header cells.
+- A real table can scroll sideways inside a labelled region while the rest of the page reflows.
+- A table is poor for a few values. Use a summary list or a sentence.
+- A wide table is hard on a narrow screen. Do not hide columns to make it fit.
+- `ha-data-table` is not available on dashboards.
+- Hover colours and header weight in Home Assistant’s table cannot be changed from a theme.
+- The divider lines are a quiet grey. Never use a line as the only way to tell rows apart or to show a value.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a table when people compare values across the same columns, or when you give the figures behind a chart. Give every table a caption and show the unit in the heading, not in every cell. Right-align comparable numbers.
+
+Keep a recorded zero separate from a missing reading. A live table that sits beside a chart must show the same values and period as the chart, and say whether hidden series are included.
+
+Do not use a table for layout or force a large data set into a small card. Make sorting predictable: use real buttons in the column headings and say which way a column is sorted in words as well as with an arrow.
+
+A wide table may scroll inside a labelled region that can be reached with the keyboard. At 320 pixels wide the page itself must not scroll sideways.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 1.3.2 Meaningful Sequence: header cells and a sensible reading order.
+- 1.4.4 Resize Text and 1.4.10 Reflow: the table scrolls inside its region and the page reflows.
+- 1.4.11 Non-text Contrast: borders and focus outlines that convey meaning must be clear.
+- 2.1.1 Keyboard, 2.4.3 Focus Order and 2.4.7 Focus Visible: sort buttons and scroll regions work and show focus.
+- 2.5.8 Target Size (Minimum): row actions and sort buttons are at least 24 CSS pixels.
+- 4.1.2 Name, Role, Value: a sorted column states its direction.
+
+Test the table at 320 pixels, by keyboard, with negative and missing values, and in light and dark modes. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
 
 ### Compare room temperatures
 
-The caption and column heading state what the values mean.
-
-<%= example('nhs-table-readings') %>
+<%= example('spec-table-readings') %>
 
 ### Distinguish zero from missing data
 
-A missing reading remains text, not a fabricated zero.
-
-<%= example('nhs-table-missing') %>
+<%= example('spec-table-missing') %>
 
 ### A wide comparison
 
-The labelled region provides horizontal access without hiding columns.
-
-<%= example('nhs-table-scroll') %>
-
-## Check the implementation
-
-Test 320px width, keyboard scrolling, negative values, missing values, decimal alignment and a screen reader’s cell-header navigation. Do not hide important columns just to fit the viewport.
-
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS table](https://service-manual.nhs.uk/design-system/components/table) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
-
-See also [charts and tables](charts.html).
+<%= example('spec-table-scroll') %>

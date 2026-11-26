@@ -1,0 +1,125 @@
+# Synthetic data. Simulated cards and forms; no live actions.
+examples:
+  spec-energy-usage-today:
+    title: Hourly energy use compared with the previous day
+    description: "A simulated energy usage graph card in the Civica chart colours, showing energy used over three hours from midnight on 11 November 2026 against the same hours the day before. Each column is one hour, in kWh, and a View data control opens the same values as a table."
+    height: 850
+    html: |
+      <div data-civica-energy-examples data-example-chart="usage"></div><noscript><p>Interactive charts need JavaScript. Read the values in the table on the Energy dashboard instead.</p></noscript><script type="module" src="../javascripts/energy-chart-examples.js"></script>
+  spec-entities-card-living-room:
+    title: An entities card for the living room, simulated
+    description: "A simulated entities card with a title, a section label and four rows: a reading, a light with a Turn off button, a lock with an Unlock button and a second reading. Every state is written in words."
+    height: 640
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-entities-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-entities-title">Living room</h2><ul class="govuk-list" style="list-style:none;padding:0;margin:0"><li style="display:flex;align-items:center;gap:12px;min-height:48px"><span style="flex:1">Temperature</span><strong>20.5 °C</strong></li><li style="display:flex;align-items:center;gap:12px;min-height:48px;border-top:1px solid #CECECE"><span style="flex:1">Ceiling light</span><span>On</span><button type="button" class="govuk-button govuk-button--secondary" style="margin:0">Turn off</button></li><li style="padding:16px 0 4px;border-top:1px solid #CECECE"><strong>Doors</strong></li><li style="display:flex;align-items:center;gap:12px;min-height:48px"><span style="flex:1">Front door</span><span>Locked</span><button type="button" class="govuk-button govuk-button--secondary" style="margin:0">Unlock</button></li><li style="display:flex;align-items:center;gap:12px;min-height:48px;border-top:1px solid #CECECE"><span style="flex:1">Humidity</span><strong>48%</strong></li></ul></div></article>
+  spec-entity-card-hall:
+    title: An entity card for the hall temperature, simulated
+    description: "A simulated entity card in the same layout as the real one: the entity name at the top left, an icon at the top right and the state below, large, with its unit. It does nothing when selected."
+    height: 300
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-entity-title"><div class="civica-card-demo__body"><div style="display:flex;justify-content:space-between;align-items:center"><h2 id="spec-entity-title" style="margin:0;font-size:1.125rem;font-weight:500;color:#484949">Hall temperature</h2><svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 40 40"><path d="M20 6v18m-5 0a5 5 0 1 0 10 0" fill="none" stroke="#0b0c0c" stroke-width="2.5"></path></svg></div><p style="margin:8px 0 0"><span style="font-size:2rem;font-weight:500">19.5</span> <span style="font-size:1.125rem;color:#484949">°C</span></p></div></article>
+  spec-entity-filter-open-doors:
+    title: An entity filter card listing open doors and windows, simulated
+    description: "A simulated entity filter card that lists only the doors and windows that are open: the back door and the kitchen window, each with its state in words."
+    height: 420
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-filter-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-filter-title">Open doors and windows</h2><ul class="govuk-list" style="list-style:none;padding:0;margin:0"><li style="display:flex;align-items:center;gap:12px;min-height:48px"><span style="flex:1">Back door</span><strong>Open</strong></li><li style="display:flex;align-items:center;gap:12px;min-height:48px;border-top:1px solid #CECECE"><span style="flex:1">Kitchen window</span><strong>Open</strong></li></ul></div></article>
+  spec-entity-picker-search:
+    title: An entity picker with a search and matching entities, simulated
+    description: "A simulated entity picker: a label that says what to choose, helper text, the typed search “kitchen” and the three matching entities with their names, areas and entity IDs."
+    height: 560
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-picker-entity-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-picker-entity-title">Choose an entity</h2><div class="govuk-form-group"><label class="govuk-label" for="spec-picker-entity-search">Entity</label><div class="govuk-hint" id="spec-picker-entity-hint">Type part of a name to narrow the list.</div><input class="govuk-input" id="spec-picker-entity-search" type="text" value="kitchen" aria-describedby="spec-picker-entity-hint"></div><ul class="govuk-list" style="list-style:none;padding:0;margin:0;border:1px solid #CECECE"><li style="padding:8px 12px"><strong>Kitchen temperature</strong><br><span class="govuk-hint" style="margin:0">Kitchen · sensor.kitchen_temperature</span></li><li style="padding:8px 12px;border-top:1px solid #CECECE"><strong>Kitchen humidity</strong><br><span class="govuk-hint" style="margin:0">Kitchen · sensor.kitchen_humidity</span></li><li style="padding:8px 12px;border-top:1px solid #CECECE"><strong>Kitchen light</strong><br><span class="govuk-hint" style="margin:0">Kitchen · light.kitchen</span></li></ul></div></article>
+  spec-error-card-two-views:
+    title: A card that could not load, on the dashboard and in the editor preview, simulated
+    description: "Two simulated error cards. The first is what an administrator sees on the dashboard: an icon and the words “Configuration error”. The second is the editor preview, which also shows the message. People who are not administrators see only the icon. Nothing here can be changed."
+    height: 520
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-errcard-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-s" id="spec-errcard-title">On the dashboard</h2><div style="display:flex;align-items:center;gap:8px;padding:12px;background:rgba(202,53,53,.12)"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#ca3535" stroke-width="2"></circle><path d="M12 7v6M12 15.5v1" stroke="#ca3535" stroke-width="2"></path></svg><strong>Configuration error</strong></div><h2 class="govuk-heading-s" style="margin-top:24px">In the card editor preview</h2><div style="padding:12px;background:rgba(202,53,53,.12)"><div style="display:flex;align-items:center;gap:8px"><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="#ca3535" stroke-width="2"></circle><path d="M12 7v6M12 15.5v1" stroke="#ca3535" stroke-width="2"></path></svg><strong>Configuration error</strong></div><p class="govuk-body" style="margin:8px 0 0">Entity not available: sensor.hall_temperature</p></div></div></article>
+  spec-error-room-name:
+    title: A missing room name
+    description: "The state after an unsuccessful save: the field keeps its label and hint, and the message beside it says what to enter. Nothing is saved here."
+    height: 340
+    html: |
+      <form data-demo-form>
+      <div class="govuk-form-group govuk-form-group--error">
+      <label class="govuk-label" for="room-name">Room name</label>
+      <div class="govuk-hint" id="room-name-hint">Use a name people in the household recognise</div>
+      <p class="govuk-error-message" id="room-name-error">
+      <span class="govuk-visually-hidden">Error:</span> Enter a room name</p>
+      <input class="govuk-input  govuk-input--error" id="room-name" name="room-name" type="text" value="" aria-describedby="room-name-hint room-name-error" aria-invalid="true" >
+      </div>
+      </form>
+  spec-error-temperature:
+    title: A temperature outside the allowed range
+    description: "The field says what it accepts, and the message repeats the range and the unit. In a real dashboard, use the minimum and maximum the integration declares. The value is kept so it can be corrected."
+    height: 340
+    html: |
+      <form data-demo-form>
+      <div class="govuk-form-group govuk-form-group--error">
+      <label class="govuk-label" for="target-temperature">Target temperature, in degrees Celsius</label>
+      <div class="govuk-hint" id="target-temperature-hint">This example accepts 10 to 30 degrees Celsius</div>
+      <p class="govuk-error-message" id="target-temperature-error">
+      <span class="govuk-visually-hidden">Error:</span> Enter a temperature between 10 and 30 degrees Celsius</p>
+      <input class="govuk-input govuk-input--width-4 govuk-input--error" id="target-temperature" name="target-temperature" type="text" value="35" aria-describedby="target-temperature-hint target-temperature-error" aria-invalid="true" inputmode="decimal">
+      </div>
+      </form>
+  spec-summary-one-error:
+    title: One setting needs an answer
+    description: "The summary names the problem and links to the same labelled field that carries the inline message."
+    height: 420
+    html: |
+      <div class="govuk-error-summary" data-module="govuk-error-summary" data-disable-auto-focus="true">
+      <div role="alert">
+      <h2 class="govuk-error-summary__title">There is a problem</h2>
+      <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+      <li>
+      <a href="#summary-room">Enter a room name</a>
+      </li>
+      </ul>
+      </div>
+      </div>
+      </div>
+      <form data-demo-form>
+      <div class="govuk-form-group govuk-form-group--error">
+      <label class="govuk-label" for="summary-room">Room name</label>
+      <p class="govuk-error-message" id="summary-room-error">
+      <span class="govuk-visually-hidden">Error:</span> Enter a room name</p>
+      <input class="govuk-input  govuk-input--error" id="summary-room" name="summary-room" type="text" value="" aria-describedby="summary-room-error" aria-invalid="true" >
+      </div>
+      </form>
+  spec-summary-two-errors:
+    title: Several settings need attention
+    description: "Each link goes to the field with the same message."
+    height: 560
+    html: |
+      <div class="govuk-error-summary" data-module="govuk-error-summary" data-disable-auto-focus="true">
+      <div role="alert">
+      <h2 class="govuk-error-summary__title">There is a problem</h2>
+      <div class="govuk-error-summary__body">
+      <ul class="govuk-list govuk-error-summary__list">
+      <li>
+      <a href="#summary-label">Enter a dashboard name</a>
+      </li>
+      <li>
+      <a href="#summary-path">Enter a path without spaces</a>
+      </li>
+      </ul>
+      </div>
+      </div>
+      </div>
+      <form data-demo-form>
+      <div class="govuk-form-group govuk-form-group--error">
+      <label class="govuk-label" for="summary-label">Dashboard name</label>
+      <p class="govuk-error-message" id="summary-label-error">
+      <span class="govuk-visually-hidden">Error:</span> Enter a dashboard name</p>
+      <input class="govuk-input  govuk-input--error" id="summary-label" name="summary-label" type="text" value="" aria-describedby="summary-label-error" aria-invalid="true" >
+      </div>
+      <div class="govuk-form-group govuk-form-group--error">
+      <label class="govuk-label" for="summary-path">Dashboard path</label>
+      <p class="govuk-error-message" id="summary-path-error">
+      <span class="govuk-visually-hidden">Error:</span> Enter a path without spaces</p>
+      <input class="govuk-input  govuk-input--error" id="summary-path" name="summary-path" type="text" value="my dashboard" aria-describedby="summary-path-error" aria-invalid="true" >
+      </div>
+      </form>

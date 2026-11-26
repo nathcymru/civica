@@ -1,65 +1,159 @@
 ---
-title: "Error message"
-description: "An inline error tells the user how to correct an answer that could not be accepted."
+title: "Error Message & Error Summary"
+description: "Tell people which answers could not be accepted: a message beside each field and a summary at the start of the form."
 section: "components"
-group: "Form elements"
-source_url: "https://service-manual.nhs.uk/design-system/components/error-message"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewrote the page as the Error Message and Error Summary specification. It now covers both patterns, which were on two pages, and keeps the wording, focus and answer-keeping guidance."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added NHS-informed error message guidance and 2 Home Assistant reference examples."
+  - date: "2026-11-11"
+    description: "Added error message guidance and 2 Home Assistant reference examples."
+ai_instructions: "Apply when a form or dialog cannot accept an answer. Use an inline error message beside the field and, after a failed save, an error summary at the start of the form content, below any back link, with the same words and a link to each affected field. Describe the correction, with units or permitted choices. Do not check fields people have not touched yet. Do not treat an offline device or a missing permission as a mistake in the answer. Keep every correct answer when a save fails. Use the integration’s own minimum and maximum, never an invented range. The red border supports the words and never replaces them. Do not claim measured contrast, focus appearance or screen-reader behaviour. Home Assistant draws its own errors in its own forms; the theme can set only error-color."
+ai_related:
+  - path: "/components/text-input.html"
+    title: "Text input"
+    relationship: "Owns the text field that carries an error message."
+  - path: "/components/hint-text.html"
+    title: "Hint text"
+    relationship: "Owns the help line that sits above an error message."
+  - path: "/components/character-count.html"
+    title: "Character Count"
+    relationship: "Owns the count and limit message for long text."
+  - path: "/components/alert-and-tip-callout.html"
+    title: "Alert & Tip Callout"
+    relationship: "Owns the alert Home Assistant uses for messages in its own forms and dialogs."
+  - path: "/patterns/question-pages.html"
+    title: "Ask clear questions on pages and in dialogs"
+    relationship: "Owns how to ask a question, keep answers and show errors."
+  - path: "/patterns/recovery.html"
+    title: "Errors and recovery"
+    relationship: "Owns how to word a failure and offer a way back."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the accessibility checks to run on a finished form."
+component:
+  parent: "Error Message & Error Summary"
+  letter: "E"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Error Message Pattern"
+      origin: "Civica"
+      anchor: "child-civica-error-message-pattern"
+    - name: "Civica Error Summary Pattern"
+      origin: "Civica"
+      anchor: "child-civica-error-summary-pattern"
+  tags:
+    - "Civica Error Message Pattern"
+    - "Civica Error Summary Pattern"
 ---
 
-# Error message
+# Error Message & Error Summary
 
-An inline error tells the user how to correct an answer that could not be accepted.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+When a form cannot accept an answer, people need to know three things: that something went wrong, which answer it is, and how to fix it. Civica gives this two parts that work together. An error message sits beside the field that needs correcting. An error summary sits at the start of the form and links to every message.
 
-## When to use it
+These are Civica patterns, not Home Assistant elements. Use them on Civica pages and in forms built with Civica form markup. Home Assistant draws its own errors in its own forms and dialogs, and a theme can set only their colour, `error-color`. For the alert Home Assistant uses inside its dialogs, see [Alert & Tip Callout](alert-and-tip-callout.html).
 
-Use it after an attempted save or next step. Put the message with the affected field and repeat it in an error summary. Describe the correction, including units or permitted choices when useful.
+This page covers:
 
-## When not to use it
+- Error Message & Error Summary
+  - Civica Error Message Pattern
+  - Civica Error Summary Pattern
 
-Do not validate untouched fields as the user tabs through them. An offline device or missing permission is not a mistake in the user’s answer; explain that condition separately.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+An error message is a line of text between the field’s label and hint and the field itself. It starts with the word “Error:”, which is hidden from view but available to assistive technology, followed by the correction in plain words. The field has a red border and `aria-invalid="true"`, and points to both the hint and the error with `aria-describedby`.
 
-For Home Assistant settings, distinguish malformed input from a service failure. Keep a correctly entered room name if saving fails because the connection was lost. Avoid inventing numeric ranges: enforce the integration’s declared minimum and maximum, and identify their unit.
+An error summary is a box with the title “There is a problem” and a list of links, one for each error. Each link takes people to the field that has the same message beside it.
 
-## Accessibility and behaviour
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Use a visible error prefix for assistive technology, aria-invalid and aria-describedby. A red boundary supports the wording but never replaces it. Preserve label and hint associations when adding the error.
+<h3 id="child-civica-error-message-pattern"><code>Civica Error Message Pattern</code></h3>
 
-## Examples
+Use it after an attempted save or next step. Put the message with the affected field and repeat it in the error summary. Describe the correction, including units or permitted choices when they help.
+
+Do not check fields as people tab through them before they have answered. An offline device or a missing permission is not a mistake in the person’s answer, so explain that condition separately.
+
+For Home Assistant settings:
+
+- Tell a mistake in the answer apart from a service failure. Keep a correct room name if saving fails because the connection was lost.
+- Do not invent numeric ranges. Use the integration’s declared minimum and maximum and name their unit.
+- Keep the label and the hint linked to the field when you add the message.
+- The red border supports the words and never replaces them.
+
+The error colour is `error-color`, #CA3535 in light mode and #F0C6C6 in dark mode.
+
+<h3 id="child-civica-error-summary-pattern"><code>Civica Error Summary Pattern</code></h3>
+
+Use the summary even when only one field needs correcting. Put it at the start of the form content, below any back link, and use the same words as the messages beside the fields.
+
+Do not use it for a successful save, a general notice or an alert about a physical device. Do not show it together with an unrelated success banner, because the two compete.
+
+After a failed Home Assistant settings save:
+
+- Move focus to the summary once, and keep every answer that is not secret.
+- When the form owns its page, start the page title with “Error:”.
+- In an existing dialog, keep focus inside the dialog and use the dialog’s own accessible title. Do not replace the application title.
+- Link each message to the control it is about. For a date made of several inputs, link to the first incorrect input. For radios, link to the first option.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The summary and the messages use the same words, so people can find an error from either.
+- Each message is tied to its field in code, not only by position or colour.
+- Both patterns are plain markup, so they do not depend on Home Assistant. They do not add checking logic: the form must still decide what is wrong and when to say so.
+- Home Assistant’s own forms do not use this markup, so the look differs there.
+- A long list of errors is hard to work through. Ask fewer questions in one step.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Write each message as a correction, in plain words, using the field’s own name: “Enter a room name”, not “Invalid input”. Say what to do, and give the unit and the choices where they help. Keep what people typed so they can change it, and do not ask for it again. Do not lock the field against pasting.
+
+Success criteria that apply:
+
+- 3.3.1 Error Identification and 3.3.3 Error Suggestion: name the field and say how to fix it.
+- 3.3.7 Redundant Entry: keep answers that were correct.
+- 3.3.8 Accessible Authentication (Minimum): do not block pasting into a field.
+- 4.1.3 Status Messages: the summary appears once after a failed save. Do not show it again while people type.
+- 1.4.1 Use of Colour: the words carry the meaning, and the red border supports them.
+- 1.4.3 and 1.4.11 Contrast: test the message and the border in your own theme, in light and dark modes.
+- 2.4.2 Page Titled and 2.4.3 Focus Order: the page title starts with “Error:” and focus moves to the summary once.
+- 2.4.11 Focus Not Obscured (Minimum): test that the focused summary and field are not hidden by other parts of the page.
+- 1.3.1 Info and Relationships and 1.3.5 Identify Input Purpose: keep the label and hint tied to the field.
+- 1.4.10 Reflow: test the messages at 320 CSS pixels.
+
+Test with the [Test the interface](../accessibility/testing.html) checks, in light and dark modes. Click every summary link. Submit with the keyboard. Correct only one of several errors and check the summary. Retry after a connection failure. Check that errors are not announced again while people type.
+
+<h2 id="examples">Examples</h2>
 
 ### A missing room name
 
-This represents the state after an unsuccessful save.
+The state after an unsuccessful save. The message says what to enter and keeps the label and hint.
 
-<%= example('nhs-error-room-name') %>
+<%= example('spec-error-room-name') %>
 
-### A temperature outside a declared range
+### A temperature outside the allowed range
 
-The example declares its supported range; production must use the actual integration limits.
+The field says what it accepts, and the message repeats the range and the unit. In a real form, use the integration’s own limits.
 
-<%= example('nhs-error-temperature') %>
+<%= example('spec-error-temperature') %>
 
-## Check the implementation
+### One setting needs an answer
 
-Test the error summary link, correction without losing the answer, multiple errors and a retry after a connection failure. Do not announce errors repeatedly while people type.
+The summary link goes to the field that carries the same message.
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+<%= example('spec-summary-one-error') %>
 
-## Source and related guidance
+### Several settings need attention
 
-[NHS error message](https://service-manual.nhs.uk/design-system/components/error-message) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+Both links go to real fields, and what people typed is kept.
 
-See also [buttons and forms](controls.html).
+<%= example('spec-summary-two-errors') %>

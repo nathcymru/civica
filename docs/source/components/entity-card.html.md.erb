@@ -1,0 +1,114 @@
+---
+title: "Entity Card"
+description: "Show one entity as a small card with its name, an icon and its state."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Entity Card specification: its settings, the theme keys that reach it and what stays as Home Assistant draws it."
+ai_instructions: "Apply when a dashboard shows one entity as a small card (type entity). The card needs an entity. It shows the name, an icon and the state with its unit, and opens More info when selected unless tap_action says otherwise. The icon colour follows the state and is set by Home Assistant, so write the state in words as well. Do not rely on the icon colour. Say that the Civica focus ring needs the card-mod integration: the card draws its own border and 1 pixel state-colour shadow on focus, and the Civica rule adds a 3 pixel outline and a 3 pixel #FFDD00 shadow. Do not claim contrast, focus appearance or screen-reader announcements for the card."
+ai_related:
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns card structure, headings and the card surface."
+  - path: "/components/entities-card-and-entity-rows.html"
+    title: "Entities Card & Entity Rows"
+    relationship: "Use for a list of several entities instead of one card each."
+  - path: "/components/button-card.html"
+    title: "Button Card"
+    relationship: "Use when the card must switch an entity on and off."
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns the wording for zero, unknown and unavailable readings."
+component:
+  parent: "Entity Card"
+  letter: "E"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-entity-card"
+      origin: "Lovelace"
+      anchor: "child-hui-entity-card"
+  tags:
+    - "hui-entity-card"
+---
+
+# Entity Card
+
+<h2 id="purpose">Purpose</h2>
+
+An entity card shows one entity: its name, an icon and its state with the unit. Use it for a single reading people look at often, such as the hall temperature.
+
+This page owns the Home Assistant entity card (`type: entity`). For several entities in one card, use an [entities card](entities-card-and-entity-rows.html). For card structure, see [Card (Base Surface)](cards.html).
+
+This page covers:
+
+- Entity Card
+  - `hui-entity-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+1. The name at the top left, in the secondary text colour, cut off with an ellipsis when it is too long.
+2. An icon at the top right.
+3. The state, in large type, with its unit beside it in smaller type.
+
+If the entity cannot be found, the card shows a warning instead.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-entity-card"><code>hui-entity-card</code></h3>
+
+```yaml
+type: entity
+entity: sensor.hall_temperature
+name: Hall temperature
+```
+
+Keys:
+
+- `entity` is required.
+- `name` replaces the entity’s name.
+- `icon` replaces the entity’s icon.
+- `attribute` shows an attribute instead of the state, and `unit` sets the unit shown beside it.
+- `color` sets the icon colour when the entity is active. `state_color` is the older key and is on by default for lights.
+- `theme` applies a theme to this card.
+- `tap_action`, `hold_action` and `double_tap_action` set what the card does. Without a `tap_action`, the card is a tab stop and selecting it opens More info.
+
+**What the Civica theme sets.** The card uses the theme’s square corners, 1 pixel border, no shadow and card background. The name uses `secondary-text-color`, the icon uses `state-icon-color` unless `color` or `state_color` applies, or the entity is a light, in which case the icon takes the state colour. The state uses the card’s own text colour. An active state uses `state-active-color` and an inactive one `state-inactive-color`.
+
+**What stays as Home Assistant draws it.** The icon colour follows the entity’s state and is set by Home Assistant. The type sizes and weights are Home Assistant’s defaults.
+
+**What needs card-mod.** The Civica yellow focus ring around a card comes from the theme’s card-mod settings, so it needs the card-mod integration. On focus the card draws its own border and a 1 pixel shadow in the state colour. Where card-mod is installed, the Civica rule adds a 3 pixel outline and a 3 pixel `#FFDD00` shadow, so the card shows the Civica ring.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One native card, with no extra module, shows a reading large and clear.
+- The state and unit are text, so they do not depend on colour.
+- The icon colour follows the state and cannot be set by the theme.
+- A long name is cut off with an ellipsis, so keep the name short.
+- A card with no tap action still opens More info, so people may reach more than the card shows.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use one entity card for one reading that matters. Choose a name that says what is measured, such as “Hall temperature”, and let the state carry its unit. Do not use the icon colour to say a value is good or bad. If a state needs a warning, say it in words, for example in a neighbouring card. Use [Entity state, confidence and freshness](../home-assistant/entity-state.html) for how to word an unknown or unavailable reading.
+
+Success criteria that apply:
+
+- 1.4.1 Use of Colour: the state is text, and the icon colour is extra.
+- 1.4.3 and 1.4.11 Contrast: test the name, the state and the icon against the card in your own dashboard, in light and dark modes.
+- 2.4.7 Focus Visible: test the focus cue on your dashboard.
+- 2.5.8 Target Size (Minimum): the whole card is the target when it has an action.
+- 4.1.2 Name, Role, Value: test how a card with an action is named in your own setup.
+
+One name, one value and one unit keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-entity-card-hall') %>

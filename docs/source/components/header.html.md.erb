@@ -1,75 +1,171 @@
 ---
-title: Header
-description: A header identifies the service and gives consistent access to its main destinations.
-section: components
-group: Navigation
-source_url: https://service-manual.nhs.uk/design-system/components/header
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Header / Top App Bar"
+description: "Identify the household and give a way home, using the Home Assistant top bar and the Civica header pattern."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
+  - date: "2026-11-26"
+    description: "Rewrote the header page as the Header / Top App Bar specification: the plain HTML header, Home Assistant’s two top bars and the Civica header pattern."
   - date: "2026-11-12"
     description: "Separated optional household identity from the project logo in header guidance and examples."
-  - date: "2026-11-11"
-    description: "Established one header identity family with focused and service-navigation responsibilities kept distinct."
-  - date: "2026-11-11"
-    description: "Added NHS-informed header guidance and 2 Home Assistant reference examples."
+ai_instructions: "Apply to page headers and to the Home Assistant top bar. The household name is the identity; a logo is optional. The identity link goes to the genuine home page and never refreshes, opens a menu or runs a device action. The Civica theme sets three colours for the Home Assistant top bar (background, text and bottom border) and nothing else; it cannot replace the bar, its title, menu button or actions. Long titles are cut short. Navigation, current-route and menu behaviour belong to Service navigation. Do not claim a contrast ratio, that the toolbar is labelled, or that card-mod can style the top bar."
+ai_related:
+  - path: "/components/service-navigation.html"
+    title: "Service navigation"
+    relationship: "Owns current-route and small-screen menu behaviour."
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns the choice of navigation pattern."
+  - path: "/components/skip-link.html"
+    title: "Skip link"
+    relationship: "Owns the link that must come before the header."
+  - path: "/get-started/personalisation.html"
+    title: "Personalise your home"
+    relationship: "Owns the household name and image settings."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the accessibility checks to run."
+component:
+  parent: "Header / Top App Bar"
+  letter: "H"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+    - "Civica"
+  children:
+    - name: "<header>"
+      origin: "HTML5"
+      anchor: "child-header"
+    - name: "ha-top-app-bar-fixed"
+      origin: "Home Assistant"
+      anchor: "child-ha-top-app-bar-fixed"
+    - name: "ha-two-pane-top-app-bar-fixed"
+      origin: "Home Assistant"
+      anchor: "child-ha-two-pane-top-app-bar-fixed"
+    - name: "Civica Header Pattern"
+      origin: "Civica"
+      anchor: "child-civica-header-pattern"
+  tags:
+    - "header"
+    - "top app bar"
+    - "ha-top-app-bar-fixed"
+    - "identity"
 ---
 
-# Header
+# Header / Top App Bar
 
-A header identifies the service and gives consistent access to its main destinations.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A header tells people whose home they are in and gives a way back to the start. Home Assistant draws its own top bar across every screen. Civica adds a header pattern for pages you write yourself, such as a help page or a setup guide.
 
-## Identity and navigation have separate responsibilities
+This page owns the household header and the identity rules. [Service navigation](service-navigation.html) owns the list of destinations, the current-route marker and the small-screen menu.
 
-This page owns the household header and optional identity contract. Use the [generic-header variant](generic-header.html) for a focused identity and home link. Add [service navigation](service-navigation.html) only when the page needs several stable destinations; that component owns current-route and small-screen menu behaviour.
+This page covers:
 
-A clear household or business name is the default. A crest or logo is optional; see [Personalise your home](../get-started/personalisation.html). The project logo belongs to project documentation and promotion. All variants use the permitted local font stack. A source reference to a government or NHS header does not authorise its identity assets. A documentation header is not proof that a native login, account screen or onboarding flow has been redesigned. Preserve Home Assistant’s actual authentication and routing boundaries.
+- Header / Top App Bar
+  - `<header>`
+  - `ha-top-app-bar-fixed`
+  - `ha-two-pane-top-app-bar-fixed`
+  - Civica Header Pattern
 
-## When to use it
+<h2 id="anatomy">Anatomy</h2>
 
-Use a minimal identity header for a focused journey and add only the navigation, search or account information that users need. Keep the service name visible.
+The Home Assistant top bar has a menu button or back button on the left, a title, and action buttons on the right. It can have a second row for tabs. Content scrolls underneath it, and a shadow appears under the bar once the page has scrolled.
 
-## When not to use it
+The Civica header pattern is a household name, linked to the home page, with an optional task name beside it and an optional short list of destinations.
 
-Do not reproduce NHS branding or add a second application header inside Home Assistant views. A theme companion adapts supported native shell elements; it does not replace routing or authentication.
+<h3 id="identity-and-navigation-have-separate-responsibilities">Identity and navigation have separate responsibilities</h3>
 
-## Home Assistant adaptation
+The header owns the household name and the optional image. [Service navigation](service-navigation.html) owns the list of destinations, the current-route marker and the small-screen menu. Add navigation to a header only when the page needs several stable destinations.
 
-The NHS header’s identity rules apply to NHS services, not this project. Use the household’s chosen name and an optional authorised image on a readable surface. Preserve Home Assistant’s native menu, account actions and permissions. A constrained task may need fewer exits than a browsing dashboard.
+A clear household or business name is the default identity. A crest or logo is optional; a plain text name is a valid identity. See [Personalise your home](../get-started/personalisation.html). The Civica project logo belongs to project documentation only. A header on a page you write is not a redesign of Home Assistant’s own sign-in, account or setup screens, which keep their own authentication and routing.
 
-## Accessibility and behaviour
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Use a header landmark, an appropriately named home link and labelled navigation. Keep text and icons visible on every masthead colour, including yellow focus. Expose current navigation state without relying solely on an underline or colour.
+<h3 id="child-header"><code>&lt;header&gt;</code></h3>
 
-## Examples
+The plain HTML element for introductory content. When it sits directly in the page body, it is the page’s banner, which people using a screen reader can jump to. Inside an article, section or similar element it is only a heading area and is not a banner. A page should have one banner. Home Assistant’s own app bar already is one, so a header you add to a page inside a dashboard should not be a second.
+
+Use a header landmark, a named home link and labelled navigation. A dashboard author does not write this element in a card.
+
+<h3 id="child-ha-top-app-bar-fixed"><code>ha-top-app-bar-fixed</code></h3>
+
+The top bar Home Assistant fixes across the top of most screens. It has a title, a menu or back button, action buttons, and an optional second row. The title is cut short with an ellipsis when it does not fit, so keep titles short.
+
+The Civica themes set three values for the top bar. The text is white in every theme and the same in light and dark modes. The background and border take the theme’s colour: #1D70B8 in Civica and Civica Blue, and a colour of their own in the other six themes.
+
+Values in Civica and Civica Blue:
+
+| Part | Theme setting | Value |
+|---|---|---|
+| Background | `app-header-background-color` | #1D70B8 (theme colour) |
+| Text and icons | `app-header-text-color` | #FFFFFF |
+| Bottom border | `app-header-border-bottom` | 4px solid, in the background colour |
+
+The theme leaves the bar’s height at Home Assistant’s default. The yellow focus colour `ha-color-focus` (#FFDD00) and dark focus text `civica-focus-text` (#0B0C0C) are also set. Check the contrast of white text on the header colour in your own theme.
+
+The theme cannot replace the bar, its title, the menu button or the action buttons. The group of action buttons is marked as a toolbar without a label, so test it with a screen reader. Card-mod styles cards, not this bar.
+
+<h3 id="child-ha-two-pane-top-app-bar-fixed"><code>ha-two-pane-top-app-bar-fixed</code></h3>
+
+A variant of the top bar with a side pane, used by screens that list items on the left and show details on the right. With the pane on, the title sits above the pane, which is 250 pixels wide by default. A line in `divider-color` (#CECECE in light mode, #50565A in dark mode) separates the pane from the content, and the pane and the content scroll separately. It has the same three theme colours and the same limits as the single-pane bar.
+
+<h3 id="child-civica-header-pattern">Civica Header Pattern</h3>
+
+A household name, a home link and, optionally, a task name and a short list of destinations. It is made for pages you write, not for Home Assistant’s own bar. The pattern uses the same colour as the top bar, white text, and a yellow focus highlight with dark text.
+
+- The household name links to the genuine home page. It must never refresh the page, open a menu or run a device action.
+- A plain text name is enough. If you add a logo, keep its proportions and place it on a plain surface. Give it a short text alternative, or an empty one when the name next to it says the same thing.
+- A long name wraps instead of squashing the logo.
+- The task name is supporting context. The page keeps its own main heading.
+- Show the current destination with more than colour or an underline.
+- Put a [skip link](skip-link.html) before the header. A fixed or sticky header must not cover the focused item when someone scrolls with the keyboard.
+- Use the same name and place on every page.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A header gives one clear way home and the household’s name in the same place.
+- The Civica theme colours the Home Assistant top bar without replacing it.
+- The theme cannot change the bar’s title, buttons or height.
+- A long title is cut short.
+- A fixed bar can cover focused content at high zoom.
+- A header you add inside a dashboard may become a second banner, so use one only on pages you write.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a focused header with only the name and the task for a single journey, and add navigation only where it is needed. A constrained task can have fewer exits than a browsing dashboard. Keep the name short and the home link in the same place on every page.
+
+Test long names, keyboard focus, account names, menu opening and wrapping at 320 CSS pixels, in light and dark modes and with at least two theme colours, using [Test the interface](../accessibility/testing.html). Keep text and icons visible on every header colour, including with yellow focus.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: use a header landmark and labelled navigation.
+- 2.4.1 Bypass Blocks: a skip link comes before the header.
+- 2.4.4 Link Purpose: name the home link for where it goes.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured: a fixed bar must not hide the focused item.
+- 1.4.10 Reflow: titles are cut short, so check them at 320 CSS pixels.
+- 3.2.3 Consistent Navigation: keep the header in the same place.
+- 1.4.3 and 1.4.11 Contrast: check the header colours, including the focus colours, in your own theme.
+
+<h2 id="examples">Examples</h2>
 
 ### A focused setup header
 
-Only identity and the task’s service name are present.
+Only the household name and the task’s name are present.
 
-<%= example('nhs-header-minimal') %>
+<%= example('spec-header-focused') %>
 
-### A service header with a few destinations
+### A header with a few destinations
 
-The chosen household name provides identity; no project or government logo is required.
+The household name gives identity, and a short labelled list gives the destinations.
 
-<%= example('nhs-header-navigation') %>
+<%= example('spec-header-navigation') %>
 
-## Check the implementation
+### A household header with a task name
 
-Test long service names, keyboard focus, account names, menu expansion and small-screen wrapping. The example navigation uses in-frame destinations; real links must retain native Home Assistant routes.
-
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS header](https://service-manual.nhs.uk/design-system/components/header) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and original household examples. NHS logos and service identity are not used.
-
-See also [navigation](navigation.html).
+<%= example('spec-header-household-task') %>

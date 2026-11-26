@@ -1,0 +1,148 @@
+---
+title: "Gauge"
+description: "Show one number on a semicircular scale, with its name, unit and state written beside it."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Gauge specification: the gauge element and the gauge card, their colours, segments and needle, and why the number and a word for the state must always be shown."
+ai_instructions: "Apply to the Home Assistant gauge card (type gauge) and the ha-gauge element it uses. The entity must give a number. Severity colours come from the theme's error, success, warning and info colours; segments can use any colour. The gauge is an image-like drawing with no accessible name or value of its own, so always show the name, number, unit and a word for the state as text. Colour never carries the reading alone. Segment labels and bands appear only with a needle; without a needle the arc is one colour. Do not claim a contrast ratio, screen reader behaviour or reduced-motion behaviour for the gauge."
+ai_related:
+  - path: "/components/bar-meter.html"
+    title: "Bar / Meter"
+    relationship: "Owns bounded readings drawn as a bar."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface a gauge sits on."
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns how to show a state and how old it is."
+  - path: "/patterns/household-urgency.html"
+    title: "Show household urgency clearly"
+    relationship: "Owns the three kinds of urgency."
+component:
+  parent: "Gauge"
+  letter: "G"
+  origins:
+    - "Home Assistant"
+    - "Lovelace"
+  children:
+    - name: "ha-gauge"
+      origin: "Home Assistant"
+      anchor: "child-ha-gauge"
+    - name: "hui-gauge-card"
+      origin: "Lovelace"
+      anchor: "child-hui-gauge-card"
+  tags:
+    - "gauge"
+    - "ha-gauge"
+    - "hui-gauge-card"
+---
+
+# Gauge
+
+<h2 id="purpose">Purpose</h2>
+
+A gauge shows where one number sits between a minimum and a maximum, such as boiler pressure or battery charge. Home Assistant draws it as a semicircle that fills from the left. The gauge card puts it on a dashboard with a name underneath.
+
+A gauge is quick to glance at but poor at precise reading. This page covers how to show it so that the number and what it means are always in words.
+
+This page covers:
+
+- Gauge
+  - `ha-gauge`
+  - `hui-gauge-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A gauge has a track, a coloured arc that fills the track up to the value, and the value written in the middle. A gauge card adds the card surface and the entity name beneath the arc. The name is cut short with an ellipsis when it does not fit. The gauge is no wider than 250 pixels.
+
+With a needle, the label of the segment the value is in replaces the number in the middle. Without a needle, labels are not shown. If the entity is missing, unavailable or not a number, the card shows a warning instead of a gauge.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-gauge"><code>ha-gauge</code></h3>
+
+The drawing itself. It has a minimum (0 by default), a maximum (100), a value, a unit, an optional needle and an optional list of levels. A level has a value and a colour, and can have a label. With a needle, every level is drawn as a band across the full width of the arc. Without a needle, the arc is a single colour, set by `--gauge-color`. A unit of “%” is spaced to suit the language.
+
+The drawing sets no name, role or value for assistive technology, so a screen reader may not report it. Always put the same reading in text.
+
+Colours the gauge reads from the theme:
+
+| Part | Theme setting | Civica light | Civica dark |
+|---|---|---|---|
+| Value text and needle | `primary-text-color` | #0B0C0C | #FFFFFF |
+| Track | `primary-background-color` | #FFFFFF | #17191B |
+| Needle outline | `card-background-color` | #FFFFFF | #24282B |
+| Default first level | `info-color` | #1D70B8 | #C0D7EB |
+
+In the light theme the track and the card are both white, so the unfilled part of the arc is not visible. This is another reason to write the number and the state as text. The arc fills with a one-second sweep. The theme does not change this, and the sweep is not turned off for people who prefer reduced motion.
+
+<h3 id="child-hui-gauge-card"><code>hui-gauge-card</code></h3>
+
+The gauge card (`type: gauge`). It needs an entity that gives a number.
+
+```yaml
+type: gauge
+entity: sensor.boiler_pressure
+name: Boiler pressure
+unit: bar
+min: 0
+max: 3
+segments:
+  - from: 0
+    color: "#CA3535"
+  - from: 1
+    color: "#0F7A52"
+  - from: 2
+    color: "#8A6100"
+```
+
+- `entity` is required. `attribute` reads a number from an attribute instead of the state.
+- `name`, `unit`, `min` and `max` set the words and the scale. The minimum is 0 and the maximum 100 by default.
+- `segments` set the colour. Each segment starts at `from`, has any colour and can have a `label`. Without a needle, the arc takes the colour of the segment the value is in. With a needle, each segment is drawn as a band, and the label of the current segment replaces the number. The older `severity` setting, with `green`, `yellow` and `red` values, is still accepted.
+- `severity` colours come from the theme: red uses `error-color`, green `success-color`, yellow `warning-color` and the plain gauge `info-color`.
+- `needle: true` draws a needle over bands in every segment colour. The arc is not filled.
+- `tap_action`, `hold_action` and `double_tap_action` set what the card does.
+
+Segment colours are fixed, so they stay the same in light and dark modes. The older severity setting follows the theme, so it changes with the mode. The Civica values for the severity colours are below.
+
+| Meaning | Theme setting | Civica light | Civica dark |
+|---|---|---|---|
+| Error | `error-color` | #CA3535 | #F0C6C6 |
+| Warning | `warning-color` | #8A6100 | #DED3B8 |
+| Success | `success-color` | #0F7A52 | #BCDACF |
+| Information | `info-color` | #1D70B8 | #C0D7EB |
+
+The card gets its look from the Civica card theme. To change the arc colour for one card, use card-mod, which needs the card-mod integration, and set `--gauge-color` on the gauge. The text size of the middle value is set by `--ha-font-size-l`. A Gauge card cannot be given its own accessible name or role. The nearest alternative is to put the name, number, unit and state in text next to it, or use an [HTML meter or bar](bar-meter.html) for a bounded reading.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A gauge shows at a glance where a reading sits in its range.
+- Segments let you mark bands such as too low, normal and high.
+- The gauge has no accessible name or value, so the reading must also be in text.
+- Colour bands need words, such as “Normal”, because colour alone is not enough.
+- A needle shows every band at once and is harder to read precisely.
+- The track is invisible in the Civica light theme.
+- The card does not wrap a long name; it is cut short.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Show the number, the unit and a word for the state every time. Use a gauge only for one reading with a clear range, and choose a bar or a plain number for anything that needs precision. Set the minimum and maximum so that a normal reading is not at the edge. Do not make the gauge the only place a warning appears. For the wording of urgency, see [Show household urgency clearly](../patterns/household-urgency.html).
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: the gauge has no text alternative of its own, so give one in text.
+- 1.4.1 Use of Colour: bands need a word for the state.
+- 1.4.11 Non-text Contrast: check the contrast of the arc against the track in your own theme.
+- 2.3.3 Animation from Interactions (AAA): the arc sweeps for about a second when it fills, and the sweep is not turned off for people who prefer reduced motion.
+- 4.1.2 Name, Role, Value: the drawing has none, which is why the text next to it matters.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-gauge-boiler-pressure') %>

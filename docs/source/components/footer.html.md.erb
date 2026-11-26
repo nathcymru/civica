@@ -1,75 +1,117 @@
 ---
 title: "Footer"
-description: "A footer offers consistent supporting links at the end of a standalone site."
+description: "A footer offers the same supporting links at the end of every page of a standalone site."
 section: "components"
-group: "Navigation"
-source_url: "https://service-manual.nhs.uk/design-system/components/footer"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewrote Footer: when a footer belongs, what Home Assistant provides, how the documentation footer works, and what to test."
   - date: "2026-11-13"
-    description: "Documented the permanent independence statement and single-source licence destination."
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: "2026-11-12"
-    description: "Clarified that identity, ownership and licence information must match the project, household or business page."
+    description: "Documented the permanent independence statement and the single licence destination."
   - date: "2026-11-11"
-    description: "Added NHS-informed footer guidance and 2 Home Assistant reference examples."
+    description: "First published, with two examples."
+ai_instructions: "Apply when a standalone page or site needs supporting links at its end, such as accessibility, help, privacy or licensing. Use the footer element, and put the links in a navigation with its own label. Keep the same links in the same order on every page. Home Assistant has no page footer: do not add one to dashboards or to the mobile app. The footer on a Civica card is the card’s own footer, owned by the card pages. Do not put device controls in a footer. Do not promise support or a response time. Identity and licence text must match the page that carries it. Do not claim a contrast ratio for the footer background."
+ai_related:
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns moving between pages, including the labelled navigation inside a footer."
+  - path: "/components/card-header-and-footer-widgets.html"
+    title: "Card Header & Footer Widgets"
+    relationship: "Owns the header and footer areas of a Home Assistant card."
+  - path: "/components/skip-link.html"
+    title: "Skip link"
+    relationship: "Owns the link that lets keyboard users move past repeated content."
+  - path: "/community/licence.html"
+    title: "Licence"
+    relationship: "Owns the full licence and attribution terms the footer links to."
+component:
+  parent: "Footer"
+  letter: "F"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<footer>"
+      origin: "HTML5"
+      anchor: "child-footer"
+  tags:
+    - "footer"
 ---
 
 # Footer
 
-A footer offers consistent supporting links at the end of a standalone site.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A footer holds supporting links at the end of a page: accessibility, help, privacy or licensing. Use it on the documentation site or on a separate service page, not on a dashboard. Home Assistant has no page footer, and a website footer does not belong in every card or in the mobile app.
 
-## When to use it
+This page owns the page footer. The header and footer areas of a Home Assistant card are owned by [Card Header & Footer Widgets](card-header-and-footer-widgets.html). For moving between pages, see [Navigation](navigation.html).
 
-Use it for the design-system website or a separate service page. Include useful accessibility, help and information-handling links without overloading the end of a task.
+This page covers:
 
-## When not to use it
+- Footer
+  - `<footer>`
 
-Do not inject a website footer into every Home Assistant card or mobile-app view. NHS guidance itself distinguishes web pages from mobile apps. A footer is not a place for critical device controls.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+- The footer element, at the end of the page.
+- A navigation with its own label, such as “Footer”, holding the links.
+- Optional short text, such as the name of the guide.
 
-Use identity, licence and ownership information appropriate to the page. Project documentation uses Civica; a separate household or business page may use its own chosen name and authorised artwork. Do not copy NHS or Crown copyright claims. Help links must lead to a known destination and appear consistently. An application’s native settings and about screens may be the appropriate home for equivalent information.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Documentation site imprint
+<h3 id="child-footer"><code>&lt;footer&gt;</code></h3>
 
-The documentation footer permanently states that Civica is independent of the UK Government and uses open-source GOV.UK Frontend components. Its **Licence and attribution** link opens the [Licence page](../community/licence.html), which renders the repository's `LICENSE.md` during each build. The statement remains available after the first-visit notice is hidden.
+A standard HTML element. When it belongs to the whole page it is a page landmark that screen readers can jump to. Inside an article or a section it is not a landmark. A footer cannot contain another footer or a header.
 
-Keep this as one concise sentence. Allow it to wrap on narrow screens rather than reducing its font size or forcing a single visual line. Link the licence name directly to the complete terms and attribution.
+Home Assistant has no page footer for you to style. Use this element on Civica pages and in custom cards you write. The footer inside Civica’s own card is part of that card and is owned by the card pages.
 
-## Accessibility and behaviour
+Label the navigation inside the footer, for example `aria-label="Footer"`, so it is told apart from other navigation on the page.
 
-Use a footer landmark and label any navigation inside it. Keep visible focus, readable link text and enough space between targets. A large footer can use grouped headings, but preserve a sensible reading order when columns stack.
+The Civica theme sets no variable for the footer. Links use `primary-color` (#1D70B8 in light mode, #C0D7EB in dark mode), borders use `divider-color` (#CECECE in light mode, #50565A in dark mode), and the focus colour is #FFDD00. The documentation footer has a light grey background and a top border, with links in a row that wraps.
 
-## Examples
+**The documentation footer.** It states permanently that Civica is an independent project, gives the licence for the code and for the guidance, and links to [Licence](../community/licence.html) for the full terms and attribution. The statement stays after the first-visit notice is hidden. Keep such a statement to a short sentence, let it wrap on narrow screens rather than shrinking the text, and link the licence name to the full terms.
 
-### A small documentation footer
+<h2 id="limits">Advantages and limitations</h2>
 
-A few supporting links remain easy to scan.
+- A footer is a predictable place for help and information links.
+- A page footer is a landmark, so screen reader users can jump to it, but landmark behaviour varies.
+- It is the last thing a keyboard user reaches, so it is a poor place for anything critical.
+- A large footer with several columns needs a sensible reading order when it stacks.
 
-<%= example('nhs-footer-simple') %>
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-### Information-handling links
+Put the same links, in the same order, on every page. Use plain link names such as “Accessibility” and “Help”. Do not put device controls in a footer.
 
-These local targets illustrate placement; production needs the real policies.
+Show the name and licence that belong to the page. The documentation uses Civica. A separate household or business page may use its own name and artwork, if it has the right to. An app’s own settings or About screen may be the better home for the same information.
 
-<%= example('nhs-footer-information') %>
+Do not promise a support channel or a response time that you cannot provide.
 
-## Check the implementation
+Success criteria that apply:
 
-Test the last keyboard stops, zoom, small-screen wrapping and every support link. Do not promise a support channel or response time that the project does not provide.
+- 1.3.1 Info and Relationships: the footer and its navigation are marked up as such.
+- 2.4.1 Bypass Blocks and 2.4.5 Multiple Ways: people can get to the footer links and the main content.
+- 2.4.4 Link Purpose (In Context): each link name says where it goes.
+- 3.2.3 Consistent Navigation and 3.2.6 Consistent Help: the links and help are in the same place on every page.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): the focus can be seen.
+- 2.5.8 Target Size (Minimum): links have enough space between them.
+- 1.4.10 Reflow and 1.4.12 Text Spacing: the footer wraps at 320 pixels and survives wider spacing.
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+The same links in the same place every time keep the load low.
 
-## Source and related guidance
+<h3 id="check">Check it works</h3>
 
-[NHS footer](https://service-manual.nhs.uk/design-system/components/footer) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+Test the last keyboard stops, zoom, how the links wrap on a small screen, and every link. See [Test the interface](../accessibility/testing.html).
 
-See also [navigation](navigation.html).
+<h2 id="examples">Examples</h2>
+
+### A small footer on a household guide
+
+<%= example('spec-footer-simple') %>
+
+### A footer with privacy and licensing links
+
+<%= example('spec-footer-information') %>

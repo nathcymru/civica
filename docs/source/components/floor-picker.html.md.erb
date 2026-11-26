@@ -1,0 +1,148 @@
+---
+title: "Floor Picker"
+description: "Choose one floor, or a list of floors, in a Home Assistant form."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Floor Picker specification: choosing one floor or several, what Civica styles and what stays as Home Assistant draws it."
+ai_instructions: "Apply when a form asks people to choose a floor. Use ha-floor-picker for one floor and ha-floors-picker for a list. Ask in terms of purpose, such as Which floor is this for. Explain what choosing a floor changes. Keep the native search and list behaviour. The picker offers Add new floor unless no-add is set; the floor selector in automations and scripts sets no-add. Do not state who is allowed to add a floor. Do not claim an ARIA pattern or a screen reader behaviour for the picker. Link to the area picker and the target pickers pages for shared behaviour."
+ai_related:
+  - path: "/components/area-picker.html"
+    title: "Area Picker"
+    relationship: "The matching picker for areas, which works in the same way."
+  - path: "/home-assistant/target-pickers.html"
+    title: "Entity, device and area pickers"
+    relationship: "Owns what area, floor and label selection means, and its states."
+  - path: "/home-assistant/schema-selectors.html"
+    title: "Schema selectors and configuration forms"
+    relationship: "Owns the floor selector in automations and scripts."
+  - path: "/components/action-bar-bottom-sheet.html"
+    title: "Action Bar / Bottom Sheet"
+    relationship: "Owns the sheet the picker opens on narrow screens."
+component:
+  parent: "Floor Picker"
+  letter: "F"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-floor-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-floor-picker"
+    - name: "ha-floors-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-floors-picker"
+  tags:
+    - "ha-floor-picker"
+    - "ha-floors-picker"
+---
+
+# Floor Picker
+
+<h2 id="purpose">Purpose</h2>
+
+A floor picker lets people choose which floor a setting belongs to or affects, such as “First floor”. Home Assistant uses it in forms, in the floor selector for automations and scripts, and when you edit an area. Use `ha-floor-picker` to choose one floor and `ha-floors-picker` to choose several.
+
+This page owns the two pickers as components. For what choosing a floor means, and for its empty, saved and failed states, see [Target pickers](../home-assistant/target-pickers.html). For the selector in automations, see [Schema selectors](../home-assistant/schema-selectors.html). The [Area Picker](area-picker.html) works in the same way.
+
+This page covers:
+
+- Floor Picker
+  - `ha-floor-picker`
+  - `ha-floors-picker`
+
+<h2 id="anatomy">Anatomy</h2>
+
+- A field with a label, helper text and the chosen floor. A clear button appears when a value is set and the field is not required.
+- A list of floors that opens from the field. It has a search box. Each row shows a floor icon and the floor name. On a narrow or short screen the list opens as a bottom sheet.
+- An option, “Add new floor…”, unless you turn it off.
+- For several floors: one field for each chosen floor, plus one empty field to add the next.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-floor-picker"><code>ha-floor-picker</code></h3>
+
+Chooses one floor.
+
+- Attributes include `label`, `value` (the floor ID), `helper`, `placeholder`, `required`, `disabled` and `no-add`, which hides the add-floor option.
+- Filters narrow the list to floors whose areas have devices or entities of a given domain or device class, or leave out chosen floors.
+- Search matches the floor name, its aliases and its ID.
+- It fires `value-changed` with the new value, or no value when cleared.
+- The default label is Home Assistant’s own “Floor” text. Home Assistant also provides its own wording for no floors (“No floors available”), no match and an unknown floor. Keep these words, so they stay translated.
+- “Add new floor…” opens Home Assistant’s floor dialog and selects the new floor. In an automation or script, the same control is the `floor` selector, and it hides that option.
+
+**What the Civica theme sets.**
+
+- The field line colour is #0B0C0C in light mode and #FFFFFF in dark mode.
+- The primary colour is #1D70B8 in light mode and #C0D7EB in dark mode.
+- The error colour is #CA3535 in light mode and #F0C6C6 in dark mode.
+- The selected row fill is #F6F9FC in light mode and #0F2232 in dark mode. The hover fill is #EDEDED in light mode and #222323 in dark mode.
+
+**What stays as Home Assistant draws it.**
+
+- The picker draws its field and list itself. There is no slot to change a row or a floor icon.
+- The width of the list is Home Assistant’s default.
+- The focus cue in the field and list is Home Assistant’s own. Check it on your own dashboard.
+- Who can add a floor is up to Home Assistant, not this page.
+
+<h3 id="child-ha-floors-picker"><code>ha-floors-picker</code></h3>
+
+Chooses several floors.
+
+- It shows one `ha-floor-picker` for each chosen floor, plus an empty one to add another, each 8 pixels apart.
+- Clearing a field removes that floor. Choosing a floor that is already chosen removes the duplicate. Floors already chosen are left out of the list in the empty field.
+- `required` applies only while no floor is chosen.
+- It fires `value-changed` with the list of floors. It has no option to reorder floors.
+- In an automation or script, it is the `floor` selector with `multiple: true`.
+
+The theme colours are the same as for the single picker.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A searchable list copes with any number of floors.
+- Floors come from the floor settings in Home Assistant, so the names are the ones people already use.
+- A picker lists only floors that match its filters. If a floor is missing, the filter may be the reason; say so in the helper text.
+- A multiple picker grows with each choice. Check it on a narrow screen.
+- You cannot change how rows look.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Label the field with a purpose: “Which floor is this for?” rather than “Floor”. Say what choosing a floor changes, for example that a schedule will apply to every radiator on it. Keep the chosen floor visible after the list closes. Use plain floor names, such as “Ground floor”.
+
+Do not show the add-floor option when people should not create floors from this form.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships, 3.3.2 Labels or Instructions: the picker has a visible label that names the floor or floors being chosen.
+- 2.1.1 Keyboard and 2.4.3 Focus Order: the list can be opened, searched and closed with the keyboard, and focus moves into it when it opens.
+- 4.1.2 Name, Role, Value: the field has a name and a value.
+- 1.4.10 Reflow: the list becomes a bottom sheet on narrow screens.
+- 2.5.8 Target Size (Minimum): rows and the clear button must be easy to tap.
+- 3.3.7 Redundant Entry: do not ask for the same floor again.
+
+Plain names, a visible choice and a clear message when no floor is available keep the load low.
+
+<h3 id="check">Check it works</h3>
+
+Test opening the list with a keyboard, searching, clearing the field, a home with one floor, a home with none, and a 320 pixel width. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
+
+### A form that asks which floor a schedule is for
+
+A simulated closed picker. Home Assistant’s own field looks different.
+
+<%= example('spec-floor-picker-closed') %>
+
+### The open list
+
+<%= example('spec-floor-picker-open') %>
+
+### Several floors
+
+<%= example('spec-floors-picker-multiple') %>

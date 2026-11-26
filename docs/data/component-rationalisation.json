@@ -1653,7 +1653,7 @@
       "title": "Accordion",
       "section": "components",
       "group": "Content presentation",
-      "sha256": "e48397f2e496cd2e63bc25cc39cc18639b17f9570ceb1f4d436989924ff5c16a",
+      "sha256": "8a2d4828fa18bd20ebda6b54ab0229229ae45f2dd6f4e2772e5584f2745a86e5",
       "examples": [
         "core-accordion-troubleshooting",
         "core-accordion-measures"
@@ -1868,7 +1868,7 @@
       "title": "Character count",
       "section": "components",
       "group": "Form elements",
-      "sha256": "803a556b1e163390e1b6cb20eaac5b2541cab5fcd7e40067ca5230db7a3119b4",
+      "sha256": "f67e41c30589903cbc7cdc256f9b2ba606a45e4ba70f1d56ab1d6d32b3a60630",
       "examples": [
         "nhs-count-note",
         "nhs-count-over-limit"
@@ -1979,7 +1979,7 @@
       "title": "Checkboxes",
       "section": "components",
       "group": "Form elements",
-      "sha256": "cd11d6dfee95c5e014fdf74d867972c2527fdce74626bfa41c78ab3d59e2db46",
+      "sha256": "f10039ab35217ac1fd0b69992f6b0a26e6b54badd79369dd7263d868997c6995",
       "examples": [
         "nhs-checkbox-rooms",
         "nhs-checkbox-preference"
@@ -2080,7 +2080,7 @@
       "title": "Cookie banner",
       "section": "components",
       "group": "Content presentation",
-      "sha256": "52bd8131ed3902192df8b5fa9bca32ff5c3619181f77798c3b433128e8d249be",
+      "sha256": "26793bb88c3fb5f37d421cf523310d971b5a7bb06189a734b7d419bb96ecd6dd",
       "examples": [
         "core-cookie-essential",
         "core-cookie-choice",
@@ -2115,7 +2115,7 @@
       "title": "Date input",
       "section": "components",
       "group": "Form elements",
-      "sha256": "21c85af4c6ea5dd3a801ff8015b96b97227800adec3e2e8fbf2ab2319be1ae4f",
+      "sha256": "0e321701a35021adbecc69ec98a7df871970738e5e2d581c4597214870bc0171",
       "examples": [
         "nhs-date-maintenance",
         "nhs-date-error"
@@ -2136,7 +2136,7 @@
       "evidence": {
         "file": "docs/source/components/date-input.html.md.erb",
         "line": 2,
-        "excerpt": "title: Date input"
+        "excerpt": "title: \"Date & Time Picker\""
       },
       "original_evidence": {
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
@@ -2223,7 +2223,7 @@
       "title": "Dialogs",
       "section": "components",
       "group": null,
-      "sha256": "3248b167f90f8d607247e6c5be069e4456220112da08bba49ab525b43b6deaa9",
+      "sha256": "f97cedd47c3962d553976ba44bf55b97243c96aeb67fa21e905bbb65fc0d3775",
       "examples": [
         "local-dialog-details",
         "local-dialog-confirm"
@@ -2243,7 +2243,7 @@
       "evidence": {
         "file": "docs/source/components/dialogs.html.md.erb",
         "line": 2,
-        "excerpt": "title: \"Dialogs\""
+        "excerpt": "title: \"Dialog / Modal\""
       },
       "original_evidence": {
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
@@ -2257,7 +2257,7 @@
       "title": "Do and do not lists",
       "section": "components",
       "group": "Content presentation",
-      "sha256": "5f1f15c10e9394113307608d57134a06315e86652ae0af97896ed4e9a54a8251",
+      "sha256": "086154402f9fa5153fc199e2be72f6a861cfa3da20463092fc3aeb062b599eb7",
       "examples": [
         "nhs-advice-dashboard",
         "nhs-advice-notes"
@@ -2277,7 +2277,7 @@
       "evidence": {
         "file": "docs/source/components/do-and-dont-lists.html.md.erb",
         "line": 2,
-        "excerpt": "title: Do and do not lists"
+        "excerpt": "title: \"Do and Don't Lists\""
       },
       "original_evidence": {
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
@@ -2291,7 +2291,7 @@
       "title": "Error message",
       "section": "components",
       "group": "Form elements",
-      "sha256": "5f882e27f2dbfb41bba3c9da3101fafa80dbff23a9ab79bf3bab98f29900b9d5",
+      "sha256": "fd3d4eda75c40fa793e8bc8dc7f411a56906f092cc40025a17402eb3b4fd985b",
       "examples": [
         "nhs-error-room-name",
         "nhs-error-temperature"
@@ -2312,7 +2312,7 @@
       "evidence": {
         "file": "docs/source/components/error-message.html.md.erb",
         "line": 2,
-        "excerpt": "title: \"Error message\""
+        "excerpt": "title: \"Error Message & Error Summary\""
       },
       "original_evidence": {
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
@@ -2397,7 +2397,7 @@
       "title": "Exit this page",
       "section": "components",
       "group": "Navigation",
-      "sha256": "b0fb387283827cf380208e4d9ce471c00df9d82f9ac5dc8ca98893e32fba211d",
+      "sha256": "eb690fcbf8238ede32eff3a59dfff095b93b3b11a26c5210e31f19f35eb1cf61",
       "examples": [
         "core-exit-visible",
         "core-exit-keyboard"
@@ -2417,7 +2417,7 @@
       "evidence": {
         "file": "docs/source/components/exit-this-page.html.md.erb",
         "line": 2,
-        "excerpt": "title: \"Exit this page\""
+        "excerpt": "title: \"Exit This Page\""
       },
       "original_evidence": {
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
@@ -2467,7 +2467,7 @@
       "title": "Feedback",
       "section": "components",
       "group": "Content presentation",
-      "sha256": "618ce2a051486c3958a0dacc67636cac1b600991285678356230e5d97967aac2",
+      "sha256": "31367220246818e1a636e6a02d2967a16e0b546be6817f6c103da7b285ebb667",
       "examples": [
         "core-feedback-invitation",
         "core-feedback-confirmation"
@@ -2487,7 +2487,7 @@
       "evidence": {
         "file": "docs/source/components/feedback.html.md.erb",
         "line": 2,
-        "excerpt": "title: Feedback"
+        "excerpt": "title: \"Feedback\""
       },
       "original_evidence": {
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
@@ -2501,7 +2501,7 @@
       "title": "Fieldset",
       "section": "components",
       "group": "Form elements",
-      "sha256": "56a4fc165c0209f6e6d7b420f6d8f3f95122662b229924a78fa6fbdc51d12f4b",
+      "sha256": "89f671e83db3c4dbfbc0724a8337419742cb7c28e89bc83d488debae2e45213c",
       "examples": [
         "nhs-fieldset-room-options",
         "nhs-fieldset-period"
@@ -2522,7 +2522,7 @@
       "evidence": {
         "file": "docs/source/components/fieldset.html.md.erb",
         "line": 2,
-        "excerpt": "title: \"Fieldset\""
+        "excerpt": "title: \"Fieldset & Legend\""
       },
       "original_evidence": {
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
@@ -2536,7 +2536,7 @@
       "title": "File upload",
       "section": "components",
       "group": "Form elements",
-      "sha256": "d56ffec5b737c7c5ed22e8e1a7f100812b18c873a3bc6811b5302f50c4e9fcaa",
+      "sha256": "875a5325cc6569f6c47ecaafe830dd20728f3d65b2f01ed086767c651f7f58ea",
       "examples": [
         "nhs-upload-image",
         "nhs-upload-error"
@@ -2557,7 +2557,7 @@
       "evidence": {
         "file": "docs/source/components/file-upload.html.md.erb",
         "line": 2,
-        "excerpt": "title: \"File upload\""
+        "excerpt": "title: \"File Upload / Dropzone\""
       },
       "original_evidence": {
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
@@ -2571,7 +2571,7 @@
       "title": "Footer",
       "section": "components",
       "group": "Navigation",
-      "sha256": "a4705bd717488063df79ebb3b6864b9ff165059ef68b12e1951993d276a338ae",
+      "sha256": "72ea146aa21f6ff90df4123b19cb9abe0c2b33bbfb751937e950e13636e7e04e",
       "examples": [
         "nhs-footer-simple",
         "nhs-footer-information"
@@ -2642,7 +2642,7 @@
       "title": "Header",
       "section": "components",
       "group": "Navigation",
-      "sha256": "40841f33c85074037caf0e20584eec11323aeae7d2e1f8eec6580c775d734cf0",
+      "sha256": "ac04d27d3cab90483cea2cb4f5e7db665759dca89beb5f1aac47ee5f3db382f9",
       "examples": [
         "nhs-header-minimal",
         "nhs-header-navigation"
@@ -2665,7 +2665,7 @@
       "evidence": {
         "file": "docs/source/components/header.html.md.erb",
         "line": 2,
-        "excerpt": "title: Header"
+        "excerpt": "title: \"Header / Top App Bar\""
       },
       "original_evidence": {
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
@@ -3226,7 +3226,7 @@
       "title": "Select",
       "section": "components",
       "group": "Form elements",
-      "sha256": "4cf41fb5e6d29f12557cc0a013ed7b6deb84d27f71d9670c7657c4ec82cbb716",
+      "sha256": "6f502fb62cb2fe2eb3ddecbd398d2869b80c75dd456aff785129a8457a4b0db2",
       "examples": [
         "nhs-select-palettes",
         "nhs-select-error"
@@ -3247,7 +3247,7 @@
       "evidence": {
         "file": "docs/source/components/select.html.md.erb",
         "line": 2,
-        "excerpt": "title: \"Select\""
+        "excerpt": "title: \"Dropdown Menu & Overflow Menu\""
       },
       "original_evidence": {
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
@@ -3398,7 +3398,7 @@
       "title": "Table",
       "section": "components",
       "group": "Content presentation",
-      "sha256": "4103510295bbcbdd0ffc8a4f1821839fb2dbe36f4606d8dd3d197523e7f9c373",
+      "sha256": "5fc84a1714a640b163182cfa0a48de8cf9d5cb018191f4dc167950e088124bf4",
       "examples": [
         "nhs-table-readings",
         "nhs-table-missing",
@@ -3420,7 +3420,7 @@
       "evidence": {
         "file": "docs/source/components/table.html.md.erb",
         "line": 2,
-        "excerpt": "title: Table"
+        "excerpt": "title: \"Data Table\""
       },
       "original_evidence": {
         "revision": "c254b1c3ae497bbcb52b1fc075804d6c411af6e4",
@@ -4147,7 +4147,7 @@
       "title": "Pause before an exceptional consequence",
       "section": "patterns",
       "group": "Page patterns",
-      "sha256": "de0daf0faa91bb590639ae5a94191a06492da17c5a08434b0216e64994a5f616",
+      "sha256": "637ba3d1a4786840c79077890e5cca8ac982a68b6983228199abb762bd2337b8",
       "examples": [
         "nhs-interruption-backup",
         "nhs-interruption-overnight",
@@ -4216,7 +4216,7 @@
       "title": "Ask clear questions on pages and in dialogs",
       "section": "patterns",
       "group": "Page patterns",
-      "sha256": "0330e83cdb0c8b910567531352fd01de942d1a83dd157da0b3fe14c3d775c94c",
+      "sha256": "7ad19a77870ed1a504b2953faa62206066fe9e9768744f5141591a8756dc8adb",
       "examples": [
         "nhs-question-room",
         "nhs-question-modal",
@@ -4845,7 +4845,7 @@
       "title": "Feedback",
       "section": "components",
       "group": "Publishing components",
-      "sha256": "4a0bb814418c700d68242605724d586f6e9ffbb7b7f3ae33650aad881cff7eda",
+      "sha256": "6bf37bf96de5cbb9c8e28c084a533e4c500fcc44feed277ce741ac9af123139b",
       "examples": [
         "pub-components-feedback-1",
         "pub-components-feedback-2"
@@ -11283,7 +11283,7 @@
         {
           "file": "docs/source/components/feedback.html.md.erb",
           "line": 2,
-          "excerpt": "title: Feedback",
+          "excerpt": "title: \"Feedback\"",
           "supports": "Feedback owns delivery, privacy, acknowledgement and failure meaning; source variants link to that contract."
         },
         {
@@ -11799,7 +11799,7 @@
         {
           "file": "docs/source/components/table.html.md.erb",
           "line": 2,
-          "excerpt": "title: Table",
+          "excerpt": "title: \"Data Table\"",
           "supports": "Table semantics remain owned by the table guide; chart composition uses the production Energy adapter and data alternative."
         },
         {
@@ -11904,7 +11904,7 @@
         {
           "file": "docs/source/components/header.html.md.erb",
           "line": 2,
-          "excerpt": "title: Header",
+          "excerpt": "title: \"Header / Top App Bar\"",
           "supports": "Header variants share one ownership contract and preserve setup/context differences without claiming native authentication coverage."
         },
         {

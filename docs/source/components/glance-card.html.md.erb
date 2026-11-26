@@ -1,0 +1,132 @@
+---
+title: "Glance Card"
+description: "Show the names and states of several entities in one compact row on a dashboard."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Glance Card specification: configuration, what each cell shows, the theme colours it uses, its focus style and its limits."
+ai_instructions: "Apply to the Home Assistant glance card (type glance). It shows a row of entities, each with a name, an icon and a state, and is for reading, not for controlling. Keep to 5 columns or fewer, use short names, and keep the state as words, not only an icon or colour. Each cell is a plain block, not a button, even when it has an action, and its keyboard focus is a background tint with no outline unless card-mod adds one. Long names are cut short. Do not claim a contrast ratio for the focus tint, that cells are announced as buttons, or that long names stay readable. For controls use a Tile or Entities card."
+ai_related:
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface and its focus outline."
+  - path: "/components/card-and-section-header.html"
+    title: "Card & Section Header"
+    relationship: "Owns the card title style."
+  - path: "/components/summary-list.html"
+    title: "Summary list"
+    relationship: "Use for a longer list of names and values."
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns how to show a state and how old it is."
+component:
+  parent: "Glance Card"
+  letter: "G"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-glance-card"
+      origin: "Lovelace"
+      anchor: "child-hui-glance-card"
+  tags:
+    - "glance"
+    - "hui-glance-card"
+---
+
+# Glance Card
+
+<h2 id="purpose">Purpose</h2>
+
+A glance card shows the state of several things in one row, so a person can see at a glance whether the front door is locked, the hall light is on and the kitchen is warm. It is for reading, not for control. For switches and sliders use a Tile or Entities card.
+
+This page covers:
+
+- Glance Card
+  - `hui-glance-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+The card has an optional title and one cell for each entity. A cell shows the name above, a small icon in the middle and the state below, all centred. A cell can show the time since the state last changed instead of the state. If an entity cannot be found, its cell shows a warning tint with a message in place of a state.
+
+Cells share the width equally. Text on one line is cut short with an ellipsis, so a long name or state loses its end.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-glance-card"><code>hui-glance-card</code></h3>
+
+The glance card (`type: glance`).
+
+```yaml
+type: glance
+title: Ground floor
+columns: 4
+entities:
+  - entity: lock.front_door
+    name: Front door
+  - entity: light.hall
+    name: Hall light
+  - entity: sensor.kitchen_temperature
+    name: Kitchen
+  - entity: cover.garage_door
+    name: Garage
+```
+
+- `entities` is required. Each item is an entity name or an object with `entity`, `name`, `icon`, `image` and `show_last_changed`. Set `show_last_changed: true` on an entity to show the time since its state changed.
+- `title` sets the card heading, drawn in the Civica card heading style.
+- `show_name`, `show_state` and `show_icon` turn parts of the cells off. Keep the name and the state on.
+- `columns` sets how many cells sit in a row. The default is the number of entities, up to 5.
+- `tap_action`, `hold_action` and `double_tap_action` set what a cell does. Tapping opens More info by default. An action that calls a service must name the service, or the card shows an error.
+- `color` sets how the icon is coloured. By default it follows the state.
+
+The card uses the theme’s card heading colour, size and font, and the primary text colour. A missing entity is tinted with `warning-color` (#8A6100 in light mode, #DED3B8 in dark mode).
+
+<h3 id="focus">Keyboard focus</h3>
+
+A cell with an action can be reached with the keyboard. Home Assistant shows focus by tinting the cell’s background with `divider-color` (#CECECE in light mode, #50565A in dark mode) and rounding its corners. It draws no outline. The Civica theme adds an outline and yellow ring to the card as a whole, but not to the cells inside it. With card-mod, which needs the card-mod integration, you can add one to the cells:
+
+```yaml
+type: glance
+card_mod:
+  style: |
+    .entity:focus {
+      outline: 3px solid var(--civica-focus-text);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 3px var(--ha-color-focus);
+    }
+entities:
+  - lock.front_door
+```
+
+A cell is a plain block, not a button, and it has no button role of its own. A cell cannot be given a name that includes its state. If people need to operate the entity, use a Tile or Entities card, or write the same names and states in text.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Many entities fit in a small space.
+- Each cell can open More info or run an action.
+- Long names and states are cut short.
+- The icon is small and the state is a few characters, so a mix of colour and icon alone is not enough. Keep the state in words.
+- The focus tint is a background change with no outline, which can be hard to see.
+- The height of a cell depends on its content, so a tap target may be small.
+- More than 5 columns make cells too narrow to read.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a glance card for a handful of related states in one place. Keep names short, show the state in words, and use no more than 5 columns. Put controls on a Tile or Entities card. For a longer list of names and values, use a [summary list](summary-list.html). For the card surface and its heading, see [Card (Base Surface)](cards.html) and [Card & Section Header](card-and-section-header.html).
+
+Success criteria that apply:
+
+- 1.4.1 Use of Colour and 1.1.1 Non-text Content: say the state in words, because the icon and its colour are not enough.
+- 1.4.4 Resize Text and 1.4.10 Reflow: cut-short text hides words at large sizes and narrow screens.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured: the default focus is a background tint. Check it in your own theme, or add the outline above.
+- 2.5.8 Target Size (Minimum): the size of a cell depends on its content. Test it in your own dashboard.
+- 4.1.2 Name, Role, Value: a cell has no role, so do not rely on it as a button.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-glance-downstairs') %>

@@ -1,0 +1,122 @@
+---
+title: "Duration Input"
+description: "Home Assistant’s field for entering a length of time in hours, minutes and seconds."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Duration Input specification: the fields, options and units, how to explain them, and the limits."
+ai_instructions: "Apply to ha-duration-input, the field for a length of time such as a timer, a delay or a boost. It shows number boxes for hours, minutes and seconds (days and milliseconds are optional) marked with the short labels dd, hh, mm, ss and ms. The short labels are abbreviations, so always add helper text that spells the units out and gives a worked value such as 1 hour 30 minutes. A duration is not a clock time: do not use a time-of-day field for it. Hours may go above 23. The theme sets text, border and error colours; unit wording, the Required message and field order cannot be changed. Do not claim a screen reader announces the group name or a contrast ratio."
+ai_related:
+  - path: "/home-assistant/schedules-and-time.html"
+    title: "Schedules, calendars and timers"
+    relationship: "Owns timers, durations on timers and how to show them."
+  - path: "/home-assistant/locale-units-and-time.html"
+    title: "Locale, units and time"
+    relationship: "Owns the difference between a date, an instant, a duration and a schedule."
+  - path: "/components/text-input.html"
+    title: "Text input"
+    relationship: "Owns single number and text fields."
+  - path: "/components/hint-text.html"
+    title: "Hint text"
+    relationship: "Owns hint wording."
+  - path: "/components/error-message.html"
+    title: "Error Message & Error Summary"
+    relationship: "Owns error wording."
+  - path: "/components/fieldset.html"
+    title: "Fieldset & Legend"
+    relationship: "Owns grouping related fields under one label."
+component:
+  parent: "Duration Input"
+  letter: "D"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-duration-input"
+      origin: "Home Assistant"
+      anchor: "child-ha-duration-input"
+  tags:
+    - "ha-duration-input"
+---
+
+# Duration Input
+
+<h2 id="purpose">Purpose</h2>
+
+The duration input lets someone enter a length of time: how long a timer runs, how long a light stays on, how long to wait before an automation continues. It is not a clock time, so it can be longer than a day.
+
+Home Assistant uses it in the duration selector, in timer settings, in automation delays and in forms that ask for a time period. A dashboard author does not place it in a card.
+
+This page covers:
+
+- Duration Input
+  - `ha-duration-input`
+
+<h2 id="anatomy">Anatomy</h2>
+
+1. A visible label, with an asterisk when the field is required.
+2. A group of number boxes, each with a short label beside it: `dd` for days, `hh` for hours, `mm` for minutes, `ss` for seconds and `ms` for milliseconds.
+3. Optional helper text.
+4. A clear control, when the field is optional and has a value.
+5. An error message, which says “Required” when a required field is empty.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-duration-input"><code>ha-duration-input</code></h3>
+
+The options are fixed by where the field is used:
+
+- Seconds show by default. Days and milliseconds show only when switched on.
+- A negative value is allowed only when switched on, and then a plus or minus control appears.
+- The label and helper text are set by the form.
+- A required field starts at zero. An optional field starts empty.
+- Hours can go above 23, so “36 hours” is a valid entry.
+- A change gives the whole value, or nothing when the field is cleared.
+
+The boxes take their text, border and error colours from the theme: `primary-text-color`, `secondary-text-color`, `divider-color`, `error-color`, `primary-color` and the focus keys. The Civica theme sets all of them for light and dark modes. Unit wording, the “Required” message and the order of the boxes cannot be changed. Civica gives no card-mod styling for this field.
+
+The short labels are abbreviations, not words. The form must explain them in its helper text, and the label and the helper must say what the duration is for.
+
+```text
+Boost length
+Hours (hh), minutes (mm) and seconds (ss). For example, 1 hour 30 minutes is 01, 30, 00.
+```
+
+Do not use a clock-time field for a duration. A clock time cannot go past a day, and it means a moment, not a length. See [Locale, units and time](../home-assistant/locale-units-and-time.html) and [Schedules, calendars and timers](../home-assistant/schedules-and-time.html).
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One field covers days, hours, minutes and seconds, and allows long durations.
+- The boxes are number fields, and ask for numeric input.
+- The short labels are not obvious to everyone.
+- You cannot change the unit labels or the error text.
+- A required field starts at zero in every box, which people may take for a real answer.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+When you write a form that uses a duration:
+
+- Name the field for its job, such as “Boost length”, not “Duration”.
+- Spell out the units in the helper text, and give a worked value.
+- Ask for one unit when one is enough, for example a number of minutes.
+- Show the saved value in words afterwards: “1 hour 30 minutes”.
+- If the field cannot be explained, use a [fieldset](fieldset.html) with one number input for each unit, each with a full-word label such as “Hours”, “Minutes” and “Seconds”.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: the boxes sit in a labelled group.
+- 3.3.2 Labels or Instructions: spell out the abbreviations.
+- 3.3.1 Error Identification: say what is missing.
+- 3.3.7 Redundant Entry: do not ask again for a duration the person has already given.
+- 4.1.2 Name, Role, Value and 2.5.8 Target Size (Minimum): test the boxes on a phone.
+
+Browsers differ in how number boxes respond to the keyboard and mouse wheel, so test in your own dashboard. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-duration-field') %>

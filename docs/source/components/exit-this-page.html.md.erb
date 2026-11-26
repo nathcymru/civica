@@ -1,46 +1,110 @@
 ---
-title: "Exit this page"
-description: "Provide a rapid departure route only when research identifies a risk from viewing sensitive content."
-section: components
-group: Navigation
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
+title: "Exit This Page"
+description: "A visible way to leave a page quickly, for the rare content where being seen reading it could put someone at risk."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added the Civica guidance, contextual examples and implementation boundaries."
+  - date: "2026-11-26"
+    description: "Rewrote Exit This Page: when to use it, what Home Assistant does and does not provide, how to build the visible and keyboard routes, and what to test."
+  - date: "2026-11-11"
+    description: "First published, with two examples."
+ai_instructions: "Apply only when research shows that someone could be at risk if another person sees the page they are reading. Exit This Page is a Civica pattern: Home Assistant has no element for it. Build it as an ordinary visible button or link that goes to a neutral page, plus a second keyboard route. It is not a close button, a sign-out or an emergency stop. Never claim that it protects anyone, clears history, or that a keyboard shortcut is free of conflicts. Do not use a single-character shortcut. Civica does not add it to household dashboards."
+ai_related:
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns moving between pages."
+  - path: "/components/buttons.html"
+    title: "Button"
+    relationship: "Owns the button that carries the exit action."
+  - path: "/components/skip-link.html"
+    title: "Skip link"
+    relationship: "Owns the link that appears when it is focused, which the secondary route uses."
+  - path: "/patterns/household-urgency.html"
+    title: "Show household urgency clearly"
+    relationship: "Owns urgent household messages, which are a different job."
+  - path: "/home-assistant/presence-and-privacy.html"
+    title: "Presence, people and shared-screen privacy"
+    relationship: "Owns privacy on a screen other people can see."
+component:
+  parent: "Exit This Page"
+  letter: "E"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Exit This Page Pattern"
+      origin: "Civica"
+      anchor: "child-civica-exit-this-page-pattern"
+  tags:
+    - "exit-this-page"
 ---
 
-# Exit this page
+# Exit This Page
 
-Provide a rapid departure route only when research identifies a risk from viewing sensitive content.
+<h2 id="purpose">Purpose</h2>
 
-## When to use
+Exit This Page lets someone leave a page quickly when another person could see what they are reading and that would put them at risk. Use it only when research with the people affected shows that risk. A household dashboard does not need it just because it shows personal information.
 
-Consider this pattern for sensitive support content where being observed could place someone at risk. It is not a general close button, a device emergency stop or a replacement for sign-out. A household control dashboard does not need this component merely because it contains personal information.
+It is not a close button, a sign-out or an emergency stop. For urgent household messages, see [Show household urgency clearly](../patterns/household-urgency.html). For privacy on a screen other people can see, see [Presence, people and shared-screen privacy](../home-assistant/presence-and-privacy.html).
 
-The examples below demonstrate visual placement and keyboard discovery only. They deliberately use local, clearly labelled destinations. They are not a production safety mechanism.
+This page covers:
 
-## Visible departure link
+- Exit This Page
+  - Civica Exit This Page Pattern
 
-<%= example('core-exit-visible') %>
+<h2 id="anatomy">Anatomy</h2>
 
-## Secondary keyboard route
+- A visible button with the plain label “Exit this page”, in the same place on every page of the content.
+- A second keyboard route: a link that appears when it receives focus and goes to the same place.
+- A neutral destination that shows nothing personal.
 
-<%= example('core-exit-keyboard') %>
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Production behaviour
+<h3 id="child-civica-exit-this-page-pattern"><code>Civica Exit This Page Pattern</code></h3>
 
-Use the complete upstream component and its companion exit pattern for a real service, including the rapid keyboard action and loading cover. Choose a destination that does not expose personalised sensitive content. Both exit routes must agree. Check session-clearing requirements with the application owner; navigation alone does not erase history, browser suggestions or device records.
+A Civica pattern with no Home Assistant element behind it. Home Assistant has no exit control, and the Civica theme does not install one. Build it from an ordinary link or button that goes to a neutral page, together with a second link for keyboard users. Signing out or locking the device is a separate action for the device, not for this page.
 
-Do not implement the rapid keyboard shortcut globally in Home Assistant without assessing conflicts with assistive technology and native controls. A miniature demonstration inside an iframe cannot establish that a full-page departure is safe.
+The Civica theme sets no variable for this pattern. The button and links take the theme text and link colours, and a 3 pixel focus ring with a 2 pixel offset. The ring is `#0B0C0C` in light mode and `#FFDD00` in dark mode (`wa-focus-ring-color`).
 
-## Accessibility and testing
+<h2 id="limits">Advantages and limitations</h2>
 
-Include affected users and appropriate safety expertise in research. Test the visible action, secondary link, shortcut, slow navigation, keyboard focus, JavaScript failure and browser back behaviour in the actual service. Never describe a local preview as proof of safety.
+- One visible button needs no explanation.
+- Going to a neutral page is quick and works without a script.
+- Moving to another page does not clear the browser history, address suggestions or the device’s own records. Do not tell people that it does.
+- A keyboard shortcut can clash with the shortcuts of screen readers and other assistive technology. Test with people who use them, or leave the shortcut out.
+- A small preview on a page cannot prove that leaving a full page is safe.
 
-## Source and limits
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-Read [GOV.UK Exit this page](https://design-system.service.gov.uk/components/exit-this-page/) and its linked journey pattern. This Civica entry records the component for completeness; the theme does not install it on household pages.
+Choose a destination that does not reveal personal content. Make the button and the secondary link go to the same place. Do not ask people to confirm; each extra step costs time they may not have.
+
+Do not add the pattern to household dashboards without research that shows a need for it. Include people who are affected and a safety expert in that research.
+
+Success criteria that apply:
+
+- 2.1.4 Character Key Shortcuts: a shortcut made of a single character must be possible to turn off or change. Prefer a press of more than one key, or no shortcut.
+- 2.4.1 Bypass Blocks and 2.4.7 Focus Visible: the keyboard route can be reached and the focus can be seen.
+- 2.4.11 Focus Not Obscured (Minimum): the focused link is not hidden.
+- 2.5.8 Target Size (Minimum): the button is large enough to press quickly.
+- 3.2.2 On Input: the button behaves as its label says.
+- 2.2.1 Timing Adjustable: nothing on the page depends on a time limit.
+
+A plain label, a fixed position and no extra steps keep the load low.
+
+<h3 id="check">Check it works</h3>
+
+Test the visible button, the secondary link, any shortcut, slow loading, keyboard focus, a page with scripts switched off and the browser Back button. Do this on the real page, not on a preview. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
+
+### A visible Exit this page button
+
+<%= example('spec-exit-visible') %>
+
+### A secondary keyboard route
+
+<%= example('spec-exit-keyboard') %>

@@ -1,0 +1,426 @@
+---
+title: "Entities Card & Entity Rows"
+description: "Show a titled list of entities as rows, each row built for its kind of entity, with a few special rows for dividers, labels and links."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Entities Card and Entity Rows specification: the card, the 25 entity rows, the eight special rows, the theme keys that reach them and what Home Assistant draws itself."
+ai_instructions: "Apply when a dashboard lists entities in an entities card (type entities). Home Assistant picks the row from the entity domain: a light, switch or vacuum gets a switch row, a water heater gets the climate row, and a domain with no row of its own gets the simple row. There is no separate vacuum row or water heater row in this Home Assistant version. Row names must match entity names, state must be written in words as well as colour, and a card should hold a short list. Row spacing uses a Home Assistant variable the Civica theme does not set, so changing it needs card-mod. Do not claim contrast, focus appearance or screen-reader behaviour for a row."
+ai_related:
+  - path: "/home-assistant/entity-lists-and-rows.html"
+    title: "Entity lists, readings and row actions"
+    relationship: "Owns how to mix readings, attributes and row actions in one list."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns card structure and headings."
+  - path: "/components/card-header-and-footer-widgets.html"
+    title: "Card Header & Footer Widgets"
+    relationship: "Owns the header and footer widgets an entities card can show."
+  - path: "/components/conditional-card.html"
+    title: "Conditional Card"
+    relationship: "Owns showing or hiding a whole card by condition."
+  - path: "/components/summary-list.html"
+    title: "Summary list"
+    relationship: "Owns the plain pattern for a list of names and values."
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns the wording for zero, unknown and unavailable readings."
+component:
+  parent: "Entities Card & Entity Rows"
+  letter: "E"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-entities-card"
+      origin: "Lovelace"
+      anchor: "child-hui-entities-card"
+      grandchildren:
+        - name: "hui-sensor-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-sensor-entity-row"
+        - name: "hui-toggle-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-toggle-entity-row"
+        - name: "hui-cover-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-cover-entity-row"
+        - name: "hui-climate-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-climate-entity-row"
+        - name: "hui-humidifier-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-humidifier-entity-row"
+        - name: "hui-input-number-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-input-number-entity-row"
+        - name: "hui-input-select-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-input-select-entity-row"
+        - name: "hui-input-text-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-input-text-entity-row"
+        - name: "hui-input-datetime-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-input-datetime-entity-row"
+        - name: "hui-input-button-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-input-button-entity-row"
+        - name: "hui-lock-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-lock-entity-row"
+        - name: "hui-media-player-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-media-player-entity-row"
+        - name: "hui-scene-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-scene-entity-row"
+        - name: "hui-script-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-script-entity-row"
+        - name: "hui-timer-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-timer-entity-row"
+        - name: "hui-update-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-update-entity-row"
+        - name: "hui-vacuum-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-vacuum-entity-row"
+        - name: "hui-valve-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-valve-entity-row"
+        - name: "hui-water-heater-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-water-heater-entity-row"
+        - name: "hui-weather-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-weather-entity-row"
+        - name: "hui-text-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-text-entity-row"
+        - name: "hui-simple-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-simple-entity-row"
+        - name: "hui-group-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-group-entity-row"
+        - name: "hui-event-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-event-entity-row"
+        - name: "hui-button-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-button-entity-row"
+        - name: "hui-divider-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-divider-row"
+        - name: "hui-section-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-section-row"
+        - name: "hui-weblink-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-weblink-row"
+        - name: "hui-attribute-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-attribute-row"
+        - name: "hui-buttons-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-buttons-row"
+        - name: "hui-cast-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-cast-row"
+        - name: "hui-conditional-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-conditional-row"
+        - name: "hui-call-service-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-call-service-row"
+  tags:
+    - "hui-entities-card"
+    - "hui-sensor-entity-row"
+    - "hui-toggle-entity-row"
+    - "hui-cover-entity-row"
+    - "hui-climate-entity-row"
+    - "hui-humidifier-entity-row"
+    - "hui-input-number-entity-row"
+    - "hui-input-select-entity-row"
+    - "hui-input-text-entity-row"
+    - "hui-input-datetime-entity-row"
+    - "hui-input-button-entity-row"
+    - "hui-lock-entity-row"
+    - "hui-media-player-entity-row"
+    - "hui-scene-entity-row"
+    - "hui-script-entity-row"
+    - "hui-timer-entity-row"
+    - "hui-update-entity-row"
+    - "hui-vacuum-entity-row"
+    - "hui-valve-entity-row"
+    - "hui-water-heater-entity-row"
+    - "hui-weather-entity-row"
+    - "hui-text-entity-row"
+    - "hui-simple-entity-row"
+    - "hui-group-entity-row"
+    - "hui-event-entity-row"
+    - "hui-button-entity-row"
+    - "hui-divider-row"
+    - "hui-section-row"
+    - "hui-weblink-row"
+    - "hui-attribute-row"
+    - "hui-buttons-row"
+    - "hui-cast-row"
+    - "hui-conditional-row"
+    - "hui-call-service-row"
+---
+
+# Entities Card & Entity Rows
+
+<h2 id="purpose">Purpose</h2>
+
+An entities card is a titled list. Each line is a row for one entity, and Home Assistant picks the kind of row from the entity’s domain, so a light gets a switch and a sensor gets a reading. A few special rows add dividers, section labels, links and buttons. Use it for a short list of related things, such as everything in one room.
+
+This page owns the card and every row. For how to mix readings, attributes and actions in one list, see [Entity lists, readings and row actions](../home-assistant/entity-lists-and-rows.html). For card structure, see [Card (Base Surface)](cards.html).
+
+This page covers:
+
+- Entities Card & Entity Rows
+  - `hui-entities-card`
+    - `hui-sensor-entity-row`
+    - `hui-toggle-entity-row`
+    - `hui-cover-entity-row`
+    - `hui-climate-entity-row`
+    - `hui-humidifier-entity-row`
+    - `hui-input-number-entity-row`
+    - `hui-input-select-entity-row`
+    - `hui-input-text-entity-row`
+    - `hui-input-datetime-entity-row`
+    - `hui-input-button-entity-row`
+    - `hui-lock-entity-row`
+    - `hui-media-player-entity-row`
+    - `hui-scene-entity-row`
+    - `hui-script-entity-row`
+    - `hui-timer-entity-row`
+    - `hui-update-entity-row`
+    - `hui-vacuum-entity-row`
+    - `hui-valve-entity-row`
+    - `hui-water-heater-entity-row`
+    - `hui-weather-entity-row`
+    - `hui-text-entity-row`
+    - `hui-simple-entity-row`
+    - `hui-group-entity-row`
+    - `hui-event-entity-row`
+    - `hui-button-entity-row`
+    - `hui-divider-row`
+    - `hui-section-row`
+    - `hui-weblink-row`
+    - `hui-attribute-row`
+    - `hui-buttons-row`
+    - `hui-cast-row`
+    - `hui-conditional-row`
+    - `hui-call-service-row`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+1. An optional header widget.
+2. A card title, with an optional icon and, at the right, a header switch that turns the switchable rows on or off together. Home Assistant shows the switch by default when the card has a title and at least two switchable rows. `show_header_toggle: false` hides it.
+3. The rows, one under another, with a gap of 8 pixels.
+4. An optional footer widget.
+
+Each entity row has a round state icon, the row name, an optional line of secondary information and, on the right, the control or value for that kind of entity. A row with an action is a tab stop, and its focus shows as a change of background colour. When the entity cannot be found, the row shows a warning.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-entities-card"><code>hui-entities-card</code></h3>
+
+A Lovelace card (`type: entities`). `entities` is required.
+
+```yaml
+type: entities
+title: Living room
+entities:
+  - sensor.living_room_temperature
+  - entity: light.ceiling
+    name: Ceiling light
+    secondary_info: last-changed
+  - type: section
+    label: Doors
+  - lock.front_door
+```
+
+Card keys: `title`, `entities`, `show_header_toggle`, `theme`, `icon`, `header`, `footer` and `color`. The older `state_color` key still works but is replaced by `color`. A row can be a plain entity ID or an object with `entity`, `name`, `icon`, `secondary_info`, `type`, `action_name`, `tap_action`, `hold_action` and `double_tap_action`. The older `service` and `service_data` keys are replaced by `action` and `data`.
+
+Home Assistant draws the card title as a first-level heading, so give each entities card a short title that names the group.
+
+**What the Civica theme sets.** The card uses the theme’s square corners, 1 pixel border and no shadow. Row names use `primary-text-color` and secondary information uses `secondary-text-color`. Dividers use `divider-color`. State icons use `state-icon-color`, with `state-active-color` for an active state, `state-inactive-color` for an inactive one and `state-icon-error-color` for an error state. Warnings use `warning-color` and errors use `error-color`.
+
+**What stays as Home Assistant draws it.** The switch, slider and button shapes inside rows are Home Assistant’s own. The row gap uses `--entities-card-row-gap`, which the theme does not set, so it stays at 8 pixels. Changing it needs the card-mod integration, for example on `hui-entities-card #states`.
+
+**Rows Home Assistant chooses for you.** If a row has no `type`, Home Assistant picks one from the domain. Domains with no row of their own get the simple row. The fan, date, datetime, number, select and time domains also have their own rows, which this page does not list separately: a fan row shows a speed slider when the fan supports speeds, beside its on and off switch; a date row shows a date field; a datetime row shows a date field and a time field; a number row shows a slider or a number box; a select row shows a dropdown; and a time row shows a time field.
+
+<h3 id="child-hui-entities-card--hui-sensor-entity-row"><code>hui-sensor-entity-row</code></h3>
+
+`type: sensor-entity`. Shows a reading with its unit on the right. A sensor whose device class is a timestamp shows the time instead. Sensors and any entity that only reports a value. Say what is measured in the row name.
+
+<h3 id="child-hui-entities-card--hui-toggle-entity-row"><code>hui-toggle-entity-row</code></h3>
+
+`type: toggle-entity`. Shows a switch. Home Assistant uses it for lights, switches, input booleans, automations, sirens, remotes, alerts and vacuums. Anything that is simply on or off. Show the state in words when a wrong guess matters, such as “Unlocked” for a door.
+
+<h3 id="child-hui-entities-card--hui-cover-entity-row"><code>hui-cover-entity-row</code></h3>
+
+`type: cover-entity`. Shows the cover’s controls, or tilt controls when the cover can only tilt. Blinds, garage doors and curtains. Name the cover, not the action.
+
+<h3 id="child-hui-entities-card--hui-climate-entity-row"><code>hui-climate-entity-row</code></h3>
+
+`type: climate-entity`. Shows the state of a thermostat. Home Assistant also uses this row for water heaters. One thermostat per row. Show the unit with every temperature.
+
+<h3 id="child-hui-entities-card--hui-humidifier-entity-row"><code>hui-humidifier-entity-row</code></h3>
+
+`type: humidifier-entity`. Shows the state of a humidifier. One humidifier per row. Show the target as a percentage.
+
+<h3 id="child-hui-entities-card--hui-input-number-entity-row"><code>hui-input-number-entity-row</code></h3>
+
+`type: input-number-entity`. Shows a slider or a number box, depending on the helper’s mode, with the helper’s own minimum, maximum and step. Settings people adjust. Show the unit and the limits in the label or hint.
+
+<h3 id="child-hui-entities-card--hui-input-select-entity-row"><code>hui-input-select-entity-row</code></h3>
+
+`type: input-select-entity`. Shows a drop-down list of the helper’s options. A short, fixed set of choices. Word each option so it reads on its own.
+
+<h3 id="child-hui-entities-card--hui-input-text-entity-row"><code>hui-input-text-entity-row</code></h3>
+
+`type: input-text-entity`. Shows a text field that follows the helper’s minimum and maximum length and its text or password mode. An empty field shows Home Assistant’s own empty-value wording. Short text such as a name or a note. Keep the row name as the label.
+
+<h3 id="child-hui-entities-card--hui-input-datetime-entity-row"><code>hui-input-datetime-entity-row</code></h3>
+
+`type: input-datetime-entity`. Shows a date input, a time input or both, depending on what the helper holds. A single date or time. Say the time zone when it matters.
+
+<h3 id="child-hui-entities-card--hui-input-button-entity-row"><code>hui-input-button-entity-row</code></h3>
+
+`type: input-button-entity`. Shows a Press button. `action_name` changes the button text, and `confirmation` asks people to confirm first. One action with no state. Name the outcome, such as “Restart the router”.
+
+<h3 id="child-hui-entities-card--hui-lock-entity-row"><code>hui-lock-entity-row</code></h3>
+
+`type: lock-entity`. Shows a Lock or Unlock button. `confirmation` asks people to confirm first. Locks. Write the state in words in the row, not by colour alone.
+
+<h3 id="child-hui-entities-card--hui-media-player-entity-row"><code>hui-media-player-entity-row</code></h3>
+
+`type: media-player-entity`. Shows power, previous, play, pause, stop and next buttons and a volume control, depending on what the player supports. One player per row. The buttons are icon buttons, so keep the player name clear.
+
+<h3 id="child-hui-entities-card--hui-scene-entity-row"><code>hui-scene-entity-row</code></h3>
+
+`type: scene-entity`. Shows an Activate button. `action_name` changes the text and `confirmation` asks people to confirm first. Scenes. Name the scene for what it does, such as “Evening”.
+
+<h3 id="child-hui-entities-card--hui-script-entity-row"><code>hui-script-entity-row</code></h3>
+
+`type: script-entity`. Shows a Run button, and a Cancel button while the script is running. `action_name` changes the text and `confirmation` asks people to confirm first. Scripts. Name the outcome, not the script.
+
+<h3 id="child-hui-entities-card--hui-timer-entity-row"><code>hui-timer-entity-row</code></h3>
+
+`type: timer-entity`. Shows the time remaining on a timer. Timers. Say what the timer is for in the row name.
+
+<h3 id="child-hui-entities-card--hui-update-entity-row"><code>hui-update-entity-row</code></h3>
+
+`type: update-entity`. Shows the update state in words, for example whether an update is available. Software and device updates.
+
+<h3 id="child-hui-entities-card--hui-vacuum-entity-row"><code>hui-vacuum-entity-row</code></h3>
+
+This Home Assistant version has no vacuum row. A vacuum entity is drawn by the switch row ([`hui-toggle-entity-row`](#child-hui-entities-card--hui-toggle-entity-row)), which shows a switch for the vacuum. Name the row for what the switch does, and show the vacuum’s state in words elsewhere, such as in a secondary line.
+
+<h3 id="child-hui-entities-card--hui-valve-entity-row"><code>hui-valve-entity-row</code></h3>
+
+`type: valve-entity`. Shows a switch to open or close a valve. Valves. Keep the state in words in the row.
+
+<h3 id="child-hui-entities-card--hui-water-heater-entity-row"><code>hui-water-heater-entity-row</code></h3>
+
+This Home Assistant version has no water heater row. A water heater entity is drawn by the climate row ([`hui-climate-entity-row`](#child-hui-entities-card--hui-climate-entity-row)). Use the climate row’s guidance for it.
+
+<h3 id="child-hui-entities-card--hui-weather-entity-row"><code>hui-weather-entity-row</code></h3>
+
+`type: weather-entity`. Shows the weather icon, the name and the current temperature, with a short forecast when one is available. One weather entity. Say the place in the row name.
+
+<h3 id="child-hui-entities-card--hui-text-entity-row"><code>hui-text-entity-row</code></h3>
+
+`type: text-entity`. Shows a text field for a text entity. Short text values. Keep the row name as the label.
+
+<h3 id="child-hui-entities-card--hui-simple-entity-row"><code>hui-simple-entity-row</code></h3>
+
+`type: simple-entity`. Shows the entity’s state as text. Home Assistant uses it for any domain without a row of its own. Read-only values. It is the fallback, so check the row reads well.
+
+<h3 id="child-hui-entities-card--hui-group-entity-row"><code>hui-group-entity-row</code></h3>
+
+`type: group-entity`. Shows a switch when every member of the group can be switched, otherwise the group’s state as text. Groups. Say what the group covers in its name.
+
+<h3 id="child-hui-entities-card--hui-event-entity-row"><code>hui-event-entity-row</code></h3>
+
+`type: event-entity`. Shows when the event last happened and its event type. Doorbells and similar events. Unavailable and unknown states show Home Assistant’s state wording instead of a time.
+
+<h3 id="child-hui-entities-card--hui-button-entity-row"><code>hui-button-entity-row</code></h3>
+
+`type: button-entity`. Shows a Press button. `action_name` changes the text and `confirmation` asks people to confirm first. One action with no state. Name the outcome.
+
+<h3 id="child-hui-entities-card--hui-divider-row"><code>hui-divider-row</code></h3>
+
+`type: divider`. Draws a thin line between rows. Its `style` key can set the line’s style. The line uses `divider-color`, or `entities-divider-color` if you set it. Use it to separate groups. It has no name, so it is only a visual break; use a section row when the group needs a name.
+
+<h3 id="child-hui-entities-card--hui-section-row"><code>hui-section-row</code></h3>
+
+`type: section`. Draws a line with a label under it. `label` is the section name. The label uses `primary-text-color`, or `section-header-text-color` if you set it. Use it to name a group of rows. Keep the label short.
+
+<h3 id="child-hui-entities-card--hui-weblink-row"><code>hui-weblink-row</code></h3>
+
+`type: weblink`. Shows a link with an icon. `url` is required. `name`, `icon`, `new_tab` and `download` are optional. Without a name, the link text is the address itself. Addresses that could run script are refused. The link text uses `primary-color`. Give the link a name that says where it goes. A link that opens a new tab should say so.
+
+<h3 id="child-hui-entities-card--hui-attribute-row"><code>hui-attribute-row</code></h3>
+
+`type: attribute`. Shows one attribute of an entity. `entity` and `attribute` are required. `prefix` and `suffix` add text before and after the value, and `time_format` shows a date attribute as a time. An attribute that is missing shows a dash. Use a suffix for the unit. A dash is not an explanation, so name the attribute in the row.
+
+<h3 id="child-hui-entities-card--hui-buttons-row"><code>hui-buttons-row</code></h3>
+
+`type: buttons`. Shows several entities as a row of buttons. `entities` is required. A switchable entity toggles when pressed and any other entity opens its More info. Holding a button opens More info. Keep it to a few buttons and give each a name or icon that says what it controls.
+
+<h3 id="child-hui-entities-card--hui-cast-row"><code>hui-cast-row</code></h3>
+
+`type: cast`. Shows a Cast control. Home Assistant shows “Cast requires HTTPS” or “Cast API unavailable” when it cannot cast, and “No devices found” when there is nothing to cast to. `name`, `icon`, `view` and `dashboard` are optional, and `hide_if_unavailable` hides the row when casting is not possible. Use `hide_if_unavailable` so people are not shown a control that cannot work.
+
+<h3 id="child-hui-entities-card--hui-conditional-row"><code>hui-conditional-row</code></h3>
+
+`type: conditional`. Wraps another row and shows it only when its conditions are met. `row` and `conditions` are required. The editor preview shows the row either way. Say elsewhere why a row may be missing, so people are not left looking for it.
+
+<h3 id="child-hui-entities-card--hui-call-service-row"><code>hui-call-service-row</code></h3>
+
+`type: call-service`. Shows a button that runs an action. `name` and `action` are required, and `data` gives the action its values. `perform-action` is the same row under its newer name. The older `service` key still works. Name the button for its outcome. Use a confirmation where a wrong press has a cost.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One native card gives a compact, scannable list of controls and readings, with the right control for each kind of entity.
+- The rows follow the household’s language, units and entity names.
+- The switch, slider and button shapes cannot be changed with the theme.
+- State and action are drawn by each row, so a long mixed list can be hard to scan. Use section rows and short lists.
+- A divider row carries no name. A conditional row can make a row disappear without explanation.
+- Rows can be changed with the theme only through colour and surface keys. Row spacing needs card-mod.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Keep a card to one subject and a short list of rows. Make each row name match the entity’s own name, so what people read on the card is what they see in settings. Write state and unit as words, such as “Locked” and “20.5 °C”, not as colour or an icon alone. Give an action button a name that says its outcome. Use `confirmation` where a wrong press matters.
+
+Use a [summary list](summary-list.html) for plain names and values that do nothing. Use [Entity lists, readings and row actions](../home-assistant/entity-lists-and-rows.html) to decide which row fits each entity.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: each row’s name and value belong together. Test the card’s headings and list structure with a screen reader in your own dashboard.
+- 1.4.1 Use of Colour: state is written in words as well as shown by an icon colour.
+- 1.4.3 and 1.4.11 Contrast: test row text, icons and dividers against the card background in your own dashboard, in light and dark modes.
+- 1.4.10 Reflow: test the card at 320 CSS pixels.
+- 2.1.1 Keyboard and 2.4.7 Focus Visible: a row with an action is a tab stop. Test every row’s focus in your own dashboard.
+- 2.5.3 Label in Name and 4.1.2 Name, Role, Value: test the names of switches, selects and buttons.
+- 2.5.8 Target Size (Minimum): test switches and buttons by touch.
+- 3.3.2 Labels or Instructions: an input row needs its name as the label.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-entities-card-living-room') %>

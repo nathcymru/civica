@@ -1,0 +1,191 @@
+---
+title: "Document Root, Metadata & Shadow DOM Primitives"
+description: "The page-level HTML elements that Home Assistant builds around every dashboard, and what a dashboard author can and cannot change."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Document Root, Metadata & Shadow DOM Primitives specification: the page elements Home Assistant builds, and what a dashboard can change."
+ai_instructions: "Apply when a question concerns the page itself: language, title, metadata, scripts or the building blocks of Home Assistant elements. Home Assistant builds the document, so a dashboard author cannot edit html, head, body, title, base, link, meta, style, script or noscript, and cannot write template or slot. Never offer a way to edit the page head from a dashboard. Do not suggest base, user-scalable=no or a maximum scale. Home Assistant needs JavaScript, so do not promise a no-script fallback. Colour and card shape come from the theme; the look of one card needs the card-mod integration. Do not claim a contrast ratio."
+ai_related:
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns what a dashboard author arranges."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface that a theme styles."
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns landmarks and navigation."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns zoom, reflow and language checks."
+component:
+  parent: "Document Root, Metadata & Shadow DOM Primitives"
+  letter: "D"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<html>"
+      origin: "HTML5"
+      anchor: "child-html"
+    - name: "<head>"
+      origin: "HTML5"
+      anchor: "child-head"
+      grandchildren:
+        - name: "<title>"
+          origin: "HTML5"
+          anchor: "child-head--title"
+        - name: "<base>"
+          origin: "HTML5"
+          anchor: "child-head--base"
+        - name: "<link>"
+          origin: "HTML5"
+          anchor: "child-head--link"
+        - name: "<meta>"
+          origin: "HTML5"
+          anchor: "child-head--meta"
+        - name: "<style>"
+          origin: "HTML5"
+          anchor: "child-head--style"
+        - name: "<script>"
+          origin: "HTML5"
+          anchor: "child-head--script"
+        - name: "<noscript>"
+          origin: "HTML5"
+          anchor: "child-head--noscript"
+    - name: "<body>"
+      origin: "HTML5"
+      anchor: "child-body"
+    - name: "<template>"
+      origin: "HTML5"
+      anchor: "child-template"
+    - name: "<slot>"
+      origin: "HTML5"
+      anchor: "child-slot"
+  tags:
+    - "html"
+    - "head"
+    - "title"
+    - "base"
+    - "link"
+    - "meta"
+    - "style"
+    - "script"
+    - "noscript"
+    - "body"
+    - "template"
+    - "slot"
+---
+
+# Document Root, Metadata & Shadow DOM Primitives
+
+<h2 id="purpose">Purpose</h2>
+
+These are the elements that make up the page itself, before any card is drawn: the root, the head with its metadata, the body, and the template and slot that Home Assistant’s own elements are built from.
+
+Home Assistant builds all of them. A dashboard author works inside the page, with cards, and has no access to the page head, its scripts or its styles. This page explains what each element does, so you know what is out of reach and what to use instead.
+
+This page covers:
+
+- Document Root, Metadata & Shadow DOM Primitives
+  - `<html>`
+  - `<head>`
+    - `<title>`
+    - `<base>`
+    - `<link>`
+    - `<meta>`
+    - `<style>`
+    - `<script>`
+    - `<noscript>`
+  - `<body>`
+  - `<template>`
+  - `<slot>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A page has one `<html>` root. It holds one `<head>`, which is not drawn, and one `<body>`, which is. Home Assistant puts its app, sidebar and dashboards inside the body as its own elements. Those elements are built with `<template>` and `<slot>`: the template holds fixed markup, and a slot is the place where content you supply is shown.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+A theme sets colours and sizes by name. It does not change any of these elements, and no Civica theme key applies to them. To change how one card looks, use the card-mod integration at card level. There is no way to change the head from a dashboard.
+
+<h3 id="child-html"><code>&lt;html&gt;</code></h3>
+
+The root, one per page. Its `lang` attribute names the page language, which screen readers use to choose a voice (3.1.1 Language of Page). Home Assistant sets the language and the text direction from the person’s own settings. You cannot change them in a dashboard.
+
+<h3 id="child-head"><code>&lt;head&gt;</code></h3>
+
+Holds information about the page. Nothing in it is drawn, and nothing in it is announced except the title. Home Assistant controls it. The seven elements below belong to it.
+
+<h3 id="child-head--title"><code>&lt;title&gt;</code></h3>
+
+The page name shown in the browser tab, history and bookmarks. It is text only. A clear title puts the unique part first and the product name after it (2.4.2 Page Titled). Home Assistant sets it; a dashboard author cannot.
+
+<h3 id="child-head--base"><code>&lt;base&gt;</code></h3>
+
+Sets the starting point for every relative link on a page, including links to a place on the same page. A page can have only one. Because it changes where in-page links point, it can break skip links and contents lists. A dashboard author cannot add one, and should not look for a way to.
+
+<h3 id="child-head--link"><code>&lt;link&gt;</code></h3>
+
+Connects the page to another file, such as a stylesheet, an icon or a preloaded resource. Home Assistant adds the ones it needs. A dashboard author cannot add one.
+
+<h3 id="child-head--meta"><code>&lt;meta&gt;</code></h3>
+
+Holds named facts about the page: the character set, the viewport, the colour scheme and the theme colour of the browser bar. Two settings must never be used: a viewport that stops people zooming (`user-scalable=no`, or a low `maximum-scale`) fails 1.4.4 Resize Text and 1.4.10 Reflow, and a timed refresh that reloads or redirects the page fails 2.2.1 Timing Adjustable. A dashboard author cannot add metadata.
+
+<h3 id="child-head--style"><code>&lt;style&gt;</code></h3>
+
+Holds CSS for the page. Inside one of Home Assistant’s elements, the CSS applies to that element only. A dashboard author sets styles through the theme, or at card level with the card-mod integration, and never through the head.
+
+<h3 id="child-head--script"><code>&lt;script&gt;</code></h3>
+
+Loads or holds code. Home Assistant supplies its own. Anything scripted must work from the keyboard (2.1.1). A dashboard author cannot add one.
+
+<h3 id="child-head--noscript"><code>&lt;noscript&gt;</code></h3>
+
+Content shown only when scripting is off. Home Assistant needs JavaScript to run, so do not promise a version of a dashboard that works without it.
+
+<h3 id="child-body"><code>&lt;body&gt;</code></h3>
+
+The visible page, one per page. Home Assistant builds its app inside it, and your dashboard cards are drawn within that app. A dashboard author cannot change the body itself.
+
+<h3 id="child-template"><code>&lt;template&gt;</code></h3>
+
+A fragment of markup that is kept ready and not drawn until a component uses it. Its contents are not part of what assistive technology reads until they are drawn. It is how Home Assistant’s elements are built. A dashboard author cannot write one.
+
+<h3 id="child-slot"><code>&lt;slot&gt;</code></h3>
+
+A placeholder inside one of Home Assistant’s elements, where outside content is shown. Real slots include these, described on [Drawer / Navigation Sidebar](drawer-navigation-sidebar.html), [Dropdown Menu & Overflow Menu](select.html) and [Empty State & Startup Views](empty-state-and-startup-views.html). The drawer has a default slot for the sidebar and a named slot for the page. The sidebar has slots for its main and fixed navigation. The empty state has a default slot for its buttons. The dropdown has a trigger slot. A slot does not change tab order or reading order beyond the order of the content in it.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Home Assistant’s own build gives every dashboard the same language, title and structure.
+- A dashboard author cannot edit the head, add scripts or add styles at page level.
+- Page-level problems, such as a wrong language or title, are outside a dashboard’s control. Report them to Home Assistant.
+- The nearest tools are the theme for colour, the card-mod integration for the look of one card, and a Markdown card for text.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Do not try to work around the page build from a dashboard. Put text, headings and links in cards, and keep the order the same from one view to the next.
+
+Success criteria that apply:
+
+- 3.1.1 Language of Page: the language comes from Home Assistant’s own setting.
+- 2.4.2 Page Titled: the browser tab shows the page title.
+- 1.4.4 Resize Text and 1.4.10 Reflow: never block zoom.
+- 2.2.1 Timing Adjustable: never reload the page on a timer.
+- 1.3.1 Info and Relationships: headings in your cards give the content its structure.
+
+A clear page title and a predictable language keep the load low. See [Test the interface](../accessibility/testing.html) for zoom and reflow checks.
+
+<h2 id="examples">Examples</h2>
+
+### A help card that lists what you can and cannot change
+
+<%= example('spec-document-root-limits') %>
