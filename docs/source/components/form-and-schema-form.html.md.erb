@@ -11,6 +11,8 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Form & Schema Form specification: the plain HTML form, Home Assistant’s schema form and its field types, with the theme colours they use and the limits of the theme."
+  - date: "2026-11-26"
+    description: "Added the divider and optional actions fields."
 ai_instructions: "Apply when describing or styling forms in Home Assistant setup dialogs, card editors and integration options. ha-form is drawn by Home Assistant from a list of field descriptions; a dashboard author cannot write one, and the theme only changes colours, border width and focus. Field order, labels and error wording belong to each integration. Do not claim that errors are programmatically linked to fields, that required fields show a mark, or any contrast ratio for Home Assistant's drawn borders. Use Civica text input, checkbox and other form pages for forms an author writes."
 ai_related:
   - path: "/components/text-input.html"
@@ -57,6 +59,9 @@ component:
         - name: "ha-form-constant"
           origin: "Home Assistant"
           anchor: "child-ha-form--ha-form-constant"
+        - name: "ha-form-divider"
+          origin: "Home Assistant"
+          anchor: "child-ha-form--ha-form-divider"
         - name: "ha-form-float"
           origin: "Home Assistant"
           anchor: "child-ha-form--ha-form-float"
@@ -72,6 +77,9 @@ component:
         - name: "ha-form-multi_select"
           origin: "Home Assistant"
           anchor: "child-ha-form--ha-form-multi-select"
+        - name: "ha-form-optional_actions"
+          origin: "Home Assistant"
+          anchor: "child-ha-form--ha-form-optional-actions"
         - name: "ha-form-positive_time_period_dict"
           origin: "Home Assistant"
           anchor: "child-ha-form--ha-form-positive-time-period-dict"
@@ -103,11 +111,13 @@ This page covers:
   - `ha-form`
     - `ha-form-boolean`
     - `ha-form-constant`
+    - `ha-form-divider`
     - `ha-form-float`
     - `ha-form-grid`
     - `ha-form-expandable`
     - `ha-form-integer`
     - `ha-form-multi_select`
+    - `ha-form-optional_actions`
     - `ha-form-positive_time_period_dict`
     - `ha-form-select`
     - `ha-form-string`
@@ -154,6 +164,10 @@ A single checkbox with its label beside it and optional helper text. It is a che
 
 A fixed value shown as text, in the form “Label: value”. There is no control to use. It confirms something the person cannot change, such as the device they are setting up.
 
+<h3 id="child-ha-form--ha-form-divider"><code>ha-form-divider</code></h3>
+
+A thin horizontal line between groups of fields. It has no label, no value and nothing to press. Its colour is the theme’s `ha-color-border-neutral-quiet`, which is #CECECE in light mode and #50565A in dark mode. It is only a visual break. Use an expandable panel when a group needs a name.
+
 <h3 id="child-ha-form--ha-form-float"><code>ha-form-float</code></h3>
 
 A number field for values with decimals, such as 19.5. It has a label, optional helper text and an optional unit after the field. A comma typed as the decimal mark is changed to a full stop. When the field is required and empty, it shows Home Assistant’s standard “required” message.
@@ -175,6 +189,10 @@ A slider is hard to use precisely and for some people impossible, so when a sett
 <h3 id="child-ha-form--ha-form-multi-select"><code>ha-form-multi_select</code></h3>
 
 Choose any number of options. With fewer than 6 options it shows one checkbox for each, all visible at once. With 6 or more it shows a drop-down list of tick boxes that stays open while you choose. Prefer fewer options, so that the visible list is used.
+
+<h3 id="child-ha-form--ha-form-optional-actions"><code>ha-form-optional_actions</code></h3>
+
+A set of optional fields that people add one at a time. Fields not yet shown are listed in a menu that opens from an “Add interaction” button with a plus icon, and each menu item uses that field’s label. An added field appears in the form above, with a [divider](#child-ha-form--ha-form-divider) before it. A field that already holds a value is shown at once. The optional fields are listed in `schema`, and `flatten` stores their answers beside the other answers instead of under the field’s name. The button wording is fixed, and there is no control to remove a field once it is added. Use it for fields few people need, and do not hide a field people must complete.
 
 <h3 id="child-ha-form--ha-form-positive-time-period-dict"><code>ha-form-positive_time_period_dict</code></h3>
 

@@ -13,6 +13,8 @@ updates:
     description: "Added the Selector specification: what a selector is, how to write one, and one entry for each selector Home Assistant draws."
   - date: "2026-11-26"
     description: "Named the serial port selector by its key, and explained how to pick Bluetooth, USB and discovered devices."
+  - date: "2026-11-26"
+    description: "Added twelve selectors: areas display, automation behaviour, device class, entity name, numeric threshold, period, selector, state class, time zone, clock date format, time format and unit of measurement."
 ai_instructions: "Apply when a Home Assistant form, automation, script or blueprint asks for a value through a selector. A selector is a YAML mapping with one key that names the type, for example selector: { number: { min: 0, max: 100 } }. Home Assistant draws the matching input. To pick a serial port, use the serial_port selector. To pick a Bluetooth, USB or discovered device, use a device selector filtered by integration, or a text field. Give every field one visible label and a hint before the field. A selector does not guarantee a label for assistive technology, so do not claim one. In slider mode the label is plain text before the slider and the slider is not named by it. Do not claim keyboard reordering, and do not claim selector behaviour is the same in every editor."
 ai_related:
   - path: "/home-assistant/schema-selectors.html"
@@ -70,12 +72,18 @@ component:
         - name: "ha-selector-area"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-area"
+        - name: "ha-selector-areas_display"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-areas-display"
         - name: "ha-selector-assist_pipeline"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-assist-pipeline"
         - name: "ha-selector-attribute"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-attribute"
+        - name: "ha-selector-automation_behavior"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-automation-behavior"
         - name: "ha-selector-backup_location"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-backup-location"
@@ -118,12 +126,18 @@ component:
         - name: "ha-selector-device"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-device"
+        - name: "ha-selector-device_class"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-device-class"
         - name: "ha-selector-duration"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-duration"
         - name: "ha-selector-entity"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-entity"
+        - name: "ha-selector-entity_name"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-entity-name"
         - name: "ha-selector-file"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-file"
@@ -151,21 +165,33 @@ component:
         - name: "ha-selector-number"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-number"
+        - name: "ha-selector-numeric_threshold"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-numeric-threshold"
         - name: "ha-selector-object"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-object"
+        - name: "ha-selector-period"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-period"
         - name: "ha-selector-qr_code"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-qr-code"
         - name: "ha-selector-select"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-select"
+        - name: "ha-selector-selector"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-selector"
         - name: "ha-selector-serial_port"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-serial-port"
         - name: "ha-selector-state"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-state"
+        - name: "ha-selector-state_class"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-state-class"
         - name: "ha-selector-statistic"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-statistic"
@@ -187,6 +213,9 @@ component:
         - name: "ha-selector-time"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-time"
+        - name: "ha-selector-timezone"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-timezone"
         - name: "ha-selector-trigger"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-trigger"
@@ -199,12 +228,21 @@ component:
         - name: "ha-selector-ui_action"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-ui-action"
+        - name: "ha-selector-ui_clock_date_format"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-ui-clock-date-format"
         - name: "ha-selector-ui_color"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-ui-color"
         - name: "ha-selector-ui_state_content"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-ui-state-content"
+        - name: "ha-selector-ui_time_format"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-ui-time-format"
+        - name: "ha-selector-unit_of_measurement"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-unit-of-measurement"
   tags:
     - "ha-selector"
 ---
@@ -217,8 +255,6 @@ A selector tells Home Assistant what kind of value a form field needs, and Home 
 
 They appear in Home Assistant’s own screens and dialogs, not as dashboard cards. This page is for people who write selectors or review forms built from them. For forms as a whole, see [Form & Schema Form](form-and-schema-form.html) and [Schema selectors and configuration forms](../home-assistant/schema-selectors.html).
 
-Home Assistant has other selector types that this page does not describe.
-
 This page covers:
 
 - Selector (Polymorphic Schema Input)
@@ -227,8 +263,10 @@ This page covers:
     - `ha-selector-addon`
     - `ha-selector-app`
     - `ha-selector-area`
+    - `ha-selector-areas_display`
     - `ha-selector-assist_pipeline`
     - `ha-selector-attribute`
+    - `ha-selector-automation_behavior`
     - `ha-selector-backup_location`
     - `ha-selector-boolean`
     - `ha-selector-button_toggle`
@@ -243,8 +281,10 @@ This page covers:
     - `ha-selector-date`
     - `ha-selector-datetime`
     - `ha-selector-device`
+    - `ha-selector-device_class`
     - `ha-selector-duration`
     - `ha-selector-entity`
+    - `ha-selector-entity_name`
     - `ha-selector-file`
     - `ha-selector-floor`
     - `ha-selector-icon`
@@ -254,11 +294,15 @@ This page covers:
     - `ha-selector-media`
     - `ha-selector-navigation`
     - `ha-selector-number`
+    - `ha-selector-numeric_threshold`
     - `ha-selector-object`
+    - `ha-selector-period`
     - `ha-selector-qr_code`
     - `ha-selector-select`
+    - `ha-selector-selector`
     - `ha-selector-serial_port`
     - `ha-selector-state`
+    - `ha-selector-state_class`
     - `ha-selector-statistic`
     - `ha-selector-stt`
     - `ha-selector-target`
@@ -266,12 +310,16 @@ This page covers:
     - `ha-selector-text`
     - `ha-selector-theme`
     - `ha-selector-time`
+    - `ha-selector-timezone`
     - `ha-selector-trigger`
     - `ha-selector-tts`
     - `ha-selector-tts_voice`
     - `ha-selector-ui_action`
+    - `ha-selector-ui_clock_date_format`
     - `ha-selector-ui_color`
     - `ha-selector-ui_state_content`
+    - `ha-selector-ui_time_format`
+    - `ha-selector-unit_of_measurement`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -336,6 +384,12 @@ Chooses one or more areas. See [Area Picker](area-picker.html) for the picker it
 
 YAML key `area`. Options: `entity`, `device`, `multiple`, `reorder`.
 
+<h3 id="child-ha-selector--ha-selector-areas-display"><code>ha-selector-areas_display</code></h3>
+
+Chooses which areas appear and in what order. The value has `hidden` and `order`, both lists of area IDs.
+
+YAML key `areas_display`. Options: none.
+
 <h3 id="child-ha-selector--ha-selector-assist-pipeline"><code>ha-selector-assist_pipeline</code></h3>
 
 Chooses an Assist pipeline, the chain of speech and language steps behind Assist. `include_last_used` adds a “last used” choice.
@@ -347,6 +401,12 @@ YAML key `assist_pipeline`. Options: `include_last_used`.
 Chooses one attribute of an entity. `entity_id` sets which entity, and `hide_attributes` leaves some out.
 
 YAML key `attribute`. Options: `entity_id`, `hide_attributes`.
+
+<h3 id="child-ha-selector--ha-selector-automation-behavior"><code>ha-selector-automation_behavior</code></h3>
+
+Chooses how a trigger or condition treats several targets, as a set of boxes with a short description under each label. In trigger mode the boxes are `each`, `first` and `all`, and each also shows a picture. In condition mode they are `any` and `all`. `translation_key` takes the wording from an integration’s own translations.
+
+YAML key `automation_behavior`. Options: `mode` (`trigger` or `condition`, with `trigger` the default), `translation_key`.
 
 <h3 id="child-ha-selector--ha-selector-backup-location"><code>ha-selector-backup_location</code></h3>
 
@@ -432,6 +492,12 @@ Chooses one or more devices. See [Device Picker](device-picker.html). `filter` n
 
 YAML key `device`. Options: `filter`, `entity`, `multiple`.
 
+<h3 id="child-ha-selector--ha-selector-device-class"><code>ha-selector-device_class</code></h3>
+
+Chooses a device class for one domain, such as the kinds of sensor. `domain` sets which domain’s classes are offered, and `multiple` allows more than one.
+
+YAML key `device_class`. Options: `domain`, `multiple`.
+
 <h3 id="child-ha-selector--ha-selector-duration"><code>ha-selector-duration</code></h3>
 
 A length of time, in days, hours, minutes, seconds and milliseconds as you enable them. `enable_day`, `enable_millisecond`, `enable_second` and `allow_negative` switch parts on. See [Duration Input](duration-input.html). A duration is not a time of day.
@@ -443,6 +509,12 @@ YAML key `duration`. Options: `enable_day`, `enable_millisecond`, `allow_negativ
 Chooses one or more entities. See [Entity Picker](entity-picker.html). `filter`, `include_entities` and `exclude_entities` narrow the list; `multiple` and `reorder` allow a list in a chosen order.
 
 YAML key `entity`. Options: `multiple`, `include_entities`, `exclude_entities`, `filter`, `reorder`, `extra_options`.
+
+<h3 id="child-ha-selector--ha-selector-entity-name"><code>ha-selector-entity_name</code></h3>
+
+Chooses how an entity’s name is put together, from its floor, area, parent device, device and entity names, or from text you type. `entity_id` says which entity, and falls back to the entity of the form it sits in. `default_name` sets the starting choice, and `allow_custom` allows typed text.
+
+YAML key `entity_name`. Options: `entity_id`, `default_name`, `allow_custom` (on by default).
 
 <h3 id="child-ha-selector--ha-selector-file"><code>ha-selector-file</code></h3>
 
@@ -498,11 +570,23 @@ A number. With both `min` and `max` set it is a slider, with a number field besi
 
 YAML key `number`. Options: `min`, `max`, `step`, `mode`, `unit_of_measurement`, `slider_ticks`, `translation_key`, `validation_message`.
 
+<h3 id="child-ha-selector--ha-selector-numeric-threshold"><code>ha-selector-numeric_threshold</code></h3>
+
+Chooses a number test for a trigger or condition. A drop-down gives the test: above, below, between or outside, with any change added in `changed` mode. Each value is either a number or an entity, with a unit list when `unit_of_measurement` offers more than one unit. `mode` sets the wording and the default test: `crossed` and `is` start at above, and `changed` starts at any change.
+
+YAML key `numeric_threshold`. Options: `mode` (`crossed`, `changed` or `is`, with `crossed` the default), `unit_of_measurement`, `number`, `entity`.
+
 <h3 id="child-ha-selector--ha-selector-object"><code>ha-selector-object</code></h3>
 
 Takes a structured value, such as a list of items with several fields, entered through a YAML editor or a field list. `fields` describes each field, and `multiple` makes it a list.
 
 YAML key `object`. Options: `label_field`, `description_field`, `translation_key`, `fields`, `multiple`.
+
+<h3 id="child-ha-selector--ha-selector-period"><code>ha-selector-period</code></h3>
+
+Chooses a period of time by name, such as `today`, `last_week` or `next_30d`. `options` lists the names to offer, from `today`, `yesterday`, `tomorrow`, `this_week`, `last_week`, `next_week`, `this_month`, `last_month`, `next_month`, `this_year`, `last_year`, `next_7d`, `next_30d` and `none`. The value saved is a calendar period, such as `calendar: {period: week, offset: -1}` for `last_week`, or no value for `none`.
+
+YAML key `period`. Options: `options`.
 
 <h3 id="child-ha-selector--ha-selector-qr-code"><code>ha-selector-qr_code</code></h3>
 
@@ -516,6 +600,12 @@ Chooses from a fixed list. `options` lists the choices. A single choice in `list
 
 YAML key `select`. Options: `multiple`, `custom_value`, `mode`, `options`, `translation_key`, `sort`, `reorder`, `box_max_columns`.
 
+<h3 id="child-ha-selector--ha-selector-selector"><code>ha-selector-selector</code></h3>
+
+Chooses another selector. A drop-down gives the type, and that type’s own options appear under it. A manual choice takes the selector as YAML. The value is a selector, written as in the wrapper above.
+
+YAML key `selector`. Options: none.
+
 <h3 id="child-ha-selector--ha-selector-serial-port"><code>ha-selector-serial_port</code></h3>
 
 The serial port selector, `serial_port`, shows a list of ports with those it recommends marked, and a pencil button for typing a port by hand. The list is loaded only for an administrator, and only when the USB component is loaded. `extra_recommended_domains` adds integrations whose ports should be marked as recommended. The value is the port as text. For standalone guidance, use a labelled text field with a hint.
@@ -525,6 +615,12 @@ The serial port selector, `serial_port`, shows a list of ports with those it rec
 Chooses one or more states of an entity. `entity_id` and `attribute` say whose state, and `hide_states` leaves some out.
 
 YAML key `state`. Options: `extra_options`, `entity_id`, `attribute`, `hide_states`, `multiple`.
+
+<h3 id="child-ha-selector--ha-selector-state-class"><code>ha-selector-state_class</code></h3>
+
+Chooses a state class for a sensor. `state_classes` limits the list, which otherwise holds the sensor state classes, and `multiple` allows more than one.
+
+YAML key `state_class`. Options: `state_classes`, `multiple`.
 
 <h3 id="child-ha-selector--ha-selector-statistic"><code>ha-selector-statistic</code></h3>
 
@@ -568,6 +664,12 @@ A time-of-day field. See [Date & Time Picker](date-input.html).
 
 YAML key `time`. Options: none.
 
+<h3 id="child-ha-selector--ha-selector-timezone"><code>ha-selector-timezone</code></h3>
+
+Chooses a time zone from a searchable list.
+
+YAML key `timezone`. Options: none.
+
 <h3 id="child-ha-selector--ha-selector-trigger"><code>ha-selector-trigger</code></h3>
 
 Chooses a list of triggers, as in an automation. The value is a list of triggers.
@@ -592,6 +694,12 @@ Chooses what a tap, hold or double-tap does on a dashboard card. `actions` limit
 
 YAML key `ui_action`. Options: `actions`, `default_action`.
 
+<h3 id="child-ha-selector--ha-selector-ui-clock-date-format"><code>ha-selector-ui_clock_date_format</code></h3>
+
+Builds the date shown on a clock, from a list of day, month, year, weekday and separator parts. Each part added is a removable chip, and the value is the list of parts.
+
+YAML key `ui_clock_date_format`. Options: none.
+
 <h3 id="child-ha-selector--ha-selector-ui-color"><code>ha-selector-ui_color</code></h3>
 
 Chooses a colour. `default_color`, `include_none` and `include_state` add choices. See [Color Picker](color-picker.html).
@@ -603,6 +711,18 @@ YAML key `ui_color`. Options: `default_color`, `include_none`, `include_state`, 
 Chooses what to show for an entity’s state. `entity_id` says which entity, and `allow_name` and `allow_context` add extra choices.
 
 YAML key `ui_state_content`. Options: `entity_id`, `allow_name`, `allow_context`.
+
+<h3 id="child-ha-selector--ha-selector-ui-time-format"><code>ha-selector-ui_time_format</code></h3>
+
+Chooses how a time is shown: Auto, or one of the time formats Home Assistant lists, which are relative, total, date, time and date and time. Once a format other than Auto is chosen, a second list offers Auto, Short or Long.
+
+YAML key `ui_time_format`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-unit-of-measurement"><code>ha-selector-unit_of_measurement</code></h3>
+
+Chooses a unit of measurement. `device_classes` and `state_classes` limit the units to those that fit, and `context` names other fields of the form whose device class or state class also limits them. When only one unit is allowed it is chosen for you. A unit that no longer fits after the form changes is cleared.
+
+YAML key `unit_of_measurement`. Options: `device_classes`, `state_classes`, `context`.
 
 <h2 id="limits">Advantages and limitations</h2>
 
