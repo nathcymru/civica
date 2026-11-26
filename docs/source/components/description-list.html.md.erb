@@ -1,0 +1,112 @@
+---
+title: "Description List"
+description: "Pair a term with its description, such as a device property and its value."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Description List specification: terms and descriptions, when to use them, and where Home Assistant offers its own alternative."
+ai_instructions: "Apply when a list pairs a name with a value, such as a device and its area. A description list is plain HTML with a term and a description for each item. Home Assistant has no description list card; its nearest choices are the Entities card and the details in the More info dialog. Do not claim that every screen reader announces a description list the same way, and do not assume a Markdown card accepts this markup. Keep terms short, one idea in each description, and stack term over description on a narrow screen. Link to Summary list for rows that also carry actions."
+ai_related:
+  - path: "/components/summary-list.html"
+    title: "Summary list"
+    relationship: "Owns rows of a key, a value and optional actions."
+  - path: "/components/table.html"
+    title: "Data Table"
+    relationship: "Use when people compare the same values across many items."
+  - path: "/components/area-card.html"
+    title: "Area Card"
+    relationship: "Shows readings for one area instead of a list of facts."
+component:
+  parent: "Description List"
+  letter: "D"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<dl>"
+      origin: "HTML5"
+      anchor: "child-dl"
+      grandchildren:
+        - name: "<dt>"
+          origin: "HTML5"
+          anchor: "child-dl--dt"
+        - name: "<dd>"
+          origin: "HTML5"
+          anchor: "child-dl--dd"
+  tags:
+    - "dl"
+    - "dt"
+    - "dd"
+---
+
+# Description List
+
+<h2 id="purpose">Purpose</h2>
+
+A description list pairs a term with its description. It suits facts about one thing: a device and its area, a setting and its value, or a word and its meaning. Home Assistant has no card or element of this kind. A description list is plain HTML.
+
+This page owns the markup. For rows that also carry change links or buttons, use a [summary list](summary-list.html). To compare the same values across many items, use a [Data Table](table.html).
+
+This page covers:
+
+- Description List
+  - `<dl>`
+    - `<dt>`
+    - `<dd>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A list of items. Each item is one or more terms followed by one or more descriptions. A term is a short name. A description is its value or explanation. On a wide screen the term sits beside its description. On a narrow screen it sits above.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-dl"><code>&lt;dl&gt;</code></h3>
+
+The list itself. It holds groups of terms and descriptions, and a group may be wrapped in a `div` so each pair can be styled together. Browsers add an indent to each description by default.
+
+No ARIA role named “description list” exists, so screen readers differ in how they read it. Some announce the number of items and some do not. Write each term so it still makes sense if read alone.
+
+Colour comes from the theme’s text colours: `primary-text-color` for descriptions, `secondary-text-color` for terms if you want them quieter, and `divider-color` for lines between items. In light mode these are `#0B0C0C`, `#484949` and `#CECECE`. In dark mode they are `#FFFFFF`, `#CBD0D3` and `#50565A`.
+
+Home Assistant offers no description list for a dashboard. The Entities card shows a list of entities, and the More info dialog shows an entity’s attributes. A Markdown card keeps `dl`, `dt`, `dd` and `div` tags, because its sanitiser allows them, so you can write a description list there as HTML. The sanitiser removes `style` attributes and scripts.
+
+<h3 id="child-dl--dt"><code>&lt;dt&gt;</code></h3>
+
+The term. Keep it short and use the same words each time: “Area”, “Last reported”. Do not put a heading, a header or a section inside a term.
+
+<h3 id="child-dl--dd"><code>&lt;dd&gt;</code></h3>
+
+The description. Give one idea in each. A term may have more than one description, such as two phone numbers. Put units next to the value: “19.8 °C”. A missing value says “Not available”, not a blank.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Pairs meaning with the term in the markup, with no table needed.
+- Works in one column, so it suits a narrow screen.
+- Screen reader support for the list is uneven.
+- It cannot carry actions by itself. Use a summary list for that.
+- Long descriptions make the term hard to find. Move a long explanation into its own paragraph.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a description list for a short set of facts about one thing. Keep the order the same across devices: area first, state second, last reported third.
+
+Stack the term above its description at 320 pixels so nothing is cut off. Check that the list still reads well with larger text and wider spacing.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: the term and its description stay linked.
+- 1.4.10 Reflow and 1.4.12 Text Spacing: the list reflows and survives wider spacing.
+- 2.4.6 Headings and Labels: terms describe what follows.
+
+Short terms, one idea in each description and a steady order keep the load low.
+
+<h2 id="examples">Examples</h2>
+
+### Facts about one device
+
+<%= example('spec-description-list-device') %>

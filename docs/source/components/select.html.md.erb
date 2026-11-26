@@ -1,67 +1,201 @@
 ---
-title: "Select"
-description: "A select is a compact choice control for a longer, familiar list."
+title: "Dropdown Menu & Overflow Menu"
+description: "Choose from a list in a dropdown, or tuck secondary actions into an overflow menu, using the native select and Home Assistant’s dropdown."
 section: "components"
-group: "Form elements"
-source_url: "https://service-manual.nhs.uk/design-system/components/select"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-18"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added NHS-informed select guidance and 2 Home Assistant reference examples."
+  - date: "2026-11-26"
+    description: "Rewrote the page as the Dropdown Menu & Overflow Menu specification. It now covers Home Assistant’s select, dropdown, overflow menu and list rows as well as the native select, and says which older names Home Assistant no longer uses."
   - date: "2026-11-18"
     description: "When to use, the preselection guidance and the example heading “Choose a saved theme colour” now refer to the 7 theme colours; the 10 palettes were retired."
+ai_instructions: "Apply when someone chooses one item from a list, or opens a menu of actions. The native select is the default for a long, familiar list; use radios for a few choices. ha-select and ha-dropdown are Home Assistant’s own; ha-icon-overflow-menu shows one three-dot button on narrow screens and visible icon buttons on wide ones. ha-button-menu and ha-clickable-list-item are not used in this release: menus are built with ha-dropdown and its items, and a clickable row is ha-list-item-button. Name the three-dot button for what it opens, put risky items last and say delete in words. Never put the main action in an overflow menu. A select must not issue a device command. Do not claim the popup colours follow the theme, and do not give a ready-made card-mod selector."
+ai_related:
+  - path: "/components/radios.html"
+    title: "Radios"
+    relationship: "Use for a few choices that should all be visible."
+  - path: "/components/checkboxes.html"
+    title: "Checkbox"
+    relationship: "Use when several items can be chosen."
+  - path: "/components/combobox-autocomplete.html"
+    title: "Combobox / Autocomplete"
+    relationship: "Owns a list the person can type to search."
+  - path: "/components/control-select.html"
+    title: "Control Select"
+    relationship: "Owns the choice control on cards."
+  - path: "/components/hint-text.html"
+    title: "Hint text"
+    relationship: "Owns hint wording."
+  - path: "/components/error-message.html"
+    title: "Error Message & Error Summary"
+    relationship: "Owns error wording."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns keyboard and mobile checks."
+component:
+  parent: "Dropdown Menu & Overflow Menu"
+  letter: "D"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<select>"
+      origin: "HTML5"
+      anchor: "child-select"
+      grandchildren:
+        - name: "<optgroup>"
+          origin: "HTML5"
+          anchor: "child-select--optgroup"
+        - name: "<option>"
+          origin: "HTML5"
+          anchor: "child-select--option"
+    - name: "ha-select"
+      origin: "Home Assistant"
+      anchor: "child-ha-select"
+    - name: "ha-dropdown"
+      origin: "Home Assistant"
+      anchor: "child-ha-dropdown"
+    - name: "ha-button-menu"
+      origin: "Home Assistant"
+      anchor: "child-ha-button-menu"
+    - name: "ha-icon-overflow-menu"
+      origin: "Home Assistant"
+      anchor: "child-ha-icon-overflow-menu"
+    - name: "ha-check-list-item"
+      origin: "Home Assistant"
+      anchor: "child-ha-check-list-item"
+    - name: "ha-clickable-list-item"
+      origin: "Home Assistant"
+      anchor: "child-ha-clickable-list-item"
+  tags:
+    - "select"
+    - "optgroup"
+    - "option"
+    - "ha-select"
+    - "ha-dropdown"
+    - "ha-button-menu"
+    - "ha-icon-overflow-menu"
+    - "ha-check-list-item"
+    - "ha-clickable-list-item"
 ---
 
-# Select
+# Dropdown Menu & Overflow Menu
 
-A select is a compact choice control for a longer, familiar list.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A dropdown lets someone choose one item from a list that is too long to show in full. An overflow menu holds the less common actions for an item, behind a three-dot button. Home Assistant uses a native select, its own select, a dropdown and an overflow menu for these jobs.
 
-## When to use it
+Think first whether a shorter question or a visible group of [radios](radios.html) would be clearer. A select suits a long, familiar list where the choice can be undone, such as the seven Civica theme colours.
 
-Use it only after considering whether a shorter question or visible radio group would be clearer. The 7 Civica theme colours are an explicit settings use: the labels are familiar, the choice is reversible and keyboard selection is native.
+This page covers:
 
-## When not to use it
+- Dropdown Menu & Overflow Menu
+  - `<select>`
+    - `<optgroup>`
+    - `<option>`
+  - `ha-select`
+  - `ha-dropdown`
+  - `ha-button-menu`
+  - `ha-icon-overflow-menu`
+  - `ha-check-list-item`
+  - `ha-clickable-list-item`
 
-Do not use a multi-select list for rooms or hide two simple choices in a dropdown. Do not use the first option as an accidental answer to an unanswered question.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+A dropdown has a field that shows the current choice and a list that opens from it. A label sits above the field, with an optional hint and, when needed, an error message. In Home Assistant’s own select the field is a button, and the list opens below it.
 
-Preselect the saved theme colour when editing theme settings. Keep its name in text and provide an immediate visual preview; a colour swatch alone does not identify the choice. Selecting an appearance must not issue device commands or reset the selected Energy period.
+An overflow menu has a three-dot button and a list of actions that opens from it. Each action has a label and sometimes an icon. A risky action is marked and sits last.
 
-## Accessibility and behaviour
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Provide a visible label and useful hint. Keep the native select keyboard behaviour and avoid replacing it with a custom menu unless its full accessibility contract is implemented. Label a required unanswered option explicitly.
+The Civica theme sets `primary-color` (`#1D70B8` in light mode, `#C0D7EB` in dark mode), `card-background-color` (`#FFFFFF`, `#24282B`, used for the menu surface), `primary-text-color`, `secondary-text-color`, `divider-color` (`#CECECE`, `#50565A`) and `disabled-text-color`. A selected item uses `primary-color`, with a pale tint that Home Assistant sets itself. The theme sets nothing for popup placement or animation.
 
-## Examples
+<h3 id="child-select"><code>&lt;select&gt;</code></h3>
+
+The native select. It has a visible label, a name and, optionally, `required`, `disabled` or `multiple`. Without `multiple` it is a dropdown. The keyboard works as the browser provides: arrow keys, typing to jump to a match, Home and End, and a key to open the list. The closed field can be styled. The open list belongs to the browser or phone, so do not expect it to follow the theme.
+
+<h3 id="child-select--optgroup"><code>&lt;optgroup&gt;</code></h3>
+
+A named group of options inside a select. The group name is a heading that cannot be chosen. Groups cannot be nested. Use one only when the list is long and has natural groups, such as rooms by floor.
+
+<h3 id="child-select--option"><code>&lt;option&gt;</code></h3>
+
+One choice. Its text is what people see. In a single select, the first option is chosen by default unless one is marked as selected. A required select that has not been answered should start with a placeholder option, such as “Choose a dashboard”, so the first real option is not chosen by accident.
+
+<h3 id="child-ha-select"><code>ha-select</code></h3>
+
+Home Assistant’s own select. A dashboard author does not write one; you meet it in settings dialogs and forms. It has a label, an optional helper line, a current value, and can be required, disabled or clearable. The field is a button with the label as its accessible name, and the choices open in a dropdown below it, sized to the field. The chosen item is marked. When the select is disabled, the list does not open.
+
+<h3 id="child-ha-dropdown"><code>ha-dropdown</code></h3>
+
+Home Assistant’s popup menu. Any element in its trigger slot, often an icon button, opens it, and it holds dropdown items. Items can be plain, show a tick for a checked state, have an icon, be disabled or be marked as dangerous. The menu surface takes `card-background-color`. Menu rows have a minimum height set by Home Assistant. Keyboard use follows the underlying component.
+
+<h3 id="child-ha-button-menu"><code>ha-button-menu</code></h3>
+
+This Home Assistant version does not use the name `ha-button-menu`. Menus are built with the dropdown described above and its items, with any element as the trigger, such as an icon button. Use the dropdown above. Do not confuse it with the menu button in the header, which opens and closes the sidebar and is not a dropdown.
+
+<h3 id="child-ha-icon-overflow-menu"><code>ha-icon-overflow-menu</code></h3>
+
+A set of actions for one item, such as a row in a list. On a narrow screen it shows one three-dot button that opens a dropdown of the actions. On a wider screen it shows each action as its own labelled icon button, with a tooltip, separated by thin lines. Each action has an icon and a label. An action can be marked as a warning, shown in the dropdown as dangerous. If there are no actions, nothing is drawn.
+
+The three-dot button takes its accessible name from a label, “Overflow menu” by default. Give it a name that says what it opens, such as “More actions for Evening lights”. Each icon button is named from its action’s label.
+
+<h3 id="child-ha-check-list-item"><code>ha-check-list-item</code></h3>
+
+A row with text and a checkbox, used in lists where several items can be chosen. It is not a dropdown. It can show a mixed state, and it can be set so that only the checkbox itself responds. The checkbox takes `primary-color`. Use it for choices such as which entities to include; for a single choice use a select or [radios](radios.html).
+
+<h3 id="child-ha-clickable-list-item"><code>ha-clickable-list-item</code></h3>
+
+This Home Assistant version does not use the name `ha-clickable-list-item`. A row you can select is the list item button, `ha-list-item-button`. It has a start area for an icon, a headline and an end area, and it can be a link. Home Assistant uses it for the sidebar rows. Give every such row a text label.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The native select works with the keyboard, phone pickers and assistive technology without extra work.
+- The native select’s open list cannot be themed, and Home Assistant’s dropdown colours come from the card colours, not from a setting of its own.
+- The three-dot button hides actions, so people may not find them.
+- Home Assistant’s dropdowns and overflow menus are drawn by the app. A dashboard author cannot add them.
+- The old names `ha-button-menu` and `ha-clickable-list-item` are not used in this release.
+- You cannot change the popup’s position, animation or hover colour.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a select for a long, familiar list with a reversible choice. Do not use it for two simple choices, and do not use a multi-select for rooms. Keep the native select instead of replacing it with a custom menu.
+
+- Give a visible label and a useful hint. Use [hint text](hint-text.html) and [error messages](error-message.html) in the usual way.
+- Preselect the saved choice when someone edits it, and keep its name in text. A colour swatch on its own does not name the choice.
+- Do not use the first option as an accidental answer. A required question starts with a placeholder.
+- Selecting an item must not send a device command or reset something else, such as the chosen Energy period. Do not submit the form when the choice changes.
+- Never put the main action in an overflow menu. Show it as a visible button.
+- Name the three-dot button for what it opens. Keep the menu short. Put risky items last, and say what they do in words, such as “Delete automation”, because colour alone does not.
+- If you cannot show a hidden menu, show the actions as visible buttons.
+
+Success criteria that apply:
+
+- 4.1.2 Name, Role, Value: the trigger says what it opens.
+- 1.3.1 and 3.3.2: a visible label and instructions.
+- 3.3.1 Error Identification: an error says what to choose.
+- 2.1.1 Keyboard, 2.4.3 Focus Order and 2.4.7 Focus Visible: the native select works with arrow keys and typing, and Home Assistant’s dropdown follows its underlying component.
+- 2.5.8 Target Size (Minimum): menu rows have a minimum height set by Home Assistant.
+- 1.4.13 Content on Hover or Focus: tooltips on overflow icon buttons.
+- 3.2.2 On Input: choosing an item does not trigger a surprise.
+- 2.5.1 Pointer Gestures: every action has a simple tap.
+
+Test arrow keys, typing a matching option, phone pickers, saved state and errors. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
 
 ### Choose a saved theme colour
 
-A named, reversible settings list is the local reason for retaining a select.
-
-<%= example('nhs-select-palettes') %>
+<%= example('spec-select-theme') %>
 
 ### An unanswered required choice
 
-The placeholder cannot be mistaken for an actual saved dashboard.
+<%= example('spec-select-error') %>
 
-<%= example('nhs-select-error') %>
+### An overflow menu on an automation row
 
-## Check the implementation
-
-Test keyboard arrows, typing a matching option, mobile pickers, saved state and errors. Confirm that a change affects only the documented preference.
-
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS select](https://service-manual.nhs.uk/design-system/components/select) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
-
-See also [buttons and forms](controls.html).
+<%= example('spec-overflow-menu') %>

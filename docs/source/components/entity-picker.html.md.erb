@@ -1,0 +1,135 @@
+---
+title: "Entity Picker"
+description: "Let people search for and choose an entity, a list of entities, an entity’s attribute or an entity’s state in a Home Assistant form."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Entity Picker specification: the four pickers, what each lets people choose and what an author can control."
+ai_instructions: "Apply when a Home Assistant form or editor asks people to choose an entity (ha-entity-picker), several entities (ha-entities-picker), one of an entity’s attributes (ha-entity-attribute-picker) or one of its states (ha-entity-state-picker). These are form elements in the editor, not cards, so a dashboard author cannot write them in YAML. The list is the shared searchable picker, owned by the Combobox / Autocomplete page. Each picker needs a visible label. Help people narrow a long list with a clear label and helper text. Do not describe the picker as a WAI-ARIA combobox, and do not claim keyboard shortcuts, mobile behaviour or contrast."
+ai_related:
+  - path: "/components/combobox-autocomplete.html"
+    title: "Combobox / Autocomplete"
+    relationship: "Owns the searchable list and field that every picker is built on."
+  - path: "/home-assistant/target-pickers.html"
+    title: "Entity, device and area pickers"
+    relationship: "Owns what an entity, a device and an area mean when people choose one."
+  - path: "/components/area-picker.html"
+    title: "Area Picker"
+    relationship: "Owns the picker for areas."
+  - path: "/components/text-input.html"
+    title: "Text input"
+    relationship: "Owns the plain text field and its label rules."
+  - path: "/components/hint-text.html"
+    title: "Hint text"
+    relationship: "Owns helper text under a field."
+component:
+  parent: "Entity Picker"
+  letter: "E"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-entity-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-entity-picker"
+    - name: "ha-entities-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-entities-picker"
+    - name: "ha-entity-attribute-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-entity-attribute-picker"
+    - name: "ha-entity-state-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-entity-state-picker"
+  tags:
+    - "ha-entity-picker"
+    - "ha-entities-picker"
+    - "ha-entity-attribute-picker"
+    - "ha-entity-state-picker"
+---
+
+# Entity Picker
+
+<h2 id="purpose">Purpose</h2>
+
+The entity pickers let people choose things by searching, instead of typing an entity ID from memory. There are four: one entity, a list of entities, one attribute of an entity and one state of an entity. People meet them in Home Assistant’s card editor, automation editor, helper settings and other forms.
+
+This page owns the four pickers. They are form elements, not cards, so a dashboard author cannot write them in YAML. They appear when you edit a card, and what an author controls is the wording of the form and which entities are offered. The searchable list under every picker is owned by [Combobox / Autocomplete](combobox-autocomplete.html). For what an entity, device or area means when people choose one, see [Entity, device and area pickers](../home-assistant/target-pickers.html).
+
+This page covers:
+
+- Entity Picker
+  - `ha-entity-picker`
+  - `ha-entities-picker`
+  - `ha-entity-attribute-picker`
+  - `ha-entity-state-picker`
+
+<h2 id="anatomy">Anatomy</h2>
+
+Each picker is a closed field with a label and, optionally, helper text. Selecting the field opens a searchable list. Each row in the entity list shows the entity’s name with an icon, a second line that gives the area or device, and either the entity ID, when the form shows it, or the domain name. When nothing matches the search, the list says “No entities found for” and the search words. Before a choice, the field shows “Select an entity”.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-entity-picker"><code>ha-entity-picker</code></h3>
+
+Chooses one entity.
+
+What Home Assistant’s own forms can set on it:
+
+- `label`, `placeholder`, `helper` and `search-label` for the wording.
+- `required` and `disabled` for its state.
+- `include-domains`, `exclude-domains`, `include-device-classes`, `include-unit-of-measurement`, `include-entities` and `exclude-entities` to narrow the list.
+- `show-entity-id` to show each entity’s ID in the list.
+- `allow-custom-entity` to accept a value that is not on the list.
+- `hide-clear-icon` to hide the clear control.
+- `add-button` and `add-button-label` to add an “Add entity” button.
+
+Its `value-changed` event reports the choice.
+
+<h3 id="child-ha-entities-picker"><code>ha-entities-picker</code></h3>
+
+Chooses a list of entities. It shows one entity picker for each chosen entity, plus an empty one to add another, and people can reorder the list by dragging when the form sets `reorder`. It accepts the same label, helper, required, disabled and filter settings as the single picker. Its `value-changed` event reports the whole list.
+
+<h3 id="child-ha-entity-attribute-picker"><code>ha-entity-attribute-picker</code></h3>
+
+Chooses one attribute of an entity that is already chosen. The field is labelled “Attribute” and offers the entity’s attributes. `hide-attributes` removes some from the list and `allow-custom-value` accepts one that is not listed. It is disabled until an entity is set, so put it after the entity picker in the form.
+
+<h3 id="child-ha-entity-state-picker"><code>ha-entity-state-picker</code></h3>
+
+Chooses one state of an entity that is already chosen, such as “on” or “off”. The field is labelled “State”. It can also show the value of an attribute, set with `attribute`, and extra options set with `extraOptions`. `allow-custom-value` accepts a state that is not listed, with an “Add custom state” row.
+
+**What the Civica theme sets.** The theme sets text, secondary text, divider and primary colours, and the text field colours that Home Assistant’s older form fields read. The pickers have no settings of their own in the theme, so each field and list looks as the shared picker looks. See [Combobox / Autocomplete](combobox-autocomplete.html) for the keys that reach the list.
+
+**What stays as Home Assistant draws it.** The field, the list, the search behaviour, the icons and the wording come from Home Assistant. A theme cannot change which entities are offered.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Searching removes the need to know an entity ID, and the entity ID can be shown when names are similar.
+- The pickers use the household’s own entity names and areas.
+- An unfiltered list can be very long. Filtering by domain or device class makes the list short enough to scan.
+- The pickers live in forms and dialogs, so a dashboard cannot style them on their own.
+- People can add a value that is not on the list only where the form allows it.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Give every picker a visible label that says what to choose in terms of the task, such as “Sensor for the chart”, and add helper text that says what the choice changes. Narrow the list to the kinds of entity that make sense. Show the entity ID when two entities have the same name. Do not ask people to type an entity ID from memory, and never block pasting one.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 3.3.2 Labels or Instructions: each picker has a visible label.
+- 2.1.1 Keyboard and 2.4.7 Focus Visible: test the field and the list with a keyboard in your own setup.
+- 2.5.8 Target Size (Minimum): test the field and rows by touch.
+- 3.3.1 Error Identification and 3.3.3 Error Suggestion: when a choice is required, say so in the label or helper text.
+- 3.3.7 Redundant Entry: do not ask people to choose the same entity twice in one form.
+- 4.1.2 Name, Role, Value: test how the field and list are named in your own screen reader.
+
+A short, filtered list and clear helper text keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-entity-picker-search') %>

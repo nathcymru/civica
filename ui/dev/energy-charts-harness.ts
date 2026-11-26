@@ -102,7 +102,7 @@ function build(target: HTMLElement) {
     ['empty', 'hui-energy-gas-graph-card', 'Gas use — no data'],
   ];
   function colours() { const css = getComputedStyle(target); return (token: string) => css.getPropertyValue(token).trim(); }
-  function graphColour(index: number) { return colours()(`--color-${index % 8 + 1}`) || ['#4263EB', '#F76707', '#099268', '#AE3EC9', '#D6336C', '#1098AD', '#E67700', '#5C7CFA'][index % 8]; }
+  function graphColour(index: number) { return colours()(`--color-${index % 8 + 1}`) || CHART_COLOUR_SPEC.categorical[index % CHART_COLOUR_SPEC.categorical.length].hex; }
   function dataset(key: Key): any[] {
     const colour = colours();
     // Shape: power-sources-graph-data.ts. Values are independent raw readings

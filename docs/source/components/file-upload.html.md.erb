@@ -1,65 +1,152 @@
 ---
-title: "File upload"
-description: "Let users choose a local file when the task genuinely needs one."
+title: "File Upload / Dropzone"
+description: "Let people choose a file from their device when the task really needs one, and tell them what will happen to it."
 section: "components"
-group: "Form elements"
-source_url: "https://service-manual.nhs.uk/design-system/components/file-upload"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added NHS-informed file upload guidance and 2 Home Assistant reference examples."
+  - date: "2026-11-26"
+    description: "Rewrote File Upload / Dropzone: the browser file chooser and the Home Assistant upload area, what the theme changes, and how to explain formats, limits and errors."
+  - date: "2026-11-11"
+    description: "First published, with two examples."
+ai_instructions: "Apply when a task needs a file from the person’s device, such as a dashboard picture or a backup. Use the browser file input with a visible label, and the Home Assistant ha-file-upload element where Home Assistant provides it. Say the accepted formats and the size limit before people choose. Dragging is never the only way: the Add file button must stay. The accept attribute is a hint, not validation, and choosing a file does not prove that it was uploaded. Show the chosen file name and let people replace it. Home Assistant shows no error inside the element, so put the error in the form. A browser will not let a page fill in a file input again after a failed request. The drag overlay and the disabled border use Home Assistant defaults, not Civica colours."
+ai_related:
+  - path: "/components/hint-text.html"
+    title: "Hint text"
+    relationship: "Owns the hint that gives formats and size limits."
+  - path: "/components/error-message.html"
+    title: "Error Message & Error Summary"
+    relationship: "Owns the wording and placement of a field error."
+  - path: "/home-assistant/backup-and-restore.html"
+    title: "Backups, restore and recovery copies"
+    relationship: "Owns what restoring from an uploaded backup means."
+  - path: "/home-assistant/schema-selectors.html"
+    title: "Schema selectors and configuration forms"
+    relationship: "Owns the file selector in automations and configuration forms."
+component:
+  parent: "File Upload / Dropzone"
+  letter: "F"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<input type=\"file\">"
+      origin: "HTML5"
+      anchor: "child-input-type-file"
+    - name: "ha-file-upload"
+      origin: "Home Assistant"
+      anchor: "child-ha-file-upload"
+  tags:
+    - "input-type-file"
+    - "ha-file-upload"
 ---
 
-# File upload
+# File Upload / Dropzone
 
-Let users choose a local file when the task genuinely needs one.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A file upload lets people choose a file from their device, such as a picture for a dashboard or a backup to restore. Use it only when the task needs a file. If existing data would do, ask for that instead.
 
-## When to use it
+This page owns the browser’s file input and Home Assistant’s `ha-file-upload`. What a restore does to a household is owned by [Backups, restore and recovery copies](../home-assistant/backup-and-restore.html).
 
-Use it for a dashboard image or a supported import file. Explain accepted formats and limits before selection. Keep the native file chooser available even if drag and drop is added.
+This page covers:
 
-## When not to use it
+- File Upload / Dropzone
+  - `<input type="file">`
+  - `ha-file-upload`
 
-Do not require a file when the same task can be completed with existing data. A themed chooser must not be mistaken for a new backup or restore implementation.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+- A visible label that names the file.
+- A hint that gives the accepted formats and the size limit.
+- The chooser: the browser’s own button and file name, or Home Assistant’s dashed upload area with an Add file button.
+- The chosen file name, and a way to replace or remove it.
+- An error message beside the field, when the file is not accepted.
 
-The reference examples select files locally and do not send them anywhere. A production importer must validate file content, report progress and explain whether an import will replace settings before committing it. File selection is not proof that an upload or restore succeeded.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Accessibility and behaviour
+<h3 id="child-input-type-file"><code>&lt;input type=&quot;file&quot;&gt;</code></h3>
 
-Provide a visible label and associate format guidance and errors. Do not make dragging the only interaction. Report the selected filename and allow replacement; browsers intentionally prevent prepopulating a file input after a failed request.
+The browser’s own file chooser. It shows a button and the chosen file name. Its main attributes are `accept` (the formats the chooser offers), `multiple`, `required` and `disabled`.
 
-## Examples
+- `accept` is a hint for the chooser, not validation. Check the file again where it is received.
+- A page cannot fill in a file input. After a failed request, people have to choose the file again, so say so.
+- Give it a `<label>`. Do not hide it and put an unlabelled box in its place, because that breaks the keyboard.
 
-### Choose a dashboard image
+Use it in Civica pages and in custom cards you write. The example shows the browser’s own chooser; what it looks like depends on the browser.
 
-This example opens the local file chooser only.
+<h3 id="child-ha-file-upload"><code>ha-file-upload</code></h3>
 
-<%= example('nhs-upload-image') %>
+Home Assistant’s upload area. It is used in the file selector (`file` with an `accept` setting), in the picture upload on forms, and when you upload a backup or firmware. It is not a dashboard card and has no YAML card type.
 
-### Explain a rejected format
+- **Empty.** A dashed box with an Add file button, the words “Or drop your file here” and a line for the formats it supports.
+- **Dragging a file over it.** The border turns solid in the theme’s primary colour.
+- **A file chosen.** The file name and its size, with a delete button.
+- **Uploading.** A text label and a progress bar.
+- **Disabled.** Greyed out, and it does not respond.
 
-The error identifies the supported formats without clearing other form answers.
+It fires `file-picked` when files are chosen and `files-cleared` when they are removed. The box is a fixed 240 pixels high. Home Assistant shows no error inside it, so write the error beside the field in your own form.
 
-<%= example('nhs-upload-error') %>
+**What the Civica theme sets.**
 
-## Check the implementation
+- The border colour follows the text-field line colour (#0B0C0C in light mode, #FFFFFF in dark mode).
+- Corners are square, because the theme sets the small corner radius to 0.
+- The primary colour is #1D70B8 in light mode and #C0D7EB in dark mode.
+- Supporting and disabled text use #484949 in light mode and #CBD0D3 in dark mode.
 
-Test keyboard selection, cancellation, empty files, unsupported content, oversized files and connection failure. The accept attribute is a chooser hint, not validation.
+**What stays as Home Assistant draws it.**
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+- The darkening when a file is dragged over, and the disabled border, use Home Assistant defaults.
+- The box height cannot be changed.
+- The file name row responds to a click but is not a keyboard stop, and the progress text is not announced as it changes. Show the outcome in words in your form.
+- You cannot add a Civica focus ring to the drop area. Check the focus on the Add file button on your own dashboard.
 
-## Source and related guidance
+<h2 id="limits">Advantages and limitations</h2>
 
-[NHS file upload](https://service-manual.nhs.uk/design-system/components/file-upload) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+- The Add file button means dragging is never the only way to choose a file.
+- The browser chooser is familiar and works with a keyboard.
+- Choosing a file does not mean it was uploaded.
+- Neither element checks the content of a file. Check the type, size and content where the file is received.
+- A themed chooser is not a new backup or restore feature.
 
-See also [buttons and forms](controls.html).
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Put the accepted formats and the size limit before the chooser. Show the chosen file name and let people replace it. Do not ask for a file when the task can be done with data you already have.
+
+An importer must report progress and say, before it starts, whether it will replace existing settings. A restore that replaces settings needs a clear confirmation step.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 3.3.2 Labels or Instructions: a visible label, with the hint linked to the field.
+- 3.3.1 Error Identification and 3.3.3 Error Suggestion: the error says which formats work.
+- 3.3.4 Error Prevention (Legal, Financial, Data): confirm an import that replaces settings.
+- 2.5.7 Dragging Movements: the button is the alternative to dragging.
+- 2.1.1 Keyboard and 4.1.2 Name, Role, Value: the chooser can be reached and has a name.
+- 4.1.3 Status Messages: say in words when an upload has finished or failed.
+- 2.5.8 Target Size (Minimum): the button is large enough to press.
+
+Formats and limits first, then the file name, then the outcome, keep the load low.
+
+<h3 id="check">Check it works</h3>
+
+Test choosing a file with the keyboard, cancelling the chooser, an empty file, the wrong type, a file that is too large and a lost connection. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
+
+### The Home Assistant upload area
+
+<%= example('spec-file-upload-dropzone') %>
+
+### A form that asks for a dashboard image
+
+Choosing a file only shows its name. Nothing is uploaded.
+
+<%= example('spec-file-upload-image') %>
+
+### A rejected file explained in words
+
+<%= example('spec-file-upload-error') %>

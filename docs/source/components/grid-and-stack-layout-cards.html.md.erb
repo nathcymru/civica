@@ -1,0 +1,137 @@
+---
+title: "Grid & Stack Layout Cards"
+description: "Arrange other cards in a grid, a row or a column on a dashboard."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Grid & Stack Layout Cards specification: the grid, horizontal stack and vertical stack, their spacing settings and how they behave on narrow screens."
+ai_instructions: "Apply to the Home Assistant layout cards grid, horizontal-stack and vertical-stack. They hold other cards and add no border or background of their own. Reading order follows the order of the cards list. A horizontal stack and a grid have a fixed number of columns and do not wrap, so cells shrink on narrow screens; keep to 3 cards across for short button-like cards and 2 for anything with text. The grid makes square cells unless square is false. Gaps default to 8 pixels and the Civica theme does not change them. A stack title is drawn as a level 1 heading inside the card. Do not claim a stack is a landmark or a group for assistive technology."
+ai_related:
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns dashboard layout and the choice of views."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface each child card keeps."
+  - path: "/components/card-and-section-header.html"
+    title: "Card & Section Header"
+    relationship: "Owns the card title style."
+  - path: "/components/glance-card.html"
+    title: "Glance Card"
+    relationship: "Use for a compact row of states instead of a grid."
+component:
+  parent: "Grid & Stack Layout Cards"
+  letter: "G"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-grid-card"
+      origin: "Lovelace"
+      anchor: "child-hui-grid-card"
+    - name: "hui-horizontal-stack-card"
+      origin: "Lovelace"
+      anchor: "child-hui-horizontal-stack-card"
+    - name: "hui-vertical-stack-card"
+      origin: "Lovelace"
+      anchor: "child-hui-vertical-stack-card"
+  tags:
+    - "grid"
+    - "horizontal-stack"
+    - "vertical-stack"
+    - "layout"
+---
+
+# Grid & Stack Layout Cards
+
+<h2 id="purpose">Purpose</h2>
+
+A layout card does not show any information itself. It holds other cards and arranges them: in a grid, side by side or one above another. Use one to keep related cards together, such as the readings and controls for one room.
+
+For where layout fits in a whole dashboard, see [Dashboard composition and card features](../home-assistant/dashboard-composition.html).
+
+This page covers:
+
+- Grid & Stack Layout Cards
+  - `hui-grid-card`
+  - `hui-horizontal-stack-card`
+  - `hui-vertical-stack-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+All three have the same parts: an optional title, then the cards they hold. The title is drawn as a level 1 heading inside the card, with padding above and below. The layout card has no border or background of its own, so each card inside keeps its own.
+
+The cards inside are read in the order they appear in the `cards` list. A horizontal stack or a grid changes where they sit on the screen, not the reading order.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+All three take a required `cards` list and an optional `title`. An empty list is shown as a warning while you edit.
+
+Gaps between cards are 8 pixels. The Civica theme does not change them. You can set `--stack-card-gap` for both stacks, or `--vertical-stack-card-gap`, `--horizontal-stack-card-gap` and `--grid-card-gap` for one kind, in a theme. For one card only, use card-mod, which needs the card-mod integration:
+
+```yaml
+type: vertical-stack
+card_mod:
+  style: |
+    :host { --stack-card-gap: 16px; }
+cards:
+  - type: tile
+    entity: light.living_room
+```
+
+The title uses the card heading colour, size and font that the Civica theme sets. Its alignment follows `--ha-stack-title-text-align`.
+
+<h3 id="child-hui-grid-card"><code>hui-grid-card</code></h3>
+
+Cards in equal columns (`type: grid`). Set `columns` for the number of columns; the default is 3. The count is fixed and does not change with the screen width.
+
+By default each cell is square (`square: true`), which is good for button-like cards and wasteful for text. Set `square: false` so that each row is as tall as its content.
+
+```yaml
+type: grid
+columns: 3
+square: false
+cards:
+  - type: tile
+    entity: light.lamp
+  - type: tile
+    entity: media_player.television
+  - type: tile
+    entity: cover.blinds
+```
+
+<h3 id="child-hui-horizontal-stack-card"><code>hui-horizontal-stack-card</code></h3>
+
+Cards side by side in one row (`type: horizontal-stack`). Each card gets an equal share of the width. A horizontal stack does not wrap, so on a narrow screen every card gets narrower and text may be cut short or squeezed. Put up to three short button-like cards in a row, and two for anything with text.
+
+<h3 id="child-hui-vertical-stack-card"><code>hui-vertical-stack-card</code></h3>
+
+Cards one above another in one column (`type: vertical-stack`). It works at any width, so it is the safest choice for narrow screens. Putting a horizontal stack inside a vertical stack is common, but keep nesting shallow so that labels do not shrink.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A stack or grid keeps related cards together on any dashboard view.
+- Spacing is the same everywhere and can be changed in one place.
+- Neither the grid nor the horizontal stack wraps, so cards shrink on a narrow screen.
+- A stack is not announced as a group, so do not rely on it to tell people which cards belong together. Give the title or the first card’s name that job.
+- The stack title is drawn as a level 1 heading inside the card, which can clash with the heading levels on the page. Check it in your own dashboard.
+- Nested stacks make reading order harder to predict.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Group cards that belong together and keep related controls close. Put up to three short button-like cards across, and two for anything with text. On a narrow screen, use a vertical stack or a sections view with grid options. Avoid nesting stacks more than one level. Put cards in the order you want them read.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 1.3.2 Meaningful Sequence: reading order follows the order of the list.
+- 1.4.10 Reflow and 1.4.4 Resize Text: rows of cards squeeze on narrow screens and at large text sizes. Test at 320 CSS pixels in your own dashboard.
+- 2.4.6 Headings and Labels: give the stack a clear title.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-stack-living-room') %>

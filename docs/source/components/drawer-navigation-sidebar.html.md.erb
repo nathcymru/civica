@@ -1,0 +1,130 @@
+---
+title: "Drawer / Navigation Sidebar"
+description: "The panel down the side of Home Assistant that lists your dashboards and settings, and the drawer that holds it."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Drawer / Navigation Sidebar specification: how the sidebar and drawer behave, the theme colours that reach them and the limits."
+ai_instructions: "Apply to the Home Assistant sidebar (ha-sidebar) and the drawer that holds it (ha-drawer). The sidebar is app navigation, not a dashboard card, so card-mod and dashboard YAML do not reach it. Six theme keys take effect: sidebar-background-color, sidebar-text-color, sidebar-icon-color, sidebar-selected-icon-color, sidebar-menu-button-background-color and sidebar-menu-button-text-color. sidebar-selected-background-color and sidebar-selected-text-color have no effect in the current release. The selected row is shown by colour and a tint, so a dashboard must also show the current page by words. The Civica theme does not set width, animation, badges or tooltips. Do not claim a contrast ratio, a named landmark or aria-current."
+ai_related:
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns navigation patterns and the current-page rule."
+  - path: "/components/service-navigation.html"
+    title: "Service navigation"
+    relationship: "Owns the Civica site navigation, which is not the Home Assistant sidebar."
+  - path: "/home-assistant/notifications-and-delivery.html"
+    title: "Notifications, acknowledgement and alerts"
+    relationship: "Owns the sidebar attention count and its wording."
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns layout on narrow screens."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns keyboard, focus and zoom checks."
+component:
+  parent: "Drawer / Navigation Sidebar"
+  letter: "D"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-drawer"
+      origin: "Home Assistant"
+      anchor: "child-ha-drawer"
+    - name: "ha-sidebar"
+      origin: "Home Assistant"
+      anchor: "child-ha-sidebar"
+  tags:
+    - "ha-drawer"
+    - "ha-sidebar"
+---
+
+# Drawer / Navigation Sidebar
+
+<h2 id="purpose">Purpose</h2>
+
+The sidebar is the list of places in Home Assistant: your dashboards and panels such as Map and Logbook, then Settings, Notifications and your user profile. The drawer is the frame that holds it, either fixed beside the page or sliding in over it on a small screen.
+
+Both belong to the app, not to a dashboard. You cannot add them to a view or change their layout. The Civica theme colours them.
+
+This page covers:
+
+- Drawer / Navigation Sidebar
+  - `ha-drawer`
+  - `ha-sidebar`
+
+<h2 id="anatomy">Anatomy</h2>
+
+The sidebar has a header, then two lists of rows.
+
+1. The header has a menu button, shown on wide screens, that collapses or expands the sidebar, and the title, which is “Home Assistant” by default.
+2. The first list holds your panels and scrolls if it is long.
+3. The second list stays fixed at the foot: Settings, Notifications and your user.
+
+Each row is a link with an icon and a text label. A row can show a count: updates and repairs, or notifications. When the sidebar is collapsed, only the icons show, with a tooltip on hover where the device has one. When it is expanded, labels show too.
+
+The drawer draws a fixed edge beside the sidebar. On a narrow screen, or where the sidebar is hidden, it slides in over the page and closes when you swipe it away or select outside it.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-drawer"><code>ha-drawer</code></h3>
+
+The drawer has three modes. The default is fixed beside the page. A dismissible drawer slides out of view. A modal drawer slides in over the page and closes when you select outside it or swipe it away. Home Assistant picks the mode, which is modal on a narrow screen. The drawer fires an event when it closes and handles right-to-left languages.
+
+The width of the sidebar is set by the app: 56 pixels plus the device edge inset when collapsed, and 256 pixels plus the inset when expanded. The expanded width reads `--ha-sidebar-expanded-width`, which the Civica theme does not set. The edge line uses `divider-color`, which the Civica theme sets to `#CECECE` in light mode and `#50565A` in dark mode. The sidebar’s animation uses `--ha-animation-duration-normal`, which the Civica theme does not set. Other layout is Home Assistant’s own.
+
+<h3 id="child-ha-sidebar"><code>ha-sidebar</code></h3>
+
+The sidebar reads these theme keys. The Civica theme sets them as shown.
+
+| Key | What it colours | Light | Dark |
+|---|---|---|---|
+| `sidebar-background-color` | The sidebar background | `#FFFFFF` | `#17191B` |
+| `sidebar-text-color` | Row labels and the title | `#0B0C0C` | `#FFFFFF` |
+| `sidebar-icon-color` | Row icons | `#484949` | `#CBD0D3` |
+| `sidebar-selected-icon-color` | The selected row’s icon and label, and its tint | `#19578D` | `#C0D7EB` |
+| `sidebar-menu-button-background-color` | The menu button | `#1D70B8` | `#1D70B8` |
+| `sidebar-menu-button-text-color` | The menu button icon | `#FFFFFF` | `#FFFFFF` |
+
+The theme also sets `sidebar-selected-background-color` and `sidebar-selected-text-color`. Home Assistant does not read them in the current release, so they change nothing.
+
+The selected row is shown by its colour and a pale tint. There is no extra mark such as a bar or bold text, so colour does most of the work (1.4.1 Use of Colour). The count badges take their colours from Home Assistant’s accent colours. Civica adds text to the notification count for assistive technology; see [Notifications, acknowledgement and alerts](../home-assistant/notifications-and-delivery.html).
+
+The panel order, and which panels show, are set by each person: they can reorder and hide panels from the sidebar’s edit dialog. You cannot set them for the household from a dashboard.
+
+The Civica theme does not set the sidebar’s width, animation, badge shape or tooltips. The sidebar is outside every dashboard, so the card-mod integration does not reach it.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The sidebar is the same on every screen, so people always know where the main places are.
+- Rows have text labels, and people can reorder and hide them.
+- When collapsed it shows icons only, so a new person has to learn what each one means.
+- The current page is shown by colour and tint only.
+- The navigation area has no name of its own that a screen reader could list.
+- You cannot add a skip link, a row or a heading to the sidebar from a dashboard.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Treat the sidebar as the app’s own navigation. Do not copy it into a dashboard as a second main menu. If a household needs shortcuts on a view, use Button cards with a navigate action, or a Markdown card with a short list of links and the current page written out in words. See [Navigation](navigation.html).
+
+Keep the main place names short and the same from one device to the next. Show the current page’s name in the view title, so it does not rely on the sidebar’s colour.
+
+Success criteria that apply:
+
+- 1.4.1 Use of Colour: the selected row relies on colour and tint, so add words in your own navigation.
+- 2.4.3 Focus Order, 2.4.7 Focus Visible and 2.1.1 Keyboard: the rows are links, so Tab moves through them in order.
+- 2.5.8 Target Size (Minimum): each row is a full-width link.
+- 3.2.3 Consistent Navigation: rows keep one order, set by the person.
+- 4.1.2 Name, Role, Value: in the collapsed sidebar the icon is the only visible label, so people who rely on tooltips or a screen reader need the expanded sidebar.
+
+The sidebar colours are set in the theme, in the table above.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-sidebar-expanded') %>

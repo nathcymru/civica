@@ -1,0 +1,126 @@
+---
+title: "Discovered Devices, Repairs & Updates Cards"
+description: "Show how many devices are waiting to be added, how many repairs are pending and how many updates are available."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Discovered Devices, Repairs & Updates Cards specification: the three cards, their shared options, theme colours and limits."
+ai_instructions: "Apply to the three Home Assistant admin cards: type discovered-devices, type repairs and type updates. They share the options hide_empty, vertical and the three tap actions. They are shown only to administrators, so never rely on them as the only route to repairs or updates. Tapping opens the add-integration dialog, the repairs screen or the updates screen unless a tap action is set. The count is written in words, so colour is not the only cue. Do not claim a contrast ratio or a live announcement of count changes. Link to the updates and repairs page for what the counts mean."
+ai_related:
+  - path: "/home-assistant/updates-and-repairs.html"
+    title: "Updates, repairs and maintenance"
+    relationship: "Owns what a repair or an update means and how to word it."
+  - path: "/home-assistant/onboarding-and-sign-in.html"
+    title: "Onboarding, integration setup and sign-in"
+    relationship: "Owns what happens when a discovered device is set up."
+  - path: "/components/devices.html"
+    title: "Device controls"
+    relationship: "Owns the rules for controls on a device."
+component:
+  parent: "Discovered Devices, Repairs & Updates Cards"
+  letter: "D"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-discovered-devices-card"
+      origin: "Lovelace"
+      anchor: "child-hui-discovered-devices-card"
+    - name: "hui-repairs-card"
+      origin: "Lovelace"
+      anchor: "child-hui-repairs-card"
+    - name: "hui-updates-card"
+      origin: "Lovelace"
+      anchor: "child-hui-updates-card"
+  tags:
+    - "hui-discovered-devices-card"
+    - "hui-repairs-card"
+    - "hui-updates-card"
+---
+
+# Discovered Devices, Repairs & Updates Cards
+
+<h2 id="purpose">Purpose</h2>
+
+These three cards are small tiles for the person who looks after the home. One shows how many devices Home Assistant has found and that can be added. One shows how many repairs are pending. One shows how many updates are available. Pressing a tile opens the screen where the work is done.
+
+The cards are for administrators only. Anyone else sees nothing, so do not make them the only way to reach repairs or updates. For what a repair or update means and how to word it, see [Updates, repairs and maintenance](../home-assistant/updates-and-repairs.html). For what happens once a discovered device is set up, see [Onboarding, integration setup and sign-in](../home-assistant/onboarding-and-sign-in.html).
+
+This page covers:
+
+- Discovered Devices, Repairs & Updates Cards
+  - `hui-discovered-devices-card`
+  - `hui-repairs-card`
+  - `hui-updates-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+Each card is one tile on a card surface. It has a round icon on the left, or above when the card is vertical, then a title and a line of text beneath: the count in words, or a message when there is nothing to do. While the count loads, the line shows a placeholder.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+All three cards take the same options:
+
+```yaml
+type: repairs
+hide_empty: true
+vertical: false
+```
+
+- `hide_empty` hides the card when the count is zero.
+- `vertical` stacks the icon above the text.
+- `tap_action`, `hold_action` and `double_tap_action` set what the card does. With no tap action set, tapping opens the screen named below.
+
+Each card is six columns wide by default, one row high (two when vertical). The wording is Home Assistant’s own and follows the language of the person using it, so do not replace it.
+
+**What the Civica theme sets.** The card background, its 1 pixel border (`#CECECE` in light mode, `#50565A` in dark mode), square corners, the text colours, and the information and warning colours for the icons. Where the card-mod integration is installed, the Civica card style also draws a 3 pixel focus outline around the card.
+
+**What stays as Home Assistant draws it.** The icons, the wording, the tile layout, and who can see the card. Only administrators see it, and `hide_empty` is the only way to hide it for them. The focus cue on the tile inside the card is Home Assistant’s own.
+
+<h3 id="child-hui-discovered-devices-card"><code>hui-discovered-devices-card</code></h3>
+
+`type: discovered-devices`. The title is “Devices discovered”. The text beneath is “1 device to add” or “2 devices to add”, or “No devices to add”. Tapping opens the dialog for adding an integration. The icon uses the information colour: `#1D70B8` in light mode and `#C0D7EB` in dark mode.
+
+<h3 id="child-hui-repairs-card"><code>hui-repairs-card</code></h3>
+
+`type: repairs`. The title is “Repairs”. The text beneath is “1 issue” or “3 issues”, or “No issues”. It counts the issues that have not been ignored. Tapping opens the repairs screen. The icon uses the warning colour: `#8A6100` in light mode and `#DED3B8` in dark mode.
+
+<h3 id="child-hui-updates-card"><code>hui-updates-card</code></h3>
+
+`type: updates`. The title is “Updates”. The text beneath is “1 update available” or “2 updates available”, or “Up to date”. It counts updates that can be installed. Tapping opens the updates screen. The icon uses the information colour.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A glance tells an administrator whether anything needs attention.
+- The count is in words, so the tile’s colour is never the only cue.
+- Non-administrators do not see the cards.
+- The cards give a count, not a list. They do not say which repair or which update.
+- The wording is fixed by Home Assistant.
+- `hide_empty` removes the “all clear” reassurance. Leave it off if people like to see “Up to date”.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Put these cards together, near the top of an administrator’s dashboard or on a maintenance view. Say in the surrounding heading what pressing them does. Do not use a repair or update count as a routine warning on a family dashboard.
+
+Do not describe a repair as an emergency. Use words such as “needs attention”. See [Updates, repairs and maintenance](../home-assistant/updates-and-repairs.html).
+
+Success criteria that apply:
+
+- 1.4.1 Use of Colour: the count in words carries the meaning, and the icon colour only supports it.
+- 1.4.3 and 1.4.11 Contrast: the icon colours and the text colours come from the theme, and the count in words carries the meaning.
+- 2.1.1 Keyboard, 2.4.7 Focus Visible and 2.5.8 Target Size (Minimum): the whole tile is the target.
+- 4.1.2 Name, Role, Value: the tile’s name is its title and count.
+- 4.1.3 Status Messages: do not rely on a count change being announced.
+
+Say what happens on a tap, and do not hide a card that people expect to find.
+
+<h2 id="examples">Examples</h2>
+
+### Three admin tiles on a maintenance view
+
+<%= example('spec-admin-tiles') %>

@@ -1,65 +1,136 @@
 ---
-title: "Fieldset"
-description: "A fieldset gives several controls one shared question or purpose."
+title: "Fieldset & Legend"
+description: "Group related form controls under one shared question, so that people hear and see what the group is for."
 section: "components"
-group: "Form elements"
-source_url: "https://service-manual.nhs.uk/design-system/components/fieldset"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added NHS-informed fieldset guidance and 2 Home Assistant reference examples."
+  - date: "2026-11-26"
+    description: "Rewrote Fieldset & Legend: when to group controls, how the legend and hint work, what Home Assistant provides, and what to test."
+  - date: "2026-11-11"
+    description: "First published, with two examples."
+ai_instructions: "Apply when two or more form controls answer one question, such as a set of checkboxes or the three parts of a date. Use a fieldset with the legend as its first child, short, naming the question. Each control keeps its own visible label. Put any hint in a separate element and link it with aria-describedby on the fieldset. Do not use a fieldset as a decorative box, and do not use it for a list of sensor readings. Set min-width to 0 on a fieldset so it does not overflow at 320 pixels. Home Assistant has no fieldset element of its own. Do not claim that every screen reader repeats the legend."
+ai_related:
+  - path: "/components/checkboxes.html"
+    title: "Checkbox"
+    relationship: "Owns the checkboxes that a fieldset groups."
+  - path: "/components/radios.html"
+    title: "Radios"
+    relationship: "Owns the radio buttons that a fieldset groups."
+  - path: "/components/date-input.html"
+    title: "Date & Time Picker"
+    relationship: "Owns the three-part date answer."
+  - path: "/components/hint-text.html"
+    title: "Hint text"
+    relationship: "Owns the hint that goes with a legend."
+  - path: "/components/summary-list.html"
+    title: "Summary list"
+    relationship: "Use for a list of readings, which is not a form group."
+component:
+  parent: "Fieldset & Legend"
+  letter: "F"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<fieldset>"
+      origin: "HTML5"
+      anchor: "child-fieldset"
+      grandchildren:
+        - name: "<legend>"
+          origin: "HTML5"
+          anchor: "child-fieldset--legend"
+  tags:
+    - "fieldset"
+    - "legend"
 ---
 
-# Fieldset
+# Fieldset & Legend
 
-A fieldset gives several controls one shared question or purpose.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A fieldset groups form controls that answer one question, such as the rooms a view includes or the day, month and year of a date. Its legend names the question. Each control still has its own label.
 
-## When to use it
+This page owns the two elements. The controls inside a fieldset are owned by [Checkbox](checkboxes.html), [Radios](radios.html) and [Date input](date-input.html).
 
-Use it for room checkboxes, an exclusive display choice, or the three parts of a date. Its legend names the group; individual labels still describe each input.
+This page covers:
 
-## When not to use it
+- Fieldset & Legend
+  - `<fieldset>`
+    - `<legend>`
 
-Do not use a fieldset as a decorative box around unrelated settings or readings. A collection of sensor values is usually a summary list or table, not a form group.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+- The fieldset wraps the controls.
+- The legend is the first child of the fieldset and names the group.
+- An optional hint sits in its own element, after the legend.
+- The controls, each with a visible label.
 
-For a dashboard editor, separate display choices from integration settings so the legend describes a coherent task. On a one-question page the legend can contain the page heading. In a multi-section settings page use the appropriate lower heading level instead of repeating h1.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Accessibility and behaviour
+<h3 id="child-fieldset"><code>&lt;fieldset&gt;</code></h3>
 
-Place the legend first and keep it short because a screen reader may repeat it for each control. Associate a short group hint programmatically. Native Home Assistant components may expose their own grouping semantics; check the rendered accessibility tree before adding wrappers.
+A standard HTML element. It may contain one legend, as its first child, then any content. It accepts `disabled`, which disables the controls inside it except those in the legend, and `form` and `name`. A browser treats it as a group and takes its name from the legend.
 
-## Examples
+Home Assistant has no fieldset element of its own. Use this one in Civica pages and in custom cards you write. Where Home Assistant draws a form itself, check the rendered accessibility tree before you add a wrapper of your own.
 
-### Related room choices
+Browsers give a fieldset a grooved border, some padding, and a minimum width that fits its content. That minimum width can push a fieldset past the edge of a narrow screen, so set `min-width: 0` on it.
 
-The legend identifies the shared question for all options.
+```html
+<fieldset aria-describedby="rooms-hint">
+  <legend>Rooms in this view</legend>
+  <div id="rooms-hint">Select all that apply</div>
+  <!-- checkboxes, each with its own label -->
+</fieldset>
+```
 
-<%= example('nhs-fieldset-room-options') %>
+<h3 id="child-fieldset--legend"><code>&lt;legend&gt;</code></h3>
 
-### A grouped date answer
+The title of the group. Put it first and keep it short, because some screen readers say it before each control in the group. Do not rely on every screen reader doing so. A heading may sit inside a legend: on a page with one question, the legend can hold the page heading; elsewhere use a lower heading level.
 
-One legend groups three individually labelled inputs.
+Keep the hint out of the legend. Put it in a separate element and link it to the fieldset with `aria-describedby`.
 
-<%= example('nhs-fieldset-period') %>
+The Civica theme sets no variable for these two elements. Text uses `primary-text-color` (#0B0C0C in light mode, #FFFFFF in dark mode), hint text uses `secondary-text-color` (#484949 in light mode, #CBD0D3 in dark mode), and a border uses `divider-color` (#CECECE in light mode, #50565A in dark mode). The focus colour is #FFDD00.
 
-## Check the implementation
+<h2 id="limits">Advantages and limitations</h2>
 
-Test the group name and individual labels with a screen reader, keyboard traversal and wrapping at 320px. Grouping must remain clear without a border.
+- The group name reaches people who cannot see the layout.
+- A group stays clear without a border, so the border is optional.
+- Nested fieldsets are allowed but quickly become hard to follow. Prefer one level.
+- The default minimum width can overflow at 320 pixels.
+- Screen readers differ in how often they repeat the legend.
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-## Source and related guidance
+Use a fieldset for room checkboxes, an exclusive display choice or the three parts of a date. Do not use it as a decorative box around unrelated settings. A set of sensor values is a [summary list](summary-list.html) or a table, not a form group.
 
-[NHS fieldset](https://service-manual.nhs.uk/design-system/components/fieldset) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+In a dashboard editor, keep display choices apart from integration settings, so each legend describes one task.
 
-See also [buttons and forms](controls.html).
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: the grouping is in the markup, not only in the layout.
+- 3.3.2 Labels or Instructions: the legend and the hint say what to choose.
+- 4.1.2 Name, Role, Value: the group has a name.
+- 1.4.10 Reflow: the fieldset does not overflow at 320 pixels.
+- 1.4.1 Use of Colour: the group is not shown by colour alone.
+
+One question for each group, with a short legend and a separate hint, keeps the load low.
+
+<h3 id="check">Check it works</h3>
+
+Test the group name and each label with a screen reader and with a keyboard. Check that the group is clear without its border and that it fits a 320 pixel width. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
+
+### Rooms in a dashboard view
+
+<%= example('spec-fieldset-rooms') %>
+
+### A date in three parts
+
+One legend groups three labelled fields. For the date fields themselves, see [Date input](date-input.html).
+
+<%= example('spec-fieldset-date') %>

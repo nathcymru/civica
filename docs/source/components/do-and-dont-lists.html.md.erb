@@ -1,71 +1,123 @@
 ---
-title: Do and do not lists
-description: Use paired advice lists when a short set of actions and cautions makes guidance easier to follow.
-section: components
-group: Content presentation
-source_url: https://service-manual.nhs.uk/design-system/components/do-and-dont-lists
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Do and Don't Lists"
+description: "Use a pair of short lists, one for what to do and one for what not to do, stacked in that order, when advice is easier to follow as a pair."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Recorded provenance, rights, purpose and alternative-text decisions for the original functional symbols.
-  - date: 2026-11-11
-    description: Added NHS-informed do and do not lists guidance and 2 Home Assistant reference examples.
+  - date: "2026-11-26"
+    description: "Rewrote the page as a Do and Don’t Lists specification: what Home Assistant offers, how to build the pair in a Markdown card, and the writing and accessibility rules."
+ai_instructions: "Apply when guidance is clearer as a Do list followed by a Do not list. This is a Civica pattern: Home Assistant has no do and do not element. Use real headings and real lists. Every Do not item must contain the words do not, so it stays correct when read alone. The tick and cross graphics are decorative and hidden from assistive technology; colour never carries the meaning. Put Do first, then Do not, stacked, never side by side. Do not use it for status values, validation or consent. A Markdown card can show the two headed lists but not the graphics. Do not claim a contrast ratio for the tick and cross colours."
+ai_related:
+  - path: "/components/inset-text.html"
+    title: "Inset text"
+    relationship: "Use for one set-apart instruction that does not need a list."
+  - path: "/components/notification-banners.html"
+    title: "Notification banners"
+    relationship: "Owns messages that apply to the whole page."
+  - path: "/components/alert-and-tip-callout.html"
+    title: "Alert & Tip Callout"
+    relationship: "Owns alerts, which interrupt; a Do and Don't Lists pair does not."
+  - path: "/content/writing-guidelines/states-and-errors.html"
+    title: "States, requests and errors"
+    relationship: "Owns the wording of states, which must not be written as advice."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns how to test spoken order, reflow and colour independence."
+component:
+  parent: "Do and Don't Lists"
+  letter: "D"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Do and Don't Lists Pattern"
+      origin: "Civica"
+      anchor: "child-civica-do-and-don-t-lists-pattern"
+  tags:
+    - "civica-do-list"
+    - "civica-dont-list"
 ---
 
-# Do and do not lists
+# Do and Don’t Lists
 
-Use paired advice lists when a short set of actions and cautions makes guidance easier to follow.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A Do and Don’t Lists pair puts advice in two short lists: what to do, then what not to do. It suits a help page for looking after a dashboard or checking an integration, where each piece of advice is short and the two lists answer the same question.
 
-## When to use it
+Home Assistant has no element for this. It is a Civica pattern, built from a heading and a list for each side. A single instruction needs only a paragraph, [Inset text](inset-text.html) or an [alert](alert-and-tip-callout.html).
 
-Use them in a help page for maintaining a dashboard or checking an integration. A single instruction usually needs a paragraph, inset or warning rather than a whole list treatment.
+This page covers:
 
-## When not to use it
+- Do and Don’t Lists
+  - Civica Do and Don’t Lists Pattern
 
-Do not turn status values into advice lists. Do not place essential validation or consent inside this content pattern. Avoid presenting lists side by side, where reading order becomes less clear.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+1. A “Do” section: a heading, then a list of actions.
+2. A “Do not” section: a heading, then a list of cautions.
+3. A tick beside each Do item and a cross beside each Do not item. They are decorative and hidden from assistive technology.
+4. A new heading after the lists, so later content is not read as more advice.
 
-Write advice that the user can act on and that matches verified product behaviour. Keep device-specific servicing instructions in the manufacturer’s guidance. The examples explain interface use and information handling; they do not prescribe physical repairs.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Accessibility and behaviour
+<h3 id="child-civica-do-and-don-t-lists-pattern"><code>Civica Do and Don’t Lists Pattern</code></h3>
 
-Use headings and actual lists. The text of every negative item must contain “do not”, so the instruction stays correct when read without its heading. Tick and cross graphics are decorative and hidden from assistive technology. Colour supports the words only.
+Each section has a thin border and padding. Each item is a row with the tick or cross, then the text, with a gap between rows. The tick uses the success colour and the cross uses the error colour. In the Civica theme these are `success-color` (`#0F7A52` in light mode, `#BCDACF` in dark mode) and `error-color` (`#CA3535` light, `#F0C6C6` dark). The border uses `divider-color` (`#CECECE` light, `#50565A` dark), and the text uses `primary-text-color`.
 
-## Examples
+A single Do not list is fine when there is no useful opposing set.
 
-### Maintain a shared dashboard
+In a Home Assistant Markdown card you can write the two headed lists, with “Do” and “Do not” in the headings. The card does not give you the bordered sections or the tick and cross graphics, so the words carry everything:
 
-Positive and negative instructions remain meaningful when read individually.
+```markdown
+## Do
+- Use room names the household recognises.
+- Check the dashboard on a small screen.
 
-<%= example('nhs-advice-dashboard') %>
+## Do not
+- Do not remove the text that explains an unavailable device.
+- Do not use colour as the only status indicator.
+```
 
-### Write useful household notes
+<h2 id="limits">Advantages and limitations</h2>
 
-A single advice list is acceptable when there is no useful opposing set.
+- Two short lists are quick to scan, and the headings give each list a name.
+- The text carries the meaning, so the pair works without the graphics and without colour.
+- The pair is not a native Home Assistant element, so a dashboard needs the Markdown version above.
+- The graphics and borders are not available in a Markdown card.
+- Long advice does not fit: a list of more than a few short items becomes a page of its own.
 
-<%= example('nhs-advice-notes') %>
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-## Check the implementation
+Write advice the reader can act on, and keep it short, with one verb at the start of each item. Keep device-specific servicing instructions in the maker’s own guidance.
 
-Test the spoken sequence, stacked mobile layout and a view without colour. Add a new heading after the lists so later content is not mistaken for another instruction.
+- Use real headings and real lists, so the structure is announced.
+- The text of every Do not item contains “do not”, so it stays correct when read without its heading.
+- Mark the tick and cross as decorative. Colour only supports the words.
+- Put Do first, then Do not, in the same order every time. Stack the two lists; do not place them side by side, because the reading order becomes unclear.
+- Do not turn status values into advice. A state such as “Unavailable” belongs in the [wording rules for states](../content/writing-guidelines/states-and-errors.html), not in a Do not list.
+- Do not put essential validation or consent in this pattern.
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+Success criteria that apply:
 
-## Source and related guidance
+- 1.3.1 Info and Relationships: real headings and lists.
+- 1.4.1 Use of Colour: the words carry the meaning.
+- 1.1.1 Non-text Content: decorative graphics are hidden.
+- 1.3.2 Meaningful Sequence: Do then Do not, stacked.
+- 1.4.10 Reflow: the lists stack at 320 CSS pixels.
+- 2.4.6 Headings and Labels: each list has a clear heading.
 
-[NHS do and do not lists](https://service-manual.nhs.uk/design-system/components/do-and-dont-lists) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+Test the spoken order, the stacked layout on a small screen and the page with colour removed. See [Test the interface](../accessibility/testing.html).
 
-See also [status and notifications](status.html).
+<h2 id="examples">Examples</h2>
 
-## Example artwork record
+### Advice for a shared dashboard
 
-The affected example records include creator, original source, rights, purpose, intended background and alternative-text decisions. Functional SVG strokes and schematic boundaries remain separate from the flat explanatory illustration style. No official identity artwork is copied.
+<%= example('spec-advice-dashboard') %>
+
+### A single Do not list
+
+<%= example('spec-advice-notes') %>

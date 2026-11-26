@@ -1,0 +1,215 @@
+---
+title: "Form & Schema Form"
+description: "Understand how Home Assistant draws whole forms from a list of fields, and how a plain HTML form compares."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Form & Schema Form specification: the plain HTML form, Home Assistant’s schema form and its field types, with the theme colours they use and the limits of the theme."
+ai_instructions: "Apply when describing or styling forms in Home Assistant setup dialogs, card editors and integration options. ha-form is drawn by Home Assistant from a list of field descriptions; a dashboard author cannot write one, and the theme only changes colours, border width and focus. Field order, labels and error wording belong to each integration. Do not claim that errors are programmatically linked to fields, that required fields show a mark, or any contrast ratio for Home Assistant's drawn borders. Use Civica text input, checkbox and other form pages for forms an author writes."
+ai_related:
+  - path: "/components/text-input.html"
+    title: "Text input"
+    relationship: "Owns single-line text fields."
+  - path: "/components/checkboxes.html"
+    title: "Checkbox"
+    relationship: "Owns checkbox fields and groups."
+  - path: "/components/select.html"
+    title: "Dropdown Menu & Overflow Menu"
+    relationship: "Owns choosing one option from a list."
+  - path: "/components/date-input.html"
+    title: "Date & Time Picker"
+    relationship: "Owns date entry."
+  - path: "/components/fieldset.html"
+    title: "Fieldset & Legend"
+    relationship: "Owns grouping related fields."
+  - path: "/components/hint-text.html"
+    title: "Hint text"
+    relationship: "Owns helper text under a label."
+  - path: "/components/error-message.html"
+    title: "Error Message & Error Summary"
+    relationship: "Owns error wording next to a field."
+  - path: "/home-assistant/schema-selectors.html"
+    title: "Schema selectors and configuration forms"
+    relationship: "Owns the selectors that setup forms use."
+component:
+  parent: "Form & Schema Form"
+  letter: "F"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<form>"
+      origin: "HTML5"
+      anchor: "child-form"
+    - name: "ha-form"
+      origin: "Home Assistant"
+      anchor: "child-ha-form"
+      grandchildren:
+        - name: "ha-form-boolean"
+          origin: "Home Assistant"
+          anchor: "child-ha-form--ha-form-boolean"
+        - name: "ha-form-constant"
+          origin: "Home Assistant"
+          anchor: "child-ha-form--ha-form-constant"
+        - name: "ha-form-float"
+          origin: "Home Assistant"
+          anchor: "child-ha-form--ha-form-float"
+        - name: "ha-form-grid"
+          origin: "Home Assistant"
+          anchor: "child-ha-form--ha-form-grid"
+        - name: "ha-form-expandable"
+          origin: "Home Assistant"
+          anchor: "child-ha-form--ha-form-expandable"
+        - name: "ha-form-integer"
+          origin: "Home Assistant"
+          anchor: "child-ha-form--ha-form-integer"
+        - name: "ha-form-multi_select"
+          origin: "Home Assistant"
+          anchor: "child-ha-form--ha-form-multi-select"
+        - name: "ha-form-positive_time_period_dict"
+          origin: "Home Assistant"
+          anchor: "child-ha-form--ha-form-positive-time-period-dict"
+        - name: "ha-form-select"
+          origin: "Home Assistant"
+          anchor: "child-ha-form--ha-form-select"
+        - name: "ha-form-string"
+          origin: "Home Assistant"
+          anchor: "child-ha-form--ha-form-string"
+  tags:
+    - "form"
+    - "ha-form"
+    - "schema form"
+    - "setup dialog"
+---
+
+# Form & Schema Form
+
+<h2 id="purpose">Purpose</h2>
+
+A form collects answers from a person. On the web it is the HTML `<form>` element. Home Assistant also draws its own forms in setup dialogs, integration options and card editors. It builds each one from a list of field descriptions, called a schema, and the part that does the drawing is `ha-form`.
+
+You cannot add an `ha-form` to a dashboard. It appears where Home Assistant asks you to configure something. This page explains what each field looks like and what the Civica theme changes. For forms you write yourself, use the Civica pages for [Text input](text-input.html), [Checkbox](checkboxes.html), [Dropdown Menu & Overflow Menu](select.html), [Date & Time Picker](date-input.html), [Fieldset & Legend](fieldset.html), [Hint text](hint-text.html) and [Error message](error-message.html).
+
+This page covers:
+
+- Form & Schema Form
+  - `<form>`
+  - `ha-form`
+    - `ha-form-boolean`
+    - `ha-form-constant`
+    - `ha-form-float`
+    - `ha-form-grid`
+    - `ha-form-expandable`
+    - `ha-form-integer`
+    - `ha-form-multi_select`
+    - `ha-form-positive_time_period_dict`
+    - `ha-form-select`
+    - `ha-form-string`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A schema form is a vertical stack of fields with 24 pixels between them. Each field has a label, its control and, where the integration supplies one, helper text. An error for a field appears as a red alert above that field. An error for the whole form, such as “could not connect”, appears as an alert at the top.
+
+Each field can also be hidden until another answer makes it relevant, so a long form can show only what applies.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-form"><code>&lt;form&gt;</code></h3>
+
+The plain HTML form. Pressing a submit button, or Enter in a single-line field, sends the answers, and the browser checks required and typed fields first. A form is announced as a form region only when it has an accessible name. Group related fields in a [fieldset](fieldset.html) with a legend, and give every control a label.
+
+Home Assistant does not use a `<form>` element for `ha-form`, so it is the plain-HTML equivalent rather than the thing underneath. A dashboard author does not write one either, so the way to build a form of your own is with the Civica form pages above.
+
+<h3 id="child-ha-form"><code>ha-form</code></h3>
+
+The schema form. It draws a whole form from a list of field descriptions and reports the merged answers when any field changes. It also checks the visible fields on request and moves focus to the first one that is wrong.
+
+Each field description can set a name, a default, whether it is required, whether it is disabled and a condition for when it is visible. The condition can compare another field’s value, and conditions can be combined with and, or and not. Labels, helper text and error wording come from the integration. If an integration supplies no label, the field’s internal name is shown.
+
+The Civica theme sets these form colours for light and dark modes. The Civica Blue theme uses the same values.
+
+| Setting | Light | Dark |
+|---|---|---|
+| Form background | #FFFFFF | #24282B |
+| Form background on hover | #F3F2F1 | #30363A |
+| Form background when disabled | #F3F2F1 | #30363A |
+| Control border | #0B0C0C | #FFFFFF |
+| Control value text | #0B0C0C | #FFFFFF |
+| Placeholder text | #484949 | #CBD0D3 |
+| Focus | #FFDD00 | #FFDD00 |
+
+Control borders are 2 pixels wide with square corners in both modes. Field order, labels and error wording are set by each integration, not by the theme, and nothing about `ha-form` can be changed with card-mod because it never appears in a dashboard card.
+
+<h3 id="child-ha-form--ha-form-boolean"><code>ha-form-boolean</code></h3>
+
+A single checkbox with its label beside it and optional helper text. It is a checkbox, not a switch, and each row is at least 56 pixels tall, which gives a comfortable target. See [Checkbox](checkboxes.html).
+
+<h3 id="child-ha-form--ha-form-constant"><code>ha-form-constant</code></h3>
+
+A fixed value shown as text, in the form “Label: value”. There is no control to use. It confirms something the person cannot change, such as the device they are setting up.
+
+<h3 id="child-ha-form--ha-form-float"><code>ha-form-float</code></h3>
+
+A number field for values with decimals, such as 19.5. It has a label, optional helper text and an optional unit after the field. A comma typed as the decimal mark is changed to a full stop. When the field is required and empty, it shows Home Assistant’s standard “required” message.
+
+<h3 id="child-ha-form--ha-form-grid"><code>ha-form-grid</code></h3>
+
+Places several fields side by side. Each column is at least 200 pixels wide by default and the columns share the width equally. Gaps are 8 pixels between columns and 24 pixels between rows. On a narrow screen the columns fall back to fewer across, so the fields keep the order they have in the list.
+
+<h3 id="child-ha-form--ha-form-expandable"><code>ha-form-expandable</code></h3>
+
+An outlined panel with a heading that opens and closes to show a group of fields. It can show an icon and a short description, and can start open. The heading is level 3 unless the integration sets another level. Use it to keep optional or advanced fields out of the way, but do not hide fields people must complete.
+
+<h3 id="child-ha-form--ha-form-integer"><code>ha-form-integer</code></h3>
+
+A whole-number field. It has two looks. When the integration sets both a minimum and a maximum and the range is under 256, it draws a slider that shows its value. A tick box before the slider switches the value on or off when the field is optional. Otherwise it draws a number field.
+
+A slider is hard to use precisely and for some people impossible, so when a setting needs an exact value, a number field is the better design. See [Control Slider](sliders.html).
+
+<h3 id="child-ha-form--ha-form-multi-select"><code>ha-form-multi_select</code></h3>
+
+Choose any number of options. With fewer than 6 options it shows one checkbox for each, all visible at once. With 6 or more it shows a drop-down list of tick boxes that stays open while you choose. Prefer fewer options, so that the visible list is used.
+
+<h3 id="child-ha-form--ha-form-positive-time-period-dict"><code>ha-form-positive_time_period_dict</code></h3>
+
+A length of time, entered as separate parts such as hours, minutes and seconds. It has a label and can be required. It is drawn by Home Assistant’s duration field.
+
+<h3 id="child-ha-form--ha-form-select"><code>ha-form-select</code></h3>
+
+Choose one option from a list. It uses Home Assistant’s own select, not the browser’s plain select, so its list is drawn by Home Assistant. An empty choice is treated as no answer. See [Dropdown Menu & Overflow Menu](select.html).
+
+<h3 id="child-ha-form--ha-form-string"><code>ha-form-string</code></h3>
+
+A text field. It becomes an email or web address field when the integration says so, and it passes on the browser’s hint about what is being asked for, which helps autofill. A field whose name contains “password”, “secret” or “token” is drawn as a password field with a show and hide button. When a non-required field is left empty, no value is stored. A required field shows the standard “required” message. See [Text input](text-input.html).
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Every setup form looks and behaves the same way, so people learn it once.
+- Fields can appear only when they are relevant, which keeps forms short.
+- The theme gives all controls a strong dark border and a yellow focus colour.
+- The theme cannot change field order, labels, helper text or error wording.
+- The error for a field is a separate alert above it. Home Assistant does not document a programmatic link between an error and its field. Test your own setup dialogs with a screen reader.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Ask for one thing in each field. Give each field a label that says what to enter, and add helper text for the format or the effect. Keep related fields together, and put optional fields in an expandable panel. Do not hide a field that people must complete.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 2.4.6 Headings and Labels: every field has a visible label.
+- 1.3.5 Identify Input Purpose: text fields can pass on what they are for.
+- 3.3.1 Error Identification, 3.3.2 Labels or Instructions and 3.3.3 Error Suggestion: say what is wrong and how to fix it.
+- 3.3.7 Redundant Entry: do not ask for the same answer twice.
+- 3.3.8 Accessible Authentication: password fields have a show and hide button.
+- 2.5.8 Target Size (Minimum): checkbox rows are at least 56 pixels tall.
+- 1.4.11 Non-text Contrast: the theme sets the border colours, Check the contrast of Home Assistant’s drawn border in your own theme.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-form-schema-heating-setup') %>
