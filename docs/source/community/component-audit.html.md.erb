@@ -65,12 +65,11 @@ Home Assistant has a further layer of native domain controls and task flows. A l
 The findings below are generated from the organisation record. Each proposal has a stable identifier, evidence and acceptance criteria. Priorities describe the order of design work: **P1** protects task meaning, consequential actions or coverage claims; **P2** improves consistency and maintenance. The original proposals and acceptance criteria remain below as a review record; each item links to its implemented resolution.
 
 <% audit['findings'].each do |finding| %>
-<h3 id="<%= escape(finding['id'].downcase) %>"><%= escape(finding['id']) %>: <%= escape(finding['title']) %></h3>
+<h3 id="<%= escape(finding['id'].downcase) %>"><%= escape(finding['title']) %></h3>
 <p><strong><%= escape(finding['priority']) %> · <%= escape(finding['status'].tr('-', ' ')) %>.</strong> <%= escape(finding['proposal']) %></p>
 <% if finding['resolution'] %><p><strong>Resolution:</strong> <%= escape(finding['resolution']['summary']) %></p><% end %>
 <p>Affected guides: <% finding['surfaces'].each_with_index do |url, index| %><%= ', ' unless index.zero? %><% record = pages_by_url.fetch(url) %><% if record['retired'] %><%= escape(record['title']) %> (now part of <a href="<%= docs_path(record['retiredInto']) %>"><%= escape(pages_by_url.fetch(record['retiredInto'])['title']) %></a>)<% else %><a href="<%= docs_path(url) %>"><%= escape(record['title']) %></a><% end %><% end %>.</p>
 <ul><% finding['acceptanceCriteria'].each do |check| %><li><%= escape(check) %></li><% end %></ul>
-<p>Rule dependencies: <% finding['ruleDependencies'].each_with_index do |rule, index| %><%= ', ' unless index.zero? %><a href="<%= docs_path(rule['localPath']) %>"><%= escape(rule['id']) %></a><% end %>.</p>
 <% end %>
 
 ## Complete component map
