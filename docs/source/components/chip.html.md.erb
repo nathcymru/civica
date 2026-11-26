@@ -5,13 +5,15 @@ section: "components"
 group: "Components"
 status: "reference"
 published_on: "2026-11-25"
-updated_on: "2026-11-25"
+updated_on: "2026-11-26"
 last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
     description: "Added the Chip specification: the three kinds of chip, their options and what the Civica theme does and does not set."
-ai_instructions: "Apply when explaining Home Assistant chips. There is no element named ha-chip; it is the shared base for ha-assist-chip, ha-filter-chip and ha-input-chip. Chips appear in pickers, editors and dialogs, not as a dashboard card, and card-mod has no reliable way to reach them. Civica sets no chip-specific key. Say selected state in words as well as colour for input chips. Do not claim square corners or contrast."
+  - date: "2026-11-26"
+    description: "Described the options all three chips share."
+ai_instructions: "Apply when explaining Home Assistant chips. The three kinds are ha-assist-chip, ha-filter-chip and ha-input-chip, and they share one base. Chips appear in pickers, editors and dialogs, not as a dashboard card, and card-mod has no reliable way to reach them. Civica sets no chip-specific key. Say selected state in words as well as colour for input chips. Do not claim square corners or contrast."
 ai_related:
   - path: "/components/buttons.html"
     title: "Button"
@@ -31,9 +33,6 @@ component:
   origins:
     - "Home Assistant"
   children:
-    - name: "ha-chip"
-      origin: "Home Assistant"
-      anchor: "child-ha-chip"
     - name: "ha-input-chip"
       origin: "Home Assistant"
       anchor: "child-ha-input-chip"
@@ -44,7 +43,6 @@ component:
       origin: "Home Assistant"
       anchor: "child-ha-assist-chip"
   tags:
-    - "ha-chip"
     - "ha-input-chip"
     - "ha-filter-chip"
     - "ha-assist-chip"
@@ -59,7 +57,6 @@ A chip is a small rounded button. Home Assistant uses three kinds: one for a sug
 This page covers:
 
 - Chip
-  - `ha-chip`
   - `ha-input-chip`
   - `ha-filter-chip`
   - `ha-assist-chip`
@@ -73,9 +70,9 @@ This page covers:
 
 <h2 id="variants">Variants, variables and extensibility</h2>
 
-<h3 id="child-ha-chip"><code>ha-chip</code></h3>
+<h3 id="shared-options">Options shared by all three kinds</h3>
 
-This Home Assistant version has no element named `ha-chip`. It is the shared base for the three kinds below, so you always place one of them. The base is a button, or a link when it has an address. It starts neutral, outlined and small.
+The three kinds below share one base, so you always place one of them. The base is a button, or a link when it has an address. It starts neutral, outlined and small.
 
 All three kinds share these options:
 

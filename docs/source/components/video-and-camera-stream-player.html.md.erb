@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Video & Camera Stream Player specification: the video element, the camera stream players, the live and still camera views and what a dashboard can and cannot control."
-ai_instructions: "Apply when a dashboard shows a video or a camera. A Markdown card can hold a video element with a source, but its track element is removed, so captions cannot be added there: give a transcript in text. A camera card shows a live stream without controls and without sound, so offer a still picture view with its time written as text, or open the camera dialog, which has controls. There is no ha-mjpeg-player element in this Home Assistant version: an older kind of live picture is drawn as a plain image inside ha-camera-stream. Never say a stream is live unless it is. Do not quote the contrast or size of the browser's own video controls."
+  - date: "2026-11-26"
+    description: "Described the fallback picture under its own heading."
+ai_instructions: "Apply when a dashboard shows a video or a camera. A Markdown card can hold a video element with a source, but its track element is removed, so captions cannot be added there: give a transcript in text. A camera card shows a live stream without controls and without sound, so offer a still picture view with its time written as text, or open the camera dialog, which has controls. An older kind of live picture is drawn as a plain image inside ha-camera-stream. Never say a stream is live unless it is. Do not quote the contrast or size of the browser’s own video controls."
 ai_related:
   - path: "/components/audio-player.html"
     title: "Audio Player"
@@ -65,15 +67,11 @@ component:
     - name: "ha-web-rtc-player"
       origin: "Home Assistant"
       anchor: "child-ha-web-rtc-player"
-    - name: "ha-mjpeg-player"
-      origin: "Home Assistant"
-      anchor: "child-ha-mjpeg-player"
   tags:
     - "video"
     - "ha-camera-stream"
     - "ha-hls-player"
     - "ha-web-rtc-player"
-    - "ha-mjpeg-player"
 ---
 
 # Video & Camera Stream Player
@@ -93,7 +91,6 @@ This page covers:
   - `ha-camera-stream`
   - `ha-hls-player`
   - `ha-web-rtc-player`
-  - `ha-mjpeg-player`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -137,7 +134,7 @@ camera_view: live
 
 With `camera_view: auto`, the card shows a still picture that refreshes. With `live`, it shows the stream.
 
-It picks the best way to stream from what the camera offers, using HLS or WebRTC. If the camera offers neither, or the stream fails, it falls back to a plain refreshing picture, described under `ha-mjpeg-player` below. On a card the stream is muted and has no controls. The camera dialog adds controls.
+It picks the best way to stream from what the camera offers, using HLS or WebRTC. If the camera offers neither, or the stream fails, it falls back to a plain refreshing picture, described under “Fallback picture” below. On a card the stream is muted and has no controls. The camera dialog adds controls.
 
 <h3 id="child-ha-hls-player"><code>ha-hls-player</code></h3>
 
@@ -151,9 +148,9 @@ The part that plays a WebRTC stream, which can also carry two-way sound. You can
 
 It uses the same `--video-max-height` setting as the HLS player.
 
-<h3 id="child-ha-mjpeg-player"><code>ha-mjpeg-player</code></h3>
+<h3 id="fallback-picture">Fallback picture</h3>
 
-This Home Assistant version has no element with this name. An older kind of live picture, called MJPEG, is drawn as a plain picture inside `ha-camera-stream`, so it has no player controls and is not a separate part you can find or style. It appears when a camera offers no HLS or WebRTC stream, or when those fail.
+An older kind of live picture, called MJPEG, is drawn as a plain picture inside `ha-camera-stream`, so it has no player controls and is not a separate part you can find or style. It appears when a camera offers no HLS or WebRTC stream, or when those fail.
 
 The picture’s text alternative is “Preview of the” and the camera name, followed by “camera”, in English whatever the language of the dashboard. Say in the card text what and where the camera is, in your own words. If you see a camera that looks live but has no controls, it may be this fallback picture.
 

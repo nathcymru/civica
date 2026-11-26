@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Divider / Horizontal Rule specification: the HTML rule, the dividers Home Assistant really has, the divider row for entities cards and the theme colours."
-ai_instructions: "Apply when a line is needed between groups. Home Assistant has no element named ha-divider. Its real dividers are the divider row in an entities card (type: divider), the Web Awesome divider used inside its own screens, a rule inside forms and a plain horizontal rule inside dialogs. Only the divider row can be written by a dashboard author. A divider must not be the only way to tell groups apart: use a heading or space as well. Do not claim a contrast ratio for the line, that the divider row is announced as a separator, or any property of the Web Awesome divider."
+  - date: "2026-11-26"
+    description: "Described the dividers Home Assistant draws under their own heading."
+ai_instructions: "Apply when a line is needed between groups. Home Assistant’s dividers are the divider row in an entities card (type: divider), the Web Awesome divider used inside its own screens, a rule inside forms and a plain horizontal rule inside dialogs. Only the divider row can be written by a dashboard author. A divider must not be the only way to tell groups apart: use a heading or space as well. Do not claim a contrast ratio for the line, that the divider row is announced as a separator, or any property of the Web Awesome divider."
 ai_related:
   - path: "/components/card-and-section-header.html"
     title: "Card & Section Header"
@@ -27,17 +29,12 @@ component:
   letter: "D"
   origins:
     - "HTML5"
-    - "Home Assistant"
   children:
     - name: "<hr>"
       origin: "HTML5"
       anchor: "child-hr"
-    - name: "ha-divider"
-      origin: "Home Assistant"
-      anchor: "child-ha-divider"
   tags:
     - "hr"
-    - "ha-divider"
 ---
 
 # Divider / Horizontal Rule
@@ -46,13 +43,12 @@ component:
 
 A divider is a thin line that separates one group of content from the next. In an entities card it separates groups of rows, such as lights from sensors. Use it sparingly. A heading or a gap often groups content better than a line.
 
-Home Assistant has no element named `ha-divider`. It has several real dividers, and only one of them, the divider row, can be written by a dashboard author. This page owns all of them.
+Home Assistant has several dividers, and only one of them, the divider row, can be written by a dashboard author. This page owns all of them.
 
 This page covers:
 
 - Divider / Horizontal Rule
   - `<hr>`
-  - `ha-divider`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -66,9 +62,9 @@ The HTML horizontal rule: a break between paragraph-level content. It is a void 
 
 Home Assistant uses a plain rule inside some dialogs, such as the update dialog and the sun dialog. A dashboard author cannot write it.
 
-<h3 id="child-ha-divider"><code>ha-divider</code></h3>
+<h3 id="home-assistant-dividers">Dividers in Home Assistant</h3>
 
-Home Assistant does not use the name `ha-divider`. It has these real dividers instead:
+Home Assistant has these dividers:
 
 - **Divider row.** An entities card row of `type: divider`. This is the one a dashboard author can use. It is a line one pixel high. Its colour is `--entities-divider-color`, or `divider-color` when that is not set. The `style` option sets CSS on the line, for example its height or margin. The divider row has no role, so a screen reader does not announce it as a separator.
 - **Web Awesome divider.** Home Assistant uses `wa-divider` inside its own screens, such as the date picker, an icon overflow menu and the settings table layout. A dashboard author cannot place it, and its settings are Web Awesome’s, not Home Assistant’s.

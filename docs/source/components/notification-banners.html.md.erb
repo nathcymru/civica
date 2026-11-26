@@ -15,7 +15,9 @@ updates:
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
     description: "First published in the Civica design system."
-ai_instructions: "Apply when telling people about a notice, an outcome or a short-lived message. Home Assistant has two native pieces: ha-toast, a short message at the bottom of the screen that closes by itself after 4 seconds by default and has a polite live announcement, and the notification drawer for persistent notifications. The drawer’s real tag is notification-drawer (class HuiNotificationDrawer); there is no element called hui-notification-drawer. Neither can be created from card configuration, and card-mod does not reach them. The Civica notification banner is a documentation pattern with no Home Assistant element: it carries a notice that applies to the whole page or the outcome of the previous step, with a heading, and never carries field validation. The theme sets the toast text colour (ha-color-on-neutral-loud) in both modes and its background (ha-color-neutral-10) in dark mode. Do not state whether the toast is legible in either mode, that a toast pauses on hover, or that it can be made to stay. Success wording must reflect a result Home Assistant has confirmed, not a button press. Never use a toast as the only record of an error."
+  - date: "2026-11-26"
+    description: "Named the notification drawer by its element, notification-drawer."
+ai_instructions: "Apply when telling people about a notice, an outcome or a short-lived message. Home Assistant has two native pieces: ha-toast, a short message at the bottom of the screen that closes by itself after 4 seconds by default and has a polite live announcement, and the notification drawer for persistent notifications. The drawer’s tag is notification-drawer (class HuiNotificationDrawer). Neither can be created from card configuration, and card-mod does not reach them. The Civica notification banner is a documentation pattern with no Home Assistant element: it carries a notice that applies to the whole page or the outcome of the previous step, with a heading, and never carries field validation. The theme sets the toast text colour (ha-color-on-neutral-loud) in both modes and its background (ha-color-neutral-10) in dark mode. Do not state whether the toast is legible in either mode, that a toast pauses on hover, or that it can be made to stay. Success wording must reflect a result Home Assistant has confirmed, not a button press. Never use a toast as the only record of an error."
 ai_related:
   - path: "/home-assistant/notifications-and-delivery.html"
     title: "Notifications, acknowledgement and alerts"
@@ -45,9 +47,9 @@ component:
     - name: "ha-toast"
       origin: "Home Assistant"
       anchor: "child-ha-toast"
-    - name: "hui-notification-drawer"
+    - name: "notification-drawer"
       origin: "Home Assistant"
-      anchor: "child-hui-notification-drawer"
+      anchor: "child-notification-drawer"
     - name: "Civica Notification Banner Pattern"
       origin: "Civica"
       anchor: "child-civica-notification-banner-pattern"
@@ -69,7 +71,7 @@ This page covers:
 
 - Notification Banner & Toast
   - `ha-toast`
-  - `hui-notification-drawer`
+  - `notification-drawer`
   - Civica Notification Banner Pattern
 
 <h2 id="anatomy">Anatomy</h2>
@@ -93,9 +95,9 @@ The text colour is `ha-color-on-neutral-loud` and the background is `ha-color-ne
 
 A toast gives people about four seconds to read it, so it is easy to miss. Use a toast only for a result that is also visible somewhere else. Put anything people must act on in a persistent notification.
 
-<h3 id="child-hui-notification-drawer"><code>hui-notification-drawer</code></h3>
+<h3 id="child-notification-drawer"><code>notification-drawer</code></h3>
 
-This Home Assistant version does not use the tag `hui-notification-drawer`. The class is `HuiNotificationDrawer`, and the element it draws is called `notification-drawer`.
+The element’s class is `HuiNotificationDrawer`.
 
 It is a modal side panel that Home Assistant opens when someone asks for their notifications. It is not a card and cannot be set up in YAML.
 

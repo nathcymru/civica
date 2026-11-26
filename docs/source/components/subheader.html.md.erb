@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Subheader specification: the group label in Home Assistant pickers, and the Heading card to use on a dashboard."
-ai_instructions: "Apply when someone asks for a subheader, a small heading over a group of items or a group label in a list. This Home Assistant version has no element named ha-subheader. The group label in its pickers is ha-section-title, a tinted bold line that is not a heading and cannot be placed from YAML. On a dashboard use the Heading card, in the subtitle style, or a Markdown card with a level-three heading. Use a real heading wherever the label names a section. Do not say that ha-section-title is a heading, has a role or can be restyled with card-mod, and never quote a contrast figure as measured."
+  - date: "2026-11-26"
+    description: "Named the group label by its element, ha-section-title."
+ai_instructions: "Apply when someone asks for a subheader, a small heading over a group of items or a group label in a list. The group label in Home Assistant’s pickers is ha-section-title, a tinted bold line that is not a heading and cannot be placed from YAML. On a dashboard use the Heading card, in the subtitle style, or a Markdown card with a level-three heading. Use a real heading wherever the label names a section. Do not say that ha-section-title is a heading, has a role or can be restyled with card-mod, and never quote a contrast figure as measured."
 ai_related:
   - path: "/components/heading.html"
     title: "Heading"
@@ -31,11 +33,10 @@ component:
   origins:
     - "Home Assistant"
   children:
-    - name: "ha-subheader"
+    - name: "ha-section-title"
       origin: "Home Assistant"
-      anchor: "child-ha-subheader"
+      anchor: "child-ha-section-title"
   tags:
-    - "ha-subheader"
     - "ha-section-title"
 ---
 
@@ -45,12 +46,12 @@ component:
 
 A subheader is a small label over a group of related items, such as “Lights” above a list of lamps. It helps people scan a long list by grouping it.
 
-This Home Assistant version has no element called `ha-subheader`. Where Home Assistant needs a group label inside a list, it draws `ha-section-title`. A dashboard author cannot place that element, and on a dashboard the Heading card does the same job. This page explains both.
+Where Home Assistant needs a group label inside a list, it draws `ha-section-title`. A dashboard author cannot place that element, and on a dashboard the Heading card does the same job. This page explains both.
 
 This page covers:
 
 - Subheader
-  - `ha-subheader`
+  - `ha-section-title`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -58,9 +59,7 @@ A group label is one short line of bold text on a tinted band, followed by the i
 
 <h2 id="variants">Variants, variables and extensibility</h2>
 
-<h3 id="child-ha-subheader"><code>ha-subheader</code></h3>
-
-This Home Assistant version does not use the name `ha-subheader`. What it draws instead is `ha-section-title`.
+<h3 id="child-ha-section-title"><code>ha-section-title</code></h3>
 
 `ha-section-title` is the bold, tinted line that labels a group of items in a picker list. People meet it in the entity, device and area pickers, in the search results of the automation editor and in the card suggestion lists. It holds the title text and nothing else.
 

@@ -5,7 +5,7 @@ section: "components"
 group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-25"
+updated_on: "2026-11-26"
 last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
@@ -17,7 +17,9 @@ updates:
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
     description: "Added the Civica button guidance and four examples."
-ai_instructions: "Apply to every control that changes something or submits an answer. Name the outcome in the label. Use a link to go somewhere. A sent command is a request, not a confirmed state. Give a button that is not a submit button type button. The ha-button element takes variant brand, neutral, success, warning or danger and appearance accent, filled, outlined or plain, and never the strings primary, secondary or plain as a variant. Home Assistant has no ha-fab element: the floating add button is a large ha-button with an icon. Never claim measured contrast, focus appearance or screen reader behaviour. Do not say the 44 px height applies to ha-icon-button."
+  - date: "2026-11-26"
+    description: "Described the floating add button under its own heading."
+ai_instructions: "Apply to every control that changes something or submits an answer. Name the outcome in the label. Use a link to go somewhere. A sent command is a request, not a confirmed state. Give a button that is not a submit button type button. The ha-button element takes variant brand, neutral, success, warning or danger and appearance accent, filled, outlined or plain, and never the strings primary, secondary or plain as a variant. The floating add button is a large ha-button with an icon. Never claim measured contrast, focus appearance or screen reader behaviour. Do not say the 44 px height applies to ha-icon-button."
 ai_related:
   - path: "/content/writing-guidelines/clear-titles.html"
     title: "Write clear titles"
@@ -94,16 +96,11 @@ component:
     - name: "ha-icon-button-toggle"
       origin: "Home Assistant"
       anchor: "child-ha-icon-button-toggle"
-    - name: "ha-fab"
-      origin: "Home Assistant"
-      anchor: "child-ha-fab"
-      note: "Floating Action Button"
   tags:
     - "button"
     - "input"
     - "ha-button"
     - "ha-icon-button"
-    - "ha-fab"
 ---
 
 # Button
@@ -134,7 +131,6 @@ This page covers:
   - `ha-icon-button-prev`
   - `ha-icon-button-next`
   - `ha-icon-button-toggle`
-  - `ha-fab`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -233,9 +229,9 @@ An icon button with a forward arrow. Its label defaults to “Next”. The Calen
 
 An icon button that can be on or off. When it is selected, it draws a filled disc behind the icon, or an outline with the `border-only` attribute. The selected look is a change of fill only, so say what is selected in nearby text too.
 
-<h3 id="child-ha-fab"><code>ha-fab</code></h3>
+<h3 id="floating-add-button">Floating add button</h3>
 
-This version of Home Assistant has no `ha-fab` element. What looks like a floating action button is an `ha-button` with `size="l"` and an icon before a visible label, such as “Add item” on the To-do page and the add-event button on the calendar. It floats at the bottom of the page in a corner, with a shadow. Because it keeps its text, it is clearer than an icon on its own. The theme does not change its position.
+A floating add button is an `ha-button` with `size="l"` and an icon before a visible label, such as “Add item” on the To-do page and the add-event button on the calendar. It floats at the bottom of the page in a corner, with a shadow. Because it keeps its text, it is clearer than an icon on its own. The theme does not change its position.
 
 <h2 id="limits">Advantages and limitations</h2>
 

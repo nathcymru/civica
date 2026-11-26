@@ -15,7 +15,9 @@ updates:
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
     description: "Defined ownership of query inputs, native datalist suggestions, filtering and finder composition."
-ai_instructions: "Apply when people type a query to find an item. Give the field a visible label and a text button, and say what is searched. Keep the query when returning from a result. Tell no matches from a failed connection and keep a route to the unfiltered list. Announce a result count once, never on every keystroke, and never move focus. This Home Assistant version has no search-input or search-input-outlined element: its search box is ha-input-search, and the outlined style is ha-input-search with appearance outlined. ha-input-search is a text input with a clear button, not a search landmark. A Markdown card removes the type attribute, so a search field cannot be written there. Keep Home Assistant's picker when selection must respect capability, permission, domain or action-target rules. Do not state the corner shape of the outlined box, and do not claim screen reader behaviour."
+  - date: "2026-11-26"
+    description: "Named the search box by its element, ha-input-search, and gathered the outlined look under it."
+ai_instructions: "Apply when people type a query to find an item. Give the field a visible label and a text button, and say what is searched. Keep the query when returning from a result. Tell no matches from a failed connection and keep a route to the unfiltered list. Announce a result count once, never on every keystroke, and never move focus. Home Assistant’s search box is ha-input-search, and the outlined style is ha-input-search with appearance outlined. ha-input-search is a text input with a clear button, not a search landmark. A Markdown card removes the type attribute, so a search field cannot be written there. Keep Home Assistant’s picker when selection must respect capability, permission, domain or action-target rules. Do not state the corner shape of the outlined box, and do not claim screen reader behaviour."
 ai_related:
   - path: "/components/combobox-autocomplete.html"
     title: "Combobox / Autocomplete"
@@ -49,12 +51,9 @@ component:
     - name: '<input type="search">'
       origin: "HTML5"
       anchor: "child-input-type-search"
-    - name: "search-input"
+    - name: "ha-input-search"
       origin: "Home Assistant"
-      anchor: "child-search-input"
-    - name: "search-input-outlined"
-      origin: "Home Assistant"
-      anchor: "child-search-input-outlined"
+      anchor: "child-ha-input-search"
     - name: "Civica Combobox Search Pattern"
       origin: "Civica"
       anchor: "child-civica-combobox-search-pattern"
@@ -78,8 +77,7 @@ This page covers:
 - Search Input
   - `<search>`
   - `<input type="search">`
-  - `search-input`
-  - `search-input-outlined`
+  - `ha-input-search`
   - Civica Combobox Search Pattern
 
 <h2 id="search-field-filters-or-finder">Search field, filters or finder</h2>
@@ -119,11 +117,9 @@ In the Civica theme, the field border is #0B0C0C in light mode and #FFFFFF in da
 
 A search field cannot be written in a [Markdown Card](markdown-card.html), because the card removes the `type` attribute from `input`.
 
-<h3 id="child-search-input"><code>search-input</code></h3>
+<h3 id="child-ha-input-search"><code>ha-input-search</code></h3>
 
-This Home Assistant version does not use an element called `search-input`. Its search box is `ha-input-search`.
-
-`ha-input-search` is a text input with a magnifier icon, a clear button and the word “Search” as its placeholder when you give it neither a label nor a placeholder. Autocomplete is off by default. It is not a search landmark and does not use the `searchbox` role.
+`ha-input-search` is Home Assistant’s search box. It is a text input with a magnifier icon, a clear button and the word “Search” as its placeholder when you give it neither a label nor a placeholder. Autocomplete is off by default. It is not a search landmark and does not use the `searchbox` role.
 
 It takes `appearance`, `label`, `hint`, `placeholder`, `disabled`, `required` and `accessible-label`, which names the field when it has no visible label. Where Home Assistant gives it only a placeholder, such as in a data table, that placeholder is its only name. Where the field is yours, use a visible label.
 
@@ -131,11 +127,9 @@ Home Assistant uses it for the data table header, filters and pickers. It is not
 
 **Theme.** The Civica theme colours the field through the `wa-form-control-*` and `ha-color-form-background*` keys: a #FFFFFF or #24282B background, a #0B0C0C or #FFFFFF border 2 pixels wide, and a #0B0C0C or #FFFFFF value. The theme sets no `--ha-input-search-` names, so the height of the search box stays Home Assistant’s default. The calculated contrast figures are the ones given for the native field above.
 
-<h3 id="child-search-input-outlined"><code>search-input-outlined</code></h3>
+<h3 id="outlined-search-appearance">Outlined search appearance</h3>
 
-This Home Assistant version does not use an element called `search-input-outlined`. The outlined search box is `ha-input-search` set to the outlined appearance.
-
-The outlined appearance is the bordered style, and the default is the filled one. With no label, the outlined box is 40 CSS pixels high. The data table uses it. In the Civica theme the border is the form-control border, #0B0C0C in light mode and #FFFFFF in dark mode, 2 pixels wide.
+The outlined search box is `ha-input-search` set to the outlined appearance. It is the bordered style, and the default is the filled one. With no label, the outlined box is 40 CSS pixels high. The data table uses it. In the Civica theme the border is the form-control border, #0B0C0C in light mode and #FFFFFF in dark mode, 2 pixels wide.
 
 <h3 id="child-civica-combobox-search-pattern"><code>Civica Combobox Search Pattern</code></h3>
 

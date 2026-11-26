@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Copy-to-Clipboard specification: the read-only field with a Copy button, hidden values, the confirmation message and what this Home Assistant version uses."
-ai_instructions: "Apply when a person needs to copy a value such as an address, key or token. This Home Assistant version has no element named ha-copy-textfield; the real element is ha-input-copy, with copy buttons elsewhere that use the copyToClipboard helper. Say so and never document ha-copy-textfield as real. Copy copies the real value even when it is masked. Confirmation is a short toast message only; do not claim it is announced to a screen reader or that copying works on every connection, because failure is not reported. Always say what will be copied, and never hide a value without a Show control. Theme keys for form fields and buttons apply."
+  - date: "2026-11-26"
+    description: "Named the copy field by its element, ha-input-copy."
+ai_instructions: "Apply when a person needs to copy a value such as an address, key or token. The element is ha-input-copy, with copy buttons elsewhere that use the copyToClipboard helper. Copy copies the real value even when it is masked. Confirmation is a short toast message only; do not claim it is announced to a screen reader or that copying works on every connection, because failure is not reported. Always say what will be copied, and never hide a value without a Show control. Theme keys for form fields and buttons apply."
 ai_related:
   - path: "/components/text-input.html"
     title: "Text Input"
@@ -31,11 +33,10 @@ component:
   origins:
     - "Home Assistant"
   children:
-    - name: "ha-copy-textfield"
+    - name: "ha-input-copy"
       origin: "Home Assistant"
-      anchor: "child-ha-copy-textfield"
+      anchor: "child-ha-input-copy"
   tags:
-    - "ha-copy-textfield"
     - "ha-input-copy"
 ---
 
@@ -48,7 +49,7 @@ Copy-to-Clipboard saves people retyping a long value, such as a remote address, 
 This page covers:
 
 - Copy-to-Clipboard
-  - `ha-copy-textfield`
+  - `ha-input-copy`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -60,9 +61,9 @@ This page covers:
 
 <h2 id="variants">Variants, variables and extensibility</h2>
 
-<h3 id="child-ha-copy-textfield"><code>ha-copy-textfield</code></h3>
+<h3 id="child-ha-input-copy"><code>ha-input-copy</code></h3>
 
-This Home Assistant version does not use an element called `ha-copy-textfield`. What it draws instead is `ha-input-copy`: a read-only input with a Copy button. You see it on the network settings page for the internal and external addresses, and in the cloud pages for remote access and webhooks. Other places, such as code editors, log details, backup keys and long-lived token dialogs, put a plain copy icon button next to the value instead. You cannot add `ha-input-copy` to a dashboard card.
+`ha-input-copy` is a read-only input with a Copy button. You see it on the network settings page for the internal and external addresses, and in the cloud pages for remote access and webhooks. Other places, such as code editors, log details, backup keys and long-lived token dialogs, put a plain copy icon button next to the value instead. You cannot add `ha-input-copy` to a dashboard card.
 
 What `ha-input-copy` does:
 

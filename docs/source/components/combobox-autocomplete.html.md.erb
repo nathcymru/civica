@@ -5,13 +5,15 @@ section: "components"
 group: "Components"
 status: "reference"
 published_on: "2026-11-25"
-updated_on: "2026-11-25"
+updated_on: "2026-11-26"
 last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
     description: "Added the Combobox / Autocomplete specification: the HTML suggestion list, the Home Assistant picker and what this Home Assistant version uses instead of a separate combo box."
-ai_instructions: "Apply when a person picks from a long list or types a value with suggestions. In HTML use an input with a datalist for suggestions only. In Home Assistant the searchable selection list is the generic picker (ha-generic-picker), which wraps ha-picker-combo-box. This Home Assistant version has no element named ha-combo-box; say so and never document it as real. Do not claim the picker follows the WAI-ARIA combobox pattern, because that has not been checked. Keep a visible label and helper text. Picker colours and width need card-mod or custom code and are not set by Civica."
+  - date: "2026-11-26"
+    description: "Named the searchable list by its element, ha-picker-combo-box."
+ai_instructions: "Apply when a person picks from a long list or types a value with suggestions. In HTML use an input with a datalist for suggestions only. In Home Assistant the searchable selection list is the generic picker (ha-generic-picker), which wraps ha-picker-combo-box. Do not claim the picker follows the WAI-ARIA combobox pattern, because that has not been checked. Keep a visible label and helper text. Picker colours and width need card-mod or custom code and are not set by Civica."
 ai_related:
   - path: "/components/search-input.html"
     title: "Search Input"
@@ -41,15 +43,15 @@ component:
     - name: "<datalist>"
       origin: "HTML5"
       anchor: "child-datalist"
-    - name: "ha-combo-box"
+    - name: "ha-picker-combo-box"
       origin: "Home Assistant"
-      anchor: "child-ha-combo-box"
+      anchor: "child-ha-picker-combo-box"
     - name: "ha-generic-picker"
       origin: "Home Assistant"
       anchor: "child-ha-generic-picker"
   tags:
     - "datalist"
-    - "ha-combo-box"
+    - "ha-picker-combo-box"
     - "ha-generic-picker"
 ---
 
@@ -69,7 +71,7 @@ This page covers:
 
 - Combobox / Autocomplete
   - `<datalist>`
-  - `ha-combo-box`
+  - `ha-picker-combo-box`
   - `ha-generic-picker`
 
 <h2 id="anatomy">Anatomy</h2>
@@ -95,9 +97,9 @@ The HTML element for suggestions. It holds `option` elements and is attached to 
 
 Home Assistant does not use `datalist` in the dashboard. It is the plain-HTML choice for a Civica documentation page. This site uses it for [Search autocomplete](../publishing/components/search-autocomplete.html).
 
-<h3 id="child-ha-combo-box"><code>ha-combo-box</code></h3>
+<h3 id="child-ha-picker-combo-box"><code>ha-picker-combo-box</code></h3>
 
-This Home Assistant version does not use an element called `ha-combo-box`. Home Assistant now draws its searchable selection lists with the generic picker, described next. The picker holds a searchable list called `ha-picker-combo-box`, whose rows are `ha-combo-box-item`, and a closed field called `ha-picker-field`. You cannot add any of these to a dashboard on their own. Use a picker, a selector in a form, or the native `select`.
+Home Assistant draws its searchable selection lists with the generic picker, described next. The picker holds this searchable list, whose rows are `ha-combo-box-item`, and a closed field called `ha-picker-field`. You cannot add any of these to a dashboard on their own. Use a picker, a selector in a form, or the native `select`.
 
 <h3 id="child-ha-generic-picker"><code>ha-generic-picker</code></h3>
 

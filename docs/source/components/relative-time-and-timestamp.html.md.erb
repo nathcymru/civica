@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Relative Time & Timestamp specification: the time element, Home Assistant’s relative time, and the time_format option that shows an exact date and time."
-ai_instructions: "Apply when a card or page says when something happened. Lead with the exact date and time where the time matters, and add the relative phrase as help, never alone. The time element is native HTML and is not allowed in a Markdown card. ha-relative-time draws plain text such as 5 minutes ago, updates itself, and carries no exact time. This Home Assistant version has no ha-timestamp element: dates and times in rows and cards are drawn by hui-timestamp-display, which the time_format option chooses. A tooltip on it shows the full time, but do not rely on it: show the exact time as text with time_format datetime. Do not say the text is announced, or that the tooltip works from the keyboard or by touch. Say whether a time is when a reading changed or when a page was reviewed."
+  - date: "2026-11-26"
+    description: "Named the timestamp by its element, hui-timestamp-display."
+ai_instructions: "Apply when a card or page says when something happened. Lead with the exact date and time where the time matters, and add the relative phrase as help, never alone. The time element is native HTML and is not allowed in a Markdown card. ha-relative-time draws plain text such as 5 minutes ago, updates itself, and carries no exact time. Dates and times in rows and cards are drawn by hui-timestamp-display, which the time_format option chooses. A tooltip on it shows the full time, but do not rely on it: show the exact time as text with time_format datetime. Do not say the text is announced, or that the tooltip works from the keyboard or by touch. Say whether a time is when a reading changed or when a page was reviewed."
 ai_related:
   - path: "/components/page-history.html"
     title: "Page History"
@@ -44,9 +46,9 @@ component:
     - name: "ha-relative-time"
       origin: "Home Assistant"
       anchor: "child-ha-relative-time"
-    - name: "ha-timestamp"
+    - name: "hui-timestamp-display"
       origin: "Home Assistant"
-      anchor: "child-ha-timestamp"
+      anchor: "child-hui-timestamp-display"
   tags:
     - "time"
     - "ha-relative-time"
@@ -67,7 +69,7 @@ This page covers:
 - Relative Time & Timestamp
   - `<time>`
   - `ha-relative-time`
-  - `ha-timestamp`
+  - `hui-timestamp-display`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -104,9 +106,9 @@ A dashboard author can turn it on only through the options that use it, such as 
 
 Text that rewrites itself every second can be a problem for some readers, because the updating information starts on its own. It is plain text with no live region, so assistive technology does not announce each change.
 
-<h3 id="child-ha-timestamp"><code>ha-timestamp</code></h3>
+<h3 id="child-hui-timestamp-display"><code>hui-timestamp-display</code></h3>
 
-This Home Assistant version does not use an element called `ha-timestamp`. Dates and times in rows and cards are drawn by `hui-timestamp-display`, which you choose with the `time_format` option.
+Dates and times in rows and cards are drawn by `hui-timestamp-display`, which you choose with the `time_format` option.
 
 `time_format` works on any row of an Entities card, including sensor and attribute rows, and on the Glance card. Its values are:
 

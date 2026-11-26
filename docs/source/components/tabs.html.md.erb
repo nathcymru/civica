@@ -10,12 +10,14 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Rewritten as the full Tabs specification. It now covers the Home Assistant tab bars, what a dashboard author can control, and the names this Home Assistant version does not use."
+    description: "Rewritten as the full Tabs specification. It now covers the Home Assistant tab bars, what a dashboard author can control."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
     description: "Added the Civica tabs guidance and two Home Assistant examples."
-ai_instructions: "Apply when people switch between a few named views or sections. In Home Assistant, tabs are the view bar at the top of a dashboard (ha-tab-group with ha-tab-group-tab) and the tab bars of editors and settings pages (ha-tab-group, or ha-tab links on config pages). They switch views or pages. They do not hold panels of content, and a dashboard card cannot hold tabs. This Home Assistant version does not use the names ha-tab-panel, ha-md-tabs, ha-md-primary-tab or ha-md-secondary-tab, and has one style, an underline on the active tab. Do not use tabs for a sequence of steps, for comparing two panels, or to hide an urgent device condition. Keep the selected tab when data updates. An empty panel should say why it is empty. Never quote a measured contrast for the view bar."
+  - date: "2026-11-26"
+    description: "Removed entries for tab names Home Assistant does not use, and described content panels under their own heading."
+ai_instructions: "Apply when people switch between a few named views or sections. In Home Assistant, tabs are the view bar at the top of a dashboard (ha-tab-group with ha-tab-group-tab) and the tab bars of editors and settings pages (ha-tab-group, or ha-tab links on config pages). They switch views or pages. They do not hold panels of content, and a dashboard card cannot hold tabs. Tabs have one style, an underline on the active tab. Do not use tabs for a sequence of steps, for comparing two panels, or to hide an urgent device condition. Keep the selected tab when data updates. An empty panel should say why it is empty. Never quote a measured contrast for the view bar."
 ai_related:
   - path: "/components/navigation.html"
     title: "Navigation"
@@ -45,19 +47,6 @@ component:
         - name: "ha-tab"
           origin: "Home Assistant"
           anchor: "child-ha-tab-group--ha-tab"
-        - name: "ha-tab-panel"
-          origin: "Home Assistant"
-          anchor: "child-ha-tab-group--ha-tab-panel"
-    - name: "ha-md-tabs"
-      origin: "Home Assistant"
-      anchor: "child-ha-md-tabs"
-      grandchildren:
-        - name: "ha-md-primary-tab"
-          origin: "Home Assistant"
-          anchor: "child-ha-md-tabs--ha-md-primary-tab"
-        - name: "ha-md-secondary-tab"
-          origin: "Home Assistant"
-          anchor: "child-ha-md-tabs--ha-md-secondary-tab"
   tags:
     - "ha-tab-group"
     - "ha-tab"
@@ -78,10 +67,6 @@ This page covers:
 - Tabs
   - `ha-tab-group`
     - `ha-tab`
-    - `ha-tab-panel`
-  - `ha-md-tabs`
-    - `ha-md-primary-tab`
-    - `ha-md-secondary-tab`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -110,25 +95,14 @@ The view bar is the app header, not a card, so the card-mod integration cannot r
 
 `ha-tab` is the simpler tab used in the tab bar of settings pages. Each one is a link to a page, marked as the current page, so it behaves as a list of links rather than as ARIA tabs. It has an icon slot, an `active` state and a `narrow` state. It can show a short badge beside its name, such as the number of waiting updates. In the narrow layout, the badge becomes a dot on the icon, and its text is hidden from sight but still read as part of the link’s name. The active tab uses the theme’s primary colour with a 2-pixel underline, except in the narrow layout.
 
-<h3 id="child-ha-tab-group--ha-tab-panel"><code>ha-tab-panel</code></h3>
+<h3 id="content-panels">Content panels</h3>
 
-This Home Assistant version does not use the name `ha-tab-panel`. Its tab bars switch views or pages and do not hold content panels. The Web Awesome library that Home Assistant builds on has a tab panel (`wa-tab-panel`), but Home Assistant does not use it. The page that a tab opens holds the content. To show panels of content inside a view, use one of these:
+Home Assistant’s tab bars switch views or pages and do not hold content panels. The page that a tab opens holds the content. To show panels of content inside a view, use one of these:
 
 - A [Conditional Card](conditional-card.html) driven by a helper and a [Button Group / Segmented Control](button-group-segmented-control.html).
 - Headed sections stacked in one card (see [Grid & Stack Layout Cards](grid-and-stack-layout-cards.html)).
 - A separate dashboard view for each group, which gives real tabs.
-
-<h3 id="child-ha-md-tabs"><code>ha-md-tabs</code></h3>
-
-This Home Assistant version does not use the name `ha-md-tabs`. It draws tabs with `ha-tab-group` and `ha-tab`, described above.
-
-<h3 id="child-ha-md-tabs--ha-md-primary-tab"><code>ha-md-primary-tab</code></h3>
-
-This Home Assistant version does not use the name `ha-md-primary-tab`. Its tabs have a single style, an underline on the active tab, so there is no primary style to choose. See `ha-tab-group` above.
-
-<h3 id="child-ha-md-tabs--ha-md-secondary-tab"><code>ha-md-secondary-tab</code></h3>
-
-This Home Assistant version does not use the name `ha-md-secondary-tab`. There is no secondary style. To show a lower level of grouping, use a heading inside the view, such as the Heading card (see [Heading](heading.html)).
+- To show a lower level of grouping, a heading inside the view, such as the Heading card (see [Heading](heading.html)).
 
 <h2 id="limits">Advantages and limitations</h2>
 

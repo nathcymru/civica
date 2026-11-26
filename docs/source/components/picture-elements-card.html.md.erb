@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Picture Elements Card specification: its settings, each element type and the limits of placing items over a picture."
-ai_instructions: "Apply to the Home Assistant picture elements card (type picture-elements). The card needs an image source (image, image_entity, camera_image or state_image) and an elements list. Elements are positioned by percentage with a style map. The element types are state-badge, state-icon, state-label, service-button (action-button is the same element), icon, image and conditional, plus custom: elements. There is no state-switch element, no hui-action-button-element and no hui-custom-element in this Home Assistant version. Image elements have no alt text setting: the alt text is the entity id, or empty. Never make a picture the only place a reading or an action appears. Put every state and action in a text list as well. Do not claim contrast, focus visibility, accessible names or announcement order for overlays."
+  - date: "2026-11-26"
+    description: "Removed entries for elements that Home Assistant does not draw, and described custom elements under their own heading."
+ai_instructions: "Apply to the Home Assistant picture elements card (type picture-elements). The card needs an image source (image, image_entity, camera_image or state_image) and an elements list. Elements are positioned by percentage with a style map. The element types are state-badge, state-icon, state-label, service-button (action-button is the same element), icon, image and conditional, plus custom: elements. Image elements have no alt text setting: the alt text is the entity id, or empty. Never make a picture the only place a reading or an action appears. Put every state and action in a text list as well. Do not claim contrast, focus visibility, accessible names or announcement order for overlays."
 ai_related:
   - path: "/home-assistant/pictures-and-embedded-content.html"
     title: "Pictures, rich content and embedded pages"
@@ -53,9 +55,6 @@ component:
         - name: "hui-service-button-element"
           origin: "Lovelace"
           anchor: "child-hui-picture-elements-card--hui-service-button-element"
-        - name: "hui-action-button-element"
-          origin: "Lovelace"
-          anchor: "child-hui-picture-elements-card--hui-action-button-element"
         - name: "hui-icon-element"
           origin: "Lovelace"
           anchor: "child-hui-picture-elements-card--hui-icon-element"
@@ -65,24 +64,15 @@ component:
         - name: "hui-conditional-element"
           origin: "Lovelace"
           anchor: "child-hui-picture-elements-card--hui-conditional-element"
-        - name: "hui-state-switch-element"
-          origin: "Lovelace"
-          anchor: "child-hui-picture-elements-card--hui-state-switch-element"
-        - name: "hui-custom-element"
-          origin: "Lovelace"
-          anchor: "child-hui-picture-elements-card--hui-custom-element"
   tags:
     - "hui-picture-elements-card"
     - "hui-state-badge-element"
     - "hui-state-icon-element"
     - "hui-state-label-element"
     - "hui-service-button-element"
-    - "hui-action-button-element"
     - "hui-icon-element"
     - "hui-image-element"
     - "hui-conditional-element"
-    - "hui-state-switch-element"
-    - "hui-custom-element"
 ---
 
 # Picture Elements Card
@@ -101,12 +91,9 @@ This page covers:
     - `hui-state-icon-element`
     - `hui-state-label-element`
     - `hui-service-button-element`
-    - `hui-action-button-element`
     - `hui-icon-element`
     - `hui-image-element`
     - `hui-conditional-element`
-    - `hui-state-switch-element`
-    - `hui-custom-element`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -183,13 +170,9 @@ The label has 8 pixels of padding and does not wrap, so a long label or large te
 
 <h3 id="child-hui-picture-elements-card--hui-service-button-element"><code>hui-service-button-element</code></h3>
 
-A text button that runs an action (`type: service-button`). `title` is the visible text and the name of the button. `action` is the action to run, for example `light.turn_on`, and `target` and `data` say what to run it on. The card shows an error if there is no action. `service` and `service_data` are older names for `action` and `data`.
+A text button that runs an action (`type: service-button`). `title` is the visible text and the name of the button. `action` is the action to run, for example `light.turn_on`, and `target` and `data` say what to run it on. The card shows an error if there is no action. `service` and `service_data` are older names for `action` and `data`. You can also write `type: action-button`, which is another name for `service-button`.
 
 It is a real button, so a keyboard can reach it and its name is its text. The text colour is `primary-color`, and the button height and corners follow `ha-button-height` (44 pixels in the Civica theme) and `ha-button-border-radius` (0). The button does not support hold or double-tap actions. Give it a clear verb and object, such as “Turn on hall light”.
-
-<h3 id="child-hui-picture-elements-card--hui-action-button-element"><code>hui-action-button-element</code></h3>
-
-This Home Assistant version has no element called `hui-action-button-element`. You can still write `type: action-button` in YAML: it is another name for `service-button`, and `hui-service-button-element` draws it. Use [the service button element](#child-hui-picture-elements-card--hui-service-button-element) for everything about how it behaves.
 
 <h3 id="child-hui-picture-elements-card--hui-icon-element"><code>hui-icon-element</code></h3>
 
@@ -209,13 +192,9 @@ Shows other elements only while conditions are true (`type: conditional`). It ta
 
 When the conditions are false, the items disappear without a message or a placeholder. Never keep the only copy of an important reading or action behind a condition that can fail without any sign.
 
-<h3 id="child-hui-picture-elements-card--hui-state-switch-element"><code>hui-state-switch-element</code></h3>
+<h3 id="custom-elements">Custom elements</h3>
 
-This Home Assistant version has no state-switch picture element. To show something different for each state, use a `state-icon` element, a `conditional` element, or the `state_image` setting of the card or an image element.
-
-<h3 id="child-hui-picture-elements-card--hui-custom-element"><code>hui-custom-element</code></h3>
-
-This Home Assistant version has no element called `hui-custom-element`. To use an element from a custom integration, write `type: custom:` followed by its tag name, for example `type: custom:my-element`. Home Assistant loads the element if it is registered and passes it your settings. If it is not registered, the card shows an error. For a tag name with a hyphen, Home Assistant waits a short time for the element to register before it shows the error.
+To use an element from a custom integration, write `type: custom:` followed by its tag name, for example `type: custom:my-element`. Home Assistant loads the element if it is registered and passes it your settings. If it is not registered, the card shows an error. For a tag name with a hyphen, Home Assistant waits a short time for the element to register before it shows the error.
 
 What a custom element does, and whether it can be used with a keyboard, depends on its own code. Civica documents only how it is loaded.
 

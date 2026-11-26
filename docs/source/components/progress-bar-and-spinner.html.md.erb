@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Progress Bar & Spinner specification: the native progress element and the Home Assistant spinner, ring, bar, progress button and fade-in, with their theme colours and limits."
-ai_instructions: "Apply when a screen shows loading or progress. The progress element is native HTML and is not allowed in a Markdown card. ha-spinner, ha-progress-ring, ha-progress-bar, ha-progress-button and ha-fade-in are Home Assistant elements that a dashboard author cannot add. This Home Assistant version has no ha-circular-progress or ha-linear-progress: the ring is ha-progress-ring and the straight bar is ha-progress-bar. A spinner is silent, so always put words beside it. Give a progress value as text too. The empty part of the bar is faint, so never rely on it. Do not fake a percentage. The result flash on ha-progress-button lasts two seconds, so show the result as text that stays. Do not say any of these is announced, or that they stop under reduced motion."
+  - date: "2026-11-26"
+    description: "Named the ring and the bar by the elements Home Assistant draws."
+ai_instructions: "Apply when a screen shows loading or progress. The progress element is native HTML and is not allowed in a Markdown card. ha-spinner, ha-progress-ring, ha-progress-bar, ha-progress-button and ha-fade-in are Home Assistant elements that a dashboard author cannot add. The ring is ha-progress-ring and the straight bar is ha-progress-bar. A spinner is silent, so always put words beside it. Give a progress value as text too. The empty part of the bar is faint, so never rely on it. Do not fake a percentage. The result flash on ha-progress-button lasts two seconds, so show the result as text that stays. Do not say any of these is announced, or that they stop under reduced motion."
 ai_related:
   - path: "/components/empty-state-and-startup-views.html"
     title: "Empty State & Startup Views"
@@ -41,15 +43,15 @@ component:
     - name: "ha-spinner"
       origin: "Home Assistant"
       anchor: "child-ha-spinner"
-    - name: "ha-circular-progress"
+    - name: "ha-progress-ring"
       origin: "Home Assistant"
-      anchor: "child-ha-circular-progress"
+      anchor: "child-ha-progress-ring"
     - name: "ha-progress-button"
       origin: "Home Assistant"
       anchor: "child-ha-progress-button"
-    - name: "ha-linear-progress"
+    - name: "ha-progress-bar"
       origin: "Home Assistant"
-      anchor: "child-ha-linear-progress"
+      anchor: "child-ha-progress-bar"
     - name: "ha-fade-in"
       origin: "Home Assistant"
       anchor: "child-ha-fade-in"
@@ -75,9 +77,9 @@ This page covers:
 - Progress Bar & Spinner
   - `<progress>`
   - `ha-spinner`
-  - `ha-circular-progress`
+  - `ha-progress-ring`
   - `ha-progress-button`
-  - `ha-linear-progress`
+  - `ha-progress-bar`
   - `ha-fade-in`
 
 <h2 id="anatomy">Anatomy</h2>
@@ -115,9 +117,9 @@ Home Assistant uses the spinner for its loading screen, the card picker and many
 
 A dashboard author cannot add a spinner. The spinner turns continuously and has no pause control. Its own styles contain no reduced-motion rule.
 
-<h3 id="child-ha-circular-progress"><code>ha-circular-progress</code></h3>
+<h3 id="child-ha-progress-ring"><code>ha-progress-ring</code></h3>
 
-This Home Assistant version has no element called `ha-circular-progress`. A ring that shows a share of a task is `ha-progress-ring`. A ring with no known end is `ha-spinner`.
+`ha-progress-ring` is a ring that shows a share of a task. A ring with no known end is `ha-spinner`.
 
 `ha-progress-ring` takes the same `size` values as the spinner (16, 28, 48 and 68 pixels, 48 by default). Its variables are `--ha-progress-ring-size`, `--ha-progress-ring-indicator-color` (defaulting to `primary-color`) and `--ha-progress-ring-divider-color` (defaulting to `divider-color`). The theme sets none of the `--ha-progress-ring-` names, so the ring follows the theme’s primary colour and divider colour. Home Assistant uses it in a few places, such as the backup overview. No card offers it.
 
@@ -135,11 +137,9 @@ It takes its colours from the button keys in the Civica theme: the button radius
 
 A two-second icon is easy to miss and cannot be extended. Show the result as text that stays on the screen, such as “Update saved”, and do not use green or red alone.
 
-<h3 id="child-ha-linear-progress"><code>ha-linear-progress</code></h3>
+<h3 id="child-ha-progress-bar"><code>ha-progress-bar</code></h3>
 
-This Home Assistant version has no element called `ha-linear-progress`. The straight bar is `ha-progress-bar`.
-
-`ha-progress-bar` can be indeterminate, and it has a `loading` attribute that adds a sliding highlight over a bar that is not indeterminate. Its variables include `--ha-progress-bar-indicator-color`, `--ha-progress-bar-track-color`, `--ha-progress-bar-track-height` (12 pixels) and `--ha-progress-bar-border-radius` (a pill shape). The default highlight takes 2.5 seconds.
+`ha-progress-bar` is the straight bar. It can be indeterminate, and it has a `loading` attribute that adds a sliding highlight over a bar that is not indeterminate. Its variables include `--ha-progress-bar-indicator-color`, `--ha-progress-bar-track-color`, `--ha-progress-bar-track-height` (12 pixels) and `--ha-progress-bar-border-radius` (a pill shape). The default highlight takes 2.5 seconds.
 
 The defaults resolve to Civica theme colours. The fill uses `ha-color-on-primary-normal`, which is #19578D in light mode and #C0D7EB in dark mode. The track uses `ha-color-fill-neutral-normal-hover`, which is #DEDEDE in light mode and #2B2C2C in dark mode. These ratios are calculated from theme colours. The fill against the track is 5.6:1 in light mode and 9.44:1 in dark mode. The empty track against the card is only 1.35:1 in light mode and 1.06:1 in dark mode, so in dark mode the unfilled part is almost invisible. Always write the value as text.
 

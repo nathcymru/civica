@@ -93,9 +93,9 @@
       ],
       "children": [
         {
-          "name": "hui-activity-card",
+          "name": "hui-logbook-card",
           "origin": "Lovelace",
-          "anchor": "child-hui-activity-card"
+          "anchor": "child-hui-logbook-card"
         }
       ]
     },
@@ -298,9 +298,9 @@
       ],
       "children": [
         {
-          "name": "ha-avatar",
+          "name": "ha-person-badge",
           "origin": "Home Assistant",
-          "anchor": "child-ha-avatar"
+          "anchor": "child-ha-person-badge"
         },
         {
           "name": "ha-user-badge",
@@ -515,12 +515,6 @@
           "name": "ha-icon-button-toggle",
           "origin": "Home Assistant",
           "anchor": "child-ha-icon-button-toggle"
-        },
-        {
-          "name": "ha-fab",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-fab",
-          "note": "Floating Action Button"
         }
       ]
     },
@@ -611,9 +605,9 @@
       ],
       "children": [
         {
-          "name": "hui-section-header",
+          "name": "hui-section-row",
           "origin": "Lovelace",
-          "anchor": "child-hui-section-header"
+          "anchor": "child-hui-section-row"
         }
       ]
     },
@@ -622,8 +616,7 @@
       "route": "/components/cards.html",
       "letter": "C",
       "origins": [
-        "Home Assistant",
-        "Lovelace"
+        "Home Assistant"
       ],
       "children": [
         {
@@ -647,11 +640,6 @@
               "anchor": "child-ha-card--card-actions"
             }
           ]
-        },
-        {
-          "name": "hui-custom-card-wrapper",
-          "origin": "Lovelace",
-          "anchor": "child-hui-custom-card-wrapper"
         }
       ]
     },
@@ -739,11 +727,6 @@
               "anchor": "child-hui-card-features--hui-date-set-card-feature"
             },
             {
-              "name": "hui-duration-schedule-card-feature",
-              "origin": "Lovelace",
-              "anchor": "child-hui-card-features--hui-duration-schedule-card-feature"
-            },
-            {
               "name": "hui-fan-direction-card-feature",
               "origin": "Lovelace",
               "anchor": "child-hui-card-features--hui-fan-direction-card-feature"
@@ -777,11 +760,6 @@
               "name": "hui-lawn-mower-commands-card-feature",
               "origin": "Lovelace",
               "anchor": "child-hui-card-features--hui-lawn-mower-commands-card-feature"
-            },
-            {
-              "name": "hui-lawn-mower-dock-card-feature",
-              "origin": "Lovelace",
-              "anchor": "child-hui-card-features--hui-lawn-mower-dock-card-feature"
             },
             {
               "name": "hui-light-brightness-card-feature",
@@ -837,16 +815,6 @@
               "name": "hui-target-temperature-card-feature",
               "origin": "Lovelace",
               "anchor": "child-hui-card-features--hui-target-temperature-card-feature"
-            },
-            {
-              "name": "hui-target-temperature-range-card-feature",
-              "origin": "Lovelace",
-              "anchor": "child-hui-card-features--hui-target-temperature-range-card-feature"
-            },
-            {
-              "name": "hui-time-set-card-feature",
-              "origin": "Lovelace",
-              "anchor": "child-hui-card-features--hui-time-set-card-feature"
             },
             {
               "name": "hui-toggle-card-feature",
@@ -924,11 +892,6 @@
           "name": "ha-category-picker",
           "origin": "Home Assistant",
           "anchor": "child-ha-category-picker"
-        },
-        {
-          "name": "ha-categories-picker",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-categories-picker"
         }
       ]
     },
@@ -965,11 +928,6 @@
           "name": "ha-checkbox",
           "origin": "Home Assistant",
           "anchor": "child-ha-checkbox"
-        },
-        {
-          "name": "ha-formfield",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-formfield"
         }
       ]
     },
@@ -981,11 +939,6 @@
         "Home Assistant"
       ],
       "children": [
-        {
-          "name": "ha-chip",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-chip"
-        },
         {
           "name": "ha-input-chip",
           "origin": "Home Assistant",
@@ -1087,16 +1040,6 @@
           "name": "ha-hs-color-picker",
           "origin": "Home Assistant",
           "anchor": "child-ha-hs-color-picker"
-        },
-        {
-          "name": "ha-rgb-color-picker",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-rgb-color-picker"
-        },
-        {
-          "name": "ha-color-temp-picker",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-color-temp-picker"
         }
       ]
     },
@@ -1115,9 +1058,9 @@
           "anchor": "child-datalist"
         },
         {
-          "name": "ha-combo-box",
+          "name": "ha-picker-combo-box",
           "origin": "Home Assistant",
-          "anchor": "child-ha-combo-box"
+          "anchor": "child-ha-picker-combo-box"
         },
         {
           "name": "ha-generic-picker",
@@ -1261,9 +1204,9 @@
       ],
       "children": [
         {
-          "name": "ha-copy-textfield",
+          "name": "ha-input-copy",
           "origin": "Home Assistant",
-          "anchor": "child-ha-copy-textfield"
+          "anchor": "child-ha-input-copy"
         }
       ]
     },
@@ -1345,9 +1288,9 @@
               "anchor": "child-ha-data-table--ha-filter-domains"
             },
             {
-              "name": "ha-filter-areas",
+              "name": "ha-filter-floor-areas",
               "origin": "Home Assistant",
-              "anchor": "child-ha-data-table--ha-filter-areas"
+              "anchor": "child-ha-data-table--ha-filter-floor-areas"
             },
             {
               "name": "ha-filter-devices",
@@ -1486,11 +1429,6 @@
           "anchor": "child-ha-dialog"
         },
         {
-          "name": "ha-wa-dialog",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-wa-dialog"
-        },
-        {
           "name": "ha-dialog-header",
           "origin": "Home Assistant",
           "anchor": "child-ha-dialog-header"
@@ -1538,19 +1476,13 @@
       "route": "/components/divider-horizontal-rule.html",
       "letter": "D",
       "origins": [
-        "HTML5",
-        "Home Assistant"
+        "HTML5"
       ],
       "children": [
         {
           "name": "<hr>",
           "origin": "HTML5",
           "anchor": "child-hr"
-        },
-        {
-          "name": "ha-divider",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-divider"
         }
       ]
     },
@@ -1700,11 +1632,6 @@
           "anchor": "child-ha-dropdown"
         },
         {
-          "name": "ha-button-menu",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-button-menu"
-        },
-        {
           "name": "ha-icon-overflow-menu",
           "origin": "Home Assistant",
           "anchor": "child-ha-icon-overflow-menu"
@@ -1715,9 +1642,9 @@
           "anchor": "child-ha-check-list-item"
         },
         {
-          "name": "ha-clickable-list-item",
+          "name": "ha-list-item-button",
           "origin": "Home Assistant",
-          "anchor": "child-ha-clickable-list-item"
+          "anchor": "child-ha-list-item-button"
         }
       ]
     },
@@ -1958,19 +1885,9 @@
               "anchor": "child-hui-entities-card--hui-update-entity-row"
             },
             {
-              "name": "hui-vacuum-entity-row",
-              "origin": "Lovelace",
-              "anchor": "child-hui-entities-card--hui-vacuum-entity-row"
-            },
-            {
               "name": "hui-valve-entity-row",
               "origin": "Lovelace",
               "anchor": "child-hui-entities-card--hui-valve-entity-row"
-            },
-            {
-              "name": "hui-water-heater-entity-row",
-              "origin": "Lovelace",
-              "anchor": "child-hui-entities-card--hui-water-heater-entity-row"
             },
             {
               "name": "hui-weather-entity-row",
@@ -2011,8 +1928,13 @@
             {
               "name": "hui-section-row",
               "origin": "Lovelace",
-              "anchor": "child-hui-entities-card--hui-section-row",
-              "note": "Special Row"
+              "anchor": "xref-hui-entities-card--hui-section-row",
+              "note": "Special Row",
+              "cross_reference": {
+                "parent": "Card & Section Header",
+                "route": "/components/card-and-section-header.html",
+                "anchor": "child-hui-section-row"
+              }
             },
             {
               "name": "hui-weblink-row",
@@ -2721,9 +2643,9 @@
           "anchor": "child-hui-picture-glance-card"
         },
         {
-          "name": "ha-camera-fetch-image",
+          "name": "hui-image",
           "origin": "Home Assistant",
-          "anchor": "child-ha-camera-fetch-image"
+          "anchor": "child-hui-image"
         }
       ]
     },
@@ -2862,19 +2784,19 @@
           "anchor": "child-ha-list-item"
         },
         {
-          "name": "ha-navigation-list",
+          "name": "ha-list-nav",
           "origin": "Home Assistant",
-          "anchor": "child-ha-navigation-list"
+          "anchor": "child-ha-list-nav"
         },
         {
-          "name": "ha-md-list",
+          "name": "ha-list-base",
           "origin": "Home Assistant",
-          "anchor": "child-ha-md-list",
+          "anchor": "child-ha-list-base",
           "grandchildren": [
             {
-              "name": "ha-md-list-item",
+              "name": "ha-list-item-base",
               "origin": "Home Assistant",
-              "anchor": "child-ha-md-list--ha-md-list-item"
+              "anchor": "child-ha-list-base--ha-list-item-base"
             }
           ]
         },
@@ -2895,14 +2817,18 @@
       "route": "/components/logbook-card.html",
       "letter": "L",
       "origins": [
-        "Lovelace",
         "Home Assistant"
       ],
       "children": [
         {
           "name": "hui-logbook-card",
           "origin": "Lovelace",
-          "anchor": "child-hui-logbook-card"
+          "anchor": "xref-hui-logbook-card",
+          "cross_reference": {
+            "parent": "Activity Card",
+            "route": "/components/activity-card.html",
+            "anchor": "child-hui-logbook-card"
+          }
         },
         {
           "name": "ha-logbook",
@@ -3100,14 +3026,14 @@
               "anchor": "child-ha-more-info-dialog--ha-state-control-fan-speed"
             },
             {
-              "name": "ha-state-control-humidifier",
+              "name": "ha-state-control-humidifier-humidity",
               "origin": "Home Assistant",
-              "anchor": "child-ha-more-info-dialog--ha-state-control-humidifier"
+              "anchor": "child-ha-more-info-dialog--ha-state-control-humidifier-humidity"
             },
             {
-              "name": "ha-state-control-lock",
+              "name": "ha-state-control-lock-toggle",
               "origin": "Home Assistant",
-              "anchor": "child-ha-more-info-dialog--ha-state-control-lock"
+              "anchor": "child-ha-more-info-dialog--ha-state-control-lock-toggle"
             },
             {
               "name": "ha-state-control-toggle",
@@ -3120,9 +3046,9 @@
               "anchor": "child-ha-more-info-dialog--ha-state-control-valve-position"
             },
             {
-              "name": "ha-state-control-water_heater",
+              "name": "ha-state-control-water_heater-temperature",
               "origin": "Home Assistant",
-              "anchor": "child-ha-more-info-dialog--ha-state-control-water-heater"
+              "anchor": "child-ha-more-info-dialog--ha-state-control-water-heater-temperature"
             },
             {
               "name": "ha-vacuum-state",
@@ -3174,9 +3100,9 @@
           "anchor": "child-ha-toast"
         },
         {
-          "name": "hui-notification-drawer",
+          "name": "notification-drawer",
           "origin": "Home Assistant",
-          "anchor": "child-hui-notification-drawer"
+          "anchor": "child-notification-drawer"
         },
         {
           "name": "Civica Notification Banner Pattern",
@@ -3295,11 +3221,6 @@
               "anchor": "child-hui-picture-elements-card--hui-service-button-element"
             },
             {
-              "name": "hui-action-button-element",
-              "origin": "Lovelace",
-              "anchor": "child-hui-picture-elements-card--hui-action-button-element"
-            },
-            {
               "name": "hui-icon-element",
               "origin": "Lovelace",
               "anchor": "child-hui-picture-elements-card--hui-icon-element"
@@ -3313,16 +3234,6 @@
               "name": "hui-conditional-element",
               "origin": "Lovelace",
               "anchor": "child-hui-picture-elements-card--hui-conditional-element"
-            },
-            {
-              "name": "hui-state-switch-element",
-              "origin": "Lovelace",
-              "anchor": "child-hui-picture-elements-card--hui-state-switch-element"
-            },
-            {
-              "name": "hui-custom-element",
-              "origin": "Lovelace",
-              "anchor": "child-hui-picture-elements-card--hui-custom-element"
             }
           ]
         }
@@ -3378,9 +3289,9 @@
           "anchor": "child-ha-spinner"
         },
         {
-          "name": "ha-circular-progress",
+          "name": "ha-progress-ring",
           "origin": "Home Assistant",
-          "anchor": "child-ha-circular-progress"
+          "anchor": "child-ha-progress-ring"
         },
         {
           "name": "ha-progress-button",
@@ -3388,9 +3299,9 @@
           "anchor": "child-ha-progress-button"
         },
         {
-          "name": "ha-linear-progress",
+          "name": "ha-progress-bar",
           "origin": "Home Assistant",
-          "anchor": "child-ha-linear-progress"
+          "anchor": "child-ha-progress-bar"
         },
         {
           "name": "ha-fade-in",
@@ -3429,9 +3340,9 @@
           "anchor": "child-input-type-radio"
         },
         {
-          "name": "ha-radio",
+          "name": "ha-radio-group",
           "origin": "Home Assistant",
-          "anchor": "child-ha-radio"
+          "anchor": "child-ha-radio-group"
         }
       ]
     },
@@ -3455,9 +3366,9 @@
           "anchor": "child-ha-relative-time"
         },
         {
-          "name": "ha-timestamp",
+          "name": "hui-timestamp-display",
           "origin": "Home Assistant",
-          "anchor": "child-ha-timestamp"
+          "anchor": "child-hui-timestamp-display"
         }
       ]
     },
@@ -3482,14 +3393,9 @@
           "anchor": "child-input-type-search"
         },
         {
-          "name": "search-input",
+          "name": "ha-input-search",
           "origin": "Home Assistant",
-          "anchor": "child-search-input"
-        },
-        {
-          "name": "search-input-outlined",
-          "origin": "Home Assistant",
-          "anchor": "child-search-input-outlined"
+          "anchor": "child-ha-input-search"
         },
         {
           "name": "Civica Combobox Search Pattern",
@@ -3586,11 +3492,6 @@
               "name": "ha-selector-backup_location",
               "origin": "Home Assistant",
               "anchor": "child-ha-selector--ha-selector-backup-location"
-            },
-            {
-              "name": "ha-selector-bluetooth",
-              "origin": "Home Assistant",
-              "anchor": "child-ha-selector--ha-selector-bluetooth"
             },
             {
               "name": "ha-selector-boolean",
@@ -3728,9 +3629,9 @@
               "anchor": "child-ha-selector--ha-selector-select"
             },
             {
-              "name": "ha-selector-serial",
+              "name": "ha-selector-serial_port",
               "origin": "Home Assistant",
-              "anchor": "child-ha-selector--ha-selector-serial"
+              "anchor": "child-ha-selector--ha-selector-serial-port"
             },
             {
               "name": "ha-selector-state",
@@ -3801,16 +3702,6 @@
               "name": "ha-selector-ui_state_content",
               "origin": "Home Assistant",
               "anchor": "child-ha-selector--ha-selector-ui-state-content"
-            },
-            {
-              "name": "ha-selector-usb",
-              "origin": "Home Assistant",
-              "anchor": "child-ha-selector--ha-selector-usb"
-            },
-            {
-              "name": "ha-selector-zeroconf",
-              "origin": "Home Assistant",
-              "anchor": "child-ha-selector--ha-selector-zeroconf"
             }
           ]
         }
@@ -3926,9 +3817,9 @@
       ],
       "children": [
         {
-          "name": "ha-subheader",
+          "name": "ha-section-title",
           "origin": "Home Assistant",
-          "anchor": "child-ha-subheader"
+          "anchor": "child-ha-section-title"
         }
       ]
     },
@@ -4085,11 +3976,6 @@
           "anchor": "child-ha-switch"
         },
         {
-          "name": "ha-md-switch",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-md-switch"
-        },
-        {
           "name": "ha-control-switch",
           "origin": "Home Assistant",
           "anchor": "child-ha-control-switch"
@@ -4113,28 +3999,6 @@
               "name": "ha-tab",
               "origin": "Home Assistant",
               "anchor": "child-ha-tab-group--ha-tab"
-            },
-            {
-              "name": "ha-tab-panel",
-              "origin": "Home Assistant",
-              "anchor": "child-ha-tab-group--ha-tab-panel"
-            }
-          ]
-        },
-        {
-          "name": "ha-md-tabs",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-md-tabs",
-          "grandchildren": [
-            {
-              "name": "ha-md-primary-tab",
-              "origin": "Home Assistant",
-              "anchor": "child-ha-md-tabs--ha-md-primary-tab"
-            },
-            {
-              "name": "ha-md-secondary-tab",
-              "origin": "Home Assistant",
-              "anchor": "child-ha-md-tabs--ha-md-secondary-tab"
             }
           ]
         }
@@ -4230,19 +4094,9 @@
           "anchor": "child-input-type-hidden"
         },
         {
-          "name": "ha-textfield",
+          "name": "ha-input",
           "origin": "Home Assistant",
-          "anchor": "child-ha-textfield"
-        },
-        {
-          "name": "ha-md-textfield",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-md-textfield"
-        },
-        {
-          "name": "ha-password-field",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-password-field"
+          "anchor": "child-ha-input"
         }
       ]
     },
@@ -4571,11 +4425,6 @@
           "name": "ha-web-rtc-player",
           "origin": "Home Assistant",
           "anchor": "child-ha-web-rtc-player"
-        },
-        {
-          "name": "ha-mjpeg-player",
-          "origin": "Home Assistant",
-          "anchor": "child-ha-mjpeg-player"
         }
       ]
     },

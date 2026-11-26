@@ -17,7 +17,9 @@ updates:
     description: "Separated shared table semantics from the chart adapter and its native data and compatibility contract."
   - date: "2026-11-11"
     description: "Added observation dates, interval context and calendar dates to all three measurement tables."
-ai_instructions: "Apply when values need shared columns. A dashboard author can show a real table with a caption and header cells in a Markdown card. ha-data-table is Home Assistant’s own grid for settings screens and cannot be added to a dashboard. Give every table a caption, put the unit in the heading, right-align numbers and keep a missing value distinct from zero. The area filter in the filter pane is ha-filter-floor-areas, not ha-filter-areas. Do not claim a contrast ratio for the divider lines or that the table is keyboard-complete. Link to the Charts and tables page for a chart’s data alternative."
+  - date: "2026-11-26"
+    description: "Named the area filter by its element, ha-filter-floor-areas."
+ai_instructions: "Apply when values need shared columns. A dashboard author can show a real table with a caption and header cells in a Markdown card. ha-data-table is Home Assistant’s own grid for settings screens and cannot be added to a dashboard. Give every table a caption, put the unit in the heading, right-align numbers and keep a missing value distinct from zero. The area filter in the filter pane is ha-filter-floor-areas. Do not claim a contrast ratio for the divider lines or that the table is keyboard-complete. Link to the Charts and tables page for a chart’s data alternative."
 ai_related:
   - path: "/components/charts.html"
     title: "Statistic & Statistics Graph Cards"
@@ -79,9 +81,9 @@ component:
         - name: "ha-filter-domains"
           origin: "Home Assistant"
           anchor: "child-ha-data-table--ha-filter-domains"
-        - name: "ha-filter-areas"
+        - name: "ha-filter-floor-areas"
           origin: "Home Assistant"
-          anchor: "child-ha-data-table--ha-filter-areas"
+          anchor: "child-ha-data-table--ha-filter-floor-areas"
         - name: "ha-filter-devices"
           origin: "Home Assistant"
           anchor: "child-ha-data-table--ha-filter-devices"
@@ -117,7 +119,7 @@ This page covers:
   - `ha-data-table`
     - `ha-filter-states`
     - `ha-filter-domains`
-    - `ha-filter-areas`
+    - `ha-filter-floor-areas`
     - `ha-filter-devices`
     - `ha-filter-labels`
 
@@ -200,9 +202,9 @@ A filter in the filter pane beside a table. It lets people pick which states to 
 
 A filter by integration domain. Its value is a list of domains. Domain names are Home Assistant’s own, so keep them as they are.
 
-<h3 id="child-ha-data-table--ha-filter-areas"><code>ha-filter-areas</code></h3>
+<h3 id="child-ha-data-table--ha-filter-floor-areas"><code>ha-filter-floor-areas</code></h3>
 
-This Home Assistant version does not use the name `ha-filter-areas`. The area filter in the filter pane is the floor-and-area filter, `ha-filter-floor-areas`. Its value holds a list of floors and a list of areas, and it can include disabled entities.
+The area filter in the filter pane is the floor-and-area filter. Its value holds a list of floors and a list of areas, and it can include disabled entities.
 
 <h3 id="child-ha-data-table--ha-filter-devices"><code>ha-filter-devices</code></h3>
 

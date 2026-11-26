@@ -15,7 +15,9 @@ updates:
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
     description: "First published in the Civica design system."
-ai_instructions: "Apply when a task needs the whole of someone’s attention or a consequence needs confirming. Home Assistant dialogs are built from ha-dialog, which wraps a Web Awesome dialog; there is no ha-wa-dialog element. A dashboard author cannot create a dialog and cannot reach one with card-mod. A theme can set the surface, corners, divider and text colours. Name the action in the title, state the consequence, label the main button with a verb and a noun, and keep Home Assistant’s confirmations for locks and alarms. Do not claim every dialog traps focus or that Escape always closes one. Do not claim a contrast ratio for the backdrop."
+  - date: "2026-11-26"
+    description: "Removed an entry that is not a dialog element."
+ai_instructions: "Apply when a task needs the whole of someone’s attention or a consequence needs confirming. Home Assistant dialogs are built from ha-dialog, which wraps a Web Awesome dialog. A dashboard author cannot create a dialog and cannot reach one with card-mod. A theme can set the surface, corners, divider and text colours. Name the action in the title, state the consequence, label the main button with a verb and a noun, and keep Home Assistant’s confirmations for locks and alarms. Do not claim every dialog traps focus or that Escape always closes one. Do not claim a contrast ratio for the backdrop."
 ai_related:
   - path: "/components/assist-voice-pipeline-dialog.html"
     title: "Assist / Voice Pipeline Dialog"
@@ -42,9 +44,6 @@ component:
     - name: "ha-dialog"
       origin: "Home Assistant"
       anchor: "child-ha-dialog"
-    - name: "ha-wa-dialog"
-      origin: "Home Assistant"
-      anchor: "child-ha-wa-dialog"
     - name: "ha-dialog-header"
       origin: "Home Assistant"
       anchor: "child-ha-dialog-header"
@@ -75,7 +74,6 @@ This page covers:
 - Dialog / Modal
   - `<dialog>`
   - `ha-dialog`
-  - `ha-wa-dialog`
   - `ha-dialog-header`
   - `ha-adaptive-dialog`
   - `dialog-box`
@@ -109,10 +107,6 @@ Home Assistant’s dialog. It is built on a Web Awesome dialog that `ha-dialog` 
 What the Civica theme sets: `ha-dialog-surface-background` (white in light mode, `#24282B` in dark mode), `ha-dialog-border-radius` (square), the heading and content text colours, and the line under a scrolling header (`#CECECE` in light mode, `#50565A` in dark mode).
 
 What stays as Home Assistant draws it: the backdrop colour and blur, the shadow and the width. A theme can add these variables, but the Civica theme does not set them. Dialogs sit outside the dashboard, so card-mod on a card does not reach them.
-
-<h3 id="child-ha-wa-dialog"><code>ha-wa-dialog</code></h3>
-
-This Home Assistant version does not use the name `ha-wa-dialog`. Home Assistant dialogs are built on a Web Awesome dialog wrapped by `ha-dialog`, which is the element to know about. Read the entry above for what it does.
 
 <h3 id="child-ha-dialog-header"><code>ha-dialog-header</code></h3>
 

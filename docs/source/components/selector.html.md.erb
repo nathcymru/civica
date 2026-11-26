@@ -10,8 +10,10 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Selector specification: what a selector is, how to write one, and one entry for each selector Home Assistant draws, including four names it does not use."
-ai_instructions: "Apply when a Home Assistant form, automation, script or blueprint asks for a value through a selector. A selector is a YAML mapping with one key that names the type, for example selector: { number: { min: 0, max: 100 } }. Home Assistant draws the matching input. Four inventory names, serial, usb, bluetooth and zeroconf, are not selectors in this version: use the serial_port selector, or a device selector filtered by integration, or a text field. Give every field one visible label and a hint before the field. A selector does not guarantee a label for assistive technology, so do not claim one. In slider mode the label is plain text before the slider and the slider is not named by it. Do not claim keyboard reordering, and do not claim selector behaviour is the same in every editor."
+    description: "Added the Selector specification: what a selector is, how to write one, and one entry for each selector Home Assistant draws."
+  - date: "2026-11-26"
+    description: "Named the serial port selector by its key, and explained how to pick Bluetooth, USB and discovered devices."
+ai_instructions: "Apply when a Home Assistant form, automation, script or blueprint asks for a value through a selector. A selector is a YAML mapping with one key that names the type, for example selector: { number: { min: 0, max: 100 } }. Home Assistant draws the matching input. To pick a serial port, use the serial_port selector. To pick a Bluetooth, USB or discovered device, use a device selector filtered by integration, or a text field. Give every field one visible label and a hint before the field. A selector does not guarantee a label for assistive technology, so do not claim one. In slider mode the label is plain text before the slider and the slider is not named by it. Do not claim keyboard reordering, and do not claim selector behaviour is the same in every editor."
 ai_related:
   - path: "/home-assistant/schema-selectors.html"
     title: "Schema selectors and configuration forms"
@@ -77,9 +79,6 @@ component:
         - name: "ha-selector-backup_location"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-backup-location"
-        - name: "ha-selector-bluetooth"
-          origin: "Home Assistant"
-          anchor: "child-ha-selector--ha-selector-bluetooth"
         - name: "ha-selector-boolean"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-boolean"
@@ -161,9 +160,9 @@ component:
         - name: "ha-selector-select"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-select"
-        - name: "ha-selector-serial"
+        - name: "ha-selector-serial_port"
           origin: "Home Assistant"
-          anchor: "child-ha-selector--ha-selector-serial"
+          anchor: "child-ha-selector--ha-selector-serial-port"
         - name: "ha-selector-state"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-state"
@@ -206,12 +205,6 @@ component:
         - name: "ha-selector-ui_state_content"
           origin: "Home Assistant"
           anchor: "child-ha-selector--ha-selector-ui-state-content"
-        - name: "ha-selector-usb"
-          origin: "Home Assistant"
-          anchor: "child-ha-selector--ha-selector-usb"
-        - name: "ha-selector-zeroconf"
-          origin: "Home Assistant"
-          anchor: "child-ha-selector--ha-selector-zeroconf"
   tags:
     - "ha-selector"
 ---
@@ -237,7 +230,6 @@ This page covers:
     - `ha-selector-assist_pipeline`
     - `ha-selector-attribute`
     - `ha-selector-backup_location`
-    - `ha-selector-bluetooth`
     - `ha-selector-boolean`
     - `ha-selector-button_toggle`
     - `ha-selector-choose`
@@ -265,7 +257,7 @@ This page covers:
     - `ha-selector-object`
     - `ha-selector-qr_code`
     - `ha-selector-select`
-    - `ha-selector-serial`
+    - `ha-selector-serial_port`
     - `ha-selector-state`
     - `ha-selector-statistic`
     - `ha-selector-stt`
@@ -280,8 +272,6 @@ This page covers:
     - `ha-selector-ui_action`
     - `ha-selector-ui_color`
     - `ha-selector-ui_state_content`
-    - `ha-selector-usb`
-    - `ha-selector-zeroconf`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -364,10 +354,6 @@ Chooses where a backup is stored, from the storage locations Home Assistant know
 
 YAML key `backup_location`. Options: none.
 
-<h3 id="child-ha-selector--ha-selector-bluetooth"><code>ha-selector-bluetooth</code></h3>
-
-Home Assistant has no selector named `bluetooth`. “Bluetooth” is the name of an integration, not an input. To let people pick a Bluetooth device, use the device selector with `filter` set to the `bluetooth` integration, or a text field when a free value is needed. See [ha-selector-device](#child-ha-selector--ha-selector-device).
-
 <h3 id="child-ha-selector--ha-selector-boolean"><code>ha-selector-boolean</code></h3>
 
 A switch for yes or no. The label and any hint sit inside the switch’s own row. Say what “on” means in the label.
@@ -442,7 +428,7 @@ YAML key `datetime`. Options: none.
 
 <h3 id="child-ha-selector--ha-selector-device"><code>ha-selector-device</code></h3>
 
-Chooses one or more devices. See [Device Picker](device-picker.html). `filter` narrows the list by integration, manufacturer, model or entity; `entity` and `multiple` also apply.
+Chooses one or more devices. See [Device Picker](device-picker.html). `filter` narrows the list by integration, manufacturer, model or entity; `entity` and `multiple` also apply. To let people pick a Bluetooth, USB or discovered device, set `filter` to the `bluetooth`, `usb` or `zeroconf` integration, or use a text field when a free value is needed.
 
 YAML key `device`. Options: `filter`, `entity`, `multiple`.
 
@@ -530,9 +516,9 @@ Chooses from a fixed list. `options` lists the choices. A single choice in `list
 
 YAML key `select`. Options: `multiple`, `custom_value`, `mode`, `options`, `translation_key`, `sort`, `reorder`, `box_max_columns`.
 
-<h3 id="child-ha-selector--ha-selector-serial"><code>ha-selector-serial</code></h3>
+<h3 id="child-ha-selector--ha-selector-serial-port"><code>ha-selector-serial_port</code></h3>
 
-This version of Home Assistant has no selector named `serial`. What it draws instead is the serial port selector, `serial_port`, which shows a list of ports with those it recommends marked, and a pencil button for typing a port by hand. The list is loaded only for an administrator, and only when the USB component is loaded. `extra_recommended_domains` adds integrations whose ports should be marked as recommended. The value is the port as text. For standalone guidance, use a labelled text field with a hint.
+The serial port selector, `serial_port`, shows a list of ports with those it recommends marked, and a pencil button for typing a port by hand. The list is loaded only for an administrator, and only when the USB component is loaded. `extra_recommended_domains` adds integrations whose ports should be marked as recommended. The value is the port as text. For standalone guidance, use a labelled text field with a hint.
 
 <h3 id="child-ha-selector--ha-selector-state"><code>ha-selector-state</code></h3>
 
@@ -617,14 +603,6 @@ YAML key `ui_color`. Options: `default_color`, `include_none`, `include_state`, 
 Chooses what to show for an entity’s state. `entity_id` says which entity, and `allow_name` and `allow_context` add extra choices.
 
 YAML key `ui_state_content`. Options: `entity_id`, `allow_name`, `allow_context`.
-
-<h3 id="child-ha-selector--ha-selector-usb"><code>ha-selector-usb</code></h3>
-
-Home Assistant has no selector named `usb`. “USB” is the name of an integration, not an input. To let people pick a USB device, use the device selector with `filter` set to the `usb` integration. To pick a serial port on a USB adapter, use the `serial_port` selector described under [ha-selector-serial](#child-ha-selector--ha-selector-serial).
-
-<h3 id="child-ha-selector--ha-selector-zeroconf"><code>ha-selector-zeroconf</code></h3>
-
-Home Assistant has no selector named `zeroconf`. “Zeroconf” is the name of a discovery method and integration, not an input. To let people pick a discovered device, use the device selector with `filter` set to the `zeroconf` integration, or a text field when a free value is needed.
 
 <h2 id="limits">Advantages and limitations</h2>
 

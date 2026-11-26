@@ -13,7 +13,9 @@ updates:
     description: "Rewritten as the full Radio Button specification: the native radio, how Home Assistant draws a group of radios, their theme colours and the rules for one-answer questions."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-ai_instructions: "Apply when people choose exactly one answer from a short list. Use one fieldset and legend, one shared name, distinct values and a label for each radio. Do not preselect an answer to a new question. Do not use radios for several answers or for an immediate on or off control. A raw radio cannot be written in a Markdown card, because the card removes the type attribute. This Home Assistant version has no ha-radio element: it draws a group with ha-radio-group and one ha-radio-option for each choice. On a dashboard or in a form, use the select selector with mode list or box. The radio border in the Civica theme is the neutral border colour, not the near-black of the text fields. Do not quote a contrast for the disabled state, and do not claim arrow-key behaviour or focus appearance for ha-radio-group."
+  - date: "2026-11-26"
+    description: "Named the radio group by its element, ha-radio-group."
+ai_instructions: "Apply when people choose exactly one answer from a short list. Use one fieldset and legend, one shared name, distinct values and a label for each radio. Do not preselect an answer to a new question. Do not use radios for several answers or for an immediate on or off control. A raw radio cannot be written in a Markdown card, because the card removes the type attribute. Home Assistant draws a group with ha-radio-group and one ha-radio-option for each choice. On a dashboard or in a form, use the select selector with mode list or box. The radio border in the Civica theme is the neutral border colour, not the near-black of the text fields. Do not quote a contrast for the disabled state, and do not claim arrow-key behaviour or focus appearance for ha-radio-group."
 ai_related:
   - path: "/components/fieldset.html"
     title: "Fieldset & Legend"
@@ -43,9 +45,9 @@ component:
     - name: '<input type="radio">'
       origin: "HTML5"
       anchor: "child-input-type-radio"
-    - name: "ha-radio"
+    - name: "ha-radio-group"
       origin: "Home Assistant"
-      anchor: "child-ha-radio"
+      anchor: "child-ha-radio-group"
   tags:
     - "input type radio"
     - "ha-radio-group"
@@ -64,7 +66,7 @@ This page covers:
 
 - Radio Button
   - `<input type="radio">`
-  - `ha-radio`
+  - `ha-radio-group`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -100,9 +102,9 @@ select:
   mode: list
 ```
 
-<h3 id="child-ha-radio"><code>ha-radio</code></h3>
+<h3 id="child-ha-radio-group"><code>ha-radio-group</code></h3>
 
-This Home Assistant version does not use an element called `ha-radio`. It draws a group with `ha-radio-group` and one `ha-radio-option` for each choice. A few older dialogs still use a Material radio list item.
+Home Assistant draws a group with `ha-radio-group` and one `ha-radio-option` for each choice. A few older dialogs still use a Material radio list item.
 
 `ha-radio-group` takes `label` and `hint`, which are the question and its hint, plus `name`, `orientation` (`horizontal` or `vertical`), `disabled` and `required`. Home Assistant asks for the label, because the group needs a name. `ha-radio-option` takes `appearance` (`default` or `button`), `size`, `checked` and `disabled`. The `button` appearance gives a larger target, 40 CSS pixels high by default.
 
