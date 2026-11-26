@@ -399,11 +399,11 @@ Home Assistant draws the card title as a first-level heading, so give each entit
 
 <h3 id="child-hui-entities-card--hui-fan-entity-row"><code>hui-fan-entity-row</code></h3>
 
-`type: fan-entity`. Shows a switch for a fan that can be turned on and off. A fan that cannot be switched, or whose state is neither on nor off, shows its state as text instead. A speed slider appears only for a fan that sets its speed in more than six steps and cannot be turned on or off. The slider sets the speed as a percentage and shows the state beside it. Fans. Show the state in words, not by the slider position alone.
+`type: fan-entity`. Shows a switch for a fan that can be turned on and off. A fan that cannot be switched, or whose state is neither on nor off, shows its state as text instead. A speed slider appears only for a fan that sets its speed in more than six steps and cannot be turned on or off. The slider sets the speed as a percentage and, when the row is wide enough, shows the state beside it. Fans. Show the state in words, not by the slider position alone.
 
 <h3 id="child-hui-entities-card--hui-number-entity-row"><code>hui-number-entity-row</code></h3>
 
-`type: number-entity`. Shows a slider when the entity’s mode is slider, or when its mode is automatic and its range has 256 steps or fewer. Otherwise it shows a number box with the unit after it. Both use the entity’s own minimum, maximum and step, and both are switched off when the entity is unavailable. The slider shows its value beside it, or a dash when the state is unavailable or unknown. Settings people adjust. Show the unit and the limits in the label or hint.
+`type: number-entity`. Shows a slider when the entity’s mode is slider, or when its mode is automatic and its range has 256 steps or fewer. Otherwise it shows a number box with the unit after it. Both use the entity’s own minimum, maximum and step, and both are switched off when the entity is unavailable. When the row is wide enough, the slider shows its value beside it, or a dash when the state is unavailable or unknown. Settings people adjust. Show the unit and the limits in the label or hint.
 
 <h3 id="child-hui-entities-card--hui-select-entity-row"><code>hui-select-entity-row</code></h3>
 
@@ -447,7 +447,7 @@ Home Assistant draws the card title as a first-level heading, so give each entit
 
 <h3 id="child-hui-entities-card--hui-button-row"><code>hui-button-row</code></h3>
 
-`type: button`. Shows an icon, a name and a button that reads Run. `name` or `entity` is required, and `icon` and `action_name` are optional; `action_name` changes the button text. A tap toggles an entity that can be switched and opens More info for any other entity. Set `tap_action` to run something else. A hold opens More info, and `double_tap_action` is available. It has no state of its own. Use it to run a chosen action from a row, and name the outcome. For an action with fixed values, see the call-service row below.
+`type: button`. Shows an icon, a name and a button that reads Run. `name` or `entity` is required, and `icon` and `action_name` are optional; `action_name` changes the button text. A tap toggles an entity that can be switched and opens More info for any other entity. Set `tap_action` to run something else. A hold opens More info, and `double_tap_action` is available. It has no state of its own. Use it to run a chosen action from a row, and name the outcome. For an action with fixed values, see the [call-service row](#child-hui-entities-card--hui-call-service-row) above.
 
 <h3 id="child-hui-entities-card--hui-text-row"><code>hui-text-row</code></h3>
 

@@ -584,7 +584,7 @@ YAML key `object`. Options: `label_field`, `description_field`, `translation_key
 
 <h3 id="child-ha-selector--ha-selector-period"><code>ha-selector-period</code></h3>
 
-Chooses a period of time by name, such as `today`, `last_week` or `next_30d`. `options` lists the names to offer, from `today`, `yesterday`, `tomorrow`, `this_week`, `last_week`, `next_week`, `this_month`, `last_month`, `next_month`, `this_year`, `last_year`, `next_7d`, `next_30d` and `none`.
+Chooses a period of time by name, such as `today`, `last_week` or `next_30d`. `options` lists the names to offer, from `today`, `yesterday`, `tomorrow`, `this_week`, `last_week`, `next_week`, `this_month`, `last_month`, `next_month`, `this_year`, `last_year`, `next_7d`, `next_30d` and `none`. The value saved is a calendar period, such as `calendar: {period: week, offset: -1}` for `last_week`, or no value for `none`.
 
 YAML key `period`. Options: `options`.
 
@@ -714,7 +714,7 @@ YAML key `ui_state_content`. Options: `entity_id`, `allow_name`, `allow_context`
 
 <h3 id="child-ha-selector--ha-selector-ui-time-format"><code>ha-selector-ui_time_format</code></h3>
 
-Chooses how a time is shown: Auto, or one of the time formats Home Assistant lists, which are relative, total, date, time and date and time. Some formats also offer a short or long style.
+Chooses how a time is shown: Auto, or one of the time formats Home Assistant lists, which are relative, total, date, time and date and time. Once a format other than Auto is chosen, a second list offers Auto, Short or Long.
 
 YAML key `ui_time_format`. Options: none.
 
