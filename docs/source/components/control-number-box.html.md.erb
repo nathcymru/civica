@@ -1,0 +1,120 @@
+---
+title: "Control Number Box"
+description: "Change a number with plus and minus buttons around a value, as in thermostat and volume card features."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Control Number Box specification: the buttons and value, keyboard use, YAML for the card feature and what the theme does not change."
+ai_instructions: "Apply to the Home Assistant plus and minus number control (ha-control-number-buttons). It is a spinbutton with two buttons, not a text input. Dashboard authors meet it as the numeric-input card feature with style buttons, and in target-temperature, target-humidity and media volume features. Set a label, or the value has no name. Keyboard users use the value, because the plus and minus buttons are not in the tab order. The buttons are narrow, so do not claim 44 pixel targets. Colours and the corner radius need card-mod. Do not describe it as an input type=number."
+ai_related:
+  - path: "/components/sliders.html"
+    title: "Control Slider"
+    relationship: "Owns the slider and the exact-entry alternative with step buttons."
+  - path: "/components/control-circular-slider.html"
+    title: "Control Circular Slider"
+    relationship: "The dial that this control is often an alternative to."
+  - path: "/components/text-input.html"
+    title: "Text input"
+    relationship: "Owns typed values and their labels and errors."
+  - path: "/home-assistant/helpers-and-scalar-inputs.html"
+    title: "Helpers and scalar input controls"
+    relationship: "Owns number helpers and input controls."
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns how card features are added to cards."
+component:
+  parent: "Control Number Box"
+  letter: "C"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-control-number-buttons"
+      origin: "Home Assistant"
+      anchor: "child-ha-control-number-buttons"
+  tags:
+    - "ha-control-number-buttons"
+---
+
+# Control Number Box
+
+<h2 id="purpose">Purpose</h2>
+
+The number box changes one number in small steps. It shows a value with a minus button on one side and a plus button on the other. Home Assistant uses it in card features for a target temperature, a target humidity, a volume and a plain number.
+
+It is not a text input. People do not type into it.
+
+This page covers:
+
+- Control Number Box
+  - `ha-control-number-buttons`
+
+<h2 id="anatomy">Anatomy</h2>
+
+- A value, with its unit when there is room.
+- A minus button on the left.
+- A plus button on the right.
+
+When the control is narrower than about 100 pixels, the unit is hidden. A button turns off when the value reaches the minimum or the maximum.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-control-number-buttons"><code>ha-control-number-buttons</code></h3>
+
+Settings: a `label`, a `step` (1 by default), a minimum, a maximum, a `unit`, number formatting and `disabled`.
+
+In a dashboard it appears as a card feature. For example, a number entity with plus and minus buttons:
+
+```yaml
+type: tile
+entity: input_number.guest_room_target
+features:
+  - type: numeric-input
+    style: buttons
+```
+
+The same buttons appear when you set `style: buttons` on the `target-temperature` and `target-humidity` features, and in the media player volume buttons feature.
+
+Keyboard: the value is a spinbutton that people reach with Tab. The arrow keys change it by one step, Page Up and Page Down by a tenth of the range, and Home and End go to the minimum and maximum when they are set. The plus and minus buttons are left out of the tab order on purpose. Each button has a name, “Increment” or “Decrement”.
+
+The control needs a `label`. Without it the value has no accessible name.
+
+Variables in the Civica theme that it reads: `primary-text-color` for the value, and `secondary-text-color` for the focus ring around the value. The ring is 2 pixels wide. The corners stay rounded, because the Civica theme does not set `ha-border-radius-md`. The background colour uses Home Assistant’s default disabled colour at low opacity, which the Civica theme does not set.
+
+Things that need the card-mod integration: the background colour, the corner radius and the focus colour. Test the exact selector in your own dashboard. Making the buttons larger, or putting them back in the tab order, is not something a theme can do.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Plus and minus steps are easy with touch and avoid dragging.
+- A long jump takes many presses. Use the [slider](sliders.html) when people need to cover a wide range.
+- Each button is about 35 pixels wide, which is below 44 pixels. It meets the 24 pixel minimum for width.
+- A person using only a keyboard cannot reach the buttons, but can use the arrow keys on the value.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+- Show the unit and the allowed range in text when they matter.
+- Choose a step that people actually want, such as 0.5 °C for a thermostat.
+- Do not run a device command on a long press unless you tell people it will repeat.
+- Provide an exact alternative for a wide range: a typed value, or the [slider with exact entry](sliders.html).
+- Keep the target and the current reading apart in words.
+
+Success criteria that apply:
+
+- 4.1.2 Name, Role, Value and 2.1.1 Keyboard: the value is a spinbutton with a name when `label` is set.
+- 3.3.2 Labels or Instructions: set the label.
+- 2.4.7 Focus Visible: the ring is on the value only. Check it in your own dashboard.
+- 2.5.8 Target Size (Minimum): the buttons are 35 pixels wide by the feature height.
+- 1.4.11 Non-text Contrast: check the button background contrast in your own dashboard.
+
+<h2 id="examples">Examples</h2>
+
+### Plus and minus around a target
+
+A stand-in picture. The real control sits inside a card.
+
+<%= example('spec-number-box-target') %>

@@ -1,0 +1,148 @@
+---
+title: "Card Header & Footer Widgets"
+description: "Add a row of buttons, a small graph or a picture above or below the rows of a card."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Card Header & Footer Widgets specification: the buttons, graph and picture widgets, their options and their limits."
+ai_instructions: "Apply when a card such as Entities carries a header or footer widget (header: or footer: in YAML). A button widget must hold real actions with names. A graph widget needs a written reading beside it, because the graph cannot be used from the keyboard as written. A picture widget always needs alt_text, which is optional in Home Assistant. Never claim the Civica theme restyles the button chips."
+ai_related:
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns how headings, headers and footers fit a dashboard."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface and its header."
+  - path: "/components/images.html"
+    title: "Images"
+    relationship: "Owns text alternatives for pictures."
+  - path: "/components/charts.html"
+    title: "Charts and tables"
+    relationship: "Owns graphs and their written equivalents."
+component:
+  parent: "Card Header & Footer Widgets"
+  letter: "C"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-buttons-header-footer"
+      origin: "Lovelace"
+      anchor: "child-hui-buttons-header-footer"
+    - name: "hui-graph-header-footer"
+      origin: "Lovelace"
+      anchor: "child-hui-graph-header-footer"
+    - name: "hui-picture-header-footer"
+      origin: "Lovelace"
+      anchor: "child-hui-picture-header-footer"
+  tags:
+    - "hui-buttons-header-footer"
+    - "hui-graph-header-footer"
+    - "hui-picture-header-footer"
+
+---
+
+# Card Header & Footer Widgets
+
+<h2 id="purpose">Purpose</h2>
+
+A header or footer widget is a small extra shown above or below the content of a card, such as a row of quick buttons, a short history graph or a picture. It gives context or a shortcut and holds nothing the card depends on.
+
+This page owns the three native widgets. For the card heading and surface see [Card (Base Surface)](cards.html), and for where headers and footers fit a dashboard see [Dashboard composition and card features](../home-assistant/dashboard-composition.html).
+
+This page covers:
+
+- Card Header & Footer Widgets
+  - `hui-buttons-header-footer`
+  - `hui-graph-header-footer`
+  - `hui-picture-header-footer`
+
+<h2 id="anatomy">Anatomy</h2>
+
+You set a widget with `header:` or `footer:` on a card that supports them, such as Entities, Entity and Statistic. The header sits above the card’s content and the footer below it. A widget has a `type` of `buttons`, `graph` or `picture`, or `custom:` followed by the name of your own element.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-buttons-header-footer"><code>hui-buttons-header-footer</code></h3>
+
+A row of buttons, drawn as chips with an icon and, if you ask, a name.
+
+```yaml
+type: entities
+entities:
+  - light.porch
+footer:
+  type: buttons
+  entities:
+    - entity: light.porch
+      name: Porch light
+      show_name: true
+    - entity: lock.gate
+      name: Gate
+      show_name: true
+```
+
+Each entity can take `icon`, `image`, `name`, `show_name`, `show_icon`, `tap_action`, `hold_action` and `double_tap_action`. A tap toggles the entity and a hold opens More info. For a scene, a tap turns the scene on. A thin divider separates the row from the card content. On narrow screens the chips scroll sideways. Without a name an icon-only chip has no text name, so show the name or the action is unclear.
+
+<h3 id="child-hui-graph-header-footer"><code>hui-graph-header-footer</code></h3>
+
+A small history graph for one entity.
+
+```yaml
+footer:
+  type: graph
+  entity: sensor.garden_temperature
+  hours_to_show: 24
+  detail: 1
+```
+
+The entity must be a counter, input number, number or sensor. Other options are `detail` (1 or 2) and `limits` with `min` and `max`. With no history the widget says there is none, and an error shows as an error message. Clicking the graph opens More info for the entity. The click is set on the graph itself, which has no keyboard stop or role, so do not rely on it. The graph redraws about once a minute and needs the history integration.
+
+<h3 id="child-hui-picture-header-footer"><code>hui-picture-header-footer</code></h3>
+
+A full-width picture.
+
+```yaml
+header:
+  type: picture
+  image: /local/garden.jpg
+  alt_text: The back garden from the kitchen door
+```
+
+`image` is required. `alt_text` is optional, but without it the picture has no text alternative, so always set it. `tap_action`, `hold_action` and `double_tap_action` make the picture act as a button.
+
+**What the Civica theme sets.** The divider and text colours come from `divider-color`, `secondary-text-color` and `primary-text-color`, and the focus colour from `ha-color-focus`. The theme sets nothing for the shape or colour of the button chips, so they stay as Home Assistant draws them. Restyling a chip, or giving the graph a keyboard stop, is not possible from a theme. With the card-mod integration chip styling might be possible. Test the selector in your own dashboard.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One line of YAML adds a shortcut row, a trend or a picture.
+- Button chips use real actions that you name.
+- The graph is a picture of numbers: it carries no values for a screen reader and cannot be used from the keyboard.
+- A picture without `alt_text` has no text alternative.
+- Chips scroll sideways on narrow screens, so later buttons can be missed.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a header or footer for supporting actions and context only. Say what each button does. Put the same value the graph shows in words beside it, with its unit and period. Write meaningful `alt_text` for a picture, or keep the picture decorative and say so in nearby text. Do not decorate. See [Images](images.html) for text alternatives and [Charts and tables](charts.html) for written equivalents of graphs.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: a picture needs `alt_text`.
+- 1.3.1 Info and Relationships and 4.1.2 Name, Role, Value: a chip needs a text name.
+- 1.4.1 Use of Colour and 1.4.11 Non-text Contrast: a graph needs a text equivalent. Check line contrast yourself.
+- 2.1.1 Keyboard: the graph click is not available from the keyboard.
+- 2.4.7 Focus Visible: measure the focus cue before you claim it.
+- 2.5.8 Target Size (Minimum): measure the chips on your own dashboard.
+
+<h2 id="examples">Examples</h2>
+
+### A garden card with a button header and a footer summary
+
+The simulated header has two named actions, and the footer gives the reading in words. No graph is drawn and the buttons do nothing.
+
+<%= example('spec-card-header-footer-garden') %>

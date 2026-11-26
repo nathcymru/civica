@@ -1,0 +1,156 @@
+---
+title: "Combobox / Autocomplete"
+description: "Offer suggestions while someone types, or let them search a long list and pick one item."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Combobox / Autocomplete specification: the HTML suggestion list, the Home Assistant picker and what this Home Assistant version uses instead of a separate combo box."
+ai_instructions: "Apply when a person picks from a long list or types a value with suggestions. In HTML use an input with a datalist for suggestions only. In Home Assistant the searchable selection list is the generic picker (ha-generic-picker), which wraps ha-picker-combo-box. This Home Assistant version has no element named ha-combo-box; say so and never document it as real. Do not claim the picker follows the WAI-ARIA combobox pattern, because that has not been checked. Keep a visible label and helper text. Picker colours and width need card-mod or custom code and are not set by Civica."
+ai_related:
+  - path: "/components/search-input.html"
+    title: "Search input"
+    relationship: "Owns the plain search field that this page's suggestions can sit on."
+  - path: "/components/select.html"
+    title: "Select"
+    relationship: "Owns the native select for a short fixed list."
+  - path: "/components/text-input.html"
+    title: "Text input"
+    relationship: "Owns the label, hint and error rules for a typed value."
+  - path: "/components/area-picker.html"
+    title: "Area Picker"
+    relationship: "Owns the area picker, which is one use of the generic picker."
+  - path: "/home-assistant/target-pickers.html"
+    title: "Entity, device and area pickers"
+    relationship: "Owns how to word and test pickers for entities, devices and areas."
+  - path: "/publishing/components/search-autocomplete.html"
+    title: "Search autocomplete"
+    relationship: "Owns suggestions on this site's own search."
+component:
+  parent: "Combobox / Autocomplete"
+  letter: "C"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<datalist>"
+      origin: "HTML5"
+      anchor: "child-datalist"
+    - name: "ha-combo-box"
+      origin: "Home Assistant"
+      anchor: "child-ha-combo-box"
+    - name: "ha-generic-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-generic-picker"
+  tags:
+    - "datalist"
+    - "ha-combo-box"
+    - "ha-generic-picker"
+---
+
+# Combobox / Autocomplete
+
+<h2 id="purpose">Purpose</h2>
+
+A combobox helps someone choose or enter a value from a long list. They type to narrow the list, then pick an item. Use it when a plain select would be too long to scan, such as a country, an icon or an area.
+
+Choose in this order:
+
+1. A native [select](select.html) when the list is short and fixed.
+2. A [text input](text-input.html) with a suggestion list when people may type something that is not on the list.
+3. The Home Assistant picker when people must pick one real item from a long list and cannot invent one.
+
+This page covers:
+
+- Combobox / Autocomplete
+  - `<datalist>`
+  - `ha-combo-box`
+  - `ha-generic-picker`
+
+<h2 id="anatomy">Anatomy</h2>
+
+- A visible label, and helper text that says what the choice changes.
+- A field that shows the current choice, or a button that opens the list.
+- A way to narrow the list by typing.
+- The list of items. In Home Assistant each item has a name, an optional second line, and an icon or picture.
+- A way to clear the choice or close the list without choosing.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-datalist"><code>&lt;datalist&gt;</code></h3>
+
+The HTML element for suggestions. It holds `option` elements and is attached to an input by the input’s `list` attribute.
+
+- It only suggests. Someone can still type any value, unlike a `select`.
+- Each option shows its `value`, and an optional `label`.
+- It works with text, search, URL, telephone, email and number inputs, and with some other input types.
+- The browser draws the suggestion list. You cannot style it.
+- Browsers and assistive technologies differ in how they present it, so test the ones your household uses.
+- The input still needs its own visible label.
+
+Home Assistant does not use `datalist` in the dashboard. It is the plain-HTML choice for a Civica documentation page. This site uses it for [Search autocomplete](../publishing/components/search-autocomplete.html).
+
+<h3 id="child-ha-combo-box"><code>ha-combo-box</code></h3>
+
+This Home Assistant version does not use an element called `ha-combo-box`. Home Assistant now draws its searchable selection lists with the generic picker, described next. The picker holds a searchable list called `ha-picker-combo-box`, whose rows are `ha-combo-box-item`, and a closed field called `ha-picker-field`. You cannot add any of these to a dashboard on their own. Use a picker, a selector in a form, or the native `select`.
+
+<h3 id="child-ha-generic-picker"><code>ha-generic-picker</code></h3>
+
+The picker behind most “choose one from a long list” fields in Home Assistant: floors, areas, labels, users, icons, countries, currencies and units of measurement. It is not a card type, so you cannot write it in dashboard YAML. People meet it in forms and dialogs.
+
+What people see:
+
+- A closed field, which is a button that shows the label and the current choice. It has a Clear control when a choice is set.
+- On a wide screen the list opens in a popover. On a narrow or short screen it opens in a bottom sheet.
+- A search field takes focus when the list opens. Typing narrows the list. Enter picks the top match.
+- Some pickers show filter chips above the list to narrow it by section.
+- Some pickers offer an “Add custom item” row, where a value that is not on the list is allowed.
+- Escape closes the list.
+- Each item can show a second line of detail, so two items with the same name can be told apart.
+
+What a form author can set in Home Assistant’s own code includes the label, placeholder, helper text, whether a value is required, and a message when nothing matches. Dashboard authors choose these only through the form or selector they are using.
+
+Variables in the Civica theme that reach it: `primary-color`, the `ha-color-fill-*` and `ha-color-border-*` keys behind the selected and active row colours, and `error-color` for the invalid helper text. The picker’s width, maximum width and popover height are Home Assistant’s own. Changing them needs the card-mod integration or custom code, and the Civica theme does not set them.
+
+Home Assistant does not say that the search field and list follow the combobox pattern in the WAI-ARIA guidance, so do not describe it that way. Call it a searchable list in a dialog. Test it with the keyboard and your screen reader.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A long list becomes usable because people can type to narrow it.
+- A `datalist` needs no script, but you cannot style it and the support differs between browsers.
+- A `datalist` can hide the label if the author forgets it. Keep the label visible.
+- The Home Assistant picker adapts to a narrow screen by opening a sheet, but you cannot restyle it with a theme alone.
+- The picker is not available as a card, so there is no YAML for it.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+- Write the label as the task: “Which area is this for?” not “Area”.
+- Say what the choice changes in helper text, before the list opens.
+- Show the current choice in words in the closed field.
+- Add a second line when two items could look the same, for example the floor under an area name.
+- Say what happens when nothing matches, and whether a custom value is allowed.
+- Never rely on an icon or colour alone to tell items apart.
+- Do not move focus away while someone is typing.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 3.3.2 Labels or Instructions: the field has a visible label.
+- 4.1.2 Name, Role, Value and 2.1.1 Keyboard: the field and the list work from the keyboard.
+- 2.4.7 Focus Visible: focus stays visible in the field and the list.
+- 1.4.10 Reflow: it works at 320 CSS pixels, where the sheet replaces the popover.
+- 3.3.7 Redundant Entry: a picker saves retyping a name that already exists.
+
+<h2 id="examples">Examples</h2>
+
+### A closed picker in a form
+
+The label, the helper text and the chosen value are all in words. The open list is not shown.
+
+<%= example('spec-generic-picker-closed') %>
+
+For picking an area, an entity or a device, see [Entity, device and area pickers](../home-assistant/target-pickers.html) and [Area Picker](area-picker.html).

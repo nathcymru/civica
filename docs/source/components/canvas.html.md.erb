@@ -1,0 +1,95 @@
+---
+title: "Canvas"
+description: "A drawing area that scripts paint pixels onto, why Home Assistant themes cannot reach it, and what to put beside it."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Canvas specification: what a canvas is, why a theme cannot colour it and the text it needs beside it."
+ai_instructions: "Apply when a custom card draws on a canvas element. A canvas is a block of pixels, so a theme cannot colour it and a screen reader cannot read it. Always give a text summary and a table or list of the same values. Prefer SVG, which can use theme colours, or a chart card. Do not say Home Assistant offers a canvas component or that its charts have accessible fallbacks. Do not claim any contrast. Avoid animation and flashing."
+ai_related:
+  - path: "/components/charts.html"
+    title: "Charts and tables"
+    relationship: "Owns charts, their colours and their table alternatives."
+  - path: "/components/images.html"
+    title: "Images"
+    relationship: "Owns text alternatives for pictures."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the keyboard, text-size and screen reader checks."
+component:
+  parent: "Canvas"
+  letter: "C"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<canvas>"
+      origin: "HTML5"
+      anchor: "child-canvas"
+  tags:
+    - "canvas"
+---
+
+# Canvas
+
+<h2 id="purpose">Purpose</h2>
+
+A canvas is an area of a page that a script paints on, pixel by pixel. Custom cards use it for graphics that ordinary page elements cannot draw. Home Assistant does not offer a canvas card or a canvas component of its own. You meet it when a custom card draws on one, and inside some of Home Assistant’s own chart cards.
+
+This page covers:
+
+- Canvas
+  - `<canvas>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A canvas has a size in pixels (300 by 150 by default) and a drawing that a script creates. It can hold fallback content between its tags, and that content can be read by assistive technology. The drawing itself cannot be.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-canvas"><code>&lt;canvas&gt;</code></h3>
+
+The element is written by a custom card’s code, not by a dashboard author in YAML or Markdown. A Home Assistant user cannot write one in a Markdown card, so there is no snippet to copy here.
+
+What you can control as an author of a custom card:
+
+- **Size.** The width and height set the pixel size of the drawing. CSS can scale it, but a scaled drawing looks blurred unless the code allows for screen density.
+- **Colour.** Theme variables do not reach pixels that are already drawn. The code has to read the theme colours when it draws, and draw again when the theme changes.
+- **A name.** Give the canvas a label or point it at a visible heading, and put the same information in text.
+- **Keyboard.** A canvas is not focusable by default. If it responds to touch, give it a keyboard alternative.
+
+A theme cannot colour a canvas, change its text size or make its drawn text wrap. Text drawn onto a canvas does not grow when people increase text size or zoom, and it does not reflow on a narrow screen.
+
+For a graphic that must follow the theme, use SVG, which can take its colours from the page, or a chart card. See [Charts and tables](charts.html).
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It can draw many moving or detailed shapes quickly.
+- Its contents are invisible to a screen reader, so every fact in it needs a text copy.
+- Theme colours, text size and dark mode do not apply to it unless the code handles them.
+- Animation can be distracting, and it can be unsafe if it flashes.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a canvas only when SVG or a chart card cannot do the job. Always write a short summary beside it and add a table or list of the same values, as in the example. Give the drawing a name, or mark it with a role as an image and a label.
+
+Avoid animation. If you need it, let people stop it, and never flash more than three times a second. Do not put the only copy of any information in drawn text.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: a text alternative for the drawing.
+- 1.3.1 Info and Relationships: a table for data.
+- 1.4.1 Use of Colour, 1.4.3 and 1.4.11 Contrast: choose and measure the colours you draw.
+- 1.4.4 Resize Text and 1.4.10 Reflow: drawn text does not resize.
+- 2.1.1 Keyboard and 4.1.2 Name, Role, Value for any drawing that responds to input.
+- 2.2.2 Pause, Stop, Hide and 2.3.1 Three Flashes for animation.
+
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-canvas-text-alternative') %>

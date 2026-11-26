@@ -1,0 +1,135 @@
+---
+title: "Assist / Voice Pipeline Dialog"
+description: "The Home Assistant Assist dialog and its chat, where people type or speak a request."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Assist dialog specification: what the dialog and chat contain, what Civica changes and what stays as Home Assistant draws it."
+ai_instructions: "Apply when a dashboard opens or describes the Assist dialog. Keep the typed route available. Never start listening because of navigation or a theme change. A dashboard may open the dialog with the assist action, with start_listening only when deliberate. Show errors and results in words. Civica does not start, stop or restyle the microphone. Bubble colours, bubble corners, the pulse and the pipeline button are not set by Civica. Do not claim that new messages are announced to a screen reader."
+ai_related:
+  - path: "/home-assistant/assist-and-voice.html"
+    title: "Assist, conversation and voice"
+    relationship: "Owns what Home Assistant does and what to show: listening, working, accepted and unconfirmed."
+  - path: "/components/dialogs.html"
+    title: "Dialogs"
+    relationship: "Owns dialog focus, closing and returning focus."
+  - path: "/home-assistant/action-results.html"
+    title: "Action requests and results"
+    relationship: "Owns how to word the result of a request."
+  - path: "/components/text-input.html"
+    title: "Text input"
+    relationship: "Owns the typed request field."
+component:
+  parent: "Assist / Voice Pipeline Dialog"
+  letter: "A"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-voice-command-dialog"
+      origin: "Home Assistant"
+      anchor: "child-ha-voice-command-dialog"
+    - name: "ha-assist-chat"
+      origin: "Home Assistant"
+      anchor: "child-ha-assist-chat"
+  tags:
+    - "ha-voice-command-dialog"
+    - "ha-assist-chat"
+---
+
+# Assist / Voice Pipeline Dialog
+
+<h2 id="purpose">Purpose</h2>
+
+The Assist dialog lets people give Home Assistant a request by typing or speaking, and shows the conversation. A pipeline is the set of speech and conversation services Assist uses. Civica does not change how Assist listens or acts. It changes the colours and shapes of the dialog surface that the Civica theme reaches.
+
+This page owns the dialog and the chat as components. For what to show while Assist listens, works and answers, see [Assist and voice](../home-assistant/assist-and-voice.html). For dialog focus, closing and returning focus, see [Dialogs](dialogs.html).
+
+This page covers:
+
+- Assist / Voice Pipeline Dialog
+  - `ha-voice-command-dialog`
+  - `ha-assist-chat`
+
+<h2 id="anatomy">Anatomy</h2>
+
+- A header with a close button, the title, a pipeline menu, a link to Assist settings for administrators and a help button.
+- The chat: messages from the person on one side and from Home Assistant on the other, a text field for typing, and a send or microphone button.
+- A spinner while the dialog loads, and an error alert if it cannot.
+
+<figure class="c-project-figure">
+  <img src="<%= docs_path('/images/component-assist-dialog-anatomy.svg') %>" width="960" height="560" alt="" loading="lazy" decoding="async">
+  <figcaption>The parts of the Assist dialog, numbered from the top: 1 the header with the close button, title and menu, 2 a message from the person, 3 a reply from Assist, 4 the text field and 5 the send button. The drawing is not interactive.</figcaption>
+</figure>
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-voice-command-dialog"><code>ha-voice-command-dialog</code></h3>
+
+The dialog. People open it from the dashboard top bar or from a card that has the `assist` action, which accepts a `pipeline_id` and `start_listening`. `start_listening` is off by default on the web. Use it only when it is deliberate, and never start listening because of navigation or a theme change. The dialog remembers the pipeline people chose last.
+
+**What the Civica theme sets.** The dialog surface uses the Civica surface colour (white in light mode and a dark surface in dark mode) with square corners, and the header text and divider use the Civica colours. On a small screen the dialog fills the screen.
+
+**What stays as Home Assistant draws it.**
+
+- The dialog width follows Home Assistant’s defaults, and the dimming behind it is not set by Civica.
+- The pipeline menu button keeps its own height, so the theme’s 44 pixel button height does not apply to it.
+- Header sizes are Home Assistant’s defaults.
+- Card-mod is not supported for dialogs, so do not rely on it to change this one.
+
+<h3 id="child-ha-assist-chat"><code>ha-assist-chat</code></h3>
+
+The conversation and the input. It is also used in the more information dialog for a conversation entity.
+
+- Pressing Enter in the field sends the typed request.
+- The microphone button starts listening. While it records, a pulsing circle shows. If the browser cannot record, an alert icon shows and typing still works.
+- Messages from Assist are written as Markdown. An error appears as its own bubble. Home Assistant can show a collapsible “thinking” section.
+
+**What the Civica theme sets.** Text uses `primary-text-color`, and the input field takes the Civica form border, square corners and focus ring.
+
+**What stays as Home Assistant draws it.**
+
+- Bubble colours come from the primary colour for the person and the secondary background colour for Assist, and from the error colour for errors. Civica does not set the chat’s own bubble colours. Contrast follows the theme colours, so check it on your own dashboard in both modes. The error bubble uses dark text on a pale colour in dark mode.
+- Bubble corners and the recording pulse keep Home Assistant’s rounded shapes.
+- Do not rely on a screen reader announcing new messages. Always write the result in words.
+- The pulse is an animation, so do not use it as the only sign that the dialog is listening.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One dialog handles typed and spoken requests.
+- Typing always works, even when speech does not.
+- Civica does not change the microphone, the pipeline or Home Assistant’s answers.
+- Bubble shape and colour are mostly outside the theme.
+- The listening state is an animated icon, so say it in words too.
+- A request can fail or be misunderstood. Plain wording in the error matters.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Keep the typed route available. Do not start the microphone without a clear choice. Say what Assist heard and what happened, in plain words, and never leave a result as colour or an icon alone. Give people time: there is no need to speak within a limit. Use the `assist` action on a card only with a clear label such as “Ask Assist”.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 1.3.2 Meaningful Sequence: messages are in order.
+- 1.4.1 Use of Colour: the listening and error states are written, not colour alone.
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: check bubbles and icons on your own dashboard.
+- 1.4.2 Audio Control: speech is under the person’s control.
+- 2.1.1 Keyboard and 2.1.2 No Keyboard Trap: the dialog holds focus by design and closes with Escape or the close button.
+- 2.2.2 Pause, Stop, Hide: the pulse loops while recording.
+- 2.4.7 Focus Visible, 2.4.11 Focus Not Obscured (Minimum) and 2.5.8 Target Size (Minimum).
+- 3.2.2 On Input: Enter sends only when people press it.
+- 3.3.2 Labels or Instructions and 4.1.3 Status Messages.
+
+A typed route, plain wording and no time limit keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### A typed request and a request Assist did not understand
+
+A simulated conversation drawn as message bubbles. Each answer is written in words. There is no microphone, and the field and the Send button do nothing.
+
+<%= example('spec-assist-dialog-typed') %>

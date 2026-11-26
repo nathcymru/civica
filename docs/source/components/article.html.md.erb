@@ -1,0 +1,103 @@
+---
+title: "Article"
+description: "Mark up a self-contained piece of content, such as a help note, that makes sense on its own."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Article specification: when the article element is right, what Home Assistant lets you write and how to start it with a heading."
+ai_instructions: "Apply when marking up a self-contained note, help topic or message. Use the article element only for content that makes sense on its own, and start it with a heading. Use section for a part of a larger whole and aside for supporting remarks. In a Home Assistant markdown card article is allowed only without attributes, so it cannot be labelled with aria-labelledby, an id, a class or a style. Home Assistant has no article component."
+ai_related:
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns card structure and headings."
+  - path: "/components/aside.html"
+    title: "Aside"
+    relationship: "Use for supporting remarks that can be skipped."
+  - path: "/components/inset-text.html"
+    title: "Inset text"
+    relationship: "Use to set a short passage apart within text."
+  - path: "/components/panel.html"
+    title: "Panel"
+    relationship: "Owns a bordered block that highlights content."
+component:
+  parent: "Article"
+  letter: "A"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<article>"
+      origin: "HTML5"
+      anchor: "child-article"
+  tags:
+    - "article"
+---
+
+# Article
+
+<h2 id="purpose">Purpose</h2>
+
+The HTML `article` element marks a self-contained piece of content that would still make sense if it were moved to another page, such as a help note, a news item or a message. It is not a generic box for a card.
+
+This page owns the `article` element. Home Assistant has no article component. Its nearest native part is the card (`ha-card`), which is a container, not an article.
+
+This page covers:
+
+- Article
+  - `<article>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+An article holds ordinary content. It should normally start with a heading (`h1` to `h6`). It may also hold a date, written in a `time` element, and short paragraphs. An article may sit inside another article, for example a comment inside a message.
+
+It has the role `article`. It is not a landmark, and how screen readers announce it varies. It has no visible style by default and no theme variables.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-article"><code>&lt;article&gt;</code></h3>
+
+It accepts only the global attributes. To name it, point `aria-labelledby` at its heading:
+
+```html
+<article aria-labelledby="note-title">
+  <h2 id="note-title">Heating schedule changed</h2>
+  <p><time datetime="2026-11-24">24 November 2026</time></p>
+  <p>The evening schedule now starts at 5pm.</p>
+</article>
+```
+
+**In a Home Assistant Markdown card.** The card allows `article`, but drops every attribute. The `id`, `class`, `style` and `aria-labelledby` are removed, so you cannot name an article there. Start it with a heading instead, or write the content without the element.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It tells software the content is self-contained.
+- It needs no integration and no styling.
+- It does not add a landmark, so it does not help people jump around the page.
+- Without a heading it has no name and little value.
+- In a Markdown card it cannot be labelled.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use an article for one idea that stands alone. Put the heading first, then a date if it matters, then short paragraphs. Do not use it for a part of a bigger whole (use `section`), for supporting remarks (use [aside](aside.html)) or as a decorative wrapper with no heading. For card structure, see [Cards](cards.html).
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: the heading and content belong together.
+- 2.4.6 Headings and Labels: the heading says what the article is about.
+- 4.1.2 Name, Role, Value: where `aria-labelledby` is allowed, it names the article.
+- 2.4.10 Section Headings (AAA): sections have headings.
+
+One idea, a heading first and short paragraphs keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### A self-contained help note
+
+A simulated help note with a heading, a date and a short body.
+
+<%= example('spec-article-note') %>

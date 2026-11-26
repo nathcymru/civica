@@ -1,0 +1,147 @@
+---
+title: "Color Picker"
+description: "Choose a colour or a colour temperature in words as well as by sight, using named colours, a slider or a hex code."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Color Picker specification, covering named colours, the colour wheel, RGB entry and colour temperature."
+ai_instructions: "Apply when a person chooses a colour. Offer named colours or a hex code and write the choice in words. The hue and saturation wheel (ha-hs-color-picker) has no keyboard or screen-reader support in this Home Assistant version; never offer it as the only way. ha-rgb-color-picker and ha-color-temp-picker are not names this version uses. Use the color_rgb selector for RGB and the color_temp selector or light-color-temp card feature for temperature. ui_color uses ha-color-picker. Do not claim named colours match Civica hex values, or any contrast."
+ai_related:
+  - path: "/components/sliders.html"
+    title: "Control Slider"
+    relationship: "Owns slider wording and the typed value beside it."
+  - path: "/home-assistant/lighting.html"
+    title: "Lighting capabilities and colour"
+    relationship: "Owns how light colour and temperature controls are offered."
+  - path: "/home-assistant/helpers-and-scalar-inputs.html"
+    title: "Helpers and scalar input controls"
+    relationship: "Owns colour and number inputs as helpers."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the checks to run before you publish."
+component:
+  parent: "Color Picker"
+  letter: "C"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: '<input type="color">'
+      origin: "HTML5"
+      anchor: "child-input-type-color"
+    - name: "ha-color-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-color-picker"
+    - name: "ha-hs-color-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-hs-color-picker"
+    - name: "ha-rgb-color-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-rgb-color-picker"
+    - name: "ha-color-temp-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-color-temp-picker"
+  tags:
+    - "input type color"
+    - "ha-color-picker"
+    - "ha-hs-color-picker"
+    - "ha-rgb-color-picker"
+    - "ha-color-temp-picker"
+---
+
+# Color Picker
+
+<h2 id="purpose">Purpose</h2>
+
+A colour picker lets a person choose a colour, such as a label colour or the colour of a light. Home Assistant has more than one way to do this, and they differ in how well they work without sight or a mouse. This page says which to offer.
+
+This page covers:
+
+- Color Picker
+  - `<input type="color">`
+  - `ha-color-picker`
+  - `ha-hs-color-picker`
+  - `ha-rgb-color-picker`
+  - `ha-color-temp-picker`
+
+<h2 id="anatomy">Anatomy</h2>
+
+1. A label that says what the colour is for.
+2. The control: a list of named colours, a slider, a colour wheel or a hex box.
+3. A written value for the choice, such as “Amber” or “Warm white, 2,700 K”.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-input-type-color"><code>&lt;input type="color"&gt;</code></h3>
+
+The browser’s own colour input. The value is a hex code such as `#ffbf47`, and it starts at `#000000`. It opens the device’s colour dialog, so its look and keyboard behaviour depend on the device. It needs a visible label. Offer a hex text box or named colours beside it.
+
+Home Assistant uses it inside the `color_rgb` selector, which stores red, green and blue values.
+
+<h3 id="child-ha-color-picker"><code>ha-color-picker</code></h3>
+
+A searchable list of named colours. Each row has a colour circle and a name, so colour is never the only cue. It offers primary, accent, red, pink, purple, blue, teal, green, amber, orange, grey, black, white and others, and a typed search can add a custom colour. It can also offer “None” and “State”.
+
+In YAML this is the `ui_color` selector:
+
+```yaml
+ui_color:
+  include_none: true
+  include_state: false
+  default_color: primary
+```
+
+Home Assistant uses it for label colours and icon colours. Named colours follow the theme’s colour variables, so describe the colour by its name, not by a hex value.
+
+<h3 id="child-ha-hs-color-picker"><code>ha-hs-color-picker</code></h3>
+
+A round hue and saturation wheel, drawn on a canvas. It is used in the light dialog. It is operated by dragging. It has no keyboard control and no name or role for a screen reader, so it cannot be used without a mouse or touch. It has no style keys.
+
+Never offer it as the only way. Offer named colours, a colour temperature slider, a brightness slider or a hex box as well.
+
+<h3 id="child-ha-rgb-color-picker"><code>ha-rgb-color-picker</code></h3>
+
+This Home Assistant version does not use the name `ha-rgb-color-picker`. RGB colour is chosen in two places instead. In the light dialog, the wheel above sits with sliders for white, cold white and warm white. In a form, the `color_rgb` selector shows the browser’s colour input.
+
+<h3 id="child-ha-color-temp-picker"><code>ha-color-temp-picker</code></h3>
+
+This Home Assistant version does not use the name `ha-color-temp-picker`. Colour temperature is a slider from warm to cool, in three places:
+
+- The light dialog has a slider.
+- The `color_temp` selector shows a labelled slider with a warm-to-cool gradient. It takes `unit` (`kelvin` or `mired`, mired by default), `min` and `max`. The default range is 153 to 500 mired.
+- The `light-color-temp` card feature adds the slider to a tile card.
+
+The gradient is drawn by Home Assistant. The theme cannot change it, and it does not promise to match a real lamp. Write the value in words, such as “Warm white, 2,700 K”.
+
+What Civica sets for these controls is general: the text colour, the outline colour and the focus ring (3px wide, offset 2px). It sets no key for pickers.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Named colours are the most accessible choice and need no sight of the exact shade.
+- The browser colour input depends on the device, and its dialog is not under your control.
+- The wheel fails keyboard and screen-reader use in this version.
+- There are no verified card-mod selectors for any of these.
+- The pickers appear in Home Assistant’s editors and dialogs. A dashboard author places only the `light-color-temp` card feature.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Name every colour in words. Show a preview with text, such as “Warm white, 2,700 K”. Do not require anyone to tell colours apart. Keep palettes short. Do not rely on dragging; a slider or a typed value is the alternative.
+
+Success criteria that apply:
+
+- 1.4.1 Use of Colour: every choice has a name.
+- 2.1.1 Keyboard, and 2.5.7 Dragging Movements: the wheel fails these without an alternative.
+- 4.1.2 Name, Role, Value: the wheel has no name or role.
+- 3.3.2 Labels or Instructions and 4.1.3 Status Messages.
+
+For the colour and light controls on a dashboard, see [Lighting capabilities and colour](../home-assistant/lighting.html) and [Helpers and scalar input controls](../home-assistant/helpers-and-scalar-inputs.html). Use [Sliders and precise values](sliders.html) for the slider. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-color-picker-light-colour') %>

@@ -1,75 +1,125 @@
 ---
-title: Breadcrumbs
-description: Breadcrumbs explain a page’s place in a hierarchy and provide routes to its parents.
-section: components
-group: Navigation
-source_url: https://service-manual.nhs.uk/design-system/components/breadcrumbs
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Breadcrumb"
+description: "Show where a page sits in a hierarchy and give a route back to each parent."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
 updates:
+  - date: "2026-11-25"
+    description: "Rewritten as the full Breadcrumb specification, with the Home Assistant position stated plainly and a new example for a trail that includes the current page."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Established the shared breadcrumb owner and explicit current-page variants, retaining the publishing examples.
-  - date: 2026-11-11
-    description: Corrected punctuation in the narrow-screen check.
-  - date: 2026-11-11
-    description: Added NHS-informed breadcrumbs guidance and 2 Home Assistant reference examples.
+  - date: "2026-11-11"
+    description: "Added the shared breadcrumb guidance and two examples."
+ai_instructions: "Apply when a deep hierarchy needs a trail of parent pages. Home Assistant has no breadcrumb element, so this is a Civica pattern built in a Markdown or custom card. Use one labelled navigation landmark and an ordered list of real parent links. Leave the current page out, or show it as plain text marked as the current page. Never link the current page to itself. Keep separators decorative. Do not pair a breadcrumb trail with a back link. Do not invent a hierarchy from entity names. Never claim measured contrast, target size or screen reader behaviour."
+ai_related:
+  - path: "/components/back-link.html"
+    title: "Back Link"
+    relationship: "Use a back link for a linear journey. Do not combine it with breadcrumbs."
+  - path: "/components/service-navigation.html"
+    title: "Service navigation"
+    relationship: "Owns the top-level navigation that breadcrumbs sit beneath."
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns navigation patterns across Civica."
+  - path: "/publishing/components/breadcrumbs.html"
+    title: "Breadcrumbs"
+    relationship: "Shows the trail in publishing templates."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the keyboard, 320 px and text-size checks."
+component:
+  parent: "Breadcrumb"
+  letter: "B"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Breadcrumb Pattern"
+      origin: "Civica"
+      anchor: "child-civica-breadcrumb-pattern"
+  tags:
+    - "breadcrumb"
+    - "nav"
 ---
 
-# Breadcrumbs
+# Breadcrumb
 
-Breadcrumbs explain a page’s place in a hierarchy and provide routes to its parents.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A breadcrumb trail lists the parents of the current page, from the top down, so people can see where they are and go up a level. It suits a deep hierarchy, such as a device inside a room inside a home.
 
-## Maintain one hierarchy contract
+Home Assistant has no breadcrumb element. Dashboards do not show one, and the closest native feature is the back arrow in a page header. This page describes a Civica pattern that you build yourself, for example in a Markdown card or a custom card.
 
-This page owns the shared breadcrumb behaviour. The [publishing breadcrumb examples](../publishing/components/breadcrumbs.html) retain their source context and the variant that includes the current page.
+This page covers:
 
-Use one labelled navigation landmark and an ordered parent trail. If the current page is omitted, its heading provides the current context. If it is included, use non-interactive text with `aria-current="page"`; do not link it back to itself. Both variants use actual parent destinations, wrap at narrow widths and keep decorative separators out of accessible names. A source-specific visual variant does not create a second hierarchy.
+- Breadcrumb
+  - Civica Breadcrumb Pattern
 
-## When to use it
+<h2 id="anatomy">Anatomy</h2>
 
-Use them on a multi-level reference site or administrative information page. The visible page heading identifies the current page; the trail can list its parents.
+1. A navigation area with the label “Breadcrumb”.
+2. An ordered list, one item for each parent, from the top level down.
+3. A link in each item, pointing to a real parent page.
+4. The current page, either left out or shown as plain text marked as the current page.
+5. Separators between items that are drawn for the eye only, so they are not read out as part of a link name.
 
-## When not to use it
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Do not use them for a linear setup journey or pair them with a back link. They show hierarchy, not a record of recently visited dashboards.
+<h3 id="child-civica-breadcrumb-pattern"><code>Civica Breadcrumb Pattern</code></h3>
 
-## Home Assistant adaptation
+There are two ways to treat the current page:
 
-Home Assistant’s sidebar and native navigation already supply much of this context. Add breadcrumbs only where a deeper hierarchy needs them, such as a device detail flow. Use real parent routes and preserve ordinary link behaviour; do not invent an extra hierarchy from entity identifiers.
+- **Left out.** The page heading names the current page, so the trail lists only its parents. This is the simpler choice.
+- **Shown as text.** The last item is plain text marked with `aria-current="page"`. It is never a link, because a link to the page you are already on does nothing useful.
 
-## Accessibility and behaviour
+Both ways use real parent destinations, wrap onto a new line when there is not enough width, and keep separators out of the names of the links.
 
-Use a labelled navigation landmark and an ordered list. Keep link text understandable out of context. The shared GOV.UK reference permits wrapping; a condensed mobile parent link requires its own tested implementation rather than silently removing destinations.
+Theme variables supply only the link colour and the text style: `link-color`, `primary-text-color`, `secondary-text-color` and the `ha-font-*` keys. There is no Home Assistant element to style, so card-mod has nothing to attach to. Build the trail from ordinary Markdown links:
 
-## Examples
+```yaml
+type: markdown
+content: |
+  [Home](/lovelace/home) / [Rooms](/lovelace/rooms) / Kitchen
+```
 
-### A device within a room
+This simple form is a starting point. It does not give you a labelled navigation area or an ordered list, which need your own markup or a custom card.
 
-The parent links lead to labelled example sections.
+<h2 id="limits">Advantages and limitations</h2>
 
-<%= example('nhs-breadcrumbs-device') %>
+- A trail shows the full route up in one place, so people do not need to press back several times.
+- It works with the page heading: the heading says where you are, the trail says what is above it.
+- It takes a little room at the top of a page and wraps onto several lines for long names.
+- Home Assistant does not draw it for you, and a theme alone cannot add it.
+- It shows hierarchy, not a history of dashboards people have visited.
 
-### A help topic within a guide
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-The current topic is named by the heading, rather than repeated as a link.
+Use a breadcrumb trail only where a hierarchy is deep enough to need it, such as a device detail page. Home Assistant’s sidebar already tells people which dashboard they are on, so do not add a trail to a top-level view.
 
-<%= example('nhs-breadcrumbs-guide') %>
+Do not use it for a step-by-step journey, and do not put it next to a back link. For a journey, use a [Back Link](back-link.html).
 
-## Check the implementation
+Use real parent routes. Do not invent a hierarchy from entity identifiers or names. Keep labels plain and the same as the headings of the pages they open. Keep to a few levels and put the trail in the same place on every page.
 
-Test long names, 320px width, increased text size and direct navigation into a child page. Ensure the current page heading and parent trail agree.
+Success criteria that apply:
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+- 1.3.1 Info and Relationships: use a labelled navigation area and an ordered list.
+- 2.4.4 Link Purpose (In Context): each link name makes sense on its own.
+- 1.4.10 Reflow and 1.4.4 Resize Text: the trail wraps and nothing is cut off.
+- 1.4.1 Use of Colour: do not rely on colour alone to show that an item is a link.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured.
+- 3.2.3 Consistent Navigation: put the trail in the same place on each page.
+- 2.4.8 Location (AAA) is helped by a trail.
 
-## Source and related guidance
+Check long names, 320 px width and larger text in light and dark modes. Measure contrast, link size and screen reader output in your own setup. See [Test the interface](../accessibility/testing.html).
 
-[NHS breadcrumbs](https://service-manual.nhs.uk/design-system/components/breadcrumbs) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+<h2 id="examples">Examples</h2>
 
-See also [navigation](navigation.html).
+<%= example('spec-breadcrumbs-device') %>
+
+<%= example('spec-breadcrumbs-guide') %>
+
+<%= example('spec-breadcrumbs-current') %>

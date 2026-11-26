@@ -1,0 +1,152 @@
+# Synthetic data. Simulated cards and notices; no live actions.
+examples:
+  spec-generic-picker-closed:
+    title: A form with a closed picker field
+    description: 'A stand-in for the closed picker field in a Home Assistant form: the label asks in terms of the task, the helper text says what the choice changes, and the chosen country sits in the field. Home Assistant draws its own field and its own searchable list, so the look differs. The field does nothing here and the open list is not shown.'
+    height: 440
+    html: '<article class="civica-card-demo" aria-labelledby="spec-gp-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-gp-title">Set up your home location</h2><div class="govuk-form-group"><span class="govuk-label" id="spec-gp-label">Country</span><div class="govuk-hint" id="spec-gp-hint">Home Assistant uses this to choose units and time zones.</div><div role="group" aria-labelledby="spec-gp-label" aria-describedby="spec-gp-hint" style="border-bottom:1px solid #0b0c0c;background:#fff;padding:8px 12px;display:flex;justify-content:space-between"><strong>United Kingdom</strong><span aria-hidden="true">&#9662;</span></div></div><p class="civica-card-demo__actions"><button type="button" class="govuk-button">Save</button></p></div></article>'
+  spec-conditional-card-frost:
+    title: A frost warning card that appears only when it is cold
+    description: 'A simulated dashboard view with a conditional card. The frost warning is the wrapped card and is shown here because its condition is met: the outside temperature is below 3 °C. When the temperature is 3 °C or above, the warning is removed and the Heating card moves up. Nothing here is live.'
+    height: 560
+    html: '<article class="civica-card-demo" aria-labelledby="spec-cond-heating"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-cond-heating">Heating</h2><p class="govuk-body">Living room target: <strong>20.5 °C</strong></p><p class="govuk-body">Outside: <strong>1.5 °C</strong></p></div></article><article class="civica-card-demo" aria-labelledby="spec-cond-frost"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-cond-frost">Frost warning</h2><p class="govuk-body">The outside temperature is below 3 °C. Check that the outside tap and pipes are protected.</p></div></article>'
+  spec-contents-list-guide:
+    title: A small Energy guide
+    description: The current topic and related destinations are visible.
+    height: 450
+    html: |
+      <nav class="civica-contents-list" aria-label="Pages in this guide">
+      <h2 class="govuk-heading-s">Energy guide</h2>
+      <ul class="govuk-list">
+      <li>
+      <span aria-current="page">Measurements</span>
+      </li>
+      <li>
+      <a class="govuk-link" href="#guide-comparisons">Comparisons</a>
+      </li>
+      <li>
+      <a class="govuk-link" href="#guide-missing">Missing readings</a>
+      </li>
+      </ul>
+      </nav>
+      <section id="guide-comparisons" tabindex="-1">
+      <h3 class="govuk-heading-s">Comparisons</h3>
+      <p class="govuk-body">Compare equivalent periods and show their original dates.</p>
+      </section>
+      <section id="guide-missing" tabindex="-1">
+      <h3 class="govuk-heading-s">Missing readings</h3>
+      <p class="govuk-body">Do not treat absent values as zero.</p>
+      </section>
+  spec-contents-list-in-page:
+    title: Sections within one article
+    description: This local variant names its in-page scope explicitly.
+    height: 420
+    html: |
+      <nav class="civica-contents-list" aria-label="On this page">
+      <h2 class="govuk-heading-s">On this page</h2>
+      <ul class="govuk-list">
+      <li>
+      <a class="govuk-link" href="#guide-labels">Room labels</a>
+      </li>
+      <li>
+      <a class="govuk-link" href="#guide-images">Room images</a>
+      </li>
+      </ul>
+      </nav>
+      <section id="guide-labels" tabindex="-1">
+      <h3 class="govuk-heading-s">Room labels</h3>
+      <p class="govuk-body">Choose names that the household recognises.</p>
+      </section>
+      <section id="guide-images" tabindex="-1">
+      <h3 class="govuk-heading-s">Room images</h3>
+      <p class="govuk-body">Use an image only when it helps identification.</p>
+      </section>
+  spec-circular-slider-thermostat:
+    title: A thermostat dial with its value in text
+    description: 'A stand-in for the circular slider inside a thermostat dialog: a 270 degree arc with the target beside it in words. Home Assistant draws its own dial and it can be dragged; this picture cannot. The target temperature is written as text because the arc alone is not enough.'
+    height: 520
+    html: <article class="civica-card-demo" aria-labelledby="spec-circ-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-circ-title">Living room thermostat</h2><div style="text-align:center"><svg role="img" aria-label="Dial showing a target of 20.5 degrees Celsius, about two thirds of the way round" width="220" height="220" viewBox="0 0 220 220"><path d="M 47 173 A 90 90 0 1 1 173 173" fill="none" stroke="#6f777b" stroke-opacity="0.3" stroke-width="24" stroke-linecap="round"></path><path d="M 47 173 A 90 90 0 1 1 168 38" fill="none" stroke="#1d70b8" stroke-width="24" stroke-linecap="round"></path><circle cx="168" cy="38" r="9" fill="#fff" stroke="#1d70b8"></circle></svg></div><p class="govuk-body" style="text-align:center"><strong>Target 20.5 °C</strong><br>Now 19.0 °C, heating</p></div></article>
+  spec-number-box-target:
+    title: Plus and minus buttons around a value
+    description: 'A stand-in for the number control in a card feature: a minus button, the value with its unit, and a plus button. In Home Assistant the value is the part a keyboard user reaches; the buttons are for touch and pointer. The buttons do nothing here.'
+    height: 330
+    html: <article class="civica-card-demo" aria-labelledby="spec-nb-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-nb-title">Bedroom thermostat</h2><p class="govuk-body" id="spec-nb-label">Target temperature</p><div style="display:flex;gap:4px;align-items:stretch;max-width:320px;background:#e8ecee;padding:4px"><button type="button" class="govuk-button govuk-button--secondary" style="margin:0;flex:0 0 56px" aria-label="Decrease target temperature">&minus;</button><div role="img" aria-labelledby="spec-nb-label" style="flex:1;text-align:center;align-self:center;font-weight:bold">18 °C</div><button type="button" class="govuk-button govuk-button--secondary" style="margin:0;flex:0 0 56px" aria-label="Increase target temperature">+</button></div></div></article>
+  spec-control-select-fan:
+    title: A fan speed picker, shown as buttons
+    description: 'A stand-in for the control select in a fan card: one row of options with the chosen one filled. The choice is written in words under the row, because the fill alone should not carry the meaning. Nothing here can be changed.'
+    height: 360
+    html: '<article class="civica-card-demo" aria-labelledby="spec-cs-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-cs-title">Bedroom fan</h2><div style="display:flex;gap:4px;max-width:360px" role="img" aria-label="Fan speed options: Low, Medium selected, High"><span style="flex:1;text-align:center;padding:10px 4px;background:#e8ecee">Low</span><span style="flex:1;text-align:center;padding:10px 4px;background:#1d70b8;color:#fff;font-weight:bold">Medium</span><span style="flex:1;text-align:center;padding:10px 4px;background:#e8ecee">High</span></div><p class="govuk-body govuk-!-margin-top-3">Speed: <strong>Medium</strong></p></div></article>'
+  spec-control-select-menu-mode:
+    title: A mode menu in a card feature
+    description: 'A stand-in for the closed select menu: a button that shows the label and the current value, with an arrow. The menu list is not shown. Nothing here can be changed.'
+    height: 300
+    html: <article class="civica-card-demo" aria-labelledby="spec-csm-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-csm-title">Living room heating</h2><div style="max-width:320px;background:#e8ecee;padding:6px 10px"><span style="display:block;font-size:14px">Mode</span><strong>Heat</strong><span aria-hidden="true" style="float:right">&#9662;</span></div></div></article>
+  spec-slider-brightness:
+    title: Brightness with an exact-value alternative
+    description: A lamp with a slider, an exact-value field and step buttons. They share one draft, and the last reported brightness stays separate.
+    height: 850
+    html: "<section aria-labelledby=\"slider-brightness-heading\">\n  <h2 class=\"govuk-heading-m\" id=\"slider-brightness-heading\">Reading lamp</h2>\n  <p class=\"govuk-body\">Last reported brightness: <strong>40%</strong>. Changing the draft does not change this reported value.</p>\n\n  <form data-demo-form data-civica-slider data-slider-min=\"1\" data-slider-max=\"100\" data-slider-step=\"1\" data-slider-unit=\"%\" data-slider-outcome=\"accepted\">\n    <fieldset class=\"govuk-fieldset\" aria-describedby=\"slider-brightness-hint\">\n      <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--s\">Choose a draft brightness</legend>\n      <p class=\"govuk-hint\" id=\"slider-brightness-hint\">1 to 100 per cent, in steps of 1.</p>\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label\" for=\"slider-brightness-range\">Brightness slider (per cent)</label>\n        <input class=\"civica-slider\" id=\"slider-brightness-range\" type=\"range\" min=\"1\" max=\"100\" step=\"1\" value=\"40\" aria-describedby=\"slider-brightness-hint slider-brightness-error\" data-slider-range>\n      </div>\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label\" for=\"slider-brightness-value\">Exact brightness (per cent)</label>\n        <input class=\"govuk-input govuk-input--width-5\" id=\"slider-brightness-value\" name=\"draft\" type=\"text\" inputmode=\"decimal\" value=\"40\" aria-describedby=\"slider-brightness-hint slider-brightness-error\" data-slider-value required>\n      </div>\n      <div class=\"civica-slider__steps\">\n        <button class=\"govuk-button govuk-button--secondary\" type=\"button\" data-slider-step=\"-1\">Decrease brightness by 1 per cent</button>\n        <button class=\"govuk-button govuk-button--secondary\" type=\"button\" data-slider-step=\"1\">Increase brightness by 1 per cent</button>\n      </div>\n      <p class=\"govuk-body\">Draft: <output for=\"slider-brightness-range slider-brightness-value\" data-slider-output aria-live=\"off\">40%</output></p>\n      <p class=\"govuk-error-message\" id=\"slider-brightness-error\" data-slider-error hidden></p>\n    </fieldset>\n    <button class=\"govuk-button\" type=\"submit\">Preview brightness request</button>\n    <p class=\"govuk-body\" role=\"status\" data-demo-status></p>\n  </form>\n  \n</section>"
+  spec-slider-temperature:
+    title: A decimal target temperature
+    description: A thermostat target in half-degree steps with exact entry.
+    height: 850
+    html: "<section aria-labelledby=\"slider-temperature-heading\">\n  <h2 class=\"govuk-heading-m\" id=\"slider-temperature-heading\">Living room thermostat</h2>\n  <p class=\"govuk-body\">Last reported target temperature: <strong>19.5 °C</strong>. Changing the draft does not change this reported value.</p>\n\n  <form data-demo-form data-civica-slider data-slider-min=\"16\" data-slider-max=\"28\" data-slider-step=\"0.5\" data-slider-unit=\"°C\" data-slider-outcome=\"accepted\">\n    <fieldset class=\"govuk-fieldset\" aria-describedby=\"slider-temperature-hint\">\n      <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--s\">Choose a draft target temperature</legend>\n      <p class=\"govuk-hint\" id=\"slider-temperature-hint\">16 to 28 degrees Celsius, in steps of 0.5.</p>\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label\" for=\"slider-temperature-range\">Target temperature slider (degrees Celsius)</label>\n        <input class=\"civica-slider\" id=\"slider-temperature-range\" type=\"range\" min=\"16\" max=\"28\" step=\"0.5\" value=\"20\" aria-describedby=\"slider-temperature-hint slider-temperature-error\" data-slider-range>\n      </div>\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label\" for=\"slider-temperature-value\">Exact target temperature (degrees Celsius)</label>\n        <input class=\"govuk-input govuk-input--width-5\" id=\"slider-temperature-value\" name=\"draft\" type=\"text\" inputmode=\"decimal\" value=\"20\" aria-describedby=\"slider-temperature-hint slider-temperature-error\" data-slider-value required>\n      </div>\n      <div class=\"civica-slider__steps\">\n        <button class=\"govuk-button govuk-button--secondary\" type=\"button\" data-slider-step=\"-1\">Decrease target temperature by 0.5 degrees Celsius</button>\n        <button class=\"govuk-button govuk-button--secondary\" type=\"button\" data-slider-step=\"1\">Increase target temperature by 0.5 degrees Celsius</button>\n      </div>\n      <p class=\"govuk-body\">Draft: <output for=\"slider-temperature-range slider-temperature-value\" data-slider-output aria-live=\"off\">20 °C</output></p>\n      <p class=\"govuk-error-message\" id=\"slider-temperature-error\" data-slider-error hidden></p>\n    </fieldset>\n    <button class=\"govuk-button\" type=\"submit\">Preview target temperature request</button>\n    <p class=\"govuk-body\" role=\"status\" data-demo-status></p>\n  </form>\n  \n</section>"
+  spec-slider-signed-offset:
+    title: A signed calibration draft
+    description: A display offset that can be negative or zero.
+    height: 850
+    html: "<section aria-labelledby=\"slider-signed-offset-heading\">\n  <h2 class=\"govuk-heading-m\" id=\"slider-signed-offset-heading\">Temperature display offset</h2>\n  <p class=\"govuk-body\">Last reported offset: <strong>-1 °C</strong>. Changing the draft does not change this reported value.</p>\n  <p class=\"govuk-body\">This draft adjusts an invented display offset, not a heating setpoint. Zero is a valid offset.</p>\n  <form data-demo-form data-civica-slider data-slider-min=\"-5\" data-slider-max=\"5\" data-slider-step=\"0.5\" data-slider-unit=\"°C\" data-slider-outcome=\"accepted\">\n    <fieldset class=\"govuk-fieldset\" aria-describedby=\"slider-signed-offset-hint\">\n      <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--s\">Choose a draft offset</legend>\n      <p class=\"govuk-hint\" id=\"slider-signed-offset-hint\">-5 to 5 degrees Celsius, in steps of 0.5.</p>\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label\" for=\"slider-signed-offset-range\">Offset slider (degrees Celsius)</label>\n        <input class=\"civica-slider\" id=\"slider-signed-offset-range\" type=\"range\" min=\"-5\" max=\"5\" step=\"0.5\" value=\"-1\" aria-describedby=\"slider-signed-offset-hint slider-signed-offset-error\" data-slider-range>\n      </div>\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label\" for=\"slider-signed-offset-value\">Exact offset (degrees Celsius)</label>\n        <input class=\"govuk-input govuk-input--width-5\" id=\"slider-signed-offset-value\" name=\"draft\" type=\"text\" value=\"-1\" aria-describedby=\"slider-signed-offset-hint slider-signed-offset-error\" data-slider-value required>\n      </div>\n      <div class=\"civica-slider__steps\">\n        <button class=\"govuk-button govuk-button--secondary\" type=\"button\" data-slider-step=\"-1\">Decrease offset by 0.5 degrees Celsius</button>\n        <button class=\"govuk-button govuk-button--secondary\" type=\"button\" data-slider-step=\"1\">Increase offset by 0.5 degrees Celsius</button>\n      </div>\n      <p class=\"govuk-body\">Draft: <output for=\"slider-signed-offset-range slider-signed-offset-value\" data-slider-output aria-live=\"off\">-1 °C</output></p>\n      <p class=\"govuk-error-message\" id=\"slider-signed-offset-error\" data-slider-error hidden></p>\n    </fieldset>\n    <button class=\"govuk-button\" type=\"submit\">Preview offset request</button>\n    <p class=\"govuk-body\" role=\"status\" data-demo-status></p>\n  </form>\n  \n</section>"
+  spec-slider-request-failed:
+    title: A failed request preserves the draft
+    description: After a failed request the earlier reported volume stays and the draft is kept for review.
+    height: 850
+    html: "<section aria-labelledby=\"slider-request-failed-heading\">\n  <h2 class=\"govuk-heading-m\" id=\"slider-request-failed-heading\">Study speaker</h2>\n  <p class=\"govuk-body\">Last reported volume: <strong>25%</strong>. Changing the draft does not change this reported value.</p>\n  <div class=\"govuk-inset-text\">Earlier example request failed. The last reported volume remains 25%. Review the retained 40% draft before trying this local preview again.</div>\n  <form data-demo-form data-civica-slider data-slider-min=\"0\" data-slider-max=\"100\" data-slider-step=\"5\" data-slider-unit=\"%\" data-slider-outcome=\"failed\">\n    <fieldset class=\"govuk-fieldset\" aria-describedby=\"slider-request-failed-hint\">\n      <legend class=\"govuk-fieldset__legend govuk-fieldset__legend--s\">Choose a draft volume</legend>\n      <p class=\"govuk-hint\" id=\"slider-request-failed-hint\">0 to 100 per cent, in steps of 5.</p>\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label\" for=\"slider-request-failed-range\">Volume slider (per cent)</label>\n        <input class=\"civica-slider\" id=\"slider-request-failed-range\" type=\"range\" min=\"0\" max=\"100\" step=\"5\" value=\"40\" aria-describedby=\"slider-request-failed-hint slider-request-failed-error\" data-slider-range>\n      </div>\n      <div class=\"govuk-form-group\">\n        <label class=\"govuk-label\" for=\"slider-request-failed-value\">Exact volume (per cent)</label>\n        <input class=\"govuk-input govuk-input--width-5\" id=\"slider-request-failed-value\" name=\"draft\" type=\"text\" inputmode=\"decimal\" value=\"40\" aria-describedby=\"slider-request-failed-hint slider-request-failed-error\" data-slider-value required>\n      </div>\n      <div class=\"civica-slider__steps\">\n        <button class=\"govuk-button govuk-button--secondary\" type=\"button\" data-slider-step=\"-1\">Decrease volume by 5 per cent</button>\n        <button class=\"govuk-button govuk-button--secondary\" type=\"button\" data-slider-step=\"1\">Increase volume by 5 per cent</button>\n      </div>\n      <p class=\"govuk-body\">Draft: <output for=\"slider-request-failed-range slider-request-failed-value\" data-slider-output aria-live=\"off\">40%</output></p>\n      <p class=\"govuk-error-message\" id=\"slider-request-failed-error\" data-slider-error hidden></p>\n    </fieldset>\n    <button class=\"govuk-button\" type=\"submit\">Preview volume request</button>\n    <p class=\"govuk-body\" role=\"status\" data-demo-status></p>\n  </form>\n  \n</section>"
+  spec-slider-unavailable:
+    title: Unavailable device without a fabricated numeric reading
+    description: When no value is available the card shows the reason instead of a slider position.
+    height: 550
+    html: |-
+      <section aria-labelledby="slider-unavailable-heading">
+        <h2 class="govuk-heading-m" id="slider-unavailable-heading">Bedroom speaker</h2>
+        <p class="govuk-body"><strong>Volume unavailable</strong></p>
+        <p class="govuk-body" id="slider-unavailable-reason">This invented device is disconnected. No current volume is available, so there is no slider position to display.</p>
+        <button class="govuk-button" type="button" disabled aria-describedby="slider-unavailable-reason">Change volume</button>
+        <details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Connection details</span></summary><div class="govuk-details__text"><p>Check the device connection, then try again.</p><p>Unavailable is not zero and it is not muted.</p></div></details>
+      </section>
+  spec-cookie-essential:
+    title: An essential-only cookie notice
+    description: The notice this site shows. Selecting Hide this notice here hides it for this view only.
+    html: |-
+      <section class="govuk-cookie-banner c-site-notice" data-site-notice="example" data-docs-home="../index.html" data-nosnippet role="region" aria-labelledby="site-notice-heading">
+        <div class="govuk-cookie-banner__message c-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h2 id="site-notice-heading" class="govuk-cookie-banner__heading govuk-heading-m">Cookies on Civica</h2>
+              <div class="govuk-cookie-banner__content">
+                <p class="govuk-body">We respect your privacy and only use essential cookies to make this site work—never for tracking or advertising.</p>
+              </div>
+            </div>
+          </div>
+          <div class="govuk-button-group">
+            <button type="button" class="govuk-button" data-site-notice-dismiss hidden>Hide this notice</button>
+            <a class="govuk-link" data-site-cookies href="../community/cookies.html">Learn more about cookies</a>
+          </div>
+        </div>
+      </section>
+      <p class="govuk-body c-container c-site-notice-status" data-site-notice-status role="status" tabindex="-1" hidden></p>
+    height: 490
+  spec-cookie-choice:
+    title: Optional measurement choice
+    html: <section class="govuk-cookie-banner" aria-label="Optional measurement choice"><h2 class="govuk-heading-m">Optional usage measurement</h2><p class="govuk-body">This service would like to measure how often each page is used, to improve it. This is optional.</p><button type="button" class="govuk-button " data-demo-message="You chose to accept optional measurement.">Accept optional measurement</button> <button type="button" class="govuk-button " data-demo-message="You chose to reject optional measurement.">Reject optional measurement</button><p role="status" data-demo-status></p></section>
+    height: 300
+    description: Accept and reject have the same weight and neither is chosen in advance.
+  spec-cookie-confirmation:
+    title: Choice confirmation
+    html: <h2 class="govuk-heading-m">Your choice has been saved</h2><p class="govuk-body">Optional measurement is off. This message appears once your choice has been saved.</p><details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">What this choice means</span></summary><div class="govuk-details__text">Storage the service needs to work stays on. You can change optional choices in the privacy settings.</div></details>
+    height: 300
+    description: A confirmation that appears only after a choice is recorded, with what it means.
+  spec-copy-field-url:
+    title: A read-only address with a Copy button
+    description: 'A stand-in for the copy field on the Home Assistant network settings page: a read-only address and a Copy button beside it. In Home Assistant a short message, Copied to clipboard, appears briefly after copying. Nothing is copied here.'
+    height: 380
+    html: <article class="civica-card-demo" aria-labelledby="spec-copy-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-copy-title">Remote access</h2><div class="govuk-form-group"><label class="govuk-label" for="spec-copy-url">Your remote address</label><div style="display:flex;gap:8px;align-items:stretch;flex-wrap:wrap"><input class="govuk-input" id="spec-copy-url" type="text" readonly value="https://example.ui.nabu.casa" style="flex:1;min-width:200px"><button type="button" class="govuk-button govuk-button--secondary" style="margin:0">Copy</button></div></div></div></article>

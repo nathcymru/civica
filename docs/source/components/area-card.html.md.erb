@@ -1,0 +1,135 @@
+---
+title: "Area Card"
+description: "Show one room or area with its picture or icon, readings and alerts, and link to its page."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Area Card specification: its display types, what Civica changes and what stays as Home Assistant draws it."
+ai_instructions: "Apply when a dashboard shows one area or room as a card (type: area). Use one area per card, a plain area name and readings with units. State every alert in words as well as the alert icon, because the icon colour is fixed by Home Assistant. Say that the Civica focus ring on the card needs the card-mod integration. Quote a contrast ratio for the alert icon only as calculated from the theme colours, as this page does, never as measured on a rendered dashboard."
+ai_related:
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns card structure, headings and cards with images."
+  - path: "/components/images.html"
+    title: "Images"
+    relationship: "Owns text alternatives and image rules."
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns how cards are grouped into views."
+  - path: "/home-assistant/target-pickers.html"
+    title: "Entity, device and area pickers"
+    relationship: "Owns what an area means when people choose one."
+component:
+  parent: "Area Card"
+  letter: "A"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-area-card"
+      origin: "Lovelace"
+      anchor: "child-hui-area-card"
+  tags:
+    - "hui-area-card"
+---
+
+# Area Card
+
+<h2 id="purpose">Purpose</h2>
+
+An area card shows one room or area, such as “Kitchen”, as a single card. It can show the area’s picture or icon, short readings such as temperature and humidity, and an alert icon when something needs attention. Use it to give people a way into a room from a dashboard overview.
+
+This page owns the Home Assistant area card (`type: area`). For how cards are built and grouped, see [Cards](cards.html) and [Dashboard composition](../home-assistant/dashboard-composition.html).
+
+This page covers:
+
+- Area Card
+  - `hui-area-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+- An optional picture, a camera view or the area’s icon. In every type except compact, the picture acts as a button when you set `image_tap_action` or `tap_action`.
+- Alert icons on the picture, one for each active alert such as motion or moisture. The compact type has no picture: it shows a single alert badge on the tile icon instead.
+- A tile with the area name, readings joined by a dot, and a round icon.
+- Optional card features, below the tile or beside it.
+
+If the area has no icon, Home Assistant draws a default texture icon.
+
+<figure class="c-project-figure">
+  <img src="<%= docs_path('/images/component-area-card-anatomy.svg') %>" width="960" height="560" alt="" loading="lazy" decoding="async">
+  <figcaption>The parts of an area card, numbered from the top: 1 the picture, 2 the alert icons on the picture, 3 the tile with a round icon, the name and the readings, and 4 the card features. The compact card on the right has no picture, and 5 marks its single alert badge. The drawing is not interactive.</figcaption>
+</figure>
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-area-card"><code>hui-area-card</code></h3>
+
+A Lovelace card. You must set `area`. Other keys:
+
+| Key | Meaning |
+| --- | --- |
+| `name` | Replaces the area name |
+| `display_type` | `picture` (default), `compact`, `icon` or `camera` |
+| `color` | Accent colour for the tile icon |
+| `sensor_classes` | Device classes shown as readings, for example temperature and humidity |
+| `alert_classes` | Binary sensor device classes shown as alert icons when active, for example motion and moisture |
+| `features` and `features_position` | Extra controls, below or inline |
+| `exclude_entities` | Entities to leave out |
+| `vertical` | Stacks a compact card; honoured only for the compact type |
+| `aspect_ratio` | Picture shape; default 16:9 |
+| `tap_action` | What a tap does; the default is nothing |
+| `image_tap_action` | What a tap on the picture does; a camera view opens more information by default |
+
+The legacy `navigation_path` key still works but is deprecated. Use `tap_action` with `navigate`.
+
+**What the Civica theme sets.** The card surface uses the Civica square corners, 1 pixel border, no shadow, white card background in light mode and the dark surface in dark mode. The tile icon takes `state-icon-color`: ink in light mode, white in dark mode. Text uses `primary-text-color` and `secondary-text-color`.
+
+**What stays as Home Assistant draws it.**
+
+- The alert badge colour comes from `orange-color`, but the alert icon inside it is always white. Calculated from the theme colours, white on the light badge colour is about 5.5 to 1, and white on the dark badge colour is about 1.5 to 1. Do not rely on the alert icon alone: say the alert in words as well, for example in a reading or a neighbouring card.
+- The tile icon stays round, because the theme does not set its radius.
+- The text size and weight in the tile are Home Assistant’s defaults.
+- Long names are cut off after two lines only when the card is compact and vertical, sits in a grid layout and its `grid_options` rows are not set to auto. Otherwise names wrap.
+
+**What needs card-mod.** The Civica yellow focus ring around a card with a tap action comes from the theme’s card-mod settings. It needs the card-mod integration. The focus ring on the picture uses the primary colour in Home Assistant’s own style. Changing the picture focus ring needs card-mod too.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One native card gives a room, its readings and its alerts in one place.
+- It works with a keyboard and needs no extra module.
+- A picture takes space, and a long row of area cards can bury the page.
+- Alerts are icons, so they need words nearby.
+- Alert icon colour and tile shape cannot be changed with the theme.
+- A picture needs a text alternative that suits the dashboard. Check how the picture is announced on your dashboard, and say what the picture shows in the card’s text.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use one area per card and the plain name people use at home. Show readings with units. Show a reading or alert as visible words, not as an icon or colour alone. Pick the compact type when you have many areas and the picture adds nothing. Keep the tap action to navigation, so a tap on a room never operates a device. See [Cards](cards.html) for heading and image rules and [Images](images.html) for text alternatives.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: the picture or icon needs a purpose and, where useful, a text alternative.
+- 1.3.1 Info and Relationships: the name, readings and alerts belong together.
+- 1.4.1 Use of Colour: an alert is never shown by colour alone.
+- 1.4.3 Contrast (Minimum) and 1.4.11 Non-text Contrast: check text and the alert icon on your own dashboard.
+- 1.4.4 Resize Text, 1.4.10 Reflow and 1.4.12 Text Spacing: names must still read, and long names can be cut off in a compact vertical grid card.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): the focus cue must be visible. Check the focus cue on your dashboard.
+- 2.5.8 Target Size (Minimum): the tappable area is the whole card or picture.
+- 4.1.2 Name, Role, Value: the picture is a button only when the card or the picture has an action, and never in the compact type.
+
+One area, a clear name and readings that say what they measure keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### A compact area card
+
+A simulated compact card in the style of the tile: a round icon, the name, readings with units and an alert written in words. It does nothing when tapped.
+
+<%= example('spec-area-card-kitchen') %>

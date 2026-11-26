@@ -1,58 +1,135 @@
 ---
-title: "Cookie banner"
-description: "Explain storage clearly and distinguish an essential notice from optional consent."
-section: components
-group: Content presentation
-status: reference
-published_on: 2026-11-11
-updated_on: 2026-11-13
+title: "Cookie Banner"
+description: "Explain what a site stores and why, and offer a choice only where something is optional."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
-  - date: 2026-11-13
-    description: "Added the deployed essential-only notice, its shared example, cookie lifetime and failure behaviour."
-  - date: 2026-11-11
+  - date: "2026-11-26"
+    description: "Rewritten as the full Cookie Banner specification, with anatomy, variants, limits and accessibility."
+  - date: "2026-11-13"
+    description: "Added the deployed essential-only notice, its example, cookie lifetime and failure behaviour."
+  - date: "2026-11-11"
     description: "Added the Civica guidance, contextual examples and implementation boundaries."
+ai_instructions: "Apply when a public site or page stores something in the browser. Explain what is stored and why. Offer a choice only for optional purposes, with accept and reject of equal weight and nothing preselected. Keep the banner in the page flow, not as an overlay. Honour a rejection before loading optional code. Home Assistant has no cookie banner and the Civica theme does not manage cookie consent or sign-in. The Civica documentation site uses an essential-only notice that sets one cookie, civica_docs_notice, and has no analytics. Do not claim legal compliance."
+ai_related:
+  - path: "/community/cookies.html"
+    title: "Cookies"
+    relationship: "Owns what this documentation site stores and why."
+  - path: "/components/dialogs.html"
+    title: "Dialogs"
+    relationship: "Owns decisions that need focus; a cookie notice is not a dialog."
+  - path: "/components/text-input.html"
+    title: "Text input"
+    relationship: "Owns labels and hints for any fields in a privacy form."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test keyboard, 320 px and storage failure."
+component:
+  parent: "Cookie Banner"
+  letter: "C"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Cookie Banner Pattern"
+      origin: "Civica"
+      anchor: "child-civica-cookie-banner-pattern"
+  tags:
+    - "cookie banner"
+    - "privacy"
 ---
 
-# Cookie banner
+# Cookie Banner
 
-Explain what the site stores and why. Offer a choice only where there is an optional purpose.
+<h2 id="purpose">Purpose</h2>
 
-## When to use
+A cookie banner tells people what a site stores in their browser and why. It offers a choice only where something is optional, such as usage measurement. Essential storage, like keeping you signed in, needs an explanation but no choice.
 
-First establish what the application actually stores and why. Distinguish essential sign-in or security state from optional measurement. A banner cannot make an inaccurate description acceptable. Do not add an empty consent ritual to every local dashboard.
+First establish what the site really stores. A banner cannot make an inaccurate description acceptable, and a local dashboard that stores nothing optional does not need one.
 
-This documentation site uses the essential-only variant below. Hiding it acknowledges the notice. It does not give consent to analytics, because the site uses none. GOV.UK does not require a cookie banner for essential cookies alone, so this notice is a courtesy that links to the [Cookies page](../community/cookies.html).
+Home Assistant has no cookie banner, and the Civica theme does not manage cookie consent, sign-in or telemetry. This is a Civica pattern for a public page, such as a documentation site or a shared status page.
 
-## Essential-only site notice
+This page covers:
 
-<%= example('core-cookie-essential') %>
+- Cookie Banner
+  - Civica Cookie Banner Pattern
 
-The deployed notice and this example share one markup record. The site saves a cookie only when you select **Hide this notice**. The example hides for the current preview only and never saves a cookie.
+<h2 id="anatomy">Anatomy</h2>
 
-The `civica_docs_notice` cookie holds the value `v1` for up to one year. It is limited to this documentation site's path, uses `SameSite=Lax` and is marked `Secure` on HTTPS. It contains no account or household information. Clearing it makes the notice appear again. A changed notice version can require a new acknowledgement.
+- A region with a heading, such as “Cookies on Civica”.
+- A short statement of what is stored and why, in plain words.
+- A button to hide the notice, or accept and reject buttons where something is optional.
+- A link to the full cookies page.
+- After a choice, a short confirmation, and focus moved to the main content.
 
-After dismissal, keyboard focus moves to the main content. If storage is blocked, the notice hides for this page and explains that it may appear again. With JavaScript off, the notice remains readable and the dismiss button stays hidden. The footer links and the [Cookies page](../community/cookies.html) remain available in every case.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-The following optional-storage examples describe a different service. They do not set cookies, enable analytics or change Home Assistant’s storage.
+<h3 id="child-civica-cookie-banner-pattern"><code>Civica Cookie Banner Pattern</code></h3>
 
-## Offer equally clear choices
+Two forms:
 
-<%= example('core-cookie-choice') %>
+- **Essential only.** One statement, a Hide this notice button and a link to the cookies page. Hiding it acknowledges the notice and does not give consent, because nothing optional is used.
+- **Optional purpose.** A statement of each optional purpose, and Accept and Reject buttons of equal weight. Nothing is preselected and hiding the banner is never treated as consent.
 
-## Confirm a recorded choice
+How this site’s notice works:
 
-<%= example('core-cookie-confirmation') %>
+- Selecting **Hide this notice** saves one cookie, `civica_docs_notice`, with the value `v1`.
+- It lasts up to one year, applies only to this site’s path, uses `SameSite=Lax`, and is marked `Secure` on HTTPS.
+- It holds no account or household information. Clearing it shows the notice again, and a new version of the notice asks again.
+- After hiding, keyboard focus moves to the main content.
+- If the browser blocks storage, the notice hides for this page and says it may appear again.
+- With scripts off, the notice stays readable and the Hide button stays hidden. The footer links and the [Cookies page](../community/cookies.html) are always available.
 
-## Behaviour and content
+The pattern has no Home Assistant theme variables. The text takes the page’s colours.
 
-State the purpose of each optional category in plain language. Accept and reject must have equivalent prominence. Provide a durable route back to preferences, and honour a rejection before loading optional code. In a real implementation, confirmation follows a successful save; failures leave the choice available with an explanation.
+If you need something similar inside Home Assistant, use a Markdown card on a separate public page with a link to your privacy information. Home Assistant has no consent mechanism.
 
-Keep the banner in document flow so it does not cover focused content. Do not use a preselected checkbox or a dismiss action as implied consent. Document storage lifetime and how the preference works across browsers using verified service facts.
+<h2 id="limits">Advantages and limitations</h2>
 
-## Accessibility and testing
+- It makes storage visible and gives people a route to the full explanation.
+- It cannot enforce a choice. Your site must not load optional code until someone accepts.
+- It is not legal advice. Check what your own service must say.
+- It is only as honest as its statement. Keep it in step with what the site stores.
 
-Check logical reading order, meaningful control labels and keyboard reachability. Test reject, accept, revisiting, changing a preference, unavailable storage and JavaScript failure. Inspect actual network and storage behaviour; the visual example alone cannot verify it.
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-## Home Assistant boundary and source
+- State the purpose of each optional category in plain language.
+- Give Accept and Reject equal prominence.
+- Do not preselect a checkbox or treat dismissal as consent.
+- Keep the banner in the flow of the page, so it does not cover focused content.
+- Honour a rejection before loading optional code, and give a lasting route back to change the choice.
+- Confirm a choice only after it is saved. If saving fails, keep the choice available and explain.
+- Say how long a choice lasts, using facts from your own service.
 
-The theme does not manage authentication, telemetry or cookie consent. Preserve native Home Assistant preferences. Consult the [GOV.UK Cookie banner guidance](https://design-system.service.gov.uk/components/cookie-banner/) when building a separate service, and review that service’s privacy requirements before connecting this reference.
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 2.4.3 Focus Order: a labelled region in a sensible reading order.
+- 2.1.1 Keyboard and 2.4.7 Focus Visible: every button is reachable with a visible focus.
+- 2.4.11 Focus Not Obscured (Minimum): the banner is in the flow, not an overlay.
+- 1.4.10 Reflow: it works at 320 CSS pixels.
+- 3.2.1 On Focus and 3.2.2 On Input: nothing happens until a button is used.
+- 4.1.3 Status Messages: the confirmation is a status message.
+
+Test reject, accept, coming back later, changing a choice, blocked storage and scripts off. Check what is really stored and sent in your browser’s tools; a picture cannot show it.
+
+<h2 id="examples">Examples</h2>
+
+### The essential-only site notice
+
+Selecting Hide this notice hides it for this view only.
+
+<%= example('spec-cookie-essential') %>
+
+### Offer equally clear choices
+
+For a different service that has an optional purpose. Neither button is chosen in advance.
+
+<%= example('spec-cookie-choice') %>
+
+### Confirm a recorded choice
+
+<%= example('spec-cookie-confirmation') %>

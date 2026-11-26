@@ -1,0 +1,119 @@
+---
+title: "Category Picker"
+description: "Let people choose one category for an automation, script or scene, and add a new one when needed."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Category Picker specification: the single-category picker, what it does with a new category and why there is no multiple-category picker."
+ai_instructions: "Apply when a form asks which category an item belongs to. Home Assistant offers a single-category picker only (ha-category-picker); there is no ha-categories-picker. An item has one category in each list. For several tags on one item, use labels. A category is not a label, an area or a permission. Say what Add new category does. Do not claim keyboard roles beyond those listed on this page."
+ai_related:
+  - path: "/components/area-picker.html"
+    title: "Area Picker"
+    relationship: "Owns the matching picker for areas."
+  - path: "/home-assistant/registries-and-bulk-actions.html"
+    title: "Registry tables and bulk actions"
+    relationship: "Owns how areas, floors, labels and categories are organised."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface for forms shown on dashboards."
+component:
+  parent: "Category Picker"
+  letter: "C"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-category-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-category-picker"
+    - name: "ha-categories-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-categories-picker"
+  tags:
+    - "ha-category-picker"
+    - "ha-categories-picker"
+    - "category"
+
+---
+
+# Category Picker
+
+<h2 id="purpose">Purpose</h2>
+
+The category picker lets someone file an automation, script or scene under one category, such as “Heating”, so a long list is easier to scan. It appears when you save one of those items and in the assign-category dialog.
+
+This page owns the picker. For areas see [Area Picker](area-picker.html), and for how categories relate to areas, floors and labels see [Registry tables and bulk actions](../home-assistant/registries-and-bulk-actions.html).
+
+This page covers:
+
+- Category Picker
+  - `ha-category-picker`
+  - `ha-categories-picker`, which this Home Assistant version does not use; see below
+
+<h2 id="anatomy">Anatomy</h2>
+
+1. A label, and optional helper text beneath it.
+2. A field showing the chosen category, or a placeholder.
+3. A list of categories that opens from the field, with a search box. Each category shows a tag icon or its own icon and its name.
+4. An “Add new category…” row at the end of the list. When what someone types matches no category, the row says what will be created.
+
+If the saved value is not a category in this list, the field shows the stored identifier instead of a name.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-category-picker"><code>ha-category-picker</code></h3>
+
+A form field that chooses one category for one list, called its scope, such as automations. Dashboard authors cannot place it on a card, because it is part of Home Assistant’s own forms.
+
+Settings a form can give it:
+
+- `scope`: the list the categories belong to, such as automation.
+- `label`, `helper` and `placeholder`.
+- `value`: the chosen category.
+- `no-add`: hides “Add new category…”.
+- `disabled` and `required`.
+
+Choosing a category sends a change with the new value, or nothing when it is cleared. Choosing “Add new category…” opens a dialog to name the category and, optionally, give it an icon.
+
+**What the Civica theme sets.** The field takes the theme’s form colours: white (or the dark surface) fill, a hover fill, dark underline and text, a square 2 pixel border and the Civica focus colour. Corners are square.
+
+**What stays as Home Assistant draws it.** The layout of the open list, the tag icon and the add row have no theme setting. Keep Home Assistant’s own labels for them.
+
+<h3 id="child-ha-categories-picker"><code>ha-categories-picker</code></h3>
+
+This Home Assistant version has no element called `ha-categories-picker`, and nothing that picks several categories. The nearest real behaviour is that each item has exactly one category in each list.
+
+To attach several organising tags to one item, use labels. Home Assistant has a multiple-label picker for that, which takes a list of labels. A category is not a label, an area or a permission.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A picker keeps categories consistent, because people choose from the existing list.
+- Someone can add a category without leaving the form.
+- Only one category fits each item, so it cannot show every theme an item has.
+- The same name is a separate category in each list.
+- Test the open list’s keyboard behaviour and focus return in your own dashboard.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Ask in terms of the task, for example “Category”, and say in the helper text that a category groups items in this list and that an item has one. Show the current value, and let people clear it. Say what “Add new category” does before someone chooses it. Use plain category names that people use at home, such as “Heating” or “Lighting”. See [Area Picker](area-picker.html) for the matching pattern.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 3.3.2 Labels or Instructions: the field has a visible label.
+- 1.4.1 Use of Colour: the tag icon sits beside the name, so the name carries the meaning.
+- 2.1.1 Keyboard and 2.4.3 Focus Order: check the open list and focus return on your own system.
+- 3.3.1 Error Identification and 3.3.3 Error Suggestion: an invalid field can show an error message.
+- 3.3.7 Redundant Entry: show the saved category so people do not choose it again.
+
+<h2 id="examples">Examples</h2>
+
+### A form that asks which category an automation belongs to
+
+A simulated stand-in for the closed picker. The open list is not shown and nothing can be changed.
+
+<%= example('spec-category-picker-automation') %>

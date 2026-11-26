@@ -1,0 +1,103 @@
+---
+title: "Aside"
+description: "Mark up supporting content that people can skip without losing the main message."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Aside specification: what belongs beside the main content, what does not and what Home Assistant lets you write."
+ai_instructions: "Apply when adding supporting remarks that can be skipped without losing the main message. Never put required instructions, warnings or errors in an aside. Give it a heading. If it is used as a landmark, name it with aria-label or aria-labelledby. In a Home Assistant markdown card aside is allowed only without attributes, so it cannot be named. Place it after the main content in the source so it stacks below on a narrow screen. Home Assistant has no aside component."
+ai_related:
+  - path: "/components/inset-text.html"
+    title: "Inset text"
+    relationship: "Use to set a short passage apart within the main text."
+  - path: "/components/alert-and-tip-callout.html"
+    title: "Alert & Tip Callout"
+    relationship: "Use for content people must read."
+  - path: "/components/warning-callout.html"
+    title: "Warning callout"
+    relationship: "Never put a warning in an aside."
+  - path: "/components/article.html"
+    title: "Article"
+    relationship: "Use for self-contained content."
+component:
+  parent: "Aside"
+  letter: "A"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<aside>"
+      origin: "HTML5"
+      anchor: "child-aside"
+  tags:
+    - "aside"
+---
+
+# Aside
+
+<h2 id="purpose">Purpose</h2>
+
+The HTML `aside` element holds content that relates to the main content but is not part of its main point: background, a related topic or a short note. People should be able to skip it and still do what they came to do.
+
+This page owns the `aside` element. Home Assistant has no aside component. For content people must read, use an [alert](alert-and-tip-callout.html) or a [warning callout](warning-callout.html). For a short passage set apart inside the text, see [Inset text](inset-text.html).
+
+This page covers:
+
+- Aside
+  - `<aside>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+An aside holds ordinary content, starting with a heading that says what it relates to, such as “About this setting”. It sits beside or after the main content.
+
+Its role depends on where it is. Browsers treat it as a complementary landmark when it is not inside another section, and may treat it as a plain block when it is inside one and has no name. Do not assume it is always a landmark. It has no theme variables.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-aside"><code>&lt;aside&gt;</code></h3>
+
+It accepts only the global attributes. When you use it as a landmark, name it:
+
+```html
+<aside aria-labelledby="about-title">
+  <h2 id="about-title">About this setting</h2>
+  <p>The hot water schedule only changes when the boiler is on.</p>
+</aside>
+```
+
+**In a Home Assistant Markdown card.** The card allows `aside`, but drops every attribute, so an `aria-label`, `aria-labelledby` or `id` is removed. You cannot name an aside there. Start it with a heading and keep it short.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- It marks supporting content, so software and people can skip it.
+- It needs no integration.
+- Different browsers and screen readers treat it differently, so do not rely on it for navigation.
+- In a Markdown card it cannot be named.
+- It is easy to overuse: anything people must read is not an aside.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Keep an aside short and say what it relates to. Never put a required instruction, a warning, an error or a live device state in it. Put it after the main content in the source order, so on a narrow screen (320 CSS pixels) it stacks below instead of coming first. Beside the content on a wide screen it needs ordinary layout styles.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 1.3.2 Meaningful Sequence: the aside follows the content it relates to.
+- 2.4.6 Headings and Labels: the heading says what it is about.
+- 2.4.1 Bypass Blocks: a named landmark can help, but it is not guaranteed.
+- 4.1.2 Name, Role, Value: name it when you use it as a landmark.
+- 1.3.6 Identify Purpose (AAA).
+
+Short supporting text with a clear heading keeps the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### A related note beside a schedule
+
+A simulated schedule card with a short “About this setting” note that people can skip.
+
+<%= example('spec-aside-schedule') %>

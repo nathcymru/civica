@@ -1,65 +1,103 @@
 ---
-title: "Back link"
-description: "A back link returns to the previous step of a task in the state the user left it."
+title: "Back Link"
+description: "Return to the previous step of a task in the state the person left it."
 section: "components"
-group: "Navigation"
-source_url: "https://service-manual.nhs.uk/design-system/components/back-link"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added NHS-informed back link guidance and 2 Home Assistant reference examples."
+  - date: "2026-11-25"
+    description: "Rewrote the Back Link specification: when to use it, how it differs from the arrow in the Home Assistant header, and what to check."
+  - date: "2026-11-11"
+    description: "First published, with two examples."
+ai_instructions: "Apply when a multi-step task lets people return to the step before. Use a real link with a specific label such as Back to room selection, placed before the main content. Keep non-secret answers when someone goes back. Do not use it on every dashboard card, next to breadcrumbs, or as a way to save or change state. Home Assistant has its own back arrow in its headers (ha-icon-button-arrow-prev); it is an icon button, not a text link, and Civica does not restyle it. Do not claim a focus colour contrast or a target size."
+ai_related:
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns moving between pages."
+  - path: "/components/breadcrumbs.html"
+    title: "Breadcrumb"
+    relationship: "Use instead of a back link to show where a page sits."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the accessibility checks to run on a rendered page."
+component:
+  parent: "Back Link"
+  letter: "B"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Back Link Pattern"
+      origin: "Civica"
+      anchor: "child-civica-back-link-pattern"
+  tags:
+    - "back-link"
+    - "ha-icon-button-arrow-prev"
 ---
 
-# Back link
+# Back Link
 
-A back link returns to the previous step of a task in the state the user left it.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A back link takes someone to the previous step of a task, with the answers they gave still in place. It suits a multi-step setup or form where changing an earlier answer is useful.
 
-## When to use it
+This page covers:
 
-Use it in a multi-step setup or form when returning to change an answer is useful. Keep the destination predictable and preserve non-secret answers.
+- Back Link
+  - Civica Back Link Pattern
 
-## When not to use it
+<h2 id="anatomy">Anatomy</h2>
 
-Do not add a back link to every dashboard card, use it alongside breadcrumbs, or treat browser history as a guaranteed parent route. A deep link may have no meaningful in-app previous page.
+A back link is one line of link text with a small arrow before it. It sits above the page heading, after any page header and before the main content.
 
-## Home Assistant adaptation
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Home Assistant already owns routing and many back controls. Reuse the native route and editor state rather than inserting a second competing control. The examples use local section targets so no real dashboard is left or modified.
+<h3 id="child-civica-back-link-pattern">Civica Back Link Pattern</h3>
 
-## Accessibility and behaviour
+A Civica design with no Home Assistant element behind it. Write it as a link:
 
-Use a real link when navigating. If returning requires saving a form answer, use the owning form’s submit behaviour rather than disguising a state-changing operation as a link. Position it before main content and after the service header.
+```html
+<a href="#previous-rooms">Back to room selection</a>
+```
 
-## Examples
+Say where the link goes. “Back to room selection” is clearer than “Back”. Keep it in the same place on every step.
 
-### Return to a previous setup step
+Home Assistant has its own back control in its headers, `ha-icon-button-arrow-prev`. It is an icon button with a translated label (“Back” by default), not a text link, and Home Assistant owns where it goes. Keep it as it is, with its label. Use the text link above in Civica pages and cards you build yourself.
 
-The local destination represents a previous step and the entered answer stays intact.
+There is no Civica theme variable for the back link. The link uses the theme link colour, and its focus follows the theme focus colour. Home Assistant decides the route, so a theme cannot add a back link to a screen.
 
-<%= example('nhs-back-step') %>
+<h2 id="limits">Advantages and limitations</h2>
 
-### Return to the settings review
+- A text link with a named destination is easy to understand.
+- It works with a keyboard and a screen reader because it is a real link.
+- A deep link may have no previous step in the app, so there may be nothing to go back to.
+- Browser Back and the link may go to different places. Do not assume they agree.
+- You cannot turn the Home Assistant header arrow into a text link.
 
-A specific destination is clearer than guessing from browser history.
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-<%= example('nhs-back-review') %>
+Use it in a multi-step setup or form. Keep the destination predictable and keep the answers that are not secret.
 
-## Check the implementation
+Do not add one to every dashboard card. Do not use it with [breadcrumbs](breadcrumbs.html), and do not treat browser history as a guaranteed parent page. If going back needs to save an answer, use the form’s own submit button, not a link that changes something.
 
-Test an edited answer, unsaved changes, a deep-linked page, browser Back and keyboard focus after return. Use a specific label when “Back” would be ambiguous.
+Success criteria that apply:
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+- 2.4.4 Link Purpose (In Context): the label names the destination.
+- 2.4.3 Focus Order: it comes before the main content.
+- 2.4.7 Focus Visible: the theme focus colour shows on the link.
+- 3.2.3 Consistent Navigation and 3.2.4 Consistent Identification: same place, same words on every step.
+- 3.3.7 Redundant Entry: people do not retype answers after going back.
+- 1.4.10 Reflow: the link wraps at 320 CSS pixels.
 
-## Source and related guidance
+<h3 id="check">Check it works</h3>
 
-[NHS back link](https://service-manual.nhs.uk/design-system/components/back-link) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+Test an edited answer, unsaved changes, a deep-linked page, browser Back and where focus lands after the return. Check light and dark modes, two theme colours and a 320 pixel width. See [Test the interface](../accessibility/testing.html). For moving between pages, see [Navigation](navigation.html).
 
-See also [navigation](navigation.html).
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-back-step') %>
+
+<%= example('spec-back-review') %>

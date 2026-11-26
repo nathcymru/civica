@@ -1,0 +1,126 @@
+---
+title: "Calendar Card"
+description: "Show events from one or more calendars as a month, week, day or list, with buttons to move through time."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Calendar Card specification: configuration, views, theme keys and the limits of the card."
+ai_instructions: "Apply to the Home Assistant calendar card (type calendar). Prefer the list week view for a linear reading order. Every event needs a title and a time as text, because event colours come from each calendar and not the theme. Do not claim that calendar colours follow the Civica theme. Do not publish a deep card-mod selector for the inner calendar, because it has not been checked. Never claim measured contrast, keyboard operation of the month grid or screen reader output."
+ai_related:
+  - path: "/components/button-group-segmented-control.html"
+    title: "Button Group / Segmented Control"
+    relationship: "Owns the toggle group that switches the calendar view."
+  - path: "/components/buttons.html"
+    title: "Button"
+    relationship: "Owns the Today button, the previous and next icon buttons and the add-event button."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns card structure and headings."
+  - path: "/publishing/frontend-templates/calendar.html"
+    title: "Calendar"
+    relationship: "Owns the publishing template for important dates."
+component:
+  parent: "Calendar Card"
+  letter: "C"
+  origins:
+    - "Lovelace"
+    - "Home Assistant"
+  children:
+    - name: "hui-calendar-card"
+      origin: "Lovelace"
+      anchor: "child-hui-calendar-card"
+    - name: "ha-full-calendar"
+      origin: "Home Assistant"
+      anchor: "child-ha-full-calendar"
+  tags:
+    - "hui-calendar-card"
+    - "ha-full-calendar"
+---
+
+# Calendar Card
+
+<h2 id="purpose">Purpose</h2>
+
+The Calendar Card shows events from your Home Assistant calendars. It suits a shared family calendar, bin days or a maintenance schedule. In YAML it is `type: calendar`.
+
+This page covers:
+
+- Calendar Card
+  - `hui-calendar-card`
+  - `ha-full-calendar`
+
+<h2 id="anatomy">Anatomy</h2>
+
+Inside one card:
+
+1. An optional title.
+2. A header with the name of the period being shown, a Today button, Previous and Next buttons and a switch between Month, Day and List (7 days).
+3. The calendar itself, in the chosen view.
+4. An optional button to add an event.
+
+While events load, the card shows a spinner.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-calendar-card"><code>hui-calendar-card</code></h3>
+
+```yaml
+type: calendar
+title: Household calendar
+entities:
+  - calendar.family
+initial_view: listWeek
+```
+
+Keys:
+
+- `entities` lists the calendar entities to show. It is required.
+- `initial_view` is `dayGridMonth` (the default), `dayGridWeek`, `dayGridDay` or `listWeek`. The card’s view switch offers only Month, Day and List (7 days), so a card that starts in `dayGridWeek` has no switch option to return to it.
+- `title` sets the heading.
+- `show_add_event` shows a button to add an event. `add_event_style` is `below`, `on_top` or `header`, and `add_event_size` is `small`, `medium` or `large`.
+- `theme` applies a theme to this card.
+
+The card needs at least four grid columns and four rows.
+
+Theme keys that reach it: `ha-card-border-radius` (square), `ha-card-background`, `ha-card-header-font-size`, `ha-card-header-color`, `primary-color`, `text-primary-color`, `primary-text-color`, `secondary-text-color`, `divider-color`, `primary-background-color`, `secondary-background-color`, `card-background-color`, the `ha-font-*` keys and the button keys on the [Button](buttons.html#child-ha-button) page.
+
+<h3 id="child-ha-full-calendar"><code>ha-full-calendar</code></h3>
+
+The calendar Home Assistant draws inside the card, and also on its own Calendar page. It has four views: month, week, day and list. The Calendar page offers all four; the card’s own switch offers only Month, Day and List (7 days). In the header, the Today button and the Previous and Next buttons are Home Assistant buttons (see [Button](buttons.html#child-ha-icon-button-prev)), and the view switch is a toggle group (see [Button Group / Segmented Control](button-group-segmented-control.html#child-ha-button-toggle-group)).
+
+Today is marked with a filled circle in the primary colour, with the date in the text-on-primary colour. In Civica that is #1D70B8 with white text in light mode, and #C0D7EB with dark text in dark mode. The colour of each event comes from its calendar or integration, not from the theme.
+
+You cannot choose which views the card offers beyond the starting view, change event text, change how time zones are shown or change the structure of the month grid with a theme or YAML. With card-mod you can style the outer `ha-card`. The inner calendar cannot be targeted reliably with card-mod.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One card for several calendars, with the standard views people expect.
+- The list week view reads in a single order, which is easiest to follow.
+- Event colours are not from the Civica theme, so check them against the card background.
+- Test the month grid with a keyboard and a screen reader in your own setup, and list important events in words elsewhere.
+- Dots and colours must never carry the meaning alone.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Start with `listWeek` for a dashboard people scan quickly, and keep the month view for planning. Give every calendar a clear name and every event a title and a time. Mark today with the date in text as well as the circle.
+
+Keep Today, Previous and Next in the same places as on other pages. Do not use a calendar to show something that is not a dated event. For a published list of important dates, see the [Calendar](../publishing/frontend-templates/calendar.html) template.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 4.1.2 Name, Role, Value for the calendar grid: check that dates, events and controls have names and roles in your own setup.
+- 1.4.1 Use of Colour: events need text.
+- 1.4.11 Non-text Contrast: measure the event markers and today circle.
+- 2.1.1 Keyboard, 2.4.3 Focus Order and 2.4.7 Focus Visible.
+- 1.4.10 Reflow and 1.4.12 Text Spacing: the card needs at least four columns.
+- 2.5.8 Target Size (Minimum) and 3.2.2 On Input.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-calendar-week-list') %>

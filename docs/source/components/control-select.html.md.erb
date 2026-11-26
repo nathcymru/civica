@@ -1,0 +1,137 @@
+---
+title: "Control Select"
+description: "Choose one option from a short row of buttons or a closed menu, as in fan, climate and light cards."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Control Select specification: the button row and the menu, keyboard use, theme keys and a contrast warning for the selected option in dark mode."
+ai_instructions: "Apply to the Home Assistant option row (ha-control-select) and the closed menu (ha-control-select-menu) used in card features such as fan speed, alarm modes, climate modes and select-options. Selected text is fixed white by Home Assistant over the primary colour. Calculated from theme colours, that is 5.17:1 in light mode and 1.48:1 in dark mode, so never say the dark selected state passes. Arrow keys move focus only; Space or Enter selects. Selection is shown by fill only, with no tick, so write the chosen value in words. Set a label. Colours need card-mod. For a native HTML list use the Select page."
+ai_related:
+  - path: "/components/select.html"
+    title: "Select"
+    relationship: "Owns the native select element."
+  - path: "/components/sliders.html"
+    title: "Control Slider"
+    relationship: "Owns choosing a value along a range."
+  - path: "/components/control-number-box.html"
+    title: "Control Number Box"
+    relationship: "Owns changing a number in steps."
+  - path: "/home-assistant/dashboard-composition.html"
+    title: "Dashboard composition and card features"
+    relationship: "Owns how card features are added to cards."
+  - path: "/home-assistant/climate-and-air.html"
+    title: "Climate, fan and water-heater controls"
+    relationship: "Owns mode and speed tasks for these devices."
+component:
+  parent: "Control Select"
+  letter: "C"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-control-select"
+      origin: "Home Assistant"
+      anchor: "child-ha-control-select"
+    - name: "ha-control-select-menu"
+      origin: "Home Assistant"
+      anchor: "child-ha-control-select-menu"
+  tags:
+    - "ha-control-select"
+    - "ha-control-select-menu"
+---
+
+# Control Select
+
+<h2 id="purpose">Purpose</h2>
+
+Control Select lets people choose one option from a short list. Home Assistant draws it two ways: a row of buttons with the chosen one filled, and a closed menu that shows the current value. Card features use both for fan speed, alarm modes, climate modes, timer presets and similar choices.
+
+For a native HTML list in a form, see [Select](select.html).
+
+This page covers:
+
+- Control Select
+  - `ha-control-select`
+  - `ha-control-select-menu`
+
+<h2 id="anatomy">Anatomy</h2>
+
+- Button row: two or more options in a row or column, each with a label, an icon or both. The chosen option is filled.
+- Menu: one button showing a label and the current value, with an optional arrow. Opening it shows the options in a list.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-control-select"><code>ha-control-select</code></h3>
+
+The button row. Options can be vertical, and the visible text can be hidden so only icons show.
+
+In a dashboard it appears through card features such as `fan-speed`, `alarm-modes` and `climate-hvac-modes`, and through the `select-options` feature with `style: buttons`:
+
+```yaml
+features:
+  - type: select-options
+    options:
+      - Low
+      - Medium
+      - High
+    style: buttons
+```
+
+Keyboard: Tab moves to the row. The arrow keys move focus between options and wrap round at the ends. They do not choose. Space or Enter chooses the focused option. This differs from a native radio group, where the arrow keys choose. The row is exposed as a group of radio options with the label as its name, so set a label.
+
+Theme keys: `primary-color` for the filled option and the focus ring, and `disabled-color` for the background, which the Civica theme does not set. The selected text is white in Home Assistant’s own style and the theme cannot change it. Calculated from theme colours, white on the light primary colour is 5.17:1, and white on the dark primary colour is 1.48:1. In dark mode the selected option is therefore low in contrast. Check it in your own dashboard and do not rely on the fill to show the choice.
+
+The selected option is shown by fill only, with no tick. Write the chosen value in words as well. Option labels are cut after two lines. When icons only are shown, the name appears only as a hover tip, so prefer words.
+
+Colour, thickness, corner radius and padding use `--control-select-*` variables, which need the card-mod integration.
+
+<h3 id="child-ha-control-select-menu"><code>ha-control-select-menu</code></h3>
+
+The closed menu. It is a real button holding a label and a value. The label can be hidden visually and is kept for assistive technology. When the control is disabled, only the disabled button is drawn. In a dashboard it is the `select-options` feature with `style: dropdown`, and it also appears in timer presets and some more-info dialogs.
+
+Theme keys: `primary-text-color`, `secondary-text-color` for the focus ring, and `ha-color-on-neutral-quiet` for the hover colour. Corners stay rounded because the Civica theme does not set `ha-border-radius-lg`. The Civica native select variables (`mdc-select-*`) do not apply to it. Long values are cut off with an ellipsis, so keep option names short.
+
+Home Assistant does not mark this button as expanded or collapsed. Test it with your screen reader.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A row shows every option at once and is quick with touch.
+- A row does not suit more than about four options or long names.
+- The selected state depends on fill, and in dark mode the white text on the light blue fill is weak.
+- Arrow keys do not choose, which surprises people used to radio buttons.
+- Colour and size need card-mod.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+- Use words for options, not icons alone.
+- Write the current choice in text near the control.
+- Keep options few and in a steady order.
+- Use a menu when options are many or names are long.
+- Do not change a device on focus. Choosing must be a deliberate Space, Enter or tap.
+
+Success criteria that apply:
+
+- 4.1.2 Name, Role, Value and 3.3.2 Labels or Instructions: set a label on the row.
+- 2.1.1 Keyboard: every option can be reached and chosen.
+- 1.4.1 Use of Colour and 1.4.11 Non-text Contrast: fill alone shows the choice, and the dark-mode contrast is calculated.
+- 2.4.7 Focus Visible: a 2 pixel ring.
+- 2.5.8 Target Size (Minimum): check option width in your layout.
+
+<h2 id="examples">Examples</h2>
+
+### A fan speed row
+
+The chosen speed is also written in words.
+
+<%= example('spec-control-select-fan') %>
+
+### A closed mode menu
+
+The label and the current value are both visible.
+
+<%= example('spec-control-select-menu-mode') %>

@@ -1,0 +1,149 @@
+---
+title: "Code & Preformatted Text"
+description: "Show entity names, YAML, key presses and sample output so people can read them and copy them correctly."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-25"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
+updates:
+  - date: "2026-11-25"
+    description: "Added the Code and Preformatted Text specification, covering the text elements and the Home Assistant code and YAML editors."
+ai_instructions: "Apply when help text shows code. Use code for names and snippets, pre with code for blocks, kbd for key presses, samp for sample output and var for a placeholder the reader replaces. Put a wide block in a labelled, keyboard-focusable scroll region. Never use these for layout or emphasis. ha-code-editor and ha-yaml-editor appear only in Home Assistant editor screens; a dashboard author cannot place them. Civica sets only the code font. Do not claim syntax colour contrast, screen-reader support or that Tab leaves the editor."
+ai_related:
+  - path: "/components/textarea.html"
+    title: "Textarea"
+    relationship: "Use a plain text area when the answer is not code."
+  - path: "/components/hint-text.html"
+    title: "Hint text"
+    relationship: "Owns the hint that explains what to type."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the checks to run before you publish."
+component:
+  parent: "Code & Preformatted Text"
+  letter: "C"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<code>"
+      origin: "HTML5"
+      anchor: "child-code"
+    - name: "<pre>"
+      origin: "HTML5"
+      anchor: "child-pre"
+    - name: "<kbd>"
+      origin: "HTML5"
+      anchor: "child-kbd"
+    - name: "<samp>"
+      origin: "HTML5"
+      anchor: "child-samp"
+    - name: "<var>"
+      origin: "HTML5"
+      anchor: "child-var"
+    - name: "ha-code-editor"
+      origin: "Home Assistant"
+      anchor: "child-ha-code-editor"
+    - name: "ha-yaml-editor"
+      origin: "Home Assistant"
+      anchor: "child-ha-yaml-editor"
+  tags:
+    - "code"
+    - "pre"
+    - "kbd"
+    - "samp"
+    - "var"
+    - "ha-code-editor"
+    - "ha-yaml-editor"
+---
+
+# Code & Preformatted Text
+
+<h2 id="purpose">Purpose</h2>
+
+Use these elements in help text, cards and guides whenever you show something a person must read exactly or copy. They mark what the text means, so it is not left to styling.
+
+This page covers:
+
+- Code & Preformatted Text
+  - `<code>`
+  - `<pre>`
+  - `<kbd>`
+  - `<samp>`
+  - `<var>`
+  - `ha-code-editor`
+  - `ha-yaml-editor`
+
+<h2 id="anatomy">Anatomy</h2>
+
+1. A sentence that says what the reader should do.
+2. The code, key press or sample, in a monospace font.
+3. For a block, a labelled box that scrolls sideways if a line is too wide.
+4. A note on what to change, with placeholders marked.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-code"><code>&lt;code&gt;</code></h3>
+
+A fragment of computer code, such as an entity ID, a key or a template in a sentence: `light.hall`. It shows the text in a monospace font. It gives no language and is not announced by screen readers, so the sentence must make sense without the styling. In a Markdown card, back-ticks give you this.
+
+<h3 id="child-pre"><code>&lt;pre&gt;</code></h3>
+
+A block that keeps its spaces and line breaks. Use it with `code` inside for YAML. Long lines scroll sideways instead of wrapping, so put the block in a region that has a name and can be reached by keyboard, as in the example. In a Markdown card, a fenced block gives you this.
+
+<h3 id="child-kbd"><code>&lt;kbd&gt;</code></h3>
+
+Something the person types or presses, such as <kbd>Ctrl</kbd> and <kbd>S</kbd>. Nest one `kbd` inside another for a combination.
+
+<h3 id="child-samp"><code>&lt;samp&gt;</code></h3>
+
+Sample output from a program, such as <samp>Configuration saved</samp>. Use it for what the person should see, not for what they should type.
+
+<h3 id="child-var"><code>&lt;var&gt;</code></h3>
+
+A placeholder the reader replaces, such as <var>your name</var>. Tell people in the sentence what to put there. The browser draws it in italics.
+
+<h3 id="child-ha-code-editor"><code>ha-code-editor</code></h3>
+
+Home Assistant’s code editor. You meet it in the YAML editor and in template fields. It is not a dashboard card, and a dashboard author cannot place it.
+
+Options: `mode` (YAML by default, also Jinja2 and others), `read-only`, `linewrap`, `autocomplete-entities`, `autocomplete-icons`, `error`, `lint`, `placeholder` and a toolbar. The toolbar has full screen, copy, undo, redo and find and replace. Pressing Ctrl or Cmd with S fires a save event.
+
+Style keys: `--code-editor-background-color`, `--code-editor-gutter-color` and `--code-editor-toolbar-height`. Civica sets none of them, so the editor takes the card background, a light grey gutter and the text colour. In the light and dark themes the card background is `#FFFFFF` and `#24282B`, the gutter is `#F3F2F1` and `#30363A`, and the border is `#CECECE` and `#50565A`. Syntax colours are not theme keys and cannot be changed from the theme.
+
+<h3 id="child-ha-yaml-editor"><code>ha-yaml-editor</code></h3>
+
+The code editor set to YAML, with checking and entity and icon suggestions. It adds a label above the editor, a copy button, an invalid state and a slot for extra actions. The label is written above the editor and is not tied to it in the page structure, so do not rely on it for the editor’s name. Check that in your own setup.
+
+When the YAML is wrong, the editor draws an error border in `error-color`, which is `#CA3535` in the light theme and `#F0C6C6` in the dark theme. Say what is wrong in words as well.
+
+The theme sets one code key: `ha-font-family-code`, which is Courier New with a monospace fallback in both themes.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A monospace font makes names and spacing clear.
+- The editors help with typing, but they appear only in Home Assistant’s own editor screens.
+- A code editor can take over the Tab key for indentation. Tell people another way to leave it, and test it.
+- Wide code needs sideways scrolling. Keep lines short.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use these elements for meaning, not for layout or emphasis. Show a copy-ready block, and say what each key does in words. Put a placeholder in `var` and say what to change. Leave prompt symbols such as `$` out of anything people will copy. Keep lines short.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: name the scroll region and give the editor a label.
+- 1.4.10 Reflow: a wide block may scroll in two directions.
+- 1.4.4 Resize Text and 1.4.12 Text Spacing.
+- 2.1.1 Keyboard and 2.1.2 No Keyboard Trap: reach the scroll region with Tab, and check the editor.
+- 3.1.2 Language of Parts: mark code as not for translation.
+- 1.4.3 Contrast: measure code text in your own theme.
+
+For the plain answer field, see [Textarea](textarea.html). See [Test the interface](../accessibility/testing.html) for the checks.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-code-help-card') %>

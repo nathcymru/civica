@@ -1,48 +1,123 @@
 ---
-title: Notification badge
-description: The MOJ notification badge pattern and its bounded Home Assistant adaptation.
-last_reviewed_on: 2026-11-11
-review_in: 3 months
-published_on: 2026-11-11
-updated_on: "2026-11-18"
+title: "Badge"
+description: "Show a small state or count on a dashboard or in the sidebar: entity badges, label badges and the Civica attention count."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-25"
+last_reviewed_on: "2026-11-25"
+review_in: "3 months"
 updates:
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Linked attention counts to the message decision guide without changing the MOJ geometry or native behaviour.
-  - date: 2026-11-11
-    description: Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild.
-  - date: 2026-11-11
-    description: First published in the Civica design system.
-  - date: "2026-11-18"
-    description: "The colour, geometry and testing guidance now say theme colour, instead of palette."
+  - date: "2026-11-25"
+    description: "Rewrote the Badge specification: the four Home Assistant badges, the sidebar attention count and what the Civica theme changes."
+  - date: "2026-11-11"
+    description: "First published, with two examples."
+ai_instructions: "Apply when showing a small state or count. ha-badge is the pill used for dashboard badges; hui-entity-badge (type entity) draws one for an entity; hui-state-label-badge (type state-label) in this version also draws an ha-badge, not an ha-label-badge; ha-label-badge is the older round badge drawn by ha-state-label-badge. The Civica theme does not set any ha-badge or ha-label-badge variable. It sets the sidebar attention count (civica-notification-badge-*): a red pill with a white number, 1 to 98 exact, 99+ above, with a hidden text count. White on the badge red calculates at about 5.16 to 1 from theme colours. Never rely on colour alone, never claim card-mod reaches dashboard badges, and do not use the count for routine totals or sensor state."
+ai_related:
+  - path: "/components/tag.html"
+    title: "Tag"
+    relationship: "Owns a word that names a state."
+  - path: "/components/notification-banners.html"
+    title: "Notification banners"
+    relationship: "Owns messages that apply to the whole page."
+component:
+  parent: "Badge"
+  letter: "B"
+  origins:
+    - "Home Assistant"
+    - "Lovelace"
+  children:
+    - name: "ha-badge"
+      origin: "Home Assistant"
+      anchor: "child-ha-badge"
+    - name: "ha-label-badge"
+      origin: "Home Assistant"
+      anchor: "child-ha-label-badge"
+    - name: "hui-entity-badge"
+      origin: "Lovelace"
+      anchor: "child-hui-entity-badge"
+    - name: "hui-state-label-badge"
+      origin: "Lovelace"
+      anchor: "child-hui-state-label-badge"
+  tags:
+    - "ha-badge"
+    - "ha-label-badge"
+    - "hui-entity-badge"
+    - "hui-state-label-badge"
+    - "notification-count"
 ---
 
-# Notification badge
+# Badge
 
-Use the [Ministry of Justice notification badge](https://design-patterns.service.justice.gov.uk/components/notification-badge/) for new or unread items that need attention. Associate it with the destination that opens those items. Do not use it for routine device totals or to label a sensor state.
+<h2 id="purpose">Purpose</h2>
 
+A badge is a small mark that shows a state or a count. Home Assistant has badges at the top of a dashboard view, one for each entity you choose, and a count beside a sidebar item. The Civica theme styles the sidebar count. It leaves the dashboard badges as Home Assistant draws them.
 
-## A count has a different job from a status
+This page owns all four Home Assistant badges and the Civica attention count. Use a badge for new or unread items that need attention, next to the place that opens them. Do not use it for routine device totals or to label a sensor state.
 
-Follow the [message decision guide](status.html#choose-the-right-message) before adding a badge. This page owns attention-count geometry and count wording. A [tag](tag.html) names a state; a [notification banner](notification-banners.html) carries a message. Neither is a substitute for an unread count, and the count itself cannot communicate the severity of the underlying items.
+This page covers:
 
-## Examples
+- Badge
+  - `ha-badge`
+  - `ha-label-badge`
+  - `hui-entity-badge`
+  - `hui-state-label-badge`
 
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+<h2 id="anatomy">Anatomy</h2>
 
-<%= example('local-badge-count') %>
+An entity badge is a pill with an optional icon, an optional small name above, and the state. An icon-only badge has no text. A label badge is a circle with the value inside and a small caption below. The sidebar count is a small red pill with a white number on the sidebar item.
 
-<%= example('local-badge-overflow') %>
+<h2 id="variants">Variants, variables and extensibility</h2>
 
+<h3 id="child-ha-badge"><code>ha-badge</code></h3>
 
-## Shape and colour
+The pill that Home Assistant draws for dashboard badges. Its properties are `type` (`badge` or `button`, default `badge`), `label` (a small caption above the content), `icon-only` and `accessible-label`. It has an `icon` slot and a default slot for the content. Home Assistant sets `type` to `button` only when the badge has an action, and then the badge can be focused.
 
-Keep the red rounded form and white count, independently of the selected theme colour. The current [MOJ stylesheet](https://github.com/ministryofjustice/moj-frontend/blob/b2dcbead533e2c157fe66ad60050b1e134e7a9c8/src/moj/components/notification-badge/_notification-badge.scss) uses the following geometry. It is not specified as a fixed 24px square.
+An icon-only badge has no text, so give it a name. `accessible-label` supplies one, but only for a button badge. Home Assistant sets it to the entity name.
+
+Variables you can set in a theme: `--badge-color` (default the secondary text colour), `--ha-badge-size` (36 pixels high and the minimum width; the radius is half the size, so it stays a pill), `--ha-badge-border-radius`, `--ha-badge-font-size` and `--ha-badge-icon-size` (18 pixels). The pill takes its background, border and shadow from the card variables, `ha-card-background`, `ha-card-border-width`, `ha-card-border-color` and `ha-card-box-shadow`. The Civica theme sets the card variables (a 1 pixel border, no shadow) and none of the `ha-badge` ones. So a Civica badge keeps its pill shape, and the theme card colours and border.
+
+<h3 id="child-ha-label-badge"><code>ha-label-badge</code></h3>
+
+The older round badge. Its properties are `label`, `description` and `image`; the default slot holds the value. The circle is 2.5em wide, the label is upper case white text on a coloured strip, and a long value is cut off with an ellipsis, so test it at a larger text size. Home Assistant draws it for the `ha-state-label-badge` element.
+
+Variables: `--ha-label-badge-size`, `--ha-label-badge-font-size`, `--ha-label-badge-border-radius` (50%), `--ha-label-badge-color`, `--ha-label-badge-label-color`, `--ha-label-badge-label-text-transform`, `--label-badge-text-color` and `--label-badge-background-color`. The state label badge takes its colour from the theme’s `label-badge-red`, `label-badge-green`, `label-badge-blue`, `label-badge-yellow` and `label-badge-grey`, which Civica sets for light and dark modes. Civica sets none of the other variables. The label text stays white, so in dark mode the pale tints under it are likely to be hard to read. Test them in your own dashboard.
+
+<h3 id="child-hui-entity-badge"><code>hui-entity-badge</code></h3>
+
+The dashboard badge for one entity (`type: entity`, the default).
+
+```yaml
+type: entity
+entity: sensor.kitchen_temperature
+name: Kitchen
+show_name: true
+```
+
+- `entity` is required.
+- `name`, `icon`, `color` and `show_entity_picture` change the look.
+- `show_name` defaults to false, and `show_state` and `show_icon` default to true. Show the name or the state in words, because an icon alone says little.
+- `state_content` chooses what the state line shows.
+- `tap_action`, `hold_action` and `double_tap_action` set what it does.
+
+It draws an `ha-badge`. The badge is a button only when an action is set. An active entity uses the primary colour, an inactive one uses `state-inactive-color`, and an error uses `red-color`. A light that has its own colour uses it. A missing entity shows a “not found” message with an alert icon.
+
+The badges sit in the view header, outside a card. Do not rely on card-mod to style them. To change a badge's shape for one entity, use a tile card with the state in text instead.
+
+<h3 id="child-hui-state-label-badge"><code>hui-state-label-badge</code></h3>
+
+The badge for `type: state-label`. In this version it is built on the entity badge, so it draws an `ha-badge`, not an `ha-label-badge`. It uses only `entity`, `color` and `show_name` (true by default). The `name`, `icon`, `image` and `tap_action` options are accepted but ignored. The older round label badge is a separate element, `ha-state-label-badge`.
+
+<h3 id="sidebar-count">The Civica attention count</h3>
+
+This is a Civica design for the count beside a sidebar item, such as notifications. It needs the Civica interface resource to be installed alongside the theme. It is not a Home Assistant badge, and it appears only in the sidebar. Switching to another theme removes it.
+
+Geometry, set by the `civica-notification-badge-*` theme keys:
 
 | Property | Value |
 | --- | --- |
-| Text | 16px, bold; Arial in Civica |
+| Text | 16px, bold |
 | Minimum content width | `0.75em` |
 | Minimum content height | `1.25em` |
 | Padding | `1px 0.25em 0` |
@@ -51,30 +126,49 @@ Keep the red rounded form and white count, independently of the selected theme c
 | Outline | 4px red, offset `-0.1em` |
 | Foreground and fill | White on `#CA3535` |
 
-Retain the outline in forced colours: the source uses it to preserve the number's boundary without affecting layout. Do not replace this geometry with the theme's square card corners or recolour it to the current theme colour. Check its surrounding background; the source explicitly warns against placing it on an unsuitable header.
+White on #CA3535 calculates at about 5.16 to 1 from the theme colours. In dark mode the sidebar is #17191B, and the badge red against it calculates at about 3.42 to 1.
 
-In dark mode, Civica uses its existing `#17191B` canvas for the sidebar so the fixed red badge retains a visible boundary. This changes the surrounding surface, not the MOJ red. White count text and the red-to-sidebar contrast are tested separately.
+Keep the red pill and the white count whatever the theme colour. In forced colours, the outline keeps the number's boundary.
 
-## Counts and accessible text
-
-The [MOJ template](https://github.com/ministryofjustice/moj-frontend/blob/b2dcbead533e2c157fe66ad60050b1e134e7a9c8/src/moj/components/notification-badge/template.njk) provides these count rules:
-
-| Items | Visible badge | Accessible count |
+| Items | Visible badge | Accessible text |
 | --- | --- | --- |
-| None | No badge | Keep the destination's name |
-| 1 to 98 | Exact count | Count with a meaningful descriptor |
-| 99 or more | `99+` | “99 or more” with a descriptor |
+| None | No badge | The item's own name |
+| 1 to 98 | The exact count | The count and what it counts |
+| 99 or more | `99+` | “99 or more” and what it counts |
 
-Include context such as unread notifications in the destination's accessible name. Expose the count once; hide a duplicate visible numeral from assistive technology. The badge is part of the destination control, not an extra tab stop.
+The visible number is hidden from screen readers, and a hidden phrase such as “3 items need attention” says the same thing once. The badge is part of the sidebar item, not an extra tab stop. A dot with no count is left as Home Assistant draws it.
 
-## Home Assistant adaptation
+Styling must not create, clear or acknowledge a notification. The theme cannot decide that something has been read. Do not announce every background change.
 
-Home Assistant can open its notification drawer with a button rather than a document link. Preserve that native action, keyboard behaviour, translated name and notification data. Apply the badge presentation only to its count; do not rename an unrelated update count as unread notifications.
+<h2 id="limits">Advantages and limitations</h2>
 
-The source component normally changes when a page reloads. Home Assistant updates in place, so this is a documented local adaptation. Keep the current count available to assistive technology without announcing every background change. Let the notification interface report an explicit dismissal or failure; a disappearing number alone is inadequate feedback. Styling must not create, clear or acknowledge notifications.
+- Entity badges are native and follow the theme colours.
+- The sidebar count is clear and says its number in words.
+- You cannot change the shape of one entity badge with a theme variable.
+- The Civica theme does not set any `ha-badge` or `ha-label-badge` variable.
+- An icon-only badge has no text. A long label badge value is cut off.
+- The attention count works only in the sidebar and needs the Civica interface resource.
 
-For updates, retain Home Assistant's own description of what is available. A theme cannot decide that an item has been read. If the host stops exposing the expected badge or count, preserve the native control and report the compatibility limit rather than manufacturing a replacement value.
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-## Acceptance checks
+A count has a different job from a status. A [tag](tag.html) names a state, and a [notification banner](notification-banners.html) carries a message. A count cannot say how serious the items are, so keep the destination clear.
 
-Check counts 0, 1, 9, 10, 98, 99 and 100; no clipping at 200% text scaling; one accessible announcement of the count; keyboard activation of the parent control; live count changes; forced colours; the header in every theme colour; and restoration when switching away from Civica. Confirm that radios, switches, avatars and ordinary status tags retain their own shapes.
+Show a name or a state in words on an entity badge. Avoid counts nobody has explained.
+
+Success criteria that apply:
+
+- 1.4.1 Use of Colour: show a name, icon or state, not colour alone.
+- 1.3.1 Info and Relationships: the count is in the item's name.
+- 2.5.3 Label in Name: the visible text is in the accessible name.
+- 4.1.3 Status Messages: announce a count once, not on every change.
+- 1.4.4 Resize Text and 1.4.10 Reflow: check long label badge values.
+
+Check counts 0, 1, 9, 10, 98, 99 and 100, text at 200%, one announcement, keyboard use, live changes, forced colours, every theme colour and the restore when you switch away from Civica.
+
+<h2 id="examples">Examples</h2>
+
+<%= example('spec-badge-entity') %>
+
+<%= example('spec-badge-count') %>
+
+<%= example('spec-badge-overflow') %>

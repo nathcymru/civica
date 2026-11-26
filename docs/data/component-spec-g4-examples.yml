@@ -1,0 +1,104 @@
+# Synthetic data and no live actions.
+examples:
+  spec-character-count-note:
+    title: A short dashboard note with its limit stated
+    description: "A stand-in for a note field on a household dashboard. The limit of 120 characters is written above the box before anyone types, and a message under the box shows how many characters are left. Home Assistant's own text box has no visible count, so this is Civica example markup. Nothing is saved."
+    height: 340
+    html: |
+      <form data-demo-form>
+      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="120">
+      <div class="govuk-form-group">
+      <label class="govuk-label" for="spec-count-note">Dashboard note</label>
+      <div class="govuk-hint" id="spec-count-note-hint">You can enter up to 120 characters</div>
+      <textarea class="govuk-textarea govuk-js-character-count" id="spec-count-note" name="note" rows="4" aria-describedby="spec-count-note-hint spec-count-note-info">Bins move to Friday this week.</textarea>
+      </div>
+      <div id="spec-count-note-info" class="govuk-hint govuk-character-count__message">You have 90 characters remaining</div>
+      </div>
+      </form>
+  spec-character-count-over-limit:
+    title: A note that is over its limit
+    description: "The same kind of note field with 40 characters allowed. The text stays in the box so the person can shorten it, and the message says in plain words what is wrong. Simulated: nothing is saved."
+    height: 420
+    html: |
+      <form data-demo-form>
+      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="40">
+      <div class="govuk-form-group govuk-form-group--error">
+      <label class="govuk-label" for="spec-count-long">Dashboard note</label>
+      <div class="govuk-hint" id="spec-count-long-hint">Example limit: 40 characters</div>
+      <p class="govuk-error-message" id="spec-count-long-error">
+      <span class="govuk-visually-hidden">Error:</span> Dashboard note must be 40 characters or fewer; you have 29 characters too many</p>
+      <textarea class="govuk-textarea govuk-js-character-count govuk-textarea--error" id="spec-count-long" name="long-note" rows="4" aria-describedby="spec-count-long-hint spec-count-long-error spec-count-long-info" aria-invalid="true">The side entrance will be used while the front path is being repaired</textarea>
+      </div>
+      <div id="spec-count-long-info" class="govuk-hint govuk-character-count__message">You have 29 characters too many</div>
+      </div>
+      </form>
+  spec-checkbox-rooms:
+    title: Choose several rooms
+    description: "A stand-in for a room picker in a dashboard editor, drawn as a group of checkboxes with a legend and a hint. Choosing a room here only changes what the example shows; no device changes. Home Assistant draws its own checkbox, so the look differs."
+    height: 340
+    html: |
+      <form data-demo-form>
+      <fieldset class="govuk-fieldset" aria-describedby="spec-rooms-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Which rooms should appear?</legend>
+      <div class="govuk-hint" id="spec-rooms-hint">Select all rooms you want to include</div>
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="spec-rooms-0" name="rooms" type="checkbox" value="0">
+      <label class="govuk-label govuk-checkboxes__label" for="spec-rooms-0">Bedroom</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="spec-rooms-1" name="rooms" type="checkbox" value="1">
+      <label class="govuk-label govuk-checkboxes__label" for="spec-rooms-1">Kitchen</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="spec-rooms-2" name="rooms" type="checkbox" value="2">
+      <label class="govuk-label govuk-checkboxes__label" for="spec-rooms-2">Living room</label>
+      </div>
+      </div>
+      </fieldset>
+      </form>
+  spec-checkbox-preference:
+    title: Edit a saved display preference
+    description: "A single checkbox for a saved preference, already ticked because the saved value is on. The button shows a message on this page only. Nothing is saved and no device is touched."
+    height: 340
+    html: |
+      <form data-demo-form>
+      <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Display preferences</legend>
+      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="spec-unavailable-0" name="unavailable" type="checkbox" value="0" checked>
+      <label class="govuk-label govuk-checkboxes__label" for="spec-unavailable-0">Show unavailable devices</label>
+      </div>
+      </div>
+      </fieldset>
+      <button type="button" class="govuk-button" data-demo-message="Example preferences saved.">Save display preferences</button>
+      <p class="govuk-body" data-demo-status role="status">
+      </p>
+      </form>
+  spec-chip-filter-row:
+    title: A filter row and a list of chosen items
+    description: "A stand-in for chips. Home Assistant shows chips inside pickers and dialogs, not on dashboard cards, so this is drawn as a card for illustration. The top row stands for filter chips: each is a toggle whose state is written as well as shown. The list below stands for input chips: each chosen item has its own Remove button. The buttons do nothing."
+    height: 460
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-chip-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-chip-title">Choose device classes</h2><p class="govuk-body" id="spec-chip-filter-label">Show only</p><p class="civica-card-demo__actions" role="group" aria-labelledby="spec-chip-filter-label"><button type="button" class="govuk-button govuk-button--secondary" aria-pressed="true" style="border-radius:16px">✓ Temperature</button><button type="button" class="govuk-button govuk-button--secondary" aria-pressed="false" style="border-radius:16px">Humidity</button><button type="button" class="govuk-button govuk-button--secondary" aria-pressed="false" style="border-radius:16px">Battery</button></p><h3 class="govuk-heading-s">Chosen</h3><ul class="govuk-list" style="display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0"><li style="border:1px solid #6F777B;border-radius:16px;padding:4px 12px;display:flex;align-items:center;gap:8px"><span>Motion</span><button type="button" class="govuk-link" style="background:none;border:0;padding:0;font:inherit;cursor:pointer">Remove<span class="govuk-visually-hidden"> Motion</span></button></li><li style="border:1px solid #6F777B;border-radius:16px;padding:4px 12px;display:flex;align-items:center;gap:8px"><span>Door</span><button type="button" class="govuk-link" style="background:none;border:0;padding:0;font:inherit;cursor:pointer">Remove<span class="govuk-visually-hidden"> Door</span></button></li></ul></div></article>
+  spec-clock-card-digital:
+    title: A digital clock card with a title and date
+    description: "A stand-in for the Clock Card in its digital style: a title, the time in large type and the date written out in words. The time is fixed at 14:30 and does not tick. Home Assistant draws the real card with its own spacing."
+    height: 300
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-clock-title"><div class="civica-card-demo__body" style="text-align:center"><h2 class="govuk-heading-s" id="spec-clock-title">Hallway</h2><p class="govuk-heading-xl" style="margin-bottom:8px"><time datetime="14:30">14:30</time></p><p class="govuk-body">Wednesday 25 November</p></div></article>
+  spec-code-help-card:
+    title: A help card that shows a snippet to copy
+    description: "A stand-in for a help card on a household dashboard. An entity name sits in a code style inside the sentence. The YAML block is in a labelled box that scrolls sideways if a line is too wide. A key press, a sample result and a placeholder to replace are marked as such. Home Assistant's own code editors appear only in its editor screens, so they are not drawn here."
+    height: 700
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-code-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-code-title">Show the hall light on a card</h2><p class="govuk-body">Use the entity <code>light.hall</code> and replace <var>your name</var> with the title you want.</p><div role="region" aria-label="Card configuration, YAML" tabindex="0" style="overflow-x:auto"><pre style="margin:0"><code>type: tile
+      entity: light.hall
+      name: Hall light</code></pre></div><p class="govuk-body">Press <kbd><kbd>Ctrl</kbd> + <kbd>S</kbd></kbd> to save. You should see <samp>Configuration saved</samp>.</p></div></article>
+  spec-color-picker-light-colour:
+    title: Three ways to choose a light colour
+    description: "A stand-in for a light colour panel. Each choice has a name in words: a named colour list, a colour temperature slider whose value is also written (Warm white, 2,700 K) and a hex entry box. The controls do nothing and no light changes. Home Assistant draws its own selectors, so the look differs."
+    height: 640
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-colour-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-colour-title">Lounge lamp colour</h2><div class="govuk-form-group"><label class="govuk-label" for="spec-colour-name">Named colour</label><select class="govuk-select" id="spec-colour-name"><option>Primary</option><option>Red</option><option selected>Amber</option><option>Teal</option><option>Blue</option></select></div><div class="govuk-form-group"><label class="govuk-label" for="spec-colour-temp">Colour temperature, warm to cool</label><input type="range" id="spec-colour-temp" min="2000" max="6500" step="100" value="2700" aria-describedby="spec-colour-temp-text"><p class="govuk-hint" id="spec-colour-temp-text">Warm white, 2,700 K</p></div><div class="govuk-form-group"><label class="govuk-label" for="spec-colour-hex">Colour as a hex code</label><input class="govuk-input govuk-input--width-5" id="spec-colour-hex" type="text" value="#FFBF47"></div></div></article>
