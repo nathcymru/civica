@@ -115,7 +115,7 @@ test('navigation icons use separate neutral, active and masthead roles', () => {
     assert.equal(v['sidebar-selected-icon-color'], v['civica-navigation-icon-active-color']);
     assert.equal(v['sidebar-menu-button-text-color'], v['civica-navigation-icon-masthead-color']);
     minimum(v['sidebar-icon-color'], v['sidebar-background-color'], 3, `${name} ${mode} navigation icon`);
-    minimum(v['sidebar-selected-icon-color'], v['sidebar-selected-background-color'], 3, `${name} ${mode} selected navigation icon`);
+    minimum(v['sidebar-selected-icon-color'], v['sidebar-background-color'], 3, `${name} ${mode} selected navigation icon`);
     minimum(v['civica-navigation-icon-masthead-color'], v['sidebar-menu-button-background-color'], 3, `${name} ${mode} masthead icon`);
   }
 });
@@ -131,7 +131,7 @@ test('text, native inputs, header, selected navigation and all action states pas
       ['text-primary-color', 'primary-color'], ['text-primary-color', 'dark-primary-color'],
       ['input-ink-color', 'input-fill-color'], ['app-header-text-color', 'app-header-background-color'],
       ['sidebar-menu-button-text-color', 'sidebar-menu-button-background-color'],
-      ['sidebar-text-color', 'sidebar-background-color'], ['sidebar-selected-text-color', 'sidebar-selected-background-color'],
+      ['sidebar-text-color', 'sidebar-background-color'],
       ['civica-on-danger', 'civica-danger-fill'], ['civica-on-success', 'civica-success-fill'],
       ['civica-on-warning', 'civica-warning-fill'], ['civica-on-notice', 'civica-notice-fill'],
     ]) minimum(v[fg], v[bg], 4.5, `${label} ${fg}/${bg}`);

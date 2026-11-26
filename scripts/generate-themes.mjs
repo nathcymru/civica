@@ -178,8 +178,6 @@ export function modeTokens(palette, dark) {
     // gives only 2.88:1. Do not recolour the badge to match a brand palette.
     'sidebar-background-color': dark ? canvas : surface, 'sidebar-text-color': text, 'sidebar-icon-color': secondary,
     'sidebar-menu-button-background-color': primary, 'sidebar-menu-button-text-color': WHITE,
-    'sidebar-selected-background-color': dark ? '#30363A' : '#E8EEF3',
-    'sidebar-selected-text-color': navigationActive,
     'sidebar-selected-icon-color': navigationActive,
     'app-header-background-color': primary, 'app-header-text-color': WHITE,
     'app-theme-color': primary,
