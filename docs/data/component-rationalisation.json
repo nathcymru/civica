@@ -3263,7 +3263,7 @@
       "title": "Service navigation",
       "section": "components",
       "group": "Navigation",
-      "sha256": "83f28b4a92fd9ce325189d0f30a4709d98ba009d6b5ae6308470d7dae3c57be9",
+      "sha256": "2f01ba1a33b6266d0db8bb6601a33fb1c5d5032ae7fabbd7008c6522bddab4cd",
       "examples": [
         "core-service-navigation",
         "core-service-navigation-compact"
@@ -11052,7 +11052,7 @@
           "supports": "Source mappings, unique component routes, current guide/example counts and the three maintained custom-card types are reported separately."
         }
       ],
-      "proposal": "Keep the 28 GOV.UK/NHS shared routes as single components with multiple official sources, not 75 separate local implementations.",
+      "proposal": "Keep the 28 routes shared by both source sets as single components with multiple official sources, not 75 separate local implementations.",
       "acceptanceCriteria": [
         "Preserve both source mappings and each applicable source-specific variant.",
         "Report source-entry, local-page, example and runtime-component counts separately."
@@ -11415,7 +11415,7 @@
       ],
       "proposal": "Use a decision guide for status, count, notice and urgent alert; do not merge them into one generic red box.",
       "acceptanceCriteria": [
-        "Preserve exact MOJ count geometry separately from rectangular tags and banners.",
+        "Preserve exact count-badge geometry separately from rectangular tags and banners.",
         "Scope, urgency and delivery semantics remain independent of brand palette."
       ],
       "dependencies": [
@@ -11926,7 +11926,7 @@
       ],
       "proposal": "Keep independent civica identity under a shared header contract while retaining navigation as a separate responsibility.",
       "acceptanceCriteria": [
-        "No official GOV.UK/NHS identity, crown or restricted font assets.",
+        "No official source identity, crown or restricted font assets.",
         "Preserve setup/focused variants and existing URLs; do not confuse documentation shell with native authentication coverage."
       ],
       "dependencies": [
