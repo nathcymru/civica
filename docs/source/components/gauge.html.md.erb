@@ -11,7 +11,7 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Gauge specification: the gauge element and the gauge card, their colours, segments and needle, and why the number and a word for the state must always be shown."
-ai_instructions: "Apply to the Home Assistant gauge card (type gauge) and the ha-gauge element it uses. The entity must give a number. Severity colours come from the theme's error, success, warning and info colours; segments can use any colour. The gauge is an image-like drawing with no accessible name or value of its own, so always show the name, number, unit and a word for the state as text. Colour never carries the reading alone. Segment labels and bands appear only with a needle; without a needle the arc is one colour. Do not claim a contrast ratio, screen reader behaviour or reduced-motion behaviour for the gauge."
+ai_instructions: "Apply to the Home Assistant gauge card (type gauge) and the ha-gauge element it uses. The entity must give a number. Severity colours come from the theme's error, success, warning and info colours; segments can use any colour. The gauge is an image-like drawing with no accessible name or value of its own, so always show the name, number, unit and a word for the state as text. Colour never carries the reading alone. Segment labels and bands appear only with a needle; without a needle the arc is one colour. Do not claim a contrast ratio for the arc, screen reader behaviour or reduced-motion behaviour for the gauge."
 ai_related:
   - path: "/components/bar-meter.html"
     title: "Bar / Meter"
@@ -77,11 +77,11 @@ Colours the gauge reads from the theme:
 | Part | Theme setting | Civica light | Civica dark |
 |---|---|---|---|
 | Value text and needle | `primary-text-color` | #0B0C0C | #FFFFFF |
-| Track | `primary-background-color` | #FFFFFF | #17191B |
+| Track | `primary-background-color`, set on the gauge to `civica-gauge-track` | #8F9498 | #6F777B |
 | Needle outline | `card-background-color` | #FFFFFF | #24282B |
 | Default first level | `info-color` | #1D70B8 | #C0D7EB |
 
-In the light theme the track and the card are both white, so the unfilled part of the arc is not visible. This is another reason to write the number and the state as text. The arc fills with a one-second sweep. The theme does not change this, and the sweep is not turned off for people who prefer reduced motion.
+Calculated from these colours, the track against the card is 3.06 to 1 in light mode and 3.25 to 1 in dark mode, in every Civica theme, so the unfilled part of the arc can be seen. The track colour reaches the gauge through `card-mod`; without it the gauge uses the page background colour, which is white in the light theme and so is not visible on a white card. The arc against the track is lower, so write the number and the state as text. The arc fills with a one-second sweep. The theme does not change this, and the sweep is not turned off for people who prefer reduced motion.
 
 <h3 id="child-hui-gauge-card"><code>hui-gauge-card</code></h3>
 
@@ -128,7 +128,7 @@ The card gets its look from the Civica card theme. To change the arc colour for 
 - The gauge has no accessible name or value, so the reading must also be in text.
 - Colour bands need words, such as “Normal”, because colour alone is not enough.
 - A needle shows every band at once and is harder to read precisely.
-- The track is invisible in the Civica light theme.
+- The track is visible only when `card-mod` is installed.
 - The card does not wrap a long name; it is cut short.
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>
