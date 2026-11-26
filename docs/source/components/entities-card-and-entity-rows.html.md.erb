@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Entities Card and Entity Rows specification: the card, the 25 entity rows, the eight special rows, the theme keys that reach them and what Home Assistant draws itself."
+    description: "Added the Entities Card and Entity Rows specification: the card, the entity rows, the eight special rows, the theme keys that reach them and what Home Assistant draws itself."
   - date: "2026-11-26"
     description: "Removed two entries for rows that Home Assistant does not draw."
 ai_instructions: "Apply when a dashboard lists entities in an entities card (type entities). Home Assistant picks the row from the entity domain: a light, switch or vacuum gets a switch row, a water heater gets the climate row, and a domain with no row of its own gets the simple row. Row names must match entity names, state must be written in words as well as colour, and a card should hold a short list. Row spacing uses a Home Assistant variable the Civica theme does not set, so changing it needs card-mod. Do not claim contrast, focus appearance or screen-reader behaviour for a row."
@@ -353,7 +353,7 @@ Home Assistant draws the card title as a first-level heading, so give each entit
 
 <h3 id="xref-hui-entities-card--hui-section-row"><code>hui-section-row</code></h3>
 
-`type: section`. Draws a line with a label under it. `label` is the section name. The label uses `primary-text-color`, or `section-header-text-color` if you set it. Use it to name a group of rows. Keep the label short. The row is described in full on [Card & Section Header](card-and-section-header.html#child-hui-section-row).
+`type: section`. Draws a line with a label under it. `label` is the section name. Use it to name a group of rows. Keep the label short. See [Card & Section Header](card-and-section-header.html#child-hui-section-row) for its colours and limits.
 
 <h3 id="child-hui-entities-card--hui-weblink-row"><code>hui-weblink-row</code></h3>
 

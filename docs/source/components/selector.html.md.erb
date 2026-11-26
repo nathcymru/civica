@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Selector specification: what a selector is, how to write one, and one entry for each selector Home Assistant draws, including four names it does not use."
+    description: "Added the Selector specification: what a selector is, how to write one, and one entry for each selector Home Assistant draws."
   - date: "2026-11-26"
     description: "Named the serial port selector by its key, and explained how to pick Bluetooth, USB and discovered devices."
 ai_instructions: "Apply when a Home Assistant form, automation, script or blueprint asks for a value through a selector. A selector is a YAML mapping with one key that names the type, for example selector: { number: { min: 0, max: 100 } }. Home Assistant draws the matching input. To pick a serial port, use the serial_port selector. To pick a Bluetooth, USB or discovered device, use a device selector filtered by integration, or a text field. Give every field one visible label and a hint before the field. A selector does not guarantee a label for assistive technology, so do not claim one. In slider mode the label is plain text before the slider and the slider is not named by it. Do not claim keyboard reordering, and do not claim selector behaviour is the same in every editor."
@@ -428,7 +428,7 @@ YAML key `datetime`. Options: none.
 
 <h3 id="child-ha-selector--ha-selector-device"><code>ha-selector-device</code></h3>
 
-Chooses one or more devices. See [Device Picker](device-picker.html). `filter` narrows the list by integration, manufacturer, model or entity; `entity` and `multiple` also apply. To let people pick a Bluetooth, USB or discovered device, set `filter` to the `bluetooth`, `usb` or `zeroconf` integration, or use a text field when a free value is needed. To pick a serial port on a USB adapter, use the `serial_port` selector.
+Chooses one or more devices. See [Device Picker](device-picker.html). `filter` narrows the list by integration, manufacturer, model or entity; `entity` and `multiple` also apply. To let people pick a Bluetooth, USB or discovered device, set `filter` to the `bluetooth`, `usb` or `zeroconf` integration, or use a text field when a free value is needed.
 
 YAML key `device`. Options: `filter`, `entity`, `multiple`.
 
