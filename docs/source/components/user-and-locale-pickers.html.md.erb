@@ -1,0 +1,207 @@
+---
+title: "User & Locale Pickers"
+description: "Choose a user, a theme, a country, a language, a time zone or a currency from a searchable list."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the User & Locale Pickers specification: the seven pickers, where each appears, the settings that can be written in YAML and how the Civica theme styles the field."
+ai_instructions: "Apply when a form asks for a user, theme, country, language, time zone or currency. A dashboard author cannot place these pickers: only the selectors theme, country, language and timezone can be written in YAML, in blueprint inputs, script and automation fields and service fields. There is no selector for users or currencies. The field shows its focus as a 2px line under the field, not the Civica yellow ring. Always give the field a visible label. A language picker does not mark each native name with its language. Choosing a theme picks a name only: light or dark mode is a separate setting. Do not say a given site has all eight Civica themes installed."
+ai_related:
+  - path: "/components/combobox-autocomplete.html"
+    title: "Combobox / Autocomplete"
+    relationship: "Owns the searchable list that every picker on this page uses."
+  - path: "/components/avatar-and-user-badge.html"
+    title: "Avatar & User Badge"
+    relationship: "Owns the user badge shown in the user picker."
+  - path: "/components/language-navigation.html"
+    title: "Language Navigation"
+    relationship: "Owns how a page tells people which language it is in."
+  - path: "/home-assistant/schema-selectors.html"
+    title: "Schema selectors and configuration forms"
+    relationship: "Owns the selectors that configuration forms use."
+  - path: "/home-assistant/locale-units-and-time.html"
+    title: "Locale, units and time"
+    relationship: "Owns how country, language, units and time zone change what people see."
+  - path: "/components/hint-text.html"
+    title: "Help / Hint Text"
+    relationship: "Owns the helper text under a field."
+component:
+  parent: "User & Locale Pickers"
+  letter: "U"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-user-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-user-picker"
+    - name: "ha-users-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-users-picker"
+    - name: "ha-theme-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-theme-picker"
+    - name: "ha-country-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-country-picker"
+    - name: "ha-language-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-language-picker"
+    - name: "ha-timezone-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-timezone-picker"
+    - name: "ha-currency-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-currency-picker"
+  tags:
+    - "ha-user-picker"
+    - "ha-users-picker"
+    - "ha-theme-picker"
+    - "ha-country-picker"
+    - "ha-language-picker"
+    - "ha-timezone-picker"
+    - "ha-currency-picker"
+---
+
+# User & Locale Pickers
+
+<h2 id="purpose">Purpose</h2>
+
+These seven pickers let people choose one value from a long list by typing to search or scrolling: a person, a theme, a country, a language, a time zone or a currency. They appear in Home Assistant’s settings screens, in the profile page and in forms that Home Assistant builds from a schema.
+
+A dashboard cannot place them, because there is no card for any of them. Four can be written in YAML as selectors, in blueprint inputs and in script, automation and service fields. This page tells you where each appears, so you can write the label and help text around it. The shared searchable list is owned by [Combobox / Autocomplete](combobox-autocomplete.html).
+
+This page covers:
+
+- User & Locale Pickers
+  - `ha-user-picker`
+  - `ha-users-picker`
+  - `ha-theme-picker`
+  - `ha-country-picker`
+  - `ha-language-picker`
+  - `ha-timezone-picker`
+  - `ha-currency-picker`
+
+<h2 id="anatomy">Anatomy</h2>
+
+All seven are built the same way:
+
+- A closed field showing the chosen value, or a placeholder when empty, with a small arrow. Some also show a clear button when a value is set.
+- A list that opens when you select the field. On a wide screen it opens as a popover under the field. On a narrow screen, up to 870 pixels wide, it opens as a sheet from the bottom.
+- A search box at the top of the list and the matching rows below it.
+
+Arrow Up, Arrow Down, Home, End and Page Down move through the list, Enter picks the highlighted row and Escape closes the list. While searching, Enter picks the top match.
+
+A value that is no longer in the list shows “Unknown item” in a tinted field.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+All seven take a `label` and a `value`, and tell the form about a change with a `value-changed` event. Most also take `disabled` and `required`. The theme, country, language and time zone pickers take a `helper` too.
+
+**What the Civica theme sets.** The field is white in light mode and the dark surface in dark mode, and its text uses the theme’s text colours. When the field has focus, Home Assistant draws a 2 pixel line under it in the theme’s primary colour. Otherwise the line is 1 pixel, in the strong neutral colour: near black in light mode and white in dark mode.
+
+**What stays as Home Assistant draws it.** The Civica yellow focus ring is not used on these fields: focus is the 2 pixel line. Corners are rounded, because the theme does not set the corner size. The popover width and shadow are also Home Assistant’s defaults. `--ha-generic-picker-width` and `--ha-generic-picker-max-width` change the width in a theme or with card-mod, which you should test on a real dashboard.
+
+<h3 id="child-ha-user-picker"><code>ha-user-picker</code></h3>
+
+Chooses one person. Each row shows the person’s badge and name. It searches by name, then username, then id. System users are left out. The field’s label comes from `label`, and the placeholder defaults to “User”.
+
+This picker is used only inside the multiple-user picker below. There is no user selector in YAML.
+
+<h3 id="child-ha-users-picker"><code>ha-users-picker</code></h3>
+
+Chooses several people. It shows one user picker for each person chosen and a last picker, labelled “Add user”, to add another. Choosing a different person or clearing a field changes the list. People already chosen are not offered again. Its value is a list of user ids.
+
+Home Assistant uses it in the event trigger editor for automations. Its group label is plain text, not tied to the fields, so give each field its own visible label.
+
+<h3 id="child-ha-theme-picker"><code>ha-theme-picker</code></h3>
+
+Chooses a theme by name. The list holds the themes Home Assistant has loaded, sorted by name. Setting `include-default` adds “Home Assistant”, the built-in theme. The label defaults to “Theme” and the empty placeholder to “No theme”.
+
+The Civica theme file defines eight themes: Civica, Civica Black, Civica Blue, Civica Green, Civica Magenta, Civica Purple, Civica Red and Civica Teal. A site that loads the whole file lists all eight. Civica and Civica Blue have the same colours. Choosing a theme picks a name only. Light and dark mode is a separate setting.
+
+In YAML, use the `theme` selector, with `include_default: true` if you want the built-in theme in the list:
+
+```yaml
+selector:
+  theme:
+    include_default: true
+```
+
+The same picker is behind the `theme` option on dashboard cards and the theme setting in the profile page.
+
+<h3 id="child-ha-country-picker"><code>ha-country-picker</code></h3>
+
+Chooses a country. The list has 249 countries, named in the person’s language with the two-letter code shown beneath each name. Search also matches the English name. The label defaults to “Country”. A required picker with no value picks the first country in the list without being asked, so show the chosen value clearly.
+
+In YAML, use the `country` selector. `countries` limits the list and `no_sort` keeps your order:
+
+```yaml
+selector:
+  country:
+    countries: [GB, IE]
+```
+
+<h3 id="child-ha-language-picker"><code>ha-language-picker</code></h3>
+
+Chooses a language. By default it lists every language Home Assistant has translations for. `languages` limits the list, `native-name` shows each language in its own name, such as “Cymraeg”, and `no-sort` keeps your order. The label defaults to “Language”. Setting `button-style` swaps the field for a plain button with a menu arrow.
+
+The native names are not marked with their language, so they are not tagged for screen readers as a different language. Where a page lists languages itself, mark each name as described in [Language Navigation](language-navigation.html).
+
+In YAML, use the `language` selector, with `languages` and `native_name` and `no_sort` where needed. The picker is used in General settings, the profile page and the Assist tools.
+
+<h3 id="child-ha-timezone-picker"><code>ha-timezone-picker</code></h3>
+
+Chooses a time zone. Each row starts with the time zone’s offset from UTC and shows its standard name, such as Europe/London, beneath. Search matches both. The label defaults to “Time zone”. UTC is also in the list.
+
+In YAML, use the `timezone` selector, which takes no options:
+
+```yaml
+selector:
+  timezone:
+```
+
+Home Assistant uses it in General settings.
+
+<h3 id="child-ha-currency-picker"><code>ha-currency-picker</code></h3>
+
+Chooses a currency from about 160. Each row shows the currency’s name and symbol, such as “British Pound (£)”, with its three-letter code beneath, sorted by name. The label defaults to “Currency”. It has no helper text and no placeholder, and no selector, so it appears only in General settings.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One consistent searchable list across user, theme, country, language, time zone and currency.
+- The list works with a keyboard and becomes a bottom sheet on a narrow screen.
+- A dashboard cannot place any of them, and a user or currency picker cannot be written in YAML at all.
+- The list is long: about 249 countries, 160 currencies and many time zones. People need the search.
+- Focus is a 2 pixel line under the field, not the Civica focus ring.
+- Native language names are not marked with their language.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Give every picker a visible label that asks in terms of the task, such as “Time zone”, and a helper that says what the choice changes. Tell people they can type to search. Where you offer a short list, such as two countries, use `countries` or `languages` to limit it, or use radio buttons instead.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 3.3.2 Labels or Instructions: a visible label and, where useful, a helper.
+- 1.4.1 Use of Colour: an unknown value is shown by a tint and the words “Unknown item”.
+- 1.4.10 Reflow: the list becomes a bottom sheet at 870 pixels wide.
+- 1.4.11 Non-text Contrast: the field boundary is a thin line, so check it on your own theme.
+- 2.1.1 Keyboard: the list has keyboard keys, listed under Anatomy.
+- 2.4.7 Focus Visible: focus is the line under the field.
+- 2.5.8 Target Size (Minimum): the field is at least 56 pixels high.
+- 3.1.2 Language of Parts: native language names are not marked up.
+
+A visible label, a helper and a short list keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### A profile form
+
+A simulated form with a Language field and a Theme field, as a person sees them before opening a list.
+
+<%= example('spec-pickers-profile-settings') %>

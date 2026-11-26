@@ -1,65 +1,132 @@
 ---
-title: "Task list"
-description: "Give a longer setup process clear tasks and visible progress."
+title: "Task List"
+description: "Show a longer setup as a list of tasks, each with a status written in words."
 section: "components"
-group: "Content presentation"
-source_url: "https://service-manual.nhs.uk/design-system/components/task-list"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewritten as the full Task List specification. It now explains that Home Assistant has no task list of its own, what a dashboard can build instead, and how to write each status."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added NHS-informed task list guidance and 2 Home Assistant reference examples."
+  - date: "2026-11-11"
+    description: "Added task list guidance and 2 Home Assistant examples."
+ai_instructions: "Apply when a long setup is split into tasks that people may finish in several sessions or in any order. The Task List is a Civica pattern. Home Assistant has no task list element, so never say it does. Write each status as text beside the task name, such as Completed or Cannot start yet, and never use colour alone. Mark a task completed only when its required work is saved. Explain a dependency in words instead of showing a dead link. A Markdown card can show a plain list but removes classes, styles and ids. Use the to-do card for editable items, not for progress through a setup. Do not claim that a change of status is announced to screen readers."
+ai_related:
+  - path: "/home-assistant/todo-and-reminders.html"
+    title: "To-do lists, reminders and household tasks"
+    relationship: "Owns the to-do card for items people add, edit and tick off."
+  - path: "/home-assistant/native-task-accessibility.html"
+    title: "Native task accessibility and evidence"
+    relationship: "Owns the accessibility notes for Home Assistant's own task screens."
+  - path: "/components/tag.html"
+    title: "Tag"
+    relationship: "Owns the short text label that can sit in a status."
+  - path: "/components/summary-list.html"
+    title: "Summary List"
+    relationship: "Use it to show saved answers instead of progress."
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns what text and links a Markdown card keeps."
+component:
+  parent: "Task List"
+  letter: "T"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Task List Pattern"
+      origin: "Civica"
+      anchor: "child-civica-task-list-pattern"
+  tags:
+    - "task list"
+    - "progress"
+    - "setup"
 ---
 
-# Task list
+# Task List
 
-Give a longer setup process clear tasks and visible progress.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A task list breaks a longer setup into named tasks and shows how far along each one is. Use it when people may finish the work in several sessions or in an order they choose, and when completed work must be kept.
 
-## When to use it
+Do not use it for a short two-step change, for a list of saved answers or for live device readings. Use a [Summary list](summary-list.html) for answers, and show readings as ordinary state.
 
-Use a task list when people may complete work in several sessions or in an order they choose. Break complex tasks into meaningful sections and preserve completed work.
+Home Assistant has no task list element, card or theme setting. This is a Civica pattern. A dashboard can draw a plain version of it, as described below. The Home Assistant to-do card is a different thing: it holds items people add, edit and tick off. See [To-do lists, reminders and household tasks](../home-assistant/todo-and-reminders.html).
 
-## When not to use it
+This page covers:
 
-Do not add it to a simple two-step preference change. It is not a list of saved answers or a live device checklist; use a summary list for answers and ordinary status presentation for readings.
+- Civica Task List Pattern
 
-## Home Assistant adaptation
+<h2 id="anatomy">Anatomy</h2>
 
-A dashboard setup may include choosing rooms, reviewing labels and checking the finished view. Mark a task completed only when its required work is saved. Explain dependencies instead of presenting an unexplained disabled link. Keep any final activation separate from progress labels.
+A task list is a heading, a line saying how many tasks are done, and one row for each task.
 
-## Accessibility and behaviour
+1. A heading that names the setup, such as “Set up household notifications”.
+2. A progress line in words, such as “1 of 3 tasks completed”.
+3. One row for each task. A row has a task name, an optional hint and a status.
+4. The task name is a link when the task can be started. It is plain text when it cannot.
+5. The status is written as text beside the name. A short boxed label can sit in the status, such as “There is a problem”.
 
-Use one clear link per task, associate its status and keep additional hints short. Do not put separate links inside a linked task row. Ensure “Cannot start yet” is readable without colour and explain which prerequisite is missing.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Examples
+<h3 id="child-civica-task-list-pattern">Civica Task List Pattern</h3>
 
-### A dashboard setup journey
+A Civica pattern for a list of tasks with a written status. Home Assistant has no element of this name, so a dashboard cannot place one directly.
 
-Each task links to an existing example section.
+**What a dashboard can build.** A [Markdown card](markdown-card.html) can show a plain list. Lists, links and bold text are kept. Classes, styles and ids are removed, so the status cannot be styled and cannot be tied to its link. Write the status in the same line as the task name:
 
-<%= example('nhs-tasks-dashboard') %>
+```markdown
+- [Choose who receives notifications](/config/helpers): Completed
+- [Select electricity meter](/config/energy): There is a problem. The saved meter was removed.
+- Review and turn on notifications: Cannot start yet. Finish the other tasks first.
+```
 
-### Explain a dependent task
+For items that people add, edit and tick off, use the to-do card (`type: todo-list`) instead.
 
-The unavailable task is text with an explicit prerequisite.
+**Statuses.** Use a small, fixed set of words, and use the same words every time:
 
-<%= example('nhs-tasks-dependency') %>
+| Status | Use it when |
+| --- | --- |
+| Not yet started | The task can be started and nothing has been saved |
+| In progress | Some work is saved but the task is not finished |
+| Completed | All the work the task needs is saved |
+| There is a problem | Something saved earlier no longer works, and the row says why |
+| Cannot start yet | A task it depends on is not finished, and the row says which |
 
-## Check the implementation
+**What the Civica theme sets.** The theme has no setting for this pattern. Text uses the primary text colour, hints use the secondary text colour and links use the link colour. Colour can help people see the status, but the words always carry it.
 
-Test returning from a task, resuming later, changed answers that invalidate later work, and the final incomplete state. A service may require all tasks completed, but a general maintenance checklist must not invent that restriction.
+**What stays as Home Assistant draws it.** Anything drawn inside a Markdown card keeps the Markdown card’s own spacing and fonts.
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+<h2 id="limits">Advantages and limitations</h2>
 
-## Source and related guidance
+- People can leave and come back, because each task has its own state.
+- Each status is written as text, so it never depends on colour.
+- A dependency is explained in words instead of a link that does nothing.
+- A Markdown card cannot link a status to its task or style it, so the status sits in the same line as the name.
+- Nothing updates the list by itself. The page that holds it must change the wording when the work is saved.
+- Do not rely on a screen reader announcing a changed status. Say in the page text what changed.
 
-[NHS task list](https://service-manual.nhs.uk/design-system/components/task-list) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-See also [buttons and forms](controls.html).
+Mark a task completed only when its required work is saved. Explain dependencies in plain text: “Finish the other tasks first” tells people what to do next, and a greyed-out link does not. Keep any final turn-on step separate from progress, so finishing the list does not switch anything on by itself.
+
+Give each task one clear link. Do not put a second link inside a linked row. Start task names with a verb, keep them in the same order every time and keep the same wording for the same task on every page. Say how many tasks are done in words, such as “1 of 3 tasks completed”. Let people leave and resume, keep the answers they gave and do not move them on automatically.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: write the rows as a list, and keep each status next to its task.
+- 1.4.1 Use of Colour: write the status in words. “Cannot start yet” must be readable without colour.
+- 2.4.4 Link Purpose (In Context): the task name says where the link goes.
+- 3.2.3 Consistent Navigation and 3.2.4 Consistent Identification: keep the order and the names the same.
+- 3.3.7 Redundant Entry: keep earlier answers when people return to a task.
+- 4.1.3 Status Messages: when a status changes after a save, say so in the page text.
+
+<h2 id="examples">Examples</h2>
+
+### A household notifications setup
+
+<%= example('spec-task-list-household-setup') %>

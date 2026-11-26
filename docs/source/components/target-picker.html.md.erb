@@ -1,0 +1,126 @@
+---
+title: "Target Picker"
+description: "Let people choose the areas, devices, entities, floors and labels that an action applies to, and exclude some of them."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Target Picker specification: what people can choose, how chosen targets and exclusions are shown, and what an author can control."
+ai_instructions: "Apply when a Home Assistant form or editor asks what an action applies to (ha-target-picker, the target selector). It shows chosen floors, areas, devices, entities and labels in groups, an Add target button and, where the form allows, an Exclude target button. It is a form element, not a card, so a dashboard author cannot place it from YAML. The element has no label of its own, only helper text, so the label comes from the surrounding form. Keep a saved target that can no longer be found visible with its reason, and never replace it silently. Say what is excluded in words. Do not claim a label property, a slot, a style variable of its own, the container's corner radius, a keyboard order, or that the entity count promises members are available at run time."
+ai_related:
+  - path: "/home-assistant/target-pickers.html"
+    title: "Entity, device and area pickers"
+    relationship: "Owns what an entity, a device and an area mean, and how to keep a saved target."
+  - path: "/home-assistant/schema-selectors.html"
+    title: "Schema selectors and configuration forms"
+    relationship: "Owns the selector that uses the target picker in forms."
+  - path: "/components/entity-picker.html"
+    title: "Entity Picker"
+    relationship: "Use it when only entities are needed."
+  - path: "/components/device-picker.html"
+    title: "Device Picker"
+    relationship: "Use it when only a device is needed."
+  - path: "/components/area-picker.html"
+    title: "Area Picker"
+    relationship: "Use it when only an area is needed."
+  - path: "/components/floor-picker.html"
+    title: "Floor Picker"
+    relationship: "Owns the floor picker."
+  - path: "/components/label-picker.html"
+    title: "Label Picker"
+    relationship: "Owns the label picker."
+  - path: "/components/combobox-autocomplete.html"
+    title: "Combobox / Autocomplete"
+    relationship: "Owns the searchable list that opens from Add target."
+component:
+  parent: "Target Picker"
+  letter: "T"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-target-picker"
+      origin: "Home Assistant"
+      anchor: "child-ha-target-picker"
+  tags:
+    - "ha-target-picker"
+    - "target"
+---
+
+# Target Picker
+
+<h2 id="purpose">Purpose</h2>
+
+The target picker asks what an action applies to. People can choose floors, areas, devices, entities and labels in one field, for example to switch off everything in the kitchen except the extractor fan. They meet it in the automation editor’s action targets, in script and blueprint inputs and in service forms.
+
+It is a form element, not a card, so a dashboard author cannot place it from YAML. What an author controls is the wording of the form and which targets the form offers. For what an entity, a device and an area mean, and how to keep a saved target, see [Entity, device and area pickers](../home-assistant/target-pickers.html). For the schema that puts it into a form, see [Schema selectors and configuration forms](../home-assistant/schema-selectors.html).
+
+This page covers:
+
+- Target Picker
+  - `ha-target-picker`
+
+<h2 id="anatomy">Anatomy</h2>
+
+The picker has three parts, from top to bottom.
+
+- **Chosen targets**, in a bordered box, grouped by type: floors, areas, devices, entities and labels. Each row shows a target and a Remove button. A row can also show a count, such as the number of entities or devices an area holds.
+- **Add target**, a button that opens a searchable list. The list is owned by [Combobox / Autocomplete](combobox-autocomplete.html).
+- **Exclude target**, a second, plainer button, shown where the form allows exclusions. Excluded targets appear in their own “Exclusions” group, each with a “Remove exclusion” button.
+
+Home Assistant words some states in the rows: “No targets” before anything is chosen, “Entity not found” (or Device, Area, Floor or Label) for a saved target that no longer exists, “Replaced device” and “Replaced by” with an Update button when a device has been swapped, and “Exclusions with no effect” for an exclusion that excludes nothing.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-target-picker"><code>ha-target-picker</code></h3>
+
+What the form can set:
+
+- `value`, which holds the chosen floors, areas, devices, entities and labels, plus an `exclude` list.
+- `helper`, a line of text under the picker.
+- `include-domains`, `include-device-classes` and `primary-entities-only` to narrow what is offered, and filter functions for devices and entities.
+- `create-domains`, `disabled` and `allow-exclude`. When `allow-exclude` is off, the Exclude target button is hidden, but exclusions already in the value are still shown.
+
+Its `value-changed` event reports the new value after any pick, removal, replacement or update.
+
+In a form, the selector key is `target`, and the form always allows exclusions. The selector can limit which entities and devices appear, and can offer only an entity’s primary entities.
+
+**What it does not have.** The picker has no label of its own, only helper text, so the label comes from the surrounding form. It has no slots, no named parts and no style variables of its own.
+
+**What the Civica theme sets.** The theme sets nothing for the target picker itself. Its text, secondary text and divider colours reach the rows and the box. The box’s corner radius, the spacing and the group labels stay as Home Assistant draws them. The picker lives in editors and dialogs, so the card-mod integration cannot restyle it.
+
+**Nearest alternatives.** For a small, known set, use a labelled radio list. For a single kind of target, use a separate [Entity Picker](entity-picker.html), [Device Picker](device-picker.html) or [Area Picker](area-picker.html), each with its own label.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One field holds floors, areas, devices, entities and labels, so people do not need to know entity IDs.
+- Exclusions let people say “everything in the kitchen except the fan”.
+- A target that has been removed from Home Assistant stays visible with its reason.
+- Counts show how much a target covers now. They do not promise that every member is available when the action runs.
+- Authors cannot relabel or restyle the rows, and cannot add a label to the picker itself.
+- A long list of chosen targets makes a tall form. Group related targets, for example by area.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Give the picker a visible label, written in terms of the task, such as “What should the automation switch off?”, and use helper text to say what the choice changes. Keep native filters so the list is short. Say why a list is empty. Keep a saved target that can no longer be found visible with its reason, and never replace it silently. Show exclusions in words, not only by position.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 3.3.2 Labels or Instructions: the surrounding form supplies a visible label.
+- 4.1.2 Name, Role, Value: each Remove button needs a name that says what it removes. Test this in your own screen reader.
+- 2.1.1 Keyboard, 2.4.7 Focus Visible and 2.5.8 Target Size (Minimum): test the field, the rows and the buttons with a keyboard and by touch.
+- 3.3.1 Error Identification and 3.3.3 Error Suggestion: tell people when a saved target is not found, and what to do.
+- 3.3.7 Redundant Entry: do not ask people to choose the same target twice.
+- 1.4.10 Reflow: rows wrap at 320 CSS pixels. Test them.
+
+Counts that say what is covered now, and plain words for exclusions, keep the effort low. Follow the [Civica accessibility checks](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
+
+### A form with chosen targets and an exclusion
+
+<%= example('spec-target-picker-chosen') %>

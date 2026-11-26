@@ -1,0 +1,153 @@
+---
+title: "Thermostat Card"
+description: "Show and set the target temperature of one heating or cooling device with a dial, and write the same values as words."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Thermostat Card specification: its dial, the keys it accepts, how the Civica theme colours it and what stays as Home Assistant draws it."
+ai_instructions: "Apply when a dashboard shows or sets the target temperature of a climate or water heater entity (type: thermostat). Use one entity from the climate or water_heater domain for each card, otherwise Home Assistant shows an error. The card writes the target and the current temperature as text, and the dial is never the only way to read them. The heating arc is Home Assistant's own orange, which the Civica theme does not set, and it is below 3:1 against the light card by calculation, so say Heating in words. Cooling uses the theme blue. The name is a paragraph, not a heading. The card has no tap, hold or double-tap action. Do not publish a delay for the dial, a measured focus cue or a contrast claim for the arc. Say that changing the dial itself needs custom code."
+ai_related:
+  - path: "/components/control-circular-slider.html"
+    title: "Control Circular Slider"
+    relationship: "Owns the dial that the card draws."
+  - path: "/components/control-number-box.html"
+    title: "Control Number Box"
+    relationship: "Owns the plus and minus control."
+  - path: "/components/card-features.html"
+    title: "Card Features (Tile & Area Inline Controls)"
+    relationship: "Owns the features that can sit under the card."
+  - path: "/components/humidifier-card.html"
+    title: "Humidifier Card"
+    relationship: "The sister card for target humidity."
+  - path: "/components/more-info-dialog-and-domain-state-controls.html"
+    title: "More-Info Dialog & Domain State Controls"
+    relationship: "Owns the climate and water heater controls that the card uses."
+  - path: "/home-assistant/climate-and-air.html"
+    title: "Climate, fan and water-heater controls"
+    relationship: "Owns the advice on wording, units and unconfirmed targets."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface."
+component:
+  parent: "Thermostat Card"
+  letter: "T"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-thermostat-card"
+      origin: "Lovelace"
+      anchor: "child-hui-thermostat-card"
+  tags:
+    - "hui-thermostat-card"
+    - "thermostat"
+    - "climate"
+---
+
+# Thermostat Card
+
+<h2 id="purpose">Purpose</h2>
+
+A Thermostat card shows the target temperature of one heating or cooling device and lets people change it. It writes the target and the current temperature as text, so the dial is never the only way to read them.
+
+This page owns the Home Assistant Thermostat card (`type: thermostat`). The dial inside it is described on [Control Circular Slider](control-circular-slider.html). For wording and units, see [Climate, fan and water-heater controls](../home-assistant/climate-and-air.html).
+
+This page covers:
+
+- `hui-thermostat-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+1. The name, centred, with a round information button at the top right.
+2. A circular dial that shows the target temperature.
+3. Two labelled values: the target and the current temperature. When the device is working, a word such as Heating or Cooling is written with them.
+4. Minus and plus buttons beside the target. A device that heats and cools has two targets, a low one and a high one, and two buttons to pick which one the minus and plus change.
+5. Optional card features, such as a list of heating modes.
+
+The name is a paragraph, not a heading. The whole card is a group named by that name.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-thermostat-card"><code>hui-thermostat-card</code></h3>
+
+A Lovelace card, set with `type: thermostat`. You must give an entity from the `climate` or `water_heater` domain. Any other entity makes Home Assistant show an error that asks for one of those two domains.
+
+```yaml
+type: thermostat
+entity: climate.bedroom
+name: Bedroom thermostat
+features:
+  - type: climate-hvac-modes
+```
+
+| Key | Meaning |
+| --- | --- |
+| `entity` | The climate or water heater entity. Required |
+| `name` | Replaces the entity name |
+| `theme` | Applies a named theme to this card only |
+| `show_current_as_primary` | Makes the current temperature the large value. Climate entities only |
+| `features` | A list of card features |
+
+Feature options are on [Card Features (Tile & Area Inline Controls)](card-features.html). If the entity cannot be found, the card shows a warning in its place. The card is 12 columns wide and 5 rows tall by default, and its smallest size is 6 columns.
+
+**How the dial behaves.** The dial is a slider with a name, a value, a minimum and a maximum. The arrow keys change the value by one step, Page Up and Page Down by a larger step, and Home and End go to the minimum and maximum. The minus and plus buttons are an alternative to dragging. For a device with a low and a high target, the two buttons that pick which target to change show which one is on. An unavailable device shows the word Unavailable. The card has no tap, hold or double-tap action. The information button opens More info.
+
+**What the Civica theme sets.** The card surface follows the Civica card settings: square corners, a 1 pixel border, no shadow, a white background in light mode and the dark surface in dark mode. The name and values use the primary text colour. The information button uses the secondary text colour.
+
+The dial colour follows the state of the device, not the primary colour:
+
+| State | Colour | Set by Civica |
+| --- | --- | --- |
+| Cooling | Theme blue, `#1D70B8` in light mode and `#C0D7EB` in dark mode | Yes |
+| Auto | Theme green, `#0F7A52` in light mode and `#BCDACF` in dark mode | Yes |
+| Drying | Theme orange, `#8A6100` in light mode and `#DED3B8` in dark mode | Yes |
+| Off and unavailable | `#484949` in light mode and `#CBD0D3` in dark mode, the same for both | Yes |
+| Heating | Orange, `#FF6F22` | No, Home Assistant’s own |
+| Heating and cooling together (heat and cool range) | Amber, `#FFC107` | No, Home Assistant’s own |
+| Fan only | Cyan | No, Home Assistant’s own |
+
+Off and unavailable look the same, so the card’s words carry the difference. By calculation, the heating orange is 2.78:1 against the white card and the amber is 1.63:1, which is below the 3:1 expected for graphics. Heating is always written in words, and the target is always a number, so the colour is a help and never the only signal. Home Assistant draws the heating colour from its own default, so a theme cannot change it. The `theme:` key only helps when the theme you pick sets those colours.
+
+**What stays as Home Assistant draws it.** The dial shape, the 270 degree arc, the arc thickness and the focus cue on the dial and buttons are Home Assistant’s own. The card has no public variables for the dial. The name is 19 pixels, centred and cut off with an ellipsis when it is too long.
+
+**What needs extra tools.** Changing the dial’s size or arc, hiding the information button, replacing the paragraph name with a real heading and adding tap actions are not available from a theme or from the card’s keys. Changing the dial would need custom code or the card-mod integration. Keep the name short instead. Where people need a different layout, use a [Markdown card](markdown-card.html) with the readings written out beside an [Entities card](entities-card-and-entity-rows.html) row.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One native card shows the target and the current temperature and sets the target, so people do not need a separate control.
+- The dial can be moved with the keyboard, and the minus and plus buttons give another way to change it without dragging.
+- The target and the current temperature are written as numbers.
+- The name is a paragraph, so the card adds no extra level-one heading. Put a [Heading](heading.html) above it if the section needs one.
+- The heating colour is Home Assistant’s own, so the word Heating must carry the state.
+- Off and unavailable look the same.
+- The card has no tap or hold actions, only the information button.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use one device in each card, named in the words people use, such as “Bedroom thermostat”. Show the target and the current temperature as two separate, labelled values with their unit. Say Heating, Cooling or Idle in words, and say when a reading is unavailable. Do not suggest the heating is on because someone changed the target: the device has to report it first. See [Climate, fan and water-heater controls](../home-assistant/climate-and-air.html).
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: the dial is graphic, so the value is also written as text.
+- 1.3.1 Info and Relationships: the card is a group named by its name.
+- 1.4.1 Use of Colour: the state is also written in words.
+- 1.4.11 Non-text Contrast: the arc colours are not a reliable signal, as the dial colour table explains.
+- 2.1.1 Keyboard and 4.1.2 Name, Role, Value: the dial is a slider with a name, a value and keys.
+- 2.5.1 Pointer Gestures and 2.5.7 Dragging Movements: the minus and plus buttons are an alternative to dragging.
+- 2.4.7 Focus Visible: the focusable parts are the information button, the dial and the buttons. Their focus cue is Home Assistant’s own. Check it on your own dashboard.
+- 2.5.8 Target Size (Minimum): check the minus and plus buttons on your own dashboard.
+
+Say what the card does in plain words, give every number a unit and keep to one device in each card.
+
+<h2 id="examples">Examples</h2>
+
+### A thermostat card for the bedroom
+
+<%= example('spec-thermostat-card-bedroom') %>

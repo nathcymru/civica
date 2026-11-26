@@ -1,71 +1,126 @@
 ---
-title: Tag
-description: A tag names a status. It is not an action.
-section: components
-group: Content presentation
-source_url: https://service-manual.nhs.uk/design-system/components/tag
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Tag"
+description: "A tag names a status in a short word. It is not an action."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewritten as the full Tag specification. It now says what Home Assistant draws instead, what a Markdown card can show, and how the status words should be written."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Linked tags to the shared message decision and retained their distinct non-interactive status role.
-  - date: 2026-11-11
-    description: Added NHS-informed tag guidance and 2 Home Assistant reference examples.
+  - date: "2026-11-11"
+    description: "Added the Civica tag guidance and two Home Assistant examples, and linked tags to the shared message decision."
+ai_instructions: "Apply when a short status label sits beside a device, task or record. A tag is a rectangular, non-interactive label whose words carry the meaning; colour is a second cue. Home Assistant has no tag element. Its nearest parts are badges, chips and labels, the state text on a tile or a row, and the Heading card badges. A Markdown card can show a status word in strong or mark, but not a coloured pill, because classes and styles are removed. Never put a link in a tag or start it with a verb. Distinguish Unavailable from Off, and a completed setup task from a device that is unavailable. Do not let a missing value become a success state. The civica status colour keys are Civica's own and are not read by Home Assistant's badges. Never quote a measured contrast."
+ai_related:
+  - path: "/components/status.html"
+    title: "Status and notifications"
+    relationship: "Owns the shared state vocabulary and the choice of message."
+  - path: "/components/notification-badge.html"
+    title: "Badge"
+    relationship: "Owns the count of new or unread items."
+  - path: "/components/notification-banners.html"
+    title: "Notification Banner & Toast"
+    relationship: "Use a banner when a message needs scope and an action."
+  - path: "/components/chip.html"
+    title: "Chip"
+    relationship: "Owns the chips that Home Assistant uses for small interactive labels."
+  - path: "/components/heading.html"
+    title: "Heading"
+    relationship: "Owns the badges on a Heading card."
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns what a Markdown card keeps and strips."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test without colour, with longer translations and at 200% text."
+component:
+  parent: "Tag"
+  letter: "T"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Tag Pattern"
+      origin: "Civica"
+      anchor: "child-civica-tag-pattern"
+  tags:
+    - "tag"
+    - "status label"
 ---
 
 # Tag
 
-A tag names a status. It is not an action.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A tag names a status in a word or two, such as “Available” or “Completed”. It describes something. It is not an action, and people cannot press it.
 
-## State label or attention count
+Home Assistant has no tag element. A tag is plain markup on this site. This page owns the Civica pattern and says what Home Assistant offers for the same job.
 
-Use the [shared state vocabulary and message decision](status.html#choose-the-right-message). This page owns the rectangular, non-interactive status-label variant. Use the [notification badge](notification-badge.html) only for a count of new or unread items, and a [banner](notification-banners.html) when a complete message needs scope and an action. Do not turn a tag into any of those by changing its colour or adding a click handler.
+This page covers:
 
-## When to use it
+- Tag
+  - Civica Tag Pattern
 
-Use a short status label when it helps people understand a device, task or record. Start with the smallest useful set of statuses and use the same vocabulary consistently.
+<h2 id="anatomy">Anatomy</h2>
 
-## When not to use it
+A tag is a short, rectangular label that sits next to the thing it describes, in reading order. The words carry the meaning and the colour is a second cue. A tag is not a link or a button.
 
-Do not put a link inside a tag or use a verb such as “Start” that suggests an action. Avoid giving every normal reading a prominent coloured label.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Home Assistant adaptation
+<h3 id="child-civica-tag-pattern"><code>Civica Tag Pattern</code></h3>
 
-Distinguish “Unavailable” from “Off”: lack of a connection does not prove the physical state. A setup task may be “Completed” while the associated device is currently unavailable; these are different facts and need different labels.
+The pattern has a default tag and coloured variants, such as green, grey and blue. Use the smallest set of statuses that helps, and use the same word for the same state everywhere.
 
-## Accessibility and behaviour
+**State label or attention count.** Use the [shared state vocabulary and message decision](status.html#choose-the-right-message). This page owns the rectangular, non-interactive status label. Use the [Badge](notification-badge.html) only for a count of new or unread items, and a [banner](notification-banners.html) when a complete message needs scope and an action. Do not turn a tag into any of those by changing its colour or adding a click handler.
 
-Use sentence case and visible words. Colour is a secondary cue and uses semantic roles independent of the selected brand. Keep tags in the normal reading order and place any associated action separately.
+**What Home Assistant draws instead.** None of these is a tag:
 
-## Examples
+- Badges and labels on cards, such as the badges on a Heading card (see [Heading](heading.html)).
+- Chips, which are small and interactive (see [Chip](chip.html)).
+- The state text on a Tile card or an Entities row.
 
-### Connection states
+**Markdown card.** It can show a status word in `strong` or `mark`, but not a coloured pill, because classes and styles are removed (see [Markdown Card](markdown-card.html)). Write the state as a plain word in sentence case.
 
-The words explain the meaning without requiring colour recognition.
+**Theme colours.** The theme defines Civica’s own status colour pairs for success, danger, warning and notice. They are Civica variables that Home Assistant does not read, so they do not colour Home Assistant’s own badges. They work only where Civica’s own code, or card-mod, refers to them. Home Assistant’s own pills take their colours from its colour tokens.
 
-<%= example('nhs-tag-connection') %>
+<h2 id="limits">Advantages and limitations</h2>
 
-### Task progress
+- A tag turns a state into one scannable word.
+- A coloured tag is not a Home Assistant element, so a dashboard cannot draw it in a Markdown card.
+- A tag can say too little. It does not say why a device is unavailable or what to do.
+- Too many tags make a page noisy. Avoid giving every normal reading a prominent label.
 
-A progress tag describes a record, not a button.
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-<%= example('nhs-tag-task') %>
+Use a short label when it helps people understand a device, task or record. Start with the smallest useful set of statuses and keep the vocabulary consistent. Use sentence case and visible words. Do not put a link inside a tag or start it with a verb such as “Start”, because that suggests an action. Place any associated action next to the tag, as its own control.
 
-## Check the implementation
+Say the state as it is:
 
-Test without colour, with longer translations and at increased text size. Review every status transition so a missing value does not become an affirmative success state.
+- “Unavailable” is not “Off”. A lost connection does not prove the physical state.
+- A setup task can be “Completed” while its device is unavailable. These are two facts and need two labels.
+- A missing value must not become a success state.
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+Success criteria that apply:
 
-## Source and related guidance
+- 1.4.1 Use of Color: the word says the status, so colour is never the only cue.
+- 1.4.3 Contrast (Minimum): tag text needs 4.5:1 against its fill. Test each theme in light and dark modes.
+- 1.3.1 Info and Relationships: the text states the status in the page, not only in a colour or an image.
+- 1.4.4 Resize Text, 1.4.10 Reflow and 1.4.12 Text Spacing: tags wrap and stay readable at 200% text and 320 CSS pixels.
+- 3.1.2 Language of Parts: translated labels carry their language.
+- 4.1.3 Status Messages: a tag that changes to report a result needs an announcement. A tag that is always there is not a status message.
 
-[NHS tag](https://service-manual.nhs.uk/design-system/components/tag) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+The same word for the same state, kept short and free of jargon, keeps the effort low. Test without colour, with longer translations and at 200% text, using the [Civica accessibility checks](../accessibility/testing.html). Review every state change so a missing value never reads as success.
 
-See also [status and notifications](status.html).
+<h2 id="examples">Examples</h2>
+
+### Connection tags beside two devices
+
+<%= example('spec-tag-connection') %>
+
+### Progress tags beside two setup tasks
+
+<%= example('spec-tag-task') %>

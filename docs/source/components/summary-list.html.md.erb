@@ -1,65 +1,131 @@
 ---
-title: "Summary list"
-description: "Present labelled values when each label has one or more associated answers."
+title: "Summary List"
+description: "Present labelled values, one fact to a row, with an optional Change link for each row."
 section: "components"
-group: "Content presentation"
-source_url: "https://service-manual.nhs.uk/design-system/components/summary-list"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewritten as the full Summary List specification. It now says what Home Assistant offers instead, what a Markdown card can and cannot carry, and how to write the Change links."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added NHS-informed summary list guidance and 2 Home Assistant reference examples."
+  - date: "2026-11-11"
+    description: "Added the Civica summary list guidance and two Home Assistant examples."
+ai_instructions: "Apply when a page or card shows labelled values such as device details, or a review of settings before saving. Home Assistant has no summary list card or element. The Civica pattern is a plain description list with one fact to a row and an optional Change link. In a Markdown card only plain dl, dt and dd survive, in the browser's default style, and a Change link cannot have hidden text, so write the full visible link text. For rows of entity states use the Entities card. Write Not supplied or Unavailable instead of leaving a value blank. Do not use it for comparison across columns, navigation or a sequence of tasks. Never present a contrast figure as measured."
+ai_related:
+  - path: "/components/description-list.html"
+    title: "Description List"
+    relationship: "Owns the dl, dt and dd markup that a summary list is built from."
+  - path: "/components/entities-card-and-entity-rows.html"
+    title: "Entities Card & Entity Rows"
+    relationship: "Use it when each row is an entity with a live state."
+  - path: "/components/table.html"
+    title: "Data Table"
+    relationship: "Use a table when rows need comparing across shared columns."
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns what a Markdown card keeps and strips."
+  - path: "/components/card-and-section-header.html"
+    title: "Card & Section Header"
+    relationship: "Owns the heading that names each summary."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test at 320 px, at 200% text and with a keyboard."
+component:
+  parent: "Summary List"
+  letter: "S"
+  origins:
+    - "Civica"
+  children:
+    - name: "Civica Summary List Pattern"
+      origin: "Civica"
+      anchor: "child-civica-summary-list-pattern"
+  tags:
+    - "summary list"
+    - "dl"
+    - "dt"
+    - "dd"
 ---
 
-# Summary list
+# Summary List
 
-Present labelled values when each label has one or more associated answers.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A summary list shows labelled values: a label on one side and its answer on the other, one fact to a row. Use it for the details of one device, or to review settings before saving. Several summaries on one page each need their own heading, so people can tell them apart.
 
-## When to use it
+Home Assistant has no card or element of this kind. A summary list is plain HTML on this site, built from the description list that [Description List](description-list.html) owns. This page owns the Civica pattern: the rows, the Change link and the rules for writing them.
 
-Use it for device details or a review of settings before saving. A summary card can separate several instances of the same thing, each with a unique title.
+This page covers:
 
-## When not to use it
+- Summary List
+  - Civica Summary List Pattern
 
-Do not use a description list for rows that need comparison across shared columns, a navigation menu or a sequence of tasks. Choose a table, list or task list for those structures.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+A summary list is a description list. Each row holds a key (the label), a value (the answer) and, if people can change it, an action.
 
-A device summary should distinguish a friendly name, room and connection state. A settings summary can offer a change link without making the whole row a button. Returning from a change must preserve the existing answer and the path back to the review.
+- The key is a `dt` and the value is a `dd`.
+- The action is a second `dd` holding a link, with the label “Change”.
+- Each row sits in a `div`, which the description list allows.
+- Long values wrap, and at 320 CSS pixels the key, value and action stack in reading order.
 
-## Accessibility and behaviour
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Use dl, dt and dd semantics. Add hidden context to repeated “Change” links, or use a complete visible link label. Keep action targets independent and ensure long values wrap on small screens.
+<h3 id="child-civica-summary-list-pattern"><code>Civica Summary List Pattern</code></h3>
 
-## Examples
+The pattern has two forms: read-only details, and a review with a Change link on each row. A row with no way to change it has no action.
 
-### Read-only device details
+Write each row like this:
 
-Key-value pairs describe one device without implying tabular comparison.
+- Keep the label plain and the same each time. Say “Room”, not “Location of installation”.
+- Put one fact in a value. If a value has several parts, give each its own row.
+- Never leave a value blank. Write “Not supplied” when nobody gave a value and “Unavailable” when the device cannot report one.
+- Make the Change link say what it changes. Add visually hidden text to the link, so that a screen reader reads “Change dashboard name” while people see “Change”. Keep each link its own target, never the whole row.
+- When people return from changing a value, keep the existing answers and the way back to the review.
 
-<%= example('nhs-summary-device') %>
+**Where Home Assistant lets you write it.**
 
-### Review and change a display name
+- **Markdown card.** Only plain `dl`, `dt` and `dd` survive, in the browser’s default style. Classes and styles are removed. The hidden-text trick needs a class, so it cannot be used. Write the whole link text in view, such as “Change dashboard name”. See [Markdown Card](markdown-card.html) for what the card keeps.
+- **Entities card.** When each row is an entity with a live state, use the [Entities Card & Entity Rows](entities-card-and-entity-rows.html) page. Home Assistant draws the rows, and the theme’s text colours apply to them.
+- **Row dividers.** Changing the dividers between rows needs the card-mod integration. Test the result in your own dashboard.
+- **Settings forms.** Home Assistant’s own settings forms use a settings row that has a heading and a description. A dashboard author cannot place it.
 
-The change link has an unambiguous accessible name and an actual example destination.
+Colours come from the theme: primary and secondary text, the divider colour and the card background. Links use the theme’s primary colour, which differs between the eight themes.
 
-<%= example('nhs-summary-change') %>
+<h2 id="limits">Advantages and limitations</h2>
 
-## Check the implementation
+- A description list tells assistive technology that each value belongs to its label.
+- One fact to a row keeps the list quick to scan, and long values wrap rather than being cut off.
+- Screen readers announce description lists in different ways, so do not rely on the list being announced.
+- A summary list shows values but cannot compare them across columns. Use a [Data Table](table.html) for that.
+- In a Markdown card the list has no Civica styling and no hidden link text.
 
-Test an absent value, a very long device name, repeated action names and reading order at 320px. Do not display a blank cell where “Not supplied” or “Unavailable” is the accurate meaning.
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+Use a summary list for the details of one thing, or to review answers before saving. Do not use it for rows that need comparing across shared columns, for navigation or for a sequence of tasks. Use a table, a list or a task list for those.
 
-## Source and related guidance
+Say what “Change” will change. A device summary should separate the friendly name, the room and the connection state, so that people never read a name as a state.
 
-[NHS summary list](https://service-manual.nhs.uk/design-system/components/summary-list) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+Success criteria that apply:
 
-See also [cards](cards.html).
+- 1.3.1 Info and Relationships and 1.3.2 Meaningful Sequence: the key comes before its value, and rows keep their order when they stack.
+- 1.4.4 Resize Text and 1.4.10 Reflow: long values wrap at 320 CSS pixels and at 200% text.
+- 2.4.4 Link Purpose (In Context) and 4.1.2 Name, Role, Value: each Change link names what it changes.
+- 2.5.8 Target Size (Minimum): each Change link is its own target of at least 24 by 24 CSS pixels.
+- 3.3.7 Redundant Entry: do not ask again for a value shown in the summary.
+
+Plain labels, one fact to a row and a clear Change link keep the effort of reviewing low. Test an absent value, a very long device name, repeated Change links and the reading order at 320 CSS pixels. Follow the [Civica accessibility checks](../accessibility/testing.html) in light and dark modes.
+
+<h2 id="examples">Examples</h2>
+
+### Read-only details of one device
+
+<%= example('spec-summary-list-device') %>
+
+### A summary row with a Change link
+
+<%= example('spec-summary-list-change') %>

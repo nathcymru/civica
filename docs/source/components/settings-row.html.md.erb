@@ -1,0 +1,114 @@
+---
+title: "Settings Row"
+description: "Lay out one setting as a heading, a short description and a control on one row."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Settings Row specification: its parts, options and spacing variables, what Civica changes, and what the row does not do for you."
+ai_instructions: "Apply when explaining or reviewing a settings row in Home Assistant settings screens and dialogs. ha-settings-row is a layout shell with slots for prefix, heading, description and the control. It cannot be placed on a dashboard. It does not link its heading to its control, so the label must be added by whoever builds the row. Do not claim headings truncate or that wrap-heading changes wrapping, and do not claim slim or three-line give a guaranteed look. Keep the scope of a setting (account, browser, installation) in words. For read-only pairs use the Summary list."
+ai_related:
+  - path: "/patterns/settings.html"
+    title: "Settings and preferences"
+    relationship: "Owns how settings are grouped, scoped and saved."
+  - path: "/components/summary-list.html"
+    title: "Summary List"
+    relationship: "Use for read-only pairs of a name and a value."
+  - path: "/components/form-and-schema-form.html"
+    title: "Form & Schema Form"
+    relationship: "Owns forms built from a schema, where rows are used."
+  - path: "/components/selector.html"
+    title: "Selector (Polymorphic Schema Input)"
+    relationship: "Owns the controls that fill a row in service and automation forms."
+component:
+  parent: "Settings Row"
+  letter: "S"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-settings-row"
+      origin: "Home Assistant"
+      anchor: "child-ha-settings-row"
+  tags:
+    - "ha-settings-row"
+---
+
+# Settings Row
+
+<h2 id="purpose">Purpose</h2>
+
+A settings row puts one setting on one line: a heading that names it, a short description of what it does and the control that changes it. Home Assistant uses it throughout its settings screens, dialogs and automation editor.
+
+It is part of Home Assistant’s own screens. A dashboard author cannot place it in a card. This page is for people who read, review or extend those screens, and for anyone laying out a setting in the same way.
+
+For how settings are grouped and saved, see [Settings and preferences](../patterns/settings.html). For read-only pairs of a name and a value, use [Summary list](summary-list.html).
+
+This page covers:
+
+- Settings Row
+  - `ha-settings-row`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From left to right, or top to bottom on a narrow screen:
+
+- An optional prefix, such as an icon.
+- A heading that names the setting.
+- An optional description under the heading, shown only when there is one.
+- The control, in the default slot.
+
+On a narrow screen the row stacks, with the control under the text and a thin line above the row. A row with a description is at least 72 pixels tall.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-settings-row"><code>ha-settings-row</code></h3>
+
+A layout element with these attributes:
+
+| Attribute | Meaning |
+| --- | --- |
+| `narrow` | Stacks the row, with the control under the text |
+| `slim` | Removes padding and the minimum height |
+| `three-line` | Makes room for a three-line description |
+| `wrap-heading` | Allows the heading to wrap |
+| `empty` | Hides the control column |
+
+Slots: `prefix`, `heading`, `description` and the default slot for the control. The heading part can be styled from outside. The row fires no events.
+
+Spacing can be changed with `--settings-row-body-padding-top`, `--settings-row-body-padding-bottom`, `--settings-row-content-display`, `--settings-row-content-padding-block`, `--settings-row-content-width`, `--settings-row-switch-padding-block`, `--settings-row-prefix-flex` and `--settings-row-prefix-display`. The Civica theme sets none of them.
+
+**What the Civica theme sets.** The row follows the theme’s `secondary-text-color` for the description, `divider-color` for the line on a narrow row, and the `ha-font-size-s` size (14 pixels) and body font. The theme does not set the spacing between parts, so that stays as Home Assistant draws it.
+
+**What the row does not do.** The heading is a slot, not a heading element, and the row does not link its heading to its control. It adds no label, no `for`, no grouping and no list. Whoever builds the row must give the control its own name. For example, the service form in Home Assistant puts the heading in a plain text element beside the control, and passes no label to it, so the two are not linked.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A row gives every setting the same shape, which helps people scan a long list.
+- It adapts to a narrow screen by stacking.
+- It gives no labelling by itself. A control in a row can be unnamed unless its builder adds a name.
+- It is available only inside Home Assistant’s own screens.
+- Do not rely on long headings being cut off or wrapped in a particular way. Check long headings on your own screen.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Give each row one setting and one control. Name the setting in plain words, for example “Show seconds in times”, not by its internal option name. Use the description to say what changes and where the change applies, such as this browser, this account or the whole installation. Say the state of a switch in words as well as by position. Keep the row’s heading, description and control in that order, so a screen reader reads them in order.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 4.1.2 Name, Role, Value: the control needs a name that matches the heading.
+- 3.3.2 Labels or Instructions: the description gives the instruction before the choice.
+- 2.5.3 Label in Name: the control’s accessible name contains the visible heading.
+- 1.4.10 Reflow: the narrow layout must read in one column at 320 pixels.
+- 1.4.3 Contrast (Minimum): the description is 14 pixel text in the secondary text colour, so check it in your own theme.
+- 2.5.8 Target Size (Minimum): check the control, not the row.
+
+<h2 id="examples">Examples</h2>
+
+### Wide and narrow rows
+
+<%= example('spec-settings-row-group') %>

@@ -1,0 +1,137 @@
+# Synthetic data and no live actions.
+examples:
+  spec-popover-reading-note:
+    title: A sensor card with its extra explanation written out
+    description: "A simulated sensor card in the light theme. The reading is on the first line, and the longer explanation sits under a plain heading, \"More about this reading\", instead of in a popover, because a dashboard cannot add a popover. The text is always visible."
+    height: 380
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-popover-title"><div class="civica-card-demo__body">
+      <h2 id="spec-popover-title" style="margin:0 0 12px;font-size:22px;line-height:1.25">Living-room temperature</h2>
+      <p style="margin:0 0 16px;font-size:1.75rem;font-weight:700;line-height:1.2">20.5 °C</p>
+      <h3 style="margin:0 0 4px;font-size:19px;line-height:1.25">More about this reading</h3>
+      <p style="margin:0;color:#484949">The sensor sits on the bookshelf, away from the radiator. It reports every 5 minutes, so the figure can be up to 5 minutes old.</p>
+      </div></article>
+  spec-progress-update-card:
+    title: An update card with a progress bar and the same progress in words
+    description: "A simulated update card in the light theme. A bar fills three fifths of its length, and the words beside it say \"Step 3 of 5\" and name what is happening. The bar here is the browser’s own, so Home Assistant’s bar looks different. Nothing here is interactive."
+    height: 400
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-progress-title"><div class="civica-card-demo__body">
+      <h2 id="spec-progress-title" style="margin:0 0 12px;font-size:22px;line-height:1.25">Hallway thermostat update</h2>
+      <p style="margin:0 0 8px"><label for="spec-progress-bar"><strong>Installing the update</strong></label></p>
+      <progress id="spec-progress-bar" value="3" max="5" style="display:block;width:100%;max-width:20rem;height:16px;accent-color:#19578D">Step 3 of 5</progress>
+      <p style="margin:8px 0 0">Step 3 of 5: copying the new software to the thermostat. This usually takes a few minutes.</p>
+      </div></article>
+  spec-qr-guest-wifi:
+    title: A guest Wi-Fi card with a QR code and the same details as text
+    description: "A simulated Markdown card in the light theme. A QR code made from the Wi-Fi details sits beside the network name and the password, which are written out as text, and a line says what scanning does. Home Assistant draws its own code, so the look differs. Nothing here is interactive."
+    height: 420
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-qr-title"><div class="civica-card-demo__body">
+      <h2 id="spec-qr-title" style="margin:0 0 12px;font-size:22px;line-height:1.25">Guest Wi-Fi</h2>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start">
+      <svg role="img" aria-label="QR code for the guest Wi-Fi network. The same details are written in the text beside it." viewBox="0 0 41 41" width="164" height="164" shape-rendering="crispEdges" style="flex:none"><rect width="41" height="41" fill="#FFFFFF"></rect><path fill="#0B0C0C" d="M4 4h7v1h-7zM12 4h5v1h-5zM26 4h2v1h-2zM30 4h7v1h-7zM4 5h1v1h-1zM10 5h1v1h-1zM12 5h4v1h-4zM21 5h1v1h-1zM23 5h1v1h-1zM25 5h2v1h-2zM28 5h1v1h-1zM30 5h1v1h-1zM36 5h1v1h-1zM4 6h1v1h-1zM6 6h3v1h-3zM10 6h1v1h-1zM12 6h1v1h-1zM16 6h1v1h-1zM20 6h5v1h-5zM26 6h3v1h-3zM30 6h1v1h-1zM32 6h3v1h-3zM36 6h1v1h-1zM4 7h1v1h-1zM6 7h3v1h-3zM10 7h1v1h-1zM13 7h3v1h-3zM19 7h1v1h-1zM27 7h2v1h-2zM30 7h1v1h-1zM32 7h3v1h-3zM36 7h1v1h-1zM4 8h1v1h-1zM6 8h3v1h-3zM10 8h1v1h-1zM12 8h1v1h-1zM18 8h2v1h-2zM21 8h2v1h-2zM24 8h2v1h-2zM27 8h2v1h-2zM30 8h1v1h-1zM32 8h3v1h-3zM36 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM13 9h2v1h-2zM17 9h1v1h-1zM21 9h1v1h-1zM24 9h2v1h-2zM27 9h2v1h-2zM30 9h1v1h-1zM36 9h1v1h-1zM4 10h7v1h-7zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h7v1h-7zM13 11h3v1h-3zM17 11h1v1h-1zM22 11h3v1h-3zM26 11h1v1h-1zM28 11h1v1h-1zM4 12h1v1h-1zM7 12h8v1h-8zM16 12h1v1h-1zM18 12h2v1h-2zM21 12h1v1h-1zM23 12h1v1h-1zM29 12h1v1h-1zM32 12h1v1h-1zM34 12h3v1h-3zM4 13h1v1h-1zM11 13h1v1h-1zM13 13h1v1h-1zM16 13h1v1h-1zM19 13h2v1h-2zM23 13h1v1h-1zM27 13h6v1h-6zM4 14h9v1h-9zM15 14h1v1h-1zM18 14h2v1h-2zM21 14h2v1h-2zM24 14h2v1h-2zM27 14h1v1h-1zM29 14h1v1h-1zM31 14h2v1h-2zM34 14h3v1h-3zM4 15h3v1h-3zM8 15h1v1h-1zM15 15h2v1h-2zM18 15h1v1h-1zM20 15h2v1h-2zM23 15h2v1h-2zM28 15h2v1h-2zM34 15h1v1h-1zM36 15h1v1h-1zM4 16h3v1h-3zM9 16h2v1h-2zM13 16h1v1h-1zM15 16h8v1h-8zM24 16h8v1h-8zM33 16h2v1h-2zM36 16h1v1h-1zM4 17h2v1h-2zM8 17h1v1h-1zM11 17h1v1h-1zM15 17h1v1h-1zM20 17h1v1h-1zM23 17h1v1h-1zM26 17h1v1h-1zM28 17h1v1h-1zM33 17h1v1h-1zM35 17h2v1h-2zM5 18h2v1h-2zM8 18h5v1h-5zM15 18h3v1h-3zM20 18h2v1h-2zM25 18h1v1h-1zM31 18h1v1h-1zM34 18h1v1h-1zM6 19h2v1h-2zM15 19h3v1h-3zM19 19h1v1h-1zM23 19h1v1h-1zM27 19h3v1h-3zM32 19h4v1h-4zM5 20h1v1h-1zM8 20h3v1h-3zM13 20h4v1h-4zM20 20h1v1h-1zM23 20h2v1h-2zM26 20h1v1h-1zM29 20h2v1h-2zM32 20h2v1h-2zM35 20h2v1h-2zM4 21h2v1h-2zM7 21h1v1h-1zM12 21h1v1h-1zM14 21h1v1h-1zM17 21h1v1h-1zM22 21h6v1h-6zM29 21h1v1h-1zM32 21h1v1h-1zM34 21h1v1h-1zM36 21h1v1h-1zM5 22h1v1h-1zM8 22h1v1h-1zM10 22h1v1h-1zM14 22h1v1h-1zM19 22h1v1h-1zM23 22h2v1h-2zM27 22h1v1h-1zM30 22h4v1h-4zM36 22h1v1h-1zM4 23h1v1h-1zM6 23h4v1h-4zM11 23h1v1h-1zM14 23h2v1h-2zM18 23h2v1h-2zM21 23h5v1h-5zM27 23h5v1h-5zM33 23h3v1h-3zM4 24h3v1h-3zM9 24h2v1h-2zM12 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM18 24h1v1h-1zM23 24h3v1h-3zM27 24h1v1h-1zM29 24h1v1h-1zM34 24h1v1h-1zM36 24h1v1h-1zM4 25h1v1h-1zM6 25h2v1h-2zM9 25h1v1h-1zM16 25h2v1h-2zM20 25h3v1h-3zM24 25h1v1h-1zM26 25h4v1h-4zM31 25h3v1h-3zM35 25h2v1h-2zM4 26h1v1h-1zM8 26h4v1h-4zM13 26h2v1h-2zM18 26h3v1h-3zM25 26h3v1h-3zM30 26h1v1h-1zM35 26h2v1h-2zM4 27h1v1h-1zM6 27h3v1h-3zM12 27h1v1h-1zM16 27h1v1h-1zM18 27h1v1h-1zM20 27h2v1h-2zM28 27h1v1h-1zM31 27h2v1h-2zM34 27h3v1h-3zM4 28h4v1h-4zM9 28h4v1h-4zM14 28h1v1h-1zM16 28h2v1h-2zM19 28h1v1h-1zM23 28h2v1h-2zM28 28h5v1h-5zM35 28h1v1h-1zM12 29h1v1h-1zM17 29h3v1h-3zM24 29h1v1h-1zM26 29h3v1h-3zM32 29h1v1h-1zM35 29h1v1h-1zM4 30h7v1h-7zM12 30h2v1h-2zM17 30h3v1h-3zM22 30h2v1h-2zM25 30h4v1h-4zM30 30h1v1h-1zM32 30h3v1h-3zM4 31h1v1h-1zM10 31h1v1h-1zM12 31h3v1h-3zM16 31h2v1h-2zM19 31h2v1h-2zM28 31h1v1h-1zM32 31h1v1h-1zM34 31h3v1h-3zM4 32h1v1h-1zM6 32h3v1h-3zM10 32h1v1h-1zM12 32h3v1h-3zM16 32h1v1h-1zM18 32h1v1h-1zM21 32h2v1h-2zM24 32h2v1h-2zM27 32h6v1h-6zM35 32h2v1h-2zM4 33h1v1h-1zM6 33h3v1h-3zM10 33h1v1h-1zM12 33h1v1h-1zM15 33h1v1h-1zM21 33h1v1h-1zM24 33h1v1h-1zM28 33h2v1h-2zM31 33h2v1h-2zM34 33h1v1h-1zM36 33h1v1h-1zM4 34h1v1h-1zM6 34h3v1h-3zM10 34h1v1h-1zM15 34h3v1h-3zM20 34h1v1h-1zM22 34h1v1h-1zM24 34h1v1h-1zM26 34h5v1h-5zM32 34h1v1h-1zM35 34h2v1h-2zM4 35h1v1h-1zM10 35h1v1h-1zM14 35h2v1h-2zM19 35h2v1h-2zM22 35h1v1h-1zM26 35h2v1h-2zM29 35h2v1h-2zM32 35h5v1h-5zM4 36h7v1h-7zM12 36h4v1h-4zM17 36h2v1h-2zM20 36h2v1h-2zM24 36h1v1h-1zM28 36h4v1h-4z"></path></svg>
+      <div style="flex:1 1 12rem;min-width:0">
+      <p style="margin:0 0 8px">Scan the code with your phone camera to join the guest network.</p>
+      <p style="margin:0">Network: <strong>Guest network</strong><br>Password: <strong>sunflower-42</strong></p>
+      </div>
+      </div>
+      </div></article>
+  spec-radio-units:
+    title: Choose one unit
+    description: "A simulated form card with one group of two radios and no answer chosen. Both options are visible, and neither is assumed for a new answer. Nothing is saved."
+    height: 340
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-radio-units-title"><div class="civica-card-demo__body">
+      <h2 id="spec-radio-units-title" style="margin:0 0 15px;font-size:22px;line-height:1.25">Display settings</h2>
+      <fieldset style="border:0;margin:0;padding:0">
+      <legend style="font-weight:700;font-size:1.25rem;padding:0;margin:0 0 8px">Which temperature unit should be used?</legend>
+      <p style="margin:0 0 8px;display:flex;align-items:center;gap:12px;min-height:44px"><input id="spec-radio-units-0" name="spec-radio-units" type="radio" value="0" style="width:24px;height:24px;margin:0"><label for="spec-radio-units-0">Degrees Celsius</label></p>
+      <p style="margin:0 0 8px;display:flex;align-items:center;gap:12px;min-height:44px"><input id="spec-radio-units-1" name="spec-radio-units" type="radio" value="1" style="width:24px;height:24px;margin:0"><label for="spec-radio-units-1">Degrees Fahrenheit</label></p>
+      </fieldset>
+      </div></article>
+  spec-radio-colour-mode:
+    title: Edit a saved colour mode
+    description: "A simulated form card with one group of three radios. The saved choice, Use device setting, is already selected, because this card edits an existing setting. Nothing is saved."
+    height: 380
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-radio-mode-title"><div class="civica-card-demo__body">
+      <h2 id="spec-radio-mode-title" style="margin:0 0 15px;font-size:22px;line-height:1.25">Display settings</h2>
+      <fieldset style="border:0;margin:0;padding:0">
+      <legend style="font-weight:700;font-size:1.25rem;padding:0;margin:0 0 8px">Colour mode</legend>
+      <p style="margin:0 0 8px;display:flex;align-items:center;gap:12px;min-height:44px"><input id="spec-radio-mode-0" name="spec-radio-mode" type="radio" value="0" style="width:24px;height:24px;margin:0"><label for="spec-radio-mode-0">Light</label></p>
+      <p style="margin:0 0 8px;display:flex;align-items:center;gap:12px;min-height:44px"><input id="spec-radio-mode-1" name="spec-radio-mode" type="radio" value="1" style="width:24px;height:24px;margin:0"><label for="spec-radio-mode-1">Dark</label></p>
+      <p style="margin:0 0 8px;display:flex;align-items:center;gap:12px;min-height:44px"><input id="spec-radio-mode-2" name="spec-radio-mode" type="radio" value="2" checked style="width:24px;height:24px;margin:0"><label for="spec-radio-mode-2">Use device setting</label></p>
+      </fieldset>
+      </div></article>
+  spec-time-reading-card:
+    title: A reading with its exact time and the relative wording
+    description: "A simulated sensor card in the light theme. The exact date and time are written out in full, and the relative wording sits beside them. Home Assistant draws and updates the relative wording itself; here it is fixed text. Nothing here is interactive."
+    height: 340
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-time-title"><div class="civica-card-demo__body">
+      <h2 id="spec-time-title" style="margin:0 0 12px;font-size:22px;line-height:1.25">Living-room temperature</h2>
+      <p style="margin:0 0 8px;font-size:1.75rem;font-weight:700;line-height:1.2">20.5 °C</p>
+      <p style="margin:0;color:#484949">Last changed <time datetime="2026-11-11T14:05:00Z">14:05 GMT on 11 November 2026</time> (5 minutes ago)</p>
+      </div></article>
+  spec-search-devices:
+    title: Search within devices
+    description: "A simulated search form with a visible label, a hint that names what is searched, one search field and a button. The button does nothing."
+    height: 340
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-search-devices-title"><div class="civica-card-demo__body">
+      <h2 id="spec-search-devices-title" style="margin:0 0 15px;font-size:22px;line-height:1.25">Devices</h2>
+      <form role="search" aria-label="Devices" onsubmit="return false">
+      <label for="spec-search-devices-field" style="display:block;font-weight:700;margin:0 0 4px">Find a device</label>
+      <p id="spec-search-devices-hint" style="margin:0 0 8px;color:#484949">Search by its display name</p>
+      <input id="spec-search-devices-field" name="spec-search-devices-field" type="search" value="" aria-describedby="spec-search-devices-hint" inputmode="search" style="width:100%;max-width:20rem;min-height:44px;padding:8px;border:2px solid #0B0C0C;font:inherit;border-radius:0">
+      <p style="margin:16px 0 0"><button type="button" style="min-height:44px;padding:8px 16px;border:2px solid #0B0C0C;background:#1D70B8;color:#FFFFFF;font:inherit;font-weight:700;border-radius:0">Search devices</button></p>
+      </form>
+      </div></article>
+  spec-search-no-results:
+    title: A search with no matches
+    description: "A simulated search form after a search for \"Attic radiator\". The query stays in the field so it can be changed, and a heading and a sentence say that nothing matched and that the connection is working. The button does nothing."
+    height: 460
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-search-none-title"><div class="civica-card-demo__body">
+      <h2 id="spec-search-none-title" style="margin:0 0 15px;font-size:22px;line-height:1.25">Devices</h2>
+      <form role="search" aria-label="Devices" onsubmit="return false">
+      <label for="spec-search-none-field" style="display:block;font-weight:700;margin:0 0 4px">Find a device</label>
+      <input id="spec-search-none-field" name="spec-search-none-field" type="search" value="Attic radiator" style="width:100%;max-width:20rem;min-height:44px;padding:8px;border:2px solid #0B0C0C;font:inherit;border-radius:0">
+      <p style="margin:16px 0 0"><button type="button" style="min-height:44px;padding:8px 16px;border:2px solid #0B0C0C;background:#1D70B8;color:#FFFFFF;font:inherit;font-weight:700;border-radius:0">Search again</button></p>
+      </form>
+      <h3 style="margin:24px 0 4px;font-size:19px;line-height:1.25">No matching devices</h3>
+      <p style="margin:0">Check the name or try a room name. The connection is working.</p>
+      </div></article>
+  spec-search-combobox-list:
+    title: The component search with a list of matches
+    description: "A simulated picture of the Civica component search after \"radio\" has been typed. A visible label and a hint sit above the field, three matching items follow, each with a short description, and a line below says how many matched. Nothing searches and the list does not respond."
+    height: 520
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-search-combo-title"><div class="civica-card-demo__body">
+      <h2 id="spec-search-combo-title" style="margin:0 0 15px;font-size:22px;line-height:1.25">Components</h2>
+      <label for="spec-search-combo-field" style="display:block;font-weight:700;margin:0 0 4px">Find a component</label>
+      <p id="spec-search-combo-hint" style="margin:0 0 8px;color:#484949">Type part of a name, for example radio or search</p>
+      <input id="spec-search-combo-field" name="spec-search-combo-field" type="text" value="radio" aria-describedby="spec-search-combo-hint" autocomplete="off" style="width:100%;max-width:20rem;min-height:44px;padding:8px;border:2px solid #0B0C0C;font:inherit;border-radius:0">
+      <ul style="list-style:none;margin:8px 0 0;padding:0;max-width:20rem;border:1px solid #CECECE">
+      <li style="padding:8px;background:#E8F1F8;border-bottom:1px solid #CECECE"><strong>Radio Button</strong><br><span style="color:#484949">Component. Origin: HTML5, Home Assistant</span></li>
+      <li style="padding:8px;border-bottom:1px solid #CECECE"><strong>&lt;input type="radio"&gt;</strong><br><span style="color:#484949">Element in Radio Button. Origin: HTML5</span></li>
+      <li style="padding:8px"><strong>ha-radio</strong><br><span style="color:#484949">Element in Radio Button. Origin: Home Assistant</span></li>
+      </ul>
+      <p style="margin:8px 0 0">3 results</p>
+      </div></article>
+  spec-section-two-sections:
+    title: A dashboard view with two sections, each opened by a heading
+    description: "A simulated dashboard view in the light theme with two sections side by side. Each section opens with a Heading card that names it, then holds one card. On a narrow screen the two sections stack into one column. Home Assistant draws its own spacing and card look, so the look differs. Nothing here is interactive."
+    height: 420
+    html: |
+      <div style="display:flex;gap:24px;flex-wrap:wrap;max-width:44rem">
+      <div style="flex:1 1 15rem;min-width:0">
+      <h2 style="margin:0 0 8px;font-size:22px;font-weight:700;line-height:1.45;color:#0B0C0C">Heating</h2>
+      <article class="civica-card-demo" aria-label="Hallway thermostat"><div class="civica-card-demo__body"><p style="margin:0 0 8px"><strong>Hallway thermostat</strong></p><p style="margin:0">Heating to 21 °C. Now 19.5 °C.</p></div></article>
+      </div>
+      <div style="flex:1 1 15rem;min-width:0">
+      <h2 style="margin:0 0 8px;font-size:22px;font-weight:700;line-height:1.45;color:#0B0C0C">Lights</h2>
+      <article class="civica-card-demo" aria-label="Living-room lights"><div class="civica-card-demo__body"><p style="margin:0 0 8px"><strong>Ceiling light</strong>: On</p><p style="margin:0"><strong>Reading lamp</strong>: Off</p></div></article>
+      </div>
+      </div>

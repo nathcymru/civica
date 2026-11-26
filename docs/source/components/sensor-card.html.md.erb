@@ -1,0 +1,140 @@
+---
+title: "Sensor Card"
+description: "Show one reading, such as a temperature, with its unit and an optional small graph."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Sensor Card specification: its options, the graph footer, what Civica changes and what stays as Home Assistant draws it."
+ai_instructions: "Apply when a dashboard shows one numeric reading as a card (type: sensor). The entity must be in the counter, input_number, number or sensor domain. Options are entity, name, icon, color, graph (line), unit, detail, theme, hours_to_show and limits. The graph is a small line with no text alternative, so write the range beside it. Long names and values are cut off with an ellipsis and the card is two rows high. The card is a button only if it has a tap action; by default a tap opens more information. Civica's thicker focus ring needs the card-mod integration. Do not claim the graph is accessible, do not state a contrast ratio for state colours, and do not claim the reading is fresh."
+ai_related:
+  - path: "/components/entity-card.html"
+    title: "Entity Card"
+    relationship: "Owns the card the sensor card is built on."
+  - path: "/components/glance-card.html"
+    title: "Glance Card"
+    relationship: "Use to show several readings compactly."
+  - path: "/components/history-graph-card.html"
+    title: "History Graph Card"
+    relationship: "Owns the full history graph for values over time."
+  - path: "/components/gauge.html"
+    title: "Gauge"
+    relationship: "Use when a reading sits within a known range."
+  - path: "/components/card-header-and-footer-widgets.html"
+    title: "Card Header & Footer Widgets"
+    relationship: "Owns the graph footer used by this card."
+  - path: "/home-assistant/entity-lists-and-rows.html"
+    title: "Entity lists, readings and row actions"
+    relationship: "Owns how readings are chosen and grouped on a dashboard."
+component:
+  parent: "Sensor Card"
+  letter: "S"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-sensor-card"
+      origin: "Lovelace"
+      anchor: "child-hui-sensor-card"
+  tags:
+    - "hui-sensor-card"
+---
+
+# Sensor Card
+
+<h2 id="purpose">Purpose</h2>
+
+A sensor card shows one number, such as a room temperature, large enough to read at a glance, with its unit and an optional small graph of recent values. Use it when one reading matters on its own.
+
+This page owns the sensor card (`type: sensor`). The card is the entity card with a different default look, so for the shared structure see [Entity Card](entity-card.html). For a row of readings use [Glance Card](glance-card.html), and for values over time use [History Graph Card](history-graph-card.html).
+
+This page covers:
+
+- Sensor Card
+  - `hui-sensor-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+- A header with the name on the left and an icon on the right.
+- The value in large type, followed by its unit.
+- An optional graph footer: a small line of recent values.
+
+The name is plain text, not a heading. The card has no slots and fires no events of its own.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-sensor-card"><code>hui-sensor-card</code></h3>
+
+A Lovelace card. You must set `entity`, and it must be a counter, an input number, a number or a sensor. Any other kind gives the error “Specify an entity from within the sensor domain”.
+
+```yaml
+type: sensor
+entity: sensor.hall_temperature
+name: Hall temperature
+graph: line
+hours_to_show: 24
+```
+
+| Key | Meaning |
+| --- | --- |
+| `name` | Replaces the entity name |
+| `icon` | Replaces the entity icon |
+| `color` | Colours the icon; with no `color` the icon follows the theme |
+| `unit` | Replaces the unit shown after the value |
+| `graph` | `line` adds the graph footer; leave it out for no graph |
+| `detail` | `1` or `2`; the editor offers it as “Show more detail” |
+| `hours_to_show` | How many hours the graph covers; the default is 24 |
+| `limits` | A `min` and `max` for the graph’s vertical range |
+| `theme` | A theme to use for this card only |
+
+`detail`, `hours_to_show` and `limits` affect the graph only. A tap opens more information by default. The graph footer opens it when clicked, and does not run the card’s tap action.
+
+**What the Civica theme sets.** The card has square corners, a 1 pixel border and no shadow. Text uses `primary-text-color` for the value and `secondary-text-color` for the name and unit, and the icon uses `state-icon-color`. The name and unit use `ha-font-size-l`, which the theme sets to 19 pixels. Home Assistant’s “medium” weight is set to regular in Civica, so the name is not bold.
+
+**What stays as Home Assistant draws it.**
+
+- The value size is Home Assistant’s default, 28 pixels at the standard text size, because the theme does not set it.
+- The name and the value are kept to one line and cut off with an ellipsis. A long name or a large text setting can hide part of it.
+- The card is two rows high in the grid, so there is little room for more text.
+- The graph is a plain line. It has no title or text alternative, and it shows a message when there is no history.
+- The icon takes a state colour only if you set `color`. It never colours itself from the state alone.
+
+**What needs card-mod.** A thicker Civica focus ring needs the card-mod integration. Without it the focus mark is Home Assistant’s 1 pixel shadow. Changing the value or name style also needs card-mod.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One large number is quick to read, and the unit is built in.
+- The graph shows trend without taking much space.
+- The graph has no text alternative. Write the range, for example “Last 24 hours: 18.9 to 21.2 °C”, in a Markdown card or card header.
+- Long names and values are cut off.
+- The card says nothing about when the reading was taken, or whether it is unknown. Use the entity’s own state for “unknown” and do not show an unknown reading as zero.
+- Only four entity domains are allowed.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Name the quantity and give the unit: “Hall temperature, °C”, not “Sensor 3”. Keep names short enough to fit on one line. State what the graph covers. Say when a reading is unknown, and do not show zero for it. Do not rely on icon colour to show a state; write the state in words nearby. Keep the number of cards small, so each reading stays easy to find.
+
+If a reading matters for safety, add a plain-words alert next to it. See [Entity lists, readings and row actions](../home-assistant/entity-lists-and-rows.html#readings) for how readings are grouped, and [Entity state, confidence and freshness](../home-assistant/entity-state.html) for unknown and out-of-date readings.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: the graph has no text alternative, so write its range in text.
+- 1.4.1 Use of Colour: a state colour is never the only cue.
+- 1.4.3 and 1.4.11 Contrast: check the text and the line colour in your own theme.
+- 1.4.4 Resize Text, 1.4.10 Reflow and 1.4.12 Text Spacing: names and values are cut off rather than wrapped.
+- 2.1.1 Keyboard: when the card has a tap action, Enter and Space run it.
+- 2.4.7 Focus Visible and 2.4.11 Focus Not Obscured (Minimum): check the focus mark on your dashboard.
+- 2.5.8 Target Size (Minimum): the whole card is the target.
+- 4.1.2 Name, Role, Value: the card has no role of its own, so do not describe it as a button.
+
+<h2 id="examples">Examples</h2>
+
+### Two readings with graphs
+
+<%= example('spec-sensor-card-readings') %>

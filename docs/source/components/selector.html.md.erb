@@ -1,0 +1,662 @@
+---
+title: "Selector (Polymorphic Schema Input)"
+description: "Choose the right input for a value in a Home Assistant form, from a simple switch to a picker for devices, areas or actions."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Selector specification: what a selector is, how to write one, and one entry for each selector Home Assistant draws, including four names it does not use."
+ai_instructions: "Apply when a Home Assistant form, automation, script or blueprint asks for a value through a selector. A selector is a YAML mapping with one key that names the type, for example selector: { number: { min: 0, max: 100 } }. Home Assistant draws the matching input. Four inventory names, serial, usb, bluetooth and zeroconf, are not selectors in this version: use the serial_port selector, or a device selector filtered by integration, or a text field. Give every field one visible label and a hint before the field. A selector does not guarantee a label for assistive technology, so do not claim one. In slider mode the label is plain text before the slider and the slider is not named by it. Do not claim keyboard reordering, and do not claim selector behaviour is the same in every editor."
+ai_related:
+  - path: "/home-assistant/schema-selectors.html"
+    title: "Schema selectors and configuration forms"
+    relationship: "Owns how selector-based forms are written and checked."
+  - path: "/components/form-and-schema-form.html"
+    title: "Form & Schema Form"
+    relationship: "Owns the form that holds selector fields."
+  - path: "/home-assistant/target-pickers.html"
+    title: "Entity, device and area pickers"
+    relationship: "Owns the target, entity, device and area choices."
+  - path: "/components/entity-picker.html"
+    title: "Entity Picker"
+    relationship: "Owns the entity field a selector draws."
+  - path: "/components/device-picker.html"
+    title: "Device Picker"
+    relationship: "Owns the device field a selector draws."
+  - path: "/components/area-picker.html"
+    title: "Area Picker"
+    relationship: "Owns the area field a selector draws."
+  - path: "/components/date-input.html"
+    title: "Date & Time Picker"
+    relationship: "Owns the date and time fields a selector draws."
+  - path: "/components/duration-input.html"
+    title: "Duration Input"
+    relationship: "Owns the duration field a selector draws."
+  - path: "/components/select.html"
+    title: "Dropdown Menu & Overflow Menu"
+    relationship: "Owns the menu a select selector can draw."
+  - path: "/components/text-input.html"
+    title: "Text Input"
+    relationship: "Owns the text field a selector draws."
+  - path: "/components/settings-row.html"
+    title: "Settings Row"
+    relationship: "Owns the row layout many selector fields sit in."
+component:
+  parent: "Selector (Polymorphic Schema Input)"
+  letter: "S"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-selector"
+      origin: "Home Assistant"
+      anchor: "child-ha-selector"
+      grandchildren:
+        - name: "ha-selector-action"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-action"
+        - name: "ha-selector-addon"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-addon"
+        - name: "ha-selector-app"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-app"
+        - name: "ha-selector-area"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-area"
+        - name: "ha-selector-assist_pipeline"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-assist-pipeline"
+        - name: "ha-selector-attribute"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-attribute"
+        - name: "ha-selector-backup_location"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-backup-location"
+        - name: "ha-selector-bluetooth"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-bluetooth"
+        - name: "ha-selector-boolean"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-boolean"
+        - name: "ha-selector-button_toggle"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-button-toggle"
+        - name: "ha-selector-choose"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-choose"
+        - name: "ha-selector-color_rgb"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-color-rgb"
+        - name: "ha-selector-color_temp"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-color-temp"
+        - name: "ha-selector-condition"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-condition"
+        - name: "ha-selector-config_entry"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-config-entry"
+        - name: "ha-selector-constant"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-constant"
+        - name: "ha-selector-conversation_agent"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-conversation-agent"
+        - name: "ha-selector-country"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-country"
+        - name: "ha-selector-date"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-date"
+        - name: "ha-selector-datetime"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-datetime"
+        - name: "ha-selector-device"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-device"
+        - name: "ha-selector-duration"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-duration"
+        - name: "ha-selector-entity"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-entity"
+        - name: "ha-selector-file"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-file"
+        - name: "ha-selector-floor"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-floor"
+        - name: "ha-selector-icon"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-icon"
+        - name: "ha-selector-label"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-label"
+        - name: "ha-selector-language"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-language"
+        - name: "ha-selector-location"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-location"
+        - name: "ha-selector-media"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-media"
+        - name: "ha-selector-navigation"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-navigation"
+        - name: "ha-selector-number"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-number"
+        - name: "ha-selector-object"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-object"
+        - name: "ha-selector-qr_code"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-qr-code"
+        - name: "ha-selector-select"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-select"
+        - name: "ha-selector-serial"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-serial"
+        - name: "ha-selector-state"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-state"
+        - name: "ha-selector-statistic"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-statistic"
+        - name: "ha-selector-stt"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-stt"
+        - name: "ha-selector-target"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-target"
+        - name: "ha-selector-template"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-template"
+        - name: "ha-selector-text"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-text"
+        - name: "ha-selector-theme"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-theme"
+        - name: "ha-selector-time"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-time"
+        - name: "ha-selector-trigger"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-trigger"
+        - name: "ha-selector-tts"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-tts"
+        - name: "ha-selector-tts_voice"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-tts-voice"
+        - name: "ha-selector-ui_action"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-ui-action"
+        - name: "ha-selector-ui_color"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-ui-color"
+        - name: "ha-selector-ui_state_content"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-ui-state-content"
+        - name: "ha-selector-usb"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-usb"
+        - name: "ha-selector-zeroconf"
+          origin: "Home Assistant"
+          anchor: "child-ha-selector--ha-selector-zeroconf"
+  tags:
+    - "ha-selector"
+---
+
+# Selector (Polymorphic Schema Input)
+
+<h2 id="purpose">Purpose</h2>
+
+A selector tells Home Assistant what kind of value a form field needs, and Home Assistant draws the matching input. A `number` selector draws a number box or a slider, a `boolean` selector a switch, an `area` selector an area picker. Selectors are used in the automation and script editors, in blueprints, in the forms that run actions and in integration settings.
+
+They appear in Home Assistant’s own screens and dialogs, not as dashboard cards. This page is for people who write selectors or review forms built from them. For forms as a whole, see [Form & Schema Form](form-and-schema-form.html) and [Schema selectors and configuration forms](../home-assistant/schema-selectors.html).
+
+Home Assistant has other selector types that this page does not describe.
+
+This page covers:
+
+- Selector (Polymorphic Schema Input)
+  - `ha-selector`
+    - `ha-selector-action`
+    - `ha-selector-addon`
+    - `ha-selector-app`
+    - `ha-selector-area`
+    - `ha-selector-assist_pipeline`
+    - `ha-selector-attribute`
+    - `ha-selector-backup_location`
+    - `ha-selector-bluetooth`
+    - `ha-selector-boolean`
+    - `ha-selector-button_toggle`
+    - `ha-selector-choose`
+    - `ha-selector-color_rgb`
+    - `ha-selector-color_temp`
+    - `ha-selector-condition`
+    - `ha-selector-config_entry`
+    - `ha-selector-constant`
+    - `ha-selector-conversation_agent`
+    - `ha-selector-country`
+    - `ha-selector-date`
+    - `ha-selector-datetime`
+    - `ha-selector-device`
+    - `ha-selector-duration`
+    - `ha-selector-entity`
+    - `ha-selector-file`
+    - `ha-selector-floor`
+    - `ha-selector-icon`
+    - `ha-selector-label`
+    - `ha-selector-language`
+    - `ha-selector-location`
+    - `ha-selector-media`
+    - `ha-selector-navigation`
+    - `ha-selector-number`
+    - `ha-selector-object`
+    - `ha-selector-qr_code`
+    - `ha-selector-select`
+    - `ha-selector-serial`
+    - `ha-selector-state`
+    - `ha-selector-statistic`
+    - `ha-selector-stt`
+    - `ha-selector-target`
+    - `ha-selector-template`
+    - `ha-selector-text`
+    - `ha-selector-theme`
+    - `ha-selector-time`
+    - `ha-selector-trigger`
+    - `ha-selector-tts`
+    - `ha-selector-tts_voice`
+    - `ha-selector-ui_action`
+    - `ha-selector-ui_color`
+    - `ha-selector-ui_state_content`
+    - `ha-selector-usb`
+    - `ha-selector-zeroconf`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A selector field is made of:
+
+- A label naming the value, in plain words.
+- An optional hint, which should come before the field.
+- The input that the selector draws.
+- An error message when the value is not accepted.
+
+The selector wrapper adds no label, role or text of its own. The input it draws supplies its own name, so check each field you use.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-ha-selector"><code>ha-selector</code></h3>
+
+The wrapper. A selector is written in YAML as a mapping with one key, the type, and that type’s options.
+
+```yaml
+selector:
+  number:
+    min: 0
+    max: 100
+    unit_of_measurement: "%"
+```
+
+Many types need no options, so the value can be empty: `boolean:`.
+
+The wrapper takes these properties: `selector` (required), `value`, `label`, `helper`, `placeholder`, `disabled`, `required` (on by default), `narrow` and `context`. It fires `value-changed` when the value changes, and the inner input fires the same event. It can check itself with `reportValidity()` and take focus with `focus()`. It has no slots, no styling variables of its own and no role or ARIA attributes.
+
+Older spellings still work: `ui-action` and `ui-color` with a hyphen are read as `ui_action` and `ui_color`, and the old `integration`, `domain`, `device_class`, `manufacturer` and `model` options on the entity and device selectors are read as a `filter`.
+
+**What the Civica theme sets.** The inputs a selector draws take the theme’s text, border and focus colours, font sizes and switch and button sizes. The theme does not restyle selectors separately.
+
+**What stays as Home Assistant draws it.** Which input appears, its layout and its behaviour. Selector options can differ between the automation editor, the dashboard editor and blueprint inputs, so check the form you are working in.
+
+**What needs card-mod.** Nothing: selectors are not in dashboard cards, so there is nothing for card-mod to style.
+
+Each selector below has its YAML key and options.
+
+<h3 id="child-ha-selector--ha-selector-action"><code>ha-selector-action</code></h3>
+
+Chooses a list of actions, as in an automation or script. The value is a list of actions.
+
+YAML key `action`. Options: `optionsInSidebar`.
+
+<h3 id="child-ha-selector--ha-selector-addon"><code>ha-selector-addon</code></h3>
+
+The older name for the app selector. It behaves exactly like `app`: Home Assistant now calls these “apps”, and the editor shows the app picker.
+
+YAML key `addon`. Options: the same as `app`.
+
+<h3 id="child-ha-selector--ha-selector-app"><code>ha-selector-app</code></h3>
+
+Chooses an installed app. Options `name` and `slug` narrow the list.
+
+YAML key `app`. Options: `name`, `slug`.
+
+<h3 id="child-ha-selector--ha-selector-area"><code>ha-selector-area</code></h3>
+
+Chooses one or more areas. See [Area Picker](area-picker.html) for the picker it draws. `multiple` allows more than one; `entity` and `device` narrow the list to areas that have a matching entity or device.
+
+YAML key `area`. Options: `entity`, `device`, `multiple`, `reorder`.
+
+<h3 id="child-ha-selector--ha-selector-assist-pipeline"><code>ha-selector-assist_pipeline</code></h3>
+
+Chooses an Assist pipeline, the chain of speech and language steps behind Assist. `include_last_used` adds a “last used” choice.
+
+YAML key `assist_pipeline`. Options: `include_last_used`.
+
+<h3 id="child-ha-selector--ha-selector-attribute"><code>ha-selector-attribute</code></h3>
+
+Chooses one attribute of an entity. `entity_id` sets which entity, and `hide_attributes` leaves some out.
+
+YAML key `attribute`. Options: `entity_id`, `hide_attributes`.
+
+<h3 id="child-ha-selector--ha-selector-backup-location"><code>ha-selector-backup_location</code></h3>
+
+Chooses where a backup is stored, from the storage locations Home Assistant knows.
+
+YAML key `backup_location`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-bluetooth"><code>ha-selector-bluetooth</code></h3>
+
+Home Assistant has no selector named `bluetooth`. “Bluetooth” is the name of an integration, not an input. To let people pick a Bluetooth device, use the device selector with `filter` set to the `bluetooth` integration, or a text field when a free value is needed. See [ha-selector-device](#child-ha-selector--ha-selector-device).
+
+<h3 id="child-ha-selector--ha-selector-boolean"><code>ha-selector-boolean</code></h3>
+
+A switch for yes or no. The label and any hint sit inside the switch’s own row. Say what “on” means in the label.
+
+YAML key `boolean`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-button-toggle"><code>ha-selector-button_toggle</code></h3>
+
+A short row of buttons, one of which is chosen. `options` lists the choices; `translation_key` and `sort` control their names and order. Use it when there are few choices and all should be visible.
+
+YAML key `button_toggle`. Options: `options`, `translation_key`, `sort`.
+
+<h3 id="child-ha-selector--ha-selector-choose"><code>ha-selector-choose</code></h3>
+
+Lets people pick one of several kinds of input, then shows the input for that choice. `choices` lists the kinds.
+
+YAML key `choose`. Options: `choices`, `translation_key`.
+
+<h3 id="child-ha-selector--ha-selector-color-rgb"><code>ha-selector-color_rgb</code></h3>
+
+Home Assistant draws a native colour input (`ha-input` with `type="color"`). The value is a list of three numbers, for red, green and blue.
+
+YAML key `color_rgb`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-color-temp"><code>ha-selector-color_temp</code></h3>
+
+A slider for light colour temperature. `unit` sets the unit, and `min`, `max`, `min_mireds` and `max_mireds` set the range.
+
+YAML key `color_temp`. Options: `unit`, `min`, `max`, `min_mireds`, `max_mireds`.
+
+<h3 id="child-ha-selector--ha-selector-condition"><code>ha-selector-condition</code></h3>
+
+Chooses a list of conditions, as in an automation. The value is a list of conditions.
+
+YAML key `condition`. Options: `optionsInSidebar`.
+
+<h3 id="child-ha-selector--ha-selector-config-entry"><code>ha-selector-config_entry</code></h3>
+
+Chooses one configured integration entry. `integration` narrows the list to one integration.
+
+YAML key `config_entry`. Options: `integration`.
+
+<h3 id="child-ha-selector--ha-selector-constant"><code>ha-selector-constant</code></h3>
+
+Not a field at all. It carries a fixed value in the schema and shows only its label or value as text, or nothing when disabled.
+
+YAML key `constant`. Options: `value`, `label`, `translation_key`.
+
+<h3 id="child-ha-selector--ha-selector-conversation-agent"><code>ha-selector-conversation_agent</code></h3>
+
+Chooses a conversation agent, the thing that interprets what people say to Assist.
+
+YAML key `conversation_agent`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-country"><code>ha-selector-country</code></h3>
+
+Chooses a country. `countries` limits the list and `no_sort` keeps your order.
+
+YAML key `country`. Options: `countries`, `no_sort`.
+
+<h3 id="child-ha-selector--ha-selector-date"><code>ha-selector-date</code></h3>
+
+A date field, in the format of the person’s language. See [Date & Time Picker](date-input.html).
+
+YAML key `date`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-datetime"><code>ha-selector-datetime</code></h3>
+
+A date field and a time field together. The value is one text string.
+
+YAML key `datetime`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-device"><code>ha-selector-device</code></h3>
+
+Chooses one or more devices. See [Device Picker](device-picker.html). `filter` narrows the list by integration, manufacturer, model or entity; `entity` and `multiple` also apply.
+
+YAML key `device`. Options: `filter`, `entity`, `multiple`.
+
+<h3 id="child-ha-selector--ha-selector-duration"><code>ha-selector-duration</code></h3>
+
+A length of time, in days, hours, minutes, seconds and milliseconds as you enable them. `enable_day`, `enable_millisecond`, `enable_second` and `allow_negative` switch parts on. See [Duration Input](duration-input.html). A duration is not a time of day.
+
+YAML key `duration`. Options: `enable_day`, `enable_millisecond`, `allow_negative`, `enable_second`, `mode`.
+
+<h3 id="child-ha-selector--ha-selector-entity"><code>ha-selector-entity</code></h3>
+
+Chooses one or more entities. See [Entity Picker](entity-picker.html). `filter`, `include_entities` and `exclude_entities` narrow the list; `multiple` and `reorder` allow a list in a chosen order.
+
+YAML key `entity`. Options: `multiple`, `include_entities`, `exclude_entities`, `filter`, `reorder`, `extra_options`.
+
+<h3 id="child-ha-selector--ha-selector-file"><code>ha-selector-file</code></h3>
+
+Uploads a file. `accept` limits the file types. See [File Upload / Dropzone](file-upload.html).
+
+YAML key `file`. Options: `accept`.
+
+<h3 id="child-ha-selector--ha-selector-floor"><code>ha-selector-floor</code></h3>
+
+Chooses one or more floors. See [Floor Picker](floor-picker.html).
+
+YAML key `floor`. Options: `entity`, `device`, `multiple`.
+
+<h3 id="child-ha-selector--ha-selector-icon"><code>ha-selector-icon</code></h3>
+
+Chooses an icon by name, with a preview. See [Icon Picker](icon-picker.html).
+
+YAML key `icon`. Options: `placeholder`, `fallbackPath`.
+
+<h3 id="child-ha-selector--ha-selector-label"><code>ha-selector-label</code></h3>
+
+Chooses one or more labels. See [Label Picker](label-picker.html).
+
+YAML key `label`. Options: `multiple`.
+
+<h3 id="child-ha-selector--ha-selector-language"><code>ha-selector-language</code></h3>
+
+Chooses a language. `languages` limits the list, `native_name` shows each language in its own name and `no_sort` keeps your order.
+
+YAML key `language`. Options: `languages`, `native_name`, `no_sort`.
+
+<h3 id="child-ha-selector--ha-selector-location"><code>ha-selector-location</code></h3>
+
+Chooses a place on a map, with an optional radius. `radius`, `radius_readonly`, `icon`, `name` and `color` change how the place is drawn.
+
+YAML key `location`. Options: `radius`, `radius_readonly`, `icon`, `name`, `color`.
+
+<h3 id="child-ha-selector--ha-selector-media"><code>ha-selector-media</code></h3>
+
+Chooses an item from a media source, with optional upload. `accept` limits the kinds, `image_upload` allows an upload and `multiple` allows several.
+
+YAML key `media`. Options: `accept`, `image_upload`, `hide_content_type`, `content_id_helper`, `multiple`.
+
+<h3 id="child-ha-selector--ha-selector-navigation"><code>ha-selector-navigation</code></h3>
+
+Chooses a place to navigate to. `entity_id` and `area_id` give it context.
+
+YAML key `navigation`. Options: `entity_id`, `area_id`.
+
+<h3 id="child-ha-selector--ha-selector-number"><code>ha-selector-number</code></h3>
+
+A number. With both `min` and `max` set it is a slider, with a number field beside it; otherwise it is a number box. `step`, `mode` (`slider` or `box`), `unit_of_measurement` and `slider_ticks` adjust it. In slider mode the label is plain text before the control, and the selector does not pass its label to the slider. Name the setting in the hint as well. See [Control Slider](sliders.html).
+
+YAML key `number`. Options: `min`, `max`, `step`, `mode`, `unit_of_measurement`, `slider_ticks`, `translation_key`, `validation_message`.
+
+<h3 id="child-ha-selector--ha-selector-object"><code>ha-selector-object</code></h3>
+
+Takes a structured value, such as a list of items with several fields, entered through a YAML editor or a field list. `fields` describes each field, and `multiple` makes it a list.
+
+YAML key `object`. Options: `label_field`, `description_field`, `translation_key`, `fields`, `multiple`.
+
+<h3 id="child-ha-selector--ha-selector-qr-code"><code>ha-selector-qr_code</code></h3>
+
+Not an input. It shows a QR code for `data`. Always write the same information as text beside it.
+
+YAML key `qr_code`. Options: `data`, `scale`, `error_correction_level`, `center_image`.
+
+<h3 id="child-ha-selector--ha-selector-select"><code>ha-selector-select</code></h3>
+
+Chooses from a fixed list. `options` lists the choices. A single choice in `list` mode is a group of radio buttons, and multiple choices in `list` mode are checkboxes. `box` mode shows large boxes. `dropdown` mode, or the default, shows a menu. `custom_value`, `multiple` or `reorder` give a field with chips. See [Dropdown Menu & Overflow Menu](select.html), [Radios](radios.html) and [Checkbox](checkboxes.html).
+
+YAML key `select`. Options: `multiple`, `custom_value`, `mode`, `options`, `translation_key`, `sort`, `reorder`, `box_max_columns`.
+
+<h3 id="child-ha-selector--ha-selector-serial"><code>ha-selector-serial</code></h3>
+
+This version of Home Assistant has no selector named `serial`. What it draws instead is the serial port selector, `serial_port`, which shows a list of ports with those it recommends marked, and a pencil button for typing a port by hand. The list is loaded only for an administrator, and only when the USB component is loaded. `extra_recommended_domains` adds integrations whose ports should be marked as recommended. The value is the port as text. For standalone guidance, use a labelled text field with a hint.
+
+<h3 id="child-ha-selector--ha-selector-state"><code>ha-selector-state</code></h3>
+
+Chooses one or more states of an entity. `entity_id` and `attribute` say whose state, and `hide_states` leaves some out.
+
+YAML key `state`. Options: `extra_options`, `entity_id`, `attribute`, `hide_states`, `multiple`.
+
+<h3 id="child-ha-selector--ha-selector-statistic"><code>ha-selector-statistic</code></h3>
+
+Chooses a long-term statistic, such as an energy meter. `device_class` narrows the list.
+
+YAML key `statistic`. Options: `device_class`, `multiple`.
+
+<h3 id="child-ha-selector--ha-selector-stt"><code>ha-selector-stt</code></h3>
+
+Chooses a speech-to-text service, which turns speech into text for Assist.
+
+YAML key `stt`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-target"><code>ha-selector-target</code></h3>
+
+Chooses what an action acts on: entities, devices, areas, floors or labels. See [Entity, device and area pickers](../home-assistant/target-pickers.html).
+
+YAML key `target`. Options: `entity`, `device`, `primary_entities_only`.
+
+<h3 id="child-ha-selector--ha-selector-template"><code>ha-selector-template</code></h3>
+
+A field for a template, written in a code editor, with an optional live preview. `preview` turns the preview on.
+
+YAML key `template`. Options: `preview`.
+
+<h3 id="child-ha-selector--ha-selector-text"><code>ha-selector-text</code></h3>
+
+A text field. `multiline` gives a larger box, `multiple` a list of fields, and `type` sets the field type. `prefix`, `suffix`, `autocomplete`, `placeholder` and `pattern` refine it, and `validation_message` says what is wrong when the pattern fails. See [Text Input](text-input.html) and [Textarea](textarea.html).
+
+YAML key `text`. Options: `multiline`, `type`, `prefix`, `suffix`, `placeholder`, `autocomplete`, `multiple`, `pattern`, `validation_message`.
+
+<h3 id="child-ha-selector--ha-selector-theme"><code>ha-selector-theme</code></h3>
+
+Chooses a theme by name.
+
+YAML key `theme`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-time"><code>ha-selector-time</code></h3>
+
+A time-of-day field. See [Date & Time Picker](date-input.html).
+
+YAML key `time`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-trigger"><code>ha-selector-trigger</code></h3>
+
+Chooses a list of triggers, as in an automation. The value is a list of triggers.
+
+YAML key `trigger`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-tts"><code>ha-selector-tts</code></h3>
+
+Chooses a text-to-speech service, which turns text into speech.
+
+YAML key `tts`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-tts-voice"><code>ha-selector-tts_voice</code></h3>
+
+Chooses a voice for a text-to-speech service.
+
+YAML key `tts_voice`. Options: none.
+
+<h3 id="child-ha-selector--ha-selector-ui-action"><code>ha-selector-ui_action</code></h3>
+
+Chooses what a tap, hold or double-tap does on a dashboard card. `actions` limits the list and `default_action` sets the first choice.
+
+YAML key `ui_action`. Options: `actions`, `default_action`.
+
+<h3 id="child-ha-selector--ha-selector-ui-color"><code>ha-selector-ui_color</code></h3>
+
+Chooses a colour. `default_color`, `include_none` and `include_state` add choices. See [Color Picker](color-picker.html).
+
+YAML key `ui_color`. Options: `default_color`, `include_none`, `include_state`, `extra_options`.
+
+<h3 id="child-ha-selector--ha-selector-ui-state-content"><code>ha-selector-ui_state_content</code></h3>
+
+Chooses what to show for an entity’s state. `entity_id` says which entity, and `allow_name` and `allow_context` add extra choices.
+
+YAML key `ui_state_content`. Options: `entity_id`, `allow_name`, `allow_context`.
+
+<h3 id="child-ha-selector--ha-selector-usb"><code>ha-selector-usb</code></h3>
+
+Home Assistant has no selector named `usb`. “USB” is the name of an integration, not an input. To let people pick a USB device, use the device selector with `filter` set to the `usb` integration. To pick a serial port on a USB adapter, use the `serial_port` selector described under [ha-selector-serial](#child-ha-selector--ha-selector-serial).
+
+<h3 id="child-ha-selector--ha-selector-zeroconf"><code>ha-selector-zeroconf</code></h3>
+
+Home Assistant has no selector named `zeroconf`. “Zeroconf” is the name of a discovery method and integration, not an input. To let people pick a discovered device, use the device selector with `filter` set to the `zeroconf` integration, or a text field when a free value is needed.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One schema gives the right input for each kind of value, so forms stay consistent.
+- Lists of devices, areas and entities come from the home itself, so people choose by name, not by identifier.
+- A selector does not guarantee a label for assistive technology. Each input supplies its own, and some are not named by the selector’s label. In slider mode, for example, the label is plain text before the control and is not passed to the slider.
+- In the service form the row heading is separate text beside the selector, so the heading and the control are not linked.
+- Selectors that can reorder a list use a sortable list. Do not assume a keyboard way to reorder.
+- Behaviour and options can differ between editors.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Choose the narrowest selector that fits the value. Use `duration` for a length of time and `time` for a time of day; a duration is not a time. Use `select` with few options and `device` or `entity` for homes with many. Give each field one plain label that names the value, put the hint before the field and say how a required field is marked, in words. Use plain option names. Use `autocomplete` on text fields that ask for personal details, and give a pattern a `validation_message` that says how to fix the value.
+
+For standalone forms, where Home Assistant does not draw the input, use labelled native controls with a hint and an error message.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 4.1.2 Name, Role, Value: each input needs a name that matches its visible label.
+- 3.3.2 Labels or Instructions: say what is wanted before the field.
+- 3.3.1 Error Identification and 3.3.3 Error Suggestion: a pattern should say what is wrong and how to fix it.
+- 1.3.5 Identify Input Purpose: text fields that collect personal details should set `autocomplete`.
+- 2.1.1 Keyboard: check each input you use.
+- 3.3.7 Redundant Entry: do not ask again for a value already given.
+- 2.5.7 Dragging Movements: where a list can be reordered by dragging, a second way is needed.
+- 2.5.8 Target Size (Minimum): the theme sets switches and buttons to 44 pixels.
+- 1.4.1 Use of Colour and 1.4.11 Non-text Contrast: check the inputs on your own screen.
+
+One label, one hint and plain option names keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### A form made of selector fields
+
+<%= example('spec-selector-form') %>

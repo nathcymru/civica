@@ -1,0 +1,190 @@
+---
+title: "Video & Camera Stream Player"
+description: "Show a video or a live camera picture, and know which controls, captions and text alternatives a dashboard can offer."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Video & Camera Stream Player specification: the video element, the camera stream players, the live and still camera views and what a dashboard can and cannot control."
+ai_instructions: "Apply when a dashboard shows a video or a camera. A Markdown card can hold a video element with a source, but its track element is removed, so captions cannot be added there: give a transcript in text. A camera card shows a live stream without controls and without sound, so offer a still picture view with its time written as text, or open the camera dialog, which has controls. There is no ha-mjpeg-player element in this Home Assistant version: an older kind of live picture is drawn as a plain image inside ha-camera-stream. Never say a stream is live unless it is. Do not quote the contrast or size of the browser's own video controls."
+ai_related:
+  - path: "/components/audio-player.html"
+    title: "Audio Player"
+    relationship: "Owns the source and track elements, and captions and transcripts."
+  - path: "/home-assistant/cameras.html"
+    title: "Cameras, streams and snapshots"
+    relationship: "Owns camera wording, privacy and what to say when a stream fails."
+  - path: "/home-assistant/media-playback.html"
+    title: "Media playback and output selection"
+    relationship: "Owns playing media and choosing where it plays."
+  - path: "/components/images.html"
+    title: "Image & Picture Cards"
+    relationship: "Owns picture cards and text alternatives for pictures."
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns the HTML a Markdown card keeps and removes."
+  - path: "/components/alert-and-tip-callout.html"
+    title: "Alert & Tip Callout"
+    relationship: "Owns the error alert a player shows when a stream fails."
+component:
+  parent: "Video & Camera Stream Player"
+  letter: "V"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<video>"
+      origin: "HTML5"
+      anchor: "child-video"
+      grandchildren:
+        - name: "<source>"
+          origin: "HTML5"
+          anchor: "xref-video--source"
+          cross_reference:
+            parent: "Audio Player"
+            route: "/components/audio-player.html"
+            anchor: "child-audio--source"
+        - name: "<track>"
+          origin: "HTML5"
+          anchor: "xref-video--track"
+          cross_reference:
+            parent: "Audio Player"
+            route: "/components/audio-player.html"
+            anchor: "child-audio--track"
+    - name: "ha-camera-stream"
+      origin: "Home Assistant"
+      anchor: "child-ha-camera-stream"
+    - name: "ha-hls-player"
+      origin: "Home Assistant"
+      anchor: "child-ha-hls-player"
+    - name: "ha-web-rtc-player"
+      origin: "Home Assistant"
+      anchor: "child-ha-web-rtc-player"
+    - name: "ha-mjpeg-player"
+      origin: "Home Assistant"
+      anchor: "child-ha-mjpeg-player"
+  tags:
+    - "video"
+    - "ha-camera-stream"
+    - "ha-hls-player"
+    - "ha-web-rtc-player"
+    - "ha-mjpeg-player"
+---
+
+# Video & Camera Stream Player
+
+<h2 id="purpose">Purpose</h2>
+
+This page covers two things: a recorded video that someone plays, and a live camera picture that Home Assistant streams. A video is an HTML element you can write in a Markdown card. The camera players are parts of Home Assistant that the picture cards and the camera dialog use for you.
+
+For what to say about cameras, privacy and failed streams, see [Cameras, streams and snapshots](../home-assistant/cameras.html). For playing media on speakers and screens, see [Media playback and output selection](../home-assistant/media-playback.html).
+
+This page covers:
+
+- Video & Camera Stream Player
+  - `<video>`
+    - `<source>`
+    - `<track>`
+  - `ha-camera-stream`
+  - `ha-hls-player`
+  - `ha-web-rtc-player`
+  - `ha-mjpeg-player`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A video is a picture area with the browser’s own controls: play and pause, a position bar, volume and full screen. The controls look different in each browser, and the Civica theme cannot restyle them.
+
+A live camera view is a picture with no controls of its own on a dashboard card, and with no sound. The more information dialog for a camera shows the same stream with controls. While a live stream starts, it shows a still picture, and when it cannot start it shows an error message.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-video"><code>&lt;video&gt;</code></h3>
+
+A Markdown card keeps the `video` element and these attributes: `src`, `poster`, `controls`, `autoplay`, `loop`, `muted`, `playsinline`, `preload`, `crossorigin`, `width` and `height`. It also keeps `source` inside it. It removes everything else, including `class`, `id`, `title` and `lang`.
+
+```html
+<video controls playsinline width="480" poster="/local/videos/doorbell.jpg">
+  <source src="/local/videos/doorbell.mp4" type="video/mp4">
+</video>
+```
+
+Always include `controls`, so people can pause, stop and change the volume. Browsers often block autoplay, especially with sound, so do not rely on it. Do not autoplay a video with sound.
+
+A video has no name of its own. Put a visible heading above it that says what it shows and how long it lasts. Put a transcript or a short written summary below it.
+
+<h4 id="xref-video--source"><code>&lt;source&gt;</code></h4>
+
+Gives a video more than one file to choose from. It is owned by [Audio Player](audio-player.html#child-audio--source).
+
+<h4 id="xref-video--track"><code>&lt;track&gt;</code></h4>
+
+Adds captions and descriptions. It is owned by [Audio Player](audio-player.html#child-audio--track). A Markdown card removes it, so you cannot add captions to a video there. Write a transcript in text instead.
+
+<h3 id="child-ha-camera-stream"><code>ha-camera-stream</code></h3>
+
+The Home Assistant part that shows a camera. You cannot place it yourself. Home Assistant uses it when a picture card, a picture entity card, a picture glance card or the camera dialog shows a camera as a live view. In YAML, set `camera_view` on the card:
+
+```yaml
+type: picture-entity
+entity: camera.front_door
+camera_view: live
+```
+
+With `camera_view: auto`, the card shows a still picture that refreshes. With `live`, it shows the stream.
+
+It picks the best way to stream from what the camera offers, using HLS or WebRTC. If the camera offers neither, or the stream fails, it falls back to a plain refreshing picture, described under `ha-mjpeg-player` below. On a card the stream is muted and has no controls. The camera dialog adds controls.
+
+<h3 id="child-ha-hls-player"><code>ha-hls-player</code></h3>
+
+The part that plays an HLS stream. You cannot place it yourself. It shows an error message when the stream times out, has a network fault or cannot play. Only the timeout and network messages are fixed in English. The message for a stream that cannot play follows the dashboard language. It pauses 60 seconds after the page is hidden and starts again when the page comes back.
+
+Its height is limited to the screen height minus 97 pixels by default. `--video-max-height` changes this in a theme or with card-mod, which you should test on a real dashboard.
+
+<h3 id="child-ha-web-rtc-player"><code>ha-web-rtc-player</code></h3>
+
+The part that plays a WebRTC stream, which can also carry two-way sound. You cannot place it yourself. While it reconnects it dims the picture and shows a spinner. When WebRTC is not supported, or the stream cannot start, it shows an error message in the language of the dashboard. Using the microphone needs the dashboard to be opened over HTTPS and the person’s permission.
+
+It uses the same `--video-max-height` setting as the HLS player.
+
+<h3 id="child-ha-mjpeg-player"><code>ha-mjpeg-player</code></h3>
+
+This Home Assistant version has no element with this name. An older kind of live picture, called MJPEG, is drawn as a plain picture inside `ha-camera-stream`, so it has no player controls and is not a separate part you can find or style. It appears when a camera offers no HLS or WebRTC stream, or when those fail.
+
+The picture’s text alternative is “Preview of the” and the camera name, followed by “camera”, in English whatever the language of the dashboard. Say in the card text what and where the camera is, in your own words. If you see a camera that looks live but has no controls, it may be this fallback picture.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A video in a Markdown card needs no extra card and has the browser’s keyboard controls.
+- The Civica theme cannot restyle the browser’s controls. It does not set the size, colour or contrast of them.
+- A camera card has no pause, stop or volume control, and no captions. For a live camera with sound, open the camera dialog, or show a still picture instead.
+- Captions cannot be added to a video in a Markdown card.
+- A live picture can look like a recording. Say “Live” only when the stream is live.
+- The timeout and network error messages in the HLS player are in English whatever the language of the dashboard.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use a still picture with its time written as text where people only need to check on something. Offer a live view as a second step. Label a still with when it was taken. Tell people when a stream is loading or has failed, in words.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: a camera picture needs words saying what it shows and when.
+- 1.2.1 to 1.2.5 Time-based Media: a video with sound needs captions and, where needed, a description or transcript. A Markdown card cannot hold captions.
+- 1.4.2 Audio Control and 2.2.2 Pause, Stop, Hide: do not autoplay sound, and keep controls on every video. A live camera card has none.
+- 2.3.1 Three Flashes or Below Threshold: check the footage you show.
+- 1.4.10 Reflow: `--video-max-height` caps the height of the HLS and WebRTC players.
+- 4.1.2 Name, Role, Value: a video has no name, so give it a heading.
+
+Short, clear labels and a written alternative keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### A camera card in still-picture mode
+
+A simulated picture card where the camera name, the time of the still and the motion state are written as text.
+
+<%= example('spec-camera-still-front-door') %>

@@ -1,0 +1,127 @@
+---
+title: "Popover"
+description: "Show a small, non-modal panel of extra content next to the control that opens it, and know why a dashboard cannot add one."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Popover specification: how the popover attribute works, where Home Assistant uses it, and what to use on a dashboard instead."
+ai_instructions: "Apply when content opens in a small panel beside the control that opened it. The popover attribute is an HTML feature, not a Home Assistant card or option, so a dashboard author cannot add one and a Markdown card removes the attribute. Home Assistant uses popover=manual inside its own toast, notification and bottom-sheet elements only. A popover is not modal, adds no role and no name, and does not trap focus: the author must add them. Never hide an essential instruction, warning or live state in a popover. On a dashboard use visible text, a more-info dialog or a dialog instead. Do not say Home Assistant uses the Popover API for its pickers."
+ai_related:
+  - path: "/components/dialogs.html"
+    title: "Dialog / Modal"
+    relationship: "Use a dialog when the task needs focus and a decision."
+  - path: "/components/combobox-autocomplete.html"
+    title: "Combobox / Autocomplete"
+    relationship: "Owns the picker list that opens beside a field on a wide screen."
+  - path: "/components/action-bar-bottom-sheet.html"
+    title: "Action Bar / Bottom Sheet"
+    relationship: "Owns the bottom sheet that replaces a popover on a narrow screen."
+  - path: "/components/more-info-dialog-and-domain-state-controls.html"
+    title: "More-Info Dialog & Domain State Controls"
+    relationship: "Owns the dialog a card opens for more detail about one entity."
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns the list of tags and attributes the card keeps and removes."
+component:
+  parent: "Popover"
+  letter: "P"
+  origins:
+    - "HTML5"
+  children:
+    - name: "[popover] Global Attribute / Popover API"
+      origin: "HTML5"
+      anchor: "child-popover-global-attribute-popover-api"
+  tags:
+    - "popover"
+    - "popovertarget"
+---
+
+# Popover
+
+<h2 id="purpose">Purpose</h2>
+
+A popover is a small panel that opens next to the control that opened it, shows a little extra content, and closes again. It does not take over the page. A tooltip, a short explanation or a small menu are the usual uses.
+
+Browsers provide the popover as a built-in feature. Home Assistant does not give dashboard authors a card or an option for it. This page explains how the feature works, where Home Assistant uses it for itself, and what to write on a dashboard instead.
+
+This page covers:
+
+- Popover
+  - `[popover]` global attribute and the Popover API
+
+<h2 id="anatomy">Anatomy</h2>
+
+A popover has two parts: the control that opens it, and the panel. The control is a button. The panel is any element that carries the `popover` attribute. The panel is hidden until it opens, and then it appears in front of everything else on the page, so no other element clips or covers it.
+
+A popover is not a dialog. It has no role and no name of its own, it does not make the rest of the page inert, and it does not move or trap focus.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-popover-global-attribute-popover-api"><code>[popover] Global Attribute / Popover API</code></h3>
+
+The `popover` attribute can go on any element. It takes two values that matter:
+
+- `auto` is the default, and the value used when the attribute is empty. The popover closes when someone presses Esc or clicks outside it, and opening one closes any other `auto` popover.
+- `manual` does not close on Esc or an outside click, and does not close other popovers. The page must close it.
+
+A `button` points at a popover with `popovertarget` and the id of the panel. An optional `popovertargetaction` set to `show`, `hide` or `toggle` says what the button does. A script can also call `showPopover()`, `hidePopover()` and `togglePopover()`.
+
+```html
+<button type="button" popovertarget="reading-note">More about this reading</button>
+<div id="reading-note" popover role="region" aria-label="About this reading">
+  The sensor reports every 5 minutes.
+</div>
+```
+
+The author supplies the role and the name, because the attribute adds neither. Style the open panel with the `:popover-open` selector. All current browsers support it.
+
+**Where Home Assistant uses it.** Home Assistant adds `popover="manual"` inside three of its own elements: the toast, the notification manager and the bottom sheet that slides up on a narrow screen. It adds the attribute only when the browser supports it. None of these is something you can configure.
+
+**What the pickers use.** On a wide screen, a picker opens its list in a popover-style panel, and on a narrow screen it opens a bottom sheet. That panel is a Home Assistant element of its own, not the `popover` attribute. [Combobox / Autocomplete](combobox-autocomplete.html), [Date & Time Picker](date-input.html) and [Label Picker](label-picker.html) own the pickers. [Action Bar / Bottom Sheet](action-bar-bottom-sheet.html) owns the sheet.
+
+**On a dashboard.** No card or option exposes `popover`, and the [Markdown Card](markdown-card.html) removes the `popover` and `popovertarget` attributes and does not allow `button`. The Civica theme sets no variable for it. Use one of these instead:
+
+- Write the extra text on the card, under a plain heading.
+- Open a [more-info dialog](more-info-dialog-and-domain-state-controls.html) from a tap action, for detail about one entity.
+- Use a [dialog](dialogs.html) when the person must make a decision.
+
+On a static Civica page, native `popover` works in plain HTML.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- A popover needs no script to open and close.
+- It appears in front of other content, so a clipped container or a stacking order cannot hide it.
+- An `auto` popover closes with Esc and an outside click.
+- It is not modal, so it can run off a narrow screen.
+- It adds no role and no name, and focus does not move into it unless you set `autofocus`.
+- A dashboard author cannot add one.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+- Keep the panel short. Put anything people need to act on in the page itself.
+- Never hide an essential instruction, a warning or a live state in a popover.
+- Name the button for what opens: “More about this reading”, not “Info”.
+- Make one way to close it obvious.
+- Do not open a popover when focus arrives or when a value changes.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 4.1.2 Name, Role, Value: give the panel a role and a name, because the attribute adds none.
+- 2.1.1 Keyboard: the button opens it, and Esc closes an `auto` popover.
+- 2.4.3 Focus Order: place the panel straight after its button in the page source, so the next Tab key press reaches it.
+- 3.2.1 On Focus and 3.2.2 On Input: opening happens on a press, never on focus.
+- 1.4.13 Content on Hover or Focus: applies to a tooltip that appears on hover or focus. It must be dismissible, hoverable and persistent.
+- 1.4.10 Reflow: check the open panel at 320 CSS pixels, because a popover is not modal and can overflow.
+- 2.5.8 Target Size (Minimum): the button is 44 CSS pixels high in the Civica theme (`ha-button-height`).
+
+<h2 id="examples">Examples</h2>
+
+### A card that writes the extra explanation out
+
+<%= example('spec-popover-reading-note') %>

@@ -1,80 +1,207 @@
 ---
-title: Search input
-description: A labelled search field helps people find a specific item when browsing is not enough.
-section: components
-group: Form elements
-source_url: https://service-manual.nhs.uk/design-system/components/search-input
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Search Input"
+description: "A labelled search field helps people find a specific item when browsing is not enough."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewritten as the full Search Input specification: the search landmark, the native search field, Home Assistant’s search box and the Civica component search."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Defined ownership of query inputs, native datalist suggestions, filtering and finder composition.
-  - date: 2026-11-11
-    description: Added NHS-informed search input guidance and 2 Home Assistant reference examples.
+  - date: "2026-11-11"
+    description: "Defined ownership of query inputs, native datalist suggestions, filtering and finder composition."
+ai_instructions: "Apply when people type a query to find an item. Give the field a visible label and a text button, and say what is searched. Keep the query when returning from a result. Tell no matches from a failed connection and keep a route to the unfiltered list. Announce a result count once, never on every keystroke, and never move focus. This Home Assistant version has no search-input or search-input-outlined element: its search box is ha-input-search, and the outlined style is ha-input-search with appearance outlined. ha-input-search is a text input with a clear button, not a search landmark. A Markdown card removes the type attribute, so a search field cannot be written there. Keep Home Assistant's picker when selection must respect capability, permission, domain or action-target rules. Do not state the corner shape of the outlined box, and do not claim screen reader behaviour."
+ai_related:
+  - path: "/components/combobox-autocomplete.html"
+    title: "Combobox / Autocomplete"
+    relationship: "Owns the list of suggestions that can sit on the search field."
+  - path: "/publishing/components/search-autocomplete.html"
+    title: "Search autocomplete"
+    relationship: "Owns native datalist suggestions."
+  - path: "/publishing/patterns/search-filter.html"
+    title: "Search filter"
+    relationship: "Owns apply, clear, result counts and no matches."
+  - path: "/publishing/frontend-templates/finder.html"
+    title: "Finder"
+    relationship: "Owns the collection page that holds the search."
+  - path: "/components/hint-text.html"
+    title: "Help / Hint Text"
+    relationship: "Owns the hint under the label."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Owns the keyboard, 320 pixel and zoom checks."
+component:
+  parent: "Search Input"
+  letter: "S"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+    - "Civica"
+  children:
+    - name: "<search>"
+      origin: "HTML5"
+      anchor: "child-search"
+    - name: '<input type="search">'
+      origin: "HTML5"
+      anchor: "child-input-type-search"
+    - name: "search-input"
+      origin: "Home Assistant"
+      anchor: "child-search-input"
+    - name: "search-input-outlined"
+      origin: "Home Assistant"
+      anchor: "child-search-input-outlined"
+    - name: "Civica Combobox Search Pattern"
+      origin: "Civica"
+      anchor: "child-civica-combobox-search-pattern"
+  tags:
+    - "search"
+    - "input type search"
+    - "ha-input-search"
+    - "combobox"
 ---
 
-# Search input
+# Search Input
 
-A labelled search field helps people find a specific item when browsing is not enough.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A search input helps people find a specific item when browsing is not enough, such as a long device list or a help index. State what is being searched so the results are predictable. Search can sit beside filters and sorting.
 
-## Search field, filters or finder
+Do not make search stand in for missing room navigation. Do not silently combine devices, automations and web results without saying so.
+
+This page covers:
+
+- Search Input
+  - `<search>`
+  - `<input type="search">`
+  - `search-input`
+  - `search-input-outlined`
+  - Civica Combobox Search Pattern
+
+<h2 id="search-field-filters-or-finder">Search field, filters or finder</h2>
 
 This page owns the labelled query input. A complete search needs more than the field:
 
 | Layer | Responsibility | Owner |
 | --- | --- | --- |
 | Query input | Visible label, named scope, keyboard submission and retained query | This page |
-| Suggestions | Optional help entering a known query; free text still works | [Native datalist reference](../publishing/components/search-autocomplete.html) |
-| Query and filters | Apply, clear, result counts, no matches and query/facet combination | [Search-filter pattern](../publishing/patterns/search-filter.html) |
-| Collection page | Result descriptions, permitted dataset, destinations and context | [Finder composition](../publishing/frontend-templates/finder.html) |
+| Suggestions | Optional help entering a known query; free text still works | [Search autocomplete](../publishing/components/search-autocomplete.html) |
+| Query and filters | Apply, clear, result counts, no matches and query and filter combination | [Search filter](../publishing/patterns/search-filter.html) |
+| Collection page | Result descriptions, permitted dataset, destinations and context | [Finder](../publishing/frontend-templates/finder.html) |
 
-The examples demonstrate fixed records or local feedback, as each description states. They do not implement a native entity or target picker. Keep Home Assistant’s picker when selection must respect capability, permission, domain or action-target rules.
+Keep Home Assistant’s own picker when the choice must respect capability, permission, domain or action-target rules. A search field only narrows a list.
 
-## When to use it
+<h2 id="anatomy">Anatomy</h2>
 
-Use it for a long device list or a help index. State what is being searched so results are predictable. Search can complement filters and sorting.
+A search has a visible label, an optional hint that says what is searched, the field and a text button. Results, a count and a “no matches” message follow. Home Assistant’s own search boxes draw a magnifier icon and a clear button inside the field.
 
-## When not to use it
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Do not make search compensate for missing room navigation. Do not silently combine devices, automations and external web results without explaining the scope.
+<h3 id="child-search"><code>&lt;search&gt;</code></h3>
 
-## Home Assistant adaptation
+A native container for a search or filtering area. Its implicit role is `search`, a landmark that people can jump to. It is a container, not a form: put a `form` inside it. For older assistive technology, `role="search"` on the form is the long-standing way. Current browsers support `search`.
 
-Preserve the current query when returning from a result. Distinguish no matching devices from a failed connection, and keep a clear route to the unfiltered list. Search in a reference frame changes no Home Assistant state; its feedback describes only the demonstration.
+Give each search a unique `aria-label` when a page has several. One search needs no name.
 
-## Accessibility and behaviour
+Home Assistant does not wrap its search boxes in a search landmark. The [Markdown Card](markdown-card.html) does not allow `search`. On a dashboard, give the area a clear heading and use Home Assistant’s own search box. On a static Civica page, use `search`.
 
-Use a search landmark with a unique label when several searches exist. Provide a visible input label and a text button. A browser-supplied clear icon is an enhancement, not the only way to reset the query.
+<h3 id="child-input-type-search"><code>&lt;input type="search"&gt;</code></h3>
 
-## Examples
+The native search field. It takes the same attributes as a text field: `name`, `value`, `placeholder`, `required`, `maxlength`, `autocomplete`, `list` (for a datalist), `inputmode` and `enterkeyhint`. Its implicit role is `searchbox`, or `combobox` when it has a `list`. Line breaks are stripped.
+
+Many browsers add a clear button when the field has text. Its look and behaviour differ, so it must not be the only way to reset the query. A placeholder is not a label: always add a visible `label`. Pressing Enter in a form submits it, and the page decides what happens. Do not search on every keystroke without announcing a count once.
+
+In the Civica theme, the field border is #0B0C0C in light mode and #FFFFFF in dark mode (19.59:1 and 14.86:1, calculated from theme colours). The placeholder is #484949 and #CBD0D3 (9.03:1 and 9.55:1, calculated from theme colours).
+
+A search field cannot be written in a [Markdown Card](markdown-card.html), because the card removes the `type` attribute from `input`.
+
+<h3 id="child-search-input"><code>search-input</code></h3>
+
+This Home Assistant version does not use an element called `search-input`. Its search box is `ha-input-search`.
+
+`ha-input-search` is a text input with a magnifier icon, a clear button and the word “Search” as its placeholder when you give it neither a label nor a placeholder. Autocomplete is off by default. It is not a search landmark and does not use the `searchbox` role.
+
+It takes `appearance`, `label`, `hint`, `placeholder`, `disabled`, `required` and `accessible-label`, which names the field when it has no visible label. Where Home Assistant gives it only a placeholder, such as in a data table, that placeholder is its only name. Where the field is yours, use a visible label.
+
+Home Assistant uses it for the data table header, filters and pickers. It is not a card, and a dashboard author cannot add it. The picker and table search boxes are drawn by Home Assistant.
+
+**Theme.** The Civica theme colours the field through the `wa-form-control-*` and `ha-color-form-background*` keys: a #FFFFFF or #24282B background, a #0B0C0C or #FFFFFF border 2 pixels wide, and a #0B0C0C or #FFFFFF value. The theme sets no `--ha-input-search-` names, so the height of the search box stays Home Assistant’s default. The calculated contrast figures are the ones given for the native field above.
+
+<h3 id="child-search-input-outlined"><code>search-input-outlined</code></h3>
+
+This Home Assistant version does not use an element called `search-input-outlined`. The outlined search box is `ha-input-search` set to the outlined appearance.
+
+The outlined appearance is the bordered style, and the default is the filled one. With no label, the outlined box is 40 CSS pixels high. The data table uses it. In the Civica theme the border is the form-control border, #0B0C0C in light mode and #FFFFFF in dark mode, 2 pixels wide.
+
+<h3 id="child-civica-combobox-search-pattern"><code>Civica Combobox Search Pattern</code></h3>
+
+Civica’s own search pattern, used for the component list on this site. It is an editable combobox with a list of results, for finding one named item in a long list. Copy it for a custom or static page. It is not a card, and a dashboard cannot use it.
+
+The pattern has:
+
+- a visible label and a hint, linked to the field
+- a text field with `role="combobox"`, `aria-autocomplete="list"`, `aria-expanded` and `aria-controls`
+- a list with `role="listbox"`, whose options each show a name and a short description
+- an offscreen status line that says how many results there are
+
+Focus stays in the field, and `aria-activedescendant` points at the highlighted option.
+
+Keys:
+
+- With no text, no list shows.
+- Results rank exact matches first, then names that start with the text, then names that contain it. At most 50 show.
+- Arrow Down opens the list and moves down. Arrow Up moves up. Both wrap.
+- Enter chooses the highlighted option, or the only result.
+- Home, End, Left and Right return to the text cursor.
+- Escape closes the list. When the list is closed, it clears the text.
+- Leaving the field closes the list.
+
+The status reads “3 results”, “1 result” or “No components or elements match.”, and says “showing the first 50” when it cuts the list. Choosing an option opens its page. It runs in the browser, with the data inside the page, and without script it is hidden and the A to Z lists remain. For the plain datalist version, see [Combobox / Autocomplete](combobox-autocomplete.html).
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Search finds a known item faster than browsing a long list.
+- A native search field works without script, but the clear button differs between browsers.
+- Home Assistant’s search box is not a search landmark, and a placeholder can be its only name.
+- A Markdown card cannot hold a search field.
+- A search pattern needs script to rank, count and move through results.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+- State what is searched, and give an example in the hint.
+- Show a visible label and a text button. A browser clear icon is not the only way to reset.
+- Keep the query when someone returns from a result.
+- Tell no matching devices from a failed connection, and keep a route to the unfiltered list.
+- Say “no matches” in words, with what to try next.
+- Announce a completed result count once. Do not announce every keystroke, and do not move focus.
+- Use a search landmark with a unique label when a page has several searches.
+- A placeholder disappears as people type, so it cannot hold instructions.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships, 3.3.2 Labels or Instructions and 4.1.2 Name, Role, Value: the field has a visible label.
+- 2.5.3 Label in Name: the button’s name matches its words.
+- 3.2.2 On Input: typing does not submit the search or move focus.
+- 4.1.3 Status Messages: announce the result count as a status.
+- 2.4.1 Bypass Blocks: a named search landmark is a shortcut.
+- 1.4.11 Non-text Contrast and 1.4.3 Contrast (Minimum): the figures above are calculated from theme colours.
+
+Test Enter, empty queries, long names, special characters and zero results. Compare light and dark modes, at least two theme colours and 320 CSS pixels. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
 
 ### Search within devices
 
-The field’s scope is explicit and the example button only reports a local message.
+<%= example('spec-search-devices') %>
 
-<%= example('nhs-search-devices') %>
+### A search with no matches
 
-### A query with no matches
+<%= example('spec-search-no-results') %>
 
-The existing query stays visible and the user can revise it.
+### The component search with a list of matches
 
-<%= example('nhs-search-no-results') %>
-
-## Check the implementation
-
-Test Enter, empty queries, long names, special characters and zero results. Announce a completed result count once; do not move focus or announce every intermediate keystroke.
-
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
-
-## Source and related guidance
-
-[NHS search input](https://service-manual.nhs.uk/design-system/components/search-input) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
-
-See also [buttons and forms](controls.html).
+<%= example('spec-search-combobox-list') %>

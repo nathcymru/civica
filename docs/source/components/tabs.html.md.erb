@@ -1,67 +1,167 @@
 ---
-title: Tabs
-description: Tabs show one of several related sections in the same view.
-section: components
-group: Content presentation
-source_url: https://service-manual.nhs.uk/design-system/components/tabs
-status: reference
-published_on: 2026-11-11
-updated_on: "2026-11-13"
-last_reviewed_on: 2026-11-11
-review_in: 3 months
+title: "Tabs"
+description: "Switch between a few clearly named views or sections, with the current one always visible."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewritten as the full Tabs specification. It now covers the Home Assistant tab bars, what a dashboard author can control, and the names this Home Assistant version does not use."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: Corrected timestamp punctuation and distinguished usable entity state from connection proof.
-  - date: 2026-11-11
-    description: Added NHS-informed tabs guidance and 2 Home Assistant reference examples.
+  - date: "2026-11-11"
+    description: "Added the Civica tabs guidance and two Home Assistant examples."
+ai_instructions: "Apply when people switch between a few named views or sections. In Home Assistant, tabs are the view bar at the top of a dashboard (ha-tab-group with ha-tab-group-tab) and the tab bars of editors and settings pages (ha-tab-group, or ha-tab links on config pages). They switch views or pages. They do not hold panels of content, and a dashboard card cannot hold tabs. This Home Assistant version does not use the names ha-tab-panel, ha-md-tabs, ha-md-primary-tab or ha-md-secondary-tab, and has one style, an underline on the active tab. Do not use tabs for a sequence of steps, for comparing two panels, or to hide an urgent device condition. Keep the selected tab when data updates. An empty panel should say why it is empty. Never quote a measured contrast for the view bar."
+ai_related:
+  - path: "/components/navigation.html"
+    title: "Navigation"
+    relationship: "Owns route navigation across a site."
+  - path: "/components/button-group-segmented-control.html"
+    title: "Button Group / Segmented Control"
+    relationship: "Use it with a Conditional card to switch content inside a view."
+  - path: "/components/conditional-card.html"
+    title: "Conditional Card"
+    relationship: "Shows one block of content or another, driven by a state."
+  - path: "/components/grid-and-stack-layout-cards.html"
+    title: "Grid & Stack Layout Cards"
+    relationship: "Owns stacking headed sections inside one card."
+  - path: "/accessibility/testing.html"
+    title: "Test the interface"
+    relationship: "Test keyboard use, small screens and an empty panel."
+component:
+  parent: "Tabs"
+  letter: "T"
+  origins:
+    - "Home Assistant"
+  children:
+    - name: "ha-tab-group"
+      origin: "Home Assistant"
+      anchor: "child-ha-tab-group"
+      grandchildren:
+        - name: "ha-tab"
+          origin: "Home Assistant"
+          anchor: "child-ha-tab-group--ha-tab"
+        - name: "ha-tab-panel"
+          origin: "Home Assistant"
+          anchor: "child-ha-tab-group--ha-tab-panel"
+    - name: "ha-md-tabs"
+      origin: "Home Assistant"
+      anchor: "child-ha-md-tabs"
+      grandchildren:
+        - name: "ha-md-primary-tab"
+          origin: "Home Assistant"
+          anchor: "child-ha-md-tabs--ha-md-primary-tab"
+        - name: "ha-md-secondary-tab"
+          origin: "Home Assistant"
+          anchor: "child-ha-md-tabs--ha-md-secondary-tab"
+  tags:
+    - "ha-tab-group"
+    - "ha-tab"
+    - "tabs"
+    - "view bar"
 ---
 
 # Tabs
 
-Tabs show one of several related sections in the same view.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+Tabs let people switch between a few clearly named groups of information, with the current one always shown. Home Assistant uses them as the view bar across the top of a dashboard, and in editors and settings pages.
 
-## When to use it
+In Home Assistant, tabs switch views or pages. They do not hold panels of content, and a dashboard card cannot hold tabs. To split content inside a view, see the alternatives below.
 
-Use them for frequent users who need to switch quickly between clearly named information groups. Put the most useful section first and keep each panel small enough to load promptly.
+This page covers:
 
-## When not to use it
+- Tabs
+  - `ha-tab-group`
+    - `ha-tab`
+    - `ha-tab-panel`
+  - `ha-md-tabs`
+    - `ha-md-primary-tab`
+    - `ha-md-secondary-tab`
 
-Do not use tabs as the application’s main route navigation, for a sequential setup process, or when people need to compare both panels side by side. Do not hide urgent device conditions in an unselected tab.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+A tab bar is a row of labels, one for each view or page, with a line under the current one. The current tab has a 2-pixel underline and stronger text, so its state does not rest on colour alone. When the bar is too long for the screen, it scrolls and shows scroll buttons.
 
-A device reference might separate current details from its event history. Preserve the selected tab during unrelated sensor updates and avoid refetching or resetting the user’s position unnecessarily. An empty panel should explain why it has no values rather than disabling its tab.
+The bar is not a navigation menu for a whole site. Route navigation across a site belongs on the [Navigation](navigation.html) page. Dashboard views are Home Assistant’s own routes, and the view bar is its way of showing them.
 
-## Accessibility and behaviour
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-Use a proven tab implementation with tablist, tab and tabpanel relationships, roving focus and arrow-key navigation. The GOV.UK reference progressively becomes a contents list and stacked sections on small screens or without enhancement.
+<h3 id="child-ha-tab-group"><code>ha-tab-group</code></h3>
 
-## Examples
+The tab bar that Home Assistant draws at the top of a dashboard, and in the automation trace pages, the card editors, the dashboard dialogs and the tools panel. It is built on the Web Awesome tab group.
 
-### Related device information
+- **On a dashboard,** each tab is a view. You control them with the dashboard’s `views` list, using `title` and `icon` for each view and `path` for its address. You cannot add other tabs.
+- **Keyboard:** the left and right arrow keys move between tabs, Home and End go to the first and last, and Enter or Space selects. Home Assistant stops Alt and Meta with an arrow from being used, so the browser’s back and forward still work.
+- **Roles:** the bar is a tab list, each tab is a tab with its selected state.
+- **Options:** a tab bar can place its tabs top, bottom, start or end, and activate a tab on focus or on Enter. Home Assistant’s own bars set no panels.
 
-The panels contain different information, not steps in a form.
+**What the Civica theme sets.** In the view bar, the header’s background and white text colours come from the theme (`app-header-background-color` and `app-header-text-color`). The background follows the theme’s primary colour: blue in Civica and Civica Blue, then green, teal, purple, magenta, red and black. The indicator is white and the track is transparent. Elsewhere, the active tab text and the indicator use the theme’s primary colour and the track uses the divider colour. The theme sets none of the tab-specific keys, so Home Assistant’s defaults apply.
 
-<%= example('nhs-tabs-device') %>
+The view bar is the app header, not a card, so the card-mod integration cannot restyle it.
 
-### An empty history panel
+<h3 id="child-ha-tab-group--ha-tab"><code>ha-tab</code></h3>
 
-The panel remains available and explains the absence of data.
+`ha-tab` is a different element from the tab inside `ha-tab-group`. The tab inside `ha-tab-group` is called `ha-tab-group-tab`. It has a label, a `panel` name, and `active` and `disabled` states.
 
-<%= example('nhs-tabs-empty') %>
+`ha-tab` is the simpler tab used in the tab bar of settings pages. Each one is a link to a page, marked as the current page, so it behaves as a list of links rather than as ARIA tabs. It has an icon slot, an `active` state and a `narrow` state. It can show a short badge beside its name, such as the number of waiting updates. In the narrow layout, the badge becomes a dot on the icon, and its text is hidden from sight but still read as part of the link’s name. The active tab uses the theme’s primary colour with a 2-pixel underline, except in the narrow layout.
 
-## Check the implementation
+<h3 id="child-ha-tab-group--ha-tab-panel"><code>ha-tab-panel</code></h3>
 
-Test keyboard selection, direct fragment links, small screens, an empty panel and data refresh while a different tab is selected. Panel headings remain useful in the stacked view.
+This Home Assistant version does not use the name `ha-tab-panel`. Its tab bars switch views or pages and do not hold content panels. The Web Awesome library that Home Assistant builds on has a tab panel (`wa-tab-panel`), but Home Assistant does not use it. The page that a tab opens holds the content. To show panels of content inside a view, use one of these:
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+- A [Conditional Card](conditional-card.html) driven by a helper and a [Button Group / Segmented Control](button-group-segmented-control.html).
+- Headed sections stacked in one card (see [Grid & Stack Layout Cards](grid-and-stack-layout-cards.html)).
+- A separate dashboard view for each group, which gives real tabs.
 
-## Source and related guidance
+<h3 id="child-ha-md-tabs"><code>ha-md-tabs</code></h3>
 
-[NHS tabs](https://service-manual.nhs.uk/design-system/components/tabs) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+This Home Assistant version does not use the name `ha-md-tabs`. It draws tabs with `ha-tab-group` and `ha-tab`, described above.
 
-See also [navigation](navigation.html).
+<h3 id="child-ha-md-tabs--ha-md-primary-tab"><code>ha-md-primary-tab</code></h3>
+
+This Home Assistant version does not use the name `ha-md-primary-tab`. Its tabs have a single style, an underline on the active tab, so there is no primary style to choose. See `ha-tab-group` above.
+
+<h3 id="child-ha-md-tabs--ha-md-secondary-tab"><code>ha-md-secondary-tab</code></h3>
+
+This Home Assistant version does not use the name `ha-md-secondary-tab`. There is no secondary style. To show a lower level of grouping, use a heading inside the view, such as the Heading card (see [Heading](heading.html)).
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The view bar shows every view at once and marks the current one, so people always know where they are.
+- The tab bar scrolls when it is too long, with scroll buttons.
+- Home Assistant’s tabs switch views and pages. A dashboard card cannot hold tabs or panels.
+- The bar has one style, so it cannot show two levels.
+- Tab text and the indicator are small. Test them in your own setup, in light and dark modes.
+- Home Assistant offers variables for the tab indicator, track and active text, but the theme does not set them, so the defaults apply.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use tabs for a few groups that people switch between often. Keep labels short and in the same order each time. Put the most useful first. Do not use tabs for a sequence of steps, or when people need to compare two groups side by side. Do not hide an urgent device condition in a tab that is not selected. Show it above the tabs.
+
+An empty group should say why it is empty and keep its tab, rather than disabling it. When data refreshes, keep the tab that people chose, and do not reset their position.
+
+Success criteria that apply:
+
+- 4.1.2 Name, Role, Value and 1.3.1 Info and Relationships: each tab has a name and a state, and its content is tied to it.
+- 2.1.1 Keyboard, 2.4.3 Focus Order and 2.4.7 Focus Visible: test arrow keys, Home and End in your own setup.
+- 1.4.1 Use of Color and 1.4.11 Non-text Contrast: the current tab is shown by an underline and stronger text as well as colour. Test the indicator against its background.
+- 1.4.10 Reflow: the bar scrolls at 320 CSS pixels. Test it.
+- 2.5.8 Target Size (Minimum): test each tab by touch.
+- 2.4.6 Headings and Labels: each panel has a useful heading.
+
+Few tabs, short labels, a steady order and a visible current tab keep the effort low. Follow the [Civica accessibility checks](../accessibility/testing.html) at 320 CSS pixels, with an empty panel and at 200% text.
+
+<h2 id="examples">Examples</h2>
+
+### A device section with Details and History tabs
+
+<%= example('spec-tabs-device') %>
+
+### A History tab with nothing to show
+
+<%= example('spec-tabs-empty') %>

@@ -1,0 +1,135 @@
+---
+title: "Weather Forecast Card"
+description: "Show the current weather and a forecast for one weather entity, and write out what the icons show."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Weather Forecast Card specification: its settings, what the Civica theme changes, and what to write beside the card because the forecast shows its conditions as icons only."
+ai_instructions: "Apply when a dashboard shows weather (type: weather-forecast). The card writes the current condition as text but shows each forecast day's condition as an icon only, with no text alternative, and the forecast row scrolls sideways without a keyboard route. Write the forecast in words in a Markdown card or Entities card beside it, or use forecast_type daily with few slots. Say which values are forecast and for which period, and show units. The Civica theme does not set the weather icon colours, which are pale. Do not call a forecast a safety warning. Civica focus ring: needs the card-mod integration and only applies when the card has a tap action. Quote contrast only as calculated from theme colours."
+ai_related:
+  - path: "/home-assistant/weather-and-warnings.html"
+    title: "Weather, environmental readings and warnings"
+    relationship: "Owns what to say about observed values, forecasts and weather warnings."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns card structure and the card heading."
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns the written alternative to the forecast row."
+  - path: "/components/entities-card-and-entity-rows.html"
+    title: "Entities Card & Entity Rows"
+    relationship: "Owns lists of values with labels and units."
+  - path: "/components/icon-and-state-icon.html"
+    title: "Icon & State Icon"
+    relationship: "Owns the rule that an icon needs words beside it."
+  - path: "/home-assistant/locale-units-and-time.html"
+    title: "Locale, units and time"
+    relationship: "Owns units, dates and times."
+component:
+  parent: "Weather Forecast Card"
+  letter: "W"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-weather-forecast-card"
+      origin: "Lovelace"
+      anchor: "child-hui-weather-forecast-card"
+  tags:
+    - "hui-weather-forecast-card"
+---
+
+# Weather Forecast Card
+
+<h2 id="purpose">Purpose</h2>
+
+A weather forecast card shows the weather for one weather entity: the current condition and temperature, and a row of forecast periods beneath. Use it for a quick look at the weather at home.
+
+This page owns the card (`type: weather-forecast`). For how to word observed values, forecasts and weather warnings, see [Weather, environmental readings and warnings](../home-assistant/weather-and-warnings.html).
+
+This page covers:
+
+- Weather Forecast Card
+  - `hui-weather-forecast-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+- The current weather: an icon, the condition in words, the temperature with its unit and, one more value, such as humidity or wind speed. The card chooses one by default, and `secondary_info_attribute` changes it.
+- A forecast row. Each period has a label (a weekday, a time, or Day or Night), an icon for the condition, a high temperature and, where there is one, a low temperature. Hourly and twice-daily forecasts add a day heading.
+
+The forecast row scrolls sideways when it does not fit. The scrollbar is hidden. The card gets more compact as it narrows.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-weather-forecast-card"><code>hui-weather-forecast-card</code></h3>
+
+A Lovelace card. You must set `entity` to a weather entity.
+
+```yaml
+type: weather-forecast
+entity: weather.home
+forecast_type: daily
+forecast_slots: 5
+```
+
+| Key | Meaning |
+| --- | --- |
+| `entity` | The weather entity. Required |
+| `name` | Replaces the entity’s name |
+| `show_current` and `show_forecast` | Show or hide the current weather and the forecast. Both are shown by default |
+| `forecast_type` | `daily`, `hourly`, `twice_daily` or `legacy`. The card editor offers only the types the entity supports |
+| `forecast_slots` | How many periods to show. The default is 5 and the editor allows 1 to 72 |
+| `secondary_info_attribute` | The extra value in the current weather, such as `humidity` or `wind_speed` |
+| `round_temperature` | Shows whole degrees |
+| `theme` | A theme for this card only |
+| `tap_action`, `hold_action` and `double_tap_action` | What the card does when used |
+
+**What the Civica theme sets.** The card surface has square corners, a 1 pixel border and no shadow. Text uses `primary-text-color`, and labels and the low temperature use `secondary-text-color`. The small and large text sizes follow the theme. Calculated from the theme colours, secondary text is about 9 to 1 on white.
+
+**What stays as Home Assistant draws it.** The weather icons keep Home Assistant’s default pale colours, because the theme sets none of the `--weather-icon-*` variables. Calculated from those defaults, the pale sun, cloud and rain fills are between about 1 and 2.3 to 1 on white. The very large text sizes are also Home Assistant’s defaults. The variables `--weather-icon-sun-color`, `--weather-icon-moon-color`, `--weather-icon-cloud-back-color`, `--weather-icon-cloud-front-color`, `--weather-icon-rain-color`, `--weather-icon-snow-color` and `--weather-icon-snow-stroke-color` change them in a theme or with card-mod, which you should test on a real dashboard.
+
+**What needs card-mod.** The Civica yellow focus ring needs the card-mod integration. It appears only when the card has a `tap_action`. Without one, the card cannot take focus.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One native card shows the weather and a forecast without extra modules.
+- The current condition is written as text, with the temperature and its unit.
+- Each forecast period shows its condition as an icon only, with no text alternative. The extra value in the current weather is sometimes an icon and a bare number, such as “63 %”, with no word for what it measures.
+- The forecast row scrolls sideways by dragging with a mouse. A keyboard may not be able to reach or scroll it, depending on the browser.
+- The default icon colours are pale, so they are weak against a white card.
+- The card does not say which values are observed and which are forecast, or when they were taken.
+- The card is not a weather warning. See [Weather, environmental readings and warnings](../home-assistant/weather-and-warnings.html).
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Show a few forecast periods, not 72. Use `forecast_type: daily` with five slots or fewer for a quick look. Put the forecast in words next to the card, as in the example: a [Markdown card](markdown-card.html) or an [Entities card](entities-card-and-entity-rows.html) with the condition, high and low and their units for each day. If the forecast in words is enough, set `show_forecast: false` on the card.
+
+Say where the figures come from and when they were taken, near the card. Say which values are forecast, for which period. Use everyday words such as “light rain”, not jargon. Do not present a forecast as a safety warning.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: forecast icons and the extra-value icon have no text alternative.
+- 1.3.1 Info and Relationships and 3.1.5 Reading Level: units and the names of values.
+- 1.4.1 Use of Colour: the condition must not depend on an icon or its colour.
+- 1.4.3 and 1.4.11 Contrast: the default icon fills are pale. Check them on your own dashboard.
+- 1.4.10 Reflow: the forecast row scrolls sideways at narrow widths.
+- 2.1.1 Keyboard: the forecast row cannot be scrolled with a keyboard.
+- 2.5.8 Target Size (Minimum): the card is a target only when it has a tap action.
+- 4.1.2 Name, Role, Value: the forecast periods have no role.
+
+Words beside the icons, a few periods and clear units keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### A written forecast beside the card
+
+A simulated Markdown or Entities card that writes the forecast in words, to sit beside a weather forecast card.
+
+<%= example('spec-weather-written-forecast') %>

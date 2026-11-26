@@ -1,0 +1,102 @@
+# Synthetic data: invented names, readings and dates. Nothing here is connected to a home, and the buttons do nothing.
+examples:
+  spec-todo-weekend-shopping:
+    title: A shopping list card with one item due today
+    description: "A simulated to-do list card titled Weekend shopping. It has an add row, two active items (one with a clock and its due date “Today”, one with a short description) and one completed item that is struck through and sits under Completed. Home Assistant draws its own checkboxes and icon buttons, so the look differs. Nothing is saved."
+    height: 520
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-todo-title"><div class="civica-card-demo__body">
+      <h2 id="spec-todo-title" style="font-size:1.375rem;margin:0 0 12px">Weekend shopping</h2>
+      <p style="display:flex;gap:8px;margin:0 0 16px"><input type="text" aria-label="Add item" placeholder="Add item" style="flex:1;min-width:0;min-height:44px;padding:0 8px;border:2px solid #6f777b;font:inherit"><button type="button" style="min-height:44px;padding:0 16px;font:inherit">Add</button></p>
+      <h3 style="font-size:1rem;margin:0 0 8px">Active</h3>
+      <ul style="list-style:none;margin:0 0 16px;padding:0">
+      <li style="padding:8px 0;border-bottom:1px solid #cecece"><label style="display:flex;gap:12px;align-items:flex-start"><input type="checkbox" style="width:24px;height:24px;margin:0;flex:none"><span>Milk<br><span style="color:#484949;font-size:.875rem">🕐 Today</span></span></label></li>
+      <li style="padding:8px 0"><label style="display:flex;gap:12px;align-items:flex-start"><input type="checkbox" style="width:24px;height:24px;margin:0;flex:none"><span>Light bulbs for the hall<br><span style="color:#484949;font-size:.875rem">Check the bulb type in the hall light first.</span></span></label></li>
+      </ul>
+      <h3 style="font-size:1rem;margin:0 0 8px;padding-top:12px;border-top:1px solid #cecece">Completed</h3>
+      <ul style="list-style:none;margin:0;padding:0">
+      <li style="padding:8px 0"><label style="display:flex;gap:12px;align-items:flex-start"><input type="checkbox" checked style="width:24px;height:24px;margin:0;flex:none"><span style="text-decoration:line-through">Eggs</span></label></li>
+      </ul>
+      </div></article>
+  spec-tooltip-visible-hint:
+    title: Help written as visible text instead of a hover tip
+    description: "A simulated heating settings card. The help for Frost protection temperature is written as visible text under the label, so it can be read on any device without hovering. The Edit schedule button carries a visible word. The field and button do nothing here."
+    height: 420
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-tip-title"><div class="civica-card-demo__body">
+      <h2 id="spec-tip-title" style="font-size:1.375rem;margin:0 0 12px">Heating settings</h2>
+      <p style="margin:0 0 4px"><label for="spec-tip-frost" style="font-weight:700">Frost protection temperature</label></p>
+      <p id="spec-tip-hint" style="margin:0 0 8px;color:#484949">The heating switches on if the house falls below this temperature, even when the schedule is off.</p>
+      <p style="margin:0 0 20px"><input id="spec-tip-frost" type="text" value="5 °C" aria-describedby="spec-tip-hint" style="width:8rem;min-height:44px;padding:0 8px;border:2px solid #6f777b;font:inherit"></p>
+      <p style="margin:0"><button type="button" style="min-height:44px;padding:0 20px;font:inherit">Edit schedule</button></p>
+      </div></article>
+  spec-pickers-profile-settings:
+    title: A profile form with a language field and a theme field
+    description: "A simulated profile form with two closed picker fields, Language and Theme, each with a visible label above it and the chosen value inside. Home Assistant draws its own fields, with rounded corners and a searchable list that opens on selection, so the look differs. The open list is not shown and nothing can be changed."
+    height: 460
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-profile-title"><div class="civica-card-demo__body">
+      <h2 id="spec-profile-title" style="font-size:1.375rem;margin:0 0 12px">Your profile</h2>
+      <p style="margin:0 0 4px;font-weight:700" id="spec-profile-lang">Language</p>
+      <div role="group" aria-labelledby="spec-profile-lang" style="border-bottom:2px solid #0b0c0c;background:#fff;padding:12px;display:flex;justify-content:space-between;margin:0 0 20px"><span>English</span><span aria-hidden="true">&#9662;</span></div>
+      <p style="margin:0 0 4px;font-weight:700" id="spec-profile-theme">Theme</p>
+      <div role="group" aria-labelledby="spec-profile-theme" style="border-bottom:2px solid #0b0c0c;background:#fff;padding:12px;display:flex;justify-content:space-between;margin:0 0 20px"><span>Civica Green</span><span aria-hidden="true">&#9662;</span></div>
+      <p style="margin:0"><button type="button" style="min-height:44px;padding:0 20px;font:inherit">Save</button></p>
+      </div></article>
+  spec-camera-still-front-door:
+    title: A front door camera card showing a still picture
+    description: "A simulated picture card for a camera in still-image mode. A grey panel stands in for the camera picture. The camera name and the time the still was taken are written as text under it, so the card says what and when without the picture. Open live view does nothing here."
+    height: 460
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-cam-title"><div class="civica-card-demo__media"><div role="img" aria-label="Still picture from the front door camera" style="aspect-ratio:16/9;background:#d9dde0;display:flex;align-items:center;justify-content:center;color:#484949"><span aria-hidden="true">Camera picture</span></div></div><div class="civica-card-demo__body">
+      <h2 id="spec-cam-title" style="font-size:1.375rem;margin:0 0 8px">Front door</h2>
+      <p style="margin:0 0 4px">Still picture, taken 26 November 2026 at 09:30</p>
+      <p style="margin:0 0 16px">Motion: none detected</p>
+      <p style="margin:0"><button type="button" style="min-height:44px;padding:0 20px;font:inherit">Open live view</button></p>
+      </div></article>
+  spec-warning-text-remove-dashboard:
+    title: A warning before removing a dashboard
+    description: "A simulated confirmation screen. A bold warning with an exclamation mark sits above the buttons and names the consequence and what it affects. The word Warning is read out by screen readers but not drawn. Remove dashboard and Cancel do nothing here."
+    height: 380
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-warn-title"><div class="civica-card-demo__body">
+      <h2 id="spec-warn-title" style="font-size:1.375rem;margin:0 0 16px">Remove the Garage dashboard?</h2>
+      <div style="display:flex;gap:15px;align-items:flex-start;margin:0 0 20px"><span aria-hidden="true" style="flex:none;width:35px;height:35px;border-radius:50%;background:#0b0c0c;color:#fff;font-weight:700;font-size:1.5rem;line-height:35px;text-align:center">!</span><strong><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Warning</span> Removing this dashboard deletes its saved layout. It does not remove any devices from Home Assistant.</strong></div>
+      <p style="display:flex;flex-wrap:wrap;gap:12px;margin:0"><button type="button" style="min-height:44px;padding:0 20px;font:inherit">Remove dashboard</button><button type="button" style="min-height:44px;padding:0 20px;font:inherit">Cancel</button></p>
+      </div></article>
+  spec-warning-callout-unavailable-reading:
+    title: A callout that corrects a wrong guess about an unavailable reading
+    description: "A yellow callout in help content. Its heading says that an unavailable reading is not an off state, and the text tells people where to find the device’s real status. The word Important is read out by screen readers but not drawn."
+    height: 340
+    html: |
+      <section class="civica-warning-callout">
+      <h2 class="civica-warning-callout__heading"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Important:</span> An unavailable reading is not an off state</h2>
+      <p style="margin:0">If a device stops reporting, this dashboard cannot confirm its current physical state. Use the device’s own status and verified instructions.</p>
+      </section>
+  spec-warning-callout-import:
+    title: A callout that explains what a configuration import replaces
+    description: "A yellow callout in help content, placed before an import screen. It is written help, not a confirmation dialog, and has no buttons. The word Important is read out by screen readers but not drawn."
+    height: 340
+    html: |
+      <section class="civica-warning-callout">
+      <h2 class="civica-warning-callout__heading"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Important:</span> Check what an import replaces</h2>
+      <p style="margin:0">A dashboard or configuration import may replace existing settings. Read the owning import screen’s description and keep a recoverable copy before continuing.</p>
+      </section>
+  spec-weather-written-forecast:
+    title: A written forecast to sit beside a weather forecast card
+    description: "A simulated card for a Markdown card or Entities card placed next to a weather forecast card. It writes out the current condition and temperature, then each of the next three days with its condition, high and low in degrees Celsius. The real forecast card shows each day’s condition as an icon only, which is why the words are repeated here."
+    height: 520
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-wx-title"><div class="civica-card-demo__body">
+      <h2 id="spec-wx-title" style="font-size:1.375rem;margin:0 0 8px">Weather at home</h2>
+      <p style="margin:0 0 4px"><strong class="civica-card-demo__metric">9 °C</strong> Partly cloudy</p>
+      <p style="margin:0 0 16px;color:#484949">Humidity 63 %. Observed at 09:30 on 26 November 2026.</p>
+      <table style="border-collapse:collapse;width:100%">
+      <caption style="text-align:left;font-weight:700;padding-bottom:8px">Forecast for the next three days</caption>
+      <thead><tr><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">Day</th><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">Condition</th><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">High</th><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 0">Low</th></tr></thead>
+      <tbody>
+      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Friday</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Light rain</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">10 °C</td><td style="border-bottom:1px solid #cecece;padding:6px 0">5 °C</td></tr>
+      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Saturday</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Cloudy</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">8 °C</td><td style="border-bottom:1px solid #cecece;padding:6px 0">3 °C</td></tr>
+      <tr><th scope="row" style="text-align:left;font-weight:400;padding:6px 8px 6px 0">Sunday</th><td style="padding:6px 8px 6px 0">Sunny</td><td style="padding:6px 8px 6px 0">7 °C</td><td style="padding:6px 0">1 °C</td></tr>
+      </tbody></table>
+      </div></article>

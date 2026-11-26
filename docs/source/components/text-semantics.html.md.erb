@@ -1,0 +1,292 @@
+---
+title: "Text Semantics (Inline)"
+description: "Choose the inline element that matches what a phrase means, and know which ones a Home Assistant Markdown card keeps."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Text Semantics (Inline) specification: what each inline element means, which ones a Markdown card keeps and what to write instead for the rest."
+ai_instructions: "Apply when marking up a phrase inside a sentence. Choose the element for its meaning, not its look: strong for importance, em for stress, del and ins for removed and added text, sub and sup for typographic position. Never rely on bold, italics or colour alone, and never assume a screen reader announces strong or em. Say a change in words, such as Removed and Added. Never put a required instruction or a warning in small. Do not use u for emphasis because it looks like a link. In a Markdown card only strong, em, b, i, u, small, s, del, ins, sub, sup, bdi, bdo, br, span and div are kept, with their class, style, id and lang removed; dfn, data, ruby, rt, rp and wbr appear as literal text. Mark, abbr, code, kbd, samp, var, pre, q, cite, blockquote, time, a, label, output, meter and progress belong to other pages."
+ai_related:
+  - path: "/components/mark-highlight.html"
+    title: "Mark / Highlight"
+    relationship: "Owns the highlight element."
+  - path: "/components/abbreviation.html"
+    title: "Abbreviation"
+    relationship: "Owns the abbreviation element."
+  - path: "/components/code-and-preformatted-text.html"
+    title: "Code & Preformatted Text"
+    relationship: "Owns code, keyboard, sample, variable and preformatted text."
+  - path: "/components/blockquote.html"
+    title: "Blockquote"
+    relationship: "Owns quotations and citations."
+  - path: "/components/link-anchor.html"
+    title: "Link / Anchor"
+    relationship: "Owns links."
+  - path: "/components/label.html"
+    title: "Label"
+    relationship: "Owns the label of a form field."
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns the card that renders these elements on a dashboard."
+  - path: "/components/relative-time-and-timestamp.html"
+    title: "Relative Time & Timestamp"
+    relationship: "Owns dates and times, so the data element is not used for them."
+  - path: "/components/warning-text.html"
+    title: "Warning Text"
+    relationship: "Use it, not bold text, for a warning."
+  - path: "/styles/typography-type-scale.html"
+    title: "Type scale"
+    relationship: "Owns the text sizes that small and the body text use."
+component:
+  parent: "Text Semantics (Inline)"
+  letter: "T"
+  origins:
+    - "HTML5"
+  children:
+    - name: "<strong>"
+      origin: "HTML5"
+      anchor: "child-strong"
+    - name: "<em>"
+      origin: "HTML5"
+      anchor: "child-em"
+    - name: "<b>"
+      origin: "HTML5"
+      anchor: "child-b"
+    - name: "<i>"
+      origin: "HTML5"
+      anchor: "child-i"
+    - name: "<u>"
+      origin: "HTML5"
+      anchor: "child-u"
+    - name: "<small>"
+      origin: "HTML5"
+      anchor: "child-small"
+    - name: "<s>"
+      origin: "HTML5"
+      anchor: "child-s"
+    - name: "<del>"
+      origin: "HTML5"
+      anchor: "child-del"
+    - name: "<ins>"
+      origin: "HTML5"
+      anchor: "child-ins"
+    - name: "<sub>"
+      origin: "HTML5"
+      anchor: "child-sub"
+    - name: "<sup>"
+      origin: "HTML5"
+      anchor: "child-sup"
+    - name: "<dfn>"
+      origin: "HTML5"
+      anchor: "child-dfn"
+    - name: "<data>"
+      origin: "HTML5"
+      anchor: "child-data"
+    - name: "<bdi>"
+      origin: "HTML5"
+      anchor: "child-bdi"
+    - name: "<bdo>"
+      origin: "HTML5"
+      anchor: "child-bdo"
+    - name: "<ruby>"
+      origin: "HTML5"
+      anchor: "child-ruby"
+      grandchildren:
+        - name: "<rt>"
+          origin: "HTML5"
+          anchor: "child-ruby--rt"
+        - name: "<rp>"
+          origin: "HTML5"
+          anchor: "child-ruby--rp"
+    - name: "<wbr>"
+      origin: "HTML5"
+      anchor: "child-wbr"
+    - name: "<br>"
+      origin: "HTML5"
+      anchor: "child-br"
+    - name: "<span>"
+      origin: "HTML5"
+      anchor: "child-span"
+    - name: "<div>"
+      origin: "HTML5"
+      anchor: "child-div"
+  tags:
+    - "strong"
+    - "em"
+    - "b"
+    - "i"
+    - "u"
+    - "small"
+    - "s"
+    - "del"
+    - "ins"
+    - "sub"
+    - "sup"
+    - "dfn"
+    - "data"
+    - "bdi"
+    - "bdo"
+    - "ruby"
+    - "rt"
+    - "rp"
+    - "wbr"
+    - "br"
+    - "span"
+    - "div"
+---
+
+# Text Semantics (Inline)
+
+<h2 id="purpose">Purpose</h2>
+
+Inline text elements mark up part of a sentence: an important phrase, a removed price, a squared unit. Each one says what the phrase means, not only how it looks. Choose the element for its meaning, and say important things in words as well, because bold and italic text is not reliably announced to people who use a screen reader.
+
+On a dashboard, these elements matter most in a [Markdown card](markdown-card.html). Other Home Assistant cards draw names and states as plain text.
+
+Some inline elements belong to other pages: highlighted text on [Mark / Highlight](mark-highlight.html), abbreviations on [Abbreviation](abbreviation.html), code and preformatted text on [Code & Preformatted Text](code-and-preformatted-text.html), quotations on [Blockquote](blockquote.html), links on [Link / Anchor](link-anchor.html), form labels on [Label](label.html), and dates and times on [Relative Time & Timestamp](relative-time-and-timestamp.html). Do not use the elements below for those jobs.
+
+This page covers:
+
+- `<strong>`, `<em>`, `<b>`, `<i>` and `<u>`
+- `<small>`, `<s>`, `<del>` and `<ins>`
+- `<sub>` and `<sup>`
+- `<dfn>`, `<data>`, `<bdi>` and `<bdo>`
+- `<ruby>`, `<rt>` and `<rp>`
+- `<wbr>` and `<br>`
+- `<span>` and `<div>`
+
+<h2 id="anatomy">Anatomy</h2>
+
+An inline element wraps a few words inside a paragraph, a list item or a table cell. It never starts a new block. Elements can be nested, but keep it to one style for each phrase.
+
+In a Markdown card, a short form is available for three of them: `**text**` is `<strong>`, `*text*` is `<em>` and `~~text~~` is `<del>`.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+**What a Markdown card keeps.** A Markdown card keeps these elements: strong, em, b, i, u, small, s, del, ins, sub, sup, bdi, bdo, br, span and div. It removes `class`, `style`, `id` and `lang` from all of them. It keeps `dir` on bdi and bdo, and `datetime` on del and ins. The elements dfn, data, ruby, rt, rp and wbr are not kept: their tags appear as literal text. Because `lang` is removed, a foreign phrase cannot be marked with its language in a Markdown card.
+
+**What the Civica theme sets.** Text uses the primary text colour, `#0B0C0C` in light mode and `#FFFFFF` in dark mode. Side text and small print use the secondary text colour, `#484949` in light mode and `#CBD0D3` in dark mode. Those are 9.03:1 and 9.55:1 against the card colours, calculated from the theme colours. Body text is 19 pixels and small text 16 pixels, scaled with the text size setting. The theme sets no style for these elements. Browsers draw them with their usual defaults.
+
+**What a dashboard author cannot control.** Home Assistant’s own dialogs, forms and cards choose their own markup. These elements are not author-controlled there.
+
+<h3 id="child-strong"><code>&lt;strong&gt;</code></h3>
+
+Strong importance, seriousness or urgency. Use it for the one phrase that must not be missed, such as “The boiler service has moved.” Do not use it for whole paragraphs or long runs of text. Do not rely on a screen reader announcing it: say why it matters in the words. For a real warning, use [Warning text](warning-text.html). Kept in a Markdown card, which also writes it as `**text**`.
+
+<h3 id="child-em"><code>&lt;em&gt;</code></h3>
+
+Stress emphasis that changes the meaning of the sentence: “Turn off the *hall* light” is different from “Turn *off* the hall light”. Use it sparingly and not for long text. Italics alone are not reliably announced. Kept in a Markdown card, which also writes it as `*text*`.
+
+<h3 id="child-b"><code>&lt;b&gt;</code></h3>
+
+Text set apart in bold without extra importance, such as a keyword or a product name. It carries no meaning of its own, so never use it for something that matters. Use `<strong>` for importance. Kept in a Markdown card.
+
+<h3 id="child-i"><code>&lt;i&gt;</code></h3>
+
+Text in another voice or mood, such as a technical term or a foreign phrase. Italics alone are not reliably announced. A foreign phrase should also carry `lang`, which a Markdown card removes. Kept in a Markdown card.
+
+<h3 id="child-u"><code>&lt;u&gt;</code></h3>
+
+An annotation, such as marking a misspelling. It draws an underline, which people read as a link, so do not use it for emphasis. Kept in a Markdown card.
+
+<h3 id="child-small"><code>&lt;small&gt;</code></h3>
+
+Side comments and small print, such as a licence line or a note about time zones. Do not use it only to make text smaller. Never put a required instruction, a warning or a price in small print. Small text is 16 pixels in the Civica theme, against 19 pixels for body text, and must still reflow at larger text sizes. Kept in a Markdown card.
+
+<h3 id="child-s"><code>&lt;s&gt;</code></h3>
+
+Text that is no longer accurate or relevant, drawn with a line through it. It is not reliably announced, so the surrounding words must carry the meaning. For an edit, use `<del>` and `<ins>`. Kept in a Markdown card.
+
+<h3 id="child-del"><code>&lt;del&gt;</code></h3>
+
+Removed text, drawn with a line through it. Pair it with `<ins>` and say the change in words: “Removed: Saturday at 10:00. Added: Friday at 14:00.” It can carry a `datetime`. Kept in a Markdown card, which also writes it as `~~text~~`.
+
+<h3 id="child-ins"><code>&lt;ins&gt;</code></h3>
+
+Added text, usually underlined. Pair it with `<del>` and write “Added:” before it. The underline can look like a link, so write the word as well. It can carry a `datetime`. Kept in a Markdown card.
+
+<h3 id="child-sub"><code>&lt;sub&gt;</code></h3>
+
+Subscript for a typographic position, such as the 2 in H<sub>2</sub>O. Do not use it to shrink ordinary text. Keep it large enough to read and let it resize with the text. Kept in a Markdown card.
+
+<h3 id="child-sup"><code>&lt;sup&gt;</code></h3>
+
+Superscript, for example m<sup>2</sup> or 1<sup>st</sup>. A footnote number in superscript should be a link with a name. Kept in a Markdown card.
+
+<h3 id="child-dfn"><code>&lt;dfn&gt;</code></h3>
+
+The defining use of a term, in the sentence that explains it. Define a term in plain words the first time you use it. A Markdown card shows the tag as literal text. Write the term and its meaning instead: “Heat pump (a device that moves heat from outside to inside)”.
+
+<h3 id="child-data"><code>&lt;data&gt;</code></h3>
+
+A value a machine can read, set with a `value` attribute. It is not announced and not shown differently. Do not use it for dates and times, which belong on [Relative Time & Timestamp](relative-time-and-timestamp.html). A Markdown card shows the tag as literal text. Write the value in the sentence instead.
+
+<h3 id="child-bdi"><code>&lt;bdi&gt;</code></h3>
+
+Isolates text whose reading direction is not known, such as a name a person typed, so that it cannot reorder the text around it. Use it for names that come from people. Kept in a Markdown card, with `dir`.
+
+<h3 id="child-bdo"><code>&lt;bdo&gt;</code></h3>
+
+Overrides the reading direction. It must have `dir` set to `ltr` or `rtl`. It is rarely needed. Do not use it to change the order of text in a way that changes its meaning. Kept in a Markdown card, with `dir`.
+
+<h3 id="child-ruby"><code>&lt;ruby&gt;</code></h3>
+
+A small annotation beside base text, usually a pronunciation, as in Japanese. Use it only where a pronunciation helps the reader. Support in screen readers varies. A Markdown card shows the tag as literal text. Write the pronunciation in brackets after the word instead.
+
+<h4 id="child-ruby--rt"><code>&lt;rt&gt;</code></h4>
+
+The annotation text inside `<ruby>`. A Markdown card shows the tag as literal text.
+
+<h4 id="child-ruby--rp"><code>&lt;rp&gt;</code></h4>
+
+Brackets inside `<ruby>`, shown only where ruby is not supported, so the annotation still reads as “word (pronunciation)”. A Markdown card shows the tag as literal text.
+
+<h3 id="child-wbr"><code>&lt;wbr&gt;</code></h3>
+
+A place where a long word or address may break onto a new line. It adds no hyphen and nothing visible. Use it in long identifiers or web addresses so they do not overflow a small screen. A Markdown card shows the tag as literal text, so keep long values on their own line instead.
+
+<h3 id="child-br"><code>&lt;br&gt;</code></h3>
+
+A forced line break, for content where the break is part of the content, such as the lines of an address. Do not stack breaks to add space and do not use them to change the reading order. Kept in a Markdown card.
+
+<h3 id="child-span"><code>&lt;span&gt;</code></h3>
+
+A container with no meaning. It is only a hook for `lang`, `dir` or a class. In a Markdown card it survives with all attributes removed, so it does nothing useful there. Use a real element with meaning where one exists.
+
+<h3 id="child-div"><code>&lt;div&gt;</code></h3>
+
+A block container with no meaning. It is not inline text and cannot sit inside a paragraph. Use `<span>` inside a paragraph. In a Markdown card it survives with all attributes removed. Use headings, lists and tables for structure instead.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- The right element carries meaning to browsers and assistive technology as well as to the eye.
+- A Markdown card keeps most of these elements, so a dashboard can show an important phrase or a change.
+- A Markdown card removes classes, styles, ids and language, so these elements cannot be coloured or sized there.
+- Bold, italic, underlined and struck-through text is not reliably announced, so words must carry the meaning.
+- dfn, data, ruby, rt, rp and wbr show as raw tags in a Markdown card.
+- Home Assistant’s other cards draw names and states as plain text. Do not assume they accept inline markup.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use one style of emphasis in a message. Bold a short phrase, not a paragraph. Avoid capital letters and long italic passages, which are hard to read. Never use colour alone, or bold or italic alone, to say something important: write it. Define a term the first time you use it. Keep small print to extra detail, never to something people need to act on.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: use the element that matches the meaning, not just the look.
+- 1.4.1 Use of Colour: do not carry meaning in colour alone.
+- 1.4.4 Resize Text and 1.4.12 Text Spacing: small text and subscripts must resize and reflow.
+- 1.3.2 Meaningful Sequence: do not use breaks or direction overrides to change the reading order.
+- 3.1.2 Language of Parts: mark a foreign phrase with its language where the page allows it.
+- 3.1.5 Reading Level and 3.1.6 Pronunciation: explain a term in plain words, and add a pronunciation only where meaning depends on it.
+
+<h2 id="examples">Examples</h2>
+
+### A Markdown card with a changed time, a squared unit and small print
+
+<%= example('spec-text-semantics-weekend-notes') %>

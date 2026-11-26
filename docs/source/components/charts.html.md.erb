@@ -1,131 +1,234 @@
 ---
-title: Charts and tables
-description: ONS chart patterns adapted to Home Assistant's native charts, with accessible data and explicit compatibility limits.
-last_reviewed_on: 2026-11-11
-review_in: 3 months
-published_on: 2026-11-11
-updated_on: "2026-11-18"
+title: "Statistic & Statistics Graph Cards"
+description: "Show one statistic for a period, or a chart of statistics over days, and know how Civica's chart presentation treats Energy charts."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
 updates:
-  - date: "2026-11-13"
-    description: "Updated the current project name and repository links to Civica."
-  - date: "2026-11-12"
-    description: "Connected data and colour rules to the existing ONS-informed chart contract and quantitative scale examples."
+  - date: "2026-11-26"
+    description: "Rewrote the page as a specification for the Statistic card, the Statistics graph card and the chart element behind them, and shortened the Energy chart guidance."
   - date: "2026-11-11"
-    description: "Linked chart data alternatives to the shared table semantics while preserving the production adapter and scope limits."
-  - date: "2026-11-11"
-    description: "Added the shared documentation navigation, page history and example presentation as part of the design-system site rebuild."
-  - date: "2026-11-11"
-    description: "First published in the Civica design system."
-  - date: "2026-11-18"
-    description: "Chart identities no longer follow a Vivid or Muted tone: they stay the same with every GOV.UK theme colour."
-  - date: "2026-11-18"
-    description: "Chart colours, labels and axes now use the GOV.UK chart palette instead of the ONS palette and generated colours."
-  - date: "2026-11-18"
-    description: "ONS is credited for chart structure only, and the local chart contract now names the six GOV.UK chart colours instead of generated identities."
-  - date: "2026-11-18"
-    description: "Series meaning now says a different theme colour, instead of interface palette."
+    description: "First published, with guidance for Energy charts."
+ai_instructions: "Apply when a dashboard shows a statistic (type: statistic) or a statistics graph (type: statistics-graph), or when someone asks how Civica treats charts. Statistic card: entity, stat_type (mean, min, max or change) and period are required; say the type and period in words. Statistics graph card: entities, days_to_show, period, stat_types and chart_type; its title is always a first-level heading, and it has no data table. ha-chart-base draws every Home Assistant chart and the legend; the Civica Energy chart presentation applies only inside the Energy panel. Civica gives these two cards theme colours only, with no data table. The statistic card is focusable but has no key handler: do not call it keyboard operable. Use the six chart colours, and keep to five series or fewer so each has its own colour. Do not claim the charts are accessible to screen readers, do not state contrast for series colours, and do not give a version number."
+ai_related:
+  - path: "/components/history-graph-card.html"
+    title: "History Graph Card"
+    relationship: "Owns the history graph for state changes over time."
+  - path: "/components/energy-cards.html"
+    title: "Energy Cards"
+    relationship: "Owns the cards in the Energy panel."
+  - path: "/components/table.html"
+    title: "Data Table"
+    relationship: "Owns table captions, headers and numeric alignment, used for chart data."
+  - path: "/components/gauge.html"
+    title: "Gauge"
+    relationship: "Use when one value sits within a known range."
+  - path: "/components/sensor-card.html"
+    title: "Sensor Card"
+    relationship: "Use for the current reading instead of a statistic over a period."
+  - path: "/components/card-header-and-footer-widgets.html"
+    title: "Card Header & Footer Widgets"
+    relationship: "Owns the footer a statistic card can show."
+  - path: "/home-assistant/history-and-statistics.html"
+    title: "History, activity and statistics"
+    relationship: "Owns how recorded values are shown and described."
+  - path: "/patterns/energy.html"
+    title: "Energy and history"
+    relationship: "Owns the household pattern for energy and history pages."
+  - path: "/styles/chart-colour.html"
+    title: "Chart colours"
+    relationship: "Owns the chart colours and how they are used."
+  - path: "/styles/brand-data.html"
+    title: "Data visualisation"
+    relationship: "Owns the principles for charts and data."
+component:
+  parent: "Statistic & Statistics Graph Cards"
+  letter: "S"
+  origins:
+    - "Lovelace"
+    - "Home Assistant"
+  children:
+    - name: "hui-statistic-card"
+      origin: "Lovelace"
+      anchor: "child-hui-statistic-card"
+    - name: "hui-statistics-graph-card"
+      origin: "Lovelace"
+      anchor: "child-hui-statistics-graph-card"
+    - name: "ha-chart-base"
+      origin: "Home Assistant"
+      anchor: "child-ha-chart-base"
+  tags:
+    - "hui-statistic-card"
+    - "hui-statistics-graph-card"
+    - "ha-chart-base"
 ---
 
-# Charts and tables
+# Statistic & Statistics Graph Cards
 
-Charts help people compare values and understand change. The Civica chart pattern adapts the **ONS Design System chart components** to Home Assistant: their geometry, axes, legend and figure structure, from the ONS chart build specifications. Colours follow the GOV.UK chart palette. A change to series colours alone does not implement this pattern.
+<h2 id="purpose">Purpose</h2>
 
-Use the [Energy and history pattern](../patterns/energy.html) for consumption, power and distribution. The [machine-readable ONS source record](../reference/ons-chart-sources.json) records the upstream release, source hashes, reference values and controlled deviations.
+Two Home Assistant cards show long-term statistics rather than the current state. The Statistic card gives one number for a period, such as the electricity used this month. The Statistics graph card draws several statistics as a chart over days or weeks. Both sit on the chart element that draws every Home Assistant chart.
 
-Open the [working chart examples](chart-examples.html) to compare the pattern using labelled synthetic data and the same presentation adapter. The examples demonstrate the implementation; they do not display a household's live readings.
+This page owns these two cards and the chart element, and records how Civica treats charts. For the history of states, see [History Graph Card](history-graph-card.html). For the cards in the Energy panel, see [Energy Cards](energy-cards.html). For recorded values in general, see [History, activity and statistics](../home-assistant/history-and-statistics.html).
 
+This page covers:
 
-## Apply the data and colour guidance
+- Statistic & Statistics Graph Cards
+  - `hui-statistic-card`
+  - `hui-statistics-graph-card`
+  - `ha-chart-base`
 
-The [data principles](../styles/brand-data.html) govern the question, context, accuracy and alternative route. The colour rules distinguish data meaning ([BG-COL-02](../styles/colour-web-app.html#bg-col-02) and [BG-COL-07](../styles/chart-colour.html#bg-col-07)) from interface accents and household identity ([BG-COL-01](../styles/colour.html#bg-col-01)).
+<h2 id="anatomy">Anatomy</h2>
 
-| Source | What it contributes here |
+A **statistic card** has a name and icon in a header, then a large value with its unit. It has no heading element.
+
+A **statistics graph card** has an optional title, a chart and a legend. The title is a first-level heading and holds a link to the History panel.
+
+The **chart element** draws the plot, the legend of toggle buttons, a control to reset zoom and, where it can, a keyboard route through the values.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-statistic-card"><code>hui-statistic-card</code></h3>
+
+A Lovelace card (`type: statistic`) that shows one statistic for one period. Three keys are required:
+
+- `entity`: the statistic to show.
+- `stat_type`: `mean`, `min`, `max` or `change`.
+- `period`: the period to cover, as a calendar period, a fixed period or a rolling window.
+
+```yaml
+type: statistic
+entity: sensor.hall_energy
+stat_type: change
+period:
+  calendar:
+    period: month
+name: Electricity used this month
+```
+
+`name`, `icon`, `unit`, `footer` and `theme` change the look. A calendar period is a day, week, month or year. Its `offset` moves it back or forward, and the editor’s “last month” choice is the previous month. The card fetches its value when it loads and every five minutes. It shows a question mark when the value is null.
+
+**What the Civica theme sets.** Square corners, a 1 pixel border, no shadow, and the theme’s text and icon colours. The name uses 19 pixel type in the secondary text colour. The value is 28 pixels at the standard text size, which is Home Assistant’s default because the theme does not set it.
+
+**Keyboard.** The card can take focus, but nothing in it handles Enter or Space. A click or tap opens more information, and a keyboard user may not get the same result. Do not rely on the card as the only place for a figure. Show the same figure in an Entities card row or as text in a Markdown card.
+
+**Say what the figure is.** The card does not state the statistic type or period. Put them in the name, for example “Electricity used this month”, rather than leaving them in the configuration.
+
+<h3 id="child-hui-statistics-graph-card"><code>hui-statistics-graph-card</code></h3>
+
+A Lovelace card (`type: statistics-graph`) that charts one or more statistics. `entities` is required and needs at least one entry, as a name or as an entry with `entity`, `name` and `color`.
+
+```yaml
+type: statistics-graph
+title: Bedroom temperature, last 30 days
+entities:
+  - sensor.bedroom_temperature
+days_to_show: 30
+period: day
+stat_types:
+  - mean
+  - max
+chart_type: line
+```
+
+| Key | Meaning |
 | --- | --- |
-| GOV.UK data guidance | Purpose, chart anatomy, readable context, accessible alternatives and truthful values |
-| ONS chart guidance | Line/column/bar geometry, axes, legend and figure structure |
-| Local chart contract | Stable identities on the six GOV.UK chart colours, opaque fills, 1.5px unfilled Power lines; the same colours with every theme colour |
+| `title` | The card title, drawn as a first-level heading |
+| `days_to_show` | How many days to chart; the default is 30 |
+| `period` | `auto`, `5minute`, `hour`, `day`, `week` or `month` |
+| `stat_types` | Any of `change`, `state`, `sum`, `min`, `max` and `mean`; the default is all six |
+| `chart_type` | `line`, `bar`, `line-stack` or `bar-stack`; the default is line |
+| `unit` | Replaces the unit |
+| `min_y_axis`, `max_y_axis`, `fit_y_data` | Control the vertical range |
+| `logarithmic_scale` | Uses a log scale |
+| `hide_legend`, `expand_legend` | Hide the legend or open it in full |
 
-These decisions form one specification. Neither a family logo nor a different theme colour changes the meaning of a source series. For ordered values or difference from a meaningful centre, use the [quantitative scale examples](../styles/chart-colour.html#choose-the-colour-mapping); do not replace the categorical Energy colours with those scales.
+The card refreshes every 60 minutes, or every five minutes when the period is `5minute`. If the data cannot be fetched, the chart shows no data and no error text.
 
-## Use the shared table contract
+**What the Civica theme sets.** Square corners, a 1 pixel border and no shadow, and the chart colours below.
 
-The [table component](table.html) owns semantic captions, row and column headers, numeric alignment and keyboard-accessible overflow. This page owns how those semantics compose with a plot and its native data. The [working chart examples](chart-examples.html) exercise the production adapter rather than a second visual implementation.
+**Headings.** The title is a first-level heading wherever the card sits. If your dashboard has its own heading order, leave the title off and put a heading in a [Markdown Card](markdown-card.html) above the chart.
 
-Keep generic table references and implemented Energy support separately labelled. The current adapter’s bounded Energy scope does not establish coverage for native History, third-party cards or every chart type.
+**No data table.** The native card has no table or text summary. The chart cannot be styled with CSS. The nearest accessible routes are a table written in a Markdown card (see [Data Table](table.html)), a [History Graph Card](history-graph-card.html) and its data, or the View data disclosure in the Energy panel.
 
-## Examples
+**What needs card-mod.** Changing the card’s own text style needs the card-mod integration. The chart itself is drawn on a canvas and cannot be restyled with it.
 
-These isolated examples illustrate the decisions on this page. Any household values are invented, and demonstration actions do not control a home. Open an example to inspect it at full width or view its exact HTML.
+<h3 id="child-ha-chart-base"><code>ha-chart-base</code></h3>
+
+The element that draws Home Assistant’s charts: statistics, history, Energy and the network, sankey and sunburst charts. It is not a card and has no YAML type, so a dashboard author cannot place it directly.
+
+**What it adds.**
+
+- A legend of real buttons: one that switches a series on or off, with a pressed state, and one that carries the series name.
+- A “Reset zoom” button after zooming.
+- A zoom slider on charts that allow it, and `--chart-max-height` for the maximum height, which is 350 pixels unless a theme sets it. The Civica theme does not.
+- For bar, line, pie and scatter charts with at least two points, a keyboard route through the values labelled “Chart”. It loads when the chart first takes keyboard focus, not when a pointer does, and speaks in German, English, Spanish, French, Hmong and Italian, falling back to English. Charts of other kinds, such as timelines, sankey and network charts, have no such route and no label.
+- A busy state while data loads.
+
+**Colours.** Series take their colours from the theme’s chart colours in order. The Civica theme sets them, and some series share a colour, so a chart with many series cannot rely on colour alone. Name every series in the legend. The chart colours, and how they change in dark mode, are listed in [Chart colours](../styles/chart-colour.html).
+
+<h2 id="energy-panel-charts">Energy panel charts</h2>
+
+Inside the Energy panel, Civica’s presentation goes further than the theme. It applies to seven chart cards: power sources, energy usage, solar, gas, water, devices and device details. It changes only the line and bar series of those charts.
+
+- **View data.** A disclosure after each chart holds a captioned table of every value supplied to the chart, including series hidden through the legend. Missing values show as missing, not as zero, and a value with no unit shows “Not supplied”. It pages at 100 rows with Previous and Next buttons and a count such as “Rows 1 to 100 of 250”.
+- **Lines and columns.** Lines are 1.5 pixels wide. The plot is at least 280 pixels high. Columns are at most 75 pixels wide, or 55 pixels on narrow charts.
+- **Legend.** It sits above the plot, and Home Assistant’s buttons to switch series on and off stay.
+- **Reversible.** Choosing a theme that is not Civica removes the added presentation. Charts it cannot restyle stay as Home Assistant draws them.
+
+The Statistic card, the Statistics graph card, History charts and third-party charts are not covered. They keep Home Assistant’s drawing, with the theme colours, and have no View data table. See [Energy and history](../patterns/energy.html) and [Compatibility and limits](../get-started/compatibility.html), and [Install Civica](../get-started/install.html) for adding the companion.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Both cards use Home Assistant’s own statistics, so figures match the rest of the product.
+- The Statistic card gives a figure in one place, and the graph shows a trend.
+- Neither card has a data table, and the Statistic card has no keyboard activation.
+- The Statistics graph title is always a first-level heading.
+- Charts need a text route for the same information. Hover text is extra and not enough alone.
+- Failures to load are silent in the Statistics graph card.
+- Zoom and roam are pointer gestures, and a keyboard route for them is not guaranteed.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+State the quantity, the unit, the kind of statistic (mean, minimum, maximum or change) and the period, in words. Keep power and energy on separate charts. Say plainly when there is no data. Keep to five series or fewer and give a text route to the values, such as a table. Do not draw a conclusion, such as a saving, that the data does not show. Use the six chart colours and no others.
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: give each chart a text alternative or a table.
+- 1.4.1 Use of Colour: name each series in the legend as well as by colour.
+- 1.4.11 Non-text Contrast: check each line colour against your card in light and dark mode.
+- 1.3.1 Info and Relationships and 2.4.6 Headings and Labels: the title is a first-level heading, so check the heading order.
+- 2.1.1 Keyboard: the Statistic card has no key handler.
+- 4.1.2 Name, Role, Value: the legend buttons report whether a series is shown.
+- 1.4.4 Resize Text, 1.4.10 Reflow and 1.4.12 Text Spacing: check the legend and axis labels at 200 per cent.
+- 2.5.7 Dragging Movements: zoom and roam are pointer gestures.
+
+For Energy charts, test light and dark modes, a 320 pixel width, keyboard use, larger text, legend and date changes, missing values, comparison periods and a return to the previous theme. See [Test the interface](../accessibility/testing.html).
+
+<h2 id="examples">Examples</h2>
+
+### A statistic card and a statistics graph card
+
+<%= example('spec-statistics-cards') %>
+
+### Power sources
+
+A simulated Energy panel chart of power sources, drawn as individual unfilled lines in the Energy chart presentation.
 
 <%= example('local-chart-power') %>
 
+### Consumption
+
+A simulated Energy panel chart of consumption, drawn as solid and hatched columns.
+
 <%= example('local-chart-usage') %>
 
+### Device comparison
+
+A simulated Energy panel chart comparing devices, drawn as horizontal bars.
+
 <%= example('local-chart-devices') %>
-
-
-## Source and implementation boundary
-
-The reviewed ONS components are [bar charts](https://service-manual.ons.gov.uk/design-system/components/bar-chart-component), [column charts](https://service-manual.ons.gov.uk/design-system/components/column-chart-component) and [line charts](https://service-manual.ons.gov.uk/design-system/components/line-chart-component). Their published implementation uses Highcharts. This project applies the design to Home Assistant's existing ECharts renderer through the optional Civica companion; it does not install Highcharts or replace the Energy dashboard.
-
-The source baseline is [ONS Design System 74.0.0](https://github.com/ONSdigital/design-system/releases/tag/74.0.0), reviewed on 11 November 2026. The companion must leave native chart data, unit conversion, statistics, routing, selection and date handling under Home Assistant's control. Theme YAML provides colour roles; the companion is required for chart geometry, captions and data alternatives. See [installation](../get-started/install.html).
-
-The v1.3.2 adapter targets seven chart cards inside the native Energy panel: power sources, energy usage, solar, gas, water, devices and device details. Its Home Assistant frontend compatibility baseline is **20261028.5**. Only their native Cartesian line and bar series are adapted. History, pie charts, the Energy distribution diagram and third-party chart cards retain their native implementation.
-
-## Figure structure
-
-Keep a concise native heading, then identify the measure, unit and displayed period. Preserve meaningful sensor or source names. A neutral descriptive title is appropriate for a live dashboard: do not invent a conclusion about savings or consumption from incomplete readings.
-
-Provide a named chart region and a route to its values without hovering. Supporting text and the data table belong to the same chart. Do not add publication figure numbers, fake downloads, empty footnotes or repeated headings. The ONS [figure component](https://service-manual.ons.gov.uk/design-system/components/figure) supplies the structural model; it explicitly treats captions, footnotes and downloads as conditional content.
-
-## Visual rules
-
-These are chart roles, separate from card borders and input boundaries. Values are CSS pixels at the default text scale.
-
-| Element | ONS reference | Civica adaptation |
-| --- | --- | --- |
-| Plot | Transparent background; no decorative frame | Inherit the themed card canvas; no extra plot box |
-| Numeric grid | 1px | GOV.UK Black tint 80% `#CECECE`, 1px, in both modes |
-| Zero reference | 1.5px | Use the true zero crossing where established; GOV.UK Black tint 50% `#858686` in both modes |
-| Axis labels | At least 14px, horizontal | Use the Civica font, respect user text scaling and reduce tick density before shrinking text |
-| Legend text | At least 14px, normal weight | Keep native labels and expose values in the accompanying table |
-| Filled-series key | 12px circle | Match the opaque series colour and comparison pattern; preserve native visibility controls |
-| Line-series key | 20px wide, 3px stroke | Match the line colour and dash pattern at the local 1.5px width; preserve native controls |
-| Data line | 3px, round ends | Use 1.5px for dense live data, including hover; power uses individual unfilled, unsmoothed lines |
-| Columns | Square ends, no decorative border | Opaque fills, native interval widths and grouping; previous-period columns use hatching |
-
-The plot has a 280px minimum height, while larger native explicit heights are preserved. Column width is limited to 75px on wider charts and 55px below the adapter's narrow-chart breakpoint. These presentation choices do not replace native period aggregation.
-
-The local line weight is **1.5px** in normal, hover, selected and blurred states, and in the legend key. All these uses read `ENERGY_CHART_SPEC.lineWidth` in `ui/src/energy-charts.ts`. The installed companion and working examples use that same production adapter and constant; there is no separate example line weight. The ONS reference remains **3px**. The thinner local weight is an explicit adaptation for dense household power data.
-
-Grid and key dimensions come from the ONS [chart elements specification](https://service-manual.ons.gov.uk/data-visualisation/build-specifications/chart-elements). Text roles come from [chart typography](https://service-manual.ons.gov.uk/data-visualisation/build-specifications/typography). Column and line treatment is checked against the [versioned component source](https://github.com/ONSdigital/design-system/tree/fba69ff1aae25035ff167d8408a57540bf8b1066/src/components/chart).
-
-For time series, use horizontal value gridlines and readable time ticks, without a second grid on the time axis. Keep the plot wide enough for its labels. Use fewer ticks at narrow widths, without removing observations. Filled bars must retain their zero baseline; negative values remain on the correct side of zero. Native scale bounds and comparison relationships must not change merely to make a chart resemble an example. See ONS [axes and gridlines](https://service-manual.ons.gov.uk/data-visualisation/guidance/axes-and-gridlines).
-
-Power sources use individual unfilled lines. Remove native cumulative display stacking and decorative smoothing for this chart; preserve source values, timestamps, signs, actual zero values and missing samples. Home Assistant splits grid and battery into positive and negative display arrays. Where those arrays have identical timestamps and complementary signs, select the existing signed value into one rendered line and leave the secondary series empty. Keep both native IDs for legend behaviour. Native transitions must finish immediately before this projection is drawn, so a previous split trace cannot reappear after a legend or theme update. The table uses the same projection; native source arrays remain unchanged. Do not combine ambiguous pairs or invent crossing points. Consumption columns retain their native stacks. Current and comparison series remain distinct through labels, dashes and hatch patterns, rather than fading.
-
-Place the legend above the plot, aligned left, and wrap whole labelled items. Preserve Home Assistant's series visibility controls and their state. This is an intentional difference from the reviewed ONS component, which disables legend selection. Hidden series must not silently disappear from an accessible table without an indication of their visibility state.
-
-## Colour and typography deviations
-
-Chart colours are the [GOV.UK chart palette](../styles/chart-colour.html), unchanged, in light and dark mode and with every theme colour. Each energy role has a fixed colour, and every other series takes one of the six categorical colours plus a pattern, line dash and marker from its stable ID. Colours are opaque, with no native alpha suffixes or gradients. Text uses the Civica Roboto stack. Labels are GOV.UK Black (`#0B0C0C`) and axes and grid lines Black tint 80% (`#CECECE`). In dark mode labels are White; the zero line uses Black tint 50% (`#858686`) in both modes. White labels in dark mode are a Civica adaptation, because GOV.UK gives no dark-mode chart guidance; the Black tint 50% zero line is a Civica choice so that it stands out from the grid.
-
-GOV.UK advises limiting the number of colours in a chart. An existing Home Assistant chart may contain more series than there are colours: **never truncate, regroup or discard native series** to fit. Use names, data values, patterns and line styles to supplement colour. Audit the actual rendered combinations.
-
-## Accessible values
-
-An accessible data alternative is part of this pattern. A tooltip is supplementary. Each supported chart has a keyboard-operable **View data** disclosure immediately after it, containing a semantic table with a caption and header cells. Its accessible name includes the chart title. It remains available on touch screens and at narrow widths.
-
-Read the current native chart's values. Preserve series names, timestamps or categories, units, negative signs and precision; present missing values as missing, distinct from zero. Exclude decorative helper series only when they are positively identified. Do not infer a total, average, saving or flow that the native data does not contain.
-
-The table includes all supported values supplied to the chart, including series hidden through the legend; zoom does not filter it. This scope is stated above the table. Comparison rows identify the comparison and use the original source timestamp when supplied, rather than the shifted plotting position. Two-value power samples use a **Time** column; energy points with an explicit original interval start use **Period start**. Device charts use native device labels. Unsupported series produce a visible explanation; absent units are labelled **Not supplied**, rather than guessed.
-
-Wide tables scroll inside a named, keyboard-focusable region. Numeric values are aligned and headings wrap. Tables paginate at **100 rows**, with previous/next controls and a row count; there is no silent total-row cap. A data change refreshes an open table and resets pagination. These are the chart's supplied values, not an export of every meter reading. Formatting follows Home Assistant's number separators, grouping, 12/24-hour and local/server time-zone preferences. Dates include the time-zone offset to distinguish repeated local times at clock changes.
-
-ONS's component supplies its own Highcharts accessibility implementation. Our semantic table and native ECharts adaptation are separate work and must be tested directly; importing visual rules does not confer that implementation's accessibility. ONS [interactive-chart guidance](https://service-manual.ons.gov.uk/data-visualisation/guidance/interactive-charts-and-animations) also supports keeping the initial view useful and avoiding motion as the only source of information.
-
-## Compatibility and acceptance
-
-The adapter must be reversible: selecting a non-Civica theme restores native options and removes added presentation. Unsupported chart internals fail back to Home Assistant. A third-party chart is not covered simply because it uses a canvas or resembles an Energy card.
-
-Accept a change only when rendered options, visual output and data preservation agree. Test fixtures must begin with actual native shapes: alpha-suffixed column colours, per-point styling, gradient areas, smooth/stacked power series, thin native boundaries and emphasis defaults. The adapter must convert these to the same visual contract shown by the examples. Testing only simplified opaque bars and unfilled lines misses the native presentation differences. Check light and dark modes, a 320px viewport, keyboard access, text scaling, legend changes, date changes, missing values, comparison series, repeated navigation and theme restoration. A mock chart proves the adapter contract; a fresh load of the installed native Energy route proves that the adapter actually runs there. Record those separately.

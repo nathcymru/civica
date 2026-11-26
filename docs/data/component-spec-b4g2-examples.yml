@@ -1,0 +1,129 @@
+# Synthetic data: invented names, readings and dates. Nothing here is connected to a home, and the buttons do nothing.
+examples:
+  spec-selector-form:
+    title: A watering schedule form made of selector fields
+    description: "A simulated form with four fields, each of the kind a selector draws: an area, a duration, a time of day and a list of days. Each field has a visible label and, where it helps, a hint before the field. Home Assistant draws its own controls, so the look differs. The fields respond, but nothing is saved."
+    height: 760
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-selector-title"><div class="civica-card-demo__body">
+      <h2 id="spec-selector-title" style="font-size:1.375rem;margin:0 0 16px">Garden watering schedule</h2>
+      <div style="margin:0 0 20px"><label for="spec-selector-area" style="display:block;font-weight:700;margin:0 0 4px">Area</label><div id="spec-selector-area-hint" style="color:#484949;margin:0 0 8px">The valves in this area will run.</div><select id="spec-selector-area" aria-describedby="spec-selector-area-hint" style="min-height:44px;width:100%;max-width:20rem;font:inherit"><option>Back garden</option><option>Front garden</option></select></div>
+      <div style="margin:0 0 20px"><label for="spec-selector-duration" style="display:block;font-weight:700;margin:0 0 4px">How long to water</label><div id="spec-selector-duration-hint" style="color:#484949;margin:0 0 8px">A length of time in minutes, not a time of day.</div><input id="spec-selector-duration" type="number" min="1" max="120" value="15" aria-describedby="spec-selector-duration-hint" style="min-height:44px;width:8rem;font:inherit;padding:0 8px"> minutes</div>
+      <div style="margin:0 0 20px"><label for="spec-selector-time" style="display:block;font-weight:700;margin:0 0 4px">Start time</label><input id="spec-selector-time" type="time" value="06:30" style="min-height:44px;font:inherit;padding:0 8px"></div>
+      <fieldset style="border:0;margin:0 0 20px;padding:0"><legend style="font-weight:700;margin:0 0 8px">Days</legend>
+      <label style="display:block;min-height:44px"><input type="checkbox" checked> Monday</label>
+      <label style="display:block;min-height:44px"><input type="checkbox"> Tuesday</label>
+      <label style="display:block;min-height:44px"><input type="checkbox" checked> Wednesday</label>
+      </fieldset>
+      <p style="margin:0"><button type="button" style="min-height:44px;padding:0 20px;font:inherit">Save schedule</button></p>
+      </div></article>
+  spec-sensor-card-readings:
+    title: "Two sensor cards: a short name and a long name"
+    description: "Two simulated sensor cards in a row, each with a name, a large value, a unit and a small line graph. The left card has a short name. The right card has a long name that is cut off with an ellipsis, as the real card does, so the full name is also written below the cards. The graph has no text of its own, so the lowest and highest values are written beneath it. The cards do nothing when tapped."
+    height: 460
+    html: |
+      <div style="display:flex;flex-wrap:wrap;gap:16px;margin:0 0 16px">
+      <article class="civica-card-demo" aria-labelledby="spec-sensor-a" style="flex:1 1 14rem;margin:0;border-radius:0"><div class="civica-card-demo__body" style="padding:16px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><div id="spec-sensor-a" style="color:#484949;font-size:1.1875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Hall temperature</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M15 13V5a3 3 0 0 0-6 0v8a5 5 0 1 0 6 0z" fill="none" stroke="#0b0c0c" stroke-width="2"></path></svg></div>
+      <div style="margin:8px 0 0"><span style="font-size:1.75rem;line-height:1.25">20.5</span> <span style="font-size:1.1875rem;color:#484949">°C</span></div>
+      <svg aria-hidden="true" focusable="false" width="100%" height="48" viewBox="0 0 200 48" preserveAspectRatio="none" style="display:block;margin:8px 0 4px"><polyline points="0,34 25,30 50,36 75,22 100,18 125,24 150,12 175,16 200,10" fill="none" stroke="#1d70b8" stroke-width="2"></polyline></svg>
+      <div style="color:#484949;font-size:.875rem">Last 24 hours: 18.9 to 21.2 °C</div>
+      </div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-sensor-b" style="flex:1 1 14rem;margin:0;border-radius:0"><div class="civica-card-demo__body" style="padding:16px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><div id="spec-sensor-b" style="color:#484949;font-size:1.1875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Upstairs landing humidity sensor</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z" fill="none" stroke="#0b0c0c" stroke-width="2"></path></svg></div>
+      <div style="margin:8px 0 0"><span style="font-size:1.75rem;line-height:1.25">48</span> <span style="font-size:1.1875rem;color:#484949">%</span></div>
+      <svg aria-hidden="true" focusable="false" width="100%" height="48" viewBox="0 0 200 48" preserveAspectRatio="none" style="display:block;margin:8px 0 4px"><polyline points="0,20 25,22 50,18 75,26 100,30 125,28 150,34 175,30 200,32" fill="none" stroke="#1d70b8" stroke-width="2"></polyline></svg>
+      <div style="color:#484949;font-size:.875rem">Last 24 hours: 44 to 53 %</div>
+      </div></article>
+      </div>
+      <p style="margin:0">Full name of the right-hand card: Upstairs landing humidity sensor.</p>
+  spec-settings-row-group:
+    title: A group of settings rows, wide and narrow
+    description: "Two simulated groups of settings rows. In the wide group each row has a heading and a hint on the left and its control on the right. In the narrow group the same rows are stacked, with the control under the text. Every row has a visible label tied to its control, and the wide group states the scope of its settings in words. The controls do nothing."
+    height: 820
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-rows-wide"><div class="civica-card-demo__body">
+      <h2 id="spec-rows-wide" style="font-size:1.375rem;margin:0 0 4px">Wide layout</h2>
+      <p style="margin:0 0 12px;color:#484949">These settings apply to this browser only.</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;min-height:72px;padding:8px 0;border-top:1px solid #cecece"><div style="flex:1 1 14rem"><label for="spec-row-wide-1" style="display:block;font-weight:700">Show seconds in times</label><span id="spec-row-wide-1-hint" style="display:block;color:#484949;font-size:.875rem">Clock times on dashboards include seconds.</span></div><div><input id="spec-row-wide-1" type="checkbox" aria-describedby="spec-row-wide-1-hint" style="width:24px;height:24px"> <span>Off</span></div></div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;min-height:72px;padding:8px 0;border-top:1px solid #cecece;border-bottom:1px solid #cecece"><div style="flex:1 1 14rem"><label for="spec-row-wide-2" style="display:block;font-weight:700">Text size</label><span id="spec-row-wide-2-hint" style="display:block;color:#484949;font-size:.875rem">Changes the size of all text in this browser.</span></div><select id="spec-row-wide-2" aria-describedby="spec-row-wide-2-hint" style="min-height:44px;font:inherit"><option>Standard</option><option>Large</option></select></div>
+      </div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-rows-narrow" style="max-width:20rem"><div class="civica-card-demo__body">
+      <h2 id="spec-rows-narrow" style="font-size:1.375rem;margin:0 0 12px">Narrow layout</h2>
+      <div style="padding:12px 0;border-top:1px solid #cecece"><label for="spec-row-narrow-1" style="display:block;font-weight:700">Show seconds in times</label><span id="spec-row-narrow-1-hint" style="display:block;color:#484949;font-size:.875rem;margin:0 0 8px">Clock times on dashboards include seconds.</span><input id="spec-row-narrow-1" type="checkbox" aria-describedby="spec-row-narrow-1-hint" style="width:24px;height:24px"> <span>Off</span></div>
+      <div style="padding:12px 0;border-top:1px solid #cecece;border-bottom:1px solid #cecece"><label for="spec-row-narrow-2" style="display:block;font-weight:700">Text size</label><span id="spec-row-narrow-2-hint" style="display:block;color:#484949;font-size:.875rem;margin:0 0 8px">Changes the size of all text in this browser.</span><select id="spec-row-narrow-2" aria-describedby="spec-row-narrow-2-hint" style="min-height:44px;font:inherit"><option>Standard</option><option>Large</option></select></div>
+      </div></article>
+  spec-shortcut-cards:
+    title: "Two shortcut cards: a row and a vertical card"
+    description: "Two simulated shortcut cards. The first is a one-row card with an icon, the label Heating schedule and the description Open the weekly schedule. The second is a vertical card with the label Lock up and the description Lock all doors. Each card is a square-cornered box with a one-pixel border. The cards do nothing when pressed."
+    height: 420
+    html: |
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start">
+      <button type="button" style="display:flex;align-items:center;gap:12px;flex:1 1 16rem;min-height:56px;padding:8px 16px;border:1px solid #cecece;border-radius:0;background:#fff;color:#0b0c0c;font:inherit;text-align:left;cursor:pointer"><svg aria-hidden="true" focusable="false" width="36" height="36" viewBox="0 0 36 36" style="flex:none"><circle cx="18" cy="18" r="18" fill="#d2e2f1"></circle><path d="M18 9v9l6 4" fill="none" stroke="#1d70b8" stroke-width="2"></path></svg><span><span style="display:block;font-size:1rem">Heating schedule</span><span style="display:block;font-size:.875rem;color:#484949">Open the weekly schedule</span></span></button>
+      <button type="button" style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;flex:0 1 10rem;min-height:112px;padding:12px 16px;border:1px solid #cecece;border-radius:0;background:#fff;color:#0b0c0c;font:inherit;text-align:left;cursor:pointer"><svg aria-hidden="true" focusable="false" width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#d2e2f1"></circle><rect x="11" y="16" width="14" height="10" fill="none" stroke="#1d70b8" stroke-width="2"></rect><path d="M14 16v-3a4 4 0 0 1 8 0v3" fill="none" stroke="#1d70b8" stroke-width="2"></path></svg><span><span style="display:block;font-size:1rem">Lock up</span><span style="display:block;font-size:.875rem;color:#484949">Lock all doors</span></span></button>
+      </div>
+  spec-skip-link-repeated-header:
+    title: Skip a repeated header
+    description: "A page with a short navigation bar above its main content. Press Tab inside the example to reveal the link Skip to main content, then press Enter to move to the main content."
+    height: 330
+    html: |
+      <style>
+      .civica-skip-link{display:block;padding:10px 15px;font:inherit;color:#0b0c0c}
+      .civica-skip-link:not(:focus){position:absolute;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+      .civica-skip-link:focus{background:#ffdd00;outline:3px solid #ffdd00}
+      </style>
+      <a class="civica-skip-link" href="#skip-main-content">Skip to main content</a>
+      <header>
+      <nav aria-label="Example navigation">
+      <a href="#skip-rooms">Rooms</a> <a href="#skip-energy">Energy</a>
+      </nav>
+      </header>
+      <main id="skip-main-content" tabindex="-1">
+      <h1 style="font-size:1.75rem;margin:0 0 16px">Home overview</h1>
+      <section id="skip-rooms"><h2 style="font-size:1.1875rem;margin:0 0 8px">Rooms</h2></section>
+      <section id="skip-energy"><h2 style="font-size:1.1875rem;margin:0 0 8px">Energy</h2></section>
+      </main>
+  spec-skip-link-task-form:
+    title: Reach the task directly
+    description: "A setup page with a header line and a Back to review link above a form. The skip link comes first and lands in the main content, so a keyboard user does not pass the header or the back link on the way to the field."
+    height: 440
+    html: |
+      <style>
+      .civica-skip-link{display:block;padding:10px 15px;font:inherit;color:#0b0c0c}
+      .civica-skip-link:not(:focus){position:absolute;width:1px;height:1px;margin:0;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+      .civica-skip-link:focus{background:#ffdd00;outline:3px solid #ffdd00}
+      </style>
+      <a class="civica-skip-link" href="#skip-form-content">Skip to main content</a>
+      <header>
+      <p style="margin:0 0 16px">Morgan household — dashboard setup</p>
+      </header>
+      <a style="display:inline-block;margin:0 0 16px" href="#skip-previous">Back to review</a>
+      <main id="skip-form-content" tabindex="-1">
+      <h1 style="font-size:1.75rem;margin:0 0 16px">Name this view</h1>
+      <form data-demo-form>
+      <div style="margin:0 0 20px"><label style="display:block;font-weight:700;margin:0 0 4px" for="skip-view-name">View name</label><input style="min-height:44px;font:inherit;padding:0 8px;width:100%;max-width:20rem" id="skip-view-name" name="skip-view-name" type="text" value="Shared rooms"></div>
+      </form>
+      <section id="skip-previous"><h2 style="font-size:1.1875rem;margin:0 0 8px">Review</h2></section>
+      </main>
+  spec-statistics-cards:
+    title: A statistic card and a statistics graph card
+    description: "Two simulated cards. The statistic card shows one figure, 142 kWh, with the statistic type (change) and the period (this month) written in its name. The statistics graph card shows two lines, the daily mean in the first chart colour and the daily maximum in the second, with a legend that names both. The chart plots the four weekly values from the table below it, in °C, with the week starting date under each point. Both lines fall slightly over the month. The table gives the same values as text."
+    height: 760
+    html: |
+      <article class="civica-card-demo" aria-labelledby="spec-stat-name" style="border-radius:0"><div class="civica-card-demo__body" style="padding:16px">
+      <div style="display:flex;justify-content:space-between;gap:8px"><div id="spec-stat-name" style="color:#484949;font-size:1.1875rem">Electricity used, change this month</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="none" stroke="#0b0c0c" stroke-width="2"></path></svg></div>
+      <div style="margin:8px 0 0"><span style="font-size:1.75rem;line-height:1.25">142</span> <span style="font-size:1.1875rem;color:#484949">kWh</span></div>
+      </div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-graph-title" style="border-radius:0"><div class="civica-card-demo__body" style="padding:16px">
+      <h2 id="spec-graph-title" style="font-size:1.375rem;margin:0 0 8px">Bedroom temperature, last four weeks</h2>
+      <ul style="display:flex;flex-wrap:wrap;gap:16px;list-style:none;margin:0 0 8px;padding:0"><li><span aria-hidden="true" style="display:inline-block;width:20px;height:3px;background:#1d70b8;vertical-align:middle"></span> Daily mean</li><li><span aria-hidden="true" style="display:inline-block;width:20px;height:3px;background:#ca357c;vertical-align:middle"></span> Daily maximum</li></ul>
+      <svg aria-hidden="true" focusable="false" width="100%" height="164" viewBox="0 0 300 164" style="display:block;margin:0 0 12px"><line x1="36" y1="130" x2="296" y2="130" stroke="#cecece"></line><text x="30" y="134" text-anchor="end" font-size="11" fill="#484949">16</text><line x1="36" y1="90" x2="296" y2="90" stroke="#cecece"></line><text x="30" y="94" text-anchor="end" font-size="11" fill="#484949">18</text><line x1="36" y1="50" x2="296" y2="50" stroke="#cecece"></line><text x="30" y="54" text-anchor="end" font-size="11" fill="#484949">20</text><line x1="36" y1="10" x2="296" y2="10" stroke="#cecece"></line><text x="30" y="14" text-anchor="end" font-size="11" fill="#484949">22</text><text x="40" y="156" text-anchor="middle" font-size="11" fill="#484949">26 Oct</text><text x="120" y="156" text-anchor="middle" font-size="11" fill="#484949">2 Nov</text><text x="200" y="156" text-anchor="middle" font-size="11" fill="#484949">9 Nov</text><text x="280" y="156" text-anchor="middle" font-size="11" fill="#484949">16 Nov</text><text x="4" y="8" font-size="11" fill="#484949">°C</text><polyline points="40,82 120,72 200,88 280,98" fill="none" stroke="#1d70b8" stroke-width="2"></polyline><polyline points="40,48 120,38 200,54 280,64" fill="none" stroke="#ca357c" stroke-width="2"></polyline></svg>
+      <table style="border-collapse:collapse;width:100%"><caption style="text-align:left;font-weight:700;padding-bottom:8px">Weekly values for the chart above, in °C</caption>
+      <thead><tr><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">Week starting</th><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">Daily mean</th><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">Daily maximum</th></tr></thead>
+      <tbody>
+      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">26 October</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">18.4</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">20.1</td></tr>
+      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">2 November</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">18.9</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">20.6</td></tr>
+      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">9 November</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">18.1</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">19.8</td></tr>
+      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">16 November</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">17.6</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">19.3</td></tr>
+      </tbody></table>
+      </div></article>

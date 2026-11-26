@@ -1,65 +1,285 @@
 ---
-title: "Text input"
-description: "Use a labelled input for a short answer on one line."
+title: "Text Input"
+description: "Use a labelled field for a short answer on one line, and choose the field type that fits the answer."
 section: "components"
-group: "Form elements"
-source_url: "https://service-manual.nhs.uk/design-system/components/text-input"
+group: "Components"
 status: "reference"
 published_on: "2026-11-11"
-updated_on: "2026-11-13"
-last_reviewed_on: "2026-11-11"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
+  - date: "2026-11-26"
+    description: "Rewritten as the full Text Input specification. It now covers each field type, the single-line field Home Assistant draws, the password field and what the Civica theme sets."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
-  - date: 2026-11-11
-    description: "Added NHS-informed text input guidance and 2 Home Assistant reference examples."
+  - date: "2026-11-11"
+    description: "Added text input guidance and 2 Home Assistant examples."
+ai_instructions: "Apply when a person types a short answer on one line. Always give the field a visible label and put the hint and any error in text linked to it. Never use a placeholder as the label. Pick the type that matches the answer: text, email, url, tel, number or password. Use type text with a numeric input mode for codes, identifiers and anything with leading zeros. Allow paste and password managers. Dashboard authors cannot place a text field in a card, so fields appear in dialogs and forms, including the text selector. This Home Assistant version has no ha-textfield, ha-md-textfield or ha-password-field: its single-line field is ha-input. The Markdown card strips input fields. Say that the Civica theme sets no key for ha-input, so its look is Home Assistant's own apart from the primary colour and the neutral border colours. Do not claim a measured focus ring, and never advise building a password field in a Markdown card."
+ai_related:
+  - path: "/components/textarea.html"
+    title: "Textarea"
+    relationship: "Owns the field for answers that need several lines."
+  - path: "/components/search-input.html"
+    title: "Search Input"
+    relationship: "Owns the search field and the search type."
+  - path: "/components/label.html"
+    title: "Label"
+    relationship: "Owns the visible name of a field."
+  - path: "/components/hint-text.html"
+    title: "Help / Hint Text"
+    relationship: "Owns the wording of the hint under a label."
+  - path: "/components/error-message.html"
+    title: "Error Message & Error Summary"
+    relationship: "Owns how a field problem is worded and shown."
+  - path: "/components/character-count.html"
+    title: "Character Count"
+    relationship: "Owns the count of characters left; Home Assistant fields show none."
+  - path: "/components/control-number-box.html"
+    title: "Control Number Box"
+    relationship: "Owns the plus and minus number control used on cards."
+  - path: "/home-assistant/schema-selectors.html"
+    title: "Schema selectors and configuration forms"
+    relationship: "Owns the text selector that draws these fields in forms."
+  - path: "/home-assistant/onboarding-and-sign-in.html"
+    title: "Onboarding, integration setup and sign-in"
+    relationship: "Owns the sign-in flow that a password field belongs to."
+component:
+  parent: "Text Input"
+  letter: "T"
+  origins:
+    - "HTML5"
+    - "Home Assistant"
+  children:
+    - name: "<input type=\"text\">"
+      origin: "HTML5"
+      anchor: "child-input-type-text"
+    - name: "<input type=\"email\">"
+      origin: "HTML5"
+      anchor: "child-input-type-email"
+    - name: "<input type=\"number\">"
+      origin: "HTML5"
+      anchor: "child-input-type-number"
+    - name: "<input type=\"password\">"
+      origin: "HTML5"
+      anchor: "child-input-type-password"
+    - name: "<input type=\"url\">"
+      origin: "HTML5"
+      anchor: "child-input-type-url"
+    - name: "<input type=\"tel\">"
+      origin: "HTML5"
+      anchor: "child-input-type-tel"
+    - name: "<input type=\"hidden\">"
+      origin: "HTML5"
+      anchor: "child-input-type-hidden"
+    - name: "ha-textfield"
+      origin: "Home Assistant"
+      anchor: "child-ha-textfield"
+    - name: "ha-md-textfield"
+      origin: "Home Assistant"
+      anchor: "child-ha-md-textfield"
+    - name: "ha-password-field"
+      origin: "Home Assistant"
+      anchor: "child-ha-password-field"
+  tags:
+    - "input"
+    - "text"
+    - "email"
+    - "number"
+    - "password"
+    - "url"
+    - "tel"
+    - "hidden"
+    - "ha-textfield"
+    - "ha-md-textfield"
+    - "ha-password-field"
 ---
 
-# Text input
+# Text Input
 
-Use a labelled input for a short answer on one line.
+<h2 id="purpose">Purpose</h2>
 
-These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
+A text input is a labelled field where a person types a short answer on one line: a room name, a display label, a temperature or an address. The field type tells the browser and the on-screen keyboard what kind of answer to expect.
 
-## When to use it
+This page owns the single-line fields. A field for several lines is on [Textarea](textarea.html). A field for searching is on [Search input](search-input.html).
 
-Use it for a room name, a display label or a known identifier. Match the width to the expected answer where that helps, while allowing the control to shrink to its container.
+This page covers:
 
-## When not to use it
+- `<input type="text">`
+- `<input type="email">`
+- `<input type="number">`
+- `<input type="password">`
+- `<input type="url">`
+- `<input type="tel">`
+- `<input type="hidden">`
+- `ha-textfield`
+- `ha-md-textfield`
+- `ha-password-field`
 
-Do not use placeholder text as the label or force a paragraph into a one-line field. Avoid number inputs for codes with leading zeros.
+<h2 id="anatomy">Anatomy</h2>
 
-## Home Assistant adaptation
+From top to bottom:
 
-Use friendly names for ordinary household tasks; show entity identifiers only when the task requires them. For measurements, state the unit in the label as well as any visual suffix. Accept sensible formatting instead of rejecting an answer solely for harmless spaces.
+1. A visible [label](label.html) that names the answer. A placeholder is never the label.
+2. An optional [hint](hint-text.html) that says what format or detail is wanted.
+3. The field itself.
+4. An error message, shown only when the answer has a problem, linked to the field.
 
-## Accessibility and behaviour
+Where the unit matters, write it in the label as well as beside the field: “Target temperature, in degrees Celsius”.
 
-Associate a persistent label, hint and any error. Choose an appropriate input mode without changing the underlying meaning of the value. Keep copy and paste available. Use personal-data autocomplete only when the field actually requests that personal information.
+<h2 id="variants">Variants, variables and extensibility</h2>
 
-## Examples
+Pick the field type that matches the answer. The type changes the keyboard on a phone and what the browser checks. It does not make an answer safe, so always check the answer where it is used.
 
-### A household-friendly name
+**Where fields appear in Home Assistant.** A dashboard author cannot place a text field in a card. Fields appear in dialogs and forms that Home Assistant draws, and in the `text` selector used by automations, scripts and blueprints. A Markdown card removes input fields, so it cannot hold one.
 
-The answer is human-readable rather than an internal entity ID.
+```yaml
+selector:
+  text:
+    type: email
+```
 
-<%= example('nhs-input-room') %>
+The `text` selector accepts `type`, `autocomplete`, `prefix`, `suffix`, `placeholder`, `pattern`, `validation_message`, `multiline` and `multiple`. With `multiline: true` it draws a [Textarea](textarea.html).
 
-### A measurement with its unit
+**The single-line field Home Assistant draws.** This version of Home Assistant draws every single-line field with one element, `ha-input`. It takes these types: date, datetime-local, email, number, password, search, tel, text, time, color and url. It has no hidden type. It also has a label, a hint, a required marker added to the label, a clear button (`with-clear`), a show-or-hide password button (`password-toggle`) and start and end slots for a prefix and a suffix.
 
-The unit is explicit in the accessible label as well as beside the input.
+**What the Civica theme sets.** The theme has no setting aimed at `ha-input`. These apply:
 
-<%= example('nhs-input-measurement') %>
+- The theme’s primary colour is the colour of the line and the label while the field has focus.
+- The strong border colour is the line under the text at rest: `#0B0C0C` in light mode and `#FFFFFF` in dark mode. This is calculated as 19.59:1 and 14.86:1 against the card colours.
+- The error line and error text use `#9A2B2B` in light mode and `#F0C6C6` in dark mode.
+- Hint text and the end slot use the secondary text colour.
 
-## Check the implementation
+The theme also sets a 2 pixel border, square corners and a yellow focus ring for other form controls. Do not expect a full dark box or a yellow focus ring around an `ha-input` field. The placeholder uses a grey that the theme does not set.
 
-Test long names, accented characters, decimal entry, leading zeros and zoom. Read the label and unit through a screen reader; a visual suffix alone is insufficient.
+**What stays as Home Assistant draws it.** The field shape, the spacing, the focus line and the buttons are Home Assistant’s own. The spacing inside the field can be changed with the `--ha-input-padding-top`, `--ha-input-padding-bottom` and `--ha-input-text-align` variables, and the required marker with `--ha-input-required-marker`. These variables are for people who build their own custom elements, because a dashboard author cannot reach a field inside a dialog.
 
-Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
+**Names and problems.** When an answer is invalid, `ha-input` marks the field as invalid and shows the message in an area that is announced politely. The show-or-hide and clear buttons have names (“Show password”, “Hide password”, “Clear”). Say in the label what is wanted, and in the message how to fix it.
 
-## Source and related guidance
+<h3 id="child-input-type-text"><code>&lt;input type="text"&gt;</code></h3>
 
-[NHS text input](https://service-manual.nhs.uk/design-system/components/text-input) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
+The default type. It takes plain text on one line, and line breaks are removed. Use it for a room name, a display label or a known identifier.
 
-See also [buttons and forms](controls.html).
+- Give it a visible label.
+- Link the hint and any error to the field, so they are read with it.
+- Match the width to the expected answer, but let the field shrink to fit a small screen.
+- Use friendly names for ordinary household tasks. Show an entity identifier only when the task needs one.
+- Accept harmless spaces rather than rejecting an answer for them.
+- Use `inputmode` for the keyboard (for example `decimal`), without changing what the value means. A unit shown only beside the field is not read as part of the label, so write it in the label too.
+- Add `autocomplete` only when the field really asks for the person’s own details.
+- Keep copy and paste available.
+
+In Home Assistant this is `ha-input` with `type="text"`.
+
+<h3 id="child-input-type-email"><code>&lt;input type="email"&gt;</code></h3>
+
+An email address. The browser checks the shape `name@domain`, ignores spaces at the start and end, and shows an email keyboard on a phone. The browser’s own message is not in your words, so give your own message too.
+
+- Say what is wanted in the label or hint, for example “Email address”.
+- Do not reject valid addresses, such as ones with a plus sign or a long ending.
+- Add `autocomplete="email"` only for the person’s own address.
+- Keep what the person typed when you show a problem.
+
+In Home Assistant this is `ha-input` with `type="email"`. The sign-in page uses a separate field, `ha-auth-textfield`, which also accepts email.
+
+<h3 id="child-input-type-number"><code>&lt;input type="number"&gt;</code></h3>
+
+A number with spin buttons. It takes `min`, `max` and `step`. A `step` of `any` allows decimals.
+
+- State the unit and the allowed range in the label or hint.
+- Do not use it for codes, identifiers, phone numbers or card numbers. It drops leading zeros and accepts the letter e. Use a text field with a numeric input mode instead.
+- For a temperature typed in, a text field with a decimal input mode avoids the spin buttons. You then accept a comma or a point yourself.
+- The spin buttons are small and cannot be resized, so give people another way to enter the value.
+
+In Home Assistant this is `ha-input` with `type="number"`, `min`, `max` and `step`; `without-spin-buttons` hides the spin buttons. For a plus and minus control, see [Control Number Box](control-number-box.html) and [Control Slider](sliders.html). For helpers that hold a number, see [Helpers and scalar input controls](../home-assistant/helpers-and-scalar-inputs.html).
+
+<h3 id="child-input-type-password"><code>&lt;input type="password"&gt;</code></h3>
+
+A field that hides what is typed. Use it only when a real password is needed.
+
+- Never use it for a one-time code, a device address or an ordinary identifier.
+- Use `autocomplete="current-password"` for an existing password and `autocomplete="new-password"` when creating one. This lets password managers fill the right field.
+- Allow paste and password managers. Do not block them.
+- Turn off spellcheck and automatic capital letters.
+- Keep the password hidden at first. If there is a show-or-hide button, give it a specific name and return the field to hidden before the form is sent.
+- Do not add a second “confirm password” field unless the account flow needs one.
+- Do not replace Home Assistant’s sign-in with your own. Keep its sign-in and password handling, and do not change an account’s password rules in presentation code.
+- A failed sign-in must not reveal which detail was wrong. Follow the sign-in flow that owns the form, which is described on [Onboarding, integration setup and sign-in](../home-assistant/onboarding-and-sign-in.html).
+- Never build a password field in a Markdown card. The card turns it into a bare field with no label that shows what is typed.
+
+In Home Assistant this is `ha-input` with `type="password"` and `password-toggle`. The toggle shows an eye or a crossed-out eye and its label changes between “Show password” and “Hide password”. The sign-in page uses `ha-auth-textfield`, which keeps the field where password managers can find it.
+
+<h3 id="child-input-type-url"><code>&lt;input type="url"&gt;</code></h3>
+
+A full web address that starts with a scheme, such as `https://`. A bare `example.com` fails the browser’s check. The browser checks the shape only, not that the address exists or can be reached.
+
+- Say in the hint what is wanted, for example “Start with https://”.
+- Add `autocomplete="url"` only for the person’s own address.
+- Keep what the person typed when you show a problem.
+
+In Home Assistant this is `ha-input` with `type="url"`, and the `text` selector accepts `type: url`.
+
+<h3 id="child-input-type-tel"><code>&lt;input type="tel"&gt;</code></h3>
+
+A telephone number. It shows a phone keypad on a touch screen. It has no built-in check and enforces no format, so it accepts spaces, a plus sign and leading zeros.
+
+- Prefer it to a number field for phone numbers.
+- Say in the hint how the number should be written, for example “For example, 0000 000000”, using an obviously invented number.
+- Add `autocomplete="tel"` only for the person’s own number.
+
+In Home Assistant this is `ha-input` with `type="tel"`.
+
+<h3 id="child-input-type-hidden"><code>&lt;input type="hidden"&gt;</code></h3>
+
+A value that travels with a form but is never shown. It has no label, cannot be focused and is not read by screen readers.
+
+- Anyone with developer tools can change it, so it is never a security control.
+- Never use it to hide text from sighted people. Content that people need must be visible.
+
+Home Assistant has no hidden field. `ha-input` has no hidden type, and a dashboard cannot add one: a Markdown card removes it.
+
+<h3 id="child-ha-textfield"><code>ha-textfield</code></h3>
+
+This version of Home Assistant does not use the name `ha-textfield`. Its single-line field is `ha-input`, and the earlier sections of this page describe it. Use the `text` selector in forms; it is not a dashboard card and has no `type:` key.
+
+<h3 id="child-ha-md-textfield"><code>ha-md-textfield</code></h3>
+
+This version of Home Assistant does not use the name `ha-md-textfield`, and there is no separate element for it. The outlined look is `ha-input` with `appearance="outlined"`. The other look, `material`, is the default.
+
+The outlined field has a 1 pixel border. In the Civica theme that border is `#CECECE` in light mode and `#50565A` in dark mode, which is light. `#CECECE` on a `#FFFFFF` card is 1.57:1, calculated from the theme colours. Hovering draws a stronger border and focus uses the theme’s primary colour. Because the border at rest is light, never rely on it alone to show where the field is: keep the label above it.
+
+<h3 id="child-ha-password-field"><code>ha-password-field</code></h3>
+
+This version of Home Assistant does not use the name `ha-password-field`. Password entry is `ha-input` with `type="password"` and a show-or-hide button (`password-toggle`). The sign-in page uses `ha-auth-textfield` instead. Forms that Home Assistant builds from a schema treat a field named password, secret or token as a password field. See [`<input type="password">`](#child-input-type-password) for the rules.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- Native fields give the right keyboard, paste, password managers and autofill without extra work.
+- One element, `ha-input`, draws every single-line field in this version of Home Assistant, so fields look and behave the same.
+- A dashboard author cannot place or style these fields. They appear only in dialogs and forms.
+- The `maxlength` attribute stops typing without showing a count. See [Character Count](character-count.html).
+- There is no input mask, and no hidden type.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Ask for as little as you need, one answer to a field. Put the label above the field, keep it visible and write it in the words people use. Add a hint only for something people need before they type, such as a format or a unit. When an answer has a problem, say what is wrong and how to fix it in the message, and keep what the person typed. Do not make people retype an answer they have already given.
+
+Do not use a field for a paragraph. Use a [Textarea](textarea.html) for several lines.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships and 2.4.6 Headings and Labels: every field has a visible label.
+- 1.3.5 Identify Input Purpose: use `autocomplete` only for the person’s own details.
+- 2.5.3 Label in Name: the name a screen reader reads includes the visible label.
+- 3.3.1 Error Identification, 3.3.2 Labels or Instructions and 3.3.3 Error Suggestion: the label names the field, and an error names the field and the fix.
+- 3.3.7 Redundant Entry: keep answers already given.
+- 3.3.8 Accessible Authentication (Minimum): allow paste and password managers in a password field.
+- 1.4.10 Reflow and 1.4.12 Text Spacing: a field must shrink to a 320 pixel screen and grow with larger text.
+
+How to check a field: try a long name, accented letters, a decimal number, a number with leading zeros and zoom. Read the label and unit through a screen reader, because a unit shown beside the field only is not read as part of the label.
+
+<h2 id="examples">Examples</h2>
+
+### A room settings form with two fields
+
+<%= example('spec-text-input-room-settings') %>

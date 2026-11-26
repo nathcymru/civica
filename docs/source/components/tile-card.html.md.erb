@@ -1,0 +1,202 @@
+---
+title: "Tile Card"
+description: "Show one entity as a compact tile with an icon, a name and its state in words, and open More info or run an action when it is selected."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the Tile Card specification: its parts, the keys it accepts, how the Civica theme colours it and what stays as Home Assistant draws it."
+ai_instructions: "Apply when a dashboard shows one entity as a tile (type: tile). The tile is one button named by its name and state, so write the state in words and keep the name short: the name and state each stay on one line and are cut off with an ellipsis when too long. The icon colour follows the state, and in the Civica theme an active tile uses the theme's primary colour. Never rely on the colour, the icon or the small corner badge alone. The badge glyph is white in every mode and is weak against pale dark-mode colours by calculation. The unavailable badge has no text of its own, so the state text must say Unavailable. Tapping the tile opens More info unless you set another action, and tapping the icon toggles only for toggleable entities. Do not claim that the tile shows the Civica yellow focus ring: its focus cue is a thin border in the tile colour. Alarm panels that are arming or triggered and jammed locks pulse, and Home Assistant has no reduced-motion rule for that pulse. Do not claim a working card-mod selector."
+ai_related:
+  - path: "/components/card-features.html"
+    title: "Card Features (Tile & Area Inline Controls)"
+    relationship: "Owns the controls that can sit on a tile."
+  - path: "/components/button-card.html"
+    title: "Button Card"
+    relationship: "Owns the large single-action card."
+  - path: "/components/light-card.html"
+    title: "Light Card"
+    relationship: "Owns the larger card for one light."
+  - path: "/components/avatar-and-user-badge.html"
+    title: "Avatar & User Badge"
+    relationship: "Owns the person picture and badge."
+  - path: "/components/notification-badge.html"
+    title: "Badge"
+    relationship: "Owns badges and counts."
+  - path: "/components/icon-and-state-icon.html"
+    title: "Icon & State Icon"
+    relationship: "Owns the icon and its state colour."
+  - path: "/components/entities-card-and-entity-rows.html"
+    title: "Entities Card & Entity Rows"
+    relationship: "Use it for many entities with long names."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns the card surface."
+  - path: "/home-assistant/entity-state.html"
+    title: "Entity state, confidence and freshness"
+    relationship: "Owns the advice on stating what an entity reports."
+component:
+  parent: "Tile Card"
+  letter: "T"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-tile-card"
+      origin: "Lovelace"
+      anchor: "child-hui-tile-card"
+      grandchildren:
+        - name: "ha-tile-icon"
+          origin: "Home Assistant"
+          anchor: "child-hui-tile-card--ha-tile-icon"
+        - name: "ha-tile-info"
+          origin: "Home Assistant"
+          anchor: "child-hui-tile-card--ha-tile-info"
+        - name: "ha-tile-badge"
+          origin: "Home Assistant"
+          anchor: "child-hui-tile-card--ha-tile-badge"
+  tags:
+    - "hui-tile-card"
+    - "ha-tile-icon"
+    - "ha-tile-info"
+    - "ha-tile-badge"
+    - "tile"
+---
+
+# Tile Card
+
+<h2 id="purpose">Purpose</h2>
+
+A Tile card shows one entity in a small, even tile: an icon, a name and the state written in words. Selecting the tile opens More info, or runs the action you set. It is the usual card for a light, a lock, a sensor or a person when a dashboard needs many entities at a glance.
+
+This page owns the Home Assistant Tile card (`type: tile`) and its three parts. The controls that can sit on a tile are on [Card Features (Tile & Area Inline Controls)](card-features.html). For many entities with long names, use an [Entities card](entities-card-and-entity-rows.html).
+
+This page covers:
+
+- `hui-tile-card`
+- `ha-tile-icon`
+- `ha-tile-info`
+- `ha-tile-badge`
+
+<h2 id="anatomy">Anatomy</h2>
+
+A tile has three parts, left to right:
+
+1. The icon, a round shape in the state colour. It can show a picture instead. A small badge can sit on its top right corner.
+2. The information: the name on the first line and the state on the second, both on one line each.
+3. Optional card features, below the information or beside it.
+
+When the tile has an action, the whole tile is one button named by its name and its state. When it has card features, the card is a group named by its name.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-tile-card"><code>hui-tile-card</code></h3>
+
+A Lovelace card, set with `type: tile`. You must give an entity, from any domain. Without one, or if it cannot be found, Home Assistant shows a warning in place of the card.
+
+```yaml
+type: tile
+entity: light.living_room_lamp
+name: Living room lamp
+features:
+  - type: light-brightness
+```
+
+| Key | Meaning |
+| --- | --- |
+| `entity` | The entity. Required |
+| `name` | Replaces the entity name |
+| `icon` | Replaces the icon, for example `mdi:lamp` |
+| `color` | A theme colour name or a CSS colour, used only while the entity is active |
+| `hide_state` | Hides the state line |
+| `state_content` | Chooses which state details are written, as one value or a list |
+| `show_entity_picture` | Shows the entity’s picture in place of the icon |
+| `vertical` | Stacks the icon above the information |
+| `features` | A list of card features |
+| `features_position` | `bottom` (the default) or `inline`. A vertical tile always uses `bottom` |
+| `time_format` | How a time is written |
+| `tap_action`, `hold_action`, `double_tap_action` | What each gesture on the tile does |
+| `icon_tap_action`, `icon_hold_action`, `icon_double_tap_action` | What each gesture on the icon does |
+
+**What the actions do.** With no `tap_action`, selecting the tile opens More info. With no `icon_tap_action`, selecting the icon toggles entities that can be toggled, such as lights and switches, and also acts on buttons, input buttons and scenes. For other entities the icon does nothing. A hold or a double tap does something only when you set it.
+
+**Size.** The tile is 6 columns wide and one row tall by default. A vertical tile adds a row. A tile with inline features needs 12 columns, and a vertical tile needs at least 3.
+
+**How the colour is chosen.** The icon colour follows the state. If you set `color` and the entity is active, that colour is used. A person and a device tracker have no icon colour, and the badge carries the state instead. A light that reports a colour shows that colour, lightened. Otherwise the colour comes from the state colour of the entity. In the Civica theme an active tile uses the theme’s primary colour, and an inactive or unavailable tile uses `#484949` in light mode and `#CBD0D3` in dark mode.
+
+**What the Civica theme sets.**
+
+- The card surface is square with a 1 pixel border, no shadow, a white background in light mode and the dark surface in dark mode.
+- The name and state use the primary text colour, which is 19.59:1 on the white card and 14.86:1 on the dark card, calculated from the theme colours.
+- The name is 16 pixels and the state 14 pixels. The state is smaller than the 19 pixel body text of the Civica theme.
+- The weight of the name is 400, so the name is not bold.
+- A picture is square.
+- The theme sets no key for the tile’s icon shape, so icons stay round.
+
+**What stays as Home Assistant draws it.** The tile layout, the spacing and the ripple when pressed are Home Assistant’s own. The name and the state each stay on one line and end with an ellipsis if they do not fit, so keep names short. A 1 second pulse runs on the icon of an alarm panel that is pending, arming or triggered and of a jammed lock. Home Assistant has no reduced-motion rule for that pulse, and it cannot be stopped from a theme.
+
+**Focus.** When a tile has focus, its border turns the tile colour and a thin outer line is added. The Civica yellow focus ring does not appear on tiles. Keep the state in words and check the focus cue on your own dashboard.
+
+**What needs extra tools.** Wrapping a long name onto more lines, changing the focus cue and making icons square need custom code or the card-mod integration. Showing a picture and an icon together, removing the badge and enlarging it are not available.
+
+<h4 id="child-hui-tile-card--ha-tile-icon"><code>ha-tile-icon</code></h4>
+
+The icon part: a 36 pixel round shape with the icon in the state colour on a faint tint of that colour. It can show a picture instead, which is decorative and has no description of its own. The state must be in the text.
+
+When the tile has an icon action, the icon is its own button with a name made from the entity name and the action. Otherwise it is not interactive. Pressing the icon makes it briefly larger, and Home Assistant has no reduced-motion rule for that. The focus cue on the icon is a 2 pixel line in the icon colour.
+
+The only public setting is `--ha-tile-icon-border-radius`, which sets the corner of the shape. The Civica theme does not set it. By calculation, the icon colour on its tint is 3.91:1 for `#1D70B8` in light mode and 5.99:1 for `#C0D7EB` in dark mode. On hover the tint is stronger and the light-mode figure falls to 3.13:1. Civica Teal’s `#158187` is 3.57:1 on the tint and 2.89:1 on hover, so the icon alone must never be the only signal.
+
+<h4 id="child-hui-tile-card--ha-tile-info"><code>ha-tile-info</code></h4>
+
+The information part: the name on the first line and the state on the second. The name is a single line of 16 pixel text and the state a single line of 14 pixel text. Both end with an ellipsis when too long, so a long name or state can be cut off. This matters for people who enlarge text or use a small screen, so keep names to a few words and put the full state in text with `state_content`.
+
+Its settings, such as `--ha-tile-info-primary-font-size` and `--ha-tile-info-secondary-color`, can be set by custom code. The Civica theme sets none of them, so the theme’s font size and weight settings apply. The part named `primary` is the name text, for anyone who restyles it to allow more lines.
+
+<h4 id="child-hui-tile-card--ha-tile-badge"><code>ha-tile-badge</code></h4>
+
+A 16 pixel square badge with a 12 pixel icon on the top right corner of the icon. Home Assistant adds it for these cases:
+
+- An exclamation mark on orange when the entity is unavailable.
+- The person badge for a person or a device tracker.
+- An action badge for a climate entity that is heating or cooling, and for a humidifier.
+
+The badge icon is white in every mode, and the badge colour comes from the state. By calculation, white on the unavailable orange is 5.54:1 in light mode and 1.49:1 in dark mode, and white on the theme blue is 5.17:1 and 1.48:1. A heating badge is white on `#FF6F22`, 2.78:1. So the glyph is hard to read in dark mode and on the heating colour. The badge is a small extra, never the only signal. The climate badge is named with the action. The unavailable badge has no text of its own, so the state line must say Unavailable, which it does.
+
+The badge’s background and icon colour can be set with `--tile-badge-background-color` and `--tile-badge-icon-color`, but Home Assistant sets the background for unavailable, person, climate and humidifier badges itself, so a theme cannot change it.
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One small card shows an entity, its state in words and a way to act on it, so many fit on a dashboard.
+- The state is written as text beside the name.
+- The whole tile is one named button, so it is easy to hit with a pointer.
+- The name and the state cannot wrap. Long ones are cut off with an ellipsis.
+- The state is 14 pixels, smaller than body text.
+- The focus cue is a thin border, not the Civica yellow ring.
+- Some tiles pulse, and the pulse has no reduced-motion rule.
+- The badge is small, so it never carries the state alone.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use one entity in each tile, named in the words people use. Keep the name to a few words and write the full state, for example “On” or “Unavailable”. Tell people what selecting the tile does: it opens More info, and selecting the icon toggles when the entity can be toggled. Do not hide the state, and do not use colour alone to say a tile is active. Do not say a device has changed until the entity reports it. See [Entity state, confidence and freshness](../home-assistant/entity-state.html).
+
+Success criteria that apply:
+
+- 1.1.1 Non-text Content: the icon and picture are decorative, and the state is in the text.
+- 1.3.1 Info and Relationships and 4.1.2 Name, Role, Value: the tile is one button named by its name and state.
+- 1.4.1 Use of Colour: the state is also written in words.
+- 1.4.4 Resize Text and 1.4.10 Reflow: a long name is cut off, so keep names short and the state in words.
+- 1.4.11 Non-text Contrast: the icon and badge colours are not a reliable signal, as the icon and badge sections explain.
+- 2.2.2 Pause, Stop, Hide: an alarm and jammed lock pulse cannot be stopped.
+- 2.4.7 Focus Visible: the focus cue is a thin border. Check it on your own dashboard.
+- 2.5.8 Target Size (Minimum): the 36 pixel icon is larger than the 24 pixel minimum.
+
+<h2 id="examples">Examples</h2>
+
+### A lamp that is on and a sensor that is unavailable
+
+<%= example('spec-tile-card-lamp') %>

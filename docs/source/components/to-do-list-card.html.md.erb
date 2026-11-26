@@ -1,0 +1,157 @@
+---
+title: "To-do List Card"
+description: "Show a to-do list on a dashboard, with an add row, due dates and a completed section."
+section: "components"
+group: "Components"
+status: "reference"
+published_on: "2026-11-26"
+updated_on: "2026-11-26"
+last_reviewed_on: "2026-11-26"
+review_in: "3 months"
+updates:
+  - date: "2026-11-26"
+    description: "Added the To-do List Card specification: the to-do and shopping list cards, their settings, what the Civica theme changes and where people need help in words."
+ai_instructions: "Apply when a dashboard shows a to-do or shopping list (type: todo-list or type: shopping-list). The sort key is display_order, never sort. The shopping list card does not need the Shopping List integration: it uses any to-do list. Reordering works only by dragging, so choose a sorted order instead of relying on it. Overdue is shown by colour and a past relative time, so write due dates in words in the item description. The icon buttons and the add field have no written label of their own, so say in the card title what to do. The Civica focus ring needs the card-mod integration and does not apply to the card itself. Quote contrast only as calculated from theme colours."
+ai_related:
+  - path: "/home-assistant/todo-and-reminders.html"
+    title: "To-do lists, reminders and household tasks"
+    relationship: "Owns the wording and behaviour of household tasks, reminders and sync."
+  - path: "/components/checkboxes.html"
+    title: "Checkbox"
+    relationship: "Owns the checkbox drawn on each item."
+  - path: "/components/cards.html"
+    title: "Card (Base Surface)"
+    relationship: "Owns card structure and the card heading."
+  - path: "/components/markdown-card.html"
+    title: "Markdown Card"
+    relationship: "Owns the Markdown that item descriptions use, and the read-only alternative."
+  - path: "/components/entities-card-and-entity-rows.html"
+    title: "Entities Card & Entity Rows"
+    relationship: "Owns read-only lists of entities."
+component:
+  parent: "To-do List Card"
+  letter: "T"
+  origins:
+    - "Lovelace"
+  children:
+    - name: "hui-todo-list-card"
+      origin: "Lovelace"
+      anchor: "child-hui-todo-list-card"
+    - name: "hui-shopping-list-card"
+      origin: "Lovelace"
+      anchor: "child-hui-shopping-list-card"
+  tags:
+    - "hui-todo-list-card"
+    - "hui-shopping-list-card"
+---
+
+# To-do List Card
+
+<h2 id="purpose">Purpose</h2>
+
+A to-do list card shows one list of items that people can add, tick off and edit. Use it for household jobs and shopping, where a short list is checked many times a day.
+
+This page owns the two list cards. For what a good task says, how due dates and reminders behave and what happens when a list fails to sync, see [To-do lists, reminders and household tasks](../home-assistant/todo-and-reminders.html).
+
+This page covers:
+
+- To-do List Card
+  - `hui-todo-list-card`
+  - `hui-shopping-list-card`
+
+<h2 id="anatomy">Anatomy</h2>
+
+From top to bottom:
+
+- The card title, which Home Assistant draws as a top-level heading.
+- An add row: a text field with the placeholder “Add item” and an icon button.
+- A section called Active, with one row for each open item. Each row has a checkbox, the item name, an optional description in Markdown (cut off after three lines) and an optional due date with a clock icon.
+- A section called Completed, with the ticked items struck through.
+- A menu beside the Active heading with “Reorder items”. It shows only when the list can move items and no fixed order is set.
+- A menu beside the Completed heading with “Remove completed items”. It shows only when the list can delete items, and removing asks for confirmation first. Hiding the section headings hides both menus.
+
+An empty list says “You have no to-do items!”. A list the card cannot find shows a warning, and an unavailable list disables the controls.
+
+<h2 id="variants">Variants, variables and extensibility</h2>
+
+<h3 id="child-hui-todo-list-card"><code>hui-todo-list-card</code></h3>
+
+A Lovelace card, written as `type: todo-list`. It needs an `entity` from the `todo` domain.
+
+```yaml
+type: todo-list
+entity: todo.weekend_shopping
+title: Weekend shopping
+hide_completed: false
+display_order: duedate_asc
+```
+
+| Key | Meaning |
+| --- | --- |
+| `entity` | The to-do list. Required, and it must be in the `todo` domain |
+| `title` | The card title |
+| `hide_completed` | Hides the Completed section |
+| `hide_create` | Hides the add row |
+| `hide_section_headers` | Hides the Active and Completed headings |
+| `display_order` | `none` (manual), `alpha_asc`, `alpha_desc`, `duedate_asc` or `duedate_desc` |
+| `due_date_period` | Shows only items due in a period, such as today or this week |
+| `item_tap_action` | `edit` (the default) opens the item; `toggle` ticks it |
+| `theme` | A theme for this card only |
+
+The key for the order is `display_order`. The key `sort` appears in Home Assistant’s type definitions, but the card does not read it.
+
+What the list can do depends on the list’s own features. The add row appears only if the list can create items. The checkbox is disabled if it cannot update them. A delete button appears on each row only when the list can delete but not update. Dragging to reorder works only when the list supports moving items and `display_order` is `none` or not set.
+
+**What the Civica theme sets.** The card surface has square corners, a 1 pixel border and no shadow, and the title uses the Civica heading size. Text uses `primary-text-color`. Descriptions and due dates use `secondary-text-color` at 14 pixels. Dividers use `divider-color`, and links in descriptions use the theme’s primary colour. A due date in the past uses `warning-color`. Calculated from the theme colours, the warning colour is about 5.5 to 1 on white and 10 to 1 on the dark surface. The checkbox colours follow the theme’s primary colour and are owned by [Checkbox](checkboxes.html).
+
+**What stays as Home Assistant draws it.** The 14 pixel text size is set for the whole theme, not for this card. The focus ring on rows, checkboxes and buttons is Home Assistant’s own.
+
+**What needs card-mod.** The Civica focus ring is part of the theme’s card-mod settings and needs the card-mod integration. The card itself cannot take focus, so the ring never appears around it. Any other change to the card’s inner parts also needs card-mod, and you should test it on a real dashboard.
+
+<h3 id="child-hui-shopping-list-card"><code>hui-shopping-list-card</code></h3>
+
+A Lovelace card, written as `type: shopping-list`. It is the to-do list card with one difference: you do not have to set `entity`. If your home has several to-do lists, it picks the first one that comes from the Shopping List integration. Otherwise it picks the first to-do list it finds. It does not need the Shopping List integration to work.
+
+Every other setting, the layout and the theme behaviour are the same as for `hui-todo-list-card`. Set `entity` yourself if you have more than one list and want a particular one.
+
+```yaml
+type: shopping-list
+title: Shopping
+```
+
+<h2 id="limits">Advantages and limitations</h2>
+
+- One native card adds, ticks off, edits and removes items without extra modules.
+- A completed item is shown three ways: a ticked checkbox, a line through the text and its place under Completed.
+- Reordering works only by dragging with a pointer or finger. There is no keyboard route. Choose `alpha_asc` or `duedate_asc` so nobody needs to reorder by hand.
+- A due date in the past is shown by the warning colour and a past time such as “3 hours ago”. The card never writes “overdue”. Put the due date in words in the item description when it matters.
+- The add and delete buttons are icons. The add field has only the placeholder “Add item”, which disappears while typing. Say in the card title or nearby text what the list is for.
+- Descriptions are cut off after three lines, so spaced or enlarged text can hide part of a note. Keep notes short.
+- Deleting a single item asks for no confirmation. Removing all completed items does.
+
+<h2 id="usage">Usage policy and cognitive accessibility</h2>
+
+Use one list for one purpose and give the card a title that says which. Write items as short instructions, one job in each. Keep lists short enough to see at a glance, and use `due_date_period` to hide items that are not due yet. Say due dates in words, for example “Due Friday”, in the description.
+
+If people only need to read a list, use a [Markdown card](markdown-card.html) or an [Entities card](entities-card-and-entity-rows.html), which have no controls to get wrong. People who cannot drag can still complete and delete an item from its edit dialog, which opens when they select the item.
+
+Success criteria that apply:
+
+- 1.3.1 Info and Relationships: the list, its section headings and the checkbox states.
+- 1.4.1 Use of Colour: completed and overdue items need more than colour. Completed has a line and a section. Overdue needs words.
+- 1.4.3 Contrast (Minimum): secondary text is small, so check it on your own dashboard.
+- 1.4.10 Reflow and 1.4.12 Text Spacing: descriptions are cut off after three lines.
+- 2.1.1 Keyboard and 2.5.7 Dragging Movements: reordering is by dragging only.
+- 2.5.8 Target Size (Minimum): the checkbox target is 40 pixels by default and the icon buttons are 32 pixels.
+- 3.3.2 Labels or Instructions: the add field has a placeholder only.
+- 4.1.2 Name, Role, Value: icon buttons need a clear name. Check them on your dashboard.
+
+Short items, one job each, and dates in plain words keep the effort low.
+
+<h2 id="examples">Examples</h2>
+
+### A shopping list card
+
+A simulated card in the layout of the to-do list card, with a due date written in words and a completed item.
+
+<%= example('spec-todo-weekend-shopping') %>
