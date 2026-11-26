@@ -1730,6 +1730,16 @@
           "anchor": "child-hui-energy-distribution-card"
         },
         {
+          "name": "hui-energy-sankey-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-sankey-card"
+        },
+        {
+          "name": "hui-power-sankey-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-power-sankey-card"
+        },
+        {
           "name": "hui-energy-usage-graph-card",
           "origin": "Lovelace",
           "anchor": "child-hui-energy-usage-graph-card"
@@ -1760,6 +1770,11 @@
           "anchor": "child-hui-energy-devices-detail-graph-card"
         },
         {
+          "name": "hui-power-sources-graph-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-power-sources-graph-card"
+        },
+        {
           "name": "hui-energy-sources-table-card",
           "origin": "Lovelace",
           "anchor": "child-hui-energy-sources-table-card"
@@ -1768,6 +1783,11 @@
           "name": "hui-energy-grid-neutrality-gauge-card",
           "origin": "Lovelace",
           "anchor": "child-hui-energy-grid-neutrality-gauge-card"
+        },
+        {
+          "name": "hui-energy-grid-balance-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-grid-balance-card"
         },
         {
           "name": "hui-energy-solar-consumed-gauge-card",
@@ -1788,6 +1808,11 @@
           "name": "hui-energy-date-selection-card",
           "origin": "Lovelace",
           "anchor": "child-hui-energy-date-selection-card"
+        },
+        {
+          "name": "hui-energy-compare-card",
+          "origin": "Lovelace",
+          "anchor": "child-hui-energy-compare-card"
         }
       ]
     },
@@ -1920,6 +1945,36 @@
               "anchor": "child-hui-entities-card--hui-button-entity-row"
             },
             {
+              "name": "hui-date-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-date-entity-row"
+            },
+            {
+              "name": "hui-datetime-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-datetime-entity-row"
+            },
+            {
+              "name": "hui-fan-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-fan-entity-row"
+            },
+            {
+              "name": "hui-number-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-number-entity-row"
+            },
+            {
+              "name": "hui-select-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-select-entity-row"
+            },
+            {
+              "name": "hui-time-entity-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-time-entity-row"
+            },
+            {
               "name": "hui-divider-row",
               "origin": "Lovelace",
               "anchor": "child-hui-entities-card--hui-divider-row",
@@ -1970,6 +2025,18 @@
               "name": "hui-call-service-row",
               "origin": "Lovelace",
               "anchor": "child-hui-entities-card--hui-call-service-row",
+              "note": "Special Row"
+            },
+            {
+              "name": "hui-button-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-button-row",
+              "note": "Special Row"
+            },
+            {
+              "name": "hui-text-row",
+              "origin": "Lovelace",
+              "anchor": "child-hui-entities-card--hui-text-row",
               "note": "Special Row"
             }
           ]
@@ -2231,6 +2298,11 @@
               "anchor": "child-ha-form--ha-form-constant"
             },
             {
+              "name": "ha-form-divider",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-form--ha-form-divider"
+            },
+            {
               "name": "ha-form-float",
               "origin": "Home Assistant",
               "anchor": "child-ha-form--ha-form-float"
@@ -2254,6 +2326,11 @@
               "name": "ha-form-multi_select",
               "origin": "Home Assistant",
               "anchor": "child-ha-form--ha-form-multi-select"
+            },
+            {
+              "name": "ha-form-optional_actions",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-form--ha-form-optional-actions"
             },
             {
               "name": "ha-form-positive_time_period_dict",
@@ -3479,6 +3556,11 @@
               "anchor": "child-ha-selector--ha-selector-area"
             },
             {
+              "name": "ha-selector-areas_display",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-areas-display"
+            },
+            {
               "name": "ha-selector-assist_pipeline",
               "origin": "Home Assistant",
               "anchor": "child-ha-selector--ha-selector-assist-pipeline"
@@ -3487,6 +3569,11 @@
               "name": "ha-selector-attribute",
               "origin": "Home Assistant",
               "anchor": "child-ha-selector--ha-selector-attribute"
+            },
+            {
+              "name": "ha-selector-automation_behavior",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-automation-behavior"
             },
             {
               "name": "ha-selector-backup_location",
@@ -3559,6 +3646,11 @@
               "anchor": "child-ha-selector--ha-selector-device"
             },
             {
+              "name": "ha-selector-device_class",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-device-class"
+            },
+            {
               "name": "ha-selector-duration",
               "origin": "Home Assistant",
               "anchor": "child-ha-selector--ha-selector-duration"
@@ -3567,6 +3659,11 @@
               "name": "ha-selector-entity",
               "origin": "Home Assistant",
               "anchor": "child-ha-selector--ha-selector-entity"
+            },
+            {
+              "name": "ha-selector-entity_name",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-entity-name"
             },
             {
               "name": "ha-selector-file",
@@ -3614,9 +3711,19 @@
               "anchor": "child-ha-selector--ha-selector-number"
             },
             {
+              "name": "ha-selector-numeric_threshold",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-numeric-threshold"
+            },
+            {
               "name": "ha-selector-object",
               "origin": "Home Assistant",
               "anchor": "child-ha-selector--ha-selector-object"
+            },
+            {
+              "name": "ha-selector-period",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-period"
             },
             {
               "name": "ha-selector-qr_code",
@@ -3629,6 +3736,11 @@
               "anchor": "child-ha-selector--ha-selector-select"
             },
             {
+              "name": "ha-selector-selector",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-selector"
+            },
+            {
               "name": "ha-selector-serial_port",
               "origin": "Home Assistant",
               "anchor": "child-ha-selector--ha-selector-serial-port"
@@ -3637,6 +3749,11 @@
               "name": "ha-selector-state",
               "origin": "Home Assistant",
               "anchor": "child-ha-selector--ha-selector-state"
+            },
+            {
+              "name": "ha-selector-state_class",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-state-class"
             },
             {
               "name": "ha-selector-statistic",
@@ -3674,6 +3791,11 @@
               "anchor": "child-ha-selector--ha-selector-time"
             },
             {
+              "name": "ha-selector-timezone",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-timezone"
+            },
+            {
               "name": "ha-selector-trigger",
               "origin": "Home Assistant",
               "anchor": "child-ha-selector--ha-selector-trigger"
@@ -3694,6 +3816,11 @@
               "anchor": "child-ha-selector--ha-selector-ui-action"
             },
             {
+              "name": "ha-selector-ui_clock_date_format",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-ui-clock-date-format"
+            },
+            {
               "name": "ha-selector-ui_color",
               "origin": "Home Assistant",
               "anchor": "child-ha-selector--ha-selector-ui-color"
@@ -3702,6 +3829,16 @@
               "name": "ha-selector-ui_state_content",
               "origin": "Home Assistant",
               "anchor": "child-ha-selector--ha-selector-ui-state-content"
+            },
+            {
+              "name": "ha-selector-ui_time_format",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-ui-time-format"
+            },
+            {
+              "name": "ha-selector-unit_of_measurement",
+              "origin": "Home Assistant",
+              "anchor": "child-ha-selector--ha-selector-unit-of-measurement"
             }
           ]
         }

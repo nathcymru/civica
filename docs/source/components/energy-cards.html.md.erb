@@ -11,7 +11,9 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Energy Cards specification: the thirteen Energy cards, their settings, the Civica energy colours and what needs the Civica companion."
-ai_instructions: "Apply when a dashboard shows Home Assistant Energy cards (types energy-distribution, energy-usage-graph, energy-solar-graph, energy-gas-graph, energy-water-graph, energy-devices-graph, energy-devices-detail-graph, energy-sources-table, the four energy gauges and energy-date-selection). The theme sets the energy colours in both modes. Chart geometry, 1.5px power lines and the values table come only from the optional Civica companion, which covers the usage, solar, gas, water, devices and devices detail graphs and the power sources graph; the distribution diagram, gauges, sources table and date selector stay as Home Assistant draws them. Always give the unit, the period and a text version of any value that is shown only on hover. Do not quote a contrast ratio for the energy colours, and do not infer savings."
+  - date: "2026-11-26"
+    description: "Added the power sources graph, compare, grid balance, Sankey and power Sankey cards."
+ai_instructions: "Apply when a dashboard shows Home Assistant Energy cards (types energy-distribution, energy-usage-graph, energy-solar-graph, energy-gas-graph, energy-water-graph, energy-devices-graph, energy-devices-detail-graph, energy-sources-table, the four energy gauges, energy-grid-balance, energy-sankey, power-sankey, power-sources-graph, energy-compare and energy-date-selection). The theme sets the energy colours in both modes. Chart geometry, 1.5px power lines and the values table come only from the optional Civica companion, which covers the usage, solar, gas, water, devices and devices detail graphs and the power sources graph; the distribution diagram, Sankey cards, gauges, grid balance card, sources table, compare notice and date selector stay as Home Assistant draws them. Always give the unit, the period and a text version of any value that is shown only on hover. Do not quote a contrast ratio for the energy colours, and do not infer savings."
 ai_related:
   - path: "/components/charts.html"
     title: "Statistic & Statistics Graph Cards"
@@ -40,6 +42,12 @@ component:
     - name: "hui-energy-distribution-card"
       origin: "Lovelace"
       anchor: "child-hui-energy-distribution-card"
+    - name: "hui-energy-sankey-card"
+      origin: "Lovelace"
+      anchor: "child-hui-energy-sankey-card"
+    - name: "hui-power-sankey-card"
+      origin: "Lovelace"
+      anchor: "child-hui-power-sankey-card"
     - name: "hui-energy-usage-graph-card"
       origin: "Lovelace"
       anchor: "child-hui-energy-usage-graph-card"
@@ -58,12 +66,18 @@ component:
     - name: "hui-energy-devices-detail-graph-card"
       origin: "Lovelace"
       anchor: "child-hui-energy-devices-detail-graph-card"
+    - name: "hui-power-sources-graph-card"
+      origin: "Lovelace"
+      anchor: "child-hui-power-sources-graph-card"
     - name: "hui-energy-sources-table-card"
       origin: "Lovelace"
       anchor: "child-hui-energy-sources-table-card"
     - name: "hui-energy-grid-neutrality-gauge-card"
       origin: "Lovelace"
       anchor: "child-hui-energy-grid-neutrality-gauge-card"
+    - name: "hui-energy-grid-balance-card"
+      origin: "Lovelace"
+      anchor: "child-hui-energy-grid-balance-card"
     - name: "hui-energy-solar-consumed-gauge-card"
       origin: "Lovelace"
       anchor: "child-hui-energy-solar-consumed-gauge-card"
@@ -76,50 +90,63 @@ component:
     - name: "hui-energy-date-selection-card"
       origin: "Lovelace"
       anchor: "child-hui-energy-date-selection-card"
+    - name: "hui-energy-compare-card"
+      origin: "Lovelace"
+      anchor: "child-hui-energy-compare-card"
   tags:
     - "hui-energy-distribution-card"
+    - "hui-energy-sankey-card"
+    - "hui-power-sankey-card"
     - "hui-energy-usage-graph-card"
     - "hui-energy-solar-graph-card"
     - "hui-energy-gas-graph-card"
     - "hui-energy-water-graph-card"
     - "hui-energy-devices-graph-card"
     - "hui-energy-devices-detail-graph-card"
+    - "hui-power-sources-graph-card"
     - "hui-energy-sources-table-card"
     - "hui-energy-grid-neutrality-gauge-card"
+    - "hui-energy-grid-balance-card"
     - "hui-energy-solar-consumed-gauge-card"
     - "hui-energy-carbon-consumed-gauge-card"
     - "hui-energy-self-sufficiency-gauge-card"
     - "hui-energy-date-selection-card"
+    - "hui-energy-compare-card"
 ---
 
 # Energy Cards
 
 <h2 id="purpose">Purpose</h2>
 
-The Energy cards show how a home uses and makes energy: a flow diagram, graphs over a period, a table of sources, four gauges and a date selector that sets the period for the others. Each reads the Energy configuration of the home, so a dashboard author chooses which cards to show, not which sensors feed them.
+The Energy cards show how a home uses and makes energy: flow diagrams, graphs over a period, a table of sources, gauges, a grid balance, a date selector that sets the period for the others and a notice that says what is being compared. Each reads the Energy configuration of the home, so a dashboard author chooses which cards to show, not which sensors feed them.
 
-This page owns the thirteen cards. How to present consumption, power and history is in [Energy and history](../patterns/energy.html). The chart and table presentation, and the exact list of graph cards the Civica companion restyles, are in [Charts and tables](charts.html) and the [Compatibility register](../home-assistant/compatibility-register.html).
+This page owns the eighteen cards. How to present consumption, power and history is in [Energy and history](../patterns/energy.html). The chart and table presentation, and the exact list of graph cards the Civica companion restyles, are in [Charts and tables](charts.html) and the [Compatibility register](../home-assistant/compatibility-register.html).
 
 This page covers:
 
 - Energy Cards
   - `hui-energy-distribution-card`
+  - `hui-energy-sankey-card`
+  - `hui-power-sankey-card`
   - `hui-energy-usage-graph-card`
   - `hui-energy-solar-graph-card`
   - `hui-energy-gas-graph-card`
   - `hui-energy-water-graph-card`
   - `hui-energy-devices-graph-card`
   - `hui-energy-devices-detail-graph-card`
+  - `hui-power-sources-graph-card`
   - `hui-energy-sources-table-card`
   - `hui-energy-grid-neutrality-gauge-card`
+  - `hui-energy-grid-balance-card`
   - `hui-energy-solar-consumed-gauge-card`
   - `hui-energy-carbon-consumed-gauge-card`
   - `hui-energy-self-sufficiency-gauge-card`
   - `hui-energy-date-selection-card`
+  - `hui-energy-compare-card`
 
 <h2 id="anatomy">Anatomy</h2>
 
-Every Energy card is a card with an optional title. The graph cards add a chart, a legend and, on some, a header button. The sources table is a real table. The gauges show one percentage. The distribution card draws a diagram of nodes joined by flow lines.
+Every Energy card is a card with an optional title. The graph cards add a chart, a legend and, on some, a header button. The sources table is a real table. The gauges show one percentage. The distribution and Sankey cards draw diagrams of nodes joined by flow lines.
 
 Every card accepts `title` and `collection_key`. Cards that share a `collection_key` use the period chosen on the [date selector](#child-hui-energy-date-selection-card).
 
@@ -140,13 +167,21 @@ Every card accepts `title` and `collection_key`. Cards that share a `collection_
 
 The role colours are the same in light and dark modes. Two roles, water and non-fossil, share a colour, so label them in words. These keys replace Home Assistant’s default energy colours. The card frame uses the theme’s card keys: square corners, a 1 pixel border and no shadow.
 
-**What needs the Civica companion.** Chart geometry, 1.5 pixel power lines and the values table behind a chart come from the optional Civica companion, not from the theme. It covers six Energy graph cards and the power sources graph. The distribution diagram, the gauges, the sources table and the date selector stay as Home Assistant draws them, and take only the theme keys.
+**What needs the Civica companion.** Chart geometry, 1.5 pixel power lines and the values table behind a chart come from the optional Civica companion, not from the theme. It covers six Energy graph cards and the power sources graph. The distribution diagram, the Sankey cards, the gauges, the grid balance card, the sources table, the compare notice and the date selector stay as Home Assistant draws them, and take only the theme keys.
 
 **What needs card-mod.** Changes to the card frame beyond the theme keys need the card-mod integration.
 
 <h3 id="child-hui-energy-distribution-card"><code>hui-energy-distribution-card</code></h3>
 
 `type: energy-distribution`. A diagram of how energy moves between the grid, solar panels, a battery, gas, water and the home. Extra setting: `link_dashboard`, which adds a button to the Energy dashboard. It takes the energy colours from the theme. The Civica companion does not restyle it. Read the numbers on the diagram out in words nearby when they matter, and see [Energy flow and other chart families](../home-assistant/energy-flow-and-other-charts.html).
+
+<h3 id="child-hui-energy-sankey-card"><code>hui-energy-sankey-card</code></h3>
+
+`type: energy-sankey`. A flow chart of the electricity used over the chosen period, in kWh. The grid, solar panels and battery supply the home, energy sent back to the grid and into the battery is shown, and the home’s use is split by device. Choosing a node opens that entity’s More info. Extra settings: `layout` (`auto`, `vertical` or `horizontal`), `group_by_floor` and `group_by_area` (both on by default), `max_devices` and `show_values`. With `auto`, the chart runs vertically on a small screen and horizontally otherwise. Devices beyond `max_devices` are grouped into an “Other” node, smallest first, and the limit is 20 unless you set one. `show_values` shows the values on the chart and is off by default. The Civica companion does not restyle it, and it has no values table, so give the main values in words or in the [sources table](#child-hui-energy-sources-table-card).
+
+<h3 id="child-hui-power-sankey-card"><code>hui-power-sankey-card</code></h3>
+
+`type: power-sankey`. The same kind of flow chart for power, drawn from the current readings of the power sensors in the Energy configuration, in watts or kilowatts, not from the chosen period. It takes the same extra settings as [`hui-energy-sankey-card`](#child-hui-energy-sankey-card). With no power readings it says there is no data. Say in the card title that the values are the present moment.
 
 <h3 id="child-hui-energy-usage-graph-card"><code>hui-energy-usage-graph-card</code></h3>
 
@@ -172,6 +207,10 @@ The role colours are the same in light and dark modes. Two roles, water and non-
 
 `type: energy-devices-detail-graph`. Each device’s use over time. Extra settings: `max_devices` and `expand_legend`. The Civica companion restyles it.
 
+<h3 id="child-hui-power-sources-graph-card"><code>hui-power-sources-graph-card</code></h3>
+
+`type: power-sources-graph`. Power over the chosen period, as lines in kW for solar, grid, battery and the home’s consumption, drawn from the power sensors in the Energy configuration. The legend shows each source’s current power. Extra settings: `show_legend` and `expand_legend`. With no data for the period it says so. The Civica companion restyles it.
+
 <h3 id="child-hui-energy-sources-table-card"><code>hui-energy-sources-table-card</code></h3>
 
 `type: energy-sources-table`. A table of energy sources with a label of “Energy sources”. Extra settings: `types`, which lists the source types to include, and `show_only_totals`. It is a real table, so its headers and rows keep their meaning. It takes its text and divider colours from the theme. It is also the best text version of the graph cards, so show it beside a graph when exact values matter.
@@ -179,6 +218,10 @@ The role colours are the same in light and dark modes. Two roles, water and non-
 <h3 id="child-hui-energy-grid-neutrality-gauge-card"><code>hui-energy-grid-neutrality-gauge-card</code></h3>
 
 `type: energy-grid-neutrality-gauge`. A gauge showing whether the home sent more energy to the grid than it took from it. Home Assistant explains the needle by colour, with a purple area for net export and a blue area for net import, in an information tooltip. It uses the grid return and grid consumption colours. No extra settings. Add a sentence that states the result in words, so the meaning never depends on the colour of the needle.
+
+<h3 id="child-hui-energy-grid-balance-card"><code>hui-energy-grid-balance-card</code></h3>
+
+`type: energy-grid-balance`. A compact card with a title (“Grid energy balance” unless you set `title`) and a sum in kWh: energy imported from the grid, minus energy exported to it, equals the net. Under it a bar grows left for export and right for import, and marks the net on the side it falls. Each part has a sentence in a tooltip, such as “Net energy imported”. It uses the grid consumption and grid return colours. The sum already states the result, but say “net import” or “net export” in words nearby, so the meaning never depends on which side the bar grows.
 
 <h3 id="child-hui-energy-solar-consumed-gauge-card"><code>hui-energy-solar-consumed-gauge-card</code></h3>
 
@@ -196,11 +239,15 @@ The role colours are the same in light and dark modes. Two roles, water and non-
 
 `type: energy-date-selection`. Chooses the period that the other Energy cards show. Extra settings: `vertical_opening_direction` (`auto`, `up` or `down`), `opening_direction` (`auto`, `right`, `left`, `center` or `inline`) and `disable_compare`. Put it at the top of the view, above the cards it controls, and give every card the same `collection_key`.
 
+<h3 id="child-hui-energy-compare-card"><code>hui-energy-compare-card</code></h3>
+
+`type: energy-compare`. A notice that says which period is being compared with which. It has a button that switches between comparing with the previous period and with the previous year, and a close button that ends the comparison. It stays hidden while comparison is off, and in the card editor it shows a sample notice. It takes no extra settings. Put it directly under the [date selector](#child-hui-energy-date-selection-card), and give it the same `collection_key`.
+
 <h2 id="limits">Advantages and limitations</h2>
 
 - The cards are native, so they follow the Energy configuration and the household’s units and costs.
 - The theme gives one stable colour to each energy role in light and dark modes.
-- Hover values on a graph need a text version. The Civica companion adds a values table to the graphs it covers; the gauges, the distribution diagram and the pie view have none, so state their result in words.
+- Hover values on a graph need a text version. The Civica companion adds a values table to the graphs it covers; the gauges, the distribution diagram, the Sankey cards and the pie view have none, so state their result in words.
 - Water and non-fossil share a colour in the theme.
 - The theme alone cannot change chart shape, line width or legend layout.
 

@@ -13,6 +13,8 @@ updates:
     description: "Added the Entities Card and Entity Rows specification: the card, the entity rows, the eight special rows, the theme keys that reach them and what Home Assistant draws itself."
   - date: "2026-11-26"
     description: "Removed two entries for rows that Home Assistant does not draw."
+  - date: "2026-11-26"
+    description: "Added the date, datetime, fan, number, select and time entity rows, and the button and text special rows."
 ai_instructions: "Apply when a dashboard lists entities in an entities card (type entities). Home Assistant picks the row from the entity domain: a light, switch or vacuum gets a switch row, a water heater gets the climate row, and a domain with no row of its own gets the simple row. Row names must match entity names, state must be written in words as well as colour, and a card should hold a short list. Row spacing uses a Home Assistant variable the Civica theme does not set, so changing it needs card-mod. Do not claim contrast, focus appearance or screen-reader behaviour for a row."
 ai_related:
   - path: "/home-assistant/entity-lists-and-rows.html"
@@ -112,6 +114,24 @@ component:
         - name: "hui-button-entity-row"
           origin: "Lovelace"
           anchor: "child-hui-entities-card--hui-button-entity-row"
+        - name: "hui-date-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-date-entity-row"
+        - name: "hui-datetime-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-datetime-entity-row"
+        - name: "hui-fan-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-fan-entity-row"
+        - name: "hui-number-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-number-entity-row"
+        - name: "hui-select-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-select-entity-row"
+        - name: "hui-time-entity-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-time-entity-row"
         - name: "hui-divider-row"
           origin: "Lovelace"
           anchor: "child-hui-entities-card--hui-divider-row"
@@ -136,6 +156,12 @@ component:
         - name: "hui-call-service-row"
           origin: "Lovelace"
           anchor: "child-hui-entities-card--hui-call-service-row"
+        - name: "hui-button-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-button-row"
+        - name: "hui-text-row"
+          origin: "Lovelace"
+          anchor: "child-hui-entities-card--hui-text-row"
   tags:
     - "hui-entities-card"
     - "hui-sensor-entity-row"
@@ -161,6 +187,12 @@ component:
     - "hui-group-entity-row"
     - "hui-event-entity-row"
     - "hui-button-entity-row"
+    - "hui-date-entity-row"
+    - "hui-datetime-entity-row"
+    - "hui-fan-entity-row"
+    - "hui-number-entity-row"
+    - "hui-select-entity-row"
+    - "hui-time-entity-row"
     - "hui-divider-row"
     - "hui-section-row"
     - "hui-weblink-row"
@@ -169,6 +201,8 @@ component:
     - "hui-cast-row"
     - "hui-conditional-row"
     - "hui-call-service-row"
+    - "hui-button-row"
+    - "hui-text-row"
 ---
 
 # Entities Card & Entity Rows
@@ -206,6 +240,12 @@ This page covers:
     - `hui-group-entity-row`
     - `hui-event-entity-row`
     - `hui-button-entity-row`
+    - `hui-date-entity-row`
+    - `hui-datetime-entity-row`
+    - `hui-fan-entity-row`
+    - `hui-number-entity-row`
+    - `hui-select-entity-row`
+    - `hui-time-entity-row`
     - `hui-divider-row`
     - `hui-section-row`
     - `hui-weblink-row`
@@ -214,6 +254,8 @@ This page covers:
     - `hui-cast-row`
     - `hui-conditional-row`
     - `hui-call-service-row`
+    - `hui-button-row`
+    - `hui-text-row`
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -253,7 +295,7 @@ Home Assistant draws the card title as a first-level heading, so give each entit
 
 **What stays as Home Assistant draws it.** The switch, slider and button shapes inside rows are Home Assistant’s own. The row gap uses `--entities-card-row-gap`, which the theme does not set, so it stays at 8 pixels. Changing it needs the card-mod integration, for example on `hui-entities-card #states`.
 
-**Rows Home Assistant chooses for you.** If a row has no `type`, Home Assistant picks one from the domain. Domains with no row of their own get the simple row. The fan, date, datetime, number, select and time domains also have their own rows, which this page does not list separately: a fan row shows a speed slider when the fan supports speeds, beside its on and off switch; a date row shows a date field; a datetime row shows a date field and a time field; a number row shows a slider or a number box; a select row shows a dropdown; and a time row shows a time field.
+**Rows Home Assistant chooses for you.** If a row has no `type`, Home Assistant picks one from the domain. Domains with no row of their own get the simple row. The fan, date, datetime, number, select and time domains each get the row of the same name, described below.
 
 <h3 id="child-hui-entities-card--hui-sensor-entity-row"><code>hui-sensor-entity-row</code></h3>
 
@@ -347,6 +389,30 @@ Home Assistant draws the card title as a first-level heading, so give each entit
 
 `type: button-entity`. Shows a Press button. `action_name` changes the text and `confirmation` asks people to confirm first. One action with no state. Name the outcome.
 
+<h3 id="child-hui-entities-card--hui-date-entity-row"><code>hui-date-entity-row</code></h3>
+
+`type: date-entity`. Shows a date field for a date entity. Choosing a date sets the entity. The field is switched off when the entity is unavailable and is empty when its state is unknown. A date that people set, such as a collection day. Keep the row name as the label.
+
+<h3 id="child-hui-entities-card--hui-datetime-entity-row"><code>hui-datetime-entity-row</code></h3>
+
+`type: datetime-entity`. Shows a date field and a time field together for a date-and-time entity. The row name labels both fields, and no separate name is drawn beside them. Changing either field sets the whole value. Both fields are switched off when the entity is unavailable and are empty when its state is unknown. One moment in time. Make the row name say which moment it is.
+
+<h3 id="child-hui-entities-card--hui-fan-entity-row"><code>hui-fan-entity-row</code></h3>
+
+`type: fan-entity`. Shows a switch for a fan that can be turned on and off. A fan that cannot be switched, or whose state is neither on nor off, shows its state as text instead. A speed slider appears only for a fan that sets its speed in more than six steps and cannot be turned on or off. The slider sets the speed as a percentage and shows the state beside it. Fans. Show the state in words, not by the slider position alone.
+
+<h3 id="child-hui-entities-card--hui-number-entity-row"><code>hui-number-entity-row</code></h3>
+
+`type: number-entity`. Shows a slider when the entity’s mode is slider, or when its mode is automatic and its range has 256 steps or fewer. Otherwise it shows a number box with the unit after it. Both use the entity’s own minimum, maximum and step, and both are switched off when the entity is unavailable. The slider shows its value beside it, or a dash when the state is unavailable or unknown. Settings people adjust. Show the unit and the limits in the label or hint.
+
+<h3 id="child-hui-entities-card--hui-select-entity-row"><code>hui-select-entity-row</code></h3>
+
+`type: select-entity`. Shows a drop-down list of the entity’s own options, with the row name as the list’s label and no separate name beside it. Each option is written in Home Assistant’s wording for that state. The list is switched off when the entity is unavailable. `entity` is required. A short, fixed set of choices. Word each option so it reads on its own.
+
+<h3 id="child-hui-entities-card--hui-time-entity-row"><code>hui-time-entity-row</code></h3>
+
+`type: time-entity`. Shows a time field for a time entity. Choosing a time sets the entity. The field is switched off when the entity is unavailable and is empty when its state is unknown. A time of day that people set. Keep the row name as the label.
+
 <h3 id="child-hui-entities-card--hui-divider-row"><code>hui-divider-row</code></h3>
 
 `type: divider`. Draws a thin line between rows. Its `style` key can set the line’s style. The line uses `divider-color`, or `entities-divider-color` if you set it. Use it to separate groups. It has no name, so it is only a visual break; use a section row when the group needs a name.
@@ -378,6 +444,14 @@ Home Assistant draws the card title as a first-level heading, so give each entit
 <h3 id="child-hui-entities-card--hui-call-service-row"><code>hui-call-service-row</code></h3>
 
 `type: call-service`. Shows a button that runs an action. `name` and `action` are required, and `data` gives the action its values. `perform-action` is the same row under its newer name. The older `service` key still works. Name the button for its outcome. Use a confirmation where a wrong press has a cost.
+
+<h3 id="child-hui-entities-card--hui-button-row"><code>hui-button-row</code></h3>
+
+`type: button`. Shows an icon, a name and a button that reads Run. `name` or `entity` is required, and `icon` and `action_name` are optional; `action_name` changes the button text. A tap toggles an entity that can be switched and opens More info for any other entity. Set `tap_action` to run something else. A hold opens More info, and `double_tap_action` is available. It has no state of its own. Use it to run a chosen action from a row, and name the outcome. For an action with fixed values, see the call-service row below.
+
+<h3 id="child-hui-entities-card--hui-text-row"><code>hui-text-row</code></h3>
+
+`type: text`. Shows an icon, a name and a line of fixed text on the right. `name` and `text` are required and `icon` is optional. The text is typed into the card, so it never follows an entity. A name or text that is too long is cut off with an ellipsis. Short notes beside a name. Keep both short, and do not put anything people must read in the cut-off part.
 
 <h2 id="limits">Advantages and limitations</h2>
 
