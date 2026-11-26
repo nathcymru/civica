@@ -52,6 +52,11 @@ This page covers:
 
 A QR code is a square picture of dark and light squares, called modules, with a plain margin around it, called the quiet area. Home Assistant draws it on a canvas. The canvas has no text alternative, so a screen reader meets a picture it cannot describe.
 
+<figure class="c-project-figure">
+  <img src="<%= docs_path('/images/component-qr-code-anatomy.svg') %>" width="960" height="560" alt="" loading="lazy" decoding="async">
+  <figcaption>The parts of a QR code: 1 a module, one small square, 2 a corner marker that helps a camera find and orient the code, and 3 the quiet area, the plain margin around the pattern. The drawing is not a working code.</figcaption>
+</figure>
+
 <h2 id="variants">Variants, variables and extensibility</h2>
 
 <h3 id="child-ha-qr-code"><code>ha-qr-code</code></h3>

@@ -1,0 +1,54 @@
+// Civica class names for the markup shown in example code panels. Each alias
+// extends the framework rule it renders with, so the page looks the same while
+// the copied HTML uses Civica names only. Import after the framework utilities.
+.civica-body { @extend .govuk-body; }
+.civica-body-s { @extend .govuk-body-s; }
+.civica-heading-l { @extend .govuk-heading-l; }
+.civica-heading-m { @extend .govuk-heading-m; }
+.civica-link { @extend .govuk-link; }
+.civica-hint { @extend .govuk-hint; }
+.civica-list { @extend .govuk-list; }
+.civica-list--number { @extend .govuk-list--number; }
+.civica-button { @extend .govuk-button; }
+.civica-button--warning { @extend .govuk-button--warning; }
+.civica-button-group { @extend .govuk-button-group; }
+.civica-form-group { @extend .govuk-form-group; }
+.civica-label { @extend .govuk-label; }
+.civica-input { @extend .govuk-input; }
+.civica-input--width-10 { @extend .govuk-input--width-10; }
+.civica-input--error { @extend .govuk-input--error; }
+.civica-form-group--error { @extend .govuk-form-group--error; }
+.civica-select { @extend .govuk-select; }
+.civica-textarea { @extend .govuk-textarea; }
+.civica-details { @extend .govuk-details; }
+.civica-details__summary { @extend .govuk-details__summary; }
+.civica-details__summary-text { @extend .govuk-details__summary-text; }
+.civica-details__text { @extend .govuk-details__text; }
+.civica-inset-text { @extend .govuk-inset-text; }
+.civica-tag { @extend .govuk-tag; }
+.civica-summary-list { @extend .govuk-summary-list; }
+.civica-summary-list__row { @extend .govuk-summary-list__row; }
+.civica-summary-list__key { @extend .govuk-summary-list__key; }
+.civica-summary-list__value { @extend .govuk-summary-list__value; }
+.civica-warning-text { @extend .govuk-warning-text; }
+.civica-warning-text__icon { @extend .govuk-warning-text__icon; }
+.civica-warning-text__text { @extend .govuk-warning-text__text; }
+.civica-skip-link { @extend .govuk-skip-link; }
+.civica-visually-hidden { @extend .govuk-visually-hidden; }
+.civica-grid-row { @extend .govuk-grid-row; }
+.civica-grid-column-two-thirds { @extend .govuk-grid-column-two-thirds; }
+.civica-cookie-banner { @extend .govuk-cookie-banner; }
+.civica-cookie-banner__message { @extend .govuk-cookie-banner__message; }
+.civica-language-navigation { @extend .govuk-language-navigation; }
+.civica-language-navigation__list { @extend .govuk-language-navigation__list; }
+.civica-language-navigation__list-item { @extend .govuk-language-navigation__list-item; }
+.civica-language-navigation__link { @extend .govuk-language-navigation__link; }
+
+// Disclosure group used by the accordion examples. Each section is a native
+// disclosure, so it works without scripts.
+.civica-accordion { margin:0 0 20px; border-bottom:1px solid #b1b4b6; }
+.civica-accordion__section { border-top:1px solid #b1b4b6; }
+.civica-accordion__heading { display:block; padding:15px 0; color:#1d70b8; font-weight:700; font-size:1.1875rem; line-height:1.3; cursor:pointer; min-height:44px; }
+.civica-accordion__heading:hover { color:#003078; background:#f3f2f1; }
+.civica-accordion__content { padding:0 0 15px; }
+.civica-accordion__content > :last-child { margin-bottom:0; }

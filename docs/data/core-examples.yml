@@ -2,62 +2,62 @@
   "examples": {
     "core-accordion-troubleshooting": {
       "title": "Troubleshooting topics",
-      "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"troubleshooting\"><div class=\"govuk-accordion__section\"><div class=\"govuk-accordion__section-header\"><h2 class=\"govuk-accordion__section-heading\"><span class=\"govuk-accordion__section-button\" id=\"troubleshooting-heading-1\">Check power</span></h2></div><div id=\"troubleshooting-content-1\" class=\"govuk-accordion__section-content\"><p class=\"govuk-body\">Check the device display or power indicator. Follow its manufacturer’s instructions before opening a cover.</p></div></div><div class=\"govuk-accordion__section\"><div class=\"govuk-accordion__section-header\"><h2 class=\"govuk-accordion__section-heading\"><span class=\"govuk-accordion__section-button\" id=\"troubleshooting-heading-2\">Check the connection</span></h2></div><div id=\"troubleshooting-content-2\" class=\"govuk-accordion__section-content\"><p class=\"govuk-body\">Check the integration’s status in Home Assistant. A missing reading does not prove the device is off.</p></div></div></div>",
+      "html": "<div class=\"civica-accordion\"><details class=\"civica-accordion__section\"><summary class=\"civica-accordion__heading\">Check power</summary><div class=\"civica-accordion__content\"><p class=\"civica-body\">Check the device display or power indicator. Follow its manufacturer’s instructions before opening a cover.</p></div></details><details class=\"civica-accordion__section\"><summary class=\"civica-accordion__heading\">Check the connection</summary><div class=\"civica-accordion__content\"><p class=\"civica-body\">Check the integration’s status in Home Assistant. A missing reading does not prove the device is off.</p></div></details></div>",
       "height": 300
     },
     "core-accordion-measures": {
       "title": "Measurement explanations",
-      "html": "<div class=\"govuk-accordion\" data-module=\"govuk-accordion\" id=\"measures\"><div class=\"govuk-accordion__section\"><div class=\"govuk-accordion__section-header\"><h2 class=\"govuk-accordion__section-heading\"><span class=\"govuk-accordion__section-button\" id=\"measures-heading-1\">Power</span></h2></div><div id=\"measures-content-1\" class=\"govuk-accordion__section-content\"><p class=\"govuk-body\">Power is the rate of electricity use at a point in time. This example uses watts.</p></div></div><div class=\"govuk-accordion__section\"><div class=\"govuk-accordion__section-header\"><h2 class=\"govuk-accordion__section-heading\"><span class=\"govuk-accordion__section-button\" id=\"measures-heading-2\">Energy</span></h2></div><div id=\"measures-content-2\" class=\"govuk-accordion__section-content\"><p class=\"govuk-body\">Energy is the amount used over a period. This example uses kilowatt-hours.</p></div></div></div>",
+      "html": "<div class=\"civica-accordion\"><details class=\"civica-accordion__section\"><summary class=\"civica-accordion__heading\">Power</summary><div class=\"civica-accordion__content\"><p class=\"civica-body\">Power is the rate of electricity use at a point in time. This example uses watts.</p></div></details><details class=\"civica-accordion__section\"><summary class=\"civica-accordion__heading\">Energy</summary><div class=\"civica-accordion__content\"><p class=\"civica-body\">Energy is the amount used over a period. This example uses kilowatt-hours.</p></div></details></div>",
       "height": 300
     },
     "core-cookie-choice": {
       "title": "Optional measurement choice",
-      "html": "<section class=\"govuk-cookie-banner\" aria-label=\"Example cookie choice\"><h2 class=\"govuk-heading-m\">Optional usage measurement</h2><p class=\"govuk-body\">This example shows a service that offers optional usage measurement. No analytics run in this demonstration.</p><button type=\"button\" class=\"govuk-button \" data-demo-message=\"Example choice: accepted. No tracking has been enabled.\">Accept optional measurement</button> <button type=\"button\" class=\"govuk-button \" data-demo-message=\"Example choice: rejected. No tracking has been enabled.\">Reject optional measurement</button><p role=\"status\" data-demo-status></p></section>",
+      "html": "<section class=\"civica-cookie-banner\" aria-label=\"Example cookie choice\"><h2 class=\"civica-heading-m\">Optional usage measurement</h2><p class=\"civica-body\">This example shows a service that offers optional usage measurement. No analytics run in this demonstration.</p><button type=\"button\" class=\"civica-button \" data-demo-message=\"Example choice: accepted. No tracking has been enabled.\">Accept optional measurement</button> <button type=\"button\" class=\"civica-button \" data-demo-message=\"Example choice: rejected. No tracking has been enabled.\">Reject optional measurement</button><p role=\"status\" data-demo-status></p></section>",
       "height": 300
     },
     "core-cookie-confirmation": {
       "title": "Choice confirmation",
-      "html": "<h2 class=\"govuk-heading-m\">Your choice has been saved</h2><p class=\"govuk-body\">Optional measurement is off. In a real service, this message appears only after the preference has been recorded.</p><details class=\"govuk-details\"><summary class=\"govuk-details__summary\"><span class=\"govuk-details__summary-text\">What this choice means</span></summary><div class=\"govuk-details__text\">Essential sign-in storage would remain available. You would be able to change optional choices from the service’s privacy settings.</div></details>",
+      "html": "<h2 class=\"civica-heading-m\">Your choice has been saved</h2><p class=\"civica-body\">Optional measurement is off. In a real service, this message appears only after the preference has been recorded.</p><details class=\"civica-details\"><summary class=\"civica-details__summary\"><span class=\"civica-details__summary-text\">What this choice means</span></summary><div class=\"civica-details__text\">Essential sign-in storage would remain available. You would be able to change optional choices from the service’s privacy settings.</div></details>",
       "height": 300
     },
     "core-exit-visible": {
       "title": "Departure control — demonstration only",
-      "html": "<a class=\"govuk-button govuk-button--warning\" href=\"#example-left\">Exit this example</a><h2 class=\"govuk-heading-m\">Sensitive content example</h2><p class=\"govuk-body\">The real page would provide the agreed support content.</p><div id=\"example-left\" tabindex=\"-1\">Example destination. No browser history or session data has been cleared.</div>",
+      "html": "<a class=\"civica-button civica-button--warning\" href=\"#example-left\">Exit this example</a><h2 class=\"civica-heading-m\">Sensitive content example</h2><p class=\"civica-body\">The real page would provide the agreed support content.</p><div id=\"example-left\" tabindex=\"-1\">Example destination. No browser history or session data has been cleared.</div>",
       "height": 300
     },
     "core-exit-keyboard": {
       "title": "Keyboard departure route",
-      "html": "<a class=\"govuk-skip-link\" href=\"#keyboard-destination\">Exit this example</a><p class=\"govuk-body\">Tab into this example to reveal the secondary departure link. It leads to the same local destination as the visible link.</p><a class=\"govuk-button govuk-button--warning\" href=\"#keyboard-destination\">Exit this example</a><div id=\"keyboard-destination\" tabindex=\"-1\">Example destination only.</div>",
+      "html": "<a class=\"civica-skip-link\" href=\"#keyboard-destination\">Exit this example</a><p class=\"civica-body\">Tab into this example to reveal the secondary departure link. It leads to the same local destination as the visible link.</p><a class=\"civica-button civica-button--warning\" href=\"#keyboard-destination\">Exit this example</a><div id=\"keyboard-destination\" tabindex=\"-1\">Example destination only.</div>",
       "height": 300
     },
     "core-feedback-invitation": {
       "title": "Feedback after guidance",
-      "html": "<h2 class=\"govuk-heading-m\">Help improve this guide</h2><p class=\"govuk-body\">Tell us which instruction was unclear. Do not include passwords, access tokens or private sensor history.</p><a class=\"govuk-link\" href=\"#feedback-form\">Give feedback about this guide</a><form id=\"feedback-form\" data-demo-form><div class=\"govuk-form-group\"><label class=\"govuk-label\" for=\"feedback-detail\">What could be clearer?</label><textarea class=\"govuk-textarea\" id=\"feedback-detail\" rows=\"3\" required></textarea></div><button class=\"govuk-button\" type=\"submit\">Preview sending feedback</button><p role=\"status\" data-demo-status></p></form>",
+      "html": "<h2 class=\"civica-heading-m\">Help improve this guide</h2><p class=\"civica-body\">Tell us which instruction was unclear. Do not include passwords, access tokens or private sensor history.</p><a class=\"civica-link\" href=\"#feedback-form\">Give feedback about this guide</a><form id=\"feedback-form\" data-demo-form><div class=\"civica-form-group\"><label class=\"civica-label\" for=\"feedback-detail\">What could be clearer?</label><textarea class=\"civica-textarea\" id=\"feedback-detail\" rows=\"3\" required></textarea></div><button class=\"civica-button\" type=\"submit\">Preview sending feedback</button><p role=\"status\" data-demo-status></p></form>",
       "height": 520
     },
     "core-feedback-confirmation": {
       "title": "Feedback demonstration confirmation",
-      "html": "<h2 class=\"govuk-heading-m\">Your example feedback is ready</h2><p class=\"govuk-body\">This demonstration has not sent a message. A connected service would show its receipt and explain what happens next.</p>",
+      "html": "<h2 class=\"civica-heading-m\">Your example feedback is ready</h2><p class=\"civica-body\">This demonstration has not sent a message. A connected service would show its receipt and explain what happens next.</p>",
       "height": 300
     },
     "core-generic-header": {
       "title": "A household name and home link",
-      "html": "<header class=\"civica-demo-header\"><a href=\"#service-home\"><strong>Morgan household</strong></a></header><main id=\"service-home\"><h2 class=\"govuk-heading-m\">Household guide</h2><p class=\"govuk-body\">Find the instructions for this home.</p></main>",
+      "html": "<header class=\"civica-demo-header\"><a href=\"#service-home\"><strong>Morgan household</strong></a></header><main id=\"service-home\"><h2 class=\"civica-heading-m\">Household guide</h2><p class=\"civica-body\">Find the instructions for this home.</p></main>",
       "height": 300
     },
     "core-generic-header-service": {
       "title": "Household header with a task name",
-      "html": "<header class=\"civica-demo-header\"><a href=\"#energy-guide\"><strong>Morgan household</strong></a><p class=\"govuk-!-margin-bottom-0\">Energy guide</p></header><main id=\"energy-guide\"><h2 class=\"govuk-heading-m\">Understand your readings</h2><p class=\"govuk-body\">Use the meter’s units and the selected period.</p></main>",
+      "html": "<header class=\"civica-demo-header\"><a href=\"#energy-guide\"><strong>Morgan household</strong></a><p style=\"margin-bottom:0\">Energy guide</p></header><main id=\"energy-guide\"><h2 class=\"civica-heading-m\">Understand your readings</h2><p class=\"civica-body\">Use the meter’s units and the selected period.</p></main>",
       "height": 300
     },
     "core-language-en": {
       "title": "English page",
-      "html": "<nav class=\"govuk-language-navigation\" aria-label=\"Language\"><ul class=\"govuk-language-navigation__list\"><li class=\"govuk-language-navigation__list-item\"><span class=\"govuk-language-navigation__text\" aria-current=\"true\" lang=\"en\">English</span></li><li class=\"govuk-language-navigation__list-item\"><a class=\"govuk-language-navigation__link\" href=\"./core-language-cy.html\" rel=\"alternate\" lang=\"cy\" hreflang=\"cy\">Cymraeg</a></li></ul></nav><section lang=\"en\"><h2 class=\"govuk-heading-m\">Home</h2><p class=\"govuk-body\">Example</p></section>",
+      "html": "<nav class=\"civica-language-navigation\" aria-label=\"Language\"><ul class=\"civica-language-navigation__list\"><li class=\"civica-language-navigation__list-item\"><span class=\"civica-language-navigation__text\" aria-current=\"true\" lang=\"en\">English</span></li><li class=\"civica-language-navigation__list-item\"><a class=\"civica-language-navigation__link\" href=\"./core-language-cy.html\" rel=\"alternate\" lang=\"cy\" hreflang=\"cy\">Cymraeg</a></li></ul></nav><section lang=\"en\"><h2 class=\"civica-heading-m\">Home</h2><p class=\"civica-body\">Example</p></section>",
       "height": 300
     },
     "core-language-cy": {
       "title": "Welsh page",
-      "html": "<nav class=\"govuk-language-navigation\" aria-label=\"Language\"><ul class=\"govuk-language-navigation__list\"><li class=\"govuk-language-navigation__list-item\"><a class=\"govuk-language-navigation__link\" href=\"./core-language-en.html\" rel=\"alternate\" lang=\"en\" hreflang=\"en\">English</a></li><li class=\"govuk-language-navigation__list-item\"><span class=\"govuk-language-navigation__text\" aria-current=\"true\" lang=\"cy\">Cymraeg</span></li></ul></nav><section lang=\"cy\"><h2 class=\"govuk-heading-m\">Cartref</h2><p class=\"govuk-body\">Enghraifft</p></section>",
+      "html": "<nav class=\"civica-language-navigation\" aria-label=\"Language\"><ul class=\"civica-language-navigation__list\"><li class=\"civica-language-navigation__list-item\"><a class=\"civica-language-navigation__link\" href=\"./core-language-en.html\" rel=\"alternate\" lang=\"en\" hreflang=\"en\">English</a></li><li class=\"civica-language-navigation__list-item\"><span class=\"civica-language-navigation__text\" aria-current=\"true\" lang=\"cy\">Cymraeg</span></li></ul></nav><section lang=\"cy\"><h2 class=\"civica-heading-m\">Cartref</h2><p class=\"civica-body\">Enghraifft</p></section>",
       "height": 300
     },
     "core-phase-demo": {
@@ -82,23 +82,23 @@
     },
     "core-warning-delete": {
       "title": "Warning before removal",
-      "html": "<h2 class=\"govuk-heading-m\">Remove the example dashboard?</h2><div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-visually-hidden\">Warning</span> Removing this dashboard deletes its saved layout. It does not remove devices from Home Assistant.</strong></div><button type=\"button\" class=\"govuk-button govuk-button--warning\" data-demo-message=\"Example only. No dashboard has been removed.\">Preview removing dashboard</button><p role=\"status\" data-demo-status></p>",
+      "html": "<h2 class=\"civica-heading-m\">Remove the example dashboard?</h2><div class=\"civica-warning-text\"><span class=\"civica-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"civica-warning-text__text\"><span class=\"civica-visually-hidden\">Warning</span> Removing this dashboard deletes its saved layout. It does not remove devices from Home Assistant.</strong></div><button type=\"button\" class=\"civica-button civica-button--warning\" data-demo-message=\"Example only. No dashboard has been removed.\">Preview removing dashboard</button><p role=\"status\" data-demo-status></p>",
       "height": 300
     },
     "core-warning-replace": {
       "title": "Warning before replacement",
-      "html": "<h2 class=\"govuk-heading-m\">Replace the example configuration?</h2><div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-visually-hidden\">Warning</span> Replacing the configuration overwrites the current example settings. Review the changes and keep a recoverable copy first.</strong></div><p class=\"govuk-body\">This is a reference screen. It cannot read or replace a configuration.</p>",
+      "html": "<h2 class=\"civica-heading-m\">Replace the example configuration?</h2><div class=\"civica-warning-text\"><span class=\"civica-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"civica-warning-text__text\"><span class=\"civica-visually-hidden\">Warning</span> Replacing the configuration overwrites the current example settings. Review the changes and keep a recoverable copy first.</strong></div><p class=\"civica-body\">This is a reference screen. It cannot read or replace a configuration.</p>",
       "height": 300
     },
     "system-example-reading": {
       "title": "A labelled reading",
-      "html": "<h2 class=\"govuk-heading-m\">Living room temperature</h2><p class=\"govuk-body\"><strong>20 °C</strong> — synthetic reading.</p><p class=\"govuk-body\">Reported on <time datetime=\"2026-11-11T14:30:00+00:00\">11 November 2026 at 14:30 GMT</time> (Europe/London).</p>",
+      "html": "<h2 class=\"civica-heading-m\">Living room temperature</h2><p class=\"civica-body\"><strong>20 °C</strong> — synthetic reading.</p><p class=\"civica-body\">Reported on <time datetime=\"2026-11-11T14:30:00+00:00\">11 November 2026 at 14:30 GMT</time> (Europe/London).</p>",
       "height": 300,
       "description": "An invented temperature with its source observation date and time, rather than an unspecified display update."
     },
     "system-example-interactive": {
       "title": "A local demonstration action",
-      "html": "<h2 class=\"govuk-heading-m\">Preview a saved preference</h2><button type=\"button\" class=\"govuk-button \" data-demo-message=\"Example preference saved in this preview only. No household setting changed.\">Preview saving</button><p role=\"status\" data-demo-status></p>",
+      "html": "<h2 class=\"civica-heading-m\">Preview a saved preference</h2><button type=\"button\" class=\"civica-button \" data-demo-message=\"Example preference saved in this preview only. No household setting changed.\">Preview saving</button><p role=\"status\" data-demo-status></p>",
       "height": 300
     },
     "system-history-expanded": {
@@ -116,7 +116,7 @@
     "core-cookie-essential": {
       "title": "An essential-only cookie notice",
       "description": "The documentation notice uses this markup. Hiding this isolated example does not save a cookie.",
-      "html": "<section class=\"govuk-cookie-banner c-site-notice\" data-site-notice=\"example\" data-docs-home=\"../index.html\" data-nosnippet role=\"region\" aria-labelledby=\"site-notice-heading\">\n  <div class=\"govuk-cookie-banner__message c-container\">\n    <div class=\"govuk-grid-row\">\n      <div class=\"govuk-grid-column-two-thirds\">\n        <h2 id=\"site-notice-heading\" class=\"govuk-cookie-banner__heading govuk-heading-m\">Cookies on Civica</h2>\n        <div class=\"govuk-cookie-banner__content\">\n          <p class=\"govuk-body\">We respect your privacy and only use essential cookies to make this site work—never for tracking or advertising.</p>\n        </div>\n      </div>\n    </div>\n    <div class=\"govuk-button-group\">\n      <button type=\"button\" class=\"govuk-button\" data-site-notice-dismiss hidden>Hide this notice</button>\n      <a class=\"govuk-link\" data-site-cookies href=\"../community/cookies.html\">Learn more about cookies</a>\n    </div>\n  </div>\n</section>\n<p class=\"govuk-body c-container c-site-notice-status\" data-site-notice-status role=\"status\" tabindex=\"-1\" hidden></p>",
+      "html": "<section class=\"civica-cookie-banner c-site-notice\" data-site-notice=\"example\" data-docs-home=\"../index.html\" data-nosnippet role=\"region\" aria-labelledby=\"site-notice-heading\">\n  <div class=\"civica-cookie-banner__message c-container\">\n    <div class=\"civica-grid-row\">\n      <div class=\"civica-grid-column-two-thirds\">\n        <h2 id=\"site-notice-heading\" class=\"civica-cookie-banner__heading civica-heading-m\">Cookies on Civica</h2>\n        <div class=\"civica-cookie-banner__content\">\n          <p class=\"civica-body\">We respect your privacy and only use essential cookies to make this site work—never for tracking or advertising.</p>\n        </div>\n      </div>\n    </div>\n    <div class=\"civica-button-group\">\n      <button type=\"button\" class=\"civica-button\" data-site-notice-dismiss hidden>Hide this notice</button>\n      <a class=\"civica-link\" data-site-cookies href=\"../community/cookies.html\">Learn more about cookies</a>\n    </div>\n  </div>\n</section>\n<p class=\"civica-body c-container c-site-notice-status\" data-site-notice-status role=\"status\" tabindex=\"-1\" hidden></p>",
       "height": 490
     }
   }

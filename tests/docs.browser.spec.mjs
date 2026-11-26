@@ -363,28 +363,23 @@ test('mobile navigation works by keyboard and remains available after resizing',
   await assertReflow(page);
 });
 
-test('accordion labels stay aligned with visible text after individual and all-section changes', async ({ page }) => {
+test('accordion sections open and close independently and keep their accessible names', async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 });
   for (const id of ['core-accordion-troubleshooting', 'core-accordion-measures']) {
     await page.goto(exampleUrl(id));
-    const sections = page.locator('.govuk-accordion__section-button');
-    const checkLabels = async () => {
-      const result = await new AxeBuilder({ page }).withRules(['label-content-name-mismatch']).analyze();
-      expect(violations(result), id).toEqual([]);
-    };
+    const sections = page.locator('.civica-accordion__section');
+    const headings = page.locator('.civica-accordion__heading');
     await expect(sections).toHaveCount(2);
-    for (const section of await sections.all()) await expect(section).toHaveAttribute('aria-expanded', 'false');
-    await checkLabels();
-    await sections.first().click();
-    await expect(sections.first()).toHaveAttribute('aria-expanded', 'true');
-    await expect(sections.first()).toHaveAccessibleName(/Hide this section/);
-    await checkLabels();
-    await page.getByRole('button', { name: 'Show all sections', exact: true }).click();
-    for (const section of await sections.all()) await expect(section).toHaveAttribute('aria-expanded', 'true');
-    await checkLabels();
-    await page.getByRole('button', { name: 'Hide all sections', exact: true }).click();
-    for (const section of await sections.all()) await expect(section).toHaveAttribute('aria-expanded', 'false');
-    await checkLabels();
+    for (const section of await sections.all()) await expect(section).not.toHaveAttribute('open', '');
+    await headings.first().click();
+    await expect(sections.first()).toHaveAttribute('open', '');
+    await expect(sections.nth(1)).not.toHaveAttribute('open', '');
+    await headings.nth(1).click();
+    await expect(sections.nth(1)).toHaveAttribute('open', '');
+    await headings.first().click();
+    await expect(sections.first()).not.toHaveAttribute('open', '');
+    const result = await new AxeBuilder({ page }).withRules(['label-content-name-mismatch']).analyze();
+    expect(violations(result), id).toEqual([]);
   }
 });
 

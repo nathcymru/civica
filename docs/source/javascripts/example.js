@@ -51,8 +51,11 @@
       error.hidden = valid;
       error.textContent = valid ? '' : message;
       field.setAttribute('aria-invalid', String(!valid));
+      const group = field.closest('.govuk-form-group, .civica-form-group');
       field.classList.toggle('govuk-input--error', !valid);
-      field.closest('.govuk-form-group')?.classList.toggle('govuk-form-group--error', !valid);
+      field.classList.toggle('civica-input--error', !valid);
+      group?.classList.toggle('govuk-form-group--error', !valid);
+      group?.classList.toggle('civica-form-group--error', !valid);
       if (!valid) { output.textContent = 'Enter a valid draft value.'; return null; }
       range.value = String(normalise(value));
       range.setAttribute('aria-valuetext', `${normalise(value)} ${spokenUnit}`);
