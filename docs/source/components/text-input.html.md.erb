@@ -1,5 +1,5 @@
 ---
-title: "Text Input"
+title: "Text input"
 description: "Use a labelled field for a short answer on one line, and choose the field type that fits the answer."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Rewritten as the full Text Input specification. It now covers each field type, the single-line field Home Assistant draws, the password field and what the Civica theme sets."
+    description: "Rewritten as the full Text input specification. It now covers each field type, the single-line field Home Assistant draws, the password field and what the Civica theme sets."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
@@ -23,22 +23,22 @@ ai_related:
     title: "Textarea"
     relationship: "Owns the field for answers that need several lines."
   - path: "/components/search-input.html"
-    title: "Search Input"
+    title: "Search input"
     relationship: "Owns the search field and the search type."
   - path: "/components/label.html"
     title: "Label"
     relationship: "Owns the visible name of a field."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns the wording of the hint under a label."
   - path: "/components/error-message.html"
-    title: "Error Message & Error Summary"
+    title: "Error message and error summary"
     relationship: "Owns how a field problem is worded and shown."
   - path: "/components/character-count.html"
-    title: "Character Count"
+    title: "Character count"
     relationship: "Owns the count of characters left; Home Assistant fields show none."
   - path: "/components/control-number-box.html"
-    title: "Control Number Box"
+    title: "Control number box"
     relationship: "Owns the plus and minus number control used on cards."
   - path: "/home-assistant/schema-selectors.html"
     title: "Schema selectors and configuration forms"
@@ -47,7 +47,7 @@ ai_related:
     title: "Onboarding, integration setup and sign-in"
     relationship: "Owns the sign-in flow that a password field belongs to."
 component:
-  parent: "Text Input"
+  parent: "Text input"
   letter: "T"
   origins:
     - "HTML5"
@@ -89,7 +89,7 @@ component:
     - "ha-input"
 ---
 
-# Text Input
+# Text input
 
 <h2 id="purpose">Purpose</h2>
 
@@ -183,7 +183,7 @@ A number with spin buttons. It takes `min`, `max` and `step`. A `step` of `any` 
 - For a temperature typed in, a text field with a decimal input mode avoids the spin buttons. You then accept a comma or a point yourself.
 - The spin buttons are small and cannot be resized, so give people another way to enter the value.
 
-In Home Assistant this is `ha-input` with `type="number"`, `min`, `max` and `step`; `without-spin-buttons` hides the spin buttons. For a plus and minus control, see [Control Number Box](control-number-box.html) and [Control Slider](sliders.html). For helpers that hold a number, see [Helpers and scalar input controls](../home-assistant/helpers-and-scalar-inputs.html).
+In Home Assistant this is `ha-input` with `type="number"`, `min`, `max` and `step`; `without-spin-buttons` hides the spin buttons. For a plus and minus control, see [Control number box](control-number-box.html) and [Control slider](sliders.html). For helpers that hold a number, see [Helpers and scalar input controls](../home-assistant/helpers-and-scalar-inputs.html).
 
 <h3 id="child-input-type-password"><code>&lt;input type="password"&gt;</code></h3>
 
@@ -249,7 +249,7 @@ Password entry is `ha-input` with `type="password"` and a show-or-hide button (`
 - Native fields give the right keyboard, paste, password managers and autofill without extra work.
 - One element, `ha-input`, draws every single-line field in this version of Home Assistant, so fields look and behave the same.
 - A dashboard author cannot place or style these fields. They appear only in dialogs and forms.
-- The `maxlength` attribute stops typing without showing a count. See [Character Count](character-count.html).
+- The `maxlength` attribute stops typing without showing a count. See [Character count](character-count.html).
 - There is no input mask, and no hidden type.
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>

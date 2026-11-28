@@ -1,5 +1,5 @@
 ---
-title: "Radio Button"
+title: "Radio button"
 description: "Use radio buttons when exactly one answer can be chosen from a short list."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Rewritten as the full Radio Button specification: the native radio, how Home Assistant draws a group of radios, their theme colours and the rules for one-answer questions."
+    description: "Rewritten as the full Radio button specification: the native radio, how Home Assistant draws a group of radios, their theme colours and the rules for one-answer questions."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-26"
@@ -18,25 +18,25 @@ updates:
 ai_instructions: "Apply when people choose exactly one answer from a short list. Use one fieldset and legend, one shared name, distinct values and a label for each radio. Do not preselect an answer to a new question. Do not use radios for several answers or for an immediate on or off control. A raw radio cannot be written in a Markdown card, because the card removes the type attribute. Home Assistant draws a group with ha-radio-group and one ha-radio-option for each choice. On a dashboard or in a form, use the select selector with mode list or box. The radio border in the Civica theme is the neutral border colour, not the near-black of the text fields. Do not quote a contrast for the disabled state, and do not claim arrow-key behaviour or focus appearance for ha-radio-group."
 ai_related:
   - path: "/components/fieldset.html"
-    title: "Fieldset & Legend"
+    title: "Fieldset and legend"
     relationship: "Owns the group and its question."
   - path: "/components/checkboxes.html"
     title: "Checkbox"
     relationship: "Use for several answers."
   - path: "/components/select.html"
-    title: "Dropdown Menu & Overflow Menu"
+    title: "Dropdown menu and overflow menu"
     relationship: "Use for a longer list."
   - path: "/components/button-group-segmented-control.html"
-    title: "Button Group / Segmented Control"
+    title: "Button group / segmented control"
     relationship: "Use for a few visible choices that act at once."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns the hint under a question."
   - path: "/accessibility/testing.html"
     title: "Test the interface"
     relationship: "Owns the keyboard, 320 pixel and zoom checks."
 component:
-  parent: "Radio Button"
+  parent: "Radio button"
   letter: "R"
   origins:
     - "HTML5"
@@ -54,17 +54,17 @@ component:
     - "ha-radio-option"
 ---
 
-# Radio Button
+# Radio button
 
 <h2 id="purpose">Purpose</h2>
 
 Use radio buttons when exactly one answer can be chosen from a short list. A new unit choice, a display mode and a small set of exclusive options all fit.
 
-Use [Checkbox](checkboxes.html) for several answers and [Dropdown Menu & Overflow Menu](select.html) for a long list. Do not use radios for an immediate on or off control. A switch and a question have different expectations.
+Use [Checkbox](checkboxes.html) for several answers and [Dropdown menu and overflow menu](select.html) for a long list. Do not use radios for an immediate on or off control. A switch and a question have different expectations.
 
 This page covers:
 
-- Radio Button
+- Radio button
   - `<input type="radio">`
   - `ha-radio-group`
 
@@ -92,7 +92,7 @@ Put the group in one `fieldset` with a `legend` that asks the question. Give eve
 
 In a native group, Tab moves onto the selected radio, or the first one if none is selected. The arrow keys move to the next or previous radio and select it, and Space selects the focused one. The browser draws the circle, and `accent-color` colours it.
 
-You cannot write a radio in a [Markdown Card](markdown-card.html). The card removes the `type` attribute from `input` unless it is a checkbox. In a form or on a dashboard, use the `select` selector instead: `mode: list` with one choice draws a group of radios, and `mode: box` draws a grid of large options that work the same way.
+You cannot write a radio in a [Markdown card](markdown-card.html). The card removes the `type` attribute from `input` unless it is a checkbox. In a form or on a dashboard, use the `select` selector instead: `mode: list` with one choice draws a group of radios, and `mode: box` draws a grid of large options that work the same way.
 
 ```yaml
 select:
@@ -134,15 +134,15 @@ The selected state is a dot as well as a colour. A disabled radio follows the th
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-- Use one fieldset and legend, one shared name, distinct values and a label for each radio. See [Fieldset & Legend](fieldset.html).
+- Use one fieldset and legend, one shared name, distinct values and a label for each radio. See [Fieldset and legend](fieldset.html).
 - Keep the list short and the choices visible when comparing them helps.
 - Show the saved choice when editing an existing setting.
 - For a new, unanswered question, do not select an answer for the person.
 - Include a genuine “Use device setting” or “Not sure” choice when it is valid, rather than forcing a false either-or.
 - Keep the order the same everywhere, and avoid “Other” without a text field.
-- Put follow-up questions after the choice, and do not hide essential explanation behind an option. Put a hint under the legend: see [Help / Hint Text](hint-text.html).
+- Put follow-up questions after the choice, and do not hide essential explanation behind an option. Put a hint under the legend: see [Help / hint text](hint-text.html).
 - On a small screen, stack the choices rather than squeezing several into a row.
-- If a choice has an immediate effect, use a switch or a [Button Group / Segmented Control](button-group-segmented-control.html) instead.
+- If a choice has an immediate effect, use a switch or a [Button group / segmented control](button-group-segmented-control.html) instead.
 
 Success criteria that apply:
 

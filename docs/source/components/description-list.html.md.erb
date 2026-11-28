@@ -1,5 +1,5 @@
 ---
-title: "Description List"
+title: "Description list"
 description: "Pair a term with its description, such as a device property and its value."
 section: "components"
 group: "Components"
@@ -10,20 +10,20 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Description List specification: terms and descriptions, when to use them, and where Home Assistant offers its own alternative."
+    description: "Added the Description list specification: terms and descriptions, when to use them, and where Home Assistant offers its own alternative."
 ai_instructions: "Apply when a list pairs a name with a value, such as a device and its area. A description list is plain HTML with a term and a description for each item. Home Assistant has no description list card; its nearest choices are the Entities card and the details in the More info dialog. Do not claim that every screen reader announces a description list the same way, and do not assume a Markdown card accepts this markup. Keep terms short, one idea in each description, and stack term over description on a narrow screen. Link to Summary list for rows that also carry actions."
 ai_related:
   - path: "/components/summary-list.html"
-    title: "Summary List"
+    title: "Summary list"
     relationship: "Owns rows of a key, a value and optional actions."
   - path: "/components/table.html"
-    title: "Data Table"
+    title: "Data table"
     relationship: "Use when people compare the same values across many items."
   - path: "/components/area-card.html"
-    title: "Area Card"
+    title: "Area card"
     relationship: "Shows readings for one area instead of a list of facts."
 component:
-  parent: "Description List"
+  parent: "Description list"
   letter: "D"
   origins:
     - "HTML5"
@@ -44,17 +44,17 @@ component:
     - "dd"
 ---
 
-# Description List
+# Description list
 
 <h2 id="purpose">Purpose</h2>
 
 A description list pairs a term with its description. It suits facts about one thing: a device and its area, a setting and its value, or a word and its meaning. Home Assistant has no card or element of this kind. A description list is plain HTML.
 
-This page owns the markup. For rows that also carry change links or buttons, use a [summary list](summary-list.html). To compare the same values across many items, use a [Data Table](table.html).
+This page owns the markup. For rows that also carry change links or buttons, use a [summary list](summary-list.html). To compare the same values across many items, use a [Data table](table.html).
 
 This page covers:
 
-- Description List
+- Description list
   - `<dl>`
     - `<dt>`
     - `<dd>`

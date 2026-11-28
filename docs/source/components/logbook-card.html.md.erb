@@ -1,5 +1,5 @@
 ---
-title: "Logbook Card"
+title: "Logbook card"
 description: "The Home Assistant card that lists what happened to chosen entities, devices or areas, and the list element it draws."
 section: "components"
 group: "Components"
@@ -10,16 +10,16 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Logbook Card specification: the card and its list, what the theme changes, and the limits of a scrolling history."
+    description: "Added the Logbook card specification: the card and its list, what the theme changes, and the limits of a scrolling history."
   - date: "2026-11-26"
-    description: "Pointed the card entry to the Activity Card page, which owns it."
-ai_instructions: "Apply to the Home Assistant card of type logbook, which the interface calls Activity, and to the list it draws (ha-logbook). The Activity Card page owns the card’s keys, so link to it rather than copying them. The card draws no icon at the start of an entry, and its entries are not a list element. Entries beyond the visible window are not in the page until you scroll, so give people the Show more link and state the period. Day headings are level four headings inside a card whose title is a level one heading. A dashboard author cannot place ha-logbook alone. Do not promise live updates or claim every entry is reachable by keyboard."
+    description: "Pointed the card entry to the Activity card page, which owns it."
+ai_instructions: "Apply to the Home Assistant card of type logbook, which the interface calls Activity, and to the list it draws (ha-logbook). The Activity card page owns the card’s keys, so link to it rather than copying them. The card draws no icon at the start of an entry, and its entries are not a list element. Entries beyond the visible window are not in the page until you scroll, so give people the Show more link and state the period. Day headings are level four headings inside a card whose title is a level one heading. A dashboard author cannot place ha-logbook alone. Do not promise live updates or claim every entry is reachable by keyboard."
 ai_related:
   - path: "/components/activity-card.html"
-    title: "Activity Card"
+    title: "Activity card"
     relationship: "Owns the card’s keys, period and example."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface and its header."
   - path: "/home-assistant/history-and-statistics.html"
     title: "History, activity and statistics"
@@ -28,7 +28,7 @@ ai_related:
     title: "Dashboard composition and card features"
     relationship: "Owns how cards are grouped into views."
 component:
-  parent: "Logbook Card"
+  parent: "Logbook card"
   letter: "L"
   origins:
     - "Home Assistant"
@@ -46,17 +46,17 @@ component:
     - "activity"
 ---
 
-# Logbook Card
+# Logbook card
 
 <h2 id="purpose">Purpose</h2>
 
 The logbook card shows a scrolling list of what happened to the things you choose, newest first. Home Assistant calls it Activity in its interface. In YAML it is `type: logbook`. Use it so people can check what happened in a room or to a device without leaving the dashboard.
 
-The [Activity Card](activity-card.html) page owns the card’s keys, its period and its example. This page adds the list the card draws and how it behaves when the history is long.
+The [Activity card](activity-card.html) page owns the card’s keys, its period and its example. This page adds the list the card draws and how it behaves when the history is long.
 
 This page covers:
 
-- Logbook Card
+- Logbook card
   - `hui-logbook-card`
   - `ha-logbook`
 
@@ -72,13 +72,13 @@ From top to bottom:
 
 <h3 id="xref-hui-logbook-card"><code>hui-logbook-card</code></h3>
 
-The card is owned by [Activity Card](activity-card.html#child-hui-logbook-card), which lists its keys and says what each does.
+The card is owned by [Activity card](activity-card.html#child-hui-logbook-card), which lists its keys and says what each does.
 
 What else the card does:
 
 - With no entities in the target it shows the error “The provided target in the logbook card has no entities.” Devices, areas and labels are turned into the entities they contain.
 - If a chosen device has been removed, it shows a warning: “A device used by this card no longer exists.”
-- As a grid card it asks for 12 columns and 6 rows by default. The [Activity Card](activity-card.html) page gives its height.
+- As a grid card it asks for 12 columns and 6 rows by default. The [Activity card](activity-card.html) page gives its height.
 - The “Show more” link opens the Activity page from the start of yesterday for the same targets, and the link has the name “Show more”, with no card name.
 
 The Civica theme sets the card surface, border, square corners, no shadow and the title (through the `ha-card-header-*` keys), plus the text and divider colours.
@@ -110,7 +110,7 @@ The list reads these theme variables: `primary-text-color`, `secondary-text-colo
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-Choose the target and period as the [Activity Card](activity-card.html#usage) page advises. Put the period in the title, for example “Garage door, last 24 hours”. Tell people what an empty list means, because Home Assistant says only “No activity found.” For wording see [States, requests and errors](../content/writing-guidelines/states-and-errors.html). For where to place the card see [Dashboard composition and card features](../home-assistant/dashboard-composition.html).
+Choose the target and period as the [Activity card](activity-card.html#usage) page advises. Put the period in the title, for example “Garage door, last 24 hours”. Tell people what an empty list means, because Home Assistant says only “No activity found.” For wording see [States, requests and errors](../content/writing-guidelines/states-and-errors.html). For where to place the card see [Dashboard composition and card features](../home-assistant/dashboard-composition.html).
 
 Success criteria that apply:
 
@@ -126,6 +126,6 @@ Success criteria that apply:
 
 ### An Activity card with nothing to show
 
-A simulated card whose title says the period and whose list area holds Home Assistant’s own empty wording. The Show more link goes nowhere here. For a card with entries see [Activity Card](activity-card.html).
+A simulated card whose title says the period and whose list area holds Home Assistant’s own empty wording. The Show more link goes nowhere here. For a card with entries see [Activity card](activity-card.html).
 
 <%= example('spec-logbook-empty') %>

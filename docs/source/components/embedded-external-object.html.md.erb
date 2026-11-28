@@ -1,5 +1,5 @@
 ---
-title: "Embedded External Object"
+title: "Embedded external object"
 description: "How a page from outside a dashboard can be shown inside it, and why Home Assistant’s Webpage card is the right tool."
 section: "components"
 group: "Components"
@@ -10,20 +10,20 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Embedded External Object specification: what the embed, object and param elements do, why a dashboard does not use them and what to use instead."
+    description: "Added the Embedded external object specification: what the embed, object and param elements do, why a dashboard does not use them and what to use instead."
 ai_instructions: "Apply when asked to show an external file or page inside a dashboard. A dashboard author cannot write the embed, object or param elements. Use the Webpage card (type iframe) and an ordinary link with visible text, and describe in words what the embedded page shows. The theme cannot style an embedded page. A page may be blocked by the provider or by mixed content. Never weaken the card's security options to make a frame load. Do not claim that embed or object work in a given browser or for a given file type."
 ai_related:
   - path: "/home-assistant/pictures-and-embedded-content.html"
     title: "Pictures, rich content and embedded pages"
     relationship: "Owns blocked frames, security options and fallbacks for external pages."
   - path: "/components/inset-text.html"
-    title: "Inset Text"
+    title: "Inset text"
     relationship: "Use for the text description of what the embed shows."
   - path: "/accessibility/testing.html"
     title: "Test the interface"
     relationship: "Owns keyboard trap and reflow checks."
 component:
-  parent: "Embedded External Object"
+  parent: "Embedded external object"
   letter: "E"
   origins:
     - "HTML5"
@@ -44,7 +44,7 @@ component:
     - "param"
 ---
 
-# Embedded External Object
+# Embedded external object
 
 <h2 id="purpose">Purpose</h2>
 
@@ -54,7 +54,7 @@ This page explains the two elements so you know why they are not used, and what 
 
 This page covers:
 
-- Embedded External Object
+- Embedded external object
   - `<embed>`
   - `<object>`
     - `<param>`

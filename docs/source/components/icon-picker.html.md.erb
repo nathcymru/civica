@@ -1,5 +1,5 @@
 ---
-title: "Icon Picker"
+title: "Icon picker"
 description: "Let people choose an icon by searching its name, and show the chosen icon beside its name in words."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Icon Picker specification: the field and its list, how search works, the settings a form can give it and what the Civica theme sets."
+    description: "Added the Icon picker specification: the field and its list, how search works, the settings a form can give it and what the Civica theme sets."
 ai_instructions: "Apply when a form asks for an icon (the icon selector, or an icon field in a card editor or helper form). Tell people to search by a word such as lamp, because there are several thousand icons and the names are English words joined with hyphens. Always show the chosen icon beside its name as text, because the icon alone has no name. Give the field a label and a short hint. Do not claim it is a native select or a standard combobox. Do not claim the helper text is linked to the field. Do not quote a contrast ratio."
 ai_related:
   - path: "/components/icon-and-state-icon.html"
-    title: "Icon & State Icon"
+    title: "Icon and state icon"
     relationship: "Owns the icon elements that draw each icon in the field and the list."
   - path: "/styles/images-icons.html"
     title: "Icons"
     relationship: "Owns the advice on when to use an icon and how to choose one."
   - path: "/components/combobox-autocomplete.html"
-    title: "Combobox / Autocomplete"
-    relationship: "Owns the searchable picker that the Icon Picker is built on."
+    title: "Combobox / autocomplete"
+    relationship: "Owns the searchable picker that the Icon picker is built on."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns the helper line under the field."
 component:
-  parent: "Icon Picker"
+  parent: "Icon picker"
   letter: "I"
   origins:
     - "Home Assistant"
@@ -39,11 +39,11 @@ component:
     - "icon selector"
 ---
 
-# Icon Picker
+# Icon picker
 
 <h2 id="purpose">Purpose</h2>
 
-An Icon Picker lets people choose one icon, for example for a helper, a card or a button. People search by name and pick from the matches. This page owns the Home Assistant icon field. For the icons themselves, see [Icon & State Icon](icon-and-state-icon.html). For pickers in general, see [Combobox / Autocomplete](combobox-autocomplete.html). For choosing an icon in the first place, see [Icons](../styles/images-icons.html).
+An Icon picker lets people choose one icon, for example for a helper, a card or a button. People search by name and pick from the matches. This page owns the Home Assistant icon field. For the icons themselves, see [Icon and state icon](icon-and-state-icon.html). For pickers in general, see [Combobox / autocomplete](combobox-autocomplete.html). For choosing an icon in the first place, see [Icons](../styles/images-icons.html).
 
 This page covers:
 

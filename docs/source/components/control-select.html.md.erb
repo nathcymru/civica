@@ -1,5 +1,5 @@
 ---
-title: "Control Select"
+title: "Control select"
 description: "Choose one option from a short row of buttons or a closed menu, as in fan, climate and light cards."
 section: "components"
 group: "Components"
@@ -10,19 +10,19 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Control Select specification: the button row and the menu, keyboard use, theme keys and a contrast warning for the selected option in dark mode."
+    description: "Added the Control select specification: the button row and the menu, keyboard use, theme keys and a contrast warning for the selected option in dark mode."
   - date: "2026-11-28"
     description: "Added the card-mod route to a darker selected fill in dark mode."
 ai_instructions: "Apply to the Home Assistant option row (ha-control-select) and the closed menu (ha-control-select-menu) used in card features such as fan speed, alarm modes, climate modes and select-options. Selected text is fixed white by Home Assistant over the primary colour. Calculated from theme colours, that is 5.17:1 in light mode and 1.48:1 in dark mode, so never say the dark selected state passes. Arrow keys move focus only; Space or Enter selects. Selection is shown by fill only, with no tick, so write the chosen value in words. Set a label. Colours need card-mod, and a darker selected fill set with --control-select-color restores contrast in dark mode. For a native HTML list use the Select page."
 ai_related:
   - path: "/components/select.html"
-    title: "Dropdown Menu & Overflow Menu"
+    title: "Dropdown menu and overflow menu"
     relationship: "Owns the native select element."
   - path: "/components/sliders.html"
-    title: "Control Slider"
+    title: "Control slider"
     relationship: "Owns choosing a value along a range."
   - path: "/components/control-number-box.html"
-    title: "Control Number Box"
+    title: "Control number box"
     relationship: "Owns changing a number in steps."
   - path: "/home-assistant/dashboard-composition.html"
     title: "Dashboard composition and card features"
@@ -31,7 +31,7 @@ ai_related:
     title: "Climate, fan and water-heater controls"
     relationship: "Owns mode and speed tasks for these devices."
 component:
-  parent: "Control Select"
+  parent: "Control select"
   letter: "C"
   origins:
     - "Home Assistant"
@@ -47,17 +47,17 @@ component:
     - "ha-control-select-menu"
 ---
 
-# Control Select
+# Control select
 
 <h2 id="purpose">Purpose</h2>
 
-Control Select lets people choose one option from a short list. Home Assistant draws it two ways: a row of buttons with the chosen one filled, and a closed menu that shows the current value. Card features use both for fan speed, alarm modes, climate modes, timer presets and similar choices.
+Control select lets people choose one option from a short list. Home Assistant draws it two ways: a row of buttons with the chosen one filled, and a closed menu that shows the current value. Card features use both for fan speed, alarm modes, climate modes, timer presets and similar choices.
 
 For a native HTML list in a form, see [Select](select.html).
 
 This page covers:
 
-- Control Select
+- Control select
   - `ha-control-select`
   - `ha-control-select-menu`
 

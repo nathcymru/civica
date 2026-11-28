@@ -1,5 +1,5 @@
 ---
-title: "Iframe / Webpage Card"
+title: "Iframe / webpage card"
 description: "Show another web page inside a dashboard with the Webpage card, name the frame, and give people an ordinary link when the page cannot be shown."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Iframe / Webpage Card specification: the frame, the Webpage card and its keys, what the Civica theme sets and how to name the frame and offer a link."
+    description: "Added the Iframe / webpage card specification: the frame, the Webpage card and its keys, what the Civica theme sets and how to name the frame and offer a link."
 ai_instructions: "Apply when a dashboard shows another page inside a card (type: iframe, called the Webpage card in Home Assistant). Always set title, because it is the only way to name the frame, and it also draws a level-one heading. Say in words what the frame shows and give an ordinary link that names the destination, because the page may be blocked or may not suit a small screen. The theme cannot style the framed page. Keep the default sandbox. Do not use disable_sandbox or allow_open_top_navigation to make a frame load. A page served over HTTP cannot be shown when Home Assistant is opened over HTTPS. Never claim that a framed page loads, is keyboard accessible or meets any contrast."
 ai_related:
   - path: "/home-assistant/pictures-and-embedded-content.html"
     title: "Pictures, rich content and embedded pages"
     relationship: "Owns blocked frames, security options and fallbacks for external pages."
   - path: "/components/embedded-external-object.html"
-    title: "Embedded External Object"
+    title: "Embedded external object"
     relationship: "Owns why a dashboard uses the Webpage card and not other embedding elements."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface and the card header."
   - path: "/accessibility/testing.html"
     title: "Test the interface"
     relationship: "Owns the keyboard trap and reflow checks."
 component:
-  parent: "Iframe / Webpage Card"
+  parent: "Iframe / webpage card"
   letter: "I"
   origins:
     - "HTML5"
@@ -44,13 +44,13 @@ component:
     - "webpage card"
 ---
 
-# Iframe / Webpage Card
+# Iframe / webpage card
 
 <h2 id="purpose">Purpose</h2>
 
 A Webpage card shows another web page inside a dashboard card, for example a weather radar or a camera viewer. Use it when a page you trust has something people need next to their other cards. The page inside the frame belongs to its owner. The Civica theme cannot change its text, colours or accessibility.
 
-This page owns the `<iframe>` element and the Home Assistant Webpage card. For blocked pages, security options and fallbacks, see [Pictures, rich content and embedded pages](../home-assistant/pictures-and-embedded-content.html). For the other embedding elements, see [Embedded External Object](embedded-external-object.html).
+This page owns the `<iframe>` element and the Home Assistant Webpage card. For blocked pages, security options and fallbacks, see [Pictures, rich content and embedded pages](../home-assistant/pictures-and-embedded-content.html). For the other embedding elements, see [Embedded external object](embedded-external-object.html).
 
 This page covers:
 

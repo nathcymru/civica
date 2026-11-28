@@ -1,5 +1,5 @@
 ---
-title: "Error Message & Error Summary"
+title: "Error message and error summary"
 description: "Tell people which answers could not be accepted: a message beside each field and a summary at the start of the form."
 section: "components"
 group: "Components"
@@ -18,16 +18,16 @@ updates:
 ai_instructions: "Apply when a form or dialog cannot accept an answer. Use an inline error message beside the field and, after a failed save, an error summary at the start of the form content, below any back link, with the same words and a link to each affected field. Describe the correction, with units or permitted choices. Do not check fields people have not touched yet. Do not treat an offline device or a missing permission as a mistake in the answer. Keep every correct answer when a save fails. Use the integration’s own minimum and maximum, never an invented range. The red border supports the words and never replaces them. Do not claim measured contrast, focus appearance or screen-reader behaviour. Home Assistant draws its own errors in its own forms; the theme can set only error-color."
 ai_related:
   - path: "/components/text-input.html"
-    title: "Text Input"
+    title: "Text input"
     relationship: "Owns the text field that carries an error message."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns the help line that sits above an error message."
   - path: "/components/character-count.html"
-    title: "Character Count"
+    title: "Character count"
     relationship: "Owns the count and limit message for long text."
   - path: "/components/alert-and-tip-callout.html"
-    title: "Alert & Tip Callout"
+    title: "Alert and tip callout"
     relationship: "Owns the alert Home Assistant uses for messages in its own forms and dialogs."
   - path: "/patterns/question-pages.html"
     title: "Ask clear questions on pages and in dialogs"
@@ -39,7 +39,7 @@ ai_related:
     title: "Test the interface"
     relationship: "Owns the accessibility checks to run on a finished form."
 component:
-  parent: "Error Message & Error Summary"
+  parent: "Error message and error summary"
   letter: "E"
   origins:
     - "Civica"
@@ -55,17 +55,17 @@ component:
     - "Civica Error Summary Pattern"
 ---
 
-# Error Message & Error Summary
+# Error message and error summary
 
 <h2 id="purpose">Purpose</h2>
 
 When a form cannot accept an answer, people need to know three things: that something went wrong, which answer it is, and how to fix it. Civica gives this two parts that work together. An error message sits beside the field that needs correcting. An error summary sits at the start of the form and links to every message.
 
-These are Civica patterns, not Home Assistant elements. Use them on Civica pages and in forms built with Civica form markup. Home Assistant draws its own errors in its own forms and dialogs, and a theme can set only their colour, `error-color`. For the alert Home Assistant uses inside its dialogs, see [Alert & Tip Callout](alert-and-tip-callout.html).
+These are Civica patterns, not Home Assistant elements. Use them on Civica pages and in forms built with Civica form markup. Home Assistant draws its own errors in its own forms and dialogs, and a theme can set only their colour, `error-color`. For the alert Home Assistant uses inside its dialogs, see [Alert and tip callout](alert-and-tip-callout.html).
 
 This page covers:
 
-- Error Message & Error Summary
+- Error message and error summary
   - Civica Error Message Pattern
   - Civica Error Summary Pattern
 

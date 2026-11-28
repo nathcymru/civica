@@ -1,5 +1,5 @@
 ---
-title: "Control Circular Slider"
+title: "Control circular slider"
 description: "Set a value by moving a handle round a dial, as in the thermostat and light dialogs."
 section: "components"
 group: "Components"
@@ -10,14 +10,14 @@ last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
-    description: "Added the Control Circular Slider specification: what the dial does, keyboard keys, the theme keys that reach it and what stays as Home Assistant draws it."
+    description: "Added the Control circular slider specification: what the dial does, keyboard keys, the theme keys that reach it and what stays as Home Assistant draws it."
 ai_instructions: "Apply to the Home Assistant circular dial (ha-control-circular-slider) used inside the light card and the climate, humidifier and water heater dialogs. It is not a card type and cannot be written in YAML. Always show the value as text next to the dial. The dial colour follows primary-color. The focus cue is a thicker arc, not the Civica focus ring, and the white target dot is fixed by Home Assistant; changing either needs card-mod or custom code. The track colour uses Home Assistant's default and has not been measured. Never say the dial is a native range input."
 ai_related:
   - path: "/components/sliders.html"
-    title: "Control Slider"
+    title: "Control slider"
     relationship: "Owns the straight sliders and the exact-entry alternative."
   - path: "/components/control-number-box.html"
-    title: "Control Number Box"
+    title: "Control number box"
     relationship: "Owns plus and minus buttons, the usual alternative to dragging."
   - path: "/home-assistant/climate-and-air.html"
     title: "Climate, fan and water-heater controls"
@@ -26,7 +26,7 @@ ai_related:
     title: "Continuous controls and alternatives"
     relationship: "Owns live updates, permissions and reconciliation."
 component:
-  parent: "Control Circular Slider"
+  parent: "Control circular slider"
   letter: "C"
   origins:
     - "Home Assistant"
@@ -38,7 +38,7 @@ component:
     - "ha-control-circular-slider"
 ---
 
-# Control Circular Slider
+# Control circular slider
 
 <h2 id="purpose">Purpose</h2>
 
@@ -46,7 +46,7 @@ The circular slider sets one value, or a low and high pair, by moving a handle r
 
 This page covers:
 
-- Control Circular Slider
+- Control circular slider
   - `ha-control-circular-slider`
 
 <h2 id="anatomy">Anatomy</h2>
@@ -93,7 +93,7 @@ Changing the arc thickness, the track or the handle needs the card-mod integrati
 <h2 id="usage">Usage policy and cognitive accessibility</h2>
 
 - Show the target as text beside the dial, with its unit.
-- Offer an exact alternative next to it: plus and minus buttons or a typed value. See [Control Number Box](control-number-box.html) and [Control Slider](sliders.html).
+- Offer an exact alternative next to it: plus and minus buttons or a typed value. See [Control number box](control-number-box.html) and [Control slider](sliders.html).
 - Do not rely on colour to show how far the value is from normal.
 - Give the dial a label that says what it sets: “Target temperature”.
 - Do not run a device command on every small movement. The dialogs apply the value when the handle is released.

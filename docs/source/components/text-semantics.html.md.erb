@@ -1,5 +1,5 @@
 ---
-title: "Text Semantics (Inline)"
+title: "Text semantics (inline)"
 description: "Choose the inline element that matches what a phrase means, and know which ones a Home Assistant Markdown card keeps."
 section: "components"
 group: "Components"
@@ -10,41 +10,41 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Text Semantics (Inline) specification: what each inline element means, which ones a Markdown card keeps and what to write instead for the rest."
+    description: "Added the Text semantics (inline) specification: what each inline element means, which ones a Markdown card keeps and what to write instead for the rest."
 ai_instructions: "Apply when marking up a phrase inside a sentence. Choose the element for its meaning, not its look: strong for importance, em for stress, del and ins for removed and added text, sub and sup for typographic position. Never rely on bold, italics or colour alone, and never assume a screen reader announces strong or em. Say a change in words, such as Removed and Added. Never put a required instruction or a warning in small. Do not use u for emphasis because it looks like a link. In a Markdown card only strong, em, b, i, u, small, s, del, ins, sub, sup, bdi, bdo, br, span and div are kept, with their class, style, id and lang removed; dfn, data, ruby, rt, rp and wbr appear as literal text. Mark, abbr, code, kbd, samp, var, pre, q, cite, blockquote, time, a, label, output, meter and progress belong to other pages."
 ai_related:
   - path: "/components/mark-highlight.html"
-    title: "Mark / Highlight"
+    title: "Mark / highlight"
     relationship: "Owns the highlight element."
   - path: "/components/abbreviation.html"
     title: "Abbreviation"
     relationship: "Owns the abbreviation element."
   - path: "/components/code-and-preformatted-text.html"
-    title: "Code & Preformatted Text"
+    title: "Code and preformatted text"
     relationship: "Owns code, keyboard, sample, variable and preformatted text."
   - path: "/components/blockquote.html"
     title: "Blockquote"
     relationship: "Owns quotations and citations."
   - path: "/components/link-anchor.html"
-    title: "Link / Anchor"
+    title: "Link / anchor"
     relationship: "Owns links."
   - path: "/components/label.html"
     title: "Label"
     relationship: "Owns the label of a form field."
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns the card that renders these elements on a dashboard."
   - path: "/components/relative-time-and-timestamp.html"
-    title: "Relative Time & Timestamp"
+    title: "Relative time and timestamp"
     relationship: "Owns dates and times, so the data element is not used for them."
   - path: "/components/warning-text.html"
-    title: "Warning Text"
+    title: "Warning text"
     relationship: "Use it, not bold text, for a warning."
   - path: "/styles/typography-type-scale.html"
     title: "Type scale"
     relationship: "Owns the text sizes that small and the body text use."
 component:
-  parent: "Text Semantics (Inline)"
+  parent: "Text semantics (inline)"
   letter: "T"
   origins:
     - "HTML5"
@@ -141,7 +141,7 @@ component:
     - "div"
 ---
 
-# Text Semantics (Inline)
+# Text semantics (inline)
 
 <h2 id="purpose">Purpose</h2>
 
@@ -149,7 +149,7 @@ Inline text elements mark up part of a sentence: an important phrase, a removed 
 
 On a dashboard, these elements matter most in a [Markdown card](markdown-card.html). Other Home Assistant cards draw names and states as plain text.
 
-Some inline elements belong to other pages: highlighted text on [Mark / Highlight](mark-highlight.html), abbreviations on [Abbreviation](abbreviation.html), code and preformatted text on [Code & Preformatted Text](code-and-preformatted-text.html), quotations on [Blockquote](blockquote.html), links on [Link / Anchor](link-anchor.html), form labels on [Label](label.html), and dates and times on [Relative Time & Timestamp](relative-time-and-timestamp.html). Do not use the elements below for those jobs.
+Some inline elements belong to other pages: highlighted text on [Mark / highlight](mark-highlight.html), abbreviations on [Abbreviation](abbreviation.html), code and preformatted text on [Code and preformatted text](code-and-preformatted-text.html), quotations on [Blockquote](blockquote.html), links on [Link / anchor](link-anchor.html), form labels on [Label](label.html), and dates and times on [Relative time and timestamp](relative-time-and-timestamp.html). Do not use the elements below for those jobs.
 
 This page covers:
 
@@ -225,7 +225,7 @@ The defining use of a term, in the sentence that explains it. Define a term in p
 
 <h3 id="child-data"><code>&lt;data&gt;</code></h3>
 
-A value a machine can read, set with a `value` attribute. It is not announced and not shown differently. Do not use it for dates and times, which belong on [Relative Time & Timestamp](relative-time-and-timestamp.html). A Markdown card shows the tag as literal text. Write the value in the sentence instead.
+A value a machine can read, set with a `value` attribute. It is not announced and not shown differently. Do not use it for dates and times, which belong on [Relative time and timestamp](relative-time-and-timestamp.html). A Markdown card shows the tag as literal text. Write the value in the sentence instead.
 
 <h3 id="child-bdi"><code>&lt;bdi&gt;</code></h3>
 

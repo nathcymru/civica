@@ -1,5 +1,5 @@
 ---
-title: "Statistic & Statistics Graph Cards"
+title: "Statistic and statistics graph cards"
 description: "Show one statistic for a period, or a chart of statistics over days, and know how Civica's chart presentation treats Energy charts."
 section: "components"
 group: "Components"
@@ -16,22 +16,22 @@ updates:
 ai_instructions: "Apply when a dashboard shows a statistic (type: statistic) or a statistics graph (type: statistics-graph), or when someone asks how Civica treats charts. Statistic card: entity, stat_type (mean, min, max or change) and period are required; say the type and period in words. Statistics graph card: entities, days_to_show, period, stat_types and chart_type; its title is always a first-level heading, and it has no data table. ha-chart-base draws every Home Assistant chart and the legend; the Civica Energy chart presentation applies only inside the Energy panel. Civica gives these two cards theme colours only, with no data table. The statistic card is focusable but has no key handler: do not call it keyboard operable. Use the six chart colours, and keep to five series or fewer so each has its own colour. Do not claim the charts are accessible to screen readers, do not state contrast for series colours, and do not give a version number."
 ai_related:
   - path: "/components/history-graph-card.html"
-    title: "History Graph Card"
+    title: "History graph card"
     relationship: "Owns the history graph for state changes over time."
   - path: "/components/energy-cards.html"
-    title: "Energy Cards"
+    title: "Energy cards"
     relationship: "Owns the cards in the Energy panel."
   - path: "/components/table.html"
-    title: "Data Table"
+    title: "Data table"
     relationship: "Owns table captions, headers and numeric alignment, used for chart data."
   - path: "/components/gauge.html"
     title: "Gauge"
     relationship: "Use when one value sits within a known range."
   - path: "/components/sensor-card.html"
-    title: "Sensor Card"
+    title: "Sensor card"
     relationship: "Use for the current reading instead of a statistic over a period."
   - path: "/components/card-header-and-footer-widgets.html"
-    title: "Card Header & Footer Widgets"
+    title: "Card header and footer widgets"
     relationship: "Owns the footer a statistic card can show."
   - path: "/home-assistant/history-and-statistics.html"
     title: "History, activity and statistics"
@@ -46,7 +46,7 @@ ai_related:
     title: "Data visualisation"
     relationship: "Owns the principles for charts and data."
 component:
-  parent: "Statistic & Statistics Graph Cards"
+  parent: "Statistic and statistics graph cards"
   letter: "S"
   origins:
     - "Lovelace"
@@ -67,17 +67,17 @@ component:
     - "ha-chart-base"
 ---
 
-# Statistic & Statistics Graph Cards
+# Statistic and statistics graph cards
 
 <h2 id="purpose">Purpose</h2>
 
 Two Home Assistant cards show long-term statistics rather than the current state. The Statistic card gives one number for a period, such as the electricity used this month. The Statistics graph card draws several statistics as a chart over days or weeks. Both sit on the chart element that draws every Home Assistant chart.
 
-This page owns these two cards and the chart element, and records how Civica treats charts. For the history of states, see [History Graph Card](history-graph-card.html). For the cards in the Energy panel, see [Energy Cards](energy-cards.html). For recorded values in general, see [History, activity and statistics](../home-assistant/history-and-statistics.html).
+This page owns these two cards and the chart element, and records how Civica treats charts. For the history of states, see [History graph card](history-graph-card.html). For the cards in the Energy panel, see [Energy cards](energy-cards.html). For recorded values in general, see [History, activity and statistics](../home-assistant/history-and-statistics.html).
 
 This page covers:
 
-- Statistic & Statistics Graph Cards
+- Statistic and statistics graph cards
   - `hui-statistic-card`
   - `hui-statistics-graph-card`
   - `ha-chart-base`
@@ -151,9 +151,9 @@ The card refreshes every 60 minutes, or every five minutes when the period is `5
 
 **What the Civica theme sets.** Square corners, a 1 pixel border and no shadow, and the chart colours below.
 
-**Headings.** The title is a first-level heading wherever the card sits. If your dashboard has its own heading order, leave the title off and put a heading in a [Markdown Card](markdown-card.html) above the chart.
+**Headings.** The title is a first-level heading wherever the card sits. If your dashboard has its own heading order, leave the title off and put a heading in a [Markdown card](markdown-card.html) above the chart.
 
-**No data table.** The native card has no table or text summary. The chart cannot be styled with CSS. The nearest accessible routes are a table written in a Markdown card (see [Data Table](table.html)), a [History Graph Card](history-graph-card.html) and its data, or the View data disclosure in the Energy panel.
+**No data table.** The native card has no table or text summary. The chart cannot be styled with CSS. The nearest accessible routes are a table written in a Markdown card (see [Data table](table.html)), a [History graph card](history-graph-card.html) and its data, or the View data disclosure in the Energy panel.
 
 **What needs card-mod.** Changing the card’s own text style needs the card-mod integration. The chart itself is drawn on a canvas and cannot be restyled with it.
 

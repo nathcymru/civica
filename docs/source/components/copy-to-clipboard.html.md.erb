@@ -1,5 +1,5 @@
 ---
-title: "Copy-to-Clipboard"
+title: "Copy-to-clipboard"
 description: "Let people copy a value, such as an address or a token, with one button."
 section: "components"
 group: "Components"
@@ -10,13 +10,13 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Copy-to-Clipboard specification: the read-only field with a Copy button, hidden values, the confirmation message and what this Home Assistant version uses."
+    description: "Added the Copy-to-clipboard specification: the read-only field with a Copy button, hidden values, the confirmation message and what this Home Assistant version uses."
   - date: "2026-11-26"
     description: "Named the copy field by its element, ha-input-copy."
 ai_instructions: "Apply when a person needs to copy a value such as an address, key or token. The element is ha-input-copy, with copy buttons elsewhere that use the copyToClipboard helper. Copy copies the real value even when it is masked. Confirmation is a short toast message only; do not claim it is announced to a screen reader or that copying works on every connection, because failure is not reported. Always say what will be copied, and never hide a value without a Show control. Theme keys for form fields and buttons apply."
 ai_related:
   - path: "/components/text-input.html"
-    title: "Text Input"
+    title: "Text input"
     relationship: "Owns labels, hints and errors for fields."
   - path: "/components/buttons.html"
     title: "Button"
@@ -28,7 +28,7 @@ ai_related:
     title: "Test the interface"
     relationship: "Test keyboard and screen reader behaviour."
 component:
-  parent: "Copy-to-Clipboard"
+  parent: "Copy-to-clipboard"
   letter: "C"
   origins:
     - "Home Assistant"
@@ -40,15 +40,15 @@ component:
     - "ha-input-copy"
 ---
 
-# Copy-to-Clipboard
+# Copy-to-clipboard
 
 <h2 id="purpose">Purpose</h2>
 
-Copy-to-Clipboard saves people retyping a long value, such as a remote address, a webhook address, a key or a token. A button next to the value copies it for them.
+Copy-to-clipboard saves people retyping a long value, such as a remote address, a webhook address, a key or a token. A button next to the value copies it for them.
 
 This page covers:
 
-- Copy-to-Clipboard
+- Copy-to-clipboard
   - `ha-input-copy`
 
 <h2 id="anatomy">Anatomy</h2>

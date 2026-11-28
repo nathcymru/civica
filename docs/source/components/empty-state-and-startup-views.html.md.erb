@@ -1,5 +1,5 @@
 ---
-title: "Empty State & Startup Views"
+title: "Empty state and startup views"
 description: "What to show when a view has nothing in it yet, and what Home Assistant shows while it is starting."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Empty State & Startup Views specification: the Empty State card, the starting screen and the empty-state pattern used in Home Assistant’s own pages."
+    description: "Added the Empty state and startup views specification: the Empty State card, the starting screen and the empty-state pattern used in Home Assistant’s own pages."
 ai_instructions: "Apply when a view, list or search has nothing to show, or while Home Assistant is starting. The Empty State card (type empty-state) takes an icon, a title, a sentence of content and buttons; its title is a top-level heading. The starting card (type starting) has no options and is shown by Home Assistant itself, not added by authors. Home Assistant’s own pages use a similar element (ha-empty-state) whose heading is a second-level heading; on a dashboard use the card. An empty state must say why it is empty and what to do next, and must look different from an error and from loading. Do not claim the text is announced, or that the card offers a reload button. Do not claim a contrast ratio."
 ai_related:
   - path: "/home-assistant/dashboard-composition.html"
@@ -26,10 +26,10 @@ ai_related:
     title: "Button"
     relationship: "Owns the buttons in the Empty State card."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface."
 component:
-  parent: "Empty State & Startup Views"
+  parent: "Empty state and startup views"
   letter: "E"
   origins:
     - "Lovelace"
@@ -50,7 +50,7 @@ component:
     - "ha-empty-state"
 ---
 
-# Empty State & Startup Views
+# Empty state and startup views
 
 <h2 id="purpose">Purpose</h2>
 
@@ -58,7 +58,7 @@ An empty state tells people a view has nothing in it yet, and what to do about i
 
 This page covers:
 
-- Empty State & Startup Views
+- Empty state and startup views
   - `hui-empty-state-card`
   - `hui-starting-card`
   - Home Assistant Empty State Pattern

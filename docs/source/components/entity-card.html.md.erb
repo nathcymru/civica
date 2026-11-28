@@ -1,5 +1,5 @@
 ---
-title: "Entity Card"
+title: "Entity card"
 description: "Show one entity as a small card with its name, an icon and its state."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Entity Card specification: its settings, the theme keys that reach it and what stays as Home Assistant draws it."
+    description: "Added the Entity card specification: its settings, the theme keys that reach it and what stays as Home Assistant draws it."
 ai_instructions: "Apply when a dashboard shows one entity as a small card (type entity). The card needs an entity. It shows the name, an icon and the state with its unit, and opens More info when selected unless tap_action says otherwise. The icon colour follows the state and is set by Home Assistant, so write the state in words as well. Do not rely on the icon colour. Say that the Civica focus ring needs the card-mod integration: the card draws its own border and 1 pixel state-colour shadow on focus, and the Civica rule adds a 3 pixel outline and a 3 pixel #FFDD00 shadow. Do not claim contrast, focus appearance or screen-reader announcements for the card."
 ai_related:
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns card structure, headings and the card surface."
   - path: "/components/entities-card-and-entity-rows.html"
-    title: "Entities Card & Entity Rows"
+    title: "Entities card and entity rows"
     relationship: "Use for a list of several entities instead of one card each."
   - path: "/components/button-card.html"
-    title: "Button Card"
+    title: "Button card"
     relationship: "Use when the card must switch an entity on and off."
   - path: "/home-assistant/entity-state.html"
     title: "Entity state, confidence and freshness"
     relationship: "Owns the wording for zero, unknown and unavailable readings."
 component:
-  parent: "Entity Card"
+  parent: "Entity card"
   letter: "E"
   origins:
     - "Lovelace"
@@ -38,17 +38,17 @@ component:
     - "hui-entity-card"
 ---
 
-# Entity Card
+# Entity card
 
 <h2 id="purpose">Purpose</h2>
 
 An entity card shows one entity: its name, an icon and its state with the unit. Use it for a single reading people look at often, such as the hall temperature.
 
-This page owns the Home Assistant entity card (`type: entity`). For several entities in one card, use an [entities card](entities-card-and-entity-rows.html). For card structure, see [Card (Base Surface)](cards.html).
+This page owns the Home Assistant entity card (`type: entity`). For several entities in one card, use an [entities card](entities-card-and-entity-rows.html). For card structure, see [Card (base surface)](cards.html).
 
 This page covers:
 
-- Entity Card
+- Entity card
   - `hui-entity-card`
 
 <h2 id="anatomy">Anatomy</h2>

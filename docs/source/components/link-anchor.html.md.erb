@@ -1,5 +1,5 @@
 ---
-title: "Link / Anchor"
+title: "Link / anchor"
 description: "Take someone to another page or place with a link that says where it goes."
 section: "components"
 group: "Components"
@@ -10,11 +10,11 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Link / Anchor specification: the link element, where links appear in Home Assistant, what Civica changes and what stays as Home Assistant draws it."
+    description: "Added the Link / anchor specification: the link element, where links appear in Home Assistant, what Civica changes and what stays as Home Assistant draws it."
 ai_instructions: "Apply when text or a card takes someone somewhere. A link goes somewhere and a button does something, so use the button page for actions. Write link text that names the destination, not Click here, and say so in the text when a link opens a new tab or downloads a file. In a Markdown card the link colour is primary-color, because Civica's link-color variable is read only by Civica's own cards. Never claim a visited colour, that a Markdown card underlines links, or a focus appearance for a link in a Markdown card. A card tap action such as navigate is not a link. Quote contrast only as calculated from theme colours."
 ai_related:
   - path: "/components/action-links.html"
-    title: "Action Links"
+    title: "Action links"
     relationship: "Owns Civica's own card of links to dashboard paths."
   - path: "/components/buttons.html"
     title: "Button"
@@ -23,16 +23,16 @@ ai_related:
     title: "Skip link"
     relationship: "Owns the link that jumps past repeated content."
   - path: "/components/back-link.html"
-    title: "Back Link"
+    title: "Back link"
     relationship: "Owns the link back to the previous page."
   - path: "/components/breadcrumbs.html"
     title: "Breadcrumb"
     relationship: "Owns the trail of links to parent pages."
   - path: "/components/language-navigation.html"
-    title: "Language Navigation"
+    title: "Language navigation"
     relationship: "Owns links between language versions of a page."
 component:
-  parent: "Link / Anchor"
+  parent: "Link / anchor"
   letter: "L"
   origins:
     - "HTML5"
@@ -46,7 +46,7 @@ component:
     - "anchor"
 ---
 
-# Link / Anchor
+# Link / anchor
 
 <h2 id="purpose">Purpose</h2>
 
@@ -54,7 +54,7 @@ A link takes someone to another page, another place on the same page or a file. 
 
 This page covers:
 
-- Link / Anchor
+- Link / anchor
   - `<a>`
 
 <h2 id="anatomy">Anatomy</h2>
@@ -95,12 +95,12 @@ Never use a link as a button, for example `href="#"` with a script. Use a [Butto
 
 - In a Markdown card, in dialogs and in help text you write. A link in a Markdown card takes `--primary-color`, or `--markdown-link-color` if a theme sets it. Each theme sets its own `primary-color`, so the link colour depends on the theme. In the Civica theme it is #1D70B8 in light mode and #C0D7EB in dark mode. For the Civica theme, calculated from those colours, that is about 5.2 to 1 on a white card and about 10 to 1 on the dark card surface. Check the other themes on your own dashboard.
 - Each theme also sets `link-color` and `ha-color-text-link`, but only Civica’s own cards read them. A Markdown card does not. The light mode value is #1A65A6 in every theme; the dark mode value differs by theme, and is #C0D7EB in the Civica theme.
-- Civica’s own [Action Links](action-links.html) card shows a list of links to dashboard paths, each at least 44 pixels high, with a Civica yellow focus background.
+- Civica’s own [Action links](action-links.html) card shows a list of links to dashboard paths, each at least 44 pixels high, with a Civica yellow focus background.
 - A card’s tap action, such as `navigate` or `url`, is not a link. It is not a link element, so say in the card’s text where it goes.
 
 **What stays as Home Assistant draws it.** The visited colour and the focus look of a link in a Markdown card are the browser’s and Home Assistant’s own. Check on your dashboard that links in a Markdown card are underlined, and add a cue other than colour if they are not.
 
-For other special links, see [Skip link](skip-link.html), [Back Link](back-link.html), [Breadcrumb](breadcrumbs.html) and [Language Navigation](language-navigation.html).
+For other special links, see [Skip link](skip-link.html), [Back link](back-link.html), [Breadcrumb](breadcrumbs.html) and [Language navigation](language-navigation.html).
 
 <h2 id="limits">Advantages and limitations</h2>
 

@@ -1,5 +1,5 @@
 ---
-title: "Entities Card & Entity Rows"
+title: "Entities card and entity rows"
 description: "Show a titled list of entities as rows, each row built for its kind of entity, with a few special rows for dividers, labels and links."
 section: "components"
 group: "Components"
@@ -21,22 +21,22 @@ ai_related:
     title: "Entity lists, readings and row actions"
     relationship: "Owns how to mix readings, attributes and row actions in one list."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns card structure and headings."
   - path: "/components/card-header-and-footer-widgets.html"
-    title: "Card Header & Footer Widgets"
+    title: "Card header and footer widgets"
     relationship: "Owns the header and footer widgets an entities card can show."
   - path: "/components/conditional-card.html"
-    title: "Conditional Card"
+    title: "Conditional card"
     relationship: "Owns showing or hiding a whole card by condition."
   - path: "/components/summary-list.html"
-    title: "Summary List"
+    title: "Summary list"
     relationship: "Owns the plain pattern for a list of names and values."
   - path: "/home-assistant/entity-state.html"
     title: "Entity state, confidence and freshness"
     relationship: "Owns the wording for zero, unknown and unavailable readings."
 component:
-  parent: "Entities Card & Entity Rows"
+  parent: "Entities card and entity rows"
   letter: "E"
   origins:
     - "Lovelace"
@@ -205,17 +205,17 @@ component:
     - "hui-text-row"
 ---
 
-# Entities Card & Entity Rows
+# Entities card and entity rows
 
 <h2 id="purpose">Purpose</h2>
 
 An entities card is a titled list. Each line is a row for one entity, and Home Assistant picks the kind of row from the entity’s domain, so a light gets a switch and a sensor gets a reading. A few special rows add dividers, section labels, links and buttons. Use it for a short list of related things, such as everything in one room.
 
-This page owns the card and every row. For how to mix readings, attributes and actions in one list, see [Entity lists, readings and row actions](../home-assistant/entity-lists-and-rows.html). For card structure, see [Card (Base Surface)](cards.html).
+This page owns the card and every row. For how to mix readings, attributes and actions in one list, see [Entity lists, readings and row actions](../home-assistant/entity-lists-and-rows.html). For card structure, see [Card (base surface)](cards.html).
 
 This page covers:
 
-- Entities Card & Entity Rows
+- Entities card and entity rows
   - `hui-entities-card`
     - `hui-sensor-entity-row`
     - `hui-toggle-entity-row`
@@ -419,7 +419,7 @@ Home Assistant draws the card title as a first-level heading, so give each entit
 
 <h3 id="xref-hui-entities-card--hui-section-row"><code>hui-section-row</code></h3>
 
-`type: section`. Draws a line with a label under it. `label` is the section name. Use it to name a group of rows. Keep the label short. See [Card & Section Header](card-and-section-header.html#child-hui-section-row) for its colours and limits.
+`type: section`. Draws a line with a label under it. `label` is the section name. Use it to name a group of rows. Keep the label short. See [Card and section header](card-and-section-header.html#child-hui-section-row) for its colours and limits.
 
 <h3 id="child-hui-entities-card--hui-weblink-row"><code>hui-weblink-row</code></h3>
 

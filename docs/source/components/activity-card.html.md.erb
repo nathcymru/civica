@@ -1,5 +1,5 @@
 ---
-title: "Activity Card"
+title: "Activity card"
 description: "Show a time-ordered list of what happened to chosen devices, areas or entities."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Activity Card specification: the Home Assistant card that shows the logbook, its options and its limits."
+    description: "Added the Activity card specification: the Home Assistant card that shows the logbook, its options and its limits."
   - date: "2026-11-26"
     description: "Corrected the description of entries: the card draws no icon at the start of an entry."
   - date: "2026-11-26"
@@ -18,7 +18,7 @@ updates:
 ai_instructions: "Apply when a dashboard shows recent activity. Home Assistant calls this card Activity in the interface and uses type logbook in YAML; the card element is hui-logbook-card. Always set a target. Say the period in the title or beside it. Do not imply the list updates live. Explain what an empty list means. The title is drawn as a level-one heading by Home Assistant."
 ai_related:
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface and its header."
   - path: "/home-assistant/dashboard-composition.html"
     title: "Dashboard composition and card features"
@@ -27,7 +27,7 @@ ai_related:
     title: "Native task accessibility and evidence"
     relationship: "Owns the evidence for native tasks."
 component:
-  parent: "Activity Card"
+  parent: "Activity card"
   letter: "A"
   origins:
     - "Lovelace"
@@ -41,17 +41,17 @@ component:
 
 ---
 
-# Activity Card
+# Activity card
 
 <h2 id="purpose">Purpose</h2>
 
 The Activity card lists what has happened to the things you choose, newest first, such as “Door unlocked” or “Light turned on”. Use it so people can check what happened in a room or to a device without leaving the dashboard.
 
-This page owns the card that Home Assistant calls Activity. For the card surface see [Card (Base Surface)](cards.html).
+This page owns the card that Home Assistant calls Activity. For the card surface see [Card (base surface)](cards.html).
 
 This page covers:
 
-- Activity Card
+- Activity card
   - `hui-logbook-card`
 
 <h2 id="anatomy">Anatomy</h2>
@@ -91,7 +91,7 @@ Keys:
 
 The card is 385 pixels tall unless the layout sets the height, and the list scrolls inside it.
 
-**What the Civica theme sets.** The card surface, the title (through the `ha-card-header-*` keys) and the text and divider colours. See [Card (Base Surface)](cards.html).
+**What the Civica theme sets.** The card surface, the title (through the `ha-card-header-*` keys) and the text and divider colours. See [Card (base surface)](cards.html).
 
 **What stays as Home Assistant draws it.** The list entries, their times and the scrolling list have no theme variable. Changing them would need the card-mod integration. Test any selector in your own dashboard.
 

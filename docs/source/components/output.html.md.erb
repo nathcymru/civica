@@ -14,13 +14,13 @@ updates:
 ai_instructions: "Apply when a value that results from a choice or calculation, such as the number a slider is set to, must be written beside its inputs. Use the output element with a for attribute naming the inputs, write the unit, and keep it next to the control. It has the role status, which makes it a polite live region, so a screen reader may announce each change; support varies. When the value changes continuously, such as while a slider is dragged, set aria-live to off so every step is not announced. Do not use it as a general status line or to carry a value by colour alone. An output is not submitted with a form. Home Assistant provides no output element of its own, and a dashboard author can write one only in HTML they are allowed to write, such as a custom card. The theme has no output variable: text colours are inherited. Do not claim that every screen reader announces changes."
 ai_related:
   - path: "/components/sliders.html"
-    title: "Control Slider"
+    title: "Control slider"
     relationship: "Owns the slider and the exact-value alternative that an output pairs with."
   - path: "/home-assistant/continuous-controls.html"
     title: "Continuous controls and alternatives"
     relationship: "Owns the rules for draft values on dragged controls."
   - path: "/components/control-number-box.html"
-    title: "Control Number Box"
+    title: "Control number box"
     relationship: "Owns the exact-value number field."
 component:
   parent: "Output"
@@ -41,7 +41,7 @@ component:
 
 An output shows the result of a choice or a calculation, next to the controls that produced it. The usual case is the number a slider is set to. A slider on its own gives no written value, so an output beside it tells people what they have chosen.
 
-This page owns the `<output>` element. For slider behaviour and the exact-value alternative, see [Control Slider](sliders.html).
+This page owns the `<output>` element. For slider behaviour and the exact-value alternative, see [Control slider](sliders.html).
 
 This page covers:
 

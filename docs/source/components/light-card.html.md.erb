@@ -1,5 +1,5 @@
 ---
-title: "Light Card"
+title: "Light card"
 description: "Show one light with a brightness dial, a lamp button to switch it, and a way to open more information."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Light Card specification: what the card shows, what Civica changes, what stays as Home Assistant draws it and what to use when you need the state as text."
+    description: "Added the Light card specification: what the card shows, what Civica changes, what stays as Home Assistant draws it and what to use when you need the state as text."
 ai_instructions: "Apply when a dashboard shows one light as a light card (type: light). Say that at rest the card writes no state and no brightness: it shows the state by the lamp icon colour and shows the brightness number only while the dial is dragged. The dial and the lamp button have no accessible name from this card, and the card has no option to add one. The lit lamp colour is Home Assistant's default amber, which Civica does not set, and is about 1.6 to 1 on a white card as calculated, so never rely on it. The filled part of the dial and its track are almost the same colour, so give the value in text elsewhere. When the state must be readable as text, recommend a tile card or an entities card. Never claim a screen reader reading."
 ai_related:
   - path: "/components/control-circular-slider.html"
-    title: "Control Circular Slider"
+    title: "Control circular slider"
     relationship: "Owns the dial inside the card, including its keyboard keys."
   - path: "/components/button-card.html"
-    title: "Button Card"
+    title: "Button card"
     relationship: "Another way to switch a light, with its name on the card."
   - path: "/components/card-features.html"
-    title: "Card Features (Tile & Area Inline Controls)"
+    title: "Card features (tile and area inline controls)"
     relationship: "Owns the brightness control that a tile card can carry."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface."
 component:
-  parent: "Light Card"
+  parent: "Light card"
   letter: "L"
   origins:
     - "Lovelace"
@@ -39,7 +39,7 @@ component:
     - "light"
 ---
 
-# Light Card
+# Light card
 
 <h2 id="purpose">Purpose</h2>
 
@@ -47,7 +47,7 @@ A light card shows one light as a dial with a lamp button in the middle. Drag th
 
 This page covers:
 
-- Light Card
+- Light card
   - `hui-light-card`
 
 <h2 id="anatomy">Anatomy</h2>
@@ -75,7 +75,7 @@ The light card, `type: light`. Set `entity` to a light.
 | `hold_action` | Default: open more information |
 | `double_tap_action` | Optional |
 
-Dragging the dial sets the brightness in whole percentages from 1 to 100. The card does not change the light until you let go. The dial also takes the arrow keys, which change it by one step, and Page Up, Page Down, Home and End. The [Control Circular Slider](control-circular-slider.html) page owns the dial.
+Dragging the dial sets the brightness in whole percentages from 1 to 100. The card does not change the light until you let go. The dial also takes the arrow keys, which change it by one step, and Page Up, Page Down, Home and End. The [Control circular slider](control-circular-slider.html) page owns the dial.
 
 **What the Civica theme sets.**
 
@@ -92,7 +92,7 @@ Dragging the dial sets the brightness in whole percentages from 1 to 100. The ca
 - The brightness number is hidden at rest. A card-mod style `.brightness { opacity: 1; }` may keep it on show. This needs the card-mod integration, and you should test it on your own dashboard first.
 - The name text sits over the lower part of the dial area, and its size is fixed by the card.
 
-**To get the state as text.** Use a tile card, which writes the state beside the name and can carry a brightness control, or an entities card. Put the name and state in text next to a light card if you keep the dial. See [Button Card](button-card.html) and [Card Features (Tile & Area Inline Controls)](card-features.html).
+**To get the state as text.** Use a tile card, which writes the state beside the name and can carry a brightness control, or an entities card. Put the name and state in text next to a light card if you keep the dial. See [Button card](button-card.html) and [Card features (tile and area inline controls)](card-features.html).
 
 <h2 id="limits">Advantages and limitations</h2>
 

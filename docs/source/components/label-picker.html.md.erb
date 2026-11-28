@@ -1,5 +1,5 @@
 ---
-title: "Label Picker"
+title: "Label picker"
 description: "Choose one label, or a list of labels, in a Home Assistant form."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Label Picker specification: the single and multiple pickers, what Civica changes and what stays as Home Assistant draws it."
+    description: "Added the Label picker specification: the single and multiple pickers, what Civica changes and what stays as Home Assistant draws it."
 ai_instructions: "Apply when a Home Assistant form asks which labels apply to a device, entity, area or automation. Home Assistant draws ha-label-picker for one label and ha-labels-picker for a list, in forms and dialogs, never as a dashboard card. Ask the question in terms of the task, and say what a label is. Colour is decoration: the label name is always text. The field shows focus only as a bottom line growing from 1 pixel to 2 pixels, so do not claim a focus ring. The label selector never offers Add new label. Do not claim an announcement for empty results, chip keyboard use, or label contrast. This page owns the two pickers; the Chip page owns the chip, and the Label page owns the form field name."
 ai_related:
   - path: "/home-assistant/target-pickers.html"
@@ -23,13 +23,13 @@ ai_related:
     title: "Chip"
     relationship: "Owns the chip that shows each chosen label."
   - path: "/components/area-picker.html"
-    title: "Area Picker"
+    title: "Area picker"
     relationship: "A sibling picker with the same field and list."
   - path: "/components/label.html"
     title: "Label"
     relationship: "Owns the name of a form field, which is a different thing."
 component:
-  parent: "Label Picker"
+  parent: "Label picker"
   letter: "L"
   origins:
     - "Home Assistant"
@@ -46,7 +46,7 @@ component:
     - "labels"
 ---
 
-# Label Picker
+# Label picker
 
 <h2 id="purpose">Purpose</h2>
 
@@ -56,7 +56,7 @@ This page is about the Home Assistant labels. It is not about a form field’s n
 
 This page covers:
 
-- Label Picker
+- Label picker
   - `ha-label-picker`
   - `ha-labels-picker`
 

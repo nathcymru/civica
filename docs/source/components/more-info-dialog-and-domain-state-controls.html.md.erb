@@ -1,5 +1,5 @@
 ---
-title: "More-Info Dialog & Domain State Controls"
+title: "More-info dialog and domain state controls"
 description: "The Home Assistant dialog that opens when you select an entity, and the controls inside it for lights, climate, covers, fans, locks and other devices."
 section: "components"
 group: "Components"
@@ -10,25 +10,25 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the More-Info Dialog & Domain State Controls specification: the dialog, its views and header, and each device control inside it, with what the Civica theme sets and what stays Home Assistant’s."
+    description: "Added the More-info dialog and domain state controls specification: the dialog, its views and header, and each device control inside it, with what the Civica theme sets and what stays Home Assistant’s."
   - date: "2026-11-26"
     description: "Named the humidifier, lock and water heater controls by the elements Home Assistant draws."
 ai_instructions: "Apply when describing the dialog that opens when someone selects an entity (the more-info dialog) and the control inside it for each kind of device. The dialog opens on the hass-more-info event; a dashboard author cannot restyle it with card-mod, and a theme sets only its surface, corners, divider and text colours. The humidifier control is ha-state-control-humidifier-humidity, the lock control is ha-state-control-lock-toggle and the water heater control is ha-state-control-water_heater-temperature. The vertical brightness, cover and valve controls are dragged and have no step buttons in the control. The slider focus ring is 2 pixels in the control’s own colour, not the Civica yellow focus. Civica sets no control-slider, control-switch or per-device state colour, so those stay Home Assistant’s. Civica’s mdc-dialog heading and content ink colours are not read by this version of the dialog; do not claim they style it. Settings and the three-dots menu are for administrators only. Do not claim contrast for device state colours, that sliders work by keyboard, or that card-mod reaches the dialog."
 ai_related:
   - path: "/components/dialogs.html"
-    title: "Dialog / Modal"
+    title: "Dialog / modal"
     relationship: "Owns dialog behaviour, anatomy and confirmation wording."
   - path: "/components/action-bar-bottom-sheet.html"
-    title: "Action Bar / Bottom Sheet"
+    title: "Action bar / bottom sheet"
     relationship: "Owns the bottom sheet the dialog becomes on a small screen."
   - path: "/components/sliders.html"
-    title: "Control Slider"
+    title: "Control slider"
     relationship: "Owns slider guidance and the exact-value alternative."
   - path: "/components/control-circular-slider.html"
-    title: "Control Circular Slider"
+    title: "Control circular slider"
     relationship: "Owns the dial used for temperature and humidity."
   - path: "/components/control-select.html"
-    title: "Control Select"
+    title: "Control select"
     relationship: "Owns the stepped selector used for fan speeds."
   - path: "/home-assistant/continuous-controls.html"
     title: "Continuous controls and alternatives"
@@ -49,7 +49,7 @@ ai_related:
     title: "History, activity and statistics"
     relationship: "Owns history and logbook guidance."
 component:
-  parent: "More-Info Dialog & Domain State Controls"
+  parent: "More-info dialog and domain state controls"
   letter: "M"
   origins:
     - "Home Assistant"
@@ -126,17 +126,17 @@ component:
     - "ha-water_heater-state"
 ---
 
-# More-Info Dialog & Domain State Controls
+# More-info dialog and domain state controls
 
 <h2 id="purpose">Purpose</h2>
 
 When someone selects a light, a thermostat, a lock or most other entities, Home Assistant opens the more-info dialog. It shows the entity’s state, the control that suits its kind of device, and, for people allowed to see them, its history, settings and related items.
 
-A dashboard author cannot write this dialog or restyle it from a card. A theme can set its surface, corners, dividers and text colours. This page describes what the dialog contains so that you can write dashboards that open it, theme it and test it. The rules for dialogs in general, including confirmations, are owned by [Dialog / Modal](dialogs.html).
+A dashboard author cannot write this dialog or restyle it from a card. A theme can set its surface, corners, dividers and text colours. This page describes what the dialog contains so that you can write dashboards that open it, theme it and test it. The rules for dialogs in general, including confirmations, are owned by [Dialog / modal](dialogs.html).
 
 This page covers:
 
-- More-Info Dialog & Domain State Controls
+- More-info dialog and domain state controls
   - `ha-more-info-dialog`
     - `ha-more-info-info`
     - `ha-more-info-history`
@@ -161,7 +161,7 @@ The dialog has a header and a scrolling content area.
 
 - The header has a close button, or a back button inside a sub-view, the entity name with its area and device above it, and buttons for history and settings. Administrators also get a three-dots menu.
 - The content area shows the view: the state and control first, then history and logbook for most kinds of device.
-- On a screen narrower than 870 pixels or shorter than 500 pixels the dialog opens as a bottom sheet instead, described on [Action Bar / Bottom Sheet](action-bar-bottom-sheet.html).
+- On a screen narrower than 870 pixels or shorter than 500 pixels the dialog opens as a bottom sheet instead, described on [Action bar / bottom sheet](action-bar-bottom-sheet.html).
 
 <figure class="c-project-figure">
   <img src="<%= docs_path('/images/component-more-info-dialog-anatomy.svg') %>" width="960" height="560" alt="" loading="lazy" decoding="async">
@@ -186,7 +186,7 @@ The backdrop, shadow and open and close timing are Home Assistant’s, because t
 
 **The controls inside.** The device controls described below share some behaviour:
 
-- Vertical sliders (brightness, cover position and valve position) are drag controls with no step buttons. If people need an exact value, add an exact-value field beside them, as described on [Control Slider](sliders.html). Dials have minus and plus buttons. Each control has a name, a role and a current value for assistive technology.
+- Vertical sliders (brightness, cover position and valve position) are drag controls with no step buttons. If people need an exact value, add an exact-value field beside them, as described on [Control slider](sliders.html). Dials have minus and plus buttons. Each control has a name, a role and a current value for assistive technology.
 - Their focus ring is a 2 pixel ring in the control’s own colour. It is not the Civica yellow focus colour, and a theme cannot change it. This applies to every control on this page.
 - Their colours default to the theme’s primary colour for the active part and a grey track. The Civica theme sets none of the `control-*` variables. It also sets no colour for a specific kind of device, so the amber for lights, green and red for locks, and the purple for covers stay Home Assistant’s. The Civica theme sets only the general active, inactive and unavailable state colours.
 - Civica’s `slider-color` and `paper-slider-*` colours are for older sliders. The more-info controls do not read them.
@@ -221,7 +221,7 @@ For colour and temperature, see [Lighting capabilities and colour](../home-assis
 
 <h3 id="child-ha-more-info-dialog--ha-state-control-climate-temperature"><code>ha-state-control-climate-temperature</code></h3>
 
-A dial for a thermostat’s target temperature, with the number in large type, and minus and plus buttons with their own labels. For a heat and cool range it has two handles with buttons to choose the low or high one. It is also used inside the thermostat card. For the dial, see [Control Circular Slider](control-circular-slider.html), and for behaviour, see [Climate, fan and water-heater controls](../home-assistant/climate-and-air.html).
+A dial for a thermostat’s target temperature, with the number in large type, and minus and plus buttons with their own labels. For a heat and cool range it has two handles with buttons to choose the low or high one. It is also used inside the thermostat card. For the dial, see [Control circular slider](control-circular-slider.html), and for behaviour, see [Climate, fan and water-heater controls](../home-assistant/climate-and-air.html).
 
 <h3 id="child-ha-more-info-dialog--ha-state-control-cover-position"><code>ha-state-control-cover-position</code></h3>
 
@@ -229,7 +229,7 @@ A vertical slider for how open a cover is, named “position”. The active colo
 
 <h3 id="child-ha-more-info-dialog--ha-state-control-fan-speed"><code>ha-state-control-fan-speed</code></h3>
 
-Either a stepped selector, when the fan has set speeds, or a slider for a percentage. Both are named. The selector is described on [Control Select](control-select.html).
+Either a stepped selector, when the fan has set speeds, or a slider for a percentage. Both are named. The selector is described on [Control select](control-select.html).
 
 <h3 id="child-ha-more-info-dialog--ha-state-control-humidifier-humidity"><code>ha-state-control-humidifier-humidity</code></h3>
 

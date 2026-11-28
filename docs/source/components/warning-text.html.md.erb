@@ -1,5 +1,5 @@
 ---
-title: "Warning Text"
+title: "Warning text"
 description: "Explain a significant consequence before someone commits to an action, in a short warning or a yellow callout."
 section: "components"
 group: "Components"
@@ -25,10 +25,10 @@ ai_related:
     title: "Button"
     relationship: "Owns the destructive and cancel actions that follow a warning."
   - path: "/components/alert-and-tip-callout.html"
-    title: "Alert & Tip Callout"
+    title: "Alert and tip callout"
     relationship: "Owns ha-alert, the native warning message on a dashboard."
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns the Markdown a warning message is written in."
   - path: "/patterns/household-urgency.html"
     title: "Show household urgency clearly"
@@ -37,7 +37,7 @@ ai_related:
     title: "Emergency banner"
     relationship: "Owns the Civica banner for urgent household messages."
 component:
-  parent: "Warning Text"
+  parent: "Warning text"
   letter: "W"
   origins:
     - "Civica"
@@ -51,7 +51,7 @@ component:
     - "warning callout"
 ---
 
-# Warning Text
+# Warning text
 
 <h2 id="purpose">Purpose</h2>
 
@@ -63,7 +63,7 @@ Home Assistant has no warning text element, so this is a Civica pattern. On a da
 
 This page covers:
 
-- Warning Text
+- Warning text
   - Civica Warning Text Pattern
 
 <h2 id="anatomy">Anatomy</h2>
@@ -84,7 +84,7 @@ A warning callout has a pale yellow box with a thin border, a heading and a para
 
 **Home Assistant alternatives.**
 
-- The nearest native piece is `ha-alert` with `alert-type="warning"`. In a Markdown card, write a quote that starts with `[!WARNING]`. See [Alert & Tip Callout](alert-and-tip-callout.html). A native alert announces itself at once, so use it for a message that appears after an action, not for a static warning that was there from the start.
+- The nearest native piece is `ha-alert` with `alert-type="warning"`. In a Markdown card, write a quote that starts with `[!WARNING]`. See [Alert and tip callout](alert-and-tip-callout.html). A native alert announces itself at once, so use it for a message that appears after an action, not for a static warning that was there from the start.
 - A Civica Markdown card with the yellow surface is the [Emergency banner](../publishing/components/emergency-banner.html). It needs the card-mod integration.
 
 Neither stops a harmful action. A warning does not make anything safe, and a device’s own limits stay the job of the device and its integration.

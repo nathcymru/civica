@@ -1,5 +1,5 @@
 ---
-title: "Video & Camera Stream Player"
+title: "Video and camera stream player"
 description: "Show a video or a live camera picture, and know which controls, captions and text alternatives a dashboard can offer."
 section: "components"
 group: "Components"
@@ -10,13 +10,13 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Video & Camera Stream Player specification: the video element, the camera stream players, the live and still camera views and what a dashboard can and cannot control."
+    description: "Added the Video and camera stream player specification: the video element, the camera stream players, the live and still camera views and what a dashboard can and cannot control."
   - date: "2026-11-26"
     description: "Described the fallback picture under its own heading."
 ai_instructions: "Apply when a dashboard shows a video or a camera. A Markdown card can hold a video element with a source, but its track element is removed, so captions cannot be added there: give a transcript in text. A camera card shows a live stream without controls and without sound, so offer a still picture view with its time written as text, or open the camera dialog, which has controls. An older kind of live picture is drawn as a plain image inside ha-camera-stream. Never say a stream is live unless it is. Do not quote the contrast or size of the browser’s own video controls."
 ai_related:
   - path: "/components/audio-player.html"
-    title: "Audio Player"
+    title: "Audio player"
     relationship: "Owns the source and track elements, and captions and transcripts."
   - path: "/home-assistant/cameras.html"
     title: "Cameras, streams and snapshots"
@@ -25,16 +25,16 @@ ai_related:
     title: "Media playback and output selection"
     relationship: "Owns playing media and choosing where it plays."
   - path: "/components/images.html"
-    title: "Image & Picture Cards"
+    title: "Image and picture cards"
     relationship: "Owns picture cards and text alternatives for pictures."
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns the HTML a Markdown card keeps and removes."
   - path: "/components/alert-and-tip-callout.html"
-    title: "Alert & Tip Callout"
+    title: "Alert and tip callout"
     relationship: "Owns the error alert a player shows when a stream fails."
 component:
-  parent: "Video & Camera Stream Player"
+  parent: "Video and camera stream player"
   letter: "V"
   origins:
     - "HTML5"
@@ -48,14 +48,14 @@ component:
           origin: "HTML5"
           anchor: "xref-video--source"
           cross_reference:
-            parent: "Audio Player"
+            parent: "Audio player"
             route: "/components/audio-player.html"
             anchor: "child-audio--source"
         - name: "<track>"
           origin: "HTML5"
           anchor: "xref-video--track"
           cross_reference:
-            parent: "Audio Player"
+            parent: "Audio player"
             route: "/components/audio-player.html"
             anchor: "child-audio--track"
     - name: "ha-camera-stream"
@@ -74,7 +74,7 @@ component:
     - "ha-web-rtc-player"
 ---
 
-# Video & Camera Stream Player
+# Video and camera stream player
 
 <h2 id="purpose">Purpose</h2>
 
@@ -84,7 +84,7 @@ For what to say about cameras, privacy and failed streams, see [Cameras, streams
 
 This page covers:
 
-- Video & Camera Stream Player
+- Video and camera stream player
   - `<video>`
     - `<source>`
     - `<track>`
@@ -116,11 +116,11 @@ A video has no name of its own. Put a visible heading above it that says what it
 
 <h4 id="xref-video--source"><code>&lt;source&gt;</code></h4>
 
-Gives a video more than one file to choose from. It is owned by [Audio Player](audio-player.html#child-audio--source).
+Gives a video more than one file to choose from. It is owned by [Audio player](audio-player.html#child-audio--source).
 
 <h4 id="xref-video--track"><code>&lt;track&gt;</code></h4>
 
-Adds captions and descriptions. It is owned by [Audio Player](audio-player.html#child-audio--track). A Markdown card removes it, so you cannot add captions to a video there. Write a transcript in text instead.
+Adds captions and descriptions. It is owned by [Audio player](audio-player.html#child-audio--track). A Markdown card removes it, so you cannot add captions to a video there. Write a transcript in text instead.
 
 <h3 id="child-ha-camera-stream"><code>ha-camera-stream</code></h3>
 

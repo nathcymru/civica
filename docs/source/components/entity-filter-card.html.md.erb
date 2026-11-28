@@ -1,5 +1,5 @@
 ---
-title: "Entity Filter Card"
+title: "Entity filter card"
 description: "Show only the entities that meet a condition, in the card you choose."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Entity Filter Card specification: the filter settings, the error messages, hiding the card and what it inherits from the card it shows."
+    description: "Added the Entity filter card specification: the filter settings, the error messages, hiding the card and what it inherits from the card it shows."
 ai_instructions: "Apply when a dashboard shows only the entities that meet a condition (type entity-filter). It has no appearance of its own: it draws the card set in card, which is an entities card by default. Give it conditions (or the older state_filter, never both) and a title on the inner card that says what the filter is. show_empty defaults to true, so the card shows an empty list when nothing matches. Set show_empty to false to hide the whole card, and say elsewhere that the card can be missing, because the card itself shows no message when it appears or disappears. Do not claim that the change is announced to a screen reader."
 ai_related:
   - path: "/components/entities-card-and-entity-rows.html"
-    title: "Entities Card & Entity Rows"
+    title: "Entities card and entity rows"
     relationship: "Owns the default card an entity filter card shows."
   - path: "/components/conditional-card.html"
-    title: "Conditional Card"
+    title: "Conditional card"
     relationship: "Use to show or hide a whole card by a condition rather than filter its entities."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns card structure and headings."
   - path: "/home-assistant/entity-state.html"
     title: "Entity state, confidence and freshness"
     relationship: "Owns the wording for zero, unknown and unavailable readings."
 component:
-  parent: "Entity Filter Card"
+  parent: "Entity filter card"
   letter: "E"
   origins:
     - "Lovelace"
@@ -38,17 +38,17 @@ component:
     - "hui-entity-filter-card"
 ---
 
-# Entity Filter Card
+# Entity filter card
 
 <h2 id="purpose">Purpose</h2>
 
 An entity filter card checks a list of entities against a condition and shows only the ones that match. Use it for a list that should show only what needs attention, such as the doors and windows that are open.
 
-This page owns the Home Assistant entity filter card (`type: entity-filter`). It draws no visuals of its own, so the look comes from the card it shows. For the default card, see [Entities Card & Entity Rows](entities-card-and-entity-rows.html). To show or hide a whole card by a condition, see [Conditional Card](conditional-card.html).
+This page owns the Home Assistant entity filter card (`type: entity-filter`). It draws no visuals of its own, so the look comes from the card it shows. For the default card, see [Entities card and entity rows](entities-card-and-entity-rows.html). To show or hide a whole card by a condition, see [Conditional card](conditional-card.html).
 
 This page covers:
 
-- Entity Filter Card
+- Entity filter card
   - `hui-entity-filter-card`
 
 <h2 id="anatomy">Anatomy</h2>

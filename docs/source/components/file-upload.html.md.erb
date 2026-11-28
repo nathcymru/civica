@@ -1,5 +1,5 @@
 ---
-title: "File Upload / Dropzone"
+title: "File upload / dropzone"
 description: "Let people choose a file from their device when the task really needs one, and tell them what will happen to it."
 section: "components"
 group: "Components"
@@ -10,16 +10,16 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Rewrote File Upload / Dropzone: the browser file chooser and the Home Assistant upload area, what the theme changes, and how to explain formats, limits and errors."
+    description: "Rewrote File upload / dropzone: the browser file chooser and the Home Assistant upload area, what the theme changes, and how to explain formats, limits and errors."
   - date: "2026-11-11"
     description: "First published, with two examples."
 ai_instructions: "Apply when a task needs a file from the person’s device, such as a dashboard picture or a backup. Use the browser file input with a visible label, and the Home Assistant ha-file-upload element where Home Assistant provides it. Say the accepted formats and the size limit before people choose. Dragging is never the only way: the Add file button must stay. The accept attribute is a hint, not validation, and choosing a file does not prove that it was uploaded. Show the chosen file name and let people replace it. Home Assistant shows no error inside the element, so put the error in the form. A browser will not let a page fill in a file input again after a failed request. The drag overlay and the disabled border use Home Assistant defaults, not Civica colours."
 ai_related:
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns the hint that gives formats and size limits."
   - path: "/components/error-message.html"
-    title: "Error Message & Error Summary"
+    title: "Error message and error summary"
     relationship: "Owns the wording and placement of a field error."
   - path: "/home-assistant/backup-and-restore.html"
     title: "Backups, restore and recovery copies"
@@ -28,7 +28,7 @@ ai_related:
     title: "Schema selectors and configuration forms"
     relationship: "Owns the file selector in automations and configuration forms."
 component:
-  parent: "File Upload / Dropzone"
+  parent: "File upload / dropzone"
   letter: "F"
   origins:
     - "HTML5"
@@ -45,7 +45,7 @@ component:
     - "ha-file-upload"
 ---
 
-# File Upload / Dropzone
+# File upload / dropzone
 
 <h2 id="purpose">Purpose</h2>
 
@@ -55,7 +55,7 @@ This page owns the browser’s file input and Home Assistant’s `ha-file-upload
 
 This page covers:
 
-- File Upload / Dropzone
+- File upload / dropzone
   - `<input type="file">`
   - `ha-file-upload`
 

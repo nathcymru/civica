@@ -1,5 +1,5 @@
 ---
-title: "Bar / Meter"
+title: "Bar / meter"
 description: "Show how full something is on a known scale, with the value always written out."
 section: "components"
 group: "Components"
@@ -10,14 +10,14 @@ last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
-    description: "Added the Bar / Meter specification: the browser meter element and the Home Assistant bar, with what the Civica theme changes."
+    description: "Added the Bar / meter specification: the browser meter element and the Home Assistant bar, with what the Civica theme changes."
 ai_instructions: "Apply when showing a value on a known scale, such as storage used or battery charge. The meter element is the browser’s own and has a role, a name and a value; label it and write the reading beside it. ha-bar is Home Assistant's own 12 pixel bar and is purely visual: it has no role or value for a screen reader, so always print the value as text. Civica sets the primary and secondary background colours that ha-bar uses but sets no ha-bar variable, so the corner radius stays Home Assistant's. The track colour on a white page is pale; do not rely on it. Use the progress element for a task that is running, not meter. Do not claim contrast, or that a screen reader announces ha-bar."
 ai_related:
   - path: "/home-assistant/energy-flow-and-other-charts.html"
     title: "Energy flow and other chart families"
     relationship: "Owns gauge and chart guidance."
 component:
-  parent: "Bar / Meter"
+  parent: "Bar / meter"
   letter: "B"
   origins:
     - "HTML5"
@@ -34,7 +34,7 @@ component:
     - "ha-bar"
 ---
 
-# Bar / Meter
+# Bar / meter
 
 <h2 id="purpose">Purpose</h2>
 
@@ -44,7 +44,7 @@ This page owns the `<meter>` element and Home Assistant’s `ha-bar`. For gauges
 
 This page covers:
 
-- Bar / Meter
+- Bar / meter
   - `<meter>`
   - `ha-bar`
 

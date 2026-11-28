@@ -1,5 +1,5 @@
 ---
-title: "Card (Base Surface)"
+title: "Card (base surface)"
 description: "The surface every Home Assistant card sits on, its header, content and actions, and how to build clear primary and secondary cards."
 section: "components"
 group: "Components"
@@ -23,10 +23,10 @@ ai_related:
     title: "Dashboard composition and card features"
     relationship: "Owns which card to use for which job and how cards are grouped."
   - path: "/components/images.html"
-    title: "Image & Picture Cards"
+    title: "Image and picture cards"
     relationship: "Owns text alternatives and image rules."
   - path: "/components/charts.html"
-    title: "Statistic & Statistics Graph Cards"
+    title: "Statistic and statistics graph cards"
     relationship: "Owns charts shown on a card."
   - path: "/content/writing-guidelines/states-and-errors.html"
     title: "States, requests and errors"
@@ -35,7 +35,7 @@ ai_related:
     title: "Organise household help with hub pages"
     relationship: "Owns larger collections of destinations."
 component:
-  parent: "Card (Base Surface)"
+  parent: "Card (base surface)"
   letter: "C"
   origins:
     - "Home Assistant"
@@ -62,7 +62,7 @@ component:
 
 ---
 
-# Card (Base Surface)
+# Card (base surface)
 
 <h2 id="purpose">Purpose</h2>
 
@@ -72,7 +72,7 @@ This page owns the card surface and the Civica card patterns shown below. For wh
 
 This page covers:
 
-- Card (Base Surface)
+- Card (base surface)
   - `ha-card`
     - `.card-header`
     - `.card-content`
@@ -100,7 +100,7 @@ Variables Home Assistant gives it: `--ha-card-background`, `--ha-card-border-rad
 
 **What needs card-mod.** The theme asks for a visible focus ring on a card that can be focused: a dark outline with a yellow band. This comes from the theme’s card-mod settings, so it needs the card-mod integration. Without it Home Assistant’s own focus styles apply. Check the focus ring on your dashboard.
 
-**Heading level.** When a card uses `header`, Home Assistant draws the title as a level-one heading. This can break heading order. Put a Heading card above the card instead (see [Card & Section Header](card-and-section-header.html)), or use your own heading markup in a custom card. You cannot change the level of the header with a theme.
+**Heading level.** When a card uses `header`, Home Assistant draws the title as a level-one heading. This can break heading order. Put a Heading card above the card instead (see [Card and section header](card-and-section-header.html)), or use your own heading markup in a custom card. You cannot change the level of the header with a theme.
 
 <h3 id="child-ha-card--card-header"><code>.card-header</code></h3>
 

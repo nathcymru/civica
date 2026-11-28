@@ -1,5 +1,5 @@
 ---
-title: "Markdown Card"
+title: "Markdown card"
 description: "Write text, lists, links and tables in a dashboard card, and know what the card keeps and what it removes."
 section: "components"
 group: "Components"
@@ -10,26 +10,26 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Markdown Card specification: its options, the tags it keeps and removes, and how the theme changes its text."
+    description: "Added the Markdown card specification: its options, the tags it keeps and removes, and how the theme changes its text."
 ai_instructions: "Apply when a dashboard card shows written content (type: markdown). Content is Markdown with HTML, filtered for safety. Headings, paragraphs, lists, links, images, tables, details, abbr, mark, kbd, sub, sup and blockquote alerts survive. Every id, class, style, aria, lang, tabindex and hidden attribute is removed, and main, menu, math, time, label, button, form, iframe, style, script and custom elements are shown as plain text. A Markdown table cannot have a caption or header cell scope, so name it in the line above. Links to another site open in a new window with no warning, so say so in the link text. The Civica theme sets no --markdown-* variable; links use primary-color. Content is a Jinja template; say live values only when the template reads an entity."
 ai_related:
   - path: "/components/article.html"
     title: "Article"
     relationship: "Owns the article element and its attributes in a Markdown card."
   - path: "/components/table.html"
-    title: "Data Table"
+    title: "Data table"
     relationship: "Owns table rules, including tables in a Markdown card."
   - path: "/components/do-and-dont-lists.html"
-    title: "Do and Don't Lists"
+    title: "Do and don't lists"
     relationship: "Owns paired lists of advice."
   - path: "/components/code-and-preformatted-text.html"
-    title: "Code & Preformatted Text"
+    title: "Code and preformatted text"
     relationship: "Owns code and preformatted text."
   - path: "/components/contents-list.html"
-    title: "Contents List"
+    title: "Contents list"
     relationship: "Owns lists of links to sections."
   - path: "/components/mark-highlight.html"
-    title: "Mark / Highlight"
+    title: "Mark / highlight"
     relationship: "Owns the mark element."
   - path: "/home-assistant/pictures-and-embedded-content.html"
     title: "Pictures, rich content and embedded pages"
@@ -38,7 +38,7 @@ ai_related:
     title: "Dashboard composition and card features"
     relationship: "Owns how cards are grouped into views."
 component:
-  parent: "Markdown Card"
+  parent: "Markdown card"
   letter: "M"
   origins:
     - "Lovelace"
@@ -61,17 +61,17 @@ component:
     - "markdown"
 ---
 
-# Markdown Card
+# Markdown card
 
 <h2 id="purpose">Purpose</h2>
 
 The Markdown card shows written content: headings, paragraphs, lists, links, images and tables. In YAML it is `type: markdown`. It is how most help text, guides and small tables get onto a dashboard.
 
-Home Assistant filters what you write for safety. It keeps the content tags and removes most attributes and many elements. This page owns that list. Other pages that mention a Markdown card link back here: [Article](article.html), [Data Table](table.html), [Do and Don’t Lists](do-and-dont-lists.html), [Code & Preformatted Text](code-and-preformatted-text.html) and [Contents List](contents-list.html).
+Home Assistant filters what you write for safety. It keeps the content tags and removes most attributes and many elements. This page owns that list. Other pages that mention a Markdown card link back here: [Article](article.html), [Data table](table.html), [Do and Don’t Lists](do-and-dont-lists.html), [Code and preformatted text](code-and-preformatted-text.html) and [Contents list](contents-list.html).
 
 This page covers:
 
-- Markdown Card
+- Markdown card
   - `hui-markdown-card`
   - `ha-markdown`
     - `ha-markdown-element`

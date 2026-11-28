@@ -1,5 +1,5 @@
 ---
-title: "Duration Input"
+title: "Duration input"
 description: "Home Assistant’s field for entering a length of time in hours, minutes and seconds."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Duration Input specification: the fields, options and units, how to explain them, and the limits."
+    description: "Added the Duration input specification: the fields, options and units, how to explain them, and the limits."
 ai_instructions: "Apply to ha-duration-input, the field for a length of time such as a timer, a delay or a boost. It shows number boxes for hours, minutes and seconds (days and milliseconds are optional) marked with the short labels dd, hh, mm, ss and ms. The short labels are abbreviations, so always add helper text that spells the units out and gives a worked value such as 1 hour 30 minutes. A duration is not a clock time: do not use a time-of-day field for it. Hours may go above 23. The theme sets text, border and error colours; unit wording, the Required message and field order cannot be changed. Do not claim a screen reader announces the group name or a contrast ratio."
 ai_related:
   - path: "/home-assistant/schedules-and-time.html"
@@ -20,19 +20,19 @@ ai_related:
     title: "Locale, units and time"
     relationship: "Owns the difference between a date, an instant, a duration and a schedule."
   - path: "/components/text-input.html"
-    title: "Text Input"
+    title: "Text input"
     relationship: "Owns single number and text fields."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns hint wording."
   - path: "/components/error-message.html"
-    title: "Error Message & Error Summary"
+    title: "Error message and error summary"
     relationship: "Owns error wording."
   - path: "/components/fieldset.html"
-    title: "Fieldset & Legend"
+    title: "Fieldset and legend"
     relationship: "Owns grouping related fields under one label."
 component:
-  parent: "Duration Input"
+  parent: "Duration input"
   letter: "D"
   origins:
     - "Home Assistant"
@@ -44,7 +44,7 @@ component:
     - "ha-duration-input"
 ---
 
-# Duration Input
+# Duration input
 
 <h2 id="purpose">Purpose</h2>
 
@@ -54,7 +54,7 @@ Home Assistant uses it in the duration selector, in timer settings, in automatio
 
 This page covers:
 
-- Duration Input
+- Duration input
   - `ha-duration-input`
 
 <h2 id="anatomy">Anatomy</h2>

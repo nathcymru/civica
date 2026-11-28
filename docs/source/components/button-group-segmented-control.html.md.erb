@@ -1,5 +1,5 @@
 ---
-title: "Button Group / Segmented Control"
+title: "Button group / segmented control"
 description: "Home Assistant’s rows of buttons and its segmented view switch, and when to use a radio group instead."
 section: "components"
 group: "Components"
@@ -10,11 +10,11 @@ last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
-    description: "Added the Button Group / Segmented Control specification: the keypad row, the view switch, theme keys and the limits of both."
+    description: "Added the Button group / segmented control specification: the keypad row, the view switch, theme keys and the limits of both."
 ai_instructions: "Apply to the Home Assistant ha-control-button-group, ha-control-button and ha-button-toggle-group. These are internal building blocks inside cards such as the alarm panel keypad and the calendar view switch. You cannot place them with YAML. The toggle group shows the selected option by fill only, with no pressed or checked state in the Home Assistant code, so never say it announces a selection. For a choice an author controls, recommend a radio group or tabs. Never claim measured contrast, heights or screen reader output."
 ai_related:
   - path: "/components/radios.html"
-    title: "Radio Button"
+    title: "Radio button"
     relationship: "Owns a single choice that an author controls."
   - path: "/components/tabs.html"
     title: "Tabs"
@@ -23,13 +23,13 @@ ai_related:
     title: "Button"
     relationship: "Owns the Home Assistant button that the toggle group is made of."
   - path: "/components/alarm-panel-card.html"
-    title: "Alarm Panel Card"
+    title: "Alarm panel card"
     relationship: "Uses the control button group for its keypad."
   - path: "/components/calendar-card.html"
-    title: "Calendar Card"
+    title: "Calendar card"
     relationship: "Uses the toggle group to switch the calendar view."
 component:
-  parent: "Button Group / Segmented Control"
+  parent: "Button group / segmented control"
   letter: "B"
   origins:
     - "Home Assistant"
@@ -50,7 +50,7 @@ component:
     - "ha-button-toggle-group"
 ---
 
-# Button Group / Segmented Control
+# Button group / segmented control
 
 <h2 id="purpose">Purpose</h2>
 
@@ -60,7 +60,7 @@ They are building blocks inside cards. There is no `type:` in YAML that places o
 
 This page covers:
 
-- Button Group / Segmented Control
+- Button group / segmented control
   - `ha-control-button-group`
     - `ha-control-button`
   - `ha-button-toggle-group`
@@ -81,7 +81,7 @@ One button in the group, 40px by 40px. It holds an icon or text, and its `label`
 
 Keyboard focus is shown as a 2px ring in the secondary text colour, set by `--control-button-focus-color`. The button has no selected state of its own.
 
-Theme keys that reach it: `primary-text-color`, `secondary-text-color` and `disabled-text-color`. Corners use Home Assistant’s own radius, because the Civica theme does not set `ha-border-radius-md`. With the card-mod integration you can make them square, as the [Alarm Panel Card](alarm-panel-card.html) page shows:
+Theme keys that reach it: `primary-text-color`, `secondary-text-color` and `disabled-text-color`. Corners use Home Assistant’s own radius, because the Civica theme does not set `ha-border-radius-md`. With the card-mod integration you can make them square, as the [Alarm panel card](alarm-panel-card.html) page shows:
 
 ```yaml
 card_mod:

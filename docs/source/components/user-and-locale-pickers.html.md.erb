@@ -1,5 +1,5 @@
 ---
-title: "User & Locale Pickers"
+title: "User and locale pickers"
 description: "Choose a user, a theme, a country, a language, a time zone or a currency from a searchable list."
 section: "components"
 group: "Components"
@@ -10,17 +10,17 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the User & Locale Pickers specification: the seven pickers, where each appears, the settings that can be written in YAML and how the Civica theme styles the field."
+    description: "Added the User and locale pickers specification: the seven pickers, where each appears, the settings that can be written in YAML and how the Civica theme styles the field."
 ai_instructions: "Apply when a form asks for a user, theme, country, language, time zone or currency. A dashboard author cannot place these pickers: only the selectors theme, country, language and timezone can be written in YAML, in blueprint inputs, script and automation fields and service fields. There is no selector for users or currencies. The field shows its focus as a 2px line under the field, not the Civica yellow ring. Always give the field a visible label. A language picker does not mark each native name with its language. Choosing a theme picks a name only: light or dark mode is a separate setting. Do not say a given site has all eight Civica themes installed."
 ai_related:
   - path: "/components/combobox-autocomplete.html"
-    title: "Combobox / Autocomplete"
+    title: "Combobox / autocomplete"
     relationship: "Owns the searchable list that every picker on this page uses."
   - path: "/components/avatar-and-user-badge.html"
-    title: "Avatar & User Badge"
+    title: "Avatar and user badge"
     relationship: "Owns the user badge shown in the user picker."
   - path: "/components/language-navigation.html"
-    title: "Language Navigation"
+    title: "Language navigation"
     relationship: "Owns how a page tells people which language it is in."
   - path: "/home-assistant/schema-selectors.html"
     title: "Schema selectors and configuration forms"
@@ -29,10 +29,10 @@ ai_related:
     title: "Locale, units and time"
     relationship: "Owns how country, language, units and time zone change what people see."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns the helper text under a field."
 component:
-  parent: "User & Locale Pickers"
+  parent: "User and locale pickers"
   letter: "U"
   origins:
     - "Home Assistant"
@@ -68,17 +68,17 @@ component:
     - "ha-currency-picker"
 ---
 
-# User & Locale Pickers
+# User and locale pickers
 
 <h2 id="purpose">Purpose</h2>
 
 These seven pickers let people choose one value from a long list by typing to search or scrolling: a person, a theme, a country, a language, a time zone or a currency. They appear in Home Assistant’s settings screens, in the profile page and in forms that Home Assistant builds from a schema.
 
-A dashboard cannot place them, because there is no card for any of them. Four can be written in YAML as selectors, in blueprint inputs and in script, automation and service fields. This page tells you where each appears, so you can write the label and help text around it. The shared searchable list is owned by [Combobox / Autocomplete](combobox-autocomplete.html).
+A dashboard cannot place them, because there is no card for any of them. Four can be written in YAML as selectors, in blueprint inputs and in script, automation and service fields. This page tells you where each appears, so you can write the label and help text around it. The shared searchable list is owned by [Combobox / autocomplete](combobox-autocomplete.html).
 
 This page covers:
 
-- User & Locale Pickers
+- User and locale pickers
   - `ha-user-picker`
   - `ha-users-picker`
   - `ha-theme-picker`
@@ -151,7 +151,7 @@ selector:
 
 Chooses a language. By default it lists every language Home Assistant has translations for. `languages` limits the list, `native-name` shows each language in its own name, such as “Cymraeg”, and `no-sort` keeps your order. The label defaults to “Language”. Setting `button-style` swaps the field for a plain button with a menu arrow.
 
-The native names are not marked with their language, so they are not tagged for screen readers as a different language. Where a page lists languages itself, mark each name as described in [Language Navigation](language-navigation.html).
+The native names are not marked with their language, so they are not tagged for screen readers as a different language. Where a page lists languages itself, mark each name as described in [Language navigation](language-navigation.html).
 
 In YAML, use the `language` selector, with `languages` and `native_name` and `no_sort` where needed. The picker is used in General settings, the profile page and the Assist tools.
 

@@ -1,5 +1,5 @@
 ---
-title: "Summary List"
+title: "Summary list"
 description: "Present labelled values, one fact to a row, with an optional Change link for each row."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Rewritten as the full Summary List specification. It now says what Home Assistant offers instead, what a Markdown card can and cannot carry, and how to write the Change links."
+    description: "Rewritten as the full Summary list specification. It now says what Home Assistant offers instead, what a Markdown card can and cannot carry, and how to write the Change links."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
@@ -18,25 +18,25 @@ updates:
 ai_instructions: "Apply when a page or card shows labelled values such as device details, or a review of settings before saving. Home Assistant has no summary list card or element. The Civica pattern is a plain description list with one fact to a row and an optional Change link. In a Markdown card only plain dl, dt and dd survive, in the browser's default style, and a Change link cannot have hidden text, so write the full visible link text. For rows of entity states use the Entities card. Write Not supplied or Unavailable instead of leaving a value blank. Do not use it for comparison across columns, navigation or a sequence of tasks. Never present a contrast figure as measured."
 ai_related:
   - path: "/components/description-list.html"
-    title: "Description List"
+    title: "Description list"
     relationship: "Owns the dl, dt and dd markup that a summary list is built from."
   - path: "/components/entities-card-and-entity-rows.html"
-    title: "Entities Card & Entity Rows"
+    title: "Entities card and entity rows"
     relationship: "Use it when each row is an entity with a live state."
   - path: "/components/table.html"
-    title: "Data Table"
+    title: "Data table"
     relationship: "Use a table when rows need comparing across shared columns."
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns what a Markdown card keeps and strips."
   - path: "/components/card-and-section-header.html"
-    title: "Card & Section Header"
+    title: "Card and section header"
     relationship: "Owns the heading that names each summary."
   - path: "/accessibility/testing.html"
     title: "Test the interface"
     relationship: "Test at 320 px, at 200% text and with a keyboard."
 component:
-  parent: "Summary List"
+  parent: "Summary list"
   letter: "S"
   origins:
     - "Civica"
@@ -51,17 +51,17 @@ component:
     - "dd"
 ---
 
-# Summary List
+# Summary list
 
 <h2 id="purpose">Purpose</h2>
 
 A summary list shows labelled values: a label on one side and its answer on the other, one fact to a row. Use it for the details of one device, or to review settings before saving. Several summaries on one page each need their own heading, so people can tell them apart.
 
-Home Assistant has no card or element of this kind. A summary list is plain HTML on this site, built from the description list that [Description List](description-list.html) owns. This page owns the Civica pattern: the rows, the Change link and the rules for writing them.
+Home Assistant has no card or element of this kind. A summary list is plain HTML on this site, built from the description list that [Description list](description-list.html) owns. This page owns the Civica pattern: the rows, the Change link and the rules for writing them.
 
 This page covers:
 
-- Summary List
+- Summary list
   - Civica Summary List Pattern
 
 <h2 id="anatomy">Anatomy</h2>
@@ -89,8 +89,8 @@ Write each row like this:
 
 **Where Home Assistant lets you write it.**
 
-- **Markdown card.** Only plain `dl`, `dt` and `dd` survive, in the browser’s default style. Classes and styles are removed. The hidden-text trick needs a class, so it cannot be used. Write the whole link text in view, such as “Change dashboard name”. See [Markdown Card](markdown-card.html) for what the card keeps.
-- **Entities card.** When each row is an entity with a live state, use the [Entities Card & Entity Rows](entities-card-and-entity-rows.html) page. Home Assistant draws the rows, and the theme’s text colours apply to them.
+- **Markdown card.** Only plain `dl`, `dt` and `dd` survive, in the browser’s default style. Classes and styles are removed. The hidden-text trick needs a class, so it cannot be used. Write the whole link text in view, such as “Change dashboard name”. See [Markdown card](markdown-card.html) for what the card keeps.
+- **Entities card.** When each row is an entity with a live state, use the [Entities card and entity rows](entities-card-and-entity-rows.html) page. Home Assistant draws the rows, and the theme’s text colours apply to them.
 - **Row dividers.** Changing the dividers between rows needs the card-mod integration. Test the result in your own dashboard.
 - **Settings forms.** Home Assistant’s own settings forms use a settings row that has a heading and a description. A dashboard author cannot place it.
 
@@ -101,7 +101,7 @@ Colours come from the theme: primary and secondary text, the divider colour and 
 - A description list tells assistive technology that each value belongs to its label.
 - One fact to a row keeps the list quick to scan, and long values wrap rather than being cut off.
 - Screen readers announce description lists in different ways, so do not rely on the list being announced.
-- A summary list shows values but cannot compare them across columns. Use a [Data Table](table.html) for that.
+- A summary list shows values but cannot compare them across columns. Use a [Data table](table.html) for that.
 - In a Markdown card the list has no Civica styling and no hidden link text.
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>

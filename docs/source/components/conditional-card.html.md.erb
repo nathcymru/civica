@@ -1,5 +1,5 @@
 ---
-title: "Conditional Card"
+title: "Conditional card"
 description: "Show another card only while its conditions are true."
 section: "components"
 group: "Components"
@@ -10,14 +10,14 @@ last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
-    description: "Added the Conditional Card specification: configuration, condition types, what happens when the card is hidden and what it must not be used for."
+    description: "Added the Conditional card specification: configuration, condition types, what happens when the card is hidden and what it must not be used for."
 ai_instructions: "Apply to the Home Assistant conditional card (type conditional). It wraps one card in card and shows it only while every condition is true. A hidden card leaves no message and no placeholder, so never hide safety information behind a condition that can fail silently, and say elsewhere why something is missing if that matters. Conditions in Lovelace are checked in the browser: they change the layout and are not access control. Never claim that the card appearing or disappearing is announced to a screen reader. The card has no theme variables of its own; the wrapped card is styled as usual."
 ai_related:
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the general rules for cards that the wrapped card follows."
   - path: "/components/alarm-panel-card.html"
-    title: "Alarm Panel Card"
+    title: "Alarm panel card"
     relationship: "A safety card that must not be hidden behind a condition that can fail."
   - path: "/home-assistant/dashboard-composition.html"
     title: "Dashboard composition and card features"
@@ -26,7 +26,7 @@ ai_related:
     title: "Presence, people and shared-screen privacy"
     relationship: "Owns the limits of hiding cards from certain people."
 component:
-  parent: "Conditional Card"
+  parent: "Conditional card"
   letter: "C"
   origins:
     - "Lovelace"
@@ -38,17 +38,17 @@ component:
     - "hui-conditional-card"
 ---
 
-# Conditional Card
+# Conditional card
 
 <h2 id="purpose">Purpose</h2>
 
-The Conditional Card shows another card only while its conditions are true. In YAML it is `type: conditional`. Use it to keep a dashboard short: a frost warning that appears only when it is cold, or a card that appears only on a small screen.
+The Conditional card shows another card only while its conditions are true. In YAML it is `type: conditional`. Use it to keep a dashboard short: a frost warning that appears only when it is cold, or a card that appears only on a small screen.
 
 It does not draw anything of its own. People see only the card inside it, or nothing.
 
 This page covers:
 
-- Conditional Card
+- Conditional card
   - `hui-conditional-card`
 
 <h2 id="anatomy">Anatomy</h2>
@@ -56,7 +56,7 @@ This page covers:
 - A list of conditions.
 - One wrapped card, set in `card`.
 
-When every condition is true, the wrapped card appears where the Conditional Card sits and takes its size. When any condition is false, the card is removed from the page. While you edit the dashboard, the card stays visible so you can still edit it.
+When every condition is true, the wrapped card appears where the Conditional card sits and takes its size. When any condition is false, the card is removed from the page. While you edit the dashboard, the card stays visible so you can still edit it.
 
 <h2 id="variants">Variants, variables and extensibility</h2>
 
@@ -113,7 +113,7 @@ The card has no theme keys of its own, so nothing in the Civica theme changes it
 Success criteria that apply:
 
 - 4.1.3 Status Messages: a card that appears is not announced. Put important changes in a status that is.
-- 2.4.3 Focus Order and 1.3.1 Info and Relationships: the wrapped card sits in the page order where the Conditional Card is.
+- 2.4.3 Focus Order and 1.3.1 Info and Relationships: the wrapped card sits in the page order where the Conditional card is.
 - 3.2.2 On Input and 3.2.4 Consistent Identification: appearing and disappearing must not surprise people.
 
 <h2 id="examples">Examples</h2>

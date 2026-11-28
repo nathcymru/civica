@@ -1,5 +1,5 @@
 ---
-title: "Shortcut Card"
+title: "Shortcut card"
 description: "Give a one-tap shortcut to a page, an address or an action that is not tied to one entity."
 section: "components"
 group: "Components"
@@ -10,20 +10,20 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Shortcut Card specification: its options, the default labels, what Civica changes and how the card is announced."
+    description: "Added the Shortcut card specification: its options, the default labels, what Civica changes and how the card is announced."
 ai_instructions: "Apply when a dashboard needs a shortcut that is not an entity (type: shortcut). It has a label, a description, an icon, a colour, an optional vertical layout and tap, hold and double-tap actions. The default tap action is none, so a card with no action does nothing and is not focusable. When it has an action, it is exposed as a button even if it navigates, never as a link. Write a label that names the destination or action and a description that says what happens. Hold and double-tap must never be the only route. Civica's focus ring is not applied to this card without card-mod. Do not claim link behaviour, a contrast ratio for a chosen colour or a screen reader wording."
 ai_related:
   - path: "/components/button-card.html"
-    title: "Button Card"
+    title: "Button card"
     relationship: "Use for a tile that controls one entity."
   - path: "/components/card-features.html"
-    title: "Card Features (Tile & Area Inline Controls)"
+    title: "Card features (tile and area inline controls)"
     relationship: "Owns the controls that sit inside tile cards."
   - path: "/components/drawer-navigation-sidebar.html"
-    title: "Drawer / Navigation Sidebar"
+    title: "Drawer / navigation sidebar"
     relationship: "Owns the sidebar, which already links to every panel."
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Use for a list of real links."
   - path: "/home-assistant/dashboard-composition.html"
     title: "Dashboard composition and card features"
@@ -32,7 +32,7 @@ ai_related:
     title: "Organise household help with hub pages"
     relationship: "Owns how many shortcuts a start page should hold."
 component:
-  parent: "Shortcut Card"
+  parent: "Shortcut card"
   letter: "S"
   origins:
     - "Lovelace"
@@ -44,17 +44,17 @@ component:
     - "hui-shortcut-card"
 ---
 
-# Shortcut Card
+# Shortcut card
 
 <h2 id="purpose">Purpose</h2>
 
 A shortcut card is a tile that takes people to a page, opens an address or runs an action, without being tied to one entity. “Heating schedule”, “Lock up” and “Ask Assist” are typical. Use it to put a few common jobs at the top of a dashboard.
 
-This page owns the shortcut card (`type: shortcut`). For a tile that controls one entity, see [Button Card](button-card.html). For grouping cards in a view, see [Dashboard composition](../home-assistant/dashboard-composition.html).
+This page owns the shortcut card (`type: shortcut`). For a tile that controls one entity, see [Button card](button-card.html). For grouping cards in a view, see [Dashboard composition](../home-assistant/dashboard-composition.html).
 
 This page covers:
 
-- Shortcut Card
+- Shortcut card
   - `hui-shortcut-card`
 
 <h2 id="anatomy">Anatomy</h2>

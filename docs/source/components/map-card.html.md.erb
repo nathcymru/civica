@@ -1,5 +1,5 @@
 ---
-title: "Map Card"
+title: "Map card"
 description: "Show people, devices and zones on a map, and always list every location as text beside it."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Map Card specification: its options, the six map styles, what the theme changes and the text list every map needs."
+    description: "Added the Map card specification: its options, the six map styles, what the theme changes and the text list every map needs."
 ai_instructions: "Apply when a dashboard shows locations on a map (type: map). Always list every location as text beside the map, with its name, state and time, because the map has no text description of its own. The six map styles are default, colorful, natural, muted, gray and toner; there is no Neon. The Civica theme does not recolour the native map: land, water and road colours stay as Home Assistant draws them unless the card sets map_style or a theme author sets the ha-color-map-* variables. Do not claim every marker is reachable by keyboard, and do not quote contrast for markers or tiles. Link to the Maps, zones and location records page for the pattern and to Map colours for the palette."
 ai_related:
   - path: "/home-assistant/maps-and-zones.html"
@@ -23,10 +23,10 @@ ai_related:
     title: "Presence, people and shared-screen privacy"
     relationship: "Owns what to show about where people are."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface and its header."
 component:
-  parent: "Map Card"
+  parent: "Map card"
   letter: "M"
   origins:
     - "Lovelace"
@@ -44,7 +44,7 @@ component:
     - "map"
 ---
 
-# Map Card
+# Map card
 
 <h2 id="purpose">Purpose</h2>
 
@@ -54,7 +54,7 @@ This page owns the card and its limits. The pattern for location records is in [
 
 This page covers:
 
-- Map Card
+- Map card
   - `hui-map-card`
   - `ha-map`
 

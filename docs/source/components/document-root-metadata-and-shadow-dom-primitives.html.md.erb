@@ -1,5 +1,5 @@
 ---
-title: "Document Root, Metadata & Shadow DOM Primitives"
+title: "Document root, metadata and shadow DOM primitives"
 description: "The page-level HTML elements that Home Assistant builds around every dashboard, and what a dashboard author can and cannot change."
 section: "components"
 group: "Components"
@@ -10,14 +10,14 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Document Root, Metadata & Shadow DOM Primitives specification: the page elements Home Assistant builds, and what a dashboard can change."
+    description: "Added the Document root, metadata and shadow DOM primitives specification: the page elements Home Assistant builds, and what a dashboard can change."
 ai_instructions: "Apply when a question concerns the page itself: language, title, metadata, scripts or the building blocks of Home Assistant elements. Home Assistant builds the document, so a dashboard author cannot edit html, head, body, title, base, link, meta, style, script or noscript, and cannot write template or slot. Never offer a way to edit the page head from a dashboard. Do not suggest base, user-scalable=no or a maximum scale. Home Assistant needs JavaScript, so do not promise a no-script fallback. Colour and card shape come from the theme; the look of one card needs the card-mod integration. Do not claim a contrast ratio."
 ai_related:
   - path: "/home-assistant/dashboard-composition.html"
     title: "Dashboard composition and card features"
     relationship: "Owns what a dashboard author arranges."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface that a theme styles."
   - path: "/components/navigation.html"
     title: "Navigation"
@@ -26,7 +26,7 @@ ai_related:
     title: "Test the interface"
     relationship: "Owns zoom, reflow and language checks."
 component:
-  parent: "Document Root, Metadata & Shadow DOM Primitives"
+  parent: "Document root, metadata and shadow DOM primitives"
   letter: "D"
   origins:
     - "HTML5"
@@ -83,7 +83,7 @@ component:
     - "slot"
 ---
 
-# Document Root, Metadata & Shadow DOM Primitives
+# Document root, metadata and shadow DOM primitives
 
 <h2 id="purpose">Purpose</h2>
 
@@ -93,7 +93,7 @@ Home Assistant builds all of them. A dashboard author works inside the page, wit
 
 This page covers:
 
-- Document Root, Metadata & Shadow DOM Primitives
+- Document root, metadata and shadow DOM primitives
   - `<html>`
   - `<head>`
     - `<title>`
@@ -161,7 +161,7 @@ A fragment of markup that is kept ready and not drawn until a component uses it.
 
 <h3 id="child-slot"><code>&lt;slot&gt;</code></h3>
 
-A placeholder inside one of Home Assistant’s elements, where outside content is shown. Real slots include these, described on [Drawer / Navigation Sidebar](drawer-navigation-sidebar.html), [Dropdown Menu & Overflow Menu](select.html) and [Empty State & Startup Views](empty-state-and-startup-views.html). The drawer has a default slot for the sidebar and a named slot for the page. The sidebar has slots for its main and fixed navigation. The empty state has a default slot for its buttons. The dropdown has a trigger slot. A slot does not change tab order or reading order beyond the order of the content in it.
+A placeholder inside one of Home Assistant’s elements, where outside content is shown. Real slots include these, described on [Drawer / navigation sidebar](drawer-navigation-sidebar.html), [Dropdown menu and overflow menu](select.html) and [Empty state and startup views](empty-state-and-startup-views.html). The drawer has a default slot for the sidebar and a named slot for the page. The sidebar has slots for its main and fixed navigation. The empty state has a default slot for its buttons. The dropdown has a trigger slot. A slot does not change tab order or reading order beyond the order of the content in it.
 
 <h2 id="limits">Advantages and limitations</h2>
 

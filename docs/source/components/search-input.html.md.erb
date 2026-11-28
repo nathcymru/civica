@@ -1,5 +1,5 @@
 ---
-title: "Search Input"
+title: "Search input"
 description: "A labelled search field helps people find a specific item when browsing is not enough."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Rewritten as the full Search Input specification: the search landmark, the native search field, Home Assistant’s search box and the Civica component search."
+    description: "Rewritten as the full Search input specification: the search landmark, the native search field, Home Assistant’s search box and the Civica component search."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
@@ -20,7 +20,7 @@ updates:
 ai_instructions: "Apply when people type a query to find an item. Give the field a visible label and a text button, and say what is searched. Keep the query when returning from a result. Tell no matches from a failed connection and keep a route to the unfiltered list. Announce a result count once, never on every keystroke, and never move focus. Home Assistant’s search box is ha-input-search, and the outlined style is ha-input-search with appearance outlined. ha-input-search is a text input with a clear button, not a search landmark. A Markdown card removes the type attribute, so a search field cannot be written there. Keep Home Assistant’s picker when selection must respect capability, permission, domain or action-target rules. Do not state the corner shape of the outlined box, and do not claim screen reader behaviour."
 ai_related:
   - path: "/components/combobox-autocomplete.html"
-    title: "Combobox / Autocomplete"
+    title: "Combobox / autocomplete"
     relationship: "Owns the list of suggestions that can sit on the search field."
   - path: "/publishing/components/search-autocomplete.html"
     title: "Search autocomplete"
@@ -32,13 +32,13 @@ ai_related:
     title: "Finder"
     relationship: "Owns the collection page that holds the search."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns the hint under the label."
   - path: "/accessibility/testing.html"
     title: "Test the interface"
     relationship: "Owns the keyboard, 320 pixel and zoom checks."
 component:
-  parent: "Search Input"
+  parent: "Search input"
   letter: "S"
   origins:
     - "HTML5"
@@ -64,7 +64,7 @@ component:
     - "combobox"
 ---
 
-# Search Input
+# Search input
 
 <h2 id="purpose">Purpose</h2>
 
@@ -74,7 +74,7 @@ Do not make search stand in for missing room navigation. Do not silently combine
 
 This page covers:
 
-- Search Input
+- Search input
   - `<search>`
   - `<input type="search">`
   - `ha-input-search`
@@ -105,7 +105,7 @@ A native container for a search or filtering area. Its implicit role is `search`
 
 Give each search a unique `aria-label` when a page has several. One search needs no name.
 
-Home Assistant does not wrap its search boxes in a search landmark. The [Markdown Card](markdown-card.html) does not allow `search`. On a dashboard, give the area a clear heading and use Home Assistant’s own search box. On a static Civica page, use `search`.
+Home Assistant does not wrap its search boxes in a search landmark. The [Markdown card](markdown-card.html) does not allow `search`. On a dashboard, give the area a clear heading and use Home Assistant’s own search box. On a static Civica page, use `search`.
 
 <h3 id="child-input-type-search"><code>&lt;input type="search"&gt;</code></h3>
 
@@ -115,7 +115,7 @@ Many browsers add a clear button when the field has text. Its look and behaviour
 
 In the Civica theme, the field border is #0B0C0C in light mode and #FFFFFF in dark mode (19.59:1 and 14.86:1, calculated from theme colours). The placeholder is #484949 and #CBD0D3 (9.03:1 and 9.55:1, calculated from theme colours).
 
-A search field cannot be written in a [Markdown Card](markdown-card.html), because the card removes the `type` attribute from `input`.
+A search field cannot be written in a [Markdown card](markdown-card.html), because the card removes the `type` attribute from `input`.
 
 <h3 id="child-ha-input-search"><code>ha-input-search</code></h3>
 
@@ -154,7 +154,7 @@ Keys:
 - Escape closes the list. When the list is closed, it clears the text.
 - Leaving the field closes the list.
 
-The status reads “3 results”, “1 result” or “No components or elements match.”, and says “showing the first 50” when it cuts the list. Choosing an option opens its page. It runs in the browser, with the data inside the page, and without script it is hidden and the A to Z lists remain. For the plain datalist version, see [Combobox / Autocomplete](combobox-autocomplete.html).
+The status reads “3 results”, “1 result” or “No components or elements match.”, and says “showing the first 50” when it cuts the list. Choosing an option opens its page. It runs in the browser, with the data inside the page, and without script it is hidden and the A to Z lists remain. For the plain datalist version, see [Combobox / autocomplete](combobox-autocomplete.html).
 
 <h2 id="limits">Advantages and limitations</h2>
 

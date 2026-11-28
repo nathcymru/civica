@@ -1,5 +1,5 @@
 ---
-title: "Button Card"
+title: "Button card"
 description: "Show one entity as a tile that toggles it or opens its details, with an icon, a name and the state."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
-    description: "Added the Button Card specification: configuration, theme keys, the focus ring and the limits of the card."
+    description: "Added the Button card specification: configuration, theme keys, the focus ring and the limits of the card."
 ai_instructions: "Apply to the Home Assistant button card (type button). Keep the name visible and show the state in words, because the state colour alone must not carry the meaning. Hold and double-tap actions are gestures, so never make them the only way to do something. The Civica focus ring on the card needs the card-mod integration. Do not describe the card as having primary or danger variants. Never claim measured contrast of the state colour or the touch target size."
 ai_related:
   - path: "/components/buttons.html"
     title: "Button"
     relationship: "Owns buttons and their labels, including the Home Assistant button."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns card structure and headings."
   - path: "/components/alarm-panel-card.html"
-    title: "Alarm Panel Card"
+    title: "Alarm panel card"
     relationship: "A card with its own arm and disarm buttons."
   - path: "/content/writing-guidelines/states-and-errors.html"
     title: "States, requests and errors"
     relationship: "Owns how to word a state and a request."
 component:
-  parent: "Button Card"
+  parent: "Button card"
   letter: "B"
   origins:
     - "Lovelace"
@@ -38,17 +38,17 @@ component:
     - "hui-button-card"
 ---
 
-# Button Card
+# Button card
 
 <h2 id="purpose">Purpose</h2>
 
-The Button Card shows one entity as a tile. Tapping it toggles the entity, or opens its More info dialog when the entity cannot be toggled. In YAML it is `type: button`.
+The Button card shows one entity as a tile. Tapping it toggles the entity, or opens its More info dialog when the entity cannot be toggled. In YAML it is `type: button`.
 
 Use it for a single device or switch that people use often, such as a lamp or a door lock. For buttons you write yourself, see [Button](buttons.html).
 
 This page covers:
 
-- Button Card
+- Button card
   - `hui-button-card`
 
 <h2 id="anatomy">Anatomy</h2>

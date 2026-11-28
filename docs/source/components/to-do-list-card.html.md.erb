@@ -1,5 +1,5 @@
 ---
-title: "To-do List Card"
+title: "To-do list card"
 description: "Show a to-do list on a dashboard, with an add row, due dates and a completed section."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the To-do List Card specification: the to-do and shopping list cards, their settings, what the Civica theme changes and where people need help in words."
+    description: "Added the To-do list card specification: the to-do and shopping list cards, their settings, what the Civica theme changes and where people need help in words."
 ai_instructions: "Apply when a dashboard shows a to-do or shopping list (type: todo-list or type: shopping-list). The sort key is display_order, never sort. The shopping list card does not need the Shopping List integration: it uses any to-do list. Reordering works only by dragging, so choose a sorted order instead of relying on it. Overdue is shown by colour and a past relative time, so write due dates in words in the item description. The icon buttons and the add field have no written label of their own, so say in the card title what to do. The Civica focus ring needs the card-mod integration and does not apply to the card itself. Quote contrast only as calculated from theme colours."
 ai_related:
   - path: "/home-assistant/todo-and-reminders.html"
@@ -20,16 +20,16 @@ ai_related:
     title: "Checkbox"
     relationship: "Owns the checkbox drawn on each item."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns card structure and the card heading."
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns the Markdown that item descriptions use, and the read-only alternative."
   - path: "/components/entities-card-and-entity-rows.html"
-    title: "Entities Card & Entity Rows"
+    title: "Entities card and entity rows"
     relationship: "Owns read-only lists of entities."
 component:
-  parent: "To-do List Card"
+  parent: "To-do list card"
   letter: "T"
   origins:
     - "Lovelace"
@@ -45,7 +45,7 @@ component:
     - "hui-shopping-list-card"
 ---
 
-# To-do List Card
+# To-do list card
 
 <h2 id="purpose">Purpose</h2>
 
@@ -55,7 +55,7 @@ This page owns the two list cards. For what a good task says, how due dates and 
 
 This page covers:
 
-- To-do List Card
+- To-do list card
   - `hui-todo-list-card`
   - `hui-shopping-list-card`
 

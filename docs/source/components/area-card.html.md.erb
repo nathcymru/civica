@@ -1,5 +1,5 @@
 ---
-title: "Area Card"
+title: "Area card"
 description: "Show one room or area with its picture or icon, readings and alerts, and link to its page."
 section: "components"
 group: "Components"
@@ -10,14 +10,14 @@ last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
-    description: "Added the Area Card specification: its display types, what Civica changes and what stays as Home Assistant draws it."
+    description: "Added the Area card specification: its display types, what Civica changes and what stays as Home Assistant draws it."
 ai_instructions: "Apply when a dashboard shows one area or room as a card (type: area). Use one area per card, a plain area name and readings with units. State every alert in words as well as the alert icon, because the icon colour is fixed by Home Assistant. Say that the Civica focus ring on the card needs the card-mod integration. Quote a contrast ratio for the alert icon only as calculated from the theme colours, as this page does, never as measured on a rendered dashboard."
 ai_related:
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns card structure, headings and cards with images."
   - path: "/components/images.html"
-    title: "Image & Picture Cards"
+    title: "Image and picture cards"
     relationship: "Owns text alternatives and image rules."
   - path: "/home-assistant/dashboard-composition.html"
     title: "Dashboard composition and card features"
@@ -26,7 +26,7 @@ ai_related:
     title: "Entity, device and area pickers"
     relationship: "Owns what an area means when people choose one."
 component:
-  parent: "Area Card"
+  parent: "Area card"
   letter: "A"
   origins:
     - "Lovelace"
@@ -38,7 +38,7 @@ component:
     - "hui-area-card"
 ---
 
-# Area Card
+# Area card
 
 <h2 id="purpose">Purpose</h2>
 
@@ -48,7 +48,7 @@ This page owns the Home Assistant area card (`type: area`). For how cards are bu
 
 This page covers:
 
-- Area Card
+- Area card
   - `hui-area-card`
 
 <h2 id="anatomy">Anatomy</h2>

@@ -14,19 +14,19 @@ updates:
 ai_instructions: "Apply when content opens in a small panel beside the control that opened it. The popover attribute is an HTML feature, not a Home Assistant card or option, so a dashboard author cannot add one and a Markdown card removes the attribute. Home Assistant uses popover=manual inside its own toast, notification and bottom-sheet elements only. A popover is not modal, adds no role and no name, and does not trap focus: the author must add them. Never hide an essential instruction, warning or live state in a popover. On a dashboard use visible text, a more-info dialog or a dialog instead. Do not say Home Assistant uses the Popover API for its pickers."
 ai_related:
   - path: "/components/dialogs.html"
-    title: "Dialog / Modal"
+    title: "Dialog / modal"
     relationship: "Use a dialog when the task needs focus and a decision."
   - path: "/components/combobox-autocomplete.html"
-    title: "Combobox / Autocomplete"
+    title: "Combobox / autocomplete"
     relationship: "Owns the picker list that opens beside a field on a wide screen."
   - path: "/components/action-bar-bottom-sheet.html"
-    title: "Action Bar / Bottom Sheet"
+    title: "Action bar / bottom sheet"
     relationship: "Owns the bottom sheet that replaces a popover on a narrow screen."
   - path: "/components/more-info-dialog-and-domain-state-controls.html"
-    title: "More-Info Dialog & Domain State Controls"
+    title: "More-info dialog and domain state controls"
     relationship: "Owns the dialog a card opens for more detail about one entity."
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns the list of tags and attributes the card keeps and removes."
 component:
   parent: "Popover"
@@ -83,9 +83,9 @@ The author supplies the role and the name, because the attribute adds neither. S
 
 **Where Home Assistant uses it.** Home Assistant adds `popover="manual"` inside three of its own elements: the toast, the notification manager and the bottom sheet that slides up on a narrow screen. It adds the attribute only when the browser supports it. None of these is something you can configure.
 
-**What the pickers use.** On a wide screen, a picker opens its list in a popover-style panel, and on a narrow screen it opens a bottom sheet. That panel is a Home Assistant element of its own, not the `popover` attribute. [Combobox / Autocomplete](combobox-autocomplete.html), [Date & Time Picker](date-input.html) and [Label Picker](label-picker.html) own the pickers. [Action Bar / Bottom Sheet](action-bar-bottom-sheet.html) owns the sheet.
+**What the pickers use.** On a wide screen, a picker opens its list in a popover-style panel, and on a narrow screen it opens a bottom sheet. That panel is a Home Assistant element of its own, not the `popover` attribute. [Combobox / autocomplete](combobox-autocomplete.html), [Date and time picker](date-input.html) and [Label picker](label-picker.html) own the pickers. [Action bar / bottom sheet](action-bar-bottom-sheet.html) owns the sheet.
 
-**On a dashboard.** No card or option exposes `popover`, and the [Markdown Card](markdown-card.html) removes the `popover` and `popovertarget` attributes and does not allow `button`. The Civica theme sets no variable for it. Use one of these instead:
+**On a dashboard.** No card or option exposes `popover`, and the [Markdown card](markdown-card.html) removes the `popover` and `popovertarget` attributes and does not allow `button`. The Civica theme sets no variable for it. Use one of these instead:
 
 - Write the extra text on the card, under a plain heading.
 - Open a [more-info dialog](more-info-dialog-and-domain-state-controls.html) from a tap action, for detail about one entity.

@@ -1,5 +1,5 @@
 ---
-title: "Dropdown Menu & Overflow Menu"
+title: "Dropdown menu and overflow menu"
 description: "Choose from a list in a dropdown, or tuck secondary actions into an overflow menu, using the native select and Home Assistant’s dropdown."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Rewrote the page as the Dropdown Menu & Overflow Menu specification. It now covers Home Assistant’s select, dropdown, overflow menu and list rows as well as the native select."
+    description: "Rewrote the page as the Dropdown menu and overflow menu specification. It now covers Home Assistant’s select, dropdown, overflow menu and list rows as well as the native select."
   - date: "2026-11-18"
     description: "When to use, the preselection guidance and the example heading “Choose a saved theme colour” now refer to the 7 theme colours; the 10 palettes were retired."
   - date: "2026-11-26"
@@ -18,28 +18,28 @@ updates:
 ai_instructions: "Apply when someone chooses one item from a list, or opens a menu of actions. The native select is the default for a long, familiar list; use radios for a few choices. ha-select and ha-dropdown are Home Assistant’s own; ha-icon-overflow-menu shows one three-dot button on narrow screens and visible icon buttons on wide ones. Menus are built with ha-dropdown and its items, and a clickable row is ha-list-item-button. Name the three-dot button for what it opens, put risky items last and say delete in words. Never put the main action in an overflow menu. A select must not issue a device command. Do not claim the popup colours follow the theme, and do not give a ready-made card-mod selector."
 ai_related:
   - path: "/components/radios.html"
-    title: "Radio Button"
+    title: "Radio button"
     relationship: "Use for a few choices that should all be visible."
   - path: "/components/checkboxes.html"
     title: "Checkbox"
     relationship: "Use when several items can be chosen."
   - path: "/components/combobox-autocomplete.html"
-    title: "Combobox / Autocomplete"
+    title: "Combobox / autocomplete"
     relationship: "Owns a list the person can type to search."
   - path: "/components/control-select.html"
-    title: "Control Select"
+    title: "Control select"
     relationship: "Owns the choice control on cards."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns hint wording."
   - path: "/components/error-message.html"
-    title: "Error Message & Error Summary"
+    title: "Error message and error summary"
     relationship: "Owns error wording."
   - path: "/accessibility/testing.html"
     title: "Test the interface"
     relationship: "Owns keyboard and mobile checks."
 component:
-  parent: "Dropdown Menu & Overflow Menu"
+  parent: "Dropdown menu and overflow menu"
   letter: "D"
   origins:
     - "HTML5"
@@ -81,7 +81,7 @@ component:
     - "ha-list-item-button"
 ---
 
-# Dropdown Menu & Overflow Menu
+# Dropdown menu and overflow menu
 
 <h2 id="purpose">Purpose</h2>
 
@@ -91,7 +91,7 @@ Think first whether a shorter question or a visible group of [radios](radios.htm
 
 This page covers:
 
-- Dropdown Menu & Overflow Menu
+- Dropdown menu and overflow menu
   - `<select>`
     - `<optgroup>`
     - `<option>`

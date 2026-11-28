@@ -1,5 +1,5 @@
 ---
-title: "Dialog / Modal"
+title: "Dialog / modal"
 description: "Use a dialog for a focused task, device details or an essential confirmation, and keep Home Assistant’s own dialog behaviour."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Rewrote the page as Dialog / Modal: the browser dialog, Home Assistant’s dialog parts, the confirmation, alert and prompt dialogs, and what a theme can change."
+    description: "Rewrote the page as Dialog / modal: the browser dialog, Home Assistant’s dialog parts, the confirmation, alert and prompt dialogs, and what a theme can change."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-11"
@@ -20,10 +20,10 @@ updates:
 ai_instructions: "Apply when a task needs the whole of someone’s attention or a consequence needs confirming. Home Assistant dialogs are built from ha-dialog, which wraps a Web Awesome dialog. A dashboard author cannot create a dialog and cannot reach one with card-mod. A theme can set the surface, corners, divider and text colours. Name the action in the title, state the consequence, label the main button with a verb and a noun, and keep Home Assistant’s confirmations for locks and alarms. Do not claim every dialog traps focus or that Escape always closes one. Do not claim a contrast ratio for the backdrop."
 ai_related:
   - path: "/components/assist-voice-pipeline-dialog.html"
-    title: "Assist / Voice Pipeline Dialog"
+    title: "Assist / voice pipeline dialog"
     relationship: "Owns the Assist dialog."
   - path: "/components/action-bar-bottom-sheet.html"
-    title: "Action Bar / Bottom Sheet"
+    title: "Action bar / bottom sheet"
     relationship: "Owns the sheet that replaces a dialog on small screens."
   - path: "/components/devices.html"
     title: "Device controls"
@@ -32,7 +32,7 @@ ai_related:
     title: "Buttons and forms"
     relationship: "Owns button labels and form behaviour."
 component:
-  parent: "Dialog / Modal"
+  parent: "Dialog / modal"
   letter: "D"
   origins:
     - "HTML5"
@@ -61,7 +61,7 @@ component:
     - "dialog-box"
 ---
 
-# Dialog / Modal
+# Dialog / modal
 
 <h2 id="purpose">Purpose</h2>
 
@@ -71,7 +71,7 @@ Keep Home Assistant’s dialog behaviour wherever you can.
 
 This page covers:
 
-- Dialog / Modal
+- Dialog / modal
   - `<dialog>`
   - `ha-dialog`
   - `ha-dialog-header`
@@ -119,7 +119,7 @@ The header of a dialog. It has places for a back icon, a title, a subtitle and a
 
 <h3 id="child-ha-adaptive-dialog"><code>ha-adaptive-dialog</code></h3>
 
-A dialog that changes with the screen. On a wider, taller screen it is a dialog. On a screen 870 pixels wide or less, or 500 pixels tall or less, it is a bottom sheet (see [Action Bar / Bottom Sheet](action-bar-bottom-sheet.html)). The choice is made when it opens and does not change if the window is resized, unless the dialog allows that. It can hide the close button and the header.
+A dialog that changes with the screen. On a wider, taller screen it is a dialog. On a screen 870 pixels wide or less, or 500 pixels tall or less, it is a bottom sheet (see [Action bar / bottom sheet](action-bar-bottom-sheet.html)). The choice is made when it opens and does not change if the window is resized, unless the dialog allows that. It can hide the close button and the header.
 
 <h3 id="child-dialog-box"><code>dialog-box</code></h3>
 

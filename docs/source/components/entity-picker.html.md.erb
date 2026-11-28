@@ -1,5 +1,5 @@
 ---
-title: "Entity Picker"
+title: "Entity picker"
 description: "Let people search for and choose an entity, a list of entities, an entity’s attribute or an entity’s state in a Home Assistant form."
 section: "components"
 group: "Components"
@@ -10,26 +10,26 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Entity Picker specification: the four pickers, what each lets people choose and what an author can control."
-ai_instructions: "Apply when a Home Assistant form or editor asks people to choose an entity (ha-entity-picker), several entities (ha-entities-picker), one of an entity’s attributes (ha-entity-attribute-picker) or one of its states (ha-entity-state-picker). These are form elements in the editor, not cards, so a dashboard author cannot write them in YAML. The list is the shared searchable picker, owned by the Combobox / Autocomplete page. Each picker needs a visible label. Help people narrow a long list with a clear label and helper text. Do not describe the picker as a WAI-ARIA combobox, and do not claim keyboard shortcuts, mobile behaviour or contrast."
+    description: "Added the Entity picker specification: the four pickers, what each lets people choose and what an author can control."
+ai_instructions: "Apply when a Home Assistant form or editor asks people to choose an entity (ha-entity-picker), several entities (ha-entities-picker), one of an entity’s attributes (ha-entity-attribute-picker) or one of its states (ha-entity-state-picker). These are form elements in the editor, not cards, so a dashboard author cannot write them in YAML. The list is the shared searchable picker, owned by the Combobox / autocomplete page. Each picker needs a visible label. Help people narrow a long list with a clear label and helper text. Do not describe the picker as a WAI-ARIA combobox, and do not claim keyboard shortcuts, mobile behaviour or contrast."
 ai_related:
   - path: "/components/combobox-autocomplete.html"
-    title: "Combobox / Autocomplete"
+    title: "Combobox / autocomplete"
     relationship: "Owns the searchable list and field that every picker is built on."
   - path: "/home-assistant/target-pickers.html"
     title: "Entity, device and area pickers"
     relationship: "Owns what an entity, a device and an area mean when people choose one."
   - path: "/components/area-picker.html"
-    title: "Area Picker"
+    title: "Area picker"
     relationship: "Owns the picker for areas."
   - path: "/components/text-input.html"
-    title: "Text Input"
+    title: "Text input"
     relationship: "Owns the plain text field and its label rules."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns helper text under a field."
 component:
-  parent: "Entity Picker"
+  parent: "Entity picker"
   letter: "E"
   origins:
     - "Home Assistant"
@@ -53,17 +53,17 @@ component:
     - "ha-entity-state-picker"
 ---
 
-# Entity Picker
+# Entity picker
 
 <h2 id="purpose">Purpose</h2>
 
 The entity pickers let people choose things by searching, instead of typing an entity ID from memory. There are four: one entity, a list of entities, one attribute of an entity and one state of an entity. People meet them in Home Assistant’s card editor, automation editor, helper settings and other forms.
 
-This page owns the four pickers. They are form elements, not cards, so a dashboard author cannot write them in YAML. They appear when you edit a card, and what an author controls is the wording of the form and which entities are offered. The searchable list under every picker is owned by [Combobox / Autocomplete](combobox-autocomplete.html). For what an entity, device or area means when people choose one, see [Entity, device and area pickers](../home-assistant/target-pickers.html).
+This page owns the four pickers. They are form elements, not cards, so a dashboard author cannot write them in YAML. They appear when you edit a card, and what an author controls is the wording of the form and which entities are offered. The searchable list under every picker is owned by [Combobox / autocomplete](combobox-autocomplete.html). For what an entity, device or area means when people choose one, see [Entity, device and area pickers](../home-assistant/target-pickers.html).
 
 This page covers:
 
-- Entity Picker
+- Entity picker
   - `ha-entity-picker`
   - `ha-entities-picker`
   - `ha-entity-attribute-picker`
@@ -103,7 +103,7 @@ Chooses one attribute of an entity that is already chosen. The field is labelled
 
 Chooses one state of an entity that is already chosen, such as “on” or “off”. The field is labelled “State”. It can also show the value of an attribute, set with `attribute`, and extra options set with `extraOptions`. `allow-custom-value` accepts a state that is not listed, with an “Add custom state” row.
 
-**What the Civica theme sets.** The theme sets text, secondary text, divider and primary colours, and the text field colours that Home Assistant’s older form fields read. The pickers have no settings of their own in the theme, so each field and list looks as the shared picker looks. See [Combobox / Autocomplete](combobox-autocomplete.html) for the keys that reach the list.
+**What the Civica theme sets.** The theme sets text, secondary text, divider and primary colours, and the text field colours that Home Assistant’s older form fields read. The pickers have no settings of their own in the theme, so each field and list looks as the shared picker looks. See [Combobox / autocomplete](combobox-autocomplete.html) for the keys that reach the list.
 
 **What stays as Home Assistant draws it.** The field, the list, the search behaviour, the icons and the wording come from Home Assistant. A theme cannot change which entities are offered.
 

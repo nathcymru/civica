@@ -1,5 +1,5 @@
 ---
-title: "SVG Vector Graphic"
+title: "SVG vector graphic"
 description: "Draw a diagram or icon as shapes and text that scale cleanly, with a name for assistive technology and a plain-text summary beside it."
 section: "components"
 group: "Components"
@@ -10,20 +10,20 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the SVG Vector Graphic specification: the svg element, the shapes, text, reusable parts and gradients, and how to name and describe a graphic."
+    description: "Added the SVG vector graphic specification: the svg element, the shapes, text, reusable parts and gradients, and how to name and describe a graphic."
 ai_instructions: "Apply when a graphic is drawn as SVG. Give an informative graphic role img with a title and a desc, and write the same facts in text beside it. Hide a decorative graphic with aria-hidden. Set a viewBox so it scales. A standard Home Assistant Markdown card strips svg, so it cannot hold one; use an image file, the Picture card, an icon or a custom card. Text inside SVG does not follow text-spacing settings or browser text size, so keep important facts in HTML. Do not rely on the title tooltip, since touch and keyboard users do not get it. Do not claim that every screen reader reads desc. The svg title is owned by the Document Root page. Never quote a measured contrast."
 ai_related:
   - path: "/components/document-root-metadata-and-shadow-dom-primitives.html"
-    title: "Document Root, Metadata & Shadow DOM Primitives"
+    title: "Document root, metadata and shadow DOM primitives"
     relationship: "Owns the title element; this page covers how the title names an SVG."
   - path: "/components/icon-and-state-icon.html"
-    title: "Icon & State Icon"
+    title: "Icon and state icon"
     relationship: "Owns Home Assistant’s ha-svg-icon, which draws one icon from path data."
   - path: "/components/figure-and-caption.html"
-    title: "Figure & Caption"
+    title: "Figure and caption"
     relationship: "Owns the caption that goes with a graphic."
   - path: "/components/images.html"
-    title: "Image & Picture Cards"
+    title: "Image and picture cards"
     relationship: "Owns showing an SVG file through an image or Picture card."
   - path: "/styles/illustration-accessibility.html"
     title: "Illustration accessibility"
@@ -32,7 +32,7 @@ ai_related:
     title: "Alt text"
     relationship: "Owns the wording of alternative text."
 component:
-  parent: "SVG Vector Graphic"
+  parent: "SVG vector graphic"
   letter: "S"
   origins:
     - "HTML5"
@@ -96,7 +96,7 @@ component:
           origin: "HTML5"
           anchor: "xref-svg--title"
           cross_reference:
-            parent: "Document Root, Metadata & Shadow DOM Primitives"
+            parent: "Document root, metadata and shadow DOM primitives"
             route: "/components/document-root-metadata-and-shadow-dom-primitives.html"
             anchor: "child-head--title"
           note: "In SVG, <title> gives the graphic or shape an accessible name; the HTML <title> owned by Document Root names the document."
@@ -111,17 +111,17 @@ component:
     - "viewBox"
 ---
 
-# SVG Vector Graphic
+# SVG vector graphic
 
 <h2 id="purpose">Purpose</h2>
 
 SVG draws a picture as shapes and text instead of pixels. It stays sharp at any size and can take colours from the surrounding page. Use it for a diagram, a floor plan or an icon.
 
-On a dashboard, a standard Home Assistant Markdown card cannot hold an `<svg>`: the card strips it. To show a graphic there, use an image file (see [Image & Picture Cards](images.html)), an icon (see [Icon & State Icon](icon-and-state-icon.html)) or a custom card. On this site, and in any page you write yourself, you can place SVG inline.
+On a dashboard, a standard Home Assistant Markdown card cannot hold an `<svg>`: the card strips it. To show a graphic there, use an image file (see [Image and picture cards](images.html)), an icon (see [Icon and state icon](icon-and-state-icon.html)) or a custom card. On this site, and in any page you write yourself, you can place SVG inline.
 
 This page covers:
 
-- SVG Vector Graphic
+- SVG vector graphic
   - `<svg>`
     - `<g>`
     - `<path>`
@@ -140,7 +140,7 @@ This page covers:
     - `<linearGradient>`
     - `<radialGradient>`
     - `<stop>`
-    - `<title>` (owned by [Document Root, Metadata & Shadow DOM Primitives](document-root-metadata-and-shadow-dom-primitives.html#child-head--title))
+    - `<title>` (owned by [Document root, metadata and shadow DOM primitives](document-root-metadata-and-shadow-dom-primitives.html#child-head--title))
     - `<desc>`
 
 <h2 id="anatomy">Anatomy</h2>
@@ -153,7 +153,7 @@ An SVG can be informative or decorative. Give an informative graphic `role="img"
 
 The Civica theme sets no keys for SVG. Inside an inline SVG you can use `currentColor` and the theme’s colour variables, such as `var(--primary-color)`. Take colours for a chart from the [Chart colours](../styles/chart-colour.html) page.
 
-**Naming a graphic with `<title>`.** `<title>` is the first way to name a graphic. As the first child of `<svg>` or of a shape, it gives that graphic or shape its accessible name. Some browsers also show it as a tooltip on hover, but not for keyboard or touch users, so never let it be the only description. The HTML `<title>` that names a whole page is a different element. [Document Root, Metadata & Shadow DOM Primitives](document-root-metadata-and-shadow-dom-primitives.html#child-head--title) owns it.
+**Naming a graphic with `<title>`.** `<title>` is the first way to name a graphic. As the first child of `<svg>` or of a shape, it gives that graphic or shape its accessible name. Some browsers also show it as a tooltip on hover, but not for keyboard or touch users, so never let it be the only description. The HTML `<title>` that names a whole page is a different element. [Document root, metadata and shadow DOM primitives](document-root-metadata-and-shadow-dom-primitives.html#child-head--title) owns it.
 
 <h3 id="child-svg"><code>&lt;svg&gt;</code></h3>
 
@@ -235,7 +235,7 @@ One colour in a gradient. `offset` gives its place, from 0 to 1 or as a percenta
 
 <h3 id="xref-svg--title"><code>&lt;title&gt;</code></h3>
 
-The `<title>` element inside `<svg>` is owned by the [Document Root, Metadata & Shadow DOM Primitives](document-root-metadata-and-shadow-dom-primitives.html) page. In a graphic, it gives the drawing or one shape a short name. Link it with `aria-labelledby` from the `<svg>`, and keep it short.
+The `<title>` element inside `<svg>` is owned by the [Document root, metadata and shadow DOM primitives](document-root-metadata-and-shadow-dom-primitives.html) page. In a graphic, it gives the drawing or one shape a short name. Link it with `aria-labelledby` from the `<svg>`, and keep it short.
 
 <h3 id="child-svg--desc"><code>&lt;desc&gt;</code></h3>
 

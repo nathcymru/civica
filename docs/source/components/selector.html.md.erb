@@ -1,5 +1,5 @@
 ---
-title: "Selector (Polymorphic Schema Input)"
+title: "Selector (polymorphic schema input)"
 description: "Choose the right input for a value in a Home Assistant form, from a simple switch to a picker for devices, areas or actions."
 section: "components"
 group: "Components"
@@ -21,37 +21,37 @@ ai_related:
     title: "Schema selectors and configuration forms"
     relationship: "Owns how selector-based forms are written and checked."
   - path: "/components/form-and-schema-form.html"
-    title: "Form & Schema Form"
+    title: "Form and schema form"
     relationship: "Owns the form that holds selector fields."
   - path: "/home-assistant/target-pickers.html"
     title: "Entity, device and area pickers"
     relationship: "Owns the target, entity, device and area choices."
   - path: "/components/entity-picker.html"
-    title: "Entity Picker"
+    title: "Entity picker"
     relationship: "Owns the entity field a selector draws."
   - path: "/components/device-picker.html"
-    title: "Device Picker"
+    title: "Device picker"
     relationship: "Owns the device field a selector draws."
   - path: "/components/area-picker.html"
-    title: "Area Picker"
+    title: "Area picker"
     relationship: "Owns the area field a selector draws."
   - path: "/components/date-input.html"
-    title: "Date & Time Picker"
+    title: "Date and time picker"
     relationship: "Owns the date and time fields a selector draws."
   - path: "/components/duration-input.html"
-    title: "Duration Input"
+    title: "Duration input"
     relationship: "Owns the duration field a selector draws."
   - path: "/components/select.html"
-    title: "Dropdown Menu & Overflow Menu"
+    title: "Dropdown menu and overflow menu"
     relationship: "Owns the menu a select selector can draw."
   - path: "/components/text-input.html"
-    title: "Text Input"
+    title: "Text input"
     relationship: "Owns the text field a selector draws."
   - path: "/components/settings-row.html"
-    title: "Settings Row"
+    title: "Settings row"
     relationship: "Owns the row layout many selector fields sit in."
 component:
-  parent: "Selector (Polymorphic Schema Input)"
+  parent: "Selector (polymorphic schema input)"
   letter: "S"
   origins:
     - "Home Assistant"
@@ -247,17 +247,17 @@ component:
     - "ha-selector"
 ---
 
-# Selector (Polymorphic Schema Input)
+# Selector (polymorphic schema input)
 
 <h2 id="purpose">Purpose</h2>
 
 A selector tells Home Assistant what kind of value a form field needs, and Home Assistant draws the matching input. A `number` selector draws a number box or a slider, a `boolean` selector a switch, an `area` selector an area picker. Selectors are used in the automation and script editors, in blueprints, in the forms that run actions and in integration settings.
 
-They appear in Home Assistant’s own screens and dialogs, not as dashboard cards. This page is for people who write selectors or review forms built from them. For forms as a whole, see [Form & Schema Form](form-and-schema-form.html) and [Schema selectors and configuration forms](../home-assistant/schema-selectors.html).
+They appear in Home Assistant’s own screens and dialogs, not as dashboard cards. This page is for people who write selectors or review forms built from them. For forms as a whole, see [Form and schema form](form-and-schema-form.html) and [Schema selectors and configuration forms](../home-assistant/schema-selectors.html).
 
 This page covers:
 
-- Selector (Polymorphic Schema Input)
+- Selector (polymorphic schema input)
   - `ha-selector`
     - `ha-selector-action`
     - `ha-selector-addon`
@@ -380,7 +380,7 @@ YAML key `app`. Options: `name`, `slug`.
 
 <h3 id="child-ha-selector--ha-selector-area"><code>ha-selector-area</code></h3>
 
-Chooses one or more areas. See [Area Picker](area-picker.html) for the picker it draws. `multiple` allows more than one; `entity` and `device` narrow the list to areas that have a matching entity or device.
+Chooses one or more areas. See [Area picker](area-picker.html) for the picker it draws. `multiple` allows more than one; `entity` and `device` narrow the list to areas that have a matching entity or device.
 
 YAML key `area`. Options: `entity`, `device`, `multiple`, `reorder`.
 
@@ -476,7 +476,7 @@ YAML key `country`. Options: `countries`, `no_sort`.
 
 <h3 id="child-ha-selector--ha-selector-date"><code>ha-selector-date</code></h3>
 
-A date field, in the format of the person’s language. See [Date & Time Picker](date-input.html).
+A date field, in the format of the person’s language. See [Date and time picker](date-input.html).
 
 YAML key `date`. Options: none.
 
@@ -488,7 +488,7 @@ YAML key `datetime`. Options: none.
 
 <h3 id="child-ha-selector--ha-selector-device"><code>ha-selector-device</code></h3>
 
-Chooses one or more devices. See [Device Picker](device-picker.html). `filter` narrows the list by integration, manufacturer, model or entity; `entity` and `multiple` also apply. To let people pick a Bluetooth, USB or discovered device, set `filter` to the `bluetooth`, `usb` or `zeroconf` integration, or use a text field when a free value is needed.
+Chooses one or more devices. See [Device picker](device-picker.html). `filter` narrows the list by integration, manufacturer, model or entity; `entity` and `multiple` also apply. To let people pick a Bluetooth, USB or discovered device, set `filter` to the `bluetooth`, `usb` or `zeroconf` integration, or use a text field when a free value is needed.
 
 YAML key `device`. Options: `filter`, `entity`, `multiple`.
 
@@ -500,13 +500,13 @@ YAML key `device_class`. Options: `domain`, `multiple`.
 
 <h3 id="child-ha-selector--ha-selector-duration"><code>ha-selector-duration</code></h3>
 
-A length of time, in days, hours, minutes, seconds and milliseconds as you enable them. `enable_day`, `enable_millisecond`, `enable_second` and `allow_negative` switch parts on. See [Duration Input](duration-input.html). A duration is not a time of day.
+A length of time, in days, hours, minutes, seconds and milliseconds as you enable them. `enable_day`, `enable_millisecond`, `enable_second` and `allow_negative` switch parts on. See [Duration input](duration-input.html). A duration is not a time of day.
 
 YAML key `duration`. Options: `enable_day`, `enable_millisecond`, `allow_negative`, `enable_second`, `mode`.
 
 <h3 id="child-ha-selector--ha-selector-entity"><code>ha-selector-entity</code></h3>
 
-Chooses one or more entities. See [Entity Picker](entity-picker.html). `filter`, `include_entities` and `exclude_entities` narrow the list; `multiple` and `reorder` allow a list in a chosen order.
+Chooses one or more entities. See [Entity picker](entity-picker.html). `filter`, `include_entities` and `exclude_entities` narrow the list; `multiple` and `reorder` allow a list in a chosen order.
 
 YAML key `entity`. Options: `multiple`, `include_entities`, `exclude_entities`, `filter`, `reorder`, `extra_options`.
 
@@ -518,25 +518,25 @@ YAML key `entity_name`. Options: `entity_id`, `default_name`, `allow_custom` (on
 
 <h3 id="child-ha-selector--ha-selector-file"><code>ha-selector-file</code></h3>
 
-Uploads a file. `accept` limits the file types. See [File Upload / Dropzone](file-upload.html).
+Uploads a file. `accept` limits the file types. See [File upload / dropzone](file-upload.html).
 
 YAML key `file`. Options: `accept`.
 
 <h3 id="child-ha-selector--ha-selector-floor"><code>ha-selector-floor</code></h3>
 
-Chooses one or more floors. See [Floor Picker](floor-picker.html).
+Chooses one or more floors. See [Floor picker](floor-picker.html).
 
 YAML key `floor`. Options: `entity`, `device`, `multiple`.
 
 <h3 id="child-ha-selector--ha-selector-icon"><code>ha-selector-icon</code></h3>
 
-Chooses an icon by name, with a preview. See [Icon Picker](icon-picker.html).
+Chooses an icon by name, with a preview. See [Icon picker](icon-picker.html).
 
 YAML key `icon`. Options: `placeholder`, `fallbackPath`.
 
 <h3 id="child-ha-selector--ha-selector-label"><code>ha-selector-label</code></h3>
 
-Chooses one or more labels. See [Label Picker](label-picker.html).
+Chooses one or more labels. See [Label picker](label-picker.html).
 
 YAML key `label`. Options: `multiple`.
 
@@ -566,7 +566,7 @@ YAML key `navigation`. Options: `entity_id`, `area_id`.
 
 <h3 id="child-ha-selector--ha-selector-number"><code>ha-selector-number</code></h3>
 
-A number. With both `min` and `max` set it is a slider, with a number field beside it; otherwise it is a number box. `step`, `mode` (`slider` or `box`), `unit_of_measurement` and `slider_ticks` adjust it. In slider mode the label is plain text before the control, and the selector does not pass its label to the slider. Name the setting in the hint as well. See [Control Slider](sliders.html).
+A number. With both `min` and `max` set it is a slider, with a number field beside it; otherwise it is a number box. `step`, `mode` (`slider` or `box`), `unit_of_measurement` and `slider_ticks` adjust it. In slider mode the label is plain text before the control, and the selector does not pass its label to the slider. Name the setting in the hint as well. See [Control slider](sliders.html).
 
 YAML key `number`. Options: `min`, `max`, `step`, `mode`, `unit_of_measurement`, `slider_ticks`, `translation_key`, `validation_message`.
 
@@ -596,7 +596,7 @@ YAML key `qr_code`. Options: `data`, `scale`, `error_correction_level`, `center_
 
 <h3 id="child-ha-selector--ha-selector-select"><code>ha-selector-select</code></h3>
 
-Chooses from a fixed list. `options` lists the choices. A single choice in `list` mode is a group of radio buttons, and multiple choices in `list` mode are checkboxes. `box` mode shows large boxes. `dropdown` mode, or the default, shows a menu. `custom_value`, `multiple` or `reorder` give a field with chips. See [Dropdown Menu & Overflow Menu](select.html), [Radios](radios.html) and [Checkbox](checkboxes.html).
+Chooses from a fixed list. `options` lists the choices. A single choice in `list` mode is a group of radio buttons, and multiple choices in `list` mode are checkboxes. `box` mode shows large boxes. `dropdown` mode, or the default, shows a menu. `custom_value`, `multiple` or `reorder` give a field with chips. See [Dropdown menu and overflow menu](select.html), [Radios](radios.html) and [Checkbox](checkboxes.html).
 
 YAML key `select`. Options: `multiple`, `custom_value`, `mode`, `options`, `translation_key`, `sort`, `reorder`, `box_max_columns`.
 
@@ -648,7 +648,7 @@ YAML key `template`. Options: `preview`.
 
 <h3 id="child-ha-selector--ha-selector-text"><code>ha-selector-text</code></h3>
 
-A text field. `multiline` gives a larger box, `multiple` a list of fields, and `type` sets the field type. `prefix`, `suffix`, `autocomplete`, `placeholder` and `pattern` refine it, and `validation_message` says what is wrong when the pattern fails. See [Text Input](text-input.html) and [Textarea](textarea.html).
+A text field. `multiline` gives a larger box, `multiple` a list of fields, and `type` sets the field type. `prefix`, `suffix`, `autocomplete`, `placeholder` and `pattern` refine it, and `validation_message` says what is wrong when the pattern fails. See [Text input](text-input.html) and [Textarea](textarea.html).
 
 YAML key `text`. Options: `multiline`, `type`, `prefix`, `suffix`, `placeholder`, `autocomplete`, `multiple`, `pattern`, `validation_message`.
 
@@ -660,7 +660,7 @@ YAML key `theme`. Options: none.
 
 <h3 id="child-ha-selector--ha-selector-time"><code>ha-selector-time</code></h3>
 
-A time-of-day field. See [Date & Time Picker](date-input.html).
+A time-of-day field. See [Date and time picker](date-input.html).
 
 YAML key `time`. Options: none.
 
@@ -702,7 +702,7 @@ YAML key `ui_clock_date_format`. Options: none.
 
 <h3 id="child-ha-selector--ha-selector-ui-color"><code>ha-selector-ui_color</code></h3>
 
-Chooses a colour. `default_color`, `include_none` and `include_state` add choices. See [Color Picker](color-picker.html).
+Chooses a colour. `default_color`, `include_none` and `include_state` add choices. See [Colour picker](color-picker.html).
 
 YAML key `ui_color`. Options: `default_color`, `include_none`, `include_state`, `extra_options`.
 

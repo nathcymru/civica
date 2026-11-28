@@ -16,7 +16,7 @@ updates:
 ai_instructions: "Apply when a standalone Civica page needs a short list of main destinations. Service navigation is a Civica pattern, not a Home Assistant element: Home Assistant uses its sidebar instead. Use real links, mark the current link with aria-current=\"page\", name the nav landmark when there is more than one, and keep the list short and in the same order on every page. Below 641 pixels a Menu button hides and shows the list; without JavaScript the list stays visible. A Markdown card cannot name a nav or set aria-current, so write the current page in words there. Do not claim Home Assistant announces the current sidebar item."
 ai_related:
   - path: "/components/header.html"
-    title: "Header / Top App Bar"
+    title: "Header / top app bar"
     relationship: "Owns identity and the home link, which stay separate from the route list."
   - path: "/components/navigation.html"
     title: "Navigation"
@@ -28,13 +28,13 @@ ai_related:
     title: "Breadcrumb"
     relationship: "Use to show where a page sits in a hierarchy."
   - path: "/components/drawer-navigation-sidebar.html"
-    title: "Drawer / Navigation Sidebar"
+    title: "Drawer / navigation sidebar"
     relationship: "Owns the Home Assistant sidebar that does this job in the product."
   - path: "/components/skip-link.html"
     title: "Skip link"
     relationship: "Owns the link that lets keyboard users pass repeated navigation."
 component:
-  parent: "Service Navigation"
+  parent: "Service navigation"
   letter: "S"
   origins:
     - "Civica"
@@ -52,13 +52,13 @@ component:
 
 Service navigation is a short row of links to the main areas of a service, such as Overview, Energy and Settings, with the current area marked. It helps people see where they are and move between areas without going back to a start page.
 
-It is a Civica pattern for standalone pages and guidance. Home Assistant has no element of this name: its own sidebar does the same job inside the product. See [Drawer / Navigation Sidebar](drawer-navigation-sidebar.html).
+It is a Civica pattern for standalone pages and guidance. Home Assistant has no element of this name: its own sidebar does the same job inside the product. See [Drawer / navigation sidebar](drawer-navigation-sidebar.html).
 
 The [header](header.html#identity-and-navigation-have-separate-responsibilities) owns identity and the home link. This page owns the list of destinations, the current-item marker and the narrow-screen menu.
 
 This page covers:
 
-- Service Navigation
+- Service navigation
   - Civica Service Navigation Pattern
 
 <h2 id="anatomy">Anatomy</h2>
@@ -82,7 +82,7 @@ The current item uses a 4 pixel bar in the link colour, so it does not rely on c
 
 Colours and type come from the page theme: `primary-text-color`, `link-color`, `divider-color` and the `ha-font-*` sizes. In Home Assistant itself none of this is applied, because Home Assistant does not draw this pattern.
 
-**What a dashboard can do.** A Markdown card can hold a list of links in a `<nav>`, but it removes `aria-label` and `aria-current`. Write the current page in words, for example in bold with “current page”, and keep to Home Assistant’s own navigation, tabs or Navigate actions for anything that needs a Menu button. See [Markdown Card](markdown-card.html).
+**What a dashboard can do.** A Markdown card can hold a list of links in a `<nav>`, but it removes `aria-label` and `aria-current`. Write the current page in words, for example in bold with “current page”, and keep to Home Assistant’s own navigation, tabs or Navigate actions for anything that needs a Menu button. See [Markdown card](markdown-card.html).
 
 <h2 id="limits">Advantages and limitations</h2>
 

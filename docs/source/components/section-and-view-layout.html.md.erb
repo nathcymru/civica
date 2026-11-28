@@ -1,5 +1,5 @@
 ---
-title: "Section & View Layout"
+title: "Section and view layout"
 description: "Choose how a dashboard view arranges its cards: sections in a grid, masonry columns, one full-width card, or a main column with a sidebar."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Section & View Layout specification: the section element and the four Home Assistant view types, with their options, reading order and limits."
+    description: "Added the Section and view layout specification: the section element and the four Home Assistant view types, with their options, reading order and limits."
 ai_instructions: "Apply when choosing or describing how a dashboard view lays out its cards. A Home Assistant view has a type: sections, masonry, panel or sidebar. A section in a Sections view is a div, not a section element, and has no title or region role of its own: open it with a Heading card. A section element in a Markdown card cannot be named, so it never becomes a landmark. Masonry places cards one at a time into the shortest column, so the keyboard order runs down column one, then column two: never write the card on the left. A panel view shows only the first card, and its card has no border. The Sidebar view merges its sidebar cards into the main column below 760 pixels, so the reading order changes with width. The sidebar option of a Sections view is a different thing. Do not claim a measured reading order on a real device."
 ai_related:
   - path: "/styles/structure-grid.html"
@@ -29,13 +29,13 @@ ai_related:
     title: "Dashboard composition and card features"
     relationship: "Owns the choice between the four view layouts."
   - path: "/components/card-and-section-header.html"
-    title: "Card & Section Header"
+    title: "Card and section header"
     relationship: "Owns the Heading card that names a section."
   - path: "/components/grid-and-stack-layout-cards.html"
-    title: "Grid & Stack Layout Cards"
+    title: "Grid and stack layout cards"
     relationship: "Owns layout cards that group other cards."
 component:
-  parent: "Section & View Layout"
+  parent: "Section and view layout"
   letter: "S"
   origins:
     - "HTML5"
@@ -68,7 +68,7 @@ component:
     - "hui-sidebar-view"
 ---
 
-# Section & View Layout
+# Section and view layout
 
 <h2 id="purpose">Purpose</h2>
 
@@ -78,7 +78,7 @@ A dashboard view arranges its cards in one of four ways. The view type decides t
 
 This page covers:
 
-- Section & View Layout
+- Section and view layout
   - `<section>`
   - `hui-sections-view`
   - `hui-section`
@@ -112,7 +112,7 @@ Do not name every section: too many landmarks become noise.
 </section>
 ```
 
-The [Markdown Card](markdown-card.html) keeps `section` but removes `id`, `class` and `aria-*`, so a section there cannot be named and never becomes a landmark. Its heading and text are the only structure. Home Assistant’s own sections are `div` elements, not `section`, so a dashboard section exposes no region landmark. The visible, supported name for a section is the Heading card.
+The [Markdown card](markdown-card.html) keeps `section` but removes `id`, `class` and `aria-*`, so a section there cannot be named and never becomes a landmark. Its heading and text are the only structure. Home Assistant’s own sections are `div` elements, not `section`, so a dashboard section exposes no region landmark. The visible, supported name for a section is the Heading card.
 
 <h3 id="child-hui-sections-view"><code>hui-sections-view</code></h3>
 
@@ -174,7 +174,7 @@ The Panel view, `type: panel` or `panel: true`. It shows exactly one card, the f
 
 The card has no border, corner radius or shadow, and no margin around it. The Civica theme’s 1 pixel card border does not show here.
 
-Use a panel view for one task: a map, a floor plan or a calendar. The card must reflow itself at every screen size, and a map must not trap the keyboard. Give another view for everything else. See [Common layouts](../styles/structure-common-layouts.html) and [Map Card](map-card.html).
+Use a panel view for one task: a map, a floor plan or a calendar. The card must reflow itself at every screen size, and a map must not trap the keyboard. Give another view for everything else. See [Common layouts](../styles/structure-common-layouts.html) and [Map card](map-card.html).
 
 <h3 id="child-hui-sidebar-view"><code>hui-sidebar-view</code></h3>
 
