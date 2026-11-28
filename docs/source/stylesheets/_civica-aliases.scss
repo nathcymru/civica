@@ -105,3 +105,6 @@
 .civica-table__header--numeric { @extend .govuk-table__header--numeric; }
 .civica-table__row { @extend .govuk-table__row !optional; }
 .civica-tag--grey { @extend .govuk-tag--grey; }
+.civica-character-count { @extend .govuk-character-count !optional; }
+.civica-character-count__message { @extend .govuk-character-count__message !optional; }
+.civica-textarea--error { @extend .govuk-textarea--error !optional; }
