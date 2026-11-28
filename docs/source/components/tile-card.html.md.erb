@@ -5,13 +5,15 @@ section: "components"
 group: "Components"
 status: "reference"
 published_on: "2026-11-26"
-updated_on: "2026-11-26"
+updated_on: "2026-11-28"
 last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Tile Card specification: its parts, the keys it accepts, how the Civica theme colours it and what stays as Home Assistant draws it."
-ai_instructions: "Apply when a dashboard shows one entity as a tile (type: tile). The tile is one button named by its name and state, so write the state in words and keep the name short: the name and state each stay on one line and are cut off with an ellipsis when too long. The icon colour follows the state, and in the Civica theme an active tile uses the theme's primary colour. Never rely on the colour, the icon or the small corner badge alone. The badge glyph is white in every mode and is weak against pale dark-mode colours by calculation. The unavailable badge has no text of its own, so the state text must say Unavailable. Tapping the tile opens More info unless you set another action, and tapping the icon toggles only for toggleable entities. Do not claim that the tile shows the Civica yellow focus ring: its focus cue is a thin border in the tile colour. Alarm panels that are arming or triggered and jammed locks pulse, and Home Assistant has no reduced-motion rule for that pulse. Do not claim a working card-mod selector."
+  - date: "2026-11-28"
+    description: "Dark mode now draws the badge glyph in ink, and the badge section states the contrast for both modes."
+ai_instructions: "Apply when a dashboard shows one entity as a tile (type: tile). The tile is one button named by its name and state, so write the state in words and keep the name short: the name and state each stay on one line and are cut off with an ellipsis when too long. The icon colour follows the state, and in the Civica theme an active tile uses the theme's primary colour. Never rely on the colour, the icon or the small corner badge alone. The badge glyph is white in light mode, and in dark mode the Civica theme draws it in ink so it stays readable on the pale dark-mode fills. The unavailable badge has no text of its own, so the state text must say Unavailable. Tapping the tile opens More info unless you set another action, and tapping the icon toggles only for toggleable entities. Do not claim that the tile shows the Civica yellow focus ring: its focus cue is a thin border in the tile colour. Alarm panels that are arming or triggered and jammed locks pulse, and Home Assistant has no reduced-motion rule for that pulse. Do not claim a working card-mod selector."
 ai_related:
   - path: "/components/card-features.html"
     title: "Card Features (Tile & Area Inline Controls)"
@@ -170,9 +172,9 @@ A 16 pixel square badge with a 12 pixel icon on the top right corner of the icon
 - The person badge for a person or a device tracker.
 - An action badge for a climate entity that is heating or cooling, and for a humidifier.
 
-The badge icon is white in every mode, and the badge colour comes from the state. By calculation, white on the unavailable orange is 5.54:1 in light mode and 1.49:1 in dark mode, and white on the theme blue is 5.17:1 and 1.48:1. A heating badge is white on `#FF6F22`, 2.78:1. So the glyph is hard to read in dark mode and on the heating colour. The badge is a small extra, never the only signal. The climate badge is named with the action. The unavailable badge has no text of its own, so the state line must say Unavailable, which it does.
+The badge icon is white in light mode and ink (`#0B0C0C`) in dark mode, and the badge colour comes from the state. In dark mode the Civica theme sets the `white-color` key to ink, which is the colour the badge icon reads, so the glyph keeps about 13:1 on the pale fills. By calculation, white on the unavailable orange is 5.54:1 in light mode, and white on the theme blue is 5.17:1. A heating badge is white on `#FF6F22`, 2.78:1, so the glyph is still hard to read on the heating colour in light mode. The badge is a small extra, never the only signal. The climate badge is named with the action. The unavailable badge has no text of its own, so the state line must say Unavailable, which it does.
 
-The badge’s background and icon colour can be set with `--tile-badge-background-color` and `--tile-badge-icon-color`, but Home Assistant sets the background for unavailable, person, climate and humidifier badges itself, so a theme cannot change it.
+The badge’s background and icon colour can be set with `--tile-badge-background-color` and `--tile-badge-icon-color` through `card-mod`. A theme sets the icon colour through the `white-color` key, which changes only the badge icon colour. Home Assistant sets the background for unavailable, person, climate and humidifier badges itself, so a theme cannot change it.
 
 <h2 id="limits">Advantages and limitations</h2>
 
@@ -195,7 +197,7 @@ Success criteria that apply:
 - 1.3.1 Info and Relationships and 4.1.2 Name, Role, Value: the tile is one button named by its name and state.
 - 1.4.1 Use of Colour: the state is also written in words.
 - 1.4.4 Resize Text and 1.4.10 Reflow: a long name is cut off, so keep names short and the state in words.
-- 1.4.11 Non-text Contrast: the icon and badge colours are not a reliable signal, as the icon and badge sections explain.
+- 1.4.11 Non-text Contrast: the icon and badge colours are not a reliable signal, as the icon and badge sections explain. The badge glyph is checked in both modes.
 - 2.2.2 Pause, Stop, Hide: an alarm and jammed lock pulse cannot be stopped.
 - 2.4.7 Focus Visible: the focus cue is a thin border. Check it on your own dashboard.
 - 2.5.8 Target Size (Minimum): the 36 pixel icon is larger than the 24 pixel minimum.

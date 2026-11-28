@@ -224,6 +224,8 @@ export function modeTokens(palette, dark) {
     ...roleTokens('neutral', '#484949', dark),
     // The toast bar takes this core neutral. Dark mode uses the loud neutral fill so its ink text keeps 4.5:1.
     ...(dark ? { 'ha-color-neutral-10': '#CCCCCC' } : {}),
+    // The small tile badge draws its glyph with white-color. Dark mode badge fills are pale, so the glyph takes ink to keep 4.5:1.
+    ...(dark ? { 'white-color': INK } : {}),
     // Gauge track: reaches 3:1 against the card surface in both modes (applied by card-mod below).
     'civica-gauge-track': dark ? '#6F777B' : '#8F9498',
     ...roleTokens('danger', SEMANTIC.danger, dark),

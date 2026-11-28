@@ -5,13 +5,15 @@ section: "components"
 group: "Components"
 status: "reference"
 published_on: "2026-11-26"
-updated_on: "2026-11-26"
+updated_on: "2026-11-28"
 last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Control Select specification: the button row and the menu, keyboard use, theme keys and a contrast warning for the selected option in dark mode."
-ai_instructions: "Apply to the Home Assistant option row (ha-control-select) and the closed menu (ha-control-select-menu) used in card features such as fan speed, alarm modes, climate modes and select-options. Selected text is fixed white by Home Assistant over the primary colour. Calculated from theme colours, that is 5.17:1 in light mode and 1.48:1 in dark mode, so never say the dark selected state passes. Arrow keys move focus only; Space or Enter selects. Selection is shown by fill only, with no tick, so write the chosen value in words. Set a label. Colours need card-mod. For a native HTML list use the Select page."
+  - date: "2026-11-28"
+    description: "Added the card-mod route to a darker selected fill in dark mode."
+ai_instructions: "Apply to the Home Assistant option row (ha-control-select) and the closed menu (ha-control-select-menu) used in card features such as fan speed, alarm modes, climate modes and select-options. Selected text is fixed white by Home Assistant over the primary colour. Calculated from theme colours, that is 5.17:1 in light mode and 1.48:1 in dark mode, so never say the dark selected state passes. Arrow keys move focus only; Space or Enter selects. Selection is shown by fill only, with no tick, so write the chosen value in words. Set a label. Colours need card-mod, and a darker selected fill set with --control-select-color restores contrast in dark mode. For a native HTML list use the Select page."
 ai_related:
   - path: "/components/select.html"
     title: "Dropdown Menu & Overflow Menu"
@@ -84,11 +86,11 @@ features:
 
 Keyboard: Tab moves to the row. The arrow keys move focus between options and wrap round at the ends. They do not choose. Space or Enter chooses the focused option. This differs from a native radio group, where the arrow keys choose. The row is exposed as a group of radio options with the label as its name, so set a label.
 
-Theme keys: `primary-color` for the filled option and the focus ring, and `disabled-color` for the background, which the Civica theme does not set. The selected text is white in Home Assistant’s own style and the theme cannot change it. Calculated from theme colours, white on the light primary colour is 5.17:1, and white on the dark primary colour is 1.48:1. In dark mode the selected option is therefore low in contrast. Check it in your own dashboard and do not rely on the fill to show the choice.
+Theme keys: `primary-color` for the filled option and the focus ring, and `disabled-color` for the background, which the Civica theme does not set. The selected text is white in Home Assistant’s own style and the theme cannot change it, and the fill colour is set on the row itself, so a theme cannot change that either. Calculated from theme colours, white on the light primary colour is 5.17:1, and white on the dark primary colour is 1.48:1. In dark mode the selected option is therefore low in contrast unless you set a darker fill with `card-mod`: set `--control-select-color` on the row to a colour that keeps at least 4.5:1 against white, such as the light-mode primary colour (5.17:1). Do not rely on the fill alone to show the choice.
 
 The selected option is shown by fill only, with no tick. Write the chosen value in words as well. Option labels are cut after two lines. When icons only are shown, the name appears only as a hover tip, so prefer words.
 
-Colour, thickness, corner radius and padding use `--control-select-*` variables, which need the card-mod integration.
+Colour, thickness, corner radius and padding use `--control-select-*` variables, which need the card-mod integration. Setting `--control-select-color` on the row changes the selected fill.
 
 <h3 id="child-ha-control-select-menu"><code>ha-control-select-menu</code></h3>
 
