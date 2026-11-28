@@ -1475,6 +1475,221 @@
       ],
       "coverage": "complete-for-explicit-domain-list",
       "exclusions": "Plant corresponds to the public Plant status card; Zone and Schedule are already used by household guide topics. These 3 are not claimed to be members of the 15-key row/dialog census. Neither inventory is the entire integration catalogue."
+    },
+    {
+      "id": "configuration-keys",
+      "title": "Configuration keys and values",
+      "denominator": 201,
+      "entry_ids": [
+        "HT-key-action-name",
+        "HT-key-add-event-size",
+        "HT-key-add-event-style",
+        "HT-key-alert-classes",
+        "HT-key-alert-color",
+        "HT-key-allow-context",
+        "HT-key-allow-custom",
+        "HT-key-allow-name",
+        "HT-key-allow-negative",
+        "HT-key-allow-open-top-navigation",
+        "HT-key-alpha-asc",
+        "HT-key-alpha-desc",
+        "HT-key-alt-text",
+        "HT-key-area-id",
+        "HT-key-arm-away",
+        "HT-key-arm-custom-bypass",
+        "HT-key-arm-home",
+        "HT-key-arm-night",
+        "HT-key-arm-vacation",
+        "HT-key-aspect-ratio",
+        "HT-key-auto-fit",
+        "HT-key-badges-position",
+        "HT-key-badges-wrap",
+        "HT-key-box-max-columns",
+        "HT-key-camera-image",
+        "HT-key-camera-view",
+        "HT-key-card-size",
+        "HT-key-center-image",
+        "HT-key-chart-type",
+        "HT-key-clear-color",
+        "HT-key-clock-size",
+        "HT-key-clock-style",
+        "HT-key-collection-key",
+        "HT-key-colors-dark",
+        "HT-key-column-span",
+        "HT-key-content-id-helper",
+        "HT-key-content-label",
+        "HT-key-custom-value",
+        "HT-key-dark-mode",
+        "HT-key-dark-mode-filter",
+        "HT-key-dark-mode-image",
+        "HT-key-date-format",
+        "HT-key-days-to-show",
+        "HT-key-default-action",
+        "HT-key-default-color",
+        "HT-key-default-name",
+        "HT-key-default-zoom",
+        "HT-key-dense-section-placement",
+        "HT-key-description-field",
+        "HT-key-device-classes",
+        "HT-key-disable-compare",
+        "HT-key-disable-sandbox",
+        "HT-key-display-order",
+        "HT-key-display-type",
+        "HT-key-due-date-period",
+        "HT-key-duedate-asc",
+        "HT-key-duedate-desc",
+        "HT-key-enable-day",
+        "HT-key-enable-millisecond",
+        "HT-key-enable-second",
+        "HT-key-entity-ids",
+        "HT-key-error-correction-level",
+        "HT-key-exclude-entities",
+        "HT-key-expand-legend",
+        "HT-key-extra-options",
+        "HT-key-extra-recommended-domains",
+        "HT-key-face-style",
+        "HT-key-features-position",
+        "HT-key-fit-mode",
+        "HT-key-fit-y-data",
+        "HT-key-fit-zones",
+        "HT-key-forecast-slots",
+        "HT-key-forecast-type",
+        "HT-key-geo-location-sources",
+        "HT-key-grid-options",
+        "HT-key-group-by-area",
+        "HT-key-group-by-floor",
+        "HT-key-heading-style",
+        "HT-key-hide-attributes",
+        "HT-key-hide-background",
+        "HT-key-hide-completed",
+        "HT-key-hide-compound-stats",
+        "HT-key-hide-content-type",
+        "HT-key-hide-create",
+        "HT-key-hide-disabled-controls",
+        "HT-key-hide-empty",
+        "HT-key-hide-if-unavailable",
+        "HT-key-hide-legend",
+        "HT-key-hide-section-headers",
+        "HT-key-hide-state",
+        "HT-key-hide-states",
+        "HT-key-hours-to-show",
+        "HT-key-icon-color",
+        "HT-key-icon-double-tap-action",
+        "HT-key-icon-height",
+        "HT-key-icon-hold-action",
+        "HT-key-icon-tap-action",
+        "HT-key-image-entity",
+        "HT-key-image-tap-action",
+        "HT-key-image-upload",
+        "HT-key-include-entities",
+        "HT-key-include-last-used",
+        "HT-key-include-none",
+        "HT-key-include-state",
+        "HT-key-initial-view",
+        "HT-key-item-tap-action",
+        "HT-key-label-field",
+        "HT-key-label-mode",
+        "HT-key-label-position",
+        "HT-key-last-month",
+        "HT-key-last-week",
+        "HT-key-last-year",
+        "HT-key-link-dashboard",
+        "HT-key-logarithmic-scale",
+        "HT-key-map-style",
+        "HT-key-max-columns",
+        "HT-key-max-devices",
+        "HT-key-max-mireds",
+        "HT-key-max-y-axis",
+        "HT-key-media-next-track",
+        "HT-key-media-pause",
+        "HT-key-media-play",
+        "HT-key-media-play-pause",
+        "HT-key-media-previous-track",
+        "HT-key-media-stop",
+        "HT-key-min-mireds",
+        "HT-key-min-y-axis",
+        "HT-key-name-detail",
+        "HT-key-native-name",
+        "HT-key-navigation-path",
+        "HT-key-new-tab",
+        "HT-key-next-30d",
+        "HT-key-next-7d",
+        "HT-key-next-month",
+        "HT-key-next-week",
+        "HT-key-no-background",
+        "HT-key-no-sort",
+        "HT-key-numbers-upright",
+        "HT-key-numeric-state",
+        "HT-key-on-top",
+        "HT-key-opening-direction",
+        "HT-key-operation-modes",
+        "HT-key-primary-entities-only",
+        "HT-key-radius-readonly",
+        "HT-key-round-temperature",
+        "HT-key-row-span",
+        "HT-key-scale-ruler",
+        "HT-key-secondary-info",
+        "HT-key-secondary-info-attribute",
+        "HT-key-seconds-motion",
+        "HT-key-sensor-classes",
+        "HT-key-service-data",
+        "HT-key-show-add-event",
+        "HT-key-show-all",
+        "HT-key-show-current",
+        "HT-key-show-current-as-primary",
+        "HT-key-show-empty",
+        "HT-key-show-entity-picture",
+        "HT-key-show-forecast",
+        "HT-key-show-header-toggle",
+        "HT-key-show-icon",
+        "HT-key-show-last-changed",
+        "HT-key-show-legend",
+        "HT-key-show-mute-button",
+        "HT-key-show-name",
+        "HT-key-show-names",
+        "HT-key-show-only-totals",
+        "HT-key-show-seconds",
+        "HT-key-show-state",
+        "HT-key-show-values",
+        "HT-key-show-zone-radius",
+        "HT-key-sidebar-label",
+        "HT-key-slider-ticks",
+        "HT-key-split-device-classes",
+        "HT-key-start-pause",
+        "HT-key-stat-type",
+        "HT-key-stat-types",
+        "HT-key-state-classes",
+        "HT-key-state-color",
+        "HT-key-state-content",
+        "HT-key-state-filter",
+        "HT-key-state-image",
+        "HT-key-state-not",
+        "HT-key-text-only",
+        "HT-key-theme-mode",
+        "HT-key-this-month",
+        "HT-key-this-week",
+        "HT-key-this-year",
+        "HT-key-time-format",
+        "HT-key-time-zone",
+        "HT-key-top-margin",
+        "HT-key-translation-key",
+        "HT-key-turn-off",
+        "HT-key-turn-on",
+        "HT-key-twice-daily",
+        "HT-key-validation-message",
+        "HT-key-vertical-opening-direction",
+        "HT-key-view-columns",
+        "HT-key-volume-down",
+        "HT-key-volume-mute",
+        "HT-key-volume-up"
+      ],
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "coverage": "Every snake_case key or value written in code on the component pages, each checked to exist in the pinned frontend source.",
+      "exclusions": [
+        "Names that belong to Civica or to third-party integrations, not to Home Assistant."
+      ]
     }
   ],
   "terms": [
@@ -9978,6 +10193,3825 @@
       "native_label_pointer": "/title",
       "code_kind": "entity/integration domain, not a complete entity or action identifier",
       "local_path": "/content/style-guides/technical-a-to-z.html#ht-domain-plant"
+    },
+    {
+      "id": "HT-key-action-name",
+      "native_name": "action_name",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `action_name` in code. In a sentence, say “button label”.",
+      "first_use_explanation": "Sets the label on the button that runs the entity’s action, in a button card feature or an entities card row.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "action_name"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-entities-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-action-name",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-add-event-size",
+      "native_name": "add_event_size",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `add_event_size` in code. In a sentence, say “add-event button size”.",
+      "first_use_explanation": "Sets the size of the button that adds an event on the calendar card. It only applies when `show_add_event` is on.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "add_event_size"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-calendar-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-add-event-size",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-add-event-style",
+      "native_name": "add_event_style",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `add_event_style` in code. In a sentence, say “add-event button position”.",
+      "first_use_explanation": "Sets where the add-event button sits on the calendar card: `below`, `on_top` or `header`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "add_event_style"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-calendar-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-add-event-style",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-alert-classes",
+      "native_name": "alert_classes",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `alert_classes` in code. In a sentence, say “alert device classes”.",
+      "first_use_explanation": "Lists the binary sensor device classes that the area card shows as alert icons when active.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "alert_classes"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-area-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-alert-classes",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-alert-color",
+      "native_name": "alert_color",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `alert_color` in code. In a sentence, say “alert colour”.",
+      "first_use_explanation": "Sets the colour of the alert card while its entity is in an alert state.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "alert_color"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-alert-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-alert-color",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-allow-context",
+      "native_name": "allow_context",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `allow_context` in code. In a sentence, say “allow context”.",
+      "first_use_explanation": "Lets the state content selector offer the entity’s context, such as its area or device, as something to show.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "allow_context"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-ui-state-content.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-allow-context",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-allow-custom",
+      "native_name": "allow_custom",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `allow_custom` in code. In a sentence, say “allow custom names”.",
+      "first_use_explanation": "Lets the entity name selector accept a name you type, as well as the ready-made name parts. It is on by default.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "allow_custom"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-entity-name.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-allow-custom",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-allow-name",
+      "native_name": "allow_name",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `allow_name` in code. In a sentence, say “allow name”.",
+      "first_use_explanation": "Lets the state content selector offer the entity’s name as something to show alongside its state.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "allow_name"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-ui-state-content.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-allow-name",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-allow-negative",
+      "native_name": "allow_negative",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `allow_negative` in code. In a sentence, say “allow negative durations”.",
+      "first_use_explanation": "Lets the duration selector accept a negative length of time.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "allow_negative"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-selector.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-allow-negative",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-allow-open-top-navigation",
+      "native_name": "allow_open_top_navigation",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `allow_open_top_navigation` in code. In a sentence, say “allow the framed page to change the whole page”.",
+      "first_use_explanation": "Lets the page inside a webpage card move the whole browser window to another address.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "allow_open_top_navigation"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-iframe-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-allow-open-top-navigation",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-alpha-asc",
+      "native_name": "alpha_asc",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `alpha_asc` in code. In a sentence, say “A to Z order”.",
+      "first_use_explanation": "Sorts to-do items from A to Z. It is a value of `display_order`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "alpha_asc"
+      ],
+      "source_file": "src/data/todo.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-alpha-asc",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-alpha-desc",
+      "native_name": "alpha_desc",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `alpha_desc` in code. In a sentence, say “Z to A order”.",
+      "first_use_explanation": "Sorts to-do items from Z to A. It is a value of `display_order`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "alpha_desc"
+      ],
+      "source_file": "src/data/todo.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-alpha-desc",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-alt-text",
+      "native_name": "alt_text",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `alt_text` in code. In a sentence, say “alternative text”.",
+      "first_use_explanation": "Sets the text that describes the image to people who cannot see it. It is optional on the picture in a card header or footer.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "alt_text"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-picture-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-alt-text",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-area-id",
+      "native_name": "area_id",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `area_id` in code. In a sentence, say “area ID”.",
+      "first_use_explanation": "Names the area that a navigation target or selector uses as context. It takes an area ID.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "area_id"
+      ],
+      "source_file": "src/components/ha-floor-picker.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-area-id",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-arm-away",
+      "native_name": "arm_away",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `arm_away` in code. In a sentence, say “away arming button”.",
+      "first_use_explanation": "Shows the button that arms the alarm in away mode. It is a value in the `states` list of an alarm panel card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "arm_away"
+      ],
+      "source_file": "src/panels/lovelace/cards/hui-alarm-panel-card.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-arm-away",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-arm-custom-bypass",
+      "native_name": "arm_custom_bypass",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `arm_custom_bypass` in code. In a sentence, say “custom bypass arming button”.",
+      "first_use_explanation": "Shows the button that arms the alarm in custom bypass mode. It is a value in the `states` list of an alarm panel card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "arm_custom_bypass"
+      ],
+      "source_file": "src/panels/lovelace/cards/hui-alarm-panel-card.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-arm-custom-bypass",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-arm-home",
+      "native_name": "arm_home",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `arm_home` in code. In a sentence, say “home arming button”.",
+      "first_use_explanation": "Shows the button that arms the alarm in home mode. It is a value in the `states` list of an alarm panel card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "arm_home"
+      ],
+      "source_file": "src/panels/lovelace/cards/hui-alarm-panel-card.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-arm-home",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-arm-night",
+      "native_name": "arm_night",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `arm_night` in code. In a sentence, say “night arming button”.",
+      "first_use_explanation": "Shows the button that arms the alarm in night mode. It is a value in the `states` list of an alarm panel card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "arm_night"
+      ],
+      "source_file": "src/panels/lovelace/cards/hui-alarm-panel-card.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-arm-night",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-arm-vacation",
+      "native_name": "arm_vacation",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `arm_vacation` in code. In a sentence, say “vacation arming button”.",
+      "first_use_explanation": "Shows the button that arms the alarm in vacation mode. It is a value in the `states` list of an alarm panel card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "arm_vacation"
+      ],
+      "source_file": "src/panels/lovelace/cards/hui-alarm-panel-card.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-arm-vacation",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-aspect-ratio",
+      "native_name": "aspect_ratio",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `aspect_ratio` in code. In a sentence, say “aspect ratio”.",
+      "first_use_explanation": "Sets the shape of the card’s picture or frame as a width-to-height ratio, such as 16:9.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "aspect_ratio"
+      ],
+      "source_file": "src/components/ha-aspect-ratio.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-aspect-ratio",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-auto-fit",
+      "native_name": "auto_fit",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `auto_fit` in code. In a sentence, say “fit the map to the markers”.",
+      "first_use_explanation": "Zooms and moves the map card so every marker fits in view.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "auto_fit"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-map-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-auto-fit",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-badges-position",
+      "native_name": "badges_position",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `badges_position` in code. In a sentence, say “badge position”.",
+      "first_use_explanation": "Sets whether the badges in a view header sit above or below the heading.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "badges_position"
+      ],
+      "source_file": "src/panels/lovelace/editor/view-header/hui-view-header-settings-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-badges-position",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-badges-wrap",
+      "native_name": "badges_wrap",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `badges_wrap` in code. In a sentence, say “badge wrapping”.",
+      "first_use_explanation": "Sets whether badges in a view header wrap onto more lines or scroll sideways when they do not fit.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "badges_wrap"
+      ],
+      "source_file": "src/panels/lovelace/editor/view-header/hui-view-header-settings-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-badges-wrap",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-box-max-columns",
+      "native_name": "box_max_columns",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `box_max_columns` in code. In a sentence, say “maximum box columns”.",
+      "first_use_explanation": "Sets the most columns of boxes the select selector shows when `mode` is `box`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "box_max_columns"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-select.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-box-max-columns",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-camera-image",
+      "native_name": "camera_image",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `camera_image` in code. In a sentence, say “camera entity”.",
+      "first_use_explanation": "Names the camera entity whose picture an image card shows.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "camera_image"
+      ],
+      "source_file": "src/panels/lovelace/elements/hui-image-element.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-camera-image",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-camera-view",
+      "native_name": "camera_view",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `camera_view` in code. In a sentence, say “camera view”.",
+      "first_use_explanation": "Sets whether a camera shows a still picture (`auto`) or a live stream (`live`).",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "camera_view"
+      ],
+      "source_file": "src/panels/lovelace/elements/hui-image-element.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-camera-view",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-card-size",
+      "native_name": "card_size",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `card_size` in code. In a sentence, say “card height”.",
+      "first_use_explanation": "Sets the height, in rows, that the dashboard layout reserves for a Markdown card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "card_size"
+      ],
+      "source_file": "src/panels/lovelace/strategies/areas/editor/hui-areas-dashboard-strategy-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-card-size",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-center-image",
+      "native_name": "center_image",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `center_image` in code. In a sentence, say “centre image”.",
+      "first_use_explanation": "Sets an image shown in the middle of the QR code that the `qr_code` selector draws.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "center_image"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-qr-code.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-center-image",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-chart-type",
+      "native_name": "chart_type",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `chart_type` in code. In a sentence, say “chart type”.",
+      "first_use_explanation": "Sets how a statistics graph card draws its data: `line`, `bar`, `line-stack` or `bar-stack`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "chart_type"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-statistics-graph-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-chart-type",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-clear-color",
+      "native_name": "clear_color",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `clear_color` in code. In a sentence, say “clear colour”.",
+      "first_use_explanation": "Sets the colour of the alert card while its entity is not in an alert state.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "clear_color"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-alert-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-clear-color",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-clock-size",
+      "native_name": "clock_size",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `clock_size` in code. In a sentence, say “clock size”.",
+      "first_use_explanation": "Sets the size of the clock on a clock card: `small`, `medium` or `large`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "clock_size"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-clock-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-clock-size",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-clock-style",
+      "native_name": "clock_style",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `clock_style` in code. In a sentence, say “clock style”.",
+      "first_use_explanation": "Sets whether a clock card shows a `digital` or `analog` clock.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "clock_style"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-clock-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-clock-style",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-collection-key",
+      "native_name": "collection_key",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `collection_key` in code. In a sentence, say “shared period key”.",
+      "first_use_explanation": "Links Energy cards that share the same key, so they all show the same date period.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "collection_key"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-energy-sankey-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-collection-key",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-colors-dark",
+      "native_name": "colors_dark",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `colors_dark` in code. In a sentence, say “dark map colours”.",
+      "first_use_explanation": "Sets the map card’s colours for the dark theme, as a list of map parts and colours.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "colors_dark"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-map-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-colors-dark",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-column-span",
+      "native_name": "column_span",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `column_span` in code. In a sentence, say “number of columns to take up”.",
+      "first_use_explanation": "Sets how many columns a section takes up in a sections view.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "column_span"
+      ],
+      "source_file": "src/panels/lovelace/editor/card-editor/hui-card-layout-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-column-span",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-content-id-helper",
+      "native_name": "content_id_helper",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `content_id_helper` in code. In a sentence, say “content ID help text”.",
+      "first_use_explanation": "Sets the helper text that explains what to enter in the media selector’s content ID field.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "content_id_helper"
+      ],
+      "source_file": "src/components/ha-media-item-picker.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-content-id-helper",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-content-label",
+      "native_name": "content_label",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `content_label` in code. In a sentence, say “content label”.",
+      "first_use_explanation": "Sets the label for the main content when a sections view has a sidebar and shows one column.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "content_label"
+      ],
+      "source_file": "src/panels/lovelace/views/hui-sections-view.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-content-label",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-custom-value",
+      "native_name": "custom_value",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `custom_value` in code. In a sentence, say “allow custom values”.",
+      "first_use_explanation": "Lets the select selector accept a value that is not in its list of choices.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "custom_value"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-selector.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-custom-value",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-dark-mode",
+      "native_name": "dark_mode",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `dark_mode` in code. In a sentence, say “dark mode”.",
+      "first_use_explanation": "Switches the map card to its dark appearance. It is deprecated; use `theme_mode` instead.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "dark_mode"
+      ],
+      "source_file": "src/components/ha-theme-settings.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-dark-mode",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-dark-mode-filter",
+      "native_name": "dark_mode_filter",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `dark_mode_filter` in code. In a sentence, say “dark mode filter”.",
+      "first_use_explanation": "Sets a CSS filter that changes the picture on a picture elements card in dark mode.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "dark_mode_filter"
+      ],
+      "source_file": "src/panels/lovelace/elements/hui-image-element.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-dark-mode-filter",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-dark-mode-image",
+      "native_name": "dark_mode_image",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `dark_mode_image` in code. In a sentence, say “dark mode image”.",
+      "first_use_explanation": "Sets the picture a picture elements card shows in dark mode, in place of its usual image.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "dark_mode_image"
+      ],
+      "source_file": "src/panels/lovelace/elements/hui-image-element.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-dark-mode-image",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-date-format",
+      "native_name": "date_format",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `date_format` in code. In a sentence, say “date format”.",
+      "first_use_explanation": "Lists the parts of the date, such as `weekday-long` and `day-numeric`, that a clock card shows.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "date_format"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-date-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-date-format",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-days-to-show",
+      "native_name": "days_to_show",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `days_to_show` in code. In a sentence, say “number of days to show”.",
+      "first_use_explanation": "Sets how many days of data a statistics graph card shows.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "days_to_show"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-precipitation-forecast-card-feature-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-days-to-show",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-default-action",
+      "native_name": "default_action",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `default_action` in code. In a sentence, say “default action”.",
+      "first_use_explanation": "Sets the action that the UI action selector chooses first for a tap, hold or double-tap.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "default_action"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-ui-action.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-default-action",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-default-color",
+      "native_name": "default_color",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `default_color` in code. In a sentence, say “default colour”.",
+      "first_use_explanation": "Sets the colour the colour selector chooses first.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "default_color"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-ui-color.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-default-color",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-default-name",
+      "native_name": "default_name",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `default_name` in code. In a sentence, say “default name”.",
+      "first_use_explanation": "Sets the name parts that the entity name selector uses until you choose others.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "default_name"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-entity-name.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-default-name",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-default-zoom",
+      "native_name": "default_zoom",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `default_zoom` in code. In a sentence, say “starting zoom”.",
+      "first_use_explanation": "Sets how far the map card is zoomed in when it first opens.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "default_zoom"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-map-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-default-zoom",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-dense-section-placement",
+      "native_name": "dense_section_placement",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `dense_section_placement` in code. In a sentence, say “dense section placement”.",
+      "first_use_explanation": "Lets later, smaller sections move up to fill gaps left by earlier sections in a sections view.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "dense_section_placement"
+      ],
+      "source_file": "src/panels/lovelace/editor/view-editor/hui-view-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-dense-section-placement",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-description-field",
+      "native_name": "description_field",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `description_field` in code. In a sentence, say “description field”.",
+      "first_use_explanation": "Names the item property that the object selector shows as each item’s description.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "description_field"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-object.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-description-field",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-device-classes",
+      "native_name": "device_classes",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `device_classes` in code. In a sentence, say “device classes”.",
+      "first_use_explanation": "Limits the unit of measurement selector to units that belong to the listed device classes.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "device_classes"
+      ],
+      "source_file": "src/components/ha-device-class-picker.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-device-classes",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-disable-compare",
+      "native_name": "disable_compare",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `disable_compare` in code. In a sentence, say “hide the compare option”.",
+      "first_use_explanation": "Hides the option to compare the chosen period with an earlier one on the energy date selection card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "disable_compare"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-energy-date-selection-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-disable-compare",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-disable-sandbox",
+      "native_name": "disable_sandbox",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `disable_sandbox` in code. In a sentence, say “remove the sandbox”.",
+      "first_use_explanation": "Removes the sandbox from a webpage card, giving the framed page more permissions. This makes the frame less secure.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "disable_sandbox"
+      ],
+      "source_file": "src/panels/lovelace/cards/hui-iframe-card.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-disable-sandbox",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-display-order",
+      "native_name": "display_order",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `display_order` in code. In a sentence, say “display order”.",
+      "first_use_explanation": "Sets how a to-do list card sorts its items, for example `none`, `alpha_asc` or `duedate_asc`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "display_order"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-todo-list-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-display-order",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-display-type",
+      "native_name": "display_type",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `display_type` in code. In a sentence, say “display type”.",
+      "first_use_explanation": "Sets how the area card looks: `picture`, `compact`, `icon` or `camera`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "display_type"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-entity-badge-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-display-type",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-due-date-period",
+      "native_name": "due_date_period",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `due_date_period` in code. In a sentence, say “due date period”.",
+      "first_use_explanation": "Limits a to-do list card to items due in a chosen period, such as today.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "due_date_period"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-todo-list-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-due-date-period",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-duedate-asc",
+      "native_name": "duedate_asc",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `duedate_asc` in code. In a sentence, say “earliest due date first”.",
+      "first_use_explanation": "Sorts to-do items with the earliest due date first. It is a value of `display_order`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "duedate_asc"
+      ],
+      "source_file": "src/data/todo.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-duedate-asc",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-duedate-desc",
+      "native_name": "duedate_desc",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `duedate_desc` in code. In a sentence, say “latest due date first”.",
+      "first_use_explanation": "Sorts to-do items with the latest due date first. It is a value of `display_order`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "duedate_desc"
+      ],
+      "source_file": "src/data/todo.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-duedate-desc",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-enable-day",
+      "native_name": "enable_day",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `enable_day` in code. In a sentence, say “days field”.",
+      "first_use_explanation": "Adds a days field to the duration selector.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "enable_day"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-selector.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-enable-day",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-enable-millisecond",
+      "native_name": "enable_millisecond",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `enable_millisecond` in code. In a sentence, say “milliseconds field”.",
+      "first_use_explanation": "Adds a milliseconds field to the duration selector.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "enable_millisecond"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-selector.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-enable-millisecond",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-enable-second",
+      "native_name": "enable_second",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `enable_second` in code. In a sentence, say “seconds field”.",
+      "first_use_explanation": "Adds a seconds field to the duration selector.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "enable_second"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-selector.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-enable-second",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-entity-ids",
+      "native_name": "entity_ids",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `entity_ids` in code. In a sentence, say “trigger entities”.",
+      "first_use_explanation": "Lists the entities whose changes make a Markdown card render its template again.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "entity_ids"
+      ],
+      "source_file": "src/panels/lovelace/cards/hui-markdown-card.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-entity-ids",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-error-correction-level",
+      "native_name": "error_correction_level",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `error_correction_level` in code. In a sentence, say “error correction level”.",
+      "first_use_explanation": "Sets how much of the QR code can be damaged and still scan: `low`, `medium`, `quartile` or `high`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "error_correction_level"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-qr-code.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-error-correction-level",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-exclude-entities",
+      "native_name": "exclude_entities",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `exclude_entities` in code. In a sentence, say “excluded entities”.",
+      "first_use_explanation": "Lists entities to leave out of an area card or an entity selector’s choices.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "exclude_entities"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-entity.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-exclude-entities",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-expand-legend",
+      "native_name": "expand_legend",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `expand_legend` in code. In a sentence, say “expand the legend”.",
+      "first_use_explanation": "Opens the legend of a statistics graph card in full instead of collapsed.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "expand_legend"
+      ],
+      "source_file": "src/components/chart/ha-chart-base.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-expand-legend",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-extra-options",
+      "native_name": "extra_options",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `extra_options` in code. In a sentence, say “extra options”.",
+      "first_use_explanation": "Adds extra choices, which you define, to the entity, state or colour selector’s list.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "extra_options"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-state.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-extra-options",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-extra-recommended-domains",
+      "native_name": "extra_recommended_domains",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `extra_recommended_domains` in code. In a sentence, say “extra recommended integrations”.",
+      "first_use_explanation": "Lists integration domains whose serial ports the serial port selector shows as recommended.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "extra_recommended_domains"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-serial-port.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-extra-recommended-domains",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-face-style",
+      "native_name": "face_style",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `face_style` in code. In a sentence, say “clock face style”.",
+      "first_use_explanation": "Sets how the analogue clock face on a clock card is marked: `markers`, `numbers_upright` or `roman`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "face_style"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-clock-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-face-style",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-features-position",
+      "native_name": "features_position",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `features_position` in code. In a sentence, say “feature position”.",
+      "first_use_explanation": "Sets whether an area card shows its features `bottom` (below) or `inline`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "features_position"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-area-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-features-position",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-fit-mode",
+      "native_name": "fit_mode",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `fit_mode` in code. In a sentence, say “fit mode”.",
+      "first_use_explanation": "Sets how a picture fills its frame on an image card: `cover`, `contain` or `fill`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "fit_mode"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-picture-entity-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-fit-mode",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-fit-y-data",
+      "native_name": "fit_y_data",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `fit_y_data` in code. In a sentence, say “fit the vertical axis to the data”.",
+      "first_use_explanation": "Sizes the vertical axis of a statistics graph card to the range of the data.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "fit_y_data"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-statistics-graph-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-fit-y-data",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-fit-zones",
+      "native_name": "fit_zones",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `fit_zones` in code. In a sentence, say “fit the map to the zones”.",
+      "first_use_explanation": "Zooms and moves the map card so every zone fits in view.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "fit_zones"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-map-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-fit-zones",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-forecast-slots",
+      "native_name": "forecast_slots",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `forecast_slots` in code. In a sentence, say “number of forecast periods”.",
+      "first_use_explanation": "Sets how many forecast periods a weather forecast card shows.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "forecast_slots"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-weather-forecast-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-forecast-slots",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-forecast-type",
+      "native_name": "forecast_type",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `forecast_type` in code. In a sentence, say “forecast type”.",
+      "first_use_explanation": "Sets the forecast a weather forecast card shows: `daily`, `hourly`, `twice_daily` or `legacy`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "forecast_type"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-precipitation-forecast-card-feature-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-forecast-type",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-geo-location-sources",
+      "native_name": "geo_location_sources",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `geo_location_sources` in code. In a sentence, say “geolocation sources”.",
+      "first_use_explanation": "Lists the sources of geolocated events that a map card plots.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "geo_location_sources"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-map-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-geo-location-sources",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-grid-options",
+      "native_name": "grid_options",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `grid_options` in code. In a sentence, say “card size in the grid”.",
+      "first_use_explanation": "Sets how many columns and rows a card takes up in a sections view.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "grid_options"
+      ],
+      "source_file": "src/panels/lovelace/editor/card-editor/hui-card-layout-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-grid-options",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-group-by-area",
+      "native_name": "group_by_area",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `group_by_area` in code. In a sentence, say “group by area”.",
+      "first_use_explanation": "Groups devices by area in the energy Sankey card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "group_by_area"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-energy-sankey-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-group-by-area",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-group-by-floor",
+      "native_name": "group_by_floor",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `group_by_floor` in code. In a sentence, say “group by floor”.",
+      "first_use_explanation": "Groups devices by floor in the energy Sankey card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "group_by_floor"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-energy-sankey-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-group-by-floor",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-heading-style",
+      "native_name": "heading_style",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `heading_style` in code. In a sentence, say “heading style”.",
+      "first_use_explanation": "Sets whether a heading card is a `title` or a smaller `subtitle`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "heading_style"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-heading-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-heading-style",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-hide-attributes",
+      "native_name": "hide_attributes",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_attributes` in code. In a sentence, say “hidden attributes”.",
+      "first_use_explanation": "Lists attributes that the attribute selector leaves out of its choices.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_attributes"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-attribute.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-attributes",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-hide-background",
+      "native_name": "hide_background",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_background` in code. In a sentence, say “hide the background”.",
+      "first_use_explanation": "Removes the card’s background, border and shadow on a webpage card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_background"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-iframe-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-background",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-hide-completed",
+      "native_name": "hide_completed",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_completed` in code. In a sentence, say “hide completed items”.",
+      "first_use_explanation": "Hides the Completed section of a to-do list card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_completed"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-todo-list-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-completed",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-hide-compound-stats",
+      "native_name": "hide_compound_stats",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_compound_stats` in code. In a sentence, say “hide combined statistics”.",
+      "first_use_explanation": "Hides statistics that combine several devices on the energy devices graph card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_compound_stats"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-energy-devices-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-compound-stats",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-hide-content-type",
+      "native_name": "hide_content_type",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_content_type` in code. In a sentence, say “hide the content type”.",
+      "first_use_explanation": "Hides the content type field in the media selector.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_content_type"
+      ],
+      "source_file": "src/components/ha-media-item-picker.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-content-type",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-hide-create",
+      "native_name": "hide_create",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_create` in code. In a sentence, say “hide the add row”.",
+      "first_use_explanation": "Hides the row for adding items on a to-do list card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_create"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-todo-list-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-create",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-hide-disabled-controls",
+      "native_name": "hide_disabled_controls",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_disabled_controls` in code. In a sentence, say “hide unavailable controls”.",
+      "first_use_explanation": "Hides playback buttons that the media player does not support, instead of showing them greyed out.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_disabled_controls"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-media-player-playback-card-feature-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-disabled-controls",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-hide-empty",
+      "native_name": "hide_empty",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_empty` in code. In a sentence, say “hide when empty”.",
+      "first_use_explanation": "Hides the card when it has nothing to list.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_empty"
+      ],
+      "source_file": "src/panels/lovelace/strategies/home/home-overview-view-strategy.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-empty",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-hide-if-unavailable",
+      "native_name": "hide_if_unavailable",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_if_unavailable` in code. In a sentence, say “hide when unavailable”.",
+      "first_use_explanation": "Hides the Cast row when Cast is not available.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_if_unavailable"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-entities-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-if-unavailable",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-hide-legend",
+      "native_name": "hide_legend",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_legend` in code. In a sentence, say “hide the legend”.",
+      "first_use_explanation": "Hides the legend on a statistics graph card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_legend"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-statistics-graph-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-legend",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-hide-section-headers",
+      "native_name": "hide_section_headers",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_section_headers` in code. In a sentence, say “hide section headings”.",
+      "first_use_explanation": "Hides the Active and Completed headings on a to-do list card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_section_headers"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-todo-list-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-section-headers",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-hide-state",
+      "native_name": "hide_state",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_state` in code. In a sentence, say “hide the state”.",
+      "first_use_explanation": "Hides the state text on the alert card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_state"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-alert-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-state",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-hide-states",
+      "native_name": "hide_states",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hide_states` in code. In a sentence, say “hidden states”.",
+      "first_use_explanation": "Lists states that the state selector leaves out of its choices.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hide_states"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-state.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hide-states",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-hours-to-show",
+      "native_name": "hours_to_show",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `hours_to_show` in code. In a sentence, say “number of hours to show”.",
+      "first_use_explanation": "Sets how many hours of data a card shows, for example the activity card or a history graph feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "hours_to_show"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-precipitation-forecast-card-feature-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-hours-to-show",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-icon-color",
+      "native_name": "icon_color",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `icon_color` in code. In a sentence, say “icon colour”.",
+      "first_use_explanation": "Sets the colour of the icon.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "icon_color"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-empty-state-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-icon-color",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-icon-double-tap-action",
+      "native_name": "icon_double_tap_action",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `icon_double_tap_action` in code. In a sentence, say “icon double-tap action”.",
+      "first_use_explanation": "Sets what happens when you double-tap the icon on a tile card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "icon_double_tap_action"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/interactions-schema.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-icon-double-tap-action",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-icon-height",
+      "native_name": "icon_height",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `icon_height` in code. In a sentence, say “icon height”.",
+      "first_use_explanation": "Sets the height of the icon on a button card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "icon_height"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-button-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-icon-height",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-icon-hold-action",
+      "native_name": "icon_hold_action",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `icon_hold_action` in code. In a sentence, say “icon hold action”.",
+      "first_use_explanation": "Sets what happens when you press and hold the icon on a tile card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "icon_hold_action"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/interactions-schema.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-icon-hold-action",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-icon-tap-action",
+      "native_name": "icon_tap_action",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `icon_tap_action` in code. In a sentence, say “icon tap action”.",
+      "first_use_explanation": "Sets what happens when you tap the icon on a tile card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "icon_tap_action"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/interactions-schema.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-icon-tap-action",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-image-entity",
+      "native_name": "image_entity",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `image_entity` in code. In a sentence, say “picture entity”.",
+      "first_use_explanation": "Names an image or person entity whose picture an image card shows instead.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "image_entity"
+      ],
+      "source_file": "src/panels/lovelace/elements/hui-image-element.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-image-entity",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-image-tap-action",
+      "native_name": "image_tap_action",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `image_tap_action` in code. In a sentence, say “picture tap action”.",
+      "first_use_explanation": "Sets what happens when you tap the picture on an area card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "image_tap_action"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-area-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-image-tap-action",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-image-upload",
+      "native_name": "image_upload",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `image_upload` in code. In a sentence, say “image upload”.",
+      "first_use_explanation": "Lets the media selector offer image uploads.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "image_upload"
+      ],
+      "source_file": "src/components/ha-media-item-picker.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-image-upload",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-include-entities",
+      "native_name": "include_entities",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `include_entities` in code. In a sentence, say “included entities”.",
+      "first_use_explanation": "Limits the entity selector to the listed entities.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "include_entities"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-entity.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-include-entities",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-include-last-used",
+      "native_name": "include_last_used",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `include_last_used` in code. In a sentence, say “last used choice”.",
+      "first_use_explanation": "Adds a “last used” choice to the Assist pipeline selector.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "include_last_used"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-assist-pipeline.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-include-last-used",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-include-none",
+      "native_name": "include_none",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `include_none` in code. In a sentence, say “none choice”.",
+      "first_use_explanation": "Adds a “none” choice to the colour selector.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "include_none"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-ui-color.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-include-none",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-include-state",
+      "native_name": "include_state",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `include_state` in code. In a sentence, say “state choice”.",
+      "first_use_explanation": "Adds a “state” choice to the colour selector, so the colour follows the entity’s state.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "include_state"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-ui-color.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-include-state",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-initial-view",
+      "native_name": "initial_view",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `initial_view` in code. In a sentence, say “starting view”.",
+      "first_use_explanation": "Sets the view a calendar card opens in, such as `dayGridMonth` or `dayGridWeek`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "initial_view"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-calendar-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-initial-view",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-item-tap-action",
+      "native_name": "item_tap_action",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `item_tap_action` in code. In a sentence, say “item tap action”.",
+      "first_use_explanation": "Sets what tapping a to-do item does: `edit` opens it, `toggle` ticks it off.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "item_tap_action"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-todo-list-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-item-tap-action",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-label-field",
+      "native_name": "label_field",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `label_field` in code. In a sentence, say “label field”.",
+      "first_use_explanation": "Names the item property that the object selector shows as each item’s label.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "label_field"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-object.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-label-field",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-label-mode",
+      "native_name": "label_mode",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `label_mode` in code. In a sentence, say “label content”.",
+      "first_use_explanation": "Sets what a map marker’s label shows, such as its `name` or `state`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "label_mode"
+      ],
+      "source_file": "src/components/map/ha-map.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-label-mode",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-label-position",
+      "native_name": "label_position",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `label_position` in code. In a sentence, say “label position”.",
+      "first_use_explanation": "Sets whether a history graph card puts its labels at the `side` or `below`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "label_position"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-history-graph-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-label-position",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-last-month",
+      "native_name": "last_month",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `last_month` in code. In a sentence, say “last month”.",
+      "first_use_explanation": "Names the period last month in a selector that chooses a period of time.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "last_month"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-period.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-last-month",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-last-week",
+      "native_name": "last_week",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `last_week` in code. In a sentence, say “last week”.",
+      "first_use_explanation": "Names the period last week in a selector that chooses a period of time.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "last_week"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-period.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-last-week",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-last-year",
+      "native_name": "last_year",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `last_year` in code. In a sentence, say “last year”.",
+      "first_use_explanation": "Names the period last year in a selector that chooses a period of time.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "last_year"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-period.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-last-year",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-link-dashboard",
+      "native_name": "link_dashboard",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `link_dashboard` in code. In a sentence, say “link to the Energy dashboard”.",
+      "first_use_explanation": "Makes the energy distribution card link to the Energy dashboard.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "link_dashboard"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-energy-graph-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-link-dashboard",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-logarithmic-scale",
+      "native_name": "logarithmic_scale",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `logarithmic_scale` in code. In a sentence, say “logarithmic scale”.",
+      "first_use_explanation": "Draws the vertical axis on a logarithmic scale, so large and small values both stay readable.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "logarithmic_scale"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-statistics-graph-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-logarithmic-scale",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-map-style",
+      "native_name": "map_style",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `map_style` in code. In a sentence, say “map style”.",
+      "first_use_explanation": "Sets the map card’s look using a preset or a custom style.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "map_style"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-map-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-map-style",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-max-columns",
+      "native_name": "max_columns",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `max_columns` in code. In a sentence, say “maximum columns”.",
+      "first_use_explanation": "Sets the most sections that sit side by side in a sections view.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "max_columns"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-automation-behavior.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-max-columns",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-max-devices",
+      "native_name": "max_devices",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `max_devices` in code. In a sentence, say “maximum devices”.",
+      "first_use_explanation": "Sets the most devices the energy Sankey card shows.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "max_devices"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-energy-sankey-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-max-devices",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-max-mireds",
+      "native_name": "max_mireds",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `max_mireds` in code. In a sentence, say “maximum colour temperature”.",
+      "first_use_explanation": "Sets the largest colour temperature, in mireds, on the colour temperature selector.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "max_mireds"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-color-temp.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-max-mireds",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-max-y-axis",
+      "native_name": "max_y_axis",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `max_y_axis` in code. In a sentence, say “highest vertical axis value”.",
+      "first_use_explanation": "Sets the highest value on the vertical axis of a chart.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "max_y_axis"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-statistics-graph-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-max-y-axis",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-media-next-track",
+      "native_name": "media_next_track",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `media_next_track` in code. In a sentence, say “next track button”.",
+      "first_use_explanation": "Names the media player control that skips to the next track. Use it in the `controls` list of a media player playback feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "media_next_track"
+      ],
+      "source_file": "src/panels/lovelace/entity-rows/hui-media-player-entity-row.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-media-next-track",
+      "native_name_kind": "action"
+    },
+    {
+      "id": "HT-key-media-pause",
+      "native_name": "media_pause",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `media_pause` in code. In a sentence, say “pause button”.",
+      "first_use_explanation": "Names the media player control that pauses playback. Use it in the `controls` list of a media player playback feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "media_pause"
+      ],
+      "source_file": "src/panels/lovelace/entity-rows/hui-media-player-entity-row.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-media-pause",
+      "native_name_kind": "action"
+    },
+    {
+      "id": "HT-key-media-play",
+      "native_name": "media_play",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `media_play` in code. In a sentence, say “play button”.",
+      "first_use_explanation": "Names the media player control that starts playback. Use it in the `controls` list of a media player playback feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "media_play"
+      ],
+      "source_file": "src/panels/lovelace/entity-rows/hui-media-player-entity-row.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-media-play",
+      "native_name_kind": "action"
+    },
+    {
+      "id": "HT-key-media-play-pause",
+      "native_name": "media_play_pause",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `media_play_pause` in code. In a sentence, say “play and pause button”.",
+      "first_use_explanation": "Names the media player control that switches between play and pause. Use it in the `controls` list of a media player playback feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "media_play_pause"
+      ],
+      "source_file": "src/panels/lovelace/entity-rows/hui-media-player-entity-row.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-media-play-pause",
+      "native_name_kind": "action"
+    },
+    {
+      "id": "HT-key-media-previous-track",
+      "native_name": "media_previous_track",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `media_previous_track` in code. In a sentence, say “previous track button”.",
+      "first_use_explanation": "Names the media player control that goes back to the previous track. Use it in the `controls` list of a media player playback feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "media_previous_track"
+      ],
+      "source_file": "src/panels/lovelace/entity-rows/hui-media-player-entity-row.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-media-previous-track",
+      "native_name_kind": "action"
+    },
+    {
+      "id": "HT-key-media-stop",
+      "native_name": "media_stop",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `media_stop` in code. In a sentence, say “stop button”.",
+      "first_use_explanation": "Names the media player control that stops playback. Use it in the `controls` list of a media player playback feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "media_stop"
+      ],
+      "source_file": "src/panels/lovelace/entity-rows/hui-media-player-entity-row.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-media-stop",
+      "native_name_kind": "action"
+    },
+    {
+      "id": "HT-key-min-mireds",
+      "native_name": "min_mireds",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `min_mireds` in code. In a sentence, say “minimum colour temperature”.",
+      "first_use_explanation": "Sets the smallest colour temperature, in mireds, on the colour temperature selector.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "min_mireds"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-color-temp.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-min-mireds",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-min-y-axis",
+      "native_name": "min_y_axis",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `min_y_axis` in code. In a sentence, say “lowest vertical axis value”.",
+      "first_use_explanation": "Sets the lowest value on the vertical axis of a chart.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "min_y_axis"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-statistics-graph-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-min-y-axis",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-name-detail",
+      "native_name": "name_detail",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `name_detail` in code. In a sentence, say “name detail”.",
+      "first_use_explanation": "Sets how much of an entity’s name the logbook card repeats: `auto`, `none`, `entity`, `device` or `area`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "name_detail"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-logbook-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-name-detail",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-native-name",
+      "native_name": "native_name",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `native_name` in code. In a sentence, say “native names”.",
+      "first_use_explanation": "Shows each language in its own name, such as Cymraeg, in the language selector.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "native_name"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-language.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-native-name",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-navigation-path",
+      "native_name": "navigation_path",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `navigation_path` in code. In a sentence, say “navigation path”.",
+      "first_use_explanation": "Sets the dashboard path that a navigate action opens.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "navigation_path"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-shortcut-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-navigation-path",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-new-tab",
+      "native_name": "new_tab",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `new_tab` in code. In a sentence, say “open in a new tab”.",
+      "first_use_explanation": "Opens a link in a new browser tab instead of the current one.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "new_tab"
+      ],
+      "source_file": "src/panels/lovelace/entity-rows/types.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-new-tab",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-next-30d",
+      "native_name": "next_30d",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `next_30d` in code. In a sentence, say “the next 30 days”.",
+      "first_use_explanation": "Names the period the next 30 days in a selector that chooses a period of time.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "next_30d"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-period.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-next-30d",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-next-7d",
+      "native_name": "next_7d",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `next_7d` in code. In a sentence, say “the next 7 days”.",
+      "first_use_explanation": "Names the period the next 7 days in a selector that chooses a period of time.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "next_7d"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-period.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-next-7d",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-next-month",
+      "native_name": "next_month",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `next_month` in code. In a sentence, say “next month”.",
+      "first_use_explanation": "Names the period next month in a selector that chooses a period of time.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "next_month"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-period.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-next-month",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-next-week",
+      "native_name": "next_week",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `next_week` in code. In a sentence, say “next week”.",
+      "first_use_explanation": "Names the period next week in a selector that chooses a period of time.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "next_week"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-period.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-next-week",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-no-background",
+      "native_name": "no_background",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `no_background` in code. In a sentence, say “no background”.",
+      "first_use_explanation": "Removes the card’s background on a clock card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "no_background"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-date-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-no-background",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-no-sort",
+      "native_name": "no_sort",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `no_sort` in code. In a sentence, say “keep the order”.",
+      "first_use_explanation": "Keeps the country selector’s list in the order you gave it instead of sorting it.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "no_sort"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-country.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-no-sort",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-numbers-upright",
+      "native_name": "numbers_upright",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `numbers_upright` in code. In a sentence, say “upright numbers”.",
+      "first_use_explanation": "Draws upright numbers on the analogue clock face. It is a value of `face_style`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "numbers_upright"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-clock-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-numbers-upright",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-numeric-state",
+      "native_name": "numeric_state",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `numeric_state` in code. In a sentence, say “number condition”.",
+      "first_use_explanation": "Names the condition type that checks whether a number is `above` or `below` a value. It is a value of `condition`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "numeric_state"
+      ],
+      "source_file": "src/components/trace/get_trace_node_target.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-numeric-state",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-on-top",
+      "native_name": "on_top",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `on_top` in code. In a sentence, say “on top”.",
+      "first_use_explanation": "Places the add-event button on top of the calendar. It is a value of `add_event_style`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "on_top"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-calendar-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-on-top",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-opening-direction",
+      "native_name": "opening_direction",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `opening_direction` in code. In a sentence, say “opening direction”.",
+      "first_use_explanation": "Sets which way the period list opens on the energy date selection card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "opening_direction"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-energy-date-selection-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-opening-direction",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-operation-modes",
+      "native_name": "operation_modes",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `operation_modes` in code. In a sentence, say “operation modes”.",
+      "first_use_explanation": "Lists the operation modes that a water heater feature offers.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "operation_modes"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-water-heater-operation-modes-card-feature-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-operation-modes",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-primary-entities-only",
+      "native_name": "primary_entities_only",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `primary_entities_only` in code. In a sentence, say “main entities only”.",
+      "first_use_explanation": "Limits the target selector to an entity’s main entities, leaving out diagnostic and configuration ones.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "primary_entities_only"
+      ],
+      "source_file": "src/components/target-picker/dialog/dialog-target-details.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-primary-entities-only",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-radius-readonly",
+      "native_name": "radius_readonly",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `radius_readonly` in code. In a sentence, say “read-only radius”.",
+      "first_use_explanation": "Shows the radius on the location selector but stops people changing it.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "radius_readonly"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-location.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-radius-readonly",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-round-temperature",
+      "native_name": "round_temperature",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `round_temperature` in code. In a sentence, say “round temperatures”.",
+      "first_use_explanation": "Shows temperatures on a weather forecast card as whole degrees.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "round_temperature"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-weather-forecast-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-round-temperature",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-row-span",
+      "native_name": "row_span",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `row_span` in code. In a sentence, say “number of rows to take up”.",
+      "first_use_explanation": "Sets how many rows a section takes up in a sections view.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "row_span"
+      ],
+      "source_file": "src/panels/lovelace/views/hui-sections-view.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-row-span",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-scale-ruler",
+      "native_name": "scale_ruler",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `scale_ruler` in code. In a sentence, say “scale ruler”.",
+      "first_use_explanation": "Shows a scale ruler on the map card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "scale_ruler"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-map-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-scale-ruler",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-secondary-info",
+      "native_name": "secondary_info",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `secondary_info` in code. In a sentence, say “extra information”.",
+      "first_use_explanation": "Sets the extra line shown under an entity row’s name, such as its last changed time.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "secondary_info"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-generic-entity-row-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-secondary-info",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-secondary-info-attribute",
+      "native_name": "secondary_info_attribute",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `secondary_info_attribute` in code. In a sentence, say “extra information attribute”.",
+      "first_use_explanation": "Names the attribute that a weather forecast card shows as secondary information beside the current weather.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "secondary_info_attribute"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-weather-forecast-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-secondary-info-attribute",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-seconds-motion",
+      "native_name": "seconds_motion",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `seconds_motion` in code. In a sentence, say “seconds hand motion”.",
+      "first_use_explanation": "Sets whether the seconds hand on a clock card moves smoothly (`continuous`) or in steps (`tick`).",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "seconds_motion"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-clock-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-seconds-motion",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-sensor-classes",
+      "native_name": "sensor_classes",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `sensor_classes` in code. In a sentence, say “sensor device classes”.",
+      "first_use_explanation": "Lists the sensor device classes that the area card shows as readings.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "sensor_classes"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-area-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-sensor-classes",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-service-data",
+      "native_name": "service_data",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `service_data` in code. In a sentence, say “action data”.",
+      "first_use_explanation": "Holds the data sent with an action on a service button. It is replaced by `data`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "service_data"
+      ],
+      "source_file": "src/panels/lovelace/elements/hui-service-button-element.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-service-data",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-add-event",
+      "native_name": "show_add_event",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_add_event` in code. In a sentence, say “show the add-event button”.",
+      "first_use_explanation": "Shows a button on the calendar card for adding an event.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_add_event"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-calendar-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-add-event",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-all",
+      "native_name": "show_all",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_all` in code. In a sentence, say “show everything”.",
+      "first_use_explanation": "Shows every entity and zone on the map card, not just the ones you listed.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_all"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-map-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-all",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-current",
+      "native_name": "show_current",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_current` in code. In a sentence, say “show the current weather”.",
+      "first_use_explanation": "Shows or hides the current weather on a weather forecast card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_current"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-weather-forecast-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-current",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-current-as-primary",
+      "native_name": "show_current_as_primary",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_current_as_primary` in code. In a sentence, say “show the current value large”.",
+      "first_use_explanation": "Makes the current humidity the large number on a humidifier card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_current_as_primary"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-humidifier-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-current-as-primary",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-empty",
+      "native_name": "show_empty",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_empty` in code. In a sentence, say “show when empty”.",
+      "first_use_explanation": "Sets whether the card still shows when it has no content. Set it to `false` to hide the card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_empty"
+      ],
+      "source_file": "src/panels/lovelace/cards/hui-markdown-card.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-empty",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-entity-picture",
+      "native_name": "show_entity_picture",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_entity_picture` in code. In a sentence, say “show the picture”.",
+      "first_use_explanation": "Shows the entity’s picture instead of its icon on a badge.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_entity_picture"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-picture-entity-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-entity-picture",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-forecast",
+      "native_name": "show_forecast",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_forecast` in code. In a sentence, say “show the forecast”.",
+      "first_use_explanation": "Shows or hides the forecast on a weather forecast card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_forecast"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-weather-forecast-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-forecast",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-header-toggle",
+      "native_name": "show_header_toggle",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_header_toggle` in code. In a sentence, say “show the header switch”.",
+      "first_use_explanation": "Shows or hides the switch in the entities card header that turns every entity on or off.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_header_toggle"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-entities-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-header-toggle",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-icon",
+      "native_name": "show_icon",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_icon` in code. In a sentence, say “show the icon”.",
+      "first_use_explanation": "Turns the icon on or off.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_icon"
+      ],
+      "source_file": "src/panels/lovelace/editor/heading-badge-editor/hui-entity-heading-badge-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-icon",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-last-changed",
+      "native_name": "show_last_changed",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_last_changed` in code. In a sentence, say “show last changed”.",
+      "first_use_explanation": "Shows when the entity last changed state.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_last_changed"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-glance-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-last-changed",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-legend",
+      "native_name": "show_legend",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_legend` in code. In a sentence, say “show the legend”.",
+      "first_use_explanation": "Shows or hides the legend on an Energy card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_legend"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-energy-graph-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-legend",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-mute-button",
+      "native_name": "show_mute_button",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_mute_button` in code. In a sentence, say “show the mute button”.",
+      "first_use_explanation": "Shows or hides the mute button in a media player volume feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_mute_button"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-media-player-volume-slider-card-feature-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-mute-button",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-name",
+      "native_name": "show_name",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_name` in code. In a sentence, say “show the name”.",
+      "first_use_explanation": "Turns the entity name on or off.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_name"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-picture-entity-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-name",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-names",
+      "native_name": "show_names",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_names` in code. In a sentence, say “show names”.",
+      "first_use_explanation": "Shows the names in the legend of a history graph card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_names"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-history-graph-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-names",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-only-totals",
+      "native_name": "show_only_totals",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_only_totals` in code. In a sentence, say “show only totals”.",
+      "first_use_explanation": "Shows only the total rows in the energy sources table.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_only_totals"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-energy-sources-table-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-only-totals",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-seconds",
+      "native_name": "show_seconds",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_seconds` in code. In a sentence, say “show seconds”.",
+      "first_use_explanation": "Shows the seconds on a clock card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_seconds"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-clock-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-seconds",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-state",
+      "native_name": "show_state",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_state` in code. In a sentence, say “show the state”.",
+      "first_use_explanation": "Shows the entity’s state as text.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_state"
+      ],
+      "source_file": "src/panels/lovelace/editor/heading-badge-editor/hui-entity-heading-badge-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-state",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-values",
+      "native_name": "show_values",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_values` in code. In a sentence, say “show values”.",
+      "first_use_explanation": "Shows the values on the flows of an energy Sankey card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_values"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-energy-sankey-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-values",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-show-zone-radius",
+      "native_name": "show_zone_radius",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `show_zone_radius` in code. In a sentence, say “show zone circles”.",
+      "first_use_explanation": "Draws the circle around each zone on the map card.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "show_zone_radius"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-map-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-show-zone-radius",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-sidebar-label",
+      "native_name": "sidebar_label",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `sidebar_label` in code. In a sentence, say “sidebar label”.",
+      "first_use_explanation": "Sets the label for the sidebar column when a sections view shows one column.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "sidebar_label"
+      ],
+      "source_file": "src/panels/lovelace/views/hui-sections-view.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-sidebar-label",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-slider-ticks",
+      "native_name": "slider_ticks",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `slider_ticks` in code. In a sentence, say “slider tick marks”.",
+      "first_use_explanation": "Shows tick marks along the number selector’s slider.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "slider_ticks"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-number.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-slider-ticks",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-split-device-classes",
+      "native_name": "split_device_classes",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `split_device_classes` in code. In a sentence, say “split by device class”.",
+      "first_use_explanation": "Splits a history graph into separate graphs, one for each device class.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "split_device_classes"
+      ],
+      "source_file": "src/panels/lovelace/cards/hui-history-graph-card.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-split-device-classes",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-start-pause",
+      "native_name": "start_pause",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `start_pause` in code. In a sentence, say “start and pause button”.",
+      "first_use_explanation": "Names the lawn mower command that starts mowing or pauses it. Use it in the `commands` list of a lawn mower feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "start_pause"
+      ],
+      "source_file": "src/panels/lovelace/card-features/hui-vacuum-commands-card-feature.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-start-pause",
+      "native_name_kind": "action"
+    },
+    {
+      "id": "HT-key-stat-type",
+      "native_name": "stat_type",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `stat_type` in code. In a sentence, say “statistic type”.",
+      "first_use_explanation": "Sets the statistic a statistics graph card shows: `mean`, `min`, `max` or `change`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "stat_type"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-statistics-graph-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-stat-type",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-stat-types",
+      "native_name": "stat_types",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `stat_types` in code. In a sentence, say “statistic types”.",
+      "first_use_explanation": "Lists the statistics a statistics graph card shows, from `change`, `state`, `sum`, `min`, `max` and `mean`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "stat_types"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-statistics-graph-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-stat-types",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-state-classes",
+      "native_name": "state_classes",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `state_classes` in code. In a sentence, say “state classes”.",
+      "first_use_explanation": "Limits the state class selector to the listed state classes.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "state_classes"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-state-class.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-state-classes",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-state-color",
+      "native_name": "state_color",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `state_color` in code. In a sentence, say “colour by state”.",
+      "first_use_explanation": "Colours the icon by the entity’s state. It is replaced by `color`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "state_color"
+      ],
+      "source_file": "src/components/entity/state-badge.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-state-color",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-state-content",
+      "native_name": "state_content",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `state_content` in code. In a sentence, say “state content”.",
+      "first_use_explanation": "Sets what the card shows as the entity’s state, as one item or a list.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "state_content"
+      ],
+      "source_file": "src/panels/lovelace/editor/heading-badge-editor/hui-entity-heading-badge-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-state-content",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-state-filter",
+      "native_name": "state_filter",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `state_filter` in code. In a sentence, say “state filter”.",
+      "first_use_explanation": "Limits a card to entities in the listed states.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "state_filter"
+      ],
+      "source_file": "src/panels/lovelace/elements/hui-image-element.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-state-filter",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-state-image",
+      "native_name": "state_image",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `state_image` in code. In a sentence, say “picture for each state”.",
+      "first_use_explanation": "Sets a different picture for each state of the entity.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "state_image"
+      ],
+      "source_file": "src/panels/lovelace/elements/hui-image-element.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-state-image",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-state-not",
+      "native_name": "state_not",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `state_not` in code. In a sentence, say “is not”.",
+      "first_use_explanation": "Makes a condition true when the entity’s state is anything other than the given state.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "state_not"
+      ],
+      "source_file": "src/panels/lovelace/editor/conditions/types/ha-card-condition-state.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-state-not",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-text-only",
+      "native_name": "text_only",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `text_only` in code. In a sentence, say “text only”.",
+      "first_use_explanation": "Draws a Markdown card without its header, background, border or shadow.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "text_only"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-empty-state-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-text-only",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-theme-mode",
+      "native_name": "theme_mode",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `theme_mode` in code. In a sentence, say “theme mode”.",
+      "first_use_explanation": "Sets whether the map card uses the `auto`, `light` or `dark` appearance.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "theme_mode"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-map-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-theme-mode",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-this-month",
+      "native_name": "this_month",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `this_month` in code. In a sentence, say “this month”.",
+      "first_use_explanation": "Names the period this month in a selector that chooses a period of time.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "this_month"
+      ],
+      "source_file": "src/components/date-picker/ha-date-range-picker.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-this-month",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-this-week",
+      "native_name": "this_week",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `this_week` in code. In a sentence, say “this week”.",
+      "first_use_explanation": "Names the period this week in a selector that chooses a period of time.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "this_week"
+      ],
+      "source_file": "src/components/date-picker/ha-date-range-picker.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-this-week",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-this-year",
+      "native_name": "this_year",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `this_year` in code. In a sentence, say “this year”.",
+      "first_use_explanation": "Names the period this year in a selector that chooses a period of time.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "this_year"
+      ],
+      "source_file": "src/components/date-picker/ha-date-range-picker.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-this-year",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-time-format",
+      "native_name": "time_format",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `time_format` in code. In a sentence, say “time format”.",
+      "first_use_explanation": "Sets how a clock card writes the time, such as 12-hour or 24-hour.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "time_format"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-entity-badge-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-time-format",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-time-zone",
+      "native_name": "time_zone",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `time_zone` in code. In a sentence, say “time zone”.",
+      "first_use_explanation": "Sets the time zone a clock card shows, using a name such as `Europe/London`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "time_zone"
+      ],
+      "source_file": "src/components/ha-timezone-picker.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-time-zone",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-top-margin",
+      "native_name": "top_margin",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `top_margin` in code. In a sentence, say “top margin”.",
+      "first_use_explanation": "Adds space above the first row of a view.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "top_margin"
+      ],
+      "source_file": "src/panels/lovelace/editor/view-editor/hui-view-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-top-margin",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-translation-key",
+      "native_name": "translation_key",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `translation_key` in code. In a sentence, say “translation key”.",
+      "first_use_explanation": "Names the set of translated labels that the object selector uses for its fields.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "translation_key"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-selector.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-translation-key",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-turn-off",
+      "native_name": "turn_off",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `turn_off` in code. In a sentence, say “power off button”.",
+      "first_use_explanation": "Names the media player control that turns the media player off. Use it in the `controls` list of a media player playback feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "turn_off"
+      ],
+      "source_file": "src/components/ha-vacuum-state.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-turn-off",
+      "native_name_kind": "action"
+    },
+    {
+      "id": "HT-key-turn-on",
+      "native_name": "turn_on",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `turn_on` in code. In a sentence, say “power on button”.",
+      "first_use_explanation": "Names the media player control that turns the media player on. Use it in the `controls` list of a media player playback feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "turn_on"
+      ],
+      "source_file": "src/components/ha-vacuum-state.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-turn-on",
+      "native_name_kind": "action"
+    },
+    {
+      "id": "HT-key-twice-daily",
+      "native_name": "twice_daily",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `twice_daily` in code. In a sentence, say “twice-daily forecast”.",
+      "first_use_explanation": "Shows a forecast with a day and a night period. It is a value of `forecast_type`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "twice_daily"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-precipitation-forecast-card-feature-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-twice-daily",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-validation-message",
+      "native_name": "validation_message",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `validation_message` in code. In a sentence, say “validation message”.",
+      "first_use_explanation": "Sets the message the text or number selector shows when the entry is not valid.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "validation_message"
+      ],
+      "source_file": "src/components/ha-selector/ha-selector-text.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-validation-message",
+      "native_name_kind": "selector option"
+    },
+    {
+      "id": "HT-key-vertical-opening-direction",
+      "native_name": "vertical_opening_direction",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `vertical_opening_direction` in code. In a sentence, say “vertical opening direction”.",
+      "first_use_explanation": "Sets whether the period list on the energy date selection card opens up or down.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "vertical_opening_direction"
+      ],
+      "source_file": "src/panels/lovelace/editor/config-elements/hui-energy-date-selection-card-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-vertical-opening-direction",
+      "native_name_kind": "setting"
+    },
+    {
+      "id": "HT-key-view-columns",
+      "native_name": "view_columns",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `view_columns` in code. In a sentence, say “view columns condition”.",
+      "first_use_explanation": "Names the condition type that checks how many columns a view has. It is a value of `condition`.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "view_columns"
+      ],
+      "source_file": "src/panels/lovelace/editor/conditions/ha-card-condition-editor.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-view-columns",
+      "native_name_kind": "value"
+    },
+    {
+      "id": "HT-key-volume-down",
+      "native_name": "volume_down",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `volume_down` in code. In a sentence, say “volume down button”.",
+      "first_use_explanation": "Names the media player control that lowers the volume. Use it in the `controls` list of a media player playback feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "volume_down"
+      ],
+      "source_file": "src/panels/lovelace/entity-rows/hui-media-player-entity-row.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-volume-down",
+      "native_name_kind": "action"
+    },
+    {
+      "id": "HT-key-volume-mute",
+      "native_name": "volume_mute",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `volume_mute` in code. In a sentence, say “mute button”.",
+      "first_use_explanation": "Names the media player control that mutes or unmutes the sound. Use it in the `controls` list of a media player playback feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "volume_mute"
+      ],
+      "source_file": "src/panels/lovelace/entity-rows/hui-media-player-entity-row.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-volume-mute",
+      "native_name_kind": "action"
+    },
+    {
+      "id": "HT-key-volume-up",
+      "native_name": "volume_up",
+      "category": "configuration-keys",
+      "household_wording": "Write it exactly as `volume_up` in code. In a sentence, say “volume up button”.",
+      "first_use_explanation": "Names the media player control that raises the volume. Use it in the `controls` list of a media player playback feature.",
+      "avoid_confusion": "Keep it as written. Do not translate or reword it in code.",
+      "source_ids": [
+        "ha-frontend"
+      ],
+      "reviewed_on": "2026-11-28",
+      "status": "current-reference",
+      "code_identifiers": [
+        "volume_up"
+      ],
+      "source_file": "src/panels/lovelace/entity-rows/hui-media-player-entity-row.ts",
+      "local_path": "/content/style-guides/technical-a-to-z.html#ht-key-volume-up",
+      "native_name_kind": "action"
     }
   ],
   "native_values": [

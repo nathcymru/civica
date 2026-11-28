@@ -41,13 +41,14 @@ The exact Home Assistant words to use. For general writing, see [A to Z General]
     'automation-language' => 'Automations and scripts', 'state-records' => 'State record', 'dashboard-language' => 'Dashboard',
     'energy-language' => 'Energy', 'security-language' => 'Accounts and security', 'helper-types' => 'Helper type',
     'assist-language' => 'Assist and voice', 'installation-language' => 'Installation', 'additional-entity-domains' => 'Entity domain',
-    'view-types' => 'Dashboard view type'
+    'view-types' => 'Dashboard view type', 'configuration-keys' => 'Configuration key'
   }
   # Four categories repeat one rule for many names. They are grouped into one entry each, with a row per name.
   groups = {
     'card-types' => { name: 'card types', id: 'card-types', lead: 'The card names the card editor shows. Use the name as shown when you point to a card.', column: 'What it shows' },
     'card-features' => { name: 'card features', id: 'card-features', lead: 'The features the card editor can add to a card. Use the name as shown when you point to a feature.', column: 'Use it to' },
     'selector-types' => { name: 'selector types', id: 'selector-types', lead: 'The kinds of input a configuration field accepts. Ask the question in plain words and keep the selector name as written in configuration.', column: 'Accepts' },
+    'configuration-keys' => { name: 'configuration keys and values', id: 'configuration-keys', lead: 'The keys and values written in dashboard configuration. Write each one exactly as shown, in code. In a sentence, use the plain wording given.', column: 'What it does' },
     'settings-labels' => { name: 'settings destinations', id: 'settings-destinations', lead: 'The destinations in Settings. Write each label exactly as Settings shows it.', column: 'Use it to' }
   }
   singles = register['terms'].reject { |term| groups.key?(term['category']) }.map { |term| { name: term['native_name'], term: term } }
@@ -68,6 +69,7 @@ The exact Home Assistant words to use. For general writing, see [A to Z General]
 <% group = entry[:group] %>
 <div class="lexicon-entry" id="<%= group[:id] %>">
 <h3><%= group[:name] %></h3>
+<p><strong class="civica-tag civica-tag--grey">Home Assistant term</strong></p>
 <p><%= fmt.call(group[:lead]) %></p>
 <table><caption><%= group[:name].capitalize %></caption><thead><tr><th scope="col">Name</th><th scope="col"><%= group[:column] %></th></tr></thead><tbody>
 <% entry[:terms].sort_by { |term| term['native_name'].downcase }.each do |term| %>
@@ -79,7 +81,7 @@ The exact Home Assistant words to use. For general writing, see [A to Z General]
 <% term = entry[:term] %>
 <div class="lexicon-entry" id="<%= escape(term['id'].downcase) %>">
 <h3><%= escape(term['native_name']) %><% if term['code_identifiers'] %> <small>(<code><%= escape(term['code_identifiers'].join(', ')) %></code>)</small><% end %></h3>
-<p class="govuk-hint"><%= kinds.fetch(term['category'], term['category']) %><%= ' · older name, kept for saved settings' if term['status'] == 'historical-term-retained' %></p>
+<p class="govuk-hint"><strong class="civica-tag civica-tag--grey">Home Assistant term</strong> <%= kinds.fetch(term['category'], term['category']) %><%= ' · older name, kept for saved settings' if term['status'] == 'historical-term-retained' %></p>
 <p><%= fmt.call([term['first_use_explanation'], term['avoid_confusion'], term['household_wording']].join(' ')) %></p>
 <% unless term['aliases'].nil? || term['aliases'].empty? %><p>Also called: <%= escape(term['aliases'].join(', ')) %>.</p><% end %>
 <% if term['official_glossary_url'] %><p><a href="<%= escape(term['official_glossary_url']) %>">Home Assistant glossary entry</a></p><% end %>
