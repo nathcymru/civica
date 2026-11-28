@@ -1,8 +1,8 @@
-# Synthetic data: invented names, readings and dates. Nothing here is connected to a home, and the buttons do nothing.
+# data: names, readings and dates. Nothing here is connected to a home, and the buttons do nothing.
 examples:
   spec-todo-weekend-shopping:
     title: A shopping list card with one item due today
-    description: "A simulated to-do list card titled Weekend shopping. It has an add row, two active items (one with a clock and its due date “Today”, one with a short description) and one completed item that is struck through and sits under Completed. Home Assistant draws its own checkboxes and icon buttons, so the look differs. Nothing is saved."
+    description: "A to-do list card titled Weekend shopping. It has an add row, two active items (one with a clock and its due date “Today”, one with a short description) and one completed item that is struck through and sits under Completed. Home Assistant draws its own checkboxes and icon buttons, so the look differs. Nothing is saved."
     height: 520
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-todo-title"><div class="civica-card-demo__body">
@@ -20,7 +20,7 @@ examples:
       </div></article>
   spec-tooltip-visible-hint:
     title: Help written as visible text instead of a hover tip
-    description: "A simulated heating settings card. The help for Frost protection temperature is written as visible text under the label, so it can be read on any device without hovering. The Edit schedule button carries a visible word. The field and button do nothing here."
+    description: "A heating settings card. The help for Frost protection temperature is written as visible text under the label, so it can be read on any device without hovering. The Edit schedule button carries a visible word. The field and button do nothing here."
     height: 420
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-tip-title"><div class="civica-card-demo__body">
@@ -32,7 +32,7 @@ examples:
       </div></article>
   spec-pickers-profile-settings:
     title: A profile form with a language field and a theme field
-    description: "A simulated profile form with two closed picker fields, Language and Theme, each with a visible label above it and the chosen value inside. Home Assistant draws its own fields, with rounded corners and a searchable list that opens on selection, so the look differs. The open list is not shown and nothing can be changed."
+    description: "A profile form with two closed picker fields, Language and Theme, each with a visible label above it and the chosen value inside. Home Assistant draws its own fields, with rounded corners and a searchable list that opens on selection, so the look differs. The open list is not shown and nothing can be changed."
     height: 460
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-profile-title"><div class="civica-card-demo__body">
@@ -45,7 +45,7 @@ examples:
       </div></article>
   spec-camera-still-front-door:
     title: A front door camera card showing a still picture
-    description: "A simulated picture card for a camera in still-image mode. A grey panel stands in for the camera picture. The camera name and the time the still was taken are written as text under it, so the card says what and when without the picture. Open live view does nothing here."
+    description: "A picture card for a camera in still-image mode. A grey panel stands in for the camera picture. The camera name and the time the still was taken are written as text under it, so the card says what and when without the picture. Open live view does nothing here."
     height: 460
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-cam-title"><div class="civica-card-demo__media"><div role="img" aria-label="Still picture from the front door camera" style="aspect-ratio:16/9;background:#d9dde0;display:flex;align-items:center;justify-content:center;color:#484949"><span aria-hidden="true">Camera picture</span></div></div><div class="civica-card-demo__body">
@@ -56,7 +56,7 @@ examples:
       </div></article>
   spec-warning-text-remove-dashboard:
     title: A warning before removing a dashboard
-    description: "A simulated confirmation screen. A bold warning with an exclamation mark sits above the buttons and names the consequence and what it affects. The word Warning is read out by screen readers but not drawn. Remove dashboard and Cancel do nothing here."
+    description: "A confirmation screen. A bold warning with an exclamation mark sits above the buttons and names the consequence and what it affects. The word Warning is read out by screen readers but not drawn. Remove dashboard and Cancel do nothing here."
     height: 380
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-warn-title"><div class="civica-card-demo__body">
@@ -84,7 +84,7 @@ examples:
       </section>
   spec-weather-written-forecast:
     title: A written forecast to sit beside a weather forecast card
-    description: "A simulated card for a Markdown card or Entities card placed next to a weather forecast card. It writes out the current condition and temperature, then each of the next three days with its condition, high and low in degrees Celsius. The real forecast card shows each day’s condition as an icon only, which is why the words are repeated here."
+    description: "A card for a Markdown card or Entities card placed next to a weather forecast card. It writes out the current condition and temperature, then each of the next three days with its condition, high and low in degrees Celsius. The real forecast card shows each day’s condition as an icon only, which is why the words are repeated here."
     height: 520
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-wx-title"><div class="civica-card-demo__body">

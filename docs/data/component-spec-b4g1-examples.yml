@@ -1,8 +1,8 @@
-# Synthetic data and no live actions.
+# data and no live actions.
 examples:
   spec-popover-reading-note:
     title: A sensor card with its extra explanation written out
-    description: "A simulated sensor card in the light theme. The reading is on the first line, and the longer explanation sits under a plain heading, \"More about this reading\", instead of in a popover, because a dashboard cannot add a popover. The text is always visible."
+    description: "A sensor card in the light theme. The reading is on the first line, and the longer explanation sits under a plain heading, \"More about this reading\", instead of in a popover, because a dashboard cannot add a popover. The text is always visible."
     height: 380
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-popover-title"><div class="civica-card-demo__body">
@@ -13,7 +13,7 @@ examples:
       </div></article>
   spec-progress-update-card:
     title: An update card with a progress bar and the same progress in words
-    description: "A simulated update card in the light theme. A bar fills three fifths of its length, and the words beside it say \"Step 3 of 5\" and name what is happening. The bar here is the browser’s own, so Home Assistant’s bar looks different. Nothing here is interactive."
+    description: "An update card in the light theme. A bar fills three fifths of its length, and the words beside it say \"Step 3 of 5\" and name what is happening. The bar here is the browser’s own, so Home Assistant’s bar looks different. Nothing here is interactive."
     height: 400
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-progress-title"><div class="civica-card-demo__body">
@@ -24,7 +24,7 @@ examples:
       </div></article>
   spec-qr-guest-wifi:
     title: A guest Wi-Fi card with a QR code and the same details as text
-    description: "A simulated Markdown card in the light theme. A QR code made from the Wi-Fi details sits beside the network name and the password, which are written out as text, and a line says what scanning does. Home Assistant draws its own code, so the look differs. Nothing here is interactive."
+    description: "A Markdown card in the light theme. A QR code made from the Wi-Fi details sits beside the network name and the password, which are written out as text, and a line says what scanning does. Home Assistant draws its own code, so the look differs. Nothing here is interactive."
     height: 420
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-qr-title"><div class="civica-card-demo__body">
@@ -39,7 +39,7 @@ examples:
       </div></article>
   spec-radio-units:
     title: Choose one unit
-    description: "A simulated form card with one group of two radios and no answer chosen. Both options are visible, and neither is assumed for a new answer. Nothing is saved."
+    description: "A form card with one group of two radios and no answer chosen. Both options are visible, and neither is assumed for a new answer. Nothing is saved."
     height: 340
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-radio-units-title"><div class="civica-card-demo__body">
@@ -52,7 +52,7 @@ examples:
       </div></article>
   spec-radio-colour-mode:
     title: Edit a saved colour mode
-    description: "A simulated form card with one group of three radios. The saved choice, Use device setting, is already selected, because this card edits an existing setting. Nothing is saved."
+    description: "A form card with one group of three radios. The saved choice, Use device setting, is already selected, because this card edits an existing setting. Nothing is saved."
     height: 380
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-radio-mode-title"><div class="civica-card-demo__body">
@@ -66,7 +66,7 @@ examples:
       </div></article>
   spec-time-reading-card:
     title: A reading with its exact time and the relative wording
-    description: "A simulated sensor card in the light theme. The exact date and time are written out in full, and the relative wording sits beside them. Home Assistant draws and updates the relative wording itself; here it is fixed text. Nothing here is interactive."
+    description: "A sensor card in the light theme. The exact date and time are written out in full, and the relative wording sits beside them. Home Assistant draws and updates the relative wording itself; here it is fixed text. Nothing here is interactive."
     height: 340
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-time-title"><div class="civica-card-demo__body">
@@ -76,7 +76,7 @@ examples:
       </div></article>
   spec-search-devices:
     title: Search within devices
-    description: "A simulated search form with a visible label, a hint that names what is searched, one search field and a button. The button does nothing."
+    description: "A search form with a visible label, a hint that names what is searched, one search field and a button. The button does nothing."
     height: 340
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-search-devices-title"><div class="civica-card-demo__body">
@@ -90,7 +90,7 @@ examples:
       </div></article>
   spec-search-no-results:
     title: A search with no matches
-    description: "A simulated search form after a search for \"Attic radiator\". The query stays in the field so it can be changed, and a heading and a sentence say that nothing matched and that the connection is working. The button does nothing."
+    description: "A search form after a search for \"Attic radiator\". The query stays in the field so it can be changed, and a heading and a sentence say that nothing matched and that the connection is working. The button does nothing."
     height: 460
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-search-none-title"><div class="civica-card-demo__body">
@@ -105,7 +105,7 @@ examples:
       </div></article>
   spec-search-combobox-list:
     title: The component search with a list of matches
-    description: "A simulated picture of the Civica component search after \"radio\" has been typed. A visible label and a hint sit above the field, three matching items follow, each with a short description, and a line below says how many matched. Nothing searches and the list does not respond."
+    description: "A picture of the Civica component search after \"radio\" has been typed. A visible label and a hint sit above the field, three matching items follow, each with a short description, and a line below says how many matched. Nothing searches and the list does not respond."
     height: 520
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-search-combo-title"><div class="civica-card-demo__body">
@@ -122,7 +122,7 @@ examples:
       </div></article>
   spec-section-two-sections:
     title: A dashboard view with two sections, each opened by a heading
-    description: "A simulated dashboard view in the light theme with two sections side by side. Each section opens with a Heading card that names it, then holds one card. On a narrow screen the two sections stack into one column. Home Assistant draws its own spacing and card look, so the look differs. Nothing here is interactive."
+    description: "A dashboard view in the light theme with two sections side by side. Each section opens with a Heading card that names it, then holds one card. On a narrow screen the two sections stack into one column. Home Assistant draws its own spacing and card look, so the look differs. Nothing here is interactive."
     height: 420
     html: |
       <div style="display:flex;gap:24px;flex-wrap:wrap;max-width:44rem">

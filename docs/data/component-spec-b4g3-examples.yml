@@ -1,8 +1,8 @@
-# Synthetic data. Component specification examples for Subheader, Summary List, SVG Vector Graphic, Switch / Toggle, Tabs, Tag and Target Picker. No live actions.
+# data. Component specification examples for Subheader, Summary List, SVG Vector Graphic, Switch / Toggle, Tabs, Tag and Target Picker. No live actions.
 examples:
   spec-subheader-picker-groups:
     title: The open list of a picker, with group labels
-    description: "A simulated stand-in for the list that opens under a Home Assistant picker. Each group label is a bold line on a tinted band, followed by the items in that group. The labels are plain text, not headings. Nothing here can be chosen."
+    description: "A stand-in for the list that opens under a Home Assistant picker. Each group label is a bold line on a tinted band, followed by the items in that group. The labels are plain text, not headings. Nothing here can be chosen."
     height: 520
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-sh-title"><div class="civica-card-demo__body">
@@ -21,7 +21,7 @@ examples:
       </div></article>
   spec-summary-list-device:
     title: Read-only details of one device
-    description: "A simulated summary list for one device. Each row is a label and its value, and nothing on the card can be changed."
+    description: "A summary list for one device. Each row is a label and its value, and nothing on the card can be changed."
     height: 380
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-sl-device-title"><div class="civica-card-demo__body">
@@ -43,7 +43,7 @@ examples:
       </div></article>
   spec-summary-list-change:
     title: A summary row with a Change link
-    description: "A simulated summary list with one row and a Change link whose purpose is clear in context, followed by the field that the link leads to. Nothing is saved."
+    description: "A summary list with one row and a Change link whose purpose is clear in context, followed by the field that the link leads to. Nothing is saved."
     height: 480
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-sl-change-title"><div class="civica-card-demo__body">
@@ -66,7 +66,7 @@ examples:
       </div></article>
   spec-svg-sensor-diagram:
     title: A diagram of two sensors
-    description: "A simulated card holding one inline SVG diagram of a house and garden with two sensors marked on it. The diagram has a title and a description for assistive technology, and the text beside it says the same thing in words. It is a drawing, not live data."
+    description: "A card holding one inline SVG diagram of a house and garden with two sensors marked on it. The diagram has a title and a description for assistive technology, and the text beside it says the same thing in words. It is a drawing, not live data."
     height: 640
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-svg-card-title"><div class="civica-card-demo__body">
@@ -97,8 +97,8 @@ examples:
       <p style="margin:0 0 15px">The hall sensor is inside the house. The garden sensor is on the lawn, joined to the hall sensor by a cable.</p>
       </div></article>
   spec-switch-toggle-rows:
-    title: An Entities card with three toggle rows, simulated
-    description: "A simulated stand-in for an Entities card with three toggle rows. The first is on, the second is off and the third is unavailable, so its switch is dimmed. The state is also written in words under each name, so it does not rely on the position of the switch alone. The switches do nothing."
+    title: An Entities card with three toggle rows
+    description: "A stand-in for an Entities card with three toggle rows. The first is on, the second is off and the third is unavailable, so its switch is dimmed. The state is also written in words under each name, so it does not rely on the position of the switch alone. The switches do nothing."
     height: 420
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-sw-title"><div class="civica-card-demo__body">
@@ -145,7 +145,7 @@ examples:
       </div></article>
   spec-tag-connection:
     title: Connection tags beside two devices
-    description: "A simulated card listing two devices, each followed by a tag that says in words whether it is available. The tags are text, not buttons."
+    description: "A card listing two devices, each followed by a tag that says in words whether it is available. The tags are text, not buttons."
     height: 360
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-tag-conn-title"><div class="civica-card-demo__body">
@@ -157,7 +157,7 @@ examples:
       </div></article>
   spec-tag-task:
     title: Progress tags beside two setup tasks
-    description: "A simulated card listing two setup tasks, each followed by a tag for its progress. A tag describes the task and cannot be pressed."
+    description: "A card listing two setup tasks, each followed by a tag for its progress. A tag describes the task and cannot be pressed."
     height: 360
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-tag-task-title"><div class="civica-card-demo__body">
@@ -168,8 +168,8 @@ examples:
       </ul>
       </div></article>
   spec-target-picker-chosen:
-    title: A form with a target picker holding three chosen items, simulated
-    description: "A simulated stand-in for the closed target picker in a form. It shows the kitchen area, a saved entity that can no longer be found, and one exclusion, with the Add target and Exclude target buttons below. Home Assistant draws its own rows, so the look differs. Each Remove button here names its target. Nothing can be changed."
+    title: A form with a target picker holding three chosen items
+    description: "A stand-in for the closed target picker in a form. It shows the kitchen area, a saved entity that can no longer be found, and one exclusion, with the Add target and Exclude target buttons below. Home Assistant draws its own rows, so the look differs. Each Remove button here names its target. Nothing can be changed."
     height: 900
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-tp-title"><div class="civica-card-demo__body">

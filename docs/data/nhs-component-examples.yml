@@ -577,7 +577,7 @@ examples:
     height: 340
     html: |
       <p class="govuk-body">Example electricity imported: 3.8 kWh</p>
-      <p class="govuk-body">Recorded from 00:00 to 14:00 on 11 November 2026, Europe/London (GMT). This is a synthetic partial-day total.</p>
+      <p class="govuk-body">Recorded from 00:00 to 14:00 on 11 November 2026, Europe/London (GMT). This is a partial-day total.</p>
       <details class="govuk-details">
       <summary class="govuk-details__summary">
       <span class="govuk-details__summary-text">What does imported electricity mean?</span>
@@ -709,14 +709,14 @@ examples:
     html: |
       <figure class="civica-image">
       <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20480%20220%22%3E%3Crect%20width%3D%22480%22%20height%3D%22220%22%20fill%3D%22%23f3f2f1%22%2F%3E%3Cpath%20d%3D%22M20%2020H460V200H20ZM240%2020V200M20%20120H240%22%20fill%3D%22none%22%20stroke%3D%22%230b0c0c%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%22345%22%20cy%3D%22100%22%20r%3D%2218%22%20fill%3D%22%231d70b8%22%2F%3E%3Ctext%20x%3D%2255%22%20y%3D%2270%22%20font-family%3D%22Arial%22%20font-size%3D%2222%22%3EHall%3C%2Ftext%3E%3Ctext%20x%3D%2245%22%20y%3D%22165%22%20font-family%3D%22Arial%22%20font-size%3D%2222%22%3EKitchen%3C%2Ftext%3E%3Ctext%20x%3D%22290%22%20y%3D%22160%22%20font-family%3D%22Arial%22%20font-size%3D%2222%22%3ELiving%20room%3C%2Ftext%3E%3C%2Fsvg%3E" width="480" height="220" alt="Example floor plan: the living room is to the right of the hall and kitchen. A blue dot marks the living-room sensor.">
-      <figcaption class="civica-image__caption">Invented schematic, not a surveyed plan. The living room is to the right of the hall and kitchen; its marker identifies the living-room sensor. Use the room name when selecting a real entity.</figcaption>
+      <figcaption class="civica-image__caption">Schematic, not a surveyed plan. The living room is to the right of the hall and kitchen; its marker identifies the living-room sensor. Use the room name when selecting a real entity.</figcaption>
       </figure>
     artwork:
       creator: civica.uk project; Codex-assisted original SVG markup
       licence: MIT, original project documentation code under LICENSE
       source: docs/data/nhs-component-examples.yml#nhs-image-floorplan
       provenance: Original simple geometry retained from the existing documentation example; no official identity paths or third-party artwork imported.
-      purpose: Show an invented room relationship and sensor location, not a surveyed floor plan or live map.
+      purpose: Show a room relationship and sensor location, not a surveyed floor plan or live map.
       intended_background: "#F3F2F1 embedded schematic canvas on the light documentation surface"
       alternative_text_decision: Informative img alternative describes the relative room positions and sensor marker; caption identifies the selection task.
       review_status: Static source/provenance recorded; rendered verification is tracked separately in the change acceptance.
@@ -757,7 +757,7 @@ examples:
       </div>
       <div class="govuk-notification-banner__content">
       <p class="govuk-notification-banner__heading">Example: energy history may be delayed on 12 November 2026.</p>
-      <p class="govuk-body">This fictional maintenance window runs from <time datetime="2026-11-12T02:00:00+00:00">02:00</time> to <time datetime="2026-11-12T02:30:00+00:00">02:30 GMT on 12 November 2026</time> (Europe/London). It concerns the example recording service only. No live outage is being announced.</p>
+      <p class="govuk-body">This maintenance window runs from <time datetime="2026-11-12T02:00:00+00:00">02:00</time> to <time datetime="2026-11-12T02:30:00+00:00">02:30 GMT on 12 November 2026</time> (Europe/London). It concerns the example recording service only. No live outage is being announced.</p>
       </div>
       </div>
   nhs-banner-success:
@@ -1418,12 +1418,12 @@ examples:
     title: A room navigation card
     description: A single heading link opens a useful local room overview. The card is navigation; it contains no nested device buttons.
     height: 680
-    html: <article class="civica-card-demo" aria-labelledby="legacy-kitchen-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="legacy-kitchen-title"><a class="govuk-link" href="#card-kitchen">Kitchen overview</a></h2><p class="govuk-body">Find the example ceiling light, temperature reading and room notes.</p><p class="govuk-body">The heading link opens the information below. It does not operate a device.</p></div></article><section id="card-kitchen" tabindex="-1"><h2 class="govuk-heading-m">Kitchen overview</h2><p class="govuk-body">Synthetic observations reported on <time datetime="2026-11-11T18:42:00+00:00">11 November 2026 at 18:42 GMT</time> (Europe/London).</p><dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Ceiling light</dt><dd class="govuk-summary-list__value">Off</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Room temperature</dt><dd class="govuk-summary-list__value">19.8 °C</dd></div></dl><p class="govuk-body">These are independent example entities. No appliance capability or remote action is inferred from the room name.</p></section>
+    html: <article class="civica-card-demo" aria-labelledby="legacy-kitchen-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="legacy-kitchen-title"><a class="govuk-link" href="#card-kitchen">Kitchen overview</a></h2><p class="govuk-body">Find the example ceiling light, temperature reading and room notes.</p><p class="govuk-body">The heading link opens the information below. It does not operate a device.</p></div></article><section id="card-kitchen" tabindex="-1"><h2 class="govuk-heading-m">Kitchen overview</h2><p class="govuk-body">Observations reported on <time datetime="2026-11-11T18:42:00+00:00">11 November 2026 at 18:42 GMT</time> (Europe/London).</p><dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Ceiling light</dt><dd class="govuk-summary-list__value">Off</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Room temperature</dt><dd class="govuk-summary-list__value">19.8 °C</dd></div></dl><p class="govuk-body">These are independent example entities. No appliance capability or remote action is inferred from the room name.</p></section>
   nhs-card-information:
     title: An information card with a complete reading
     description: A non-clickable card shows the measured quantity, unit, source and observation time. It has no pretend preview or reset actions.
     height: 500
-    html: <article class="civica-card-demo" aria-labelledby="information-temperature-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="information-temperature-title">Living room temperature</h2><p class="govuk-body"><strong>20.5 °C</strong></p><p class="govuk-body">Reported by the example room sensor on <time datetime="2026-11-11T18:42:00+00:00">11 November 2026 at 18:42 GMT</time> (Europe/London).</p><p class="govuk-body">This is a synthetic measured air temperature, not a heating target. The card displays information and has no interactive controls.</p></div></article>
+    html: <article class="civica-card-demo" aria-labelledby="information-temperature-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="information-temperature-title">Living room temperature</h2><p class="govuk-body"><strong>20.5 °C</strong></p><p class="govuk-body">Reported by the example room sensor on <time datetime="2026-11-11T18:42:00+00:00">11 November 2026 at 18:42 GMT</time> (Europe/London).</p><p class="govuk-body">This is a measured air temperature, not a heating target. The card displays information and has no interactive controls.</p></div></article>
   nhs-action-link-journey:
     title: Start a dashboard setup journey
     description: An action link with a clear label and an arrow signals the start of a task. It opens a view on the same dashboard and does not operate a device.

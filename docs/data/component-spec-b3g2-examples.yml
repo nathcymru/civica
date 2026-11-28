@@ -1,8 +1,8 @@
-# Synthetic data; simulated cards and forms with no live actions.
+# data; simulated cards and forms with no live actions.
 examples:
   spec-image-glance-living-room:
-    title: A picture glance card for the living room, simulated
-    description: "A simulated stand-in for a picture glance card: a picture of the room with the name and state of one lamp written below it as text. The real card draws small icon buttons over the picture instead. Nothing here is live."
+    title: A picture glance card for the living room
+    description: "A stand-in for a picture glance card: a picture of the room with the name and state of one lamp written below it as text. The real card draws small icon buttons over the picture instead. Nothing here is live."
     height: 440
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-glance-title"><div class="civica-card-demo__body">
@@ -18,20 +18,20 @@ examples:
     html: |
       <figure class="civica-image">
       <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20480%20220%22%3E%3Crect%20width%3D%22480%22%20height%3D%22220%22%20fill%3D%22%23f3f2f1%22%2F%3E%3Cpath%20d%3D%22M20%2020H460V200H20ZM240%2020V200M20%20120H240%22%20fill%3D%22none%22%20stroke%3D%22%230b0c0c%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%22345%22%20cy%3D%22100%22%20r%3D%2218%22%20fill%3D%22%231d70b8%22%2F%3E%3Ctext%20x%3D%2255%22%20y%3D%2270%22%20font-family%3D%22Arial%22%20font-size%3D%2222%22%3EHall%3C%2Ftext%3E%3Ctext%20x%3D%2245%22%20y%3D%22165%22%20font-family%3D%22Arial%22%20font-size%3D%2222%22%3EKitchen%3C%2Ftext%3E%3Ctext%20x%3D%22290%22%20y%3D%22160%22%20font-family%3D%22Arial%22%20font-size%3D%2222%22%3ELiving%20room%3C%2Ftext%3E%3C%2Fsvg%3E" width="480" height="220" alt="Example floor plan: the living room is to the right of the hall and kitchen. A blue dot marks the living-room sensor.">
-      <figcaption class="civica-image__caption">Invented schematic, not a surveyed plan. The living room is to the right of the hall and kitchen; its marker identifies the living-room sensor. Use the room name when selecting a real entity.</figcaption>
+      <figcaption class="civica-image__caption">Schematic, not a surveyed plan. The living room is to the right of the hall and kitchen; its marker identifies the living-room sensor. Use the room name when selecting a real entity.</figcaption>
       </figure>
     artwork:
       creator: Civica project contributors; Claude-assisted original SVG markup
       licence: GPL-3.0-or-later (code), CC BY-SA 4.0 (documentation)
       source: docs/data/component-spec-b3g2-examples.yml#spec-image-room-diagram
       provenance: Original simple geometry retained from the existing documentation example; no official identity paths or third-party artwork imported.
-      purpose: Show an invented room relationship and sensor location, not a surveyed floor plan or live map.
+      purpose: Show a room relationship and sensor location, not a surveyed floor plan or live map.
       intended_background: "#F3F2F1 embedded schematic canvas on the light documentation surface"
       alternative_text_decision: Informative img alternative describes the relative room positions and sensor marker; caption identifies the selection task.
       review_status: Static source/provenance recorded; rendered verification is tracked separately in the change acceptance.
   spec-image-decorative-mark:
     title: A picture card with a decorative picture
-    description: "A simulated picture card for the garden: the picture only decorates the card, so it has an empty alt, and the card beside it gives the garden’s name and state as text. Nothing here is live."
+    description: "A picture card for the garden: the picture only decorates the card, so it has an empty alt, and the card beside it gives the garden’s name and state as text. Nothing here is live."
     height: 480
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-decor-title"><div class="civica-card-demo__body">
@@ -41,8 +41,8 @@ examples:
       <p style="margin:0">Soil moisture: 38%, reported at 18:42.</p>
       </div></article>
   spec-image-entity-front-door:
-    title: A picture entity card for the front door, simulated
-    description: "A simulated picture entity card: a picture of the front door with the name and state in a bar along its bottom edge, and the same name and state written as text below it, because the bar sits over a picture whose contrast cannot be known. The real card draws the bar itself. Nothing here is live."
+    title: A picture entity card for the front door
+    description: "A picture entity card: a picture of the front door with the name and state in a bar along its bottom edge, and the same name and state written as text below it, because the bar sits over a picture whose contrast cannot be known. The real card draws the bar itself. Nothing here is live."
     height: 460
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-entity-title"><div class="civica-card-demo__body">
@@ -55,7 +55,7 @@ examples:
       </div></article>
   spec-inset-estimate:
     title: Explain an estimated cost
-    description: "A simulated Markdown card in the Civica inset style: a note under the heading About energy costs says the cost shown is an estimate from the configured tariff. It is not a live reading."
+    description: "A Markdown card in the Civica inset style: a note under the heading About energy costs says the cost shown is an estimate from the configured tariff. It is not a live reading."
     height: 340
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-inset-energy-title"><div class="civica-card-demo__body">
@@ -64,7 +64,7 @@ examples:
       </div></article>
   spec-inset-display:
     title: Clarify a display-only change
-    description: "A simulated Markdown card in the Civica inset style: a note under the heading Name a dashboard says that changing a dashboard’s display name does not rename the devices shown on it."
+    description: "A Markdown card in the Civica inset style: a note under the heading Name a dashboard says that changing a dashboard’s display name does not rename the devices shown on it."
     height: 340
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-inset-name-title"><div class="civica-card-demo__body">
@@ -73,7 +73,7 @@ examples:
       </div></article>
   spec-label-field:
     title: A settings form with visible field names
-    description: "Plain HTML in a simulated settings card: each field has a visible label tied to it, a hint and a text box, and the checkbox is wrapped in its label so the words are part of the target. Home Assistant draws its own fields, so a real form looks different. Nothing here is saved."
+    description: "Plain HTML in a settings card: each field has a visible label tied to it, a hint and a text box, and the checkbox is wrapped in its label so the words are part of the target. Home Assistant draws its own fields, so a real form looks different. Nothing here is saved."
     height: 560
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-label-title"><div class="civica-card-demo__body">
@@ -90,7 +90,7 @@ examples:
       </div></article>
   spec-label-picker-device:
     title: A form that asks which labels apply to a device
-    description: "A simulated stand-in for the labels picker: the question asks in terms of the task, the helper text says what labels are for, the chosen labels are written as text and an Add label button follows. Home Assistant draws its own field, chips and list, so the look differs. The button does nothing and the open list is not shown."
+    description: "A stand-in for the labels picker: the question asks in terms of the task, the helper text says what labels are for, the chosen labels are written as text and an Add label button follows. Home Assistant draws its own field, chips and list, so the look differs. The button does nothing and the open list is not shown."
     height: 480
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-labels-title"><div class="civica-card-demo__body">
@@ -104,7 +104,7 @@ examples:
       </div></article>
   spec-language-navigation-pair:
     title: A heating note in English and in Welsh
-    description: "Two simulated pages side by side in the page. Each shows its language links, names every language in that language, and marks the current one. The links jump between the two cards."
+    description: "Two pages side by side in the page. Each shows its language links, names every language in that language, and marks the current one. The links jump between the two cards."
     height: 620
     html: |
       <article class="civica-card-demo" id="spec-lang-en" aria-labelledby="spec-lang-en-title"><div class="civica-card-demo__body">
@@ -116,8 +116,8 @@ examples:
       <section lang="cy"><h2 id="spec-lang-cy-title" style="margin:0 0 12px;font-size:1.5rem;line-height:1.25">Gwres</h2><p style="margin:0">Mae’r gwres ymlaen tan 10pm.</p></section>
       </div></article>
   spec-light-card-lounge:
-    title: A light card for the lounge lamp, simulated
-    description: "A simulated stand-in for a light card: a dial around a lamp icon, with the name, the state and the brightness written as text beside it. The real card shows no state or brightness text while it is at rest; it shows the brightness only while the dial is dragged. Nothing here is live."
+    title: A light card for the lounge lamp
+    description: "A stand-in for a light card: a dial around a lamp icon, with the name, the state and the brightness written as text beside it. The real card shows no state or brightness text while it is at rest; it shows the brightness only while the dial is dragged. Nothing here is live."
     height: 420
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-light-title"><div class="civica-card-demo__body">
@@ -129,7 +129,7 @@ examples:
       </div></article>
   spec-link-descriptive:
     title: A help card with links, and a button for an action
-    description: "A simulated help card. The first link names its destination, the second says it is a file and opens in a new tab, and the lamp control is a button because it acts instead of going somewhere. The links go nowhere real and the button does nothing."
+    description: "A help card. The first link names its destination, the second says it is a file and opens in a new tab, and the lamp control is a button because it acts instead of going somewhere. The links go nowhere real and the button does nothing."
     height: 520
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-link-title"><div class="civica-card-demo__body">

@@ -1,8 +1,8 @@
-# Synthetic data and no live actions.
+# data and no live actions.
 examples:
   spec-task-list-household-setup:
     title: A household notifications setup with three tasks
-    description: "A simulated setup card with three tasks. One is completed, one has a problem that is explained in words, and one cannot start yet and says why. Each status is written as text beside the task name. Home Assistant has no task list of its own, so this is a Civica pattern drawn with ordinary text. Selecting a task name moves to a note lower in the card and saves nothing."
+    description: "A setup card with three tasks. One is completed, one has a problem that is explained in words, and one cannot start yet and says why. Each status is written as text beside the task name. Home Assistant has no task list of its own, so this is a Civica pattern drawn with ordinary text. Selecting a task name moves to a note lower in the card and saves nothing."
     height: 640
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-tl-title"><div class="civica-card-demo__body">
@@ -28,7 +28,7 @@ examples:
       </div></article>
   spec-text-input-room-settings:
     title: A room settings form with two text fields
-    description: "A simulated settings form with two single-line fields. The first has a label, a hint and a typed name. The second asks for a temperature with the unit in its label and a unit shown beside the box. Home Assistant draws its own fields, so the look differs. Nothing is saved."
+    description: "A settings form with two single-line fields. The first has a label, a hint and a typed name. The second asks for a temperature with the unit in its label and a unit shown beside the box. Home Assistant draws its own fields, so the look differs. Nothing is saved."
     height: 520
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-ti-title"><div class="civica-card-demo__body">
@@ -59,7 +59,7 @@ examples:
       </div></article>
   spec-textarea-dashboard-description:
     title: A multi-line description box with its hint
-    description: "A simulated form with a label, a hint that says who can read the text and a box that holds several lines. The box can be resized vertically. Home Assistant draws its own multi-line field, so the look differs. Nothing is saved."
+    description: "A form with a label, a hint that says who can read the text and a box that holds several lines. The box can be resized vertically. Home Assistant draws its own multi-line field, so the look differs. Nothing is saved."
     height: 520
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-ta-title"><div class="civica-card-demo__body">
@@ -72,7 +72,7 @@ examples:
       </div></article>
   spec-thermostat-card-bedroom:
     title: A thermostat card for the bedroom
-    description: "A simulated thermostat card in the light theme. The name sits at the top with a round button for more information at its right. A dial shows the target, and minus and plus buttons sit under it. The target, the current temperature and the word Heating are written as text. The orange arc is the colour Home Assistant uses for heating, which the Civica theme does not change. Home Assistant draws its own dial, which can be dragged or moved with the keyboard; this picture cannot. Nothing here is interactive."
+    description: "A thermostat card in the light theme. The name sits at the top with a round button for more information at its right. A dial shows the target, and minus and plus buttons sit under it. The target, the current temperature and the word Heating are written as text. The orange arc is the colour Home Assistant uses for heating, which the Civica theme does not change. Home Assistant draws its own dial, which can be dragged or moved with the keyboard; this picture cannot. Nothing here is interactive."
     height: 600
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-thermo-title" style="max-width:22rem"><div class="civica-card-demo__body" style="position:relative">
@@ -84,7 +84,7 @@ examples:
       </div></article>
   spec-tile-card-lamp:
     title: Two tile cards, a lamp that is on and a sensor that is unavailable
-    description: "Two simulated tile cards in the light theme. The first shows a round icon in the theme colour, the name and the state On. The second shows a grey icon with a small orange warning mark at its corner, and the state Unavailable is written in words. The icons are plain shapes standing in for Home Assistant icons. Home Assistant draws its own tiles, which open More info when selected; these do nothing."
+    description: "Two tile cards in the light theme. The first shows a round icon in the theme colour, the name and the state On. The second shows a grey icon with a small orange warning mark at its corner, and the state Unavailable is written in words. The icons are plain shapes standing in for Home Assistant icons. Home Assistant draws its own tiles, which open More info when selected; these do nothing."
     height: 380
     html: |
       <div style="display:grid;gap:12px;max-width:22rem">

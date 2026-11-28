@@ -1,8 +1,8 @@
-# Synthetic data: invented names, readings and dates. Nothing here is connected to a home, and the buttons do nothing.
+# data: names, readings and dates. Nothing here is connected to a home, and the buttons do nothing.
 examples:
   spec-history-editorial-and-reading:
     title: A help page with its own dates, and a reading with a separate time
-    description: "A simulated help page for a thermostat card. The page shows when the guidance was published and last updated. The temperature reading has its own observation time. The review dates sit below the content they cover, and none of the dates stands in for another."
+    description: "A help page for a thermostat card. The page shows when the guidance was published and last updated. The temperature reading has its own observation time. The review dates sit below the content they cover, and none of the dates stands in for another."
     height: 460
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-history-title"><div class="civica-card-demo__body">
@@ -14,7 +14,7 @@ examples:
       </div></article>
   spec-pagination-table:
     title: An energy data table on its first page
-    description: "A simulated View data disclosure under an energy chart, open on its first page of 250 rows, 100 rows to a page. Only the first three rows are drawn here. Previous rows is disabled on the first page, the row count sits between the two buttons, and Next rows is available. The buttons do nothing in this example."
+    description: "A View data disclosure under an energy chart, open on its first page of 250 rows, 100 rows to a page. Only the first three rows are drawn here. Previous rows is disabled on the first page, the row count sits between the two buttons, and Next rows is available. The buttons do nothing in this example."
     height: 520
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-pagetable-title"><div class="civica-card-demo__body">
@@ -80,7 +80,7 @@ examples:
       <p style="margin:20px 0 0">The example has not changed any devices. Review the references before saving.</p>
   spec-phase-banner-trial-view:
     title: A trial banner above a new energy view
-    description: "A simulated dashboard card for a trial of a new energy view. A Trial label and one plain sentence sit at the top and say what to use instead. The link goes nowhere in this example."
+    description: "A dashboard card for a trial of a new energy view. A Trial label and one plain sentence sit at the top and say what to use instead. The link goes nowhere in this example."
     height: 340
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-phase-title"><div class="civica-card-demo__body">
@@ -90,7 +90,7 @@ examples:
       </div></article>
   spec-picture-elements-floor-plan:
     title: A floor plan with a label, an icon and a button, and the same readings as a list
-    description: "A simulated picture elements card. A plain floor plan has a temperature label, a lamp icon and a Turn on hall light button placed over it by percentage. Below the picture, the same readings and the action are written as a list. Home Assistant draws its own icons and buttons, so the look differs. The button does nothing here."
+    description: "A picture elements card. A plain floor plan has a temperature label, a lamp icon and a Turn on hall light button placed over it by percentage. Below the picture, the same readings and the action are written as a list. Home Assistant draws its own icons and buttons, so the look differs. The button does nothing here."
     height: 640
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-picture-title"><div class="civica-card-demo__body">
@@ -106,7 +106,7 @@ examples:
       </div></article>
   spec-plant-status-study-fern:
     title: A plant status card with one reading below its limit, and the sentence beneath it
-    description: "A simulated plant status card for a plant called Study fern, with four readings drawn as an icon, a value and a unit. The moisture value is in the error colour and bold. Beneath the card, a sentence says in words which reading is below its limit. Home Assistant draws its own icons, so the look differs. The limit of 20% is invented."
+    description: "A plant status card for a plant called Study fern, with four readings drawn as an icon, a value and a unit. The moisture value is in the error colour and bold. Beneath the card, a sentence says in words which reading is below its limit. Home Assistant draws its own icons, so the look differs. The limit of 20% is an example."
     height: 480
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-plant-title">

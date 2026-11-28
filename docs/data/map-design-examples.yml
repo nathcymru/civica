@@ -109,7 +109,7 @@ examples:
       review_status: Source checks only; integrated rendered review is recorded separately.
   map-background-unavailable:
     title: A missing map background preserves the location records
-    description: A simulated background failure is separate from tracker data. The complete table and explicit missing-location record remain available without requesting tiles or coordinates.
+    description: A background failure is separate from tracker data. The complete table and explicit missing-location record remain available without requesting tiles or coordinates.
     height: 1250
     html: |
       <section class="civica-map-demo" aria-labelledby="map-unavailable-title">

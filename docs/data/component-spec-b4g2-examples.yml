@@ -1,8 +1,8 @@
-# Synthetic data: invented names, readings and dates. Nothing here is connected to a home, and the buttons do nothing.
+# data: names, readings and dates. Nothing here is connected to a home, and the buttons do nothing.
 examples:
   spec-selector-form:
     title: A watering schedule form made of selector fields
-    description: "A simulated form with four fields, each of the kind a selector draws: an area, a duration, a time of day and a list of days. Each field has a visible label and, where it helps, a hint before the field. Home Assistant draws its own controls, so the look differs. The fields respond, but nothing is saved."
+    description: "A form with four fields, each of the kind a selector draws: an area, a duration, a time of day and a list of days. Each field has a visible label and, where it helps, a hint before the field. Home Assistant draws its own controls, so the look differs. The fields respond, but nothing is saved."
     height: 760
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-selector-title"><div class="civica-card-demo__body">
@@ -19,7 +19,7 @@ examples:
       </div></article>
   spec-sensor-card-readings:
     title: "Two sensor cards: a short name and a long name"
-    description: "Two simulated sensor cards in a row, each with a name, a large value, a unit and a small line graph. The left card has a short name. The right card has a long name that is cut off with an ellipsis, as the real card does, so the full name is also written below the cards. The graph has no text of its own, so the lowest and highest values are written beneath it. The cards do nothing when tapped."
+    description: "Two sensor cards in a row, each with a name, a large value, a unit and a small line graph. The left card has a short name. The right card has a long name that is cut off with an ellipsis, as the real card does, so the full name is also written below the cards. The graph has no text of its own, so the lowest and highest values are written beneath it. The cards do nothing when tapped."
     height: 460
     html: |
       <div style="display:flex;flex-wrap:wrap;gap:16px;margin:0 0 16px">
@@ -39,7 +39,7 @@ examples:
       <p style="margin:0">Full name of the right-hand card: Upstairs landing humidity sensor.</p>
   spec-settings-row-group:
     title: A group of settings rows, wide and narrow
-    description: "Two simulated groups of settings rows. In the wide group each row has a heading and a hint on the left and its control on the right. In the narrow group the same rows are stacked, with the control under the text. Every row has a visible label tied to its control, and the wide group states the scope of its settings in words. The controls do nothing."
+    description: "Two groups of settings rows. In the wide group each row has a heading and a hint on the left and its control on the right. In the narrow group the same rows are stacked, with the control under the text. Every row has a visible label tied to its control, and the wide group states the scope of its settings in words. The controls do nothing."
     height: 820
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-rows-wide"><div class="civica-card-demo__body">
@@ -55,7 +55,7 @@ examples:
       </div></article>
   spec-shortcut-cards:
     title: "Two shortcut cards: a row and a vertical card"
-    description: "Two simulated shortcut cards. The first is a one-row card with an icon, the label Heating schedule and the description Open the weekly schedule. The second is a vertical card with the label Lock up and the description Lock all doors. Each card is a square-cornered box with a one-pixel border. The cards do nothing when pressed."
+    description: "Two shortcut cards. The first is a one-row card with an icon, the label Heating schedule and the description Open the weekly schedule. The second is a vertical card with the label Lock up and the description Lock all doors. Each card is a square-cornered box with a one-pixel border. The cards do nothing when pressed."
     height: 420
     html: |
       <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start">
@@ -107,7 +107,7 @@ examples:
       </main>
   spec-statistics-cards:
     title: A statistic card and a statistics graph card
-    description: "Two simulated cards. The statistic card shows one figure, 142 kWh, with the statistic type (change) and the period (this month) written in its name. The statistics graph card shows two lines, the daily mean in the first chart colour and the daily maximum in the second, with a legend that names both. The chart plots the four weekly values from the table below it, in °C, with the week starting date under each point. Both lines fall slightly over the month. The table gives the same values as text."
+    description: "Two cards. The statistic card shows one figure, 142 kWh, with the statistic type (change) and the period (this month) written in its name. The statistics graph card shows two lines, the daily mean in the first chart colour and the daily maximum in the second, with a legend that names both. The chart plots the four weekly values from the table below it, in °C, with the week starting date under each point. Both lines fall slightly over the month. The table gives the same values as text."
     height: 760
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-stat-name" style="border-radius:0"><div class="civica-card-demo__body" style="padding:16px">

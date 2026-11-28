@@ -1,6 +1,6 @@
 ---
 title: Review dates and freshness
-description: The NHS review-date component has been withdrawn. Use its replacement content-review pattern, and keep that distinct from sensor freshness.
+description: This component has been withdrawn. Use its replacement content-review pattern, and keep that distinct from sensor freshness.
 section: components
 group: Content presentation
 source_url: https://service-manual.nhs.uk/design-system/components/review-date
@@ -15,18 +15,18 @@ updates:
   - date: 2026-11-11
     description: Directed new work to metadata/history and the review workflow while preserving the withdrawn source route.
   - date: 2026-11-11
-    description: Added NHS-informed review dates and freshness guidance and 2 Home Assistant reference examples.
+    description: Added review dates and freshness guidance and 2 Home Assistant reference examples.
 ---
 
 # Review dates and freshness
 
-The NHS review-date component has been withdrawn. Use its replacement content-review pattern, and keep that distinct from sensor freshness.
+This component has been withdrawn. Use its replacement content-review pattern, and keep that distinct from sensor freshness.
 
 These are Civica reference implementations for component authors. They do not replace native Home Assistant behaviour or demonstrate a connection to a live home.
 
 ## Use the maintained editorial-date family
 
-Use [Page metadata and history](page-history.html#child-civica-page-history-pattern) for the maintained publication and update component, and [Show when guidance was reviewed](../patterns/review-dates.html) for the review workflow. This URL remains the withdrawn NHS source reference with its historical examples. Keeping it does not reinstate the retired upstream component or authorise automatic freshness dates.
+Use [Page metadata and history](page-history.html#child-civica-page-history-pattern) for the maintained publication and update component, and [Show when guidance was reviewed](../patterns/review-dates.html) for the review workflow. Keeping this page does not reinstate the component or authorise automatic freshness dates.
 
 ## When to use it
 
@@ -64,10 +64,6 @@ Check that an editorial date is supported by a real review and that a sensor tim
 
 Use the [Civica accessibility checks](../accessibility/testing.html) and compare the rendered result in light and dark modes, with at least two theme colours, and at 320 CSS pixels. The example markup is a starting point; a theme alone does not add its application logic.
 
-## Source and related guidance
-
-[NHS review dates and freshness](https://service-manual.nhs.uk/design-system/components/review-date) informs the component choice and interaction guidance. The examples use shared GOV.UK primitives or original Civica markup, Roboto typography and Civica assets. NHS logos and service identity are not used.
-
-The NHS source explicitly withdraws its old component and directs readers to [helping users know a page is up to date](https://service-manual.nhs.uk/design-system/patterns/know-that-a-page-is-up-to-date). This page records that replacement, rather than reinstating the retired component.
+## Related guidance
 
 See also [status and notifications](status.html).

@@ -15,7 +15,7 @@ examples:
       </article>
       <section id="cv-primary-lighting-guide" tabindex="-1">
         <h2 class="govuk-heading-m">Lighting overview</h2>
-        <p class="govuk-body">This synthetic destination explains the difference between light groups, individual entities and their reported states. Live controls require the actual Home Assistant dashboard and permissions.</p>
+        <p class="govuk-body">This destination explains the difference between light groups, individual entities and their reported states. Live controls require the actual Home Assistant dashboard and permissions.</p>
       </section>
   card-primary-static:
     title: "Primary card with more than one destination"
@@ -33,7 +33,7 @@ examples:
           </ul>
         </div>
       </article>
-      <section id="cv-primary-schedule" tabindex="-1"><h2 class="govuk-heading-m">Understand the schedule</h2><p class="govuk-body">The fictional period is an example of a planned setpoint. It is not a live thermostat reading.</p></section>
+      <section id="cv-primary-schedule" tabindex="-1"><h2 class="govuk-heading-m">Understand the schedule</h2><p class="govuk-body">The period is an example of a planned setpoint. It is not a live thermostat reading.</p></section>
       <section id="cv-primary-temperature" tabindex="-1"><h2 class="govuk-heading-m">Read sensor and target values</h2><p class="govuk-body">A sensor reports measured temperature. A thermostat target describes a requested setting. They must remain separate.</p></section>
   card-primary-chevron:
     title: "Primary navigation card with a chevron"
@@ -88,7 +88,7 @@ examples:
           <p class="govuk-body">Find example room information. The illustration is not a live camera feed.</p>
         </div>
       </article>
-      <section id="cv-image-kitchen-details" tabindex="-1"><h2 class="govuk-heading-m">Kitchen guide</h2><p class="govuk-body">This invented kitchen contains a ceiling light and a separate air-temperature sensor. Their values are not supplied by this illustration.</p></section>
+      <section id="cv-image-kitchen-details" tabindex="-1"><h2 class="govuk-heading-m">Kitchen guide</h2><p class="govuk-body">This kitchen contains a ceiling light and a separate air-temperature sensor. Their values are not supplied by this illustration.</p></section>
   card-secondary-actions:
     title: "Non-clickable card with contextual actions"
     description: "A heading and two individually named navigation actions stay separate. Actions appear below the title at narrow widths."
@@ -115,7 +115,7 @@ examples:
     height: 760
     html: |
       <h2 class="govuk-heading-m">Example room readings</h2>
-      <p class="govuk-body">Invented observations recorded on 13 November 2026 at 18:10 GMT (Europe/London), not live data.</p>
+      <p class="govuk-body">Observations recorded on 13 November 2026 at 18:10 GMT (Europe/London), not live data.</p>
       <ul class="civica-card-demo-grid">
         <li>
           <article class="civica-card-demo civica-card-demo--primary" aria-labelledby="cv-metric-temperature">
