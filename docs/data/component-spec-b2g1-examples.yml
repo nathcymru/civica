@@ -1,8 +1,8 @@
-# Synthetic data. Simulated cards, tables and dialogs; no live actions.
+# data. Simulated cards, tables and dialogs; no live actions.
 examples:
   spec-table-readings:
     title: Compare room temperatures
-    description: "A simulated card holding a real table. The caption says what the table shows, when it was read and where, and the unit is in the column heading, so every cell is only a number."
+    description: "A card holding a real table. The caption says what the table shows, when it was read and where, and the unit is in the column heading, so every cell is only a number."
     height: 360
     html: |
       <article class="civica-card-demo" aria-label="Room temperatures"><div class="civica-card-demo__body">
@@ -32,7 +32,7 @@ examples:
       </div></article>
   spec-table-missing:
     title: Distinguish zero from missing data
-    description: "A simulated card holding an hourly electricity table. The 09:00 row records zero. The 10:00 row says Not available because no reading arrived, and a sentence under the table explains that it is not zero."
+    description: "A card holding an hourly electricity table. The 09:00 row records zero. The 10:00 row says Not available because no reading arrived, and a sentence under the table explains that it is not zero."
     height: 420
     html: |
       <article class="civica-card-demo" aria-label="Hourly electricity"><div class="civica-card-demo__body">
@@ -63,7 +63,7 @@ examples:
       </div></article>
   spec-table-scroll:
     title: A wide comparison
-    description: "A simulated card holding a table with four day columns. The table sits in a labelled region that scrolls sideways when the card is narrow, so no column is hidden."
+    description: "A card holding a table with four day columns. The table sits in a labelled region that scrolls sideways when the card is narrow, so no column is hidden."
     height: 380
     html: |
       <article class="civica-card-demo" aria-label="Weekly room temperatures"><div class="civica-card-demo__body">
@@ -100,7 +100,7 @@ examples:
       </div></article>
   spec-date-maintenance:
     title: Record a known maintenance date
-    description: "A simulated form card that asks when a filter was replaced. The question is the group label, the format is shown as a hint, and the date is typed into three labelled fields because the person already knows it. Nothing is saved."
+    description: "A form card that asks when a filter was replaced. The question is the group label, the format is shown as a hint, and the date is typed into three labelled fields because the person already knows it. Nothing is saved."
     height: 460
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-date-m-title"><div class="civica-card-demo__body">
@@ -120,7 +120,7 @@ examples:
       </div></article>
   spec-date-error:
     title: Correct one part of a date
-    description: "A simulated form card after a failed save. The message says the month must be between 1 and 12, only the month box is marked, and the day and year the person typed are still there."
+    description: "A form card after a failed save. The message says the month must be between 1 and 12, only the month box is marked, and the day and year the person typed are still there."
     height: 520
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-date-e-title"><div class="civica-card-demo__body">
@@ -141,7 +141,7 @@ examples:
       </div></article>
   spec-description-list-device:
     title: Facts about one device
-    description: "A simulated card with a description list: each term names a fact about the kitchen light and its description gives the value, with the unit and the time of the reading. Home Assistant has no card like this, so the card is a stand-in. Nothing here is live."
+    description: "A card with a description list: each term names a fact about the kitchen light and its description gives the value, with the unit and the time of the reading. Home Assistant has no card like this, so the card is a stand-in. Nothing here is live."
     height: 440
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-dl-title"><div class="civica-card-demo__body">
@@ -155,7 +155,7 @@ examples:
       </div></article>
   spec-device-picker-automation:
     title: A form that asks which device an automation uses
-    description: "A simulated stand-in for the closed device picker: the label asks in terms of the task, the helper text says what the choice changes, and the chosen device shows its area beneath its name. Home Assistant draws its own field and searchable list, so the look differs. Nothing here can be changed, and the open list is not shown."
+    description: "A stand-in for the closed device picker: the label asks in terms of the task, the helper text says what the choice changes, and the chosen device shows its area beneath its name. Home Assistant draws its own field and searchable list, so the look differs. Nothing here can be changed, and the open list is not shown."
     height: 480
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-dp-title"><div class="civica-card-demo__body">
@@ -165,7 +165,7 @@ examples:
       </div></article>
   spec-dialog-confirm-delete:
     title: A confirmation that names its consequence
-    description: "A simulated confirmation dialog drawn on a dimmed page. The title names the action, the text says what will be lost, the main button says Delete automation, and Cancel sits beside it. The buttons do nothing, and Home Assistant draws its own dialog."
+    description: "A confirmation dialog drawn on a dimmed page. The title names the action, the text says what will be lost, the main button says Delete automation, and Cancel sits beside it. The buttons do nothing, and Home Assistant draws its own dialog."
     height: 380
     html: |
       <div style="background:#505a5f;padding:24px 12px">
@@ -177,7 +177,7 @@ examples:
       </div>
   spec-dialog-device-details:
     title: A dialog for device details
-    description: "A simulated stand-in for a device details dialog, drawn on a dimmed page: a title with the device name, the current state and area, and a Close button. Home Assistant’s own More info dialog has more in it. The button does nothing."
+    description: "A stand-in for a device details dialog, drawn on a dimmed page: a title with the device name, the current state and area, and a Close button. Home Assistant’s own More info dialog has more in it. The button does nothing."
     height: 360
     html: |
       <div style="background:#505a5f;padding:24px 12px">
@@ -190,7 +190,7 @@ examples:
       </div>
   spec-admin-tiles:
     title: Three admin tiles on a maintenance view
-    description: "A simulated maintenance view with the three cards in their default look: Devices discovered with 2 devices to add, Repairs with 1 issue, and Updates with 3 updates available. The count is written in words beside each icon. The tiles do nothing here."
+    description: "A maintenance view with the three cards in their default look: Devices discovered with 2 devices to add, Repairs with 1 issue, and Updates with 3 updates available. The count is written in words beside each icon. The tiles do nothing here."
     height: 420
     html: |
       <div style="display:grid;gap:12px">
@@ -200,7 +200,7 @@ examples:
       </div>
   spec-divider-entities:
     title: An entities card with a divider between groups
-    description: "A simulated entities card for the kitchen. A thin line separates the two lights from the two sensors, and every row is labelled in words, so the line is not the only cue. The line is drawn like a divider row. Nothing here is live."
+    description: "An entities card for the kitchen. A thin line separates the two lights from the two sensors, and every row is labelled in words, so the line is not the only cue. The line is drawn like a divider row. Nothing here is live."
     height: 420
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-dv-title"><div class="civica-card-demo__body">

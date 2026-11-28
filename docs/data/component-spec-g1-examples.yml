@@ -1,4 +1,4 @@
-# Synthetic data and no live actions.
+# data and no live actions.
 examples:
   spec-audio-player-message:
     title: A voice message card with a transcript
@@ -14,7 +14,7 @@ examples:
       <article class="civica-card-demo" aria-labelledby="spec-avatar-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-avatar-title">Who is home</h2><ul class="govuk-list"><li style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span aria-hidden="true" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:#E8F1F8;color:#0B0C0C;font-weight:400">SO</span><span>Sam Okafor, home</span></li><li style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><span aria-hidden="true" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:#E8F1F8;color:#0B0C0C;font-weight:400">AM</span><span>Amira Mensah, away</span></li></ul></div></article>
   spec-back-step:
     title: Return to a previous setup step
-    description: "A simulated setup step. The link names its destination, and the answer typed on this step stays as it is. The link moves to a section on this page and changes nothing in a home."
+    description: "A setup step. The link names its destination, and the answer typed on this step stays as it is. The link moves to a section on this page and changes nothing in a home."
     height: 440
     html: |
       <a class="govuk-back-link" href="#previous-rooms">Back to room selection</a>
@@ -48,7 +48,7 @@ examples:
       <article class="civica-card-demo" aria-labelledby="spec-badge-entity-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-badge-entity-title">Home overview</h2><ul class="govuk-list" style="display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0"><li style="border:1px solid #CECECE;border-radius:18px;min-height:36px;padding:0 12px;display:flex;align-items:center;gap:6px"><span>Kitchen</span><strong>20.5 °C</strong></li><li style="border:1px solid #CECECE;border-radius:18px;min-height:36px;padding:0 12px;display:flex;align-items:center;gap:6px"><span>Front door</span><strong>Locked</strong></li><li style="border:1px solid #CECECE;border-radius:18px;min-height:36px;padding:0 12px;display:flex;align-items:center;gap:6px"><span>Hall light</span><strong>Off</strong></li></ul></div></article>
   spec-badge-count:
     title: An unread count on its destination
-    description: "A simulated sidebar link with the Civica count badge: a red pill with a white number. The number is hidden from screen readers and the link's hidden text says the same thing in words. The link moves to a section on this page."
+    description: "A sidebar link with the Civica count badge: a red pill with a white number. The number is hidden from screen readers and the link's hidden text says the same thing in words. The link moves to a section on this page."
     height: 300
     html: |
       <a class="govuk-link" href="#example-notifications">Notifications <span class="civica-badge" aria-hidden="true">3</span><span class="govuk-visually-hidden">, 3 unread notifications</span></a><section id="example-notifications"><h2 class="govuk-heading-m">Example notifications</h2><ul class="govuk-list govuk-list--bullet"><li>One device is unavailable.</li><li>A backup completed.</li><li>An update is available.</li></ul></section>
@@ -72,7 +72,7 @@ examples:
       <article class="civica-card-demo" aria-labelledby="spec-meter-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-meter-title">Backup battery</h2><label class="govuk-label" for="spec-battery-meter">Backup battery charge</label><meter id="spec-battery-meter" min="0" max="100" value="45">45%</meter><p class="govuk-body">Reported charge: 45% on a scale from 0% to 100%. Seen at 14:30.</p></div></article>
   spec-blockquote-help:
     title: A quoted passage and an inline quote
-    description: "A help card that quotes someone else: the speaker is named first, the passage sits in a blockquote with a left rule, and the source is in a caption. The inline quote shows the browser adding the quotation marks. The names and words are invented."
+    description: "A help card that quotes someone else: the speaker is named first, the passage sits in a blockquote with a left rule, and the source is in a caption. The inline quote shows the browser adding the quotation marks."
     height: 460
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-quote-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-quote-title">Advice from the installer</h2><p class="govuk-body">The installer's handover note said:</p><figure style="margin:0 0 20px"><blockquote style="margin:0;padding:0 0 0 16px;border-left:4px solid #CECECE"><p class="govuk-body">Leave the boiler on its winter setting until April. Only change the schedule from the Heating dashboard.</p></blockquote><figcaption class="govuk-body" style="margin-top:8px">From <cite style="font-style:normal">Heating handover note</cite>, 3 October 2026</figcaption></figure><p class="govuk-body">The note also says to <q>check the pressure gauge once a month</q>.</p></div></article>

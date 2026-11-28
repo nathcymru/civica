@@ -2,7 +2,7 @@
 examples:
   nhs-identifier-route:
     title: "Choose a device without memorising its ID"
-    description: "A filter question offers the normal device picker as an equal route. All device names are synthetic."
+    description: "A filter question offers the normal device picker as an equal route."
     height: 560
     html: |
       <h1 class="govuk-heading-l">Find the device to add</h1>
@@ -335,7 +335,7 @@ examples:
       </details>
   nhs-household-unknown:
     title: "Unavailable information is not reassurance"
-    description: "An unknown sensor state has its own message, without an invented all-clear or emergency claim."
+    description: "An unknown sensor state has its own message, without a made-up all-clear or emergency claim."
     height: 560
     html: |
       <h1 class="govuk-heading-l">Sensor information is unavailable</h1>

@@ -1,4 +1,4 @@
-# Synthetic data and no live actions.
+# data and no live actions.
 examples:
   spec-character-count-note:
     title: A short dashboard note with its limit stated
@@ -17,7 +17,7 @@ examples:
       </form>
   spec-character-count-over-limit:
     title: A note that is over its limit
-    description: "The same kind of note field with 40 characters allowed. The text stays in the box so the person can shorten it, and the message says in plain words what is wrong. Simulated: nothing is saved."
+    description: "The same kind of note field with 40 characters allowed. The text stays in the box so the person can shorten it, and the message says in plain words what is wrong."
     height: 420
     html: |
       <form data-demo-form>

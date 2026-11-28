@@ -1,8 +1,8 @@
-# Synthetic data and no live actions.
+# data and no live actions.
 examples:
   spec-breadcrumbs-device:
     title: A device within a room
-    description: "A simulated trail for a device detail page: Home, Rooms, Kitchen, with the page heading below. The parent links jump to labelled sections of this example. Home Assistant does not draw breadcrumbs, so this is a Markdown or custom card pattern."
+    description: "A trail for a device detail page: Home, Rooms, Kitchen, with the page heading below. The parent links jump to labelled sections of this example. Home Assistant does not draw breadcrumbs, so this is a Markdown or custom card pattern."
     height: 420
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-crumb-device-title"><div class="civica-card-demo__body">
@@ -20,7 +20,7 @@ examples:
       </div></article>
   spec-breadcrumbs-guide:
     title: A help topic within a guide
-    description: "A simulated trail with the current page left out. The heading names the current topic, so it is not repeated as a link."
+    description: "A trail with the current page left out. The heading names the current topic, so it is not repeated as a link."
     height: 360
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-crumb-guide-title"><div class="civica-card-demo__body">
@@ -36,7 +36,7 @@ examples:
       </div></article>
   spec-breadcrumbs-current:
     title: A trail that includes the current page
-    description: "A simulated trail where the last item is plain text marked as the current page. It is not a link, so it cannot send people back to where they already are."
+    description: "A trail where the last item is plain text marked as the current page. It is not a link, so it cannot send people back to where they already are."
     height: 300
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-crumb-current-title"><div class="civica-card-demo__body">
@@ -53,7 +53,7 @@ examples:
       </div></article>
   spec-button-save:
     title: Save dashboard preferences
-    description: "A simulated form with one main action that names what is saved. Pressing it shows a message in this example only and does not change Home Assistant."
+    description: "A form with one main action that names what is saved. Pressing it shows a message in this example only and does not change Home Assistant."
     height: 340
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-button-save-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-button-save-title">Dashboard preferences</h2>
@@ -63,7 +63,7 @@ examples:
       </form></div></article>
   spec-button-pair:
     title: A main action and a quieter action
-    description: "A simulated pair of buttons for one task. The second button changes only the message in this example."
+    description: "A pair of buttons for one task. The second button changes only the message in this example."
     height: 340
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-button-pair-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-button-pair-title">Room name</h2>
@@ -76,7 +76,7 @@ examples:
       </form></div></article>
   spec-button-remove:
     title: Confirm removing a saved view
-    description: "A simulated final confirmation that names the outcome and uses the fixed danger colour. Nothing is deleted."
+    description: "A final confirmation that names the outcome and uses the fixed danger colour. Nothing is deleted."
     height: 340
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-button-remove-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-button-remove-title">Remove the saved garden view?</h2>
@@ -85,7 +85,7 @@ examples:
       <p class="govuk-body" data-demo-status role="status"></p></div></article>
   spec-button-unavailable:
     title: Explain why an action is unavailable
-    description: "A simulated unavailable button with the reason written beside it, so the reason stays readable when the control cannot be used."
+    description: "An unavailable button with the reason written beside it, so the reason stays readable when the control cannot be used."
     height: 300
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-button-unavailable-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-button-unavailable-title">Washing machine</h2>
@@ -93,7 +93,7 @@ examples:
       <button class="govuk-button" type="button" disabled aria-describedby="washer-unavailable">Start washer</button></div></article>
   spec-button-card-tiles:
     title: Two button cards, a lamp and a door
-    description: "A simulated pair of button cards. Each shows an icon, a name and the state in words. The lamp would toggle and the door would open More info. Nothing here responds, and Home Assistant draws its own cards."
+    description: "A pair of button cards. Each shows an icon, a name and the state in words. The lamp would toggle and the door would open More info. Nothing here responds, and Home Assistant draws its own cards."
     height: 340
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-bcard-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-s" id="spec-bcard-title">Living room</h2>
@@ -102,8 +102,8 @@ examples:
       <div role="group" aria-label="Front door" style="border:1px solid #cecece;padding:16px;min-width:9rem;text-align:center"><svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 40 40"><rect x="9" y="18" width="22" height="16" fill="none" stroke="#0b0c0c" stroke-width="2"></rect><path d="M14 18v-5a6 6 0 0 1 12 0v5" fill="none" stroke="#0b0c0c" stroke-width="2"></path></svg><p class="govuk-body" style="margin:4px 0 0"><strong>Front door</strong></p><p class="govuk-body" style="margin:0;font-size:0.9rem">Locked</p></div>
       </div></div></article>
   spec-segmented-view-switch:
-    title: A four-option view switch, simulated
-    description: "A simulated segmented control with four options. Home Assistant’s calendar card offers only Month, Day and List (7 days), as icon buttons with tooltips. Each option here is a text button, and the selected one is also marked in the page so its state does not depend on colour. Home Assistant’s own control shows the selection by fill alone. The buttons do nothing here."
+    title: A four-option view switch
+    description: "A segmented control with four options. Home Assistant’s calendar card offers only Month, Day and List (7 days), as icon buttons with tooltips. Each option here is a text button, and the selected one is also marked in the page so its state does not depend on colour. Home Assistant’s own control shows the selection by fill alone. The buttons do nothing here."
     height: 320
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-seg-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-s" id="spec-seg-title">Choose a view</h2>
@@ -115,8 +115,8 @@ examples:
       </div>
       <p class="govuk-body">Selected view: Week</p></div></article>
   spec-calendar-week-list:
-    title: A calendar card listing one week of events, simulated
-    description: "A simulated calendar card listing the events for one week. The title and the Today, Previous and Next buttons sit above dated events with their times in words. Home Assistant draws its own calendar, so the look differs. The buttons do nothing here."
+    title: A calendar card listing one week of events
+    description: "A calendar card listing the events for one week. The title and the Today, Previous and Next buttons sit above dated events with their times in words. Home Assistant draws its own calendar, so the look differs. The buttons do nothing here."
     height: 560
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-cal-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-cal-title">Household calendar</h2>
@@ -129,7 +129,7 @@ examples:
       </ul></div></article>
   spec-canvas-text-alternative:
     title: The text a drawn graphic needs beside it
-    description: "A simulated card that shows what must sit next to a drawn graphic: a short summary and a table of the same values. The drawing itself is not shown. A canvas is a block of pixels, so its meaning has to be written out as text."
+    description: "A card that shows what must sit next to a drawn graphic: a short summary and a table of the same values. The drawing itself is not shown. A canvas is a block of pixels, so its meaning has to be written out as text."
     height: 480
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-canvas-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-canvas-title">Power use today</h2>
