@@ -74,7 +74,7 @@ Choose the right control:
 | Adjust brightness or volume approximately | A slider with a visible value and an exact alternative | That 0% means off or mute for every integration |
 | Set an exact temperature or offset | Typed entry and step buttons; a slider may supplement them | A universal range, step, unit or safe setting |
 | Choose a named mode | Radios, a [select](select.html) or a [Control Select](control-select.html) | A numeric sequence between unrelated modes |
-| Show a measurement | Text, a gauge or a chart with its unit and date | An editable slider just because the value is a number |
+| Show a measurement | Text, a gauge or a chart with its unit and date | An editable slider only because the value is a number |
 | Move a cover, valve or other mechanism | The [access and movement guidance](../home-assistant/access-and-movement.html) and the supported position control | That moving a draft thumb is harmless or confirms movement |
 | Set two related bounds | Two labelled exact fields with ordering checks | That two overlapping thumbs are accessible |
 
@@ -107,7 +107,7 @@ The HTML slider, used on Civica documentation pages.
 - `min` (0 by default), `max` (100), `step` (1, or `any`) and `value` (the midpoint by default). `list` can add tick marks, but support varies.
 - It always has a value. It cannot say “no value”, so hide it when a device has no reading.
 - It has a built-in slider role. Do not add a second `role="slider"` or a duplicate `aria-valuenow`.
-- It needs a visible label. Use `aria-valuetext` when the number alone is unclear, for example “40 per cent”.
+- It needs a visible label. Use `aria-valuetext` when the number alone is unclear, for example “40%”.
 - It has no text output. Pair it with an `output` element or a typed field.
 - Arrow keys, Home and End work in every browser. Page Up and Page Down depend on the browser.
 - The browser draws it by default, and Civica restyles it with a round thumb and ink border.

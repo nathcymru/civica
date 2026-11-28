@@ -27,13 +27,13 @@ examples:
       <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><div id="spec-sensor-a" style="color:#484949;font-size:1.1875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Hall temperature</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M15 13V5a3 3 0 0 0-6 0v8a5 5 0 1 0 6 0z" fill="none" stroke="#0b0c0c" stroke-width="2"></path></svg></div>
       <div style="margin:8px 0 0"><span style="font-size:1.75rem;line-height:1.25">20.5</span> <span style="font-size:1.1875rem;color:#484949">°C</span></div>
       <svg aria-hidden="true" focusable="false" width="100%" height="48" viewBox="0 0 200 48" preserveAspectRatio="none" style="display:block;margin:8px 0 4px"><polyline points="0,34 25,30 50,36 75,22 100,18 125,24 150,12 175,16 200,10" fill="none" stroke="#1d70b8" stroke-width="2"></polyline></svg>
-      <div style="color:#484949;font-size:.875rem">Last 24 hours: 18.9 to 21.2 °C</div>
+      <div style="color:#484949;font-size:.875rem">Last 24 hours: 18.9 to 21.2°C</div>
       </div></article>
       <article class="civica-card-demo" aria-labelledby="spec-sensor-b" style="flex:1 1 14rem;margin:0;border-radius:0"><div class="civica-card-demo__body" style="padding:16px">
       <div style="display:flex;align-items:center;justify-content:space-between;gap:8px"><div id="spec-sensor-b" style="color:#484949;font-size:1.1875rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Upstairs landing humidity sensor</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z" fill="none" stroke="#0b0c0c" stroke-width="2"></path></svg></div>
       <div style="margin:8px 0 0"><span style="font-size:1.75rem;line-height:1.25">48</span> <span style="font-size:1.1875rem;color:#484949">%</span></div>
       <svg aria-hidden="true" focusable="false" width="100%" height="48" viewBox="0 0 200 48" preserveAspectRatio="none" style="display:block;margin:8px 0 4px"><polyline points="0,20 25,22 50,18 75,26 100,30 125,28 150,34 175,30 200,32" fill="none" stroke="#1d70b8" stroke-width="2"></polyline></svg>
-      <div style="color:#484949;font-size:.875rem">Last 24 hours: 44 to 53 %</div>
+      <div style="color:#484949;font-size:.875rem">Last 24 hours: 44 to 53%</div>
       </div></article>
       </div>
       <p style="margin:0">Full name of the right-hand card: Upstairs landing humidity sensor.</p>
@@ -107,7 +107,7 @@ examples:
       </main>
   spec-statistics-cards:
     title: A statistic card and a statistics graph card
-    description: "Two cards. The statistic card shows one figure, 142 kWh, with the statistic type (change) and the period (this month) written in its name. The statistics graph card shows two lines, the daily mean in the first chart colour and the daily maximum in the second, with a legend that names both. The chart plots the four weekly values from the table below it, in °C, with the week starting date under each point. Both lines fall slightly over the month. The table gives the same values as text."
+    description: "Two cards. The statistic card shows one figure, 142kWh, with the statistic type (change) and the period (this month) written in its name. The statistics graph card shows two lines, the daily mean in the first chart colour and the daily maximum in the second, with a legend that names both. The chart plots the four weekly values from the table below it, in °C, with the week starting date under each point. Both lines fall slightly over the month. The table gives the same values as text."
     height: 760
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-stat-name" style="border-radius:0"><div class="civica-card-demo__body" style="padding:16px">

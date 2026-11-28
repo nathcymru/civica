@@ -9,7 +9,7 @@ examples:
       <h2 id="spec-history-title" style="font-size:1.375rem;margin:0 0 8px">Set the bedroom thermostat</h2>
       <p style="margin:0">Published <time datetime="2026-10-01">1 October 2026</time><br>Last updated <time datetime="2026-11-01">1 November 2026</time></p>
       <h3 style="font-size:1.1875rem;margin:20px 0 8px">Bedroom temperature</h3>
-      <p style="margin:0">19.5 °C, reported <time datetime="2026-11-26T09:30:00+00:00">26 November 2026 at 09:30 GMT</time></p>
+      <p style="margin:0">19.5°C, reported <time datetime="2026-11-26T09:30:00+00:00">26 November 2026 at 09:30 GMT</time></p>
       <p style="margin:20px 0 0;padding-top:12px;border-top:1px solid #cecece">Last reviewed <time datetime="2026-11-01">1 November 2026</time><br>Next review due <time datetime="2027-02-01">1 February 2027</time></p>
       </div></article>
   spec-pagination-table:
@@ -56,7 +56,7 @@ examples:
       <li><a href="#records-three" aria-label="Page 3" style="display:inline-block;min-width:44px;min-height:44px;line-height:44px;text-align:center;color:#1d70b8">3</a></li>
       </ul></nav>
       <section id="records-one" tabindex="-1"><h2 style="font-size:1.1875rem;margin:0 0 12px">Entries 1 to 10</h2><p style="margin:0 0 12px">Hall light turned on at 18:02 on 12 November 2026.</p></section>
-      <section id="records-two" tabindex="-1"><h2 style="font-size:1.1875rem;margin:0 0 12px">Entries 11 to 20</h2><p style="margin:0 0 12px">Thermostat target changed to 19.5 °C at 07:30 on 12 November 2026.</p></section>
+      <section id="records-two" tabindex="-1"><h2 style="font-size:1.1875rem;margin:0 0 12px">Entries 11 to 20</h2><p style="margin:0 0 12px">Thermostat target changed to 19.5°C at 07:30 on 12 November 2026.</p></section>
       <section id="records-three" tabindex="-1"><h2 style="font-size:1.1875rem;margin:0">Entries 21 to 28</h2><p style="margin:0">Front door contact closed at 21:15 on 11 November 2026.</p></section>
   spec-panel-complete:
     title: A completed dashboard setup
@@ -86,7 +86,7 @@ examples:
       <article class="civica-card-demo" aria-labelledby="spec-phase-title"><div class="civica-card-demo__body">
       <p style="margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid #cecece"><strong style="display:inline-block;margin-right:12px;padding:2px 8px;background:#d2e2f1;color:#0b0c0c;font-size:1rem;text-transform:uppercase;letter-spacing:1px">Trial</strong><span>This view is being tested. For your usual figures, use the <a href="#current-energy" style="color:#1d70b8">current Energy dashboard</a>.</span></p>
       <h2 id="spec-phase-title" style="font-size:1.375rem;margin:0 0 8px">Energy this week</h2>
-      <p id="current-energy" style="margin:0">Electricity used: 58 kWh</p>
+      <p id="current-energy" style="margin:0">Electricity used: 58kWh</p>
       </div></article>
   spec-picture-elements-floor-plan:
     title: A floor plan with a label, an icon and a button, and the same readings as a list
@@ -97,12 +97,12 @@ examples:
       <h2 id="spec-picture-title" style="font-size:1.375rem;margin:0 0 12px">Ground floor</h2>
       <div style="position:relative;height:200px;background:#f3f2f1;border:1px solid #cecece;margin:0 0 16px">
       <svg aria-hidden="true" focusable="false" viewBox="0 0 400 200" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%"><rect x="10" y="10" width="170" height="180" fill="none" stroke="#484949" stroke-width="2"></rect><rect x="180" y="10" width="210" height="180" fill="none" stroke="#484949" stroke-width="2"></rect></svg>
-      <span style="position:absolute;left:68%;top:30%;transform:translate(-50%,-50%);padding:8px;white-space:nowrap;background:#fff">Living room 20.5 °C</span>
+      <span style="position:absolute;left:68%;top:30%;transform:translate(-50%,-50%);padding:8px;white-space:nowrap;background:#fff">Living room 20.5°C</span>
       <svg aria-hidden="true" focusable="false" width="32" height="32" viewBox="0 0 32 32" style="position:absolute;left:25%;top:35%;transform:translate(-50%,-50%)"><circle cx="16" cy="16" r="15" fill="#fff" stroke="#0b0c0c" stroke-width="2"></circle><circle cx="16" cy="14" r="6" fill="#0b0c0c"></circle><rect x="13" y="21" width="6" height="4" fill="#0b0c0c"></rect></svg>
       <button type="button" style="position:absolute;left:25%;top:75%;transform:translate(-50%,-50%);min-height:44px;padding:0 16px;font:inherit;color:#1d70b8;white-space:nowrap">Turn on hall light</button>
       </div>
       <h3 style="font-size:1.1875rem;margin:0 0 8px">Readings and actions</h3>
-      <ul style="margin:0;padding-left:20px"><li>Living room temperature: 20.5 °C</li><li>Hall light: off</li><li>Action: Turn on hall light</li></ul>
+      <ul style="margin:0;padding-left:20px"><li>Living room temperature: 20.5°C</li><li>Hall light: off</li><li>Action: Turn on hall light</li></ul>
       </div></article>
   spec-plant-status-study-fern:
     title: A plant status card with one reading below its limit, and the sentence beneath it

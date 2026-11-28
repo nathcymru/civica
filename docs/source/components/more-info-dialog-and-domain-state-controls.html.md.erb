@@ -191,7 +191,7 @@ The backdrop, shadow and open and close timing are Home Assistant’s, because t
 - Their colours default to the theme’s primary colour for the active part and a grey track. The Civica theme sets none of the `control-*` variables. It also sets no colour for a specific kind of device, so the amber for lights, green and red for locks, and the purple for covers stay Home Assistant’s. The Civica theme sets only the general active, inactive and unavailable state colours.
 - Civica’s `slider-color` and `paper-slider-*` colours are for older sliders. The more-info controls do not read them.
 
-Write the state as text beside every control, such as “On, 70 %”, because the colour of the control is not enough. The same applies to every control below.
+Write the state as text beside every control, such as “On, 70%”, because the colour of the control is not enough. The same applies to every control below.
 
 <h3 id="child-ha-more-info-dialog--ha-more-info-info"><code>ha-more-info-info</code></h3>
 
@@ -215,7 +215,7 @@ The Related view. It lists what the entity is connected to: its integrations, bl
 
 <h3 id="child-ha-more-info-dialog--ha-state-control-light-brightness"><code>ha-state-control-light-brightness</code></h3>
 
-A vertical slider for a light’s brightness, from 1 to 100 per cent, with the name “brightness”. The handle shows only when the light is on, and the control is disabled when the light is unavailable. It takes the light’s own colour, adjusted for contrast, or the state colour, so it varies from light to light. It is about 130 pixels wide and between 200 and 320 pixels tall.
+A vertical slider for a light’s brightness, from 1 to 100%, with the name “brightness”. The handle shows only when the light is on, and the control is disabled when the light is unavailable. It takes the light’s own colour, adjusted for contrast, or the state colour, so it varies from light to light. It is about 130 pixels wide and between 200 and 320 pixels tall.
 
 For colour and temperature, see [Lighting capabilities and colour](../home-assistant/lighting.html).
 
@@ -270,7 +270,7 @@ Read-only text on a water heater’s row: the state in bold, then the target tem
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-Keep one task in the dialog. Do not stack another dialog on top of it. Write the state next to each control, such as “Locked”, “On, 70 %” or “Unavailable”. Say what a toggle will change before it acts. Keep Home Assistant’s confirmations for locks.
+Keep one task in the dialog. Do not stack another dialog on top of it. Write the state next to each control, such as “Locked”, “On, 70%” or “Unavailable”. Say what a toggle will change before it acts. Keep Home Assistant’s confirmations for locks.
 
 Success criteria that apply:
 

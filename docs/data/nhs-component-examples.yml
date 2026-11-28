@@ -576,7 +576,7 @@ examples:
     description: The definition is optional; the measurement stays outside the disclosure.
     height: 340
     html: |
-      <p class="govuk-body">Example electricity imported: 3.8 kWh</p>
+      <p class="govuk-body">Example electricity imported: 3.8kWh</p>
       <p class="govuk-body">Recorded from 00:00 to 14:00 on 11 November 2026, Europe/London (GMT). This is a partial-day total.</p>
       <details class="govuk-details">
       <summary class="govuk-details__summary">
@@ -1216,7 +1216,7 @@ examples:
       </section>
   nhs-footer-simple:
     title: "A small documentation footer"
-    description: "A few supporting links remain easy to scan."
+    description: "A few supporting links remain quick to scan."
     height: 390
     html: |
       <section id="footer-accessibility">
@@ -1418,12 +1418,12 @@ examples:
     title: A room navigation card
     description: A single heading link opens a useful local room overview. The card is navigation; it contains no nested device buttons.
     height: 680
-    html: <article class="civica-card-demo" aria-labelledby="legacy-kitchen-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="legacy-kitchen-title"><a class="govuk-link" href="#card-kitchen">Kitchen overview</a></h2><p class="govuk-body">Find the example ceiling light, temperature reading and room notes.</p><p class="govuk-body">The heading link opens the information below. It does not operate a device.</p></div></article><section id="card-kitchen" tabindex="-1"><h2 class="govuk-heading-m">Kitchen overview</h2><p class="govuk-body">Observations reported on <time datetime="2026-11-11T18:42:00+00:00">11 November 2026 at 18:42 GMT</time> (Europe/London).</p><dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Ceiling light</dt><dd class="govuk-summary-list__value">Off</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Room temperature</dt><dd class="govuk-summary-list__value">19.8 °C</dd></div></dl><p class="govuk-body">These are independent example entities. No appliance capability or remote action is inferred from the room name.</p></section>
+    html: <article class="civica-card-demo" aria-labelledby="legacy-kitchen-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="legacy-kitchen-title"><a class="govuk-link" href="#card-kitchen">Kitchen overview</a></h2><p class="govuk-body">Find the example ceiling light, temperature reading and room notes.</p><p class="govuk-body">The heading link opens the information below. It does not operate a device.</p></div></article><section id="card-kitchen" tabindex="-1"><h2 class="govuk-heading-m">Kitchen overview</h2><p class="govuk-body">Observations reported on <time datetime="2026-11-11T18:42:00+00:00">11 November 2026 at 18:42 GMT</time> (Europe/London).</p><dl class="govuk-summary-list"><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Ceiling light</dt><dd class="govuk-summary-list__value">Off</dd></div><div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Room temperature</dt><dd class="govuk-summary-list__value">19.8°C</dd></div></dl><p class="govuk-body">These are independent example entities. No appliance capability or remote action is inferred from the room name.</p></section>
   nhs-card-information:
     title: An information card with a complete reading
     description: A non-clickable card shows the measured quantity, unit, source and observation time. It has no pretend preview or reset actions.
     height: 500
-    html: <article class="civica-card-demo" aria-labelledby="information-temperature-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="information-temperature-title">Living room temperature</h2><p class="govuk-body"><strong>20.5 °C</strong></p><p class="govuk-body">Reported by the example room sensor on <time datetime="2026-11-11T18:42:00+00:00">11 November 2026 at 18:42 GMT</time> (Europe/London).</p><p class="govuk-body">This is a measured air temperature, not a heating target. The card displays information and has no interactive controls.</p></div></article>
+    html: <article class="civica-card-demo" aria-labelledby="information-temperature-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="information-temperature-title">Living room temperature</h2><p class="govuk-body"><strong>20.5°C</strong></p><p class="govuk-body">Reported by the example room sensor on <time datetime="2026-11-11T18:42:00+00:00">11 November 2026 at 18:42 GMT</time> (Europe/London).</p><p class="govuk-body">This is a measured air temperature, not a heating target. The card displays information and has no interactive controls.</p></div></article>
   nhs-action-link-journey:
     title: Start a dashboard setup journey
     description: An action link with a clear label and an arrow signals the start of a task. It opens a view on the same dashboard and does not operate a device.

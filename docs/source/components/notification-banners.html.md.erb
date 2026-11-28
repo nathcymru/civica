@@ -93,7 +93,7 @@ A short message that closes by itself. Home Assistant shows one for things like 
 
 The text colour is `ha-color-on-neutral-loud` and the background is `ha-color-neutral-10`. The Civica theme sets the text colour to `#FFFFFF` in light mode and `#0B0C0C` in dark mode. It leaves the background at Home Assistant’s `#202020` in light mode and sets it to `#CCCCCC` in dark mode, so the bar is light with dark text. Calculated from those colours, the text and background make 16.29 to 1 in light mode and 12.20 to 1 in dark mode, in every Civica theme.
 
-A toast gives people about four seconds to read it, so it is easy to miss. Use a toast only for a result that is also visible somewhere else. Put anything people must act on in a persistent notification.
+A toast gives people about four seconds to read it, so it is often missed. Use a toast only for a result that is also visible somewhere else. Put anything people must act on in a persistent notification.
 
 <h3 id="child-notification-drawer"><code>notification-drawer</code></h3>
 
@@ -132,7 +132,7 @@ Rules for the banner:
 - Word success from the result Home Assistant has confirmed, not because a button was pressed.
 - Remove a stale success notice after navigation.
 
-For how long a service-wide banner stays, see [Global banner](../publishing/components/global-banner.html). For urgent messages, see [Emergency banner](../publishing/components/emergency-banner.html). A maintenance notice is not urgent just because it is a notice.
+For how long a service-wide banner stays, see [Global banner](../publishing/components/global-banner.html). For urgent messages, see [Emergency banner](../publishing/components/emergency-banner.html). A maintenance notice is not urgent only because it is a notice.
 
 <h2 id="limits">Advantages and limitations</h2>
 
