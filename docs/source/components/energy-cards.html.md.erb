@@ -1,5 +1,5 @@
 ---
-title: "Energy Cards"
+title: "Energy cards"
 description: "Show energy use, sources, devices and self-sufficiency with the Home Assistant Energy cards."
 section: "components"
 group: "Components"
@@ -10,13 +10,13 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Energy Cards specification: the thirteen Energy cards, their settings, the Civica energy colours and what needs the Civica companion."
+    description: "Added the Energy cards specification: the thirteen Energy cards, their settings, the Civica energy colours and what needs the Civica companion."
   - date: "2026-11-26"
     description: "Added the power sources graph, compare, grid balance, Sankey, power Sankey, water Sankey and water flow Sankey cards."
 ai_instructions: "Apply when a dashboard shows Home Assistant Energy cards (types energy-distribution, energy-usage-graph, energy-solar-graph, energy-gas-graph, energy-water-graph, energy-devices-graph, energy-devices-detail-graph, energy-sources-table, the four energy gauges, energy-grid-balance, energy-sankey, power-sankey, water-sankey, water-flow-sankey, power-sources-graph, energy-compare and energy-date-selection). The theme sets the energy colours in both modes. Chart geometry, 1.5px power lines and the values table come only from the optional Civica companion, which covers the usage, solar, gas, water, devices and devices detail graphs and the power sources graph; the distribution diagram, Sankey cards, gauges, grid balance card, sources table, compare notice and date selector stay as Home Assistant draws them. Always give the unit, the period and a text version of any value that is shown only on hover. Do not quote a contrast ratio for the energy colours, and do not infer savings."
 ai_related:
   - path: "/components/charts.html"
-    title: "Statistic & Statistics Graph Cards"
+    title: "Statistic and statistics graph cards"
     relationship: "Owns the chart and table presentation and the boundary of the Energy adapter."
   - path: "/patterns/energy.html"
     title: "Energy and history"
@@ -31,10 +31,10 @@ ai_related:
     title: "Chart colours"
     relationship: "Owns the chart colour palette."
   - path: "/components/table.html"
-    title: "Data Table"
+    title: "Data table"
     relationship: "Owns table captions, headers and numeric alignment."
 component:
-  parent: "Energy Cards"
+  parent: "Energy cards"
   letter: "E"
   origins:
     - "Lovelace"
@@ -122,7 +122,7 @@ component:
     - "hui-energy-compare-card"
 ---
 
-# Energy Cards
+# Energy cards
 
 <h2 id="purpose">Purpose</h2>
 
@@ -132,7 +132,7 @@ This page owns the twenty cards. How to present consumption, power and history i
 
 This page covers:
 
-- Energy Cards
+- Energy cards
   - `hui-energy-distribution-card`
   - `hui-energy-sankey-card`
   - `hui-power-sankey-card`

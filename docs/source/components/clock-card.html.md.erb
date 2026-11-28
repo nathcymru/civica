@@ -1,5 +1,5 @@
 ---
-title: "Clock Card"
+title: "Clock card"
 description: "Show the time, and optionally the date, on a dashboard in a digital or analogue style."
 section: "components"
 group: "Components"
@@ -10,11 +10,11 @@ last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
-    description: "Added the Clock Card specification: options, sizes, theme keys and the limits of the analogue face."
+    description: "Added the Clock card specification: options, sizes, theme keys and the limits of the analogue face."
 ai_instructions: "Apply to the Home Assistant clock card (type clock). Prefer the digital style. The analogue face has a fixed English label, Analog clock, and does not give the time to a screen reader. The digital time has no live region and does not announce changes. Keep seconds off. Show the date with words. Civica sets no clock-specific key. Do not claim contrast or announced time."
 ai_related:
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns how cards are laid out and named."
   - path: "/components/abbreviation.html"
     title: "Abbreviation"
@@ -23,7 +23,7 @@ ai_related:
     title: "Test the interface"
     relationship: "Owns the checks to run before you publish."
 component:
-  parent: "Clock Card"
+  parent: "Clock card"
   letter: "C"
   origins:
     - "Lovelace"
@@ -35,15 +35,15 @@ component:
     - "hui-clock-card"
 ---
 
-# Clock Card
+# Clock card
 
 <h2 id="purpose">Purpose</h2>
 
-The Clock Card shows the current time on a dashboard, with an optional title and date. In YAML it is `type: clock`. It suits a wall-mounted tablet. For anything where the exact time matters to someone using a screen reader, add the time as text as well.
+The Clock card shows the current time on a dashboard, with an optional title and date. In YAML it is `type: clock`. It suits a wall-mounted tablet. For anything where the exact time matters to someone using a screen reader, add the time as text as well.
 
 This page covers:
 
-- Clock Card
+- Clock card
   - `hui-clock-card`
 
 <h2 id="anatomy">Anatomy</h2>

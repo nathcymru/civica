@@ -1,5 +1,5 @@
 ---
-title: "Calendar Card"
+title: "Calendar card"
 description: "Show events from one or more calendars as a month, week, day or list, with buttons to move through time."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
-    description: "Added the Calendar Card specification: configuration, views, theme keys and the limits of the card."
+    description: "Added the Calendar card specification: configuration, views, theme keys and the limits of the card."
 ai_instructions: "Apply to the Home Assistant calendar card (type calendar). Prefer the list week view for a linear reading order. Every event needs a title and a time as text, because event colours come from each calendar and not the theme. Do not claim that calendar colours follow the Civica theme. Do not publish a deep card-mod selector for the inner calendar, because it has not been checked. Never claim measured contrast, keyboard operation of the month grid or screen reader output."
 ai_related:
   - path: "/components/button-group-segmented-control.html"
-    title: "Button Group / Segmented Control"
+    title: "Button group / segmented control"
     relationship: "Owns the toggle group that switches the calendar view."
   - path: "/components/buttons.html"
     title: "Button"
     relationship: "Owns the Today button, the previous and next icon buttons and the add-event button."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns card structure and headings."
   - path: "/publishing/frontend-templates/calendar.html"
     title: "Calendar"
     relationship: "Owns the publishing template for important dates."
 component:
-  parent: "Calendar Card"
+  parent: "Calendar card"
   letter: "C"
   origins:
     - "Lovelace"
@@ -43,15 +43,15 @@ component:
     - "ha-full-calendar"
 ---
 
-# Calendar Card
+# Calendar card
 
 <h2 id="purpose">Purpose</h2>
 
-The Calendar Card shows events from your Home Assistant calendars. It suits a shared family calendar, bin days or a maintenance schedule. In YAML it is `type: calendar`.
+The Calendar card shows events from your Home Assistant calendars. It suits a shared family calendar, bin days or a maintenance schedule. In YAML it is `type: calendar`.
 
 This page covers:
 
-- Calendar Card
+- Calendar card
   - `hui-calendar-card`
   - `ha-full-calendar`
 
@@ -92,7 +92,7 @@ Theme keys that reach it: `ha-card-border-radius` (square), `ha-card-background`
 
 <h3 id="child-ha-full-calendar"><code>ha-full-calendar</code></h3>
 
-The calendar Home Assistant draws inside the card, and also on its own Calendar page. It has four views: month, week, day and list. The Calendar page offers all four; the card’s own switch offers only Month, Day and List (7 days). In the header, the Today button and the Previous and Next buttons are Home Assistant buttons (see [Button](buttons.html#child-ha-icon-button-prev)), and the view switch is a toggle group (see [Button Group / Segmented Control](button-group-segmented-control.html#child-ha-button-toggle-group)).
+The calendar Home Assistant draws inside the card, and also on its own Calendar page. It has four views: month, week, day and list. The Calendar page offers all four; the card’s own switch offers only Month, Day and List (7 days). In the header, the Today button and the Previous and Next buttons are Home Assistant buttons (see [Button](buttons.html#child-ha-icon-button-prev)), and the view switch is a toggle group (see [Button group / segmented control](button-group-segmented-control.html#child-ha-button-toggle-group)).
 
 Today is marked with a filled circle in the primary colour, with the date in the text-on-primary colour. In Civica that is #1D70B8 with white text in light mode, and #C0D7EB with dark text in dark mode. The colour of each event comes from its calendar or integration, not from the theme.
 

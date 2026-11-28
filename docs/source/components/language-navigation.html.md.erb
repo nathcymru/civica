@@ -1,5 +1,5 @@
 ---
-title: "Language Navigation"
+title: "Language navigation"
 description: "Link equivalent content in the languages a household page genuinely supports."
 section: "components"
 group: "Components"
@@ -19,13 +19,13 @@ ai_related:
     title: "Help people find British Sign Language content"
     relationship: "Owns finding signed content, which a language menu does not replace."
   - path: "/components/link-anchor.html"
-    title: "Link / Anchor"
+    title: "Link / anchor"
     relationship: "Owns the link element used for each language."
   - path: "/components/navigation.html"
     title: "Navigation"
     relationship: "Owns navigation lists in general."
 component:
-  parent: "Language Navigation"
+  parent: "Language navigation"
   letter: "L"
   origins:
     - "Civica"
@@ -38,17 +38,17 @@ component:
     - "navigation"
 ---
 
-# Language Navigation
+# Language navigation
 
 <h2 id="purpose">Purpose</h2>
 
 Language navigation links to the same content in another language, such as a help page in English and Welsh. Use it on your own pages when a translated version of the current content exists.
 
-Home Assistant has no language navigation element. Each person picks the interface language in the language setting of their Home Assistant profile. So the pattern is for your own HTML pages. To offer a dashboard in another language, link to the other dashboard with a plain link (see [Link / Anchor](link-anchor.html)).
+Home Assistant has no language navigation element. Each person picks the interface language in the language setting of their Home Assistant profile. So the pattern is for your own HTML pages. To offer a dashboard in another language, link to the other dashboard with a plain link (see [Link / anchor](link-anchor.html)).
 
 This page covers:
 
-- Language Navigation
+- Language navigation
   - Civica Language Navigation Pattern
 
 <h2 id="anatomy">Anatomy</h2>
@@ -79,7 +79,7 @@ This is markup for your own pages. Civica has no card or element for it.
 - Set `lang` on the page to match its main content. A passage in another language needs its own `lang`.
 - Put the navigation in the same place on every page.
 
-**What the Civica theme sets.** Nothing in the Home Assistant theme styles this, because Home Assistant has no language navigation. Links in a Markdown card take `--primary-color` (see [Link / Anchor](link-anchor.html)).
+**What the Civica theme sets.** Nothing in the Home Assistant theme styles this, because Home Assistant has no language navigation. Links in a Markdown card take `--primary-color` (see [Link / anchor](link-anchor.html)).
 
 Only publish a translation after a suitably qualified speaker has reviewed it. Say when a translation is missing or out of date. Do not replace a reviewed household instruction with machine translation.
 

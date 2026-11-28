@@ -1,5 +1,5 @@
 ---
-title: "Image & Picture Cards"
+title: "Image and picture cards"
 description: "Show a picture on a dashboard or page, with a text alternative and the key facts written as text."
 section: "components"
 group: "Components"
@@ -17,7 +17,7 @@ updates:
     description: "Added images guidance and 2 Home Assistant reference examples."
   - date: "2026-11-26"
     description: "Named the picture component by its element, hui-image."
-ai_instructions: "Apply when a page or dashboard shows a picture. Use the picture card (type: picture), picture entity card (type: picture-entity) or picture glance card (type: picture-glance) for pictures on a dashboard, and name both the YAML type and the element. Always write the name, state and any alert as text, never only on the picture. Say that the entity picture’s footer text and the glance icons sit over an arbitrary picture, so no contrast can be promised. Say that hui-image gives the raw entity ID as the picture’s alt text. For camera stills, say that hui-image fetches them and there is nothing to configure. This page owns img, picture, map and area and the three picture cards; source belongs to the Audio Player page. Quote a contrast ratio only as calculated from theme colours."
+ai_instructions: "Apply when a page or dashboard shows a picture. Use the picture card (type: picture), picture entity card (type: picture-entity) or picture glance card (type: picture-glance) for pictures on a dashboard, and name both the YAML type and the element. Always write the name, state and any alert as text, never only on the picture. Say that the entity picture’s footer text and the glance icons sit over an arbitrary picture, so no contrast can be promised. Say that hui-image gives the raw entity ID as the picture’s alt text. For camera stills, say that hui-image fetches them and there is nothing to configure. This page owns img, picture, map and area and the three picture cards; source belongs to the Audio player page. Quote a contrast ratio only as calculated from theme colours."
 ai_related:
   - path: "/home-assistant/pictures-and-embedded-content.html"
     title: "Pictures, rich content and embedded pages"
@@ -29,13 +29,13 @@ ai_related:
     title: "Images"
     relationship: "Owns the rules for writing alt text."
   - path: "/components/audio-player.html"
-    title: "Audio Player"
+    title: "Audio player"
     relationship: "Owns the source element."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns card structure and cards with images."
 component:
-  parent: "Image & Picture Cards"
+  parent: "Image and picture cards"
   letter: "I"
   origins:
     - "HTML5"
@@ -82,7 +82,7 @@ component:
     - "image"
 ---
 
-# Image & Picture Cards
+# Image and picture cards
 
 <h2 id="purpose">Purpose</h2>
 
@@ -92,7 +92,7 @@ On a dashboard, Home Assistant has three plain picture cards: `type: picture`, `
 
 This page covers:
 
-- Image & Picture Cards
+- Image and picture cards
   - `<img>`
   - `<picture>`
     - `<source>`
@@ -135,7 +135,7 @@ Wraps a list of `<source>` elements and one `<img>`. The browser uses the first 
 
 <h3 id="xref-picture--source"><code>&lt;source&gt;</code></h3>
 
-The `<source>` element inside `<picture>` is owned by the [Audio Player](audio-player.html#child-audio--source) page. In a picture, give it `srcset` and `type`, and optionally `media` and `sizes`. Do not give it `src`.
+The `<source>` element inside `<picture>` is owned by the [Audio player](audio-player.html#child-audio--source) page. In a picture, give it `srcset` and `type`, and optionally `media` and `sizes`. Do not give it `src`.
 
 <h3 id="child-map"><code>&lt;map&gt;</code></h3>
 

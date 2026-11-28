@@ -1,5 +1,5 @@
 ---
-title: "Tile Card"
+title: "Tile card"
 description: "Show one entity as a compact tile with an icon, a name and its state in words, and open More info or run an action when it is selected."
 section: "components"
 group: "Components"
@@ -10,40 +10,40 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Tile Card specification: its parts, the keys it accepts, how the Civica theme colours it and what stays as Home Assistant draws it."
+    description: "Added the Tile card specification: its parts, the keys it accepts, how the Civica theme colours it and what stays as Home Assistant draws it."
   - date: "2026-11-28"
     description: "Dark mode now draws the badge glyph in ink, and the badge section states the contrast for both modes."
 ai_instructions: "Apply when a dashboard shows one entity as a tile (type: tile). The tile is one button named by its name and state, so write the state in words and keep the name short: the name and state each stay on one line and are cut off with an ellipsis when too long. The icon colour follows the state, and in the Civica theme an active tile uses the theme's primary colour. Never rely on the colour, the icon or the small corner badge alone. The badge glyph is white in light mode, and in dark mode the Civica theme draws it in ink so it stays readable on the pale dark-mode fills. The unavailable badge has no text of its own, so the state text must say Unavailable. Tapping the tile opens More info unless you set another action, and tapping the icon toggles only for toggleable entities. Do not claim that the tile shows the Civica yellow focus ring: its focus cue is a thin border in the tile colour. Alarm panels that are arming or triggered and jammed locks pulse, and Home Assistant has no reduced-motion rule for that pulse. Do not claim a working card-mod selector."
 ai_related:
   - path: "/components/card-features.html"
-    title: "Card Features (Tile & Area Inline Controls)"
+    title: "Card features (tile and area inline controls)"
     relationship: "Owns the controls that can sit on a tile."
   - path: "/components/button-card.html"
-    title: "Button Card"
+    title: "Button card"
     relationship: "Owns the large single-action card."
   - path: "/components/light-card.html"
-    title: "Light Card"
+    title: "Light card"
     relationship: "Owns the larger card for one light."
   - path: "/components/avatar-and-user-badge.html"
-    title: "Avatar & User Badge"
+    title: "Avatar and user badge"
     relationship: "Owns the person picture and badge."
   - path: "/components/notification-badge.html"
     title: "Badge"
     relationship: "Owns badges and counts."
   - path: "/components/icon-and-state-icon.html"
-    title: "Icon & State Icon"
+    title: "Icon and state icon"
     relationship: "Owns the icon and its state colour."
   - path: "/components/entities-card-and-entity-rows.html"
-    title: "Entities Card & Entity Rows"
+    title: "Entities card and entity rows"
     relationship: "Use it for many entities with long names."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface."
   - path: "/home-assistant/entity-state.html"
     title: "Entity state, confidence and freshness"
     relationship: "Owns the advice on stating what an entity reports."
 component:
-  parent: "Tile Card"
+  parent: "Tile card"
   letter: "T"
   origins:
     - "Lovelace"
@@ -69,13 +69,13 @@ component:
     - "tile"
 ---
 
-# Tile Card
+# Tile card
 
 <h2 id="purpose">Purpose</h2>
 
 A Tile card shows one entity in a small, even tile: an icon, a name and the state written in words. Selecting the tile opens More info, or runs the action you set. It is the usual card for a light, a lock, a sensor or a person when a dashboard needs many entities at a glance.
 
-This page owns the Home Assistant Tile card (`type: tile`) and its three parts. The controls that can sit on a tile are on [Card Features (Tile & Area Inline Controls)](card-features.html). For many entities with long names, use an [Entities card](entities-card-and-entity-rows.html).
+This page owns the Home Assistant Tile card (`type: tile`) and its three parts. The controls that can sit on a tile are on [Card features (tile and area inline controls)](card-features.html). For many entities with long names, use an [Entities card](entities-card-and-entity-rows.html).
 
 This page covers:
 

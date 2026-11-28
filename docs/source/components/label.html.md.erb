@@ -11,22 +11,22 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Label specification: the label element, how Home Assistant draws field names, and what a dashboard author can and cannot control."
-ai_instructions: "Apply when a form field in your own HTML needs a name. Use a label element tied to the field with for and id, or wrapped around it, and keep it visible. Never use placeholder text as the only label. Home Assistant draws the field names in its own forms and selectors, usually as a floating label inside the field, so a dashboard author cannot write a label element there. Civica sets the label text colour only. Do not confuse this page with the Label Picker, which is the Home Assistant feature for grouping devices. Do not claim a screen reader reading or a label font size."
+ai_instructions: "Apply when a form field in your own HTML needs a name. Use a label element tied to the field with for and id, or wrapped around it, and keep it visible. Never use placeholder text as the only label. Home Assistant draws the field names in its own forms and selectors, usually as a floating label inside the field, so a dashboard author cannot write a label element there. Civica sets the label text colour only. Do not confuse this page with the Label picker, which is the Home Assistant feature for grouping devices. Do not claim a screen reader reading or a label font size."
 ai_related:
   - path: "/components/text-input.html"
-    title: "Text Input"
+    title: "Text input"
     relationship: "Owns the text box that a label names."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns the hint that sits under a label."
   - path: "/components/fieldset.html"
-    title: "Fieldset & Legend"
+    title: "Fieldset and legend"
     relationship: "Owns the name for a group of related fields."
   - path: "/components/form-and-schema-form.html"
-    title: "Form & Schema Form"
+    title: "Form and schema form"
     relationship: "Owns how Home Assistant forms draw their fields."
   - path: "/components/label-picker.html"
-    title: "Label Picker"
+    title: "Label picker"
     relationship: "Owns the Home Assistant labels that group devices and areas."
 component:
   parent: "Label"
@@ -48,7 +48,7 @@ component:
 
 A label is the name of a form field, such as “Device name”. It tells people what to type, and it gives the field its name for assistive technology. Clicking or tapping the label also moves to the field, or switches a checkbox, so the label makes the target bigger.
 
-This page is about the form field name. It is not about the Home Assistant labels that group devices and areas: for those, see [Label Picker](label-picker.html).
+This page is about the form field name. It is not about the Home Assistant labels that group devices and areas: for those, see [Label picker](label-picker.html).
 
 This page covers:
 
@@ -80,7 +80,7 @@ Names one form control. There are two ways to tie it to the control:
 Rules:
 
 - Put only text inside a label. Never put a link or a button in it.
-- Do not use a label as a heading. Use [Fieldset & Legend](fieldset.html) for a group of fields.
+- Do not use a label as a heading. Use [Fieldset and legend](fieldset.html) for a group of fields.
 - A `for` that points to an `id` that does not exist does nothing.
 - A control can have more than one label.
 - Placeholder text inside the box is not a label. It disappears when someone types.
@@ -91,7 +91,7 @@ Write a short noun phrase or a question in the language of the task: “Device n
 
 **What the Civica theme sets.** The label text colour: `input-label-ink-color` and `mdc-text-field-label-ink-color` are #0B0C0C in light mode and #FFFFFF in dark mode. Calculated from the theme colours, #0B0C0C on white is about 19.6 to 1. Label size and weight stay as Home Assistant draws them.
 
-**One native case.** The Home Assistant labels picker draws its field name as a plain `<label>` that is not tied to a field, so the label is not programmatically tied to its field. See [Label Picker](label-picker.html).
+**One native case.** The Home Assistant labels picker draws its field name as a plain `<label>` that is not tied to a field, so the label is not programmatically tied to its field. See [Label picker](label-picker.html).
 
 <h2 id="limits">Advantages and limitations</h2>
 

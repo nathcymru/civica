@@ -1,5 +1,5 @@
 ---
-title: "Control Slider"
+title: "Control slider"
 description: "Choose a bounded value with a range control, exact entry and visible step buttons."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Rewritten as the full Control Slider specification. It covers the HTML range input and the three Home Assistant sliders, and keeps the exact-entry guidance and examples."
+    description: "Rewritten as the full Control slider specification. It covers the HTML range input and the three Home Assistant sliders, and keeps the exact-entry guidance and examples."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
   - date: "2026-11-12"
@@ -27,16 +27,16 @@ ai_related:
     title: "Locks, alarms, covers and valves"
     relationship: "Owns moving a cover, valve or other mechanism."
   - path: "/components/control-circular-slider.html"
-    title: "Control Circular Slider"
+    title: "Control circular slider"
     relationship: "Owns the round dial."
   - path: "/components/control-number-box.html"
-    title: "Control Number Box"
+    title: "Control number box"
     relationship: "Owns plus and minus buttons around a number."
   - path: "/home-assistant/native-task-accessibility.html"
     title: "Native task accessibility and evidence"
     relationship: "Owns the native test matrix."
 component:
-  parent: "Control Slider"
+  parent: "Control slider"
   letter: "C"
   origins:
     - "HTML5"
@@ -61,7 +61,7 @@ component:
     - "ha-grid-layout-slider"
 ---
 
-# Control Slider
+# Control slider
 
 <h2 id="purpose">Purpose</h2>
 
@@ -73,7 +73,7 @@ Choose the right control:
 | --- | --- | --- |
 | Adjust brightness or volume approximately | A slider with a visible value and an exact alternative | That 0% means off or mute for every integration |
 | Set an exact temperature or offset | Typed entry and step buttons; a slider may supplement them | A universal range, step, unit or safe setting |
-| Choose a named mode | Radios, a [select](select.html) or a [Control Select](control-select.html) | A numeric sequence between unrelated modes |
+| Choose a named mode | Radios, a [select](select.html) or a [Control select](control-select.html) | A numeric sequence between unrelated modes |
 | Show a measurement | Text, a gauge or a chart with its unit and date | An editable slider only because the value is a number |
 | Move a cover, valve or other mechanism | The [access and movement guidance](../home-assistant/access-and-movement.html) and the supported position control | That moving a draft thumb is harmless or confirms movement |
 | Set two related bounds | Two labelled exact fields with ordering checks | That two overlapping thumbs are accessible |
@@ -82,7 +82,7 @@ Live updates, permissions, physical actions and reconciliation are owned by [Con
 
 This page covers:
 
-- Control Slider
+- Control slider
   - `<input type="range">`
   - `ha-slider`
   - `ha-control-slider`

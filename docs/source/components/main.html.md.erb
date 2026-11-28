@@ -17,13 +17,13 @@ ai_related:
     title: "Skip link"
     relationship: "Owns the skip link that points to the main content."
   - path: "/components/header.html"
-    title: "Header / Top App Bar"
+    title: "Header / top app bar"
     relationship: "Owns the repeated header that sits outside main."
   - path: "/components/footer.html"
     title: "Footer"
     relationship: "Owns the footer that sits outside main."
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns what a Markdown card keeps and removes."
 component:
   parent: "Main"
@@ -71,7 +71,7 @@ The `main` element has no attributes of its own and no visual style: browsers dr
 - Use `main` rather than a `div` with a `main` role.
 - When a skip link points to it, give it an `id` and `tabindex="-1"`, so the link can move focus to it.
 
-**In a Home Assistant dashboard.** A dashboard author cannot add `main`. A Markdown card removes it and shows the tags as visible text, and this version of Home Assistant draws no `main` element in its own pages. Rely on Home Assistant’s page structure, and give each card a clear heading. In a Markdown card, use `##` and `###` headings in order. See [Markdown Card](markdown-card.html).
+**In a Home Assistant dashboard.** A dashboard author cannot add `main`. A Markdown card removes it and shows the tags as visible text, and this version of Home Assistant draws no `main` element in its own pages. Rely on Home Assistant’s page structure, and give each card a clear heading. In a Markdown card, use `##` and `###` headings in order. See [Markdown card](markdown-card.html).
 
 **What the Civica theme sets.** Nothing. `main` has no style to theme. The page ground comes from `primary-background-color`.
 

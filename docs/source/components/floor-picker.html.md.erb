@@ -1,5 +1,5 @@
 ---
-title: "Floor Picker"
+title: "Floor picker"
 description: "Choose one floor, or a list of floors, in a Home Assistant form."
 section: "components"
 group: "Components"
@@ -10,11 +10,11 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Floor Picker specification: choosing one floor or several, what Civica styles and what stays as Home Assistant draws it."
+    description: "Added the Floor picker specification: choosing one floor or several, what Civica styles and what stays as Home Assistant draws it."
 ai_instructions: "Apply when a form asks people to choose a floor. Use ha-floor-picker for one floor and ha-floors-picker for a list. Ask in terms of purpose, such as Which floor is this for. Explain what choosing a floor changes. Keep the native search and list behaviour. The picker offers Add new floor unless no-add is set; the floor selector in automations and scripts sets no-add. Do not state who is allowed to add a floor. Do not claim an ARIA pattern or a screen reader behaviour for the picker. Link to the area picker and the target pickers pages for shared behaviour."
 ai_related:
   - path: "/components/area-picker.html"
-    title: "Area Picker"
+    title: "Area picker"
     relationship: "The matching picker for areas, which works in the same way."
   - path: "/home-assistant/target-pickers.html"
     title: "Entity, device and area pickers"
@@ -23,10 +23,10 @@ ai_related:
     title: "Schema selectors and configuration forms"
     relationship: "Owns the floor selector in automations and scripts."
   - path: "/components/action-bar-bottom-sheet.html"
-    title: "Action Bar / Bottom Sheet"
+    title: "Action bar / bottom sheet"
     relationship: "Owns the sheet the picker opens on narrow screens."
 component:
-  parent: "Floor Picker"
+  parent: "Floor picker"
   letter: "F"
   origins:
     - "Home Assistant"
@@ -42,17 +42,17 @@ component:
     - "ha-floors-picker"
 ---
 
-# Floor Picker
+# Floor picker
 
 <h2 id="purpose">Purpose</h2>
 
 A floor picker lets people choose which floor a setting belongs to or affects, such as “First floor”. Home Assistant uses it in forms, in the floor selector for automations and scripts, and when you edit an area. Use `ha-floor-picker` to choose one floor and `ha-floors-picker` to choose several.
 
-This page owns the two pickers as components. For what choosing a floor means, and for its empty, saved and failed states, see [Target pickers](../home-assistant/target-pickers.html). For the selector in automations, see [Schema selectors](../home-assistant/schema-selectors.html). The [Area Picker](area-picker.html) works in the same way.
+This page owns the two pickers as components. For what choosing a floor means, and for its empty, saved and failed states, see [Target pickers](../home-assistant/target-pickers.html). For the selector in automations, see [Schema selectors](../home-assistant/schema-selectors.html). The [Area picker](area-picker.html) works in the same way.
 
 This page covers:
 
-- Floor Picker
+- Floor picker
   - `ha-floor-picker`
   - `ha-floors-picker`
 

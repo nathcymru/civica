@@ -22,7 +22,7 @@ ai_related:
     title: "Main"
     relationship: "Owns the main landmark a skip link points to."
   - path: "/components/back-link.html"
-    title: "Back Link"
+    title: "Back link"
     relationship: "Owns the back link, which a skip link should come before."
   - path: "/components/service-navigation.html"
     title: "Service navigation"
@@ -31,7 +31,7 @@ ai_related:
     title: "Test the interface"
     relationship: "Owns the keyboard and screen reader checks."
 component:
-  parent: "Skip Link"
+  parent: "Skip link"
   letter: "S"
   origins:
     - "Civica"
@@ -53,7 +53,7 @@ It is a Civica pattern for standalone pages. Home Assistant has no skip link and
 
 This page covers:
 
-- Skip Link
+- Skip link
   - Civica Skip Link Pattern
 
 <h2 id="anatomy">Anatomy</h2>
@@ -72,7 +72,7 @@ Put the link before the back link and any other repeated controls. Aim it at the
 
 **When not to use it.** Do not add a skip link to every card, and do not point one at a fragment that does not exist. A link that only scrolls the page can leave keyboard focus at the start of the navigation.
 
-**In Home Assistant.** A fragment link cannot reach an element inside another shadow tree, and Home Assistant draws its pages inside shadow trees. It exposes no stable main target. A Markdown card removes `id` and `tabindex`, so it cannot hold a skip link or a target. Do not claim a skip link for a dashboard. See [Markdown Card](markdown-card.html).
+**In Home Assistant.** A fragment link cannot reach an element inside another shadow tree, and Home Assistant draws its pages inside shadow trees. It exposes no stable main target. A Markdown card removes `id` and `tabindex`, so it cannot hold a skip link or a target. Do not claim a skip link for a dashboard. See [Markdown card](markdown-card.html).
 
 <h2 id="limits">Advantages and limitations</h2>
 

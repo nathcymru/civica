@@ -1,5 +1,5 @@
 ---
-title: "Switch / Toggle"
+title: "Switch / toggle"
 description: "Turn one setting on or off at once, with a visible label and a state that people can read in words."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Switch / Toggle specification: the native switch, the Home Assistant switch in settings and entity rows, and the swipe switch in tile controls."
+    description: "Added the Switch / toggle specification: the native switch, the Home Assistant switch in settings and entity rows, and the swipe switch in tile controls."
   - date: "2026-11-26"
     description: "Removed an entry for a switch that Home Assistant does not draw."
 ai_instructions: "Apply when a control turns one setting or device on or off at once. A switch acts immediately; use a checkbox when the choice is confirmed by a button. Every switch needs a visible label that says what it controls and, where it helps, the state in words. In Home Assistant the settings and entity-row switch is ha-switch, built on the Web Awesome switch. ha-control-switch is the swipe switch inside tile controls and the more-info dialog and cannot be placed alone. A Markdown card cannot hold a switch, because role switch is removed. In entity rows the switch is expected to be drawn smaller than the theme size, so tell people to check its size in their own dashboard. Never claim a measured focus appearance or contrast. The old switch-checked keys do not control ha-switch."
@@ -19,22 +19,22 @@ ai_related:
     title: "Checkbox"
     relationship: "Use a checkbox when the choice is confirmed later by a button."
   - path: "/components/entities-card-and-entity-rows.html"
-    title: "Entities Card & Entity Rows"
+    title: "Entities card and entity rows"
     relationship: "Owns the toggle row that holds a switch."
   - path: "/components/card-features.html"
-    title: "Card Features (Tile & Area Inline Controls)"
+    title: "Card features (tile and area inline controls)"
     relationship: "Owns the toggle feature on a tile that uses the swipe switch."
   - path: "/components/more-info-dialog-and-domain-state-controls.html"
-    title: "More-Info Dialog & Domain State Controls"
+    title: "More-info dialog and domain state controls"
     relationship: "Owns the state controls in the dialog that use the swipe switch."
   - path: "/components/button-group-segmented-control.html"
-    title: "Button Group / Segmented Control"
+    title: "Button group / segmented control"
     relationship: "Use a button group when there are more than two choices."
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns what a Markdown card keeps and strips."
 component:
-  parent: "Switch / Toggle"
+  parent: "Switch / toggle"
   letter: "S"
   origins:
     - "HTML5"
@@ -56,17 +56,17 @@ component:
     - "ha-control-switch"
 ---
 
-# Switch / Toggle
+# Switch / toggle
 
 <h2 id="purpose">Purpose</h2>
 
-A switch turns one thing on or off, and the change happens as soon as people use it. Use it for a setting or a device with two states, such as a porch light or a notification setting. If a choice is confirmed later by a button, use a [Checkbox](checkboxes.html). If there are more than two choices, use a [Button Group / Segmented Control](button-group-segmented-control.html).
+A switch turns one thing on or off, and the change happens as soon as people use it. Use it for a setting or a device with two states, such as a porch light or a notification setting. If a choice is confirmed later by a button, use a [Checkbox](checkboxes.html). If there are more than two choices, use a [Button group / segmented control](button-group-segmented-control.html).
 
 This page owns the switch in all its forms. People meet Home Assistant’s switches in settings forms, in Entities card rows, in tile controls and in the more-info dialog.
 
 This page covers:
 
-- Switch / Toggle
+- Switch / toggle
   - `<input type="checkbox" role="switch">`
   - `ha-switch`
   - `ha-control-switch`

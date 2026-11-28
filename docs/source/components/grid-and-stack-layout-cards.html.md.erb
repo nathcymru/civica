@@ -1,5 +1,5 @@
 ---
-title: "Grid & Stack Layout Cards"
+title: "Grid and stack layout cards"
 description: "Arrange other cards in a grid, a row or a column on a dashboard."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Grid & Stack Layout Cards specification: the grid, horizontal stack and vertical stack, their spacing settings and how they behave on narrow screens."
+    description: "Added the Grid and stack layout cards specification: the grid, horizontal stack and vertical stack, their spacing settings and how they behave on narrow screens."
 ai_instructions: "Apply to the Home Assistant layout cards grid, horizontal-stack and vertical-stack. They hold other cards and add no border or background of their own. Reading order follows the order of the cards list. A horizontal stack and a grid have a fixed number of columns and do not wrap, so cells shrink on narrow screens; keep to 3 cards across for short button-like cards and 2 for anything with text. The grid makes square cells unless square is false. Gaps default to 8 pixels and the Civica theme does not change them. A stack title is drawn as a level 1 heading inside the card. Do not claim a stack is a landmark or a group for assistive technology."
 ai_related:
   - path: "/home-assistant/dashboard-composition.html"
     title: "Dashboard composition and card features"
     relationship: "Owns dashboard layout and the choice of views."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface each child card keeps."
   - path: "/components/card-and-section-header.html"
-    title: "Card & Section Header"
+    title: "Card and section header"
     relationship: "Owns the card title style."
   - path: "/components/glance-card.html"
-    title: "Glance Card"
+    title: "Glance card"
     relationship: "Use for a compact row of states instead of a grid."
 component:
-  parent: "Grid & Stack Layout Cards"
+  parent: "Grid and stack layout cards"
   letter: "G"
   origins:
     - "Lovelace"
@@ -47,7 +47,7 @@ component:
     - "layout"
 ---
 
-# Grid & Stack Layout Cards
+# Grid and stack layout cards
 
 <h2 id="purpose">Purpose</h2>
 
@@ -57,7 +57,7 @@ For where layout fits in a whole dashboard, see [Dashboard composition and card 
 
 This page covers:
 
-- Grid & Stack Layout Cards
+- Grid and stack layout cards
   - `hui-grid-card`
   - `hui-horizontal-stack-card`
   - `hui-vertical-stack-card`

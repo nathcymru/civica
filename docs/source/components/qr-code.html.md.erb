@@ -1,5 +1,5 @@
 ---
-title: "QR Code"
+title: "QR code"
 description: "Show a QR code that a phone can scan, and always give the same information as text."
 section: "components"
 group: "Components"
@@ -10,20 +10,20 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the QR Code specification: the ha-qr-code element, where you can use it, its colours in light and dark mode, and the text to write beside it."
+    description: "Added the QR code specification: the ha-qr-code element, where you can use it, its colours in light and dark mode, and the text to write beside it."
 ai_instructions: "Apply when a dashboard shows a QR code. ha-qr-code is a Home Assistant element that draws to a canvas. A dashboard author can use it in a Markdown card, with the attributes data, scale, width, margin, error-correction-level and center-image, and in a form with the qr_code selector. The canvas has no text alternative and a Markdown card removes aria attributes, so always write what the code contains and what scanning does as text beside it. Never put a secret in a code left on a wall display. The code is drawn in the theme's text colour on the card colour, and in dark mode that gives light squares on a dark card, an inverted code. Do not claim that it scans or fails to scan. Do not give a maximum data size or a pixel size."
 ai_related:
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns the tags and attributes the card keeps, including ha-qr-code."
   - path: "/home-assistant/schema-selectors.html"
     title: "Schema selectors and configuration forms"
     relationship: "Owns the form selectors, including the QR code selector."
   - path: "/components/copy-to-clipboard.html"
-    title: "Copy-to-Clipboard"
+    title: "Copy-to-clipboard"
     relationship: "Use to copy the text equivalent of a code."
 component:
-  parent: "QR Code"
+  parent: "QR code"
   letter: "Q"
   origins:
     - "Home Assistant"
@@ -35,7 +35,7 @@ component:
     - "ha-qr-code"
 ---
 
-# QR Code
+# QR code
 
 <h2 id="purpose">Purpose</h2>
 
@@ -45,7 +45,7 @@ Home Assistant draws QR codes with its `ha-qr-code` element. This page covers ho
 
 This page covers:
 
-- QR Code
+- QR code
   - `ha-qr-code`
 
 <h2 id="anatomy">Anatomy</h2>
@@ -73,7 +73,7 @@ If drawing fails, for example because there is too much data, the element shows 
 
 **Where you can use it.**
 
-- In a [Markdown Card](markdown-card.html), where `ha-qr-code` is one of the few custom elements the card keeps:
+- In a [Markdown card](markdown-card.html), where `ha-qr-code` is one of the few custom elements the card keeps:
 
   ```html
   <ha-qr-code data="WIFI:T:WPA;S:Guest network;P:sunflower-42;;" scale="6" error-correction-level="quartile"></ha-qr-code>

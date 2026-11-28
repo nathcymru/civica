@@ -1,5 +1,5 @@
 ---
-title: "Weather Forecast Card"
+title: "Weather forecast card"
 description: "Show the current weather and a forecast for one weather entity, and write out what the icons show."
 section: "components"
 group: "Components"
@@ -10,29 +10,29 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Weather Forecast Card specification: its settings, what the Civica theme changes, and what to write beside the card because the forecast shows its conditions as icons only."
+    description: "Added the Weather forecast card specification: its settings, what the Civica theme changes, and what to write beside the card because the forecast shows its conditions as icons only."
 ai_instructions: "Apply when a dashboard shows weather (type: weather-forecast). The card writes the current condition as text but shows each forecast day's condition as an icon only, with no text alternative, and the forecast row scrolls sideways without a keyboard route. Write the forecast in words in a Markdown card or Entities card beside it, or use forecast_type daily with few slots. Say which values are forecast and for which period, and show units. The Civica theme does not set the weather icon colours, which are pale. Do not call a forecast a safety warning. Civica focus ring: needs the card-mod integration and only applies when the card has a tap action. Quote contrast only as calculated from theme colours."
 ai_related:
   - path: "/home-assistant/weather-and-warnings.html"
     title: "Weather, environmental readings and warnings"
     relationship: "Owns what to say about observed values, forecasts and weather warnings."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns card structure and the card heading."
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns the written alternative to the forecast row."
   - path: "/components/entities-card-and-entity-rows.html"
-    title: "Entities Card & Entity Rows"
+    title: "Entities card and entity rows"
     relationship: "Owns lists of values with labels and units."
   - path: "/components/icon-and-state-icon.html"
-    title: "Icon & State Icon"
+    title: "Icon and state icon"
     relationship: "Owns the rule that an icon needs words beside it."
   - path: "/home-assistant/locale-units-and-time.html"
     title: "Locale, units and time"
     relationship: "Owns units, dates and times."
 component:
-  parent: "Weather Forecast Card"
+  parent: "Weather forecast card"
   letter: "W"
   origins:
     - "Lovelace"
@@ -44,7 +44,7 @@ component:
     - "hui-weather-forecast-card"
 ---
 
-# Weather Forecast Card
+# Weather forecast card
 
 <h2 id="purpose">Purpose</h2>
 
@@ -54,7 +54,7 @@ This page owns the card (`type: weather-forecast`). For how to word observed val
 
 This page covers:
 
-- Weather Forecast Card
+- Weather forecast card
   - `hui-weather-forecast-card`
 
 <h2 id="anatomy">Anatomy</h2>

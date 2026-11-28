@@ -1,5 +1,5 @@
 ---
-title: "Mathematical Markup"
+title: "Mathematical markup"
 description: "Write a formula or sum so people can read it, with the meaning always given in words and units."
 section: "components"
 group: "Components"
@@ -10,11 +10,11 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Mathematical Markup specification: the math element, what a dashboard can show instead and how to explain a formula."
+    description: "Added the Mathematical markup specification: the math element, what a dashboard can show instead and how to explain a formula."
 ai_instructions: "Apply when a page or card shows a formula or a worked sum. Always write the sum in words first, with units, and give the result in words. On a standalone page the math element (MathML) can draw the formula, but assistive technology support varies, so never rely on it alone, and do not use an image of a formula. A Home Assistant Markdown card does not draw math: it shows the tags as text, and Home Assistant does not draw LaTeX. In a dashboard write the formula as words and units, such as kWh = kW x hours, and use sub and sup for powers and subscripts. Define each symbol and keep one operation per line."
 ai_related:
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns what a Markdown card keeps and removes."
   - path: "/content/writing-guidelines/numbers-measurements-dates-time.html"
     title: "Write numbers, measurements, dates and time"
@@ -23,10 +23,10 @@ ai_related:
     title: "Use clear language"
     relationship: "Owns plain wording for explanations."
   - path: "/components/code-and-preformatted-text.html"
-    title: "Code & Preformatted Text"
+    title: "Code and preformatted text"
     relationship: "Owns code and preformatted text."
 component:
-  parent: "Mathematical Markup"
+  parent: "Mathematical markup"
   letter: "M"
   origins:
     - "HTML5"
@@ -40,7 +40,7 @@ component:
     - "MathML"
 ---
 
-# Mathematical Markup
+# Mathematical markup
 
 <h2 id="purpose">Purpose</h2>
 
@@ -50,7 +50,7 @@ This page owns the `math` element and the rules for explaining a sum. Home Assis
 
 This page covers:
 
-- Mathematical Markup
+- Mathematical markup
   - `<math>` (MathML)
 
 <h2 id="anatomy">Anatomy</h2>
@@ -70,7 +70,7 @@ The top-level MathML element. It holds MathML elements such as `mi` for a name, 
 
 On a web page, current browsers draw MathML, but the maths font and the spacing vary between them. Screen readers read it unevenly, and some read nothing. Write the meaning in words next to every formula. Do not use a picture of a formula.
 
-**In a Home Assistant dashboard.** A Markdown card shows math as text: it does not keep the `math` tag. Home Assistant does not draw LaTeX either, and a template cannot produce MathML for the card. Write the sum as words and units, such as “kWh = kW × hours”, and use `<sub>` and `<sup>` for subscripts and powers, which a Markdown card keeps. See [Markdown Card](markdown-card.html).
+**In a Home Assistant dashboard.** A Markdown card shows math as text: it does not keep the `math` tag. Home Assistant does not draw LaTeX either, and a template cannot produce MathML for the card. Write the sum as words and units, such as “kWh = kW × hours”, and use `<sub>` and `<sup>` for subscripts and powers, which a Markdown card keeps. See [Markdown card](markdown-card.html).
 
 **What the Civica theme sets.** Nothing. A formula takes its text colour from the page. There is no theme setting for a maths font.
 

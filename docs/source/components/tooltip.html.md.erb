@@ -14,19 +14,19 @@ updates:
 ai_instructions: "Apply when a control seems to need a hover hint. ha-tooltip is a building block inside Home Assistant screens, not something a dashboard author can add. ha-help-tooltip opens only by hovering a non-focusable icon, so keyboard and screen reader users cannot reach it: never put essential help there, and write visible hint text instead. Never put an instruction people need in a tooltip. The Civica theme sets no tooltip variables, so tooltips keep Home Assistant's rounded corners and default colours. Quote contrast only as calculated from theme colours."
 ai_related:
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns visible help text, which is the alternative to a hover hint."
   - path: "/components/icon-and-state-icon.html"
-    title: "Icon & State Icon"
+    title: "Icon and state icon"
     relationship: "Owns the rule that an icon needs a name of its own."
   - path: "/components/select.html"
-    title: "Dropdown Menu & Overflow Menu"
+    title: "Dropdown menu and overflow menu"
     relationship: "Owns overflow menus, whose icon buttons use tooltips."
   - path: "/components/history-graph-card.html"
-    title: "History Graph Card"
+    title: "History graph card"
     relationship: "Owns the hover readout on a history chart."
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns the HTML a Markdown card keeps, including the title attribute."
 component:
   parent: "Tooltip"
@@ -51,7 +51,7 @@ component:
 
 A tooltip is a small box of text that appears next to a control when someone points at it or moves keyboard focus to it. Home Assistant uses tooltips to name icon buttons, such as the buttons in an overflow menu, and to explain items in settings screens.
 
-You cannot add a tooltip to a dashboard card. There is no card or Markdown tag for it. This page tells you what Home Assistant does, so you know what to expect from its screens and what to write yourself. For visible help, see [Help / Hint Text](hint-text.html).
+You cannot add a tooltip to a dashboard card. There is no card or Markdown tag for it. This page tells you what Home Assistant does, so you know what to expect from its screens and what to write yourself. For visible help, see [Help / hint text](hint-text.html).
 
 This page covers:
 
@@ -115,7 +115,7 @@ For help that is not essential, link to a longer explanation from visible text. 
 
 Success criteria that apply:
 
-- 1.1.1 Non-text Content and 4.1.2 Name, Role, Value: an icon button needs a name. See [Icon & State Icon](icon-and-state-icon.html).
+- 1.1.1 Non-text Content and 4.1.2 Name, Role, Value: an icon button needs a name. See [Icon and state icon](icon-and-state-icon.html).
 - 1.3.1 Info and Relationships: the tooltip text is announced as a description of the control, not as its name.
 - 1.4.13 Content on Hover or Focus: it can be dismissed with Escape and the pointer can move onto it. Check how long it stays on your own screens.
 - 2.1.1 Keyboard: the help icon cannot be reached.

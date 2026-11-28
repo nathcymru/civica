@@ -1,5 +1,5 @@
 ---
-title: "Progress Bar & Spinner"
+title: "Progress bar and spinner"
 description: "Show that something is loading or in progress, with a bar, a spinner or a progress button, and always say it in words too."
 section: "components"
 group: "Components"
@@ -10,19 +10,19 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Progress Bar & Spinner specification: the native progress element and the Home Assistant spinner, ring, bar, progress button and fade-in, with their theme colours and limits."
+    description: "Added the Progress bar and spinner specification: the native progress element and the Home Assistant spinner, ring, bar, progress button and fade-in, with their theme colours and limits."
   - date: "2026-11-26"
     description: "Named the ring and the bar by the elements Home Assistant draws."
 ai_instructions: "Apply when a screen shows loading or progress. The progress element is native HTML and is not allowed in a Markdown card. ha-spinner, ha-progress-ring, ha-progress-bar, ha-progress-button and ha-fade-in are Home Assistant elements that a dashboard author cannot add. The ring is ha-progress-ring and the straight bar is ha-progress-bar. A spinner is silent, so always put words beside it. Give a progress value as text too. The empty part of the bar is faint, so never rely on it. Do not fake a percentage. The result flash on ha-progress-button lasts two seconds, so show the result as text that stays. Do not say any of these is announced, or that they stop under reduced motion."
 ai_related:
   - path: "/components/empty-state-and-startup-views.html"
-    title: "Empty State & Startup Views"
+    title: "Empty state and startup views"
     relationship: "Owns the loading screen, where a spinner fades in after half a second."
   - path: "/components/buttons.html"
     title: "Button"
     relationship: "Owns the button and its loading state."
   - path: "/components/file-upload.html"
-    title: "File Upload / Dropzone"
+    title: "File upload / dropzone"
     relationship: "Owns the upload that shows a progress bar."
   - path: "/components/gauge.html"
     title: "Gauge"
@@ -31,7 +31,7 @@ ai_related:
     title: "Appliances, vacuums and outdoor devices"
     relationship: "Owns how to word the progress of an appliance cycle."
 component:
-  parent: "Progress Bar & Spinner"
+  parent: "Progress bar and spinner"
   letter: "P"
   origins:
     - "HTML5"
@@ -64,7 +64,7 @@ component:
     - "ha-fade-in"
 ---
 
-# Progress Bar & Spinner
+# Progress bar and spinner
 
 <h2 id="purpose">Purpose</h2>
 
@@ -74,7 +74,7 @@ HTML has one native element for this, `progress`. Home Assistant draws its own s
 
 This page covers:
 
-- Progress Bar & Spinner
+- Progress bar and spinner
   - `<progress>`
   - `ha-spinner`
   - `ha-progress-ring`
@@ -103,7 +103,7 @@ Name it with a `label` or `aria-label`. It is not a live region, so a change in 
 
 The browser draws the default look, and it differs between browsers. For a measured value that is not progress, such as a battery level, use `meter` instead.
 
-Home Assistant does not use this element, and the [Markdown Card](markdown-card.html) shows it as plain text. On a dashboard, write the progress in words (“Installing: step 3 of 5”) or use a [Gauge](gauge.html) for a measured value. On a static Civica page, use `progress` with a label.
+Home Assistant does not use this element, and the [Markdown card](markdown-card.html) shows it as plain text. On a dashboard, write the progress in words (“Installing: step 3 of 5”) or use a [Gauge](gauge.html) for a measured value. On a static Civica page, use `progress` with a label.
 
 <h3 id="child-ha-spinner"><code>ha-spinner</code></h3>
 
@@ -113,7 +113,7 @@ It sets three CSS variables. `--ha-spinner-size` is the size. `--ha-spinner-indi
 
 The Civica theme sets `primary-color` and `divider-color`, so the spinner takes its colour from the theme’s primary colour. The theme does not set the `--ha-spinner-` names, so size and speed stay Home Assistant’s. The arc is #1D70B8 on a white card (5.17:1, calculated from theme colours). The track is faint (1.57:1), so the arc carries the meaning.
 
-Home Assistant uses the spinner for its loading screen, the card picker and many dialogs. It sets no accessible name on the spinner itself, so put the words beside it. The loading screen shows the spinner above a short message. See [Empty State & Startup Views](empty-state-and-startup-views.html).
+Home Assistant uses the spinner for its loading screen, the card picker and many dialogs. It sets no accessible name on the spinner itself, so put the words beside it. The loading screen shows the spinner above a short message. See [Empty state and startup views](empty-state-and-startup-views.html).
 
 A dashboard author cannot add a spinner. The spinner turns continuously and has no pause control. Its own styles contain no reduced-motion rule.
 
@@ -143,7 +143,7 @@ A two-second icon is often missed and cannot be extended. Show the result as tex
 
 The defaults resolve to Civica theme colours. The fill uses `ha-color-on-primary-normal`, which is #19578D in light mode and #C0D7EB in dark mode. The track uses `ha-color-fill-neutral-normal-hover`, which is #DEDEDE in light mode and #2B2C2C in dark mode. These ratios are calculated from theme colours. The fill against the track is 5.6:1 in light mode and 9.44:1 in dark mode. The empty track against the card is only 1.35:1 in light mode and 1.06:1 in dark mode, so in dark mode the unfilled part is almost invisible. Always write the value as text.
 
-Home Assistant uses the bar in file upload, firmware updates and a few other screens. No dashboard card uses it, so a dashboard author cannot add one. [File Upload / Dropzone](file-upload.html) owns the upload. For a measured value on a dashboard, use a [Gauge](gauge.html) or write the value.
+Home Assistant uses the bar in file upload, firmware updates and a few other screens. No dashboard card uses it, so a dashboard author cannot add one. [File upload / dropzone](file-upload.html) owns the upload. For a measured value on a dashboard, use a [Gauge](gauge.html) or write the value.
 
 <h3 id="child-ha-fade-in"><code>ha-fade-in</code></h3>
 

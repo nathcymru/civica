@@ -1,5 +1,5 @@
 ---
-title: "List, Navigation List & Sortable List"
+title: "List, navigation list and sortable list"
 description: "Use real lists for items that belong together, a list of links for navigation, and a button alternative wherever people can change the order."
 section: "components"
 group: "Components"
@@ -19,28 +19,28 @@ ai_related:
     title: "Navigation"
     relationship: "Owns navigation patterns and the room destinations example."
   - path: "/components/drawer-navigation-sidebar.html"
-    title: "Drawer / Navigation Sidebar"
+    title: "Drawer / navigation sidebar"
     relationship: "Owns the sidebar, which uses Home Assistant’s navigation list."
   - path: "/components/summary-list.html"
-    title: "Summary List"
+    title: "Summary list"
     relationship: "Owns lists of names and values."
   - path: "/components/task-list.html"
-    title: "Task List"
+    title: "Task list"
     relationship: "Owns lists of tasks with a status."
   - path: "/components/contents-list.html"
-    title: "Contents List"
+    title: "Contents list"
     relationship: "Owns lists of links to sections of a page."
   - path: "/components/do-and-dont-lists.html"
-    title: "Do and Don't Lists"
+    title: "Do and don't lists"
     relationship: "Owns paired lists of advice."
   - path: "/home-assistant/entity-lists-and-rows.html"
     title: "Entity lists, readings and row actions"
     relationship: "Owns lists of entities with readings and actions."
   - path: "/components/markdown-card.html"
-    title: "Markdown Card"
+    title: "Markdown card"
     relationship: "Owns what a Markdown card keeps and removes."
 component:
-  parent: "List, Navigation List & Sortable List"
+  parent: "List, navigation list and sortable list"
   letter: "L"
   origins:
     - "HTML5"
@@ -93,17 +93,17 @@ component:
     - "ha-items-display-editor"
 ---
 
-# List, Navigation List & Sortable List
+# List, navigation list and sortable list
 
 <h2 id="purpose">Purpose</h2>
 
 A list groups items that belong together, so people can see how many there are and read them one by one. Use a bullet list when the order does not matter, a numbered list for steps, and a list of links for navigation. If people can change the order, give them a way that does not need dragging.
 
-This page owns the list elements and the Home Assistant list components. Lists of names and values, tasks, section links and entities have their own pages: [Summary list](summary-list.html), [Task list](task-list.html), [Contents List](contents-list.html) and [Entity lists, readings and row actions](../home-assistant/entity-lists-and-rows.html).
+This page owns the list elements and the Home Assistant list components. Lists of names and values, tasks, section links and entities have their own pages: [Summary list](summary-list.html), [Task list](task-list.html), [Contents list](contents-list.html) and [Entity lists, readings and row actions](../home-assistant/entity-lists-and-rows.html).
 
 This page covers:
 
-- List, Navigation List & Sortable List
+- List, navigation list and sortable list
   - `<ul>`
   - `<ol>`
   - `<li>`
@@ -167,7 +167,7 @@ The Civica theme sets none of the `--mdc-list-*` variables, so rows keep Home As
 
 The navigation list puts a list inside a `nav` landmark and takes a name, which becomes the landmark’s label. Its rows are `ha-list-item-button` rows, which draw a link when they have an address. The sidebar uses it, and so does the settings page `ha-config-navigation-list`.
 
-A dashboard author cannot add `ha-list-nav` to a view. For navigation on a dashboard, use the navigation described in [Navigation](navigation.html). The sidebar is described in [Drawer / Navigation Sidebar](drawer-navigation-sidebar.html).
+A dashboard author cannot add `ha-list-nav` to a view. For navigation on a dashboard, use the navigation described in [Navigation](navigation.html). The sidebar is described in [Drawer / navigation sidebar](drawer-navigation-sidebar.html).
 
 Keyboard behaviour and focus colours come from Home Assistant’s list family, described under `ha-list-base` below. Rows show a background and a focus ring. The Civica theme sets `ha-color-focus` for the ring and `ha-color-fill-neutral-quiet-hover` for the focused row background.
 

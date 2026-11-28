@@ -1,5 +1,5 @@
 ---
-title: "Card Header & Footer Widgets"
+title: "Card header and footer widgets"
 description: "Add a row of buttons, a small graph or a picture above or below the rows of a card."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Card Header & Footer Widgets specification: the buttons, graph and picture widgets, their options and their limits."
+    description: "Added the Card header and footer widgets specification: the buttons, graph and picture widgets, their options and their limits."
 ai_instructions: "Apply when a card such as Entities carries a header or footer widget (header: or footer: in YAML). A button widget must hold real actions with names. A graph widget needs a written reading beside it, because the graph cannot be used from the keyboard as written. A picture widget always needs alt_text, which is optional in Home Assistant. Never claim the Civica theme restyles the button chips."
 ai_related:
   - path: "/home-assistant/dashboard-composition.html"
     title: "Dashboard composition and card features"
     relationship: "Owns how headings, headers and footers fit a dashboard."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface and its header."
   - path: "/components/images.html"
-    title: "Image & Picture Cards"
+    title: "Image and picture cards"
     relationship: "Owns text alternatives for pictures."
   - path: "/components/charts.html"
-    title: "Statistic & Statistics Graph Cards"
+    title: "Statistic and statistics graph cards"
     relationship: "Owns graphs and their written equivalents."
 component:
-  parent: "Card Header & Footer Widgets"
+  parent: "Card header and footer widgets"
   letter: "C"
   origins:
     - "Lovelace"
@@ -47,17 +47,17 @@ component:
 
 ---
 
-# Card Header & Footer Widgets
+# Card header and footer widgets
 
 <h2 id="purpose">Purpose</h2>
 
 A header or footer widget is a small extra shown above or below the content of a card, such as a row of quick buttons, a short history graph or a picture. It gives context or a shortcut and holds nothing the card depends on.
 
-This page owns the three native widgets. For the card heading and surface see [Card (Base Surface)](cards.html), and for where headers and footers fit a dashboard see [Dashboard composition and card features](../home-assistant/dashboard-composition.html).
+This page owns the three native widgets. For the card heading and surface see [Card (base surface)](cards.html), and for where headers and footers fit a dashboard see [Dashboard composition and card features](../home-assistant/dashboard-composition.html).
 
 This page covers:
 
-- Card Header & Footer Widgets
+- Card header and footer widgets
   - `hui-buttons-header-footer`
   - `hui-graph-header-footer`
   - `hui-picture-header-footer`

@@ -1,5 +1,5 @@
 ---
-title: "Glance Card"
+title: "Glance card"
 description: "Show the names and states of several entities in one compact row on a dashboard."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Glance Card specification: configuration, what each cell shows, the theme colours it uses, its focus style and its limits."
+    description: "Added the Glance card specification: configuration, what each cell shows, the theme colours it uses, its focus style and its limits."
 ai_instructions: "Apply to the Home Assistant glance card (type glance). It shows a row of entities, each with a name, an icon and a state, and is for reading, not for controlling. Keep to 5 columns or fewer, use short names, and keep the state as words, not only an icon or colour. Each cell is a plain block, not a button, even when it has an action, and its keyboard focus is a background tint with no outline unless card-mod adds one. Long names are cut short. Do not claim a contrast ratio for the focus tint, that cells are announced as buttons, or that long names stay readable. For controls use a Tile or Entities card."
 ai_related:
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface and its focus outline."
   - path: "/components/card-and-section-header.html"
-    title: "Card & Section Header"
+    title: "Card and section header"
     relationship: "Owns the card title style."
   - path: "/components/summary-list.html"
-    title: "Summary List"
+    title: "Summary list"
     relationship: "Use for a longer list of names and values."
   - path: "/home-assistant/entity-state.html"
     title: "Entity state, confidence and freshness"
     relationship: "Owns how to show a state and how old it is."
 component:
-  parent: "Glance Card"
+  parent: "Glance card"
   letter: "G"
   origins:
     - "Lovelace"
@@ -39,7 +39,7 @@ component:
     - "hui-glance-card"
 ---
 
-# Glance Card
+# Glance card
 
 <h2 id="purpose">Purpose</h2>
 
@@ -47,7 +47,7 @@ A glance card shows the state of several things in one row, so a person can see 
 
 This page covers:
 
-- Glance Card
+- Glance card
   - `hui-glance-card`
 
 <h2 id="anatomy">Anatomy</h2>
@@ -122,7 +122,7 @@ A cell is a plain block, not a button, and it has no button role of its own. A c
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-Use a glance card for a handful of related states in one place. Keep names short, show the state in words, and use no more than 5 columns. Put controls on a Tile or Entities card. For a longer list of names and values, use a [summary list](summary-list.html). For the card surface and its heading, see [Card (Base Surface)](cards.html) and [Card & Section Header](card-and-section-header.html).
+Use a glance card for a handful of related states in one place. Keep names short, show the state in words, and use no more than 5 columns. Put controls on a Tile or Entities card. For a longer list of names and values, use a [summary list](summary-list.html). For the card surface and its heading, see [Card (base surface)](cards.html) and [Card and section header](card-and-section-header.html).
 
 Success criteria that apply:
 

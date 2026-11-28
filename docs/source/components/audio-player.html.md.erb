@@ -1,5 +1,5 @@
 ---
-title: "Audio Player"
+title: "Audio player"
 description: "Play a sound clip with the browser’s own controls, a visible label and a written transcript."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
-    description: "Added the Audio Player specification: the audio element, its source and track children, and what a dashboard author can and cannot control."
+    description: "Added the Audio player specification: the audio element, its source and track children, and what a dashboard author can and cannot control."
 ai_instructions: "Apply when a page or dialog plays a sound clip. The audio element needs the controls attribute, a visible label that names the clip, a transcript, and no autoplay. Home Assistant uses it in the media browser dialog. The browser draws the controls, so the Civica theme cannot restyle them. The source element lists the file and its type; the track element adds captions or subtitles for video, but do not claim a browser shows them for audio. This page owns source and track; the Video and Picture pages link here. A Markdown card can hold audio with a source element, but it removes the track element. Do not claim that autoplay works, or any size or contrast for the browser controls."
 ai_related:
   - path: "/home-assistant/media-playback.html"
@@ -20,7 +20,7 @@ ai_related:
     title: "Pictures, rich content and embedded pages"
     relationship: "Owns pictures and embedded content on a dashboard."
 component:
-  parent: "Audio Player"
+  parent: "Audio player"
   letter: "A"
   origins:
     - "HTML5"
@@ -41,17 +41,17 @@ component:
     - "track"
 ---
 
-# Audio Player
+# Audio player
 
 <h2 id="purpose">Purpose</h2>
 
 An audio player plays a sound clip, such as a voice message left at the front door. The browser draws the play button, the time bar and the volume control. Civica does not restyle them.
 
-This page owns the `<audio>` element and its two children, `<source>` and `<track>`. The Video & Camera Stream Player and Picture pages use `<source>` and `<track>` too, and link here for them. For the Home Assistant media player and its status wording, see [Media playback and output selection](../home-assistant/media-playback.html).
+This page owns the `<audio>` element and its two children, `<source>` and `<track>`. The Video and camera stream player and Picture pages use `<source>` and `<track>` too, and link here for them. For the Home Assistant media player and its status wording, see [Media playback and output selection](../home-assistant/media-playback.html).
 
 This page covers:
 
-- Audio Player
+- Audio player
   - `<audio>`
     - `<source>`
     - `<track>`

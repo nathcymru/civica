@@ -1,5 +1,5 @@
 ---
-title: "Drawer / Navigation Sidebar"
+title: "Drawer / navigation sidebar"
 description: "The panel down the side of Home Assistant that lists your dashboards and settings, and the drawer that holds it."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Drawer / Navigation Sidebar specification: how the sidebar and drawer behave, the theme colours that reach them and the limits."
+    description: "Added the Drawer / navigation sidebar specification: how the sidebar and drawer behave, the theme colours that reach them and the limits."
 ai_instructions: "Apply to the Home Assistant sidebar (ha-sidebar) and the drawer that holds it (ha-drawer). The sidebar is app navigation, not a dashboard card, so card-mod and dashboard YAML do not reach it. Six theme keys take effect: sidebar-background-color, sidebar-text-color, sidebar-icon-color, sidebar-selected-icon-color, sidebar-menu-button-background-color and sidebar-menu-button-text-color. sidebar-selected-background-color and sidebar-selected-text-color have no effect in the current release. The selected row is shown by colour and a tint, so a dashboard must also show the current page by words. The Civica theme does not set width, animation, badges or tooltips. Do not claim a contrast ratio, a named landmark or aria-current."
 ai_related:
   - path: "/components/navigation.html"
@@ -29,7 +29,7 @@ ai_related:
     title: "Test the interface"
     relationship: "Owns keyboard, focus and zoom checks."
 component:
-  parent: "Drawer / Navigation Sidebar"
+  parent: "Drawer / navigation sidebar"
   letter: "D"
   origins:
     - "Home Assistant"
@@ -45,7 +45,7 @@ component:
     - "ha-sidebar"
 ---
 
-# Drawer / Navigation Sidebar
+# Drawer / navigation sidebar
 
 <h2 id="purpose">Purpose</h2>
 
@@ -55,7 +55,7 @@ Both belong to the app, not to a dashboard. You cannot add them to a view or cha
 
 This page covers:
 
-- Drawer / Navigation Sidebar
+- Drawer / navigation sidebar
   - `ha-drawer`
   - `ha-sidebar`
 

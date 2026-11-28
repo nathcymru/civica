@@ -18,16 +18,16 @@ updates:
 ai_instructions: "Apply when a person types an answer that needs several lines, such as a dashboard description or a household instruction. Always give it a visible label and a short hint linked to it, and say who can read the text. Never store passwords, tokens or private care instructions in a shared dashboard note. Keep what the person typed when another answer fails. Allow paste. Do not impose a limit only to control card height, and use a count only for a real limit. Dashboard authors cannot place ha-textarea in a card: it appears in dialogs and forms, and the text selector draws it with multiline set to true. Home Assistant's textarea shows a problem in an alert area but does not mark the field itself as invalid, so name the field in the message. A Markdown card shows a textarea tag as literal text. It has no character counter."
 ai_related:
   - path: "/components/text-input.html"
-    title: "Text Input"
+    title: "Text input"
     relationship: "Owns the fields for short answers on one line."
   - path: "/components/character-count.html"
-    title: "Character Count"
+    title: "Character count"
     relationship: "Owns the count of characters left; Home Assistant's textarea shows none."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns the wording of the hint under a label."
   - path: "/components/error-message.html"
-    title: "Error Message & Error Summary"
+    title: "Error message and error summary"
     relationship: "Owns how a problem is worded and shown."
   - path: "/components/label.html"
     title: "Label"
@@ -60,7 +60,7 @@ component:
 
 A textarea is a labelled box where a person types an answer that needs more than one line, such as a dashboard description or a short household instruction. Use it for a specific answer, with a hint that says what to write and who can read it.
 
-Do not use an open box when a small set of choices would answer the question more reliably. Do not suggest that a note is read by a support team. For a short answer on one line, use [Text Input](text-input.html).
+Do not use an open box when a small set of choices would answer the question more reliably. Do not suggest that a note is read by a support team. For a short answer on one line, use [Text input](text-input.html).
 
 This page covers:
 
@@ -140,7 +140,7 @@ Do not expect a full dark box or a yellow focus ring around it. The look of the 
 
 Say who can read the text and where it appears: “Shown to everyone who can open this dashboard.” Do not store passwords, access tokens or private care instructions in a shared dashboard note. When another answer fails, keep the text people have typed and say clearly if anything is unsaved before they leave.
 
-Do not impose a limit only to control card height. Use a [Character Count](character-count.html) only for a real storage or delivery limit.
+Do not impose a limit only to control card height. Use a [Character count](character-count.html) only for a real storage or delivery limit.
 
 Success criteria that apply:
 

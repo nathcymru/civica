@@ -1,5 +1,5 @@
 ---
-title: "Humidifier Card"
+title: "Humidifier card"
 description: "Show and set the target humidity of one humidifier or dehumidifier with a dial, and write the same values as words."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Humidifier Card specification: its dial, the keys it accepts, how the Civica theme colours it and what stays as Home Assistant draws it."
+    description: "Added the Humidifier card specification: its dial, the keys it accepts, how the Civica theme colours it and what stays as Home Assistant draws it."
 ai_instructions: "Apply when a dashboard shows or sets the target humidity of a humidifier or dehumidifier (type: humidifier). Use one entity from the humidifier domain for each card. The dial colour follows the state colour of the entity, not the primary colour: on is the theme blue, and off and unavailable share one colour, so say the state in words. The name is a paragraph, not a heading. The card writes the target and the current reading as text. Do not show a target for a device that reports none, and never show 0 for a missing value. Say that changing the number size or dial thickness needs the card-mod integration. Do not claim a measured contrast for the arc or the focus cue."
 ai_related:
   - path: "/components/control-circular-slider.html"
-    title: "Control Circular Slider"
+    title: "Control circular slider"
     relationship: "Owns the dial that the card draws."
   - path: "/components/card-features.html"
-    title: "Card Features (Tile & Area Inline Controls)"
+    title: "Card features (tile and area inline controls)"
     relationship: "Owns the humidifier toggle and humidifier modes features."
   - path: "/home-assistant/climate-and-air.html"
     title: "Climate, fan and water-heater controls"
     relationship: "Owns the advice on humidifier wording, units and missing readings."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface."
 component:
-  parent: "Humidifier Card"
+  parent: "Humidifier card"
   letter: "H"
   origins:
     - "Lovelace"
@@ -38,13 +38,13 @@ component:
     - "hui-humidifier-card"
 ---
 
-# Humidifier Card
+# Humidifier card
 
 <h2 id="purpose">Purpose</h2>
 
 A Humidifier card shows the target humidity of one humidifier or dehumidifier, and lets people change it. It shows the target and the current humidity as numbers, so the dial is never the only way to read them.
 
-This page owns the Home Assistant Humidifier card (`type: humidifier`). The dial inside it is described on [Control Circular Slider](control-circular-slider.html). For wording and units, see [Climate, fan and water-heater controls](../home-assistant/climate-and-air.html).
+This page owns the Home Assistant Humidifier card (`type: humidifier`). The dial inside it is described on [Control circular slider](control-circular-slider.html). For wording and units, see [Climate, fan and water-heater controls](../home-assistant/climate-and-air.html).
 
 This page covers:
 
@@ -83,7 +83,7 @@ features:
 | `show_current_as_primary` | Makes the current humidity the large number and the target the smaller one |
 | `features` | A list of card features |
 
-The two features for a humidifier are `humidifier-toggle` and `humidifier-modes`. Their options are on [Card Features (Tile & Area Inline Controls)](card-features.html). If the entity cannot be found, the card shows a warning in its place.
+The two features for a humidifier are `humidifier-toggle` and `humidifier-modes`. Their options are on [Card features (tile and area inline controls)](card-features.html). If the entity cannot be found, the card shows a warning in its place.
 
 **How the dial behaves.** The dial runs from the entity’s minimum to its maximum humidity. These default to 0 and 100 and move in steps of 1 unless the entity says otherwise. Letting go of the handle sets the target at once. Pressing the plus and minus buttons waits one second after the last press before it sets the target. For a dehumidifier the arc fills the other way round. If the entity reports no target, the card shows the state in words and no dial. It never shows 0 for a missing target.
 

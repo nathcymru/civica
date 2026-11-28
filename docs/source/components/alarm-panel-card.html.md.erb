@@ -1,5 +1,5 @@
 ---
-title: "Alarm Panel Card"
+title: "Alarm panel card"
 description: "Show the state of an alarm control panel and let people arm or disarm it."
 section: "components"
 group: "Components"
@@ -10,14 +10,14 @@ last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
-    description: "Added the Alarm Panel Card specification: configuration, theme keys, keypad and the limits of the card."
+    description: "Added the Alarm panel card specification: configuration, theme keys, keypad and the limits of the card."
 ai_instructions: "Apply to the Home Assistant alarm-panel card (type alarm-panel). The entity must be in the alarm_control_panel domain. Show the state as text, never by colour or the pulse alone. Do not change the code entry flow or add a confirm step in a theme. The keypad shape needs card-mod. Use the word alarm only for a real alarm that has sounded. A calm state does not mean the house is safe."
 ai_related:
   - path: "/components/devices.html"
     title: "Device controls"
     relationship: "Owns the rules for locks, alarms and covers."
   - path: "/components/dialogs.html"
-    title: "Dialog / Modal"
+    title: "Dialog / modal"
     relationship: "Home Assistant confirmations for alarms stay in place."
   - path: "/components/status.html"
     title: "Status and notifications"
@@ -29,7 +29,7 @@ ai_related:
     title: "States, requests and errors"
     relationship: "A quiet smoke alarm does not mean the house is safe."
 component:
-  parent: "Alarm Panel Card"
+  parent: "Alarm panel card"
   letter: "A"
   origins:
     - "Lovelace"
@@ -41,17 +41,17 @@ component:
     - "hui-alarm-panel-card"
 ---
 
-# Alarm Panel Card
+# Alarm panel card
 
 <h2 id="purpose">Purpose</h2>
 
-The Alarm Panel Card shows the state of one alarm control panel and gives people the buttons to arm or disarm it, with a keypad when a numeric code is needed. In YAML it is `type: alarm-panel`.
+The Alarm panel card shows the state of one alarm control panel and gives people the buttons to arm or disarm it, with a keypad when a numeric code is needed. In YAML it is `type: alarm-panel`.
 
 It is for the household’s own alarm system. Rules for locks, alarms and covers in general are in [Devices](devices.html#locks-alarms-and-covers). This page owns the card.
 
 This page covers:
 
-- Alarm Panel Card
+- Alarm panel card
   - `hui-alarm-panel-card`
 
 <h2 id="anatomy">Anatomy</h2>

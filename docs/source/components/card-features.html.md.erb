@@ -1,5 +1,5 @@
 ---
-title: "Card Features (Tile & Area Inline Controls)"
+title: "Card features (tile and area inline controls)"
 description: "Add small controls, such as a slider or a mode choice, to a Tile or Area card, and know which ones appear for which device."
 section: "components"
 group: "Components"
@@ -19,16 +19,16 @@ ai_related:
     title: "Dashboard composition and card features"
     relationship: "Owns how features sit within a view and the table of variants."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface that features sit inside."
   - path: "/components/area-card.html"
-    title: "Area Card"
+    title: "Area card"
     relationship: "Owns the area card that can carry features."
   - path: "/components/sliders.html"
-    title: "Control Slider"
+    title: "Control slider"
     relationship: "Owns the advice on sliders and precise values."
 component:
-  parent: "Card Features (Tile & Area Inline Controls)"
+  parent: "Card features (tile and area inline controls)"
   letter: "C"
   origins:
     - "Lovelace"
@@ -162,17 +162,17 @@ component:
 
 ---
 
-# Card Features (Tile & Area Inline Controls)
+# Card features (tile and area inline controls)
 
 <h2 id="purpose">Purpose</h2>
 
 A card feature is a small control or display added to a card, such as a brightness slider under a light tile or a set of heating modes under a thermostat. People can then act on a device without opening More info.
 
-This page owns the feature container and every feature type Civica documents. For where cards and features sit within a view, see [Dashboard composition and card features](../home-assistant/dashboard-composition.html). For the card surface itself, see [Card (Base Surface)](cards.html).
+This page owns the feature container and every feature type Civica documents. For where cards and features sit within a view, see [Dashboard composition and card features](../home-assistant/dashboard-composition.html). For the card surface itself, see [Card (base surface)](cards.html).
 
 This page covers:
 
-- Card Features (Tile & Area Inline Controls)
+- Card features (tile and area inline controls)
   - `hui-card-features`
   - the feature types listed under [Variants](#variants)
 
@@ -385,7 +385,7 @@ YAML type `water-heater-operation-modes`. A choice of operation mode. Appears fo
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-Add a feature only when it saves a real trip to More info. Use one control for one job. Put the reported state in words next to the feature, so people can tell what is happening from what they asked for. Do not hide an essential control behind a feature, because it may not appear for every device. Use the same feature for the same job across cards. See [Dashboard composition and card features](../home-assistant/dashboard-composition.html) for how to arrange cards and [Control Slider](sliders.html) for slider guidance.
+Add a feature only when it saves a real trip to More info. Use one control for one job. Put the reported state in words next to the feature, so people can tell what is happening from what they asked for. Do not hide an essential control behind a feature, because it may not appear for every device. Use the same feature for the same job across cards. See [Dashboard composition and card features](../home-assistant/dashboard-composition.html) for how to arrange cards and [Control slider](sliders.html) for slider guidance.
 
 Success criteria that apply:
 

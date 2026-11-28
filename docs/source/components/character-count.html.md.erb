@@ -1,5 +1,5 @@
 ---
-title: "Character Count"
+title: "Character count"
 description: "Tell people the limit on a text answer before they type, and say plainly when they are over it."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-25"
 review_in: "3 months"
 updates:
   - date: "2026-11-25"
-    description: "Rewritten as the Character Count specification. It now says what Home Assistant gives you, what it does not, and how to word a limit."
+    description: "Rewritten as the Character count specification. It now says what Home Assistant gives you, what it does not, and how to word a limit."
   - date: "2026-11-13"
     description: "Updated the current project name and repository links to Civica."
 ai_instructions: "Apply when a text answer has a real limit. State the limit in the hint before the field. Home Assistant gives only a hard maxlength on ha-textarea and ha-input, with no visible count; a live count is Civica example markup or custom card code. Do not invent limits, do not block paste, keep the text after an error and say how many characters are over in plain words. Never claim a screen reader announces the count."
@@ -19,16 +19,16 @@ ai_related:
     title: "Textarea"
     relationship: "Owns the multi-line field this pattern sits on."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns where the limit is written before the field."
   - path: "/components/error-message.html"
-    title: "Error Message & Error Summary"
+    title: "Error message and error summary"
     relationship: "Owns the wording of the over-limit message."
   - path: "/accessibility/testing.html"
     title: "Test the interface"
     relationship: "Owns the checks to run before you publish."
 component:
-  parent: "Character Count"
+  parent: "Character count"
   letter: "C"
   origins:
     - "Civica"
@@ -42,15 +42,15 @@ component:
     - "maxlength"
 ---
 
-# Character Count
+# Character count
 
 <h2 id="purpose">Purpose</h2>
 
-Character Count tells people how long a text answer may be and how much they have left. Use it for a bounded dashboard note or message field where the system that receives the text has a documented limit.
+Character count tells people how long a text answer may be and how much they have left. Use it for a bounded dashboard note or message field where the system that receives the text has a documented limit.
 
 It is a Civica pattern built on Home Assistant’s text boxes. It is not a Home Assistant element. This page covers:
 
-- Character Count
+- Character count
   - Civica Character Count Pattern
 
 <h2 id="anatomy">Anatomy</h2>

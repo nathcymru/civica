@@ -1,5 +1,5 @@
 ---
-title: "Metric / Analytics Summary"
+title: "Metric / analytics summary"
 description: "Show a percentage reading with a bar, and a set of switches for sharing settings, in the Home Assistant screens that use them."
 section: "components"
 group: "Components"
@@ -10,17 +10,17 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Metric / Analytics Summary specification: the percentage bar and the analytics switches, with the thresholds, the colours the theme sets and what stays Home Assistant’s."
+    description: "Added the Metric / analytics summary specification: the percentage bar and the analytics switches, with the thresholds, the colours the theme sets and what stays Home Assistant’s."
 ai_instructions: "Apply when describing the percentage rows in Home Assistant’s system information dialog or the analytics switches in its settings. ha-metric is a heading, a percentage written as text and an ha-bar; it turns the warning colour above 50% and the error colour above 85%, and those thresholds cannot be changed. It appears only in the system information dialog, never on a dashboard, so no dashboard card can use it. ha-analytics is four rows with switches (base, usage, statistics, diagnostics) in the analytics settings; switching usage or statistics on switches base on, and switching base off switches usage and statistics off. The Civica theme sets the switch size and colours but sets no metric or bar variable. Do not paraphrase what each analytics option shares: use Home Assistant’s own wording. Do not claim the bar is announced by a screen reader or give a measured contrast ratio."
 ai_related:
   - path: "/components/bar-meter.html"
-    title: "Bar / Meter"
+    title: "Bar / meter"
     relationship: "Owns ha-bar, the picture the metric row draws."
   - path: "/home-assistant/native-task-accessibility.html"
     title: "Native task accessibility and evidence"
     relationship: "Owns how to check native settings screens."
 component:
-  parent: "Metric / Analytics Summary"
+  parent: "Metric / analytics summary"
   letter: "M"
   origins:
     - "Home Assistant"
@@ -36,17 +36,17 @@ component:
     - "ha-analytics"
 ---
 
-# Metric / Analytics Summary
+# Metric / analytics summary
 
 <h2 id="purpose">Purpose</h2>
 
 This page describes two small pieces of Home Assistant’s settings screens: the metric row, which writes a percentage and draws a bar beside it, and the analytics rows, which are switches for what a home shares. Neither is a dashboard card. A dashboard author cannot add them, so this page helps you understand and theme the screens that use them.
 
-For the bar itself, see [Bar / Meter](bar-meter.html).
+For the bar itself, see [Bar / meter](bar-meter.html).
 
 This page covers:
 
-- Metric / Analytics Summary
+- Metric / analytics summary
   - `ha-metric`
   - `ha-analytics`
 

@@ -1,5 +1,5 @@
 ---
-title: "Media Control Card"
+title: "Media control card"
 description: "Show one media player on a dashboard with its title, state and playback buttons, and know what the card and the Civica theme control."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Media Control Card specification: what the card shows, how it changes on narrow screens, which colours the theme sets and which come from the artwork."
+    description: "Added the Media control card specification: what the card shows, how it changes on narrow screens, which colours the theme sets and which come from the artwork."
 ai_instructions: "Apply when a dashboard shows one media player with playback buttons. The card type is media-control and the entity must be in the media_player domain. It has name and theme options only: no tap actions and no features. The artwork is a decorative background with no text alternative, so title, artist and state must be readable as text. The card takes its text and background colours from the artwork, so a theme cannot set them; with no artwork it uses primary-color and text-primary-color. Below 350 pixels wide the progress bar is hidden and below 300 pixels the buttons are hidden unless the player is off, idle or on. A long title scrolls only when the mouse hovers over it. Seeking works only on players that support it. Do not claim a contrast ratio for text over artwork, that the progress bar is named or announced, or that card-mod selectors beyond ha-card have been tested. Never start playback on page load."
 ai_related:
   - path: "/home-assistant/media-playback.html"
     title: "Media playback and output selection"
     relationship: "Owns the state wording and the playback flow, including never starting playback on load."
   - path: "/components/more-info-dialog-and-domain-state-controls.html"
-    title: "More-Info Dialog & Domain State Controls"
+    title: "More-info dialog and domain state controls"
     relationship: "Owns the dialog the card opens from its three-dots button."
   - path: "/components/sliders.html"
-    title: "Control Slider"
+    title: "Control slider"
     relationship: "Owns slider behaviour, including the progress bar’s drag interaction."
   - path: "/components/audio-player.html"
-    title: "Audio Player"
+    title: "Audio player"
     relationship: "Owns the browser audio element, which is a different component."
 component:
-  parent: "Media Control Card"
+  parent: "Media control card"
   letter: "M"
   origins:
     - "Lovelace"
@@ -39,17 +39,17 @@ component:
     - "media-control"
 ---
 
-# Media Control Card
+# Media control card
 
 <h2 id="purpose">Purpose</h2>
 
 The media control card shows one media player: what is playing, whether it is playing, and buttons to play, pause or skip. Use it when people want to control a speaker or television from the dashboard without opening a dialog.
 
-The state words (Playing, Paused, Idle, Off, Unavailable) and the rule that playback never starts when a page loads are owned by [Media playback and output selection](../home-assistant/media-playback.html). The card’s three-dots button opens the full controls in the more-info dialog, which is described on [More-Info Dialog & Domain State Controls](more-info-dialog-and-domain-state-controls.html).
+The state words (Playing, Paused, Idle, Off, Unavailable) and the rule that playback never starts when a page loads are owned by [Media playback and output selection](../home-assistant/media-playback.html). The card’s three-dots button opens the full controls in the more-info dialog, which is described on [More-info dialog and domain state controls](more-info-dialog-and-domain-state-controls.html).
 
 This page covers:
 
-- Media Control Card
+- Media control card
   - `hui-media-control-card`
 
 <h2 id="anatomy">Anatomy</h2>

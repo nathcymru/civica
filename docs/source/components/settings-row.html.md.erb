@@ -1,5 +1,5 @@
 ---
-title: "Settings Row"
+title: "Settings row"
 description: "Lay out one setting as a heading, a short description and a control on one row."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Settings Row specification: its parts, options and spacing variables, what Civica changes, and what the row does not do for you."
+    description: "Added the Settings row specification: its parts, options and spacing variables, what Civica changes, and what the row does not do for you."
 ai_instructions: "Apply when explaining or reviewing a settings row in Home Assistant settings screens and dialogs. ha-settings-row is a layout shell with slots for prefix, heading, description and the control. It cannot be placed on a dashboard. It does not link its heading to its control, so the label must be added by whoever builds the row. Do not claim headings truncate or that wrap-heading changes wrapping, and do not claim slim or three-line give a guaranteed look. Keep the scope of a setting (account, browser, installation) in words. For read-only pairs use the Summary list."
 ai_related:
   - path: "/patterns/settings.html"
     title: "Settings and preferences"
     relationship: "Owns how settings are grouped, scoped and saved."
   - path: "/components/summary-list.html"
-    title: "Summary List"
+    title: "Summary list"
     relationship: "Use for read-only pairs of a name and a value."
   - path: "/components/form-and-schema-form.html"
-    title: "Form & Schema Form"
+    title: "Form and schema form"
     relationship: "Owns forms built from a schema, where rows are used."
   - path: "/components/selector.html"
-    title: "Selector (Polymorphic Schema Input)"
+    title: "Selector (polymorphic schema input)"
     relationship: "Owns the controls that fill a row in service and automation forms."
 component:
-  parent: "Settings Row"
+  parent: "Settings row"
   letter: "S"
   origins:
     - "Home Assistant"
@@ -38,7 +38,7 @@ component:
     - "ha-settings-row"
 ---
 
-# Settings Row
+# Settings row
 
 <h2 id="purpose">Purpose</h2>
 
@@ -50,7 +50,7 @@ For how settings are grouped and saved, see [Settings and preferences](../patter
 
 This page covers:
 
-- Settings Row
+- Settings row
   - `ha-settings-row`
 
 <h2 id="anatomy">Anatomy</h2>

@@ -1,5 +1,5 @@
 ---
-title: "Plant Status Card"
+title: "Plant status card"
 description: "Show the readings of a plant entity, and say in words which reading is outside its limit."
 section: "components"
 group: "Components"
@@ -10,23 +10,23 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Plant Status Card specification: its settings, the readings it shows and why a problem needs words as well as colour."
+    description: "Added the Plant status card specification: its settings, the readings it shows and why a problem needs words as well as colour."
 ai_instructions: "Apply to the Home Assistant plant status card (type plant-status). The entity must be in the plant domain. The card shows up to five readings as an icon, a value and a unit: moisture, temperature, brightness, conductivity and battery. A reading the plant integration lists as a problem is shown only in the error colour and bold, with no words. Always say in text which reading is outside its limit and what the limit is. The card shows the integration's problem attribute and gives no care advice, so never diagnose a plant or add thresholds. The plant picture is a background image and cannot have alt text. Keep a missing reading missing. Do not claim contrast, accessible names or the header size in pixels."
 ai_related:
   - path: "/home-assistant/specialist-entities.html"
     title: "Specialist entities and derived information"
     relationship: "Owns how plant and environmental readings are described."
   - path: "/components/summary-list.html"
-    title: "Summary List"
+    title: "Summary list"
     relationship: "Use for the text list that states each reading and its limit."
   - path: "/components/status.html"
     title: "Status and notifications"
     relationship: "Owns state wording and how a problem is shown."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface, border and header."
 component:
-  parent: "Plant Status Card"
+  parent: "Plant status card"
   letter: "P"
   origins:
     - "Lovelace"
@@ -38,7 +38,7 @@ component:
     - "hui-plant-status-card"
 ---
 
-# Plant Status Card
+# Plant status card
 
 <h2 id="purpose">Purpose</h2>
 
@@ -48,7 +48,7 @@ The card reports what the integration supplies. It does not tell anyone how to c
 
 This page covers:
 
-- Plant Status Card
+- Plant status card
   - `hui-plant-status-card`
 
 <h2 id="anatomy">Anatomy</h2>

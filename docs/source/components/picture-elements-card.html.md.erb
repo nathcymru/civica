@@ -1,5 +1,5 @@
 ---
-title: "Picture Elements Card"
+title: "Picture elements card"
 description: "Place icons, labels, badges and buttons over a picture, such as a floor plan, and keep every reading available as text."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Picture Elements Card specification: its settings, each element type and the limits of placing items over a picture."
+    description: "Added the Picture elements card specification: its settings, each element type and the limits of placing items over a picture."
   - date: "2026-11-26"
     description: "Removed entries for elements that Home Assistant does not draw, and described custom elements under their own heading."
 ai_instructions: "Apply to the Home Assistant picture elements card (type picture-elements). The card needs an image source (image, image_entity, camera_image or state_image) and an elements list. Elements are positioned by percentage with a style map. The element types are state-badge, state-icon, state-label, service-button (action-button is the same element), icon, image and conditional, plus custom: elements. Image elements have no alt text setting: the alt text is the entity id, or empty. Never make a picture the only place a reading or an action appears. Put every state and action in a text list as well. Do not claim contrast, focus visibility, accessible names or announcement order for overlays."
@@ -19,22 +19,22 @@ ai_related:
     title: "Pictures, rich content and embedded pages"
     relationship: "Owns the rules for pictures and overlays on dashboards."
   - path: "/components/images.html"
-    title: "Image & Picture Cards"
+    title: "Image and picture cards"
     relationship: "Owns how to describe an image in text."
   - path: "/components/conditional-card.html"
-    title: "Conditional Card"
+    title: "Conditional card"
     relationship: "Owns the conditions that the conditional element also uses."
   - path: "/components/button-card.html"
-    title: "Button Card"
+    title: "Button card"
     relationship: "Use for a plain button outside a picture."
   - path: "/components/summary-list.html"
-    title: "Summary List"
+    title: "Summary list"
     relationship: "Use for the text list that repeats the picture's readings."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface, border and header."
 component:
-  parent: "Picture Elements Card"
+  parent: "Picture elements card"
   letter: "P"
   origins:
     - "Lovelace"
@@ -75,7 +75,7 @@ component:
     - "hui-conditional-element"
 ---
 
-# Picture Elements Card
+# Picture elements card
 
 <h2 id="purpose">Purpose</h2>
 
@@ -85,7 +85,7 @@ The picture is a visual aid. Anything people need to know or do must also be ava
 
 This page covers:
 
-- Picture Elements Card
+- Picture elements card
   - `hui-picture-elements-card`
     - `hui-state-badge-element`
     - `hui-state-icon-element`
@@ -193,7 +193,7 @@ An image element has no alt text setting. Its alt text is the entity id when an 
 
 <h3 id="child-hui-picture-elements-card--hui-conditional-element"><code>hui-conditional-element</code></h3>
 
-Shows other elements only while conditions are true (`type: conditional`). It takes `conditions`, a list, and `elements`, the items to show. It accepts the conditions of the [Conditional Card](conditional-card.html).
+Shows other elements only while conditions are true (`type: conditional`). It takes `conditions`, a list, and `elements`, the items to show. It accepts the conditions of the [Conditional card](conditional-card.html).
 
 When the conditions are false, the items disappear without a message or a placeholder. Never keep the only copy of an important reading or action behind a condition that can fail without any sign.
 

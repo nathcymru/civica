@@ -1,5 +1,5 @@
 ---
-title: "Fieldset & Legend"
+title: "Fieldset and legend"
 description: "Group related form controls under one shared question, so that people hear and see what the group is for."
 section: "components"
 group: "Components"
@@ -10,7 +10,7 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Rewrote Fieldset & Legend: when to group controls, how the legend and hint work, what Home Assistant provides, and what to test."
+    description: "Rewrote Fieldset and legend: when to group controls, how the legend and hint work, what Home Assistant provides, and what to test."
   - date: "2026-11-11"
     description: "First published, with two examples."
 ai_instructions: "Apply when two or more form controls answer one question, such as a set of checkboxes or the three parts of a date. Use a fieldset with the legend as its first child, short, naming the question. Each control keeps its own visible label. Put any hint in a separate element and link it with aria-describedby on the fieldset. Do not use a fieldset as a decorative box, and do not use it for a list of sensor readings. Set min-width to 0 on a fieldset so it does not overflow at 320 pixels. Home Assistant has no fieldset element of its own. Do not claim that every screen reader repeats the legend."
@@ -19,19 +19,19 @@ ai_related:
     title: "Checkbox"
     relationship: "Owns the checkboxes that a fieldset groups."
   - path: "/components/radios.html"
-    title: "Radio Button"
+    title: "Radio button"
     relationship: "Owns the radio buttons that a fieldset groups."
   - path: "/components/date-input.html"
-    title: "Date & Time Picker"
+    title: "Date and time picker"
     relationship: "Owns the three-part date answer."
   - path: "/components/hint-text.html"
-    title: "Help / Hint Text"
+    title: "Help / hint text"
     relationship: "Owns the hint that goes with a legend."
   - path: "/components/summary-list.html"
-    title: "Summary List"
+    title: "Summary list"
     relationship: "Use for a list of readings, which is not a form group."
 component:
-  parent: "Fieldset & Legend"
+  parent: "Fieldset and legend"
   letter: "F"
   origins:
     - "HTML5"
@@ -48,7 +48,7 @@ component:
     - "legend"
 ---
 
-# Fieldset & Legend
+# Fieldset and legend
 
 <h2 id="purpose">Purpose</h2>
 
@@ -58,7 +58,7 @@ This page owns the two elements. The controls inside a fieldset are owned by [Ch
 
 This page covers:
 
-- Fieldset & Legend
+- Fieldset and legend
   - `<fieldset>`
     - `<legend>`
 

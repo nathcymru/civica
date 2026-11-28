@@ -1,5 +1,5 @@
 ---
-title: "Category Picker"
+title: "Category picker"
 description: "Let people choose one category for an automation, script or scene, and add a new one when needed."
 section: "components"
 group: "Components"
@@ -10,22 +10,22 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Category Picker specification: the single-category picker, what it does with a new category and why there is no multiple-category picker."
+    description: "Added the Category picker specification: the single-category picker, what it does with a new category and why there is no multiple-category picker."
   - date: "2026-11-26"
     description: "Explained how to give one item several tags."
 ai_instructions: "Apply when a form asks which category an item belongs to. Home Assistant offers a single-category picker only (ha-category-picker). An item has one category in each list. For several tags on one item, use labels. A category is not a label, an area or a permission. Say what Add new category does. Do not claim keyboard roles beyond those listed on this page."
 ai_related:
   - path: "/components/area-picker.html"
-    title: "Area Picker"
+    title: "Area picker"
     relationship: "Owns the matching picker for areas."
   - path: "/home-assistant/registries-and-bulk-actions.html"
     title: "Registry tables and bulk actions"
     relationship: "Owns how areas, floors, labels and categories are organised."
   - path: "/components/cards.html"
-    title: "Card (Base Surface)"
+    title: "Card (base surface)"
     relationship: "Owns the card surface for forms shown on dashboards."
 component:
-  parent: "Category Picker"
+  parent: "Category picker"
   letter: "C"
   origins:
     - "Home Assistant"
@@ -39,17 +39,17 @@ component:
 
 ---
 
-# Category Picker
+# Category picker
 
 <h2 id="purpose">Purpose</h2>
 
 The category picker lets someone file an automation, script or scene under one category, such as “Heating”, so a long list is easier to scan. It appears when you save one of those items and in the assign-category dialog.
 
-This page owns the picker. For areas see [Area Picker](area-picker.html), and for how categories relate to areas, floors and labels see [Registry tables and bulk actions](../home-assistant/registries-and-bulk-actions.html).
+This page owns the picker. For areas see [Area picker](area-picker.html), and for how categories relate to areas, floors and labels see [Registry tables and bulk actions](../home-assistant/registries-and-bulk-actions.html).
 
 This page covers:
 
-- Category Picker
+- Category picker
   - `ha-category-picker`
 
 <h2 id="anatomy">Anatomy</h2>
@@ -97,7 +97,7 @@ To attach several organising tags to one item, use labels. Home Assistant has a 
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-Ask in terms of the task, for example “Category”, and say in the helper text that a category groups items in this list and that an item has one. Show the current value, and let people clear it. Say what “Add new category” does before someone chooses it. Use plain category names that people use at home, such as “Heating” or “Lighting”. See [Area Picker](area-picker.html) for the matching pattern.
+Ask in terms of the task, for example “Category”, and say in the helper text that a category groups items in this list and that an item has one. Show the current value, and let people clear it. Say what “Add new category” does before someone chooses it. Use plain category names that people use at home, such as “Heating” or “Lighting”. See [Area picker](area-picker.html) for the matching pattern.
 
 Success criteria that apply:
 

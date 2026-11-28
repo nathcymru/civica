@@ -154,7 +154,7 @@ test('the combobox finds parents, elements and variants and goes to the owning a
   await again.fill('hui-tile-card');
   await again.press('ArrowDown');
   await again.press('Enter');
-  const tile = parents.find(parent => parent.parent === 'Tile Card');
+  const tile = parents.find(parent => parent.parent === 'Tile card');
   if (available.includes(tile)) await expect(page).toHaveURL(new RegExp(`tile-card\\.html${anchorPattern(tile, 'child-hui-tile-card')}`));
   else {
     await expect(page).toHaveURL(/components\/a-z\/t\.html#parent-tile-card$/);

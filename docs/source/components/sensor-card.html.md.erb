@@ -1,5 +1,5 @@
 ---
-title: "Sensor Card"
+title: "Sensor card"
 description: "Show one reading, such as a temperature, with its unit and an optional small graph."
 section: "components"
 group: "Components"
@@ -10,32 +10,32 @@ last_reviewed_on: "2026-11-26"
 review_in: "3 months"
 updates:
   - date: "2026-11-26"
-    description: "Added the Sensor Card specification: its options, the graph footer, what Civica changes and what stays as Home Assistant draws it."
+    description: "Added the Sensor card specification: its options, the graph footer, what Civica changes and what stays as Home Assistant draws it."
 ai_instructions: "Apply when a dashboard shows one numeric reading as a card (type: sensor). The entity must be in the counter, input_number, number or sensor domain. Options are entity, name, icon, color, graph (line), unit, detail, theme, hours_to_show and limits. The graph is a small line with no text alternative, so write the range beside it. Long names and values are cut off with an ellipsis and the card is two rows high. The card is a button only if it has a tap action; by default a tap opens more information. Civica's thicker focus ring needs the card-mod integration. Do not claim the graph is accessible, do not state a contrast ratio for state colours, and do not claim the reading is fresh."
 ai_related:
   - path: "/styles/chart-colour.html"
     title: "Chart colours"
     relationship: "Owns the colours for a graph line and the rule that colour never carries meaning alone."
   - path: "/components/entity-card.html"
-    title: "Entity Card"
+    title: "Entity card"
     relationship: "Owns the card the sensor card is built on."
   - path: "/components/glance-card.html"
-    title: "Glance Card"
+    title: "Glance card"
     relationship: "Use to show several readings compactly."
   - path: "/components/history-graph-card.html"
-    title: "History Graph Card"
+    title: "History graph card"
     relationship: "Owns the full history graph for values over time."
   - path: "/components/gauge.html"
     title: "Gauge"
     relationship: "Use when a reading sits within a known range."
   - path: "/components/card-header-and-footer-widgets.html"
-    title: "Card Header & Footer Widgets"
+    title: "Card header and footer widgets"
     relationship: "Owns the graph footer used by this card."
   - path: "/home-assistant/entity-lists-and-rows.html"
     title: "Entity lists, readings and row actions"
     relationship: "Owns how readings are chosen and grouped on a dashboard."
 component:
-  parent: "Sensor Card"
+  parent: "Sensor card"
   letter: "S"
   origins:
     - "Lovelace"
@@ -47,17 +47,17 @@ component:
     - "hui-sensor-card"
 ---
 
-# Sensor Card
+# Sensor card
 
 <h2 id="purpose">Purpose</h2>
 
 A sensor card shows one number, such as a room temperature, large enough to read at a glance, with its unit and an optional small graph of recent values. Use it when one reading matters on its own.
 
-This page owns the sensor card (`type: sensor`). The card is the entity card with a different default look, so for the shared structure see [Entity Card](entity-card.html). For a row of readings use [Glance Card](glance-card.html), and for values over time use [History Graph Card](history-graph-card.html).
+This page owns the sensor card (`type: sensor`). The card is the entity card with a different default look, so for the shared structure see [Entity card](entity-card.html). For a row of readings use [Glance card](glance-card.html), and for values over time use [History graph card](history-graph-card.html).
 
 This page covers:
 
-- Sensor Card
+- Sensor card
   - `hui-sensor-card`
 
 <h2 id="anatomy">Anatomy</h2>
