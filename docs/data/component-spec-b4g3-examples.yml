@@ -75,7 +75,7 @@ examples:
       <title id="spec-svg-t">Position of the two sensors</title>
       <desc id="spec-svg-d">A house with a garden below it. The hall sensor is inside the house, on the left. The garden sensor is on the lawn, on the right. A cable joins them.</desc>
       <defs>
-      <linearGradient id="spec-svg-lawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EAF4EF"/><stop offset="1" stop-color="#BCDACF"/></linearGradient>
+      <linearGradient id="spec-svg-lawn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3f8f6"/><stop offset="1" stop-color="#BCDACF"/></linearGradient>
       <radialGradient id="spec-svg-glow"><stop offset="0" stop-color="#1D70B8" stop-opacity="0.35"/><stop offset="1" stop-color="#1D70B8" stop-opacity="0"/></radialGradient>
       <clipPath id="spec-svg-clip"><rect x="10" y="140" width="300" height="50"/></clipPath>
       <symbol id="spec-svg-sensor" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" fill="#FFFFFF" stroke="#0B0C0C" stroke-width="2"/><circle cx="12" cy="16.5" r="2" fill="#0B0C0C"/><path d="M7 7a7 7 0 0 1 10 0M9.5 9.2a3.6 3.6 0 0 1 5 0" fill="none" stroke="#0B0C0C" stroke-width="1.6" stroke-linecap="round"/></symbol>
@@ -151,8 +151,8 @@ examples:
       <article class="civica-card-demo" aria-labelledby="spec-tag-conn-title"><div class="civica-card-demo__body">
       <h2 style="margin:0 0 15px;font-size:1.5rem;line-height:1.25;font-weight:700" id="spec-tag-conn-title">Device connections</h2>
       <ul style="margin:0;padding:0;list-style:none">
-      <li style="margin:0 0 10px">Living-room lamp: <strong style="display:inline-block;padding:2px 8px;font-size:1rem;font-weight:700;line-height:1.25;text-transform:uppercase;color:#005a30;background:#cce2d8">Available</strong></li>
-      <li style="margin:0 0 10px">Garden sensor: <strong style="display:inline-block;padding:2px 8px;font-size:1rem;font-weight:700;line-height:1.25;text-transform:uppercase;color:#282d30;background:#e5e6e7">Unavailable</strong></li>
+      <li style="margin:0 0 10px">Living-room lamp: <strong style="display:inline-block;padding:2px 8px;font-size:1rem;font-weight:700;line-height:1.25;text-transform:uppercase;color:#0b5c3e;background:#cfe4dc">Available</strong></li>
+      <li style="margin:0 0 10px">Garden sensor: <strong style="display:inline-block;padding:2px 8px;font-size:1rem;font-weight:700;line-height:1.25;text-transform:uppercase;color:#0b0c0c;background:#cecece">Unavailable</strong></li>
       </ul>
       </div></article>
   spec-tag-task:
@@ -164,7 +164,7 @@ examples:
       <h2 style="margin:0 0 15px;font-size:1.5rem;line-height:1.25;font-weight:700" id="spec-tag-task-title">Dashboard setup</h2>
       <ul style="margin:0;padding:0;list-style:none">
       <li style="margin:0 0 10px">Choose rooms: <strong style="display:inline-block;padding:2px 8px;font-size:1rem;font-weight:700;line-height:1.25;text-transform:uppercase;color:#1d70b8;background:#e8f1f8">Completed</strong></li>
-      <li style="margin:0 0 10px">Check dashboard: <strong style="display:inline-block;padding:2px 8px;font-size:1rem;font-weight:700;line-height:1.25;text-transform:uppercase;color:#144e81;background:#d2e2f1">In progress</strong></li>
+      <li style="margin:0 0 10px">Check dashboard: <strong style="display:inline-block;padding:2px 8px;font-size:1rem;font-weight:700;line-height:1.25;text-transform:uppercase;color:#16548a;background:#d2e2f1">In progress</strong></li>
       </ul>
       </div></article>
   spec-target-picker-chosen:

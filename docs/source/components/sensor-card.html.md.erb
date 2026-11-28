@@ -13,6 +13,9 @@ updates:
     description: "Added the Sensor Card specification: its options, the graph footer, what Civica changes and what stays as Home Assistant draws it."
 ai_instructions: "Apply when a dashboard shows one numeric reading as a card (type: sensor). The entity must be in the counter, input_number, number or sensor domain. Options are entity, name, icon, color, graph (line), unit, detail, theme, hours_to_show and limits. The graph is a small line with no text alternative, so write the range beside it. Long names and values are cut off with an ellipsis and the card is two rows high. The card is a button only if it has a tap action; by default a tap opens more information. Civica's thicker focus ring needs the card-mod integration. Do not claim the graph is accessible, do not state a contrast ratio for state colours, and do not claim the reading is fresh."
 ai_related:
+  - path: "/styles/chart-colour.html"
+    title: "Chart colours"
+    relationship: "Owns the colours for a graph line and the rule that colour never carries meaning alone."
   - path: "/components/entity-card.html"
     title: "Entity Card"
     relationship: "Owns the card the sensor card is built on."
