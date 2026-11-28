@@ -108,7 +108,7 @@ Do not name every section: too many landmarks become noise.
 ```html
 <section aria-labelledby="heating-heading">
   <h2 id="heating-heading">Heating</h2>
-  <p>Heating to 21 °C.</p>
+  <p>Heating to 21°C.</p>
 </section>
 ```
 
@@ -151,14 +151,14 @@ One section inside a Sections view. It draws a grid of cards. Options on a secti
 
 - `cards`: the cards in the section.
 - `column_span` and `row_span`: how many columns and rows it spans. Both default to 1. [Width overrides](../styles/structure-width-overrides.html) owns `column_span`.
-- `background`: `true` or an object with a `color` and an `opacity`. The opacity defaults to 50 per cent.
+- `background`: `true` or an object with a `color` and an `opacity`. The opacity defaults to 50%.
 - `visibility`: conditions. A hidden section collapses and the view recounts its columns. Hiding a section also hides its controls, so give another route to them. It is not a security setting.
 - `theme`: a different theme for this section.
 - `title`: deprecated. Use a Heading card instead.
 
 The grid inside a section has 12 base columns for each column the section spans, with 8 pixels between cells and rows 56 pixels high. [Using the grid system](../styles/structure-grid.html) owns the cell sizes, and the cards use `grid_options`.
 
-The section background is a tint of a colour, drawn at 50 per cent opacity by default. It uses `--section-background-color` from the `color`, else the theme’s `secondary-background-color` (#F3F2F1 in light mode and #30363A in dark mode). Home Assistant gives it its own rounded corners, and the Civica theme does not change them. Because the tint is translucent, check your text against it in your own theme, and never use the tint as the only way to group cards.
+The section background is a tint of a colour, drawn at 50% opacity by default. It uses `--section-background-color` from the `color`, else the theme’s `secondary-background-color` (#F3F2F1 in light mode and #30363A in dark mode). Home Assistant gives it its own rounded corners, and the Civica theme does not change them. Because the tint is translucent, check your text against it in your own theme, and never use the tint as the only way to group cards.
 
 <h3 id="child-hui-masonry-view"><code>hui-masonry-view</code></h3>
 

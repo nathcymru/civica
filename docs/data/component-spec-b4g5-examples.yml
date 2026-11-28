@@ -27,7 +27,7 @@ examples:
       <h2 id="spec-tip-title" style="font-size:1.375rem;margin:0 0 12px">Heating settings</h2>
       <p style="margin:0 0 4px"><label for="spec-tip-frost" style="font-weight:700">Frost protection temperature</label></p>
       <p id="spec-tip-hint" style="margin:0 0 8px;color:#484949">The heating switches on if the house falls below this temperature, even when the schedule is off.</p>
-      <p style="margin:0 0 20px"><input id="spec-tip-frost" type="text" value="5 °C" aria-describedby="spec-tip-hint" style="width:8rem;min-height:44px;padding:0 8px;border:2px solid #6f777b;font:inherit"></p>
+      <p style="margin:0 0 20px"><input id="spec-tip-frost" type="text" value="5°C" aria-describedby="spec-tip-hint" style="width:8rem;min-height:44px;padding:0 8px;border:2px solid #6f777b;font:inherit"></p>
       <p style="margin:0"><button type="button" style="min-height:44px;padding:0 20px;font:inherit">Edit schedule</button></p>
       </div></article>
   spec-pickers-profile-settings:
@@ -89,14 +89,14 @@ examples:
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-wx-title"><div class="civica-card-demo__body">
       <h2 id="spec-wx-title" style="font-size:1.375rem;margin:0 0 8px">Weather at home</h2>
-      <p style="margin:0 0 4px"><strong class="civica-card-demo__metric">9 °C</strong> Partly cloudy</p>
-      <p style="margin:0 0 16px;color:#484949">Humidity 63 %. Observed at 09:30 on 26 November 2026.</p>
+      <p style="margin:0 0 4px"><strong class="civica-card-demo__metric">9°C</strong> Partly cloudy</p>
+      <p style="margin:0 0 16px;color:#484949">Humidity 63%. Observed at 09:30 on 26 November 2026.</p>
       <table style="border-collapse:collapse;width:100%">
       <caption style="text-align:left;font-weight:700;padding-bottom:8px">Forecast for the next three days</caption>
       <thead><tr><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">Day</th><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">Condition</th><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 8px 6px 0">High</th><th scope="col" style="text-align:left;border-bottom:2px solid #0b0c0c;padding:6px 0">Low</th></tr></thead>
       <tbody>
-      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Friday</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Light rain</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">10 °C</td><td style="border-bottom:1px solid #cecece;padding:6px 0">5 °C</td></tr>
-      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Saturday</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Cloudy</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">8 °C</td><td style="border-bottom:1px solid #cecece;padding:6px 0">3 °C</td></tr>
-      <tr><th scope="row" style="text-align:left;font-weight:400;padding:6px 8px 6px 0">Sunday</th><td style="padding:6px 8px 6px 0">Sunny</td><td style="padding:6px 8px 6px 0">7 °C</td><td style="padding:6px 0">1 °C</td></tr>
+      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Friday</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Light rain</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">10°C</td><td style="border-bottom:1px solid #cecece;padding:6px 0">5°C</td></tr>
+      <tr><th scope="row" style="text-align:left;font-weight:400;border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Saturday</th><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">Cloudy</td><td style="border-bottom:1px solid #cecece;padding:6px 8px 6px 0">8°C</td><td style="border-bottom:1px solid #cecece;padding:6px 0">3°C</td></tr>
+      <tr><th scope="row" style="text-align:left;font-weight:400;padding:6px 8px 6px 0">Sunday</th><td style="padding:6px 8px 6px 0">Sunny</td><td style="padding:6px 8px 6px 0">7°C</td><td style="padding:6px 0">1°C</td></tr>
       </tbody></table>
       </div></article>

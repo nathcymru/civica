@@ -107,7 +107,7 @@ entities:
 | `split_device_classes` | Splits the history by device class |
 | `expand_legend` | Shows every legend entry instead of folding the extra ones away |
 
-Home Assistant shows a message in place of the chart when no entity is listed, when the history component is switched off, while the history loads and when no history is found.
+Home Assistant shows a message in place of the chart when no entity is listed, when the history component is turned off, while the history loads and when no history is found.
 
 **What the Civica theme sets.** Each series takes a Civica chart colour by its position in the card, from the 1st to the 24th. The colours are the same in light and dark modes, except the 9th, which is near-black in light mode and white in dark mode. From the 25th series Home Assistant’s own colours are used, so keep to far fewer series than that. Text and axes use the primary and secondary text colours, and the grid and axis lines use the divider colour. Calculated from the theme colours, that line colour on a white card is about 1.6 to 1, so the lines are faint. Do not rely on the grid to read values.
 
@@ -127,7 +127,7 @@ The Home Assistant element that lays out the charts. It is not a card and has no
 
 It draws the timeline rows first, then one line chart for each unit. It takes the period, the names and the colours, whether to show names, and the axis settings that the card passes down. It has no theme setting of its own and takes its look from the two charts below.
 
-Each legend entry is a button that switches a series on or off. Home Assistant also offers a zoom slider and touch scrubbing. Animation is switched off when the person has asked their device for reduced motion.
+Each legend entry is a button that switches a series on or off. Home Assistant also offers a zoom slider and touch scrubbing. Animation is turned off when the person has asked their device for reduced motion.
 
 <h3 id="child-state-history-charts--state-history-chart-line"><code>state-history-chart-line</code></h3>
 

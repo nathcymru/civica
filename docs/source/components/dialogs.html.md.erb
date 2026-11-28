@@ -106,7 +106,7 @@ Home Assistant’s dialog. It is built on a Web Awesome dialog that `ha-dialog` 
 - **Width:** small (320 pixels), medium (580 pixels, the default), large (1024 pixels) or full.
 - **Closing:** the close button closes it. Escape and pressing the backdrop close it too, unless the dialog prevents that.
 - **Small screens:** at 450 pixels wide or 500 pixels tall or less a standard dialog fills the screen with square corners.
-- **Motion:** with reduced motion switched on, the opening and closing animations run for no time.
+- **Motion:** with reduced motion turned on, the opening and closing animations run for no time.
 - **Parts:** header, body and footer. An element marked to take focus is focused when the dialog opens.
 
 What the Civica theme sets: `ha-dialog-surface-background` (white in light mode, `#24282B` in dark mode), `ha-dialog-border-radius` (square), the heading and content text colours, and the line under a scrolling header (`#CECECE` in light mode, `#50565A` in dark mode).
@@ -154,7 +154,7 @@ A dialog needs:
 - focus that returns to the control that opened it
 - content that scrolls without hiding the heading or the actions
 
-Confirm consequential actions. Name the consequence and label the main button with a verb and a noun, such as “Delete automation”, not “Are you sure?”. Keep the safe Cancel action easy to find. Do not interrupt routine changes, such as a light or an appearance setting, with a confirmation. Keep Home Assistant’s own confirmations for locks, alarms and similar controls.
+Confirm consequential actions. Name the consequence and label the main button with a verb and a noun, such as “Delete automation”, not “Are you sure?”. Keep the safe Cancel action visible. Do not interrupt routine changes, such as a light or an appearance setting, with a confirmation. Keep Home Assistant’s own confirmations for locks, alarms and similar controls.
 
 Do not remove the modal’s position, focus handling or scrolling when you tone down its look. Use a subdued backdrop, and keep the dialog’s edge clear.
 
@@ -165,7 +165,7 @@ Success criteria that apply:
 - 1.4.10 Reflow: the dialog fills a narrow screen and scrolls.
 - 3.3.4 Error Prevention: confirm legal, financial or hard to reverse choices.
 - 4.1.2 Name, Role, Value and 1.3.1 Info and Relationships: a name for the dialog and its parts.
-- 2.5.8 Target Size (Minimum): buttons are easy to press.
+- 2.5.8 Target Size (Minimum): buttons are large enough to press.
 
 One task, a plain title, the consequence in words and no time limit keep the load low.
 

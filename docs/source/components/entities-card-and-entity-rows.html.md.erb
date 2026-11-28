@@ -303,7 +303,7 @@ Home Assistant draws the card title as a first-level heading, so give each entit
 
 <h3 id="child-hui-entities-card--hui-toggle-entity-row"><code>hui-toggle-entity-row</code></h3>
 
-`type: toggle-entity`. Shows a switch. Home Assistant uses it for lights, switches, input booleans, automations, sirens, remotes, alerts and vacuums. Anything that is simply on or off. Show the state in words when a wrong guess matters, such as “Unlocked” for a door.
+`type: toggle-entity`. Shows a switch. Home Assistant uses it for lights, switches, input booleans, automations, sirens, remotes, alerts and vacuums. Anything that is only on or off. Show the state in words when a wrong guess matters, such as “Unlocked” for a door.
 
 <h3 id="child-hui-entities-card--hui-cover-entity-row"><code>hui-cover-entity-row</code></h3>
 
@@ -391,11 +391,11 @@ Home Assistant draws the card title as a first-level heading, so give each entit
 
 <h3 id="child-hui-entities-card--hui-date-entity-row"><code>hui-date-entity-row</code></h3>
 
-`type: date-entity`. Shows a date field for a date entity. Choosing a date sets the entity. The field is switched off when the entity is unavailable and is empty when its state is unknown. A date that people set, such as a collection day. Keep the row name as the label.
+`type: date-entity`. Shows a date field for a date entity. Choosing a date sets the entity. The field is turned off when the entity is unavailable and is empty when its state is unknown. A date that people set, such as a collection day. Keep the row name as the label.
 
 <h3 id="child-hui-entities-card--hui-datetime-entity-row"><code>hui-datetime-entity-row</code></h3>
 
-`type: datetime-entity`. Shows a date field and a time field together for a date-and-time entity. The row name labels both fields, and no separate name is drawn beside them. Changing either field sets the whole value. Both fields are switched off when the entity is unavailable and are empty when its state is unknown. One moment in time. Make the row name say which moment it is.
+`type: datetime-entity`. Shows a date field and a time field together for a date-and-time entity. The row name labels both fields, and no separate name is drawn beside them. Changing either field sets the whole value. Both fields are turned off when the entity is unavailable and are empty when its state is unknown. One moment in time. Make the row name say which moment it is.
 
 <h3 id="child-hui-entities-card--hui-fan-entity-row"><code>hui-fan-entity-row</code></h3>
 
@@ -403,15 +403,15 @@ Home Assistant draws the card title as a first-level heading, so give each entit
 
 <h3 id="child-hui-entities-card--hui-number-entity-row"><code>hui-number-entity-row</code></h3>
 
-`type: number-entity`. Shows a slider when the entity’s mode is slider, or when its mode is automatic and its range has 256 steps or fewer. Otherwise it shows a number box with the unit after it. Both use the entity’s own minimum, maximum and step, and both are switched off when the entity is unavailable. When the row is wide enough, the slider shows its value beside it, or a dash when the state is unavailable or unknown. Settings people adjust. Show the unit and the limits in the label or hint.
+`type: number-entity`. Shows a slider when the entity’s mode is slider, or when its mode is automatic and its range has 256 steps or fewer. Otherwise it shows a number box with the unit after it. Both use the entity’s own minimum, maximum and step, and both are turned off when the entity is unavailable. When the row is wide enough, the slider shows its value beside it, or a dash when the state is unavailable or unknown. Settings people adjust. Show the unit and the limits in the label or hint.
 
 <h3 id="child-hui-entities-card--hui-select-entity-row"><code>hui-select-entity-row</code></h3>
 
-`type: select-entity`. Shows a drop-down list of the entity’s own options, with the row name as the list’s label and no separate name beside it. Each option is written in Home Assistant’s wording for that state. The list is switched off when the entity is unavailable. `entity` is required. A short, fixed set of choices. Word each option so it reads on its own.
+`type: select-entity`. Shows a drop-down list of the entity’s own options, with the row name as the list’s label and no separate name beside it. Each option is written in Home Assistant’s wording for that state. The list is turned off when the entity is unavailable. `entity` is required. A short, fixed set of choices. Word each option so it reads on its own.
 
 <h3 id="child-hui-entities-card--hui-time-entity-row"><code>hui-time-entity-row</code></h3>
 
-`type: time-entity`. Shows a time field for a time entity. Choosing a time sets the entity. The field is switched off when the entity is unavailable and is empty when its state is unknown. A time of day that people set. Keep the row name as the label.
+`type: time-entity`. Shows a time field for a time entity. Choosing a time sets the entity. The field is turned off when the entity is unavailable and is empty when its state is unknown. A time of day that people set. Keep the row name as the label.
 
 <h3 id="child-hui-entities-card--hui-divider-row"><code>hui-divider-row</code></h3>
 
@@ -464,7 +464,7 @@ Home Assistant draws the card title as a first-level heading, so give each entit
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-Keep a card to one subject and a short list of rows. Make each row name match the entity’s own name, so what people read on the card is what they see in settings. Write state and unit as words, such as “Locked” and “20.5 °C”, not as colour or an icon alone. Give an action button a name that says its outcome. Use `confirmation` where a wrong press matters.
+Keep a card to one subject and a short list of rows. Make each row name match the entity’s own name, so what people read on the card is what they see in settings. Write state and unit as words, such as “Locked” and “20.5°C”, not as colour or an icon alone. Give an action button a name that says its outcome. Use `confirmation` where a wrong press matters.
 
 Use a [summary list](summary-list.html) for plain names and values that do nothing. Use [Entity lists, readings and row actions](../home-assistant/entity-lists-and-rows.html) to decide which row fits each entity.
 

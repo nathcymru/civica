@@ -13,7 +13,7 @@ updates:
     description: "Added guidance on when to use a warning, and two examples."
   - date: "2026-11-26"
     description: "Added the yellow callout form, the Home Assistant alternatives, the theme colours and two more examples."
-ai_instructions: "Apply when an action can cause a loss or change that is easy to overlook, or when reference content must correct a likely mistake. Place the warning before the action and name the consequence and the object. Do not use it for routine information, a success or every unavailable sensor. A warning is not a device safety interlock and does not replace a confirmation. The word Warning or Important must be real text, not just an icon or colour. Home Assistant has no warning text element: the nearest native one is ha-alert with alert-type warning, which announces itself at once. The Civica yellow surface on a dashboard needs the card-mod integration. Quote contrast only as calculated from theme colours."
+ai_instructions: "Apply when an action can cause a loss or change that is often overlooked, or when reference content must correct a likely mistake. Place the warning before the action and name the consequence and the object. Do not use it for routine information, a success or every unavailable sensor. A warning is not a device safety interlock and does not replace a confirmation. The word Warning or Important must be real text, not only an icon or colour. Home Assistant has no warning text element: the nearest native one is ha-alert with alert-type warning, which announces itself at once. The Civica yellow surface on a dashboard needs the card-mod integration. Quote contrast only as calculated from theme colours."
 ai_related:
   - path: "/patterns/interruption.html"
     title: "Pause before an exceptional consequence"
@@ -55,9 +55,9 @@ component:
 
 <h2 id="purpose">Purpose</h2>
 
-Place a short warning before an action that can cause a loss or change that is easy to miss. Name the consequence and the thing it affects, in plain words.
+Place a short warning before an action that can cause a loss or change that is often missed. Name the consequence and the thing it affects, in plain words.
 
-A warning has two forms. Warning text is one bold sentence with an exclamation mark, placed just above the action. A warning callout is a yellow box with a heading and a few sentences, used in reference content to correct a likely mistake.
+A warning has two forms. Warning text is one bold sentence with an exclamation mark, placed directly above the action. A warning callout is a yellow box with a heading and a few sentences, used in reference content to correct a likely mistake.
 
 Home Assistant has no warning text element, so this is a Civica pattern. On a dashboard, its nearest native piece is the warning alert described under Variants. This page owns both forms.
 
@@ -101,11 +101,11 @@ Neither stops a harmful action. A warning does not make anything safe, and a dev
 
 Use a warning for a meaningful change, such as removing a dashboard or replacing a configuration. Do not use it for routine information, a successful action or every unavailable sensor.
 
-Name the actual consequence: “Removing this dashboard deletes its saved layout. It does not remove devices from Home Assistant.” Avoid capital letters and vague questions such as “Are you sure?”. Use plain verbs. Keep the cancel route clear. Do not style a destructive action like the ordinary primary action just because the theme colour is Green or Red.
+Name the actual consequence: “Removing this dashboard deletes its saved layout. It does not remove devices from Home Assistant.” Avoid capital letters and vague questions such as “Are you sure?”. Use plain verbs. Keep the cancel route clear. Do not style a destructive action like the ordinary primary action only because the theme colour is Green or Red.
 
 When the decision needs more explanation, use the [interruption pattern](../patterns/interruption.html). For wording, see [States, requests and errors](../content/writing-guidelines/states-and-errors.html). For the actions that follow a warning, see [Button](buttons.html).
 
-Before you publish one, check that the warning comes before the action in visual and reading order. Test it at 400 per cent zoom, with a screen reader and in forced colours. Use the [Civica accessibility checks](../accessibility/testing.html).
+Before you publish one, check that the warning comes before the action in visual and reading order. Test it at 400% zoom, with a screen reader and in forced colours. Use the [Civica accessibility checks](../accessibility/testing.html).
 
 Success criteria that apply:
 

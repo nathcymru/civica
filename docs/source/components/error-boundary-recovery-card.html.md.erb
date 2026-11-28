@@ -62,7 +62,7 @@ A single-row card with:
 2. A title next to the icon. By default it reads “Configuration error”, or “Configuration warning” for a warning. A card can supply its own text.
 3. A message under the title, shown only in the card editor preview.
 
-The card tints its whole surface with the error or warning colour at 12 per cent. The title is one line and is cut off with an ellipsis when it is too long.
+The card tints its whole surface with the error or warning colour at 12%. The title is one line and is cut off with an ellipsis when it is too long.
 
 Who sees what:
 
@@ -80,7 +80,7 @@ Home Assistant fills the card’s settings itself: `error` (the title), `message
 
 **What the Civica theme sets.** The icon and the tint use `error-color` for an error and `warning-color` for a warning. The theme sets `error-color` to #CA3535 in light mode and #F0C6C6 in dark mode, and `warning-color` to #8A6100 in light mode and #DED3B8 in dark mode. The corners use the theme’s square `ha-card-border-radius`.
 
-**What stays as Home Assistant draws it.** The icons, the 12 per cent tint, the spacing, the one-line title and the rule about who sees the title and message are all Home Assistant’s. The theme cannot show the message to people who are not administrators.
+**What stays as Home Assistant draws it.** The icons, the 12% tint, the spacing, the one-line title and the rule about who sees the title and message are all Home Assistant’s. The theme cannot show the message to people who are not administrators.
 
 <h2 id="limits">Advantages and limitations</h2>
 
@@ -97,7 +97,7 @@ Treat the card as a sign for the person who looks after the dashboard. Fix the c
 Success criteria that apply:
 
 - 1.1.1 Non-text Content and 1.4.1 Use of Colour: people who are not administrators get only an icon in a tinted card. Write the meaning in words nearby, because the card gives them none.
-- 1.4.3 and 1.4.11 Contrast: the title and icon sit on a 12 per cent tint of the error or warning colour. Test them in your own dashboard, in light and dark modes.
+- 1.4.3 and 1.4.11 Contrast: the title and icon sit on a 12% tint of the error or warning colour. Test them in your own dashboard, in light and dark modes.
 - 3.3.1 Error Identification and 3.3.3 Error Suggestion: the message with the cause is shown only in the editor preview. Check it there.
 - 4.1.3 Status Messages: the card does not announce itself. Test with a screen reader in your own setup.
 

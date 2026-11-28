@@ -11,7 +11,7 @@ review_in: "3 months"
 updates:
   - date: "2026-11-26"
     description: "Added the Metric / Analytics Summary specification: the percentage bar and the analytics switches, with the thresholds, the colours the theme sets and what stays Home Assistant’s."
-ai_instructions: "Apply when describing the percentage rows in Home Assistant’s system information dialog or the analytics switches in its settings. ha-metric is a heading, a percentage written as text and an ha-bar; it turns the warning colour above 50 per cent and the error colour above 85 per cent, and those thresholds cannot be changed. It appears only in the system information dialog, never on a dashboard, so no dashboard card can use it. ha-analytics is four rows with switches (base, usage, statistics, diagnostics) in the analytics settings; switching usage or statistics on switches base on, and switching base off switches usage and statistics off. The Civica theme sets the switch size and colours but sets no metric or bar variable. Do not paraphrase what each analytics option shares: use Home Assistant’s own wording. Do not claim the bar is announced by a screen reader or give a measured contrast ratio."
+ai_instructions: "Apply when describing the percentage rows in Home Assistant’s system information dialog or the analytics switches in its settings. ha-metric is a heading, a percentage written as text and an ha-bar; it turns the warning colour above 50% and the error colour above 85%, and those thresholds cannot be changed. It appears only in the system information dialog, never on a dashboard, so no dashboard card can use it. ha-analytics is four rows with switches (base, usage, statistics, diagnostics) in the analytics settings; switching usage or statistics on switches base on, and switching base off switches usage and statistics off. The Civica theme sets the switch size and colours but sets no metric or bar variable. Do not paraphrase what each analytics option shares: use Home Assistant’s own wording. Do not claim the bar is announced by a screen reader or give a measured contrast ratio."
 ai_related:
   - path: "/components/bar-meter.html"
     title: "Bar / Meter"
@@ -60,15 +60,15 @@ The analytics block is a list of four rows. Each has a visible headline, a line 
 
 <h3 id="child-ha-metric"><code>ha-metric</code></h3>
 
-A heading, a percentage and a bar. Its properties are `heading`, `value` (a number between 0 and 100) and an optional `tooltip`, which is the row’s hover text. The value is rounded to one decimal place and always printed as text, such as “62 %”. The bar underneath is a picture with no role, so the number is the reading.
+A heading, a percentage and a bar. Its properties are `heading`, `value` (a number between 0 and 100) and an optional `tooltip`, which is the row’s hover text. The value is rounded to one decimal place and always printed as text, such as “62%”. The bar underneath is a picture with no role, so the number is the reading.
 
 Home Assistant uses it only in the system information dialog under Settings, to show processor and memory use for the core and for the supervisor. It never appears on a dashboard, so there is no dashboard card for card-mod to style.
 
 The bar fill changes with the value:
 
-- 50 per cent or less: the success colour.
-- Above 50 per cent: the warning colour.
-- Above 85 per cent: the error colour.
+- 50% or less: the success colour.
+- Above 50%: the warning colour.
+- Above 85%: the error colour.
 
 These two thresholds are fixed. The fill variables are `--metric-bar-ok-color`, `--metric-bar-warning-color` and `--metric-bar-critical-color`, which default to the theme’s success, warning and error colours. The track is `--ha-bar-background-color` (the secondary background colour by default) and its corners are `--ha-bar-border-radius`.
 
@@ -118,14 +118,14 @@ The other Civica themes use their own checked colour. Row text uses `primary-tex
 
 - The percentage is always written, so the bar never carries the reading alone.
 - The warning and error colours follow the theme in light and dark modes.
-- The 50 and 85 per cent thresholds cannot be changed.
+- The 50 and 85% thresholds cannot be changed.
 - The colour change is not announced, and the bar has no role.
 - Neither element can be placed on a dashboard.
 - The analytics layout, wording and tooltips are Home Assistant’s.
 
 <h2 id="usage">Usage policy and cognitive accessibility</h2>
 
-On a dashboard, show a percentage in words, such as “Memory 62 %”, and say what a high value means. Use an entity row with a toggle plus a plain sentence about what it controls, where you need a setting like the analytics switches.
+On a dashboard, show a percentage in words, such as “Memory 62%”, and say what a high value means. Use an entity row with a toggle plus a plain sentence about what it controls, where you need a setting like the analytics switches.
 
 Do not describe what analytics shares in your own words. Point people to Home Assistant’s text, and say that usage and statistics need the base setting. Do not pressure anyone to switch an option on, and show the saved state as words.
 

@@ -90,7 +90,7 @@ Theme keys that reach it: `ha-card-border-radius` (square), `ha-card-border-widt
 
 By default Home Assistant shows keyboard focus on this card as a 1px coloured edge, and the icon grows slightly. Civica replaces that with a thicker dark outline and a gold ring, but only when the card-mod integration is installed. Without card-mod, the card keeps Home Assistant’s own focus look.
 
-With card-mod you can set the corners and shadow for just one card:
+With card-mod you can set the corners and shadow for one card:
 
 ```yaml
 type: button
@@ -104,7 +104,7 @@ You cannot give this card primary or danger variants, add visible text beyond th
 
 <h2 id="limits">Advantages and limitations</h2>
 
-- One large target for a common action, which is easy to find on a phone.
+- One large target for a common action, which is quick to find on a phone.
 - The name and state are real text, so the card can be read out.
 - The colour of the icon shows the state, but the card does not check that this colour has enough contrast against the card. Measure it in your own theme.
 - Hold and double-tap are gestures. The card does not promise that they work from a keyboard, so check them.
