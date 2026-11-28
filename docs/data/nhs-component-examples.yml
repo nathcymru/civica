@@ -216,11 +216,11 @@ examples:
     description: "The summary link reaches the same labelled input that carries the inline error."
     height: 420
     html: |
-      <div class="govuk-error-summary" data-module="govuk-error-summary" data-disable-auto-focus="true">
+      <div class="civica-error-summary" data-module="govuk-error-summary" data-disable-auto-focus="true">
       <div role="alert">
-      <h2 class="govuk-error-summary__title">There is a problem</h2>
-      <div class="govuk-error-summary__body">
-      <ul class="govuk-list govuk-error-summary__list">
+      <h2 class="civica-error-summary__title">There is a problem</h2>
+      <div class="civica-error-summary__body">
+      <ul class="civica-list civica-error-summary__list">
       <li>
       <a href="#summary-room">Enter a room name</a>
       </li>
@@ -229,11 +229,11 @@ examples:
       </div>
       </div>
       <form data-demo-form>
-      <div class="govuk-form-group govuk-form-group--error">
-      <label class="govuk-label" for="summary-room">Room name</label>
-      <p class="govuk-error-message" id="summary-room-error">
-      <span class="govuk-visually-hidden">Error:</span> Enter a room name</p>
-      <input class="govuk-input  govuk-input--error" id="summary-room" name="summary-room" type="text" value="" aria-describedby="summary-room-error" aria-invalid="true" >
+      <div class="civica-form-group civica-form-group--error">
+      <label class="civica-label" for="summary-room">Room name</label>
+      <p class="civica-error-message" id="summary-room-error">
+      <span class="civica-visually-hidden">Error:</span> Enter a room name</p>
+      <input class="civica-input  civica-input--error" id="summary-room" name="summary-room" type="text" value="" aria-describedby="summary-room-error" aria-invalid="true" >
       </div>
       </form>
   nhs-summary-two-errors:
@@ -241,11 +241,11 @@ examples:
     description: "Both links point to actual controls and preserve the entered values."
     height: 560
     html: |
-      <div class="govuk-error-summary" data-module="govuk-error-summary" data-disable-auto-focus="true">
+      <div class="civica-error-summary" data-module="govuk-error-summary" data-disable-auto-focus="true">
       <div role="alert">
-      <h2 class="govuk-error-summary__title">There is a problem</h2>
-      <div class="govuk-error-summary__body">
-      <ul class="govuk-list govuk-error-summary__list">
+      <h2 class="civica-error-summary__title">There is a problem</h2>
+      <div class="civica-error-summary__body">
+      <ul class="civica-list civica-error-summary__list">
       <li>
       <a href="#summary-label">Enter a dashboard name</a>
       </li>
@@ -257,17 +257,17 @@ examples:
       </div>
       </div>
       <form data-demo-form>
-      <div class="govuk-form-group govuk-form-group--error">
-      <label class="govuk-label" for="summary-label">Dashboard name</label>
-      <p class="govuk-error-message" id="summary-label-error">
-      <span class="govuk-visually-hidden">Error:</span> Enter a dashboard name</p>
-      <input class="govuk-input  govuk-input--error" id="summary-label" name="summary-label" type="text" value="" aria-describedby="summary-label-error" aria-invalid="true" >
+      <div class="civica-form-group civica-form-group--error">
+      <label class="civica-label" for="summary-label">Dashboard name</label>
+      <p class="civica-error-message" id="summary-label-error">
+      <span class="civica-visually-hidden">Error:</span> Enter a dashboard name</p>
+      <input class="civica-input  civica-input--error" id="summary-label" name="summary-label" type="text" value="" aria-describedby="summary-label-error" aria-invalid="true" >
       </div>
-      <div class="govuk-form-group govuk-form-group--error">
-      <label class="govuk-label" for="summary-path">Dashboard path</label>
-      <p class="govuk-error-message" id="summary-path-error">
-      <span class="govuk-visually-hidden">Error:</span> Enter a path without spaces</p>
-      <input class="govuk-input  govuk-input--error" id="summary-path" name="summary-path" type="text" value="my dashboard" aria-describedby="summary-path-error" aria-invalid="true" >
+      <div class="civica-form-group civica-form-group--error">
+      <label class="civica-label" for="summary-path">Dashboard path</label>
+      <p class="civica-error-message" id="summary-path-error">
+      <span class="civica-visually-hidden">Error:</span> Enter a path without spaces</p>
+      <input class="civica-input  civica-input--error" id="summary-path" name="summary-path" type="text" value="my dashboard" aria-describedby="summary-path-error" aria-invalid="true" >
       </div>
       </form>
   nhs-fieldset-room-options:
@@ -576,14 +576,14 @@ examples:
     description: The definition is optional; the measurement stays outside the disclosure.
     height: 340
     html: |
-      <p class="govuk-body">Example electricity imported: 3.8kWh</p>
-      <p class="govuk-body">Recorded from 00:00 to 14:00 on 11 November 2026, Europe/London (GMT). This is a partial-day total.</p>
-      <details class="govuk-details">
-      <summary class="govuk-details__summary">
-      <span class="govuk-details__summary-text">What does imported electricity mean?</span>
+      <p class="civica-body">Example electricity imported: 3.8kWh</p>
+      <p class="civica-body">Recorded from 00:00 to 14:00 on 11 November 2026, Europe/London (GMT). This is a partial-day total.</p>
+      <details class="civica-details">
+      <summary class="civica-details__summary">
+      <span class="civica-details__summary-text">What does imported electricity mean?</span>
       </summary>
-      <div class="govuk-details__text">
-      <p class="govuk-body">Electricity imported is energy supplied to your home from the grid. Solar energy used directly in your home is recorded separately.</p>
+      <div class="civica-details__text">
+      <p class="civica-body">Electricity imported is energy supplied to your home from the grid. Solar energy used directly in your home is recorded separately.</p>
       </div>
       </details>
   nhs-details-unavailable:
@@ -693,13 +693,13 @@ examples:
       <details class="civica-expander" open>
       <summary>Missing readings</summary>
       <div class="civica-expander__content">
-      <p class="govuk-body">A missing sample is not automatically zero. Check the integration’s availability and the period displayed by the chart.</p>
+      <p class="civica-body">A missing sample is not automatically zero. Check the integration’s availability and the period displayed by the chart.</p>
       </div>
       </details>
       <details class="civica-expander">
       <summary>Delayed readings</summary>
       <div class="civica-expander__content">
-      <p class="govuk-body">Some integrations report totals after the period ends. Keep the reporting interval visible where it affects interpretation.</p>
+      <p class="civica-body">Some integrations report totals after the period ends. Keep the reporting interval visible where it affects interpretation.</p>
       </div>
       </details>
   nhs-image-floorplan:
@@ -799,9 +799,9 @@ examples:
     description: "These dates refer to a human review of authored content."
     height: 340
     html: |
-      <h2 class="govuk-heading-m">Understanding energy estimates</h2>
-      <p class="govuk-body">This example explains how a configured tariff affects the displayed estimate.</p>
-      <p class="govuk-body-s">Last reviewed: <time datetime="2026-11-11">11 November 2026</time>
+      <h2 class="civica-heading-m">Understanding energy estimates</h2>
+      <p class="civica-body">This example explains how a configured tariff affects the displayed estimate.</p>
+      <p class="civica-body-s">Last reviewed: <time datetime="2026-11-11">11 November 2026</time>
       <br>Next review: <time datetime="2027-02-11">11 February 2027</time>
       </p>
   nhs-review-reading:
@@ -809,11 +809,11 @@ examples:
     description: "This timestamp is an observation, not an editorial review."
     height: 340
     html: |
-      <h2 class="govuk-heading-m">Living-room temperature</h2>
-      <p class="govuk-body">20.5°C</p>
-      <p class="govuk-body-s">Observed at <time datetime="2026-11-11T14:05:00Z">14:05 GMT on 11 November 2026</time>
+      <h2 class="civica-heading-m">Living-room temperature</h2>
+      <p class="civica-body">20.5°C</p>
+      <p class="civica-body-s">Observed at <time datetime="2026-11-11T14:05:00Z">14:05 GMT on 11 November 2026</time>
       </p>
-      <p class="govuk-body">The example reading has not been updated since that time.</p>
+      <p class="civica-body">The example reading has not been updated since that time.</p>
   nhs-summary-device:
     title: "Read-only device details"
     description: "Key-value pairs describe one device without implying tabular comparison."

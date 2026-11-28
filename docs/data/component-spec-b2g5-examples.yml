@@ -5,25 +5,25 @@ examples:
     description: "A stand-in for a Home Assistant setup dialog. One text field, one number field with its unit, one checkbox and a form-level error above the fields, each with a label and helper text. Home Assistant draws its own fields, so the look differs. Nothing here can be changed and the Save button does nothing."
     height: 760
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-form-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-form-title">Add a heating zone</h2><div class="govuk-error-summary" role="group" aria-labelledby="spec-form-error"><h3 class="govuk-error-summary__title" id="spec-form-error">There is a problem</h3><div class="govuk-error-summary__body"><p class="govuk-body">Home Assistant could not reach the thermostat. Check that it is turned on, then try again.</p></div></div><div class="govuk-form-group"><label class="govuk-label" for="spec-form-name">Zone name</label><div class="govuk-hint" id="spec-form-name-hint">Shown on your dashboards, for example Upstairs.</div><input class="govuk-input" id="spec-form-name" type="text" value="Upstairs" aria-describedby="spec-form-name-hint"></div><div class="govuk-form-group"><label class="govuk-label" for="spec-form-target">Target temperature</label><div class="govuk-hint" id="spec-form-target-hint">Between 5 and 30.</div><div style="display:flex;align-items:center;gap:8px"><input class="govuk-input govuk-input--width-5" id="spec-form-target" type="text" inputmode="decimal" value="19.5" aria-describedby="spec-form-target-hint"><span>°C</span></div></div><div class="govuk-checkboxes govuk-checkboxes--small"><div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="spec-form-frost" type="checkbox" checked><label class="govuk-label govuk-checkboxes__label" for="spec-form-frost">Protect from frost</label></div></div><p class="civica-card-demo__actions"><button type="button" class="govuk-button">Save</button></p></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-form-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-form-title">Add a heating zone</h2><div class="civica-error-summary" role="group" aria-labelledby="spec-form-error"><h3 class="civica-error-summary__title" id="spec-form-error">There is a problem</h3><div class="civica-error-summary__body"><p class="civica-body">Home Assistant could not reach the thermostat. Check that it is turned on, then try again.</p></div></div><div class="civica-form-group"><label class="civica-label" for="spec-form-name">Zone name</label><div class="civica-hint" id="spec-form-name-hint">Shown on your dashboards, for example Upstairs.</div><input class="civica-input" id="spec-form-name" type="text" value="Upstairs" aria-describedby="spec-form-name-hint"></div><div class="civica-form-group"><label class="civica-label" for="spec-form-target">Target temperature</label><div class="civica-hint" id="spec-form-target-hint">Between 5 and 30.</div><div style="display:flex;align-items:center;gap:8px"><input class="civica-input civica-input--width-5" id="spec-form-target" type="text" inputmode="decimal" value="19.5" aria-describedby="spec-form-target-hint"><span>°C</span></div></div><div class="civica-checkboxes civica-checkboxes--small"><div class="civica-checkboxes__item"><input class="civica-checkboxes__input" id="spec-form-frost" type="checkbox" checked><label class="civica-label civica-checkboxes__label" for="spec-form-frost">Protect from frost</label></div></div><p class="civica-card-demo__actions"><button type="button" class="civica-button">Save</button></p></div></article>
   spec-gauge-boiler-pressure:
     title: A gauge card for boiler pressure
     description: "A gauge card in the light theme: a semicircle filled to 1.4 bar on a scale of 0 to 3, with the name, the number, the unit and a word for the state written beside it, so the arc and its colour never carry the reading alone. The grey track shows the unfilled part. Home Assistant draws its own gauge and animates the sweep. Nothing here is interactive."
     height: 420
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-gauge-title"><div class="civica-card-demo__body"><div style="max-width:250px;margin:0 auto;text-align:center"><svg aria-hidden="true" focusable="false" viewBox="-50 -50 100 55" width="100%"><path d="M -40 0 A 40 40 0 0 1 40 0" fill="none" stroke="#8F9498" stroke-width="12"></path><path d="M -40 0 A 40 40 0 0 1 -4.18 -39.78" fill="none" stroke="#0F7A52" stroke-width="12"></path><text x="0" y="-6" text-anchor="middle" font-size="14" font-weight="700" fill="#0B0C0C">1.4 bar</text></svg><h2 class="govuk-heading-s" id="spec-gauge-title" style="margin:8px 0 0">Boiler pressure</h2><p class="govuk-body" style="margin:0">Normal. The scale runs from 0 to 3 bar.</p></div></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-gauge-title"><div class="civica-card-demo__body"><div style="max-width:250px;margin:0 auto;text-align:center"><svg aria-hidden="true" focusable="false" viewBox="-50 -50 100 55" width="100%"><path d="M -40 0 A 40 40 0 0 1 40 0" fill="none" stroke="#8F9498" stroke-width="12"></path><path d="M -40 0 A 40 40 0 0 1 -4.18 -39.78" fill="none" stroke="#0F7A52" stroke-width="12"></path><text x="0" y="-6" text-anchor="middle" font-size="14" font-weight="700" fill="#0B0C0C">1.4 bar</text></svg><h2 class="civica-heading-s" id="spec-gauge-title" style="margin:8px 0 0">Boiler pressure</h2><p class="civica-body" style="margin:0">Normal. The scale runs from 0 to 3 bar.</p></div></div></article>
   spec-glance-downstairs:
     title: A glance card for the ground floor
     description: "A glance card: a title and four entities in a row, each with its name, a small icon and its state written in words. Long names are cut short in Home Assistant, so the names here are short. Nothing here is interactive."
     height: 380
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-glance-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-glance-title">Ground floor</h2><ul class="govuk-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:8px;text-align:center;margin:0"><li style="margin:0"><div>Front door</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" fill="none" stroke="#0B0C0C" stroke-width="2"></rect></svg><div><strong>Locked</strong></div></li><li style="margin:0"><div>Hall light</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7" fill="none" stroke="#0B0C0C" stroke-width="2"></circle></svg><div><strong>On</strong></div></li><li style="margin:0"><div>Kitchen</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v12M8 15a4 4 0 1 0 8 0" fill="none" stroke="#0B0C0C" stroke-width="2"></path></svg><div><strong>20.5°C</strong></div></li><li style="margin:0"><div>Garage</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M3 20V9l9-5 9 5v11z" fill="none" stroke="#0B0C0C" stroke-width="2"></path></svg><div><strong>Closed</strong></div></li></ul></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-glance-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-glance-title">Ground floor</h2><ul class="civica-list" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(72px,1fr));gap:8px;text-align:center;margin:0"><li style="margin:0"><div>Front door</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" fill="none" stroke="#0B0C0C" stroke-width="2"></rect></svg><div><strong>Locked</strong></div></li><li style="margin:0"><div>Hall light</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7" fill="none" stroke="#0B0C0C" stroke-width="2"></circle></svg><div><strong>On</strong></div></li><li style="margin:0"><div>Kitchen</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M12 3v12M8 15a4 4 0 1 0 8 0" fill="none" stroke="#0B0C0C" stroke-width="2"></path></svg><div><strong>20.5°C</strong></div></li><li style="margin:0"><div>Garage</div><svg aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24"><path d="M3 20V9l9-5 9 5v11z" fill="none" stroke="#0B0C0C" stroke-width="2"></path></svg><div><strong>Closed</strong></div></li></ul></div></article>
   spec-stack-living-room:
     title: A living room built from stacks and a grid
     description: "A layout: a vertical stack holds a title, a horizontal stack of two readings and a grid of three devices. The gaps are 8 pixels, the Home Assistant default. The outlined boxes stand in for the cards inside the stacks. Nothing here is interactive."
     height: 520
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-stack-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-stack-title">Living room</h2><div style="display:flex;flex-direction:column;gap:8px"><div style="display:flex;gap:8px"><div style="flex:1 1 0;min-width:0;border:1px solid #CECECE;padding:12px"><strong>Temperature</strong><br>20.5°C</div><div style="flex:1 1 0;min-width:0;border:1px solid #CECECE;padding:12px"><strong>Humidity</strong><br>48%</div></div><div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px"><div style="border:1px solid #CECECE;padding:12px"><strong>Lamp</strong><br>On</div><div style="border:1px solid #CECECE;padding:12px"><strong>Television</strong><br>Off</div><div style="border:1px solid #CECECE;padding:12px"><strong>Blinds</strong><br>Open</div></div></div></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-stack-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-stack-title">Living room</h2><div style="display:flex;flex-direction:column;gap:8px"><div style="display:flex;gap:8px"><div style="flex:1 1 0;min-width:0;border:1px solid #CECECE;padding:12px"><strong>Temperature</strong><br>20.5°C</div><div style="flex:1 1 0;min-width:0;border:1px solid #CECECE;padding:12px"><strong>Humidity</strong><br>48%</div></div><div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px"><div style="border:1px solid #CECECE;padding:12px"><strong>Lamp</strong><br>On</div><div style="border:1px solid #CECECE;padding:12px"><strong>Television</strong><br>Off</div><div style="border:1px solid #CECECE;padding:12px"><strong>Blinds</strong><br>Open</div></div></div></div></article>
   spec-header-focused:
     title: A focused setup header
     description: "Only the household name and the task’s name are present. The household name is a home link."
@@ -36,8 +36,8 @@ examples:
       <span>Dashboard setup</span>
       </header>
       <main id="service-home" tabindex="-1">
-      <h1 class="govuk-heading-l">Set up a shared view</h1>
-      <p class="govuk-body">Choose the information your household needs.</p>
+      <h1 class="civica-heading-l">Set up a shared view</h1>
+      <p class="civica-body">Choose the information your household needs.</p>
       </main>
   spec-header-navigation:
     title: A header with a few destinations
@@ -50,7 +50,7 @@ examples:
       </a>
       <span>My home</span>
       <nav class="civica-header__navigation" aria-label="Main">
-      <ul class="govuk-list">
+      <ul class="civica-list">
       <li>
       <a href="#header-rooms">Rooms</a>
       </li>
@@ -64,15 +64,15 @@ examples:
       </nav>
       </header>
       <main id="service-home" tabindex="-1">
-      <h1 class="govuk-heading-l">My home</h1>
+      <h1 class="civica-heading-l">My home</h1>
       <section id="header-rooms">
-      <h2 class="govuk-heading-s">Rooms</h2>
+      <h2 class="civica-heading-s">Rooms</h2>
       </section>
       <section id="header-energy">
-      <h2 class="govuk-heading-s">Energy</h2>
+      <h2 class="civica-heading-s">Energy</h2>
       </section>
       <section id="header-profile">
-      <h2 class="govuk-heading-s">Profile</h2>
+      <h2 class="civica-heading-s">Profile</h2>
       </section>
       </main>
   spec-header-household-task:
@@ -80,4 +80,4 @@ examples:
     description: "The household name links home and the task name sits beside it as supporting context. The page keeps its own main heading. The link only moves within the example."
     height: 300
     html: |
-      <header class="civica-demo-header"><a href="#energy-guide"><strong>Morgan household</strong></a><p class="govuk-!-margin-bottom-0">Energy guide</p></header><main id="energy-guide"><h1 class="govuk-heading-m">Understand your readings</h1><p class="govuk-body">Use the meter’s units and the selected period.</p></main>
+      <header class="civica-demo-header"><a href="#energy-guide"><strong>Morgan household</strong></a><p>Energy guide</p></header><main id="energy-guide"><h1 class="civica-heading-m">Understand your readings</h1><p class="civica-body">Use the meter’s units and the selected period.</p></main>

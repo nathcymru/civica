@@ -8,14 +8,14 @@ examples:
     html: |
       <article class="civica-card-demo civica-card-demo--primary civica-card-demo--clickable" aria-labelledby="cv-primary-lighting">
         <div class="civica-card-demo__body">
-          <h2 class="govuk-heading-m" id="cv-primary-lighting"><a class="govuk-link civica-card-demo__title-link" href="#cv-primary-lighting-guide">Lighting overview</a></h2>
-          <p class="govuk-body">Find rooms, review reported light states and open the controls supported by each device.</p>
-          <p class="govuk-body">This card navigates; it cannot turn lights on or off.</p>
+          <h2 class="civica-heading-m" id="cv-primary-lighting"><a class="civica-link civica-card-demo__title-link" href="#cv-primary-lighting-guide">Lighting overview</a></h2>
+          <p class="civica-body">Find rooms, review reported light states and open the controls supported by each device.</p>
+          <p class="civica-body">This card navigates; it cannot turn lights on or off.</p>
         </div>
       </article>
       <section id="cv-primary-lighting-guide" tabindex="-1">
-        <h2 class="govuk-heading-m">Lighting overview</h2>
-        <p class="govuk-body">This destination explains the difference between light groups, individual entities and their reported states. Live controls require the actual Home Assistant dashboard and permissions.</p>
+        <h2 class="civica-heading-m">Lighting overview</h2>
+        <p class="civica-body">This destination explains the difference between light groups, individual entities and their reported states. Live controls require the actual Home Assistant dashboard and permissions.</p>
       </section>
   card-primary-static:
     title: "Primary card with more than one destination"
@@ -24,17 +24,17 @@ examples:
     html: |
       <article class="civica-card-demo civica-card-demo--primary" aria-labelledby="cv-primary-heating">
         <div class="civica-card-demo__body">
-          <h2 class="govuk-heading-m" id="cv-primary-heating">Heating schedule</h2>
-          <p class="govuk-body"><strong>Next example period:</strong> Comfort, from 18:00 to 21:00 on 13 November 2026 (Europe/London).</p>
-          <p class="govuk-body">A scheduled target is not a measured room temperature or proof that heating is on.</p>
-          <ul class="govuk-list govuk-list--bullet">
-            <li><a class="govuk-link" href="#cv-primary-schedule">Understand the schedule</a></li>
-            <li><a class="govuk-link" href="#cv-primary-temperature">Read sensor and target values</a></li>
+          <h2 class="civica-heading-m" id="cv-primary-heating">Heating schedule</h2>
+          <p class="civica-body"><strong>Next example period:</strong> Comfort, from 18:00 to 21:00 on 13 November 2026 (Europe/London).</p>
+          <p class="civica-body">A scheduled target is not a measured room temperature or proof that heating is on.</p>
+          <ul class="civica-list civica-list--bullet">
+            <li><a class="civica-link" href="#cv-primary-schedule">Understand the schedule</a></li>
+            <li><a class="civica-link" href="#cv-primary-temperature">Read sensor and target values</a></li>
           </ul>
         </div>
       </article>
-      <section id="cv-primary-schedule" tabindex="-1"><h2 class="govuk-heading-m">Understand the schedule</h2><p class="govuk-body">The period is an example of a planned setpoint. It is not a live thermostat reading.</p></section>
-      <section id="cv-primary-temperature" tabindex="-1"><h2 class="govuk-heading-m">Read sensor and target values</h2><p class="govuk-body">A sensor reports measured temperature. A thermostat target describes a requested setting. They must remain separate.</p></section>
+      <section id="cv-primary-schedule" tabindex="-1"><h2 class="civica-heading-m">Understand the schedule</h2><p class="civica-body">The period is an example of a planned setpoint. It is not a live thermostat reading.</p></section>
+      <section id="cv-primary-temperature" tabindex="-1"><h2 class="civica-heading-m">Read sensor and target values</h2><p class="civica-body">A sensor reports measured temperature. A thermostat target describes a requested setting. They must remain separate.</p></section>
   card-primary-chevron:
     title: "Primary navigation card with a chevron"
     description: "A single important hub destination may use a small decorative chevron. Its meaning is supplied by the link text."
@@ -43,13 +43,13 @@ examples:
       <article class="civica-card-demo civica-card-demo--primary civica-card-demo--clickable" aria-labelledby="cv-chevron-guide">
         <div class="civica-card-demo__body">
           <div class="civica-card-demo__heading-row">
-            <h2 class="govuk-heading-m" id="cv-chevron-guide"><a class="govuk-link civica-card-demo__title-link" href="#cv-chevron-destination">Rooms and areas</a></h2>
+            <h2 class="civica-heading-m" id="cv-chevron-guide"><a class="civica-link civica-card-demo__title-link" href="#cv-chevron-destination">Rooms and areas</a></h2>
             <span class="civica-card-demo__chevron" aria-hidden="true"></span>
           </div>
-          <p class="govuk-body">Browse room guides and see which entities belong to each area.</p>
+          <p class="civica-body">Browse room guides and see which entities belong to each area.</p>
         </div>
       </article>
-      <section id="cv-chevron-destination" tabindex="-1"><h2 class="govuk-heading-m">Rooms and areas</h2><p class="govuk-body">Area membership and available capabilities come from Home Assistant configuration, not assumptions made by this illustration.</p></section>
+      <section id="cv-chevron-destination" tabindex="-1"><h2 class="civica-heading-m">Rooms and areas</h2><p class="civica-body">Area membership and available capabilities come from Home Assistant configuration, not assumptions made by this illustration.</p></section>
   card-secondary-linked:
     title: "Secondary card with one navigation destination"
     description: "A quieter card for supporting help. It has the same native anchor, focus and keyboard behaviour as the primary card."
@@ -57,11 +57,11 @@ examples:
     html: |
       <article class="civica-card-demo civica-card-demo--secondary civica-card-demo--clickable" aria-labelledby="cv-secondary-energy">
         <div class="civica-card-demo__body">
-          <h2 class="govuk-heading-m" id="cv-secondary-energy"><a class="govuk-link civica-card-demo__title-link" href="#cv-secondary-energy-guide">Understand energy history</a></h2>
-          <p class="govuk-body">Learn why missing measurements and changed comparison periods should not be treated as zero usage.</p>
+          <h2 class="civica-heading-m" id="cv-secondary-energy"><a class="civica-link civica-card-demo__title-link" href="#cv-secondary-energy-guide">Understand energy history</a></h2>
+          <p class="civica-body">Learn why missing measurements and changed comparison periods should not be treated as zero usage.</p>
         </div>
       </article>
-      <section id="cv-secondary-energy-guide" tabindex="-1"><h2 class="govuk-heading-m">Understand energy history</h2><p class="govuk-body">Check the chart period, source unit, source identity and a table alternative. This example does not read live energy data.</p></section>
+      <section id="cv-secondary-energy-guide" tabindex="-1"><h2 class="civica-heading-m">Understand energy history</h2><p class="civica-body">Check the chart period, source unit, source identity and a table alternative. This example does not read live energy data.</p></section>
   card-secondary-static:
     title: "Secondary card with independent links"
     description: "Two supporting destinations mean the card is not a single clickable surface."
@@ -69,13 +69,13 @@ examples:
     html: |
       <article class="civica-card-demo civica-card-demo--secondary" aria-labelledby="cv-secondary-help">
         <div class="civica-card-demo__body">
-          <h2 class="govuk-heading-m" id="cv-secondary-help">Connection help</h2>
-          <p class="govuk-body">If a device reports Unavailable, that does not establish whether it has lost power or is safe to operate.</p>
-          <p class="govuk-body"><a class="govuk-link" href="#cv-secondary-entity">Check an entity</a> or <a class="govuk-link" href="#cv-secondary-integration">review its integration</a>.</p>
+          <h2 class="civica-heading-m" id="cv-secondary-help">Connection help</h2>
+          <p class="civica-body">If a device reports Unavailable, that does not establish whether it has lost power or is safe to operate.</p>
+          <p class="civica-body"><a class="civica-link" href="#cv-secondary-entity">Check an entity</a> or <a class="civica-link" href="#cv-secondary-integration">review its integration</a>.</p>
         </div>
       </article>
-      <section id="cv-secondary-entity" tabindex="-1"><h2 class="govuk-heading-m">Check an entity</h2><p class="govuk-body">Open its details and look at the latest reported state and any earlier timestamp.</p></section>
-      <section id="cv-secondary-integration" tabindex="-1"><h2 class="govuk-heading-m">Review its integration</h2><p class="govuk-body">Use the installed integration's actual diagnostics and recovery guidance.</p></section>
+      <section id="cv-secondary-entity" tabindex="-1"><h2 class="civica-heading-m">Check an entity</h2><p class="civica-body">Open its details and look at the latest reported state and any earlier timestamp.</p></section>
+      <section id="cv-secondary-integration" tabindex="-1"><h2 class="civica-heading-m">Review its integration</h2><p class="civica-body">Use the installed integration's actual diagnostics and recovery guidance.</p></section>
   card-primary-image-linked:
     title: "Image card with a single destination"
     description: "A kitchen picture supports the heading. The heading link is the only control on the card."
@@ -84,11 +84,11 @@ examples:
       <article class="civica-card-demo civica-card-demo--primary civica-card-demo--clickable" aria-labelledby="cv-image-kitchen">
         <img class="civica-card-demo__media" src="../images/card-kitchen.svg" width="640" height="360" alt="">
         <div class="civica-card-demo__body">
-          <h2 class="govuk-heading-m" id="cv-image-kitchen"><a class="govuk-link civica-card-demo__title-link" href="#cv-image-kitchen-details">Kitchen guide</a></h2>
-          <p class="govuk-body">Find example room information. The illustration is not a live camera feed.</p>
+          <h2 class="civica-heading-m" id="cv-image-kitchen"><a class="civica-link civica-card-demo__title-link" href="#cv-image-kitchen-details">Kitchen guide</a></h2>
+          <p class="civica-body">Find example room information. The illustration is not a live camera feed.</p>
         </div>
       </article>
-      <section id="cv-image-kitchen-details" tabindex="-1"><h2 class="govuk-heading-m">Kitchen guide</h2><p class="govuk-body">This kitchen contains a ceiling light and a separate air-temperature sensor. Their values are not supplied by this illustration.</p></section>
+      <section id="cv-image-kitchen-details" tabindex="-1"><h2 class="civica-heading-m">Kitchen guide</h2><p class="civica-body">This kitchen contains a ceiling light and a separate air-temperature sensor. Their values are not supplied by this illustration.</p></section>
   card-secondary-actions:
     title: "Non-clickable card with contextual actions"
     description: "A heading and two individually named navigation actions stay separate. Actions appear below the title at narrow widths."
@@ -97,41 +97,41 @@ examples:
       <article class="civica-card-demo civica-card-demo--secondary" aria-labelledby="cv-actions-porch">
         <div class="civica-card-demo__body">
           <div class="civica-card-demo__heading-row">
-            <h2 class="govuk-heading-m" id="cv-actions-porch">Porch lighting automation</h2>
+            <h2 class="civica-heading-m" id="cv-actions-porch">Porch lighting automation</h2>
             <ul class="civica-card-demo__action-links">
-              <li><a class="govuk-link" href="#cv-actions-review">Review porch lighting automation</a></li>
-              <li><a class="govuk-link" href="#cv-actions-history">Read porch automation history</a></li>
+              <li><a class="civica-link" href="#cv-actions-review">Review porch lighting automation</a></li>
+              <li><a class="civica-link" href="#cv-actions-history">Read porch automation history</a></li>
             </ul>
           </div>
-          <p class="govuk-body"><strong>Example state: not supplied.</strong> No trigger, physical outcome or current run is inferred from this specimen.</p>
-          <p class="govuk-body">These links open local guidance; they do not change a Home Assistant automation.</p>
+          <p class="civica-body"><strong>Example state: not supplied.</strong> No trigger, physical outcome or current run is inferred from this specimen.</p>
+          <p class="civica-body">These links open local guidance; they do not change a Home Assistant automation.</p>
         </div>
       </article>
-      <section id="cv-actions-review" tabindex="-1"><h2 class="govuk-heading-m">Review porch lighting automation</h2><p class="govuk-body">In Home Assistant, open the named automation and inspect its conditions, actions and traces before editing.</p></section>
-      <section id="cv-actions-history" tabindex="-1"><h2 class="govuk-heading-m">Read porch automation history</h2><p class="govuk-body">Compare recent traces with the device logbook and integrations. A trace alone may not confirm that a light physically changed.</p></section>
+      <section id="cv-actions-review" tabindex="-1"><h2 class="civica-heading-m">Review porch lighting automation</h2><p class="civica-body">In Home Assistant, open the named automation and inspect its conditions, actions and traces before editing.</p></section>
+      <section id="cv-actions-history" tabindex="-1"><h2 class="civica-heading-m">Read porch automation history</h2><p class="civica-body">Compare recent traces with the device logbook and integrations. A trace alone may not confirm that a light physically changed.</p></section>
   card-primary-metric-group:
     title: "A responsive group of two measured-state summaries"
     description: "Cards form a semantic list; readings include units, source and time. There is no unlabeled colour-only status."
     height: 760
     html: |
-      <h2 class="govuk-heading-m">Example room readings</h2>
-      <p class="govuk-body">Observations recorded on 13 November 2026 at 18:10 GMT (Europe/London), not live data.</p>
+      <h2 class="civica-heading-m">Example room readings</h2>
+      <p class="civica-body">Observations recorded on 13 November 2026 at 18:10 GMT (Europe/London), not live data.</p>
       <ul class="civica-card-demo-grid">
         <li>
           <article class="civica-card-demo civica-card-demo--primary" aria-labelledby="cv-metric-temperature">
             <div class="civica-card-demo__body">
-              <h3 class="govuk-heading-m" id="cv-metric-temperature">Living room air temperature</h3>
-              <p class="govuk-body"><strong class="civica-card-demo__metric">20.5°C</strong></p>
-              <p class="govuk-body">Example room sensor; <time datetime="2026-11-13T18:10:00+00:00">13 November 2026 at 18:10 GMT</time>.</p>
+              <h3 class="civica-heading-m" id="cv-metric-temperature">Living room air temperature</h3>
+              <p class="civica-body"><strong class="civica-card-demo__metric">20.5°C</strong></p>
+              <p class="civica-body">Example room sensor; <time datetime="2026-11-13T18:10:00+00:00">13 November 2026 at 18:10 GMT</time>.</p>
             </div>
           </article>
         </li>
         <li>
           <article class="civica-card-demo civica-card-demo--secondary" aria-labelledby="cv-metric-humidity">
             <div class="civica-card-demo__body">
-              <h3 class="govuk-heading-m" id="cv-metric-humidity">Living room relative humidity</h3>
-              <p class="govuk-body"><strong class="civica-card-demo__metric">48%</strong></p>
-              <p class="govuk-body">Separate example humidity sensor; <time datetime="2026-11-13T18:10:00+00:00">13 November 2026 at 18:10 GMT</time>.</p>
+              <h3 class="civica-heading-m" id="cv-metric-humidity">Living room relative humidity</h3>
+              <p class="civica-body"><strong class="civica-card-demo__metric">48%</strong></p>
+              <p class="civica-body">Separate example humidity sensor; <time datetime="2026-11-13T18:10:00+00:00">13 November 2026 at 18:10 GMT</time>.</p>
             </div>
           </article>
         </li>
@@ -142,11 +142,11 @@ examples:
     height: 550
     html: |
       <section aria-labelledby="cv-heading-section">
-        <h2 class="govuk-heading-m" id="cv-heading-section">Device information</h2>
+        <h2 class="civica-heading-m" id="cv-heading-section">Device information</h2>
         <article class="civica-card-demo civica-card-demo--secondary" aria-labelledby="cv-heading-device">
           <div class="civica-card-demo__body">
-            <h3 class="govuk-heading-m" id="cv-heading-device">Garden room temperature sensor</h3>
-            <p class="govuk-body">No usable reading or observation time supplied. Unknown must not be presented as 0°C.</p>
+            <h3 class="civica-heading-m" id="cv-heading-device">Garden room temperature sensor</h3>
+            <p class="civica-body">No usable reading or observation time supplied. Unknown must not be presented as 0°C.</p>
           </div>
         </article>
       </section>

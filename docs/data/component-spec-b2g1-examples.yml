@@ -6,26 +6,26 @@ examples:
     height: 360
     html: |
       <article class="civica-card-demo" aria-label="Room temperatures"><div class="civica-card-demo__body">
-      <table class="govuk-table">
-      <caption class="govuk-table__caption govuk-table__caption--m">Example room temperatures reported on 11 November 2026 at 09:00 GMT (Europe/London)</caption>
-      <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Room</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Temperature (°C)</th>
+      <table class="civica-table">
+      <caption class="civica-table__caption civica-table__caption--m">Example room temperatures reported on 11 November 2026 at 09:00 GMT (Europe/London)</caption>
+      <thead class="civica-table__head">
+      <tr class="civica-table__row">
+      <th scope="col" class="civica-table__header">Room</th>
+      <th scope="col" class="civica-table__header civica-table__header--numeric">Temperature (°C)</th>
       </tr>
       </thead>
-      <tbody class="govuk-table__body">
-      <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Kitchen</th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">19.8</td>
+      <tbody class="civica-table__body">
+      <tr class="civica-table__row">
+      <th scope="row" class="civica-table__header">Kitchen</th>
+      <td class="civica-table__cell civica-table__cell--numeric">19.8</td>
       </tr>
-      <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Living room</th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">20.5</td>
+      <tr class="civica-table__row">
+      <th scope="row" class="civica-table__header">Living room</th>
+      <td class="civica-table__cell civica-table__cell--numeric">20.5</td>
       </tr>
-      <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Bedroom</th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">18.2</td>
+      <tr class="civica-table__row">
+      <th scope="row" class="civica-table__header">Bedroom</th>
+      <td class="civica-table__cell civica-table__cell--numeric">18.2</td>
       </tr>
       </tbody>
       </table>
@@ -36,30 +36,30 @@ examples:
     height: 420
     html: |
       <article class="civica-card-demo" aria-label="Hourly electricity"><div class="civica-card-demo__body">
-      <table class="govuk-table">
-      <caption class="govuk-table__caption govuk-table__caption--m">Example hourly electricity on 11 November 2026, Europe/London (GMT)</caption>
-      <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Period start (GMT)</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Energy (kWh)</th>
+      <table class="civica-table">
+      <caption class="civica-table__caption civica-table__caption--m">Example hourly electricity on 11 November 2026, Europe/London (GMT)</caption>
+      <thead class="civica-table__head">
+      <tr class="civica-table__row">
+      <th scope="col" class="civica-table__header">Period start (GMT)</th>
+      <th scope="col" class="civica-table__header civica-table__header--numeric">Energy (kWh)</th>
       </tr>
       </thead>
-      <tbody class="govuk-table__body">
-      <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">09:00</th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">0.00</td>
+      <tbody class="civica-table__body">
+      <tr class="civica-table__row">
+      <th scope="row" class="civica-table__header">09:00</th>
+      <td class="civica-table__cell civica-table__cell--numeric">0.00</td>
       </tr>
-      <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">10:00</th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">Not available</td>
+      <tr class="civica-table__row">
+      <th scope="row" class="civica-table__header">10:00</th>
+      <td class="civica-table__cell civica-table__cell--numeric">Not available</td>
       </tr>
-      <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">11:00</th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">0.42</td>
+      <tr class="civica-table__row">
+      <th scope="row" class="civica-table__header">11:00</th>
+      <td class="civica-table__cell civica-table__cell--numeric">0.42</td>
       </tr>
       </tbody>
       </table>
-      <p class="govuk-body">Each row starts a one-hour interval. The 10:00 interval has no reading; it is not zero, so these rows do not form a complete total.</p>
+      <p class="civica-body">Each row starts a one-hour interval. The 10:00 interval has no reading; it is not zero, so these rows do not form a complete total.</p>
       </div></article>
   spec-table-scroll:
     title: A wide comparison
@@ -68,31 +68,31 @@ examples:
     html: |
       <article class="civica-card-demo" aria-label="Weekly room temperatures"><div class="civica-card-demo__body">
       <div class="civica-table-scroll" role="region" aria-label="Weekly room-temperature comparison" tabindex="0">
-      <table class="govuk-table">
-      <caption class="govuk-table__caption govuk-table__caption--m">Example room temperatures at 09:00 GMT (Europe/London), 9 to 12 November 2026</caption>
-      <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header">Room</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Monday 9 November (°C)</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Tuesday 10 November (°C)</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Wednesday 11 November (°C)</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric">Thursday 12 November (°C)</th>
+      <table class="civica-table">
+      <caption class="civica-table__caption civica-table__caption--m">Example room temperatures at 09:00 GMT (Europe/London), 9 to 12 November 2026</caption>
+      <thead class="civica-table__head">
+      <tr class="civica-table__row">
+      <th scope="col" class="civica-table__header">Room</th>
+      <th scope="col" class="civica-table__header civica-table__header--numeric">Monday 9 November (°C)</th>
+      <th scope="col" class="civica-table__header civica-table__header--numeric">Tuesday 10 November (°C)</th>
+      <th scope="col" class="civica-table__header civica-table__header--numeric">Wednesday 11 November (°C)</th>
+      <th scope="col" class="civica-table__header civica-table__header--numeric">Thursday 12 November (°C)</th>
       </tr>
       </thead>
-      <tbody class="govuk-table__body">
-      <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Kitchen</th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">19.2</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">19.7</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">19.4</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">19.5</td>
+      <tbody class="civica-table__body">
+      <tr class="civica-table__row">
+      <th scope="row" class="civica-table__header">Kitchen</th>
+      <td class="civica-table__cell civica-table__cell--numeric">19.2</td>
+      <td class="civica-table__cell civica-table__cell--numeric">19.7</td>
+      <td class="civica-table__cell civica-table__cell--numeric">19.4</td>
+      <td class="civica-table__cell civica-table__cell--numeric">19.5</td>
       </tr>
-      <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">Living room</th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">20.1</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">20.3</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">20.0</td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">20.2</td>
+      <tr class="civica-table__row">
+      <th scope="row" class="civica-table__header">Living room</th>
+      <td class="civica-table__cell civica-table__cell--numeric">20.1</td>
+      <td class="civica-table__cell civica-table__cell--numeric">20.3</td>
+      <td class="civica-table__cell civica-table__cell--numeric">20.0</td>
+      <td class="civica-table__cell civica-table__cell--numeric">20.2</td>
       </tr>
       </tbody>
       </table>
@@ -104,19 +104,19 @@ examples:
     height: 460
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-date-m-title"><div class="civica-card-demo__body">
-      <h2 class="govuk-heading-m" id="spec-date-m-title">Water filter</h2>
-      <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="spec-date-m-hint">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">When was the filter replaced?</legend>
-      <div class="govuk-hint" id="spec-date-m-hint">For example, 11 11 2026</div>
-      <div class="govuk-date-input">
-      <div class="govuk-date-input__item"><div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="spec-date-m-day">Day</label><input class="govuk-input govuk-date-input__input govuk-input--width-2" id="spec-date-m-day" type="text" inputmode="numeric" value="11"></div></div>
-      <div class="govuk-date-input__item"><div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="spec-date-m-month">Month</label><input class="govuk-input govuk-date-input__input govuk-input--width-2" id="spec-date-m-month" type="text" inputmode="numeric" value="11"></div></div>
-      <div class="govuk-date-input__item"><div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="spec-date-m-year">Year</label><input class="govuk-input govuk-date-input__input govuk-input--width-4" id="spec-date-m-year" type="text" inputmode="numeric" value="2026"></div></div>
+      <h2 class="civica-heading-m" id="spec-date-m-title">Water filter</h2>
+      <div class="civica-form-group">
+      <fieldset class="civica-fieldset" aria-describedby="spec-date-m-hint">
+      <legend class="civica-fieldset__legend civica-fieldset__legend--s">When was the filter replaced?</legend>
+      <div class="civica-hint" id="spec-date-m-hint">For example, 11 11 2026</div>
+      <div class="civica-date-input">
+      <div class="civica-date-input__item"><div class="civica-form-group"><label class="civica-label civica-date-input__label" for="spec-date-m-day">Day</label><input class="civica-input civica-date-input__input civica-input--width-2" id="spec-date-m-day" type="text" inputmode="numeric" value="11"></div></div>
+      <div class="civica-date-input__item"><div class="civica-form-group"><label class="civica-label civica-date-input__label" for="spec-date-m-month">Month</label><input class="civica-input civica-date-input__input civica-input--width-2" id="spec-date-m-month" type="text" inputmode="numeric" value="11"></div></div>
+      <div class="civica-date-input__item"><div class="civica-form-group"><label class="civica-label civica-date-input__label" for="spec-date-m-year">Year</label><input class="civica-input civica-date-input__input civica-input--width-4" id="spec-date-m-year" type="text" inputmode="numeric" value="2026"></div></div>
       </div>
       </fieldset>
       </div>
-      <p class="civica-card-demo__actions"><button type="button" class="govuk-button">Save date</button></p>
+      <p class="civica-card-demo__actions"><button type="button" class="civica-button">Save date</button></p>
       </div></article>
   spec-date-error:
     title: Correct one part of a date
@@ -124,20 +124,20 @@ examples:
     height: 520
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-date-e-title"><div class="civica-card-demo__body">
-      <h2 class="govuk-heading-m" id="spec-date-e-title">New thermostat</h2>
-      <div class="govuk-form-group govuk-form-group--error">
-      <fieldset class="govuk-fieldset" aria-describedby="spec-date-e-hint spec-date-e-error">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">When was the device installed?</legend>
-      <div class="govuk-hint" id="spec-date-e-hint">For example, 11 11 2026</div>
-      <p class="govuk-error-message" id="spec-date-e-error"><span class="govuk-visually-hidden">Error:</span> Month must be between 1 and 12</p>
-      <div class="govuk-date-input">
-      <div class="govuk-date-input__item"><div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="spec-date-e-day">Day</label><input class="govuk-input govuk-date-input__input govuk-input--width-2" id="spec-date-e-day" type="text" inputmode="numeric" value="11"></div></div>
-      <div class="govuk-date-input__item"><div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="spec-date-e-month">Month</label><input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="spec-date-e-month" type="text" inputmode="numeric" value="13" aria-invalid="true"></div></div>
-      <div class="govuk-date-input__item"><div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="spec-date-e-year">Year</label><input class="govuk-input govuk-date-input__input govuk-input--width-4" id="spec-date-e-year" type="text" inputmode="numeric" value="2026"></div></div>
+      <h2 class="civica-heading-m" id="spec-date-e-title">New thermostat</h2>
+      <div class="civica-form-group civica-form-group--error">
+      <fieldset class="civica-fieldset" aria-describedby="spec-date-e-hint spec-date-e-error">
+      <legend class="civica-fieldset__legend civica-fieldset__legend--s">When was the device installed?</legend>
+      <div class="civica-hint" id="spec-date-e-hint">For example, 11 11 2026</div>
+      <p class="civica-error-message" id="spec-date-e-error"><span class="civica-visually-hidden">Error:</span> Month must be between 1 and 12</p>
+      <div class="civica-date-input">
+      <div class="civica-date-input__item"><div class="civica-form-group"><label class="civica-label civica-date-input__label" for="spec-date-e-day">Day</label><input class="civica-input civica-date-input__input civica-input--width-2" id="spec-date-e-day" type="text" inputmode="numeric" value="11"></div></div>
+      <div class="civica-date-input__item"><div class="civica-form-group"><label class="civica-label civica-date-input__label" for="spec-date-e-month">Month</label><input class="civica-input civica-date-input__input civica-input--width-2 civica-input--error" id="spec-date-e-month" type="text" inputmode="numeric" value="13" aria-invalid="true"></div></div>
+      <div class="civica-date-input__item"><div class="civica-form-group"><label class="civica-label civica-date-input__label" for="spec-date-e-year">Year</label><input class="civica-input civica-date-input__input civica-input--width-4" id="spec-date-e-year" type="text" inputmode="numeric" value="2026"></div></div>
       </div>
       </fieldset>
       </div>
-      <p class="civica-card-demo__actions"><button type="button" class="govuk-button">Save date</button></p>
+      <p class="civica-card-demo__actions"><button type="button" class="civica-button">Save date</button></p>
       </div></article>
   spec-description-list-device:
     title: Facts about one device
@@ -145,12 +145,12 @@ examples:
     height: 440
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-dl-title"><div class="civica-card-demo__body">
-      <h2 class="govuk-heading-m" id="spec-dl-title">Kitchen light</h2>
-      <dl class="govuk-summary-list">
-      <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Area</dt><dd class="govuk-summary-list__value">Kitchen</dd></div>
-      <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">State</dt><dd class="govuk-summary-list__value">On</dd></div>
-      <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Brightness</dt><dd class="govuk-summary-list__value">80%</dd></div>
-      <div class="govuk-summary-list__row"><dt class="govuk-summary-list__key">Last reported</dt><dd class="govuk-summary-list__value"><time datetime="2026-11-11T18:42:00+00:00">11 November 2026 at 18:42 GMT</time></dd></div>
+      <h2 class="civica-heading-m" id="spec-dl-title">Kitchen light</h2>
+      <dl class="civica-summary-list">
+      <div class="civica-summary-list__row"><dt class="civica-summary-list__key">Area</dt><dd class="civica-summary-list__value">Kitchen</dd></div>
+      <div class="civica-summary-list__row"><dt class="civica-summary-list__key">State</dt><dd class="civica-summary-list__value">On</dd></div>
+      <div class="civica-summary-list__row"><dt class="civica-summary-list__key">Brightness</dt><dd class="civica-summary-list__value">80%</dd></div>
+      <div class="civica-summary-list__row"><dt class="civica-summary-list__key">Last reported</dt><dd class="civica-summary-list__value"><time datetime="2026-11-11T18:42:00+00:00">11 November 2026 at 18:42 GMT</time></dd></div>
       </dl>
       </div></article>
   spec-device-picker-automation:
@@ -159,9 +159,9 @@ examples:
     height: 480
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-dp-title"><div class="civica-card-demo__body">
-      <h2 class="govuk-heading-m" id="spec-dp-title">Add a sunset automation</h2>
-      <div class="govuk-form-group"><span class="govuk-label" id="spec-dp-label">Which device should switch on at sunset?</span><div class="govuk-hint" id="spec-dp-hint">The automation will switch this device on every day at sunset.</div><div role="group" aria-labelledby="spec-dp-label" aria-describedby="spec-dp-hint" style="border-bottom:1px solid #0b0c0c;background:#fff;padding:8px 12px;display:flex;justify-content:space-between"><span><strong>Porch light</strong><br><span class="govuk-hint" style="margin:0">Hall</span></span><span aria-hidden="true">&#9662;</span></div></div>
-      <p class="civica-card-demo__actions"><button type="button" class="govuk-button">Save automation</button></p>
+      <h2 class="civica-heading-m" id="spec-dp-title">Add a sunset automation</h2>
+      <div class="civica-form-group"><span class="civica-label" id="spec-dp-label">Which device should switch on at sunset?</span><div class="civica-hint" id="spec-dp-hint">The automation will switch this device on every day at sunset.</div><div role="group" aria-labelledby="spec-dp-label" aria-describedby="spec-dp-hint" style="border-bottom:1px solid #0b0c0c;background:#fff;padding:8px 12px;display:flex;justify-content:space-between"><span><strong>Porch light</strong><br><span class="civica-hint" style="margin:0">Hall</span></span><span aria-hidden="true">&#9662;</span></div></div>
+      <p class="civica-card-demo__actions"><button type="button" class="civica-button">Save automation</button></p>
       </div></article>
   spec-dialog-confirm-delete:
     title: A confirmation that names its consequence
@@ -170,9 +170,9 @@ examples:
     html: |
       <div style="background:#505a5f;padding:24px 12px">
       <div class="civica-card-demo" role="group" aria-labelledby="spec-dc-title" aria-describedby="spec-dc-text" style="max-width:420px;margin:0 auto;background:#fff"><div class="civica-card-demo__body">
-      <h2 class="govuk-heading-m" id="spec-dc-title">Delete “Evening lights”?</h2>
-      <p class="govuk-body" id="spec-dc-text">This automation will be removed and the lights will no longer switch on at sunset. You cannot undo this.</p>
-      <p class="civica-card-demo__actions"><button type="button" class="govuk-button govuk-button--secondary">Cancel</button><button type="button" class="govuk-button govuk-button--warning">Delete automation</button></p>
+      <h2 class="civica-heading-m" id="spec-dc-title">Delete “Evening lights”?</h2>
+      <p class="civica-body" id="spec-dc-text">This automation will be removed and the lights will no longer switch on at sunset. You cannot undo this.</p>
+      <p class="civica-card-demo__actions"><button type="button" class="civica-button civica-button--secondary">Cancel</button><button type="button" class="civica-button civica-button--warning">Delete automation</button></p>
       </div></div>
       </div>
   spec-dialog-device-details:
@@ -182,10 +182,10 @@ examples:
     html: |
       <div style="background:#505a5f;padding:24px 12px">
       <div class="civica-card-demo" role="group" aria-labelledby="spec-dd-title" style="max-width:420px;margin:0 auto;background:#fff"><div class="civica-card-demo__body">
-      <h2 class="govuk-heading-m" id="spec-dd-title">Kitchen light</h2>
-      <p class="govuk-body"><strong>On</strong>, 80% brightness</p>
-      <p class="govuk-body">Area: Kitchen</p>
-      <p class="civica-card-demo__actions"><button type="button" class="govuk-button govuk-button--secondary">Close</button></p>
+      <h2 class="civica-heading-m" id="spec-dd-title">Kitchen light</h2>
+      <p class="civica-body"><strong>On</strong>, 80% brightness</p>
+      <p class="civica-body">Area: Kitchen</p>
+      <p class="civica-card-demo__actions"><button type="button" class="civica-button civica-button--secondary">Close</button></p>
       </div></div>
       </div>
   spec-admin-tiles:
@@ -194,9 +194,9 @@ examples:
     height: 420
     html: |
       <div style="display:grid;gap:12px">
-      <article class="civica-card-demo" aria-labelledby="spec-at-d"><div class="civica-card-demo__body" style="display:flex;align-items:center;gap:16px"><svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#1d70b8"></circle><rect x="11" y="13" width="18" height="12" fill="none" stroke="#fff" stroke-width="2"></rect><path d="M15 29h10" stroke="#fff" stroke-width="2"></path></svg><div><h2 class="govuk-heading-s" id="spec-at-d" style="margin:0">Devices discovered</h2><p class="govuk-body" style="margin:0">2 devices to add</p></div></div></article>
-      <article class="civica-card-demo" aria-labelledby="spec-at-r"><div class="civica-card-demo__body" style="display:flex;align-items:center;gap:16px"><svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#8a6100"></circle><path d="M13 27l10-10m-3-4l6 0 1 6" fill="none" stroke="#fff" stroke-width="2.5"></path></svg><div><h2 class="govuk-heading-s" id="spec-at-r" style="margin:0">Repairs</h2><p class="govuk-body" style="margin:0">1 issue</p></div></div></article>
-      <article class="civica-card-demo" aria-labelledby="spec-at-u"><div class="civica-card-demo__body" style="display:flex;align-items:center;gap:16px"><svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#1d70b8"></circle><path d="M20 28V13m-6 6l6-6 6 6" fill="none" stroke="#fff" stroke-width="2.5"></path></svg><div><h2 class="govuk-heading-s" id="spec-at-u" style="margin:0">Updates</h2><p class="govuk-body" style="margin:0">3 updates available</p></div></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-at-d"><div class="civica-card-demo__body" style="display:flex;align-items:center;gap:16px"><svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#1d70b8"></circle><rect x="11" y="13" width="18" height="12" fill="none" stroke="#fff" stroke-width="2"></rect><path d="M15 29h10" stroke="#fff" stroke-width="2"></path></svg><div><h2 class="civica-heading-s" id="spec-at-d" style="margin:0">Devices discovered</h2><p class="civica-body" style="margin:0">2 devices to add</p></div></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-at-r"><div class="civica-card-demo__body" style="display:flex;align-items:center;gap:16px"><svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#8a6100"></circle><path d="M13 27l10-10m-3-4l6 0 1 6" fill="none" stroke="#fff" stroke-width="2.5"></path></svg><div><h2 class="civica-heading-s" id="spec-at-r" style="margin:0">Repairs</h2><p class="civica-body" style="margin:0">1 issue</p></div></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-at-u"><div class="civica-card-demo__body" style="display:flex;align-items:center;gap:16px"><svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#1d70b8"></circle><path d="M20 28V13m-6 6l6-6 6 6" fill="none" stroke="#fff" stroke-width="2.5"></path></svg><div><h2 class="civica-heading-s" id="spec-at-u" style="margin:0">Updates</h2><p class="civica-body" style="margin:0">3 updates available</p></div></div></article>
       </div>
   spec-divider-entities:
     title: An entities card with a divider between groups
@@ -204,7 +204,7 @@ examples:
     height: 420
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-dv-title"><div class="civica-card-demo__body">
-      <h2 class="govuk-heading-m" id="spec-dv-title">Kitchen</h2>
+      <h2 class="civica-heading-m" id="spec-dv-title">Kitchen</h2>
       <div style="display:flex;justify-content:space-between;padding:8px 0"><span>Ceiling light</span><strong>On</strong></div>
       <div style="display:flex;justify-content:space-between;padding:8px 0"><span>Counter lights</span><strong>Off</strong></div>
       <div aria-hidden="true" style="height:1px;background:#cecece;margin:8px 0"></div>

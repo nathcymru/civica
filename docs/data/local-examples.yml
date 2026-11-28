@@ -2,43 +2,43 @@
   "examples": {
     "local-device-switch": {
       "title": "A labelled device switch",
-      "html": "<h2 class=\"govuk-heading-m\">Kitchen light</h2><p class=\"govuk-body\">Example control. Changing it only updates this preview.</p><form data-demo-form><div class=\"govuk-checkboxes\"><div class=\"govuk-checkboxes__item\"><input id=\"light-on\" class=\"govuk-checkboxes__input\" type=\"checkbox\" role=\"switch\"><label class=\"govuk-label govuk-checkboxes__label\" for=\"light-on\">Kitchen light on</label></div></div><button class=\"govuk-button\" type=\"submit\">Preview saving</button><p role=\"status\" data-demo-status></p></form>",
+      "html": "<h2 class=\"civica-heading-m\">Kitchen light</h2><p class=\"civica-body\">Example control. Changing it only updates this preview.</p><form data-demo-form><div class=\"civica-checkboxes\"><div class=\"civica-checkboxes__item\"><input id=\"light-on\" class=\"civica-checkboxes__input\" type=\"checkbox\" role=\"switch\"><label class=\"civica-label civica-checkboxes__label\" for=\"light-on\">Kitchen light on</label></div></div><button class=\"civica-button\" type=\"submit\">Preview saving</button><p role=\"status\" data-demo-status></p></form>",
       "height": 400
     },
     "local-device-unavailable": {
       "title": "An unavailable reading",
-      "html": "<section class=\"civica-card\"><h2 class=\"govuk-heading-m\">Bedroom temperature</h2><p class=\"govuk-body\"><strong>Unavailable</strong></p><p class=\"govuk-body\">The integration has not supplied a current reading. Check the device\u2019s connection from its native details page.</p></section>",
+      "html": "<section class=\"civica-card\"><h2 class=\"civica-heading-m\">Bedroom temperature</h2><p class=\"civica-body\"><strong>Unavailable</strong></p><p class=\"civica-body\">The integration has not supplied a current reading. Check the device\u2019s connection from its native details page.</p></section>",
       "height": 300
     },
     "local-device-slider": {
       "title": "Brightness with an explicit value",
-      "html": "<h2 class=\"govuk-heading-m\">Reading light</h2><form data-demo-form><label class=\"govuk-label\" for=\"brightness\">Brightness (percent)</label><input id=\"brightness\" type=\"range\" min=\"0\" max=\"100\" step=\"1\" value=\"50\" data-demo-range><output for=\"brightness\" data-demo-range-output>50%</output><button class=\"govuk-button\" type=\"submit\">Preview saving</button><p role=\"status\" data-demo-status></p></form>",
+      "html": "<h2 class=\"civica-heading-m\">Reading light</h2><form data-demo-form><label class=\"civica-label\" for=\"brightness\">Brightness (percent)</label><input id=\"brightness\" type=\"range\" min=\"0\" max=\"100\" step=\"1\" value=\"50\" data-demo-range><output for=\"brightness\" data-demo-range-output>50%</output><button class=\"civica-button\" type=\"submit\">Preview saving</button><p role=\"status\" data-demo-status></p></form>",
       "height": 350
     },
     "local-controls-form": {
       "title": "Appearance preferences",
-      "html": "<form data-demo-form><div class=\"govuk-form-group\"><label class=\"govuk-label\" for=\"palette-choice\">Theme colour</label><select class=\"govuk-select\" id=\"palette-choice\"><option>Blue</option><option>Green</option><option>Teal</option><option>Purple</option><option>Magenta</option><option>Red</option><option>Black</option></select></div><button class=\"govuk-button\" type=\"submit\">Preview saving</button><p role=\"status\" data-demo-status></p></form>",
+      "html": "<form data-demo-form><div class=\"civica-form-group\"><label class=\"civica-label\" for=\"palette-choice\">Theme colour</label><select class=\"civica-select\" id=\"palette-choice\"><option>Blue</option><option>Green</option><option>Teal</option><option>Purple</option><option>Magenta</option><option>Red</option><option>Black</option></select></div><button class=\"civica-button\" type=\"submit\">Preview saving</button><p role=\"status\" data-demo-status></p></form>",
       "height": 400
     },
     "local-controls-error": {
       "title": "A field with a useful error",
-      "html": "<form data-demo-form><div class=\"govuk-form-group govuk-form-group--error\"><label class=\"govuk-label\" for=\"room-name\">Room name</label><p class=\"govuk-error-message\" id=\"room-error\"><span class=\"govuk-visually-hidden\">Error:</span> Enter a room name</p><input class=\"govuk-input govuk-input--error\" id=\"room-name\" aria-describedby=\"room-error\" required></div><button class=\"govuk-button\" type=\"submit\">Preview saving</button><p role=\"status\" data-demo-status></p></form>",
+      "html": "<form data-demo-form><div class=\"civica-form-group civica-form-group--error\"><label class=\"civica-label\" for=\"room-name\">Room name</label><p class=\"civica-error-message\" id=\"room-error\"><span class=\"civica-visually-hidden\">Error:</span> Enter a room name</p><input class=\"civica-input civica-input--error\" id=\"room-name\" aria-describedby=\"room-error\" required></div><button class=\"civica-button\" type=\"submit\">Preview saving</button><p role=\"status\" data-demo-status></p></form>",
       "height": 350
     },
     "local-status-empty": {
       "title": "A valid empty result",
-      "html": "<h2 class=\"govuk-heading-m\">Notifications</h2><p class=\"govuk-body\">No current notifications.</p><p class=\"govuk-body\">This is different from a failed request. The example contains no unread items.</p>",
+      "html": "<h2 class=\"civica-heading-m\">Notifications</h2><p class=\"civica-body\">No current notifications.</p><p class=\"civica-body\">This is different from a failed request. The example contains no unread items.</p>",
       "height": 300
     },
     "local-status-failure": {
       "title": "A request explicitly rejected by permission checks",
-      "html": "<h2 class=\"govuk-heading-m\">The turn-on request was rejected</h2><p class=\"govuk-body\">In this example, Home Assistant rejected the request because this profile cannot control the kitchen light. No device command was sent.</p><p class=\"govuk-body\">Last reported state: Off, at <time datetime=\"2026-11-11T18:42:00+00:00\">18:42 GMT on 11 November 2026</time> (Europe/London).</p><a class=\"govuk-link\" href=\"#rejected-request-help\">Read about this permission limit</a><section id=\"rejected-request-help\" tabindex=\"-1\"><h2 class=\"govuk-heading-m\">Permission limit</h2><p class=\"govuk-body\">Use a profile authorised for the task or ask the system administrator for help. A confirmation dialog cannot grant device permission.</p></section>",
+      "html": "<h2 class=\"civica-heading-m\">The turn-on request was rejected</h2><p class=\"civica-body\">In this example, Home Assistant rejected the request because this profile cannot control the kitchen light. No device command was sent.</p><p class=\"civica-body\">Last reported state: Off, at <time datetime=\"2026-11-11T18:42:00+00:00\">18:42 GMT on 11 November 2026</time> (Europe/London).</p><a class=\"civica-link\" href=\"#rejected-request-help\">Read about this permission limit</a><section id=\"rejected-request-help\" tabindex=\"-1\"><h2 class=\"civica-heading-m\">Permission limit</h2><p class=\"civica-body\">Use a profile authorised for the task or ask the system administrator for help. A confirmation dialog cannot grant device permission.</p></section>",
       "height": 480,
       "description": "A rejected request is different from an accepted request with no confirmed result."
     },
     "local-status-pending": {
       "title": "A pending request with the last reported state",
-      "html": "<section class=\"civica-card\" aria-labelledby=\"pending-kitchen-title\"><h2 class=\"govuk-heading-m\" id=\"pending-kitchen-title\">Kitchen light</h2><p class=\"govuk-body\"><strong>Waiting for a reported state</strong></p><dl class=\"govuk-summary-list\"><div class=\"govuk-summary-list__row\"><dt class=\"govuk-summary-list__key\">Last reported state</dt><dd class=\"govuk-summary-list__value\">Off, at <time datetime=\"2026-11-11T18:42:00+00:00\">18:42 GMT on 11 November 2026</time></dd></div><div class=\"govuk-summary-list__row\"><dt class=\"govuk-summary-list__key\">Request</dt><dd class=\"govuk-summary-list__value\">Turn on request accepted at <time datetime=\"2026-11-11T18:43:00+00:00\">18:43 GMT on 11 November 2026</time></dd></div></dl><p class=\"govuk-body\">The request was accepted, but a newer device state has not arrived. The earlier Off state is not a confirmed result for this request.</p><p class=\"govuk-body\">Time zone: Europe/London. This static example does not complete automatically or operate a device.</p></section>",
+      "html": "<section class=\"civica-card\" aria-labelledby=\"pending-kitchen-title\"><h2 class=\"civica-heading-m\" id=\"pending-kitchen-title\">Kitchen light</h2><p class=\"civica-body\"><strong>Waiting for a reported state</strong></p><dl class=\"civica-summary-list\"><div class=\"civica-summary-list__row\"><dt class=\"civica-summary-list__key\">Last reported state</dt><dd class=\"civica-summary-list__value\">Off, at <time datetime=\"2026-11-11T18:42:00+00:00\">18:42 GMT on 11 November 2026</time></dd></div><div class=\"civica-summary-list__row\"><dt class=\"civica-summary-list__key\">Request</dt><dd class=\"civica-summary-list__value\">Turn on request accepted at <time datetime=\"2026-11-11T18:43:00+00:00\">18:43 GMT on 11 November 2026</time></dd></div></dl><p class=\"civica-body\">The request was accepted, but a newer device state has not arrived. The earlier Off state is not a confirmed result for this request.</p><p class=\"civica-body\">Time zone: Europe/London. This static example does not complete automatically or operate a device.</p></section>",
       "height": 560,
       "description": "A complete static pending state, including the acknowledged request and earlier observation. It never completes automatically."
     },
