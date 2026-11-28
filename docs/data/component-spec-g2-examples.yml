@@ -6,17 +6,17 @@ examples:
     height: 420
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-crumb-device-title"><div class="civica-card-demo__body">
-      <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
-      <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="#crumb-home">Home</a></li>
-      <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="#crumb-rooms">Rooms</a></li>
-      <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="#crumb-kitchen">Kitchen</a></li>
+      <nav class="civica-breadcrumbs" aria-label="Breadcrumb">
+      <ol class="civica-breadcrumbs__list">
+      <li class="civica-breadcrumbs__list-item"><a class="civica-breadcrumbs__link" href="#crumb-home">Home</a></li>
+      <li class="civica-breadcrumbs__list-item"><a class="civica-breadcrumbs__link" href="#crumb-rooms">Rooms</a></li>
+      <li class="civica-breadcrumbs__list-item"><a class="civica-breadcrumbs__link" href="#crumb-kitchen">Kitchen</a></li>
       </ol>
       </nav>
-      <h2 class="govuk-heading-m" id="spec-crumb-device-title">Kitchen temperature sensor</h2>
-      <section id="crumb-home" tabindex="-1"><h3 class="govuk-heading-s">Home</h3></section>
-      <section id="crumb-rooms" tabindex="-1"><h3 class="govuk-heading-s">Rooms</h3></section>
-      <section id="crumb-kitchen" tabindex="-1"><h3 class="govuk-heading-s">Kitchen</h3></section>
+      <h2 class="civica-heading-m" id="spec-crumb-device-title">Kitchen temperature sensor</h2>
+      <section id="crumb-home" tabindex="-1"><h3 class="civica-heading-s">Home</h3></section>
+      <section id="crumb-rooms" tabindex="-1"><h3 class="civica-heading-s">Rooms</h3></section>
+      <section id="crumb-kitchen" tabindex="-1"><h3 class="civica-heading-s">Kitchen</h3></section>
       </div></article>
   spec-breadcrumbs-guide:
     title: A help topic within a guide
@@ -24,15 +24,15 @@ examples:
     height: 360
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-crumb-guide-title"><div class="civica-card-demo__body">
-      <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
-      <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="#crumb-help">Help</a></li>
-      <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="#crumb-energy">Energy guide</a></li>
+      <nav class="civica-breadcrumbs" aria-label="Breadcrumb">
+      <ol class="civica-breadcrumbs__list">
+      <li class="civica-breadcrumbs__list-item"><a class="civica-breadcrumbs__link" href="#crumb-help">Help</a></li>
+      <li class="civica-breadcrumbs__list-item"><a class="civica-breadcrumbs__link" href="#crumb-energy">Energy guide</a></li>
       </ol>
       </nav>
-      <h2 class="govuk-heading-m" id="spec-crumb-guide-title">Understand imported energy</h2>
-      <section id="crumb-help" tabindex="-1"><h3 class="govuk-heading-s">Help</h3></section>
-      <section id="crumb-energy" tabindex="-1"><h3 class="govuk-heading-s">Energy guide</h3></section>
+      <h2 class="civica-heading-m" id="spec-crumb-guide-title">Understand imported energy</h2>
+      <section id="crumb-help" tabindex="-1"><h3 class="civica-heading-s">Help</h3></section>
+      <section id="crumb-energy" tabindex="-1"><h3 class="civica-heading-s">Energy guide</h3></section>
       </div></article>
   spec-breadcrumbs-current:
     title: A trail that includes the current page
@@ -40,89 +40,89 @@ examples:
     height: 300
     html: |
       <article class="civica-card-demo" aria-labelledby="spec-crumb-current-title"><div class="civica-card-demo__body">
-      <nav class="govuk-breadcrumbs" aria-label="Breadcrumb">
-      <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="#crumb-current-home">Home</a></li>
-      <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="#crumb-current-rooms">Rooms</a></li>
-      <li class="govuk-breadcrumbs__list-item" aria-current="page">Kitchen</li>
+      <nav class="civica-breadcrumbs" aria-label="Breadcrumb">
+      <ol class="civica-breadcrumbs__list">
+      <li class="civica-breadcrumbs__list-item"><a class="civica-breadcrumbs__link" href="#crumb-current-home">Home</a></li>
+      <li class="civica-breadcrumbs__list-item"><a class="civica-breadcrumbs__link" href="#crumb-current-rooms">Rooms</a></li>
+      <li class="civica-breadcrumbs__list-item" aria-current="page">Kitchen</li>
       </ol>
       </nav>
-      <h2 class="govuk-heading-m" id="spec-crumb-current-title">Kitchen</h2>
-      <section id="crumb-current-home" tabindex="-1"><h3 class="govuk-heading-s">Home</h3></section>
-      <section id="crumb-current-rooms" tabindex="-1"><h3 class="govuk-heading-s">Rooms</h3></section>
+      <h2 class="civica-heading-m" id="spec-crumb-current-title">Kitchen</h2>
+      <section id="crumb-current-home" tabindex="-1"><h3 class="civica-heading-s">Home</h3></section>
+      <section id="crumb-current-rooms" tabindex="-1"><h3 class="civica-heading-s">Rooms</h3></section>
       </div></article>
   spec-button-save:
     title: Save dashboard preferences
     description: "A form with one main action that names what is saved. Pressing it shows a message in this example only and does not change Home Assistant."
     height: 340
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-button-save-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-button-save-title">Dashboard preferences</h2>
+      <article class="civica-card-demo" aria-labelledby="spec-button-save-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-button-save-title">Dashboard preferences</h2>
       <form data-demo-form>
-      <button type="button" class="govuk-button" data-demo-message="Example preferences saved.">Save preferences</button>
-      <p class="govuk-body" data-demo-status role="status"></p>
+      <button type="button" class="civica-button" data-demo-message="Example preferences saved.">Save preferences</button>
+      <p class="civica-body" data-demo-status role="status"></p>
       </form></div></article>
   spec-button-pair:
     title: A main action and a quieter action
     description: "A pair of buttons for one task. The second button changes only the message in this example."
     height: 340
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-button-pair-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-button-pair-title">Room name</h2>
+      <article class="civica-card-demo" aria-labelledby="spec-button-pair-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-button-pair-title">Room name</h2>
       <form data-demo-form>
-      <div class="govuk-button-group">
-      <button type="button" class="govuk-button" data-demo-message="Example room name saved.">Save room name</button>
-      <button type="button" class="govuk-button govuk-button--secondary" data-demo-message="Example room name reset.">Reset example</button>
+      <div class="civica-button-group">
+      <button type="button" class="civica-button" data-demo-message="Example room name saved.">Save room name</button>
+      <button type="button" class="civica-button civica-button--secondary" data-demo-message="Example room name reset.">Reset example</button>
       </div>
-      <p class="govuk-body" data-demo-status role="status"></p>
+      <p class="civica-body" data-demo-status role="status"></p>
       </form></div></article>
   spec-button-remove:
     title: Confirm removing a saved view
     description: "A final confirmation that names the outcome and uses the fixed danger colour. Nothing is deleted."
     height: 340
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-button-remove-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-button-remove-title">Remove the saved garden view?</h2>
-      <p class="govuk-body">This example removes only a demonstration view.</p>
-      <button class="govuk-button govuk-button--warning" type="button" data-demo-message="Example view removed.">Remove saved view</button>
-      <p class="govuk-body" data-demo-status role="status"></p></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-button-remove-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-button-remove-title">Remove the saved garden view?</h2>
+      <p class="civica-body">This example removes only a demonstration view.</p>
+      <button class="civica-button civica-button--warning" type="button" data-demo-message="Example view removed.">Remove saved view</button>
+      <p class="civica-body" data-demo-status role="status"></p></div></article>
   spec-button-unavailable:
     title: Explain why an action is unavailable
     description: "An unavailable button with the reason written beside it, so the reason stays readable when the control cannot be used."
     height: 300
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-button-unavailable-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-button-unavailable-title">Washing machine</h2>
-      <p class="govuk-body" id="washer-unavailable">Remote start is unavailable while the washer is off.</p>
-      <button class="govuk-button" type="button" disabled aria-describedby="washer-unavailable">Start washer</button></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-button-unavailable-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-button-unavailable-title">Washing machine</h2>
+      <p class="civica-body" id="washer-unavailable">Remote start is unavailable while the washer is off.</p>
+      <button class="civica-button" type="button" disabled aria-describedby="washer-unavailable">Start washer</button></div></article>
   spec-button-card-tiles:
     title: Two button cards, a lamp and a door
     description: "A pair of button cards. Each shows an icon, a name and the state in words. The lamp would toggle and the door would open More info. Nothing here responds, and Home Assistant draws its own cards."
     height: 340
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-bcard-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-s" id="spec-bcard-title">Living room</h2>
+      <article class="civica-card-demo" aria-labelledby="spec-bcard-title"><div class="civica-card-demo__body"><h2 class="civica-heading-s" id="spec-bcard-title">Living room</h2>
       <div style="display:flex;flex-wrap:wrap;gap:12px">
-      <div role="group" aria-label="Reading lamp" style="border:1px solid #cecece;padding:16px;min-width:9rem;text-align:center"><svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="16" r="9" fill="none" stroke="#0b0c0c" stroke-width="2"></circle><path d="M16 28h8M17 32h6" stroke="#0b0c0c" stroke-width="2"></path></svg><p class="govuk-body" style="margin:4px 0 0"><strong>Reading lamp</strong></p><p class="govuk-body" style="margin:0;font-size:0.9rem">On</p></div>
-      <div role="group" aria-label="Front door" style="border:1px solid #cecece;padding:16px;min-width:9rem;text-align:center"><svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 40 40"><rect x="9" y="18" width="22" height="16" fill="none" stroke="#0b0c0c" stroke-width="2"></rect><path d="M14 18v-5a6 6 0 0 1 12 0v5" fill="none" stroke="#0b0c0c" stroke-width="2"></path></svg><p class="govuk-body" style="margin:4px 0 0"><strong>Front door</strong></p><p class="govuk-body" style="margin:0;font-size:0.9rem">Locked</p></div>
+      <div role="group" aria-label="Reading lamp" style="border:1px solid #cecece;padding:16px;min-width:9rem;text-align:center"><svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="16" r="9" fill="none" stroke="#0b0c0c" stroke-width="2"></circle><path d="M16 28h8M17 32h6" stroke="#0b0c0c" stroke-width="2"></path></svg><p class="civica-body" style="margin:4px 0 0"><strong>Reading lamp</strong></p><p class="civica-body" style="margin:0;font-size:0.9rem">On</p></div>
+      <div role="group" aria-label="Front door" style="border:1px solid #cecece;padding:16px;min-width:9rem;text-align:center"><svg aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 40 40"><rect x="9" y="18" width="22" height="16" fill="none" stroke="#0b0c0c" stroke-width="2"></rect><path d="M14 18v-5a6 6 0 0 1 12 0v5" fill="none" stroke="#0b0c0c" stroke-width="2"></path></svg><p class="civica-body" style="margin:4px 0 0"><strong>Front door</strong></p><p class="civica-body" style="margin:0;font-size:0.9rem">Locked</p></div>
       </div></div></article>
   spec-segmented-view-switch:
     title: A four-option view switch
     description: "A segmented control with four options. Home Assistant’s calendar card offers only Month, Day and List (7 days), as icon buttons with tooltips. Each option here is a text button, and the selected one is also marked in the page so its state does not depend on colour. Home Assistant’s own control shows the selection by fill alone. The buttons do nothing here."
     height: 320
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-seg-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-s" id="spec-seg-title">Choose a view</h2>
+      <article class="civica-card-demo" aria-labelledby="spec-seg-title"><div class="civica-card-demo__body"><h2 class="civica-heading-s" id="spec-seg-title">Choose a view</h2>
       <div role="group" aria-labelledby="spec-seg-title" class="civica-card-demo__actions">
-      <button type="button" class="govuk-button govuk-button--secondary" aria-pressed="false">Month</button>
-      <button type="button" class="govuk-button" aria-pressed="true">Week</button>
-      <button type="button" class="govuk-button govuk-button--secondary" aria-pressed="false">Day</button>
-      <button type="button" class="govuk-button govuk-button--secondary" aria-pressed="false">List</button>
+      <button type="button" class="civica-button civica-button--secondary" aria-pressed="false">Month</button>
+      <button type="button" class="civica-button" aria-pressed="true">Week</button>
+      <button type="button" class="civica-button civica-button--secondary" aria-pressed="false">Day</button>
+      <button type="button" class="civica-button civica-button--secondary" aria-pressed="false">List</button>
       </div>
-      <p class="govuk-body">Selected view: Week</p></div></article>
+      <p class="civica-body">Selected view: Week</p></div></article>
   spec-calendar-week-list:
     title: A calendar card listing one week of events
     description: "A calendar card listing the events for one week. The title and the Today, Previous and Next buttons sit above dated events with their times in words. Home Assistant draws its own calendar, so the look differs. The buttons do nothing here."
     height: 560
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-cal-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-cal-title">Household calendar</h2>
-      <p class="civica-card-demo__actions"><button type="button" class="govuk-button govuk-button--secondary">Previous</button><button type="button" class="govuk-button govuk-button--secondary">Today</button><button type="button" class="govuk-button govuk-button--secondary">Next</button></p>
-      <h3 class="govuk-heading-s">23 to 29 November 2026</h3>
-      <ul class="govuk-list">
+      <article class="civica-card-demo" aria-labelledby="spec-cal-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-cal-title">Household calendar</h2>
+      <p class="civica-card-demo__actions"><button type="button" class="civica-button civica-button--secondary">Previous</button><button type="button" class="civica-button civica-button--secondary">Today</button><button type="button" class="civica-button civica-button--secondary">Next</button></p>
+      <h3 class="civica-heading-s">23 to 29 November 2026</h3>
+      <ul class="civica-list">
       <li><strong>Tuesday 24 November</strong><br>10:00 to 11:00, Boiler service</li>
       <li><strong>Thursday 26 November</strong><br>All day, Bins out</li>
       <li><strong>Saturday 28 November</strong><br>18:30 to 21:00, Dinner with Sam</li>
@@ -132,13 +132,13 @@ examples:
     description: "A card that shows what must sit next to a drawn graphic: a short summary and a table of the same values. The drawing itself is not shown. A canvas is a block of pixels, so its meaning has to be written out as text."
     height: 480
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-canvas-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-canvas-title">Power use today</h2>
-      <p class="govuk-body">Power use peaked at 3.2kW at 18:00 and was lowest overnight.</p>
-      <table class="govuk-table"><caption class="govuk-table__caption govuk-visually-hidden">Power use at four times of day</caption>
-      <thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Time</th><th scope="col" class="govuk-table__header">Power use (kW)</th></tr></thead>
-      <tbody class="govuk-table__body">
-      <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">03:00</th><td class="govuk-table__cell">0.2</td></tr>
-      <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">08:00</th><td class="govuk-table__cell">1.4</td></tr>
-      <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">13:00</th><td class="govuk-table__cell">0.9</td></tr>
-      <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">18:00</th><td class="govuk-table__cell">3.2</td></tr>
+      <article class="civica-card-demo" aria-labelledby="spec-canvas-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-canvas-title">Power use today</h2>
+      <p class="civica-body">Power use peaked at 3.2kW at 18:00 and was lowest overnight.</p>
+      <table class="civica-table"><caption class="civica-table__caption civica-visually-hidden">Power use at four times of day</caption>
+      <thead class="civica-table__head"><tr class="civica-table__row"><th scope="col" class="civica-table__header">Time</th><th scope="col" class="civica-table__header">Power use (kW)</th></tr></thead>
+      <tbody class="civica-table__body">
+      <tr class="civica-table__row"><th scope="row" class="civica-table__header">03:00</th><td class="civica-table__cell">0.2</td></tr>
+      <tr class="civica-table__row"><th scope="row" class="civica-table__header">08:00</th><td class="civica-table__cell">1.4</td></tr>
+      <tr class="civica-table__row"><th scope="row" class="civica-table__header">13:00</th><td class="civica-table__cell">0.9</td></tr>
+      <tr class="civica-table__row"><th scope="row" class="civica-table__header">18:00</th><td class="civica-table__cell">3.2</td></tr>
       </tbody></table></div></article>

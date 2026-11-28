@@ -5,39 +5,39 @@ examples:
     description: "A support card. The button sits at the top of the card, in the same place every time. In this simulation it moves focus to the weather forecast below. A real button would open a neutral page, and it cannot clear browser history."
     height: 380
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-exit-visible-title"><div class="civica-card-demo__body"><p><a class="govuk-button govuk-button--warning" href="#spec-exit-visible-left">Exit this page</a></p><h2 class="govuk-heading-m" id="spec-exit-visible-title">Staying safe online at home</h2><p class="govuk-body">This card would hold the agreed support information.</p><div id="spec-exit-visible-left" tabindex="-1">Weather forecast: dry and mild this afternoon.</div></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-exit-visible-title"><div class="civica-card-demo__body"><p><a class="civica-button civica-button--warning" href="#spec-exit-visible-left">Exit this page</a></p><h2 class="civica-heading-m" id="spec-exit-visible-title">Staying safe online at home</h2><p class="civica-body">This card would hold the agreed support information.</p><div id="spec-exit-visible-left" tabindex="-1">Weather forecast: dry and mild this afternoon.</div></div></article>
   spec-exit-keyboard:
     title: A secondary keyboard route to the same exit
     description: "Press Tab once to reveal a second Exit this page link above the card. It goes to the same weather forecast as the button, in this simulation."
     height: 380
     html: |
-      <a class="govuk-skip-link" href="#spec-exit-keyboard-left">Exit this page</a>
-      <article class="civica-card-demo" aria-labelledby="spec-exit-keyboard-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-exit-keyboard-title">Staying safe online at home</h2><p class="govuk-body">Tab into this example to reveal the secondary link. It leads to the same weather forecast as the button.</p><p><a class="govuk-button govuk-button--warning" href="#spec-exit-keyboard-left">Exit this page</a></p><div id="spec-exit-keyboard-left" tabindex="-1">Weather forecast: dry and mild this afternoon.</div></div></article>
+      <a class="civica-skip-link" href="#spec-exit-keyboard-left">Exit this page</a>
+      <article class="civica-card-demo" aria-labelledby="spec-exit-keyboard-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-exit-keyboard-title">Staying safe online at home</h2><p class="civica-body">Tab into this example to reveal the secondary link. It leads to the same weather forecast as the button.</p><p><a class="civica-button civica-button--warning" href="#spec-exit-keyboard-left">Exit this page</a></p><div id="spec-exit-keyboard-left" tabindex="-1">Weather forecast: dry and mild this afternoon.</div></div></article>
   spec-feedback-invitation:
     title: A feedback invitation at the foot of a guide
     description: "A card that invites feedback after the main task. There is one question, and the privacy warning and the destination come before the field. The button shows a preview message only: nothing is sent."
     height: 560
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-feedback-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-feedback-title">Help improve this guide</h2><p class="govuk-body">Tell us which instruction was unclear. Do not include passwords, access tokens or private sensor history. Your comment goes to the project’s public issue form and is visible to everyone.</p><form data-demo-form><div class="govuk-form-group"><label class="govuk-label" for="spec-feedback-detail">What could be clearer?</label><textarea class="govuk-textarea" id="spec-feedback-detail" rows="3" required></textarea></div><button class="govuk-button" type="submit">Preview sending feedback</button><p role="status" data-demo-status></p></form></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-feedback-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-feedback-title">Help improve this guide</h2><p class="civica-body">Tell us which instruction was unclear. Do not include passwords, access tokens or private sensor history. Your comment goes to the project’s public issue form and is visible to everyone.</p><form data-demo-form><div class="civica-form-group"><label class="civica-label" for="spec-feedback-detail">What could be clearer?</label><textarea class="civica-textarea" id="spec-feedback-detail" rows="3" required></textarea></div><button class="civica-button" type="submit">Preview sending feedback</button><p role="status" data-demo-status></p></form></div></article>
   spec-feedback-confirmation:
     title: A confirmation that says nothing has been sent
     description: "A message after a preview. It says plainly that nothing was sent. A real service would show its own receipt and say what happens next."
     height: 300
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-feedback-done"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-feedback-done">Your feedback has not been sent</h2><p class="govuk-body">Nothing has been sent. A connected service would show its receipt here and explain what happens next.</p></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-feedback-done"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-feedback-done">Your feedback has not been sent</h2><p class="civica-body">Nothing has been sent. A connected service would show its receipt here and explain what happens next.</p></div></article>
   spec-fieldset-rooms:
     title: A settings card that asks which rooms a view includes
     description: "A dashboard settings card. One legend asks the shared question, a hint says that more than one can be chosen, and each room has its own label. The boxes can be ticked; nothing is saved."
     height: 420
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-fieldset-rooms-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-fieldset-rooms-title">Edit view</h2><form data-demo-form>
-      <fieldset class="govuk-fieldset" aria-describedby="spec-included-rooms-hint">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Rooms in this view</legend>
-      <div class="govuk-hint" id="spec-included-rooms-hint">Select all that apply</div>
-      <div class="govuk-checkboxes govuk-checkboxes--small">
-      <div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="spec-included-rooms-0" name="spec-included-rooms" type="checkbox" value="hall"><label class="govuk-label govuk-checkboxes__label" for="spec-included-rooms-0">Hall</label></div>
-      <div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="spec-included-rooms-1" name="spec-included-rooms" type="checkbox" value="kitchen"><label class="govuk-label govuk-checkboxes__label" for="spec-included-rooms-1">Kitchen</label></div>
-      <div class="govuk-checkboxes__item"><input class="govuk-checkboxes__input" id="spec-included-rooms-2" name="spec-included-rooms" type="checkbox" value="landing"><label class="govuk-label govuk-checkboxes__label" for="spec-included-rooms-2">Landing</label></div>
+      <article class="civica-card-demo" aria-labelledby="spec-fieldset-rooms-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-fieldset-rooms-title">Edit view</h2><form data-demo-form>
+      <fieldset class="civica-fieldset" aria-describedby="spec-included-rooms-hint">
+      <legend class="civica-fieldset__legend civica-fieldset__legend--s">Rooms in this view</legend>
+      <div class="civica-hint" id="spec-included-rooms-hint">Select all that apply</div>
+      <div class="civica-checkboxes civica-checkboxes--small">
+      <div class="civica-checkboxes__item"><input class="civica-checkboxes__input" id="spec-included-rooms-0" name="spec-included-rooms" type="checkbox" value="hall"><label class="civica-label civica-checkboxes__label" for="spec-included-rooms-0">Hall</label></div>
+      <div class="civica-checkboxes__item"><input class="civica-checkboxes__input" id="spec-included-rooms-1" name="spec-included-rooms" type="checkbox" value="kitchen"><label class="civica-label civica-checkboxes__label" for="spec-included-rooms-1">Kitchen</label></div>
+      <div class="civica-checkboxes__item"><input class="civica-checkboxes__input" id="spec-included-rooms-2" name="spec-included-rooms" type="checkbox" value="landing"><label class="civica-label civica-checkboxes__label" for="spec-included-rooms-2">Landing</label></div>
       </div>
       </fieldset>
       </form></div></article>
@@ -46,15 +46,15 @@ examples:
     description: "A form on a boiler service record. One legend names the question and three labelled fields hold the day, month and year. The fields can be edited; nothing is saved."
     height: 460
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-fieldset-date-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-fieldset-date-title">Boiler service record</h2><form data-demo-form>
-      <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="spec-service-date-hint">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">When was the boiler serviced?</legend>
-      <div class="govuk-hint" id="spec-service-date-hint">For example, 11 11 2026</div>
-      <div class="govuk-date-input">
-      <div class="govuk-date-input__item"><div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="spec-service-date-day">Day</label><input class="govuk-input govuk-date-input__input govuk-input--width-2" id="spec-service-date-day" name="spec-service-date-day" type="text" inputmode="numeric" value="11"></div></div>
-      <div class="govuk-date-input__item"><div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="spec-service-date-month">Month</label><input class="govuk-input govuk-date-input__input govuk-input--width-2" id="spec-service-date-month" name="spec-service-date-month" type="text" inputmode="numeric" value="11"></div></div>
-      <div class="govuk-date-input__item"><div class="govuk-form-group"><label class="govuk-label govuk-date-input__label" for="spec-service-date-year">Year</label><input class="govuk-input govuk-date-input__input govuk-input--width-4" id="spec-service-date-year" name="spec-service-date-year" type="text" inputmode="numeric" value="2026"></div></div>
+      <article class="civica-card-demo" aria-labelledby="spec-fieldset-date-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-fieldset-date-title">Boiler service record</h2><form data-demo-form>
+      <div class="civica-form-group">
+      <fieldset class="civica-fieldset" aria-describedby="spec-service-date-hint">
+      <legend class="civica-fieldset__legend civica-fieldset__legend--s">When was the boiler serviced?</legend>
+      <div class="civica-hint" id="spec-service-date-hint">For example, 11 11 2026</div>
+      <div class="civica-date-input">
+      <div class="civica-date-input__item"><div class="civica-form-group"><label class="civica-label civica-date-input__label" for="spec-service-date-day">Day</label><input class="civica-input civica-date-input__input civica-input--width-2" id="spec-service-date-day" name="spec-service-date-day" type="text" inputmode="numeric" value="11"></div></div>
+      <div class="civica-date-input__item"><div class="civica-form-group"><label class="civica-label civica-date-input__label" for="spec-service-date-month">Month</label><input class="civica-input civica-date-input__input civica-input--width-2" id="spec-service-date-month" name="spec-service-date-month" type="text" inputmode="numeric" value="11"></div></div>
+      <div class="civica-date-input__item"><div class="civica-form-group"><label class="civica-label civica-date-input__label" for="spec-service-date-year">Year</label><input class="civica-input civica-date-input__input civica-input--width-4" id="spec-service-date-year" name="spec-service-date-year" type="text" inputmode="numeric" value="2026"></div></div>
       </div>
       </fieldset>
       </div>
@@ -64,7 +64,7 @@ examples:
     description: "A help card with a figure. The picture has a short text alternative that describes what it shows, and the caption beneath says why it is there. The plan is not to scale."
     height: 470
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-figure-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-figure-title">Where is the living-room sensor?</h2>
+      <article class="civica-card-demo" aria-labelledby="spec-figure-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-figure-title">Where is the living-room sensor?</h2>
       <figure class="civica-image">
       <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20480%20220%22%3E%3Crect%20width%3D%22480%22%20height%3D%22220%22%20fill%3D%22%23f3f2f1%22%2F%3E%3Cpath%20d%3D%22M20%2020H460V200H20ZM240%2020V200M20%20120H240%22%20fill%3D%22none%22%20stroke%3D%22%230b0c0c%22%20stroke-width%3D%224%22%2F%3E%3Ccircle%20cx%3D%22345%22%20cy%3D%22100%22%20r%3D%2218%22%20fill%3D%22%231d70b8%22%2F%3E%3Ctext%20x%3D%2255%22%20y%3D%2270%22%20font-family%3D%22Arial%22%20font-size%3D%2222%22%3EHall%3C%2Ftext%3E%3Ctext%20x%3D%2245%22%20y%3D%22165%22%20font-family%3D%22Arial%22%20font-size%3D%2222%22%3EKitchen%3C%2Ftext%3E%3Ctext%20x%3D%22290%22%20y%3D%22160%22%20font-family%3D%22Arial%22%20font-size%3D%2222%22%3ELiving%20room%3C%2Ftext%3E%3C%2Fsvg%3E" width="480" height="220" alt="Floor plan: the living room is to the right of the hall and kitchen.">
       <figcaption class="civica-image__caption">Plan, not to scale. The blue dot is the living-room sensor. Use the room name when you choose an entity in a card.</figcaption>
@@ -83,17 +83,17 @@ examples:
     description: "An upload area on a dashboard picture form. It follows the layout Home Assistant uses: a dashed box, an Add file button, the words Or drop your file here and a line saying which formats are accepted. Home Assistant draws its own element, so the look differs. The button does nothing."
     height: 460
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-upload-drop-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-upload-drop-title">Dashboard background</h2><p class="govuk-hint" id="spec-upload-drop-hint">JPEG or PNG, up to 5 MB.</p><div role="group" aria-labelledby="spec-upload-drop-title" aria-describedby="spec-upload-drop-hint" style="border:1px dashed #0b0c0c;padding:24px;text-align:center"><p style="margin:0 0 12px"><button type="button" class="govuk-button govuk-button--secondary" style="margin:0">Add file</button></p><p class="govuk-body" style="margin:0 0 4px">Or drop your file here</p><p class="govuk-hint" style="margin:0">Supports JPEG and PNG</p></div></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-upload-drop-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-upload-drop-title">Dashboard background</h2><p class="civica-hint" id="spec-upload-drop-hint">JPEG or PNG, up to 5 MB.</p><div role="group" aria-labelledby="spec-upload-drop-title" aria-describedby="spec-upload-drop-hint" style="border:1px dashed #0b0c0c;padding:24px;text-align:center"><p style="margin:0 0 12px"><button type="button" class="civica-button civica-button--secondary" style="margin:0">Add file</button></p><p class="civica-body" style="margin:0 0 4px">Or drop your file here</p><p class="civica-hint" style="margin:0">Supports JPEG and PNG</p></div></div></article>
   spec-file-upload-image:
     title: A form that asks for a dashboard image
     description: "A form with the browser’s own file chooser. The label names the file, the hint gives the formats and size limit first. Choosing a file only shows its name here; nothing is uploaded."
     height: 380
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-upload-image-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-upload-image-title">Change dashboard picture</h2><form data-demo-form>
-      <div class="govuk-form-group">
-      <label class="govuk-label" for="spec-dashboard-image">Dashboard image</label>
-      <div class="govuk-hint" id="spec-dashboard-image-hint">JPEG or PNG, up to 5 MB</div>
-      <input class="govuk-file-upload" id="spec-dashboard-image" name="spec-dashboard-image" type="file" accept="image/jpeg,image/png" aria-describedby="spec-dashboard-image-hint">
+      <article class="civica-card-demo" aria-labelledby="spec-upload-image-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-upload-image-title">Change dashboard picture</h2><form data-demo-form>
+      <div class="civica-form-group">
+      <label class="civica-label" for="spec-dashboard-image">Dashboard image</label>
+      <div class="civica-hint" id="spec-dashboard-image-hint">JPEG or PNG, up to 5 MB</div>
+      <input class="civica-file-upload" id="spec-dashboard-image" name="spec-dashboard-image" type="file" accept="image/jpeg,image/png" aria-describedby="spec-dashboard-image-hint">
       </div>
       </form></div></article>
   spec-file-upload-error:
@@ -101,11 +101,11 @@ examples:
     description: "A form after a file of the wrong type was chosen. The message says which formats work and sits next to the field. Nothing is uploaded."
     height: 380
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-upload-error-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-upload-error-title">Change dashboard picture</h2><form data-demo-form>
-      <div class="govuk-form-group govuk-form-group--error">
-      <label class="govuk-label" for="spec-replacement-image">Choose another image</label>
-      <p class="govuk-error-message" id="spec-replacement-image-error"><span class="govuk-visually-hidden">Error:</span> Select a JPEG or PNG image</p>
-      <input class="govuk-file-upload govuk-file-upload--error" id="spec-replacement-image" name="spec-replacement-image" type="file" accept="image/jpeg,image/png" aria-invalid="true" aria-describedby="spec-replacement-image-error">
+      <article class="civica-card-demo" aria-labelledby="spec-upload-error-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-upload-error-title">Change dashboard picture</h2><form data-demo-form>
+      <div class="civica-form-group civica-form-group--error">
+      <label class="civica-label" for="spec-replacement-image">Choose another image</label>
+      <p class="civica-error-message" id="spec-replacement-image-error"><span class="civica-visually-hidden">Error:</span> Select a JPEG or PNG image</p>
+      <input class="civica-file-upload civica-file-upload--error" id="spec-replacement-image" name="spec-replacement-image" type="file" accept="image/jpeg,image/png" aria-invalid="true" aria-describedby="spec-replacement-image-error">
       </div>
       </form></div></article>
   spec-floor-picker-closed:
@@ -113,40 +113,40 @@ examples:
     description: "A stand-in for the closed floor picker. The label asks in terms of the task, the helper text says what the choice changes and the chosen floor is written in the field. Home Assistant draws its own field, so the look differs. Nothing here can be changed."
     height: 420
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-floor-closed-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-floor-closed-title">Add a heating schedule</h2><div class="govuk-form-group"><span class="govuk-label" id="spec-floor-closed-label">Which floor is this for?</span><div class="govuk-hint" id="spec-floor-closed-hint">The schedule will apply to every radiator on this floor.</div><div role="group" aria-labelledby="spec-floor-closed-label" aria-describedby="spec-floor-closed-hint" style="border-bottom:1px solid #0b0c0c;background:#fff;padding:8px 12px"><strong>First floor</strong></div></div><p class="civica-card-demo__actions"><button type="button" class="govuk-button">Save schedule</button></p></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-floor-closed-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-floor-closed-title">Add a heating schedule</h2><div class="civica-form-group"><span class="civica-label" id="spec-floor-closed-label">Which floor is this for?</span><div class="civica-hint" id="spec-floor-closed-hint">The schedule will apply to every radiator on this floor.</div><div role="group" aria-labelledby="spec-floor-closed-label" aria-describedby="spec-floor-closed-hint" style="border-bottom:1px solid #0b0c0c;background:#fff;padding:8px 12px"><strong>First floor</strong></div></div><p class="civica-card-demo__actions"><button type="button" class="civica-button">Save schedule</button></p></div></article>
   spec-floor-picker-open:
     title: The floor list open
     description: "A static picture of the list the floor picker opens. A search box sits above the floors, and the last row offers to add a new floor. This is a stand-in drawn by Civica: Home Assistant draws its own list, and nothing here responds."
     height: 470
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-floor-open-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-floor-open-title">Choose a floor</h2><div class="govuk-form-group"><span class="govuk-label">Search floors</span><div style="border:1px solid #0b0c0c;background:#fff;padding:8px 12px">Search</div></div><ul class="govuk-list" style="border:1px solid #cecece;margin:0;padding:0"><li style="padding:10px 12px;margin:0;border-bottom:1px solid #cecece">Ground floor</li><li style="padding:10px 12px;margin:0;border-bottom:1px solid #cecece;background:#f6f9fc"><strong>First floor</strong> (selected)</li><li style="padding:10px 12px;margin:0;border-bottom:1px solid #cecece">Loft</li><li style="padding:10px 12px;margin:0">Add new floor…</li></ul></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-floor-open-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-floor-open-title">Choose a floor</h2><div class="civica-form-group"><span class="civica-label">Search floors</span><div style="border:1px solid #0b0c0c;background:#fff;padding:8px 12px">Search</div></div><ul class="civica-list" style="border:1px solid #cecece;margin:0;padding:0"><li style="padding:10px 12px;margin:0;border-bottom:1px solid #cecece">Ground floor</li><li style="padding:10px 12px;margin:0;border-bottom:1px solid #cecece;background:#f6f9fc"><strong>First floor</strong> (selected)</li><li style="padding:10px 12px;margin:0;border-bottom:1px solid #cecece">Loft</li><li style="padding:10px 12px;margin:0">Add new floor…</li></ul></div></article>
   spec-floors-picker-multiple:
     title: A form that asks which floors a rule covers
     description: "A stand-in for the floors picker. Each chosen floor has its own field and one empty field waits at the end for the next. Home Assistant draws its own fields, so the look differs. Nothing here can be changed."
     height: 520
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-floors-title"><div class="civica-card-demo__body"><h2 class="govuk-heading-m" id="spec-floors-title">Turn off lights at night</h2><div class="govuk-form-group"><span class="govuk-label" id="spec-floors-label">Which floors should this cover?</span><div class="govuk-hint" id="spec-floors-hint">Choose one or more. Clear a field to remove that floor.</div><div role="group" aria-labelledby="spec-floors-label" aria-describedby="spec-floors-hint"><div style="border-bottom:1px solid #0b0c0c;background:#fff;padding:8px 12px;margin-top:8px"><strong>Ground floor</strong></div><div style="border-bottom:1px solid #0b0c0c;background:#fff;padding:8px 12px;margin-top:8px"><strong>First floor</strong></div><div style="border-bottom:1px solid #0b0c0c;background:#fff;padding:8px 12px;margin-top:8px"><span class="govuk-hint" style="margin:0">Floor</span></div></div></div></div></article>
+      <article class="civica-card-demo" aria-labelledby="spec-floors-title"><div class="civica-card-demo__body"><h2 class="civica-heading-m" id="spec-floors-title">Turn off lights at night</h2><div class="civica-form-group"><span class="civica-label" id="spec-floors-label">Which floors should this cover?</span><div class="civica-hint" id="spec-floors-hint">Choose one or more. Clear a field to remove that floor.</div><div role="group" aria-labelledby="spec-floors-label" aria-describedby="spec-floors-hint"><div style="border-bottom:1px solid #0b0c0c;background:#fff;padding:8px 12px;margin-top:8px"><strong>Ground floor</strong></div><div style="border-bottom:1px solid #0b0c0c;background:#fff;padding:8px 12px;margin-top:8px"><strong>First floor</strong></div><div style="border-bottom:1px solid #0b0c0c;background:#fff;padding:8px 12px;margin-top:8px"><span class="civica-hint" style="margin:0">Floor</span></div></div></div></div></article>
   spec-footer-simple:
     title: A small footer on a household guide
     description: "A guide page with two short sections and a footer. The footer holds two links in a labelled navigation, and the links go to the sections above."
     height: 420
     html: |
       <section id="spec-footer-accessibility">
-      <h2 class="govuk-heading-s">Accessibility</h2>
-      <p class="govuk-body">How to use this guide with a keyboard or a screen reader.</p>
+      <h2 class="civica-heading-s">Accessibility</h2>
+      <p class="civica-body">How to use this guide with a keyboard or a screen reader.</p>
       </section>
       <section id="spec-footer-help">
-      <h2 class="govuk-heading-s">Help</h2>
-      <p class="govuk-body">Who to ask if the guide does not answer your question.</p>
+      <h2 class="civica-heading-s">Help</h2>
+      <p class="civica-body">Who to ask if the guide does not answer your question.</p>
       </section>
       <footer class="civica-footer">
       <nav aria-label="Footer">
-      <ul class="govuk-list">
-      <li><a class="govuk-link" href="#spec-footer-accessibility">Accessibility</a></li>
-      <li><a class="govuk-link" href="#spec-footer-help">Help</a></li>
+      <ul class="civica-list">
+      <li><a class="civica-link" href="#spec-footer-accessibility">Accessibility</a></li>
+      <li><a class="civica-link" href="#spec-footer-help">Help</a></li>
       </ul>
       </nav>
-      <p class="govuk-body-s">Morgan household guide</p>
+      <p class="civica-body-s">Morgan household guide</p>
       </footer>
   spec-footer-information:
     title: A footer with privacy and licensing links
@@ -154,19 +154,19 @@ examples:
     height: 420
     html: |
       <section id="spec-footer-privacy">
-      <h2 class="govuk-heading-s">Privacy</h2>
-      <p class="govuk-body">What this guide stores about you, and for how long.</p>
+      <h2 class="civica-heading-s">Privacy</h2>
+      <p class="civica-body">What this guide stores about you, and for how long.</p>
       </section>
       <section id="spec-footer-licence">
-      <h2 class="govuk-heading-s">Licensing</h2>
-      <p class="govuk-body">The terms for the software and the pictures, kept separate.</p>
+      <h2 class="civica-heading-s">Licensing</h2>
+      <p class="civica-body">The terms for the software and the pictures, kept separate.</p>
       </section>
       <footer class="civica-footer">
       <nav aria-label="Footer">
-      <ul class="govuk-list">
-      <li><a class="govuk-link" href="#spec-footer-privacy">Privacy</a></li>
-      <li><a class="govuk-link" href="#spec-footer-licence">Licensing</a></li>
+      <ul class="civica-list">
+      <li><a class="civica-link" href="#spec-footer-privacy">Privacy</a></li>
+      <li><a class="civica-link" href="#spec-footer-licence">Licensing</a></li>
       </ul>
       </nav>
-      <p class="govuk-body-s">Morgan household guide</p>
+      <p class="civica-body-s">Morgan household guide</p>
       </footer>

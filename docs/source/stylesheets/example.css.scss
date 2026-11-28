@@ -84,7 +84,7 @@ dialog::backdrop { background:rgb(11 12 12 / 50%); }
    code and native chart labels retain their documented density roles. */
 .govuk-body,.govuk-body-m,.govuk-list,.govuk-table,.govuk-hint,.govuk-error-message,
 .govuk-input,.govuk-select,.govuk-textarea,.govuk-button,.govuk-details,
-.govuk-label:not([class*="govuk-label--"]),.govuk-fieldset__legend:not([class*="govuk-fieldset__legend--"]) {
+.govuk-label:not([class*="govuk-label--"]):not([class*="civica-label--"]),.govuk-fieldset__legend:not([class*="govuk-fieldset__legend--"]):not([class*="civica-fieldset__legend--"]) {
   font-size:var(--c-body-size); line-height:1.5;
 }
 .civica-card-demo { border:1px solid var(--c-border); background:#fff; margin:0 0 20px; min-width:0; max-width:40rem; }

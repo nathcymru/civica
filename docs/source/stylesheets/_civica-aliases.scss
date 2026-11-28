@@ -52,3 +52,56 @@
 .civica-accordion__heading:hover { color:#003078; background:#f3f2f1; }
 .civica-accordion__content { padding:0 0 15px; }
 .civica-accordion__content > :last-child { margin-bottom:0; }
+
+.civica-back-link { @extend .govuk-back-link; }
+.civica-breadcrumbs { @extend .govuk-breadcrumbs; }
+.civica-breadcrumbs__link { @extend .govuk-breadcrumbs__link; }
+.civica-breadcrumbs__list { @extend .govuk-breadcrumbs__list; }
+.civica-breadcrumbs__list-item { @extend .govuk-breadcrumbs__list-item; }
+.civica-button--secondary { @extend .govuk-button--secondary; }
+.civica-checkboxes { @extend .govuk-checkboxes !optional; }
+.civica-checkboxes--small { @extend .govuk-checkboxes--small; }
+.civica-checkboxes__input { @extend .govuk-checkboxes__input; }
+.civica-checkboxes__item { @extend .govuk-checkboxes__item; }
+.civica-checkboxes__label { @extend .govuk-checkboxes__label; }
+.civica-cookie-banner__content { @extend .govuk-cookie-banner__content !optional; }
+.civica-cookie-banner__heading { @extend .govuk-cookie-banner__heading !optional; }
+.civica-date-input { @extend .govuk-date-input; }
+.civica-date-input__input { @extend .govuk-date-input__input; }
+.civica-date-input__item { @extend .govuk-date-input__item; }
+.civica-date-input__label { @extend .govuk-date-input__label; }
+.civica-error-message { @extend .govuk-error-message; }
+.civica-error-summary { @extend .govuk-error-summary; }
+.civica-error-summary__body { @extend .govuk-error-summary__body; }
+.civica-error-summary__list { @extend .govuk-error-summary__list; }
+.civica-error-summary__title { @extend .govuk-error-summary__title; }
+.civica-fieldset { @extend .govuk-fieldset; }
+.civica-fieldset__legend { @extend .govuk-fieldset__legend; }
+.civica-fieldset__legend--s { @extend .govuk-fieldset__legend--s; }
+.civica-file-upload { @extend .govuk-file-upload; }
+.civica-file-upload--error { @extend .govuk-file-upload--error !optional; }
+.civica-heading-s { @extend .govuk-heading-s; }
+.civica-heading-xl { @extend .govuk-heading-xl; }
+.civica-input--width-2 { @extend .govuk-input--width-2; }
+.civica-input--width-3 { @extend .govuk-input--width-3; }
+.civica-input--width-4 { @extend .govuk-input--width-4; }
+.civica-input--width-5 { @extend .govuk-input--width-5; }
+.civica-list--bullet { @extend .govuk-list--bullet; }
+.civica-notification-banner { @extend .govuk-notification-banner; }
+.civica-notification-banner--success { @extend .govuk-notification-banner--success; }
+.civica-notification-banner__content { @extend .govuk-notification-banner__content; }
+.civica-notification-banner__header { @extend .govuk-notification-banner__header; }
+.civica-notification-banner__heading { @extend .govuk-notification-banner__heading; }
+.civica-notification-banner__title { @extend .govuk-notification-banner__title; }
+.civica-select--error { @extend .govuk-select--error; }
+.civica-table { @extend .govuk-table; }
+.civica-table__body { @extend .govuk-table__body !optional; }
+.civica-table__caption { @extend .govuk-table__caption; }
+.civica-table__caption--m { @extend .govuk-table__caption--m; }
+.civica-table__cell { @extend .govuk-table__cell; }
+.civica-table__cell--numeric { @extend .govuk-table__cell--numeric; }
+.civica-table__head { @extend .govuk-table__head !optional; }
+.civica-table__header { @extend .govuk-table__header; }
+.civica-table__header--numeric { @extend .govuk-table__header--numeric; }
+.civica-table__row { @extend .govuk-table__row !optional; }
+.civica-tag--grey { @extend .govuk-tag--grey; }
