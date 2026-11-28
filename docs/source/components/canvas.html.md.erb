@@ -13,6 +13,9 @@ updates:
     description: "Added the Canvas specification: what a canvas is, why a theme cannot colour it and the text it needs beside it."
 ai_instructions: "Apply when a custom card draws on a canvas element. A canvas is a block of pixels, so a theme cannot colour it and a screen reader cannot read it. Always give a text summary and a table or list of the same values. Prefer SVG, which can use theme colours, or a chart card. Do not say Home Assistant offers a canvas component or that its charts have accessible fallbacks. Do not claim any contrast. Avoid animation and flashing."
 ai_related:
+  - path: "/styles/chart-colour.html"
+    title: "Chart colours"
+    relationship: "Owns the colours for anything a chart draws on a canvas."
   - path: "/components/charts.html"
     title: "Statistic & Statistics Graph Cards"
     relationship: "Owns charts, their colours and their table alternatives."

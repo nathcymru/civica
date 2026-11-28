@@ -48,7 +48,7 @@ examples:
     description: "A picture card for a camera in still-image mode. A grey panel stands in for the camera picture. The camera name and the time the still was taken are written as text under it, so the card says what and when without the picture. Open live view does nothing here."
     height: 460
     html: |
-      <article class="civica-card-demo" aria-labelledby="spec-cam-title"><div class="civica-card-demo__media"><div role="img" aria-label="Still picture from the front door camera" style="aspect-ratio:16/9;background:#d9dde0;display:flex;align-items:center;justify-content:center;color:#484949"><span aria-hidden="true">Camera picture</span></div></div><div class="civica-card-demo__body">
+      <article class="civica-card-demo" aria-labelledby="spec-cam-title"><div class="civica-card-demo__media"><div role="img" aria-label="Still picture from the front door camera" style="aspect-ratio:16/9;background:#cecece;display:flex;align-items:center;justify-content:center;color:#484949"><span aria-hidden="true">Camera picture</span></div></div><div class="civica-card-demo__body">
       <h2 id="spec-cam-title" style="font-size:1.375rem;margin:0 0 8px">Front door</h2>
       <p style="margin:0 0 4px">Still picture, taken 26 November 2026 at 09:30</p>
       <p style="margin:0 0 16px">Motion: none detected</p>
