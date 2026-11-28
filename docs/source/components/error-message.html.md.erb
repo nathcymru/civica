@@ -44,15 +44,15 @@ component:
   origins:
     - "Civica"
   children:
-    - name: "Civica Error Message Pattern"
+    - name: "Civica error message pattern"
       origin: "Civica"
       anchor: "child-civica-error-message-pattern"
-    - name: "Civica Error Summary Pattern"
+    - name: "Civica error summary pattern"
       origin: "Civica"
       anchor: "child-civica-error-summary-pattern"
   tags:
-    - "Civica Error Message Pattern"
-    - "Civica Error Summary Pattern"
+    - "Civica error message pattern"
+    - "Civica error summary pattern"
 ---
 
 # Error message and error summary
@@ -66,8 +66,8 @@ These are Civica patterns, not Home Assistant elements. Use them on Civica pages
 This page covers:
 
 - Error message and error summary
-  - Civica Error Message Pattern
-  - Civica Error Summary Pattern
+  - Civica error message pattern
+  - Civica error summary pattern
 
 <h2 id="anatomy">Anatomy</h2>
 
@@ -77,7 +77,7 @@ An error summary is a box with the title “There is a problem” and a list of 
 
 <h2 id="variants">Variants, variables and extensibility</h2>
 
-<h3 id="child-civica-error-message-pattern"><code>Civica Error Message Pattern</code></h3>
+<h3 id="child-civica-error-message-pattern"><code>Civica error message pattern</code></h3>
 
 Use it after an attempted save or next step. Put the message with the affected field and repeat it in the error summary. Describe the correction, including units or permitted choices when they help.
 
@@ -92,7 +92,7 @@ For Home Assistant settings:
 
 The error colour is `error-color`, #CA3535 in light mode and #F0C6C6 in dark mode.
 
-<h3 id="child-civica-error-summary-pattern"><code>Civica Error Summary Pattern</code></h3>
+<h3 id="child-civica-error-summary-pattern"><code>Civica error summary pattern</code></h3>
 
 Use the summary even when only one field needs correcting. Put it at the start of the form content, below any back link, and use the same words as the messages beside the fields.
 

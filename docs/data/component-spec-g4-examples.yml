@@ -6,13 +6,13 @@ examples:
     height: 340
     html: |
       <form data-demo-form>
-      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="120">
-      <div class="govuk-form-group">
-      <label class="govuk-label" for="spec-count-note">Dashboard note</label>
-      <div class="govuk-hint" id="spec-count-note-hint">You can enter up to 120 characters</div>
-      <textarea class="govuk-textarea govuk-js-character-count" id="spec-count-note" name="note" rows="4" aria-describedby="spec-count-note-hint spec-count-note-info">Bins move to Friday this week.</textarea>
+      <div class="civica-character-count" data-civica-character-count data-maxlength="120">
+      <div class="civica-form-group">
+      <label class="civica-label" for="spec-count-note">Dashboard note</label>
+      <div class="civica-hint" id="spec-count-note-hint">You can enter up to 120 characters</div>
+      <textarea class="civica-textarea" id="spec-count-note" name="note" rows="4" aria-describedby="spec-count-note-hint spec-count-note-info">Bins move to Friday this week.</textarea>
       </div>
-      <div id="spec-count-note-info" class="govuk-hint govuk-character-count__message">You have 90 characters remaining</div>
+      <div id="spec-count-note-info" class="civica-hint civica-character-count__message">You have 90 characters remaining</div>
       </div>
       </form>
   spec-character-count-over-limit:
@@ -21,15 +21,15 @@ examples:
     height: 420
     html: |
       <form data-demo-form>
-      <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="40">
-      <div class="govuk-form-group govuk-form-group--error">
-      <label class="govuk-label" for="spec-count-long">Dashboard note</label>
-      <div class="govuk-hint" id="spec-count-long-hint">Example limit: 40 characters</div>
-      <p class="govuk-error-message" id="spec-count-long-error">
-      <span class="govuk-visually-hidden">Error:</span> Dashboard note must be 40 characters or fewer; you have 29 characters too many</p>
-      <textarea class="govuk-textarea govuk-js-character-count govuk-textarea--error" id="spec-count-long" name="long-note" rows="4" aria-describedby="spec-count-long-hint spec-count-long-error spec-count-long-info" aria-invalid="true">The side entrance will be used while the front path is being repaired</textarea>
+      <div class="civica-character-count" data-civica-character-count data-maxlength="40">
+      <div class="civica-form-group civica-form-group--error">
+      <label class="civica-label" for="spec-count-long">Dashboard note</label>
+      <div class="civica-hint" id="spec-count-long-hint">Example limit: 40 characters</div>
+      <p class="civica-error-message" id="spec-count-long-error">
+      <span class="civica-visually-hidden">Error:</span> Dashboard note must be 40 characters or fewer; you have 29 characters too many</p>
+      <textarea class="civica-textarea civica-textarea--error" id="spec-count-long" name="long-note" rows="4" aria-describedby="spec-count-long-hint spec-count-long-error spec-count-long-info" aria-invalid="true">The side entrance will be used while the front path is being repaired</textarea>
       </div>
-      <div id="spec-count-long-info" class="govuk-hint govuk-character-count__message">You have 29 characters too many</div>
+      <div id="spec-count-long-info" class="civica-hint civica-character-count__message">You have 29 characters too many</div>
       </div>
       </form>
   spec-checkbox-rooms:
@@ -38,21 +38,21 @@ examples:
     height: 340
     html: |
       <form data-demo-form>
-      <fieldset class="govuk-fieldset" aria-describedby="spec-rooms-hint">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Which rooms should appear?</legend>
-      <div class="govuk-hint" id="spec-rooms-hint">Select all rooms you want to include</div>
-      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="spec-rooms-0" name="rooms" type="checkbox" value="0">
-      <label class="govuk-label govuk-checkboxes__label" for="spec-rooms-0">Bedroom</label>
+      <fieldset class="civica-fieldset" aria-describedby="spec-rooms-hint">
+      <legend class="civica-fieldset__legend civica-fieldset__legend--m">Which rooms should appear?</legend>
+      <div class="civica-hint" id="spec-rooms-hint">Select all rooms you want to include</div>
+      <div class="civica-checkboxes">
+      <div class="civica-checkboxes__item">
+      <input class="civica-checkboxes__input" id="spec-rooms-0" name="rooms" type="checkbox" value="0">
+      <label class="civica-label civica-checkboxes__label" for="spec-rooms-0">Bedroom</label>
       </div>
-      <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="spec-rooms-1" name="rooms" type="checkbox" value="1">
-      <label class="govuk-label govuk-checkboxes__label" for="spec-rooms-1">Kitchen</label>
+      <div class="civica-checkboxes__item">
+      <input class="civica-checkboxes__input" id="spec-rooms-1" name="rooms" type="checkbox" value="1">
+      <label class="civica-label civica-checkboxes__label" for="spec-rooms-1">Kitchen</label>
       </div>
-      <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="spec-rooms-2" name="rooms" type="checkbox" value="2">
-      <label class="govuk-label govuk-checkboxes__label" for="spec-rooms-2">Living room</label>
+      <div class="civica-checkboxes__item">
+      <input class="civica-checkboxes__input" id="spec-rooms-2" name="rooms" type="checkbox" value="2">
+      <label class="civica-label civica-checkboxes__label" for="spec-rooms-2">Living room</label>
       </div>
       </div>
       </fieldset>
@@ -63,17 +63,17 @@ examples:
     height: 340
     html: |
       <form data-demo-form>
-      <fieldset class="govuk-fieldset">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">Display preferences</legend>
-      <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-      <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="spec-unavailable-0" name="unavailable" type="checkbox" value="0" checked>
-      <label class="govuk-label govuk-checkboxes__label" for="spec-unavailable-0">Show unavailable devices</label>
+      <fieldset class="civica-fieldset">
+      <legend class="civica-fieldset__legend civica-fieldset__legend--m">Display preferences</legend>
+      <div class="civica-checkboxes">
+      <div class="civica-checkboxes__item">
+      <input class="civica-checkboxes__input" id="spec-unavailable-0" name="unavailable" type="checkbox" value="0" checked>
+      <label class="civica-label civica-checkboxes__label" for="spec-unavailable-0">Show unavailable devices</label>
       </div>
       </div>
       </fieldset>
-      <button type="button" class="govuk-button" data-demo-message="Example preferences saved.">Save display preferences</button>
-      <p class="govuk-body" data-demo-status role="status">
+      <button type="button" class="civica-button" data-demo-message="Example preferences saved.">Save display preferences</button>
+      <p class="civica-body" data-demo-status role="status">
       </p>
       </form>
   spec-chip-filter-row:
